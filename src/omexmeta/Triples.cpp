@@ -10,12 +10,12 @@ namespace omexmeta {
     Triples::Triples() = default;
 
     Triples::Triples(Triple &triple) {
-        move_back(triple);
+        moveBack(triple);
     }
 
     Triples::Triples(std::vector<Triple> triples) {
         for (auto &triple: triples) {
-            move_back(triple);
+            moveBack(triple);
         }
     }
 
@@ -27,52 +27,52 @@ namespace omexmeta {
      * slot. Therefore, ownership of the triple passes to
      * the Triples object who is reposible for freeing the Triple.
      */
-    void Triples::move_back(Triple &triple) {
+    void Triples::moveBack(Triple &triple) {
         // This move calls Triple destrubtor?
         triples_.push_back(std::move(triple));
     }
 
-    void Triples::emplace_back(librdf_node *subject, librdf_node *predicate, librdf_node *resource) {
-        Triple triple(subject, predicate, resource);
-        move_back(triple);
+    void Triples::emplace_back(UriHandler& uriHandler, librdf_node *subject, librdf_node *predicate, librdf_node *resource) {
+        Triple triple(uriHandler, subject, predicate, resource);
+        moveBack(triple);
     }
 
-    void Triples::emplace_back(Subject subject, const PredicatePtr &predicatePtr, const Resource &resource) {
-        Triple triple(subject, predicatePtr, resource);
-        move_back(triple);
+    void Triples::emplace_back(UriHandler& uriHandler, LibrdfNode subject, const PredicatePtr &predicatePtr, const LibrdfNode &resource) {
+        Triple triple(uriHandler, subject, predicatePtr, resource);
+        moveBack(triple);
     }
 
-    void Triples::emplace_back(Subject subject, const Predicate &predicate, const Resource &resource) {
-        Triple triple(subject.getNode(), predicate.getNode(), resource.getNode());
-        move_back(triple);
+    void Triples::emplace_back(UriHandler& uriHandler, LibrdfNode subject, const Predicate &predicate, const LibrdfNode &resource) {
+        Triple triple(uriHandler, subject.get(), predicate.get(), resource.get());
+        moveBack(triple);
     }
 
-    void Triples::emplace_back(Subject subject, BiomodelsBiologyQualifier predicate, const Resource &resource) {
-        Triple triple(subject, std::make_shared<BiomodelsBiologyQualifier>(std::move(predicate)),
+    void Triples::emplace_back(UriHandler& uriHandler, LibrdfNode subject, BiomodelsBiologyQualifier predicate, const LibrdfNode &resource) {
+        Triple triple(uriHandler, subject, std::make_shared<BiomodelsBiologyQualifier>(std::move(predicate)),
                       resource);
-        move_back(triple);
+        moveBack(triple);
     }
 
-    void Triples::emplace_back(Subject subject, BiomodelsModelQualifier predicate, const Resource &resource) {
-        Triple triple(subject, std::make_shared<BiomodelsModelQualifier>(std::move(predicate)),
+    void Triples::emplace_back(UriHandler& uriHandler, LibrdfNode subject, BiomodelsModelQualifier predicate, const LibrdfNode &resource) {
+        Triple triple(uriHandler, subject, std::make_shared<BiomodelsModelQualifier>(std::move(predicate)),
                       resource);
-        move_back(triple);
+        moveBack(triple);
     }
 
-    void Triples::emplace_back(Subject subject, DCTerm predicate, const Resource &resource) {
-        Triple triple(subject, std::make_shared<DCTerm>(std::move(predicate)), resource);
-        move_back(triple);
+    void Triples::emplace_back(UriHandler& uriHandler, LibrdfNode subject, DCTerm predicate, const LibrdfNode &resource) {
+        Triple triple(uriHandler, subject, std::make_shared<DCTerm>(std::move(predicate)), resource);
+        moveBack(triple);
     }
 
-    void Triples::emplace_back(Subject subject, SemSim predicate, const Resource &resource) {
-        Triple triple(subject, std::make_shared<SemSim>(std::move(predicate)), resource);
-        move_back(triple);
+    void Triples::emplace_back(UriHandler& uriHandler, LibrdfNode subject, SemSim predicate, const LibrdfNode &resource) {
+        Triple triple(uriHandler, subject, std::make_shared<SemSim>(std::move(predicate)), resource);
+        moveBack(triple);
     }
 
     std::vector<std::string> Triples::getSubjectsStr() {
         std::vector<std::string> vec;
         for (auto &triple : triples_) {
-            vec.push_back(triple.getSubjectStr());
+            vec.push_back(triple.getSubjectNode().str());
         }
         return vec;
     }
@@ -80,7 +80,7 @@ namespace omexmeta {
     std::vector<std::string> Triples::getPredicates() {
         std::vector<std::string> vec;
         for (auto &triple: triples_) {
-            vec.push_back(triple.getPredicateStr());
+            vec.push_back(triple.getPredicateNode().str());
         }
         return vec;
     }
@@ -88,7 +88,7 @@ namespace omexmeta {
     std::vector<std::string> Triples::getResources() {
         std::vector<std::string> vec;
         for (auto &triple: triples_) {
-            vec.push_back(triple.getResourceStr());
+            vec.push_back(triple.getResourceNode().str());
         }
         return vec;
     }
@@ -117,20 +117,20 @@ namespace omexmeta {
         librdf_serializer *serializer = librdf_new_serializer(world, format.c_str(), nullptr, nullptr);
         for (auto &it : triples_) {
             // ensure we have three nodes and a statement
-            if (!it.getSubject()) {
+            if (!it.getSubjectAsRawNode()) {
                 throw RedlandNullPointerException("RedlandNullPointerException: Triples::str: subject is null");
             }
-            if (!it.getPredicate()) {
+            if (!it.getPredicateAsRawNode()) {
                 throw RedlandNullPointerException("RedlandNullPointerException: Triples::str: predicate is null");
             }
-            if (!it.getResource()) {
+            if (!it.getResourceAsRawNode()) {
                 throw RedlandNullPointerException("RedlandNullPointerException: Triples::str: resource is null");
             }
             if (!it.getStatement()) {
                 throw RedlandNullPointerException("RedlandNullPointerException: Triples::str: statement is null");
             }
             librdf_model_add_statement(model, it.getStatement());
-            Predicate::addSeenNamespaceToSerializer(world, serializer, it.getPredicate());
+            Predicate::addSeenNamespaceToSerializer(world, serializer, it.getPredicateAsRawNode());
         }
 
         // turn off base uri
@@ -174,30 +174,27 @@ namespace omexmeta {
 
     Triple Triples::pop() {
         // get reference to back of triples_ vector
-        Triple &triple = triples_.back();
+        Triple triple = triples_.back();
         // then remove it from the triples_ vector
         triples_.pop_back();
         // return by move so no copies are made.
         return std::move(triple);
     }
 
-    Triple Triples::pop_front() {
-        // get reference to front of triples_ vector
-        // move should remove it from the triples_ vector
-        Triple triple = std::move(triples_.front());
-        triples_.erase(triples_.begin());
-        // return by move so no copies are made.
-        return std::move(triple);
-    }
 
     void Triples::freeTriples() {
-        while (!triples_.empty()) {
-            pop().freeTriple();
+        for (auto& triple: triples_){
+            triple.freeTriple();
         }
+        triples_ = std::vector<Triple>();
     }
 
     bool Triples::isEmpty() {
         return triples_.empty();
+    }
+
+    Triple &Triples::operator[](int index) {
+        return triples_[index];
     }
 
     const Triple &Triples::operator[](int index) const {

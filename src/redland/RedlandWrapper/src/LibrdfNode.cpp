@@ -12,8 +12,60 @@
 
 namespace redland {
 
+    LibrdfNode::~LibrdfNode() {
+        if (node_) {
+            freeNode();
+        }
+    }
+
+    LibrdfNode::LibrdfNode(const LibrdfNode &node) {
+        if (node_) {
+            librdf_free_node(node_);
+            node_ = nullptr;
+        }
+        node_ = node.get();// does the necessary reference increment for us
+    }
+
+    LibrdfNode &LibrdfNode::operator=(const LibrdfNode &node) {
+        if (*this != node) {
+            if (node_) {
+                librdf_free_node(node_);
+                node_ = nullptr;
+            }
+            node_ = node.get();// increment done for us
+        }
+        return *this;
+    }
+
+    LibrdfNode::LibrdfNode(LibrdfNode &&node) noexcept {
+        if (node_) {
+            librdf_free_node(node_);
+            node_ = nullptr;
+        }
+        node_ = node.getWithoutIncrement();
+        node.node_ = nullptr;
+    }
+
+
+    LibrdfNode &LibrdfNode::operator=(LibrdfNode &&node) noexcept {
+        if (this != &node) {
+            if (node_) {
+                librdf_free_node(node_);
+                node_ = nullptr;
+            }
+            node_ = node.getWithoutIncrement();
+            node.node_ = nullptr;
+        }
+        return *this;
+    }
+
+
     LibrdfNode::LibrdfNode(librdf_node *node)
         : node_(node) {}
+
+    LibrdfNode::LibrdfNode(const LibrdfUri &uri)
+        : node_(LibrdfNode::fromUriString(uri.str()).get()){};
+
 
     //todo the content of thos method really belongs somewhere else
     LibrdfNode LibrdfNode::fromUriString(const std::string &uri_string) {
@@ -87,7 +139,6 @@ namespace redland {
     LibrdfNode LibrdfNode::fromRelativeUri(const std::string &uri_string, const std::string &base_uri) {
         LibrdfUri uri(base_uri);
         librdf_uri *u = librdf_new_uri_relative_to_base(uri.get(), (const unsigned char *) uri_string.c_str());
-        uri.freeUri();
         librdf_node *n = librdf_new_node_from_uri(World::getWorld(), u);
         return LibrdfNode(n);
     }
@@ -133,6 +184,8 @@ namespace redland {
                 xml_language_,
                 literal_datatype_uri_);
         librdf_free_uri(literal_datatype_uri_);
+        // todo do i need to increment the ref counter here?
+        //  1 for the underlying node, one for the LibrdfNode???
         return LibrdfNode(n);
     }
 
@@ -173,12 +226,19 @@ namespace redland {
     }
 
     librdf_node *LibrdfNode::get() const {
+        node_->usage++;
+        return node_;
+    }
+
+    librdf_node *LibrdfNode::getWithoutIncrement() const {
         return node_;
     }
 
 
     LibrdfUri LibrdfNode::getLiteralDatatype() {
-        return LibrdfUri::fromRawPtr(librdf_node_get_literal_value_datatype_uri(node_));
+        LibrdfUri uri = LibrdfUri::fromRawPtr(librdf_node_get_literal_value_datatype_uri(node_));
+        uri.incrementUsage();
+        return uri;
     }
 
     std::string LibrdfNode::getLiteralLanguage() {
@@ -193,7 +253,9 @@ namespace redland {
     }
 
     LibrdfUri LibrdfNode::getUri() {
-        return LibrdfUri::fromRawPtr(librdf_node_get_uri(node_));
+        LibrdfUri uri = LibrdfUri::fromRawPtr(librdf_node_get_uri(node_));
+        uri.incrementUsage();
+        return uri;
     }
 
     void LibrdfNode::setUri(const std::string &uri) {
@@ -259,49 +321,28 @@ namespace redland {
                 (const unsigned char *) identifier.c_str());
     }
 
-    void LibrdfNode::freeNode(librdf_node *node) {
-        if (!node) {
-            throw RedlandNullPointerException(
-                    "RedlandNullPointerException: LibrdfNode::free: trying to free null node");
-        }
-        librdf_free_node(node);
-    }
 
     void LibrdfNode::freeNode() {
-        LibrdfNode::freeNode(node_);
+        if (!node_)
+            return;
+        unsigned int count = getUsage();
+        librdf_free_node(node_);
+        // only set to nullptr if we're sure the pointer
+        // is not still in use. librdf_free_node decrements the
+        // internal ref counter, but the node may become NULL.
+        // If this happens the count is inaccessible for checking.
+        // so we do it this way instead.
+        if (count - 1 == 0) {
+            node_ = nullptr;
+        }
     }
 
     std::string LibrdfNode::str() const {
         return LibrdfNode::str(node_);
     }
 
-    LibrdfNode::LibrdfNode(LibrdfNode &&node) noexcept {
-        if (node.node_ != nullptr) {
-            if (node_ != nullptr) {
-                librdf_free_node(node_);
-                node_ = nullptr;
-            }
-            node_ = node.node_;
-            node.node_ = nullptr;
-        }
-    }
-
-    LibrdfNode &LibrdfNode::operator=(LibrdfNode &&node) noexcept {
-        if (this != &node) {
-            if (node.node_ != nullptr) {
-                if (node_ != nullptr) {
-                    librdf_free_node(node_);
-                    node_ = nullptr;
-                }
-                node_ = node.node_;
-                node.node_ = nullptr;
-            }
-        }
-        return *this;
-    }
-
     bool LibrdfNode::operator==(const LibrdfNode &rhs) const {
-        return librdf_node_equals(node_, rhs.node_);
+        return librdf_node_equals(node_, rhs.getWithoutIncrement());
     }
 
     bool LibrdfNode::operator!=(const LibrdfNode &rhs) const {
@@ -353,5 +394,14 @@ namespace redland {
         }
         return ns.str();
     }
+
+    unsigned int LibrdfNode::getUsage() const {
+        return node_->usage;
+    };
+
+    void LibrdfNode::incrementUsageCount() {
+        node_->usage++;
+    }
+
 
 }// namespace redland

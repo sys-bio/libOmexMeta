@@ -6,24 +6,27 @@
 #define LIBOMEXMETA_LIBRDFURI_H
 
 
-#include <memory>
-#include "librdf.h"
 #include "LibrdfException.h"
+#include "librdf.h"
+#include <memory>
 
 
 namespace redland {
 
     class LibrdfUri {
 
-        librdf_uri *uri_ = nullptr;
-
-        /*
-         * Hidden to make creating with raw ptr more explicit.
-         */
-        explicit LibrdfUri(librdf_uri *uri);
-
     public:
         LibrdfUri() = default;
+
+        ~LibrdfUri();
+
+        LibrdfUri(const LibrdfUri &librdfUri);
+
+        LibrdfUri(LibrdfUri &&librdfUri) noexcept;
+
+        LibrdfUri &operator=(const LibrdfUri &librdfUri);
+
+        LibrdfUri &operator=(LibrdfUri &&librdfUri) noexcept;
 
         /*
          * @brief create a LibrdfUri object from a raw librdf_uri* pointer
@@ -79,9 +82,25 @@ namespace redland {
 
         explicit LibrdfUri(const std::string &uri);
 
+        /**
+         * @brief returns a librdf_uri pointer and increments the
+         * usage count. The caller is responsible for calling
+         * @see freeUri to decrement the librdf_uri* again.
+         * @note when @see getUsage() is 1 the destructor
+         * will take care of freeing memory associated with
+         * librdf_uri object.
+         */
         [[nodiscard]] librdf_uri *get() const;
 
-        [[nodiscard]] bool isNull() const;
+        /**
+         * @brief get the underlying librdf_uri*
+         * @details do not increment the shared pointer reference
+         * counter.
+         * @warning this method assumes you know what you are doing
+         * with regards to the librdf reference counting system
+         * @see LibrdfUri::get()
+         */
+        [[nodiscard]] librdf_uri *getWithoutIncrement() const;
 
         [[nodiscard]] bool isEmpty() const;
 
@@ -106,8 +125,21 @@ namespace redland {
 
         int getUsage();
 
+        /**
+         * @brief adds 1 to the usage count
+         * for underlying reference counter
+         * in librdf_uri*
+         */
+        void incrementUsage() const;
 
+    private:
+        librdf_uri *uri_ = nullptr;
+
+        /*
+         * Hidden to make creating with raw ptr more explicit.
+         */
+        explicit LibrdfUri(librdf_uri *uri);
     };
-}
+}// namespace redland
 
-#endif //LIBOMEXMETA_LIBRDFURI_H
+#endif//LIBOMEXMETA_LIBRDFURI_H

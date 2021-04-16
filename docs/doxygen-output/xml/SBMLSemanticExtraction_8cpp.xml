@@ -26,9 +26,15 @@
       <node id="8">
         <label>stdarg.h</label>
       </node>
-      <node id="41">
+      <node id="40">
         <label>LibrdfNode.h</label>
         <link refid="LibrdfNode_8h_source"/>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
         <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
@@ -36,12 +42,6 @@
         <childnode refid="31" relation="include">
         </childnode>
         <childnode refid="38" relation="include">
-        </childnode>
-        <childnode refid="33" relation="include">
-        </childnode>
-        <childnode refid="29" relation="include">
-        </childnode>
-        <childnode refid="34" relation="include">
         </childnode>
       </node>
       <node id="61">
@@ -73,7 +73,7 @@
         </childnode>
         <childnode refid="42" relation="include">
         </childnode>
-        <childnode refid="41" relation="include">
+        <childnode refid="40" relation="include">
         </childnode>
         <childnode refid="44" relation="include">
         </childnode>
@@ -91,9 +91,13 @@
       <node id="64">
         <label>UriHandler.h</label>
         <link refid="UriHandler_8h_source"/>
+        <childnode refid="51" relation="include">
+        </childnode>
         <childnode refid="30" relation="include">
         </childnode>
-        <childnode refid="51" relation="include">
+        <childnode refid="57" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
         </childnode>
       </node>
       <node id="14">
@@ -129,30 +133,26 @@
         <childnode refid="45" relation="include">
         </childnode>
       </node>
-      <node id="82">
+      <node id="80">
         <label>omexmeta/PhysicalEntity.h</label>
         <link refid="PhysicalEntity_8h_source"/>
         <childnode refid="55" relation="include">
         </childnode>
         <childnode refid="51" relation="include">
         </childnode>
-        <childnode refid="73" relation="include">
+        <childnode refid="71" relation="include">
         </childnode>
-        <childnode refid="75" relation="include">
+        <childnode refid="73" relation="include">
         </childnode>
         <childnode refid="56" relation="include">
         </childnode>
         <childnode refid="65" relation="include">
         </childnode>
-        <childnode refid="66" relation="include">
-        </childnode>
-        <childnode refid="67" relation="include">
-        </childnode>
-        <childnode refid="74" relation="include">
+        <childnode refid="72" relation="include">
         </childnode>
         <childnode refid="28" relation="include">
         </childnode>
-        <childnode refid="83" relation="include">
+        <childnode refid="81" relation="include">
         </childnode>
         <childnode refid="31" relation="include">
         </childnode>
@@ -164,14 +164,14 @@
         <link refid="SBMLSemanticExtraction_8h_source"/>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="85" relation="include">
+        <childnode refid="83" relation="include">
         </childnode>
-        <childnode refid="89" relation="include">
+        <childnode refid="87" relation="include">
         </childnode>
         <childnode refid="30" relation="include">
         </childnode>
       </node>
-      <node id="83">
+      <node id="81">
         <label>cassert</label>
       </node>
       <node id="17">
@@ -183,27 +183,25 @@
       <node id="54">
         <label>stdexcept</label>
       </node>
-      <node id="78">
+      <node id="76">
         <label>libxml/parser.h</label>
       </node>
-      <node id="75">
+      <node id="73">
         <label>omexmeta/PropertyBearer.h</label>
         <link refid="PropertyBearer_8h_source"/>
-        <childnode refid="66" relation="include">
-        </childnode>
-        <childnode refid="73" relation="include">
-        </childnode>
-        <childnode refid="76" relation="include">
-        </childnode>
-        <childnode refid="67" relation="include">
-        </childnode>
-        <childnode refid="72" relation="include">
-        </childnode>
-        <childnode refid="55" relation="include">
+        <childnode refid="74" relation="include">
         </childnode>
         <childnode refid="57" relation="include">
         </childnode>
+        <childnode refid="55" relation="include">
+        </childnode>
+        <childnode refid="71" relation="include">
+        </childnode>
         <childnode refid="56" relation="include">
+        </childnode>
+        <childnode refid="65" relation="include">
+        </childnode>
+        <childnode refid="70" relation="include">
         </childnode>
         <childnode refid="28" relation="include">
         </childnode>
@@ -262,13 +260,13 @@
       <node id="23">
         <label>rdf_raptor.h</label>
       </node>
-      <node id="87">
+      <node id="84">
         <label>fstream</label>
       </node>
-      <node id="70">
+      <node id="69">
         <label>ostream</label>
       </node>
-      <node id="76">
+      <node id="74">
         <label>omexmeta/AnnotationType.h</label>
         <link refid="AnnotationType_8h_source"/>
       </node>
@@ -288,18 +286,14 @@
       <node id="53">
         <label>curl/curl.h</label>
       </node>
-      <node id="72">
+      <node id="70">
         <label>omexmeta/Triples.h</label>
         <link refid="Triples_8h_source"/>
         <childnode refid="28" relation="include">
         </childnode>
-        <childnode refid="67" relation="include">
-        </childnode>
-        <childnode refid="68" relation="include">
+        <childnode refid="65" relation="include">
         </childnode>
         <childnode refid="66" relation="include">
-        </childnode>
-        <childnode refid="65" relation="include">
         </childnode>
         <childnode refid="57" relation="include">
         </childnode>
@@ -310,7 +304,7 @@
         <childnode refid="48" relation="include">
         </childnode>
       </node>
-      <node id="88">
+      <node id="86">
         <label>omexmeta/logger.h</label>
         <link refid="logger_8h_source"/>
         <childnode refid="30" relation="include">
@@ -322,10 +316,10 @@
       <node id="20">
         <label>rdf_model.h</label>
       </node>
-      <node id="74">
+      <node id="72">
         <label>omexmeta_export.h</label>
       </node>
-      <node id="68">
+      <node id="66">
         <label>omexmeta/Predicate.h</label>
         <link refid="Predicate_8h_source"/>
         <childnode refid="29" relation="include">
@@ -336,39 +330,25 @@
         </childnode>
         <childnode refid="58" relation="include">
         </childnode>
-        <childnode refid="69" relation="include">
+        <childnode refid="67" relation="include">
         </childnode>
         <childnode refid="38" relation="include">
         </childnode>
-        <childnode refid="40" relation="include">
+        <childnode refid="41" relation="include">
         </childnode>
         <childnode refid="30" relation="include">
         </childnode>
         <childnode refid="48" relation="include">
         </childnode>
       </node>
-      <node id="81">
+      <node id="79">
         <label>omexmeta/PersonalInformation.h</label>
         <link refid="PersonalInformation_8h_source"/>
+        <childnode refid="70" relation="include">
+        </childnode>
         <childnode refid="72" relation="include">
         </childnode>
-        <childnode refid="74" relation="include">
-        </childnode>
         <childnode refid="31" relation="include">
-        </childnode>
-      </node>
-      <node id="66">
-        <label>omexmeta/Subject.h</label>
-        <link refid="Subject_8h_source"/>
-        <childnode refid="29" relation="include">
-        </childnode>
-        <childnode refid="41" relation="include">
-        </childnode>
-        <childnode refid="57" relation="include">
-        </childnode>
-        <childnode refid="30" relation="include">
-        </childnode>
-        <childnode refid="58" relation="include">
         </childnode>
       </node>
       <node id="3">
@@ -378,42 +358,40 @@
         </childnode>
         <childnode refid="57" relation="include">
         </childnode>
-        <childnode refid="77" relation="include">
+        <childnode refid="75" relation="include">
         </childnode>
         <childnode refid="51" relation="include">
         </childnode>
-        <childnode refid="79" relation="include">
+        <childnode refid="77" relation="include">
         </childnode>
         <childnode refid="63" relation="include">
         </childnode>
-        <childnode refid="81" relation="include">
+        <childnode refid="79" relation="include">
+        </childnode>
+        <childnode refid="80" relation="include">
         </childnode>
         <childnode refid="82" relation="include">
         </childnode>
-        <childnode refid="84" relation="include">
+        <childnode refid="66" relation="include">
         </childnode>
-        <childnode refid="68" relation="include">
-        </childnode>
-        <childnode refid="75" relation="include">
-        </childnode>
-        <childnode refid="65" relation="include">
+        <childnode refid="73" relation="include">
         </childnode>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="67" relation="include">
+        <childnode refid="65" relation="include">
         </childnode>
-        <childnode refid="74" relation="include">
+        <childnode refid="64" relation="include">
+        </childnode>
+        <childnode refid="72" relation="include">
         </childnode>
         <childnode refid="28" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="48" relation="include">
-        </childnode>
         <childnode refid="61" relation="include">
         </childnode>
       </node>
-      <node id="73">
+      <node id="71">
         <label>omexmeta/PhysicalProperty.h</label>
         <link refid="PhysicalProperty_8h_source"/>
         <childnode refid="28" relation="include">
@@ -422,20 +400,18 @@
         </childnode>
         <childnode refid="65" relation="include">
         </childnode>
-        <childnode refid="67" relation="include">
-        </childnode>
-        <childnode refid="72" relation="include">
+        <childnode refid="70" relation="include">
         </childnode>
         <childnode refid="64" relation="include">
         </childnode>
-        <childnode refid="74" relation="include">
+        <childnode refid="72" relation="include">
         </childnode>
         <childnode refid="32" relation="include">
         </childnode>
         <childnode refid="48" relation="include">
         </childnode>
       </node>
-      <node id="80">
+      <node id="78">
         <label>omexmeta/OmexMetaXmlType.h</label>
         <link refid="OmexMetaXmlType_8h_source"/>
       </node>
@@ -455,15 +431,15 @@
       <node id="58">
         <label>vector</label>
       </node>
-      <node id="86">
+      <node id="85">
         <label>streambuf</label>
       </node>
-      <node id="77">
+      <node id="75">
         <label>omexmeta/MarkupIdentifier.h</label>
         <link refid="MarkupIdentifier_8h_source"/>
         <childnode refid="59" relation="include">
         </childnode>
-        <childnode refid="78" relation="include">
+        <childnode refid="76" relation="include">
         </childnode>
         <childnode refid="57" relation="include">
         </childnode>
@@ -475,17 +451,17 @@
         </childnode>
         <childnode refid="58" relation="include">
         </childnode>
-        <childnode refid="69" relation="include">
+        <childnode refid="67" relation="include">
         </childnode>
       </node>
       <node id="33">
         <label>LibrdfUri.h</label>
         <link refid="LibrdfUri_8h_source"/>
-        <childnode refid="31" relation="include">
+        <childnode refid="34" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="34" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
       </node>
       <node id="34">
@@ -499,36 +475,32 @@
       <node id="48">
         <label>utility</label>
       </node>
-      <node id="67">
+      <node id="65">
         <label>omexmeta/Triple.h</label>
         <link refid="Triple_8h_source"/>
         <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="41" relation="include">
+        <childnode refid="40" relation="include">
         </childnode>
         <childnode refid="39" relation="include">
-        </childnode>
-        <childnode refid="68" relation="include">
         </childnode>
         <childnode refid="66" relation="include">
         </childnode>
         <childnode refid="65" relation="include">
         </childnode>
-        <childnode refid="67" relation="include">
-        </childnode>
         <childnode refid="64" relation="include">
         </childnode>
-        <childnode refid="70" relation="include">
+        <childnode refid="67" relation="include">
         </childnode>
-        <childnode refid="48" relation="include">
+        <childnode refid="60" relation="include">
+        </childnode>
+        <childnode refid="68" relation="include">
         </childnode>
         <childnode refid="69" relation="include">
         </childnode>
-        <childnode refid="71" relation="include">
-        </childnode>
-        <childnode refid="60" relation="include">
+        <childnode refid="48" relation="include">
         </childnode>
       </node>
       <node id="38">
@@ -545,7 +517,7 @@
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="40" relation="include">
+        <childnode refid="41" relation="include">
         </childnode>
         <childnode refid="58" relation="include">
         </childnode>
@@ -558,7 +530,7 @@
         <childnode refid="48" relation="include">
         </childnode>
       </node>
-      <node id="89">
+      <node id="87">
         <label>omexmeta/ElementExtractor.h</label>
         <link refid="ElementExtractor_8h_source"/>
         <childnode refid="57" relation="include">
@@ -567,13 +539,13 @@
         </childnode>
         <childnode refid="59" relation="include">
         </childnode>
-        <childnode refid="78" relation="include">
+        <childnode refid="76" relation="include">
         </childnode>
         <childnode refid="30" relation="include">
         </childnode>
         <childnode refid="58" relation="include">
         </childnode>
-        <childnode refid="69" relation="include">
+        <childnode refid="67" relation="include">
         </childnode>
       </node>
       <node id="10">
@@ -595,37 +567,37 @@
         <childnode refid="30" relation="include">
         </childnode>
       </node>
-      <node id="85">
+      <node id="83">
         <label>omexmeta/RDF.h</label>
         <link refid="RDF_8h_source"/>
         <childnode refid="28" relation="include">
         </childnode>
-        <childnode refid="74" relation="include">
+        <childnode refid="78" relation="include">
         </childnode>
-        <childnode refid="80" relation="include">
+        <childnode refid="72" relation="include">
         </childnode>
-        <childnode refid="86" relation="include">
+        <childnode refid="84" relation="include">
         </childnode>
-        <childnode refid="40" relation="include">
+        <childnode refid="85" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
         </childnode>
         <childnode refid="48" relation="include">
         </childnode>
-        <childnode refid="87" relation="include">
-        </childnode>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="77" relation="include">
+        <childnode refid="75" relation="include">
         </childnode>
         <childnode refid="51" relation="include">
         </childnode>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="88" relation="include">
-        </childnode>
         <childnode refid="64" relation="include">
         </childnode>
+        <childnode refid="86" relation="include">
+        </childnode>
       </node>
-      <node id="84">
+      <node id="82">
         <label>omexmeta/PhysicalProcess.h</label>
         <link refid="PhysicalProcess_8h_source"/>
         <childnode refid="28" relation="include">
@@ -634,11 +606,11 @@
         </childnode>
         <childnode refid="63" relation="include">
         </childnode>
+        <childnode refid="71" relation="include">
+        </childnode>
         <childnode refid="73" relation="include">
         </childnode>
-        <childnode refid="75" relation="include">
-        </childnode>
-        <childnode refid="74" relation="include">
+        <childnode refid="72" relation="include">
         </childnode>
         <childnode refid="48" relation="include">
         </childnode>
@@ -660,14 +632,14 @@
         </childnode>
         <childnode refid="29" relation="include">
         </childnode>
-        <childnode refid="41" relation="include">
+        <childnode refid="40" relation="include">
         </childnode>
         <childnode refid="33" relation="include">
         </childnode>
         <childnode refid="42" relation="include">
         </childnode>
       </node>
-      <node id="40">
+      <node id="41">
         <label>unordered_map</label>
       </node>
       <node id="4">
@@ -681,11 +653,11 @@
         </childnode>
         <childnode refid="63" relation="include">
         </childnode>
+        <childnode refid="71" relation="include">
+        </childnode>
         <childnode refid="73" relation="include">
         </childnode>
-        <childnode refid="75" relation="include">
-        </childnode>
-        <childnode refid="74" relation="include">
+        <childnode refid="72" relation="include">
         </childnode>
         <childnode refid="58" relation="include">
         </childnode>
@@ -700,22 +672,6 @@
         <childnode refid="31" relation="include">
         </childnode>
         <childnode refid="29" relation="include">
-        </childnode>
-      </node>
-      <node id="65">
-        <label>omexmeta/Resource.h</label>
-        <link refid="Resource_8h_source"/>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="41" relation="include">
-        </childnode>
-        <childnode refid="57" relation="include">
-        </childnode>
-        <childnode refid="30" relation="include">
-        </childnode>
-        <childnode refid="38" relation="include">
-        </childnode>
-        <childnode refid="58" relation="include">
         </childnode>
       </node>
       <node id="59">
@@ -736,7 +692,7 @@
         </childnode>
         <childnode refid="47" relation="include">
         </childnode>
-        <childnode refid="41" relation="include">
+        <childnode refid="40" relation="include">
         </childnode>
         <childnode refid="49" relation="include">
         </childnode>
@@ -747,19 +703,15 @@
       <node id="63">
         <label>omexmeta/Participant.h</label>
         <link refid="Participant_8h_source"/>
-        <childnode refid="5" relation="include">
-        </childnode>
         <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="64" relation="include">
         </childnode>
         <childnode refid="65" relation="include">
         </childnode>
-        <childnode refid="66" relation="include">
-        </childnode>
-        <childnode refid="67" relation="include">
-        </childnode>
-        <childnode refid="72" relation="include">
+        <childnode refid="70" relation="include">
         </childnode>
         <childnode refid="37" relation="include">
         </childnode>
@@ -838,24 +790,24 @@
       <node id="39">
         <label>LibrdfStatement.h</label>
         <link refid="LibrdfStatement_8h_source"/>
-        <childnode refid="31" relation="include">
-        </childnode>
-        <childnode refid="30" relation="include">
+        <childnode refid="40" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="40" relation="include">
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
         </childnode>
         <childnode refid="41" relation="include">
         </childnode>
       </node>
-      <node id="69">
+      <node id="67">
         <label>algorithm</label>
       </node>
-      <node id="79">
+      <node id="77">
         <label>omexmeta/OmexMetaXmlAssistant.h</label>
         <link refid="OmexMetaXmlAssistant_8h_source"/>
-        <childnode refid="78" relation="include">
+        <childnode refid="76" relation="include">
         </childnode>
         <childnode refid="59" relation="include">
         </childnode>
@@ -863,7 +815,7 @@
         </childnode>
         <childnode refid="51" relation="include">
         </childnode>
-        <childnode refid="80" relation="include">
+        <childnode refid="78" relation="include">
         </childnode>
         <childnode refid="30" relation="include">
         </childnode>
@@ -913,7 +865,7 @@
         <childnode refid="2" relation="include">
         </childnode>
       </node>
-      <node id="71">
+      <node id="68">
         <label>cstring</label>
       </node>
       <node id="12">
@@ -973,104 +925,103 @@
 <codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.about(species_metaid)</highlight></codeline>
 <codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.setPredicate(</highlight><highlight class="stringliteral">&quot;bqbiol&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;isPartOf&quot;</highlight><highlight class="normal">)</highlight></codeline>
 <codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.setResourceWithModelUri(compartment_id_that_species_node_belongs_to);</highlight></codeline>
-<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>editor_-&gt;<ref refid="classomexmeta_1_1Editor_1a0417b55575a244817ef981f17c8e1a8f" kindref="member">addSingleAnnotation</ref>(singularAnnotation);</highlight></codeline>
-<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>singularAnnotation.freeTriple();</highlight></codeline>
-<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>editor_-&gt;<ref refid="classomexmeta_1_1Editor_1a434304cc0ca8aa802cd236d34aaa1763" kindref="member">addSingleAnnotation</ref>(singularAnnotation);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
 <codeline lineno="51"><highlight class="normal"></highlight></codeline>
-<codeline lineno="52"><highlight class="normal"></highlight></codeline>
-<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>SBMLSemanticExtraction::extractProcessesFromReactions()<sp/>{</highlight></codeline>
-<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ElementExtractor<sp/>reaction_extraction(sbml_string_,<sp/></highlight><highlight class="stringliteral">&quot;reaction&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;xmlNode<sp/>*&gt;<sp/>reactions<sp/>=<sp/>reaction_extraction.getElements();</highlight></codeline>
-<codeline lineno="56"><highlight class="normal"></highlight></codeline>
-<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(reactions.empty())<sp/>{</highlight></codeline>
-<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight><highlight class="comment">//<sp/>this<sp/>is<sp/>not<sp/>needed<sp/>when<sp/>model<sp/>has<sp/>no<sp/>reactions.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>we<sp/>also<sp/>need<sp/>the<sp/>listOfSpecies<sp/>element<sp/>and<sp/>its<sp/>children</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ElementExtractor<sp/>species_extraction(sbml_string_,<sp/></highlight><highlight class="stringliteral">&quot;listOfSpecies&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;xmlNode<sp/>*&gt;<sp/>list_of_species<sp/>=<sp/>species_extraction.getElements();</highlight></codeline>
-<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>assert(list_of_species.size()<sp/>==<sp/>1);</highlight></codeline>
-<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;xmlNode<sp/>*&gt;<sp/>species_elements<sp/>=<sp/>OmexMetaUtils::getAllChildElements(list_of_species[0]);</highlight></codeline>
-<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>we<sp/>iterate<sp/>over<sp/>all<sp/>reaction<sp/>elements</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;reaction_node<sp/>:<sp/>reactions)<sp/>{</highlight></codeline>
-<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>collect<sp/>some<sp/>of<sp/>the<sp/>reaction<sp/>attributes</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>reaction_id<sp/>=<sp/>OmexMetaUtils::getXmlNodeProperty(reaction_node,<sp/></highlight><highlight class="stringliteral">&quot;id&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>reaction_metaid<sp/>=<sp/>OmexMetaUtils::getXmlNodeProperty(reaction_node,<sp/></highlight><highlight class="stringliteral">&quot;metaid&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>begin<sp/>the<sp/>annotation</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PhysicalProcess<sp/>process<sp/>=<sp/>editor_-&gt;<ref refid="classomexmeta_1_1Editor_1a2815d918736ee17d07306c5cf07c8ebf" kindref="member">newPhysicalProcess</ref>();</highlight></codeline>
-<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>process.hasProperty(reaction_metaid,<sp/>MODEL_URI,<sp/></highlight><highlight class="stringliteral">&quot;opb:OPB_00592&quot;</highlight><highlight class="normal">,<sp/>reaction_metaid,<sp/>MODEL_URI);</highlight></codeline>
-<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>and<sp/>pull<sp/>out<sp/>the<sp/>listOf*<sp/>elements<sp/>for<sp/>the<sp/>reaction</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>xmlNode<sp/>*reactants_node<sp/>=<sp/>OmexMetaUtils::getChildElementCalled(reaction_node,<sp/></highlight><highlight class="stringliteral">&quot;listOfReactants&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>xmlNode<sp/>*products_node<sp/>=<sp/>OmexMetaUtils::getChildElementCalled(reaction_node,<sp/></highlight><highlight class="stringliteral">&quot;listOfProducts&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>xmlNode<sp/>*modifiers_node<sp/>=<sp/>OmexMetaUtils::getChildElementCalled(reaction_node,<sp/></highlight><highlight class="stringliteral">&quot;listOfModifiers&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>we<sp/>collect<sp/>the<sp/>speciesReference<sp/>elements<sp/>which<sp/>are<sp/>children<sp/>of<sp/>listOf*<sp/>elements<sp/>in<sp/>a<sp/>reaction</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>note,<sp/>these<sp/>will<sp/>be<sp/>empty<sp/>if<sp/>listOf*<sp/>is<sp/>empty<sp/>and<sp/>we<sp/>won&apos;t<sp/>enter<sp/>the<sp/>next<sp/>loop.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;xmlNode<sp/>*&gt;<sp/>reactants_species_references<sp/>=<sp/>OmexMetaUtils::getAllChildElements(reactants_node);</highlight></codeline>
-<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;xmlNode<sp/>*&gt;<sp/>products_species_references<sp/>=<sp/>OmexMetaUtils::getAllChildElements(products_node);</highlight></codeline>
-<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;xmlNode<sp/>*&gt;<sp/>modifiers_species_references<sp/>=<sp/>OmexMetaUtils::getAllChildElements(modifiers_node);</highlight></codeline>
-<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Now<sp/>we<sp/>iterate<sp/>over<sp/>the<sp/>collected<sp/>species<sp/>references</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>note:<sp/>there<sp/>is<sp/>some<sp/>code<sp/>duplication<sp/>here<sp/>but<sp/>since<sp/>we<sp/>need<sp/>to<sp/>use<sp/>a<sp/>different</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>end<sp/>method<sp/>(addSource<sp/>here)<sp/>it&apos;ll<sp/>take<sp/>some<sp/>thinking.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;reactant_node<sp/>:<sp/>reactants_species_references)<sp/>{</highlight></codeline>
-<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>collect<sp/>some<sp/>information<sp/>from<sp/>the<sp/>participant<sp/>node<sp/>attributes</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>stoichiometry<sp/>only<sp/>exists<sp/>in<sp/>some<sp/>models.<sp/>So<sp/>default<sp/>to<sp/>1.0.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>reactant_node_stoic<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;1.0&quot;</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(xmlHasProp(reactant_node,<sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>xmlChar<sp/>*)<sp/></highlight><highlight class="stringliteral">&quot;stoichiometry&quot;</highlight><highlight class="normal">))</highlight></codeline>
-<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>reactant_node_stoic<sp/>=<sp/>OmexMetaUtils::getXmlNodeProperty(reactant_node,<sp/></highlight><highlight class="stringliteral">&quot;stoichiometry&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>reactant_node_species_ref<sp/>=<sp/>OmexMetaUtils::getXmlNodeProperty(reactant_node,<sp/></highlight><highlight class="stringliteral">&quot;species&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>and<sp/>begin<sp/>looking<sp/>for<sp/>the<sp/>species<sp/>that<sp/>has<sp/>the<sp/>reactant_node_species_ref</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;species_node<sp/>:<sp/>species_elements)<sp/>{</highlight></codeline>
-<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>collect<sp/>the<sp/>id<sp/>from<sp/>the<sp/>species<sp/>node<sp/>and<sp/>compare<sp/>against<sp/>reactant_node_species_ref</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>species_node_id<sp/>=<sp/>OmexMetaUtils::getXmlNodeProperty(species_node,<sp/></highlight><highlight class="stringliteral">&quot;id&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(reactant_node_species_ref<sp/>==<sp/>species_node_id)<sp/>{</highlight></codeline>
-<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>if<sp/>we<sp/>have<sp/>a<sp/>match,<sp/>then<sp/>species_node<sp/>contains<sp/>our<sp/>metaid<sp/>that<sp/>will<sp/>be<sp/>species<sp/>ref.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>species_node_metaid<sp/>=<sp/>OmexMetaUtils::getXmlNodeProperty(species_node,<sp/></highlight><highlight class="stringliteral">&quot;metaid&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>process.addSource(species_node_metaid,<sp/>MODEL_URI,<sp/>std::stoi(reactant_node_stoic));</highlight></codeline>
-<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>SBMLSemanticExtraction::extractProcessesFromReactions()<sp/>{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ElementExtractor<sp/>reaction_extraction(sbml_string_,<sp/></highlight><highlight class="stringliteral">&quot;reaction&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;xmlNode<sp/>*&gt;<sp/>reactions<sp/>=<sp/>reaction_extraction.getElements();</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(reactions.empty())<sp/>{</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight><highlight class="comment">//<sp/>this<sp/>is<sp/>not<sp/>needed<sp/>when<sp/>model<sp/>has<sp/>no<sp/>reactions.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>we<sp/>also<sp/>need<sp/>the<sp/>listOfSpecies<sp/>element<sp/>and<sp/>its<sp/>children</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ElementExtractor<sp/>species_extraction(sbml_string_,<sp/></highlight><highlight class="stringliteral">&quot;listOfSpecies&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;xmlNode<sp/>*&gt;<sp/>list_of_species<sp/>=<sp/>species_extraction.getElements();</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>assert(list_of_species.size()<sp/>==<sp/>1);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;xmlNode<sp/>*&gt;<sp/>species_elements<sp/>=<sp/>OmexMetaUtils::getAllChildElements(list_of_species[0]);</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>we<sp/>iterate<sp/>over<sp/>all<sp/>reaction<sp/>elements</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;reaction_node<sp/>:<sp/>reactions)<sp/>{</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>collect<sp/>some<sp/>of<sp/>the<sp/>reaction<sp/>attributes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>reaction_id<sp/>=<sp/>OmexMetaUtils::getXmlNodeProperty(reaction_node,<sp/></highlight><highlight class="stringliteral">&quot;id&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>reaction_metaid<sp/>=<sp/>OmexMetaUtils::getXmlNodeProperty(reaction_node,<sp/></highlight><highlight class="stringliteral">&quot;metaid&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>begin<sp/>the<sp/>annotation</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PhysicalProcess<sp/>process<sp/>=<sp/>editor_-&gt;<ref refid="classomexmeta_1_1Editor_1a2815d918736ee17d07306c5cf07c8ebf" kindref="member">newPhysicalProcess</ref>();</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>process.hasProperty(reaction_metaid,<sp/>MODEL_URI,<sp/></highlight><highlight class="stringliteral">&quot;opb:OPB_00592&quot;</highlight><highlight class="normal">,<sp/>reaction_metaid,<sp/>MODEL_URI);</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>and<sp/>pull<sp/>out<sp/>the<sp/>listOf*<sp/>elements<sp/>for<sp/>the<sp/>reaction</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>xmlNode<sp/>*reactants_node<sp/>=<sp/>OmexMetaUtils::getChildElementCalled(reaction_node,<sp/></highlight><highlight class="stringliteral">&quot;listOfReactants&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>xmlNode<sp/>*products_node<sp/>=<sp/>OmexMetaUtils::getChildElementCalled(reaction_node,<sp/></highlight><highlight class="stringliteral">&quot;listOfProducts&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>xmlNode<sp/>*modifiers_node<sp/>=<sp/>OmexMetaUtils::getChildElementCalled(reaction_node,<sp/></highlight><highlight class="stringliteral">&quot;listOfModifiers&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>we<sp/>collect<sp/>the<sp/>speciesReference<sp/>elements<sp/>which<sp/>are<sp/>children<sp/>of<sp/>listOf*<sp/>elements<sp/>in<sp/>a<sp/>reaction</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>note,<sp/>these<sp/>will<sp/>be<sp/>empty<sp/>if<sp/>listOf*<sp/>is<sp/>empty<sp/>and<sp/>we<sp/>won&apos;t<sp/>enter<sp/>the<sp/>next<sp/>loop.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;xmlNode<sp/>*&gt;<sp/>reactants_species_references<sp/>=<sp/>OmexMetaUtils::getAllChildElements(reactants_node);</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;xmlNode<sp/>*&gt;<sp/>products_species_references<sp/>=<sp/>OmexMetaUtils::getAllChildElements(products_node);</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;xmlNode<sp/>*&gt;<sp/>modifiers_species_references<sp/>=<sp/>OmexMetaUtils::getAllChildElements(modifiers_node);</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Now<sp/>we<sp/>iterate<sp/>over<sp/>the<sp/>collected<sp/>species<sp/>references</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>note:<sp/>there<sp/>is<sp/>some<sp/>code<sp/>duplication<sp/>here<sp/>but<sp/>since<sp/>we<sp/>need<sp/>to<sp/>use<sp/>a<sp/>different</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>end<sp/>method<sp/>(addSource<sp/>here)<sp/>it&apos;ll<sp/>take<sp/>some<sp/>thinking.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;reactant_node<sp/>:<sp/>reactants_species_references)<sp/>{</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>collect<sp/>some<sp/>information<sp/>from<sp/>the<sp/>participant<sp/>node<sp/>attributes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>stoichiometry<sp/>only<sp/>exists<sp/>in<sp/>some<sp/>models.<sp/>So<sp/>default<sp/>to<sp/>1.0.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>reactant_node_stoic<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;1.0&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(xmlHasProp(reactant_node,<sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>xmlChar<sp/>*)<sp/></highlight><highlight class="stringliteral">&quot;stoichiometry&quot;</highlight><highlight class="normal">))</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>reactant_node_stoic<sp/>=<sp/>OmexMetaUtils::getXmlNodeProperty(reactant_node,<sp/></highlight><highlight class="stringliteral">&quot;stoichiometry&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>reactant_node_species_ref<sp/>=<sp/>OmexMetaUtils::getXmlNodeProperty(reactant_node,<sp/></highlight><highlight class="stringliteral">&quot;species&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>and<sp/>begin<sp/>looking<sp/>for<sp/>the<sp/>species<sp/>that<sp/>has<sp/>the<sp/>reactant_node_species_ref</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;species_node<sp/>:<sp/>species_elements)<sp/>{</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>collect<sp/>the<sp/>id<sp/>from<sp/>the<sp/>species<sp/>node<sp/>and<sp/>compare<sp/>against<sp/>reactant_node_species_ref</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>species_node_id<sp/>=<sp/>OmexMetaUtils::getXmlNodeProperty(species_node,<sp/></highlight><highlight class="stringliteral">&quot;id&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(reactant_node_species_ref<sp/>==<sp/>species_node_id)<sp/>{</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>if<sp/>we<sp/>have<sp/>a<sp/>match,<sp/>then<sp/>species_node<sp/>contains<sp/>our<sp/>metaid<sp/>that<sp/>will<sp/>be<sp/>species<sp/>ref.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>species_node_metaid<sp/>=<sp/>OmexMetaUtils::getXmlNodeProperty(species_node,<sp/></highlight><highlight class="stringliteral">&quot;metaid&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>process.addSource(species_node_metaid,<sp/>MODEL_URI,<sp/>std::stoi(reactant_node_stoic));</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Similarly<sp/>for<sp/>products.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;product_node<sp/>:<sp/>products_species_references)<sp/>{</highlight></codeline>
-<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>collect<sp/>some<sp/>information<sp/>from<sp/>the<sp/>participant<sp/>node<sp/>attributes</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>stoichiometry<sp/>only<sp/>exists<sp/>in<sp/>some<sp/>models.<sp/>So<sp/>default<sp/>to<sp/>1.0.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>product_node_stoic<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;1.0&quot;</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(xmlHasProp(products_node,<sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>xmlChar<sp/>*)<sp/></highlight><highlight class="stringliteral">&quot;stoichiometry&quot;</highlight><highlight class="normal">))</highlight></codeline>
-<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>product_node_stoic<sp/>=<sp/>OmexMetaUtils::getXmlNodeProperty(product_node,<sp/></highlight><highlight class="stringliteral">&quot;stoichiometry&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>product_node_species_ref<sp/>=<sp/>OmexMetaUtils::getXmlNodeProperty(product_node,<sp/></highlight><highlight class="stringliteral">&quot;species&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>and<sp/>begin<sp/>looking<sp/>for<sp/>the<sp/>species<sp/>that<sp/>has<sp/>the<sp/>reactant_node_species_ref</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;species_node<sp/>:<sp/>species_elements)<sp/>{</highlight></codeline>
-<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>collect<sp/>the<sp/>id<sp/>from<sp/>the<sp/>species<sp/>node<sp/>and<sp/>compare<sp/>against<sp/>reactant_node_species_ref</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>species_node_id<sp/>=<sp/>OmexMetaUtils::getXmlNodeProperty(species_node,<sp/></highlight><highlight class="stringliteral">&quot;id&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(product_node_species_ref<sp/>==<sp/>species_node_id)<sp/>{</highlight></codeline>
-<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>if<sp/>we<sp/>have<sp/>a<sp/>match,<sp/>then<sp/>species_node<sp/>contains<sp/>our<sp/>metaid<sp/>that<sp/>will<sp/>be<sp/>species<sp/>ref.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>species_node_metaid<sp/>=<sp/>OmexMetaUtils::getXmlNodeProperty(species_node,<sp/></highlight><highlight class="stringliteral">&quot;metaid&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>process.addSink(species_node_metaid,<sp/>MODEL_URI,<sp/>std::stoi(product_node_stoic));</highlight></codeline>
-<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>modifiers</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;modifier_node<sp/>:<sp/>modifiers_species_references)<sp/>{</highlight></codeline>
-<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>collect<sp/>some<sp/>information<sp/>from<sp/>the<sp/>participant<sp/>node<sp/>attributes</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>modifier_node_species_ref<sp/>=<sp/>OmexMetaUtils::getXmlNodeProperty(modifier_node,<sp/></highlight><highlight class="stringliteral">&quot;species&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="126"><highlight class="normal"></highlight></codeline>
-<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>and<sp/>begin<sp/>looking<sp/>for<sp/>the<sp/>species<sp/>that<sp/>has<sp/>the<sp/>reactant_node_species_ref</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;species_node<sp/>:<sp/>species_elements)<sp/>{</highlight></codeline>
-<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>collect<sp/>the<sp/>id<sp/>from<sp/>the<sp/>species<sp/>node<sp/>and<sp/>compare<sp/>against<sp/>reactant_node_species_ref</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>species_node_id<sp/>=<sp/>OmexMetaUtils::getXmlNodeProperty(species_node,<sp/></highlight><highlight class="stringliteral">&quot;id&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(modifier_node_species_ref<sp/>==<sp/>species_node_id)<sp/>{</highlight></codeline>
-<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>if<sp/>we<sp/>have<sp/>a<sp/>match,<sp/>then<sp/>species_node<sp/>contains<sp/>our<sp/>metaid<sp/>that<sp/>will<sp/>be<sp/>species<sp/>ref.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>species_node_metaid<sp/>=<sp/>OmexMetaUtils::getXmlNodeProperty(species_node,<sp/></highlight><highlight class="stringliteral">&quot;metaid&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>process.addMediator(species_node_metaid,<sp/>MODEL_URI);</highlight></codeline>
-<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>editor_-&gt;<ref refid="classomexmeta_1_1Editor_1ae4a608ecbe64f05c1b64efbeeb1fdeb1" kindref="member">addPhysicalProcess</ref>(process);</highlight></codeline>
-<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="141"><highlight class="normal"></highlight></codeline>
-<codeline lineno="142"><highlight class="normal">}</highlight><highlight class="comment">//<sp/>namespace<sp/>omexmeta</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Similarly<sp/>for<sp/>products.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;product_node<sp/>:<sp/>products_species_references)<sp/>{</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>collect<sp/>some<sp/>information<sp/>from<sp/>the<sp/>participant<sp/>node<sp/>attributes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>stoichiometry<sp/>only<sp/>exists<sp/>in<sp/>some<sp/>models.<sp/>So<sp/>default<sp/>to<sp/>1.0.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>product_node_stoic<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;1.0&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(xmlHasProp(products_node,<sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>xmlChar<sp/>*)<sp/></highlight><highlight class="stringliteral">&quot;stoichiometry&quot;</highlight><highlight class="normal">))</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>product_node_stoic<sp/>=<sp/>OmexMetaUtils::getXmlNodeProperty(product_node,<sp/></highlight><highlight class="stringliteral">&quot;stoichiometry&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>product_node_species_ref<sp/>=<sp/>OmexMetaUtils::getXmlNodeProperty(product_node,<sp/></highlight><highlight class="stringliteral">&quot;species&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>and<sp/>begin<sp/>looking<sp/>for<sp/>the<sp/>species<sp/>that<sp/>has<sp/>the<sp/>reactant_node_species_ref</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;species_node<sp/>:<sp/>species_elements)<sp/>{</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>collect<sp/>the<sp/>id<sp/>from<sp/>the<sp/>species<sp/>node<sp/>and<sp/>compare<sp/>against<sp/>reactant_node_species_ref</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>species_node_id<sp/>=<sp/>OmexMetaUtils::getXmlNodeProperty(species_node,<sp/></highlight><highlight class="stringliteral">&quot;id&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(product_node_species_ref<sp/>==<sp/>species_node_id)<sp/>{</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>if<sp/>we<sp/>have<sp/>a<sp/>match,<sp/>then<sp/>species_node<sp/>contains<sp/>our<sp/>metaid<sp/>that<sp/>will<sp/>be<sp/>species<sp/>ref.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>species_node_metaid<sp/>=<sp/>OmexMetaUtils::getXmlNodeProperty(species_node,<sp/></highlight><highlight class="stringliteral">&quot;metaid&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>process.addSink(species_node_metaid,<sp/>MODEL_URI,<sp/>std::stoi(product_node_stoic));</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>modifiers</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;modifier_node<sp/>:<sp/>modifiers_species_references)<sp/>{</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>collect<sp/>some<sp/>information<sp/>from<sp/>the<sp/>participant<sp/>node<sp/>attributes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>modifier_node_species_ref<sp/>=<sp/>OmexMetaUtils::getXmlNodeProperty(modifier_node,<sp/></highlight><highlight class="stringliteral">&quot;species&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>and<sp/>begin<sp/>looking<sp/>for<sp/>the<sp/>species<sp/>that<sp/>has<sp/>the<sp/>reactant_node_species_ref</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;species_node<sp/>:<sp/>species_elements)<sp/>{</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>collect<sp/>the<sp/>id<sp/>from<sp/>the<sp/>species<sp/>node<sp/>and<sp/>compare<sp/>against<sp/>reactant_node_species_ref</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>species_node_id<sp/>=<sp/>OmexMetaUtils::getXmlNodeProperty(species_node,<sp/></highlight><highlight class="stringliteral">&quot;id&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(modifier_node_species_ref<sp/>==<sp/>species_node_id)<sp/>{</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>if<sp/>we<sp/>have<sp/>a<sp/>match,<sp/>then<sp/>species_node<sp/>contains<sp/>our<sp/>metaid<sp/>that<sp/>will<sp/>be<sp/>species<sp/>ref.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>species_node_metaid<sp/>=<sp/>OmexMetaUtils::getXmlNodeProperty(species_node,<sp/></highlight><highlight class="stringliteral">&quot;metaid&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>process.addMediator(species_node_metaid,<sp/>MODEL_URI);</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>editor_-&gt;<ref refid="classomexmeta_1_1Editor_1ae4a608ecbe64f05c1b64efbeeb1fdeb1" kindref="member">addPhysicalProcess</ref>(process);</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal">}</highlight><highlight class="comment">//<sp/>namespace<sp/>omexmeta</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="src/omexmeta/SBMLSemanticExtraction.cpp"/>
   </compounddef>

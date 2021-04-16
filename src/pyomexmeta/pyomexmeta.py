@@ -5,7 +5,6 @@ import os
 from contextlib import contextmanager
 from sys import executable as _python_interpretor
 from typing import List
-import glob
 
 try:
     # for use from outside the package, as a python package
@@ -174,20 +173,20 @@ class RDF:
 
     @staticmethod
     @propagate_omexmeta_error
-    def equals_rdf_vs_rdf(first_rdf: RDF, second_rdf: RDF, format: str = "turtle") -> bool:
-        return _pyom.rdf_equals_rdf_vs_rdf(first_rdf._obj, second_rdf._obj, format.encode())
+    def equals_rdf_vs_rdf(first_rdf: RDF, second_rdf: RDF, format: str = "turtle", verbose: bool = False) -> bool:
+        return _pyom.rdf_equals_rdf_vs_rdf(first_rdf._obj, second_rdf._obj, format.encode(), verbose)
 
     @staticmethod
     @propagate_omexmeta_error
-    def equals_rdf_vs_string(rdf: RDF, string: str, format: str = "turtle") -> bool:
-        return _pyom.rdf_equals_rdf_vs_string(rdf._obj, string.encode(), format.encode())
+    def equals_rdf_vs_string(rdf: RDF, string: str, format: str = "turtle", verbose: bool = False) -> bool:
+        return _pyom.rdf_equals_rdf_vs_string(rdf._obj, string.encode(), format.encode(), verbose)
 
     @staticmethod
     @propagate_omexmeta_error
     def equals_string_vs_string(first_string: str, second_string: str, first_format: str = "turtle",
-                                second_format: str = "turtle") -> bool:
+                                second_format: str = "turtle", verbose: bool = False) -> bool:
         return _pyom.rdf_equals_string_vs_string(first_string.encode(), second_string.encode(), first_format,
-                                                 second_format.encode())
+                                                 second_format.encode(), verbose)
 
     @propagate_omexmeta_error
     def __eq__(self, other: RDF):
@@ -532,13 +531,6 @@ class SingularAnnotation:
             )
         )
 
-    def __str__(self):
-        return self.to_string("turtle")
-
-    def to_string(self, format: str) -> str:
-        return _pyom.get_and_free_c_str(
-            propagate_omexmeta_error(_pyom.singular_annotation_str(self._obj, format.encode())))
-
     def get_predicate(self) -> str:
         return _pyom.get_and_free_c_str(
             propagate_omexmeta_error(_pyom.singular_annotation_get_predicate(self._obj)))
@@ -719,16 +711,6 @@ class PhysicalEntity(_PropertyBearer):
             )
         ) for i in range(self.get_num_locations())]
 
-    def to_string(self, format: str, base_uri: str = "Annotations.rdf") -> str:
-        return _pyom.get_and_free_c_str(
-            propagate_omexmeta_error(
-                _pyom.physical_entity_str(self.get_ptr(), format.encode(), base_uri.encode())
-            )
-        )
-
-    def __str__(self):
-        return self.to_string("turtle")
-
     def delete(self) -> None:
         _pyom.physical_entity_delete(self._obj)
 
@@ -777,16 +759,6 @@ class PhysicalProcess(_PropertyBearer):
         propagate_omexmeta_error(self._obj)
         return self
 
-    def to_string(self, format: str, base_uri: str = "Annotations.rdf"):
-        return _pyom.get_and_free_c_str(
-            propagate_omexmeta_error(
-                _pyom.physical_process_str(self._obj, format.encode(), base_uri.encode())
-            )
-        )
-
-    def __str__(self):
-        return self.to_string("turtle")
-
     def delete(self) -> None:
         return _pyom.physical_process_delete(self._obj)
 
@@ -824,13 +796,6 @@ class EnergyDiff(_PropertyBearer):
         propagate_omexmeta_error(self._obj)
         return self
 
-    def to_string(self, format: str, base_uri: str = "Annotations.rdf"):
-        return _pyom.get_and_free_c_str(
-            _pyom.energy_diff_str(self._obj, format.encode(), base_uri.encode()))
-
-    def __str__(self):
-        return self.to_string("turtle")
-
     def delete(self) -> None:
         _pyom.energy_diff_delete(self._obj)
 
@@ -847,13 +812,6 @@ class PersonalInformation:
 
     def get_ptr(self) -> ct.c_int64:
         return self._obj
-
-    def to_string(self, format: str, base_uri: str = "Annotations.rdf"):
-        return _pyom.get_and_free_c_str(
-            propagate_omexmeta_error(
-                _pyom.energy_diff_str(self._obj, format.encode(), base_uri.encode())
-            )
-        )
 
     def get_local_uri(self) -> str:
         return _pyom.get_and_free_c_str(

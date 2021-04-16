@@ -1,15 +1,11 @@
 
 #include "CellMLFactory.h"
-#include "OmexMetaTestUtils.h"
 #include "SBMLFactory.h"
 #include "librdf.h"
 #include "omexmeta/EnergyDiff.h"
-#include "omexmeta/OmexMetaUtils.h"
-#include "omexmeta/Participant.h"
 #include "omexmeta/PhysicalEntity.h"
 #include "omexmeta/RDF.h"
 #include "gtest/gtest.h"
-#include <vector>
 
 using namespace omexmeta;
 

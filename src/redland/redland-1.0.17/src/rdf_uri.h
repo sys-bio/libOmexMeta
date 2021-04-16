@@ -91,6 +91,8 @@ REDLAND_EXPORT
 librdf_uri *librdf_new_uri_from_filename(librdf_world *world, const char *filename);
 REDLAND_EXPORT
 int librdf_uri_get_usage(librdf_uri *uri);
+REDLAND_EXPORT
+void librdf_uri_increment_usage(librdf_uri *uri);
 
 #ifdef __cplusplus
 }

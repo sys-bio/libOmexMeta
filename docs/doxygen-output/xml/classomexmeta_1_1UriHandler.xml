@@ -3,11 +3,11 @@
   <compounddef id="classomexmeta_1_1UriHandler" kind="class" language="C++" prot="public">
     <compoundname>omexmeta::UriHandler</compoundname>
       <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="classomexmeta_1_1UriHandler_1a7314e819a6df8473af060e8386c5ca28" prot="private" static="no" mutable="no">
+      <memberdef kind="variable" id="classomexmeta_1_1UriHandler_1a0cfa5e8d7bf17f4ebf89fb60294869b4" prot="private" static="no" mutable="no">
         <type>std::string</type>
-        <definition>std::string omexmeta::UriHandler::repository_</definition>
+        <definition>std::string omexmeta::UriHandler::repository_uri_</definition>
         <argsstring></argsstring>
-        <name>repository_</name>
+        <name>repository_uri_</name>
         <initializer>= &quot;http://omex-library.org/&quot;</initializer>
         <briefdescription>
         </briefdescription>
@@ -15,49 +15,49 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/UriHandler.h" line="122" column="21" bodyfile="src/omexmeta/include/omexmeta/UriHandler.h" bodystart="122" bodyend="-1"/>
+        <location file="src/omexmeta/include/omexmeta/UriHandler.h" line="129" column="21" bodyfile="src/omexmeta/include/omexmeta/UriHandler.h" bodystart="129" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classomexmeta_1_1UriHandler_1acba5cabedaa526c1c750f8e483c7462d" prot="private" static="no" mutable="no">
+      <memberdef kind="variable" id="classomexmeta_1_1UriHandler_1a9b4ed97d0a608e10550c495b4dc0a98a" prot="private" static="no" mutable="no">
         <type>std::string</type>
-        <definition>std::string omexmeta::UriHandler::archive_</definition>
+        <definition>std::string omexmeta::UriHandler::archive_uri_</definition>
         <argsstring></argsstring>
-        <name>archive_</name>
-        <initializer>= repository_ + &quot;NewOmex.omex/&quot;</initializer>
+        <name>archive_uri_</name>
+        <initializer>= repository_uri_ + &quot;NewOmex.omex/&quot;</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/UriHandler.h" line="123" column="21" bodyfile="src/omexmeta/include/omexmeta/UriHandler.h" bodystart="123" bodyend="-1"/>
+        <location file="src/omexmeta/include/omexmeta/UriHandler.h" line="130" column="21" bodyfile="src/omexmeta/include/omexmeta/UriHandler.h" bodystart="130" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classomexmeta_1_1UriHandler_1ac7572c260f85d710c0f70a1f1ceeefed" prot="private" static="no" mutable="no">
+      <memberdef kind="variable" id="classomexmeta_1_1UriHandler_1af0dd80b7c4b17229ca645744249e2cea" prot="private" static="no" mutable="no">
         <type>std::string</type>
-        <definition>std::string omexmeta::UriHandler::model_</definition>
+        <definition>std::string omexmeta::UriHandler::model_uri_</definition>
         <argsstring></argsstring>
-        <name>model_</name>
-        <initializer>= archive_ + &quot;NewModel.xml&quot;</initializer>
+        <name>model_uri_</name>
+        <initializer>= archive_uri_ + &quot;NewModel.xml&quot;</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/UriHandler.h" line="124" column="21" bodyfile="src/omexmeta/include/omexmeta/UriHandler.h" bodystart="124" bodyend="-1"/>
+        <location file="src/omexmeta/include/omexmeta/UriHandler.h" line="131" column="21" bodyfile="src/omexmeta/include/omexmeta/UriHandler.h" bodystart="131" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classomexmeta_1_1UriHandler_1abf8134e01008621ea4d5ef840853c82c" prot="private" static="no" mutable="no">
+      <memberdef kind="variable" id="classomexmeta_1_1UriHandler_1a0a4ab87004debc7c614abde4cb2a16f1" prot="private" static="no" mutable="no">
         <type>std::string</type>
-        <definition>std::string omexmeta::UriHandler::local_</definition>
+        <definition>std::string omexmeta::UriHandler::local_uri_</definition>
         <argsstring></argsstring>
-        <name>local_</name>
-        <initializer>= archive_ + &quot;NewModel.rdf#&quot;</initializer>
+        <name>local_uri_</name>
+        <initializer>= archive_uri_ + &quot;NewModel.rdf#&quot;</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/UriHandler.h" line="125" column="21" bodyfile="src/omexmeta/include/omexmeta/UriHandler.h" bodystart="125" bodyend="-1"/>
+        <location file="src/omexmeta/include/omexmeta/UriHandler.h" line="132" column="21" bodyfile="src/omexmeta/include/omexmeta/UriHandler.h" bodystart="132" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -72,13 +72,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/UriHandler.h" line="21" column="9"/>
+        <location file="src/omexmeta/include/omexmeta/UriHandler.h" line="23" column="9"/>
       </memberdef>
-      <memberdef kind="function" id="classomexmeta_1_1UriHandler_1aebddd11d7594e355d8b60153e380144f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classomexmeta_1_1UriHandler_1a57e13ab5ccdb36c87793d458f9c4961d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::string &amp;</type>
-        <definition>const std::string &amp; omexmeta::UriHandler::getRepository</definition>
+        <definition>const std::string &amp; omexmeta::UriHandler::getRepositoryUri</definition>
         <argsstring>() const</argsstring>
-        <name>getRepository</name>
+        <name>getRepositoryUri</name>
         <briefdescription>
 <para>getter for repository uri. </para>
         </briefdescription>
@@ -87,13 +87,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/UriHandler.h" line="27" column="28" bodyfile="src/omexmeta/UriHandler.cpp" bodystart="11" bodyend="13"/>
+        <location file="src/omexmeta/include/omexmeta/UriHandler.h" line="29" column="28" bodyfile="src/omexmeta/UriHandler.cpp" bodystart="11" bodyend="13"/>
       </memberdef>
-      <memberdef kind="function" id="classomexmeta_1_1UriHandler_1af31f643e5ef458a3031112f2854f2f1d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classomexmeta_1_1UriHandler_1a58c427641e81597583e6defaa497857c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1UriHandler" kindref="compound">UriHandler</ref> &amp;</type>
-        <definition>UriHandler &amp; omexmeta::UriHandler::setRepository</definition>
+        <definition>UriHandler &amp; omexmeta::UriHandler::setRepositoryUri</definition>
         <argsstring>(const std::string &amp;repository)</argsstring>
-        <name>setRepository</name>
+        <name>setRepositoryUri</name>
         <param>
           <type>const std::string &amp;</type>
           <declname>repository</declname>
@@ -106,13 +106,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/UriHandler.h" line="33" column="20" bodyfile="src/omexmeta/UriHandler.cpp" bodystart="15" bodyend="31"/>
+        <location file="src/omexmeta/include/omexmeta/UriHandler.h" line="35" column="20" bodyfile="src/omexmeta/UriHandler.cpp" bodystart="15" bodyend="31"/>
       </memberdef>
-      <memberdef kind="function" id="classomexmeta_1_1UriHandler_1a97718b9b1e91fe2efec0b3f17d63665d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classomexmeta_1_1UriHandler_1a6615f423d49cdbf1e94bafcac0d1a2e0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::string &amp;</type>
-        <definition>const std::string &amp; omexmeta::UriHandler::getArchive</definition>
+        <definition>const std::string &amp; omexmeta::UriHandler::getArchiveUri</definition>
         <argsstring>() const</argsstring>
-        <name>getArchive</name>
+        <name>getArchiveUri</name>
         <briefdescription>
 <para>getter for archive uri. </para>
         </briefdescription>
@@ -121,13 +121,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/UriHandler.h" line="41" column="28" bodyfile="src/omexmeta/UriHandler.cpp" bodystart="33" bodyend="35"/>
+        <location file="src/omexmeta/include/omexmeta/UriHandler.h" line="43" column="28" bodyfile="src/omexmeta/UriHandler.cpp" bodystart="33" bodyend="35"/>
       </memberdef>
-      <memberdef kind="function" id="classomexmeta_1_1UriHandler_1abaa9bf90c2d8c7daf9d8f8fad6188a4e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classomexmeta_1_1UriHandler_1ab17e4c0a990674ec15f3c638a4d1cf52" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1UriHandler" kindref="compound">UriHandler</ref> &amp;</type>
-        <definition>UriHandler &amp; omexmeta::UriHandler::setArchive</definition>
+        <definition>UriHandler &amp; omexmeta::UriHandler::setArchiveUri</definition>
         <argsstring>(const std::string &amp;archive)</argsstring>
-        <name>setArchive</name>
+        <name>setArchiveUri</name>
         <param>
           <type>const std::string &amp;</type>
           <declname>archive</declname>
@@ -140,13 +140,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/UriHandler.h" line="49" column="20" bodyfile="src/omexmeta/UriHandler.cpp" bodystart="36" bodyend="61"/>
+        <location file="src/omexmeta/include/omexmeta/UriHandler.h" line="51" column="20" bodyfile="src/omexmeta/UriHandler.cpp" bodystart="36" bodyend="61"/>
       </memberdef>
-      <memberdef kind="function" id="classomexmeta_1_1UriHandler_1a67f7dfa35576a487940dd5072ea625d2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classomexmeta_1_1UriHandler_1ad135d8d4d6fdb3af194f1cb24758e745" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::string &amp;</type>
-        <definition>const std::string &amp; omexmeta::UriHandler::getModel</definition>
+        <definition>const std::string &amp; omexmeta::UriHandler::getModelUri</definition>
         <argsstring>() const</argsstring>
-        <name>getModel</name>
+        <name>getModelUri</name>
         <briefdescription>
 <para>getter for model uri. </para>
         </briefdescription>
@@ -155,13 +155,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/UriHandler.h" line="57" column="28" bodyfile="src/omexmeta/UriHandler.cpp" bodystart="63" bodyend="65"/>
+        <location file="src/omexmeta/include/omexmeta/UriHandler.h" line="59" column="28" bodyfile="src/omexmeta/UriHandler.cpp" bodystart="63" bodyend="65"/>
       </memberdef>
-      <memberdef kind="function" id="classomexmeta_1_1UriHandler_1a6bb9006061d7ce7480700987ed9e1918" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classomexmeta_1_1UriHandler_1acab34dfe7bdef8ddc4fbe956f74dbd69" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1UriHandler" kindref="compound">UriHandler</ref> &amp;</type>
-        <definition>UriHandler &amp; omexmeta::UriHandler::setModel</definition>
+        <definition>UriHandler &amp; omexmeta::UriHandler::setModelUri</definition>
         <argsstring>(std::string model)</argsstring>
-        <name>setModel</name>
+        <name>setModelUri</name>
         <param>
           <type>std::string</type>
           <declname>model</declname>
@@ -170,17 +170,17 @@
 <para>setter for model uri. </para>
         </briefdescription>
         <detaileddescription>
-<para>default is&quot;NewModel.xml&quot; and produces the full uri &quot;http://omex-library.org/NewOmex.omex/NewModel.xml#&quot; when assembled </para>
+<para>default is&quot;NewModel.xml&quot; and produces the full uri &quot;http://omex-library.org/NewOmex.omex/NewModel.xml&quot; when assembled </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/UriHandler.h" line="65" column="20" bodyfile="src/omexmeta/UriHandler.cpp" bodystart="67" bodyend="129"/>
+        <location file="src/omexmeta/include/omexmeta/UriHandler.h" line="67" column="20" bodyfile="src/omexmeta/UriHandler.cpp" bodystart="67" bodyend="125"/>
       </memberdef>
-      <memberdef kind="function" id="classomexmeta_1_1UriHandler_1a14e40e77ef67711ba1afca4e15428c02" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classomexmeta_1_1UriHandler_1a4c20a7d29388f3e3d8ce736dcce386d6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::string &amp;</type>
-        <definition>const std::string &amp; omexmeta::UriHandler::getLocal</definition>
+        <definition>const std::string &amp; omexmeta::UriHandler::getLocalUri</definition>
         <argsstring>() const</argsstring>
-        <name>getLocal</name>
+        <name>getLocalUri</name>
         <briefdescription>
 <para>getter for local uri. </para>
         </briefdescription>
@@ -189,7 +189,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/UriHandler.h" line="75" column="28" bodyfile="src/omexmeta/UriHandler.cpp" bodystart="131" bodyend="133"/>
+        <location file="src/omexmeta/include/omexmeta/UriHandler.h" line="77" column="28" bodyfile="src/omexmeta/UriHandler.cpp" bodystart="127" bodyend="129"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1UriHandler_1ad30de26a22a4e9bfd0417cc19c7c67cc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
@@ -210,7 +210,41 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/UriHandler.h" line="77" column="22" bodyfile="src/omexmeta/UriHandler.cpp" bodystart="134" bodyend="145"/>
+        <location file="src/omexmeta/include/omexmeta/UriHandler.h" line="79" column="22" bodyfile="src/omexmeta/UriHandler.cpp" bodystart="130" bodyend="142"/>
+      </memberdef>
+      <memberdef kind="function" id="classomexmeta_1_1UriHandler_1a2549db1e5246b677be92914cca82f6a6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool omexmeta::UriHandler::operator==</definition>
+        <argsstring>(const UriHandler &amp;rhs) const</argsstring>
+        <name>operator==</name>
+        <param>
+          <type>const <ref refid="classomexmeta_1_1UriHandler" kindref="compound">UriHandler</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/UriHandler.h" line="118" column="14" bodyfile="src/omexmeta/UriHandler.cpp" bodystart="144" bodyend="149"/>
+      </memberdef>
+      <memberdef kind="function" id="classomexmeta_1_1UriHandler_1a53ad815e57019fd58402c04edbd53ed3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool omexmeta::UriHandler::operator!=</definition>
+        <argsstring>(const UriHandler &amp;rhs) const</argsstring>
+        <name>operator!=</name>
+        <param>
+          <type>const <ref refid="classomexmeta_1_1UriHandler" kindref="compound">UriHandler</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/UriHandler.h" line="120" column="14" bodyfile="src/omexmeta/UriHandler.cpp" bodystart="150" bodyend="152"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -242,26 +276,28 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/UriHandler.h" line="80" column="28" bodyfile="src/omexmeta/include/omexmeta/UriHandler.h" bodystart="80" bodyend="113"/>
+        <location file="src/omexmeta/include/omexmeta/UriHandler.h" line="82" column="28" bodyfile="src/omexmeta/include/omexmeta/UriHandler.h" bodystart="82" bodyend="117"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="src/omexmeta/include/omexmeta/UriHandler.h" line="19" column="5" bodyfile="src/omexmeta/include/omexmeta/UriHandler.h" bodystart="19" bodyend="126"/>
+    <location file="src/omexmeta/include/omexmeta/UriHandler.h" line="21" column="5" bodyfile="src/omexmeta/include/omexmeta/UriHandler.h" bodystart="21" bodyend="133"/>
     <listofallmembers>
-      <member refid="classomexmeta_1_1UriHandler_1acba5cabedaa526c1c750f8e483c7462d" prot="private" virt="non-virtual"><scope>omexmeta::UriHandler</scope><name>archive_</name></member>
-      <member refid="classomexmeta_1_1UriHandler_1a97718b9b1e91fe2efec0b3f17d63665d" prot="public" virt="non-virtual"><scope>omexmeta::UriHandler</scope><name>getArchive</name></member>
-      <member refid="classomexmeta_1_1UriHandler_1a14e40e77ef67711ba1afca4e15428c02" prot="public" virt="non-virtual"><scope>omexmeta::UriHandler</scope><name>getLocal</name></member>
-      <member refid="classomexmeta_1_1UriHandler_1a67f7dfa35576a487940dd5072ea625d2" prot="public" virt="non-virtual"><scope>omexmeta::UriHandler</scope><name>getModel</name></member>
-      <member refid="classomexmeta_1_1UriHandler_1aebddd11d7594e355d8b60153e380144f" prot="public" virt="non-virtual"><scope>omexmeta::UriHandler</scope><name>getRepository</name></member>
-      <member refid="classomexmeta_1_1UriHandler_1abf8134e01008621ea4d5ef840853c82c" prot="private" virt="non-virtual"><scope>omexmeta::UriHandler</scope><name>local_</name></member>
-      <member refid="classomexmeta_1_1UriHandler_1ac7572c260f85d710c0f70a1f1ceeefed" prot="private" virt="non-virtual"><scope>omexmeta::UriHandler</scope><name>model_</name></member>
-      <member refid="classomexmeta_1_1UriHandler_1a7314e819a6df8473af060e8386c5ca28" prot="private" virt="non-virtual"><scope>omexmeta::UriHandler</scope><name>repository_</name></member>
-      <member refid="classomexmeta_1_1UriHandler_1abaa9bf90c2d8c7daf9d8f8fad6188a4e" prot="public" virt="non-virtual"><scope>omexmeta::UriHandler</scope><name>setArchive</name></member>
-      <member refid="classomexmeta_1_1UriHandler_1a6bb9006061d7ce7480700987ed9e1918" prot="public" virt="non-virtual"><scope>omexmeta::UriHandler</scope><name>setModel</name></member>
-      <member refid="classomexmeta_1_1UriHandler_1af31f643e5ef458a3031112f2854f2f1d" prot="public" virt="non-virtual"><scope>omexmeta::UriHandler</scope><name>setRepository</name></member>
+      <member refid="classomexmeta_1_1UriHandler_1a9b4ed97d0a608e10550c495b4dc0a98a" prot="private" virt="non-virtual"><scope>omexmeta::UriHandler</scope><name>archive_uri_</name></member>
+      <member refid="classomexmeta_1_1UriHandler_1a6615f423d49cdbf1e94bafcac0d1a2e0" prot="public" virt="non-virtual"><scope>omexmeta::UriHandler</scope><name>getArchiveUri</name></member>
+      <member refid="classomexmeta_1_1UriHandler_1a4c20a7d29388f3e3d8ce736dcce386d6" prot="public" virt="non-virtual"><scope>omexmeta::UriHandler</scope><name>getLocalUri</name></member>
+      <member refid="classomexmeta_1_1UriHandler_1ad135d8d4d6fdb3af194f1cb24758e745" prot="public" virt="non-virtual"><scope>omexmeta::UriHandler</scope><name>getModelUri</name></member>
+      <member refid="classomexmeta_1_1UriHandler_1a57e13ab5ccdb36c87793d458f9c4961d" prot="public" virt="non-virtual"><scope>omexmeta::UriHandler</scope><name>getRepositoryUri</name></member>
+      <member refid="classomexmeta_1_1UriHandler_1a0a4ab87004debc7c614abde4cb2a16f1" prot="private" virt="non-virtual"><scope>omexmeta::UriHandler</scope><name>local_uri_</name></member>
+      <member refid="classomexmeta_1_1UriHandler_1af0dd80b7c4b17229ca645744249e2cea" prot="private" virt="non-virtual"><scope>omexmeta::UriHandler</scope><name>model_uri_</name></member>
+      <member refid="classomexmeta_1_1UriHandler_1a53ad815e57019fd58402c04edbd53ed3" prot="public" virt="non-virtual"><scope>omexmeta::UriHandler</scope><name>operator!=</name></member>
+      <member refid="classomexmeta_1_1UriHandler_1a2549db1e5246b677be92914cca82f6a6" prot="public" virt="non-virtual"><scope>omexmeta::UriHandler</scope><name>operator==</name></member>
+      <member refid="classomexmeta_1_1UriHandler_1a0cfa5e8d7bf17f4ebf89fb60294869b4" prot="private" virt="non-virtual"><scope>omexmeta::UriHandler</scope><name>repository_uri_</name></member>
+      <member refid="classomexmeta_1_1UriHandler_1ab17e4c0a990674ec15f3c638a4d1cf52" prot="public" virt="non-virtual"><scope>omexmeta::UriHandler</scope><name>setArchiveUri</name></member>
+      <member refid="classomexmeta_1_1UriHandler_1acab34dfe7bdef8ddc4fbe956f74dbd69" prot="public" virt="non-virtual"><scope>omexmeta::UriHandler</scope><name>setModelUri</name></member>
+      <member refid="classomexmeta_1_1UriHandler_1a58c427641e81597583e6defaa497857c" prot="public" virt="non-virtual"><scope>omexmeta::UriHandler</scope><name>setRepositoryUri</name></member>
       <member refid="classomexmeta_1_1UriHandler_1a3fc8f7022dc611dbbed4d9994a937de7" prot="public" virt="non-virtual"><scope>omexmeta::UriHandler</scope><name>UriHandler</name></member>
       <member refid="classomexmeta_1_1UriHandler_1ad30de26a22a4e9bfd0417cc19c7c67cc" prot="public" virt="non-virtual"><scope>omexmeta::UriHandler</scope><name>uriModifier</name></member>
       <member refid="classomexmeta_1_1UriHandler_1a9cde7e91ac8c45800decd9263a853f74" prot="public" virt="non-virtual"><scope>omexmeta::UriHandler</scope><name>uriModifier</name></member>

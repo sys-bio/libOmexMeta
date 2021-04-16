@@ -101,6 +101,13 @@ TEST_F(OmexMetaUtilsTests, TestAddLocalPrefixToMetaid) {
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
+TEST_F(OmexMetaUtilsTests, TestAddLocalPrefixToMetaidNoTrailingHand) {
+    std::string actual = OmexMetaUtils::concatMetaIdAndUri("Metaid00001",
+                                                           "http://omex-library.org/NewOmex.omex/NewModel.rdf");
+    std::string expected = "http://omex-library.org/NewOmex.omex/NewModel.rdf#Metaid00001";
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
 TEST_F(OmexMetaUtilsTests, TestAddLocalPrefixToMetaid2) {
     std::string actual = OmexMetaUtils::concatMetaIdAndUri(
             "http://omex-library.org/NewOmex.omex/NewModel.rdf#Metaid00001",

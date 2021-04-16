@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libomexmeta
-   &#160;<span id="projectnumber">1.2.3</span>
+   &#160;<span id="projectnumber">1.2.6</span>
    </div>
    <div id="projectbrief">Annotations for models in systems biology</div>
   </td>
@@ -85,9 +85,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a8ca987ddfc8c218bbcbdb548b186b2a2"><td class="memItemLeft" align="right" valign="top"><a id="a8ca987ddfc8c218bbcbdb548b186b2a2"></a>
 const std::vector&lt; std::string &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getNamespaces</b> () const</td></tr>
 <tr class="separator:a8ca987ddfc8c218bbcbdb548b186b2a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7494a26893d42e33953dee18bc6db4e4"><td class="memItemLeft" align="right" valign="top"><a id="a7494a26893d42e33953dee18bc6db4e4"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>PersonalInformation</b> (librdf_model *model, std::string model_uri, std::string local_uri)</td></tr>
-<tr class="separator:a7494a26893d42e33953dee18bc6db4e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaafb0d585de0eea7cb979e8fd7285228"><td class="memItemLeft" align="right" valign="top"><a id="aaafb0d585de0eea7cb979e8fd7285228"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>PersonalInformation</b> (librdf_model *model, <a class="el" href="classomexmeta_1_1UriHandler.html">UriHandler</a> &amp;uriHandler)</td></tr>
+<tr class="separator:aaafb0d585de0eea7cb979e8fd7285228"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a75cedb2a97efb996852b4e7cd39d6440"><td class="memItemLeft" align="right" valign="top"><a id="a75cedb2a97efb996852b4e7cd39d6440"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1PersonalInformation.html#a75cedb2a97efb996852b4e7cd39d6440">PersonalInformation</a> (const <a class="el" href="classomexmeta_1_1PersonalInformation.html">PersonalInformation</a> &amp;information)=delete</td></tr>
 <tr class="memdesc:a75cedb2a97efb996852b4e7cd39d6440"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy constructor for <a class="el" href="classomexmeta_1_1PersonalInformation.html" title="add personal information to the model as a composite annotation.">PersonalInformation</a>. <br /></td></tr>
@@ -105,9 +105,6 @@ const std::vector&lt; std::string &gt; &amp;&#160;</td><td class="memItemRight" 
 <tr class="memitem:aef8b8cfd83f8247b487d58f887c93e54"><td class="memItemLeft" align="right" valign="top"><a id="aef8b8cfd83f8247b487d58f887c93e54"></a>
 const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getLocalUri</b> () const</td></tr>
 <tr class="separator:aef8b8cfd83f8247b487d58f887c93e54"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab7d25a7a99ae29ef8cbb004343b9b540"><td class="memItemLeft" align="right" valign="top"><a id="ab7d25a7a99ae29ef8cbb004343b9b540"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setLocalUri</b> (const std::string &amp;localUri)</td></tr>
-<tr class="separator:ab7d25a7a99ae29ef8cbb004343b9b540"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a84ce9ae11ad2ed4a01fe1b5b84707146"><td class="memItemLeft" align="right" valign="top"><a id="a84ce9ae11ad2ed4a01fe1b5b84707146"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator==</b> (const <a class="el" href="classomexmeta_1_1PersonalInformation.html">PersonalInformation</a> &amp;rhs) const</td></tr>
 <tr class="separator:a84ce9ae11ad2ed4a01fe1b5b84707146"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -162,9 +159,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>setMetaid</b> (const 
 <tr class="memitem:a6b2ce3a6c724b67afe3d0c2df00bb484"><td class="memItemLeft" align="right" valign="top"><a id="a6b2ce3a6c724b67afe3d0c2df00bb484"></a>
 const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getModelUri</b> () const</td></tr>
 <tr class="separator:a6b2ce3a6c724b67afe3d0c2df00bb484"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afc5f378fc98d02112a9a569f4388552e"><td class="memItemLeft" align="right" valign="top"><a id="afc5f378fc98d02112a9a569f4388552e"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setModelUri</b> (const std::string &amp;modelUri)</td></tr>
-<tr class="separator:afc5f378fc98d02112a9a569f4388552e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aecc5783753b41ed88a49c5b3bce82ba4"><td class="memItemLeft" align="right" valign="top"><a id="aecc5783753b41ed88a49c5b3bce82ba4"></a>
 <a class="el" href="classomexmeta_1_1Triples.html">Triples</a>&#160;</td><td class="memItemRight" valign="bottom"><b>getTriples</b> ()</td></tr>
 <tr class="separator:aecc5783753b41ed88a49c5b3bce82ba4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -177,7 +171,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>setTriples</b> (<a cl
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>add personal information to the model as a composite annotation. </p>
-<p>For developers: <a class="el" href="classThis.html" title="interface for querying an rdf graph basically a wrapper around both librdf_query and librdf_query_res...">This</a> composite annotation is fundamentally different to the Physical* composites in that the structure is more arbitrary. With the Physical* composites, the structure is very well defined, so it was easier to implement the toTriples() method to construct those triples when called. <a class="el" href="classThis.html" title="interface for querying an rdf graph basically a wrapper around both librdf_query and librdf_query_res...">This</a> differs subtly in <a class="el" href="classomexmeta_1_1PersonalInformation.html" title="add personal information to the model as a composite annotation.">PersonalInformation</a> in that we have a class level <a class="el" href="classomexmeta_1_1Triples.html">Triples</a> object to store generated triples using a series of methods. The user can use as many or few of them as they like. Once finished they can use the getTriples() method to get a unique ptr to the triples. </p>
+<p>For developers: <a class="el" href="classThis.html" title="interface for querying an rdf graph basically a wrapper around both librdf_query and librdf_query_res...">This</a> composite annotation is fundamentally different to the Physical* composites in that the structure is more arbitrary. With the Physical* composites, the structure is very well defined, so it was easier to implement the toTriples() method to construct those triples when called. <a class="el" href="classThis.html" title="interface for querying an rdf graph basically a wrapper around both librdf_query and librdf_query_res...">This</a> differs subtly in <a class="el" href="classomexmeta_1_1PersonalInformation.html" title="add personal information to the model as a composite annotation.">PersonalInformation</a> in that we have a class level <a class="el" href="classomexmeta_1_1Triples.html" title="A Triples object is a collection of Triple objects.">Triples</a> object to store generated triples using a series of methods. The user can use as many or few of them as they like. Once finished they can use the getTriples() method to get a unique ptr to the triples. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a6653d6c5751154f5f33562d9879d6727"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6653d6c5751154f5f33562d9879d6727">&#9670;&nbsp;</a></span>PersonalInformation()</h2>

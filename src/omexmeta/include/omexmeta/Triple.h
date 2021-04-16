@@ -12,16 +12,13 @@
 #include "redland/LibrdfStatement.h"
 
 #include "omexmeta/Predicate.h"
-#include "omexmeta/Subject.h"
-#include "omexmeta/Resource.h"
 #include "omexmeta/Triple.h"
 #include "omexmeta/UriHandler.h"
 
-#include <ostream>
-#include <utility>
 #include <algorithm>
-#include <cstring>
 #include <assert.h>
+#include <cstring>
+#include <ostream>
 #include <utility>
 
 
@@ -35,34 +32,39 @@ namespace omexmeta {
 
     class Triple : public LibrdfStatement {
 
-        Triple(librdf_statement *statement);
-        std::string local_uri_; // like http:/omex-library.org/omex-archive.omex/model.rdf
-        std::string model_uri_;
-
     public:
-
         using LibrdfStatement::LibrdfStatement;
         using LibrdfStatement::operator=;
 
-        explicit Triple() = default;
+        /**
+         * @brief only a default virtual destructor needed
+         * as call to base class destructor will clean up
+         * the underlying statement_ pointer.
+         */
+        ~Triple() override = default;
 
-        Triple(const Subject &subject, const PredicatePtr &predicate_ptr, const Resource &resource);
+        explicit Triple(UriHandler &uriHandler);
 
-        Triple(librdf_node *subject, librdf_node *predicate, librdf_node *resource);
+        Triple(Triple &&triple) noexcept;
 
-        static Triple fromRawStatementPtr(librdf_statement *statement);
+        Triple &operator=(Triple &&triple) noexcept;
+
+        Triple(const Triple &triple);
+
+        Triple &operator=(const Triple &triple);
+
+        Triple(UriHandler &uriHandler, const LibrdfNode &subject, const PredicatePtr &predicate_ptr, const LibrdfNode &resource);
+
+        Triple(UriHandler &uriHandler, const LibrdfNode &subject, const LibrdfNode &predicate, const LibrdfNode &resource);
+
+        [[deprecated("Triple(UriHandler &uriHandler, const LibrdfNode &subject, const PredicatePtr &predicate_ptr, const LibrdfNode &resource);")]] Triple(UriHandler &uriHandler, librdf_node *subject, librdf_node *predicate, librdf_node *resource);
 
         const std::string &getLocalUri() const;
 
         /**
-         * @brief set the local_uri_ attribute for this triple
-         */
-        void setLocalUri(std::string localUri);
-
-        /**
          * @brief set the model_uri_ attribute for this triple
          */
-        void setModelUri(const std::string& model_uri);
+        void setModelUri(const std::string &model_uri);
 
         /**
          * @brief serialize the triple using a @format serializer.
@@ -71,14 +73,14 @@ namespace omexmeta {
          * to the users annotations. This method is for visualizing
          * a triple only.
          */
-        std::string str(const std::string &format = "turtle",
-                const std::string &base = (std::filesystem::current_path() /=  "annotations.rdf").string(),
-                std::string omex_name = "NewOmex.omex/",
-                std::string model_name = "NewModel.xml") const;
+        [[deprecated("Use main RDF class to serialize triple objects")]] std::string str(const std::string &format = "turtle",
+                                                                                         const std::string &base = (std::filesystem::current_path() /= "annotations.rdf").string(),
+                                                                                         std::string omex_name = "NewOmex.omex/",
+                                                                                         std::string model_name = "NewModel.xml") const;
 
         void freeTriple();
 
-        Triple &about(std::string omex_name, const std::string& model_name, std::string metaid);
+        Triple &about(std::string omex_name, const std::string &model_name, std::string metaid);
 
         Triple &about(std::string metaid);
 
@@ -109,8 +111,6 @@ namespace omexmeta {
 
         void freeTripleAndUris();
 
-//        Triple &about(const std::string &metaid);
-
         const std::string &getModelUri() const;
 
         Triple &setResourceWithModelUri(const std::string &metaid);
@@ -122,9 +122,14 @@ namespace omexmeta {
         Triple &resourceUri(const std::string &identifiers_uri);
 
         Triple &resourceBlank(const std::string &blank_id);
+
+    private:
+        Triple(UriHandler &uriHandler, librdf_statement *statement);
+
+        UriHandler &uriHandler_;
     };
 
     typedef Triple SingularAnnotation;
-}
+}// namespace omexmeta
 
-#endif //LIBOMEXMETA_Triple22_H
+#endif//LIBOMEXMETA_Triple22_H

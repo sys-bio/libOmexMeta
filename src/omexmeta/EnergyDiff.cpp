@@ -7,11 +7,11 @@
 
 namespace omexmeta {
 
-    EnergyDiff::EnergyDiff(librdf_model *model, std::string model_uri, std::string local_uri,
+    EnergyDiff::EnergyDiff(librdf_model *model, UriHandler& uriHandler,
                                  PhysicalProperty physicalProperty,
                                  Sources sources,
                                  Sinks sinks)
-        : PropertyBearer(model, model_uri, local_uri, std::move(physicalProperty), PHYSICAL_PROCESS),
+        : PropertyBearer(model, uriHandler, std::move(physicalProperty), PHYSICAL_PROCESS),
           sources_(std::move(sources)), sinks_(std::move(sinks)) {
     }
 
@@ -48,12 +48,12 @@ namespace omexmeta {
         Triples triples = physical_property_.toTriples();
         for (auto &source : sources_) {
             for (auto &triple : source.toTriples(getAbout(), new_metaid_exclusion_list_)) {
-                triples.move_back(triple);
+                triples.moveBack(triple);
             }
         }
         for (auto &sink : sinks_) {
             for (auto &triple : sink.toTriples(getAbout(), new_metaid_exclusion_list_)) {
-                triples.move_back(triple);
+                triples.moveBack(triple);
             }
         }
         return triples;
@@ -64,32 +64,31 @@ namespace omexmeta {
         return (*this);
     }
 
-    EnergyDiff &EnergyDiff::setPhysicalProperty(std::string subject_metaid, std::string physical_property) {
+    EnergyDiff &EnergyDiff::setPhysicalProperty(std::string subject_metaid, const std::string& physical_property) {
         if (!OmexMetaUtils::startsWith(subject_metaid, "http")) {
             subject_metaid = OmexMetaUtils::concatMetaIdAndUri(subject_metaid, getModelUri());
         }
-        physical_property_ = PhysicalProperty(std::move(subject_metaid), std::move(physical_property), getModelUri());
+        physical_property_ = PhysicalProperty(model_, uriHandler_);
+        physical_property_.about(subject_metaid)
+                .isVersionOf(physical_property);
         return *this;
     }
 
     EnergyDiff &EnergyDiff::addSource(const std::string &physical_entity_reference, eUriType type) {
         sources_.push_back(
                 std::move(SourceParticipant(
-                        model_, 0.0, physical_entity_reference, type, getModelUri(), getLocalUri())));
+                        model_, 0.0, physical_entity_reference, type, uriHandler_)));
         return (*this);
     }
 
     EnergyDiff &EnergyDiff::addSink(const std::string &physical_entity_reference, eUriType type) {
         sinks_.push_back(
-                SinkParticipant(model_, 0.0, physical_entity_reference, type, getModelUri(), getLocalUri()));
+                SinkParticipant(model_, 0.0, physical_entity_reference, type, uriHandler_));
         return (*this);
     }
 
-    EnergyDiff::EnergyDiff(librdf_model *model)
-        : PropertyBearer(model) {}
-
-    EnergyDiff::EnergyDiff(librdf_model *model, const std::string &model_uri, const std::string &local_uri)
-        : PropertyBearer(model, model_uri, local_uri) {}
+    EnergyDiff::EnergyDiff(librdf_model *model, UriHandler& uriHandler)
+        : PropertyBearer(model, uriHandler) {}
 
     int EnergyDiff::getNumSources() {
         return sources_.size();

@@ -300,16 +300,16 @@ class PyOmexMetaAPI:
     # Editor RDF_toEditor(RDF *rdf_ptr, const char *xml, bool generate_new_metaids, bool sbml_semantic_extraction);
     rdf_to_editor = utils.load_func("RDF_toEditor", [ct.c_int64, ct.c_char_p, ct.c_bool, ct.c_bool], ct.c_int64)
 
-    # bool RDF_equals_rdf_vs_string(RDF *rdf_ptr, const char *serialized_rdf, const char *format) {
-    rdf_equals_rdf_vs_string = utils.load_func("RDF_equals_rdf_vs_string", [ct.c_int64, ct.c_char_p, ct.c_char_p],
+    # bool RDF_equals_rdf_vs_string(RDF *rdf_ptr, const char *serialized_rdf, const char *format, bool, bool verbose) {
+    rdf_equals_rdf_vs_string = utils.load_func("RDF_equals_rdf_vs_string", [ct.c_int64, ct.c_char_p, ct.c_char_p, ct.c_bool],
                                                ct.c_bool)
 
-    # bool RDF_equals_rdf_vs_rdf(RDF *rdf_ptr1, RDF *rdf_ptr2, const char *format) {
-    rdf_equals_rdf_vs_rdf = utils.load_func("RDF_equals_rdf_vs_rdf", [ct.c_int64, ct.c_int64, ct.c_char_p], ct.c_bool)
+    # bool RDF_equals_rdf_vs_rdf(RDF *rdf_ptr1, RDF *rdf_ptr2, const char *format, bool verbose) {
+    rdf_equals_rdf_vs_rdf = utils.load_func("RDF_equals_rdf_vs_rdf", [ct.c_int64, ct.c_int64, ct.c_char_p, ct.c_bool], ct.c_bool)
 
-    # bool RDF_equals_string_vs_string(const char *first_rdf_graph, const char *second_rdf_graph, const char *format) {
+    # bool RDF_equals_string_vs_string(const char *first_rdf_graph, const char *second_rdf_graph, const char *format, bool verbose) {
     rdf_equals_string_vs_string = utils.load_func("RDF_equals_string_vs_string",
-                                                  [ct.c_char_p, ct.c_char_p, ct.c_char_p],
+                                                  [ct.c_char_p, ct.c_char_p, ct.c_char_p, ct.c_bool],
                                                   ct.c_bool)
 
     #################################################################
@@ -475,9 +475,6 @@ class PyOmexMetaAPI:
     # char *SingularAnnotation_getAbout(SingularAnnotation *singular_annotation);
     singular_annotation_get_about = utils.load_func("SingularAnnotation_getAbout", [ct.c_int64], ct.c_int64)
 
-    # char * SingularAnnotation_str(SingularAnnotation * singular_annotation, const char * format)
-    singular_annotation_str = utils.load_func("SingularAnnotation_str", [ct.c_int64, ct.c_char_p], ct.c_int64)
-
     # char *SingularAnnotation_getPredicate(SingularAnnotation *singular_annotation);
     singular_annotation_get_predicate = utils.load_func("SingularAnnotation_getPredicate", [ct.c_int64], ct.c_int64)
 
@@ -538,10 +535,6 @@ class PyOmexMetaAPI:
     # char *PhysicalEntity_getLocation(PhysicalEntity *physical_entity_ptr, int index);
     physical_entity_get_location = utils.load_func("PhysicalEntity_getLocation", [ct.c_int64, ct.c_int64], ct.c_int64)
 
-    # char *PhysicalEntity_str(PhysicalEntity *physical_entity_ptr, const char *format, const char *base_uri);
-    physical_entity_str = utils.load_func("PhysicalEntity_str", [ct.c_int64, ct.c_char_p, ct.c_char_p],
-                                          ct.c_int64)
-
     # PhysicalEntity *PhysicalEntity_hasProperty(PhysicalEntity *physical_entity_ptr, PhysicalProperty* property);
     physical_entity_has_property = utils.load_func("PhysicalEntity_hasProperty", [ct.c_int64, ct.c_int64], ct.c_int64)
 
@@ -587,9 +580,6 @@ class PyOmexMetaAPI:
     physical_process_add_mediator = utils.load_func("PhysicalProcess_addMediator",
                                                     [ct.c_int64, ct.c_char_p, ct.c_int64], ct.c_int64)
 
-    # char *PhysicalProcess_str(PhysicalProcess *physical_process_ptr, const char *format, const char *base_uri);
-    physical_process_str = utils.load_func("PhysicalProcess_str",
-                                           [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_int64)
 
     # PhysicalProcess *PhysicalProcess_isVersionOf(PhysicalProcess *physical_process_ptr, const char *version, eUriType type){
     physical_process_is_version_of = utils.load_func("PhysicalProcess_isVersionOf",
@@ -630,10 +620,6 @@ class PyOmexMetaAPI:
     #                                      const char *physical_entity_reference, eUriType type) {
     energy_diff_add_sink = utils.load_func("EnergyDiff_addSink",
                                               [ct.c_int64, ct.c_char_p, ct.c_int64], ct.c_int64)
-
-    # char *EnergyDiff_str(EnergyDiff *energy_diff_ptr, const char *format, const char *base_uri);
-    energy_diff_str = utils.load_func("EnergyDiff_str",
-                                         [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_int64)
 
     # EnergyDiff *EnergyDiff_hasProperty(EnergyDiff *physical_entity_ptr, PhysicalProperty* property);
     energy_diff_has_property = utils.load_func("EnergyDiff_hasProperty", [ct.c_int64], ct.c_int64)
@@ -701,13 +687,6 @@ class PyOmexMetaAPI:
 
     # int PersonalInformation_setMetaid(PersonalInformation *information, const char *metaid);
     personal_information_set_metaid = utils.load_func("PersonalInformation_setMetaid", [ct.c_int64, ct.c_char_p], ct.c_int)
-
-    # char *PersonalInformation_getModelUri(PersonalInformation *information);
-    personal_information_get_model_uri = utils.load_func("PersonalInformation_getModelUri", [ct.c_int64], ct.c_int64)
-
-    # int PersonalInformation_setModelUri(PersonalInformation *information, const char *modelUri);
-    personal_information_set_model_uri = utils.load_func("PersonalInformation_setModelUri", [ct.c_int64, ct.c_char_p],
-                                                         ct.c_int)
 
     # int PersonalInformation_delete(PersonalInformation* information);
     personal_information_delete = utils.load_func("PersonalInformation_delete", [ct.c_int64], ct.c_int)

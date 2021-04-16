@@ -27,9 +27,9 @@
         </childnode>
         <childnode refid="25" relation="include">
         </childnode>
-        <childnode refid="35" relation="include">
+        <childnode refid="33" relation="include">
         </childnode>
-        <childnode refid="31" relation="include">
+        <childnode refid="35" relation="include">
         </childnode>
         <childnode refid="28" relation="include">
         </childnode>
@@ -37,25 +37,25 @@
       <node id="5">
         <label>stdarg.h</label>
       </node>
-      <node id="30">
+      <node id="29">
         <label>LibrdfNode.h</label>
         <link refid="LibrdfNode_8h_source"/>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
         <childnode refid="2" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="25" relation="include">
         </childnode>
-        <childnode refid="31" relation="include">
-        </childnode>
-        <childnode refid="32" relation="include">
-        </childnode>
         <childnode refid="35" relation="include">
         </childnode>
-        <childnode refid="33" relation="include">
-        </childnode>
       </node>
-      <node id="35">
+      <node id="33">
         <label>World.h</label>
         <link refid="World_8h_source"/>
         <childnode refid="2" relation="include">
@@ -64,7 +64,7 @@
         </childnode>
         <childnode refid="25" relation="include">
         </childnode>
-        <childnode refid="36" relation="include">
+        <childnode refid="34" relation="include">
         </childnode>
       </node>
       <node id="11">
@@ -92,7 +92,7 @@
         </childnode>
         <childnode refid="39" relation="include">
         </childnode>
-        <childnode refid="35" relation="include">
+        <childnode refid="33" relation="include">
         </childnode>
         <childnode refid="40" relation="include">
         </childnode>
@@ -112,7 +112,7 @@
       <node id="12">
         <label>rdf_iterator.h</label>
       </node>
-      <node id="36">
+      <node id="34">
         <label>regex</label>
       </node>
       <node id="40">
@@ -122,10 +122,10 @@
         </childnode>
         <childnode refid="25" relation="include">
         </childnode>
-        <childnode refid="35" relation="include">
+        <childnode refid="33" relation="include">
         </childnode>
       </node>
-      <node id="34">
+      <node id="31">
         <label>exception</label>
       </node>
       <node id="20">
@@ -160,28 +160,28 @@
         </childnode>
         <childnode refid="25" relation="include">
         </childnode>
-        <childnode refid="35" relation="include">
+        <childnode refid="33" relation="include">
         </childnode>
       </node>
       <node id="32">
         <label>LibrdfUri.h</label>
         <link refid="LibrdfUri_8h_source"/>
-        <childnode refid="25" relation="include">
+        <childnode refid="30" relation="include">
         </childnode>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="33" relation="include">
+        <childnode refid="25" relation="include">
         </childnode>
       </node>
-      <node id="33">
+      <node id="30">
         <label>LibrdfException.h</label>
         <link refid="LibrdfException_8h_source"/>
-        <childnode refid="34" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
         <childnode refid="27" relation="include">
         </childnode>
       </node>
-      <node id="31">
+      <node id="35">
         <label>sstream</label>
       </node>
       <node id="7">
@@ -201,7 +201,7 @@
       <node id="27">
         <label>iostream</label>
       </node>
-      <node id="29">
+      <node id="36">
         <label>unordered_map</label>
       </node>
       <node id="37">
@@ -211,7 +211,7 @@
         </childnode>
         <childnode refid="25" relation="include">
         </childnode>
-        <childnode refid="35" relation="include">
+        <childnode refid="33" relation="include">
         </childnode>
       </node>
       <node id="8">
@@ -275,15 +275,15 @@
       <node id="28">
         <label>LibrdfStatement.h</label>
         <link refid="LibrdfStatement_8h_source"/>
-        <childnode refid="25" relation="include">
-        </childnode>
-        <childnode refid="27" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="29" relation="include">
+        <childnode refid="27" relation="include">
         </childnode>
-        <childnode refid="30" relation="include">
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
         </childnode>
       </node>
       <node id="4">
@@ -326,6 +326,8 @@
       <node id="25">
         <label>src/omexmeta/include/omexmeta/UriHandler.h</label>
         <link refid="UriHandler_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
         <childnode refid="19" relation="include">
         </childnode>
         <childnode refid="20" relation="include">
@@ -646,7 +648,7 @@
 <codeline lineno="53"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LibrdfQueryResults<sp/>query(LibrdfQuery<sp/>query);</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/><ref refid="classredland_1_1LibrdfQueryResults" kindref="compound">LibrdfQueryResults</ref><sp/>query(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classredland_1_1LibrdfQuery" kindref="compound">LibrdfQuery</ref>&amp;<sp/>query)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="55"><highlight class="normal"></highlight></codeline>
-<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classredland_1_1LibrdfStream" kindref="compound">LibrdfStream</ref><sp/>toStream();</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>librdf_stream*<sp/>toStream();</highlight></codeline>
 <codeline lineno="57"><highlight class="normal"></highlight></codeline>
 <codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>size()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="59"><highlight class="normal"></highlight></codeline>

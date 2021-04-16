@@ -4,6 +4,13 @@ namespace redland {
 
     LibrdfQueryResults::LibrdfQueryResults(librdf_query_results *query_results) : query_results_(query_results) {}
 
+    LibrdfQueryResults::~LibrdfQueryResults(){
+        if (!query_results_)
+            return;
+        librdf_free_query_results(query_results_);
+        query_results_ = nullptr;
+    }
+
 
     librdf_query_results *LibrdfQueryResults::get() const {
         return query_results_;
@@ -11,11 +18,6 @@ namespace redland {
 
     std::string LibrdfQueryResults::str(std::string format) {
         return std::string();
-    }
-    void LibrdfQueryResults::freeQueryResults() {
-        if (query_results_) {
-            librdf_free_query_results(query_results_);
-        }
     }
 
     LibrdfQueryResults::LibrdfQueryResults(LibrdfQueryResults &&queryResults) noexcept {

@@ -9,16 +9,12 @@
 namespace omexmeta {
 
     Editor::Editor(std::string xml_or_file, bool create_ids,
-                   const LibrdfModel &model, NamespaceMap &ns_map,
-                   bool generate_new_metaids, bool sbml_semantic_extraction,
-                   const std::string &repository_uri,
-                   const std::string &archive_uri, const std::string &model_uri,
-                   const std::string &local_uri)
+                   const LibrdfModel &model, NamespaceMap &ns_map, UriHandler &uriHandler,
+                   bool generate_new_metaids, bool sbml_semantic_extraction)
         : xml_(std::move(xml_or_file)), create_ids_(create_ids), model_(model), namespaces_(ns_map),
           generate_new_metaids_(generate_new_metaids),
           sbml_semantic_extraction_(sbml_semantic_extraction),
-          repository_uri_(repository_uri), archive_uri_(archive_uri),
-          model_uri_(model_uri), local_uri_(local_uri) {
+          uriHandler_(uriHandler) {
         // sometimes in the python api users can accidentally start the sbml
         // string with a new line character. Catch this and error.
         if (OmexMetaUtils::startsWith(xml_, "\n")) {
@@ -63,8 +59,7 @@ namespace omexmeta {
 
     const std::vector<std::string> &Editor::getMetaids() const { return metaids_; }
 
-    const std::unordered_map<std::string, std::string> &
-    Editor::getNamespaces() const {
+    const std::unordered_map<std::string, std::string> &Editor::getNamespaces() const {
         return namespaces_;
     }
 
@@ -97,8 +92,8 @@ namespace omexmeta {
                     throw std::invalid_argument("Editor::checkValidMetaid: metaid "
                                                 "\"" +
                                                 metaid + "\" was given but it does not "
-                                                     "contain a fragment portion "
-                                                     "(i.e. the bit after \"#\"). ");
+                                                         "contain a fragment portion "
+                                                         "(i.e. the bit after \"#\"). ");
                 }
                 // now that we've checked we have a "#" in the uri, we can split on it
                 std::vector<std::string> split_string = OmexMetaUtils::splitStringBy(metaid, '#');
@@ -112,7 +107,7 @@ namespace omexmeta {
                     break;
                 }
 
-            }else {
+            } else {
                 // if we are not dealing with a full uri (starts with http)
                 // we can just compare against the metaid
                 if (metaid == it) {
@@ -142,10 +137,8 @@ namespace omexmeta {
         // as argument because that would take copies and
         // mess with cleaning up the triples later.
         Triples triples = pp->toTriples();
-        while (!triples.isEmpty()) {
-            Triple triple = triples.pop_front();
-            addNamespaceFromAnnotation(triple.getPredicateStr());
-            triple.freeStatement();
+        for (auto &triple : triples) {
+            addNamespaceFromAnnotation(triple.getPredicateNode().str());
         }
     }
 
@@ -153,9 +146,9 @@ namespace omexmeta {
         namespaces_[ns] = std::move(prefix);
     }
 
-    void Editor::addSingleAnnotation(Subject subject,
+    void Editor::addSingleAnnotation(LibrdfNode subject,
                                      const PredicatePtr &predicate_ptr,
-                                     const Resource &resource) {
+                                     const LibrdfNode &resource) {
         if (!predicate_ptr) {
             std::ostringstream err;
             err << __FILE__ << ":" << __LINE__ << ":PredicatePtr argument is null"
@@ -163,21 +156,21 @@ namespace omexmeta {
             throw NullPointerException(err.str());
         }
         checkValidMetaid(subject.str());
-        Triple triple(subject, predicate_ptr, resource);
+        Triple triple(uriHandler_, subject, predicate_ptr, resource);
         model_.addStatement(triple);
         triple.freeStatement();
         namespaces_[predicate_ptr->getNamespace()] = predicate_ptr->getPrefix();
     }
 
     void Editor::addSingleAnnotation(SingularAnnotation &singularAnnotation) {
-        checkValidMetaid(singularAnnotation.getSubjectStr());
-        addNamespaceFromAnnotation(singularAnnotation.getPredicateStr());
+        checkValidMetaid(singularAnnotation.getSubjectNode().str());
+        addNamespaceFromAnnotation(singularAnnotation.getPredicateNode().str());
         model_.addStatement(singularAnnotation);
     }
 
     void Editor::addSingleAnnotationNoValidation(
             SingularAnnotation &singularAnnotation) {
-        addNamespaceFromAnnotation(singularAnnotation.getPredicateStr());
+        addNamespaceFromAnnotation(singularAnnotation.getPredicateNode().str());
         model_.addStatement(singularAnnotation);
     }
 
@@ -201,19 +194,15 @@ namespace omexmeta {
         * that in the PersonalInformation class.
         */
         Triples triples = phenomenonPtr->toTriples();
-        while (!triples.isEmpty()) {
-            // remove a Triple off the front of triples
-            Triple triple = triples.pop_front();
+        for (auto &triple : triples) {
 
             // collect the namespace from the triple
-            addNamespaceFromAnnotation(triple.getPredicateStr());
+            addNamespaceFromAnnotation(triple.getPredicateNode().str());
 
             //todo consider whether to also call AddNamespaceFromAnnotation(triple.getResourseStr())
 
             // add to the model
             model_.addStatement(triple.getStatement());
-            // remember to free it.
-            triple.freeStatement();
         }
     }
 
@@ -221,16 +210,15 @@ namespace omexmeta {
         Triples triples = phenomenonPtr->toTriples();
         for (auto &triple : triples) {
             // collect the namespace from the triple
-            addNamespaceFromAnnotation(triple.getPredicateStr());
+            addNamespaceFromAnnotation(triple.getPredicateNode().str());
             addSingleAnnotationNoValidation(triple);
         }
-        triples.freeTriples();
     }
 
     void Editor::addTriples(Triples &triples) {
         for (auto &triple : triples) {
             // collect the namespace from the triple
-            addNamespaceFromAnnotation(triple.getPredicateStr());
+            addNamespaceFromAnnotation(triple.getPredicateNode().str());
             addSingleAnnotationNoValidation(triple);
         }
     }
@@ -239,10 +227,9 @@ namespace omexmeta {
         Triples triples = physicalProperty.toTriples();
         for (auto &triple : triples) {
             // collect the namespace from the triple
-            addNamespaceFromAnnotation(triple.getPredicateStr());
+            addNamespaceFromAnnotation(triple.getPredicateNode().str());
             addSingleAnnotationNoValidation(triple);
         }
-        triples.freeTriples();
     }
 
     void Editor::addPhysicalEntity(PhysicalEntity &physicalEntity) {
@@ -267,7 +254,7 @@ namespace omexmeta {
         Triples triples = personalInformation->getTriples();
         for (auto &triple : triples) {
             // collect the namespace from the triple
-            addNamespaceFromAnnotation(triple.getPredicateStr());
+            addNamespaceFromAnnotation(triple.getPredicateNode().str());
             // add to the model
             model_.addStatement(triple.getStatement());
         }
@@ -282,60 +269,56 @@ namespace omexmeta {
         model_.removeStatement(stmt);
     }
 
-    void Editor::removePhysicalPhenomenon(PropertyBearer *physicalPhenomenon) const {
+    void Editor::removePropertyBearer(PropertyBearer *physicalPhenomenon) const {
         Triples triples = physicalPhenomenon->toTriples();
-        while (!triples.isEmpty()) {
-            Triple triple = triples.pop();
+        for (auto &triple : triples) {
             model_.removeStatement(triple.getStatement());
         }
-        //        triples.freeTriples();
     }
 
     void Editor::removePhysicalEntity(PhysicalEntity &physicalEntity) const {
-        removePhysicalPhenomenon(&physicalEntity);
+        removePropertyBearer(&physicalEntity);
     }
 
     void Editor::removePersonalInformation(PersonalInformation *information) const {
         Triples triples = information->getTriples();
-        while (!triples.isEmpty()) {
-            Triple triple = triples.pop();
+        for (auto &triple : triples) {
             model_.removeStatement(triple.getStatement());
-            triple.freeTriple();
         }
     }
 
     void Editor::removeEnergyDiff(EnergyDiff &physicalForce) const {
-        removePhysicalPhenomenon(&physicalForce);
+        removePropertyBearer(&physicalForce);
     }
 
     void Editor::removePhysicalProcess(PhysicalProcess &physicalProcess) const {
-        removePhysicalPhenomenon(&physicalProcess);
+        removePropertyBearer(&physicalProcess);
     }
 
     PhysicalProperty Editor::newPhysicalProperty() {
-        return PhysicalProperty(model_.get(), getModelUri(), getLocalUri());
+        return PhysicalProperty(model_.get(), uriHandler_);
     }
 
     PhysicalProperty *Editor::newPhysicalPropertyPtr() {
-        auto *property = new PhysicalProperty(model_.get(), getModelUri(), getLocalUri());
+        auto *property = new PhysicalProperty(model_.get(), uriHandler_);
         return property;
     }
 
     PhysicalEntity Editor::newPhysicalEntity() {
-        return PhysicalEntity(model_.get(), getModelUri(), getLocalUri());
+        return PhysicalEntity(model_.get(), uriHandler_);
     }
 
     EnergyDiff Editor::newEnergyDiff() {
-        return EnergyDiff(model_.get(), getModelUri(), getLocalUri());
+        return EnergyDiff(model_.get(), uriHandler_);
     }
 
     PhysicalProcess Editor::newPhysicalProcess() {
-        return PhysicalProcess(model_.get(), getModelUri(), getLocalUri());
+        return PhysicalProcess(model_.get(), uriHandler_);
     }
 
     PersonalInformation Editor::newPersonalInformation() {
         // todo consider whether local_uri argument is needed
-        return PersonalInformation(model_.get(), getModelUri(), getLocalUri());
+        return PersonalInformation(model_.get(), uriHandler_);
     }
 
     Editor &Editor::addCreator(std::string orcid_id) {
@@ -343,12 +326,11 @@ namespace omexmeta {
         if (orcid_id.rfind(orcid_namespace, 0) != 0) {
             orcid_id = orcid_namespace + orcid_id;
         }
-        Triple triple(LibrdfNode::fromUriString(getModelUri()).get(),
-                      PredicateFactory("dc", "creator")->getNode(),
+        Triple triple(uriHandler_, LibrdfNode::fromUriString(getModelUri()).get(),
+                      PredicateFactory("dc", "creator")->get(),
                       LibrdfNode::fromUriString(orcid_id).get());
         model_.addStatement(triple);
         addNamespace(Predicate::namespaceMap()["dc"], "dc");
-        triple.freeTriple();
         return *this;
     }
 
@@ -357,22 +339,21 @@ namespace omexmeta {
         if (orcid_id.rfind(orcid_namespace, 0) != 0) {
             orcid_id = orcid_namespace + orcid_id;
         }
-        Triple triple(LibrdfNode::fromUriString(getLocalUri()).get(),
-                      PredicateFactory("dc", "creator")->getNode(),
+        Triple triple(uriHandler_, LibrdfNode::fromUriString(getLocalUri()).get(),
+                      PredicateFactory("dc", "creator")->get(),
                       LibrdfNode::fromUriString(orcid_id).get());
         model_.addStatement(triple);
         addNamespace(Predicate::namespaceMap()["dc"], "dc");
-        triple.freeTriple();
         return *this;
     }
 
     Editor &Editor::addDateCreated(const std::string &date) {
         LibrdfNode anon = LibrdfNode::fromBlank("");
-        Triple triple1(LibrdfNode::fromUriString(getModelUri()).get(),
-                       PredicateFactory("dc", "created")->getNode(),
+        Triple triple1(uriHandler_, LibrdfNode::fromUriString(getModelUri()).get(),
+                       PredicateFactory("dc", "created")->get(),
                        anon.get());
-        Triple triple2(anon.get(),
-                       PredicateFactory("dc", "W3CDTF")->getNode(),
+        Triple triple2(uriHandler_, anon.get(),
+                       PredicateFactory("dc", "W3CDTF")->get(),
                        LibrdfNode::fromLiteral(date).get());
         model_.addStatement(triple1);
         model_.addStatement(triple2);
@@ -381,56 +362,52 @@ namespace omexmeta {
     }
 
     Editor &Editor::addDescription(const std::string &date) {
-        Triple triple(LibrdfNode::fromUriString(getModelUri()).get(),
-                      PredicateFactory("dc", "description")->getNode(),
+        Triple triple(uriHandler_, LibrdfNode::fromUriString(getModelUri()).get(),
+                      PredicateFactory("dc", "description")->get(),
                       LibrdfNode::fromLiteral(date).get());
         model_.addStatement(triple);
         addNamespace(Predicate::namespaceMap()["dc"], "dc");
-        triple.freeTriple();
         return *this;
     }
 
     Editor &Editor::addPubmed(const std::string &pubmedid) {
-        Triple triple(LibrdfNode::fromUriString(getModelUri()).get(),
-                      PredicateFactory("bqmodel", "isDescribedBy")->getNode(),
+        Triple triple(uriHandler_, LibrdfNode::fromUriString(getModelUri()).get(),
+                      PredicateFactory("bqmodel", "isDescribedBy")->get(),
                       LibrdfNode::fromUriString("pubmed:" + pubmedid).get());
         model_.addStatement(triple);
         addNamespace(Predicate::namespaceMap()["bqmodel"], "bqmodel");
         addNamespace(Predicate::namespaceMap()["pubmed"], "pubmed");
-        triple.freeTriple();
         return *this;
     }
 
     Editor &Editor::addParentModel(const std::string &biomod_id) {
-        Triple triple(LibrdfNode::fromUriString(getModelUri()).get(),
-                      PredicateFactory("bqmodel", "isDerivedFrom")->getNode(),
+        Triple triple(uriHandler_, LibrdfNode::fromUriString(getModelUri()).get(),
+                      PredicateFactory("bqmodel", "isDerivedFrom")->get(),
                       LibrdfNode::fromUriString("biomodels.db:" + biomod_id).get());
         model_.addStatement(triple);
         addNamespace(Predicate::namespaceMap()["bqmodel"], "bqmodel");
         addNamespace(Predicate::namespaceMap()["biomod"], "biomod");
-        triple.freeTriple();
         return *this;
     }
 
     Editor &Editor::addTaxon(const std::string &taxon_id) {
-        Triple triple(LibrdfNode::fromUriString(getModelUri()).get(),
-                      PredicateFactory("bqbiol", "hasTaxon")->getNode(),
+        Triple triple(uriHandler_, LibrdfNode::fromUriString(getModelUri()).get(),
+                      PredicateFactory("bqbiol", "hasTaxon")->get(),
                       LibrdfNode::fromUriString("taxonomy:" + taxon_id).get());
         model_.addStatement(triple);
         addNamespace(Predicate::namespaceMap()["bqbiol"], "bqbiol");
         addNamespace(Predicate::namespaceMap()["NCBI_Taxon"], "NCBI_Taxon");
 
-        triple.freeTriple();
         return *this;
     }
 
-    std::string Editor::getLocalUri() const { return local_uri_; }
+    std::string Editor::getLocalUri() const { return uriHandler_.getLocalUri(); }
 
-    std::string Editor::getModelUri() const { return model_uri_; }
+    std::string Editor::getModelUri() const { return uriHandler_.getModelUri(); }
 
-    std::string Editor::getArchiveUri() const { return archive_uri_; }
+    std::string Editor::getArchiveUri() const { return uriHandler_.getArchiveUri(); }
 
-    std::string Editor::getRepositoryUri() const { return repository_uri_; }
+    std::string Editor::getRepositoryUri() const { return uriHandler_.getRepositoryUri(); }
 
     LibrdfNode Editor::createNodeWithModelUri(const std::string &string) const {
         if (getModelUri().empty()) {
@@ -452,17 +429,14 @@ namespace omexmeta {
     }
 
     SingularAnnotation Editor::newSingularAnnotation() const {
-        SingularAnnotation singularAnnotation;
-        singularAnnotation.setModelUri(getModelUri());
-        singularAnnotation.setLocalUri(getLocalUri());
+        SingularAnnotation singularAnnotation(uriHandler_);
         return singularAnnotation;
     }
 
     SingularAnnotation Editor::newSingularAnnotation(std::string metaid) const {
-        SingularAnnotation singularAnnotation;
-        singularAnnotation.setModelUri(getModelUri());
+        SingularAnnotation singularAnnotation(uriHandler_);
         singularAnnotation.about(
-                OmexMetaUtils::concatMetaIdAndUri(std::move(metaid), getModelUri()));
+                OmexMetaUtils::concatMetaIdAndUri(std::move(metaid), uriHandler_.getModelUri()));
         return singularAnnotation;
     }
 
@@ -475,6 +449,9 @@ namespace omexmeta {
     OmexMetaXmlType Editor::getType() const { return type_; }
 
     void Editor::setType(OmexMetaXmlType type) { type_ = type; }
+    UriHandler &Editor::getUriHandler() const {
+        return uriHandler_;
+    }
 
 
 }// namespace omexmeta

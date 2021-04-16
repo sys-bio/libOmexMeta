@@ -137,15 +137,14 @@ TEST_F(LibrdfParserTests, TestRelativeBaseUriResolvesCorrectly) {
     std::cout << storage_fname << std::endl;
 
     std::string expected = "https://www.dajobe.org/net/this/is/the/base#dajobe";
+    // note: docs do not say anything about having to free the stream and address sanitizer
+    // is happy without the free.
     librdf_stream *stream = librdf_model_as_stream(model.get());
     LibrdfStatement stmt = LibrdfStatement::fromRawStatementPtr(librdf_stream_get_object(stream));
-    auto s = LibrdfNode(stmt.getSubject());
+    auto s = LibrdfNode(stmt.getSubjectNode());
     std::string actual = s.str();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
-
     librdf_free_stream(stream);
-    model.freeModel();
-    storage.freeStorage();
 }
 
 
@@ -194,60 +193,9 @@ TEST_F(LibrdfParserTests, TestFeatures) {
     ASSERT_EQ("0", nonNFCfatalNode.str());
     ASSERT_EQ("1", warnOtherParseTypesNode.str());
     ASSERT_EQ("1", checkRdfIDNode.str());
-
-    scanForRDFNode.freeNode();
-    allowNonNsAttributesNode.freeNode();
-    allowOtherParsetypesNode.freeNode();
-    allowBagIDNode.freeNode();
-    allowRDFtypeRDFlistNode.freeNode();
-    normalizeLanguageNode.freeNode();
-    nonNFCfatalNode.freeNode();
-    warnOtherParseTypesNode.freeNode();
-    checkRdfIDNode.freeNode();
-    scanForRDFUri.freeUri();
-    allowNonNsAttributesUri.freeUri();
-    allowOtherParsetypesUri.freeUri();
-    allowBagIDUri.freeUri();
-    allowRDFtypeRDFlistUri.freeUri();
-    normalizeLanguageUri.freeUri();
-    nonNFCfatalUri.freeUri();
-    warnOtherParseTypesUri.freeUri();
-    checkRdfIDUri.freeUri();
-    model.freeModel();
-    storage.freeStorage();
 }
 
 
-//TEST_F(LibrdfParserTests, TestParserWithContexts) {
-//    std::string input = "<?xml version=\"1.0\"?>\n"
-//                        "<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
-//                        "     xmlns:dc=\"http://purl.org/dc/elements/1.1/\"\n"
-//                        "     xml:base=\"https://www.dajobe.org/net/this/is/the/base\">\n"
-//                        "  <rdf:Description rdf:about=\"#dajobe\">\n"
-//                        "    <dc:title>Dave Beckett's Home Page</dc:title>\n"
-//                        "    <dc:creator>Dave Beckett</dc:creator>\n"
-//                        "    <dc:description>The generic home page of Dave Beckett.</dc:description>\n"
-//                        "  </rdf:Description> \n"
-//                        "</rdf:RDF>";
-//    LibrdfStorage storage("file");
-//    LibrdfModel model(storage.get());
-//    LibrdfParser parser("rdfxml");
-//    librdf_model_supports_contexts()
-////    parser.parseString(input, model, "LibrdfParserTests_TestBaseUri");
-//
-//    std::string expected = "https://www.dajobe.org/net/this/is/the/base#dajobe";
-//    librdf_stream* stream = librdf_model_as_stream(model.get());
-//    LibrdfStatement stmt = LibrdfStatement::fromRawStatementPtr(librdf_stream_get_object(stream));
-//    auto s = LibrdfNode(stmt.getSubject());
-//    std::string actual = s.str();
-//    ASSERT_STREQ(expected.c_str(), actual.c_str());
-//
-//    librdf_free_stream(stream);
-//    stmt.freeStatement();
-//    s.freeNode();
-//    model.freeModel();
-//    storage.freeStorage();
-//}
 
 
 

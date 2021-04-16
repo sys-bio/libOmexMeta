@@ -11,13 +11,11 @@ Inheritance diagram for omexmeta\+::Physical\+Process\+:\begin{figure}[H]
 \item 
 \mbox{\hyperlink{classomexmeta_1_1PhysicalProcess_acf4c42d10d6dbdd3aa4285bed7bd823b}{Physical\+Process}} ()=delete
 \begin{DoxyCompactList}\small\item\em default constructor for \mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classomexmeta_1_1PhysicalProcess_a37f99033da4635ff1af2b9f19c1b84ce}{Physical\+Process}} (librdf\+\_\+model $\ast$model, std\+::string model\+\_\+uri, std\+::string local\+\_\+uri, const \mbox{\hyperlink{classomexmeta_1_1PhysicalProperty}{Physical\+Property}} \&physical\+Property, Sources sources, Sinks sinks, Mediators mediators)
+\mbox{\hyperlink{classomexmeta_1_1PhysicalProcess_afc6b8fa69c15e213e2527f01cca4ae23}{Physical\+Process}} (librdf\+\_\+model $\ast$model, \mbox{\hyperlink{classomexmeta_1_1UriHandler}{Uri\+Handler}} \&uri\+Handler, const \mbox{\hyperlink{classomexmeta_1_1PhysicalProperty}{Physical\+Property}} \&physical\+Property, Sources sources, Sinks sinks, Mediators mediators)
 \begin{DoxyCompactList}\small\item\em Constructor for \mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} object. \mbox{\hyperlink{classSubclass}{Subclass}} of Physical\+Phenomenon. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classomexmeta_1_1PhysicalProcess_a8dfcffe80f264ad24e70de9d7b71c73b}{free}} ()
 \begin{DoxyCompactList}\small\item\em free the node resources used by \mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}}. \end{DoxyCompactList}\item 
-O\+M\+E\+X\+M\+E\+T\+A\+\_\+\+D\+E\+P\+R\+E\+C\+A\+T\+ED \mbox{\hyperlink{classomexmeta_1_1PhysicalProcess_a2b694395a318335e81c884ed76b5f4dd}{Physical\+Process}} (librdf\+\_\+model $\ast$model)
-\begin{DoxyCompactList}\small\item\em constructor for the builder interface of \mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} instantiation \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classomexmeta_1_1PhysicalProcess_a974e2717dbf4b690b95b07e9c026fd2a}{Physical\+Process}} (librdf\+\_\+model $\ast$model, std\+::string model\+\_\+uri, std\+::string local\+\_\+uri)
+\mbox{\hyperlink{classomexmeta_1_1PhysicalProcess_a4012f37ba6f9d9ade1c1064280897c05}{Physical\+Process}} (librdf\+\_\+model $\ast$model, \mbox{\hyperlink{classomexmeta_1_1UriHandler}{Uri\+Handler}} \&uri\+Handler)
 \begin{DoxyCompactList}\small\item\em constructor for the builder interface of \mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} instantiation \end{DoxyCompactList}\item 
 const Sources \& \mbox{\hyperlink{classomexmeta_1_1PhysicalProcess_ab5f3100febc21173775a2090bb57a0fb}{get\+Sources}} () const
 \begin{DoxyCompactList}\small\item\em getter for sources \end{DoxyCompactList}\item 
@@ -27,10 +25,6 @@ const Mediators \& \mbox{\hyperlink{classomexmeta_1_1PhysicalProcess_a349b76ad18
 \begin{DoxyCompactList}\small\item\em getter for mediators \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classomexmeta_1_1Triples}{Triples}} \mbox{\hyperlink{classomexmeta_1_1PhysicalProcess_ab6f6af00fac2401f9a88e186fd1d897a}{to\+Triples}} () override
 \begin{DoxyCompactList}\small\item\em convert a \mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} into a set of \mbox{\hyperlink{classomexmeta_1_1Triples}{Triples}} \end{DoxyCompactList}\item 
-O\+M\+E\+X\+M\+E\+T\+A\+\_\+\+D\+E\+P\+R\+E\+C\+A\+T\+ED \mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} \& \mbox{\hyperlink{classomexmeta_1_1PhysicalProcess_ac875058d67408246aa28cf58dd77ccf6}{set\+Physical\+Property}} (std\+::string subject\+\_\+metaid, const std\+::string \&physical\+Property)
-\begin{DoxyCompactList}\small\item\em setter for the physical property portion of the \mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}}. \end{DoxyCompactList}\item 
-O\+M\+E\+X\+M\+E\+T\+A\+\_\+\+D\+E\+P\+R\+E\+C\+A\+T\+ED \mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} \& \mbox{\hyperlink{classomexmeta_1_1PhysicalProcess_ac49bf4a1c21c6590a9d2af7ae93e13a7}{set\+Physical\+Property}} (\mbox{\hyperlink{classomexmeta_1_1PhysicalProperty}{Physical\+Property}} physical\+Property)
-\begin{DoxyCompactList}\small\item\em setter for the physical property portion of the \mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}}. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} \& \mbox{\hyperlink{classomexmeta_1_1PhysicalProcess_a4cae1a5cecfc2107f2667a2e5c0480cc}{add\+Source}} (std\+::string physical\+\_\+entity\+\_\+reference, e\+Uri\+Type type, double multiplier=1.\+0)
 \begin{DoxyCompactList}\small\item\em add a source to the list of Source object associated with a \mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} \& \mbox{\hyperlink{classomexmeta_1_1PhysicalProcess_aa55335a92b7558262f512f836fae8c4f}{add\+Sink}} (std\+::string physical\+\_\+entity\+\_\+reference, e\+Uri\+Type type, double multiplier=1.\+0)
@@ -78,18 +72,18 @@ const std\+::string \& {\bfseries get\+Property\+Metaid\+Base} () const override
 \mbox{\Hypertarget{classomexmeta_1_1PhysicalProcess_acf4c42d10d6dbdd3aa4285bed7bd823b}\label{classomexmeta_1_1PhysicalProcess_acf4c42d10d6dbdd3aa4285bed7bd823b}} 
 \index{omexmeta::PhysicalProcess@{omexmeta::PhysicalProcess}!PhysicalProcess@{PhysicalProcess}}
 \index{PhysicalProcess@{PhysicalProcess}!omexmeta::PhysicalProcess@{omexmeta::PhysicalProcess}}
-\doxysubsubsection{\texorpdfstring{PhysicalProcess()}{PhysicalProcess()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+\doxysubsubsection{\texorpdfstring{PhysicalProcess()}{PhysicalProcess()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
 {\footnotesize\ttfamily omexmeta\+::\+Physical\+Process\+::\+Physical\+Process (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
 
 
 
 default constructor for \mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} 
 
-deliberately deleted. If you try using the builder interface (chaining setter methods) from a default instantiated \mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} you will get an error, because there will be no model associated with \mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}}. Instead, always instantiate a \mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} from the \mbox{\hyperlink{classomexmeta_1_1Editor_ae4a608ecbe64f05c1b64efbeeb1fdeb1}{Editor\+::add\+Physical\+Process()}} method. \mbox{\Hypertarget{classomexmeta_1_1PhysicalProcess_a37f99033da4635ff1af2b9f19c1b84ce}\label{classomexmeta_1_1PhysicalProcess_a37f99033da4635ff1af2b9f19c1b84ce}} 
+deliberately deleted. If you try using the builder interface (chaining setter methods) from a default instantiated \mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} you will get an error, because there will be no model associated with \mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}}. Instead, always instantiate a \mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} from the \mbox{\hyperlink{classomexmeta_1_1Editor_ae4a608ecbe64f05c1b64efbeeb1fdeb1}{Editor\+::add\+Physical\+Process()}} method. \mbox{\Hypertarget{classomexmeta_1_1PhysicalProcess_afc6b8fa69c15e213e2527f01cca4ae23}\label{classomexmeta_1_1PhysicalProcess_afc6b8fa69c15e213e2527f01cca4ae23}} 
 \index{omexmeta::PhysicalProcess@{omexmeta::PhysicalProcess}!PhysicalProcess@{PhysicalProcess}}
 \index{PhysicalProcess@{PhysicalProcess}!omexmeta::PhysicalProcess@{omexmeta::PhysicalProcess}}
-\doxysubsubsection{\texorpdfstring{PhysicalProcess()}{PhysicalProcess()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
-{\footnotesize\ttfamily omexmeta\+::\+Physical\+Process\+::\+Physical\+Process (\begin{DoxyParamCaption}\item[{librdf\+\_\+model $\ast$}]{model,  }\item[{std\+::string}]{model\+\_\+uri,  }\item[{std\+::string}]{local\+\_\+uri,  }\item[{const \mbox{\hyperlink{classomexmeta_1_1PhysicalProperty}{Physical\+Property}} \&}]{physical\+Property,  }\item[{Sources}]{sources,  }\item[{Sinks}]{sinks,  }\item[{Mediators}]{mediators }\end{DoxyParamCaption})}
+\doxysubsubsection{\texorpdfstring{PhysicalProcess()}{PhysicalProcess()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily omexmeta\+::\+Physical\+Process\+::\+Physical\+Process (\begin{DoxyParamCaption}\item[{librdf\+\_\+model $\ast$}]{model,  }\item[{\mbox{\hyperlink{classomexmeta_1_1UriHandler}{Uri\+Handler}} \&}]{uri\+Handler,  }\item[{const \mbox{\hyperlink{classomexmeta_1_1PhysicalProperty}{Physical\+Property}} \&}]{physical\+Property,  }\item[{Sources}]{sources,  }\item[{Sinks}]{sinks,  }\item[{Mediators}]{mediators }\end{DoxyParamCaption})}
 
 
 
@@ -108,26 +102,11 @@ Constructor for \mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Pro
 {\em mediator} & a vector of Sink objects representing the energetic modulators for the \mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{classomexmeta_1_1PhysicalProcess_a2b694395a318335e81c884ed76b5f4dd}\label{classomexmeta_1_1PhysicalProcess_a2b694395a318335e81c884ed76b5f4dd}} 
+\mbox{\Hypertarget{classomexmeta_1_1PhysicalProcess_a4012f37ba6f9d9ade1c1064280897c05}\label{classomexmeta_1_1PhysicalProcess_a4012f37ba6f9d9ade1c1064280897c05}} 
 \index{omexmeta::PhysicalProcess@{omexmeta::PhysicalProcess}!PhysicalProcess@{PhysicalProcess}}
 \index{PhysicalProcess@{PhysicalProcess}!omexmeta::PhysicalProcess@{omexmeta::PhysicalProcess}}
-\doxysubsubsection{\texorpdfstring{PhysicalProcess()}{PhysicalProcess()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
-{\footnotesize\ttfamily omexmeta\+::\+Physical\+Process\+::\+Physical\+Process (\begin{DoxyParamCaption}\item[{librdf\+\_\+model $\ast$}]{model }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
-
-
-
-constructor for the builder interface of \mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} instantiation 
-
-
-\begin{DoxyParams}{Parameters}
-{\em model} & the currently active \mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} model. \\
-\hline
-\end{DoxyParams}
-\mbox{\Hypertarget{classomexmeta_1_1PhysicalProcess_a974e2717dbf4b690b95b07e9c026fd2a}\label{classomexmeta_1_1PhysicalProcess_a974e2717dbf4b690b95b07e9c026fd2a}} 
-\index{omexmeta::PhysicalProcess@{omexmeta::PhysicalProcess}!PhysicalProcess@{PhysicalProcess}}
-\index{PhysicalProcess@{PhysicalProcess}!omexmeta::PhysicalProcess@{omexmeta::PhysicalProcess}}
-\doxysubsubsection{\texorpdfstring{PhysicalProcess()}{PhysicalProcess()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
-{\footnotesize\ttfamily omexmeta\+::\+Physical\+Process\+::\+Physical\+Process (\begin{DoxyParamCaption}\item[{librdf\+\_\+model $\ast$}]{model,  }\item[{std\+::string}]{model\+\_\+uri,  }\item[{std\+::string}]{local\+\_\+uri }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+\doxysubsubsection{\texorpdfstring{PhysicalProcess()}{PhysicalProcess()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily omexmeta\+::\+Physical\+Process\+::\+Physical\+Process (\begin{DoxyParamCaption}\item[{librdf\+\_\+model $\ast$}]{model,  }\item[{\mbox{\hyperlink{classomexmeta_1_1UriHandler}{Uri\+Handler}} \&}]{uri\+Handler }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
 
 
 
@@ -165,7 +144,7 @@ set the subject (rdf\+:about) portion of the \mbox{\hyperlink{classomexmeta_1_1P
 
 
 \begin{DoxyParams}{Parameters}
-{\em about} & the string to be used as the \mbox{\hyperlink{classomexmeta_1_1Subject}{Subject}} portion of the is\+Version\+Of \mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}}. \mbox{\hyperlink{classThis}{This}} should be an existing metaid on the model you are annotating. Will error when metaid does not exist.  \mbox{\hyperlink{classThis}{This}} method will set the \mbox{\hyperlink{classomexmeta_1_1Subject}{Subject}} subject\+\_\+ attribute of the \mbox{\hyperlink{classomexmeta_1_1PhysicalProperty}{Physical\+Property}} associated with the \mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}}. \\
+{\em about} & the string to be used as the Librdf\+Node portion of the is\+Version\+Of \mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}}. \mbox{\hyperlink{classThis}{This}} should be an existing metaid on the model you are annotating. Will error when metaid does not exist.  \mbox{\hyperlink{classThis}{This}} method will set the Librdf\+Node subject\+\_\+ attribute of the \mbox{\hyperlink{classomexmeta_1_1PhysicalProperty}{Physical\+Property}} associated with the \mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}}. \\
 \hline
 \end{DoxyParams}
 
@@ -298,32 +277,6 @@ getter for sources
 
 \begin{DoxyReturn}{Returns}
 a vector of \mbox{\hyperlink{classomexmeta_1_1SourceParticipant}{Source\+Participant}} objects 
-\end{DoxyReturn}
-\mbox{\Hypertarget{classomexmeta_1_1PhysicalProcess_ac49bf4a1c21c6590a9d2af7ae93e13a7}\label{classomexmeta_1_1PhysicalProcess_ac49bf4a1c21c6590a9d2af7ae93e13a7}} 
-\index{omexmeta::PhysicalProcess@{omexmeta::PhysicalProcess}!setPhysicalProperty@{setPhysicalProperty}}
-\index{setPhysicalProperty@{setPhysicalProperty}!omexmeta::PhysicalProcess@{omexmeta::PhysicalProcess}}
-\doxysubsubsection{\texorpdfstring{setPhysicalProperty()}{setPhysicalProperty()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} \& omexmeta\+::\+Physical\+Process\+::set\+Physical\+Property (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classomexmeta_1_1PhysicalProperty}{Physical\+Property}}}]{physical\+Property }\end{DoxyParamCaption})}
-
-
-
-setter for the physical property portion of the \mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}}. 
-
-\begin{DoxyReturn}{Returns}
-a reference to this \mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} to enable chaining setter commands
-\end{DoxyReturn}
-Developers. Consider removing this method in favour of the set\+Physical\+Property version that only takes a string as argument \mbox{\Hypertarget{classomexmeta_1_1PhysicalProcess_ac875058d67408246aa28cf58dd77ccf6}\label{classomexmeta_1_1PhysicalProcess_ac875058d67408246aa28cf58dd77ccf6}} 
-\index{omexmeta::PhysicalProcess@{omexmeta::PhysicalProcess}!setPhysicalProperty@{setPhysicalProperty}}
-\index{setPhysicalProperty@{setPhysicalProperty}!omexmeta::PhysicalProcess@{omexmeta::PhysicalProcess}}
-\doxysubsubsection{\texorpdfstring{setPhysicalProperty()}{setPhysicalProperty()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} \& omexmeta\+::\+Physical\+Process\+::set\+Physical\+Property (\begin{DoxyParamCaption}\item[{std\+::string}]{subject\+\_\+metaid,  }\item[{const std\+::string \&}]{physical\+Property }\end{DoxyParamCaption})}
-
-
-
-setter for the physical property portion of the \mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}}. 
-
-\begin{DoxyReturn}{Returns}
-a reference to this \mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} to enable chaining setter commands 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classomexmeta_1_1PhysicalProcess_ab6f6af00fac2401f9a88e186fd1d897a}\label{classomexmeta_1_1PhysicalProcess_ab6f6af00fac2401f9a88e186fd1d897a}} 
 \index{omexmeta::PhysicalProcess@{omexmeta::PhysicalProcess}!toTriples@{toTriples}}

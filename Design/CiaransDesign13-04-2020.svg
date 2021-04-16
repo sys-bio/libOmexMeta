@@ -378,15 +378,15 @@ class Triple-->
         </text>
         <ellipse cx="4600.5" cy="1431.6875" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
         <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="129"
-              x="4609.5" y="1436.1064">getPredicate() : Predicate&amp;
+              x="4609.5" y="1436.1064">getPredicateAsRawNode() : Predicate&amp;
         </text>
         <ellipse cx="4600.5" cy="1445.5234" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
         <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="133"
-              x="4609.5" y="1449.9424">getResource() : Resource&amp;
+              x="4609.5" y="1449.9424">getResourceAsRawNode() : Resource&amp;
         </text>
         <ellipse cx="4600.5" cy="1459.3594" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
         <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="111"
-              x="4609.5" y="1463.7783">getSubject() : Subject&amp;
+              x="4609.5" y="1463.7783">getSubjectAsRawNode() : Subject&amp;
         </text>
         <ellipse cx="4600.5" cy="1473.1953" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
         <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="186"
@@ -768,7 +768,7 @@ class RDF-->
         <line style="stroke: #A80036; stroke-width: 1.5;" x1="913" x2="1419" y1="136.5" y2="136.5"/>
         <rect fill="none" height="6" style="stroke: #C82930; stroke-width: 1.0;" width="6" x="920" y="144.5"/>
         <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="105"
-              x="932" y="151.9189">model_ : librdf_model*
+              x="932" y="151.9189">model_uri_ : librdf_model*
         </text>
         <rect fill="none" height="6" style="stroke: #C82930; stroke-width: 1.0;" width="6" x="920" y="158.3359"/>
         <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="123"
@@ -882,7 +882,7 @@ class RDF-->
         </text>
         <ellipse cx="923" cy="529.0703" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
         <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="122"
-              x="932" y="533.4893">getModel() : librdf_model*
+              x="932" y="533.4893">getModelUri() : librdf_model*
         </text>
         <ellipse cx="923" cy="542.9063" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
         <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="141"
@@ -902,7 +902,7 @@ class RDF-->
         </text>
         <ellipse cx="923" cy="598.25" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
         <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="173"
-              x="932" y="602.6689">setModel(librdf_model* model) : void
+              x="932" y="602.6689">setModelUri(librdf_model* model) : void
         </text>
         <ellipse cx="923" cy="612.0859" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
         <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="444"
@@ -936,7 +936,7 @@ class Reader-->
         <line style="stroke: #A80036; stroke-width: 1.5;" x1="1447.5" x2="1828.5" y1="885" y2="885"/>
         <rect fill="none" height="6" style="stroke: #C82930; stroke-width: 1.0;" width="6" x="1454.5" y="893"/>
         <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="105"
-              x="1466.5" y="900.4189">model_ : librdf_model*
+              x="1466.5" y="900.4189">model_uri_ : librdf_model*
         </text>
         <rect fill="none" height="6" style="stroke: #C82930; stroke-width: 1.0;" width="6" x="1454.5" y="906.8359"/>
         <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="113"
@@ -993,7 +993,7 @@ class Reader-->
         </text>
         <ellipse cx="1457.5" cy="1097.7031" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
         <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="122"
-              x="1466.5" y="1102.1221">getModel() : librdf_model*
+              x="1466.5" y="1102.1221">getModelUri() : librdf_model*
         </text>
         <ellipse cx="1457.5" cy="1111.5391" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
         <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="130"
@@ -1088,7 +1088,7 @@ class Writer-->
         <line style="stroke: #A80036; stroke-width: 1.5;" x1="921.5" x2="1410.5" y1="933.5" y2="933.5"/>
         <rect fill="none" height="6" style="stroke: #C82930; stroke-width: 1.0;" width="6" x="928.5" y="941.5"/>
         <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="105"
-              x="940.5" y="948.9189">model_ : librdf_model*
+              x="940.5" y="948.9189">model_uri_ : librdf_model*
         </text>
         <rect fill="none" height="6" style="stroke: #C82930; stroke-width: 1.0;" width="6" x="928.5" y="955.3359"/>
         <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="131"
@@ -1113,7 +1113,7 @@ class Writer-->
         <line style="stroke: #A80036; stroke-width: 1.5;" x1="921.5" x2="1410.5" y1="1024.5156" y2="1024.5156"/>
         <ellipse cx="931.5" cy="1035.5156" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
         <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="465"
-              x="940.5" y="1039.9346">Writer(librdf_world* world_, librdf_model* model_, std::string format, const
+              x="940.5" y="1039.9346">Writer(librdf_world* world_, librdf_model* model_uri_, std::string format, const
             std::string&amp; base_uri_)
         </text>
         <ellipse cx="931.5" cy="1049.3516" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>

@@ -11,9 +11,7 @@
     <innerfile refid="LibrdfSerializer_8cpp">LibrdfSerializer.cpp</innerfile>
     <innerfile refid="LibrdfStatement_8cpp">LibrdfStatement.cpp</innerfile>
     <innerfile refid="LibrdfStorage_8cpp">LibrdfStorage.cpp</innerfile>
-    <innerfile refid="LibrdfStream_8cpp">LibrdfStream.cpp</innerfile>
     <innerfile refid="LibrdfUri_8cpp">LibrdfUri.cpp</innerfile>
-    <innerfile refid="RaptorIOStream_8cpp">RaptorIOStream.cpp</innerfile>
     <innerfile refid="World_8cpp">World.cpp</innerfile>
     <briefdescription>
     </briefdescription>

@@ -126,7 +126,7 @@ class TestAPI(unittest.TestCase):
     bqmodel:isDescribedBy <https://identifiers.org/pubmed/12991237> .
 
 """
-        self.assertTrue(self.pyom.rdf_equals_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode()))
+        self.assertTrue(self.pyom.rdf_equals_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode(), True))
 
     def test_rdf_to_file(self):
         self.pyom.rdf_add_from_string(self.rdf, TestStrings.singular_annotation2.encode(),
@@ -210,7 +210,7 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
         actual_local = self.pyom.get_and_free_c_str(
             self.pyom.rdf_get_local_uri(self.rdf)
         )
-        expected_model = "http://omex-library.org/NewOmex.omex/my-awesome-model.sbml#"
+        expected_model = "http://omex-library.org/NewOmex.omex/my-awesome-model.sbml"
         expected_local = "http://omex-library.org/NewOmex.omex/my-awesome-model.rdf#"
         self.assertEqual(expected_model, actual_model)
         self.assertEqual(expected_local, actual_local)
@@ -226,19 +226,17 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
                                                                                  "http://uri.com/resource".encode())
         self.pyom.editor_add_single_annotation(editor_ptr, singular_annotation)
 
-        expected = r"""<?xml version="1.1" encoding="utf-8"?>
-<rdf:RDF xmlns:OMEXlib="http://omex-library.org/"
-   xmlns:local="http://omex-library.org/NewOmex.omex/NewModel.rdf#"
-   xmlns:myOMEX="http://omex-library.org/NewOmex.omex/"
-   xmlns:ns_="https://namespace.com"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <rdf:Description rdf:about="http://uri.com#cytosol">
-    <ns1:uri xmlns:ns1="https://predicate.com/from/"
-       rdf:resource="http://uri.com/resource"/>
-  </rdf:Description>
-</rdf:RDF>
+        expected = r"""@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix ns_: <https://namespace.com> .
+@prefix OMEXlib: <http://omex-library.org/> .
+@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#cytosol>
+    <https://predicate.com/from/uri> <http://uri.com/resource> .
+
 """
-        self.assertTrue(self.pyom.rdf_equals_rdf_vs_string(self.rdf, expected.encode(), "rdfxml-abbrev".encode()))
+        print(self.pyom.get_and_free_c_str(self.pyom.rdf_to_string(self.rdf, "turtle".encode())))
+        self.assertTrue(self.pyom.rdf_equals_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode(), True))
         self.pyom.editor_delete(editor_ptr)
         self.pyom.singular_annotation_delete(singular_annotation)
 
@@ -401,7 +399,7 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
 <http://omex-library.org/NewOmex.omex/NewModel.xml>
     dc:creator <https://orcid.org/1234-1234-1234-1234> .
 """
-        self.assertTrue(self.pyom.rdf_equals_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode()))
+        self.assertTrue(self.pyom.rdf_equals_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode(), True))
         self.pyom.editor_delete(editor_ptr)
 
     def test_editor_add_curator(self):
@@ -420,7 +418,7 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
     dc:creator <https://orcid.org/1234-1234-1234-1234> .
 
 """
-        self.assertTrue(self.pyom.rdf_equals_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode()))
+        self.assertTrue(self.pyom.rdf_equals_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode(), True))
         self.pyom.editor_delete(editor_ptr)
 
     def test_editor_get_taxon(self):
@@ -440,7 +438,7 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
     bqbiol:hasTaxon <https://identifiers.org/taxonomy:9898> .
 
 """
-        self.assertTrue(self.pyom.rdf_equals_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode()))
+        self.assertTrue(self.pyom.rdf_equals_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode(), True))
         self.pyom.editor_delete(editor_ptr)
 
     def test_editor_add_pubmed(self):
@@ -460,7 +458,7 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
     bqmodel:isDescribedBy <https://identifiers.org/pubmed:1234568> .
 
 """
-        self.assertTrue(self.pyom.rdf_equals_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode()))
+        self.assertTrue(self.pyom.rdf_equals_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode(), True))
         self.pyom.editor_delete(editor_ptr)
 
     def test_editor_add_description(self):
@@ -479,7 +477,7 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
     dc:description "An awesome model"^^rdf:string .
 
 """
-        self.assertTrue(self.pyom.rdf_equals_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode()))
+        self.assertTrue(self.pyom.rdf_equals_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode(), True))
         self.pyom.editor_delete(editor_ptr)
 
     def test_editor_add_date_created(self):
@@ -500,7 +498,7 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
     ] .
 
 """
-        self.assertTrue(self.pyom.rdf_equals_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode()))
+        self.assertTrue(self.pyom.rdf_equals_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode(), True))
         self.pyom.editor_delete(editor_ptr)
 
     def test_editor_add_parent_model(self):
@@ -521,7 +519,7 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
 
 
 """
-        self.assertTrue(self.pyom.rdf_equals_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode()))
+        self.assertTrue(self.pyom.rdf_equals_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode(), True))
         self.pyom.editor_delete(editor_ptr)
 
     def test_singular_annotation_about(self):
@@ -626,33 +624,6 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
         self.pyom.editor_delete(editor_ptr)
         self.pyom.singular_annotation_delete(singular_annotation)
 
-    def test_singular_annotation_str(self):
-        editor_ptr = self.pyom.rdf_to_editor(self.rdf, TestStrings.xml.encode(), True, False)
-        singular_annotation = self.pyom.editor_new_singular_annotation(editor_ptr)
-        self.pyom.singular_annotation_about(singular_annotation, "cytosol".encode())
-        self.pyom.singular_annotation_set_predicate(singular_annotation, "bqbiol".encode(), "is".encode())
-        self.pyom.singular_annotation_set_resource_uri(singular_annotation, "uniprot:PD12345".encode())
-
-        self.pyom.editor_add_single_annotation(editor_ptr, singular_annotation)
-        ptr = self.pyom.singular_annotation_str(
-            singular_annotation, "turtle".encode())
-
-        actual = self.pyom.get_and_free_c_str(ptr)
-        print(actual)
-        expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
-@prefix OMEXlib: <http://omex-library.org/> .
-@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
-@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
-
-<http://omex-library.org/NewOmex.omex/NewModel.xml#cytosol>
-    bqbiol:is <https://identifiers.org/uniprot:PD12345> .
-
-"""
-        self.assertTrue(self.pyom.rdf_equals_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode()))
-        self.pyom.editor_delete(editor_ptr)
-        self.pyom.singular_annotation_delete(singular_annotation)
-
     def test_editor_add_single_annotation(self):
         editor_ptr = self.pyom.rdf_to_editor(self.rdf, TestStrings.xml.encode(), True, False)
         singular_annotation = self.pyom.editor_new_singular_annotation(editor_ptr)
@@ -672,7 +643,7 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
     bqbiol:is <https://identifiers.org/uniprot:PD12345> .
 
 """
-        self.assertTrue(self.pyom.rdf_equals_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode()))
+        self.assertTrue(self.pyom.rdf_equals_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode(), True))
         self.pyom.editor_delete(editor_ptr)
         self.pyom.singular_annotation_delete(singular_annotation)
 
@@ -683,7 +654,7 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
         self.pyom.physical_entity_identity(physical_entity, "uniprot:P456".encode())
         ptr = self.pyom.physical_entity_get_identity(physical_entity)
         actual = self.pyom.get_and_free_c_str(ptr)
-        expected = "https://identifiers.org/uniprot:P456"
+        expected = "uniprot:P456"
         self.assertEqual(expected, actual)
         self.pyom.editor_delete(editor_ptr)
         self.pyom.physical_entity_delete(physical_entity)
@@ -738,7 +709,7 @@ local:EntityProperty
 <http://omex-library.org/NewOmex.omex/NewModel.xml#species0001>
     bqbiol:is <https://identifiers.org/uniprot:PD12345> ;
     bqbiol:isPartOf <https://identifiers.org/FMA:1234> .""".encode()
-        self.assertTrue(self.pyom.rdf_equals_rdf_vs_string(self.rdf, expected, "turtle".encode()))
+        self.assertTrue(self.pyom.rdf_equals_rdf_vs_string(self.rdf, expected, "turtle".encode(), True))
         self.pyom.editor_delete(editor_ptr)
         self.pyom.physical_entity_delete(physical_entity)
         self.pyom.physical_property_delete(entity_property)
@@ -769,7 +740,7 @@ local:EntityProperty
 <http://omex-library.org/NewOmex.omex/NewModel.xml#species0001>
     bqbiol:is <https://identifiers.org/uniprot:PD12345> ;
     bqbiol:isPartOf <https://identifiers.org/FMA:1234> .""".encode()
-        self.assertTrue(self.pyom.rdf_equals_rdf_vs_string(self.rdf, expected, "turtle".encode()))
+        self.assertTrue(self.pyom.rdf_equals_rdf_vs_string(self.rdf, expected, "turtle".encode(), True))
         self.pyom.editor_delete(editor_ptr)
         self.pyom.physical_entity_delete(physical_entity)
 
@@ -797,7 +768,7 @@ local:EntityProperty0000
 <http://omex-library.org/NewOmex.omex/NewModel.xml#species0001>
     bqbiol:is <https://identifiers.org/uniprot:PD12345> ;
     bqbiol:isPartOf <https://identifiers.org/FMA:1234> .""".encode()
-        self.assertTrue(self.pyom.rdf_equals_rdf_vs_string(self.rdf, expected, "turtle".encode()))
+        self.assertTrue(self.pyom.rdf_equals_rdf_vs_string(self.rdf, expected, "turtle".encode(), True))
         self.pyom.editor_delete(editor_ptr)
         self.pyom.physical_entity_delete(physical_entity)
 
@@ -828,7 +799,7 @@ local:entity0
     bqbiol:isPropertyOf local:entity0 ;
     bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00154> .
 """.encode()
-        self.assertTrue(self.pyom.rdf_equals_rdf_vs_string(self.rdf, expected, "turtle".encode()))
+        self.assertTrue(self.pyom.rdf_equals_rdf_vs_string(self.rdf, expected, "turtle".encode(), True))
         self.pyom.editor_delete(editor_ptr)
         self.pyom.physical_entity_delete(physical_entity)
         self.pyom.physical_property_delete(entity_property)
@@ -855,7 +826,7 @@ local:Entity0000
     bqbiol:isPropertyOf local:Entity0000 ;
     bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00154> .
 """.encode()
-        self.assertTrue(self.pyom.rdf_equals_rdf_vs_string(self.rdf, expected, "turtle".encode()))
+        self.assertTrue(self.pyom.rdf_equals_rdf_vs_string(self.rdf, expected, "turtle".encode(), True))
         self.pyom.editor_delete(editor_ptr)
         self.pyom.physical_entity_delete(physical_entity)
 
@@ -897,7 +868,7 @@ local:SourceParticipant0000
     semsim:hasSinkParticipant local:SinkParticipant0000 ;
     semsim:hasSourceParticipant local:SourceParticipant0000 .
 """.encode()
-        self.assertTrue(self.pyom.rdf_equals_rdf_vs_string(self.rdf, expected, "turtle".encode()))
+        self.assertTrue(self.pyom.rdf_equals_rdf_vs_string(self.rdf, expected, "turtle".encode(), True))
         self.pyom.editor_delete(editor_ptr)
         self.pyom.physical_process_delete(physical_process)
 
@@ -937,7 +908,7 @@ local:SourceParticipant0000
     semsim:hasSinkParticipant local:SinkParticipant0000 ;
     semsim:hasSourceParticipant local:SourceParticipant0000 .
 """.encode()
-        self.assertTrue(self.pyom.rdf_equals_rdf_vs_string(self.rdf, expected, "turtle".encode()))
+        self.assertTrue(self.pyom.rdf_equals_rdf_vs_string(self.rdf, expected, "turtle".encode(), True))
         self.pyom.editor_delete(editor_ptr)
         self.pyom.physical_process_delete(physical_process)
 
@@ -979,7 +950,7 @@ local:SourceParticipant0000
     bqbiol:isPropertyOf local:Process ;
     bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .
 """.encode()
-        self.assertTrue(self.pyom.rdf_equals_rdf_vs_string(self.rdf, expected, "turtle".encode()))
+        self.assertTrue(self.pyom.rdf_equals_rdf_vs_string(self.rdf, expected, "turtle".encode(), True))
         self.pyom.editor_delete(editor_ptr)
         self.pyom.physical_process_delete(physical_process)
 
@@ -1020,7 +991,7 @@ local:SourceParticipant0000
     bqbiol:isPropertyOf local:Process0000 ;
     bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .
 """.encode()
-        self.assertTrue(self.pyom.rdf_equals_rdf_vs_string(self.rdf, expected, "turtle".encode()))
+        self.assertTrue(self.pyom.rdf_equals_rdf_vs_string(self.rdf, expected, "turtle".encode(), True))
         self.pyom.editor_delete(editor_ptr)
         self.pyom.physical_process_delete(physical_process)
 
@@ -1054,7 +1025,7 @@ local:parameter_metaid_0
     semsim:hasSinkParticipant local:SinkParticipant0000 ;
     semsim:hasSourceParticipant local:SourceParticipant0000 .
 """.encode()
-        self.assertTrue(self.pyom.rdf_equals_rdf_vs_string(self.rdf, expected, "turtle".encode()))
+        self.assertTrue(self.pyom.rdf_equals_rdf_vs_string(self.rdf, expected, "turtle".encode(), True))
         self.pyom.editor_delete(editor_ptr)
         self.pyom.energy_diff_delete(energy_diff)
 
@@ -1089,7 +1060,7 @@ local:SourceParticipant0000
     semsim:hasSinkParticipant local:SinkParticipant0000 ;
     semsim:hasSourceParticipant local:SourceParticipant0000 .
 """.encode()
-        self.assertTrue(self.pyom.rdf_equals_rdf_vs_string(self.rdf, expected, "turtle".encode()))
+        self.assertTrue(self.pyom.rdf_equals_rdf_vs_string(self.rdf, expected, "turtle".encode(), True))
         self.pyom.editor_delete(editor_ptr)
         self.pyom.energy_diff_delete(energy_diff)
 
@@ -1127,7 +1098,7 @@ local:SourceParticipant0000
     semsim:hasSourceParticipant local:SourceParticipant0000 .
 
 """.encode()
-        self.assertTrue(self.pyom.rdf_equals_rdf_vs_string(self.rdf, expected, "turtle".encode()))
+        self.assertTrue(self.pyom.rdf_equals_rdf_vs_string(self.rdf, expected, "turtle".encode(), True))
         self.pyom.editor_delete(editor_ptr)
         self.pyom.energy_diff_delete(energy_diff)
 
@@ -1170,7 +1141,7 @@ local:SourceParticipant0000
     dc:creator <https://identifiers.org/orcid/1234-1234-1234-1234> .
 
 """
-        self.assertTrue(self.pyom.rdf_equals_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode()))
+        self.assertTrue(self.pyom.rdf_equals_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode(), True))
         self.pyom.personal_information_delete(information)
         self.pyom.editor_delete(editor_ptr)
 
@@ -1196,7 +1167,7 @@ local:SourceParticipant0000
     foaf:name "Ciaran Welsh"^^rdf:string .
 
 """
-        self.assertTrue(self.pyom.rdf_equals_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode()))
+        self.assertTrue(self.pyom.rdf_equals_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode(), True))
         self.pyom.personal_information_delete(information)
         self.pyom.editor_delete(editor_ptr)
 
@@ -1222,7 +1193,7 @@ local:SourceParticipant0000
     foaf:mbox "annotations.uw.edu"^^rdf:string .
 
 """
-        self.assertTrue(self.pyom.rdf_equals_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode()))
+        self.assertTrue(self.pyom.rdf_equals_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode(), True))
         self.pyom.personal_information_delete(information)
         self.pyom.editor_delete(editor_ptr)
 
@@ -1245,7 +1216,7 @@ local:SourceParticipant0000
     foaf:accountName <https://orcid.org/1234-1234-1234-1234> .
 
 """
-        self.assertTrue(self.pyom.rdf_equals_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode()))
+        self.assertTrue(self.pyom.rdf_equals_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode(), True))
         self.pyom.personal_information_delete(information)
         self.pyom.editor_delete(editor_ptr)
 
@@ -1272,7 +1243,7 @@ local:SourceParticipant0000
     foaf:accountServiceHomepage <https://github.com/sys-bio/libOmexMeta> .
 
 """
-        self.assertTrue(self.pyom.rdf_equals_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode()))
+        self.assertTrue(self.pyom.rdf_equals_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode(), True))
         self.pyom.personal_information_delete(information)
         self.pyom.editor_delete(editor_ptr)
 
@@ -1298,7 +1269,7 @@ local:SourceParticipant0000
     foaf:name _:Blank .
 
 """
-        self.assertTrue(self.pyom.rdf_equals_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode()))
+        self.assertTrue(self.pyom.rdf_equals_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode(), True))
         self.pyom.personal_information_delete(information)
         self.pyom.editor_delete(editor_ptr)
 
@@ -1324,7 +1295,7 @@ local:SourceParticipant0000
     foaf:mbox <http://uri.com/> .
 
 """
-        self.assertTrue(self.pyom.rdf_equals_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode()))
+        self.assertTrue(self.pyom.rdf_equals_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode(), True))
         self.pyom.personal_information_delete(information)
         self.pyom.editor_delete(editor_ptr)
 
@@ -1350,7 +1321,7 @@ local:SourceParticipant0000
     foaf:name "literal"^^rdf:string .
 
 """
-        self.assertTrue(self.pyom.rdf_equals_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode()))
+        self.assertTrue(self.pyom.rdf_equals_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode(), True))
         self.pyom.personal_information_delete(information)
         self.pyom.editor_delete(editor_ptr)
 
@@ -1366,30 +1337,6 @@ local:SourceParticipant0000
         self.pyom.personal_information_delete(information)
         self.pyom.editor_delete(editor_ptr)
 
-    def test_personal_information_get_model_uri(self):
-        editor_ptr = self.pyom.rdf_to_editor(self.rdf, TestStrings.xml.encode(), True, False)
-        information = self.pyom.editor_new_personal_information(editor_ptr)
-        self.pyom.editor_add_personal_information(editor_ptr, information)
-        actual = self.pyom.get_and_free_c_str(
-            self.pyom.personal_information_get_model_uri(information)
-        )
-        expected = "http://omex-library.org/NewOmex.omex/NewModel.xml"
-        self.assertEqual(expected, actual)
-        self.pyom.personal_information_delete(information)
-        self.pyom.editor_delete(editor_ptr)
-
-    def test_personal_information_set_model_uri(self):
-        editor_ptr = self.pyom.rdf_to_editor(self.rdf, TestStrings.xml.encode(), True, False)
-        information = self.pyom.editor_new_personal_information(editor_ptr)
-        self.pyom.personal_information_set_model_uri(information, "awesome-model.xml".encode())
-        self.pyom.editor_add_personal_information(editor_ptr, information)
-        actual = self.pyom.get_and_free_c_str(
-            self.pyom.personal_information_get_model_uri(information)
-        )
-        expected = "awesome-model.xml"
-        self.assertEqual(expected, actual)
-        self.pyom.personal_information_delete(information)
-        self.pyom.editor_delete(editor_ptr)
 
 
 if __name__ == "__main__":

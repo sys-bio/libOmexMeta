@@ -9,64 +9,58 @@
 
 namespace omexmeta {
 
-    PhysicalProperty::PhysicalProperty(std::string is_version_of, std::string is_version_of_value, std::string model_uri)
-        : is_property_of_value_(std::move(is_version_of)),
-          is_version_of_value_(std::move(is_version_of_value)),
-          model_uri_(std::move(model_uri)) {
-        //        validate();
+    PhysicalProperty::PhysicalProperty(UriHandler &uriHandler)
+        : uriHandler_(uriHandler) {}
+
+    PhysicalProperty &PhysicalProperty::operator=(const PhysicalProperty &physicalProperty) {
+        if (*this != physicalProperty) {
+            new_metaid_exclusion_list_ = physicalProperty.new_metaid_exclusion_list_;
+            is_property_of_value_ = physicalProperty.is_property_of_value_;
+            is_version_of_value_ = physicalProperty.is_version_of_value_;
+            property_metaid_base_ = physicalProperty.property_metaid_base_;
+            property_bearer_base_ = physicalProperty.property_bearer_base_;
+            about_value_ = physicalProperty.about_value_;
+            model_ = physicalProperty.model_;
+            uriHandler_ = physicalProperty.uriHandler_;
+            is_set_ = physicalProperty.is_set_;
+        }
+        return *this;
     }
+    PhysicalProperty &PhysicalProperty::operator=(PhysicalProperty &&physicalProperty) noexcept {
+        if (*this != physicalProperty) {
+            new_metaid_exclusion_list_ = std::move(physicalProperty.new_metaid_exclusion_list_);
+            is_property_of_value_ = std::move(physicalProperty.is_property_of_value_);
+            is_version_of_value_ = std::move(physicalProperty.is_version_of_value_);
+            property_metaid_base_ = std::move(physicalProperty.property_metaid_base_);
+            property_bearer_base_ = std::move(physicalProperty.property_bearer_base_);
+            about_value_ = std::move(physicalProperty.about_value_);
+            model_ = physicalProperty.model_;
+            uriHandler_ = std::move(physicalProperty.uriHandler_);
+            is_set_ = physicalProperty.is_set_;
+        }
+        return *this;
+    }
+    bool PhysicalProperty::operator==(const PhysicalProperty &rhs) const {
+        return new_metaid_exclusion_list_ == rhs.new_metaid_exclusion_list_ &&
+               is_property_of_value_ == rhs.is_property_of_value_ &&
+               is_version_of_value_ == rhs.is_version_of_value_ &&
+               property_metaid_base_ == rhs.property_metaid_base_ &&
+               property_bearer_base_ == rhs.property_bearer_base_ &&
+               about_value_ == rhs.about_value_ &&
+               model_ == rhs.model_ &&
+               uriHandler_ == rhs.uriHandler_ &&
+               is_set_ == rhs.is_set_;
+    }
+    bool PhysicalProperty::operator!=(const PhysicalProperty &rhs) const {
+        return !(rhs == *this);
+    }
+
     const std::string &PhysicalProperty::getLocalUri() const {
-        return local_uri_;
+        return uriHandler_.getLocalUri();
     }
 
-    PhysicalProperty::PhysicalProperty(std::string is_version_of, std::string is_version_of_value, std::string model_uri, librdf_model *model)
-        : is_property_of_value_(std::move(is_version_of)),
-          is_version_of_value_(std::move(is_version_of_value)),
-          model_uri_(std::move(model_uri)),
-          model_(model) {
-        //        validate();
-    }
-
-    PhysicalProperty::PhysicalProperty(std::string subject_str, std::string model_uri)
-        : is_property_of_value_(std::move(subject_str)),
-          model_uri_(std::move(model_uri)) {
-        //        validate();
-    }
-
-    PhysicalProperty::PhysicalProperty(librdf_model *model, const std::string &model_uri, const std::string &local_uri)
-        : model_(model), model_uri_(model_uri), local_uri_(local_uri) {}
-
-    void PhysicalProperty::validate() {
-        std::string expected_prefix1 = "https://identifiers.org/OPB";
-        std::string expected_prefix2 = "https://identifiers.org/opb";
-
-        // create a temporary resource obj for checking only.
-        if (!is_version_of_value_.empty()) {
-            Resource r(LibrdfNode::fromUriString(is_version_of_value_));
-            std::string uri = r.str();
-            r.free();
-            if ((uri.rfind(expected_prefix1, 0) != 0) && (uri.rfind(expected_prefix2, 0) != 0)) {
-                std::ostringstream err;
-                err << __FILE__ << ":" << __LINE__ << ": The uri generated (";
-                err << uri << ") is not a OPB resource. Physical properties "
-                              "must be OPB resources.";
-                throw omexmeta::InappropriateResourceException(err.str());
-            }
-        }
-
-        // ensure subject_uri_ has the model_uri associated with it
-        if (OmexMetaUtils::startsWith(is_property_of_value_, "http")) {
-            if (!OmexMetaUtils::startsWith(is_property_of_value_, getModelUri())) {
-                throw std::invalid_argument("std::invalid_argument: PhysicalProperty::validate() "
-                                            "The subject argument to PhysicalProperty is already a URI"
-                                            "but is it not the uri associated with the model you are annotating "
-                                            "(" +
-                                            getModelUri() + ") but instead \"" + is_property_of_value_ + "\"");
-            }
-        } else {
-            is_property_of_value_ = OmexMetaUtils::concatMetaIdAndUri(is_property_of_value_, getModelUri());
-        }
-    }
+    PhysicalProperty::PhysicalProperty(librdf_model *model, UriHandler &uriHandler)
+        : model_(model), uriHandler_(uriHandler) {}
 
 
     Triples PhysicalProperty::toTriples() {
@@ -91,17 +85,19 @@ namespace omexmeta {
         }
 
         Triple is_property_of_triple(
+                uriHandler_,
                 LibrdfNode::fromUriString(about_value_).get(),
-                BiomodelsBiologyQualifier("isPropertyOf").getNode(),
+                BiomodelsBiologyQualifier("isPropertyOf").get(),
                 LibrdfNode::fromUriString(is_property_of_value_).get());
-        triples.move_back(is_property_of_triple);
+        triples.moveBack(is_property_of_triple);
 
         if (!is_version_of_value_.empty()) {
             Triple is_version_of_triple(
+                    uriHandler_,
                     LibrdfNode::fromUriString(about_value_).get(),
-                    BiomodelsBiologyQualifier("isVersionOf").getNode(),
-                    Resource(LibrdfNode::fromUriString(is_version_of_value_)).getNode());
-            triples.move_back(is_version_of_triple);
+                    BiomodelsBiologyQualifier("isVersionOf").get(),
+                    LibrdfNode::fromUriString(is_version_of_value_).get());
+            triples.moveBack(is_version_of_triple);
         }
         return triples;
     }
@@ -112,14 +108,12 @@ namespace omexmeta {
         return property_metaid_base_;
     }
 
-
     const std::string &PhysicalProperty::getAbout() const {
         return about_value_;
     }
 
-
     PhysicalProperty &PhysicalProperty::about(const std::string &about, eUriType type) {
-        if (OmexMetaUtils::startsWith(about, "http")){
+        if (OmexMetaUtils::startsWith(about, "http")) {
             about_value_ = about;
         } else {
             about_value_ = UriHandler::uriModifier<PhysicalProperty>(*this, about, type);
@@ -131,18 +125,8 @@ namespace omexmeta {
         return is_version_of_value_;
     }
 
-    bool PhysicalProperty::operator==(const PhysicalProperty &rhs) const {
-        return is_property_of_value_ == rhs.is_property_of_value_ &&
-               is_version_of_value_ == rhs.is_version_of_value_ &&
-               about_value_ == rhs.about_value_;
-    }
-
-    bool PhysicalProperty::operator!=(const PhysicalProperty &rhs) const {
-        return !(rhs == *this);
-    }
-
     const std::string &PhysicalProperty::getModelUri() const {
-        return model_uri_;
+        return uriHandler_.getModelUri();
     }
 
     PhysicalProperty &PhysicalProperty::isVersionOf(const std::string &is_version_of) {

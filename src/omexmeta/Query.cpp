@@ -117,7 +117,6 @@ namespace omexmeta {
         LibrdfNode node(librdf_query_results_get_binding_value_by_name(
                 query_results_, (const char *) name.c_str()));
         std::string s = node.str();
-        node.freeNode();
         return s;
     }
 
@@ -142,7 +141,6 @@ namespace omexmeta {
         unsigned char *s = librdf_query_results_to_string2(
                 query_results_, output_format.c_str(),
                 nullptr, nullptr, uri.get());
-        uri.freeUri();
         std::string res = (const char *) s; // makes a copy
         // the above string using \r\n for line endings. Convert to \n like any sane program should.
         res = OmexMetaUtils::stringReplace(res, "\r\n", "\n");

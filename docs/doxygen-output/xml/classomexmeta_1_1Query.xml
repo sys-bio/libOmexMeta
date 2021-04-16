@@ -23,7 +23,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Query.h" line="125" column="21" bodyfile="src/omexmeta/Query.cpp" bodystart="116" bodyend="122"/>
+        <location file="src/omexmeta/include/omexmeta/Query.h" line="125" column="21" bodyfile="src/omexmeta/Query.cpp" bodystart="116" bodyend="121"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Query_1aafaf7dc024ccb358467b2f7d814ec132" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -39,7 +39,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Query.h" line="135" column="13" bodyfile="src/omexmeta/Query.cpp" bodystart="124" bodyend="126"/>
+        <location file="src/omexmeta/include/omexmeta/Query.h" line="135" column="13" bodyfile="src/omexmeta/Query.cpp" bodystart="123" bodyend="125"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Query_1a405a2bcace57e7b9a78b42ff0bb04a27" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -182,7 +182,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Query.h" line="217" column="20" bodyfile="src/omexmeta/Query.cpp" bodystart="158" bodyend="185"/>
+        <location file="src/omexmeta/include/omexmeta/Query.h" line="217" column="20" bodyfile="src/omexmeta/Query.cpp" bodystart="156" bodyend="183"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Query_1a7109dd08bd808bf5a20becb164622ed6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
@@ -215,7 +215,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Query.h" line="225" column="22" bodyfile="src/omexmeta/Query.cpp" bodystart="128" bodyend="151"/>
+        <location file="src/omexmeta/include/omexmeta/Query.h" line="225" column="22" bodyfile="src/omexmeta/Query.cpp" bodystart="127" bodyend="149"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Query_1a879a4db0413abc8f4a3470877ebf5193" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -326,7 +326,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Query.h" line="62" column="13" bodyfile="src/omexmeta/Query.cpp" bodystart="154" bodyend="156"/>
+        <location file="src/omexmeta/include/omexmeta/Query.h" line="62" column="13" bodyfile="src/omexmeta/Query.cpp" bodystart="152" bodyend="154"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Query_1a0e31011a576bb0598e92fe3676216899" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -410,7 +410,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Query.h" line="114" column="21" bodyfile="src/omexmeta/Query.cpp" bodystart="192" bodyend="194"/>
+        <location file="src/omexmeta/include/omexmeta/Query.h" line="114" column="21" bodyfile="src/omexmeta/Query.cpp" bodystart="190" bodyend="192"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
