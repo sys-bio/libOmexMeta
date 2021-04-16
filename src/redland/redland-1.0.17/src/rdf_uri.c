@@ -293,7 +293,7 @@ int librdf_uri_get_usage(librdf_uri *uri) {
 }
 
 void librdf_uri_increment_usage(librdf_uri *uri) {
-    raptor_uri_increment_usage_count(uri);
+    raptor_uri_increment_usage(uri);
 }
 
 
