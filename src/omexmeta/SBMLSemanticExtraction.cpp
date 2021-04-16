@@ -68,7 +68,8 @@ namespace omexmeta {
             std::string reaction_metaid = OmexMetaUtils::getXmlNodeProperty(reaction_node, "metaid");
             // begin the annotation
             PhysicalProcess process = editor_->newPhysicalProcess();
-            process.hasProperty(reaction_metaid, MODEL_URI, "opb:OPB_00592", reaction_metaid, MODEL_URI);
+            process.about(reaction_metaid, MODEL_URI);
+            process.hasProperty("opb:OPB_00592");
             // and pull out the listOf* elements for the reaction
             xmlNode *reactants_node = OmexMetaUtils::getChildElementCalled(reaction_node, "listOfReactants");
             xmlNode *products_node = OmexMetaUtils::getChildElementCalled(reaction_node, "listOfProducts");

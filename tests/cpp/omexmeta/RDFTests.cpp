@@ -255,7 +255,8 @@ TEST_F(RDFTests, TestReadSBMLModelWithBagFromString) {
     RDF expectedRdf = RDF::fromString(samples.annotationFromSBMLModelWithRDFBag);
     std::string sbml = SBMLFactory::getSBML(SBML_WITH_BAG);
     RDF actualRdf = RDF::fromString(sbml, "rdfxml");
-    ASSERT_EQ(expectedRdf, actualRdf);
+
+    ASSERT_TRUE(RDF::equals(&actualRdf, &expectedRdf, "turtle"));
 }
 
 TEST_F(RDFTests, TestReadSBMLModelWithBagFromFile) {

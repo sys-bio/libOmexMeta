@@ -80,6 +80,7 @@ namespace redland {
                 World::getWorld(), name.c_str(), uri_, (const unsigned char *) query.c_str(), base_uri_);
     }
 
+
     librdf_query *LibrdfQuery::get() const {
         query_->usage++;
         return query_;
