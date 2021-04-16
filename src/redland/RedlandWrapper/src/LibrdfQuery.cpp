@@ -25,6 +25,7 @@ namespace redland {
 
     }
 
+
     librdf_query *LibrdfQuery::get() const {
         return query_.get();
     }
