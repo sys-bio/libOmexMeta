@@ -96,11 +96,11 @@ R\+D\+F$\ast$ rdf\+\_\+ptr = R\+D\+F\+\_\+from\+String(string\+\_\+annotations, 
 \DoxyCodeLine{}
 \DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{char} *RDF\_getLocalUri(RDF *rdf\_ptr);}
 \DoxyCodeLine{}
-\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{bool} RDF\_equals\_rdf\_vs\_string(RDF* rdf\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* serialized\_rdf, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* format = \textcolor{stringliteral}{"{}turtle"{}});}
+\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{bool} RDF\_equals\_rdf\_vs\_string(RDF* rdf\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* serialized\_rdf, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* format = \textcolor{stringliteral}{"{}turtle"{}}, \textcolor{keywordtype}{bool} verbose = \textcolor{keyword}{false});}
 \DoxyCodeLine{}
-\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{bool} RDF\_equals\_rdf\_vs\_rdf(RDF* rdf\_ptr1, RDF* rdf\_ptr2, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* format = \textcolor{stringliteral}{"{}turtle"{}});}
+\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{bool} RDF\_equals\_rdf\_vs\_rdf(RDF* rdf\_ptr1, RDF* rdf\_ptr2, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* format = \textcolor{stringliteral}{"{}turtle"{}}, \textcolor{keywordtype}{bool} verbose = \textcolor{keyword}{false});}
 \DoxyCodeLine{}
-\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{bool} RDF\_equals\_string\_vs\_string(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* first\_rdf\_graph, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* second\_rdf\_graph, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* format = \textcolor{stringliteral}{"{}turtle"{}});}
+\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{bool} RDF\_equals\_string\_vs\_string(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* first\_rdf\_graph, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* second\_rdf\_graph, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* format = \textcolor{stringliteral}{"{}turtle"{}}, \textcolor{keywordtype}{bool} verbose = \textcolor{keyword}{false});}
 \DoxyCodeLine{}
 \DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT Editor *}
 \DoxyCodeLine{    RDF\_toEditor(RDF *rdf\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *xml, \textcolor{keywordtype}{bool} generate\_new\_metaids, \textcolor{keywordtype}{bool} sbml\_semantic\_extraction);}
@@ -368,10 +368,6 @@ R\+D\+F$\ast$ rdf\+\_\+ptr = R\+D\+F\+\_\+from\+String(string\+\_\+annotations, 
 \DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{char} *PersonalInformation\_getMetaid(PersonalInformation *information);}
 \DoxyCodeLine{}
 \DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{int} PersonalInformation\_setMetaid(PersonalInformation *information, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *metaid);}
-\DoxyCodeLine{}
-\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{char} *PersonalInformation\_getModelUri(PersonalInformation *information);}
-\DoxyCodeLine{}
-\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{int} PersonalInformation\_setModelUri(PersonalInformation *information, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *modelUri);}
 \DoxyCodeLine{}
 \DoxyCodeLine{}
 \DoxyCodeLine{\textcolor{preprocessor}{\#ifdef \_\_cplusplus}}

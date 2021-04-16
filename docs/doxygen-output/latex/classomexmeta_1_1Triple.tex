@@ -9,18 +9,36 @@ Inheritance diagram for omexmeta\+::Triple\+:\begin{figure}[H]
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classomexmeta_1_1Triple_aaed857f9356dc3a7414f06f393a75ba0}\label{classomexmeta_1_1Triple_aaed857f9356dc3a7414f06f393a75ba0}} 
-{\bfseries Triple} (const \mbox{\hyperlink{classomexmeta_1_1Subject}{Subject}} \&subject, const Predicate\+Ptr \&predicate\+\_\+ptr, const \mbox{\hyperlink{classomexmeta_1_1Resource}{Resource}} \&resource)
+\mbox{\Hypertarget{classomexmeta_1_1Triple_a9bbe27351665a72507570bd1da6b209c}\label{classomexmeta_1_1Triple_a9bbe27351665a72507570bd1da6b209c}} 
+\mbox{\hyperlink{classomexmeta_1_1Triple_a9bbe27351665a72507570bd1da6b209c}{$\sim$\+Triple}} () override=default
+\begin{DoxyCompactList}\small\item\em only a default virtual destructor needed as call to base class destructor will clean up the underlying statement\+\_\+ pointer. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classomexmeta_1_1Triple_aa28089d2e08463961811f98d70b1df8a}\label{classomexmeta_1_1Triple_aa28089d2e08463961811f98d70b1df8a}} 
+{\bfseries Triple} (\mbox{\hyperlink{classomexmeta_1_1UriHandler}{Uri\+Handler}} \&uri\+Handler)
 \item 
-\mbox{\Hypertarget{classomexmeta_1_1Triple_adc457c78ec059eb71602e7ea4f763582}\label{classomexmeta_1_1Triple_adc457c78ec059eb71602e7ea4f763582}} 
-{\bfseries Triple} (\mbox{\hyperlink{structraptor__term}{librdf\+\_\+node}} $\ast$subject, \mbox{\hyperlink{structraptor__term}{librdf\+\_\+node}} $\ast$\mbox{\hyperlink{classomexmeta_1_1Triple_a27637af321ba7d7eeb2596bac93feb54}{predicate}}, \mbox{\hyperlink{structraptor__term}{librdf\+\_\+node}} $\ast$resource)
+\mbox{\Hypertarget{classomexmeta_1_1Triple_ad160e8e90a25538cd5e3a8d46fae5cee}\label{classomexmeta_1_1Triple_ad160e8e90a25538cd5e3a8d46fae5cee}} 
+{\bfseries Triple} (\mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}} \&\&triple) noexcept
+\item 
+\mbox{\Hypertarget{classomexmeta_1_1Triple_a0831a005f3b781b73f7af661c3a903f8}\label{classomexmeta_1_1Triple_a0831a005f3b781b73f7af661c3a903f8}} 
+\mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}} \& {\bfseries operator=} (\mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}} \&\&triple) noexcept
+\item 
+\mbox{\Hypertarget{classomexmeta_1_1Triple_a79d8092e4fab78add6161890b2f3c624}\label{classomexmeta_1_1Triple_a79d8092e4fab78add6161890b2f3c624}} 
+{\bfseries Triple} (const \mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}} \&triple)
+\item 
+\mbox{\Hypertarget{classomexmeta_1_1Triple_a977b07d30a7d4895b6f6a4f75221df0c}\label{classomexmeta_1_1Triple_a977b07d30a7d4895b6f6a4f75221df0c}} 
+\mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}} \& {\bfseries operator=} (const \mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}} \&triple)
+\item 
+\mbox{\Hypertarget{classomexmeta_1_1Triple_a95491182a1fba9c86fd59a1dcfe573a6}\label{classomexmeta_1_1Triple_a95491182a1fba9c86fd59a1dcfe573a6}} 
+{\bfseries Triple} (\mbox{\hyperlink{classomexmeta_1_1UriHandler}{Uri\+Handler}} \&uri\+Handler, const \mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} \&subject, const Predicate\+Ptr \&predicate\+\_\+ptr, const \mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} \&resource)
+\item 
+\mbox{\Hypertarget{classomexmeta_1_1Triple_ace642731214400b1c6d4ecff3b154598}\label{classomexmeta_1_1Triple_ace642731214400b1c6d4ecff3b154598}} 
+{\bfseries Triple} (\mbox{\hyperlink{classomexmeta_1_1UriHandler}{Uri\+Handler}} \&uri\+Handler, const \mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} \&subject, const \mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} \&\mbox{\hyperlink{classomexmeta_1_1Triple_a27637af321ba7d7eeb2596bac93feb54}{predicate}}, const \mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} \&resource)
+\item 
+\mbox{\Hypertarget{classomexmeta_1_1Triple_aeb37b8aae97d7339d03c5f00aaa5e656}\label{classomexmeta_1_1Triple_aeb37b8aae97d7339d03c5f00aaa5e656}} 
+{\bfseries Triple} (\mbox{\hyperlink{classomexmeta_1_1UriHandler}{Uri\+Handler}} \&uri\+Handler, \mbox{\hyperlink{structraptor__term}{librdf\+\_\+node}} $\ast$subject, \mbox{\hyperlink{structraptor__term}{librdf\+\_\+node}} $\ast$\mbox{\hyperlink{classomexmeta_1_1Triple_a27637af321ba7d7eeb2596bac93feb54}{predicate}}, \mbox{\hyperlink{structraptor__term}{librdf\+\_\+node}} $\ast$resource)
 \item 
 \mbox{\Hypertarget{classomexmeta_1_1Triple_a1cb45dd3a5778f0e0e92e4a185da9400}\label{classomexmeta_1_1Triple_a1cb45dd3a5778f0e0e92e4a185da9400}} 
 const std\+::string \& {\bfseries get\+Local\+Uri} () const
 \item 
-\mbox{\Hypertarget{classomexmeta_1_1Triple_a6694daa46597ea91dda045aa0d5e6cfc}\label{classomexmeta_1_1Triple_a6694daa46597ea91dda045aa0d5e6cfc}} 
-void \mbox{\hyperlink{classomexmeta_1_1Triple_a6694daa46597ea91dda045aa0d5e6cfc}{set\+Local\+Uri}} (std\+::string local\+Uri)
-\begin{DoxyCompactList}\small\item\em set the local\+\_\+uri\+\_\+ attribute for this triple \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classomexmeta_1_1Triple_afd918ecccfa23079d9cb70f2e1a3e9b0}\label{classomexmeta_1_1Triple_afd918ecccfa23079d9cb70f2e1a3e9b0}} 
 void \mbox{\hyperlink{classomexmeta_1_1Triple_afd918ecccfa23079d9cb70f2e1a3e9b0}{set\+Model\+Uri}} (const std\+::string \&model\+\_\+uri)
 \begin{DoxyCompactList}\small\item\em set the model\+\_\+uri\+\_\+ attribute for this triple \end{DoxyCompactList}\item 
@@ -89,12 +107,6 @@ const std\+::string \& {\bfseries get\+Model\+Uri} () const
 \mbox{\Hypertarget{classomexmeta_1_1Triple_ac19ea0eaa8bfe1a7c481da4312cdf1b9}\label{classomexmeta_1_1Triple_ac19ea0eaa8bfe1a7c481da4312cdf1b9}} 
 \mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}} \& {\bfseries resource\+Blank} (const std\+::string \&blank\+\_\+id)
 \end{DoxyCompactItemize}
-\doxysubsection*{Static Public Member Functions}
-\begin{DoxyCompactItemize}
-\item 
-\mbox{\Hypertarget{classomexmeta_1_1Triple_af03c0ce3392c0ff30f13772209ac873c}\label{classomexmeta_1_1Triple_af03c0ce3392c0ff30f13772209ac873c}} 
-static \mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}} {\bfseries from\+Raw\+Statement\+Ptr} (\mbox{\hyperlink{structraptor__statement}{librdf\+\_\+statement}} $\ast$statement)
-\end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
 
 
@@ -103,7 +115,7 @@ static \mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}} {\bfseries from\+Raw\+
 \index{omexmeta::Triple@{omexmeta::Triple}!str@{str}}
 \index{str@{str}!omexmeta::Triple@{omexmeta::Triple}}
 \doxysubsubsection{\texorpdfstring{str()}{str()}}
-{\footnotesize\ttfamily std\+::string omexmeta\+::\+Triple\+::str (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{format = {\ttfamily \char`\"{}turtle\char`\"{}},  }\item[{const std\+::string \&}]{base = {\ttfamily (std\+:\+:filesystem\+:\+:current\+\_\+path()~/=~~\char`\"{}annotations.rdf\char`\"{}).string()},  }\item[{std\+::string}]{omex\+\_\+name = {\ttfamily \char`\"{}NewOmex.omex/\char`\"{}},  }\item[{std\+::string}]{model\+\_\+name = {\ttfamily \char`\"{}NewModel.xml\char`\"{}} }\end{DoxyParamCaption}) const}
+{\footnotesize\ttfamily std\+::string omexmeta\+::\+Triple\+::str (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{format = {\ttfamily \char`\"{}turtle\char`\"{}},  }\item[{const std\+::string \&}]{base = {\ttfamily (std\+:\+:filesystem\+:\+:current\+\_\+path()~/=~\char`\"{}annotations.rdf\char`\"{}).string()},  }\item[{std\+::string}]{omex\+\_\+name = {\ttfamily \char`\"{}NewOmex.omex/\char`\"{}},  }\item[{std\+::string}]{model\+\_\+name = {\ttfamily \char`\"{}NewModel.xml\char`\"{}} }\end{DoxyParamCaption}) const}
 
 
 

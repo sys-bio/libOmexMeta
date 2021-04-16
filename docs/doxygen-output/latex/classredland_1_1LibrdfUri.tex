@@ -3,6 +3,18 @@
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+\mbox{\Hypertarget{classredland_1_1LibrdfUri_afb311a21a7de7319c72fc1d27aaacbbd}\label{classredland_1_1LibrdfUri_afb311a21a7de7319c72fc1d27aaacbbd}} 
+{\bfseries Librdf\+Uri} (const \mbox{\hyperlink{classredland_1_1LibrdfUri}{Librdf\+Uri}} \&librdf\+Uri)
+\item 
+\mbox{\Hypertarget{classredland_1_1LibrdfUri_aecb54f52a078bf61a64caff6b1fa198b}\label{classredland_1_1LibrdfUri_aecb54f52a078bf61a64caff6b1fa198b}} 
+{\bfseries Librdf\+Uri} (\mbox{\hyperlink{classredland_1_1LibrdfUri}{Librdf\+Uri}} \&\&librdf\+Uri) noexcept
+\item 
+\mbox{\Hypertarget{classredland_1_1LibrdfUri_ae0a39124aee33ef75ced69587db7bef9}\label{classredland_1_1LibrdfUri_ae0a39124aee33ef75ced69587db7bef9}} 
+\mbox{\hyperlink{classredland_1_1LibrdfUri}{Librdf\+Uri}} \& {\bfseries operator=} (const \mbox{\hyperlink{classredland_1_1LibrdfUri}{Librdf\+Uri}} \&librdf\+Uri)
+\item 
+\mbox{\Hypertarget{classredland_1_1LibrdfUri_a26a0edd47c99853694a46c3382884514}\label{classredland_1_1LibrdfUri_a26a0edd47c99853694a46c3382884514}} 
+\mbox{\hyperlink{classredland_1_1LibrdfUri}{Librdf\+Uri}} \& {\bfseries operator=} (\mbox{\hyperlink{classredland_1_1LibrdfUri}{Librdf\+Uri}} \&\&librdf\+Uri) noexcept
+\item 
 \mbox{\Hypertarget{classredland_1_1LibrdfUri_a3630cf904c9e4546fb6d6c175ed6c66e}\label{classredland_1_1LibrdfUri_a3630cf904c9e4546fb6d6c175ed6c66e}} 
 \mbox{\hyperlink{classredland_1_1LibrdfUri}{Librdf\+Uri}} {\bfseries concatonate} (const std\+::string \&local\+\_\+name) const
 \item 
@@ -12,12 +24,10 @@ std\+::string {\bfseries str} () const
 \mbox{\Hypertarget{classredland_1_1LibrdfUri_a36c5c589ae207ad6294e10be2bb8df17}\label{classredland_1_1LibrdfUri_a36c5c589ae207ad6294e10be2bb8df17}} 
 {\bfseries Librdf\+Uri} (const std\+::string \&uri)
 \item 
-\mbox{\Hypertarget{classredland_1_1LibrdfUri_a1858bf7c3afae7d6d8ed2dca47e9cf55}\label{classredland_1_1LibrdfUri_a1858bf7c3afae7d6d8ed2dca47e9cf55}} 
-librdf\+\_\+uri $\ast$ {\bfseries get} () const
-\item 
-\mbox{\Hypertarget{classredland_1_1LibrdfUri_ae9a8237bcb9cba0f2d87f2d980f579f3}\label{classredland_1_1LibrdfUri_ae9a8237bcb9cba0f2d87f2d980f579f3}} 
-bool {\bfseries is\+Null} () const
-\item 
+librdf\+\_\+uri $\ast$ \mbox{\hyperlink{classredland_1_1LibrdfUri_a1858bf7c3afae7d6d8ed2dca47e9cf55}{get}} () const
+\begin{DoxyCompactList}\small\item\em returns a librdf\+\_\+uri pointer and increments the usage count. The caller is responsible for calling \end{DoxyCompactList}\item 
+librdf\+\_\+uri $\ast$ \mbox{\hyperlink{classredland_1_1LibrdfUri_a2c4744e82ffb6b03bdfb48c1a4327b59}{get\+Without\+Increment}} () const
+\begin{DoxyCompactList}\small\item\em get the underlying librdf\+\_\+uri$\ast$ \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classredland_1_1LibrdfUri_a13f1a7bc775cd79b6bb4dc6cd31b5d53}\label{classredland_1_1LibrdfUri_a13f1a7bc775cd79b6bb4dc6cd31b5d53}} 
 bool {\bfseries is\+Empty} () const
 \item 
@@ -38,7 +48,10 @@ std\+::string {\bfseries to\+Filename\+String} () const
 \item 
 \mbox{\Hypertarget{classredland_1_1LibrdfUri_a77105fe3bed8bced2001bfee738f7032}\label{classredland_1_1LibrdfUri_a77105fe3bed8bced2001bfee738f7032}} 
 int {\bfseries get\+Usage} ()
-\end{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classredland_1_1LibrdfUri_a220ac88021038a9ad710ccfc1ff423cf}\label{classredland_1_1LibrdfUri_a220ac88021038a9ad710ccfc1ff423cf}} 
+void \mbox{\hyperlink{classredland_1_1LibrdfUri_a220ac88021038a9ad710ccfc1ff423cf}{increment\+Usage}} () const
+\begin{DoxyCompactList}\small\item\em adds 1 to the usage count for underlying reference counter in librdf\+\_\+uri$\ast$ \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -51,6 +64,44 @@ static \mbox{\hyperlink{classredland_1_1LibrdfUri}{Librdf\+Uri}} {\bfseries from
 \mbox{\Hypertarget{classredland_1_1LibrdfUri_a58ab2ce202cc9b563d1dc60a20a545b2}\label{classredland_1_1LibrdfUri_a58ab2ce202cc9b563d1dc60a20a545b2}} 
 static \mbox{\hyperlink{classredland_1_1LibrdfUri}{Librdf\+Uri}} {\bfseries concatonate} (librdf\+\_\+uri $\ast$old\+\_\+name, const std\+::string \&local\+\_\+name)
 \end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classredland_1_1LibrdfUri_a1858bf7c3afae7d6d8ed2dca47e9cf55}\label{classredland_1_1LibrdfUri_a1858bf7c3afae7d6d8ed2dca47e9cf55}} 
+\index{redland::LibrdfUri@{redland::LibrdfUri}!get@{get}}
+\index{get@{get}!redland::LibrdfUri@{redland::LibrdfUri}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}}
+{\footnotesize\ttfamily librdf\+\_\+uri $\ast$ redland\+::\+Librdf\+Uri\+::get (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+returns a librdf\+\_\+uri pointer and increments the usage count. The caller is responsible for calling 
+
+\begin{DoxySeeAlso}{See also}
+free\+Uri to decrement the librdf\+\_\+uri$\ast$ again. 
+\end{DoxySeeAlso}
+\begin{DoxyNote}{Note}
+when 
+\end{DoxyNote}
+\begin{DoxySeeAlso}{See also}
+get\+Usage() is 1 the destructor will take care of freeing memory associated with librdf\+\_\+uri object. 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classredland_1_1LibrdfUri_a2c4744e82ffb6b03bdfb48c1a4327b59}\label{classredland_1_1LibrdfUri_a2c4744e82ffb6b03bdfb48c1a4327b59}} 
+\index{redland::LibrdfUri@{redland::LibrdfUri}!getWithoutIncrement@{getWithoutIncrement}}
+\index{getWithoutIncrement@{getWithoutIncrement}!redland::LibrdfUri@{redland::LibrdfUri}}
+\doxysubsubsection{\texorpdfstring{getWithoutIncrement()}{getWithoutIncrement()}}
+{\footnotesize\ttfamily librdf\+\_\+uri $\ast$ redland\+::\+Librdf\+Uri\+::get\+Without\+Increment (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+get the underlying librdf\+\_\+uri$\ast$ 
+
+do not increment the shared pointer reference counter. \begin{DoxyWarning}{Warning}
+this method assumes you know what you are doing with regards to the librdf reference counting system 
+\end{DoxyWarning}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classredland_1_1LibrdfUri_a1858bf7c3afae7d6d8ed2dca47e9cf55}{Librdf\+Uri\+::get()}} 
+\end{DoxySeeAlso}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

@@ -31,9 +31,15 @@
       <node id="5">
         <label>stdarg.h</label>
       </node>
-      <node id="33">
+      <node id="32">
         <label>LibrdfNode.h</label>
         <link refid="LibrdfNode_8h_source"/>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
         <childnode refid="2" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
@@ -41,12 +47,6 @@
         <childnode refid="26" relation="include">
         </childnode>
         <childnode refid="30" relation="include">
-        </childnode>
-        <childnode refid="34" relation="include">
-        </childnode>
-        <childnode refid="27" relation="include">
-        </childnode>
-        <childnode refid="35" relation="include">
         </childnode>
       </node>
       <node id="27">
@@ -85,7 +85,7 @@
       <node id="29">
         <label>regex</label>
       </node>
-      <node id="36">
+      <node id="34">
         <label>exception</label>
       </node>
       <node id="20">
@@ -113,20 +113,20 @@
       <node id="15">
         <label>rdf_concepts.h</label>
       </node>
-      <node id="34">
+      <node id="35">
         <label>LibrdfUri.h</label>
         <link refid="LibrdfUri_8h_source"/>
-        <childnode refid="26" relation="include">
+        <childnode refid="33" relation="include">
         </childnode>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="35" relation="include">
+        <childnode refid="26" relation="include">
         </childnode>
       </node>
-      <node id="35">
+      <node id="33">
         <label>LibrdfException.h</label>
         <link refid="LibrdfException_8h_source"/>
-        <childnode refid="36" relation="include">
+        <childnode refid="34" relation="include">
         </childnode>
         <childnode refid="28" relation="include">
         </childnode>
@@ -151,7 +151,7 @@
       <node id="28">
         <label>iostream</label>
       </node>
-      <node id="32">
+      <node id="36">
         <label>unordered_map</label>
       </node>
       <node id="8">
@@ -215,15 +215,15 @@
       <node id="31">
         <label>LibrdfStatement.h</label>
         <link refid="LibrdfStatement_8h_source"/>
-        <childnode refid="26" relation="include">
-        </childnode>
-        <childnode refid="28" relation="include">
+        <childnode refid="32" relation="include">
         </childnode>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="32" relation="include">
+        <childnode refid="28" relation="include">
         </childnode>
-        <childnode refid="33" relation="include">
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
         </childnode>
       </node>
       <node id="4">
@@ -274,6 +274,8 @@
       <node id="26">
         <label>src/omexmeta/include/omexmeta/UriHandler.h</label>
         <link refid="UriHandler_8h_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
         <childnode refid="20" relation="include">
         </childnode>
         <childnode refid="21" relation="include">

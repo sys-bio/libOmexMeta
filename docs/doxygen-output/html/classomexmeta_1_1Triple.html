@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libomexmeta
-   &#160;<span id="projectnumber">1.2.3</span>
+   &#160;<span id="projectnumber">1.2.6</span>
    </div>
    <div id="projectbrief">Annotations for models in systems biology</div>
   </td>
@@ -69,7 +69,6 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="classomexmeta_1_1Triple-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">omexmeta::Triple Class Reference</div>  </div>
@@ -87,19 +86,37 @@ Inheritance diagram for omexmeta::Triple:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aaed857f9356dc3a7414f06f393a75ba0"><td class="memItemLeft" align="right" valign="top"><a id="aaed857f9356dc3a7414f06f393a75ba0"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Triple</b> (const <a class="el" href="classomexmeta_1_1Subject.html">Subject</a> &amp;subject, const PredicatePtr &amp;predicate_ptr, const <a class="el" href="classomexmeta_1_1Resource.html">Resource</a> &amp;resource)</td></tr>
-<tr class="separator:aaed857f9356dc3a7414f06f393a75ba0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adc457c78ec059eb71602e7ea4f763582"><td class="memItemLeft" align="right" valign="top"><a id="adc457c78ec059eb71602e7ea4f763582"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Triple</b> (<a class="el" href="structraptor__term.html">librdf_node</a> *subject, <a class="el" href="structraptor__term.html">librdf_node</a> *<a class="el" href="classomexmeta_1_1Triple.html#a27637af321ba7d7eeb2596bac93feb54">predicate</a>, <a class="el" href="structraptor__term.html">librdf_node</a> *resource)</td></tr>
-<tr class="separator:adc457c78ec059eb71602e7ea4f763582"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9bbe27351665a72507570bd1da6b209c"><td class="memItemLeft" align="right" valign="top"><a id="a9bbe27351665a72507570bd1da6b209c"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1Triple.html#a9bbe27351665a72507570bd1da6b209c">~Triple</a> () override=default</td></tr>
+<tr class="memdesc:a9bbe27351665a72507570bd1da6b209c"><td class="mdescLeft">&#160;</td><td class="mdescRight">only a default virtual destructor needed as call to base class destructor will clean up the underlying statement_ pointer. <br /></td></tr>
+<tr class="separator:a9bbe27351665a72507570bd1da6b209c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa28089d2e08463961811f98d70b1df8a"><td class="memItemLeft" align="right" valign="top"><a id="aa28089d2e08463961811f98d70b1df8a"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Triple</b> (<a class="el" href="classomexmeta_1_1UriHandler.html">UriHandler</a> &amp;uriHandler)</td></tr>
+<tr class="separator:aa28089d2e08463961811f98d70b1df8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad160e8e90a25538cd5e3a8d46fae5cee"><td class="memItemLeft" align="right" valign="top"><a id="ad160e8e90a25538cd5e3a8d46fae5cee"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Triple</b> (<a class="el" href="classomexmeta_1_1Triple.html">Triple</a> &amp;&amp;triple) noexcept</td></tr>
+<tr class="separator:ad160e8e90a25538cd5e3a8d46fae5cee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0831a005f3b781b73f7af661c3a903f8"><td class="memItemLeft" align="right" valign="top"><a id="a0831a005f3b781b73f7af661c3a903f8"></a>
+<a class="el" href="classomexmeta_1_1Triple.html">Triple</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (<a class="el" href="classomexmeta_1_1Triple.html">Triple</a> &amp;&amp;triple) noexcept</td></tr>
+<tr class="separator:a0831a005f3b781b73f7af661c3a903f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a79d8092e4fab78add6161890b2f3c624"><td class="memItemLeft" align="right" valign="top"><a id="a79d8092e4fab78add6161890b2f3c624"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Triple</b> (const <a class="el" href="classomexmeta_1_1Triple.html">Triple</a> &amp;triple)</td></tr>
+<tr class="separator:a79d8092e4fab78add6161890b2f3c624"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a977b07d30a7d4895b6f6a4f75221df0c"><td class="memItemLeft" align="right" valign="top"><a id="a977b07d30a7d4895b6f6a4f75221df0c"></a>
+<a class="el" href="classomexmeta_1_1Triple.html">Triple</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const <a class="el" href="classomexmeta_1_1Triple.html">Triple</a> &amp;triple)</td></tr>
+<tr class="separator:a977b07d30a7d4895b6f6a4f75221df0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a95491182a1fba9c86fd59a1dcfe573a6"><td class="memItemLeft" align="right" valign="top"><a id="a95491182a1fba9c86fd59a1dcfe573a6"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Triple</b> (<a class="el" href="classomexmeta_1_1UriHandler.html">UriHandler</a> &amp;uriHandler, const <a class="el" href="classredland_1_1LibrdfNode.html">LibrdfNode</a> &amp;subject, const PredicatePtr &amp;predicate_ptr, const <a class="el" href="classredland_1_1LibrdfNode.html">LibrdfNode</a> &amp;resource)</td></tr>
+<tr class="separator:a95491182a1fba9c86fd59a1dcfe573a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace642731214400b1c6d4ecff3b154598"><td class="memItemLeft" align="right" valign="top"><a id="ace642731214400b1c6d4ecff3b154598"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Triple</b> (<a class="el" href="classomexmeta_1_1UriHandler.html">UriHandler</a> &amp;uriHandler, const <a class="el" href="classredland_1_1LibrdfNode.html">LibrdfNode</a> &amp;subject, const <a class="el" href="classredland_1_1LibrdfNode.html">LibrdfNode</a> &amp;<a class="el" href="classomexmeta_1_1Triple.html#a27637af321ba7d7eeb2596bac93feb54">predicate</a>, const <a class="el" href="classredland_1_1LibrdfNode.html">LibrdfNode</a> &amp;resource)</td></tr>
+<tr class="separator:ace642731214400b1c6d4ecff3b154598"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb37b8aae97d7339d03c5f00aaa5e656"><td class="memItemLeft" align="right" valign="top"><a id="aeb37b8aae97d7339d03c5f00aaa5e656"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Triple</b> (<a class="el" href="classomexmeta_1_1UriHandler.html">UriHandler</a> &amp;uriHandler, <a class="el" href="structraptor__term.html">librdf_node</a> *subject, <a class="el" href="structraptor__term.html">librdf_node</a> *<a class="el" href="classomexmeta_1_1Triple.html#a27637af321ba7d7eeb2596bac93feb54">predicate</a>, <a class="el" href="structraptor__term.html">librdf_node</a> *resource)</td></tr>
+<tr class="separator:aeb37b8aae97d7339d03c5f00aaa5e656"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1cb45dd3a5778f0e0e92e4a185da9400"><td class="memItemLeft" align="right" valign="top"><a id="a1cb45dd3a5778f0e0e92e4a185da9400"></a>
 const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getLocalUri</b> () const</td></tr>
 <tr class="separator:a1cb45dd3a5778f0e0e92e4a185da9400"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6694daa46597ea91dda045aa0d5e6cfc"><td class="memItemLeft" align="right" valign="top"><a id="a6694daa46597ea91dda045aa0d5e6cfc"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1Triple.html#a6694daa46597ea91dda045aa0d5e6cfc">setLocalUri</a> (std::string localUri)</td></tr>
-<tr class="memdesc:a6694daa46597ea91dda045aa0d5e6cfc"><td class="mdescLeft">&#160;</td><td class="mdescRight">set the local_uri_ attribute for this triple <br /></td></tr>
-<tr class="separator:a6694daa46597ea91dda045aa0d5e6cfc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afd918ecccfa23079d9cb70f2e1a3e9b0"><td class="memItemLeft" align="right" valign="top"><a id="afd918ecccfa23079d9cb70f2e1a3e9b0"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1Triple.html#afd918ecccfa23079d9cb70f2e1a3e9b0">setModelUri</a> (const std::string &amp;model_uri)</td></tr>
 <tr class="memdesc:afd918ecccfa23079d9cb70f2e1a3e9b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">set the model_uri_ attribute for this triple <br /></td></tr>
@@ -175,6 +192,18 @@ const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>ge
 <tr class="memitem:ac1b38e67ff0b90ac54b27c4f5f5d9e12 inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memItemLeft" align="right" valign="top"><a id="ac1b38e67ff0b90ac54b27c4f5f5d9e12"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>LibrdfStatement</b> (<a class="el" href="structraptor__term.html">librdf_node</a> *subject, <a class="el" href="structraptor__term.html">librdf_node</a> *predicate, <a class="el" href="structraptor__term.html">librdf_node</a> *resource)</td></tr>
 <tr class="separator:ac1b38e67ff0b90ac54b27c4f5f5d9e12 inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3cc134733626929faabbbdd376b348c1 inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memItemLeft" align="right" valign="top"><a id="a3cc134733626929faabbbdd376b348c1"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>LibrdfStatement</b> (const <a class="el" href="classredland_1_1LibrdfStatement.html">LibrdfStatement</a> &amp;statement)</td></tr>
+<tr class="separator:a3cc134733626929faabbbdd376b348c1 inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea171565ffb3ecc8d9c1db5439314306 inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memItemLeft" align="right" valign="top"><a id="aea171565ffb3ecc8d9c1db5439314306"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>LibrdfStatement</b> (<a class="el" href="classredland_1_1LibrdfStatement.html">LibrdfStatement</a> &amp;&amp;statement) noexcept</td></tr>
+<tr class="separator:aea171565ffb3ecc8d9c1db5439314306 inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12bfe14c6ca6abf09ee29b3ee6fe3ab7 inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memItemLeft" align="right" valign="top"><a id="a12bfe14c6ca6abf09ee29b3ee6fe3ab7"></a>
+<a class="el" href="classredland_1_1LibrdfStatement.html">LibrdfStatement</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const <a class="el" href="classredland_1_1LibrdfStatement.html">LibrdfStatement</a> &amp;statement)</td></tr>
+<tr class="separator:a12bfe14c6ca6abf09ee29b3ee6fe3ab7 inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6cebbcea1400ba2983b25096f3db3b3c inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memItemLeft" align="right" valign="top"><a id="a6cebbcea1400ba2983b25096f3db3b3c"></a>
+<a class="el" href="classredland_1_1LibrdfStatement.html">LibrdfStatement</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (<a class="el" href="classredland_1_1LibrdfStatement.html">LibrdfStatement</a> &amp;&amp;statement) noexcept</td></tr>
+<tr class="separator:a6cebbcea1400ba2983b25096f3db3b3c inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ada81e9bfb312e25daf20d6dda10eeb2e inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memItemLeft" align="right" valign="top"><a id="ada81e9bfb312e25daf20d6dda10eeb2e"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator==</b> (const <a class="el" href="classredland_1_1LibrdfStatement.html">LibrdfStatement</a> &amp;rhs) const</td></tr>
 <tr class="separator:ada81e9bfb312e25daf20d6dda10eeb2e inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -184,42 +213,33 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator!=</b> (const
 <tr class="memitem:ae7f7e27b7a502070195103268407243a inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memItemLeft" align="right" valign="top"><a id="ae7f7e27b7a502070195103268407243a"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>LibrdfStatement</b> (const <a class="el" href="classredland_1_1LibrdfNode.html">LibrdfNode</a> &amp;subject, const <a class="el" href="classredland_1_1LibrdfNode.html">LibrdfNode</a> &amp;predicate, const <a class="el" href="classredland_1_1LibrdfNode.html">LibrdfNode</a> &amp;resource)</td></tr>
 <tr class="separator:ae7f7e27b7a502070195103268407243a inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a344ec4a937a1d67589ebc7247b3f08c6 inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memItemLeft" align="right" valign="top"><a id="a344ec4a937a1d67589ebc7247b3f08c6"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>LibrdfStatement</b> (const <a class="el" href="classredland_1_1LibrdfStatement.html">LibrdfStatement</a> &amp;statement)=delete</td></tr>
-<tr class="separator:a344ec4a937a1d67589ebc7247b3f08c6 inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aea171565ffb3ecc8d9c1db5439314306 inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memItemLeft" align="right" valign="top"><a id="aea171565ffb3ecc8d9c1db5439314306"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>LibrdfStatement</b> (<a class="el" href="classredland_1_1LibrdfStatement.html">LibrdfStatement</a> &amp;&amp;statement) noexcept</td></tr>
-<tr class="separator:aea171565ffb3ecc8d9c1db5439314306 inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7aeb5ac71f5583b5a56b4aad7d904381 inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memItemLeft" align="right" valign="top"><a id="a7aeb5ac71f5583b5a56b4aad7d904381"></a>
-<a class="el" href="classredland_1_1LibrdfStatement.html">LibrdfStatement</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const <a class="el" href="classredland_1_1LibrdfStatement.html">LibrdfStatement</a> &amp;statement)=delete</td></tr>
-<tr class="separator:a7aeb5ac71f5583b5a56b4aad7d904381 inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6cebbcea1400ba2983b25096f3db3b3c inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memItemLeft" align="right" valign="top"><a id="a6cebbcea1400ba2983b25096f3db3b3c"></a>
-<a class="el" href="classredland_1_1LibrdfStatement.html">LibrdfStatement</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (<a class="el" href="classredland_1_1LibrdfStatement.html">LibrdfStatement</a> &amp;&amp;statement) noexcept</td></tr>
-<tr class="separator:a6cebbcea1400ba2983b25096f3db3b3c inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa51bc647bc938a07bd6c16b4d6ce07b4 inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memItemLeft" align="right" valign="top"><a id="aa51bc647bc938a07bd6c16b4d6ce07b4"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>freeStatement</b> ()</td></tr>
 <tr class="separator:aa51bc647bc938a07bd6c16b4d6ce07b4 inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6b655a56f37dbe95fec840a0a1f0ed53 inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memItemLeft" align="right" valign="top"><a id="a6b655a56f37dbe95fec840a0a1f0ed53"></a>
-<a class="el" href="structraptor__statement.html">librdf_statement</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>get</b> () const</td></tr>
+<tr class="memitem:a6b655a56f37dbe95fec840a0a1f0ed53 inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structraptor__statement.html">librdf_statement</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredland_1_1LibrdfStatement.html#a6b655a56f37dbe95fec840a0a1f0ed53">get</a> () const</td></tr>
+<tr class="memdesc:a6b655a56f37dbe95fec840a0a1f0ed53 inherit pub_methods_classredland_1_1LibrdfStatement"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns a librdf_statement pointer and increments the usage count. The caller is responsible for calling  <a href="classredland_1_1LibrdfStatement.html#a6b655a56f37dbe95fec840a0a1f0ed53">More...</a><br /></td></tr>
 <tr class="separator:a6b655a56f37dbe95fec840a0a1f0ed53 inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abcf022b8e24a74282e1d059fdf54d3fe inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memItemLeft" align="right" valign="top"><a id="abcf022b8e24a74282e1d059fdf54d3fe"></a>
+<tr class="memitem:aae6c894388cf0e0af0cb427e03224d38 inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structraptor__statement.html">librdf_statement</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredland_1_1LibrdfStatement.html#aae6c894388cf0e0af0cb427e03224d38">getWithoutIncrement</a> () const</td></tr>
+<tr class="memdesc:aae6c894388cf0e0af0cb427e03224d38 inherit pub_methods_classredland_1_1LibrdfStatement"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the underlying librdf_statement*  <a href="classredland_1_1LibrdfStatement.html#aae6c894388cf0e0af0cb427e03224d38">More...</a><br /></td></tr>
+<tr class="separator:aae6c894388cf0e0af0cb427e03224d38 inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae72ad665ee0546f9b412ef2798c719b6 inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memItemLeft" align="right" valign="top"><a id="ae72ad665ee0546f9b412ef2798c719b6"></a>
 <a class="el" href="structraptor__term.html">librdf_node</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>getSubjectAsRawNode</b> () const</td></tr>
-<tr class="separator:abcf022b8e24a74282e1d059fdf54d3fe inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5aae51ac0994552a13f2c9b90bec63d0 inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memItemLeft" align="right" valign="top"><a id="a5aae51ac0994552a13f2c9b90bec63d0"></a>
+<tr class="separator:ae72ad665ee0546f9b412ef2798c719b6 inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a87edefc7382feb47585d4a3a91f26a76 inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memItemLeft" align="right" valign="top"><a id="a87edefc7382feb47585d4a3a91f26a76"></a>
 <a class="el" href="structraptor__term.html">librdf_node</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>getPredicateAsRawNode</b> () const</td></tr>
-<tr class="separator:a5aae51ac0994552a13f2c9b90bec63d0 inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa763688f20b712ddc655afe405d7691a inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memItemLeft" align="right" valign="top"><a id="aa763688f20b712ddc655afe405d7691a"></a>
+<tr class="separator:a87edefc7382feb47585d4a3a91f26a76 inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37e4c22fa0b2cc3fbf0c659fa1546d92 inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memItemLeft" align="right" valign="top"><a id="a37e4c22fa0b2cc3fbf0c659fa1546d92"></a>
 <a class="el" href="structraptor__term.html">librdf_node</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>getResourceAsRawNode</b> () const</td></tr>
-<tr class="separator:aa763688f20b712ddc655afe405d7691a inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6feed51cdebe7c4f2430fcba0ae17f37 inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memItemLeft" align="right" valign="top"><a id="a6feed51cdebe7c4f2430fcba0ae17f37"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>getAbout</b> () const</td></tr>
-<tr class="separator:a6feed51cdebe7c4f2430fcba0ae17f37 inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5dd0d6a2e9fe1bfcf5254aa7928cdfaf inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memItemLeft" align="right" valign="top"><a id="a5dd0d6a2e9fe1bfcf5254aa7928cdfaf"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>getPredicateStr</b> () const</td></tr>
-<tr class="separator:a5dd0d6a2e9fe1bfcf5254aa7928cdfaf inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adc21321df7ccf186c262e83a4438e993 inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memItemLeft" align="right" valign="top"><a id="adc21321df7ccf186c262e83a4438e993"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>getResourceStr</b> () const</td></tr>
-<tr class="separator:adc21321df7ccf186c262e83a4438e993 inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:a37e4c22fa0b2cc3fbf0c659fa1546d92 inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d7cc313572ac34e9822e97d6b23dd36 inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memItemLeft" align="right" valign="top"><a id="a2d7cc313572ac34e9822e97d6b23dd36"></a>
+<a class="el" href="classredland_1_1LibrdfNode.html">LibrdfNode</a>&#160;</td><td class="memItemRight" valign="bottom"><b>getSubjectNode</b> () const</td></tr>
+<tr class="separator:a2d7cc313572ac34e9822e97d6b23dd36 inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade668892ca9383eacbf5517df4e8f8d8 inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memItemLeft" align="right" valign="top"><a id="ade668892ca9383eacbf5517df4e8f8d8"></a>
+<a class="el" href="classredland_1_1LibrdfNode.html">LibrdfNode</a>&#160;</td><td class="memItemRight" valign="bottom"><b>getPredicateNode</b> () const</td></tr>
+<tr class="separator:ade668892ca9383eacbf5517df4e8f8d8 inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d4376221d84e22d15eeb6393ea4afe3 inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memItemLeft" align="right" valign="top"><a id="a9d4376221d84e22d15eeb6393ea4afe3"></a>
+<a class="el" href="classredland_1_1LibrdfNode.html">LibrdfNode</a>&#160;</td><td class="memItemRight" valign="bottom"><b>getResourceNode</b> () const</td></tr>
+<tr class="separator:a9d4376221d84e22d15eeb6393ea4afe3 inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a700219b2fed175a96fecfbd905d20ab1 inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memItemLeft" align="right" valign="top"><a id="a700219b2fed175a96fecfbd905d20ab1"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>checkForNull</b> ()</td></tr>
 <tr class="separator:a700219b2fed175a96fecfbd905d20ab1 inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -235,24 +255,18 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>setPredicate</b> (<a 
 <tr class="memitem:a84a6fae7f1879c2f033001a9927627b0 inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memItemLeft" align="right" valign="top"><a id="a84a6fae7f1879c2f033001a9927627b0"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>isComplete</b> ()</td></tr>
 <tr class="separator:a84a6fae7f1879c2f033001a9927627b0 inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af8417e75a1ddb953c64c36b6028d3448 inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memItemLeft" align="right" valign="top"><a id="af8417e75a1ddb953c64c36b6028d3448"></a>
-std::unordered_map&lt; std::string, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getUsages</b> ()</td></tr>
-<tr class="separator:af8417e75a1ddb953c64c36b6028d3448 inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1881b122993ff4a24f560b7b31ea3176 inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memItemLeft" align="right" valign="top"><a id="a1881b122993ff4a24f560b7b31ea3176"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>printUsages</b> ()</td></tr>
-<tr class="separator:a1881b122993ff4a24f560b7b31ea3176 inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a104a61ca5a7568728273c071269e1882 inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memItemLeft" align="right" valign="top"><a id="a104a61ca5a7568728273c071269e1882"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>freeStatementAndUris</b> ()</td></tr>
-<tr class="separator:a104a61ca5a7568728273c071269e1882 inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af52b7e72cb067548d97f48b4a77a44ff inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memItemLeft" align="right" valign="top"><a id="af52b7e72cb067548d97f48b4a77a44ff"></a>
 std::string&#160;</td><td class="memItemRight" valign="bottom"><b>getPredicateNamespaceStr</b> () const</td></tr>
 <tr class="separator:af52b7e72cb067548d97f48b4a77a44ff inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae86b7dd596bd71e23fb7284354273791 inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memItemLeft" align="right" valign="top"><a id="ae86b7dd596bd71e23fb7284354273791"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>getUsage</b> () const</td></tr>
+<tr class="separator:ae86b7dd596bd71e23fb7284354273791 inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a90c9f8f0c9c560d168dadfd26ac7febb inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memItemLeft" align="right" valign="top"><a id="a90c9f8f0c9c560d168dadfd26ac7febb"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>incrementUsage</b> () const</td></tr>
+<tr class="separator:a90c9f8f0c9c560d168dadfd26ac7febb inherit pub_methods_classredland_1_1LibrdfStatement"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
-Static Public Member Functions</h2></td></tr>
-<tr class="memitem:af03c0ce3392c0ff30f13772209ac873c"><td class="memItemLeft" align="right" valign="top"><a id="af03c0ce3392c0ff30f13772209ac873c"></a>
-static <a class="el" href="classomexmeta_1_1Triple.html">Triple</a>&#160;</td><td class="memItemRight" valign="bottom"><b>fromRawStatementPtr</b> (<a class="el" href="structraptor__statement.html">librdf_statement</a> *statement)</td></tr>
-<tr class="separator:af03c0ce3392c0ff30f13772209ac873c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
+Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pub_static_methods_classredland_1_1LibrdfStatement"><td colspan="2" onclick="javascript:toggleInherit('pub_static_methods_classredland_1_1LibrdfStatement')"><img src="closed.png" alt="-"/>&#160;Static Public Member Functions inherited from <a class="el" href="classredland_1_1LibrdfStatement.html">redland::LibrdfStatement</a></td></tr>
 <tr class="memitem:a2013f7fa1ce77c0659d504c2f54d6e45 inherit pub_static_methods_classredland_1_1LibrdfStatement"><td class="memItemLeft" align="right" valign="top"><a id="a2013f7fa1ce77c0659d504c2f54d6e45"></a>
 static bool&#160;</td><td class="memItemRight" valign="bottom"><b>equals</b> (<a class="el" href="structraptor__statement.html">librdf_statement</a> *first, <a class="el" href="structraptor__statement.html">librdf_statement</a> *second)</td></tr>
@@ -263,9 +277,6 @@ static <a class="el" href="classredland_1_1LibrdfStatement.html">LibrdfStatement
 <tr class="memitem:a4eceaebc10deea27f4c75f7c8b4cccaf inherit pub_static_methods_classredland_1_1LibrdfStatement"><td class="memItemLeft" align="right" valign="top"><a id="a4eceaebc10deea27f4c75f7c8b4cccaf"></a>
 static <a class="el" href="classredland_1_1LibrdfStatement.html">LibrdfStatement</a>&#160;</td><td class="memItemRight" valign="bottom"><b>fromRawNodePtrs</b> (<a class="el" href="structraptor__term.html">librdf_node</a> *subject, <a class="el" href="structraptor__term.html">librdf_node</a> *predicate, <a class="el" href="structraptor__term.html">librdf_node</a> *resource)</td></tr>
 <tr class="separator:a4eceaebc10deea27f4c75f7c8b4cccaf inherit pub_static_methods_classredland_1_1LibrdfStatement"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
-Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pro_methods_classredland_1_1LibrdfStatement"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_classredland_1_1LibrdfStatement')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="classredland_1_1LibrdfStatement.html">redland::LibrdfStatement</a></td></tr>
 <tr class="memitem:afd63d6425b2130dbe4e76fdee4d7218b inherit pro_methods_classredland_1_1LibrdfStatement"><td class="memItemLeft" align="right" valign="top"><a id="afd63d6425b2130dbe4e76fdee4d7218b"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>refreshStatement</b> ()</td></tr>
@@ -295,7 +306,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>refreshStatement</b> 
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>base</em> = <code>(std::filesystem::current_path()&#160;/=&#160;&#160;&quot;annotations.rdf&quot;).string()</code>, </td>
+          <td class="paramname"><em>base</em> = <code>(std::filesystem::current_path()&#160;/=&#160;&quot;annotations.rdf&quot;).string()</code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>

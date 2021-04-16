@@ -60,7 +60,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/SBMLSemanticExtraction.h" line="52" column="14" bodyfile="src/omexmeta/SBMLSemanticExtraction.cpp" bodystart="13" bodyend="50"/>
+        <location file="src/omexmeta/include/omexmeta/SBMLSemanticExtraction.h" line="52" column="14" bodyfile="src/omexmeta/SBMLSemanticExtraction.cpp" bodystart="13" bodyend="49"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1SBMLSemanticExtraction_1a89ed78df066e71e628c8b631175a8441" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -73,7 +73,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/SBMLSemanticExtraction.h" line="54" column="14" bodyfile="src/omexmeta/SBMLSemanticExtraction.cpp" bodystart="53" bodyend="140"/>
+        <location file="src/omexmeta/include/omexmeta/SBMLSemanticExtraction.h" line="54" column="14" bodyfile="src/omexmeta/SBMLSemanticExtraction.cpp" bodystart="52" bodyend="139"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

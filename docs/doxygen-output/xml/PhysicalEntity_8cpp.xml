@@ -27,9 +27,15 @@
       <node id="13">
         <label>stdarg.h</label>
       </node>
-      <node id="41">
+      <node id="40">
         <label>LibrdfNode.h</label>
         <link refid="LibrdfNode_8h_source"/>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
         <childnode refid="10" relation="include">
         </childnode>
         <childnode refid="11" relation="include">
@@ -37,12 +43,6 @@
         <childnode refid="33" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="35" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="36" relation="include">
         </childnode>
       </node>
       <node id="59">
@@ -74,7 +74,7 @@
         </childnode>
         <childnode refid="42" relation="include">
         </childnode>
-        <childnode refid="41" relation="include">
+        <childnode refid="40" relation="include">
         </childnode>
         <childnode refid="44" relation="include">
         </childnode>
@@ -89,12 +89,16 @@
         <childnode refid="47" relation="include">
         </childnode>
       </node>
-      <node id="67">
+      <node id="65">
         <label>omexmeta/UriHandler.h</label>
         <link refid="UriHandler_8h_source"/>
+        <childnode refid="50" relation="include">
+        </childnode>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="50" relation="include">
+        <childnode refid="55" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
         </childnode>
       </node>
       <node id="19">
@@ -139,28 +143,24 @@
         </childnode>
         <childnode refid="61" relation="include">
         </childnode>
-        <childnode refid="72" relation="include">
+        <childnode refid="70" relation="include">
         </childnode>
         <childnode refid="54" relation="include">
         </childnode>
         <childnode refid="62" relation="include">
         </childnode>
-        <childnode refid="66" relation="include">
-        </childnode>
-        <childnode refid="63" relation="include">
-        </childnode>
-        <childnode refid="71" relation="include">
+        <childnode refid="69" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
-        <childnode refid="74" relation="include">
+        <childnode refid="72" relation="include">
         </childnode>
         <childnode refid="33" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
       </node>
-      <node id="74">
+      <node id="72">
         <label>cassert</label>
       </node>
       <node id="22">
@@ -172,24 +172,22 @@
       <node id="53">
         <label>stdexcept</label>
       </node>
-      <node id="72">
+      <node id="70">
         <label>omexmeta/PropertyBearer.h</label>
         <link refid="PropertyBearer_8h_source"/>
-        <childnode refid="66" relation="include">
-        </childnode>
-        <childnode refid="61" relation="include">
-        </childnode>
-        <childnode refid="73" relation="include">
-        </childnode>
-        <childnode refid="63" relation="include">
-        </childnode>
-        <childnode refid="70" relation="include">
-        </childnode>
-        <childnode refid="3" relation="include">
+        <childnode refid="71" relation="include">
         </childnode>
         <childnode refid="55" relation="include">
         </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="61" relation="include">
+        </childnode>
         <childnode refid="54" relation="include">
+        </childnode>
+        <childnode refid="62" relation="include">
+        </childnode>
+        <childnode refid="68" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
@@ -248,10 +246,10 @@
       <node id="28">
         <label>rdf_raptor.h</label>
       </node>
-      <node id="68">
+      <node id="67">
         <label>ostream</label>
       </node>
-      <node id="73">
+      <node id="71">
         <label>omexmeta/AnnotationType.h</label>
         <link refid="AnnotationType_8h_source"/>
       </node>
@@ -260,7 +258,7 @@
         <link refid="PhysicalEntity_8cpp"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="67" relation="include">
+        <childnode refid="65" relation="include">
         </childnode>
       </node>
       <node id="27">
@@ -279,18 +277,14 @@
       <node id="52">
         <label>curl/curl.h</label>
       </node>
-      <node id="70">
+      <node id="68">
         <label>omexmeta/Triples.h</label>
         <link refid="Triples_8h_source"/>
         <childnode refid="8" relation="include">
         </childnode>
-        <childnode refid="63" relation="include">
-        </childnode>
-        <childnode refid="64" relation="include">
-        </childnode>
-        <childnode refid="66" relation="include">
-        </childnode>
         <childnode refid="62" relation="include">
+        </childnode>
+        <childnode refid="63" relation="include">
         </childnode>
         <childnode refid="55" relation="include">
         </childnode>
@@ -307,10 +301,10 @@
       <node id="25">
         <label>rdf_model.h</label>
       </node>
-      <node id="71">
+      <node id="69">
         <label>omexmeta_export.h</label>
       </node>
-      <node id="64">
+      <node id="63">
         <label>omexmeta/Predicate.h</label>
         <link refid="Predicate_8h_source"/>
         <childnode refid="9" relation="include">
@@ -321,29 +315,15 @@
         </childnode>
         <childnode refid="56" relation="include">
         </childnode>
-        <childnode refid="65" relation="include">
+        <childnode refid="64" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="40" relation="include">
+        <childnode refid="41" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
-        </childnode>
-      </node>
-      <node id="66">
-        <label>omexmeta/Subject.h</label>
-        <link refid="Subject_8h_source"/>
-        <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="41" relation="include">
-        </childnode>
-        <childnode refid="55" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="56" relation="include">
         </childnode>
       </node>
       <node id="61">
@@ -355,13 +335,11 @@
         </childnode>
         <childnode refid="62" relation="include">
         </childnode>
-        <childnode refid="63" relation="include">
+        <childnode refid="68" relation="include">
         </childnode>
-        <childnode refid="70" relation="include">
+        <childnode refid="65" relation="include">
         </childnode>
-        <childnode refid="67" relation="include">
-        </childnode>
-        <childnode refid="71" relation="include">
+        <childnode refid="69" relation="include">
         </childnode>
         <childnode refid="34" relation="include">
         </childnode>
@@ -387,11 +365,11 @@
       <node id="35">
         <label>LibrdfUri.h</label>
         <link refid="LibrdfUri_8h_source"/>
-        <childnode refid="33" relation="include">
+        <childnode refid="36" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="36" relation="include">
+        <childnode refid="33" relation="include">
         </childnode>
       </node>
       <node id="36">
@@ -405,36 +383,32 @@
       <node id="6">
         <label>utility</label>
       </node>
-      <node id="63">
+      <node id="62">
         <label>omexmeta/Triple.h</label>
         <link refid="Triple_8h_source"/>
         <childnode refid="10" relation="include">
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="41" relation="include">
+        <childnode refid="40" relation="include">
         </childnode>
         <childnode refid="39" relation="include">
         </childnode>
-        <childnode refid="64" relation="include">
-        </childnode>
-        <childnode refid="66" relation="include">
+        <childnode refid="63" relation="include">
         </childnode>
         <childnode refid="62" relation="include">
         </childnode>
-        <childnode refid="63" relation="include">
+        <childnode refid="65" relation="include">
+        </childnode>
+        <childnode refid="64" relation="include">
+        </childnode>
+        <childnode refid="58" relation="include">
+        </childnode>
+        <childnode refid="66" relation="include">
         </childnode>
         <childnode refid="67" relation="include">
         </childnode>
-        <childnode refid="68" relation="include">
-        </childnode>
         <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="65" relation="include">
-        </childnode>
-        <childnode refid="69" relation="include">
-        </childnode>
-        <childnode refid="58" relation="include">
         </childnode>
       </node>
       <node id="5">
@@ -451,7 +425,7 @@
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="40" relation="include">
+        <childnode refid="41" relation="include">
         </childnode>
         <childnode refid="56" relation="include">
         </childnode>
@@ -498,14 +472,14 @@
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
-        <childnode refid="41" relation="include">
+        <childnode refid="40" relation="include">
         </childnode>
         <childnode refid="35" relation="include">
         </childnode>
         <childnode refid="42" relation="include">
         </childnode>
       </node>
-      <node id="40">
+      <node id="41">
         <label>unordered_map</label>
       </node>
       <node id="43">
@@ -516,22 +490,6 @@
         <childnode refid="33" relation="include">
         </childnode>
         <childnode refid="9" relation="include">
-        </childnode>
-      </node>
-      <node id="62">
-        <label>omexmeta/Resource.h</label>
-        <link refid="Resource_8h_source"/>
-        <childnode refid="10" relation="include">
-        </childnode>
-        <childnode refid="41" relation="include">
-        </childnode>
-        <childnode refid="55" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="56" relation="include">
         </childnode>
       </node>
       <node id="57">
@@ -552,7 +510,7 @@
         </childnode>
         <childnode refid="47" relation="include">
         </childnode>
-        <childnode refid="41" relation="include">
+        <childnode refid="40" relation="include">
         </childnode>
         <childnode refid="48" relation="include">
         </childnode>
@@ -632,18 +590,18 @@
       <node id="39">
         <label>LibrdfStatement.h</label>
         <link refid="LibrdfStatement_8h_source"/>
-        <childnode refid="33" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
+        <childnode refid="40" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="40" relation="include">
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
         </childnode>
         <childnode refid="41" relation="include">
         </childnode>
       </node>
-      <node id="65">
+      <node id="64">
         <label>algorithm</label>
       </node>
       <node id="50">
@@ -679,7 +637,7 @@
       <node id="12">
         <label>stdio.h</label>
       </node>
-      <node id="69">
+      <node id="66">
         <label>cstring</label>
       </node>
       <node id="17">
@@ -704,218 +662,214 @@
 <codeline lineno="7"><highlight class="normal"></highlight></codeline>
 <codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceomexmeta" kindref="compound">omexmeta</ref><sp/>{</highlight></codeline>
 <codeline lineno="9"><highlight class="normal"></highlight></codeline>
-<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classomexmeta_1_1PhysicalEntity_1a9d29348a080c64f91ff6ec184fd45ece" kindref="member">PhysicalEntity::PhysicalEntity</ref>(librdf_model<sp/>*model,<sp/>std::string<sp/>model_uri,<sp/>std::string<sp/>local_uri,<sp/>PhysicalProperty<sp/>physicalProperty,</highlight></codeline>
-<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Resource<sp/>is,<sp/>Resources<sp/>is_part_of)</highlight></codeline>
-<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>PropertyBearer(model,<sp/>model_uri,<sp/>local_uri,<sp/>std::move(physicalProperty),<sp/>PHYSICAL_ENTITY),</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classomexmeta_1_1PhysicalEntity_1a9d29348a080c64f91ff6ec184fd45ece" kindref="member">PhysicalEntity::PhysicalEntity</ref>(librdf_model<sp/>*model,<sp/>UriHandler<sp/>&amp;uriHandler,<sp/>PhysicalProperty<sp/>physicalProperty,</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>is,<sp/>std::vector&lt;std::string&gt;<sp/>is_part_of)</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>PropertyBearer(model,<sp/>uriHandler,<sp/>std::move(physicalProperty),<sp/>PHYSICAL_ENTITY),</highlight></codeline>
 <codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>identity_resource_(std::move(is)),<sp/>location_resources_(std::move(is_part_of))<sp/>{}</highlight></codeline>
 <codeline lineno="14"><highlight class="normal"></highlight></codeline>
 <codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1PhysicalEntity_1a6fd4acd7255a01322c4a53d3e84df0ba" kindref="member">PhysicalEntity::free</ref>()<sp/>{</highlight></codeline>
-<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(identity_resource_.get()<sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
-<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>identity_resource_.free();</highlight></codeline>
-<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>identity_resource_.setNode(</highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="20"><highlight class="normal"></highlight></codeline>
-<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;i<sp/>:<sp/>location_resources_)<sp/>{</highlight></codeline>
-<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(i.get()<sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
-<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>i.free();</highlight></codeline>
-<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>i.setNode(</highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(identity_resource_.getNode()<sp/>!=<sp/>nullptr)<sp/>{</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>identity_resource_.free();</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>identity_resource_.setNode(nullptr);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>for<sp/>(auto<sp/>&amp;i<sp/>:<sp/>location_resources_)<sp/>{</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(i.getNode()<sp/>!=<sp/>nullptr)<sp/>{</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>i.free();</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>i.setNode(nullptr);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="28"><highlight class="normal"></highlight></codeline>
-<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classomexmeta_1_1PhysicalEntity_1a9d29348a080c64f91ff6ec184fd45ece" kindref="member">PhysicalEntity::PhysicalEntity</ref>(librdf_model<sp/>*model)<sp/>:<sp/>PropertyBearer(model)<sp/>{}</highlight></codeline>
-<codeline lineno="30"><highlight class="normal"></highlight></codeline>
-<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classomexmeta_1_1PhysicalEntity_1a9d29348a080c64f91ff6ec184fd45ece" kindref="member">PhysicalEntity::PhysicalEntity</ref>(librdf_model<sp/>*model,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;model_uri,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;local_uri)</highlight></codeline>
-<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>PropertyBearer(model,<sp/>model_uri,<sp/>local_uri)<sp/>{}</highlight></codeline>
-<codeline lineno="33"><highlight class="normal"></highlight></codeline>
-<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>PhysicalEntity<sp/>&amp;<ref refid="classomexmeta_1_1PhysicalEntity_1a5d7168c527d2dbdacd612de37aa9a605" kindref="member">PhysicalEntity::setPhysicalProperty</ref>(PhysicalProperty<sp/>physicalProperty)<sp/>{</highlight></codeline>
-<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>physical_property_<sp/>=<sp/>std::move(physicalProperty);</highlight></codeline>
-<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="38"><highlight class="normal"></highlight></codeline>
-<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>PhysicalEntity<sp/>&amp;</highlight></codeline>
-<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classomexmeta_1_1PhysicalEntity_1a5d7168c527d2dbdacd612de37aa9a605" kindref="member">PhysicalEntity::setPhysicalProperty</ref>(std::string<sp/>subject_metaid,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;physicalProperty)<sp/>{</highlight></codeline>
-<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>subject_metaid<sp/>=<sp/><ref refid="classomexmeta_1_1OmexMetaUtils_1ae645af49ce57dac8bd0e0eba9e39a6c0" kindref="member">OmexMetaUtils::concatMetaIdAndUri</ref>(subject_metaid,<sp/>getModelUri());</highlight></codeline>
-<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>physical_property_<sp/>=<sp/>PhysicalProperty(subject_metaid,<sp/>physicalProperty,<sp/>getModelUri());</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classomexmeta_1_1PhysicalEntity_1a9d29348a080c64f91ff6ec184fd45ece" kindref="member">PhysicalEntity::PhysicalEntity</ref>(librdf_model<sp/>*model,<sp/>UriHandler<sp/>&amp;uriHandler)</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>PropertyBearer(model,<sp/>uriHandler)<sp/>{}</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>PhysicalEntity<sp/>&amp;<ref refid="classomexmeta_1_1PhysicalEntity_1a5d7168c527d2dbdacd612de37aa9a605" kindref="member">PhysicalEntity::setPhysicalProperty</ref>(PhysicalProperty<sp/>physicalProperty)<sp/>{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>physical_property_<sp/>=<sp/>std::move(physicalProperty);</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>PhysicalEntity<sp/>&amp;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classomexmeta_1_1PhysicalEntity_1a5d7168c527d2dbdacd612de37aa9a605" kindref="member">PhysicalEntity::setPhysicalProperty</ref>(std::string<sp/>subject_metaid,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;physicalProperty)<sp/>{</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>subject_metaid<sp/>=<sp/><ref refid="classomexmeta_1_1OmexMetaUtils_1ae645af49ce57dac8bd0e0eba9e39a6c0" kindref="member">OmexMetaUtils::concatMetaIdAndUri</ref>(subject_metaid,<sp/>uriHandler_.<ref refid="classomexmeta_1_1UriHandler_1ad135d8d4d6fdb3af194f1cb24758e745" kindref="member">getModelUri</ref>());</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>physical_property_<sp/>=<sp/>PhysicalProperty(model_,<sp/>uriHandler_);</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>physical_property_.about(subject_metaid)</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.isVersionOf(physicalProperty);</highlight></codeline>
 <codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="45"><highlight class="normal"></highlight></codeline>
 <codeline lineno="46"><highlight class="normal"></highlight></codeline>
-<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>PhysicalEntity<sp/>&amp;<ref refid="classomexmeta_1_1PhysicalEntity_1a4d4c3ee9572b19e44e79a44f18f1ac31" kindref="member">PhysicalEntity::setIdentity</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;resource)<sp/>{</highlight></codeline>
-<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>todo<sp/>implement<sp/>second<sp/>argument<sp/>which<sp/>defaults<sp/>to<sp/>RDFUriNode</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>and<sp/>controls<sp/>whether<sp/>we<sp/>use<sp/>literal/blank/uri<sp/>node</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>identity_resource_<sp/>=<sp/>Resource(LibrdfNode::fromUriString(resource));</highlight></codeline>
-<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="53"><highlight class="normal"></highlight></codeline>
-<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>PhysicalEntity<sp/>&amp;<ref refid="classomexmeta_1_1PhysicalEntity_1a6f51117462876bda1eb743244437104a" kindref="member">PhysicalEntity::identity</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;resource)<sp/>{</highlight></codeline>
-<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1PhysicalEntity_1a4d4c3ee9572b19e44e79a44f18f1ac31" kindref="member">setIdentity</ref>(resource);</highlight></codeline>
-<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="57"><highlight class="normal"></highlight></codeline>
-<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/>PhysicalEntity<sp/>&amp;<ref refid="classomexmeta_1_1PhysicalEntity_1a82e77be3327c537b2426b571afaa5045" kindref="member">PhysicalEntity::addLocation</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;where)<sp/>{</highlight></codeline>
-<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>location_resources_.push_back(std::move(</highlight></codeline>
-<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Resource(LibrdfNode::fromUriString(where))));</highlight></codeline>
-<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="63"><highlight class="normal"></highlight></codeline>
-<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>PhysicalEntity<sp/>&amp;<ref refid="classomexmeta_1_1PhysicalEntity_1a200859dbbda1b17c244ced477d21f06f" kindref="member">PhysicalEntity::hasPart</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;where)<sp/>{</highlight></codeline>
-<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>part_resources_.push_back(std::move(</highlight></codeline>
-<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Resource(LibrdfNode::fromUriString(where))));</highlight></codeline>
-<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>PhysicalEntity<sp/>&amp;<ref refid="classomexmeta_1_1PhysicalEntity_1a9029e221fb2e4125284eba3935993d8f" kindref="member">PhysicalEntity::setIdentity</ref>(std::string<sp/>resource)<sp/>{</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>identity_resource_<sp/>=<sp/>std::move(resource);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>PhysicalEntity<sp/>&amp;<ref refid="classomexmeta_1_1PhysicalEntity_1a6f51117462876bda1eb743244437104a" kindref="member">PhysicalEntity::identity</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;resource)<sp/>{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1PhysicalEntity_1a9029e221fb2e4125284eba3935993d8f" kindref="member">setIdentity</ref>(resource);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>PhysicalEntity<sp/>&amp;<ref refid="classomexmeta_1_1PhysicalEntity_1a82e77be3327c537b2426b571afaa5045" kindref="member">PhysicalEntity::addLocation</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;where)<sp/>{</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>location_resources_.push_back(std::move(where));</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>PhysicalEntity<sp/>&amp;<ref refid="classomexmeta_1_1PhysicalEntity_1a200859dbbda1b17c244ced477d21f06f" kindref="member">PhysicalEntity::hasPart</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;where)<sp/>{</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>part_resources_.push_back(std::move(where));</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;<ref refid="classomexmeta_1_1PhysicalEntity_1a82f43f8355a33284876b84278027cac5" kindref="member">PhysicalEntity::getIdentityResource</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>identity_resource_;</highlight></codeline>
 <codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="69"><highlight class="normal"></highlight></codeline>
-<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Resource<sp/>&amp;<ref refid="classomexmeta_1_1PhysicalEntity_1ae4b3374e9ebb817eb63f9105b491e958" kindref="member">PhysicalEntity::getIdentityResource</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>identity_resource_;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;std::string&gt;<sp/>&amp;<ref refid="classomexmeta_1_1PhysicalEntity_1a5bca97a9f5195260bd44f72b6d29d87a" kindref="member">PhysicalEntity::getLocationResources</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>location_resources_;</highlight></codeline>
 <codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="73"><highlight class="normal"></highlight></codeline>
-<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Resources<sp/>&amp;<ref refid="classomexmeta_1_1PhysicalEntity_1a3e2fba07a4622db0180650d24bf263d9" kindref="member">PhysicalEntity::getLocationResources</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>location_resources_;</highlight></codeline>
-<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="77"><highlight class="normal"></highlight></codeline>
-<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>Triples<sp/><ref refid="classomexmeta_1_1PhysicalEntity_1a51f5df8b2e8a1d65e5aa0d10e53b77ba" kindref="member">PhysicalEntity::toTriples</ref>()<sp/>{</highlight></codeline>
-<codeline lineno="79"><highlight class="normal"></highlight></codeline>
-<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>when<sp/>physical_property_id_<sp/>is<sp/>empty<sp/>it<sp/>means<sp/>we<sp/>have<sp/>not</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>called<sp/>the<sp/>toTriples()<sp/>method<sp/>before<sp/>and<sp/>an<sp/>ID<sp/>needs<sp/>to<sp/>be<sp/>generated.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>When<sp/>it<sp/>is<sp/>not<sp/>empty<sp/>-<sp/>we<sp/>have<sp/>called<sp/>toTriples<sp/>before<sp/>and<sp/>we<sp/>can<sp/>skip<sp/>ID<sp/>generation</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>To<sp/>further<sp/>clarify,<sp/>the<sp/>entity_id_<sp/>needs<sp/>to<sp/>be<sp/>a<sp/>class<sp/>level<sp/>attribute</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>and<sp/>initialized<sp/>as<sp/>an<sp/>empty<sp/>string.<sp/>When<sp/>its<sp/>empty<sp/>we<sp/>need<sp/>to<sp/>generate<sp/>a</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>new<sp/>id<sp/>but<sp/>if<sp/>its<sp/>filled<sp/>then<sp/>we<sp/>can<sp/>generate<sp/>Triples<sp/>an<sp/>arbitrary<sp/>number</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>of<sp/>times<sp/>from<sp/>the<sp/>same<sp/>PhysicalEntity<sp/>instance<sp/>and<sp/>still<sp/>get<sp/>the<sp/>same</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Triples<sp/>object.<sp/>Note,<sp/>this<sp/>is<sp/>important<sp/>for<sp/>deleting<sp/>composites<sp/>from<sp/>the<sp/>rdf<sp/>model.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(physical_property_.getIsPropertyOfValue().empty()<sp/>||<sp/>physical_property_.getPropertyMetaidBase()<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;Property&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
-<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>we<sp/>do<sp/>not<sp/>set<sp/>the<sp/>value<sp/>of<sp/>the<sp/>PhysicalProperty<sp/>objects<sp/>subject<sp/>portion<sp/>of<sp/>Triple</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>but<sp/>instead<sp/>change<sp/>the<sp/>base<sp/>name<sp/>for<sp/>the<sp/>PhysicalProperty<sp/>and<sp/>it&apos;ll<sp/>generate</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>an<sp/>appropriate<sp/>id<sp/>itself.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>physical_property_.setPropertyMetaidBase(</highlight><highlight class="stringliteral">&quot;EntityProperty&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="95"><highlight class="normal"></highlight></codeline>
-<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(OmexMetaUtils::isStringEmpty&lt;PhysicalEntity&gt;(*</highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>about_value_)){</highlight></codeline>
-<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classomexmeta_1_1PhysicalEntity_1adae8f23418feee0833e8d63458175f19" kindref="member">about</ref>(<ref refid="classomexmeta_1_1OmexMetaUtils_1a596094a1ce72a362238682c8a864f616" kindref="member">OmexMetaUtils::generateUniqueMetaid</ref>(model_uri_,<sp/></highlight><highlight class="stringliteral">&quot;Entity&quot;</highlight><highlight class="normal">,<sp/>new_metaid_exclusion_list_),<sp/>LOCAL_URI);</highlight></codeline>
-<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>physical_property_.isPropertyOf(about_value_,<sp/>LOCAL_URI);</highlight></codeline>
-<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>Triples<sp/><ref refid="classomexmeta_1_1PhysicalEntity_1a51f5df8b2e8a1d65e5aa0d10e53b77ba" kindref="member">PhysicalEntity::toTriples</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>when<sp/>physical_property_id_<sp/>is<sp/>empty<sp/>it<sp/>means<sp/>we<sp/>have<sp/>not</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>called<sp/>the<sp/>toTriples()<sp/>method<sp/>before<sp/>and<sp/>an<sp/>ID<sp/>needs<sp/>to<sp/>be<sp/>generated.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>When<sp/>it<sp/>is<sp/>not<sp/>empty<sp/>-<sp/>we<sp/>have<sp/>called<sp/>toTriples<sp/>before<sp/>and<sp/>we<sp/>can<sp/>skip<sp/>ID<sp/>generation</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>To<sp/>further<sp/>clarify,<sp/>the<sp/>entity_id_<sp/>needs<sp/>to<sp/>be<sp/>a<sp/>class<sp/>level<sp/>attribute</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>and<sp/>initialized<sp/>as<sp/>an<sp/>empty<sp/>string.<sp/>When<sp/>its<sp/>empty<sp/>we<sp/>need<sp/>to<sp/>generate<sp/>a</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>new<sp/>id<sp/>but<sp/>if<sp/>its<sp/>filled<sp/>then<sp/>we<sp/>can<sp/>generate<sp/>Triples<sp/>an<sp/>arbitrary<sp/>number</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>of<sp/>times<sp/>from<sp/>the<sp/>same<sp/>PhysicalEntity<sp/>instance<sp/>and<sp/>still<sp/>get<sp/>the<sp/>same</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Triples<sp/>object.<sp/>Note,<sp/>this<sp/>is<sp/>important<sp/>for<sp/>deleting<sp/>composites<sp/>from<sp/>the<sp/>rdf<sp/>model.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(physical_property_.getIsPropertyOfValue().empty()<sp/>||<sp/>physical_property_.getPropertyMetaidBase()<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;Property&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>we<sp/>do<sp/>not<sp/>set<sp/>the<sp/>value<sp/>of<sp/>the<sp/>PhysicalProperty<sp/>objects<sp/>subject<sp/>portion<sp/>of<sp/>Triple</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>but<sp/>instead<sp/>change<sp/>the<sp/>base<sp/>name<sp/>for<sp/>the<sp/>PhysicalProperty<sp/>and<sp/>it&apos;ll<sp/>generate</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>an<sp/>appropriate<sp/>id<sp/>itself.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>physical_property_.setPropertyMetaidBase(</highlight><highlight class="stringliteral">&quot;EntityProperty&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(OmexMetaUtils::isStringEmpty&lt;PhysicalEntity&gt;(*</highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>about_value_))<sp/>{</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classomexmeta_1_1PhysicalEntity_1adae8f23418feee0833e8d63458175f19" kindref="member">about</ref>(<ref refid="classomexmeta_1_1OmexMetaUtils_1a596094a1ce72a362238682c8a864f616" kindref="member">OmexMetaUtils::generateUniqueMetaid</ref>(model_,<sp/></highlight><highlight class="stringliteral">&quot;Entity&quot;</highlight><highlight class="normal">,<sp/>new_metaid_exclusion_list_),<sp/>LOCAL_URI);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>physical_property_.isPropertyOf(about_value_,<sp/>LOCAL_URI);</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>preallocate<sp/>for<sp/>efficiency</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Triples<sp/>triples((</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)<sp/><ref refid="classomexmeta_1_1PhysicalEntity_1a5bca97a9f5195260bd44f72b6d29d87a" kindref="member">getLocationResources</ref>().size()<sp/>+<sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)<sp/>part_resources_.size()<sp/>+<sp/>3);</highlight></codeline>
 <codeline lineno="100"><highlight class="normal"></highlight></codeline>
-<codeline lineno="101"><highlight class="normal"></highlight></codeline>
-<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>preallocate<sp/>for<sp/>efficiency</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Triples<sp/>triples((</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)<sp/><ref refid="classomexmeta_1_1PhysicalEntity_1a3e2fba07a4622db0180650d24bf263d9" kindref="member">getLocationResources</ref>().size()<sp/>+<sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)<sp/>part_resources_.size()<sp/>+<sp/>3);</highlight></codeline>
-<codeline lineno="104"><highlight class="normal"></highlight></codeline>
-<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(physical_property_.isSet()<sp/>)<sp/>{</highlight></codeline>
-<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Triples<sp/>physical_property_triples<sp/>=<sp/>physical_property_.<ref refid="classomexmeta_1_1PhysicalProperty_1af2e63778f1281f871a99e216bfcbaf88" kindref="member">toTriples</ref>();</highlight></codeline>
-<codeline lineno="113"><highlight class="normal"></highlight></codeline>
-<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;it<sp/>:<sp/>physical_property_triples)<sp/>{</highlight></codeline>
-<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>triples.<ref refid="classomexmeta_1_1Triples_1a88dcf4b950f105acb621bd07f07a38a0" kindref="member">moveBack</ref>(it);</highlight><highlight class="comment">//<sp/>moves<sp/>the<sp/>statement</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>physical_property_triples.freeTriples();</highlight></codeline>
-<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>assert(physical_property_triples.size()<sp/>==<sp/>0);</highlight></codeline>
-<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="120"><highlight class="normal"></highlight></codeline>
-<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>&quot;what&quot;<sp/>part<sp/>of<sp/>physical<sp/>entity<sp/>triple</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="122"><highlight class="normal"></highlight></codeline>
-<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(identity_resource_.isSet())<sp/>{</highlight></codeline>
-<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>triples.emplace_back(</highlight></codeline>
-<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LibrdfNode::fromUriString(physical_property_.getIsPropertyOfValue()).get(),</highlight></codeline>
-<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>BiomodelsBiologyQualifier(</highlight><highlight class="stringliteral">&quot;is&quot;</highlight><highlight class="normal">).get(),</highlight></codeline>
-<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>identity_resource_.get());</highlight></codeline>
-<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="129"><highlight class="normal"></highlight></codeline>
-<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>make<sp/>it<sp/>explicit<sp/>that<sp/>location<sp/>resources<sp/>is<sp/>optional</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!location_resources_.empty())<sp/>{</highlight></codeline>
-<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>&quot;where&quot;<sp/>part<sp/>of<sp/>the<sp/>physical<sp/>entity</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;locationResource<sp/>:<sp/>location_resources_)<sp/>{</highlight></codeline>
-<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>triples.emplace_back(</highlight></codeline>
-<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LibrdfNode::fromUriString(physical_property_.getIsPropertyOfValue()).get(),</highlight></codeline>
-<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>BiomodelsBiologyQualifier(</highlight><highlight class="stringliteral">&quot;isPartOf&quot;</highlight><highlight class="normal">).get(),</highlight></codeline>
-<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>locationResource.get());</highlight></codeline>
-<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>make<sp/>it<sp/>explicit<sp/>that<sp/>hasPart<sp/>resources<sp/>is<sp/>optional</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!part_resources_.empty())<sp/>{</highlight></codeline>
-<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>&quot;where&quot;<sp/>part<sp/>of<sp/>the<sp/>physical<sp/>entity</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;locationResource<sp/>:<sp/>part_resources_)<sp/>{</highlight></codeline>
-<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>triples.emplace_back(</highlight></codeline>
-<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LibrdfNode::fromUriString(physical_property_.getIsPropertyOfValue()).get(),</highlight></codeline>
-<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>BiomodelsBiologyQualifier(</highlight><highlight class="stringliteral">&quot;hasPart&quot;</highlight><highlight class="normal">).get(),</highlight></codeline>
-<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>locationResource.get());</highlight></codeline>
-<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::move(triples);</highlight></codeline>
-<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="152"><highlight class="normal"></highlight></codeline>
-<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/>[[maybe_unused]]<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1PhysicalEntity_1a33559c90dbe3e3be1b71898ab9a5bfa4" kindref="member">PhysicalEntity::getNumLocations</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1PhysicalEntity_1a3e2fba07a4622db0180650d24bf263d9" kindref="member">getLocationResources</ref>().size();</highlight></codeline>
-<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="156"><highlight class="normal"></highlight></codeline>
-<codeline lineno="157"><highlight class="normal"></highlight></codeline>
-<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>PhysicalEntity::operator==(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>PhysicalEntity<sp/>&amp;rhs)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keyword">const<sp/></highlight><highlight class="normal"><ref refid="classomexmeta_1_1PropertyBearer" kindref="compound">omexmeta::PropertyBearer</ref><sp/>&amp;</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(*this)<sp/>==</highlight></codeline>
-<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keyword">const<sp/></highlight><highlight class="normal"><ref refid="classomexmeta_1_1PropertyBearer" kindref="compound">omexmeta::PropertyBearer</ref><sp/>&amp;</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(rhs)<sp/>&amp;&amp;</highlight></codeline>
-<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>identity_resource_<sp/>==<sp/>rhs.identity_resource_<sp/>&amp;&amp;</highlight></codeline>
-<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>location_resources_<sp/>==<sp/>rhs.location_resources_;</highlight></codeline>
-<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="164"><highlight class="normal"></highlight></codeline>
-<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>PhysicalEntity::operator!=(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>PhysicalEntity<sp/>&amp;rhs)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>!(rhs<sp/>==<sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="168"><highlight class="normal"></highlight></codeline>
-<codeline lineno="169"><highlight class="normal"></highlight></codeline>
-<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/>PhysicalEntity<sp/>&amp;PhysicalEntity::isPropertyOf(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;is_property_of,<sp/>eUriType<sp/>type)<sp/>{</highlight></codeline>
-<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>physical_property_.isPropertyOf(is_property_of,<sp/>type);</highlight></codeline>
-<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="174"><highlight class="normal"></highlight></codeline>
-<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/>PhysicalEntity<sp/>&amp;<ref refid="classomexmeta_1_1PhysicalEntity_1ad3b863794c49c8baf4477b88d5e1d8a2" kindref="member">PhysicalEntity::propertyIsVersionOf</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;is_version_of)<sp/>{</highlight></codeline>
-<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>physical_property_.isVersionOf(is_version_of);</highlight></codeline>
-<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="179"><highlight class="normal"></highlight></codeline>
-<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/>PhysicalEntity<sp/>&amp;<ref refid="classomexmeta_1_1PhysicalEntity_1adae8f23418feee0833e8d63458175f19" kindref="member">PhysicalEntity::about</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;about,<sp/>eUriType<sp/>type)<sp/>{</highlight></codeline>
-<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PropertyBearer::about(<ref refid="classomexmeta_1_1PhysicalEntity_1adae8f23418feee0833e8d63458175f19" kindref="member">about</ref>,<sp/>type);</highlight></codeline>
-<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="184"><highlight class="normal"></highlight></codeline>
-<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/>PhysicalEntity<sp/>&amp;<ref refid="classomexmeta_1_1PhysicalEntity_1adae8f23418feee0833e8d63458175f19" kindref="member">PhysicalEntity::about</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;about)<sp/>{</highlight></codeline>
-<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PropertyBearer::about(<ref refid="classomexmeta_1_1PhysicalEntity_1adae8f23418feee0833e8d63458175f19" kindref="member">about</ref>);</highlight></codeline>
-<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="189"><highlight class="normal"></highlight></codeline>
-<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/>PhysicalEntity<sp/>&amp;<ref refid="classomexmeta_1_1PhysicalEntity_1a2498e9b0b11a00200e47332c4515b1f1" kindref="member">PhysicalEntity::is</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;is)<sp/>{</highlight></codeline>
-<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1PhysicalEntity_1a4d4c3ee9572b19e44e79a44f18f1ac31" kindref="member">setIdentity</ref>(<ref refid="classomexmeta_1_1PhysicalEntity_1a2498e9b0b11a00200e47332c4515b1f1" kindref="member">is</ref>);</highlight></codeline>
-<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="193"><highlight class="normal"></highlight></codeline>
-<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/>PhysicalEntity<sp/>&amp;<ref refid="classomexmeta_1_1PhysicalEntity_1aeba395f9474a7b6beb1b28a6095bb62d" kindref="member">PhysicalEntity::isPartOf</ref>(std::string<sp/>isPartOf,<sp/>eUriType<sp/>type)<sp/>{</highlight></codeline>
-<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classomexmeta_1_1PhysicalEntity_1aeba395f9474a7b6beb1b28a6095bb62d" kindref="member">isPartOf</ref><sp/>=<sp/>UriHandler::uriModifier&lt;PhysicalEntity&gt;(*</highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/><ref refid="classomexmeta_1_1PhysicalEntity_1aeba395f9474a7b6beb1b28a6095bb62d" kindref="member">isPartOf</ref>,<sp/>type);</highlight></codeline>
-<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>location_resources_.push_back(std::move(</highlight></codeline>
-<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Resource(LibrdfNode::fromUriString(<ref refid="classomexmeta_1_1PhysicalEntity_1aeba395f9474a7b6beb1b28a6095bb62d" kindref="member">isPartOf</ref>))));</highlight></codeline>
-<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="200"><highlight class="normal"></highlight></codeline>
-<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/>PhysicalEntity<sp/>&amp;<ref refid="classomexmeta_1_1PhysicalEntity_1a6aff4d003c2e39aad8bd00ab536ec00e" kindref="member">PhysicalEntity::variableMetaId</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;metaid)<sp/>{</highlight></codeline>
-<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>physical_entity_property_id_<sp/>=<sp/><ref refid="classomexmeta_1_1OmexMetaUtils_1ae645af49ce57dac8bd0e0eba9e39a6c0" kindref="member">OmexMetaUtils::concatMetaIdAndUri</ref>(metaid,<sp/>model_uri_);</highlight></codeline>
-<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(physical_property_.isSet())<sp/>{</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Triples<sp/>physical_property_triples<sp/>=<sp/>physical_property_.<ref refid="classomexmeta_1_1PhysicalProperty_1af2e63778f1281f871a99e216bfcbaf88" kindref="member">toTriples</ref>();</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;it<sp/>:<sp/>physical_property_triples)<sp/>{</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>triples.<ref refid="classomexmeta_1_1Triples_1a64e7f250d3199421c4306e9e8fbbc6e5" kindref="member">moveBack</ref>(it);</highlight><highlight class="comment">//<sp/>moves<sp/>the<sp/>statement</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>&quot;what&quot;<sp/>part<sp/>of<sp/>physical<sp/>entity<sp/>triple</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!identity_resource_.empty())<sp/>{</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>triples.emplace_back(</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uriHandler_,</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LibrdfNode::fromUriString(physical_property_.getIsPropertyOfValue()).get(),</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>BiomodelsBiologyQualifier(</highlight><highlight class="stringliteral">&quot;is&quot;</highlight><highlight class="normal">).get(),</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LibrdfNode::fromUriString(identity_resource_).get()</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>make<sp/>it<sp/>explicit<sp/>that<sp/>location<sp/>resources<sp/>is<sp/>optional</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!location_resources_.empty())<sp/>{</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>&quot;where&quot;<sp/>part<sp/>of<sp/>the<sp/>physical<sp/>entity</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;locationResource<sp/>:<sp/>location_resources_)<sp/>{</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>triples.emplace_back(</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uriHandler_,</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LibrdfNode::fromUriString(physical_property_.getIsPropertyOfValue()).get(),</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>BiomodelsBiologyQualifier(</highlight><highlight class="stringliteral">&quot;isPartOf&quot;</highlight><highlight class="normal">).get(),</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LibrdfNode::fromUriString(locationResource).get());</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>make<sp/>it<sp/>explicit<sp/>that<sp/>hasPart<sp/>resources<sp/>is<sp/>optional</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!part_resources_.empty())<sp/>{</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>&quot;where&quot;<sp/>part<sp/>of<sp/>the<sp/>physical<sp/>entity</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;locationResource<sp/>:<sp/>part_resources_)<sp/>{</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>triples.emplace_back(</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uriHandler_,</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LibrdfNode::fromUriString(physical_property_.getIsPropertyOfValue()).get(),</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>BiomodelsBiologyQualifier(</highlight><highlight class="stringliteral">&quot;hasPart&quot;</highlight><highlight class="normal">).get(),</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LibrdfNode::fromUriString(locationResource).get());</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::move(triples);</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/>[[maybe_unused]]<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1PhysicalEntity_1a33559c90dbe3e3be1b71898ab9a5bfa4" kindref="member">PhysicalEntity::getNumLocations</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1PhysicalEntity_1a5bca97a9f5195260bd44f72b6d29d87a" kindref="member">getLocationResources</ref>().size();</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>PhysicalEntity::operator==(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>PhysicalEntity<sp/>&amp;rhs)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keyword">const<sp/></highlight><highlight class="normal"><ref refid="classomexmeta_1_1PropertyBearer" kindref="compound">omexmeta::PropertyBearer</ref><sp/>&amp;</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(*this)<sp/>==</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keyword">const<sp/></highlight><highlight class="normal"><ref refid="classomexmeta_1_1PropertyBearer" kindref="compound">omexmeta::PropertyBearer</ref><sp/>&amp;</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(rhs)<sp/>&amp;&amp;</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>identity_resource_<sp/>==<sp/>rhs.identity_resource_<sp/>&amp;&amp;</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>location_resources_<sp/>==<sp/>rhs.location_resources_;</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>PhysicalEntity::operator!=(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>PhysicalEntity<sp/>&amp;rhs)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>!(rhs<sp/>==<sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/>PhysicalEntity<sp/>&amp;PhysicalEntity::isPropertyOf(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;is_property_of,<sp/>eUriType<sp/>type)<sp/>{</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>physical_property_.isPropertyOf(is_property_of,<sp/>type);</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/>PhysicalEntity<sp/>&amp;<ref refid="classomexmeta_1_1PhysicalEntity_1ad3b863794c49c8baf4477b88d5e1d8a2" kindref="member">PhysicalEntity::propertyIsVersionOf</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;is_version_of)<sp/>{</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>physical_property_.isVersionOf(is_version_of);</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/>PhysicalEntity<sp/>&amp;<ref refid="classomexmeta_1_1PhysicalEntity_1adae8f23418feee0833e8d63458175f19" kindref="member">PhysicalEntity::about</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;about,<sp/>eUriType<sp/>type)<sp/>{</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PropertyBearer::about(<ref refid="classomexmeta_1_1PhysicalEntity_1adae8f23418feee0833e8d63458175f19" kindref="member">about</ref>,<sp/>type);</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/>PhysicalEntity<sp/>&amp;<ref refid="classomexmeta_1_1PhysicalEntity_1adae8f23418feee0833e8d63458175f19" kindref="member">PhysicalEntity::about</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;about)<sp/>{</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PropertyBearer::about(<ref refid="classomexmeta_1_1PhysicalEntity_1adae8f23418feee0833e8d63458175f19" kindref="member">about</ref>);</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"></highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/>PhysicalEntity<sp/>&amp;<ref refid="classomexmeta_1_1PhysicalEntity_1a2498e9b0b11a00200e47332c4515b1f1" kindref="member">PhysicalEntity::is</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;is)<sp/>{</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1PhysicalEntity_1a9029e221fb2e4125284eba3935993d8f" kindref="member">setIdentity</ref>(<ref refid="classomexmeta_1_1PhysicalEntity_1a2498e9b0b11a00200e47332c4515b1f1" kindref="member">is</ref>);</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"></highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/>PhysicalEntity<sp/>&amp;<ref refid="classomexmeta_1_1PhysicalEntity_1aeba395f9474a7b6beb1b28a6095bb62d" kindref="member">PhysicalEntity::isPartOf</ref>(std::string<sp/>isPartOf,<sp/>eUriType<sp/>type)<sp/>{</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classomexmeta_1_1PhysicalEntity_1aeba395f9474a7b6beb1b28a6095bb62d" kindref="member">isPartOf</ref><sp/>=<sp/>UriHandler::uriModifier&lt;PhysicalEntity&gt;(*</highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/><ref refid="classomexmeta_1_1PhysicalEntity_1aeba395f9474a7b6beb1b28a6095bb62d" kindref="member">isPartOf</ref>,<sp/>type);</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>location_resources_.push_back(std::move(<ref refid="classomexmeta_1_1PhysicalEntity_1aeba395f9474a7b6beb1b28a6095bb62d" kindref="member">isPartOf</ref>));</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"></highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/>PhysicalEntity<sp/>&amp;<ref refid="classomexmeta_1_1PhysicalEntity_1a6aff4d003c2e39aad8bd00ab536ec00e" kindref="member">PhysicalEntity::variableMetaId</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;metaid)<sp/>{</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>physical_entity_property_id_<sp/>=<sp/><ref refid="classomexmeta_1_1OmexMetaUtils_1ae645af49ce57dac8bd0e0eba9e39a6c0" kindref="member">OmexMetaUtils::concatMetaIdAndUri</ref>(metaid,<sp/>getModelUri());</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"></highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;PhysicalEntity::getPropertyMetaidBase()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>property_metaid_base_;</highlight></codeline>
 <codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="205"><highlight class="normal"></highlight></codeline>
-<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;PhysicalEntity::getPropertyMetaidBase()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>property_metaid_base_;</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/>PhysicalEntity<sp/>&amp;PhysicalEntity::hasProperty(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>PhysicalProperty<sp/>&amp;property)<sp/>{</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PropertyBearer::hasProperty(property);</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/>PhysicalEntity<sp/>&amp;PhysicalEntity::hasProperty(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>PhysicalProperty<sp/>&amp;property)<sp/>{</highlight></codeline>
-<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PropertyBearer::hasProperty(property);</highlight></codeline>
-<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/>PhysicalEntity<sp/>&amp;PhysicalEntity::hasProperty(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;property_about,<sp/>eUriType<sp/>about_uri_type,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;is_version_of,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;is_property_of,<sp/>eUriType<sp/>is_property_of_uri_type)<sp/>{</highlight></codeline>
-<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PropertyBearer::hasProperty(property_about,<sp/>about_uri_type,<sp/>is_version_of,<sp/>is_property_of,<sp/>is_property_of_uri_type);</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>PhysicalEntity<sp/>&amp;PhysicalEntity::hasProperty(const<sp/>std::string<sp/>&amp;property_about,<sp/>eUriType<sp/>about_uri_type,<sp/>const<sp/>std::string<sp/>&amp;is_version_of,<sp/>const<sp/>std::string<sp/>&amp;is_property_of,<sp/>eUriType<sp/>is_property_of_uri_type)<sp/>{</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PropertyBearer::hasProperty(property_about,<sp/>about_uri_type,<sp/>is_version_of,<sp/>is_property_of,<sp/>is_property_of_uri_type);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>*this;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/>PhysicalEntity<sp/>&amp;PhysicalEntity::hasProperty(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;is_version_of)<sp/>{</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PropertyBearer::hasProperty(is_version_of);</highlight></codeline>
 <codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/>PhysicalEntity<sp/>&amp;PhysicalEntity::hasProperty(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;is_version_of)<sp/>{</highlight></codeline>
-<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PropertyBearer::hasProperty(is_version_of);</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/>PhysicalEntity<sp/>&amp;PhysicalEntity::hasProperty(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;property_about,<sp/>eUriType<sp/>about_uri_type,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;is_version_of)<sp/>{</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PropertyBearer::hasProperty(property_about,<sp/>about_uri_type,<sp/>is_version_of);</highlight></codeline>
 <codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/>PhysicalEntity<sp/>&amp;PhysicalEntity::hasProperty(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;property_about,<sp/>eUriType<sp/>about_uri_type,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;is_version_of)<sp/>{</highlight></codeline>
-<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PropertyBearer::hasProperty(property_about,<sp/>about_uri_type,<sp/>is_version_of);</highlight></codeline>
-<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="225"><highlight class="normal"></highlight></codeline>
-<codeline lineno="226"><highlight class="normal"></highlight></codeline>
-<codeline lineno="227"><highlight class="normal">}</highlight><highlight class="comment">//<sp/>namespace<sp/>omexmeta</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="221"><highlight class="normal"></highlight></codeline>
+<codeline lineno="222"><highlight class="normal"></highlight></codeline>
+<codeline lineno="223"><highlight class="normal">}</highlight><highlight class="comment">//<sp/>namespace<sp/>omexmeta</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="src/omexmeta/PhysicalEntity.cpp"/>
   </compounddef>

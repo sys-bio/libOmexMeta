@@ -21,9 +21,7 @@
     <innerfile refid="PropertyBearer_8cpp">PropertyBearer.cpp</innerfile>
     <innerfile refid="Query_8cpp">Query.cpp</innerfile>
     <innerfile refid="RDF_8cpp">RDF.cpp</innerfile>
-    <innerfile refid="Resource_8cpp">Resource.cpp</innerfile>
     <innerfile refid="SBMLSemanticExtraction_8cpp">SBMLSemanticExtraction.cpp</innerfile>
-    <innerfile refid="Subject_8cpp">Subject.cpp</innerfile>
     <innerfile refid="Triple_8cpp">Triple.cpp</innerfile>
     <innerfile refid="Triples_8cpp">Triples.cpp</innerfile>
     <innerfile refid="UriHandler_8cpp">UriHandler.cpp</innerfile>

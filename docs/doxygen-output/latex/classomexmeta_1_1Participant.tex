@@ -9,8 +9,11 @@ Inheritance diagram for omexmeta\+::Participant\+:\begin{figure}[H]
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+\mbox{\hyperlink{classomexmeta_1_1Participant_afd275c1f5648ae4c86cc22f3a0853ffb}{Participant}} (librdf\+\_\+model $\ast$model, std\+::string base\+\_\+metaid, \mbox{\hyperlink{classomexmeta_1_1UriHandler}{Uri\+Handler}} \&uri\+Handler, std\+::string semsim\+\_\+predicate\+\_\+term, double multiplier, std\+::string physical\+Entity\+Reference, e\+Uri\+Type type)
+\begin{DoxyCompactList}\small\item\em Superclass of participant types. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classomexmeta_1_1Participant_aee7846dcbb910dd394a0683841ab723a}\label{classomexmeta_1_1Participant_aee7846dcbb910dd394a0683841ab723a}} 
 void \mbox{\hyperlink{classomexmeta_1_1Participant_aee7846dcbb910dd394a0683841ab723a}{set\+Multiplier}} (double multiplier)
-\begin{DoxyCompactList}\small\item\em return the vector of strings that keeps track of newly generated metaids. \mbox{\hyperlink{classThis}{This}} mechanism ensures unique metaids in the situation where the user has added $>$1 participant of a certain type i.\+e. sink. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em setter for the multiplier field of \mbox{\hyperlink{classomexmeta_1_1Participant}{Participant}} types \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classomexmeta_1_1Participant_a415c1205762dff6943426d830d74edcd}{set\+Physical\+Entity\+Reference}} (const std\+::string \&physical\+Entity\+Reference)
 \begin{DoxyCompactList}\small\item\em setter for physical entity reference field of \mbox{\hyperlink{classomexmeta_1_1Participant}{Participant}} types \end{DoxyCompactList}\item 
 const std\+::string \& \mbox{\hyperlink{classomexmeta_1_1Participant_a8a6626e17aca48b76465d66928eee78f}{get\+Local\+Participant\+Metaid}} () const
@@ -20,13 +23,8 @@ void \mbox{\hyperlink{classomexmeta_1_1Participant_a5e8f680950f55230587c0f85498c
 \mbox{\Hypertarget{classomexmeta_1_1Participant_a6bf4c724ab5212d10f2a89893f369cd1}\label{classomexmeta_1_1Participant_a6bf4c724ab5212d10f2a89893f369cd1}} 
 const std\+::string \& \mbox{\hyperlink{classomexmeta_1_1Participant_a6bf4c724ab5212d10f2a89893f369cd1}{get\+Local\+Uri}} () const
 \begin{DoxyCompactList}\small\item\em getter for local uri attribute \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classomexmeta_1_1Participant_a595323ae0681f42a7ba5981e2ee840f1}\label{classomexmeta_1_1Participant_a595323ae0681f42a7ba5981e2ee840f1}} 
-void \mbox{\hyperlink{classomexmeta_1_1Participant_a595323ae0681f42a7ba5981e2ee840f1}{set\+Local\+Uri}} (const std\+::string \&local\+Uri)
-\begin{DoxyCompactList}\small\item\em setter for local uri attribute \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classomexmeta_1_1Participant_a395bc8d2561149a77371ed80e2ed1517}{free}} ()
 \item 
-\mbox{\hyperlink{classomexmeta_1_1Participant_ad7fb4564c20db459f8f9f8fc0b62ee09}{Participant}} (librdf\+\_\+model $\ast$model, std\+::string base\+\_\+metaid, const std\+::string \&model\+\_\+uri, const std\+::string \&local\+\_\+uri, std\+::string semsim\+\_\+predicate\+\_\+term, double multiplier, std\+::string physical\+Entity\+Reference, e\+Uri\+Type type)
-\begin{DoxyCompactList}\small\item\em Superclass of participant types. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classomexmeta_1_1Participant_ad3db317039b403fdb7728885152cbeda}\label{classomexmeta_1_1Participant_ad3db317039b403fdb7728885152cbeda}} 
 bool {\bfseries operator==} (const \mbox{\hyperlink{classomexmeta_1_1Participant}{Participant}} \&rhs) const
 \item 
@@ -49,18 +47,15 @@ const std\+::string \& \mbox{\hyperlink{classomexmeta_1_1Participant_a40a5858db6
 \begin{DoxyCompactList}\small\item\em get the physical\+Entity\+Reference \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classomexmeta_1_1Participant_ae78613f8d39ccfc23fc3624deb960fb0}\label{classomexmeta_1_1Participant_ae78613f8d39ccfc23fc3624deb960fb0}} 
 const std\+::string \& \mbox{\hyperlink{classomexmeta_1_1Participant_ae78613f8d39ccfc23fc3624deb960fb0}{get\+Model\+Uri}} () const
-\begin{DoxyCompactList}\small\item\em getter for model\+\_\+uri\+\_\+ attribute \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classomexmeta_1_1Participant_abea74e8605f7314a51db8dc723961462}\label{classomexmeta_1_1Participant_abea74e8605f7314a51db8dc723961462}} 
-void \mbox{\hyperlink{classomexmeta_1_1Participant_abea74e8605f7314a51db8dc723961462}{set\+Model\+Uri}} (const std\+::string \&model\+\_\+uri)
-\begin{DoxyCompactList}\small\item\em setter for model\+\_\+uri\+\_\+ attribute \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em getter for model\+\_\+uri\+\_\+ attribute \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{classomexmeta_1_1Participant_ad7fb4564c20db459f8f9f8fc0b62ee09}\label{classomexmeta_1_1Participant_ad7fb4564c20db459f8f9f8fc0b62ee09}} 
+\mbox{\Hypertarget{classomexmeta_1_1Participant_afd275c1f5648ae4c86cc22f3a0853ffb}\label{classomexmeta_1_1Participant_afd275c1f5648ae4c86cc22f3a0853ffb}} 
 \index{omexmeta::Participant@{omexmeta::Participant}!Participant@{Participant}}
 \index{Participant@{Participant}!omexmeta::Participant@{omexmeta::Participant}}
 \doxysubsubsection{\texorpdfstring{Participant()}{Participant()}}
-{\footnotesize\ttfamily omexmeta\+::\+Participant\+::\+Participant (\begin{DoxyParamCaption}\item[{librdf\+\_\+model $\ast$}]{model,  }\item[{std\+::string}]{base\+\_\+metaid,  }\item[{const std\+::string \&}]{model\+\_\+uri,  }\item[{const std\+::string \&}]{local\+\_\+uri,  }\item[{std\+::string}]{semsim\+\_\+predicate\+\_\+term,  }\item[{double}]{multiplier,  }\item[{std\+::string}]{physical\+Entity\+Reference,  }\item[{e\+Uri\+Type}]{type }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily omexmeta\+::\+Participant\+::\+Participant (\begin{DoxyParamCaption}\item[{librdf\+\_\+model $\ast$}]{model,  }\item[{std\+::string}]{base\+\_\+metaid,  }\item[{\mbox{\hyperlink{classomexmeta_1_1UriHandler}{Uri\+Handler}} \&}]{uri\+Handler,  }\item[{std\+::string}]{semsim\+\_\+predicate\+\_\+term,  }\item[{double}]{multiplier,  }\item[{std\+::string}]{physical\+Entity\+Reference,  }\item[{e\+Uri\+Type}]{type }\end{DoxyParamCaption})}
 
 
 
@@ -167,17 +162,7 @@ get the subject portion of the \mbox{\hyperlink{classomexmeta_1_1Participant}{Pa
 \begin{DoxyReturn}{Returns}
 the string of the subject value metaid of the \mbox{\hyperlink{classomexmeta_1_1Participant}{Participant}} 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classomexmeta_1_1Participant_aee7846dcbb910dd394a0683841ab723a}\label{classomexmeta_1_1Participant_aee7846dcbb910dd394a0683841ab723a}} 
-\index{omexmeta::Participant@{omexmeta::Participant}!setMultiplier@{setMultiplier}}
-\index{setMultiplier@{setMultiplier}!omexmeta::Participant@{omexmeta::Participant}}
-\doxysubsubsection{\texorpdfstring{setMultiplier()}{setMultiplier()}}
-{\footnotesize\ttfamily void omexmeta\+::\+Participant\+::set\+Multiplier (\begin{DoxyParamCaption}\item[{double}]{multiplier }\end{DoxyParamCaption})}
-
-
-
-return the vector of strings that keeps track of newly generated metaids. \mbox{\hyperlink{classThis}{This}} mechanism ensures unique metaids in the situation where the user has added $>$1 participant of a certain type i.\+e. sink. 
-
-setter for the multiplier field of \mbox{\hyperlink{classomexmeta_1_1Participant}{Participant}} types \mbox{\Hypertarget{classomexmeta_1_1Participant_a415c1205762dff6943426d830d74edcd}\label{classomexmeta_1_1Participant_a415c1205762dff6943426d830d74edcd}} 
+\mbox{\Hypertarget{classomexmeta_1_1Participant_a415c1205762dff6943426d830d74edcd}\label{classomexmeta_1_1Participant_a415c1205762dff6943426d830d74edcd}} 
 \index{omexmeta::Participant@{omexmeta::Participant}!setPhysicalEntityReference@{setPhysicalEntityReference}}
 \index{setPhysicalEntityReference@{setPhysicalEntityReference}!omexmeta::Participant@{omexmeta::Participant}}
 \doxysubsubsection{\texorpdfstring{setPhysicalEntityReference()}{setPhysicalEntityReference()}}

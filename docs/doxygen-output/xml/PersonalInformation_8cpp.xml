@@ -26,9 +26,15 @@
       <node id="9">
         <label>stdarg.h</label>
       </node>
-      <node id="40">
+      <node id="39">
         <label>LibrdfNode.h</label>
         <link refid="LibrdfNode_8h_source"/>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
         <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
@@ -36,12 +42,6 @@
         <childnode refid="30" relation="include">
         </childnode>
         <childnode refid="37" relation="include">
-        </childnode>
-        <childnode refid="32" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="33" relation="include">
         </childnode>
       </node>
       <node id="62">
@@ -73,7 +73,7 @@
         </childnode>
         <childnode refid="41" relation="include">
         </childnode>
-        <childnode refid="40" relation="include">
+        <childnode refid="39" relation="include">
         </childnode>
         <childnode refid="43" relation="include">
         </childnode>
@@ -88,12 +88,16 @@
         <childnode refid="46" relation="include">
         </childnode>
       </node>
-      <node id="67">
+      <node id="65">
         <label>omexmeta/UriHandler.h</label>
         <link refid="UriHandler_8h_source"/>
+        <childnode refid="52" relation="include">
+        </childnode>
         <childnode refid="29" relation="include">
         </childnode>
-        <childnode refid="52" relation="include">
+        <childnode refid="58" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
         </childnode>
       </node>
       <node id="15">
@@ -190,7 +194,7 @@
       <node id="24">
         <label>rdf_raptor.h</label>
       </node>
-      <node id="68">
+      <node id="67">
         <label>ostream</label>
       </node>
       <node id="23">
@@ -218,10 +222,6 @@
         </childnode>
         <childnode refid="51" relation="include">
         </childnode>
-        <childnode refid="65" relation="include">
-        </childnode>
-        <childnode refid="66" relation="include">
-        </childnode>
         <childnode refid="58" relation="include">
         </childnode>
         <childnode refid="59" relation="include">
@@ -237,7 +237,7 @@
       <node id="21">
         <label>rdf_model.h</label>
       </node>
-      <node id="70">
+      <node id="68">
         <label>omexmeta_export.h</label>
       </node>
       <node id="51">
@@ -255,7 +255,7 @@
         </childnode>
         <childnode refid="37" relation="include">
         </childnode>
-        <childnode refid="39" relation="include">
+        <childnode refid="40" relation="include">
         </childnode>
         <childnode refid="29" relation="include">
         </childnode>
@@ -267,23 +267,9 @@
         <link refid="PersonalInformation_8h_source"/>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="70" relation="include">
+        <childnode refid="68" relation="include">
         </childnode>
         <childnode refid="30" relation="include">
-        </childnode>
-      </node>
-      <node id="65">
-        <label>omexmeta/Subject.h</label>
-        <link refid="Subject_8h_source"/>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="40" relation="include">
-        </childnode>
-        <childnode refid="58" relation="include">
-        </childnode>
-        <childnode refid="29" relation="include">
-        </childnode>
-        <childnode refid="59" relation="include">
         </childnode>
       </node>
       <node id="19">
@@ -305,11 +291,11 @@
       <node id="32">
         <label>LibrdfUri.h</label>
         <link refid="LibrdfUri_8h_source"/>
-        <childnode refid="30" relation="include">
+        <childnode refid="33" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="33" relation="include">
+        <childnode refid="30" relation="include">
         </childnode>
       </node>
       <node id="33">
@@ -330,29 +316,25 @@
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="40" relation="include">
+        <childnode refid="39" relation="include">
         </childnode>
         <childnode refid="38" relation="include">
         </childnode>
         <childnode refid="51" relation="include">
         </childnode>
-        <childnode refid="65" relation="include">
-        </childnode>
-        <childnode refid="66" relation="include">
-        </childnode>
         <childnode refid="50" relation="include">
         </childnode>
-        <childnode refid="67" relation="include">
-        </childnode>
-        <childnode refid="68" relation="include">
-        </childnode>
-        <childnode refid="47" relation="include">
+        <childnode refid="65" relation="include">
         </childnode>
         <childnode refid="64" relation="include">
         </childnode>
-        <childnode refid="69" relation="include">
-        </childnode>
         <childnode refid="61" relation="include">
+        </childnode>
+        <childnode refid="66" relation="include">
+        </childnode>
+        <childnode refid="67" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
         </childnode>
       </node>
       <node id="37">
@@ -369,7 +351,7 @@
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="39" relation="include">
+        <childnode refid="40" relation="include">
         </childnode>
         <childnode refid="59" relation="include">
         </childnode>
@@ -416,14 +398,14 @@
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="40" relation="include">
+        <childnode refid="39" relation="include">
         </childnode>
         <childnode refid="32" relation="include">
         </childnode>
         <childnode refid="41" relation="include">
         </childnode>
       </node>
-      <node id="39">
+      <node id="40">
         <label>unordered_map</label>
       </node>
       <node id="1">
@@ -440,22 +422,6 @@
         <childnode refid="30" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
-        </childnode>
-      </node>
-      <node id="66">
-        <label>omexmeta/Resource.h</label>
-        <link refid="Resource_8h_source"/>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="40" relation="include">
-        </childnode>
-        <childnode refid="58" relation="include">
-        </childnode>
-        <childnode refid="29" relation="include">
-        </childnode>
-        <childnode refid="37" relation="include">
-        </childnode>
-        <childnode refid="59" relation="include">
         </childnode>
       </node>
       <node id="60">
@@ -476,7 +442,7 @@
         </childnode>
         <childnode refid="46" relation="include">
         </childnode>
-        <childnode refid="40" relation="include">
+        <childnode refid="39" relation="include">
         </childnode>
         <childnode refid="48" relation="include">
         </childnode>
@@ -556,13 +522,13 @@
       <node id="38">
         <label>LibrdfStatement.h</label>
         <link refid="LibrdfStatement_8h_source"/>
-        <childnode refid="30" relation="include">
-        </childnode>
-        <childnode refid="29" relation="include">
+        <childnode refid="39" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="39" relation="include">
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
         </childnode>
         <childnode refid="40" relation="include">
         </childnode>
@@ -603,7 +569,7 @@
       <node id="8">
         <label>stdio.h</label>
       </node>
-      <node id="69">
+      <node id="66">
         <label>cstring</label>
       </node>
       <node id="13">
@@ -628,207 +594,193 @@
 <codeline lineno="7"><highlight class="normal"></highlight></codeline>
 <codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceomexmeta" kindref="compound">omexmeta</ref><sp/>{</highlight></codeline>
 <codeline lineno="9"><highlight class="normal"></highlight></codeline>
-<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/>PersonalInformation::PersonalInformation(librdf_model<sp/>*model,<sp/>std::string<sp/>model_uri,<sp/>std::string<sp/>local_uri)</highlight></codeline>
-<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>model_uri_(model),<sp/>local_uri_(local_uri),<sp/>model_uri_(model_uri)<sp/>{</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/>PersonalInformation::PersonalInformation(librdf_model<sp/>*model,<sp/>UriHandler<sp/>&amp;uriHandler)</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>model_(model),<sp/>uriHandler_(uriHandler)<sp/>{</highlight></codeline>
 <codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>metaid_<sp/>=<sp/>generateMetaId();</highlight></codeline>
 <codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>createSubject();</highlight></codeline>
 <codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="15"><highlight class="normal"></highlight></codeline>
-<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>PersonalInformation::~PersonalInformation(){</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>PersonalInformation::~PersonalInformation()<sp/>{</highlight></codeline>
 <codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>freeTriples();</highlight></codeline>
 <codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="19"><highlight class="normal"></highlight></codeline>
-<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>PersonalInformation::PersonalInformation(PersonalInformation<sp/>&amp;&amp;information)<sp/>noexcept<sp/>{</highlight></codeline>
-<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>model_uri_<sp/>=<sp/>information.model_uri_;</highlight></codeline>
-<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>information.model_uri_<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>local_uri_<sp/>=<sp/>information.local_uri_;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>PersonalInformation::PersonalInformation(PersonalInformation<sp/>&amp;&amp;information)<sp/>noexcept</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>uriHandler_(information.uriHandler_)<sp/>{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>model_<sp/>=<sp/>information.model_;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>information.model_<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>triples_<sp/>=<sp/>std::move(information.triples_);</highlight></codeline>
-<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>model_uri_<sp/>=<sp/>information.model_uri_;</highlight></codeline>
-<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="30"><highlight class="normal"></highlight></codeline>
-<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>PersonalInformation<sp/>&amp;<ref refid="classomexmeta_1_1PersonalInformation_1a11a759dd5f065ba6a48f0bc3b4c48438" kindref="member">PersonalInformation::operator=</ref>(PersonalInformation<sp/>&amp;&amp;information)<sp/>noexcept<sp/>{</highlight></codeline>
-<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">this</highlight><highlight class="normal"><sp/>!=<sp/>&amp;information)<sp/>{</highlight></codeline>
-<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>model_uri_<sp/>=<sp/>information.model_uri_;</highlight></codeline>
-<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>information.model_uri_<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>local_uri_<sp/>=<sp/>information.local_uri_;</highlight></codeline>
-<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>triples_<sp/>=<sp/>std::move(information.triples_);</highlight></codeline>
-<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>model_uri_<sp/>=<sp/>information.model_uri_;</highlight></codeline>
-<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="44"><highlight class="normal"></highlight></codeline>
-<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>PersonalInformation::operator==(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>PersonalInformation<sp/>&amp;rhs)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>model_uri_<sp/>==<sp/>rhs.model_uri_<sp/>&amp;&amp;</highlight></codeline>
-<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>triples_<sp/>==<sp/>rhs.triples_;</highlight></codeline>
-<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="49"><highlight class="normal"></highlight></codeline>
-<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>PersonalInformation::operator!=(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>PersonalInformation<sp/>&amp;rhs)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>!(rhs<sp/>==<sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="53"><highlight class="normal"></highlight></codeline>
-<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>PersonalInformation::generateMetaId()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;std::string&gt;<sp/>exclusions;<sp/></highlight><highlight class="comment">//<sp/>not<sp/>really<sp/>needed<sp/>in<sp/>this<sp/>context,<sp/>but<sp/>signature<sp/>requires<sp/>the<sp/>argument</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>metaid<sp/>=<sp/><ref refid="classomexmeta_1_1OmexMetaUtils_1a596094a1ce72a362238682c8a864f616" kindref="member">OmexMetaUtils::generateUniqueMetaid</ref>(model_uri_,<sp/></highlight><highlight class="stringliteral">&quot;PersonalInfo&quot;</highlight><highlight class="normal">,<sp/>exclusions);</highlight></codeline>
-<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1OmexMetaUtils_1ae645af49ce57dac8bd0e0eba9e39a6c0" kindref="member">OmexMetaUtils::concatMetaIdAndUri</ref>(metaid,<sp/>getModelUri());</highlight></codeline>
-<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="59"><highlight class="normal"></highlight></codeline>
-<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>PersonalInformation<sp/>&amp;</highlight></codeline>
-<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>PersonalInformation::addFoaf(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;predicate,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classredland_1_1LibrdfNode" kindref="compound">LibrdfNode</ref>&amp;<sp/>value_node)<sp/>{</highlight></codeline>
-<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classredland_1_1LibrdfNode" kindref="compound">LibrdfNode</ref><sp/>subject<sp/>=<sp/>LibrdfNode::fromUriString(metaid_);</highlight></codeline>
-<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Foaf<sp/>foaf(predicate);</highlight></codeline>
-<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Triple<sp/>triple(subject.get(),<sp/>foaf.get(),<sp/>value_node.get());</highlight></codeline>
-<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>triples_.<ref refid="classomexmeta_1_1Triples_1a88dcf4b950f105acb621bd07f07a38a0" kindref="member">moveBack</ref>(triple);</highlight></codeline>
-<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>namespaces_.push_back(<ref refid="classomexmeta_1_1Predicate_1a1291e3cd9727871f568e864e0f5af3f0" kindref="member">Predicate::namespaceMap</ref>()[</highlight><highlight class="stringliteral">&quot;foaf&quot;</highlight><highlight class="normal">]);</highlight></codeline>
-<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="69"><highlight class="normal"></highlight></codeline>
-<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>PersonalInformation<sp/>&amp;</highlight></codeline>
-<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>PersonalInformation::addDC(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;predicate,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classredland_1_1LibrdfNode" kindref="compound">LibrdfNode</ref>&amp;<sp/>value_node)<sp/>{</highlight></codeline>
-<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classredland_1_1LibrdfNode" kindref="compound">LibrdfNode</ref><sp/>subject<sp/>=<sp/>LibrdfNode::fromUriString(metaid_);</highlight></codeline>
-<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DCTerm<sp/>dc(predicate);</highlight></codeline>
-<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Triple<sp/>triple(subject.get(),<sp/>dc.get(),<sp/>value_node.get());</highlight></codeline>
-<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>triples_.<ref refid="classomexmeta_1_1Triples_1a88dcf4b950f105acb621bd07f07a38a0" kindref="member">moveBack</ref>(triple);</highlight></codeline>
-<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>namespaces_.push_back(<ref refid="classomexmeta_1_1Predicate_1a1291e3cd9727871f568e864e0f5af3f0" kindref="member">Predicate::namespaceMap</ref>()[</highlight><highlight class="stringliteral">&quot;dc&quot;</highlight><highlight class="normal">]);</highlight></codeline>
-<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="79"><highlight class="normal"></highlight></codeline>
-<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/>PersonalInformation<sp/>&amp;</highlight></codeline>
-<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>PersonalInformation::addFoafBlank(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;predicate,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;blank_value)<sp/>{</highlight></codeline>
-<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classredland_1_1LibrdfNode" kindref="compound">LibrdfNode</ref><sp/>blank_node<sp/>=<sp/>LibrdfNode::fromBlank(blank_value);</highlight></codeline>
-<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>addFoaf(predicate,<sp/>blank_node);</highlight></codeline>
-<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>namespaces_.push_back(<ref refid="classomexmeta_1_1Predicate_1a1291e3cd9727871f568e864e0f5af3f0" kindref="member">Predicate::namespaceMap</ref>()[</highlight><highlight class="stringliteral">&quot;foaf&quot;</highlight><highlight class="normal">]);</highlight></codeline>
-<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="87"><highlight class="normal"></highlight></codeline>
-<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/>PersonalInformation<sp/>&amp;</highlight></codeline>
-<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>PersonalInformation::addFoafUri(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;predicate,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;uri_value)<sp/>{</highlight></codeline>
-<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Foaf<sp/>foaf(predicate);</highlight></codeline>
-<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classredland_1_1LibrdfNode" kindref="compound">LibrdfNode</ref><sp/>uri_node<sp/>=<sp/>LibrdfNode::fromUriString(uri_value);</highlight></codeline>
-<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>addFoaf(predicate,<sp/>uri_node);</highlight></codeline>
-<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>foaf.freeNode();</highlight></codeline>
-<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>namespaces_.push_back(<ref refid="classomexmeta_1_1Predicate_1a1291e3cd9727871f568e864e0f5af3f0" kindref="member">Predicate::namespaceMap</ref>()[</highlight><highlight class="stringliteral">&quot;foaf&quot;</highlight><highlight class="normal">]);</highlight></codeline>
-<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="97"><highlight class="normal"></highlight></codeline>
-<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/>PersonalInformation<sp/>&amp;</highlight></codeline>
-<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/>PersonalInformation::addFoafLiteral(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;predicate,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;literal_value)<sp/>{</highlight></codeline>
-<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Foaf<sp/>foaf(predicate);</highlight></codeline>
-<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classredland_1_1LibrdfNode" kindref="compound">LibrdfNode</ref><sp/>literal_node<sp/>=<sp/>LibrdfNode::fromLiteral(literal_value);</highlight></codeline>
-<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>addFoaf(predicate,<sp/>literal_node);</highlight></codeline>
-<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>foaf.freeNode();</highlight></codeline>
-<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>namespaces_.push_back(<ref refid="classomexmeta_1_1Predicate_1a1291e3cd9727871f568e864e0f5af3f0" kindref="member">Predicate::namespaceMap</ref>()[</highlight><highlight class="stringliteral">&quot;foaf&quot;</highlight><highlight class="normal">]);</highlight></codeline>
-<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="107"><highlight class="normal"></highlight></codeline>
-<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/>PersonalInformation<sp/>&amp;</highlight></codeline>
-<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/>PersonalInformation::addDCBlank(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;predicate,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;blank_value)<sp/>{</highlight></codeline>
-<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classredland_1_1LibrdfNode" kindref="compound">LibrdfNode</ref><sp/>blank_node<sp/>=<sp/>LibrdfNode::fromBlank(blank_value);</highlight></codeline>
-<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>addDC(predicate,<sp/>blank_node);</highlight></codeline>
-<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>namespaces_.push_back(<ref refid="classomexmeta_1_1Predicate_1a1291e3cd9727871f568e864e0f5af3f0" kindref="member">Predicate::namespaceMap</ref>()[</highlight><highlight class="stringliteral">&quot;dc&quot;</highlight><highlight class="normal">]);</highlight></codeline>
-<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="115"><highlight class="normal"></highlight></codeline>
-<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/>PersonalInformation<sp/>&amp;</highlight></codeline>
-<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/>PersonalInformation::addDCUri(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;predicate,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;uri_value)<sp/>{</highlight></codeline>
-<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DCTerm<sp/>dcTerm(predicate);</highlight></codeline>
-<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classredland_1_1LibrdfNode" kindref="compound">LibrdfNode</ref><sp/>uri_node<sp/>=<sp/>LibrdfNode::fromUriString(uri_value);</highlight></codeline>
-<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>addDC(predicate,<sp/>uri_node);</highlight></codeline>
-<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dcTerm.freeNode();</highlight></codeline>
-<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>namespaces_.push_back(<ref refid="classomexmeta_1_1Predicate_1a1291e3cd9727871f568e864e0f5af3f0" kindref="member">Predicate::namespaceMap</ref>()[</highlight><highlight class="stringliteral">&quot;dc&quot;</highlight><highlight class="normal">]);</highlight></codeline>
-<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="125"><highlight class="normal"></highlight></codeline>
-<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/>PersonalInformation<sp/>&amp;</highlight></codeline>
-<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/>PersonalInformation::addDCLiteral(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;predicate,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;literal_value)<sp/>{</highlight></codeline>
-<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DCTerm<sp/>dcTerm(predicate);</highlight></codeline>
-<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classredland_1_1LibrdfNode" kindref="compound">LibrdfNode</ref><sp/>literal_node<sp/>=<sp/>LibrdfNode::fromLiteral(literal_value);</highlight></codeline>
-<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>addDC(predicate,<sp/>literal_node);</highlight></codeline>
-<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dcTerm.freeNode();</highlight></codeline>
-<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>namespaces_.push_back(<ref refid="classomexmeta_1_1Predicate_1a1291e3cd9727871f568e864e0f5af3f0" kindref="member">Predicate::namespaceMap</ref>()[</highlight><highlight class="stringliteral">&quot;dc&quot;</highlight><highlight class="normal">]);</highlight></codeline>
-<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="135"><highlight class="normal"></highlight></codeline>
-<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/>PersonalInformation<sp/>&amp;PersonalInformation::addName(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>value)<sp/>{</highlight></codeline>
-<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>addFoafLiteral(</highlight><highlight class="stringliteral">&quot;name&quot;</highlight><highlight class="normal">,<sp/>value);</highlight></codeline>
-<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="140"><highlight class="normal"></highlight></codeline>
-<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/>PersonalInformation<sp/>&amp;PersonalInformation::addMbox(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>value)<sp/>{</highlight></codeline>
-<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>addFoafLiteral(</highlight><highlight class="stringliteral">&quot;mbox&quot;</highlight><highlight class="normal">,<sp/>value);</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>PersonalInformation<sp/>&amp;<ref refid="classomexmeta_1_1PersonalInformation_1a11a759dd5f065ba6a48f0bc3b4c48438" kindref="member">PersonalInformation::operator=</ref>(PersonalInformation<sp/>&amp;&amp;information)<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">this</highlight><highlight class="normal"><sp/>!=<sp/>&amp;information)<sp/>{</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>model_<sp/>=<sp/>information.model_;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>information.model_<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>triples_<sp/>=<sp/>std::move(information.triples_);</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uriHandler_<sp/>=<sp/>information.uriHandler_;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>PersonalInformation::operator==(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>PersonalInformation<sp/>&amp;rhs)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>model_<sp/>==<sp/>rhs.model_<sp/>&amp;&amp;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>triples_<sp/>==<sp/>rhs.triples_;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>PersonalInformation::operator!=(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>PersonalInformation<sp/>&amp;rhs)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>!(rhs<sp/>==<sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>PersonalInformation::generateMetaId()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;std::string&gt;<sp/>exclusions;</highlight><highlight class="comment">//<sp/>not<sp/>really<sp/>needed<sp/>in<sp/>this<sp/>context,<sp/>but<sp/>signature<sp/>requires<sp/>the<sp/>argument</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>metaid<sp/>=<sp/><ref refid="classomexmeta_1_1OmexMetaUtils_1a596094a1ce72a362238682c8a864f616" kindref="member">OmexMetaUtils::generateUniqueMetaid</ref>(model_,<sp/></highlight><highlight class="stringliteral">&quot;PersonalInfo&quot;</highlight><highlight class="normal">,<sp/>exclusions);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1OmexMetaUtils_1ae645af49ce57dac8bd0e0eba9e39a6c0" kindref="member">OmexMetaUtils::concatMetaIdAndUri</ref>(metaid,<sp/>getModelUri());</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/>PersonalInformation<sp/>&amp;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>PersonalInformation::addFoaf(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;predicate,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classredland_1_1LibrdfNode" kindref="compound">LibrdfNode</ref><sp/>&amp;value_node)<sp/>{</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classredland_1_1LibrdfNode" kindref="compound">LibrdfNode</ref><sp/>subject<sp/>=<sp/>LibrdfNode::fromUriString(metaid_);</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Foaf<sp/>foaf(predicate);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Triple<sp/>triple(uriHandler_,<sp/>subject.<ref refid="classredland_1_1LibrdfNode_1a33162ea36efe451c100325816cf8613f" kindref="member">get</ref>(),<sp/>foaf.get(),<sp/>value_node.<ref refid="classredland_1_1LibrdfNode_1a33162ea36efe451c100325816cf8613f" kindref="member">get</ref>());</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>triples_.<ref refid="classomexmeta_1_1Triples_1a64e7f250d3199421c4306e9e8fbbc6e5" kindref="member">moveBack</ref>(triple);</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>namespaces_.push_back(<ref refid="classomexmeta_1_1Predicate_1a1291e3cd9727871f568e864e0f5af3f0" kindref="member">Predicate::namespaceMap</ref>()[</highlight><highlight class="stringliteral">&quot;foaf&quot;</highlight><highlight class="normal">]);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>PersonalInformation<sp/>&amp;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>PersonalInformation::addDC(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;predicate,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classredland_1_1LibrdfNode" kindref="compound">LibrdfNode</ref><sp/>&amp;value_node)<sp/>{</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classredland_1_1LibrdfNode" kindref="compound">LibrdfNode</ref><sp/>subject<sp/>=<sp/>LibrdfNode::fromUriString(metaid_);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DCTerm<sp/>dc(predicate);</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Triple<sp/>triple(uriHandler_,<sp/>subject.<ref refid="classredland_1_1LibrdfNode_1a33162ea36efe451c100325816cf8613f" kindref="member">get</ref>(),<sp/>dc.get(),<sp/>value_node.<ref refid="classredland_1_1LibrdfNode_1a33162ea36efe451c100325816cf8613f" kindref="member">get</ref>());</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>triples_.<ref refid="classomexmeta_1_1Triples_1a64e7f250d3199421c4306e9e8fbbc6e5" kindref="member">moveBack</ref>(triple);</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>namespaces_.push_back(<ref refid="classomexmeta_1_1Predicate_1a1291e3cd9727871f568e864e0f5af3f0" kindref="member">Predicate::namespaceMap</ref>()[</highlight><highlight class="stringliteral">&quot;dc&quot;</highlight><highlight class="normal">]);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>PersonalInformation<sp/>&amp;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>PersonalInformation::addFoafBlank(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;predicate,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;blank_value)<sp/>{</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classredland_1_1LibrdfNode" kindref="compound">LibrdfNode</ref><sp/>blank_node<sp/>=<sp/>LibrdfNode::fromBlank(blank_value);</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>addFoaf(predicate,<sp/>blank_node);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>namespaces_.push_back(<ref refid="classomexmeta_1_1Predicate_1a1291e3cd9727871f568e864e0f5af3f0" kindref="member">Predicate::namespaceMap</ref>()[</highlight><highlight class="stringliteral">&quot;foaf&quot;</highlight><highlight class="normal">]);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>PersonalInformation<sp/>&amp;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/>PersonalInformation::addFoafUri(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;predicate,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;uri_value)<sp/>{</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Foaf<sp/>foaf(predicate);</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classredland_1_1LibrdfNode" kindref="compound">LibrdfNode</ref><sp/>uri_node<sp/>=<sp/>LibrdfNode::fromUriString(uri_value);</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>addFoaf(predicate,<sp/>uri_node);</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>namespaces_.push_back(<ref refid="classomexmeta_1_1Predicate_1a1291e3cd9727871f568e864e0f5af3f0" kindref="member">Predicate::namespaceMap</ref>()[</highlight><highlight class="stringliteral">&quot;foaf&quot;</highlight><highlight class="normal">]);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>PersonalInformation<sp/>&amp;</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/>PersonalInformation::addFoafLiteral(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;predicate,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;literal_value)<sp/>{</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Foaf<sp/>foaf(predicate);</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classredland_1_1LibrdfNode" kindref="compound">LibrdfNode</ref><sp/>literal_node<sp/>=<sp/>LibrdfNode::fromLiteral(literal_value);</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>addFoaf(predicate,<sp/>literal_node);</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>namespaces_.push_back(<ref refid="classomexmeta_1_1Predicate_1a1291e3cd9727871f568e864e0f5af3f0" kindref="member">Predicate::namespaceMap</ref>()[</highlight><highlight class="stringliteral">&quot;foaf&quot;</highlight><highlight class="normal">]);</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/>PersonalInformation<sp/>&amp;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/>PersonalInformation::addDCBlank(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;predicate,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;blank_value)<sp/>{</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classredland_1_1LibrdfNode" kindref="compound">LibrdfNode</ref><sp/>blank_node<sp/>=<sp/>LibrdfNode::fromBlank(blank_value);</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>addDC(predicate,<sp/>blank_node);</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>namespaces_.push_back(<ref refid="classomexmeta_1_1Predicate_1a1291e3cd9727871f568e864e0f5af3f0" kindref="member">Predicate::namespaceMap</ref>()[</highlight><highlight class="stringliteral">&quot;dc&quot;</highlight><highlight class="normal">]);</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/>PersonalInformation<sp/>&amp;</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/>PersonalInformation::addDCUri(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;predicate,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;uri_value)<sp/>{</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DCTerm<sp/>dcTerm(predicate);</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classredland_1_1LibrdfNode" kindref="compound">LibrdfNode</ref><sp/>uri_node<sp/>=<sp/>LibrdfNode::fromUriString(uri_value);</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>addDC(predicate,<sp/>uri_node);</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>namespaces_.push_back(<ref refid="classomexmeta_1_1Predicate_1a1291e3cd9727871f568e864e0f5af3f0" kindref="member">Predicate::namespaceMap</ref>()[</highlight><highlight class="stringliteral">&quot;dc&quot;</highlight><highlight class="normal">]);</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/>PersonalInformation<sp/>&amp;</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/>PersonalInformation::addDCLiteral(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;predicate,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;literal_value)<sp/>{</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DCTerm<sp/>dcTerm(predicate);</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classredland_1_1LibrdfNode" kindref="compound">LibrdfNode</ref><sp/>literal_node<sp/>=<sp/>LibrdfNode::fromLiteral(literal_value);</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>addDC(predicate,<sp/>literal_node);</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>namespaces_.push_back(<ref refid="classomexmeta_1_1Predicate_1a1291e3cd9727871f568e864e0f5af3f0" kindref="member">Predicate::namespaceMap</ref>()[</highlight><highlight class="stringliteral">&quot;dc&quot;</highlight><highlight class="normal">]);</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/>PersonalInformation<sp/>&amp;PersonalInformation::addName(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;value)<sp/>{</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>addFoafLiteral(</highlight><highlight class="stringliteral">&quot;name&quot;</highlight><highlight class="normal">,<sp/>value);</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/>PersonalInformation<sp/>&amp;PersonalInformation::addMbox(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;value)<sp/>{</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>addFoafLiteral(</highlight><highlight class="stringliteral">&quot;mbox&quot;</highlight><highlight class="normal">,<sp/>value);</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/>PersonalInformation<sp/>&amp;PersonalInformation::addAccountName(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;value)<sp/>{</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>addFoafUri(</highlight><highlight class="stringliteral">&quot;accountName&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;https://orcid.org/&quot;</highlight><highlight class="normal"><sp/>+<sp/>value);</highlight><highlight class="comment">//<sp/>orcid<sp/>id</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>namespaces_.push_back(<ref refid="classomexmeta_1_1Predicate_1a1291e3cd9727871f568e864e0f5af3f0" kindref="member">Predicate::namespaceMap</ref>()[</highlight><highlight class="stringliteral">&quot;orcid&quot;</highlight><highlight class="normal">]);</highlight></codeline>
 <codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="145"><highlight class="normal"></highlight></codeline>
-<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/>PersonalInformation<sp/>&amp;PersonalInformation::addAccountName(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>value)<sp/>{</highlight></codeline>
-<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>addFoafUri(</highlight><highlight class="stringliteral">&quot;accountName&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;https://orcid.org/&quot;</highlight><highlight class="normal"><sp/>+<sp/>value);<sp/></highlight><highlight class="comment">//<sp/>orcid<sp/>id</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>namespaces_.push_back(<ref refid="classomexmeta_1_1Predicate_1a1291e3cd9727871f568e864e0f5af3f0" kindref="member">Predicate::namespaceMap</ref>()[</highlight><highlight class="stringliteral">&quot;orcid&quot;</highlight><highlight class="normal">]);</highlight></codeline>
-<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="151"><highlight class="normal"></highlight></codeline>
-<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>PersonalInformation::setTriples(Triples<sp/>triples)<sp/>{</highlight></codeline>
-<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>triples_<sp/>=<sp/>std::move(triples);</highlight></codeline>
-<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="155"><highlight class="normal"></highlight></codeline>
-<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/>PersonalInformation<sp/>&amp;PersonalInformation::addAccountServiceHomepage(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>value)<sp/>{</highlight></codeline>
-<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>addFoafUri(</highlight><highlight class="stringliteral">&quot;accountServiceHomepage&quot;</highlight><highlight class="normal">,<sp/>value);</highlight></codeline>
-<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="160"><highlight class="normal"></highlight></codeline>
-<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/>PersonalInformation<sp/>&amp;PersonalInformation::addCreator(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;value)<sp/>{</highlight></codeline>
-<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>addDCUri(</highlight><highlight class="stringliteral">&quot;creator&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;orcid:&quot;</highlight><highlight class="normal">+value);</highlight></codeline>
-<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="165"><highlight class="normal"></highlight></codeline>
-<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;PersonalInformation::getLocalUri()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>local_uri_;</highlight></codeline>
-<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="169"><highlight class="normal"></highlight></codeline>
-<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>PersonalInformation::setLocalUri(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;localUri)<sp/>{</highlight></codeline>
-<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>local_uri_<sp/>=<sp/>localUri;</highlight></codeline>
-<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="173"><highlight class="normal"></highlight></codeline>
-<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>PersonalInformation::createSubject()<sp/>{</highlight></codeline>
-<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(model_uri_.empty())<sp/>{</highlight></codeline>
-<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>std::invalid_argument(</highlight><highlight class="stringliteral">&quot;std::invalid_argument:<sp/>PersonalInformation::createSubject:&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Trying<sp/>to<sp/>create<sp/>a<sp/>PersonalInformation<sp/>composite<sp/>annotation<sp/>triples<sp/>without&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;a<sp/>`model_uri`.<sp/>Please<sp/>use<sp/>setModelUri()<sp/>and<sp/>try<sp/>again.&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classredland_1_1LibrdfNode" kindref="compound">LibrdfNode</ref><sp/>n<sp/>=<sp/>LibrdfNode::fromUriString(model_uri_);</highlight></codeline>
-<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DCTerm<sp/>creator(</highlight><highlight class="stringliteral">&quot;creator&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classredland_1_1LibrdfNode" kindref="compound">LibrdfNode</ref><sp/>r<sp/>=<sp/>LibrdfNode::fromUriString(metaid_);</highlight></codeline>
-<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Triple<sp/>triple(n.get(),<sp/>creator.get(),<sp/>r.get());</highlight></codeline>
-<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>namespaces_.push_back(<ref refid="classomexmeta_1_1Predicate_1a1291e3cd9727871f568e864e0f5af3f0" kindref="member">Predicate::namespaceMap</ref>()[</highlight><highlight class="stringliteral">&quot;orcid&quot;</highlight><highlight class="normal">]);</highlight></codeline>
-<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>triples_.<ref refid="classomexmeta_1_1Triples_1a88dcf4b950f105acb621bd07f07a38a0" kindref="member">moveBack</ref>(triple);</highlight></codeline>
-<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="187"><highlight class="normal"></highlight></codeline>
-<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;PersonalInformation::getMetaid()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>metaid_;</highlight></codeline>
-<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="191"><highlight class="normal"></highlight></codeline>
-<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/>Triples<sp/>PersonalInformation::getTriples()<sp/>{</highlight></codeline>
-<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::move(triples_);</highlight></codeline>
-<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="195"><highlight class="normal"></highlight></codeline>
-<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>PersonalInformation::setMetaid(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;metaid)<sp/>{</highlight></codeline>
-<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>metaid_<sp/>=<sp/>metaid;</highlight></codeline>
-<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="199"><highlight class="normal"></highlight></codeline>
-<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;PersonalInformation::getModelUri()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>model_uri_;</highlight></codeline>
-<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="203"><highlight class="normal"></highlight></codeline>
-<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>PersonalInformation::setModelUri(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;modelUri)<sp/>{</highlight></codeline>
-<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>model_uri_<sp/>=<sp/>modelUri;</highlight></codeline>
-<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="207"><highlight class="normal"></highlight></codeline>
-<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>PersonalInformation::freeTriples()<sp/>{</highlight></codeline>
-<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>triples_.freeTriples();</highlight></codeline>
-<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;std::string&gt;<sp/>&amp;PersonalInformation::getNamespaces()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>namespaces_;</highlight></codeline>
-<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="214"><highlight class="normal"></highlight></codeline>
-<codeline lineno="215"><highlight class="normal"></highlight></codeline>
-<codeline lineno="216"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>PersonalInformation::setTriples(Triples<sp/>triples)<sp/>{</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>triples_<sp/>=<sp/>std::move(triples);</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/>PersonalInformation<sp/>&amp;PersonalInformation::addAccountServiceHomepage(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;value)<sp/>{</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>addFoafUri(</highlight><highlight class="stringliteral">&quot;accountServiceHomepage&quot;</highlight><highlight class="normal">,<sp/>value);</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/>PersonalInformation<sp/>&amp;PersonalInformation::addCreator(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;value)<sp/>{</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>addDCUri(</highlight><highlight class="stringliteral">&quot;creator&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;orcid:&quot;</highlight><highlight class="normal"><sp/>+<sp/>value);</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;PersonalInformation::getLocalUri()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>uriHandler_.<ref refid="classomexmeta_1_1UriHandler_1a4c20a7d29388f3e3d8ce736dcce386d6" kindref="member">getLocalUri</ref>();</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>PersonalInformation::createSubject()<sp/>{</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(uriHandler_.<ref refid="classomexmeta_1_1UriHandler_1ad135d8d4d6fdb3af194f1cb24758e745" kindref="member">getModelUri</ref>().empty())<sp/>{</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>std::invalid_argument(</highlight><highlight class="stringliteral">&quot;std::invalid_argument:<sp/>PersonalInformation::createSubject:&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Trying<sp/>to<sp/>create<sp/>a<sp/>PersonalInformation<sp/>composite<sp/>annotation<sp/>triples<sp/>without&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;a<sp/>`model_uri`.<sp/>Please<sp/>use<sp/>setModelUri()<sp/>and<sp/>try<sp/>again.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classredland_1_1LibrdfNode" kindref="compound">LibrdfNode</ref><sp/>n<sp/>=<sp/>LibrdfNode::fromUriString(uriHandler_.<ref refid="classomexmeta_1_1UriHandler_1ad135d8d4d6fdb3af194f1cb24758e745" kindref="member">getModelUri</ref>());</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PredicatePtr<sp/>creatorPtr<sp/>=<sp/>std::make_shared&lt;DCTerm&gt;(</highlight><highlight class="stringliteral">&quot;creator&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classredland_1_1LibrdfNode" kindref="compound">LibrdfNode</ref><sp/>r<sp/>=<sp/>LibrdfNode::fromUriString(metaid_);</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Triple<sp/>triple(uriHandler_,<sp/>n,<sp/>creatorPtr,<sp/>r);</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>namespaces_.push_back(<ref refid="classomexmeta_1_1Predicate_1a1291e3cd9727871f568e864e0f5af3f0" kindref="member">Predicate::namespaceMap</ref>()[</highlight><highlight class="stringliteral">&quot;orcid&quot;</highlight><highlight class="normal">]);</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>triples_.<ref refid="classomexmeta_1_1Triples_1a64e7f250d3199421c4306e9e8fbbc6e5" kindref="member">moveBack</ref>(triple);</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;PersonalInformation::getMetaid()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>metaid_;</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/>Triples<sp/>PersonalInformation::getTriples()<sp/>{</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::move(triples_);</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"></highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>PersonalInformation::setMetaid(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;metaid)<sp/>{</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>metaid_<sp/>=<sp/>metaid;</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;PersonalInformation::getModelUri()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>uriHandler_.<ref refid="classomexmeta_1_1UriHandler_1ad135d8d4d6fdb3af194f1cb24758e745" kindref="member">getModelUri</ref>();</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"></highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>PersonalInformation::freeTriples()<sp/>{</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>triples_.freeTriples();</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;std::string&gt;<sp/>&amp;PersonalInformation::getNamespaces()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>namespaces_;</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"></highlight></codeline>
+<codeline lineno="201"><highlight class="normal"></highlight></codeline>
+<codeline lineno="202"><highlight class="normal">}</highlight><highlight class="comment">//<sp/>namespace<sp/>omexmeta</highlight></codeline>
     </programlisting>
     <location file="src/omexmeta/PersonalInformation.cpp"/>
   </compounddef>

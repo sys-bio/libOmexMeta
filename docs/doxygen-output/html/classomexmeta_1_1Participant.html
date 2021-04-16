@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libomexmeta
-   &#160;<span id="projectnumber">1.2.3</span>
+   &#160;<span id="projectnumber">1.2.6</span>
    </div>
    <div id="projectbrief">Annotations for models in systems biology</div>
   </td>
@@ -88,8 +88,12 @@ Inheritance diagram for omexmeta::Participant:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aee7846dcbb910dd394a0683841ab723a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1Participant.html#aee7846dcbb910dd394a0683841ab723a">setMultiplier</a> (double multiplier)</td></tr>
-<tr class="memdesc:aee7846dcbb910dd394a0683841ab723a"><td class="mdescLeft">&#160;</td><td class="mdescRight">return the vector of strings that keeps track of newly generated metaids. <a class="el" href="classThis.html" title="interface for querying an rdf graph basically a wrapper around both librdf_query and librdf_query_res...">This</a> mechanism ensures unique metaids in the situation where the user has added &gt;1 participant of a certain type i.e. sink.  <a href="classomexmeta_1_1Participant.html#aee7846dcbb910dd394a0683841ab723a">More...</a><br /></td></tr>
+<tr class="memitem:afd275c1f5648ae4c86cc22f3a0853ffb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1Participant.html#afd275c1f5648ae4c86cc22f3a0853ffb">Participant</a> (librdf_model *model, std::string base_metaid, <a class="el" href="classomexmeta_1_1UriHandler.html">UriHandler</a> &amp;uriHandler, std::string semsim_predicate_term, double multiplier, std::string physicalEntityReference, eUriType type)</td></tr>
+<tr class="memdesc:afd275c1f5648ae4c86cc22f3a0853ffb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Superclass of participant types.  <a href="classomexmeta_1_1Participant.html#afd275c1f5648ae4c86cc22f3a0853ffb">More...</a><br /></td></tr>
+<tr class="separator:afd275c1f5648ae4c86cc22f3a0853ffb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee7846dcbb910dd394a0683841ab723a"><td class="memItemLeft" align="right" valign="top"><a id="aee7846dcbb910dd394a0683841ab723a"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1Participant.html#aee7846dcbb910dd394a0683841ab723a">setMultiplier</a> (double multiplier)</td></tr>
+<tr class="memdesc:aee7846dcbb910dd394a0683841ab723a"><td class="mdescLeft">&#160;</td><td class="mdescRight">setter for the multiplier field of <a class="el" href="classomexmeta_1_1Participant.html">Participant</a> types <br /></td></tr>
 <tr class="separator:aee7846dcbb910dd394a0683841ab723a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a415c1205762dff6943426d830d74edcd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1Participant.html#a415c1205762dff6943426d830d74edcd">setPhysicalEntityReference</a> (const std::string &amp;physicalEntityReference)</td></tr>
 <tr class="memdesc:a415c1205762dff6943426d830d74edcd"><td class="mdescLeft">&#160;</td><td class="mdescRight">setter for physical entity reference field of <a class="el" href="classomexmeta_1_1Participant.html">Participant</a> types  <a href="classomexmeta_1_1Participant.html#a415c1205762dff6943426d830d74edcd">More...</a><br /></td></tr>
@@ -104,15 +108,8 @@ Public Member Functions</h2></td></tr>
 const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1Participant.html#a6bf4c724ab5212d10f2a89893f369cd1">getLocalUri</a> () const</td></tr>
 <tr class="memdesc:a6bf4c724ab5212d10f2a89893f369cd1"><td class="mdescLeft">&#160;</td><td class="mdescRight">getter for local uri attribute <br /></td></tr>
 <tr class="separator:a6bf4c724ab5212d10f2a89893f369cd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a595323ae0681f42a7ba5981e2ee840f1"><td class="memItemLeft" align="right" valign="top"><a id="a595323ae0681f42a7ba5981e2ee840f1"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1Participant.html#a595323ae0681f42a7ba5981e2ee840f1">setLocalUri</a> (const std::string &amp;localUri)</td></tr>
-<tr class="memdesc:a595323ae0681f42a7ba5981e2ee840f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">setter for local uri attribute <br /></td></tr>
-<tr class="separator:a595323ae0681f42a7ba5981e2ee840f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a395bc8d2561149a77371ed80e2ed1517"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1Participant.html#a395bc8d2561149a77371ed80e2ed1517">free</a> ()</td></tr>
 <tr class="separator:a395bc8d2561149a77371ed80e2ed1517"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad7fb4564c20db459f8f9f8fc0b62ee09"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1Participant.html#ad7fb4564c20db459f8f9f8fc0b62ee09">Participant</a> (librdf_model *model, std::string base_metaid, const std::string &amp;model_uri, const std::string &amp;local_uri, std::string semsim_predicate_term, double multiplier, std::string physicalEntityReference, eUriType type)</td></tr>
-<tr class="memdesc:ad7fb4564c20db459f8f9f8fc0b62ee09"><td class="mdescLeft">&#160;</td><td class="mdescRight">Superclass of participant types.  <a href="classomexmeta_1_1Participant.html#ad7fb4564c20db459f8f9f8fc0b62ee09">More...</a><br /></td></tr>
-<tr class="separator:ad7fb4564c20db459f8f9f8fc0b62ee09"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad3db317039b403fdb7728885152cbeda"><td class="memItemLeft" align="right" valign="top"><a id="ad3db317039b403fdb7728885152cbeda"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator==</b> (const <a class="el" href="classomexmeta_1_1Participant.html">Participant</a> &amp;rhs) const</td></tr>
 <tr class="separator:ad3db317039b403fdb7728885152cbeda"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -120,18 +117,18 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator==</b> (const
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator!=</b> (const <a class="el" href="classomexmeta_1_1Participant.html">Participant</a> &amp;rhs) const</td></tr>
 <tr class="separator:aa4baa62cb4ccffe8443262382490328d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aabb81b9996c05ce9519c44f5d1d529db"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classomexmeta_1_1Triples.html">Triples</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1Participant.html#aabb81b9996c05ce9519c44f5d1d529db">toTriples</a> (std::string about, std::vector&lt; std::string &gt; &amp;metaid_exclusions)</td></tr>
-<tr class="memdesc:aabb81b9996c05ce9519c44f5d1d529db"><td class="mdescLeft">&#160;</td><td class="mdescRight">create a <a class="el" href="classomexmeta_1_1Triples.html">Triples</a> object from the <a class="el" href="classomexmeta_1_1Participant.html">Participant</a>.  <a href="classomexmeta_1_1Participant.html#aabb81b9996c05ce9519c44f5d1d529db">More...</a><br /></td></tr>
+<tr class="memdesc:aabb81b9996c05ce9519c44f5d1d529db"><td class="mdescLeft">&#160;</td><td class="mdescRight">create a <a class="el" href="classomexmeta_1_1Triples.html" title="A Triples object is a collection of Triple objects.">Triples</a> object from the <a class="el" href="classomexmeta_1_1Participant.html">Participant</a>.  <a href="classomexmeta_1_1Participant.html#aabb81b9996c05ce9519c44f5d1d529db">More...</a><br /></td></tr>
 <tr class="separator:aabb81b9996c05ce9519c44f5d1d529db"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a03a1ffc7e9efaed5c0e94a62f7c72650"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1Participant.html#a03a1ffc7e9efaed5c0e94a62f7c72650">createMetaid</a> (const std::string &amp;base, std::vector&lt; std::string &gt; &amp;metaid_exclusions) const</td></tr>
 <tr class="memdesc:a03a1ffc7e9efaed5c0e94a62f7c72650"><td class="mdescLeft">&#160;</td><td class="mdescRight">create a new metaid use base  <a href="classomexmeta_1_1Participant.html#a03a1ffc7e9efaed5c0e94a62f7c72650">More...</a><br /></td></tr>
 <tr class="separator:a03a1ffc7e9efaed5c0e94a62f7c72650"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa09f8c5736dd172b03d7898519d9478d"><td class="memItemLeft" align="right" valign="top">std::basic_string&lt; char &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1Participant.html#aa09f8c5736dd172b03d7898519d9478d">getPredicateAsRawNode</a> ()</td></tr>
+<tr class="memitem:aa09f8c5736dd172b03d7898519d9478d"><td class="memItemLeft" align="right" valign="top">std::basic_string&lt; char &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1Participant.html#aa09f8c5736dd172b03d7898519d9478d">getPredicate</a> ()</td></tr>
 <tr class="memdesc:aa09f8c5736dd172b03d7898519d9478d"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the predicate currently in use by the participant  <a href="classomexmeta_1_1Participant.html#aa09f8c5736dd172b03d7898519d9478d">More...</a><br /></td></tr>
 <tr class="separator:aa09f8c5736dd172b03d7898519d9478d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1188d6a2036514eb6b649ce1e08eca4d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1Participant.html#a1188d6a2036514eb6b649ce1e08eca4d">setPredicate</a> (const std::string &amp;semsim_predicate_string)</td></tr>
 <tr class="memdesc:a1188d6a2036514eb6b649ce1e08eca4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">set the predicate used in the participant  <a href="classomexmeta_1_1Participant.html#a1188d6a2036514eb6b649ce1e08eca4d">More...</a><br /></td></tr>
 <tr class="separator:a1188d6a2036514eb6b649ce1e08eca4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a232d2e7fe124ee13650d666fdfc3b866"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1Participant.html#a232d2e7fe124ee13650d666fdfc3b866">getSubjectAsRawNode</a> () const</td></tr>
+<tr class="memitem:a232d2e7fe124ee13650d666fdfc3b866"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1Participant.html#a232d2e7fe124ee13650d666fdfc3b866">getSubject</a> () const</td></tr>
 <tr class="memdesc:a232d2e7fe124ee13650d666fdfc3b866"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the subject portion of the <a class="el" href="classomexmeta_1_1Participant.html">Participant</a>, which is the  <a href="classomexmeta_1_1Participant.html#a232d2e7fe124ee13650d666fdfc3b866">More...</a><br /></td></tr>
 <tr class="separator:a232d2e7fe124ee13650d666fdfc3b866"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a79b467cfc699483fdfe5e7686cc5447e"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1Participant.html#a79b467cfc699483fdfe5e7686cc5447e">getMultiplier</a> () const</td></tr>
@@ -144,14 +141,10 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator!=</b> (const
 const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1Participant.html#ae78613f8d39ccfc23fc3624deb960fb0">getModelUri</a> () const</td></tr>
 <tr class="memdesc:ae78613f8d39ccfc23fc3624deb960fb0"><td class="mdescLeft">&#160;</td><td class="mdescRight">getter for model_uri_ attribute <br /></td></tr>
 <tr class="separator:ae78613f8d39ccfc23fc3624deb960fb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abea74e8605f7314a51db8dc723961462"><td class="memItemLeft" align="right" valign="top"><a id="abea74e8605f7314a51db8dc723961462"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1Participant.html#abea74e8605f7314a51db8dc723961462">setModelUri</a> (const std::string &amp;model_uri)</td></tr>
-<tr class="memdesc:abea74e8605f7314a51db8dc723961462"><td class="mdescLeft">&#160;</td><td class="mdescRight">setter for model_uri_ attribute <br /></td></tr>
-<tr class="separator:abea74e8605f7314a51db8dc723961462"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="ad7fb4564c20db459f8f9f8fc0b62ee09"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad7fb4564c20db459f8f9f8fc0b62ee09">&#9670;&nbsp;</a></span>Participant()</h2>
+<a id="afd275c1f5648ae4c86cc22f3a0853ffb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd275c1f5648ae4c86cc22f3a0853ffb">&#9670;&nbsp;</a></span>Participant()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -171,14 +164,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>model_uri</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>local_uri</em>, </td>
+          <td class="paramtype"><a class="el" href="classomexmeta_1_1UriHandler.html">UriHandler</a> &amp;&#160;</td>
+          <td class="paramname"><em>uriHandler</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -344,13 +331,13 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </div>
 </div>
 <a id="aa09f8c5736dd172b03d7898519d9478d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa09f8c5736dd172b03d7898519d9478d">&#9670;&nbsp;</a></span>getPredicateAsRawNode()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#aa09f8c5736dd172b03d7898519d9478d">&#9670;&nbsp;</a></span>getPredicate()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::basic_string&lt; char &gt; omexmeta::Participant::getPredicateAsRawNode </td>
+          <td class="memname">std::basic_string&lt; char &gt; omexmeta::Participant::getPredicate </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -364,13 +351,13 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </div>
 </div>
 <a id="a232d2e7fe124ee13650d666fdfc3b866"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a232d2e7fe124ee13650d666fdfc3b866">&#9670;&nbsp;</a></span>getSubjectAsRawNode()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a232d2e7fe124ee13650d666fdfc3b866">&#9670;&nbsp;</a></span>getSubject()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const std::string &amp; omexmeta::Participant::getSubjectAsRawNode </td>
+          <td class="memname">const std::string &amp; omexmeta::Participant::getSubject </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -380,27 +367,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 
 <p>get the subject portion of the <a class="el" href="classomexmeta_1_1Participant.html">Participant</a>, which is the </p>
 <dl class="section return"><dt>Returns</dt><dd>the string of the subject value metaid of the <a class="el" href="classomexmeta_1_1Participant.html">Participant</a> </dd></dl>
-
-</div>
-</div>
-<a id="aee7846dcbb910dd394a0683841ab723a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aee7846dcbb910dd394a0683841ab723a">&#9670;&nbsp;</a></span>setMultiplier()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void omexmeta::Participant::setMultiplier </td>
-          <td>(</td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>multiplier</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>return the vector of strings that keeps track of newly generated metaids. <a class="el" href="classThis.html" title="interface for querying an rdf graph basically a wrapper around both librdf_query and librdf_query_res...">This</a> mechanism ensures unique metaids in the situation where the user has added &gt;1 participant of a certain type i.e. sink. </p>
-<p>setter for the multiplier field of <a class="el" href="classomexmeta_1_1Participant.html">Participant</a> types </p>
 
 </div>
 </div>
@@ -499,14 +465,14 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
       </table>
 </div><div class="memdoc">
 
-<p>create a <a class="el" href="classomexmeta_1_1Triples.html">Triples</a> object from the <a class="el" href="classomexmeta_1_1Participant.html">Participant</a>. </p>
+<p>create a <a class="el" href="classomexmeta_1_1Triples.html" title="A Triples object is a collection of Triple objects.">Triples</a> object from the <a class="el" href="classomexmeta_1_1Participant.html">Participant</a>. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">about</td><td>the metaid for a process </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>A <a class="el" href="classomexmeta_1_1Triples.html">Triples</a> container for the <a class="el" href="classomexmeta_1_1Triples.html">Triples</a> associated with this <a class="el" href="classomexmeta_1_1Participant.html">Participant</a></dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>A <a class="el" href="classomexmeta_1_1Triples.html" title="A Triples object is a collection of Triple objects.">Triples</a> container for the <a class="el" href="classomexmeta_1_1Triples.html" title="A Triples object is a collection of Triple objects.">Triples</a> associated with this <a class="el" href="classomexmeta_1_1Participant.html">Participant</a></dd></dl>
 <p>The same toTriples method is used for all participants. </p>
 <p>Since <a class="el" href="classomexmeta_1_1Triple.html">Triple</a>'s are added to the model as a unit, we need a way of keeping track of which metaids have been used in order to ensure unique metaid's when we have more than one Sink/Source/Mediate <a class="el" href="classomexmeta_1_1Participant.html">Participant</a>. For this we add the generated metaid to a vector. Note, we do this before concat with local uri because of the way local_uri's were added after the original design was in place. Future developers might want to look at this.</p>
 
