@@ -5,37 +5,21 @@
 #ifndef LIBOMEXMETA_LIBRDFSTORAGE_H
 #define LIBOMEXMETA_LIBRDFSTORAGE_H
 
-#include "librdf.h"
-#include <string>
-#include <memory>
-#include "World.h"
-#include "sstream"
 #include "LibrdfStatement.h"
+#include "World.h"
+#include "librdf.h"
+#include "sstream"
+#include <memory>
+#include <string>
 
 namespace redland {
 
     class LibrdfStorage {
 
-        std::vector<std::string> valid_stores_ = {
-                "hashes",
-                "memory",
-                "file",
-                "mysql",
-                "postgresql",
-                "sqlite",
-                "tstore",
-                "uri",
-                "virtuoso",
-        };
-
-        struct deleter {
-            void operator()(librdf_storage *storage);
-        };
-
-        librdf_storage *storage_ = nullptr;
-
     public:
         explicit LibrdfStorage(librdf_storage *storage);
+
+        ~LibrdfStorage();
 
         explicit LibrdfStorage(const std::string &storage_name = "memory", const std::string &name = "SemsimStore",
                                const char *options = nullptr);
@@ -59,8 +43,23 @@ namespace redland {
         int commit();
 
         void printAvailableStorages();
+
+    private:
+        std::vector<std::string> valid_stores_ = {
+                "hashes",
+                "memory",
+                "file",
+                "mysql",
+                "postgresql",
+                "sqlite",
+                "tstore",
+                "uri",
+                "virtuoso",
+        };
+
+        librdf_storage *storage_ = nullptr;
     };
-}
+}// namespace redland
 
 /*
  *
@@ -101,4 +100,4 @@ namespace redland {
 //    };
 //
 // */
-#endif //LIBOMEXMETA_LIBRDFSTORAGE_H
+#endif//LIBOMEXMETA_LIBRDFSTORAGE_H

@@ -144,6 +144,7 @@ TEST_F(LibrdfParserTests, TestRelativeBaseUriResolvesCorrectly) {
     auto s = LibrdfNode(stmt.getSubjectNode());
     std::string actual = s.str();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
+    librdf_free_stream(stream);
 }
 
 

@@ -1,15 +1,13 @@
 #include "redland/LibrdfParser.h"
 
-#include <utility>
 #include "redland/LibrdfModel.h"
+#include <utility>
 
 namespace redland {
 
-    LibrdfParser::LibrdfParser(librdf_parser *parser) :
-            parser_(parser) {}
+    LibrdfParser::LibrdfParser(librdf_parser *parser) : parser_(parser) {}
 
-    LibrdfParser::LibrdfParser(std::string format, std::string mime_type, const std::string &type_uri) :
-            format_(std::move(format)), mime_type_(std::move(mime_type)) {
+    LibrdfParser::LibrdfParser(std::string format, std::string mime_type, const std::string &type_uri) : format_(std::move(format)), mime_type_(std::move(mime_type)) {
         setTypeUri(type_uri);
         validateParserName();
         parser_ = makeParser();
@@ -31,8 +29,7 @@ namespace redland {
         if (!name_used && !mime_type_used && !type_uri_)
             throw std::invalid_argument(
                     "std::invalid_argument: LibrdfParser::makeParser(): Need at "
-                    "least one of format, mime_type or type_uri arguments"
-            );
+                    "least one of format, mime_type or type_uri arguments");
         librdf_parser *parser = librdf_new_parser(World::getWorld(), name_used, mime_type_used, type_uri_);
         // must set options each time we create new parser
         // i.e. when we change a parameter, like format
@@ -93,7 +90,7 @@ namespace redland {
         LibrdfNode node = LibrdfNode::fromLiteral(value);
         LibrdfUri u(feature_uri_base + option);
         int failed = librdf_parser_set_feature(parser, u.getWithoutIncrement(), node.getWithoutIncrement());
-        if (failed < 0 ){
+        if (failed < 0) {
             throw std::invalid_argument("No such feature: " + feature_uri_base);
         }
         if (failed) {
@@ -111,7 +108,7 @@ namespace redland {
         setOption(parser, "scanForRDF", "1");
         setOption(parser, "allowNonNsAttributes", "0");
         setOption(parser, "allowOtherParsetypes", "1");
-        setOption(parser, "allowBagID", "0");
+        setOption(parser, "allowBagID", "0");// does nae work
         setOption(parser, "allowRDFtypeRDFlist", "1");
         setOption(parser, "normalizeLanguage", "1");
         setOption(parser, "nonNFCfatal", "0");
@@ -157,30 +154,29 @@ namespace redland {
         LibrdfUri filename_uri_ = LibrdfUri::fromFilename(filename_uri);
         LibrdfUri base_uri = LibrdfUri::fromFilename(filename_uri);
         librdf_parser_parse_into_model(
-                parser_, filename_uri_.get(), base_uri.get(), model.get()
-        );
+                parser_, filename_uri_.get(), base_uri.get(), model.get());
     }
 
     void LibrdfParser::parseFile(const std::string &filename_uri, const LibrdfModel &model, const std::string &local_uri) const {
         LibrdfUri filename_uri_ = LibrdfUri::fromFilename(filename_uri);
         LibrdfUri base_uri(local_uri);
         librdf_parser_parse_into_model(
-                parser_, filename_uri_.get(), base_uri.get(), model.get()
-        );
+                parser_, filename_uri_.get(), base_uri.get(), model.get());
     }
 
     void LibrdfParser::validateParserName() const {
-        std::vector<std::string> v = {"rdfxml",
-                                      "ntriples",
-                                      "turtle",
-                                      "trig",
-                                      "rss-tag-soup",
-                                      "grddl",
-                                      "guess",
-                                      "rdfa",
-                                      "nquads",
-                                      "guess",
-                                      "", // empty string is allowed
+        std::vector<std::string> v = {
+                "rdfxml",
+                "ntriples",
+                "turtle",
+                "trig",
+                "rss-tag-soup",
+                "grddl",
+                "guess",
+                "rdfa",
+                "nquads",
+                "guess",
+                "",// empty string is allowed
         };
         if (std::find(v.begin(), v.end(), getName()) != v.end()) {
             // string accepted return
@@ -197,10 +193,10 @@ namespace redland {
     }
 
     LibrdfParser::~LibrdfParser() {
-        if (parser_ != nullptr) {
-            librdf_free_parser(parser_);
-            parser_ = nullptr;
-        }
+        if (!parser_)
+            return;
+        librdf_free_parser(parser_);
+        parser_ = nullptr;
     }
 
     std::vector<std::string> LibrdfParser::getSeenNamespaces(std::vector<std::string> namespaces) const {
@@ -231,7 +227,6 @@ namespace redland {
             parser_ = parser.parser_;
             parser.parser_ = nullptr;
         }
-
     }
 
     LibrdfParser &LibrdfParser::operator=(LibrdfParser &&parser) noexcept {
@@ -257,4 +252,4 @@ namespace redland {
         }
         return *this;
     }
-}
+}// namespace redland

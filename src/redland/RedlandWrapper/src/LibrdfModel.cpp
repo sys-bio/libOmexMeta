@@ -7,10 +7,17 @@
 
 namespace redland {
 
+
+    LibrdfModel::~LibrdfModel() {
+        freeModel();
+    }
+
+
     void LibrdfModel::freeModel() {
-        if (model_ != nullptr) {
-            librdf_free_model(model_);
-        }
+        if (!model_)
+            return;
+        librdf_free_model(model_);
+        model_ = nullptr;
     }
 
     LibrdfModel::LibrdfModel(librdf_model *model)
@@ -47,6 +54,8 @@ namespace redland {
     LibrdfModel::LibrdfModel(librdf_storage *storage, const char *options)
         : model_(librdf_new_model(World::getWorld(), storage, options)) {}
 
+    LibrdfModel::LibrdfModel(LibrdfStorage &storage, const char *options)
+        : model_(librdf_new_model(World::getWorld(), storage.get(), options)) {}
 
     void LibrdfModel::addStatement(librdf_statement *statement) const {
         librdf_model_add_statement(model_, statement);
@@ -61,7 +70,7 @@ namespace redland {
     }
 
     LibrdfQueryResults LibrdfModel::query(const LibrdfQuery &query) const {
-        librdf_query_results *results = librdf_query_execute(query.get(), model_);
+        librdf_query_results *results = librdf_query_execute(query.getWithoutIncrement(), model_);
         return LibrdfQueryResults(results);
     }
 
@@ -69,7 +78,7 @@ namespace redland {
         return librdf_model_size(model_);
     }
 
-    librdf_stream* LibrdfModel::toStream() {
+    librdf_stream *LibrdfModel::toStream() {
         return librdf_model_as_stream(model_);
     }
 
@@ -180,6 +189,7 @@ namespace redland {
     int LibrdfModel::supportsContexts() const {
         return librdf_model_supports_contexts(model_);
     }
+
     bool LibrdfModel::containsStatement(librdf_statement *statement) const {
         bool contains_statement = false;
         librdf_stream *stream = librdf_model_as_stream(model_);
@@ -204,6 +214,10 @@ namespace redland {
         }
         librdf_free_stream(stream);
         return contains_statement;
+    }
+
+    bool LibrdfModel::containsStatement(const LibrdfStatement &statement) const {
+        return containsStatement(statement.getWithoutIncrement());
     }
 
 }// namespace redland

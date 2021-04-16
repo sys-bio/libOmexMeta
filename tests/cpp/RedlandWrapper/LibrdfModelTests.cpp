@@ -20,38 +20,34 @@ public:
 };
 
 TEST_F(LibrdfModelTests, TestNew) {
-    LibrdfModel model1 = LibrdfModel(storage1.get());
+    LibrdfModel model1 = LibrdfModel(storage1);
     ASSERT_NE(model1.get(), nullptr);
 }
 
 
 TEST_F(LibrdfModelTests, TestMoveConstructor) {
-    LibrdfModel model1 = LibrdfModel(storage1.get());
-    auto model1_int_ptr = reinterpret_cast<std::uintptr_t>(model1.get());
+    // test with valgrind
+    LibrdfModel model1 = LibrdfModel(storage1);
     LibrdfModel model2 = std::move(model1);
-    auto model2_int_ptr = reinterpret_cast<std::uintptr_t>(model2.get());
-    ASSERT_EQ(model1_int_ptr, model2_int_ptr);
+
 }
 
 TEST_F(LibrdfModelTests, TestMoveAssignment) {
-    LibrdfModel model1 = LibrdfModel(storage1.get());
-    // get ptr as int to store for comparison later:
-    auto model1_int_ptr = reinterpret_cast<std::uintptr_t>(model1.get());
-    LibrdfModel model2 = LibrdfModel(storage2.get());
+    // test with valgrind
+    LibrdfModel model1 = LibrdfModel(storage1);
+    LibrdfModel model2 = LibrdfModel(storage2);
     model2 = std::move(model1);
-    auto model2_int_ptr = reinterpret_cast<std::uintptr_t>(model2.get());
-    ASSERT_EQ(model1_int_ptr, model2_int_ptr);
 }
 
 
 TEST_F(LibrdfModelTests, TestAddStatement) {
-    auto model1 = LibrdfModel(storage1.get());
-    LibrdfStatement statement = LibrdfStatement::fromRawNodePtrs(
-            LibrdfNode::fromUriString("subject").get(),
-            LibrdfNode::fromUriString("predicate").get(),
-            LibrdfNode::fromUriString("resource").get()
+    auto model1 = LibrdfModel(storage1);
+    LibrdfStatement statement = LibrdfStatement(
+            LibrdfNode::fromUriString("subject"),
+            LibrdfNode::fromUriString("predicate"),
+            LibrdfNode::fromUriString("resource")
     );
-    model1.addStatement(statement.get());
+    model1.addStatement(statement);
     int expected = 1;
     int actual = model1.size();
     ASSERT_EQ(expected, actual);
@@ -59,21 +55,21 @@ TEST_F(LibrdfModelTests, TestAddStatement) {
 }
 
 TEST_F(LibrdfModelTests, TestRemoveStatement) {
-    LibrdfModel model1 = LibrdfModel(storage1.get());
-    LibrdfStatement statement1 = LibrdfStatement::fromRawNodePtrs(
-            LibrdfNode::fromUriString("subject1").get(),
-            LibrdfNode::fromUriString("predicate1").get(),
-            LibrdfNode::fromUriString("resource1").get()
+    LibrdfModel model1 = LibrdfModel(storage1);
+    LibrdfStatement statement1 = LibrdfStatement(
+            LibrdfNode::fromUriString("subject1"),
+            LibrdfNode::fromUriString("predicate1"),
+            LibrdfNode::fromUriString("resource1")
     );
-    model1.addStatement(statement1.get());
+    model1.addStatement(statement1);
 
-    LibrdfStatement statement2 = LibrdfStatement::fromRawNodePtrs(
-            LibrdfNode::fromUriString("subject2").get(),
-            LibrdfNode::fromUriString("predicate2").get(),
-            LibrdfNode::fromUriString("resource2").get()
+    LibrdfStatement statement2 = LibrdfStatement(
+            LibrdfNode::fromUriString("subject2"),
+            LibrdfNode::fromUriString("predicate2"),
+            LibrdfNode::fromUriString("resource2")
     );
-    model1.addStatement(statement2.get());
-//    librdf_model_remove_statement(model1.get(), statement2.get());
+    model1.addStatement(statement2);
+//    librdf_model_remove_statement(model1, statement2);
     model1.removeStatement(statement2);
     int expected = 1;
     int actual = model1.size();
@@ -82,118 +78,117 @@ TEST_F(LibrdfModelTests, TestRemoveStatement) {
 
 TEST_F(LibrdfModelTests, TestContext) {
     LibrdfStorage storage;
-    LibrdfModel model(storage.get());
+    LibrdfModel model(storage);
     ASSERT_FALSE(model.supportsContexts());
 }
 
 
 TEST_F(LibrdfModelTests, containsPass) {
-    LibrdfStatement statement1 = LibrdfStatement::fromRawNodePtrs(
-            LibrdfNode::fromUriString("subject1").get(),
-            LibrdfNode::fromUriString("predicate1").get(),
-            LibrdfNode::fromUriString("resource1").get()
+    LibrdfStatement statement1 = LibrdfStatement(
+            LibrdfNode::fromUriString("subject1"),
+            LibrdfNode::fromUriString("predicate1"),
+            LibrdfNode::fromUriString("resource1")
     );
 
-    auto model1 = LibrdfModel(storage1.get());
-    model1.addStatement(statement1.get());
+    auto model1 = LibrdfModel(storage1);
+    model1.addStatement(statement1);
 
-    ASSERT_TRUE(model1.containsStatement(statement1.get()));
-    ASSERT_TRUE(model1.containsStatement(statement1.get()));
+    ASSERT_TRUE(model1.containsStatement(statement1));
 }
 
 TEST_F(LibrdfModelTests, containsFail) {
-    LibrdfStatement statement1 = LibrdfStatement::fromRawNodePtrs(
-            LibrdfNode::fromUriString("subject1").get(),
-            LibrdfNode::fromUriString("predicate1").get(),
-            LibrdfNode::fromUriString("resource1").get()
+    LibrdfStatement statement1 = LibrdfStatement(
+            LibrdfNode::fromUriString("subject1"),
+            LibrdfNode::fromUriString("predicate1"),
+            LibrdfNode::fromUriString("resource1")
     );
-    LibrdfStatement statement2 = LibrdfStatement::fromRawNodePtrs(
-            LibrdfNode::fromUriString("subject2").get(),
-            LibrdfNode::fromUriString("predicate2").get(),
-            LibrdfNode::fromUriString("resource2").get()
+    LibrdfStatement statement2 = LibrdfStatement(
+            LibrdfNode::fromUriString("subject2"),
+            LibrdfNode::fromUriString("predicate2"),
+            LibrdfNode::fromUriString("resource2")
     );
 
-    LibrdfModel model1 = LibrdfModel(storage1.get());
-    model1.addStatement(statement1.get());
+    LibrdfModel model1 = LibrdfModel(storage1);
+    model1.addStatement(statement1);
     ASSERT_EQ(1, model1.size());
 
-    ASSERT_TRUE(model1.containsStatement(statement1.get()));
-    ASSERT_FALSE(model1.containsStatement(statement2.get()));
+    ASSERT_TRUE(model1.containsStatement(statement1));
+    ASSERT_FALSE(model1.containsStatement(statement2));
 }
 
 
 TEST_F(LibrdfModelTests, Equality1Pass) {
-    LibrdfStatement statement1 = LibrdfStatement::fromRawNodePtrs(
-            LibrdfNode::fromUriString("subject1").get(),
-            LibrdfNode::fromUriString("predicate1").get(),
-            LibrdfNode::fromUriString("resource1").get()
+    LibrdfStatement statement1 = LibrdfStatement(
+            LibrdfNode::fromUriString("subject1"),
+            LibrdfNode::fromUriString("predicate1"),
+            LibrdfNode::fromUriString("resource1")
     );
 
-    LibrdfStatement statement2 = LibrdfStatement::fromRawNodePtrs(
-            LibrdfNode::fromUriString("subject2").get(),
-            LibrdfNode::fromUriString("predicate2").get(),
-            LibrdfNode::fromUriString("resource2").get()
+    LibrdfStatement statement2 = LibrdfStatement(
+            LibrdfNode::fromUriString("subject2"),
+            LibrdfNode::fromUriString("predicate2"),
+            LibrdfNode::fromUriString("resource2")
     );
 
-    auto model1 = LibrdfModel(storage1.get());
-    auto model2 = LibrdfModel(storage2.get());
-    model1.addStatement(statement1.get());
-    model1.addStatement(statement2.get());
-    model2.addStatement(statement1.get());
-    model2.addStatement(statement2.get());
+    auto model1 = LibrdfModel(storage1);
+    auto model2 = LibrdfModel(storage2);
+    model1.addStatement(statement1);
+    model1.addStatement(statement2);
+    model2.addStatement(statement1);
+    model2.addStatement(statement2);
 
     ASSERT_TRUE(model1 == model2);
 }
 
 TEST_F(LibrdfModelTests, Equality1Blanks) {
     // subject1 and subject2 are blank identifiers and not used in the comparison.
-    LibrdfStatement statement1 = LibrdfStatement::fromRawNodePtrs(
-            LibrdfNode::fromBlank("subject1").get(),
-            LibrdfNode::fromUriString("predicate1").get(),
-            LibrdfNode::fromUriString("resource1").get()
+    LibrdfStatement statement1 = LibrdfStatement(
+            LibrdfNode::fromBlank("subject1"),
+            LibrdfNode::fromUriString("predicate1"),
+            LibrdfNode::fromUriString("resource1")
     );
 
-    LibrdfStatement statement2 = LibrdfStatement::fromRawNodePtrs(
-            LibrdfNode::fromBlank("subject2").get(),
-            LibrdfNode::fromUriString("predicate2").get(),
-            LibrdfNode::fromUriString("resource2").get()
+    LibrdfStatement statement2 = LibrdfStatement(
+            LibrdfNode::fromBlank("subject2"),
+            LibrdfNode::fromUriString("predicate2"),
+            LibrdfNode::fromUriString("resource2")
     );
 
-    auto model1 = LibrdfModel(storage1.get());
-    auto model2 = LibrdfModel(storage2.get());
-    model1.addStatement(statement1.get());
-    model1.addStatement(statement2.get());
-    model2.addStatement(statement1.get());
-    model2.addStatement(statement2.get());
+    auto model1 = LibrdfModel(storage1);
+    auto model2 = LibrdfModel(storage2);
+    model1.addStatement(statement1);
+    model1.addStatement(statement2);
+    model2.addStatement(statement1);
+    model2.addStatement(statement2);
 
     ASSERT_TRUE(model1 == model2);
 }
 
 TEST_F(LibrdfModelTests, Equality1Fail) {
-    LibrdfStatement statement1 = LibrdfStatement::fromRawNodePtrs(
-            LibrdfNode::fromUriString("subject1").get(),
-            LibrdfNode::fromUriString("predicate1").get(),
-            LibrdfNode::fromUriString("resource1").get()
+    LibrdfStatement statement1 = LibrdfStatement(
+            LibrdfNode::fromUriString("subject1"),
+            LibrdfNode::fromUriString("predicate1"),
+            LibrdfNode::fromUriString("resource1")
     );
 
-    LibrdfStatement statement2 = LibrdfStatement::fromRawNodePtrs(
-            LibrdfNode::fromUriString("subject2").get(),
-            LibrdfNode::fromUriString("predicate2").get(),
-            LibrdfNode::fromUriString("resource2").get()
+    LibrdfStatement statement2 = LibrdfStatement(
+            LibrdfNode::fromUriString("subject2"),
+            LibrdfNode::fromUriString("predicate2"),
+            LibrdfNode::fromUriString("resource2")
     );
 
-    LibrdfStatement statement3 = LibrdfStatement::fromRawNodePtrs(
-            LibrdfNode::fromUriString("subject3").get(),
-            LibrdfNode::fromUriString("predicate3").get(),
-            LibrdfNode::fromUriString("resource3").get()
+    LibrdfStatement statement3 = LibrdfStatement(
+            LibrdfNode::fromUriString("subject3"),
+            LibrdfNode::fromUriString("predicate3"),
+            LibrdfNode::fromUriString("resource3")
     );
 
-    LibrdfModel model1 = LibrdfModel(storage1.get());
-    LibrdfModel model2 = LibrdfModel(storage2.get());
-    model1.addStatement(statement1.get());
-    model1.addStatement(statement3.get());
-    model2.addStatement(statement1.get());
-    model2.addStatement(statement2.get());
+    LibrdfModel model1 = LibrdfModel(storage1);
+    LibrdfModel model2 = LibrdfModel(storage2);
+    model1.addStatement(statement1);
+    model1.addStatement(statement3);
+    model2.addStatement(statement1);
+    model2.addStatement(statement2);
 
     ASSERT_FALSE(model1 == model2);
 }

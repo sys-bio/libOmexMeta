@@ -15,6 +15,7 @@ namespace redland {
     LibrdfStatement::LibrdfStatement(librdf_statement *statement)
         : statement_(statement) {
         checkForNull();
+        statement->usage++; // when constructed from raw ptr we need to increment usage count
     }
 
     LibrdfStatement::LibrdfStatement(librdf_node *subject, librdf_node *predicate, librdf_node *resource)

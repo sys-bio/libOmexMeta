@@ -14,10 +14,11 @@
 namespace redland {
 
     class LibrdfQueryResults {
-        librdf_query_results * query_results_ = nullptr;
 
     public:
         LibrdfQueryResults() = default;
+
+        ~LibrdfQueryResults();
 
         explicit LibrdfQueryResults(librdf_query_results *queryResults);
 
@@ -46,6 +47,9 @@ namespace redland {
         std::string str(std::string format);
 
         void freeQueryResults();
+
+    private:
+        librdf_query_results *query_results_ = nullptr;
     };
 }// namespace redland
 

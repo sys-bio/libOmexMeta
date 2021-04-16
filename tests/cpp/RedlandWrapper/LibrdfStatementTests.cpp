@@ -126,17 +126,14 @@ TEST(LibrdfStatementTestsNoFixture, TestBlankInEquality2) {
 
 TEST(LibrdfStatementTestsNoFixture, TestBlankInEquality3) {
     LibrdfStorage storage1;
-    LibrdfModel model1(storage1.get());
+    LibrdfModel model1(storage1);
 
     LibrdfStatement statement1(
-            LibrdfNode::fromUriString("http://omex-library.org/NewOmex.omex/NewModel.xml").get(),
-            LibrdfNode::fromUriString("https://dublincore.org/specifications/dublin-core/dcmi-terms/created").get(),
-            LibrdfNode::fromBlank("").get());
+            LibrdfNode::fromUriString("http://omex-library.org/NewOmex.omex/NewModel.xml"),
+            LibrdfNode::fromUriString("https://dublincore.org/specifications/dublin-core/dcmi-terms/created"),
+            LibrdfNode::fromBlank(""));
     model1.addStatement(statement1);
-    ASSERT_TRUE(model1.containsStatement(statement1.get()));
-
-    model1.freeModel();
-    storage1.freeStorage();
+    ASSERT_TRUE(model1.containsStatement(statement1));
 }
 
 
@@ -160,7 +157,6 @@ TEST_F(LibrdfStatementTests, TestPartial1) {
 TEST_F(LibrdfStatementTests, TestGetSubjectNode) {
     LibrdfStatement statement = LibrdfStatement(subject, predicate, resource);
     ASSERT_EQ(1, statement.getUsage());
-
     ASSERT_EQ(2, subject.getUsage());
     ASSERT_EQ(2, predicate.getUsage());
     ASSERT_EQ(2, resource.getUsage());
