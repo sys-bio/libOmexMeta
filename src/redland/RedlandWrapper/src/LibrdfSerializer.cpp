@@ -24,7 +24,7 @@ namespace redland {
     }
 
     LibrdfSerializer::~LibrdfSerializer() {
-        freeSerializer();
+//        freeSerializer();
     }
 
     LibrdfSerializer::LibrdfSerializer(LibrdfSerializer &&serializer) noexcept {

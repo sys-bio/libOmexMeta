@@ -15,17 +15,13 @@ public:
 
     LibrdfModelTests() = default;
 
-    ~LibrdfModelTests() {
-        storage1.freeStorage();
-        storage2.freeStorage();
-    }
+    ~LibrdfModelTests() override = default;
 
 };
 
 TEST_F(LibrdfModelTests, TestNew) {
     LibrdfModel model1 = LibrdfModel(storage1.get());
     ASSERT_NE(model1.get(), nullptr);
-    model1.freeModel();
 }
 
 
@@ -35,7 +31,6 @@ TEST_F(LibrdfModelTests, TestMoveConstructor) {
     LibrdfModel model2 = std::move(model1);
     auto model2_int_ptr = reinterpret_cast<std::uintptr_t>(model2.get());
     ASSERT_EQ(model1_int_ptr, model2_int_ptr);
-    model2.freeModel();
 }
 
 TEST_F(LibrdfModelTests, TestMoveAssignment) {
@@ -46,7 +41,6 @@ TEST_F(LibrdfModelTests, TestMoveAssignment) {
     model2 = std::move(model1);
     auto model2_int_ptr = reinterpret_cast<std::uintptr_t>(model2.get());
     ASSERT_EQ(model1_int_ptr, model2_int_ptr);
-    model2.freeModel();
 }
 
 
@@ -61,7 +55,6 @@ TEST_F(LibrdfModelTests, TestAddStatement) {
     int expected = 1;
     int actual = model1.size();
     ASSERT_EQ(expected, actual);
-    model1.freeModel();
     statement.freeStatement();
 }
 
@@ -85,17 +78,12 @@ TEST_F(LibrdfModelTests, TestRemoveStatement) {
     int expected = 1;
     int actual = model1.size();
     ASSERT_EQ(expected, actual);
-    model1.freeModel();
-    statement1.freeStatement();
-    statement2.freeStatement();
 }
 
 TEST_F(LibrdfModelTests, TestContext) {
     LibrdfStorage storage;
     LibrdfModel model(storage.get());
     ASSERT_FALSE(model.supportsContexts());
-    model.freeModel();
-    storage.freeStorage();
 }
 
 
@@ -111,8 +99,6 @@ TEST_F(LibrdfModelTests, containsPass) {
 
     ASSERT_TRUE(model1.containsStatement(statement1.get()));
     ASSERT_TRUE(model1.containsStatement(statement1.get()));
-    model1.freeModel();
-    statement1.freeStatement();
 }
 
 TEST_F(LibrdfModelTests, containsFail) {
@@ -132,12 +118,7 @@ TEST_F(LibrdfModelTests, containsFail) {
     ASSERT_EQ(1, model1.size());
 
     ASSERT_TRUE(model1.containsStatement(statement1.get()));
-//    ASSERT_FALSE(model1.containsStatement(statement2));
     ASSERT_FALSE(model1.containsStatement(statement2.get()));
-
-    model1.freeModel();
-    statement1.freeStatement();
-    statement2.freeStatement();
 }
 
 
@@ -162,10 +143,6 @@ TEST_F(LibrdfModelTests, Equality1Pass) {
     model2.addStatement(statement2.get());
 
     ASSERT_TRUE(model1 == model2);
-    statement1.freeStatement();
-    statement2.freeStatement();
-    model1.freeModel();
-    model2.freeModel();
 }
 
 TEST_F(LibrdfModelTests, Equality1Blanks) {
@@ -190,10 +167,6 @@ TEST_F(LibrdfModelTests, Equality1Blanks) {
     model2.addStatement(statement2.get());
 
     ASSERT_TRUE(model1 == model2);
-    model1.freeModel();
-    model2.freeModel();
-    statement1.freeStatement();
-    statement2.freeStatement();
 }
 
 TEST_F(LibrdfModelTests, Equality1Fail) {
@@ -223,10 +196,6 @@ TEST_F(LibrdfModelTests, Equality1Fail) {
     model2.addStatement(statement2.get());
 
     ASSERT_FALSE(model1 == model2);
-    model1.freeModel();
-    statement1.freeStatement();
-    statement2.freeStatement();
-    statement3.freeStatement();
 }
 
 

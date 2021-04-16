@@ -36,10 +36,7 @@ public:
         model.addStatement(statement.get());
     };
 
-    ~LibrdfQueryResultsTests() {
-        statement.freeStatement();
-        model.freeModel();
-    }
+    ~LibrdfQueryResultsTests() = default;
 
 };
 

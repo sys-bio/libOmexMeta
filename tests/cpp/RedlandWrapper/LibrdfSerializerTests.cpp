@@ -1,20 +1,30 @@
 //
 // Created by Ciaran on 5/17/2020.
 //
-#include "gtest/gtest.h"
-#include "redland/World.h"
-#include "redland/LibrdfSerializer.h"
 #include "iostream"
+#include "redland/LibrdfSerializer.h"
+#include "redland/World.h"
+#include "gtest/gtest.h"
 
 using namespace redland;
 
 class LibrdfSerializerTests : public ::testing::Test {
 
 public:
-
     LibrdfSerializerTests() = default;
-
 };
+
+class A {
+public:
+    A() = default;
+};
+
+TEST_F(LibrdfSerializerTests, Test) {
+    //    A* a = new A;
+    std::vector<int> x;
+    int y = x[4];
+}
+
 
 TEST_F(LibrdfSerializerTests, TestInstantiateSerializer) {
     LibrdfSerializer serializer1 = LibrdfSerializer("rdfxml");
@@ -51,11 +61,10 @@ TEST_F(LibrdfSerializerTests, TestToString) {
     LibrdfStatement statement = LibrdfStatement(
             LibrdfNode::fromUriString("https://subject.com"),
             LibrdfNode::fromUriString("https://predicate.com"),
-            LibrdfNode::fromUriString("https://resource.com")
-    );
+            LibrdfNode::fromUriString("https://resource.com"));
     model.addStatement(statement.get());
     LibrdfSerializer serializer1 = LibrdfSerializer("rdfxml");
-//    LibrdfUri uri("base_uri");
+    //    LibrdfUri uri("base_uri");
     std::string actual = serializer1.toString("base_uri", model);
     std::string expected = "<?xml version=\"1.1\" encoding=\"utf-8\"?>\n"
                            "<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n"
@@ -64,9 +73,6 @@ TEST_F(LibrdfSerializerTests, TestToString) {
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
-    statement.freeStatement();
-    model.freeModel();
-    storage.freeStorage();
 }
 
 
@@ -76,8 +82,7 @@ TEST_F(LibrdfSerializerTests, TestToStringTurtle) {
     LibrdfStatement statement = LibrdfStatement(
             LibrdfNode::fromUriString("https://subject.com"),
             LibrdfNode::fromUriString("https://predicate.com"),
-            LibrdfNode::fromUriString("https://resource.com")
-    );
+            LibrdfNode::fromUriString("https://resource.com"));
     model.addStatement(statement.get());
     LibrdfSerializer serializer1 = LibrdfSerializer("turtle");
     std::string actual = serializer1.toString("base_uri", model);
@@ -87,9 +92,6 @@ TEST_F(LibrdfSerializerTests, TestToStringTurtle) {
                            "    <https://predicate.com> <https://resource.com> .\n\n";
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected.c_str(), actual.c_str());
-    statement.freeStatement();
-    model.freeModel();
-    storage.freeStorage();
 }
 
 
@@ -99,17 +101,13 @@ TEST_F(LibrdfSerializerTests, TestToStringNTriples) {
     LibrdfStatement statement = LibrdfStatement(
             LibrdfNode::fromUriString("https://subject.com"),
             LibrdfNode::fromUriString("https://predicate.com"),
-            LibrdfNode::fromUriString("https://resource.com")
-    );
+            LibrdfNode::fromUriString("https://resource.com"));
     model.addStatement(statement.get());
     LibrdfSerializer serializer1 = LibrdfSerializer("ntriples");
     std::string actual = serializer1.toString("base_uri", model);
     std::string expected = "<https://subject.com> <https://predicate.com> <https://resource.com> .\n";
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected.c_str(), actual.c_str());
-    statement.freeStatement();
-    model.freeModel();
-    storage.freeStorage();
 }
 
 TEST_F(LibrdfSerializerTests, TestBaseUri) {
@@ -118,16 +116,13 @@ TEST_F(LibrdfSerializerTests, TestBaseUri) {
     LibrdfStatement statement = LibrdfStatement(
             LibrdfNode::fromUriString("https://subject.com"),
             LibrdfNode::fromUriString("https://predicate.com"),
-            LibrdfNode::fromUriString("https://resource.com")
-    );
+            LibrdfNode::fromUriString("https://resource.com"));
     model.addStatement(statement.get());
     LibrdfSerializer serializer1 = LibrdfSerializer("ntriples");
     std::string actual = serializer1.toString("base_uri", model);
     std::string expected = "<https://subject.com> <https://predicate.com> <https://resource.com> .\n";
     std::cout << actual << std::endl;
     ASSERT_STREQ(expected.c_str(), actual.c_str());
-    model.freeModel();
-    storage.freeStorage();
 }
 
 
@@ -137,8 +132,7 @@ TEST_F(LibrdfSerializerTests, TestFeatures) {
     LibrdfStatement statement = LibrdfStatement(
             LibrdfNode::fromUriString("https://subject.com"),
             LibrdfNode::fromUriString("https://predicate.com"),
-            LibrdfNode::fromUriString("https://resource.com")
-    );
+            LibrdfNode::fromUriString("https://resource.com"));
     model.addStatement(statement.get());
     LibrdfSerializer serializer("rdfxml-abbrev");
 
@@ -146,36 +140,13 @@ TEST_F(LibrdfSerializerTests, TestFeatures) {
     LibrdfUri relativeURIsUri("http://feature.librdf.org/raptor-relativeURIs");
     LibrdfNode relativeURIsNode = LibrdfNode(
             librdf_serializer_get_feature(
-                    serializer.get(), relativeURIsUri.get())
-    );
+                    serializer.get(), relativeURIsUri.get()));
     ASSERT_EQ("0", relativeURIsNode.str());
 
     serializer.setOption("writeBaseURI", "0");
     LibrdfUri writeBaseUriUri("http://feature.librdf.org/raptor-writeBaseURI");
     LibrdfNode writeBaseUriNode = LibrdfNode(
             librdf_serializer_get_feature(
-                    serializer.get(), writeBaseUriUri.get())
-    );
+                    serializer.get(), writeBaseUriUri.get()));
     ASSERT_EQ("0", writeBaseUriNode.str());
-    serializer.freeSerializer();
-    relativeURIsUri.freeUri();
-    relativeURIsNode.freeNode();
-    writeBaseUriUri.freeUri();
-    writeBaseUriNode.freeNode();
-    statement.freeStatement();
-    model.freeModel();
-    storage.freeStorage();
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
