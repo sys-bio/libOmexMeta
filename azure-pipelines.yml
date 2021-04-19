@@ -491,7 +491,7 @@ stages:
               echo "cd $(BUILD_DIRECTORY)"
               cd $(BUILD_DIRECTORY)
 
-              $(PipExecutable) install python-libcombine pytest wheel ipython breathe sphinx-tabs requests tellurium python-libcombine graphviz
+              $(PipExecutable) install python-libcombine pytest wheel ipython breathe sphinx-tabs requests tellurium python-libcombine graphviz pydot
 
               yum install -y graphviz
               cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX=$(INSTALL_DIRECTORY) -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(PythonRoot)  ..
