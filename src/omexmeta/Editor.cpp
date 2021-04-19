@@ -391,9 +391,9 @@ namespace omexmeta {
     }
 
     Editor &Editor::addTaxon(const std::string &taxon_id) {
-        Triple triple(uriHandler_, LibrdfNode::fromUriString(getModelUri()).get(),
-                      PredicateFactory("bqbiol", "hasTaxon")->get(),
-                      LibrdfNode::fromUriString("taxonomy:" + taxon_id).get());
+        Triple triple(uriHandler_, LibrdfNode::fromUriString(getModelUri()),
+                      PredicateFactory("bqbiol", "hasTaxon"),
+                      LibrdfNode::fromUriString(Predicate::namespaceMap()["NCBI_Taxon"] + taxon_id));
         model_.addStatement(triple);
         addNamespace(Predicate::namespaceMap()["bqbiol"], "bqbiol");
         addNamespace(Predicate::namespaceMap()["NCBI_Taxon"], "NCBI_Taxon");

@@ -35,6 +35,9 @@ namespace omexmeta {
     public:
         using LibrdfStatement::LibrdfStatement;
         using LibrdfStatement::operator=;
+        using LibrdfStatement::setSubject;
+        using LibrdfStatement::setPredicate;
+        using LibrdfStatement::setResource;
 
         /**
          * @brief only a default virtual destructor needed

@@ -103,7 +103,6 @@ namespace redland {
         }
 
         else if (std::regex_search(uri_string, m, taxon_regex)) {
-            std::cout << "Taxon regex matched" << std::endl;
             uri_string_ = identifier_dot_org + uri_string;
         }
 

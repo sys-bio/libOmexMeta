@@ -827,11 +827,52 @@ TEST_F(EditorTests, TestaddTaxon) {
                            "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
                            "@prefix NCBI_Taxon: <https://identifiers.org/taxonomy:> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
-                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
-                           "myOMEX:NewModel.xml\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml>\n"
                            "    bqbiol:hasTaxon NCBI_Taxon:9696 .";
     std::cout << rdf.toString() << std::endl;
+
     ASSERT_TRUE(RDF::equals(&rdf, expected));
+}
+
+
+TEST_F(EditorTests, prefixTest1) {
+    LibrdfNode subject = LibrdfNode::fromUriString("http://omex-library.org/NewOmex.omex/NewModel.xml#model0000");
+    LibrdfNode predicate = LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/hasTaxon");
+    LibrdfNode resource = LibrdfNode::fromUriString("https://prefix.org#AnID");
+
+    RDF rdf;
+    Editor editor = rdf.toEditor(SBMLFactory::getSBML(SBML_NOT_ANNOTATED2), true, false);
+
+    SingularAnnotation singularAnnotation = editor.newSingularAnnotation();
+    singularAnnotation.setSubject(subject.getWithoutIncrement());
+
+    singularAnnotation.setPredicate(predicate.getWithoutIncrement());
+    singularAnnotation.setResource(resource.getWithoutIncrement());
+
+    editor.addSingleAnnotation(singularAnnotation);
+    editor.addNamespace("https://prefix.org#", "APrefix");
+
+    std::cout << rdf.toString("turtle") << std::endl;
+}
+
+TEST_F(EditorTests, prefixTest2) {
+    LibrdfNode subject = LibrdfNode::fromUriString("http://omex-library.org/NewOmex.omex/NewModel.xml#model0000");
+    LibrdfNode predicate = LibrdfNode::fromUriString("http://biomodels.net/biology-qualifiers/hasTaxon");
+    LibrdfNode resource = LibrdfNode::fromUriString("https://identifiers.org/taxonomy:9696");
+
+    RDF rdf;
+    Editor editor = rdf.toEditor(SBMLFactory::getSBML(SBML_NOT_ANNOTATED2), true, false);
+
+    SingularAnnotation singularAnnotation = editor.newSingularAnnotation();
+    singularAnnotation.setSubject(subject.getWithoutIncrement());
+
+    singularAnnotation.setPredicate(predicate.getWithoutIncrement());
+    singularAnnotation.setResource(resource.getWithoutIncrement());
+
+    editor.addSingleAnnotation(singularAnnotation);
+    editor.addNamespace("https://identifiers.org/taxonomy:", "NCBI_Taxon");
+
+    std::cout << rdf.toString("turtle") << std::endl;
 }
