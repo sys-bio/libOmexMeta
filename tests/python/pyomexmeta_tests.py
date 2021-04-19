@@ -1353,24 +1353,25 @@ class DrawTests(unittest.TestCase):
                 end
                 """
         self.sbml = te.antimonyToSBML(ant)
-        self.output_filename = os.path.join(os.path.dirname(__file__), "test_draw")
+        self.output_filename = os.path.join(os.path.dirname(__file__), "test_draw.jpeg")
 
     def tearDown(self) -> None:
-        if os.path.isfile(self.output_filename + ".jpeg"):
-            os.remove(self.output_filename + ".jpeg")
+        if os.path.isfile(self.output_filename ):
+            os.remove(self.output_filename)
 
         if os.path.isfile(self.output_filename):
             os.remove(self.output_filename)
 
-    @unittest.skip("graphviz executable not found on some systems (on CI). ")
     def test(self):
         rdf = RDF()
-        with rdf.to_editor(self.sbml, generate_new_metaids=True) as editor:
-            with editor.new_singular_annotation() as s:
-                s.about("species0000") \
-                    .predicate("bqbiol", "is") \
-                    .resource_uri("fma/FMA_66835")
-        rdf.draw(self.output_filename, format="jpeg")
+        editor = rdf.to_editor(self.sbml, generate_new_metaids=True)
+
+        with editor.new_singular_annotation() as s:
+            s.about("species0000") \
+                .predicate("bqbiol", "is") \
+                .resource_uri("fma/FMA_66835")
+
+        rdf.draw(self.output_filename)
         self.assertTrue(os.path.isfile(self.output_filename))
 
 

@@ -1,10 +1,23 @@
 from __future__ import annotations
 
 import ctypes as ct
-import os
 from contextlib import contextmanager
 from sys import executable as _python_interpretor
 from typing import List
+
+import matplotlib.pyplot as plt
+import matplotlib.image as mpimg
+
+import pydot
+
+try:
+    import graphviz
+except ImportError:
+    raise ImportError(f'"graphviz" not found. Install '
+                      f'with "[sudo apt][choco][brew] install graphviz" and then '
+                      f'"pip install graphviz". This may be an conda environment issue. Check that '
+                      f'you are using the correct python interpretor. The interpreter being used '
+                      f'now is \"{_python_interpretor}\"')
 
 try:
     # for use from outside the package, as a python package
@@ -260,32 +273,27 @@ class RDF:
         propagate_omexmeta_error(obj)
         return Editor(obj)
 
-    def draw(self, filename: str, **kwargs):
-        """
-        render an graph of RDF and save to `filename`
+    def draw(self, filename: str, show: bool = False):
+        """ Render network as image and save to filename (as png).
 
         Args:
-            filename: where to write. The extension determines the format. See
-            https://graphviz.readthedocs.io/en/stable/index.html for more
-            details about accepted formats.
+            filename: if not None, save to this filename. Use the filename
+                      extension for saving to different file types. Valid
+                      filetypes are the same as that for `matplotlib.savefig <https://matplotlib.org/2.1.2/api/_as_gen/matplotlib.pyplot.savefig.html>_`
+            show:     Bool. Displays graph when true. Default: False. Note:
+                      must be using a matplotlib GUI-backend such as TkAgg
+                      (i.e. matplotlib.use("TkAgg") )
 
-        Returns:
+        Returns: matplotlib.Figure
 
         """
-        try:
-            import graphviz
-        except ImportError:
-            raise ImportError(f'"graphviz" not found. Install '
-                              f'with "[sudo apt][choco][brew] install graphviz" and then '
-                              f'"pip install graphviz". This may be an conda environment issue. Check that '
-                              f'you are using the correct python interpretor. The interpreter being used '
-                              f'now is \"{_python_interpretor}\"')
-        dot = self.to_string("dot")
-        src = graphviz.Source(dot, **kwargs)
-        src.render(filename)
-        print('RDF graph saved to "{}"'.format(filename))
-        if not os.path.isfile(filename):
-            raise ValueError("Output was not written to file \"{}\"".format(filename))
+
+        (graph,) = pydot.graph_from_dot_data(self.to_string("dot"))
+        graph.write_png(filename)
+        if show:
+            img = mpimg.imread(filename)
+            plt.imshow(img)
+            plt.show()
 
 
 class Editor:
