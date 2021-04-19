@@ -90,6 +90,19 @@ class RDF:
 
     def __init__(self, storage_type: str = "memory", storage_name: str = "libOmexMetaStore",
                  storage_options: str = None, model_options: str = None, rdf_ptr: ct.c_int64 = None):
+        """Construct an RDF graph.
+
+        Args:
+            storage_type:       `memory` (default) or `sqlite` (are tested). Some of the
+                                others from `https://librdf.org/docs/api/redland-storage-modules.html` *may* also work.
+            storage_name:       A name to give the storage. Arbitrary, user specified.
+            storage_options:    Options to pass to librdf_storage. Options take form of "option='yes'".
+                                Please refer to the librdf documentation for relevant options for
+                                each type of storage. For instance https://librdf.org/docs/api/redland-storage-module-mysql.html
+            model_options:      Options to pass to a librdf_model*. Please refer to librdf docs `https://librdf.org/docs/api/index.html`
+            rdf_ptr:            Default=None. An existing rdf_ptr to use if specified. If None,
+                                A new rdf graph is created.
+        """
         # when pointer argument not given by user, create new instance of RDF
         # argument is only given manually when static methods are used and
         # this is hidden from users.
@@ -131,12 +144,25 @@ class RDF:
         self._obj = ptr
 
     @staticmethod
-    def from_string(rdf_string: str, format: str = "guess", base_uri: str = "Annotations.rdf",
-                    storage_type: str = "hashes", storage_name: str = "semsim_storage", storage_options: str = None,
+    def from_string(rdf_string: str, format: str = "guess", storage_type: str = "hashes", storage_name: str = "semsim_storage", storage_options: str = None,
                     model_options: str = None) -> RDF:
-        """read rdf from a string"""
+        """Read an rdf graph from a string in `format` format (default is to `guess`). Other options
+        are passed to RDF constructor (See RDF.__init__)
+
+        Args:
+            rdf_string:         RDF string to read.
+            format:             Default=`guess`. Format of rdf_string to read. One of
+                                `rdfxml`, `json`, `turtle`.
+            storage_type:       storage_type argument for RDF constructor (see RDF.__init__)
+            storage_name:       storage_name argument for RDF constructor (see RDF.__init__)
+            storage_options:    storage_options argument for RDF constructor (see RDF.__init__)
+            model_options:      model_options argument for RDF constructor (see RDF.__init__)
+
+        Returns: RDF
+
+        """
         rdf_ptr = _pyom.rdf_from_string(
-            rdf_string.encode(), format.encode(), base_uri.encode(),
+            rdf_string.encode(), format.encode(),
             storage_type.encode(), storage_name.encode(),
             None if not storage_options else storage_options.encode(),
             None if not storage_options else model_options.encode()
