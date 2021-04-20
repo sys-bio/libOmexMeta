@@ -1,4 +1,4 @@
-FROM ciaranwelsh/manylinux2014
+FROM ciaranwelsh/libomexmeta-manylinux2014-base
 
 RUN git clone https://github.com/sys-bio/libOmexMeta.git --recurse-submodules
 RUN cd /libOmexMeta && mkdir build && cd build \

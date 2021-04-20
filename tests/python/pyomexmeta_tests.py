@@ -1362,6 +1362,7 @@ class DrawTests(unittest.TestCase):
         if os.path.isfile(self.output_filename):
             os.remove(self.output_filename)
 
+    @unittest.skip()
     def test(self):
         rdf = RDF()
         editor = rdf.to_editor(self.sbml, generate_new_metaids=True)
