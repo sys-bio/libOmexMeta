@@ -16,7 +16,6 @@ using namespace omexmeta;
 class RDFTests : public ::testing::Test {
 
 public:
-
     AnnotationSamples samples;
 
     RDFTests() = default;
@@ -85,8 +84,8 @@ TEST_F(RDFTests, TestFromStringSingularAnnotation) {
 }
 
 TEST_F(RDFTests, TestFromStringSingularAnnotationSqlite) {
-//    "hashes", "test", "hash-type='bdb',dir='.'")
-//    librdf_new_storage()
+    //    "hashes", "test", "hash-type='bdb',dir='.'")
+    //    librdf_new_storage()
     RDF rdf("sqlite", "semsim_store", "new='yes'");//"hash-type=sqlite,dir=mnt/d/libomexmeta/tests/cpp");
     rdf.addFromString(samples.singular_annotation1, "rdfxml");
     rdf.commitTransaction();
@@ -157,8 +156,6 @@ TEST(RDFTestsNoFigure, TestRDFCanReadFromTwoStrings) {
 
     RDF rdf = RDF::fromString(rdf_string1);
     std::cout << rdf.toString() << std::endl;
-
-
 }
 
 TEST_F(RDFTests, TestAddFromString) {
@@ -182,8 +179,8 @@ TEST_F(RDFTests, TestAddFromStringMultipleTimes) {
 
 TEST_F(RDFTests, TestParseFromFile) {
     // first create a file containing annotations
-//    raptor_option_uri_prefix;
-    std::string fname = (std::filesystem::current_path()/+ "TestParseFromFile.rdf").string();
+    //    raptor_option_uri_prefix;
+    std::string fname = (std::filesystem::current_path() / +"TestParseFromFile.rdf").string();
     std::cout << fname << std::endl;
     std::ofstream f(fname);
     if (f.is_open()) {
@@ -203,7 +200,6 @@ TEST_F(RDFTests, TestParseFromFile) {
 
     // clear up file we wrote
     std::remove(fname.c_str());
-
 }
 
 
@@ -252,8 +248,7 @@ TEST_F(RDFTests, TestReadFromSBMLWithExtraction) {
     std::string expected = "";
     std::string actual = rdf.toString("turtle");
     std::cout << actual << std::endl;
-//    ASSERT_STREQ(expected.c_str(), actual.c_str());
-
+    //    ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
 TEST_F(RDFTests, TestReadSBMLModelWithBagFromString) {
@@ -265,7 +260,7 @@ TEST_F(RDFTests, TestReadSBMLModelWithBagFromString) {
 }
 
 TEST_F(RDFTests, TestReadSBMLModelWithBagFromFile) {
-    std::filesystem::path fname = std::filesystem::current_path() /+ "sbml.xml";
+    std::filesystem::path fname = std::filesystem::current_path() / +"sbml.xml";
     RDF expectedRdf = RDF::fromString(samples.annotationFromSBMLModelWithRDFBag);
 
     // get sbml as string
@@ -282,128 +277,20 @@ TEST_F(RDFTests, TestReadSBMLModelWithBagFromFile) {
 
     // clean up file
     remove(fname);
-
-
 }
 
-TEST_F(RDFTests, TestRepositoryPrefix){
+TEST_F(RDFTests, TestRepositoryPrefix) {
     RDF rdf = RDF::fromString(samples.singular_annotation1);
     std::string turtle_string = rdf.toString("turtle");
     std::string arg = "@prefix OMEXlib: <http://omex-library.org/> .";
     ASSERT_TRUE(OmexMetaUtils::isSubString(turtle_string, arg));
 }
 
-TEST_F(RDFTests, TestLocalPrefix){
+TEST_F(RDFTests, TestLocalPrefix) {
     RDF rdf = RDF::fromString(samples.singular_annotation1);
     std::string turtle_string = rdf.toString("turtle");
     std::string arg = "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .";
     ASSERT_TRUE(OmexMetaUtils::isSubString(turtle_string, arg));
-}
-
-
-TEST_F(SBMLSemanticExtractionTests, TestReactionExtraction){
-    std::string model_string = SBMLFactory::getSBML(SBML_Semantic_Extraction_Model);
-//    std::cout << model_string << std::endl;
-    RDF rdf;
-    rdf.setArchiveUri("AnAwesomeOmex.omex");
-    rdf.setModelUri("Model1.xml");
-    Editor editor = rdf.toEditor(model_string, true);
-    SBMLSemanticExtraction extraction(&editor);
-    extraction.extractProcessesFromReactions();
-    std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
-                           "@prefix semsim: <http://bime.uw.edu/semsim/> .\n"
-                           "@prefix OMEXlib: <http://omex-library.org/> .\n"
-                           "@prefix local: <http://omex-library.org/AnAwesomeOmex.omex/Model1.rdf#> .\n"
-                           "\n"
-                           "local:MediatorParticipant0000\n"
-                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#sp_5> .\n"
-                           "\n"
-                           "local:MediatorParticipant0001\n"
-                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#sp_5> .\n"
-                           "\n"
-                           "local:ProcessProperty0000\n"
-                           "    bqbiol:isPropertyOf <http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#react1> ;\n"
-                           "    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .\n"
-                           "\n"
-                           "local:ProcessProperty0001\n"
-                           "    bqbiol:isPropertyOf <http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#react2> ;\n"
-                           "    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .\n"
-                           "\n"
-                           "local:ProcessProperty0002\n"
-                           "    bqbiol:isPropertyOf <http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#react1> ;\n"
-                           "    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .\n"
-                           "\n"
-                           "local:ProcessProperty0003\n"
-                           "    bqbiol:isPropertyOf <http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#react2> ;\n"
-                           "    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .\n"
-                           "\n"
-                           "local:SinkParticipant0000\n"
-                           "    semsim:hasMultiplier \"1\"^^rdf:double ;\n"
-                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#sp_1> .\n"
-                           "\n"
-                           "local:SinkParticipant0001\n"
-                           "    semsim:hasMultiplier \"1\"^^rdf:double ;\n"
-                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#sp_4> .\n"
-                           "\n"
-                           "local:SinkParticipant0002\n"
-                           "    semsim:hasMultiplier \"1\"^^rdf:double ;\n"
-                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#sp_1> .\n"
-                           "\n"
-                           "local:SinkParticipant0003\n"
-                           "    semsim:hasMultiplier \"1\"^^rdf:double ;\n"
-                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#sp_4> .\n"
-                           "\n"
-                           "local:SourceParticipant0000\n"
-                           "    semsim:hasMultiplier \"1\"^^rdf:double ;\n"
-                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#sp_2> .\n"
-                           "\n"
-                           "local:SourceParticipant0001\n"
-                           "    semsim:hasMultiplier \"1\"^^rdf:double ;\n"
-                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#sp_3> .\n"
-                           "\n"
-                           "local:SourceParticipant0002\n"
-                           "    semsim:hasMultiplier \"1\"^^rdf:double ;\n"
-                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#sp_1> .\n"
-                           "\n"
-                           "local:SourceParticipant0003\n"
-                           "    semsim:hasMultiplier \"1\"^^rdf:double ;\n"
-                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#sp_2> .\n"
-                           "\n"
-                           "local:SourceParticipant0004\n"
-                           "    semsim:hasMultiplier \"1\"^^rdf:double ;\n"
-                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#sp_3> .\n"
-                           "\n"
-                           "local:SourceParticipant0005\n"
-                           "    semsim:hasMultiplier \"1\"^^rdf:double ;\n"
-                           "    semsim:hasPhysicalEntityReference <http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#sp_1> .\n"
-                           "\n"
-                           "<http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#react1>\n"
-                           "    semsim:hasSinkParticipant local:SinkParticipant0000, local:SinkParticipant0002 ;\n"
-                           "    semsim:hasSourceParticipant local:SourceParticipant0000, local:SourceParticipant0003 .\n"
-                           "\n"
-                           "<http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#react2>\n"
-                           "    semsim:hasMediatorParticipant local:MediatorParticipant0000, local:MediatorParticipant0001 ;\n"
-                           "    semsim:hasSinkParticipant local:SinkParticipant0001, local:SinkParticipant0003 ;\n"
-                           "    semsim:hasSourceParticipant local:SourceParticipant0001, local:SourceParticipant0002, local:SourceParticipant0004, local:SourceParticipant0005 .\n"
-                           "\n"
-                           "<http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#sp_1>\n"
-                           "    bqbiol:isPartOf <http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#cytosol> .\n"
-                           "\n"
-                           "<http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#sp_2>\n"
-                           "    bqbiol:isPartOf <http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#cytosol> .\n"
-                           "\n"
-                           "<http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#sp_3>\n"
-                           "    bqbiol:isPartOf <http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#cytosol> .\n"
-                           "\n"
-                           "<http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#sp_4>\n"
-                           "    bqbiol:isPartOf <http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#extraCell> .\n"
-                           "\n"
-                           "<http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#sp_5>\n"
-                           "    bqbiol:isPartOf <http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#cytosol> .";
-    std::string actual = rdf.toString("turtle");
-    std::cout << actual << std::endl;
-    OmexMetaTestUtils::equals(&rdf, expected);
 }
 
 
@@ -421,7 +308,6 @@ TEST_F(RDFTests, TestBagConversionSimple) {
                            "    bqbiol:isVersionOf <http://identifiers.org/obo.chebi/CHEBI:16526>, <http://identifiers.org/obo.chebi/CHEBI:16527>, <http://identifiers.org/obo.chebi/CHEBI:16528> .";
 
     ASSERT_TRUE(RDF::equals(&rdf, expected, "turtle"));
-
 }
 
 TEST_F(RDFTests, TestBagConversionWithVCardInTheMix) {
@@ -500,15 +386,13 @@ TEST_F(RDFTests, TestBagConversionWithVCardInTheMix) {
                         "            </rdf:Description>\n"
                         "        </rdf:RDF>";
     RDF rdf = RDF::fromString(input, "rdfxml");
-    rdf.purgeRDFBag();
+    rdf.vcardTranslator();
 
-    std::string expected = "This test can only be completed after we know how to convert "
-                           "VCard information from rdf:Bag";
+//    std::string expected = "This test can only be completed after we know how to convert "
+//                           "VCard information from rdf:Bag";
 
-    ASSERT_TRUE(RDF::equals(&rdf, expected, "turtle"));
-
+    ASSERT_TRUE(RDF::equals(&rdf, "expected", "turtle"));
 }
-
 
 
 class ParserReadTesReadFromFileHasPrefixesTests : public ::testing::Test {
@@ -524,18 +408,17 @@ public:
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n";
     AnnotationSamples samples;
-    const std::string& input_string = samples.simple_input_turtle_string;
+    const std::string &input_string = samples.simple_input_turtle_string;
     ParserReadTesReadFromFileHasPrefixesTests() = default;
-
 };
 
-TEST_F(ParserReadTesReadFromFileHasPrefixesTests, TestReadFromStringHasPrefixes){
+TEST_F(ParserReadTesReadFromFileHasPrefixesTests, TestReadFromStringHasPrefixes) {
     RDF rdf = RDF::fromString(input_string, "turtle");
     ASSERT_TRUE(OmexMetaTestUtils::equals(&rdf, expected, "rdfxml"));
 }
 
-TEST_F(ParserReadTesReadFromFileHasPrefixesTests, TestReadFromFileHasPrefixes){
-    std::filesystem::path fname = std::filesystem::current_path() /+ "annotation_file.rdf";
+TEST_F(ParserReadTesReadFromFileHasPrefixesTests, TestReadFromFileHasPrefixes) {
+    std::filesystem::path fname = std::filesystem::current_path() / +"annotation_file.rdf";
     std::ofstream annot_file;
 
     annot_file.open(fname);
@@ -546,31 +429,4 @@ TEST_F(ParserReadTesReadFromFileHasPrefixesTests, TestReadFromFileHasPrefixes){
 
     ASSERT_TRUE(OmexMetaTestUtils::equals(&rdf, expected, "rdfxml"));
     remove(fname.string().c_str());
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

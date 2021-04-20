@@ -42,6 +42,7 @@ set(OMEXMETA_HEADERS
         "${OMEXMETA_INCLUDE_DIR}/omexmeta/OmexMetaXmlType.h"
         "${OMEXMETA_INCLUDE_DIR}/omexmeta/Error.h"
         "${OMEXMETA_INCLUDE_DIR}/omexmeta/UriHandler.h"
+        "${OMEXMETA_INCLUDE_DIR}/omexmeta/VCardTranslator.h"
         #    dbg.h
         )
 
@@ -70,6 +71,7 @@ set(OMEXMETA_SOURCES
         "PersonalInformation.cpp"
         "MarkupIdentifier.cpp"
         "UriHandler.cpp"
+        "VCardTranslator.cpp"
         )
 
 

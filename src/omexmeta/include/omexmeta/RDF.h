@@ -370,6 +370,13 @@ namespace omexmeta {
          */
         void purgeRDFBag();
 
+        /**
+         * @brief translate the "vcard" construct
+         * into OmexMeta complient annotation
+         */
+        void vcardTranslator();
+
+
     };
 }
 

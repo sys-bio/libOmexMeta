@@ -140,9 +140,4 @@ namespace omexmeta {
         }
     }
 
-    void SBMLSemanticExtraction::bagConversion() {
-        ElementExtractor species_extraction(sbml_string_, "rdf:bag");
-
-    }
-
 }// namespace omexmeta

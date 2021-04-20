@@ -579,5 +579,23 @@ namespace omexmeta {
         //        }
     }
 
+    void RDF::vcardTranslator() {
+        std::string q = "SELECT  ?blank ?subject ?predicate ?rdfTypePredicateRemoveMe ?removeMePredicate2 ?resource   \n"
+                        "WHERE {\n"
+                        "?subject ?predicate ?blank . \n"
+                        "?blank ?rdfTypePredicateRemoveMe <http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag> .\n"
+                        "?blank ?removeMePredicate2 ?resource\n"
+                        "}\n";
+
+        Query query(model_.get(), q);
+        auto results = query.resultsAsMap();
+
+        for (auto [k, l]: results){
+
+        }
+
+        ;
+    }
+
 
 }// namespace omexmeta
