@@ -521,6 +521,6 @@ stages:
           - task: PublishBuildArtifacts@1
             inputs:
               pathToPublish: '$(Build.ArtifactStagingDirectory)/libomexmeta-$(PythonName)'
-              artifactName: libOmexMeta-ManyLinux2014-$(PythonName)
+              artifactName: libOmexMeta-libOmexMeta-manylinux2014-base-$(PythonName)
               Parallel: true
               ParallelCount: 8
