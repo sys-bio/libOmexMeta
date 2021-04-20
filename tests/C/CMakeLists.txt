@@ -3,8 +3,6 @@ set(target "OmexMetaCAPITests")
 
 set(CAPI_TEST_SOURCES
         CAPITests.cpp
-        ${OMEXMETA_TESTS_DIR}/OmexMetaTestUtils.h
-        ${OMEXMETA_TESTS_DIR}/OmexMetaTestUtils.cpp
         )
 
 add_executable(${target} ${CAPI_TEST_SOURCES})

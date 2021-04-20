@@ -153,7 +153,7 @@ class TestRDF(unittest.TestCase):
         rdf = RDF()
         rdf.set_model_uri("my-awesome-model.xml")
         actual = rdf.get_model_uri()
-        expected = "http://omex-library.org/NewOmex.omex/my-awesome-model.xml#"
+        expected = "http://omex-library.org/NewOmex.omex/my-awesome-model.xml"
         self.assertEqual(expected, actual)
 
     def test_get_repository_uri(self):

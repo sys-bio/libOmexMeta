@@ -12,7 +12,6 @@ set(REDLAND_WRAPPER_TEST_SOURCES
         LibrdfSerializerTests.cpp
         LibrdfQueryTests.cpp
         LibrdfQueryResultsTests.cpp
-        LibrdfStreamTests.cpp
         )
 
 # add test executable

@@ -254,13 +254,11 @@ namespace omexmeta {
     }
 
     Editor RDF::toEditor(const std::string &xml, bool generate_new_metaids, bool sbml_semantic_extraction) {
-        return Editor(xml, false, model_, namespaces_, generate_new_metaids, sbml_semantic_extraction,
-                      getRepositoryUri(), getArchiveUri(), getModelUri(), getLocalUri());
+        return Editor(xml, false, model_, namespaces_, uriHandler_, generate_new_metaids, sbml_semantic_extraction);
     }
 
     Editor *RDF::toEditorPtr(const std::string &xml, bool generate_new_metaids, bool sbml_semantic_extraction) {
-        auto *editor = new Editor(xml, false, model_, namespaces_, generate_new_metaids, sbml_semantic_extraction,
-                                  getRepositoryUri(), getArchiveUri(), getModelUri(), getLocalUri());
+        auto *editor = new Editor(xml, false, model_, namespaces_, uriHandler_, generate_new_metaids, sbml_semantic_extraction);
         return editor;
     }
 
@@ -329,31 +327,31 @@ namespace omexmeta {
     }
 
     const std::string &RDF::getRepositoryUri() const {
-        return uriHandler_.getRepository();
+        return uriHandler_.getRepositoryUri();
     }
 
     void RDF::setRepositoryUri(const std::string &repositoryName) {
-        uriHandler_.setRepository(repositoryName);
+        uriHandler_.setRepositoryUri(repositoryName);
     }
 
     const std::string &RDF::getArchiveUri() const {
-        return uriHandler_.getArchive();
+        return uriHandler_.getArchiveUri();
     }
 
     void RDF::setArchiveUri(const std::string &archiveName) {
-        uriHandler_.setArchive(archiveName);
+        uriHandler_.setArchiveUri(archiveName);
     }
 
     const std::string &RDF::getModelUri() const {
-        return uriHandler_.getModel();
+        return uriHandler_.getModelUri();
     }
 
     void RDF::setModelUri(std::string modelName) {
-        uriHandler_.setModel(std::move(modelName));
+        uriHandler_.setModelUri(std::move(modelName));
     }
 
     const std::string &RDF::getLocalUri() const {
-        return uriHandler_.getLocal();
+        return uriHandler_.getLocalUri();
     }
 
     OmexMetaXmlType RDF::getXmlType() const {
@@ -426,24 +424,22 @@ namespace omexmeta {
         model_.addStatement(triple.getStatement());
         // after adding content to the model we need to
         // update namespace information
-        seen_namespaces_.push_back(triple.getPredicateStr());
+        seen_namespaces_.push_back(triple.getPredicateNode().str());
         namespaces_ = propagateNamespacesFromParser(seen_namespaces_);
     }
 
-    void RDF::addTriples(const Triples &triples) {
-        for (int i = 0; i < triples.size(); i++) {
-            const Triple &triple = triples[i];
+    void RDF::addTriples(Triples &triples) {
+        for (auto &triple : triples) {
             model_.addStatement(triple.getStatement());
-            const std::string &ns = LibrdfNode(triple.getPredicate()).getNamespace();
-            seen_namespaces_.push_back(triple.getPredicateNamespaceStr());
+            seen_namespaces_.push_back(triple.getPredicateNode().getNamespace());
             namespaces_ = propagateNamespacesFromParser(seen_namespaces_);
         }
     }
 
 
-    bool RDF::equals(RDF *actual, RDF *expected, const std::string &format) {
+    bool RDF::equals(RDF *actual, RDF *expected, const std::string &format, bool verbose) {
         bool equal = *expected == *actual;
-        if (!equal) {
+        if (verbose && !equal) {
             std::cout << "Expected does not equal actual: " << std::endl;
             std::cout << "Expected:" << std::endl;
             std::cout << expected->toString(format) << std::endl;
@@ -452,10 +448,10 @@ namespace omexmeta {
         }
         return equal;
     }
-    bool RDF::equals(RDF *actual, const std::string &expected_string, const std::string &format) {
+    bool RDF::equals(RDF *actual, const std::string &expected_string, const std::string &format, bool verbose) {
         RDF expected = RDF::fromString(expected_string, format);
         bool equal = expected == *actual;
-        if (!equal) {
+        if (verbose && !equal) {
             std::cout << "Expected does not equal actual: " << std::endl;
             std::cout << "Expected:" << std::endl;
             std::cout << expected.toString(format) << std::endl;
@@ -465,13 +461,13 @@ namespace omexmeta {
         return equal;
     }
 
-    bool RDF::equals(const Triple &actual, const std::string &expected_string, const std::string &format) {
+    bool RDF::equals(const Triple &actual, const std::string &expected_string, const std::string &format, bool verbose) {
         RDF actual_rdf;
         actual_rdf.addTriple(actual);
 
         RDF expected_rdf = RDF::fromString(expected_string);
         bool equal = expected_rdf == actual_rdf;
-        if (!equal) {
+        if (verbose && !equal) {
             std::cout << "Expected does not equal actual: " << std::endl;
             std::cout << "Expected:" << std::endl;
             std::cout << expected_rdf.toString(format) << std::endl;
@@ -481,13 +477,13 @@ namespace omexmeta {
         return equal;
     }
 
-    bool RDF::equals(const Triples &actual, const std::string &expected_string, const std::string &format) {
+    bool RDF::equals(Triples &actual, const std::string &expected_string, const std::string &format, bool verbose) {
         RDF actual_rdf;
         actual_rdf.addTriples(actual);
 
         RDF expected_rdf = RDF::fromString(expected_string);
         bool equal = expected_rdf == actual_rdf;
-        if (!equal) {
+        if (verbose && !equal) {
             std::cout << "Expected does not equal actual: " << std::endl;
             std::cout << "Expected:" << std::endl;
             std::cout << expected_rdf.toString(format) << std::endl;
@@ -497,11 +493,11 @@ namespace omexmeta {
         return equal;
     }
 
-    bool RDF::equals(const std::string &first, const std::string &second, const std::string &first_format, const std::string &second_format) {
+    bool RDF::equals(const std::string &first, const std::string &second, const std::string &first_format, const std::string &second_format, bool verbose) {
         RDF first_rdf = RDF::fromString(first, first_format);
         RDF second_rdf = RDF::fromString(second, second_format);
         bool equal = first_format == second_format;
-        if (!equal) {
+        if (verbose && !equal) {
             std::cout << "First rdf string does not equal second rdf string: " << std::endl;
             std::cout << "first:" << std::endl;
             std::cout << first_rdf.toString("turtle") << std::endl;
@@ -509,92 +505,6 @@ namespace omexmeta {
             std::cout << second_rdf.toString("turtle") << std::endl;
         }
         return equal;
-    }
-
-
-    void RDF::purgeRDFBag() {
-        std::string q = "SELECT  ?blank ?subject ?predicate ?rdfTypePredicateRemoveMe ?removeMePredicate2 ?resource   \n"
-                        "WHERE {\n"
-                        "?subject ?predicate ?blank . \n"
-                        "?blank ?rdfTypePredicateRemoveMe <http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag> .\n"
-                        "?blank ?removeMePredicate2 ?resource\n"
-                        "}\n";
-
-        Query query(model_.get(), q);
-        auto results = query.resultsAsMap();
-
-        for (int i = 0; i < results["subject"].size(); i++) {
-            const std::string &rdfTypePredicateRemoveMe = results["rdfTypePredicateRemoveMe"][i];
-            const std::string &subject = results["subject"][i];
-            const std::string &predicate = results["predicate"][i];
-            const std::string &removeMePredicate2 = results["removeMePredicate2"][i];
-            const std::string &resource = results["resource"][i];
-            const std::string &blank = results["blank"][i];
-
-            Triple tripleToRemove(
-                    LibrdfNode::fromBlank(blank).get(),
-                    LibrdfNode::fromUriString(rdfTypePredicateRemoveMe).get(),
-                    LibrdfNode::fromUriString("http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag").get());
-            librdf_model_remove_statement(model_.get(), tripleToRemove.getStatement());
-            tripleToRemove.freeTriple();
-
-            tripleToRemove = Triple(
-                    LibrdfNode::fromUriString(subject).get(),
-                    LibrdfNode::fromUriString(predicate).get(),
-                    LibrdfNode::fromBlank(blank).get());
-            librdf_model_remove_statement(model_.get(), tripleToRemove.getStatement());
-            tripleToRemove.freeTriple();
-
-            if (resource != "http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag") {
-                // We first need to construct the triple we want to remove
-                // so that we can actually remove it
-
-                tripleToRemove = Triple(
-                        LibrdfNode::fromBlank(blank).get(),
-                        LibrdfNode::fromUriString(removeMePredicate2).get(),
-                        LibrdfNode::fromUriString(resource).get());
-                librdf_model_remove_statement(model_.get(), tripleToRemove.getStatement());
-                tripleToRemove.freeTriple();
-
-                // Now construct the triple extracted from the rdf:Bag
-                // and add to the model
-                Triple triple(
-                        LibrdfNode::fromUriString(subject).get(),
-                        LibrdfNode::fromUriString(predicate).get(),
-                        LibrdfNode::fromUriString(resource).get());
-                librdf_model_add_statement(model_.get(), triple.getStatement());
-                triple.freeTriple();
-            }
-        }
-
-        //        for (auto [variableName, resultList] :results){
-        //            std::cout << variableName << std::endl;
-        //            for (auto i: resultList){
-        //                std::cout << "\t" << i << std::endl;
-        //            }
-        //        }
-        //
-        //        for (auto [first, second] : results) {
-        //            std::cout << first << ";  ";// << second << std::endl;
-        //        }
-    }
-
-    void RDF::vcardTranslator() {
-        std::string q = "SELECT  ?blank ?subject ?predicate ?rdfTypePredicateRemoveMe ?removeMePredicate2 ?resource   \n"
-                        "WHERE {\n"
-                        "?subject ?predicate ?blank . \n"
-                        "?blank ?rdfTypePredicateRemoveMe <http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag> .\n"
-                        "?blank ?removeMePredicate2 ?resource\n"
-                        "}\n";
-
-        Query query(model_.get(), q);
-        auto results = query.resultsAsMap();
-
-        for (auto [k, l]: results){
-
-        }
-
-        ;
     }
 
 

@@ -12,7 +12,7 @@ Add or change annotations in xml.
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classomexmeta_1_1Editor_a6be7468055f21d94e72e15f7daa5da5c}{Editor}} (std\+::string xml\+\_\+or\+\_\+file, bool create\+\_\+ids, const \mbox{\hyperlink{classredland_1_1LibrdfModel}{Librdf\+Model}} \&model, Namespace\+Map \&ns\+\_\+map, bool generate\+\_\+new\+\_\+metaids=false, bool sbml\+\_\+semantic\+\_\+extraction=true, const std\+::string \&repository\+\_\+uri=std\+::string(), const std\+::string \&archive\+\_\+uri=std\+::string(), const std\+::string \&model\+\_\+uri=std\+::string(), const std\+::string \&local\+\_\+uri=std\+::string())
+\mbox{\hyperlink{classomexmeta_1_1Editor_a38d00e9a39b423cbae5058f9af49da3a}{Editor}} (std\+::string xml\+\_\+or\+\_\+file, bool create\+\_\+ids, const \mbox{\hyperlink{classredland_1_1LibrdfModel}{Librdf\+Model}} \&model, Namespace\+Map \&ns\+\_\+map, \mbox{\hyperlink{classomexmeta_1_1UriHandler}{Uri\+Handler}} \&uri\+Handler, bool generate\+\_\+new\+\_\+metaids=false, bool sbml\+\_\+semantic\+\_\+extraction=true)
 \begin{DoxyCompactList}\small\item\em constructor for \mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}}. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classomexmeta_1_1Editor_aa11380bb7e2ca7859937c3f5907b6240}{$\sim$\+Editor}} ()=default
 \item 
@@ -32,7 +32,7 @@ const std\+::vector$<$ std\+::string $>$ \& \mbox{\hyperlink{classomexmeta_1_1Ed
 \begin{DoxyCompactList}\small\item\em returns a list of metaids both that existed previously and that was added during instantiation. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classomexmeta_1_1Editor_a052a725cee8b8e577c55e977eee81ace}{add\+Namespace}} (const std\+::string \&ns, std\+::string prefix)
 \begin{DoxyCompactList}\small\item\em add a namespace \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classomexmeta_1_1Editor_a0417b55575a244817ef981f17c8e1a8f}{add\+Single\+Annotation}} (\mbox{\hyperlink{classomexmeta_1_1Subject}{Subject}} subject, const Predicate\+Ptr \&predicate\+\_\+ptr, const \mbox{\hyperlink{classomexmeta_1_1Resource}{Resource}} \&resource)
+void \mbox{\hyperlink{classomexmeta_1_1Editor_a434304cc0ca8aa802cd236d34aaa1763}{add\+Single\+Annotation}} (\mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} subject, const Predicate\+Ptr \&predicate\+\_\+ptr, const \mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} \&resource)
 \begin{DoxyCompactList}\small\item\em Add a Single\+Annotation (aka a \mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}}) to the model. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classomexmeta_1_1Editor_ae46835f3f35425d8087b80d08666aaa4}{add\+Single\+Annotation}} (\mbox{\hyperlink{classomexmeta_1_1Triple}{Singular\+Annotation}} \&singular\+Annotation)
 \begin{DoxyCompactList}\small\item\em Add a Single\+Annotation (aka \mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}}) to the rdf graph. \end{DoxyCompactList}\item 
@@ -90,8 +90,8 @@ O\+M\+E\+X\+M\+E\+T\+A\+\_\+\+D\+E\+P\+R\+E\+C\+A\+T\+ED void {\bfseries add\+Co
 \mbox{\Hypertarget{classomexmeta_1_1Editor_ace8ee873498fa72b63c0747775b729f5}\label{classomexmeta_1_1Editor_ace8ee873498fa72b63c0747775b729f5}} 
 void {\bfseries add\+Triples} (\mbox{\hyperlink{classomexmeta_1_1Triples}{Triples}} \&triples)
 \item 
-\mbox{\Hypertarget{classomexmeta_1_1Editor_ad080f47ffb7b86dd4a09fca967baa493}\label{classomexmeta_1_1Editor_ad080f47ffb7b86dd4a09fca967baa493}} 
-void {\bfseries remove\+Physical\+Phenomenon} (\mbox{\hyperlink{classomexmeta_1_1PropertyBearer}{Property\+Bearer}} $\ast$physical\+Phenomenon) const
+\mbox{\Hypertarget{classomexmeta_1_1Editor_a1b126c390f5fc0b7ebcd1e3f691c9ece}\label{classomexmeta_1_1Editor_a1b126c390f5fc0b7ebcd1e3f691c9ece}} 
+void {\bfseries remove\+Property\+Bearer} (\mbox{\hyperlink{classomexmeta_1_1PropertyBearer}{Property\+Bearer}} $\ast$physical\+Phenomenon) const
 \item 
 \mbox{\Hypertarget{classomexmeta_1_1Editor_a736e49794c5a358f06d13d41c3657fe2}\label{classomexmeta_1_1Editor_a736e49794c5a358f06d13d41c3657fe2}} 
 std\+::string \mbox{\hyperlink{classomexmeta_1_1Editor_a736e49794c5a358f06d13d41c3657fe2}{get\+Archive\+Uri}} () const
@@ -130,18 +130,21 @@ std\+::string \mbox{\hyperlink{classomexmeta_1_1Editor_a2264cbd2efae17d1d72c3f40
 \mbox{\hyperlink{classomexmeta_1_1PhysicalProperty}{Physical\+Property}} \mbox{\hyperlink{classomexmeta_1_1Editor_aeae47fb60d955f506de2f16a54c0679a}{new\+Physical\+Property}} ()
 \begin{DoxyCompactList}\small\item\em instantiate a new \mbox{\hyperlink{classomexmeta_1_1PhysicalProperty}{Physical\+Property}} instance and return \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classomexmeta_1_1PhysicalProperty}{Physical\+Property}} $\ast$ \mbox{\hyperlink{classomexmeta_1_1Editor_ab36fc15581a0aa0af434af60d4f910ac}{new\+Physical\+Property\+Ptr}} ()
-\begin{DoxyCompactList}\small\item\em instantiate a pointer to a new \mbox{\hyperlink{classomexmeta_1_1PhysicalProperty}{Physical\+Property}} instance and return \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em instantiate a pointer to a new \mbox{\hyperlink{classomexmeta_1_1PhysicalProperty}{Physical\+Property}} instance and return \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classomexmeta_1_1Editor_a0c3c16e06d9ecbbf9958bb2feb85b56a}\label{classomexmeta_1_1Editor_a0c3c16e06d9ecbbf9958bb2feb85b56a}} 
+\mbox{\hyperlink{classomexmeta_1_1UriHandler}{Uri\+Handler}} \& \mbox{\hyperlink{classomexmeta_1_1Editor_a0c3c16e06d9ecbbf9958bb2feb85b56a}{get\+Uri\+Handler}} () const
+\begin{DoxyCompactList}\small\item\em get a reference to the current \mbox{\hyperlink{classomexmeta_1_1UriHandler}{Uri\+Handler}} \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 Add or change annotations in xml. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{classomexmeta_1_1Editor_a6be7468055f21d94e72e15f7daa5da5c}\label{classomexmeta_1_1Editor_a6be7468055f21d94e72e15f7daa5da5c}} 
+\mbox{\Hypertarget{classomexmeta_1_1Editor_a38d00e9a39b423cbae5058f9af49da3a}\label{classomexmeta_1_1Editor_a38d00e9a39b423cbae5058f9af49da3a}} 
 \index{omexmeta::Editor@{omexmeta::Editor}!Editor@{Editor}}
 \index{Editor@{Editor}!omexmeta::Editor@{omexmeta::Editor}}
 \doxysubsubsection{\texorpdfstring{Editor()}{Editor()}}
-{\footnotesize\ttfamily omexmeta\+::\+Editor\+::\+Editor (\begin{DoxyParamCaption}\item[{std\+::string}]{xml\+\_\+or\+\_\+file,  }\item[{bool}]{create\+\_\+ids,  }\item[{const \mbox{\hyperlink{classredland_1_1LibrdfModel}{Librdf\+Model}} \&}]{model,  }\item[{Namespace\+Map \&}]{ns\+\_\+map,  }\item[{bool}]{generate\+\_\+new\+\_\+metaids = {\ttfamily false},  }\item[{bool}]{sbml\+\_\+semantic\+\_\+extraction = {\ttfamily true},  }\item[{const std\+::string \&}]{repository\+\_\+uri = {\ttfamily std\+:\+:string()},  }\item[{const std\+::string \&}]{archive\+\_\+uri = {\ttfamily std\+:\+:string()},  }\item[{const std\+::string \&}]{model\+\_\+uri = {\ttfamily std\+:\+:string()},  }\item[{const std\+::string \&}]{local\+\_\+uri = {\ttfamily std\+:\+:string()} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+{\footnotesize\ttfamily omexmeta\+::\+Editor\+::\+Editor (\begin{DoxyParamCaption}\item[{std\+::string}]{xml\+\_\+or\+\_\+file,  }\item[{bool}]{create\+\_\+ids,  }\item[{const \mbox{\hyperlink{classredland_1_1LibrdfModel}{Librdf\+Model}} \&}]{model,  }\item[{Namespace\+Map \&}]{ns\+\_\+map,  }\item[{\mbox{\hyperlink{classomexmeta_1_1UriHandler}{Uri\+Handler}} \&}]{uri\+Handler,  }\item[{bool}]{generate\+\_\+new\+\_\+metaids = {\ttfamily false},  }\item[{bool}]{sbml\+\_\+semantic\+\_\+extraction = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
 
 
 
@@ -364,26 +367,11 @@ add the \char`\"{}pubmed id\char`\"{} model level annotation
 {\em a} & pubmed id as string \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{classomexmeta_1_1Editor_ae46835f3f35425d8087b80d08666aaa4}\label{classomexmeta_1_1Editor_ae46835f3f35425d8087b80d08666aaa4}} 
+\mbox{\Hypertarget{classomexmeta_1_1Editor_a434304cc0ca8aa802cd236d34aaa1763}\label{classomexmeta_1_1Editor_a434304cc0ca8aa802cd236d34aaa1763}} 
 \index{omexmeta::Editor@{omexmeta::Editor}!addSingleAnnotation@{addSingleAnnotation}}
 \index{addSingleAnnotation@{addSingleAnnotation}!omexmeta::Editor@{omexmeta::Editor}}
 \doxysubsubsection{\texorpdfstring{addSingleAnnotation()}{addSingleAnnotation()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily void omexmeta\+::\+Editor\+::add\+Single\+Annotation (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classomexmeta_1_1Triple}{Singular\+Annotation}} \&}]{singular\+Annotation }\end{DoxyParamCaption})}
-
-
-
-Add a Single\+Annotation (aka \mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}}) to the rdf graph. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em singular\+Annotation} & An instance of Singular\+Annotation to add to the model \\
-\hline
-\end{DoxyParams}
-\mbox{\Hypertarget{classomexmeta_1_1Editor_a0417b55575a244817ef981f17c8e1a8f}\label{classomexmeta_1_1Editor_a0417b55575a244817ef981f17c8e1a8f}} 
-\index{omexmeta::Editor@{omexmeta::Editor}!addSingleAnnotation@{addSingleAnnotation}}
-\index{addSingleAnnotation@{addSingleAnnotation}!omexmeta::Editor@{omexmeta::Editor}}
-\doxysubsubsection{\texorpdfstring{addSingleAnnotation()}{addSingleAnnotation()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily void omexmeta\+::\+Editor\+::add\+Single\+Annotation (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classomexmeta_1_1Subject}{Subject}}}]{subject,  }\item[{const Predicate\+Ptr \&}]{predicate\+\_\+ptr,  }\item[{const \mbox{\hyperlink{classomexmeta_1_1Resource}{Resource}} \&}]{resource }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void omexmeta\+::\+Editor\+::add\+Single\+Annotation (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}}}]{subject,  }\item[{const Predicate\+Ptr \&}]{predicate\+\_\+ptr,  }\item[{const \mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} \&}]{resource }\end{DoxyParamCaption})}
 
 
 
@@ -396,6 +384,21 @@ Add a Single\+Annotation (aka a \mbox{\hyperlink{classomexmeta_1_1Triple}{Triple
 {\em pointer} & to the predicate the predicate portion of the triple. Ths is a pointer to support polymorphic calls. \\
 \hline
 {\em resource} & the resource portion of the triple \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classomexmeta_1_1Editor_ae46835f3f35425d8087b80d08666aaa4}\label{classomexmeta_1_1Editor_ae46835f3f35425d8087b80d08666aaa4}} 
+\index{omexmeta::Editor@{omexmeta::Editor}!addSingleAnnotation@{addSingleAnnotation}}
+\index{addSingleAnnotation@{addSingleAnnotation}!omexmeta::Editor@{omexmeta::Editor}}
+\doxysubsubsection{\texorpdfstring{addSingleAnnotation()}{addSingleAnnotation()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void omexmeta\+::\+Editor\+::add\+Single\+Annotation (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classomexmeta_1_1Triple}{Singular\+Annotation}} \&}]{singular\+Annotation }\end{DoxyParamCaption})}
+
+
+
+Add a Single\+Annotation (aka \mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}}) to the rdf graph. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em singular\+Annotation} & An instance of Singular\+Annotation to add to the model \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{classomexmeta_1_1Editor_a4da72139f63090ab5682bf51c96d7886}\label{classomexmeta_1_1Editor_a4da72139f63090ab5682bf51c96d7886}} 

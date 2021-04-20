@@ -18,7 +18,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfStream.h" line="18" column="18" bodyfile="src/redland/RedlandWrapper/src/LibrdfStream.cpp" bodystart="5" bodyend="8"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfStream.h" line="18" column="18"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

@@ -17,49 +17,27 @@
 #include "omexmeta/PhysicalProcess.h"
 #include "omexmeta/Predicate.h"
 #include "omexmeta/PropertyBearer.h"
-#include "omexmeta/Resource.h"
 #include "omexmeta/SBMLSemanticExtraction.h"
 #include "omexmeta/Triple.h"
+#include "omexmeta/UriHandler.h"
 #include "omexmeta_export.h"
 #include "redland/RedlandAPI.h"
-
 #include "redland/librdf.h"
 
-#include <utility>
 #include <filesystem>
-#include <utility>
 
 using namespace redland;
 
 
 namespace omexmeta {
 
-    typedef std::unordered_map<std::string, std::string> NamespaceMap;
 
     /**
      * @brief Add or change annotations in xml.
      *
      */
     class OMEXMETA_EXPORT Editor {
-    private:
-        std::string xml_;
-        std::vector<std::string> metaids_;
-        const LibrdfModel &model_;
-        bool create_ids_ = false;
-        std::unordered_map<std::string, std::string> &namespaces_;
-        bool generate_new_metaids_;
-        bool sbml_semantic_extraction_;
-        std::string metaid_base_ = "#OmexMetaId";
-        OmexMetaXmlType type_;
-        const std::string& repository_uri_ ;
-        const std::string& archive_uri_ ;
-        const std::string& model_uri_ ;
-        const std::string& local_uri_ ;
-
-        void extractNamespacesFromTriplesVector(PropertyBearer *pp);
-
     public:
-
         /**
          * @brief constructor for Editor.
          * @param xml_or_file The valid xml content for annotation OR the path to the file on disk containing this content
@@ -79,10 +57,7 @@ namespace omexmeta {
          * are used. If the type is unknown, then all elements are given metaids.
          */
         explicit Editor(std::string xml_or_file, bool create_ids, const LibrdfModel &model, NamespaceMap &ns_map,
-                        bool generate_new_metaids = false, bool sbml_semantic_extraction = true,
-                        const std::string &repository_uri = std::string(),
-                        const std::string &archive_uri = std::string(), const std::string &model_uri = std::string(),
-                        const std::string &local_uri = std::string());
+                        UriHandler &uriHandler, bool generate_new_metaids = false, bool sbml_semantic_extraction = true);
 
         /**
          * We no longer required to free the
@@ -138,7 +113,7 @@ namespace omexmeta {
          * @param pointer to the predicate the predicate portion of the triple. Ths is a pointer to support polymorphic calls.
          * @param resource the resource portion of the triple
          */
-        void addSingleAnnotation(Subject subject, const PredicatePtr &predicate_ptr, const Resource &resource);
+        void addSingleAnnotation(LibrdfNode subject, const PredicatePtr &predicate_ptr, const LibrdfNode &resource);
 
         /**
          * @brief Add a SingleAnnotation (aka Triple) to the rdf graph.
@@ -223,7 +198,7 @@ namespace omexmeta {
          * @brief check that a metaid is valid by comparing
          * with the output from Editor::getMetaIds()
          */
-        void checkValidMetaid(const std::string& metaid);
+        void checkValidMetaid(const std::string &metaid);
 
         /**
          * @brief extract namespace part of uri from @parameter predicate_string
@@ -284,7 +259,7 @@ namespace omexmeta {
          * via the Editor because this enables the passing of necessary information
          * behind the scenes, rather than needing to be provided by the user.
          */
-         PhysicalProcess newPhysicalProcess();
+        PhysicalProcess newPhysicalProcess();
 
         /**
          * @brief create a new PersonalInformation object.
@@ -303,7 +278,7 @@ namespace omexmeta {
 
         void addTriples(Triples &triples);
 
-        void removePhysicalPhenomenon(PropertyBearer *physicalPhenomenon) const;
+        void removePropertyBearer(PropertyBearer *physicalPhenomenon) const;
 
         /**
          * @brief get the current value of archive_uri_
@@ -329,43 +304,43 @@ namespace omexmeta {
          * @brief instantiate a LibrdfNode that is prefixed with the current local_uri
          *
          */
-        [[nodiscard]] LibrdfNode createNodeWithModelUri(const std::string& string) const;
+        [[nodiscard]] LibrdfNode createNodeWithModelUri(const std::string &string) const;
 
         /**
          * @brief add the "creator" model level annotation
          * @param an orcid_id as string
          */
-        Editor& addCreator(std::string orcid_id);
+        Editor &addCreator(std::string orcid_id);
 
         /**
          * @brief add the "curator" model level annotation
          * @param an orcid_id as string
          */
-        Editor& addCurator(std::string orcid_id);
+        Editor &addCurator(std::string orcid_id);
 
         /**
          * @brief add the "taxon id" model level annotation
          * @param an taxon_id as string
          */
-        Editor& addTaxon(const std::string &taxon_id);
+        Editor &addTaxon(const std::string &taxon_id);
 
         /**
          * @brief add the "pubmed id" model level annotation
          * @param a pubmed id as string
          */
-        Editor& addPubmed(const std::string &pubmedid);
+        Editor &addPubmed(const std::string &pubmedid);
 
         /**
          * @brief add the "description" model level annotation
          * @param a description of the model as string
          */
-        Editor& addDescription(const std::string &date);
+        Editor &addDescription(const std::string &date);
 
         /**
          * @brief add the "date created" model level annotation
          * @param The date that the model was created
          */
-        Editor& addDateCreated(const std::string &date);
+        Editor &addDateCreated(const std::string &date);
 
         /**
          * @brief create a new singular annotation object with metaid
@@ -378,7 +353,7 @@ namespace omexmeta {
          * @brief add the "parent model" model level annotation
          * @param The biomodels id for the model in which this model was derived from
          */
-        Editor& addParentModel(const std::string &biomod_id);
+        Editor &addParentModel(const std::string &biomod_id);
 
         /**
          * @brief create a new SingularAnnotation object
@@ -397,10 +372,30 @@ namespace omexmeta {
          * @details the caller is responsible for deleting the returned PhysicalProperty
          * using deletePhysicalProperty
          */
-        PhysicalProperty* newPhysicalPropertyPtr();
+        PhysicalProperty *newPhysicalPropertyPtr();
 
+        /**
+         * @brief get a reference to the current UriHandler
+         */
+        UriHandler &getUriHandler() const;
+
+    private:
+        std::string xml_;
+        std::vector<std::string> metaids_;
+        const LibrdfModel &model_;
+        bool create_ids_ = false;
+        std::unordered_map<std::string, std::string> &namespaces_;
+        bool generate_new_metaids_;
+        bool sbml_semantic_extraction_;
+        std::string metaid_base_ = "#OmexMetaId";
+        OmexMetaXmlType type_;
+
+    private:
+        UriHandler &uriHandler_;
+
+        void extractNamespacesFromTriplesVector(PropertyBearer *pp);
     };
 
-}
+}// namespace omexmeta
 
-#endif //LIBOMEXMETA_EDITOR_H
+#endif//LIBOMEXMETA_EDITOR_H

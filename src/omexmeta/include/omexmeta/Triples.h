@@ -9,8 +9,6 @@
 
 #include "omexmeta/Triple.h"
 #include "omexmeta/Predicate.h"
-#include "omexmeta/Subject.h"
-#include "omexmeta/Resource.h"
 #include "omexmeta/Error.h"
 
 #include <vector>
@@ -28,16 +26,13 @@ namespace omexmeta {
     typedef std::vector<Triple> TripleVector;
 
     /**
-         * @brief A Triples object is a collection of Triple objects.
+     * @brief A Triples object is a collection of Triple objects.
      * @details the implementation of Triples is hampered by the
      * inability to clone Triple objects. Instead triples must use
      * move semantics to get Triples in or out of a Triples object.
      * Under the hood, the Triples object is just a std::vector<Triple>.
      */
     class Triples {
-    private:
-
-        TripleVector triples_;
 
     public:
         Triples();
@@ -73,22 +68,14 @@ namespace omexmeta {
          * the Triples object. Analogous to push
          * back but with move semantics.
          */
-        void move_back(Triple &triple);
+        void moveBack(Triple &triple);
 
         /**
          * @brief construct a Triple object from the necessary components and move it to the back of Triples
          * @details this method is heavily overloaded and has several signatures
          * all of which result in the construction and emplacement of a Triple at the back of Triples.
          */
-        void emplace_back(Subject subject, const PredicatePtr &predicatePtr, const Resource &resource);
-
-
-        /**
-         * @brief construct a Triple object from the necessary components and move it to the back of Triples
-         * @details this method is heavily overloaded and has several signatures
-         * all of which result in the construction and emplacement of a Triple at the back of Triples.
-         */
-        void emplace_back(Subject subject, const Predicate &predicate, const Resource &resource);
+        void emplace_back(UriHandler& uriHandler, LibrdfNode subject, const PredicatePtr &predicatePtr, const LibrdfNode &resource);
 
 
         /**
@@ -96,7 +83,7 @@ namespace omexmeta {
          * @details this method is heavily overloaded and has several signatures
          * all of which result in the construction and emplacement of a Triple at the back of Triples.
          */
-        void emplace_back(Subject subject, BiomodelsBiologyQualifier predicate, const Resource &resource);
+        void emplace_back(UriHandler& uriHandler, LibrdfNode subject, const Predicate &predicate, const LibrdfNode &resource);
 
 
         /**
@@ -104,7 +91,7 @@ namespace omexmeta {
          * @details this method is heavily overloaded and has several signatures
          * all of which result in the construction and emplacement of a Triple at the back of Triples.
          */
-        void emplace_back(Subject subject, BiomodelsModelQualifier predicate, const Resource &resource);
+        void emplace_back(UriHandler& uriHandler, LibrdfNode subject, BiomodelsBiologyQualifier predicate, const LibrdfNode &resource);
 
 
         /**
@@ -112,7 +99,7 @@ namespace omexmeta {
          * @details this method is heavily overloaded and has several signatures
          * all of which result in the construction and emplacement of a Triple at the back of Triples.
          */
-        void emplace_back(Subject subject, DCTerm predicate, const Resource &resource);
+        void emplace_back(UriHandler& uriHandler, LibrdfNode subject, BiomodelsModelQualifier predicate, const LibrdfNode &resource);
 
 
         /**
@@ -120,14 +107,22 @@ namespace omexmeta {
          * @details this method is heavily overloaded and has several signatures
          * all of which result in the construction and emplacement of a Triple at the back of Triples.
          */
-        void emplace_back(Subject subject, SemSim predicate, const Resource &resource);
+        void emplace_back(UriHandler& uriHandler, LibrdfNode subject, DCTerm predicate, const LibrdfNode &resource);
+
 
         /**
          * @brief construct a Triple object from the necessary components and move it to the back of Triples
          * @details this method is heavily overloaded and has several signatures
          * all of which result in the construction and emplacement of a Triple at the back of Triples.
          */
-        void emplace_back(librdf_node *subject, librdf_node *predicate, librdf_node *resource);
+        void emplace_back(UriHandler& uriHandler, LibrdfNode subject, SemSim predicate, const LibrdfNode &resource);
+
+        /**
+         * @brief construct a Triple object from the necessary components and move it to the back of Triples
+         * @details this method is heavily overloaded and has several signatures
+         * all of which result in the construction and emplacement of a Triple at the back of Triples.
+         */
+        void emplace_back(UriHandler& uriHandler, librdf_node *subject, librdf_node *predicate, librdf_node *resource);
 
         /**
          * @brief get all subjects as strings
@@ -147,7 +142,7 @@ namespace omexmeta {
 
         /**
          * @brief get all resources as strings
-         * @details we do not return the Resource itself because Resource objects
+         * @details we do not return the LibrdfNode itself because LibrdfNode objects
          * cannot be copied.
          * @returns All resource uri's as strings in a std::vector
          */
@@ -157,7 +152,7 @@ namespace omexmeta {
          * @brief get the number of triples in the Triples object
          * @returns the integer number of triples in the Triples object
          */
-        int size() const;
+        [[nodiscard]] int size() const;
 
         /**
          * @brief the begin iterator for a Triples object
@@ -208,6 +203,8 @@ namespace omexmeta {
          * that iterating over a Triples object and making copies
          * will cause complications with freeing the objects.
          */
+        Triple &operator[](int index);
+
         const Triple &operator[](int index) const;
 
         /**
@@ -224,7 +221,7 @@ namespace omexmeta {
          * @return a Triple from position 0 in Triples
          * @details caller is responsible for Triple resources
          */
-        Triple pop_front();
+//        [[deprecated("Slow algorithm so do not use")]] Triple popFront();
 
         /**
          * @brief forwarded on to std::vector::capacity
@@ -232,6 +229,9 @@ namespace omexmeta {
          */
         int capacity();
 
+    private:
+
+        TripleVector triples_;
     };
 
 }

@@ -4,7 +4,6 @@
 
 
 #include "CellMLFactory.h"
-#include "OmexMetaTestUtils.h"
 #include "SBMLFactory.h"
 #include "librdf.h"
 #include "omexmeta/OmexMetaUtils.h"

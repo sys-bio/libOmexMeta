@@ -3,13 +3,12 @@
 
 namespace redland {
 
-    void LibrdfStorage::deleter::operator()(librdf_storage *storage) {
-        if (storage != nullptr)
-            librdf_free_storage(storage);
+    LibrdfStorage::~LibrdfStorage() {
+        freeStorage();
     }
 
     LibrdfStorage::LibrdfStorage(librdf_storage *storage)
-            : storage_(storage) {}
+        : storage_(storage) {}
 
     LibrdfStorage::LibrdfStorage(const std::string &storage_name, const std::string &name, const char *options) {
         if (std::find(valid_stores_.begin(), valid_stores_.end(), storage_name) == valid_stores_.end()) {
@@ -27,7 +26,8 @@ namespace redland {
         if (storage_ == nullptr) {
             throw RedlandNullPointerException(
                     "RedlandNullPointerException: LibrdfStorage::LibrdfStorage(): librdf_storage* "
-                    "type:\"" + storage_name + "\" was not created. Nullptr.");
+                    "type:\"" +
+                    storage_name + "\" was not created. Nullptr.");
         }
     }
 
@@ -38,7 +38,6 @@ namespace redland {
             storage_ = storage.storage_;
             storage.storage_ = nullptr;
         }
-
     }
 
     LibrdfStorage &LibrdfStorage::operator=(LibrdfStorage &&storage) noexcept {
@@ -58,10 +57,11 @@ namespace redland {
     }
 
     void LibrdfStorage::freeStorage() {
-        if (storage_ != nullptr) {
-            librdf_free_storage(storage_);
-            storage_ = nullptr;
-        }
+        if (!storage_)
+            return;
+
+        librdf_free_storage(storage_);
+        storage_ = nullptr;
     }
 
     int LibrdfStorage::addStatement(librdf_statement *statement) {
@@ -69,7 +69,7 @@ namespace redland {
     }
 
     int LibrdfStorage::addStatement(const LibrdfStatement &statement) {
-        return librdf_storage_add_statement(storage_, statement.get());
+        return librdf_storage_add_statement(storage_, statement.getWithoutIncrement());
     }
 
     int LibrdfStorage::size() {
@@ -85,13 +85,4 @@ namespace redland {
     }
 
 
-}
-
-
-
-
-
-
-
-
-
+}// namespace redland

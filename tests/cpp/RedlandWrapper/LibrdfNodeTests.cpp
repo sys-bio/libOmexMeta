@@ -1,18 +1,17 @@
 //
 // Created by Ciaran on 5/17/2020.
 //
-#include "gtest/gtest.h"
-#include "redland/World.h"
 #include "redland/LibrdfNode.h"
+#include "redland/LibrdfStatement.h"
+#include "redland/World.h"
+#include "gtest/gtest.h"
 
 using namespace redland;
 
 class LibrdfNodeTests : public ::testing::Test {
 
 public:
-
     LibrdfNodeTests() = default;
-
 };
 
 
@@ -21,26 +20,15 @@ TEST_F(LibrdfNodeTests, TestCreate) {
     LibrdfNode node = LibrdfNode::fromUriString(expected);
     std::string actual = node.str();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
-    node.freeNode();
 }
 
 TEST_F(LibrdfNodeTests, TestUnderlyingNodeHasUri) {
     std::string expected = "https://notarealaddress.com";
     LibrdfNode node = LibrdfNode::fromUriString(expected);
-    LibrdfUri uri = node.getUri(); // owned by node
+    LibrdfUri uri = node.getUri();
     std::string s = uri.str();
     ASSERT_STREQ("https://notarealaddress.com", s.c_str());
-    node.freeNode();
 }
-
-
-//TEST_F(LibrdfNodeTests, TestCopyConstructor) {
-//    std::string expected1 = "https://notarealaddress1.com";
-//    LibrdfNode node1 = LibrdfNode::fromUriString(expected1);
-//    LibrdfNode node2 = node1;
-//    std::string actual = node2.str();
-//    ASSERT_STREQ(expected1.c_str(), actual.c_str());
-//}
 
 
 TEST_F(LibrdfNodeTests, TestMoveConstructor) {
@@ -49,7 +37,6 @@ TEST_F(LibrdfNodeTests, TestMoveConstructor) {
     LibrdfNode node2 = std::move(node);
     std::string actual = node2.str();
     ASSERT_STREQ(expected1.c_str(), actual.c_str());
-    node2.freeNode();
 }
 
 //TEST_F(LibrdfNodeTests, TestAssignmentOperator) {
@@ -71,7 +58,6 @@ TEST_F(LibrdfNodeTests, TestMoveAssignmentOperator) {
     node1 = std::move(node2);
     std::string actual = node1.str();
     ASSERT_STREQ(expected2.c_str(), actual.c_str());
-    node1.freeNode();
 }
 
 TEST_F(LibrdfNodeTests, TestLiteral1) {
@@ -82,14 +68,14 @@ TEST_F(LibrdfNodeTests, TestLiteral1) {
     LibrdfNode node = LibrdfNode::fromLiteral("Literal Node");
     std::string actual = node.str();
     ASSERT_STREQ("Literal Node", actual.c_str());
-    node.freeNode();
 }
 
 TEST_F(LibrdfNodeTests, TestTypedLiteral1) {
     LibrdfNode node = LibrdfNode::fromLiteral("TypedLiteral");
-    unsigned char *actual = librdf_node_get_literal_value(node.get());
+    librdf_node* n = node.get();
+    unsigned char *actual = librdf_node_get_literal_value(n);
+    librdf_free_node(n);
     ASSERT_STREQ("TypedLiteral", (const char *) actual);
-    node.freeNode();
 }
 
 TEST_F(LibrdfNodeTests, TestTypedLiteral2) {
@@ -97,32 +83,26 @@ TEST_F(LibrdfNodeTests, TestTypedLiteral2) {
     LibrdfUri n = node.getLiteralDatatype();
     std::string actual = n.str();
     ASSERT_STREQ("http://www.w3.org/1999/02/22-rdf-syntax-ns#string", actual.c_str());
-    node.freeNode();
 }
 
 TEST_F(LibrdfNodeTests, TestTypedLiteral3) {
     LibrdfNode node = LibrdfNode::fromLiteral("TypedLiteral");
     std::string actual = node.getLiteralLanguage();
     ASSERT_STREQ("", actual.c_str());
-    node.freeNode();
 }
 
 TEST_F(LibrdfNodeTests, TestBlank) {
     // http://www.w3.org/2001/XMLSchema#string
     LibrdfNode node = LibrdfNode::fromBlank("Blanky");
-    unsigned char *actual = librdf_node_get_blank_identifier(node.get());
+    unsigned char *actual = librdf_node_get_blank_identifier(node.getWithoutIncrement());
     ASSERT_STREQ("Blanky", (const char *) actual);
-    node.freeNode();
 }
 
 TEST_F(LibrdfNodeTests, TestNodeUri) {
     std::string expected = "https://notarealaddress.com";
     LibrdfNode node = LibrdfNode::fromUriString(expected);
-    librdf_uri *uri_actual = librdf_node_get_uri(node.get());
-    unsigned char *actual = librdf_uri_to_string(uri_actual);
-    ASSERT_STREQ(expected.c_str(), (const char *) actual);
-    free(actual);
-    node.freeNode();
+    LibrdfUri uri = node.getUri();
+    ASSERT_STREQ(expected.c_str(), uri.str().c_str());
 }
 
 
@@ -135,12 +115,10 @@ TEST_F(LibrdfNodeTests, TestNodeUriStringTwice) {
     std::string actual2 = uri2.str();
     ASSERT_STREQ(expected1.c_str(), actual1.c_str());
     ASSERT_STREQ(expected2.c_str(), actual2.c_str());
-    uri1.freeNode();
-    uri2.freeNode();
 }
 
 
-TEST_F(LibrdfNodeTests, TestUseNodsToMakeAStatement) {
+TEST_F(LibrdfNodeTests, TestUseNodesToMakeARawLibrdfStatementObj) {
     LibrdfNode subject = LibrdfNode::fromUriString("subject");
     LibrdfNode predicate = LibrdfNode::fromUriString("predicate");
     LibrdfNode resource = LibrdfNode::fromUriString("resource");
@@ -155,7 +133,24 @@ TEST_F(LibrdfNodeTests, TestUseNodsToMakeAStatement) {
     ASSERT_STREQ(expected, actual);
     free(actual);
     librdf_free_statement(stmt);
+}
 
+TEST_F(LibrdfNodeTests, TestUseNodesToMakeAWrapperLibrdfStatementObj) {
+    LibrdfNode subject = LibrdfNode::fromUriString("subject");
+    LibrdfNode predicate = LibrdfNode::fromUriString("predicate");
+    LibrdfNode resource = LibrdfNode::fromUriString("resource");
+
+    ASSERT_EQ(subject.getUsage(), 1);
+    ASSERT_EQ(predicate.getUsage(), 1);
+    ASSERT_EQ(resource.getUsage(), 1);
+
+    LibrdfStatement stmt(subject, predicate, resource);
+
+    ASSERT_EQ(stmt.getUsage(), 1);
+
+    ASSERT_EQ(subject.getUsage(), 2);
+    ASSERT_EQ(predicate.getUsage(), 2);
+    ASSERT_EQ(resource.getUsage(), 2);
 }
 
 
@@ -165,7 +160,6 @@ TEST_F(LibrdfNodeTests, TestgetUri) {
     std::string actual = u.str();
     std::string expected = "subject";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
-    subject.freeNode();
 }
 
 TEST_F(LibrdfNodeTests, TestSetUri) {
@@ -174,7 +168,6 @@ TEST_F(LibrdfNodeTests, TestSetUri) {
     std::string actual = subject.getUri().str();
     std::string expected = "predicate";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
-    subject.freeNode();
 }
 
 TEST_F(LibrdfNodeTests, TestgetLiteralDatatype) {
@@ -183,7 +176,6 @@ TEST_F(LibrdfNodeTests, TestgetLiteralDatatype) {
     std::string actual = u.str();
     std::string expected = "http://www.w3.org/1999/02/22-rdf-syntax-ns#string";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
-    subject.freeNode();
 }
 
 TEST_F(LibrdfNodeTests, TestValidateLiteralDatatype) {
@@ -198,15 +190,6 @@ TEST_F(LibrdfNodeTests, TestValidateLiteralDatatype2) {
     ASSERT_STREQ(actual.c_str(), expected.c_str());
 }
 
-//TEST_F(LibrdfNodeTests, TestsetLiteralDatatype) {
-//    LibrdfNode subject = LibrdfNode::fromLiteral("subject");
-//    subject.setLiteralDatatype("int");
-////    LibrdfUri u = subject.getLiteralDatatype();
-////    std::string actual = u.str();
-////    std::string expected = "http://www.w3.org/1999/02/22-rdf-syntax-ns#int";
-////    ASSERT_STREQ(expected.c_str(), actual.c_str());
-//    subject.freeNode();
-//}
 
 TEST_F(LibrdfNodeTests, TestsetLiteralDatatypeDoesntChangeValue) {
     LibrdfNode subject = LibrdfNode::fromLiteral("subject");
@@ -214,7 +197,6 @@ TEST_F(LibrdfNodeTests, TestsetLiteralDatatypeDoesntChangeValue) {
     std::string actual = subject.str();
     std::string expected = "subject";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
-    subject.freeNode();
 }
 
 TEST_F(LibrdfNodeTests, TestSetBlank) {
@@ -223,7 +205,6 @@ TEST_F(LibrdfNodeTests, TestSetBlank) {
     std::string actual = subject.getBlankIdentifier();
     std::string expected = "blank subject";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
-    subject.freeNode();
 }
 
 TEST_F(LibrdfNodeTests, TestSetBlankValueNotChanged) {
@@ -232,8 +213,6 @@ TEST_F(LibrdfNodeTests, TestSetBlankValueNotChanged) {
     std::string actual = subject.str();
     std::string expected = "blank subject";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
-    subject.freeNode();
-
 }
 
 TEST_F(LibrdfNodeTests, TestSetUri2) {
@@ -242,7 +221,6 @@ TEST_F(LibrdfNodeTests, TestSetUri2) {
     std::string actual = subject.getUri().str();
     std::string expected = "predicate";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
-    subject.freeNode();
 }
 
 
@@ -250,18 +228,12 @@ TEST_F(LibrdfNodeTests, TestEquality) {
     LibrdfNode subject1 = LibrdfNode::fromUriString("subject");
     LibrdfNode subject2 = LibrdfNode::fromUriString("subject");
     ASSERT_EQ(subject1, subject2);
-
-    subject1.freeNode();
-    subject2.freeNode();
 }
 
 TEST_F(LibrdfNodeTests, TestEqualityBlank) {
     LibrdfNode subject1 = LibrdfNode::fromBlank("subject");
     LibrdfNode subject2 = LibrdfNode::fromBlank("subject");
     ASSERT_EQ(subject1, subject2);
-
-    subject1.freeNode();
-    subject2.freeNode();
 }
 
 TEST_F(LibrdfNodeTests, TestInequality) {
@@ -269,13 +241,6 @@ TEST_F(LibrdfNodeTests, TestInequality) {
     LibrdfNode subject2 = LibrdfNode::fromUriString("subject2");
     ASSERT_NE(subject1, subject2);
 
-    /*
-     * Both nodes refer to the same block of memory. But
-     * librdf_node has a reference counter. Each time we free the node,
-     * the ref count reduces until it gets to 1. Then it is freed.
-     */
-    subject1.freeNode(); // ref count to 1
-    subject2.freeNode(); // ref count to 0
 }
 
 TEST_F(LibrdfNodeTests, TestCopyNodeUri) {
@@ -283,17 +248,14 @@ TEST_F(LibrdfNodeTests, TestCopyNodeUri) {
     LibrdfNode subject2 = LibrdfNode::copyNode(subject1);
     ASSERT_EQ(subject1, subject2);
     ASSERT_EQ(subject1.getUri(), subject2.getUri());
-
-    subject1.freeNode(); // ref count to 1
-    subject2.freeNode(); // ref count to 0
 }
 
 /*
  * Uri works as expected.
  */
 TEST_F(LibrdfNodeTests, TestCopyNodeUriNoWrapper) {
-    librdf_uri* uri1 = librdf_new_uri(World::getWorld(), (const unsigned char*)"https://uri.com");
-    librdf_uri* uri2 = librdf_new_uri_from_uri(uri1);
+    librdf_uri *uri1 = librdf_new_uri(World::getWorld(), (const unsigned char *) "https://uri.com");
+    librdf_uri *uri2 = librdf_new_uri_from_uri(uri1);
     int expected = 2;
     int uri1_count = librdf_uri_get_usage(uri1);
     int uri2_count = librdf_uri_get_usage(uri2);
@@ -310,15 +272,12 @@ TEST_F(LibrdfNodeTests, TestCopyNodeLiteral) {
     LibrdfNode subject2 = LibrdfNode::copyNode(subject1);
     ASSERT_EQ(subject1, subject2);
     ASSERT_EQ(subject1.getLiteralDatatype(), subject2.getLiteralDatatype());
-
-    subject1.freeNode(); // ref count to 1
-    subject2.freeNode(); // ref count to 0
 }
 
 TEST_F(LibrdfNodeTests, TestTwoNodesUriCountDifferentContentUsingRaptor) {
     // n1 and n2 are two different nodes
-    librdf_node* n1 = librdf_new_node_from_uri_string(World::getWorld(), (const unsigned char*)"node1");
-    librdf_node* n2 = librdf_new_node_from_uri_string(World::getWorld(), (const unsigned char*)"node2");
+    librdf_node *n1 = librdf_new_node_from_uri_string(World::getWorld(), (const unsigned char *) "node1");
+    librdf_node *n2 = librdf_new_node_from_uri_string(World::getWorld(), (const unsigned char *) "node2");
 
     ASSERT_EQ(1, n1->usage);
     ASSERT_EQ(1, n2->usage);
@@ -326,12 +285,12 @@ TEST_F(LibrdfNodeTests, TestTwoNodesUriCountDifferentContentUsingRaptor) {
     ASSERT_EQ(1, librdf_uri_get_usage(n2->value.uri));
     librdf_free_node(n1);
     librdf_free_node(n2);
-}
+;}
 
 TEST_F(LibrdfNodeTests, TestTwoNodesUriCountSameContentUsingRaptor) {
     // n1 and n2 are different nodes but they share the same uri
-    librdf_node* n1 = librdf_new_node_from_uri_string(World::getWorld(), (const unsigned char*)"node1");
-    librdf_node* n2 = librdf_new_node_from_uri_string(World::getWorld(), (const unsigned char*)"node1");
+    librdf_node *n1 = librdf_new_node_from_uri_string(World::getWorld(), (const unsigned char *) "node1");
+    librdf_node *n2 = librdf_new_node_from_uri_string(World::getWorld(), (const unsigned char *) "node1");
 
     ASSERT_EQ(1, n1->usage);
     ASSERT_EQ(1, n2->usage);
@@ -339,44 +298,24 @@ TEST_F(LibrdfNodeTests, TestTwoNodesUriCountSameContentUsingRaptor) {
     ASSERT_EQ(2, librdf_uri_get_usage(n1->value.uri));
     ASSERT_EQ(2, librdf_uri_get_usage(n2->value.uri));
 
-    // uri count decreases by 1 when we free the node
     librdf_free_node(n1);
     ASSERT_EQ(1, librdf_uri_get_usage(n2->value.uri));
     librdf_free_node(n2);
 }
 
 
-TEST_F(LibrdfNodeTests, TestTwoNodesUriCountDifferentContentUsingMyCode) {
-    // n1 and n2 are two different nodes
-    LibrdfNode n1 = LibrdfNode::fromUriString("node1");
-    LibrdfNode n2 = LibrdfNode::fromUriString("node2");
-
-    ASSERT_EQ(1, n1.get()->usage);
-    ASSERT_EQ(1, n2.get()->usage);
-    ASSERT_EQ(1, librdf_uri_get_usage(n1.get()->value.uri));
-    ASSERT_EQ(1, librdf_uri_get_usage(n2.get()->value.uri));
-
-    n1.freeNode();
-    n2.freeNode();
-}
-
-TEST_F(LibrdfNodeTests, TestTwoNodesUriCountSameContentUsingMyCode) {
-    // n1 and n2 are two different nodes
-    LibrdfNode n1 = LibrdfNode::fromUriString("node1");
-    LibrdfNode n2 = LibrdfNode::fromUriString("node1");
-
-    ASSERT_EQ(1, n1.get()->usage);
-    ASSERT_EQ(1, n2.get()->usage);
-    // same uri is used twice
-    ASSERT_EQ(2, librdf_uri_get_usage(n1.get()->value.uri));
-    ASSERT_EQ(2, librdf_uri_get_usage(n2.get()->value.uri));
-
-    // uri count decreases by 1 when we free the node
-    n1.freeNode();
-    ASSERT_EQ(1, librdf_uri_get_usage(n2.get()->value.uri));
-    n2.freeNode();
-}
-
+//TEST_F(LibrdfNodeTests, TestTwoNodesUriCountDifferentContentUsingMyCode) {
+//    // n1 and n2 are two different nodes
+//    LibrdfNode n1 = LibrdfNode::fromUriString("node1");
+//    LibrdfNode n2 = LibrdfNode::fromUriString("node2");
+//
+//    ASSERT_EQ(1, n1.getUsage());
+//    ASSERT_EQ(1, n2.getUsage());
+//    LibrdfUri uri1 = n1.getUri();
+//    LibrdfUri uri2 = n2.getUri();
+//    ASSERT_EQ(2, uri1.getUsage());
+//    ASSERT_EQ(2, uri2.getUsage());
+//}
 
 TEST_F(LibrdfNodeTests, GetNamespace1) {
     // n1 and n2 are two different nodes
@@ -384,8 +323,6 @@ TEST_F(LibrdfNodeTests, GetNamespace1) {
     std::string expected = "http://biomodels.net/biology-qualifiers/";
     std::string actual = n1.getNamespace();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
-    // uri count decreases by 1 when we free the node
-    n1.freeNode();
 }
 
 
@@ -395,31 +332,60 @@ TEST_F(LibrdfNodeTests, GetNamespace2) {
     std::string expected = "http://bime.uw.edu/semsim#";
     std::string actual = n1.getNamespace();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
-    // uri count decreases by 1 when we free the node
-    n1.freeNode();
 }
 
 
-//TEST_F(LibrdfNodeTests, TestRelativeUri) {
-//    LibrdfNode node = LibrdfNode::fromRelativeUri("subject1", "file://mnt/d/libOmexMeta");
-//    std::string actual = node.str();
-//    std::string expected = "file://mnt/d/libOmexMeta/myModel.xml#subject1";
-//    ASSERT_STREQ(expected.c_str(), actual.c_str());
-//    node.freeNode();
-//}
+TEST_F(LibrdfNodeTests, TestRefCounterOneNode) {
+    LibrdfNode n1 = LibrdfNode::fromUriString("node1");
+    ASSERT_EQ(1, n1.getUsage());
+}
+
+TEST_F(LibrdfNodeTests, TestRefCounterOneNodesUri) {
+    LibrdfNode n1 = LibrdfNode::fromUriString("node1");
+    ASSERT_EQ(1, n1.getUsage());
+
+    // get uri. increase ref count but pointer belongs to
+    // uri1 so do not free
+    LibrdfUri uri1 = n1.getUri();
+    ASSERT_EQ(2, uri1.getUsage());
+    ASSERT_STREQ(uri1.str().c_str(), "node1");
+
+    // remaining pointers are cleaned up by destructors
+}
 
 
+TEST_F(LibrdfNodeTests, CopyConstruct) {
+    LibrdfNode node = LibrdfNode::fromUriString("node");
+    ASSERT_EQ(1, node.getUsage());
+    LibrdfNode nodeCopy = node;
+    ASSERT_EQ(2, node.getUsage());
+    ASSERT_EQ(2, nodeCopy.getUsage());
+}
 
+TEST_F(LibrdfNodeTests, CopyAssignment) {
+    LibrdfNode node1 = LibrdfNode::fromUriString("https://node1.com");
+    ASSERT_EQ(1, node1.getUsage());
+    LibrdfNode node2 = LibrdfNode::fromUriString("https://node2.com");
+    ASSERT_EQ(1, node2.getUsage());
 
+    node1 = node2;
+    ASSERT_STREQ("https://node2.com", node1.str().c_str());
+    ASSERT_STREQ("https://node2.com", node2.str().c_str());
+    ASSERT_EQ(2, node1.getUsage());
+    ASSERT_EQ(2, node2.getUsage());
+    ASSERT_EQ(node1, node2);
+}
 
+TEST_F(LibrdfNodeTests, MoveConstruct) {
+    LibrdfNode node = LibrdfNode::fromUriString("https://node.com");
+    ASSERT_EQ(1, node.getUsage());
+    LibrdfNode nodeMoved = std::move(node);
+    ASSERT_EQ(1, nodeMoved.getUsage());
+}
 
-
-
-
-
-
-
-
-
-
-
+TEST_F(LibrdfNodeTests, MoveAssignment) {
+    LibrdfNode node1 = LibrdfNode::fromUriString("https://node1.com");
+    ASSERT_EQ(1, node1.getUsage());
+    LibrdfNode node2 = std::move(node1);
+    ASSERT_EQ(1, node2.getUsage());
+}

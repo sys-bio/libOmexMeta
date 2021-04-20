@@ -3,7 +3,6 @@
 //
 
 #include "AnnotationSamples.h"
-#include "OmexMetaTestUtils.h"
 #include "SBMLFactory.h"
 #include "omexmeta/RDF.h"
 #include "gtest/gtest.h"
@@ -130,7 +129,8 @@ TEST_F(RDFTests, TestToString) {
                            "";
     std::string actual = rdf.toString();
     std::cout << actual << std::endl;
-    ASSERT_TRUE(OmexMetaTestUtils::equals(&rdf, expected));
+    bool truth = RDF::equals(&rdf, expected, "turtle", true);
+    ASSERT_TRUE(truth);
 }
 
 TEST(RDFTestsNoFigure, TestRDFCanReadFromTwoStrings) {
@@ -235,7 +235,7 @@ TEST_F(RDFTests, TestWriteToFile) {
     ASSERT_EQ(expected, actual);
     rdf.toFile(fname, "turtle");
 
-    std::filesystem::exists(fname);
+    ASSERT_TRUE(std::filesystem::exists(fname));
 
     // clear up file we wrote
     std::remove(fname.c_str());
@@ -293,6 +293,34 @@ TEST_F(RDFTests, TestLocalPrefix) {
     ASSERT_TRUE(OmexMetaUtils::isSubString(turtle_string, arg));
 }
 
+TEST_F(RDFTests, TestSerializeCellMlAnnotationNoTrailingHashes) {
+    std::string cellml = "<model xmlns=\"http://www.cellml.org/cellml/1.1#\" xmlns:cmeta=\"http://www.cellml.org/metadata/1.0#\"\n"
+                         "      name=\"annotation_examples\" cmeta:id=\"annExamples\">\n"
+                         "  <component name=\"main\">\n"
+                         "    <variable cmeta:id=\"main.Volume\" initial_value=\"100\" name=\"Volume\" units=\"dimensionless\" />\n"
+                         "    <variable cmeta:id=\"main.MembraneVoltage\" initial_value=\"-80\" name=\"MembraneVoltage\" units=\"dimensionless\" />\n"
+                         "    <variable cmeta:id=\"main.ReactionRate\" initial_value=\"1\" name=\"ReactionRate\" units=\"dimensionless\" />\n"
+                         "  </component>\n"
+                         "</model>";
+
+    RDF rdf = RDF();
+    rdf.setArchiveUri("my-omex-archive.omex");
+    rdf.setModelUri("my-model.cellml");
+    Editor editor = rdf.toEditor(cellml, false, false);
+    editor.addCreator("0000-0003-4667-9779");
+    editor.addTaxon("9895");
+    std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+                           "@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n"
+                           "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
+                           "@prefix NCBI_Taxon: <https://identifiers.org/taxonomy:> .\n"
+                           "@prefix OMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix local: <http://omex-library.org/my-omex-archive.omex/my-model.rdf#> .\n"
+                           "\n"
+                           "<http://omex-library.org/my-omex-archive.omex/my-model.cellml>\n"
+                           "    bqbiol:hasTaxon <https://identifiers.org/taxonomy:9895> ;\n"
+                           "    dc:creator <https://orcid.org/0000-0003-4667-9779> .";
+    ASSERT_TRUE(RDF::equals(&rdf, expected));
+}
 
 TEST_F(RDFTests, TestBagConversionSimple) {
     RDF rdf = RDF::fromString(samples.simpleRDFBag, "turtle");
@@ -414,7 +442,7 @@ public:
 
 TEST_F(ParserReadTesReadFromFileHasPrefixesTests, TestReadFromStringHasPrefixes) {
     RDF rdf = RDF::fromString(input_string, "turtle");
-    ASSERT_TRUE(OmexMetaTestUtils::equals(&rdf, expected, "rdfxml"));
+    ASSERT_TRUE(RDF::equals(&rdf, expected, "rdfxml"));
 }
 
 TEST_F(ParserReadTesReadFromFileHasPrefixesTests, TestReadFromFileHasPrefixes) {
@@ -427,6 +455,6 @@ TEST_F(ParserReadTesReadFromFileHasPrefixesTests, TestReadFromFileHasPrefixes) {
     RDF rdf = RDF::fromFile(fname.string(), "turtle");
     std::string output = rdf.toString("rdfxml-abbrev");
 
-    ASSERT_TRUE(OmexMetaTestUtils::equals(&rdf, expected, "rdfxml"));
+    ASSERT_TRUE(RDF::equals(&rdf, expected, "rdfxml"));
     remove(fname.string().c_str());
 }

@@ -13,7 +13,7 @@ Inheritance diagram for omexmeta\+::Predicate\+:\begin{figure}[H]
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classomexmeta_1_1Predicate_ad5a91eb29204202d2f18816d09677622}{Predicate}} (const std\+::string \&namespace\+\_\+, std\+::string term, std\+::string prefix)
+\mbox{\hyperlink{classomexmeta_1_1Predicate_ad5a91eb29204202d2f18816d09677622}{Predicate}} (const std\+::string \&\mbox{\hyperlink{classomexmeta_1_1Predicate_afc79b0cc43eb11e4bc2fe0b305e551bc}{namespace\+\_\+}}, std\+::string term, std\+::string prefix)
 \begin{DoxyCompactList}\small\item\em construct a \mbox{\hyperlink{classomexmeta_1_1Predicate}{Predicate}} from a namespace, term and prefix portion of a predicate \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classomexmeta_1_1Predicate_a5db1e6150f8cfd7605e82996e2aebb50}\label{classomexmeta_1_1Predicate_a5db1e6150f8cfd7605e82996e2aebb50}} 
 bool {\bfseries operator==} (const \mbox{\hyperlink{classomexmeta_1_1Predicate}{Predicate}} \&rhs) const
@@ -23,7 +23,7 @@ bool {\bfseries operator!=} (const \mbox{\hyperlink{classomexmeta_1_1Predicate}{
 \item 
 std\+::string \mbox{\hyperlink{classomexmeta_1_1Predicate_a9d51ebf565f39fb4d6d4f58c1b030edf}{str}} ()
 \begin{DoxyCompactList}\small\item\em get the predicate as a full string \end{DoxyCompactList}\item 
-\mbox{\hyperlink{structraptor__term}{librdf\+\_\+node}} $\ast$ \mbox{\hyperlink{classomexmeta_1_1Predicate_a144efc75a923b9d85b9f8eaccf0400bb}{get\+Node}} () const
+\mbox{\hyperlink{structraptor__term}{librdf\+\_\+node}} $\ast$ \mbox{\hyperlink{classomexmeta_1_1Predicate_a6edbc1f17d4a5cbf8ad0c1b70b683b4a}{get}} () const
 \begin{DoxyCompactList}\small\item\em getter for the node contained by the \mbox{\hyperlink{classomexmeta_1_1Predicate}{Predicate}} object \end{DoxyCompactList}\item 
 const std\+::vector$<$ std\+::string $>$ \& \mbox{\hyperlink{classomexmeta_1_1Predicate_aee19b8fc8b21f8e5ffd5b64691e1e530}{get\+Valid\+Terms}} () const
 \begin{DoxyCompactList}\small\item\em stores the valid terms that are allowed in a particular predicate subclass \end{DoxyCompactList}\item 
@@ -61,8 +61,8 @@ static void \mbox{\hyperlink{classomexmeta_1_1Predicate_a4cda551beb4e1354ac56d69
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{classomexmeta_1_1Predicate_afc79b0cc43eb11e4bc2fe0b305e551bc}\label{classomexmeta_1_1Predicate_afc79b0cc43eb11e4bc2fe0b305e551bc}} 
-std\+::string {\bfseries namespace\+\_\+}
-\item 
+std\+::string \mbox{\hyperlink{classomexmeta_1_1Predicate_afc79b0cc43eb11e4bc2fe0b305e551bc}{namespace\+\_\+}}
+\begin{DoxyCompactList}\small\item\em make a shared pointer from this \mbox{\hyperlink{classomexmeta_1_1Predicate}{Predicate}} \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classomexmeta_1_1Predicate_ab626a5fd9fa8f302767d4ca544a9eff2}\label{classomexmeta_1_1Predicate_ab626a5fd9fa8f302767d4ca544a9eff2}} 
 std\+::string {\bfseries term\+\_\+}
 \item 
@@ -72,12 +72,12 @@ std\+::string {\bfseries prefix\+\_\+}
 \mbox{\Hypertarget{classomexmeta_1_1Predicate_a4fe359b93a9dea9b60f7bc28c1aa913b}\label{classomexmeta_1_1Predicate_a4fe359b93a9dea9b60f7bc28c1aa913b}} 
 std\+::string {\bfseries uri\+\_\+}
 \item 
-\mbox{\Hypertarget{classomexmeta_1_1Predicate_ad0548a6d31dbc6f32734032b1540e58f}\label{classomexmeta_1_1Predicate_ad0548a6d31dbc6f32734032b1540e58f}} 
-\mbox{\hyperlink{structraptor__term}{librdf\+\_\+node}} $\ast$ {\bfseries node\+\_\+} = nullptr
-\item 
 \mbox{\Hypertarget{classomexmeta_1_1Predicate_a14ae7768fbd3aaf444bcde8650910c0b}\label{classomexmeta_1_1Predicate_a14ae7768fbd3aaf444bcde8650910c0b}} 
-std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{classomexmeta_1_1Predicate_a14ae7768fbd3aaf444bcde8650910c0b}{valid\+\_\+terms\+\_\+}} \{\char`\"{}All\char`\"{}\}
-\begin{DoxyCompactList}\small\item\em predicates can only have type uri \end{DoxyCompactList}\end{DoxyCompactItemize}
+std\+::vector$<$ std\+::string $>$ {\bfseries valid\+\_\+terms\+\_\+} \{\char`\"{}All\char`\"{}\}
+\item 
+\mbox{\Hypertarget{classomexmeta_1_1Predicate_a1c062fe0337919ecbffba1f567b77048}\label{classomexmeta_1_1Predicate_a1c062fe0337919ecbffba1f567b77048}} 
+\mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} {\bfseries node\+\_\+}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -120,16 +120,20 @@ bqbiol\+:is -\/-\/-\/---$\vert$-- $\vert$ $\vert$ prefix term
 
 release resources associated with this \mbox{\hyperlink{classomexmeta_1_1Predicate}{Predicate}}. 
 
-\begin{DoxyVerb}Predicate objects contain a librdf_node pointer which
-needs to be freed by the caller. If a Predicate is passed
-to a Triple object (which most of the time is it),
-responsibility for deleting the contained librdf_node
-is transferred to the Triple object, which automatically
-clears up resources. If not, then it is the callers
-responsibility to call this method when they are done with
-Predicate instances.
-\end{DoxyVerb}
- \mbox{\Hypertarget{classomexmeta_1_1Predicate_add4ab1cd86f83de3512279bbfdad947c}\label{classomexmeta_1_1Predicate_add4ab1cd86f83de3512279bbfdad947c}} 
+\mbox{\hyperlink{classomexmeta_1_1Predicate}{Predicate}} objects contain a librdf\+\_\+node pointer which needs to be freed by the caller. If a \mbox{\hyperlink{classomexmeta_1_1Predicate}{Predicate}} is passed to a \mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}} object (which most of the time is it), responsibility for deleting the contained librdf\+\_\+node is transferred to the \mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}} object, which automatically clears up resources. If not, then it is the callers responsibility to call this method when they are done with \mbox{\hyperlink{classomexmeta_1_1Predicate}{Predicate}} instances. \mbox{\Hypertarget{classomexmeta_1_1Predicate_a6edbc1f17d4a5cbf8ad0c1b70b683b4a}\label{classomexmeta_1_1Predicate_a6edbc1f17d4a5cbf8ad0c1b70b683b4a}} 
+\index{omexmeta::Predicate@{omexmeta::Predicate}!get@{get}}
+\index{get@{get}!omexmeta::Predicate@{omexmeta::Predicate}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structraptor__term}{librdf\+\_\+node}} $\ast$ omexmeta\+::\+Predicate\+::get (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+getter for the node contained by the \mbox{\hyperlink{classomexmeta_1_1Predicate}{Predicate}} object 
+
+\begin{DoxyReturn}{Returns}
+the librdf\+\_\+node$\ast$ pointer for the redland libraries under the hood 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classomexmeta_1_1Predicate_add4ab1cd86f83de3512279bbfdad947c}\label{classomexmeta_1_1Predicate_add4ab1cd86f83de3512279bbfdad947c}} 
 \index{omexmeta::Predicate@{omexmeta::Predicate}!getNamespace@{getNamespace}}
 \index{getNamespace@{getNamespace}!omexmeta::Predicate@{omexmeta::Predicate}}
 \doxysubsubsection{\texorpdfstring{getNamespace()}{getNamespace()}}
@@ -141,19 +145,6 @@ getter for the namespace portion of the \mbox{\hyperlink{classomexmeta_1_1Predic
 
 \begin{DoxyReturn}{Returns}
 the string representing the namespace of the current \mbox{\hyperlink{classomexmeta_1_1Predicate}{Predicate}} 
-\end{DoxyReturn}
-\mbox{\Hypertarget{classomexmeta_1_1Predicate_a144efc75a923b9d85b9f8eaccf0400bb}\label{classomexmeta_1_1Predicate_a144efc75a923b9d85b9f8eaccf0400bb}} 
-\index{omexmeta::Predicate@{omexmeta::Predicate}!getNode@{getNode}}
-\index{getNode@{getNode}!omexmeta::Predicate@{omexmeta::Predicate}}
-\doxysubsubsection{\texorpdfstring{getNode()}{getNode()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{structraptor__term}{librdf\+\_\+node}} $\ast$ omexmeta\+::\+Predicate\+::get\+Node (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
-
-
-
-getter for the node contained by the \mbox{\hyperlink{classomexmeta_1_1Predicate}{Predicate}} object 
-
-\begin{DoxyReturn}{Returns}
-the librdf\+\_\+node$\ast$ pointer for the redland libraries under the hood 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classomexmeta_1_1Predicate_a0147e977f71604db05763815ae6b553f}\label{classomexmeta_1_1Predicate_a0147e977f71604db05763815ae6b553f}} 
 \index{omexmeta::Predicate@{omexmeta::Predicate}!getPrefix@{getPrefix}}
@@ -191,9 +182,7 @@ the string representing the term portion of the \mbox{\hyperlink{classomexmeta_1
 
 getter for uri 
 
-\begin{DoxyVerb}For developers. Consider removing since str() method does the same thing
-\end{DoxyVerb}
- \mbox{\Hypertarget{classomexmeta_1_1Predicate_aee19b8fc8b21f8e5ffd5b64691e1e530}\label{classomexmeta_1_1Predicate_aee19b8fc8b21f8e5ffd5b64691e1e530}} 
+For developers. Consider removing since \mbox{\hyperlink{classomexmeta_1_1Predicate_a9d51ebf565f39fb4d6d4f58c1b030edf}{str()}} method does the same thing \mbox{\Hypertarget{classomexmeta_1_1Predicate_aee19b8fc8b21f8e5ffd5b64691e1e530}\label{classomexmeta_1_1Predicate_aee19b8fc8b21f8e5ffd5b64691e1e530}} 
 \index{omexmeta::Predicate@{omexmeta::Predicate}!getValidTerms@{getValidTerms}}
 \index{getValidTerms@{getValidTerms}!omexmeta::Predicate@{omexmeta::Predicate}}
 \doxysubsubsection{\texorpdfstring{getValidTerms()}{getValidTerms()}}

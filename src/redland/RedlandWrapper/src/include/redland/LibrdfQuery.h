@@ -15,13 +15,18 @@ namespace redland {
 
     class LibrdfQuery {
 
-        struct deleter {
-            void operator()(librdf_query *query);
-        };
-
-        std::unique_ptr<librdf_query, deleter> query_;
     public:
         LibrdfQuery() = default;
+
+        ~LibrdfQuery();
+
+        LibrdfQuery(const LibrdfQuery &query);
+
+        LibrdfQuery(LibrdfQuery &query) noexcept;
+
+        LibrdfQuery &operator=(const LibrdfQuery &query);
+
+        LibrdfQuery &operator=(LibrdfQuery &&query) noexcept;
 
         explicit LibrdfQuery(librdf_query *query);
 
@@ -32,7 +37,15 @@ namespace redland {
 
         [[nodiscard]] librdf_query *get() const;
 
-    };
-}
+        int getUsage();
 
-#endif //LIBOMEXMETA_LIBRDFQUERY_H
+        librdf_query *getWithoutIncrement() const;
+        bool operator==(const LibrdfQuery &rhs) const;
+        bool operator!=(const LibrdfQuery &rhs) const;
+
+    private:
+        librdf_query *query_ = nullptr;
+    };
+}// namespace redland
+
+#endif//LIBOMEXMETA_LIBRDFQUERY_H

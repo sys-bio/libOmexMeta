@@ -18,7 +18,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/include/redland/RaptorIOStream.h" line="19" column="18" bodyfile="src/redland/RedlandWrapper/src/RaptorIOStream.cpp" bodystart="10" bodyend="13"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/RaptorIOStream.h" line="19" column="18"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

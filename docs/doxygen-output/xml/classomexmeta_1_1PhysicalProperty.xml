@@ -14,7 +14,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PhysicalProperty.h" line="26" column="21" bodyfile="src/omexmeta/include/omexmeta/PhysicalProperty.h" bodystart="26" bodyend="-1"/>
+        <location file="src/omexmeta/include/omexmeta/PhysicalProperty.h" line="72" column="21" bodyfile="src/omexmeta/include/omexmeta/PhysicalProperty.h" bodystart="72" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classomexmeta_1_1PhysicalProperty_1afdab2807139903007a406fb67a7a4458" prot="private" static="no" mutable="no">
         <type>std::string</type>
@@ -27,7 +27,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PhysicalProperty.h" line="27" column="21" bodyfile="src/omexmeta/include/omexmeta/PhysicalProperty.h" bodystart="27" bodyend="-1"/>
+        <location file="src/omexmeta/include/omexmeta/PhysicalProperty.h" line="73" column="21" bodyfile="src/omexmeta/include/omexmeta/PhysicalProperty.h" bodystart="73" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classomexmeta_1_1PhysicalProperty_1a0bf8eca6d996849ef0d3092226ca2e79" prot="private" static="no" mutable="no">
         <type>std::string</type>
@@ -40,7 +40,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PhysicalProperty.h" line="28" column="21" bodyfile="src/omexmeta/include/omexmeta/PhysicalProperty.h" bodystart="28" bodyend="-1"/>
+        <location file="src/omexmeta/include/omexmeta/PhysicalProperty.h" line="74" column="21" bodyfile="src/omexmeta/include/omexmeta/PhysicalProperty.h" bodystart="74" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classomexmeta_1_1PhysicalProperty_1aa6739d4c58f1daa524bd96ea123f9b0f" prot="private" static="no" mutable="no">
         <type>std::string</type>
@@ -54,7 +54,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PhysicalProperty.h" line="29" column="21" bodyfile="src/omexmeta/include/omexmeta/PhysicalProperty.h" bodystart="29" bodyend="-1"/>
+        <location file="src/omexmeta/include/omexmeta/PhysicalProperty.h" line="75" column="21" bodyfile="src/omexmeta/include/omexmeta/PhysicalProperty.h" bodystart="75" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classomexmeta_1_1PhysicalProperty_1a58c0bfc4cee0998e1d7aaaff9b8c7ff0" prot="private" static="no" mutable="no">
         <type>std::string</type>
@@ -68,7 +68,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PhysicalProperty.h" line="30" column="21" bodyfile="src/omexmeta/include/omexmeta/PhysicalProperty.h" bodystart="30" bodyend="-1"/>
+        <location file="src/omexmeta/include/omexmeta/PhysicalProperty.h" line="76" column="21" bodyfile="src/omexmeta/include/omexmeta/PhysicalProperty.h" bodystart="76" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classomexmeta_1_1PhysicalProperty_1acdec5ae85563d2b3f92a9ea15e2bf060" prot="private" static="no" mutable="no">
         <type>std::string</type>
@@ -81,33 +81,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PhysicalProperty.h" line="31" column="21" bodyfile="src/omexmeta/include/omexmeta/PhysicalProperty.h" bodystart="31" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="classomexmeta_1_1PhysicalProperty_1acc22e1576caaad8b1d297531a59d8b84" prot="private" static="no" mutable="no">
-        <type>std::string</type>
-        <definition>std::string omexmeta::PhysicalProperty::model_uri_</definition>
-        <argsstring></argsstring>
-        <name>model_uri_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PhysicalProperty.h" line="33" column="21" bodyfile="src/omexmeta/include/omexmeta/PhysicalProperty.h" bodystart="33" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="classomexmeta_1_1PhysicalProperty_1a4d0963b9ec2f3f42ac0dafa23ee92347" prot="private" static="no" mutable="no">
-        <type>std::string</type>
-        <definition>std::string omexmeta::PhysicalProperty::local_uri_</definition>
-        <argsstring></argsstring>
-        <name>local_uri_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PhysicalProperty.h" line="34" column="21" bodyfile="src/omexmeta/include/omexmeta/PhysicalProperty.h" bodystart="34" bodyend="-1"/>
+        <location file="src/omexmeta/include/omexmeta/PhysicalProperty.h" line="77" column="21" bodyfile="src/omexmeta/include/omexmeta/PhysicalProperty.h" bodystart="77" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classomexmeta_1_1PhysicalProperty_1aa129d8ee6d5e5390a5d40d888cb34f0d" prot="private" static="no" mutable="no">
         <type>librdf_model *</type>
@@ -121,7 +95,20 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PhysicalProperty.h" line="35" column="22" bodyfile="src/omexmeta/include/omexmeta/PhysicalProperty.h" bodystart="35" bodyend="-1"/>
+        <location file="src/omexmeta/include/omexmeta/PhysicalProperty.h" line="79" column="22" bodyfile="src/omexmeta/include/omexmeta/PhysicalProperty.h" bodystart="79" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classomexmeta_1_1PhysicalProperty_1a44b8fe9de1697e10b1d505b2e84abd52" prot="private" static="no" mutable="no">
+        <type><ref refid="classomexmeta_1_1UriHandler" kindref="compound">UriHandler</ref> &amp;</type>
+        <definition>UriHandler&amp; omexmeta::PhysicalProperty::uriHandler_</definition>
+        <argsstring></argsstring>
+        <name>uriHandler_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/PhysicalProperty.h" line="81" column="20" bodyfile="src/omexmeta/include/omexmeta/PhysicalProperty.h" bodystart="81" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classomexmeta_1_1PhysicalProperty_1a7816274c77919713b49b7f91d4355339" prot="private" static="no" mutable="no">
         <type>bool</type>
@@ -136,25 +123,108 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PhysicalProperty.h" line="42" column="14" bodyfile="src/omexmeta/include/omexmeta/PhysicalProperty.h" bodystart="42" bodyend="-1"/>
+        <location file="src/omexmeta/include/omexmeta/PhysicalProperty.h" line="88" column="14" bodyfile="src/omexmeta/include/omexmeta/PhysicalProperty.h" bodystart="88" bodyend="-1"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-func">
-      <memberdef kind="function" id="classomexmeta_1_1PhysicalProperty_1a6983c4f7e0b46cf9d8061f13bd3c3311" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>OMEXMETA_DEPRECATED void</type>
-        <definition>void omexmeta::PhysicalProperty::validate</definition>
-        <argsstring>()</argsstring>
-        <name>validate</name>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classomexmeta_1_1PhysicalProperty_1aa0faaf61713981a2c1e340ea3b401616" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>omexmeta::PhysicalProperty::PhysicalProperty</definition>
+        <argsstring>(UriHandler &amp;uriHandler)</argsstring>
+        <name>PhysicalProperty</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1UriHandler" kindref="compound">UriHandler</ref> &amp;</type>
+          <declname>uriHandler</declname>
+        </param>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PhysicalProperty.h" line="46" column="34" bodyfile="src/omexmeta/PhysicalProperty.cpp" bodystart="39" bodyend="69"/>
+        <location file="src/omexmeta/include/omexmeta/PhysicalProperty.h" line="26" column="9" bodyfile="src/omexmeta/PhysicalProperty.cpp" bodystart="12" bodyend="13"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classomexmeta_1_1PhysicalProperty_1a6080d0966cd4f0d1912dd0cf914caf5b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>omexmeta::PhysicalProperty::~PhysicalProperty</definition>
+        <argsstring>()=default</argsstring>
+        <name>~PhysicalProperty</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/PhysicalProperty.h" line="27" column="9"/>
+      </memberdef>
+      <memberdef kind="function" id="classomexmeta_1_1PhysicalProperty_1a41cd211e575a4cf4144fa2157f52747d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>omexmeta::PhysicalProperty::PhysicalProperty</definition>
+        <argsstring>(const PhysicalProperty &amp;physicalProperty)=default</argsstring>
+        <name>PhysicalProperty</name>
+        <param>
+          <type>const <ref refid="classomexmeta_1_1PhysicalProperty" kindref="compound">PhysicalProperty</ref> &amp;</type>
+          <declname>physicalProperty</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/PhysicalProperty.h" line="28" column="9"/>
+      </memberdef>
+      <memberdef kind="function" id="classomexmeta_1_1PhysicalProperty_1a0c12f4fc60d445adf9a7086f76015474" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>omexmeta::PhysicalProperty::PhysicalProperty</definition>
+        <argsstring>(PhysicalProperty &amp;&amp;physicalProperty) noexcept=default</argsstring>
+        <name>PhysicalProperty</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1PhysicalProperty" kindref="compound">PhysicalProperty</ref> &amp;&amp;</type>
+          <declname>physicalProperty</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/PhysicalProperty.h" line="29" column="9"/>
+      </memberdef>
+      <memberdef kind="function" id="classomexmeta_1_1PhysicalProperty_1af0fc85f08d59093673270cf74773823e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classomexmeta_1_1PhysicalProperty" kindref="compound">PhysicalProperty</ref> &amp;</type>
+        <definition>PhysicalProperty &amp; omexmeta::PhysicalProperty::operator=</definition>
+        <argsstring>(const PhysicalProperty &amp;physicalProperty)</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="classomexmeta_1_1PhysicalProperty" kindref="compound">PhysicalProperty</ref> &amp;</type>
+          <declname>physicalProperty</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/PhysicalProperty.h" line="30" column="26" bodyfile="src/omexmeta/PhysicalProperty.cpp" bodystart="15" bodyend="28"/>
+      </memberdef>
+      <memberdef kind="function" id="classomexmeta_1_1PhysicalProperty_1a8800365ed17c49d1a8e7eb2225bae169" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classomexmeta_1_1PhysicalProperty" kindref="compound">PhysicalProperty</ref> &amp;</type>
+        <definition>PhysicalProperty &amp; omexmeta::PhysicalProperty::operator=</definition>
+        <argsstring>(PhysicalProperty &amp;&amp;physicalProperty) noexcept</argsstring>
+        <name>operator=</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1PhysicalProperty" kindref="compound">PhysicalProperty</ref> &amp;&amp;</type>
+          <declname>physicalProperty</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/PhysicalProperty.h" line="31" column="26" bodyfile="src/omexmeta/PhysicalProperty.cpp" bodystart="29" bodyend="42"/>
+      </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalProperty_1a13a9ec404ea9c6d7ddea6c7398b67328" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
         <definition>bool omexmeta::PhysicalProperty::isSet</definition>
@@ -166,7 +236,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PhysicalProperty.h" line="49" column="14" bodyfile="src/omexmeta/PhysicalProperty.cpp" bodystart="169" bodyend="171"/>
+        <location file="src/omexmeta/include/omexmeta/PhysicalProperty.h" line="33" column="14" bodyfile="src/omexmeta/PhysicalProperty.cpp" bodystart="153" bodyend="155"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalProperty_1a46f5436faa6f1c977088544bec31d125" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -183,90 +253,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PhysicalProperty.h" line="51" column="14" bodyfile="src/omexmeta/PhysicalProperty.cpp" bodystart="172" bodyend="174"/>
-      </memberdef>
-      <memberdef kind="function" id="classomexmeta_1_1PhysicalProperty_1af3b3379a751ebb15f7a5ea0cae8cb4d6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>bool</type>
-        <definition>bool omexmeta::PhysicalProperty::operator==</definition>
-        <argsstring>(const PhysicalProperty &amp;rhs) const</argsstring>
-        <name>operator==</name>
-        <param>
-          <type>const <ref refid="classomexmeta_1_1PhysicalProperty" kindref="compound">PhysicalProperty</ref> &amp;</type>
-          <declname>rhs</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PhysicalProperty.h" line="53" column="14" bodyfile="src/omexmeta/PhysicalProperty.cpp" bodystart="134" bodyend="138"/>
-      </memberdef>
-      <memberdef kind="function" id="classomexmeta_1_1PhysicalProperty_1a1a85ba2c50f5b79e49e8a01b96756f0a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>bool</type>
-        <definition>bool omexmeta::PhysicalProperty::operator!=</definition>
-        <argsstring>(const PhysicalProperty &amp;rhs) const</argsstring>
-        <name>operator!=</name>
-        <param>
-          <type>const <ref refid="classomexmeta_1_1PhysicalProperty" kindref="compound">PhysicalProperty</ref> &amp;</type>
-          <declname>rhs</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PhysicalProperty.h" line="55" column="14" bodyfile="src/omexmeta/PhysicalProperty.cpp" bodystart="140" bodyend="142"/>
-      </memberdef>
-      <memberdef kind="function" id="classomexmeta_1_1PhysicalProperty_1af0ff6c915ed8b5d977a94c5ebee4edca" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type></type>
-        <definition>omexmeta::PhysicalProperty::PhysicalProperty</definition>
-        <argsstring>()=default</argsstring>
-        <name>PhysicalProperty</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PhysicalProperty.h" line="57" column="9"/>
-      </memberdef>
-      <memberdef kind="function" id="classomexmeta_1_1PhysicalProperty_1aa973322a7a26249187a82bb878ad3790" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>OMEXMETA_DEPRECATED</type>
-        <definition>omexmeta::PhysicalProperty::PhysicalProperty</definition>
-        <argsstring>(std::string is_version_of, std::string is_version_of_value, std::string model_uri)</argsstring>
-        <name>PhysicalProperty</name>
-        <param>
-          <type>std::string</type>
-          <declname>is_version_of</declname>
-        </param>
-        <param>
-          <type>std::string</type>
-          <declname>is_version_of_value</declname>
-        </param>
-        <param>
-          <type>std::string</type>
-          <declname>model_uri</declname>
-        </param>
-        <briefdescription>
-<para>constructor for <ref refid="classomexmeta_1_1PhysicalProperty" kindref="compound">PhysicalProperty</ref> </para>
-        </briefdescription>
-        <detaileddescription>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>physical_property_string</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>is used to create a URI node representing the physical property  overload deprecated use PhysicalProperty(model, model_uri, local_uri) instead </para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PhysicalProperty.h" line="64" column="29" bodyfile="src/omexmeta/PhysicalProperty.cpp" bodystart="12" bodyend="17"/>
+        <location file="src/omexmeta/include/omexmeta/PhysicalProperty.h" line="35" column="14" bodyfile="src/omexmeta/PhysicalProperty.cpp" bodystart="156" bodyend="158"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalProperty_1a101d24ba21354367e13406d1f68c9248" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -283,7 +270,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PhysicalProperty.h" line="66" column="14" bodyfile="src/omexmeta/PhysicalProperty.cpp" bodystart="158" bodyend="160"/>
+        <location file="src/omexmeta/include/omexmeta/PhysicalProperty.h" line="37" column="22" bodyfile="src/omexmeta/PhysicalProperty.cpp" bodystart="142" bodyend="144"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalProperty_1aa9f55839baebd3594e859d4ad8d080a2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::string &amp;</type>
@@ -296,7 +283,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PhysicalProperty.h" line="68" column="28" bodyfile="src/omexmeta/PhysicalProperty.cpp" bodystart="162" bodyend="164"/>
+        <location file="src/omexmeta/include/omexmeta/PhysicalProperty.h" line="39" column="28" bodyfile="src/omexmeta/PhysicalProperty.cpp" bodystart="146" bodyend="148"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalProperty_1a1b521c8ed4752a27b0e667c766b9e304" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -313,64 +300,20 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PhysicalProperty.h" line="70" column="14" bodyfile="src/omexmeta/PhysicalProperty.cpp" bodystart="166" bodyend="168"/>
+        <location file="src/omexmeta/include/omexmeta/PhysicalProperty.h" line="41" column="14" bodyfile="src/omexmeta/PhysicalProperty.cpp" bodystart="150" bodyend="152"/>
       </memberdef>
-      <memberdef kind="function" id="classomexmeta_1_1PhysicalProperty_1ae1661cc749bd68c04ad47cdc0b7260d5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>OMEXMETA_DEPRECATED</type>
-        <definition>omexmeta::PhysicalProperty::PhysicalProperty</definition>
-        <argsstring>(std::string is_version_of, std::string is_version_of_value, std::string model_uri, librdf_model *model)</argsstring>
-        <name>PhysicalProperty</name>
-        <param>
-          <type>std::string</type>
-          <declname>is_version_of</declname>
-        </param>
-        <param>
-          <type>std::string</type>
-          <declname>is_version_of_value</declname>
-        </param>
-        <param>
-          <type>std::string</type>
-          <declname>model_uri</declname>
-        </param>
-        <param>
-          <type>librdf_model *</type>
-          <declname>model</declname>
-        </param>
-        <briefdescription>
-<para>constructor for <ref refid="classomexmeta_1_1PhysicalProperty" kindref="compound">PhysicalProperty</ref> </para>
-        </briefdescription>
-        <detaileddescription>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>physical_property_string</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>is used to create a URI node representing the physical property  overload deprecated use PhysicalProperty(model, model_uri, local_uri) instead </para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PhysicalProperty.h" line="76" column="29" bodyfile="src/omexmeta/PhysicalProperty.cpp" bodystart="22" bodyend="28"/>
-      </memberdef>
-      <memberdef kind="function" id="classomexmeta_1_1PhysicalProperty_1a3f0c5a2374e80b71aa74184e29780e28" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classomexmeta_1_1PhysicalProperty_1a907bcbaacfa441756d514ff52efa2f97" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>omexmeta::PhysicalProperty::PhysicalProperty</definition>
-        <argsstring>(librdf_model *model, const std::string &amp;model_uri, const std::string &amp;local_uri)</argsstring>
+        <argsstring>(librdf_model *model, UriHandler &amp;uriHandler)</argsstring>
         <name>PhysicalProperty</name>
         <param>
           <type>librdf_model *</type>
           <declname>model</declname>
         </param>
         <param>
-          <type>const std::string &amp;</type>
-          <declname>model_uri</declname>
-        </param>
-        <param>
-          <type>const std::string &amp;</type>
-          <declname>local_uri</declname>
+          <type><ref refid="classomexmeta_1_1UriHandler" kindref="compound">UriHandler</ref> &amp;</type>
+          <declname>uriHandler</declname>
         </param>
         <briefdescription>
         </briefdescription>
@@ -378,39 +321,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PhysicalProperty.h" line="78" column="9" bodyfile="src/omexmeta/PhysicalProperty.cpp" bodystart="36" bodyend="37"/>
-      </memberdef>
-      <memberdef kind="function" id="classomexmeta_1_1PhysicalProperty_1a9a8b291c9516decaa67afa1b15ac7c2d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type></type>
-        <definition>omexmeta::PhysicalProperty::PhysicalProperty</definition>
-        <argsstring>(std::string subject_str, std::string model_uri)</argsstring>
-        <name>PhysicalProperty</name>
-        <param>
-          <type>std::string</type>
-          <declname>subject_str</declname>
-        </param>
-        <param>
-          <type>std::string</type>
-          <declname>model_uri</declname>
-        </param>
-        <briefdescription>
-<para>constructor for <ref refid="classomexmeta_1_1PhysicalProperty" kindref="compound">PhysicalProperty</ref> </para>
-        </briefdescription>
-        <detaileddescription>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>physical_property_string</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>is used to create a URI node representing the physical property </para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PhysicalProperty.h" line="84" column="9" bodyfile="src/omexmeta/PhysicalProperty.cpp" bodystart="30" bodyend="34"/>
+        <location file="src/omexmeta/include/omexmeta/PhysicalProperty.h" line="43" column="9" bodyfile="src/omexmeta/PhysicalProperty.cpp" bodystart="62" bodyend="63"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalProperty_1a0f27071bfef5a9de4eb89fb21461ba76" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::string &amp;</type>
@@ -423,7 +334,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PhysicalProperty.h" line="86" column="28" bodyfile="src/omexmeta/PhysicalProperty.cpp" bodystart="144" bodyend="146"/>
+        <location file="src/omexmeta/include/omexmeta/PhysicalProperty.h" line="45" column="28" bodyfile="src/omexmeta/PhysicalProperty.cpp" bodystart="128" bodyend="130"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalProperty_1a9810bdd4b71d035e6187347b640ce83f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::string &amp;</type>
@@ -436,7 +347,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PhysicalProperty.h" line="88" column="28" bodyfile="src/omexmeta/PhysicalProperty.cpp" bodystart="116" bodyend="118"/>
+        <location file="src/omexmeta/include/omexmeta/PhysicalProperty.h" line="47" column="28" bodyfile="src/omexmeta/PhysicalProperty.cpp" bodystart="111" bodyend="113"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalProperty_1a8065f6509c81feb045a13bcfe43c11b5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PhysicalProperty" kindref="compound">PhysicalProperty</ref> &amp;</type>
@@ -458,7 +369,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PhysicalProperty.h" line="90" column="26" bodyfile="src/omexmeta/PhysicalProperty.cpp" bodystart="121" bodyend="128"/>
+        <location file="src/omexmeta/include/omexmeta/PhysicalProperty.h" line="49" column="26" bodyfile="src/omexmeta/PhysicalProperty.cpp" bodystart="115" bodyend="122"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalProperty_1a182ba6fca7c913219ccd50e006cfbb61" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::string &amp;</type>
@@ -471,7 +382,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PhysicalProperty.h" line="92" column="28" bodyfile="src/omexmeta/PhysicalProperty.cpp" bodystart="130" bodyend="132"/>
+        <location file="src/omexmeta/include/omexmeta/PhysicalProperty.h" line="51" column="28" bodyfile="src/omexmeta/PhysicalProperty.cpp" bodystart="124" bodyend="126"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalProperty_1af2e63778f1281f871a99e216bfcbaf88" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref></type>
@@ -488,7 +399,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PhysicalProperty.h" line="98" column="18" bodyfile="src/omexmeta/PhysicalProperty.cpp" bodystart="72" bodyend="107"/>
+        <location file="src/omexmeta/include/omexmeta/PhysicalProperty.h" line="57" column="18" bodyfile="src/omexmeta/PhysicalProperty.cpp" bodystart="66" bodyend="103"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalProperty_1a57779b9711e41a3e70213190759b3d32" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PhysicalProperty" kindref="compound">PhysicalProperty</ref> &amp;</type>
@@ -509,7 +420,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PhysicalProperty.h" line="100" column="26" bodyfile="src/omexmeta/PhysicalProperty.cpp" bodystart="153" bodyend="156"/>
+        <location file="src/omexmeta/include/omexmeta/PhysicalProperty.h" line="59" column="26" bodyfile="src/omexmeta/PhysicalProperty.cpp" bodystart="137" bodyend="140"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalProperty_1a30ca01ca75b8ccb6293f515439b00e06" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PhysicalProperty" kindref="compound">PhysicalProperty</ref> &amp;</type>
@@ -526,7 +437,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PhysicalProperty.h" line="102" column="26" bodyfile="src/omexmeta/PhysicalProperty.cpp" bodystart="148" bodyend="151"/>
+        <location file="src/omexmeta/include/omexmeta/PhysicalProperty.h" line="61" column="26" bodyfile="src/omexmeta/PhysicalProperty.cpp" bodystart="132" bodyend="135"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalProperty_1ab498df5bb21e010614ae43c0c8e70bb7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::string &amp;</type>
@@ -539,7 +450,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PhysicalProperty.h" line="104" column="28" bodyfile="src/omexmeta/PhysicalProperty.cpp" bodystart="18" bodyend="20"/>
+        <location file="src/omexmeta/include/omexmeta/PhysicalProperty.h" line="63" column="28" bodyfile="src/omexmeta/PhysicalProperty.cpp" bodystart="58" bodyend="60"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalProperty_1a6981edb407fb11b81eebccbc8f7aa94a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::string &amp;</type>
@@ -552,7 +463,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PhysicalProperty.h" line="106" column="28" bodyfile="src/omexmeta/PhysicalProperty.cpp" bodystart="108" bodyend="110"/>
+        <location file="src/omexmeta/include/omexmeta/PhysicalProperty.h" line="65" column="28" bodyfile="src/omexmeta/PhysicalProperty.cpp" bodystart="104" bodyend="106"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalProperty_1acd67e442b842ba57daf0653467b8a682" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::string &amp;</type>
@@ -565,14 +476,48 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PhysicalProperty.h" line="108" column="28" bodyfile="src/omexmeta/PhysicalProperty.cpp" bodystart="111" bodyend="113"/>
+        <location file="src/omexmeta/include/omexmeta/PhysicalProperty.h" line="67" column="28" bodyfile="src/omexmeta/PhysicalProperty.cpp" bodystart="107" bodyend="109"/>
+      </memberdef>
+      <memberdef kind="function" id="classomexmeta_1_1PhysicalProperty_1af3b3379a751ebb15f7a5ea0cae8cb4d6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool omexmeta::PhysicalProperty::operator==</definition>
+        <argsstring>(const PhysicalProperty &amp;rhs) const</argsstring>
+        <name>operator==</name>
+        <param>
+          <type>const <ref refid="classomexmeta_1_1PhysicalProperty" kindref="compound">PhysicalProperty</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/PhysicalProperty.h" line="68" column="14" bodyfile="src/omexmeta/PhysicalProperty.cpp" bodystart="43" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="function" id="classomexmeta_1_1PhysicalProperty_1a1a85ba2c50f5b79e49e8a01b96756f0a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool omexmeta::PhysicalProperty::operator!=</definition>
+        <argsstring>(const PhysicalProperty &amp;rhs) const</argsstring>
+        <name>operator!=</name>
+        <param>
+          <type>const <ref refid="classomexmeta_1_1PhysicalProperty" kindref="compound">PhysicalProperty</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/PhysicalProperty.h" line="69" column="14" bodyfile="src/omexmeta/PhysicalProperty.cpp" bodystart="54" bodyend="56"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="src/omexmeta/include/omexmeta/PhysicalProperty.h" line="24" column="5" bodyfile="src/omexmeta/include/omexmeta/PhysicalProperty.h" bodystart="24" bodyend="109"/>
+    <location file="src/omexmeta/include/omexmeta/PhysicalProperty.h" line="23" column="5" bodyfile="src/omexmeta/include/omexmeta/PhysicalProperty.h" bodystart="23" bodyend="89"/>
     <listofallmembers>
       <member refid="classomexmeta_1_1PhysicalProperty_1a8065f6509c81feb045a13bcfe43c11b5" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProperty</scope><name>about</name></member>
       <member refid="classomexmeta_1_1PhysicalProperty_1acdec5ae85563d2b3f92a9ea15e2bf060" prot="private" virt="non-virtual"><scope>omexmeta::PhysicalProperty</scope><name>about_value_</name></member>
@@ -589,24 +534,24 @@
       <member refid="classomexmeta_1_1PhysicalProperty_1a57779b9711e41a3e70213190759b3d32" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProperty</scope><name>isPropertyOf</name></member>
       <member refid="classomexmeta_1_1PhysicalProperty_1a13a9ec404ea9c6d7ddea6c7398b67328" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProperty</scope><name>isSet</name></member>
       <member refid="classomexmeta_1_1PhysicalProperty_1a30ca01ca75b8ccb6293f515439b00e06" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProperty</scope><name>isVersionOf</name></member>
-      <member refid="classomexmeta_1_1PhysicalProperty_1a4d0963b9ec2f3f42ac0dafa23ee92347" prot="private" virt="non-virtual"><scope>omexmeta::PhysicalProperty</scope><name>local_uri_</name></member>
       <member refid="classomexmeta_1_1PhysicalProperty_1aa129d8ee6d5e5390a5d40d888cb34f0d" prot="private" virt="non-virtual"><scope>omexmeta::PhysicalProperty</scope><name>model_</name></member>
-      <member refid="classomexmeta_1_1PhysicalProperty_1acc22e1576caaad8b1d297531a59d8b84" prot="private" virt="non-virtual"><scope>omexmeta::PhysicalProperty</scope><name>model_uri_</name></member>
       <member refid="classomexmeta_1_1PhysicalProperty_1a6ae73e803b715d79b6900cf8b8867a8a" prot="private" virt="non-virtual"><scope>omexmeta::PhysicalProperty</scope><name>new_metaid_exclusion_list_</name></member>
       <member refid="classomexmeta_1_1PhysicalProperty_1a1a85ba2c50f5b79e49e8a01b96756f0a" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProperty</scope><name>operator!=</name></member>
+      <member refid="classomexmeta_1_1PhysicalProperty_1af0fc85f08d59093673270cf74773823e" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProperty</scope><name>operator=</name></member>
+      <member refid="classomexmeta_1_1PhysicalProperty_1a8800365ed17c49d1a8e7eb2225bae169" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProperty</scope><name>operator=</name></member>
       <member refid="classomexmeta_1_1PhysicalProperty_1af3b3379a751ebb15f7a5ea0cae8cb4d6" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProperty</scope><name>operator==</name></member>
-      <member refid="classomexmeta_1_1PhysicalProperty_1af0ff6c915ed8b5d977a94c5ebee4edca" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProperty</scope><name>PhysicalProperty</name></member>
-      <member refid="classomexmeta_1_1PhysicalProperty_1aa973322a7a26249187a82bb878ad3790" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProperty</scope><name>PhysicalProperty</name></member>
-      <member refid="classomexmeta_1_1PhysicalProperty_1ae1661cc749bd68c04ad47cdc0b7260d5" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProperty</scope><name>PhysicalProperty</name></member>
-      <member refid="classomexmeta_1_1PhysicalProperty_1a3f0c5a2374e80b71aa74184e29780e28" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProperty</scope><name>PhysicalProperty</name></member>
-      <member refid="classomexmeta_1_1PhysicalProperty_1a9a8b291c9516decaa67afa1b15ac7c2d" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProperty</scope><name>PhysicalProperty</name></member>
+      <member refid="classomexmeta_1_1PhysicalProperty_1aa0faaf61713981a2c1e340ea3b401616" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProperty</scope><name>PhysicalProperty</name></member>
+      <member refid="classomexmeta_1_1PhysicalProperty_1a41cd211e575a4cf4144fa2157f52747d" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProperty</scope><name>PhysicalProperty</name></member>
+      <member refid="classomexmeta_1_1PhysicalProperty_1a0c12f4fc60d445adf9a7086f76015474" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProperty</scope><name>PhysicalProperty</name></member>
+      <member refid="classomexmeta_1_1PhysicalProperty_1a907bcbaacfa441756d514ff52efa2f97" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProperty</scope><name>PhysicalProperty</name></member>
       <member refid="classomexmeta_1_1PhysicalProperty_1a58c0bfc4cee0998e1d7aaaff9b8c7ff0" prot="private" virt="non-virtual"><scope>omexmeta::PhysicalProperty</scope><name>property_bearer_base_</name></member>
       <member refid="classomexmeta_1_1PhysicalProperty_1aa6739d4c58f1daa524bd96ea123f9b0f" prot="private" virt="non-virtual"><scope>omexmeta::PhysicalProperty</scope><name>property_metaid_base_</name></member>
       <member refid="classomexmeta_1_1PhysicalProperty_1a46f5436faa6f1c977088544bec31d125" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProperty</scope><name>setIsSet</name></member>
       <member refid="classomexmeta_1_1PhysicalProperty_1a1b521c8ed4752a27b0e667c766b9e304" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProperty</scope><name>setPropertyBearerBase</name></member>
       <member refid="classomexmeta_1_1PhysicalProperty_1a101d24ba21354367e13406d1f68c9248" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProperty</scope><name>setPropertyMetaidBase</name></member>
       <member refid="classomexmeta_1_1PhysicalProperty_1af2e63778f1281f871a99e216bfcbaf88" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProperty</scope><name>toTriples</name></member>
-      <member refid="classomexmeta_1_1PhysicalProperty_1a6983c4f7e0b46cf9d8061f13bd3c3311" prot="private" virt="non-virtual"><scope>omexmeta::PhysicalProperty</scope><name>validate</name></member>
+      <member refid="classomexmeta_1_1PhysicalProperty_1a44b8fe9de1697e10b1d505b2e84abd52" prot="private" virt="non-virtual"><scope>omexmeta::PhysicalProperty</scope><name>uriHandler_</name></member>
+      <member refid="classomexmeta_1_1PhysicalProperty_1a6080d0966cd4f0d1912dd0cf914caf5b" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProperty</scope><name>~PhysicalProperty</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

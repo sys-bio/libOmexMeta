@@ -21,13 +21,18 @@ namespace redland {
 
     class LibrdfModel {
 
-        librdf_model *model_ = nullptr;
-
     public:
-//        ~LibrdfModel();
-        bool operator==(const LibrdfModel &rhs) const;
+        ~LibrdfModel();
 
-        bool operator!=(const LibrdfModel &rhs) const;
+        /*
+         *  librdf_model and librdf_storage have a
+         * strictly 1:1 relationship. i.e. a storage cannot
+         * be associated with more than one model.
+         */
+        [[deprecated("Use LibrdfModel(LibrdfStorage storage, const char *options = nullptr);")]]
+        explicit LibrdfModel(librdf_storage *storage, const char *options = nullptr);
+
+        explicit LibrdfModel(LibrdfStorage& storage, const char *options = nullptr);
 
         LibrdfModel(const LibrdfModel &model) = delete;
 
@@ -37,23 +42,20 @@ namespace redland {
 
         LibrdfModel &operator=(LibrdfModel &&model) noexcept;
 
+        bool operator==(const LibrdfModel &rhs) const;
+
+        bool operator!=(const LibrdfModel &rhs) const;
+
         LibrdfModel() = default;
 
         explicit LibrdfModel(librdf_model *model);
-
-        /*
-         *  librdf_model and librdf_storage have a
-         * strictly 1:1 relationship. i.e. a storage cannot
-         * be associated with more than one model.
-         */
-        explicit LibrdfModel(librdf_storage *storage, const char *options = nullptr);
 
         [[nodiscard]] librdf_model *get() const;
 
 //        LibrdfQueryResults query(LibrdfQuery query);
         [[nodiscard]] LibrdfQueryResults query(const LibrdfQuery& query) const;
 
-        LibrdfStream toStream();
+        librdf_stream* toStream();
 
         int size() const;
 
@@ -81,7 +83,11 @@ namespace redland {
 
         bool containsStatement(librdf_statement* statement) const;
 
+        bool containsStatement(const LibrdfStatement &statement) const;
+
         void addStatement(const LibrdfStatement &statement) const;
+    private:
+        librdf_model *model_ = nullptr;
     };
 }
 

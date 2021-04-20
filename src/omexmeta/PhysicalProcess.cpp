@@ -6,17 +6,15 @@
 
 namespace omexmeta {
 
-    PhysicalProcess::PhysicalProcess(librdf_model *model, std::string model_uri, std::string local_uri,
+    PhysicalProcess::PhysicalProcess(librdf_model *model, UriHandler& uriHandler,
                                      const PhysicalProperty &physicalProperty,
                                      Sources sources, Sinks sinks, Mediators mediators)
-        : PropertyBearer(model, model_uri, local_uri, physicalProperty, PHYSICAL_PROCESS),
+        : PropertyBearer(model, uriHandler, physicalProperty, PHYSICAL_PROCESS),
           sources_(std::move(sources)), sinks_(std::move(sinks)), mediators_(std::move(mediators)) {
     }
 
-    PhysicalProcess::PhysicalProcess(librdf_model *model) : PropertyBearer(model) {}
-
-    PhysicalProcess::PhysicalProcess(librdf_model *model, std::string model_uri, std::string local_uri)
-        : PropertyBearer(model, model_uri, local_uri) {}
+    PhysicalProcess::PhysicalProcess(librdf_model *model, UriHandler& uriHandler)
+        : PropertyBearer(model, uriHandler) {}
 
     const std::vector<SourceParticipant> &PhysicalProcess::getSources() const {
         return sources_;
@@ -30,35 +28,21 @@ namespace omexmeta {
         return mediators_;
     }
 
-    PhysicalProcess &PhysicalProcess::setPhysicalProperty(PhysicalProperty physicalProperty) {
-        physical_property_ = std::move(physicalProperty);
-        return (*this);
-    }
-
-    //todo turn this into a factory whereby user enters string of PhysicalProperty
-    //  and we automatically pick out the correct OPB identifier
-    PhysicalProcess &
-    PhysicalProcess::setPhysicalProperty(std::string subject_metaid, const std::string &physicalProperty) {
-        subject_metaid = OmexMetaUtils::concatMetaIdAndUri(subject_metaid, getModelUri());
-        physical_property_ = PhysicalProperty(subject_metaid, physicalProperty, getModelUri());
-        return (*this);
-    }
-
     PhysicalProcess &PhysicalProcess::addSource(std::string physical_entity_reference, eUriType type, double multiplier) {
         sources_.push_back(
                 std::move(SourceParticipant(model_,
                                             multiplier,
                                             std::move(physical_entity_reference), type,
-                                            getModelUri(), getLocalUri())));
-        return (*this);
+                                            uriHandler_
+                                            )));
+        return *this;
     }
 
     PhysicalProcess &PhysicalProcess::addSink(std::string physical_entity_reference, eUriType type, double multiplier) {
         sinks_.push_back(
                 std::move(SinkParticipant(
                         model_,
-                        multiplier, std::move(physical_entity_reference),type,
-                        getModelUri(), getLocalUri())));
+                        multiplier, std::move(physical_entity_reference),type, uriHandler_)));
 
         return (*this);
     }
@@ -67,8 +51,7 @@ namespace omexmeta {
         mediators_.push_back(
                 std::move(MediatorParticipant(
                         model_,
-                        std::move(physical_entity_reference),type,
-                        getModelUri(), getLocalUri())));
+                        std::move(physical_entity_reference),type, uriHandler_)));
 
         return (*this);
     }
@@ -129,24 +112,25 @@ namespace omexmeta {
 
         if (!is_version_of_.empty()) {
             SingularAnnotation singularAnnotation(
+                    uriHandler_,
                     LibrdfNode::fromUriString(getAbout()).get(),
-                    PredicateFactory("bqbiol", "isVersionOf")->getNode(),
+                    PredicateFactory("bqbiol", "isVersionOf")->get(),
                     LibrdfNode::fromUriString(is_version_of_).get());
-            triples.move_back(singularAnnotation);
+            triples.moveBack(singularAnnotation);
         }
         for (auto &source : sources_) {
             for (auto &triple : source.toTriples(getAbout(), new_metaid_exclusion_list_)) {
-                triples.move_back(triple);
+                triples.moveBack(triple);
             }
         }
         for (auto &sink : sinks_) {
             for (auto &triple : sink.toTriples(getAbout(), new_metaid_exclusion_list_)) {
-                triples.move_back(triple);
+                triples.moveBack(triple);
             }
         }
         for (auto &mediator : mediators_) {
             for (auto &triple : mediator.toTriples(getAbout(), new_metaid_exclusion_list_)) {
-                triples.move_back(triple);
+                triples.moveBack(triple);
             }
         }
         return triples;

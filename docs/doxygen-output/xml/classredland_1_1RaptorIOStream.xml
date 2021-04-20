@@ -47,11 +47,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/include/redland/RaptorIOStream.h" line="26" column="18" bodyfile="src/redland/RedlandWrapper/src/RaptorIOStream.cpp" bodystart="15" bodyend="18"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/RaptorIOStream.h" line="26" column="18"/>
       </memberdef>
-      <memberdef kind="function" id="classredland_1_1RaptorIOStream_1adbcfcc29e030219dfd180ecb3d6c2c4b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classredland_1_1RaptorIOStream_1ae771c80aba471ed772b7c227fe7e4003" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>raptor_iostream *</type>
-        <definition>raptor_iostream * redland::RaptorIOStream::get</definition>
+        <definition>raptor_iostream* redland::RaptorIOStream::get</definition>
         <argsstring>() const</argsstring>
         <name>get</name>
         <briefdescription>
@@ -60,13 +60,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/include/redland/RaptorIOStream.h" line="28" column="26" bodyfile="src/redland/RedlandWrapper/src/RaptorIOStream.cpp" bodystart="20" bodyend="22"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/RaptorIOStream.h" line="28" column="26"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
-      <memberdef kind="function" id="classredland_1_1RaptorIOStream_1ab4b78aede5b54be5a654c9b81e65452c" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classredland_1_1RaptorIOStream_1acdefbbf1049c545740f19cb9b3b02046" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::pair&lt; <ref refid="classredland_1_1RaptorIOStream" kindref="compound">RaptorIOStream</ref>, void * &gt;</type>
-        <definition>std::pair&lt; RaptorIOStream, void * &gt; redland::RaptorIOStream::newIOToString</definition>
+        <definition>static std::pair&lt;RaptorIOStream, void *&gt; redland::RaptorIOStream::newIOToString</definition>
         <argsstring>()</argsstring>
         <name>newIOToString</name>
         <briefdescription>
@@ -75,7 +75,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/include/redland/RaptorIOStream.h" line="30" column="26" bodyfile="src/redland/RedlandWrapper/src/RaptorIOStream.cpp" bodystart="24" bodyend="33"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/RaptorIOStream.h" line="30" column="26"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -84,9 +84,9 @@
     </detaileddescription>
     <location file="src/redland/RedlandWrapper/src/include/redland/RaptorIOStream.h" line="17" column="5" bodyfile="src/redland/RedlandWrapper/src/include/redland/RaptorIOStream.h" bodystart="17" bodyend="31"/>
     <listofallmembers>
-      <member refid="classredland_1_1RaptorIOStream_1adbcfcc29e030219dfd180ecb3d6c2c4b" prot="public" virt="non-virtual"><scope>redland::RaptorIOStream</scope><name>get</name></member>
+      <member refid="classredland_1_1RaptorIOStream_1ae771c80aba471ed772b7c227fe7e4003" prot="public" virt="non-virtual"><scope>redland::RaptorIOStream</scope><name>get</name></member>
       <member refid="classredland_1_1RaptorIOStream_1a5e0290f081c8c72e66c6aa40741f2bf9" prot="private" virt="non-virtual"><scope>redland::RaptorIOStream</scope><name>iostream_</name></member>
-      <member refid="classredland_1_1RaptorIOStream_1ab4b78aede5b54be5a654c9b81e65452c" prot="public" virt="non-virtual"><scope>redland::RaptorIOStream</scope><name>newIOToString</name></member>
+      <member refid="classredland_1_1RaptorIOStream_1acdefbbf1049c545740f19cb9b3b02046" prot="public" virt="non-virtual"><scope>redland::RaptorIOStream</scope><name>newIOToString</name></member>
       <member refid="classredland_1_1RaptorIOStream_1aa7371096ef963f70ddd935f9a101831c" prot="public" virt="non-virtual"><scope>redland::RaptorIOStream</scope><name>RaptorIOStream</name></member>
       <member refid="classredland_1_1RaptorIOStream_1a6cf2e1a9cf6c31bb37069c5b3e591509" prot="public" virt="non-virtual"><scope>redland::RaptorIOStream</scope><name>RaptorIOStream</name></member>
     </listofallmembers>

@@ -16,7 +16,7 @@ namespace omexmeta {
         } else {
             this->uri_ = namespace_ + "/" + term_;
         }
-        this->node_ = LibrdfNode::fromUriString(uri_).get();
+        node_ = std::move(LibrdfNode::fromUriString(uri_));
     }
 
     Predicate::Predicate(librdf_node *node)
@@ -25,7 +25,7 @@ namespace omexmeta {
             throw RedlandNullPointerException(
                     "RedlandNullPointerException: Predicate::Predicate(librdf_node* node): node is null");
         // some logic for processing the uri in a node to automatically produce the fields we want.
-        std::string val = LibrdfNode::str(node_);
+        std::string val = node_.str();
 
         // split the uri by '/'
         std::vector<std::string> v = OmexMetaUtils::splitStringBy(val, '/');
@@ -64,7 +64,7 @@ namespace omexmeta {
         } else {
             this->uri_ = namespace_ + "/" + term_;
         }
-        node_ = LibrdfNode::fromUriString(uri_).get();
+        node_ = LibrdfNode::fromUriString(uri_);
     }
 
     const std::string &Predicate::getNamespace() const {
@@ -140,16 +140,17 @@ namespace omexmeta {
         }
     }
 
-    librdf_node *Predicate::getNode() const {
-        return node_;
+    librdf_node *Predicate::get() const {
+        return node_.get();
     }
 
     void Predicate::setNode(librdf_node *node) {
-        node_ = node;
+        node_ = LibrdfNode(node);
     }
 
     void Predicate::freeNode() {
-        LibrdfNode::freeNode(node_);
+        node_.freeNode();
+//        LibrdfNode::freeNode(node_);
     }
 
     void Predicate::addSeenNamespaceToSerializer(librdf_world *world,
@@ -192,7 +193,7 @@ namespace omexmeta {
     }
 
     bool Predicate::operator==(const Predicate &rhs) const {
-        return librdf_node_equals(node_, rhs.node_);
+        return node_ == rhs.node_;
     }
 
     bool Predicate::operator!=(const Predicate &rhs) const {

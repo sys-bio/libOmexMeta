@@ -43,7 +43,6 @@ namespace omexmeta {
                             .setPredicate("bqbiol", "isPartOf")
                             .setResourceWithModelUri(compartment_id_that_species_node_belongs_to);
                     editor_->addSingleAnnotation(singularAnnotation);
-                    singularAnnotation.freeTriple();
                 }
             }
         }
