@@ -79,7 +79,7 @@ TEST_F(LibrdfNodeTests, TestTypedLiteral1) {
 }
 
 TEST_F(LibrdfNodeTests, TestTypedLiteral2) {
-    LibrdfNode node = LibrdfNode::fromLiteral("TypedLiteral");
+    LibrdfNode node = LibrdfNode::fromLiteral("TypedLiteral", "string");
     LibrdfUri n = node.getLiteralDatatype();
     std::string actual = n.str();
     ASSERT_STREQ("http://www.w3.org/1999/02/22-rdf-syntax-ns#string", actual.c_str());
@@ -171,10 +171,10 @@ TEST_F(LibrdfNodeTests, TestSetUri) {
 }
 
 TEST_F(LibrdfNodeTests, TestgetLiteralDatatype) {
-    LibrdfNode subject = LibrdfNode::fromLiteral("subject");
+    LibrdfNode subject = LibrdfNode::fromLiteral("subject", "int");
     LibrdfUri u = subject.getLiteralDatatype();
     std::string actual = u.str();
-    std::string expected = "http://www.w3.org/1999/02/22-rdf-syntax-ns#string";
+    std::string expected = "http://www.w3.org/1999/02/22-rdf-syntax-ns#int";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
@@ -268,7 +268,7 @@ TEST_F(LibrdfNodeTests, TestCopyNodeUriNoWrapper) {
 
 
 TEST_F(LibrdfNodeTests, TestCopyNodeLiteral) {
-    LibrdfNode subject1 = LibrdfNode::fromLiteral("subject1");
+    LibrdfNode subject1 = LibrdfNode::fromLiteral("subject1", "string");
     LibrdfNode subject2 = LibrdfNode::copyNode(subject1);
     ASSERT_EQ(subject1, subject2);
     ASSERT_EQ(subject1.getLiteralDatatype(), subject2.getLiteralDatatype());

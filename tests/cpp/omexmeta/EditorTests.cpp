@@ -278,7 +278,7 @@ TEST_F(EditorTests, TestToRDFSingularAnnotationWithLiteral) {
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#species0001>\n"
-                           "    dc:description \"Cardiomyocyte cytosolic ATP concentration\"^^rdf:string .\n"
+                           "    dc:description \"Cardiomyocyte cytosolic ATP concentration\" .\n"
                            "\n";
     std::cout << actual << std::endl;
     ASSERT_TRUE(RDF::equals(&rdf, expected));
@@ -526,15 +526,11 @@ TEST_F(EditorTests, TestModelLevelAnnotationAddCurator) {
 }
 
 TEST_F(EditorTests, TestModelLevelAnnotationAddDateCreated) {
-    std::cout << __FILE__ << ":" << __LINE__ << std::endl;
     RDF rdf;
-    std::cout << __FILE__ << ":" << __LINE__ << std::endl;
     Editor editor = rdf.toEditor(
             SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
-    std::cout << __FILE__ << ":" << __LINE__ << std::endl;
 
     editor.addDateCreated("14/01/1991");
-    std::cout << __FILE__ << ":" << __LINE__ << std::endl;
 
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n"
@@ -544,20 +540,14 @@ TEST_F(EditorTests, TestModelLevelAnnotationAddDateCreated) {
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml>\n"
                            "    dc:created [\n"
-                           "        dc:W3CDTF \"14/01/1991\"^^rdf:string\n"
+                           "        dc:W3CDTF \"14/01/1991\"\n"
                            "    ] .";
-    std::cout << __FILE__ << ":" << __LINE__ << std::endl;
     RDF expected_rdf = RDF::fromString(expected, "turtle");
-    std::cout << __FILE__ << ":" << __LINE__ << std::endl;
     std::cout << rdf.toString() << std::endl;
-    std::cout << __FILE__ << ":" << __LINE__ << std::endl;
     std::cout << expected_rdf.toString() << std::endl;
-    std::cout << __FILE__ << ":" << __LINE__ << std::endl;
 
     bool passed = RDF::equals(&rdf, &expected_rdf);
-    std::cout << __FILE__ << ":" << __LINE__ << std::endl;
     ASSERT_TRUE(passed);
-    std::cout << __FILE__ << ":" << __LINE__ << std::endl;
 }
 
 TEST_F(EditorTests, TestModelLevelAnnotationAddDescription) {
@@ -574,7 +564,7 @@ TEST_F(EditorTests, TestModelLevelAnnotationAddDescription) {
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml>\n"
-                           "    <https://dublincore.org/specifications/dublin-core/dcmi-terms/description> \"Predictive model of chip butty consumer's risk of heart failure.\"^^rdf:string .\n"
+                           "    <https://dublincore.org/specifications/dublin-core/dcmi-terms/description> \"Predictive model of chip butty consumer's risk of heart failure.\" .\n"
                            "\n";
     std::string actual = rdf.toString("turtle");
     std::cout << actual << std::endl;
@@ -641,7 +631,7 @@ TEST_F(EditorTests, TestSingularAnnotationBuilderAlternativeInterface) {
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#species0000>\n"
-                           "    bqbiol:is \"resource\"^^rdf:string .\n\n";
+                           "    bqbiol:is \"resource\" .\n\n";
     std::string actual = singularAnnotation.str("turtle");
     std::cout << actual << std::endl;
     ASSERT_TRUE(RDF::equals(&rdf, expected));
@@ -711,8 +701,8 @@ TEST_F(EditorTests, TestAddPersonalInformation) {
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000>\n"
                            "    foaf:accountName <https://orcid.org/1234-1234-1234-1234> ;\n"
                            "    foaf:accountServiceHomepage <https://github.com/sys-bio/libOmexMeta> ;\n"
-                           "    foaf:mbox \"annotations@uw.edu\"^^rdf:string ;\n"
-                           "    foaf:name \"Ciaran Welsh\"^^rdf:string .\n"
+                           "    foaf:mbox \"annotations@uw.edu\" ;\n"
+                           "    foaf:name \"Ciaran Welsh\" .\n"
                            "\n"
                            "";
     std::cout << actual << std::endl;
@@ -762,7 +752,7 @@ TEST_F(EditorTests, TestaddDateCreated) {
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml>\n"
                            "    dc:created [\n"
-                           "        dc:W3CDTF \"20-01-2020\"^^rdf:string\n"
+                           "        dc:W3CDTF \"20-01-2020\"\n"
                            "    ] .\n"
                            "";
     std::cout << rdf.toString() << std::endl;
@@ -779,7 +769,7 @@ TEST_F(EditorTests, TestaddDescription) {
                            "@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml>\n"
-                           "    dc:description \"Descripting\"^^rdf:string .\n"
+                           "    dc:description \"Descripting\" .\n"
                            "";
     std::cout << rdf.toString() << std::endl;
     ASSERT_TRUE(RDF::equals(&rdf, expected));

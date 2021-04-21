@@ -41,7 +41,7 @@ set(OMEXMETA_HEADERS
         "${OMEXMETA_INCLUDE_DIR}/omexmeta/Error.h"
         "${OMEXMETA_INCLUDE_DIR}/omexmeta/UriHandler.h"
         "${OMEXMETA_INCLUDE_DIR}/omexmeta/VCardTranslator.h"
-        #    dbg.h
+        "${OMEXMETA_INCLUDE_DIR}/omexmeta/PurgeRDFBag.h"
         )
 
 set(OMEXMETA_SOURCES
@@ -68,6 +68,7 @@ set(OMEXMETA_SOURCES
         "MarkupIdentifier.cpp"
         "UriHandler.cpp"
         "VCardTranslator.cpp"
+        "PurgeRDFBag.cpp"
         )
 
 

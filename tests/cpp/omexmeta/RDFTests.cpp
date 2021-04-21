@@ -94,8 +94,9 @@ TEST_F(RDFTests, TestFromStringSingularAnnotationSqlite) {
 }
 
 TEST_F(RDFTests, TestFromStringTurtleBag) {
+    // note that rdf::bag is auto removed
     RDF rdf = RDF::fromString(samples.rdf_turtle_bag_example, "turtle");
-    int expected = 7;
+    int expected = 5;// 7 with rdf:bag
     int actual = rdf.size();
     ASSERT_EQ(expected, actual);
 }
@@ -322,23 +323,7 @@ TEST_F(RDFTests, TestSerializeCellMlAnnotationNoTrailingHashes) {
     ASSERT_TRUE(RDF::equals(&rdf, expected));
 }
 
-TEST_F(RDFTests, TestBagConversionSimple) {
-    RDF rdf = RDF::fromString(samples.simpleRDFBag, "turtle");
-    rdf.purgeRDFBag();
-
-    std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
-                           "@prefix semsim: <http://bime.uw.edu/semsim/> .\n"
-                           "@prefix OMEXlib: <http://omex-library.org/> .\n"
-                           "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
-                           "\n"
-                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#S1>\n"
-                           "    bqbiol:isVersionOf <http://identifiers.org/obo.chebi/CHEBI:16526>, <http://identifiers.org/obo.chebi/CHEBI:16527>, <http://identifiers.org/obo.chebi/CHEBI:16528> .";
-
-    ASSERT_TRUE(RDF::equals(&rdf, expected, "turtle"));
-}
-
-TEST_F(RDFTests, TestBagConversionWithVCardInTheMix) {
+TEST_F(RDFTests, TestBagConversion) {
     std::string input = "<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
                         "                 xmlns:bqmodel=\"http://biomodels.net/model-qualifiers/\"\n"
                         "                 xmlns:vCard=\"http://www.w3.org/2001/vcard-rdf/3.0#\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"\n"
@@ -414,13 +399,34 @@ TEST_F(RDFTests, TestBagConversionWithVCardInTheMix) {
                         "            </rdf:Description>\n"
                         "        </rdf:RDF>";
     RDF rdf = RDF::fromString(input, "rdfxml");
-    rdf.vcardTranslator();
 
-//    std::string expected = "This test can only be completed after we know how to convert "
-//                           "VCard information from rdf:Bag";
-
-    ASSERT_TRUE(RDF::equals(&rdf, "expected", "turtle"));
+    std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+                           "@prefix bqmodel: <http://biomodels.net/model-qualifiers/> .\n"
+                           "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
+                           "@prefix OMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
+                           "\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#_272044>\n"
+                           "    bqbiol:hasTaxon <http://identifiers.org/taxonomy/33090> ;\n"
+                           "    bqmodel:is <http://identifiers.org/biomodels.db/BIOMD0000000385>, <http://identifiers.org/biomodels.db/MODEL1109270001>, <http://identifiers.org/obo.go/GO:0019253> ;\n"
+                           "    bqmodel:isDescribedBy <http://identifiers.org/pubmed/22001849> ;\n"
+                           "    <http://purl.org/dc/elements/1.1/creator> [\n"
+                           "        <http://xmlns.com/foaf/0.1/Organization> \"EMBL-EBI\", \"\"\"Institute of Biochemistry and Biology, University of Potsdam, 14476\n"
+                           "                                    Potsdam, Germany\n"
+                           "                                \"\"\", \"Max-Planck-Institute of Molecular Plant Physiology\" ;\n"
+                           "        <http://xmlns.com/foaf/0.1/familyName> \"Arnold\", \"Chelliah\", \"Nikoloski\" ;\n"
+                           "        <http://xmlns.com/foaf/0.1/givenName> \"Anne\", \"Vijayalakshmi\", \"Zoran\" ;\n"
+                           "        <http://xmlns.com/foaf/0.1/mbox> \"arnold@mpimp-golm.mpg.de\", \"nikoloski@mpimp-golm.mpg.de\", \"viji@ebi.ac.uk\"\n"
+                           "    ] ;\n"
+                           "    <http://purl.org/dc/terms/created> [\n"
+                           "        <http://purl.org/dc/terms/W3CDTF> \"2011-10-19T14:51:13Z\"\n"
+                           "    ] ;\n"
+                           "    <http://purl.org/dc/terms/modified> [\n"
+                           "        <http://purl.org/dc/terms/W3CDTF> \"2012-04-20T19:52:45Z\"\n"
+                           "    ] .";
+    ASSERT_TRUE(RDF::equals(&rdf, expected, "turtle"));
 }
+
 
 
 class ParserReadTesReadFromFileHasPrefixesTests : public ::testing::Test {

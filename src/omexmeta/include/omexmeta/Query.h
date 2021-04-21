@@ -231,6 +231,11 @@ namespace omexmeta {
         void runQuery();
 
         /**
+         * @brief Output query results to cout
+         */
+        void printQueryResults();
+
+        /**
          * todo test implementing these commented out functions.
          *  They were commented out before for circular dependency issues
          *  but might be able do the same thing but inside the RDF object?
