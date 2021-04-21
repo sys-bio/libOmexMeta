@@ -21,16 +21,12 @@ public:
 
     std::filesystem::path fnamep = std::filesystem::current_path() / +"annotation.rdf";
     std::string fname;
+    std::filesystem::path sqlite_fname = std::filesystem::current_path() += "SqliteStorageTest.db";
 
     CAPITests() {
         fname = fnamep.string();
     }
 
-    void TearDown() override {
-        if (std::filesystem::exists(fname)) {
-            std::filesystem::remove(fname);
-        }
-    };
 };
 
 
@@ -121,8 +117,7 @@ TEST_F(CAPITests, RDF_addFromStringOutput) {
 //}
 
 TEST_F(CAPITests, RDF_addFromUriSqliteStorage) {
-    std::filesystem::path fname = std::filesystem::current_path() += "SqliteStorageTest.db";
-    RDF *rdf_ptr = RDF_new("sqlite", fname.string().c_str(), "new='yes'");
+    RDF *rdf_ptr = RDF_new("sqlite", sqlite_fname.string().c_str(), "new='yes'");
     RDF_addFromString(rdf_ptr, samples.singular_annotation1.c_str(), "rdfxml");
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
@@ -137,7 +132,7 @@ TEST_F(CAPITests, RDF_addFromUriSqliteStorage) {
     ASSERT_TRUE(RDF::equals(rdf_ptr, expected, "turtle"));
     ASSERT_TRUE(std::filesystem::exists(fname));
     RDF_delete(rdf_ptr);
-    std::filesystem::remove(fname);
+
 }
 
 TEST_F(CAPITests, RDF_fromFile) {
@@ -298,7 +293,7 @@ TEST_F(CAPITests, TestSingularAnnotationFull) {
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#species0000>\n"
-                           "    <http://predicate.com/from/uri> \"Cheese\"^^rdf:string .\n"
+                           "    <http://predicate.com/from/uri> \"Cheese\" .\n"
                            "\n";
     ASSERT_TRUE(RDF::equals(rdf_ptr, expected, "turtle"));
 
@@ -1212,7 +1207,7 @@ TEST_F(CAPITests, EditoraddDescription) {
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml>\n"
-                           "    <https://dublincore.org/specifications/dublin-core/dcmi-terms/description> \"A model\"^^rdf:string .\n"
+                           "    <https://dublincore.org/specifications/dublin-core/dcmi-terms/description> \"A model\" .\n"
                            "\n"
                            "";
     char *actual = RDF_toString(rdf_ptr, "turtle");
@@ -1236,7 +1231,7 @@ TEST_F(CAPITests, EditoraddDateCreated) {
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml>\n"
                            "    dc:created [\n"
-                           "        dc:W3CDTF \"14/01/1991\"^^rdf:string\n"
+                           "        dc:W3CDTF \"14/01/1991\"\n"
                            "    ] .";
     char *actual = RDF_toString(rdf_ptr, "turtle");
     std::cout << actual << std::endl;
@@ -1335,7 +1330,7 @@ TEST_F(CAPITests, PersonalInformationaddName) {
                            "    dc:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000>\n"
-                           "    foaf:name \"Ciaran Welsh\"^^rdf:string .\n"
+                           "    foaf:name \"Ciaran Welsh\" .\n"
                            "\n"
                            "";
     std::cout << actual << std::endl;
@@ -1365,7 +1360,7 @@ TEST_F(CAPITests, PersonalInformationaddMbox) {
                            "    dc:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000>\n"
-                           "    foaf:mbox \"cwelsh2@ue.edu\"^^rdf:string .\n"
+                           "    foaf:mbox \"cwelsh2@ue.edu\" .\n"
                            "\n"
                            "";
     std::cout << actual << std::endl;
@@ -1454,7 +1449,7 @@ TEST_F(CAPITests, PersonalInformationaddFoafUri) {
                            "    dc:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000>\n"
-                           "    foaf:accountServiceHomepage \"https://github.com/sys-bio/libOmexMeta\"^^rdf:string .\n"
+                           "    foaf:accountServiceHomepage \"https://github.com/sys-bio/libOmexMeta\" .\n"
                            "\n"
                            "";
     std::cout << actual << std::endl;
@@ -1484,7 +1479,7 @@ TEST_F(CAPITests, PersonalInformationaddFoafLiteral) {
                            "    dc:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000>\n"
-                           "    foaf:name \"Ciaran Welsh\"^^rdf:string .\n"
+                           "    foaf:name \"Ciaran Welsh\" .\n"
                            "\n";
     std::cout << actual << std::endl;
     ASSERT_TRUE(RDF::equals(rdf_ptr, expected, "turtle"));

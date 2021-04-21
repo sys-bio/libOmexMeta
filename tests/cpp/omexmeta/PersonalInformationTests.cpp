@@ -42,7 +42,7 @@ TEST_F(PersonalInformationTests, TestAddFoaf) {
                            "    dc:creator <http://omex-library.org/NewOmex.omex/TestModel.sbml#PersonalInfo0000> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/TestModel.sbml#PersonalInfo0000>\n"
-                           "    foaf:name \"Joe Blogs\"^^rdf:string .\n";
+                           "    foaf:name \"Joe Blogs\" .\n";
     ASSERT_TRUE(RDF::equals(triples, expected));
 
 
@@ -63,7 +63,7 @@ TEST_F(PersonalInformationTests, TestAddFoafUsingLiteral) {
                            "    dc:creator <http://omex-library.org/NewOmex.omex/TestModel.sbml#PersonalInfo0000> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/TestModel.sbml#PersonalInfo0000>\n"
-                           "    foaf:name \"Ciaran Welsh\"^^rdf:string .";
+                           "    foaf:name \"Ciaran Welsh\" .";
     ASSERT_TRUE(RDF::equals(triples, expected, "turtle"));
 
 }
@@ -106,7 +106,7 @@ TEST_F(PersonalInformationTests, TestAddName) {
                            "    dc:creator <http://omex-library.org/NewOmex.omex/TestModel.sbml#PersonalInfo0000> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/TestModel.sbml#PersonalInfo0000>\n"
-                           "    foaf:name \"Ciaran Welsh\"^^rdf:string .";
+                           "    foaf:name \"Ciaran Welsh\" .";
     ASSERT_TRUE(RDF::equals(triples, expected, "turtle"));
 
 }
@@ -127,7 +127,7 @@ TEST_F(PersonalInformationTests, TestMBox) {
                            "    dc:creator <http://omex-library.org/NewOmex.omex/TestModel.sbml#PersonalInfo0000> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/TestModel.sbml#PersonalInfo0000>\n"
-                           "    foaf:mbox \"annotations@uw.edu\"^^rdf:string .";
+                           "    foaf:mbox \"annotations@uw.edu\" .";
     ASSERT_TRUE(RDF::equals(triples, expected, "turtle"));
 
 }
@@ -196,8 +196,8 @@ TEST_F(PersonalInformationTests, TestMultipleEntries) {
                            "<http://omex-library.org/NewOmex.omex/TestModel.sbml#PersonalInfo0000>\n"
                            "    foaf:accountName <https://orcid.org/0000-1111-2222-3333> ;\n"
                            "    foaf:accountServiceHomepage <https://github.com/sys-bio/libOmexMeta> ;\n"
-                           "    foaf:mbox \"annotations.uw.edu\"^^rdf:string ;\n"
-                           "    foaf:name \"Ciaran Welsh\"^^rdf:string .";
+                           "    foaf:mbox \"annotations.uw.edu\" ;\n"
+                           "    foaf:name \"Ciaran Welsh\" .";
     ASSERT_TRUE(RDF::equals(triples, expected, "turtle"));
 
 }

@@ -5,18 +5,18 @@
 #ifndef LIBOMEXMETA_QUERY_H
 #define LIBOMEXMETA_QUERY_H
 
-#include "redland/RedlandAPI.h"
 #include "omexmeta/Error.h"
 #include "omexmeta/OmexMetaUtils.h"
+#include "redland/RedlandAPI.h"
 
 #include "redland/librdf.h"
 
-#include <unordered_map>
-#include <vector>
-#include <string>
-#include <sstream>
 #include <iostream>
+#include <sstream>
+#include <string>
+#include <unordered_map>
 #include <utility>
+#include <vector>
 
 using namespace redland;
 
@@ -42,7 +42,7 @@ namespace omexmeta {
      */
     class Query {
 
-        librdf_model *model_ = nullptr; // will be cleaned up by RDF class
+        librdf_model *model_ = nullptr;// will be cleaned up by RDF class
         librdf_query_results *query_results_ = nullptr;
         librdf_query *q_ = nullptr;
         std::string query_;
@@ -135,14 +135,13 @@ namespace omexmeta {
         int getBindingsCount();
 
     public:
-
         /**
-     * @brief constructor for Query object
+        * @brief constructor for Query object
          */
         Query(librdf_model *model, std::string query);
 
         /**
-     *
+        *
          * @brief copy constructor for Query object
          * @details deleted
          *
@@ -153,12 +152,12 @@ namespace omexmeta {
         Query(const Query &query) = delete;
 
         /**
-     * @brief move constructor for Query object
+         * @brief move constructor for Query object
          */
         Query(Query &&query) noexcept;
 
-/**
-     *
+        /**
+         *
          * @brief copy assignment constructor for Query object
          * @details deleted
          *
@@ -168,29 +167,29 @@ namespace omexmeta {
          */
         Query &operator=(const Query &query) = delete;
 
-/**
-     *
+        /**
+        *
          * @brief move assignment constructor for Query object
          *
          */
         Query &operator=(Query &&query) noexcept;
 
         /**
-     * @brief free resources associated with a query object.
+         * @brief free resources associated with a query object.
          * @details it is the callers responsibility to ensure
          * resources used by Query are released after use.
          */
         void freeQuery();
 
         /**
-     * @breif returns the results as a librdf_stream* object
+         * @breif returns the results as a librdf_stream* object
          *
          * developers. Consider removing.
          */
-        [[maybe_unused]]librdf_stream *resultsAsLibRdfStream();
+        [[maybe_unused]] librdf_stream *resultsAsLibRdfStream();
 
         /**
-     * @brief returns query results in a map where keys are
+         * @brief returns query results in a map where keys are
          * the variable names used in query and values are vectors
          * of values for results.
          *
@@ -217,7 +216,7 @@ namespace omexmeta {
         ResultsMap resultsAsMap();
 
         /**
-     * @brief collect the result of the query as a string
+         * @brief collect the result of the query as a string
          * @param output_format one of 9 strings used to choose how you
          * want the results to be presented.
          * Options are xml, json, table, csv, mkr, tsv, html, turtle and rdfxml.
@@ -232,6 +231,11 @@ namespace omexmeta {
         void runQuery();
 
         /**
+         * @brief Output query results to cout
+         */
+        void printQueryResults();
+
+        /**
          * todo test implementing these commented out functions.
          *  They were commented out before for circular dependency issues
          *  but might be able do the same thing but inside the RDF object?
@@ -239,6 +243,6 @@ namespace omexmeta {
         //        Triples resultsAsTriples();
         //        RDF resultsAsRDF();
     };
-}
+}// namespace omexmeta
 
-#endif //LIBOMEXMETA_QUERY_H
+#endif//LIBOMEXMETA_QUERY_H

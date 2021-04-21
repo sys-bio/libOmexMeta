@@ -4,8 +4,7 @@
 
 #include "omexmeta/RDF.h"
 
-#include <utility>
-
+#include "omexmeta/PurgeRDFBag.h"
 
 namespace omexmeta {
 
@@ -13,7 +12,7 @@ namespace omexmeta {
              const char *storage_options, const char *model_options) {
         storage_ = LibrdfStorage(storage_type, storage_name, storage_options);
         // model_ now owns storage_
-        model_ = LibrdfModel(storage_.get(), model_options);
+        model_ = LibrdfModel(storage_, model_options);
     }
 
     void RDF::freeRDF() {
@@ -72,6 +71,15 @@ namespace omexmeta {
         // information if were using sbml
         rdf.extractSemanticInformationFromSBML(str);
 
+        // use the VCard translator
+        // (make sure to use before purgeRDFBag)
+        VCardTranslator translator(&rdf);
+        translator.translate();
+
+        // remove rdf bag constructs
+        PurgeRDFBag purger(&rdf);
+        purger.purge();
+
         return rdf;
     }
 
@@ -93,6 +101,15 @@ namespace omexmeta {
         // this will set the xmlType variable if sbml or cellml
         rdf->classifyXmlType(str, format);
         rdf->extractSemanticInformationFromSBML(str);
+
+        // use the VCard translator
+        // (make sure to use before purgeRDFBag)
+        VCardTranslator translator(rdf);
+        translator.translate();
+
+        // remove rdf bag constructs
+        PurgeRDFBag purger(rdf);
+        purger.purge();
     }
 
     void RDF::addFromString(const std::string &str,
@@ -115,6 +132,15 @@ namespace omexmeta {
         classifyXmlType(str, format);
 
         extractSemanticInformationFromSBML(str);
+
+        // use the VCard translator
+        // (make sure to use before purgeRDFBag)
+        VCardTranslator translator(this);
+        translator.translate();
+
+        // remove rdf bag constructs
+        PurgeRDFBag purger(this);
+        purger.purge();
     }
 
     /**
@@ -138,6 +164,15 @@ namespace omexmeta {
         // This allows us to only use the ones that are needed
         rdf.namespaces_ = rdf.propagateNamespacesFromParser(rdf.seen_namespaces_);
         rdf.extractSemanticInformationFromSBML(uri_string);
+
+        // use the VCard translator
+        // (make sure to use before purgeRDFBag)
+        VCardTranslator translator(&rdf);
+        translator.translate();
+
+        // remove rdf bag constructs
+        PurgeRDFBag purger(&rdf);
+        purger.purge();
         return rdf;
     }
 
@@ -158,6 +193,15 @@ namespace omexmeta {
         // This allows us to only use the ones that are needed
         namespaces_ = propagateNamespacesFromParser(seen_namespaces_);
         extractSemanticInformationFromSBML(uri_string);
+
+        // use the VCard translator
+        // (make sure to use before purgeRDFBag)
+        VCardTranslator translator(this);
+        translator.translate();
+
+        // remove rdf bag constructs
+        PurgeRDFBag purger(this);
+        purger.purge();
     }
 
     RDF RDF::fromFile(const std::string &filename, const std::string &format) {
@@ -173,6 +217,15 @@ namespace omexmeta {
         // Here we use the semantic extraction tool to collect
         // information if were using sbml
         rdf.extractSemanticInformationFromSBML(filename);
+
+        // use the VCard translator
+        // (make sure to use before purgeRDFBag)
+        VCardTranslator translator(&rdf);
+        translator.translate();
+
+        // remove rdf bag constructs
+        PurgeRDFBag purger(&rdf);
+        purger.purge();
         return rdf;
     }
 
@@ -188,6 +241,15 @@ namespace omexmeta {
         namespaces_ = propagateNamespacesFromParser(seen_namespaces_);
 
         extractSemanticInformationFromSBML(filename);
+
+        // use the VCard translator
+        // (make sure to use before purgeRDFBag)
+        VCardTranslator translator(this);
+        translator.translate();
+
+        // remove rdf bag constructs
+        PurgeRDFBag purger(this);
+        purger.purge();
     }
 
     /**
@@ -505,6 +567,11 @@ namespace omexmeta {
             std::cout << second_rdf.toString("turtle") << std::endl;
         }
         return equal;
+    }
+
+
+    UriHandler &RDF::getUriHandler() {
+        return uriHandler_;
     }
 
 

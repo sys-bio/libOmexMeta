@@ -159,6 +159,8 @@ namespace omexmeta {
          */
         void setNode(librdf_node *node);
 
+        LibrdfNode getNode();
+
         /**
          * @brief make a shared pointer from this Predicate
          *
