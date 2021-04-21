@@ -7,7 +7,6 @@
     <includes refid="World_8h" local="yes">World.h</includes>
     <includes local="yes">utility</includes>
     <includes refid="LibrdfException_8h" local="yes">LibrdfException.h</includes>
-    <includedby refid="RaptorIOStream_8cpp" local="yes">src/redland/RedlandWrapper/src/RaptorIOStream.cpp</includedby>
     <includedby refid="LibrdfSerializer_8h" local="yes">src/redland/RedlandWrapper/src/include/redland/LibrdfSerializer.h</includedby>
     <includedby refid="RedlandAPI_8h" local="yes">src/redland/RedlandWrapper/src/include/redland/RedlandAPI.h</includedby>
     <incdepgraph>
@@ -215,6 +214,8 @@
       <node id="25">
         <label>src/omexmeta/include/omexmeta/UriHandler.h</label>
         <link refid="UriHandler_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
         <childnode refid="19" relation="include">
         </childnode>
         <childnode refid="20" relation="include">

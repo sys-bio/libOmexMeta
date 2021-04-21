@@ -5,8 +5,10 @@
 #ifndef LIBOMEXMETA_URIHANDLER_H
 #define LIBOMEXMETA_URIHANDLER_H
 
-#include <iostream>
 #include "OmexMetaUtils.h"
+#include <iostream>
+#include "omexmeta/Error.h"
+#include <exception>
 
 namespace omexmeta {
     enum eUriType {
@@ -24,13 +26,13 @@ namespace omexmeta {
          * @brief getter for repository uri.
          * @details default is "http://omex-library.org/"
          */
-        [[nodiscard]] const std::string &getRepository() const;
+        [[nodiscard]] const std::string &getRepositoryUri() const;
 
         /**
          * @brief setter for repository uri.
          * @details default is "http://omex-library.org/"
          */
-        UriHandler &setRepository(const std::string &repository);
+        UriHandler &setRepositoryUri(const std::string &repository);
 
         /**
          * @brief getter for archive uri.
@@ -38,7 +40,7 @@ namespace omexmeta {
          * the full uri "http://omex-library.org/NewOmex.omex/"
          * when assembled
          */
-        [[nodiscard]] const std::string &getArchive() const;
+        [[nodiscard]] const std::string &getArchiveUri() const;
 
         /**
          * @brief setter for archive uri.
@@ -46,7 +48,7 @@ namespace omexmeta {
          * the full uri "http://omex-library.org/NewOmex.omex/"
          * when assembled
          */
-        UriHandler &setArchive(const std::string &archive);
+        UriHandler &setArchiveUri(const std::string &archive);
 
         /**
          * @brief getter for model uri.
@@ -54,15 +56,15 @@ namespace omexmeta {
          * the full uri "http://omex-library.org/NewOmex.omex/NewModel.xml#"
          * when assembled
          */
-        [[nodiscard]] const std::string &getModel() const;
+        [[nodiscard]] const std::string &getModelUri() const;
 
         /**
          * @brief setter for model uri.
          * @details default is"NewModel.xml" and produces
-         * the full uri "http://omex-library.org/NewOmex.omex/NewModel.xml#"
+         * the full uri "http://omex-library.org/NewOmex.omex/NewModel.xml"
          * when assembled
          */
-        UriHandler &setModel(std::string model);
+        UriHandler &setModelUri(std::string model);
 
         /**
          * @brief getter for local uri.
@@ -72,25 +74,24 @@ namespace omexmeta {
          * it'll take on the name of model_uri_ with the "xml" extension
          * replaced with "rdf"
          */
-        [[nodiscard]] const std::string &getLocal() const;
+        [[nodiscard]] const std::string &getLocalUri() const;
 
         [[nodiscard]] std::string uriModifier(std::string uri_to_modify, eUriType type) const;
 
         template<class T>
-        static std::string uriModifier(T& cls, std::string uri_to_modify, eUriType type) {
+        static std::string uriModifier(T &cls, std::string uri_to_modify, eUriType type) {
             // When uri_to_modify equals model or local uri, we throw.
             if (
                     uri_to_modify == cls.getLocalUri() ||
-                    uri_to_modify == cls.getLocalUri() +"#" ||
+                    uri_to_modify == cls.getLocalUri() + "#" ||
                     uri_to_modify == cls.getModelUri() ||
-                    uri_to_modify == cls.getModelUri() +"#"
-                ){
-                throw std::logic_error("std::string uriModifier: Cannot modify input string: \""+uri_to_modify+"\"");
+                    uri_to_modify == cls.getModelUri() + "#") {
+                throw std::logic_error("std::string uriModifier: Cannot modify input string: \"" + uri_to_modify + "\"");
             }
             // When we already have a uri that is not local or model uri, we just return
-            if(OmexMetaUtils::startsWith(uri_to_modify, "http")) {
+            if (OmexMetaUtils::startsWith(uri_to_modify, "http")) {
                 return uri_to_modify;
-                }
+            }
             switch (type) {
                 case NONE: {
                     return uri_to_modify;
@@ -109,8 +110,14 @@ namespace omexmeta {
                 case IDENTIFIERS_URI: {
                     return "https://identifiers.org/" + uri_to_modify;
                 }
+                default: {
+                    throw std::invalid_argument("std::string uriModifier: Unrecognized eUriType");
+                }
             }
         }
+        bool operator==(const UriHandler &rhs) const;
+
+        bool operator!=(const UriHandler &rhs) const;
 
 
     private:
@@ -119,14 +126,13 @@ namespace omexmeta {
          * This ensures that when one of these values change, the
          * others get updated.
          */
-        std::string repository_ = "http://omex-library.org/";
-        std::string archive_ = repository_ + "NewOmex.omex/";
-        std::string model_ = archive_ + "NewModel.xml";
-        std::string local_ = archive_ + "NewModel.rdf#";
+        std::string repository_uri_ = "http://omex-library.org/";
+        std::string archive_uri_ = repository_uri_ + "NewOmex.omex/";
+        std::string model_uri_ = archive_uri_ + "NewModel.xml";
+        std::string local_uri_ = archive_uri_ + "NewModel.rdf#";
     };
 
 
-    //    std::string UriFactory();
 }// namespace omexmeta
 
 #endif//LIBOMEXMETA_URIHANDLER_H

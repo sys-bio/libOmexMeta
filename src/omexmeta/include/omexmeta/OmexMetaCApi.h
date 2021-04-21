@@ -95,11 +95,11 @@ namespace omexmeta {
 
     OMEXMETA_CAPI_EXPORT char *RDF_getLocalUri(RDF *rdf_ptr);
 
-    OMEXMETA_CAPI_EXPORT bool RDF_equals_rdf_vs_string(RDF* rdf_ptr, const char* serialized_rdf, const char* format = "turtle");
+    OMEXMETA_CAPI_EXPORT bool RDF_equals_rdf_vs_string(RDF* rdf_ptr, const char* serialized_rdf, const char* format = "turtle", bool verbose = false);
 
-    OMEXMETA_CAPI_EXPORT bool RDF_equals_rdf_vs_rdf(RDF* rdf_ptr1, RDF* rdf_ptr2, const char* format = "turtle");
+    OMEXMETA_CAPI_EXPORT bool RDF_equals_rdf_vs_rdf(RDF* rdf_ptr1, RDF* rdf_ptr2, const char* format = "turtle", bool verbose = false);
 
-    OMEXMETA_CAPI_EXPORT bool RDF_equals_string_vs_string(const char* first_rdf_graph, const char* second_rdf_graph, const char* format = "turtle");
+    OMEXMETA_CAPI_EXPORT bool RDF_equals_string_vs_string(const char* first_rdf_graph, const char* second_rdf_graph, const char* format = "turtle", bool verbose = false);
 
     OMEXMETA_CAPI_EXPORT Editor *
     RDF_toEditor(RDF *rdf_ptr, const char *xml, bool generate_new_metaids, bool sbml_semantic_extraction);
@@ -398,10 +398,6 @@ namespace omexmeta {
     OMEXMETA_CAPI_EXPORT char *PersonalInformation_getMetaid(PersonalInformation *information);
 
     OMEXMETA_CAPI_EXPORT int PersonalInformation_setMetaid(PersonalInformation *information, const char *metaid);
-
-    OMEXMETA_CAPI_EXPORT char *PersonalInformation_getModelUri(PersonalInformation *information);
-
-    OMEXMETA_CAPI_EXPORT int PersonalInformation_setModelUri(PersonalInformation *information, const char *modelUri);
 
 
 #ifdef __cplusplus

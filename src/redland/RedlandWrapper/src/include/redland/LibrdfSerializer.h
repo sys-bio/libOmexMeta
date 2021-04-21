@@ -9,27 +9,16 @@
 #include "librdf.h"
 #include <memory>
 
-#include "World.h"
-#include "LibrdfUri.h"
 #include "LibrdfModel.h"
-#include "RaptorIOStream.h"
 #include "LibrdfNode.h"
-#include "LibrdfModel.h"
+#include "LibrdfUri.h"
+#include "RaptorIOStream.h"
+#include "World.h"
 #include <stdlib.h>
 
 namespace redland {
 
     class LibrdfSerializer {
-
-        struct deleter {
-            void operator()(librdf_serializer *serializer);
-        };
-
-        std::vector<std::string> validateSerializerName();
-
-        librdf_serializer *serializer_ = nullptr;
-
-        explicit LibrdfSerializer(librdf_serializer *serializer);
 
     public:
         LibrdfSerializer() = default;
@@ -43,7 +32,6 @@ namespace redland {
         LibrdfSerializer &operator=(const LibrdfSerializer &serializer) = delete;
 
         LibrdfSerializer &operator=(LibrdfSerializer &&serializer) noexcept;
-
 
         static LibrdfSerializer fromRawPtr(librdf_serializer *serializer);
 
@@ -66,8 +54,12 @@ namespace redland {
 
         void setOptions() const;
 
+    private:
+        librdf_serializer *serializer_ = nullptr;
+
+        explicit LibrdfSerializer(librdf_serializer *serializer);
     };
-}
+}// namespace redland
 
 
-#endif //LIBOMEXMETA_LIBRDFSERIALIZER_H
+#endif//LIBOMEXMETA_LIBRDFSERIALIZER_H

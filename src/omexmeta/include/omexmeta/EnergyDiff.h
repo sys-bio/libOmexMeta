@@ -23,10 +23,6 @@ using namespace redland;
 namespace omexmeta {
     class OMEXMETA_EXPORT EnergyDiff : public PropertyBearer {
 
-        Sources sources_;
-        Sinks sinks_;
-        std::string property_metaid_base_ = "EnergyDiffProperty"; // Empty for PhysicalPhenomenon but overridden by subclasses with values such as "EntityProperty"
-
     public:
 
         /**
@@ -41,8 +37,7 @@ namespace omexmeta {
 
         ~EnergyDiff() = default;
 
-
-        EnergyDiff(librdf_model *model, std::string model_uri, std::string local_uri, PhysicalProperty physicalProperty, Sources sources,
+        EnergyDiff(librdf_model *model, UriHandler& uriHandler, PhysicalProperty physicalProperty, Sources sources,
                       Sinks sinks);
 
         /**
@@ -62,17 +57,6 @@ namespace omexmeta {
         /**
          * @brief constructor for instantiating a EnergyDiff type composite annotation
          * @param model. A librdf_model pass down by Editor.
-         *
-         * Users do not need to instantiate EnergyDiff manually, since it is done
-         * by Editor. This constructor instantiates an empty EnergyDiff
-         * object which is filled by
-         *
-         */
-        OMEXMETA_DEPRECATED explicit EnergyDiff(librdf_model *model);
-
-        /**
-         * @brief constructor for instantiating a EnergyDiff type composite annotation
-         * @param model. A librdf_model pass down by Editor.
          * @param model_uri. String passed down by Editor. The local uri to use for metaids
          *
          * Users do not need to instantiate EnergyDiff manually, since it is done
@@ -80,7 +64,7 @@ namespace omexmeta {
          * object which is filled by
          *
          */
-        explicit EnergyDiff(librdf_model *model, const std::string& model_uri, const std::string& local_uri);
+        explicit EnergyDiff(librdf_model *model, UriHandler& uriHandler);
 
         /**
          * @brief create a metaid for the energy differential annotation
@@ -128,7 +112,7 @@ namespace omexmeta {
          * @param A string representing the OPB term to use as the physical property. Like "OPB:OPB_1234"
          * @return a reference to this EnergyDiff to enable the builder interface.
          */
-        OMEXMETA_DEPRECATED EnergyDiff &setPhysicalProperty(std::string subject_metaid, std::string physical_property);
+        OMEXMETA_DEPRECATED EnergyDiff &setPhysicalProperty(std::string subject_metaid, const std::string& physical_property);
 
         /**
          * @brief add a SourceParticipant to the EnergyDiff.
@@ -174,18 +158,18 @@ namespace omexmeta {
 
         /**
          * @brief set the isVersionOf portion of the EnergyDiff composite annotation
-         * @param is_version_of the string to be used as the Resource portion of the isVersionOf Triple. This
+         * @param is_version_of the string to be used as the LibrdfNode portion of the isVersionOf Triple. This
          * should be of the form OPB:OPB_12345 or OPB/OPB_12345.
-         * @details This method will set the Resource resource_ attribute of the PhysicalProperty
+         * @details This method will set the LibrdfNode resource_ attribute of the PhysicalProperty
          * associated with the PhysicalProcess.
          */
         EnergyDiff &isVersionOf(const std::string &property);
 
         /**
          * @brief set the subject (rdf:about) portion of the EnergyDiff composite annotation
-         * @param about the string to be used as the Subject portion of the isVersionOf Triple. This
+         * @param about the string to be used as the LibrdfNode portion of the isVersionOf Triple. This
          * should be an existing metaid on the model you are annotating. Will error when metaid does not exist.
-         * @details This method will set the Subject subject_ attribute of the PhysicalProperty
+         * @details This method will set the LibrdfNode subject_ attribute of the PhysicalProperty
          * associated with the PhysicalProcess.
          */
         EnergyDiff &about(const std::string &about, eUriType type) override;
@@ -206,6 +190,10 @@ namespace omexmeta {
         EnergyDiff &hasProperty(const std::string &is_version_of) override;
 
         EnergyDiff &hasProperty(const std::string &property_about, eUriType about_uri_type, const std::string &is_version_of) override;
+    private:
+        Sources sources_;
+        Sinks sinks_;
+        std::string property_metaid_base_ = "EnergyDiffProperty"; // Empty for PhysicalPhenomenon but overridden by subclasses with values such as "EntityProperty"
 
     };
 }

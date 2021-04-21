@@ -9,22 +9,14 @@
 #include "librdf.h"
 #include <memory>
 
-#include "World.h"
+#include "LibrdfModel.h"
 #include "LibrdfNode.h"
 #include "LibrdfUri.h"
-#include "LibrdfModel.h"
+#include "World.h"
 
 namespace redland {
 
     class LibrdfParser {
-
-        librdf_parser *parser_ = nullptr;
-
-        void validateParserName() const;
-
-        std::string format_ = std::string();
-        std::string mime_type_ = std::string();
-        librdf_uri *type_uri_ = nullptr;
 
     public:
         LibrdfParser() = default;
@@ -42,7 +34,7 @@ namespace redland {
         explicit LibrdfParser(librdf_parser *parser);
 
         explicit LibrdfParser(std::string format, std::string mime_type = std::string(),
-                              const std::string& type_uri = std::string());
+                              const std::string &type_uri = std::string());
 
         [[nodiscard]] librdf_parser *get() const;
 
@@ -97,17 +89,22 @@ namespace redland {
 
         librdf_parser *makeParser();
 
-        static void setFeature(librdf_parser *parser, const std::string &feature_uri, librdf_node *node);
-
         static void setOption(librdf_parser *parser, const std::string &option, const std::string &value);
 
         static void setOptions(librdf_parser *parser);
 
         [[nodiscard]] std::vector<std::string> getSeenNamespaces(std::vector<std::string> namespaces) const;
 
+    private:
+        librdf_parser *parser_ = nullptr;
 
+        void validateParserName() const;
+
+        std::string format_ = std::string();
+        std::string mime_type_ = std::string();
+        librdf_uri *type_uri_ = nullptr;
     };
-}
+}// namespace redland
 
 
-#endif //LIBOMEXMETA_LIBRDFPARSER_H
+#endif//LIBOMEXMETA_LIBRDFPARSER_H

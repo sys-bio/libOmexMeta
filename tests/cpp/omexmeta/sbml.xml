@@ -11,7 +11,7 @@
                 <annotation>
                     <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
                              xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
-                        <rdf:Description rdf:about="sp_1">
+                        <rdf:Description rdf:about="#_1">
                             <bqbiol:is>
                                 <rdf:Bag>
                                     <rdf:li rdf:resource="http://identifiers.org/uniprot/P00742"/>
@@ -76,4 +76,3 @@
         </listOfReactions>
     </model>
 </sbml>
-

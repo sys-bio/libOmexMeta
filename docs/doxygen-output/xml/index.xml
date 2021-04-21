@@ -91,12 +91,8 @@
     <member refid="classomexmeta_1_1Editor_1ac4bbccf4ad683eaa744a5b9e81e688f8" kind="variable"><name>sbml_semantic_extraction_</name></member>
     <member refid="classomexmeta_1_1Editor_1a3c4514ca9177b9bc157e9e52af23bc82" kind="variable"><name>metaid_base_</name></member>
     <member refid="classomexmeta_1_1Editor_1a2676967741d009a5e9115d031b018318" kind="variable"><name>type_</name></member>
-    <member refid="classomexmeta_1_1Editor_1a7ca53e98f38477e0da4c0a47ded86caa" kind="variable"><name>repository_uri_</name></member>
-    <member refid="classomexmeta_1_1Editor_1a0b7358b0b40a0fd11b5198642e625ff8" kind="variable"><name>archive_uri_</name></member>
-    <member refid="classomexmeta_1_1Editor_1ae657c4bb2d8f44c239e3d0b0e4db7a6b" kind="variable"><name>model_uri_</name></member>
-    <member refid="classomexmeta_1_1Editor_1a9f145eda6fffb7dc1e5892dfe919d8a7" kind="variable"><name>local_uri_</name></member>
-    <member refid="classomexmeta_1_1Editor_1ae9f90708ec42906075e38c1d26a62be6" kind="function"><name>extractNamespacesFromTriplesVector</name></member>
-    <member refid="classomexmeta_1_1Editor_1a6be7468055f21d94e72e15f7daa5da5c" kind="function"><name>Editor</name></member>
+    <member refid="classomexmeta_1_1Editor_1a2bebe515d6a48f4f74a1d25bc791b740" kind="variable"><name>uriHandler_</name></member>
+    <member refid="classomexmeta_1_1Editor_1a38d00e9a39b423cbae5058f9af49da3a" kind="function"><name>Editor</name></member>
     <member refid="classomexmeta_1_1Editor_1aa11380bb7e2ca7859937c3f5907b6240" kind="function"><name>~Editor</name></member>
     <member refid="classomexmeta_1_1Editor_1ab5b39f1f137312ce77575e73a86dfb05" kind="function"><name>size</name></member>
     <member refid="classomexmeta_1_1Editor_1a514443fe99a6e52154d1fe4f7ec94618" kind="function"><name>getNamespaces</name></member>
@@ -105,7 +101,7 @@
     <member refid="classomexmeta_1_1Editor_1ad931e829fc9f78717e0c1443c619b7d3" kind="function"><name>getXml</name></member>
     <member refid="classomexmeta_1_1Editor_1a242c86222e1aeff337d3af22641db1de" kind="function"><name>getMetaids</name></member>
     <member refid="classomexmeta_1_1Editor_1a052a725cee8b8e577c55e977eee81ace" kind="function"><name>addNamespace</name></member>
-    <member refid="classomexmeta_1_1Editor_1a0417b55575a244817ef981f17c8e1a8f" kind="function"><name>addSingleAnnotation</name></member>
+    <member refid="classomexmeta_1_1Editor_1a434304cc0ca8aa802cd236d34aaa1763" kind="function"><name>addSingleAnnotation</name></member>
     <member refid="classomexmeta_1_1Editor_1ae46835f3f35425d8087b80d08666aaa4" kind="function"><name>addSingleAnnotation</name></member>
     <member refid="classomexmeta_1_1Editor_1afcb5ce7397aab23fabd3b4b4b89d3a54" kind="function"><name>removeSingleAnnotation</name></member>
     <member refid="classomexmeta_1_1Editor_1a81e9e3e81a86ac079f81239a47f18092" kind="function"><name>addCompositeAnnotation</name></member>
@@ -131,7 +127,7 @@
     <member refid="classomexmeta_1_1Editor_1a8fb3a19e8f64aeff2ac9b78c483843de" kind="function"><name>addSingleAnnotationNoValidation</name></member>
     <member refid="classomexmeta_1_1Editor_1a415aa94ed30686392c65f99b4318aa84" kind="function"><name>addCompositeAnnotation2</name></member>
     <member refid="classomexmeta_1_1Editor_1ace8ee873498fa72b63c0747775b729f5" kind="function"><name>addTriples</name></member>
-    <member refid="classomexmeta_1_1Editor_1ad080f47ffb7b86dd4a09fca967baa493" kind="function"><name>removePhysicalPhenomenon</name></member>
+    <member refid="classomexmeta_1_1Editor_1a1b126c390f5fc0b7ebcd1e3f691c9ece" kind="function"><name>removePropertyBearer</name></member>
     <member refid="classomexmeta_1_1Editor_1a736e49794c5a358f06d13d41c3657fe2" kind="function"><name>getArchiveUri</name></member>
     <member refid="classomexmeta_1_1Editor_1a8494826923de713c19f971fd9c7908c0" kind="function"><name>getLocalUri</name></member>
     <member refid="classomexmeta_1_1Editor_1a0020d3b9c3e91fb37c134ba8b211c13e" kind="function"><name>getModelUri</name></member>
@@ -148,6 +144,8 @@
     <member refid="classomexmeta_1_1Editor_1a6142da2b89068e9638410c3c903e3b64" kind="function"><name>newSingularAnnotation</name></member>
     <member refid="classomexmeta_1_1Editor_1aeae47fb60d955f506de2f16a54c0679a" kind="function"><name>newPhysicalProperty</name></member>
     <member refid="classomexmeta_1_1Editor_1ab36fc15581a0aa0af434af60d4f910ac" kind="function"><name>newPhysicalPropertyPtr</name></member>
+    <member refid="classomexmeta_1_1Editor_1a0c3c16e06d9ecbbf9958bb2feb85b56a" kind="function"><name>getUriHandler</name></member>
+    <member refid="classomexmeta_1_1Editor_1ae9f90708ec42906075e38c1d26a62be6" kind="function"><name>extractNamespacesFromTriplesVector</name></member>
   </compound>
   <compound refid="classomexmeta_1_1ElementExtractor" kind="class"><name>omexmeta::ElementExtractor</name>
     <member refid="classomexmeta_1_1ElementExtractor_1a0a2c0bbf39f19a2595d79a5d78862427" kind="variable"><name>doc_</name></member>
@@ -165,16 +163,15 @@
     <member refid="classomexmeta_1_1EnergyDiff_1a9a68625316c4e2fa7ab5013cbe585ba0" kind="variable"><name>property_metaid_base_</name></member>
     <member refid="classomexmeta_1_1EnergyDiff_1ae40b225f1950a46e51f98a02f56a8f78" kind="function"><name>EnergyDiff</name></member>
     <member refid="classomexmeta_1_1EnergyDiff_1a702c8bcf724ef81aa9af04a1389507e8" kind="function"><name>~EnergyDiff</name></member>
-    <member refid="classomexmeta_1_1EnergyDiff_1a7c2db2dc6ef6027f68bec6b208fb92f3" kind="function"><name>EnergyDiff</name></member>
+    <member refid="classomexmeta_1_1EnergyDiff_1a757c334d0fbdd17bac674cbd085889c1" kind="function"><name>EnergyDiff</name></member>
     <member refid="classomexmeta_1_1EnergyDiff_1a04547f43809e57847265b911f6868018" kind="function"><name>free</name></member>
-    <member refid="classomexmeta_1_1EnergyDiff_1a80d80714023470124fe4b4bfa34442d0" kind="function"><name>EnergyDiff</name></member>
-    <member refid="classomexmeta_1_1EnergyDiff_1a955fd4268fe51f20d99bc1339a54b3e0" kind="function"><name>EnergyDiff</name></member>
+    <member refid="classomexmeta_1_1EnergyDiff_1aef560b63f36f3f5b4dd02e7d491b2981" kind="function"><name>EnergyDiff</name></member>
     <member refid="classomexmeta_1_1EnergyDiff_1a251676c05ab006aa282520e0e9464c4e" kind="function"><name>createMetaId</name></member>
     <member refid="classomexmeta_1_1EnergyDiff_1a233d2ccf116a4ddcd87f853faabe0824" kind="function"><name>getSources</name></member>
     <member refid="classomexmeta_1_1EnergyDiff_1ab8530b24901f539967c5b51d57b2ed98" kind="function"><name>getSinks</name></member>
     <member refid="classomexmeta_1_1EnergyDiff_1a34bef11e0fca4435e0f1a9ba93d7ddf4" kind="function"><name>toTriples</name></member>
     <member refid="classomexmeta_1_1EnergyDiff_1af24cd391d9b15de82f1fa435275ca533" kind="function"><name>setPhysicalProperty</name></member>
-    <member refid="classomexmeta_1_1EnergyDiff_1a4caf862a01da65ae0a660f63e1fbc8ec" kind="function"><name>setPhysicalProperty</name></member>
+    <member refid="classomexmeta_1_1EnergyDiff_1a52481a08e42648acb227defd28e4961e" kind="function"><name>setPhysicalProperty</name></member>
     <member refid="classomexmeta_1_1EnergyDiff_1a89b71ee99e45544f84ce7995db575f0a" kind="function"><name>addSource</name></member>
     <member refid="classomexmeta_1_1EnergyDiff_1a4525a9f6eb11712f775f5dc62e64a9e7" kind="function"><name>addSink</name></member>
     <member refid="classomexmeta_1_1EnergyDiff_1ae73876722556ca27d21e43b0c7823618" kind="function"><name>getNumSources</name></member>
@@ -244,7 +241,7 @@
     <member refid="classredland_1_1LibrdfModel_1a355e16664fa50a8a3085f4070347106f" kind="function"><name>LibrdfModel</name></member>
     <member refid="classredland_1_1LibrdfModel_1ae1b996f1785adfe9b4a1824a73643248" kind="function"><name>get</name></member>
     <member refid="classredland_1_1LibrdfModel_1a9bbced9329b4b9ef915789a37bf857b6" kind="function"><name>query</name></member>
-    <member refid="classredland_1_1LibrdfModel_1a646ed92896c4030de31c9e17b881bd2a" kind="function"><name>toStream</name></member>
+    <member refid="classredland_1_1LibrdfModel_1a4d58b2d9729173c1bfd7ece4d62e2b33" kind="function"><name>toStream</name></member>
     <member refid="classredland_1_1LibrdfModel_1a3067eb5bae1353ab5c86f135c4b401ad" kind="function"><name>size</name></member>
     <member refid="classredland_1_1LibrdfModel_1a643c3e3d3363f4f06330ede73dc19514" kind="function"><name>addStatement</name></member>
     <member refid="classredland_1_1LibrdfModel_1ad145b8f46be49434bb8bd0b90a904770" kind="function"><name>freeModel</name></member>
@@ -263,15 +260,18 @@
   <compound refid="classredland_1_1LibrdfNode" kind="class"><name>redland::LibrdfNode</name>
     <member refid="classredland_1_1LibrdfNode_1ab9968deae2b43d5b77de4227960db0b0" kind="variable"><name>node_</name></member>
     <member refid="classredland_1_1LibrdfNode_1a0f6b28fba74ab6ff25de32c725d499e9" kind="function"><name>LibrdfNode</name></member>
+    <member refid="classredland_1_1LibrdfNode_1acfe3ae9d7b0f311da59f66e014cfbdec" kind="function"><name>~LibrdfNode</name></member>
+    <member refid="classredland_1_1LibrdfNode_1a6bca38d88eb20f9f6b29e9f32848fb5b" kind="function"><name>LibrdfNode</name></member>
+    <member refid="classredland_1_1LibrdfNode_1a822ce6a4221315abe5768b278b83d0e5" kind="function"><name>LibrdfNode</name></member>
+    <member refid="classredland_1_1LibrdfNode_1a01b8ce0f193e277ccb914b460b1c275c" kind="function"><name>operator=</name></member>
+    <member refid="classredland_1_1LibrdfNode_1a9de3a69b00958b2bb50646dbf0aa8d7e" kind="function"><name>operator=</name></member>
     <member refid="classredland_1_1LibrdfNode_1afc1bdf57705253e8204a394541b96ca7" kind="function"><name>operator==</name></member>
     <member refid="classredland_1_1LibrdfNode_1aefbf9e2bf34eb0171932e39323eadfd8" kind="function"><name>operator!=</name></member>
     <member refid="classredland_1_1LibrdfNode_1a28f6ce060bddf7e1cb88d17d4d4ea81a" kind="function"><name>freeNode</name></member>
-    <member refid="classredland_1_1LibrdfNode_1a669557dc1240dc17c3a7a3a61d2400d9" kind="function"><name>LibrdfNode</name></member>
-    <member refid="classredland_1_1LibrdfNode_1a822ce6a4221315abe5768b278b83d0e5" kind="function"><name>LibrdfNode</name></member>
-    <member refid="classredland_1_1LibrdfNode_1abce52c34cc89e48886cde07aa5e113c9" kind="function"><name>operator=</name></member>
-    <member refid="classredland_1_1LibrdfNode_1a9de3a69b00958b2bb50646dbf0aa8d7e" kind="function"><name>operator=</name></member>
     <member refid="classredland_1_1LibrdfNode_1a200c7a67088e66d6fc73f52bdb51d2e9" kind="function"><name>LibrdfNode</name></member>
+    <member refid="classredland_1_1LibrdfNode_1a0662461585aba94581be80247d9bd917" kind="function"><name>LibrdfNode</name></member>
     <member refid="classredland_1_1LibrdfNode_1a33162ea36efe451c100325816cf8613f" kind="function"><name>get</name></member>
+    <member refid="classredland_1_1LibrdfNode_1a0bd36d9a9140a98753bb1d35ff8c1695" kind="function"><name>getWithoutIncrement</name></member>
     <member refid="classredland_1_1LibrdfNode_1a83ec604f27e71cea80ac49569a06ddfe" kind="function"><name>getRaptorTermType</name></member>
     <member refid="classredland_1_1LibrdfNode_1a535fbe1bc21ca9cd9b39b969bfd2e500" kind="function"><name>str</name></member>
     <member refid="classredland_1_1LibrdfNode_1a98487d5af58971d820fcb99c88d8712d" kind="function"><name>getLiteralDatatype</name></member>
@@ -281,9 +281,9 @@
     <member refid="classredland_1_1LibrdfNode_1a01aeb7675187379674746f803a1fbdc9" kind="function"><name>setUri</name></member>
     <member refid="classredland_1_1LibrdfNode_1a160db9f7c7636c339e12c26f519b8fff" kind="function"><name>setLiteralDatatype</name></member>
     <member refid="classredland_1_1LibrdfNode_1afd81499fe4125cc2f4c472d33fb6c8c0" kind="function"><name>setBlankIdentifier</name></member>
-    <member refid="classredland_1_1LibrdfNode_1a8ac1d280707f4405dc8865465028ae33" kind="function"><name>fromUriString</name></member>
     <member refid="classredland_1_1LibrdfNode_1a43ba1bed3f1cc6ed654a16c570598565" kind="function"><name>getNamespace</name></member>
-    <member refid="classredland_1_1LibrdfNode_1a5c971e6daeca94c4eabddfa5f6e4c456" kind="function"><name>freeNode</name></member>
+    <member refid="classredland_1_1LibrdfNode_1a6dd134798082dbee9fb5601752609981" kind="function"><name>getUsage</name></member>
+    <member refid="classredland_1_1LibrdfNode_1a21d7aff6813bf11d13057f4dab8bbef7" kind="function"><name>incrementUsageCount</name></member>
     <member refid="classredland_1_1LibrdfNode_1aacf853ee60f9d706bc7e95fb426166bd" kind="function"><name>fromUriString</name></member>
     <member refid="classredland_1_1LibrdfNode_1a22ea96262be432e6abb5c1e28ede3071" kind="function"><name>fromBlank</name></member>
     <member refid="classredland_1_1LibrdfNode_1a346fad618a010ef983ce24d62891de0e" kind="function"><name>fromLiteral</name></member>
@@ -372,38 +372,38 @@
   </compound>
   <compound refid="classredland_1_1LibrdfStatement" kind="class"><name>redland::LibrdfStatement</name>
     <member refid="classredland_1_1LibrdfStatement_1acd1e53cd114c6744cf808174a9333ce5" kind="variable"><name>statement_</name></member>
-    <member refid="classredland_1_1LibrdfStatement_1afd63d6425b2130dbe4e76fdee4d7218b" kind="function"><name>refreshStatement</name></member>
-    <member refid="classredland_1_1LibrdfStatement_1a4cbbbf99d094cea4569324a8c67789fb" kind="function"><name>LibrdfStatement</name></member>
+    <member refid="classredland_1_1LibrdfStatement_1a002503079c7e1bde3dfd3eab592361c2" kind="function"><name>~LibrdfStatement</name></member>
     <member refid="classredland_1_1LibrdfStatement_1ac1b38e67ff0b90ac54b27c4f5f5d9e12" kind="function"><name>LibrdfStatement</name></member>
+    <member refid="classredland_1_1LibrdfStatement_1a3cc134733626929faabbbdd376b348c1" kind="function"><name>LibrdfStatement</name></member>
+    <member refid="classredland_1_1LibrdfStatement_1aea171565ffb3ecc8d9c1db5439314306" kind="function"><name>LibrdfStatement</name></member>
+    <member refid="classredland_1_1LibrdfStatement_1a12bfe14c6ca6abf09ee29b3ee6fe3ab7" kind="function"><name>operator=</name></member>
+    <member refid="classredland_1_1LibrdfStatement_1a6cebbcea1400ba2983b25096f3db3b3c" kind="function"><name>operator=</name></member>
     <member refid="classredland_1_1LibrdfStatement_1ada81e9bfb312e25daf20d6dda10eeb2e" kind="function"><name>operator==</name></member>
     <member refid="classredland_1_1LibrdfStatement_1ad3d6c126b90c0d93413a08353c496f8f" kind="function"><name>operator!=</name></member>
     <member refid="classredland_1_1LibrdfStatement_1afc571bdf0e13d00ff7aa684aecc2987a" kind="function"><name>LibrdfStatement</name></member>
     <member refid="classredland_1_1LibrdfStatement_1ae7f7e27b7a502070195103268407243a" kind="function"><name>LibrdfStatement</name></member>
-    <member refid="classredland_1_1LibrdfStatement_1a344ec4a937a1d67589ebc7247b3f08c6" kind="function"><name>LibrdfStatement</name></member>
-    <member refid="classredland_1_1LibrdfStatement_1aea171565ffb3ecc8d9c1db5439314306" kind="function"><name>LibrdfStatement</name></member>
-    <member refid="classredland_1_1LibrdfStatement_1a7aeb5ac71f5583b5a56b4aad7d904381" kind="function"><name>operator=</name></member>
-    <member refid="classredland_1_1LibrdfStatement_1a6cebbcea1400ba2983b25096f3db3b3c" kind="function"><name>operator=</name></member>
-    <member refid="classredland_1_1LibrdfStatement_1a6bf6a6b02efc9d7eef2ca368cf0a36b1" kind="function"><name>~LibrdfStatement</name></member>
     <member refid="classredland_1_1LibrdfStatement_1aa51bc647bc938a07bd6c16b4d6ce07b4" kind="function"><name>freeStatement</name></member>
     <member refid="classredland_1_1LibrdfStatement_1a6b655a56f37dbe95fec840a0a1f0ed53" kind="function"><name>get</name></member>
-    <member refid="classredland_1_1LibrdfStatement_1abcf022b8e24a74282e1d059fdf54d3fe" kind="function"><name>getSubject</name></member>
-    <member refid="classredland_1_1LibrdfStatement_1a5aae51ac0994552a13f2c9b90bec63d0" kind="function"><name>getPredicate</name></member>
-    <member refid="classredland_1_1LibrdfStatement_1aa763688f20b712ddc655afe405d7691a" kind="function"><name>getResource</name></member>
-    <member refid="classredland_1_1LibrdfStatement_1a6feed51cdebe7c4f2430fcba0ae17f37" kind="function"><name>getSubjectStr</name></member>
-    <member refid="classredland_1_1LibrdfStatement_1a5dd0d6a2e9fe1bfcf5254aa7928cdfaf" kind="function"><name>getPredicateStr</name></member>
-    <member refid="classredland_1_1LibrdfStatement_1adc21321df7ccf186c262e83a4438e993" kind="function"><name>getResourceStr</name></member>
+    <member refid="classredland_1_1LibrdfStatement_1aae6c894388cf0e0af0cb427e03224d38" kind="function"><name>getWithoutIncrement</name></member>
+    <member refid="classredland_1_1LibrdfStatement_1ae72ad665ee0546f9b412ef2798c719b6" kind="function"><name>getSubjectAsRawNode</name></member>
+    <member refid="classredland_1_1LibrdfStatement_1a87edefc7382feb47585d4a3a91f26a76" kind="function"><name>getPredicateAsRawNode</name></member>
+    <member refid="classredland_1_1LibrdfStatement_1a37e4c22fa0b2cc3fbf0c659fa1546d92" kind="function"><name>getResourceAsRawNode</name></member>
+    <member refid="classredland_1_1LibrdfStatement_1a2d7cc313572ac34e9822e97d6b23dd36" kind="function"><name>getSubjectNode</name></member>
+    <member refid="classredland_1_1LibrdfStatement_1ade668892ca9383eacbf5517df4e8f8d8" kind="function"><name>getPredicateNode</name></member>
+    <member refid="classredland_1_1LibrdfStatement_1a9d4376221d84e22d15eeb6393ea4afe3" kind="function"><name>getResourceNode</name></member>
     <member refid="classredland_1_1LibrdfStatement_1a700219b2fed175a96fecfbd905d20ab1" kind="function"><name>checkForNull</name></member>
     <member refid="classredland_1_1LibrdfStatement_1a5fa27f77859a4673e991b9e86f84d889" kind="function"><name>setSubject</name></member>
     <member refid="classredland_1_1LibrdfStatement_1a8b8fd2999e80bd2912af2430503a557a" kind="function"><name>setResource</name></member>
     <member refid="classredland_1_1LibrdfStatement_1a3306876fb080f3d19fca806142f93f87" kind="function"><name>setPredicate</name></member>
     <member refid="classredland_1_1LibrdfStatement_1a84a6fae7f1879c2f033001a9927627b0" kind="function"><name>isComplete</name></member>
-    <member refid="classredland_1_1LibrdfStatement_1af8417e75a1ddb953c64c36b6028d3448" kind="function"><name>getUsages</name></member>
-    <member refid="classredland_1_1LibrdfStatement_1a1881b122993ff4a24f560b7b31ea3176" kind="function"><name>printUsages</name></member>
-    <member refid="classredland_1_1LibrdfStatement_1a104a61ca5a7568728273c071269e1882" kind="function"><name>freeStatementAndUris</name></member>
     <member refid="classredland_1_1LibrdfStatement_1af52b7e72cb067548d97f48b4a77a44ff" kind="function"><name>getPredicateNamespaceStr</name></member>
+    <member refid="classredland_1_1LibrdfStatement_1ae86b7dd596bd71e23fb7284354273791" kind="function"><name>getUsage</name></member>
+    <member refid="classredland_1_1LibrdfStatement_1a90c9f8f0c9c560d168dadfd26ac7febb" kind="function"><name>incrementUsage</name></member>
     <member refid="classredland_1_1LibrdfStatement_1a2013f7fa1ce77c0659d504c2f54d6e45" kind="function"><name>equals</name></member>
     <member refid="classredland_1_1LibrdfStatement_1a9fb66c801d731ffce13e4d1381c49c29" kind="function"><name>fromRawStatementPtr</name></member>
     <member refid="classredland_1_1LibrdfStatement_1a4eceaebc10deea27f4c75f7c8b4cccaf" kind="function"><name>fromRawNodePtrs</name></member>
+    <member refid="classredland_1_1LibrdfStatement_1afd63d6425b2130dbe4e76fdee4d7218b" kind="function"><name>refreshStatement</name></member>
+    <member refid="classredland_1_1LibrdfStatement_1a4cbbbf99d094cea4569324a8c67789fb" kind="function"><name>LibrdfStatement</name></member>
   </compound>
   <compound refid="classredland_1_1LibrdfStorage" kind="class"><name>redland::LibrdfStorage</name>
     <member refid="classredland_1_1LibrdfStorage_1af4a249b61ea425600320ac30201e171a" kind="variable"><name>valid_stores_</name></member>
@@ -425,17 +425,21 @@
     <member refid="classredland_1_1LibrdfStream_1aa37d2217c1badecef5747e0339d026e7" kind="variable"><name>stream_</name></member>
     <member refid="classredland_1_1LibrdfStream_1affc8f519ea00a1aba400fe1ad3120737" kind="function"><name>LibrdfStream</name></member>
     <member refid="classredland_1_1LibrdfStream_1aaa64a7ef8a26be8cf35f3b31d6e34a1b" kind="function"><name>LibrdfStream</name></member>
-    <member refid="classredland_1_1LibrdfStream_1a5b52659abdfc01e583e1b9941eec2c4b" kind="function"><name>get</name></member>
+    <member refid="classredland_1_1LibrdfStream_1a1702c7a940f477973bd5d6611277063e" kind="function"><name>get</name></member>
   </compound>
   <compound refid="classredland_1_1LibrdfUri" kind="class"><name>redland::LibrdfUri</name>
     <member refid="classredland_1_1LibrdfUri_1a63db4550be5d92576b6ff6de78563483" kind="variable"><name>uri_</name></member>
-    <member refid="classredland_1_1LibrdfUri_1a4992fcae8de6b2814b6c9061f8f3d5b8" kind="function"><name>LibrdfUri</name></member>
     <member refid="classredland_1_1LibrdfUri_1ae178bed8994fa2b3e32c1ad97a45e67d" kind="function"><name>LibrdfUri</name></member>
+    <member refid="classredland_1_1LibrdfUri_1a187a01fa75ec171fdfd9c9578723296f" kind="function"><name>~LibrdfUri</name></member>
+    <member refid="classredland_1_1LibrdfUri_1afb311a21a7de7319c72fc1d27aaacbbd" kind="function"><name>LibrdfUri</name></member>
+    <member refid="classredland_1_1LibrdfUri_1aecb54f52a078bf61a64caff6b1fa198b" kind="function"><name>LibrdfUri</name></member>
+    <member refid="classredland_1_1LibrdfUri_1ae0a39124aee33ef75ced69587db7bef9" kind="function"><name>operator=</name></member>
+    <member refid="classredland_1_1LibrdfUri_1a26a0edd47c99853694a46c3382884514" kind="function"><name>operator=</name></member>
     <member refid="classredland_1_1LibrdfUri_1a3630cf904c9e4546fb6d6c175ed6c66e" kind="function"><name>concatonate</name></member>
     <member refid="classredland_1_1LibrdfUri_1acaeb8a0d4b6f493805ecc1b198807e1c" kind="function"><name>str</name></member>
     <member refid="classredland_1_1LibrdfUri_1a36c5c589ae207ad6294e10be2bb8df17" kind="function"><name>LibrdfUri</name></member>
     <member refid="classredland_1_1LibrdfUri_1a1858bf7c3afae7d6d8ed2dca47e9cf55" kind="function"><name>get</name></member>
-    <member refid="classredland_1_1LibrdfUri_1ae9a8237bcb9cba0f2d87f2d980f579f3" kind="function"><name>isNull</name></member>
+    <member refid="classredland_1_1LibrdfUri_1a2c4744e82ffb6b03bdfb48c1a4327b59" kind="function"><name>getWithoutIncrement</name></member>
     <member refid="classredland_1_1LibrdfUri_1a13f1a7bc775cd79b6bb4dc6cd31b5d53" kind="function"><name>isEmpty</name></member>
     <member refid="classredland_1_1LibrdfUri_1aa07e6315dc3428b6d864deb00cda48e1" kind="function"><name>freeUri</name></member>
     <member refid="classredland_1_1LibrdfUri_1a770d47b63c041e39761f8dd46b0bf8b5" kind="function"><name>isFileUri</name></member>
@@ -443,9 +447,11 @@
     <member refid="classredland_1_1LibrdfUri_1a8ded118526be9cfdbe6dbc87d075fb06" kind="function"><name>operator!=</name></member>
     <member refid="classredland_1_1LibrdfUri_1ad24448f9b22adce080a35decc4694479" kind="function"><name>toFilenameString</name></member>
     <member refid="classredland_1_1LibrdfUri_1a77105fe3bed8bced2001bfee738f7032" kind="function"><name>getUsage</name></member>
+    <member refid="classredland_1_1LibrdfUri_1a220ac88021038a9ad710ccfc1ff423cf" kind="function"><name>incrementUsage</name></member>
     <member refid="classredland_1_1LibrdfUri_1a518761e1fbfd8c2f79dcac01b05c720b" kind="function"><name>fromRawPtr</name></member>
     <member refid="classredland_1_1LibrdfUri_1ad7245bf32a2538d220ec7d3a0afc0802" kind="function"><name>fromFilename</name></member>
     <member refid="classredland_1_1LibrdfUri_1a58ab2ce202cc9b563d1dc60a20a545b2" kind="function"><name>concatonate</name></member>
+    <member refid="classredland_1_1LibrdfUri_1a4992fcae8de6b2814b6c9061f8f3d5b8" kind="function"><name>LibrdfUri</name></member>
   </compound>
   <compound refid="structLogData" kind="struct"><name>LogData</name>
     <member refid="structLogData_1added55423a3b24a6ef757e8f749795ea" kind="variable"><name>list</name></member>
@@ -464,7 +470,7 @@
   </compound>
   <compound refid="classomexmeta_1_1MediatorParticipant" kind="class"><name>omexmeta::MediatorParticipant</name>
     <member refid="classomexmeta_1_1MediatorParticipant_1aa0ee2b1a660455271ef16adcbf81fe58" kind="variable"><name>multiplier_</name></member>
-    <member refid="classomexmeta_1_1MediatorParticipant_1a80e7e91e7304647e1d35b1bb930ef049" kind="function"><name>MediatorParticipant</name></member>
+    <member refid="classomexmeta_1_1MediatorParticipant_1a14ff63de2df15706051787f7445d1fec" kind="function"><name>MediatorParticipant</name></member>
   </compound>
   <compound refid="classomexmeta_1_1MetaID" kind="class"><name>omexmeta::MetaID</name>
     <member refid="classomexmeta_1_1MetaID_1a51a9bc3c81218b25902e0285c878a2b9" kind="variable"><name>base_</name></member>
@@ -551,17 +557,15 @@
     <member refid="classomexmeta_1_1Participant_1aba352cbcc6db3a2df58c08d544c8e3bd" kind="variable"><name>multiplier_</name></member>
     <member refid="classomexmeta_1_1Participant_1ae0d944207f96c78ccfc0002a7084d861" kind="variable"><name>physicalEntityReference_</name></member>
     <member refid="classomexmeta_1_1Participant_1a2d1b200f736249f791559b5b65afea2d" kind="variable"><name>local_participant_metaid_</name></member>
-    <member refid="classomexmeta_1_1Participant_1adc7f331875342471ca28c8b0ccc9f625" kind="variable"><name>model_uri_</name></member>
-    <member refid="classomexmeta_1_1Participant_1a3c5e24de1d42e00ebf0b9d05fda0bdab" kind="variable"><name>local_uri_</name></member>
+    <member refid="classomexmeta_1_1Participant_1ac5d451ba48c63052ab60ce9627c7931d" kind="variable"><name>uriHandler_</name></member>
     <member refid="classomexmeta_1_1Participant_1a375e3ece0c157e9e4cc6d3b05c53a21f" kind="variable"><name>type_</name></member>
+    <member refid="classomexmeta_1_1Participant_1afd275c1f5648ae4c86cc22f3a0853ffb" kind="function"><name>Participant</name></member>
     <member refid="classomexmeta_1_1Participant_1aee7846dcbb910dd394a0683841ab723a" kind="function"><name>setMultiplier</name></member>
     <member refid="classomexmeta_1_1Participant_1a415c1205762dff6943426d830d74edcd" kind="function"><name>setPhysicalEntityReference</name></member>
     <member refid="classomexmeta_1_1Participant_1a8a6626e17aca48b76465d66928eee78f" kind="function"><name>getLocalParticipantMetaid</name></member>
     <member refid="classomexmeta_1_1Participant_1a5e8f680950f55230587c0f85498c5047" kind="function"><name>setUniqueParticipantMetaid</name></member>
     <member refid="classomexmeta_1_1Participant_1a6bf4c724ab5212d10f2a89893f369cd1" kind="function"><name>getLocalUri</name></member>
-    <member refid="classomexmeta_1_1Participant_1a595323ae0681f42a7ba5981e2ee840f1" kind="function"><name>setLocalUri</name></member>
     <member refid="classomexmeta_1_1Participant_1a395bc8d2561149a77371ed80e2ed1517" kind="function"><name>free</name></member>
-    <member refid="classomexmeta_1_1Participant_1ad7fb4564c20db459f8f9f8fc0b62ee09" kind="function"><name>Participant</name></member>
     <member refid="classomexmeta_1_1Participant_1a78529cee5b9d5b30d76f937af652d4f0" kind="function"><name>~Participant</name></member>
     <member refid="classomexmeta_1_1Participant_1ad3db317039b403fdb7728885152cbeda" kind="function"><name>operator==</name></member>
     <member refid="classomexmeta_1_1Participant_1aa4baa62cb4ccffe8443262382490328d" kind="function"><name>operator!=</name></member>
@@ -573,27 +577,21 @@
     <member refid="classomexmeta_1_1Participant_1a79b467cfc699483fdfe5e7686cc5447e" kind="function"><name>getMultiplier</name></member>
     <member refid="classomexmeta_1_1Participant_1a40a5858db6aaae7ec7095b320de838d1" kind="function"><name>getPhysicalEntityReference</name></member>
     <member refid="classomexmeta_1_1Participant_1ae78613f8d39ccfc23fc3624deb960fb0" kind="function"><name>getModelUri</name></member>
-    <member refid="classomexmeta_1_1Participant_1abea74e8605f7314a51db8dc723961462" kind="function"><name>setModelUri</name></member>
   </compound>
   <compound refid="classomexmeta_1_1PersonalInformation" kind="class"><name>omexmeta::PersonalInformation</name>
     <member refid="classomexmeta_1_1PersonalInformation_1aa7926298a95c2e0418e360afaa9036d7" kind="variable"><name>model_</name></member>
     <member refid="classomexmeta_1_1PersonalInformation_1ac4708b8e04dba32b67bc67a68f7c7fc7" kind="variable"><name>triples_</name></member>
-    <member refid="classomexmeta_1_1PersonalInformation_1afdae43f2e4f56f8b4320cdc1fa0f6a06" kind="variable"><name>local_uri_</name></member>
     <member refid="classomexmeta_1_1PersonalInformation_1a01f5b7a1789bbcfda5cb51a041799438" kind="variable"><name>metaid_</name></member>
-    <member refid="classomexmeta_1_1PersonalInformation_1aa4dcccf20c51c9e4e3f120e95de76963" kind="variable"><name>model_uri_</name></member>
     <member refid="classomexmeta_1_1PersonalInformation_1a8e0eb4e7a40af6c1af975d4e715b805c" kind="variable"><name>namespaces_</name></member>
-    <member refid="classomexmeta_1_1PersonalInformation_1ad8ac47e95eff79132873a743d4884034" kind="function"><name>generateMetaId</name></member>
-    <member refid="classomexmeta_1_1PersonalInformation_1a9c705b23c9935cbf827e2c11a8bd266b" kind="function"><name>createSubject</name></member>
+    <member refid="classomexmeta_1_1PersonalInformation_1aca65bf571c2c1b6c630e65c793967f45" kind="variable"><name>uriHandler_</name></member>
     <member refid="classomexmeta_1_1PersonalInformation_1a8ca987ddfc8c218bbcbdb548b186b2a2" kind="function"><name>getNamespaces</name></member>
-    <member refid="classomexmeta_1_1PersonalInformation_1a3f829abf201987bf79892862e92877ec" kind="function"><name>PersonalInformation</name></member>
     <member refid="classomexmeta_1_1PersonalInformation_1ad06c48c239cf4e2c62b44c9b97fde011" kind="function"><name>~PersonalInformation</name></member>
-    <member refid="classomexmeta_1_1PersonalInformation_1a7494a26893d42e33953dee18bc6db4e4" kind="function"><name>PersonalInformation</name></member>
+    <member refid="classomexmeta_1_1PersonalInformation_1aaafb0d585de0eea7cb979e8fd7285228" kind="function"><name>PersonalInformation</name></member>
     <member refid="classomexmeta_1_1PersonalInformation_1a75cedb2a97efb996852b4e7cd39d6440" kind="function"><name>PersonalInformation</name></member>
     <member refid="classomexmeta_1_1PersonalInformation_1a6653d6c5751154f5f33562d9879d6727" kind="function"><name>PersonalInformation</name></member>
     <member refid="classomexmeta_1_1PersonalInformation_1a11a759dd5f065ba6a48f0bc3b4c48438" kind="function"><name>operator=</name></member>
     <member refid="classomexmeta_1_1PersonalInformation_1a048a3377b27d4b87681e4f8c24dd8c4f" kind="function"><name>operator=</name></member>
     <member refid="classomexmeta_1_1PersonalInformation_1aef8b8cfd83f8247b487d58f887c93e54" kind="function"><name>getLocalUri</name></member>
-    <member refid="classomexmeta_1_1PersonalInformation_1ab7d25a7a99ae29ef8cbb004343b9b540" kind="function"><name>setLocalUri</name></member>
     <member refid="classomexmeta_1_1PersonalInformation_1a84ce9ae11ad2ed4a01fe1b5b84707146" kind="function"><name>operator==</name></member>
     <member refid="classomexmeta_1_1PersonalInformation_1abb71bc363efd7466c71733709aa50394" kind="function"><name>operator!=</name></member>
     <member refid="classomexmeta_1_1PersonalInformation_1af37c1c7065dd9edbb89e90e8b37f35e8" kind="function"><name>addCreator</name></member>
@@ -612,29 +610,30 @@
     <member refid="classomexmeta_1_1PersonalInformation_1ae00bfe55d51745ac11f37986443feb28" kind="function"><name>getMetaid</name></member>
     <member refid="classomexmeta_1_1PersonalInformation_1a2bf7f31511c545eb0158643645115b00" kind="function"><name>setMetaid</name></member>
     <member refid="classomexmeta_1_1PersonalInformation_1a6b2ce3a6c724b67afe3d0c2df00bb484" kind="function"><name>getModelUri</name></member>
-    <member refid="classomexmeta_1_1PersonalInformation_1afc5f378fc98d02112a9a569f4388552e" kind="function"><name>setModelUri</name></member>
     <member refid="classomexmeta_1_1PersonalInformation_1aecc5783753b41ed88a49c5b3bce82ba4" kind="function"><name>getTriples</name></member>
     <member refid="classomexmeta_1_1PersonalInformation_1aea3a34c765f176a3d6f6b88a6b8c8369" kind="function"><name>freeTriples</name></member>
     <member refid="classomexmeta_1_1PersonalInformation_1a25a1e9ba56dda2459cb1bbbe61cc4346" kind="function"><name>setTriples</name></member>
+    <member refid="classomexmeta_1_1PersonalInformation_1ad8ac47e95eff79132873a743d4884034" kind="function"><name>generateMetaId</name></member>
+    <member refid="classomexmeta_1_1PersonalInformation_1a9c705b23c9935cbf827e2c11a8bd266b" kind="function"><name>createSubject</name></member>
   </compound>
   <compound refid="classomexmeta_1_1PhysicalEntity" kind="class"><name>omexmeta::PhysicalEntity</name>
-    <member refid="classomexmeta_1_1PhysicalEntity_1ac5f674248ef40f86df4a5160c2d193e3" kind="variable"><name>identity_resource_</name></member>
-    <member refid="classomexmeta_1_1PhysicalEntity_1ac8f480836499a208e2cfbe71a1492e5b" kind="variable"><name>location_resources_</name></member>
-    <member refid="classomexmeta_1_1PhysicalEntity_1aa69e751efbd57e4f4e9c79dc00f7bf59" kind="variable"><name>part_resources_</name></member>
+    <member refid="classomexmeta_1_1PhysicalEntity_1a68cdd5a93cbf3c225ec97b6852994999" kind="variable"><name>identity_resource_</name></member>
+    <member refid="classomexmeta_1_1PhysicalEntity_1a3966efdc86f7f455e1abe8edc7225a25" kind="variable"><name>location_resources_</name></member>
+    <member refid="classomexmeta_1_1PhysicalEntity_1a18d640c67df3fd6c153c1298e2c9de9d" kind="variable"><name>part_resources_</name></member>
     <member refid="classomexmeta_1_1PhysicalEntity_1a95bbbce8e02d4575f8bb00987494216e" kind="variable"><name>physical_entity_property_id_</name></member>
     <member refid="classomexmeta_1_1PhysicalEntity_1aef6d38bfa93a0c5eba971755f5241ba8" kind="variable"><name>property_metaid_base_</name></member>
     <member refid="classomexmeta_1_1PhysicalEntity_1a9d29348a080c64f91ff6ec184fd45ece" kind="function"><name>PhysicalEntity</name></member>
-    <member refid="classomexmeta_1_1PhysicalEntity_1a0341918665af91cacdb4481d037c42d2" kind="function"><name>PhysicalEntity</name></member>
+    <member refid="classomexmeta_1_1PhysicalEntity_1aa30078a1fa71747a37700915919bbb72" kind="function"><name>PhysicalEntity</name></member>
     <member refid="classomexmeta_1_1PhysicalEntity_1ab905eecead2704afb14285fa44899958" kind="function"><name>~PhysicalEntity</name></member>
     <member refid="classomexmeta_1_1PhysicalEntity_1a6fd4acd7255a01322c4a53d3e84df0ba" kind="function"><name>free</name></member>
-    <member refid="classomexmeta_1_1PhysicalEntity_1a6bbbce71778e374de7d4e5e2e674fc2b" kind="function"><name>PhysicalEntity</name></member>
-    <member refid="classomexmeta_1_1PhysicalEntity_1a5f583e60ad44bbb3dfcd11fdc6bc72cc" kind="function"><name>PhysicalEntity</name></member>
+    <member refid="classomexmeta_1_1PhysicalEntity_1a0f6af5e55a34be889110b0d03e5f1aec" kind="function"><name>PhysicalEntity</name></member>
+    <member refid="classomexmeta_1_1PhysicalEntity_1a5765425cc25593f824eddb100a6f5229" kind="function"><name>PhysicalEntity</name></member>
     <member refid="classomexmeta_1_1PhysicalEntity_1a51f5df8b2e8a1d65e5aa0d10e53b77ba" kind="function"><name>toTriples</name></member>
-    <member refid="classomexmeta_1_1PhysicalEntity_1ae4b3374e9ebb817eb63f9105b491e958" kind="function"><name>getIdentityResource</name></member>
-    <member refid="classomexmeta_1_1PhysicalEntity_1a3e2fba07a4622db0180650d24bf263d9" kind="function"><name>getLocationResources</name></member>
+    <member refid="classomexmeta_1_1PhysicalEntity_1a82f43f8355a33284876b84278027cac5" kind="function"><name>getIdentityResource</name></member>
+    <member refid="classomexmeta_1_1PhysicalEntity_1a5bca97a9f5195260bd44f72b6d29d87a" kind="function"><name>getLocationResources</name></member>
     <member refid="classomexmeta_1_1PhysicalEntity_1a5d7168c527d2dbdacd612de37aa9a605" kind="function"><name>setPhysicalProperty</name></member>
     <member refid="classomexmeta_1_1PhysicalEntity_1a9bca0cb13601b6f9617df9f264968f1f" kind="function"><name>setPhysicalProperty</name></member>
-    <member refid="classomexmeta_1_1PhysicalEntity_1a4d4c3ee9572b19e44e79a44f18f1ac31" kind="function"><name>setIdentity</name></member>
+    <member refid="classomexmeta_1_1PhysicalEntity_1a9029e221fb2e4125284eba3935993d8f" kind="function"><name>setIdentity</name></member>
     <member refid="classomexmeta_1_1PhysicalEntity_1a6f51117462876bda1eb743244437104a" kind="function"><name>identity</name></member>
     <member refid="classomexmeta_1_1PhysicalEntity_1a82e77be3327c537b2426b571afaa5045" kind="function"><name>addLocation</name></member>
     <member refid="classomexmeta_1_1PhysicalEntity_1a33559c90dbe3e3be1b71898ab9a5bfa4" kind="function"><name>getNumLocations</name></member>
@@ -650,7 +649,6 @@
     <member refid="classomexmeta_1_1PhysicalEntity_1a6aff4d003c2e39aad8bd00ab536ec00e" kind="function"><name>variableMetaId</name></member>
     <member refid="classomexmeta_1_1PhysicalEntity_1ac77ef003e4111cbdaf4c9c7f0c5fb680" kind="function"><name>getPropertyMetaidBase</name></member>
     <member refid="classomexmeta_1_1PhysicalEntity_1a9d8224786f634b20b32d5cbc2cccaa12" kind="function"><name>hasProperty</name></member>
-    <member refid="classomexmeta_1_1PhysicalEntity_1acf7a5abb235d3be5d65a3d675364012e" kind="function"><name>hasProperty</name></member>
     <member refid="classomexmeta_1_1PhysicalEntity_1a5ca4656de18ff0bc740ebd9f2c7f8883" kind="function"><name>hasProperty</name></member>
     <member refid="classomexmeta_1_1PhysicalEntity_1a151fae24b38b8c568fe2b0309bc8d113" kind="function"><name>hasProperty</name></member>
   </compound>
@@ -662,16 +660,13 @@
     <member refid="classomexmeta_1_1PhysicalProcess_1a2646c7350a226acde1a81a35aa92b71b" kind="variable"><name>property_metaid_base_</name></member>
     <member refid="classomexmeta_1_1PhysicalProcess_1acf4c42d10d6dbdd3aa4285bed7bd823b" kind="function"><name>PhysicalProcess</name></member>
     <member refid="classomexmeta_1_1PhysicalProcess_1a20821628486c64885ca2523067a71eb8" kind="function"><name>~PhysicalProcess</name></member>
-    <member refid="classomexmeta_1_1PhysicalProcess_1a37f99033da4635ff1af2b9f19c1b84ce" kind="function"><name>PhysicalProcess</name></member>
+    <member refid="classomexmeta_1_1PhysicalProcess_1afc6b8fa69c15e213e2527f01cca4ae23" kind="function"><name>PhysicalProcess</name></member>
     <member refid="classomexmeta_1_1PhysicalProcess_1a8dfcffe80f264ad24e70de9d7b71c73b" kind="function"><name>free</name></member>
-    <member refid="classomexmeta_1_1PhysicalProcess_1a2b694395a318335e81c884ed76b5f4dd" kind="function"><name>PhysicalProcess</name></member>
-    <member refid="classomexmeta_1_1PhysicalProcess_1a974e2717dbf4b690b95b07e9c026fd2a" kind="function"><name>PhysicalProcess</name></member>
+    <member refid="classomexmeta_1_1PhysicalProcess_1a4012f37ba6f9d9ade1c1064280897c05" kind="function"><name>PhysicalProcess</name></member>
     <member refid="classomexmeta_1_1PhysicalProcess_1ab5f3100febc21173775a2090bb57a0fb" kind="function"><name>getSources</name></member>
     <member refid="classomexmeta_1_1PhysicalProcess_1a069e7caa05f346f90f413f650f081535" kind="function"><name>getSinks</name></member>
     <member refid="classomexmeta_1_1PhysicalProcess_1a349b76ad1831d2510904510583f0d7f2" kind="function"><name>getMediators</name></member>
     <member refid="classomexmeta_1_1PhysicalProcess_1ab6f6af00fac2401f9a88e186fd1d897a" kind="function"><name>toTriples</name></member>
-    <member refid="classomexmeta_1_1PhysicalProcess_1ac875058d67408246aa28cf58dd77ccf6" kind="function"><name>setPhysicalProperty</name></member>
-    <member refid="classomexmeta_1_1PhysicalProcess_1ac49bf4a1c21c6590a9d2af7ae93e13a7" kind="function"><name>setPhysicalProperty</name></member>
     <member refid="classomexmeta_1_1PhysicalProcess_1a4cae1a5cecfc2107f2667a2e5c0480cc" kind="function"><name>addSource</name></member>
     <member refid="classomexmeta_1_1PhysicalProcess_1aa55335a92b7558262f512f836fae8c4f" kind="function"><name>addSink</name></member>
     <member refid="classomexmeta_1_1PhysicalProcess_1a5a4ee2c911331eb5196e25168b41ee31" kind="function"><name>addMediator</name></member>
@@ -696,23 +691,21 @@
     <member refid="classomexmeta_1_1PhysicalProperty_1aa6739d4c58f1daa524bd96ea123f9b0f" kind="variable"><name>property_metaid_base_</name></member>
     <member refid="classomexmeta_1_1PhysicalProperty_1a58c0bfc4cee0998e1d7aaaff9b8c7ff0" kind="variable"><name>property_bearer_base_</name></member>
     <member refid="classomexmeta_1_1PhysicalProperty_1acdec5ae85563d2b3f92a9ea15e2bf060" kind="variable"><name>about_value_</name></member>
-    <member refid="classomexmeta_1_1PhysicalProperty_1acc22e1576caaad8b1d297531a59d8b84" kind="variable"><name>model_uri_</name></member>
-    <member refid="classomexmeta_1_1PhysicalProperty_1a4d0963b9ec2f3f42ac0dafa23ee92347" kind="variable"><name>local_uri_</name></member>
     <member refid="classomexmeta_1_1PhysicalProperty_1aa129d8ee6d5e5390a5d40d888cb34f0d" kind="variable"><name>model_</name></member>
+    <member refid="classomexmeta_1_1PhysicalProperty_1a44b8fe9de1697e10b1d505b2e84abd52" kind="variable"><name>uriHandler_</name></member>
     <member refid="classomexmeta_1_1PhysicalProperty_1a7816274c77919713b49b7f91d4355339" kind="variable"><name>is_set_</name></member>
-    <member refid="classomexmeta_1_1PhysicalProperty_1a6983c4f7e0b46cf9d8061f13bd3c3311" kind="function"><name>validate</name></member>
+    <member refid="classomexmeta_1_1PhysicalProperty_1aa0faaf61713981a2c1e340ea3b401616" kind="function"><name>PhysicalProperty</name></member>
+    <member refid="classomexmeta_1_1PhysicalProperty_1a6080d0966cd4f0d1912dd0cf914caf5b" kind="function"><name>~PhysicalProperty</name></member>
+    <member refid="classomexmeta_1_1PhysicalProperty_1a41cd211e575a4cf4144fa2157f52747d" kind="function"><name>PhysicalProperty</name></member>
+    <member refid="classomexmeta_1_1PhysicalProperty_1a0c12f4fc60d445adf9a7086f76015474" kind="function"><name>PhysicalProperty</name></member>
+    <member refid="classomexmeta_1_1PhysicalProperty_1af0fc85f08d59093673270cf74773823e" kind="function"><name>operator=</name></member>
+    <member refid="classomexmeta_1_1PhysicalProperty_1a8800365ed17c49d1a8e7eb2225bae169" kind="function"><name>operator=</name></member>
     <member refid="classomexmeta_1_1PhysicalProperty_1a13a9ec404ea9c6d7ddea6c7398b67328" kind="function"><name>isSet</name></member>
     <member refid="classomexmeta_1_1PhysicalProperty_1a46f5436faa6f1c977088544bec31d125" kind="function"><name>setIsSet</name></member>
-    <member refid="classomexmeta_1_1PhysicalProperty_1af3b3379a751ebb15f7a5ea0cae8cb4d6" kind="function"><name>operator==</name></member>
-    <member refid="classomexmeta_1_1PhysicalProperty_1a1a85ba2c50f5b79e49e8a01b96756f0a" kind="function"><name>operator!=</name></member>
-    <member refid="classomexmeta_1_1PhysicalProperty_1af0ff6c915ed8b5d977a94c5ebee4edca" kind="function"><name>PhysicalProperty</name></member>
-    <member refid="classomexmeta_1_1PhysicalProperty_1aa973322a7a26249187a82bb878ad3790" kind="function"><name>PhysicalProperty</name></member>
     <member refid="classomexmeta_1_1PhysicalProperty_1a101d24ba21354367e13406d1f68c9248" kind="function"><name>setPropertyMetaidBase</name></member>
     <member refid="classomexmeta_1_1PhysicalProperty_1aa9f55839baebd3594e859d4ad8d080a2" kind="function"><name>getPropertyBearerBase</name></member>
     <member refid="classomexmeta_1_1PhysicalProperty_1a1b521c8ed4752a27b0e667c766b9e304" kind="function"><name>setPropertyBearerBase</name></member>
-    <member refid="classomexmeta_1_1PhysicalProperty_1ae1661cc749bd68c04ad47cdc0b7260d5" kind="function"><name>PhysicalProperty</name></member>
-    <member refid="classomexmeta_1_1PhysicalProperty_1a3f0c5a2374e80b71aa74184e29780e28" kind="function"><name>PhysicalProperty</name></member>
-    <member refid="classomexmeta_1_1PhysicalProperty_1a9a8b291c9516decaa67afa1b15ac7c2d" kind="function"><name>PhysicalProperty</name></member>
+    <member refid="classomexmeta_1_1PhysicalProperty_1a907bcbaacfa441756d514ff52efa2f97" kind="function"><name>PhysicalProperty</name></member>
     <member refid="classomexmeta_1_1PhysicalProperty_1a0f27071bfef5a9de4eb89fb21461ba76" kind="function"><name>getModelUri</name></member>
     <member refid="classomexmeta_1_1PhysicalProperty_1a9810bdd4b71d035e6187347b640ce83f" kind="function"><name>getAbout</name></member>
     <member refid="classomexmeta_1_1PhysicalProperty_1a8065f6509c81feb045a13bcfe43c11b5" kind="function"><name>about</name></member>
@@ -723,21 +716,22 @@
     <member refid="classomexmeta_1_1PhysicalProperty_1ab498df5bb21e010614ae43c0c8e70bb7" kind="function"><name>getLocalUri</name></member>
     <member refid="classomexmeta_1_1PhysicalProperty_1a6981edb407fb11b81eebccbc8f7aa94a" kind="function"><name>getIsPropertyOfValue</name></member>
     <member refid="classomexmeta_1_1PhysicalProperty_1acd67e442b842ba57daf0653467b8a682" kind="function"><name>getPropertyMetaidBase</name></member>
+    <member refid="classomexmeta_1_1PhysicalProperty_1af3b3379a751ebb15f7a5ea0cae8cb4d6" kind="function"><name>operator==</name></member>
+    <member refid="classomexmeta_1_1PhysicalProperty_1a1a85ba2c50f5b79e49e8a01b96756f0a" kind="function"><name>operator!=</name></member>
   </compound>
   <compound refid="classomexmeta_1_1Predicate" kind="class"><name>omexmeta::Predicate</name>
     <member refid="classomexmeta_1_1Predicate_1afc79b0cc43eb11e4bc2fe0b305e551bc" kind="variable"><name>namespace_</name></member>
     <member refid="classomexmeta_1_1Predicate_1ab626a5fd9fa8f302767d4ca544a9eff2" kind="variable"><name>term_</name></member>
     <member refid="classomexmeta_1_1Predicate_1a5dfbbc85f7bdc5a3e4da72913f6ce306" kind="variable"><name>prefix_</name></member>
     <member refid="classomexmeta_1_1Predicate_1a4fe359b93a9dea9b60f7bc28c1aa913b" kind="variable"><name>uri_</name></member>
-    <member refid="classomexmeta_1_1Predicate_1ad0548a6d31dbc6f32734032b1540e58f" kind="variable"><name>node_</name></member>
     <member refid="classomexmeta_1_1Predicate_1a14ae7768fbd3aaf444bcde8650910c0b" kind="variable"><name>valid_terms_</name></member>
-    <member refid="classomexmeta_1_1Predicate_1a157c4e95f9869d4f22cd07332ff7621a" kind="function"><name>Predicate</name></member>
+    <member refid="classomexmeta_1_1Predicate_1a1c062fe0337919ecbffba1f567b77048" kind="variable"><name>node_</name></member>
     <member refid="classomexmeta_1_1Predicate_1a897a506f4c1b31e38e42abd7b0f8314a" kind="function"><name>Predicate</name></member>
     <member refid="classomexmeta_1_1Predicate_1ad5a91eb29204202d2f18816d09677622" kind="function"><name>Predicate</name></member>
     <member refid="classomexmeta_1_1Predicate_1a5db1e6150f8cfd7605e82996e2aebb50" kind="function"><name>operator==</name></member>
     <member refid="classomexmeta_1_1Predicate_1a7bf4b8769eb9801eb26cc976723b56f2" kind="function"><name>operator!=</name></member>
     <member refid="classomexmeta_1_1Predicate_1a9d51ebf565f39fb4d6d4f58c1b030edf" kind="function"><name>str</name></member>
-    <member refid="classomexmeta_1_1Predicate_1a144efc75a923b9d85b9f8eaccf0400bb" kind="function"><name>getNode</name></member>
+    <member refid="classomexmeta_1_1Predicate_1a6edbc1f17d4a5cbf8ad0c1b70b683b4a" kind="function"><name>get</name></member>
     <member refid="classomexmeta_1_1Predicate_1aee19b8fc8b21f8e5ffd5b64691e1e530" kind="function"><name>getValidTerms</name></member>
     <member refid="classomexmeta_1_1Predicate_1add4ab1cd86f83de3512279bbfdad947c" kind="function"><name>getNamespace</name></member>
     <member refid="classomexmeta_1_1Predicate_1a54a15176bd697d37d00573bf86954630" kind="function"><name>getTerm</name></member>
@@ -749,6 +743,7 @@
     <member refid="classomexmeta_1_1Predicate_1a1e7e59b8a48c9f89eeec73f3bbaea19c" kind="function"><name>verify</name></member>
     <member refid="classomexmeta_1_1Predicate_1a8381c8b0c7bbaa27de29608cbff08bf5" kind="function"><name>namespaceKnown</name></member>
     <member refid="classomexmeta_1_1Predicate_1a4cda551beb4e1354ac56d692f0eb78cd" kind="function"><name>addSeenNamespaceToSerializer</name></member>
+    <member refid="classomexmeta_1_1Predicate_1a157c4e95f9869d4f22cd07332ff7621a" kind="function"><name>Predicate</name></member>
   </compound>
   <compound refid="structdbg_1_1pretty__print__tuple" kind="struct"><name>dbg::pretty_print_tuple</name>
     <member refid="structdbg_1_1pretty__print__tuple_1a17c2bca6c330e88da2082efa4c3a9be5" kind="function"><name>print</name></member>
@@ -769,12 +764,11 @@
     <member refid="classomexmeta_1_1PropertyBearer_1a2a2bcd9e87986713cff5877e39a9f994" kind="variable"><name>model_</name></member>
     <member refid="classomexmeta_1_1PropertyBearer_1abdaa4997f02b9ef36cda61037399eb86" kind="variable"><name>physical_property_</name></member>
     <member refid="classomexmeta_1_1PropertyBearer_1a98d1be3285eaeaa15c3c888a87190f55" kind="variable"><name>type_</name></member>
-    <member refid="classomexmeta_1_1PropertyBearer_1a9be0613d73e71b972ec908eff77378fd" kind="variable"><name>model_uri_</name></member>
-    <member refid="classomexmeta_1_1PropertyBearer_1aa5c08869538a59266cfd785d92f12539" kind="variable"><name>local_uri_</name></member>
     <member refid="classomexmeta_1_1PropertyBearer_1a1ee416fecb12d19937f5bc9b6d43c7b1" kind="variable"><name>new_metaid_exclusion_list_</name></member>
     <member refid="classomexmeta_1_1PropertyBearer_1a85572e31aba1416b88b88f9426740052" kind="variable"><name>property_metaid_base_</name></member>
     <member refid="classomexmeta_1_1PropertyBearer_1a9cd9e2ce5b8007edd315eb545e15f69f" kind="variable"><name>about_value_</name></member>
     <member refid="classomexmeta_1_1PropertyBearer_1a930900eac7a51e075aa0a455c63e753c" kind="variable"><name>about_uri_type_</name></member>
+    <member refid="classomexmeta_1_1PropertyBearer_1a87848412017394e006ac24259f3f9e02" kind="variable"><name>uriHandler_</name></member>
     <member refid="classomexmeta_1_1PropertyBearer_1ad53dffe87d395860708c4bcfc8a76478" kind="function"><name>getAboutUriType</name></member>
     <member refid="classomexmeta_1_1PropertyBearer_1a50f4abd4a7a5f699343fe824612b12fb" kind="function"><name>setAboutUriType</name></member>
     <member refid="classomexmeta_1_1PropertyBearer_1a8f819ed67e63c84aecff651cca4b945c" kind="function"><name>getPropertyMetaidBase</name></member>
@@ -783,21 +777,17 @@
     <member refid="classomexmeta_1_1PropertyBearer_1a8e065b7ca6fc51c2eb4f4d63e1203fe2" kind="function"><name>operator!=</name></member>
     <member refid="classomexmeta_1_1PropertyBearer_1a9c492b5dde77979fedf04444c0316732" kind="function"><name>~PropertyBearer</name></member>
     <member refid="classomexmeta_1_1PropertyBearer_1a45b07ccfc203b51dfc08c45dbd37480d" kind="function"><name>getLocalUri</name></member>
-    <member refid="classomexmeta_1_1PropertyBearer_1af17cb8f631359fdba8c000f7694fc7a6" kind="function"><name>setLocalUri</name></member>
-    <member refid="classomexmeta_1_1PropertyBearer_1ae20593473538babfb4cb6d3428a07fbb" kind="function"><name>PropertyBearer</name></member>
-    <member refid="classomexmeta_1_1PropertyBearer_1aebdf1dc3d7022a7745b1041d03a35be6" kind="function"><name>PropertyBearer</name></member>
-    <member refid="classomexmeta_1_1PropertyBearer_1a0783dd90438e82bed7ea635fb4ab5301" kind="function"><name>operator=</name></member>
-    <member refid="classomexmeta_1_1PropertyBearer_1aae644b45fb2151fe9f10c5d3547964be" kind="function"><name>operator=</name></member>
-    <member refid="classomexmeta_1_1PropertyBearer_1a9d489c71505341bfa11526c843f03e9e" kind="function"><name>PropertyBearer</name></member>
-    <member refid="classomexmeta_1_1PropertyBearer_1a45bb47fe169c2312ecfa0a40bd761fb6" kind="function"><name>PropertyBearer</name></member>
-    <member refid="classomexmeta_1_1PropertyBearer_1a9ccbcbf0c5a022c4c8dd4c111098c556" kind="function"><name>PropertyBearer</name></member>
+    <member refid="classomexmeta_1_1PropertyBearer_1aba09b3a7c564ff208507dc0d533639ff" kind="function"><name>PropertyBearer</name></member>
+    <member refid="classomexmeta_1_1PropertyBearer_1a130c3075575d8da0113ad6320a8f0794" kind="function"><name>PropertyBearer</name></member>
+    <member refid="classomexmeta_1_1PropertyBearer_1a86f970e1522a3a180c9f9ada9df82b7e" kind="function"><name>operator=</name></member>
+    <member refid="classomexmeta_1_1PropertyBearer_1a961b7de161f14f4ac92b8dd216399b6a" kind="function"><name>operator=</name></member>
+    <member refid="classomexmeta_1_1PropertyBearer_1af6a967a6e8950c3fe550ee6cc4bb9e6e" kind="function"><name>PropertyBearer</name></member>
+    <member refid="classomexmeta_1_1PropertyBearer_1a55a9c4b8c46c2f14cd805e94a7b6f141" kind="function"><name>PropertyBearer</name></member>
     <member refid="classomexmeta_1_1PropertyBearer_1a6df2db1bb03c9b62da60263869f57ce6" kind="function"><name>getModelUri</name></member>
-    <member refid="classomexmeta_1_1PropertyBearer_1a9759a5f2d759295e913f5f89f8e18fd8" kind="function"><name>setModelUri</name></member>
-    <member refid="classomexmeta_1_1PropertyBearer_1a5171a92883795c1ba3981443ecd21864" kind="function"><name>getAbout</name></member>
+    <member refid="classomexmeta_1_1PropertyBearer_1ace448a5a3bf9c20e413cba3d36890442" kind="function"><name>getPropertyAbout</name></member>
     <member refid="classomexmeta_1_1PropertyBearer_1a1a7ffce435c889b4e3f26fcbb66b6cc3" kind="function"><name>getType</name></member>
     <member refid="classomexmeta_1_1PropertyBearer_1a38414e467fca285fa84e82184e4e26c3" kind="function"><name>getPhysicalProperty</name></member>
     <member refid="classomexmeta_1_1PropertyBearer_1adccf527f59eaebc1baf88dfce3ae9664" kind="function"><name>toTriples</name></member>
-    <member refid="classomexmeta_1_1PropertyBearer_1a1a61b4c119025b9872032ec7881e5b0d" kind="function"><name>getSubjectStr</name></member>
     <member refid="classomexmeta_1_1PropertyBearer_1a54b3df74898019158a849b9f0a9112ad" kind="function"><name>setPhysicalProperty</name></member>
     <member refid="classomexmeta_1_1PropertyBearer_1aa2de7a52a6737252ebf1d4d8820f8035" kind="function"><name>setType</name></member>
     <member refid="classomexmeta_1_1PropertyBearer_1a97a2c8ec00a740a607512db4b351467a" kind="function"><name>getModel</name></member>
@@ -807,6 +797,7 @@
     <member refid="classomexmeta_1_1PropertyBearer_1aa2bc856917f03659ac84ac7b2e0a2c7d" kind="function"><name>hasProperty</name></member>
     <member refid="classomexmeta_1_1PropertyBearer_1ab115d41cefd58183ebfe429af7be69dc" kind="function"><name>about</name></member>
     <member refid="classomexmeta_1_1PropertyBearer_1a374759ec870893444272ff0489be538f" kind="function"><name>about</name></member>
+    <member refid="classomexmeta_1_1PropertyBearer_1a5171a92883795c1ba3981443ecd21864" kind="function"><name>getAbout</name></member>
     <member refid="classomexmeta_1_1PropertyBearer_1ad5385daa0deb6a484d16a190d46fa0e7" kind="function"><name>getNewMetaidExclusionList</name></member>
     <member refid="classomexmeta_1_1PropertyBearer_1a78328bba4ba48b3bfdcfebd8256d6add" kind="function"><name>generateMetaId</name></member>
   </compound>
@@ -891,8 +882,8 @@
     <member refid="classredland_1_1RaptorIOStream_1a5e0290f081c8c72e66c6aa40741f2bf9" kind="variable"><name>iostream_</name></member>
     <member refid="classredland_1_1RaptorIOStream_1aa7371096ef963f70ddd935f9a101831c" kind="function"><name>RaptorIOStream</name></member>
     <member refid="classredland_1_1RaptorIOStream_1a6cf2e1a9cf6c31bb37069c5b3e591509" kind="function"><name>RaptorIOStream</name></member>
-    <member refid="classredland_1_1RaptorIOStream_1adbcfcc29e030219dfd180ecb3d6c2c4b" kind="function"><name>get</name></member>
-    <member refid="classredland_1_1RaptorIOStream_1ab4b78aede5b54be5a654c9b81e65452c" kind="function"><name>newIOToString</name></member>
+    <member refid="classredland_1_1RaptorIOStream_1ae771c80aba471ed772b7c227fe7e4003" kind="function"><name>get</name></member>
+    <member refid="classredland_1_1RaptorIOStream_1acdefbbf1049c545740f19cb9b3b02046" kind="function"><name>newIOToString</name></member>
   </compound>
   <compound refid="structrasqal__data__graph" kind="struct"><name>rasqal_data_graph</name>
     <member refid="structrasqal__data__graph_1a957110dfdb2d78ed60d9a113db3c4787" kind="variable"><name>world</name></member>
@@ -1039,18 +1030,14 @@
     <member refid="structrasqal__xsd__datetime_1a2fd4b146de5847a40fb925303d9e97a4" kind="variable"><name>have_tz</name></member>
   </compound>
   <compound refid="classomexmeta_1_1RDF" kind="class"><name>omexmeta::RDF</name>
-    <member refid="classomexmeta_1_1RDF_1ad31e5bb632eeaa00a3ac0e69c5e4f89c" kind="typedef"><name>NamespaceMap</name></member>
+    <member refid="classomexmeta_1_1RDF_1a1979d7d70a4c20f2e63f00c7fa668b1f" kind="variable"><name>namespaces_</name></member>
+    <member refid="classomexmeta_1_1RDF_1a82bc53feb93e1243970400fd104174da" kind="variable"><name>seen_namespaces_</name></member>
+    <member refid="classomexmeta_1_1RDF_1a59014bbb45a43dbfa760480f1713c473" kind="variable"><name>OMEXlib_</name></member>
+    <member refid="classomexmeta_1_1RDF_1a654ae548e17aa6b098531f24c116dde1" kind="variable"><name>noexcept</name></member>
     <member refid="classomexmeta_1_1RDF_1a345bcba83c6928f750ba732b6e6c748b" kind="variable"><name>storage_</name></member>
     <member refid="classomexmeta_1_1RDF_1a88a09d66eb9d6881fd77e9ef6133b4e6" kind="variable"><name>model_</name></member>
     <member refid="classomexmeta_1_1RDF_1ac7eaa8a5c0fdf7b563ba56550fede82a" kind="variable"><name>xmlType</name></member>
     <member refid="classomexmeta_1_1RDF_1a54d08d61cfd6eab43c2034e115150a59" kind="variable"><name>uriHandler_</name></member>
-    <member refid="classomexmeta_1_1RDF_1a1979d7d70a4c20f2e63f00c7fa668b1f" kind="variable"><name>namespaces_</name></member>
-    <member refid="classomexmeta_1_1RDF_1a82bc53feb93e1243970400fd104174da" kind="variable"><name>seen_namespaces_</name></member>
-    <member refid="classomexmeta_1_1RDF_1a59014bbb45a43dbfa760480f1713c473" kind="variable"><name>OMEXlib_</name></member>
-    <member refid="classomexmeta_1_1RDF_1a91574f34be1fe3054f4f7ce6830098b4" kind="function"><name>classifyXmlType</name></member>
-    <member refid="classomexmeta_1_1RDF_1a71b3dd4837a918a273f8d15aaa5c6c7b" kind="function"><name>classifyXmlTypeFromFile</name></member>
-    <member refid="classomexmeta_1_1RDF_1ade6ca329272d5de27496183a81bbec8a" kind="function"><name>extractSemanticInformationFromSBML</name></member>
-    <member refid="classomexmeta_1_1RDF_1add8f3d957f24a26785f29b85d50f4399" kind="function"><name>freeRDF</name></member>
     <member refid="classomexmeta_1_1RDF_1a6979e6ca2688cf5cae1e9e1cf3a7309a" kind="function"><name>getXmlType</name></member>
     <member refid="classomexmeta_1_1RDF_1add69d33d544dc31789b2ff0a71182a84" kind="function"><name>operator==</name></member>
     <member refid="classomexmeta_1_1RDF_1ac652b39964477c8ea69e5218f2203013" kind="function"><name>operator!=</name></member>
@@ -1065,7 +1052,6 @@
     <member refid="classomexmeta_1_1RDF_1aecb90e51830082f78ff055c045f4b439" kind="function"><name>RDF</name></member>
     <member refid="classomexmeta_1_1RDF_1a87b1eb7fe49f4928e61c399edf49e09c" kind="function"><name>~RDF</name></member>
     <member refid="classomexmeta_1_1RDF_1ad95c4a8588988efe399c7f984e304990" kind="function"><name>RDF</name></member>
-    <member refid="classomexmeta_1_1RDF_1a6490b2ea0d10e3026bea587a305b7fb9" kind="function"><name>RDF</name></member>
     <member refid="classomexmeta_1_1RDF_1a9d1b20d798969d3c1dac412c621247b9" kind="function"><name>operator=</name></member>
     <member refid="classomexmeta_1_1RDF_1ae3739bda3be0986547c31559381f3df4" kind="function"><name>operator=</name></member>
     <member refid="classomexmeta_1_1RDF_1a63247bb3a05957abf7320c060543c3ca" kind="function"><name>size</name></member>
@@ -1087,17 +1073,21 @@
     <member refid="classomexmeta_1_1RDF_1af5c7c6104496c09762518d56e94e6048" kind="function"><name>getTransactionRollback</name></member>
     <member refid="classomexmeta_1_1RDF_1ab168be2c14d53c3fc94024121dc88ba6" kind="function"><name>query</name></member>
     <member refid="classomexmeta_1_1RDF_1a9ecf58f64ea449a01457bfc28bb53e17" kind="function"><name>addTriple</name></member>
-    <member refid="classomexmeta_1_1RDF_1a7a6ad7d96f3104da8356f02ac6705941" kind="function"><name>addTriples</name></member>
+    <member refid="classomexmeta_1_1RDF_1a7725d1260c67fbfd8ffeb98dd4bbc1d1" kind="function"><name>addTriples</name></member>
     <member refid="classomexmeta_1_1RDF_1a9d91b3134cdcc6dfef6d62b7b09d8da2" kind="function"><name>fromString</name></member>
     <member refid="classomexmeta_1_1RDF_1a03906aa5c3b9429a2afdbe0ad2be21e6" kind="function"><name>fromUri</name></member>
     <member refid="classomexmeta_1_1RDF_1a98a1da84161a7935bf38ec5e5d34e91f" kind="function"><name>fromFile</name></member>
     <member refid="classomexmeta_1_1RDF_1ab2dadc7ff1cf25edbb401b2c879a21b0" kind="function"><name>fromString</name></member>
     <member refid="classomexmeta_1_1RDF_1ae01ed260e02eda2141ffe1288f78c177" kind="function"><name>listOptions</name></member>
-    <member refid="classomexmeta_1_1RDF_1aecf658fb2442857994104693b3ad0e32" kind="function"><name>equals</name></member>
-    <member refid="classomexmeta_1_1RDF_1acfa31de8762c1ddbf53eda0c3e1af30a" kind="function"><name>equals</name></member>
-    <member refid="classomexmeta_1_1RDF_1a8101930655e94114599d48f4a973d51f" kind="function"><name>equals</name></member>
-    <member refid="classomexmeta_1_1RDF_1a686595f16edca5d2fa834056ba43bc09" kind="function"><name>equals</name></member>
-    <member refid="classomexmeta_1_1RDF_1aa26e7c1636fc5d0fc45691db6a97c1ac" kind="function"><name>equals</name></member>
+    <member refid="classomexmeta_1_1RDF_1ac584ebe8f6cf3b4dc314a87cda9b2605" kind="function"><name>equals</name></member>
+    <member refid="classomexmeta_1_1RDF_1ab7ba68741f9e2c96c9606a883559d6d2" kind="function"><name>equals</name></member>
+    <member refid="classomexmeta_1_1RDF_1a496f1a75f8a9896f8c755eb0264c7ada" kind="function"><name>equals</name></member>
+    <member refid="classomexmeta_1_1RDF_1a57cd25efd5b6812d352d1d7ea2123e99" kind="function"><name>equals</name></member>
+    <member refid="classomexmeta_1_1RDF_1a9757a8f6dfaa36a7b3e68e7fa6a68d4f" kind="function"><name>equals</name></member>
+    <member refid="classomexmeta_1_1RDF_1a91574f34be1fe3054f4f7ce6830098b4" kind="function"><name>classifyXmlType</name></member>
+    <member refid="classomexmeta_1_1RDF_1a71b3dd4837a918a273f8d15aaa5c6c7b" kind="function"><name>classifyXmlTypeFromFile</name></member>
+    <member refid="classomexmeta_1_1RDF_1ade6ca329272d5de27496183a81bbec8a" kind="function"><name>extractSemanticInformationFromSBML</name></member>
+    <member refid="classomexmeta_1_1RDF_1add8f3d957f24a26785f29b85d50f4399" kind="function"><name>freeRDF</name></member>
   </compound>
   <compound refid="classRedlandLibrdfException" kind="class"><name>RedlandLibrdfException</name>
     <member refid="classRedlandLibrdfException_1ac541ead5c20548813d7dea73c28c7fab" kind="function"><name>Exception</name></member>
@@ -1106,20 +1096,6 @@
   <compound refid="classRedlandNullPointerException" kind="class"><name>RedlandNullPointerException</name>
     <member refid="classRedlandNullPointerException_1ac541ead5c20548813d7dea73c28c7fab" kind="function"><name>Exception</name></member>
     <member refid="classRedlandNullPointerException_1a0b1693d4d5007815322070c907ee5cc2" kind="function"><name>Exception</name></member>
-  </compound>
-  <compound refid="classomexmeta_1_1Resource" kind="class"><name>omexmeta::Resource</name>
-    <member refid="classomexmeta_1_1Resource_1a9695da843dd795e090f8b89886d432b9" kind="variable"><name>node_</name></member>
-    <member refid="classomexmeta_1_1Resource_1a21639dad566369d3a9c0e7a9968b46c3" kind="function"><name>Resource</name></member>
-    <member refid="classomexmeta_1_1Resource_1ade5147df30b7e4f42386534a4a27b12f" kind="function"><name>operator==</name></member>
-    <member refid="classomexmeta_1_1Resource_1a99336c4dd6ef49588cd7144e50cf639b" kind="function"><name>operator!=</name></member>
-    <member refid="classomexmeta_1_1Resource_1a6b70255d34f54c4adfa893a8ba54b0a2" kind="function"><name>Resource</name></member>
-    <member refid="classomexmeta_1_1Resource_1a5c0035886f90fe34028ce3f6448c7610" kind="function"><name>Resource</name></member>
-    <member refid="classomexmeta_1_1Resource_1a25be1a34d6a27565612a9c7b597befd8" kind="function"><name>setNode</name></member>
-    <member refid="classomexmeta_1_1Resource_1a7866b5bd47b319e39dec70eae8969d4f" kind="function"><name>getNode</name></member>
-    <member refid="classomexmeta_1_1Resource_1aae0948ff89d537133fd5e99bb88aa96a" kind="function"><name>str</name></member>
-    <member refid="classomexmeta_1_1Resource_1ad6a1a5009a2b8fdacf0f53899986735a" kind="function"><name>isSet</name></member>
-    <member refid="classomexmeta_1_1Resource_1a87a7540d96d762dbd3f0b5160e575803" kind="function"><name>free</name></member>
-    <member refid="classomexmeta_1_1Resource_1a4b8f2429e43312eab63b5135fd508986" kind="function"><name>fromRawPtr</name></member>
   </compound>
   <compound refid="classomexmeta_1_1SBMLAssistant" kind="class"><name>omexmeta::SBMLAssistant</name>
     <member refid="classomexmeta_1_1SBMLAssistant_1afcc69d3e7a12673071632f757290d798" kind="function"><name>getValidElements</name></member>
@@ -1141,10 +1117,10 @@
     <member refid="classomexmeta_1_1SemSim_1a40dcb1f6945bba21cc6927cf78a53e80" kind="function"><name>verify</name></member>
   </compound>
   <compound refid="classomexmeta_1_1SinkParticipant" kind="class"><name>omexmeta::SinkParticipant</name>
-    <member refid="classomexmeta_1_1SinkParticipant_1a97ccae03a2034280f7dd9f6b711b8902" kind="function"><name>SinkParticipant</name></member>
+    <member refid="classomexmeta_1_1SinkParticipant_1ad1511bd4bfa1ce694c813e8ce658da18" kind="function"><name>SinkParticipant</name></member>
   </compound>
   <compound refid="classomexmeta_1_1SourceParticipant" kind="class"><name>omexmeta::SourceParticipant</name>
-    <member refid="classomexmeta_1_1SourceParticipant_1a82b62514a966e86eac1134f769ba32c7" kind="function"><name>SourceParticipant</name></member>
+    <member refid="classomexmeta_1_1SourceParticipant_1ac0300bc2693741baa921d64bed3bb832" kind="function"><name>SourceParticipant</name></member>
   </compound>
   <compound refid="classSubclass" kind="class"><name>Subclass</name>
   </compound>
@@ -1155,36 +1131,23 @@
   <compound refid="classSubclass" kind="class"><name>Subclass</name>
   </compound>
   <compound refid="classSubclass" kind="class"><name>Subclass</name>
-  </compound>
-  <compound refid="classomexmeta_1_1Subject" kind="class"><name>omexmeta::Subject</name>
-    <member refid="classomexmeta_1_1Subject_1ac6f8f8b58d81748ba000f05ed4f4eecb" kind="variable"><name>node_</name></member>
-    <member refid="classomexmeta_1_1Subject_1a6ea1f43fab08770a4e0b0e9679af1880" kind="function"><name>Subject</name></member>
-    <member refid="classomexmeta_1_1Subject_1a4e80ab7745a8c2cf6628e8e93a95cdac" kind="function"><name>Subject</name></member>
-    <member refid="classomexmeta_1_1Subject_1ac39b07acc615dbd6f7ef57668a315708" kind="function"><name>Subject</name></member>
-    <member refid="classomexmeta_1_1Subject_1a91ea148978a5320dfba19bdb1bdbdd90" kind="function"><name>getNode</name></member>
-    <member refid="classomexmeta_1_1Subject_1aa04b4e973bd7df44fffe588e31b8779f" kind="function"><name>setNode</name></member>
-    <member refid="classomexmeta_1_1Subject_1a1b170dceee7bf297843da5b201e06693" kind="function"><name>operator==</name></member>
-    <member refid="classomexmeta_1_1Subject_1a3729c201061ff27fc50b1ae2412dab2b" kind="function"><name>operator!=</name></member>
-    <member refid="classomexmeta_1_1Subject_1a3aa59bfd78d3c6e138beb386d846a584" kind="function"><name>str</name></member>
-    <member refid="classomexmeta_1_1Subject_1a1b4c539f6310fc0c834cc44afb275c32" kind="function"><name>isSet</name></member>
-    <member refid="classomexmeta_1_1Subject_1ac21da4aad49780ba33322de5b7f87756" kind="function"><name>free</name></member>
-    <member refid="classomexmeta_1_1Subject_1a845dda888ce07265306d0eb6b46cd989" kind="function"><name>fromRawPtr</name></member>
-    <member refid="classomexmeta_1_1Subject_1a346583235b81d5bd523818de09d7359e" kind="function"><name>fromUri</name></member>
-    <member refid="classomexmeta_1_1Subject_1a315d058097112f4081c4db7860346aef" kind="function"><name>fromBlank</name></member>
   </compound>
   <compound refid="classThis" kind="class"><name>This</name>
   </compound>
   <compound refid="structdbg_1_1time" kind="struct"><name>dbg::time</name>
   </compound>
   <compound refid="classomexmeta_1_1Triple" kind="class"><name>omexmeta::Triple</name>
-    <member refid="classomexmeta_1_1Triple_1ac73ca3aad0e993e1ff26bea1b5f531a1" kind="variable"><name>local_uri_</name></member>
-    <member refid="classomexmeta_1_1Triple_1af43736e46ee06c5236149c3cabe89dfe" kind="variable"><name>model_uri_</name></member>
-    <member refid="classomexmeta_1_1Triple_1ae87525e0bb65c6ce86022b0786d3bd5c" kind="function"><name>Triple</name></member>
-    <member refid="classomexmeta_1_1Triple_1a07e967036bbc29feb13ef8a0ece2d8b8" kind="function"><name>Triple</name></member>
-    <member refid="classomexmeta_1_1Triple_1aaed857f9356dc3a7414f06f393a75ba0" kind="function"><name>Triple</name></member>
-    <member refid="classomexmeta_1_1Triple_1adc457c78ec059eb71602e7ea4f763582" kind="function"><name>Triple</name></member>
+    <member refid="classomexmeta_1_1Triple_1a36b093100ddf2b716b2d67336e1dffe4" kind="variable"><name>uriHandler_</name></member>
+    <member refid="classomexmeta_1_1Triple_1a9bbe27351665a72507570bd1da6b209c" kind="function"><name>~Triple</name></member>
+    <member refid="classomexmeta_1_1Triple_1aa28089d2e08463961811f98d70b1df8a" kind="function"><name>Triple</name></member>
+    <member refid="classomexmeta_1_1Triple_1ad160e8e90a25538cd5e3a8d46fae5cee" kind="function"><name>Triple</name></member>
+    <member refid="classomexmeta_1_1Triple_1a0831a005f3b781b73f7af661c3a903f8" kind="function"><name>operator=</name></member>
+    <member refid="classomexmeta_1_1Triple_1a79d8092e4fab78add6161890b2f3c624" kind="function"><name>Triple</name></member>
+    <member refid="classomexmeta_1_1Triple_1a977b07d30a7d4895b6f6a4f75221df0c" kind="function"><name>operator=</name></member>
+    <member refid="classomexmeta_1_1Triple_1a95491182a1fba9c86fd59a1dcfe573a6" kind="function"><name>Triple</name></member>
+    <member refid="classomexmeta_1_1Triple_1ace642731214400b1c6d4ecff3b154598" kind="function"><name>Triple</name></member>
+    <member refid="classomexmeta_1_1Triple_1aeb37b8aae97d7339d03c5f00aaa5e656" kind="function"><name>Triple</name></member>
     <member refid="classomexmeta_1_1Triple_1a1cb45dd3a5778f0e0e92e4a185da9400" kind="function"><name>getLocalUri</name></member>
-    <member refid="classomexmeta_1_1Triple_1a6694daa46597ea91dda045aa0d5e6cfc" kind="function"><name>setLocalUri</name></member>
     <member refid="classomexmeta_1_1Triple_1afd918ecccfa23079d9cb70f2e1a3e9b0" kind="function"><name>setModelUri</name></member>
     <member refid="classomexmeta_1_1Triple_1a2cabbc7a28348a9472bd50f059469183" kind="function"><name>str</name></member>
     <member refid="classomexmeta_1_1Triple_1a3f3868622349d3a3e14ed3e4b21d49a9" kind="function"><name>freeTriple</name></member>
@@ -1208,7 +1171,7 @@
     <member refid="classomexmeta_1_1Triple_1a60b0bd14eb91bab42ea894ec50843eb3" kind="function"><name>resourceLiteral</name></member>
     <member refid="classomexmeta_1_1Triple_1a27f52f5d96e0fcbd17291bb88f39617f" kind="function"><name>resourceUri</name></member>
     <member refid="classomexmeta_1_1Triple_1ac19ea0eaa8bfe1a7c481da4312cdf1b9" kind="function"><name>resourceBlank</name></member>
-    <member refid="classomexmeta_1_1Triple_1af03c0ce3392c0ff30f13772209ac873c" kind="function"><name>fromRawStatementPtr</name></member>
+    <member refid="classomexmeta_1_1Triple_1a8bc0e104ab8f1e18a4ff8b9cae503395" kind="function"><name>Triple</name></member>
   </compound>
   <compound refid="classomexmeta_1_1Triples" kind="class"><name>omexmeta::Triples</name>
     <member refid="classomexmeta_1_1Triples_1ac1bedb4d0e572623208e032280abd634" kind="variable"><name>triples_</name></member>
@@ -1218,14 +1181,14 @@
     <member refid="classomexmeta_1_1Triples_1a71a3ff7b185a5420eabd9bf4e9637196" kind="function"><name>Triples</name></member>
     <member refid="classomexmeta_1_1Triples_1a8c6e00fe9e694d9c52e1fa37a82ae489" kind="function"><name>operator==</name></member>
     <member refid="classomexmeta_1_1Triples_1a8c9df0d37572179d682127cb7368dd82" kind="function"><name>operator!=</name></member>
-    <member refid="classomexmeta_1_1Triples_1a88dcf4b950f105acb621bd07f07a38a0" kind="function"><name>move_back</name></member>
-    <member refid="classomexmeta_1_1Triples_1a9882f6f582e8d2e34e09d2f7076a0e2e" kind="function"><name>emplace_back</name></member>
-    <member refid="classomexmeta_1_1Triples_1acab4513889a9a42c77b3044aac941728" kind="function"><name>emplace_back</name></member>
-    <member refid="classomexmeta_1_1Triples_1a862d672c0ac9d877261947cf5a7061db" kind="function"><name>emplace_back</name></member>
-    <member refid="classomexmeta_1_1Triples_1a87cdc3aacef07c2aebbfe06342bd70f5" kind="function"><name>emplace_back</name></member>
-    <member refid="classomexmeta_1_1Triples_1a9f3f3152592f99ac95f65e0e7ce3b450" kind="function"><name>emplace_back</name></member>
-    <member refid="classomexmeta_1_1Triples_1a55e7ed1c3212ae19d2189a386b81422e" kind="function"><name>emplace_back</name></member>
-    <member refid="classomexmeta_1_1Triples_1a3a8c150cff4d1e78aa360d62d3d6604e" kind="function"><name>emplace_back</name></member>
+    <member refid="classomexmeta_1_1Triples_1a64e7f250d3199421c4306e9e8fbbc6e5" kind="function"><name>moveBack</name></member>
+    <member refid="classomexmeta_1_1Triples_1a106779ab1767a271708dba8d93165205" kind="function"><name>emplace_back</name></member>
+    <member refid="classomexmeta_1_1Triples_1a5ba6faa259c9e07b06fa796ddcba0163" kind="function"><name>emplace_back</name></member>
+    <member refid="classomexmeta_1_1Triples_1aaaa2909bb574deb4e5e129968d545ece" kind="function"><name>emplace_back</name></member>
+    <member refid="classomexmeta_1_1Triples_1a0b47dcbc4a0c608c7dcdb14f9db0706d" kind="function"><name>emplace_back</name></member>
+    <member refid="classomexmeta_1_1Triples_1a4821b664c8a28da93a979008f8fc7438" kind="function"><name>emplace_back</name></member>
+    <member refid="classomexmeta_1_1Triples_1a2b12527ab68f7d9a8a250dbb952e741e" kind="function"><name>emplace_back</name></member>
+    <member refid="classomexmeta_1_1Triples_1a26e4fdcab8b0f3473e098846441adfe3" kind="function"><name>emplace_back</name></member>
     <member refid="classomexmeta_1_1Triples_1a5234882414a2aaaca603eacd805df3d6" kind="function"><name>getSubjectsStr</name></member>
     <member refid="classomexmeta_1_1Triples_1a63639c08caac19e6c5cbf30bb28292d0" kind="function"><name>getPredicates</name></member>
     <member refid="classomexmeta_1_1Triples_1aa875120a73cb1618be9e699e8bfb08c4" kind="function"><name>getResources</name></member>
@@ -1235,27 +1198,29 @@
     <member refid="classomexmeta_1_1Triples_1ad2510c5b335b0266b05507c53bcc64af" kind="function"><name>str</name></member>
     <member refid="classomexmeta_1_1Triples_1ad0c5839b0f49d6427cf53004baf9b0f4" kind="function"><name>freeTriples</name></member>
     <member refid="classomexmeta_1_1Triples_1a5dad8f2cde0a3f6c0ce341338f80b0cd" kind="function"><name>pop</name></member>
+    <member refid="classomexmeta_1_1Triples_1a02d9829c76b2f7e72263b55c7cc9b640" kind="function"><name>operator[]</name></member>
     <member refid="classomexmeta_1_1Triples_1a43d540423a436986d9f72d7cf0f02d72" kind="function"><name>operator[]</name></member>
     <member refid="classomexmeta_1_1Triples_1a48ab93d0e38e3cfcb4eac9264b047f0a" kind="function"><name>isEmpty</name></member>
-    <member refid="classomexmeta_1_1Triples_1abb333b83c7a8ed1f210816ef88c8d3a0" kind="function"><name>pop_front</name></member>
     <member refid="classomexmeta_1_1Triples_1a1f7ba9d5cd575ba5c63ed9dbbd1f279c" kind="function"><name>capacity</name></member>
   </compound>
   <compound refid="structdbg_1_1type__tag" kind="struct"><name>dbg::type_tag</name>
   </compound>
   <compound refid="classomexmeta_1_1UriHandler" kind="class"><name>omexmeta::UriHandler</name>
-    <member refid="classomexmeta_1_1UriHandler_1a7314e819a6df8473af060e8386c5ca28" kind="variable"><name>repository_</name></member>
-    <member refid="classomexmeta_1_1UriHandler_1acba5cabedaa526c1c750f8e483c7462d" kind="variable"><name>archive_</name></member>
-    <member refid="classomexmeta_1_1UriHandler_1ac7572c260f85d710c0f70a1f1ceeefed" kind="variable"><name>model_</name></member>
-    <member refid="classomexmeta_1_1UriHandler_1abf8134e01008621ea4d5ef840853c82c" kind="variable"><name>local_</name></member>
+    <member refid="classomexmeta_1_1UriHandler_1a0cfa5e8d7bf17f4ebf89fb60294869b4" kind="variable"><name>repository_uri_</name></member>
+    <member refid="classomexmeta_1_1UriHandler_1a9b4ed97d0a608e10550c495b4dc0a98a" kind="variable"><name>archive_uri_</name></member>
+    <member refid="classomexmeta_1_1UriHandler_1af0dd80b7c4b17229ca645744249e2cea" kind="variable"><name>model_uri_</name></member>
+    <member refid="classomexmeta_1_1UriHandler_1a0a4ab87004debc7c614abde4cb2a16f1" kind="variable"><name>local_uri_</name></member>
     <member refid="classomexmeta_1_1UriHandler_1a3fc8f7022dc611dbbed4d9994a937de7" kind="function"><name>UriHandler</name></member>
-    <member refid="classomexmeta_1_1UriHandler_1aebddd11d7594e355d8b60153e380144f" kind="function"><name>getRepository</name></member>
-    <member refid="classomexmeta_1_1UriHandler_1af31f643e5ef458a3031112f2854f2f1d" kind="function"><name>setRepository</name></member>
-    <member refid="classomexmeta_1_1UriHandler_1a97718b9b1e91fe2efec0b3f17d63665d" kind="function"><name>getArchive</name></member>
-    <member refid="classomexmeta_1_1UriHandler_1abaa9bf90c2d8c7daf9d8f8fad6188a4e" kind="function"><name>setArchive</name></member>
-    <member refid="classomexmeta_1_1UriHandler_1a67f7dfa35576a487940dd5072ea625d2" kind="function"><name>getModel</name></member>
-    <member refid="classomexmeta_1_1UriHandler_1a6bb9006061d7ce7480700987ed9e1918" kind="function"><name>setModel</name></member>
-    <member refid="classomexmeta_1_1UriHandler_1a14e40e77ef67711ba1afca4e15428c02" kind="function"><name>getLocal</name></member>
+    <member refid="classomexmeta_1_1UriHandler_1a57e13ab5ccdb36c87793d458f9c4961d" kind="function"><name>getRepositoryUri</name></member>
+    <member refid="classomexmeta_1_1UriHandler_1a58c427641e81597583e6defaa497857c" kind="function"><name>setRepositoryUri</name></member>
+    <member refid="classomexmeta_1_1UriHandler_1a6615f423d49cdbf1e94bafcac0d1a2e0" kind="function"><name>getArchiveUri</name></member>
+    <member refid="classomexmeta_1_1UriHandler_1ab17e4c0a990674ec15f3c638a4d1cf52" kind="function"><name>setArchiveUri</name></member>
+    <member refid="classomexmeta_1_1UriHandler_1ad135d8d4d6fdb3af194f1cb24758e745" kind="function"><name>getModelUri</name></member>
+    <member refid="classomexmeta_1_1UriHandler_1acab34dfe7bdef8ddc4fbe956f74dbd69" kind="function"><name>setModelUri</name></member>
+    <member refid="classomexmeta_1_1UriHandler_1a4c20a7d29388f3e3d8ce736dcce386d6" kind="function"><name>getLocalUri</name></member>
     <member refid="classomexmeta_1_1UriHandler_1ad30de26a22a4e9bfd0417cc19c7c67cc" kind="function"><name>uriModifier</name></member>
+    <member refid="classomexmeta_1_1UriHandler_1a2549db1e5246b677be92914cca82f6a6" kind="function"><name>operator==</name></member>
+    <member refid="classomexmeta_1_1UriHandler_1a53ad815e57019fd58402c04edbd53ed3" kind="function"><name>operator!=</name></member>
     <member refid="classomexmeta_1_1UriHandler_1a9cde7e91ac8c45800decd9263a853f74" kind="function"><name>uriModifier</name></member>
   </compound>
   <compound refid="classomexmeta_1_1ValueException" kind="class"><name>omexmeta::ValueException</name>
@@ -1343,19 +1308,17 @@
     <member refid="namespaceomexmeta_1a8da31fe59b4fd33d53d24aa3e7dd605ca086cdbb72aebd7d0aa472ff9a9a3af95" kind="enumvalue"><name>LOCAL_URI</name></member>
     <member refid="namespaceomexmeta_1a8da31fe59b4fd33d53d24aa3e7dd605ca018c9b5d6ea175f276737f990cc06c58" kind="enumvalue"><name>MODEL_URI</name></member>
     <member refid="namespaceomexmeta_1a8da31fe59b4fd33d53d24aa3e7dd605cacdd247179753e5cb0b15c941eb4c20be" kind="enumvalue"><name>IDENTIFIERS_URI</name></member>
-    <member refid="namespaceomexmeta_1ad9c3f36d18cb218950d2780f2d4dc0a0" kind="typedef"><name>NamespaceMap</name></member>
     <member refid="namespaceomexmeta_1a602c5d1094d065496b79af07e9a3b28a" kind="typedef"><name>XmlAssistantPtr</name></member>
     <member refid="namespaceomexmeta_1a90b8619f565d06ee3a8fa4d1cfda893c" kind="typedef"><name>ParticipantPtr</name></member>
     <member refid="namespaceomexmeta_1a1c258e53336c37fdc17cf08a394f5198" kind="typedef"><name>Sources</name></member>
     <member refid="namespaceomexmeta_1ac2d6392fea1506f1d5d13ebb155db3df" kind="typedef"><name>Mediators</name></member>
     <member refid="namespaceomexmeta_1a57d60796797e34581e3c1780985f0b59" kind="typedef"><name>Sinks</name></member>
+    <member refid="namespaceomexmeta_1ad9c3f36d18cb218950d2780f2d4dc0a0" kind="typedef"><name>NamespaceMap</name></member>
     <member refid="namespaceomexmeta_1a2edd0078a7f3b226df6fb3382d76471a" kind="typedef"><name>PredicatePtr</name></member>
     <member refid="namespaceomexmeta_1af916f97aa87900541cf46ca66139fc14" kind="typedef"><name>Predicates</name></member>
     <member refid="namespaceomexmeta_1a84ba746aac1e9ee5c7256a2f2f393a41" kind="typedef"><name>PredicatePtrs</name></member>
-    <member refid="namespaceomexmeta_1a35b9e2daff126f8b3073338fc53ee31a" kind="typedef"><name>PhysicalPhenomenonPtr</name></member>
+    <member refid="namespaceomexmeta_1a4a755ee078afb8f071a545ff5a5631b0" kind="typedef"><name>PropertyBearerPtr</name></member>
     <member refid="namespaceomexmeta_1a08a1cea39a93f919e8c481f1307e9d64" kind="typedef"><name>ResultsMap</name></member>
-    <member refid="namespaceomexmeta_1a211f941200e84d6258b6980a1101a978" kind="typedef"><name>Resources</name></member>
-    <member refid="namespaceomexmeta_1a55c310aac91280285453df83fafa7d69" kind="typedef"><name>Subjects</name></member>
     <member refid="namespaceomexmeta_1a7fc6fa4ba32424705fe4953ee297a795" kind="typedef"><name>SingularAnnotation</name></member>
     <member refid="namespaceomexmeta_1a866d550d1c1d6bdadd778a73fef571bb" kind="typedef"><name>SharedTripleVector</name></member>
     <member refid="namespaceomexmeta_1a0591b044477ac1101740fd7db67088bc" kind="typedef"><name>TripleVector</name></member>
@@ -1383,9 +1346,9 @@
     <member refid="namespaceomexmeta_1a5b5329943434433e159fba88df8779da" kind="function"><name>RDF_getArchiveUri</name></member>
     <member refid="namespaceomexmeta_1a9a9ed2edfc0f1086171a1fee84f85924" kind="function"><name>RDF_getModelUri</name></member>
     <member refid="namespaceomexmeta_1ae8e96ffbbc5b63d413101f408a6c47bd" kind="function"><name>RDF_getLocalUri</name></member>
-    <member refid="namespaceomexmeta_1a348c5592f89d9daa42bd3b2630346ad7" kind="function"><name>RDF_equals_rdf_vs_string</name></member>
-    <member refid="namespaceomexmeta_1a28be955d5e2992efc37b443a08c354c8" kind="function"><name>RDF_equals_rdf_vs_rdf</name></member>
-    <member refid="namespaceomexmeta_1a963528f63c05205cda77ccc622cd4c59" kind="function"><name>RDF_equals_string_vs_string</name></member>
+    <member refid="namespaceomexmeta_1a9356e3da39b18fef7364aa743e121491" kind="function"><name>RDF_equals_rdf_vs_string</name></member>
+    <member refid="namespaceomexmeta_1af947a161099353e17d0487980c117f77" kind="function"><name>RDF_equals_rdf_vs_rdf</name></member>
+    <member refid="namespaceomexmeta_1a9c9012badb89df16438f0c7d7a1eacd1" kind="function"><name>RDF_equals_string_vs_string</name></member>
     <member refid="namespaceomexmeta_1a8695ed72dce3e00da869e7262c1544b7" kind="function"><name>RDF_toEditor</name></member>
     <member refid="namespaceomexmeta_1a30d98a9eb2bc11c67f7ca13a68aa1a73" kind="function"><name>Editor_newSingularAnnotation</name></member>
     <member refid="namespaceomexmeta_1a2edfc336f79ca0b7d9240128926c4c81" kind="function"><name>Editor_newPersonalInformation</name></member>
@@ -1422,7 +1385,6 @@
     <member refid="namespaceomexmeta_1a27a3eec567f41bb22f9b46209141673b" kind="function"><name>Editor_addDateCreated</name></member>
     <member refid="namespaceomexmeta_1ad57daad673e39cf41098902d2d4bf33b" kind="function"><name>Editor_addParentModel</name></member>
     <member refid="namespaceomexmeta_1a86245ea959cf5a3e8f389941cca41f1a" kind="function"><name>SingularAnnotation_delete</name></member>
-    <member refid="namespaceomexmeta_1ad8b1a3d657ffffadcef2d723044c18e9" kind="function"><name>free_singular_annotation</name></member>
     <member refid="namespaceomexmeta_1ad33ae04d8a525ee7d6e5303a27de0703" kind="function"><name>SingularAnnotation_about</name></member>
     <member refid="namespaceomexmeta_1a04581f55ac73cf93673675e6bc04c3e2" kind="function"><name>SingularAnnotation_setPredicate</name></member>
     <member refid="namespaceomexmeta_1a79292d1fabe6eac8e281ba535deee9fc" kind="function"><name>SingularAnnotation_predicate</name></member>
@@ -1446,14 +1408,12 @@
     <member refid="namespaceomexmeta_1a07fe1277bd2ca11d4dda95caabbec6fe" kind="function"><name>PhysicalProperty_getIsPropertyOfValue</name></member>
     <member refid="namespaceomexmeta_1a14b74eafc872341f11c0a3aa870ffb5b" kind="function"><name>PhysicalProperty_delete</name></member>
     <member refid="namespaceomexmeta_1afbe0ad46666e43033c32182a23fba6d7" kind="function"><name>PhysicalEntity_delete</name></member>
-    <member refid="namespaceomexmeta_1af6b8432376992c29b894c5a01047c83f" kind="function"><name>PhysicalEntity_freeAll</name></member>
     <member refid="namespaceomexmeta_1a98a14aa5194e75689780e61464379506" kind="function"><name>PhysicalEntity_setPhysicalProperty</name></member>
     <member refid="namespaceomexmeta_1a2f3f105a84638f3533b4b88a36df13d0" kind="function"><name>PhysicalEntity_identity</name></member>
     <member refid="namespaceomexmeta_1a3bf7eca197f627c34e6c9f866805aa48" kind="function"><name>PhysicalEntity_getAbout</name></member>
     <member refid="namespaceomexmeta_1a4b2cd6ac20c433b9913a70b202b3b11f" kind="function"><name>PhysicalEntity_getIdentity</name></member>
     <member refid="namespaceomexmeta_1a5c3035659e87532dfe378bc22c15c526" kind="function"><name>PhysicalEntity_getNumLocations</name></member>
     <member refid="namespaceomexmeta_1a5fa7d564d4b1f2250129308bf062dad4" kind="function"><name>PhysicalEntity_getLocation</name></member>
-    <member refid="namespaceomexmeta_1a3e35c640721a9bb5b4d0af676bd9b1c0" kind="function"><name>PhysicalEntity_str</name></member>
     <member refid="namespaceomexmeta_1a6e95c07d09117f202830352c7cdf4fea" kind="function"><name>PhysicalEntity_hasProperty</name></member>
     <member refid="namespaceomexmeta_1ab2001820dafe8b68bf0705150345585a" kind="function"><name>PhysicalEntity_hasPropertyisVersionOf</name></member>
     <member refid="namespaceomexmeta_1abe700f93f6a4e2767d81296d106271b1" kind="function"><name>PhysicalEntity_hasPropertyFull</name></member>
@@ -1461,11 +1421,9 @@
     <member refid="namespaceomexmeta_1ac18e38cd359cdf5b596de850b7cecb0e" kind="function"><name>PhysicalEntity_hasPart</name></member>
     <member refid="namespaceomexmeta_1abea59573a22604c01fcc64f9a735ce50" kind="function"><name>PhysicalEntity_about</name></member>
     <member refid="namespaceomexmeta_1a8f35bfdeddd4366704c681fac1b8112e" kind="function"><name>PhysicalProcess_delete</name></member>
-    <member refid="namespaceomexmeta_1a6591a8c615162ed0f28401b3a5d0c6c0" kind="function"><name>PhysicalProcess_freeAll</name></member>
     <member refid="namespaceomexmeta_1a8ab294c40c45244bf12f7ef7df9e6392" kind="function"><name>PhysicalProcess_addSource</name></member>
     <member refid="namespaceomexmeta_1a0a0d22748b0e4bdc5fccc5cc6f738579" kind="function"><name>PhysicalProcess_addSink</name></member>
     <member refid="namespaceomexmeta_1a71d1fd24049dae1b02b2dcb626f10ec0" kind="function"><name>PhysicalProcess_addMediator</name></member>
-    <member refid="namespaceomexmeta_1ac65d28dc0f988bb2eeb21c0a74abadc8" kind="function"><name>PhysicalProcess_str</name></member>
     <member refid="namespaceomexmeta_1a7fe71bd4245dccd8033660fbe0606896" kind="function"><name>PhysicalProcess_hasProperty</name></member>
     <member refid="namespaceomexmeta_1afc6ddf5fa416514b3febf49a80c8faee" kind="function"><name>PhysicalProcess_hasPropertyisVersionOf</name></member>
     <member refid="namespaceomexmeta_1a51d31f63cb0e7ea14a4a87caf28b03ac" kind="function"><name>PhysicalProcess_hasPropertyFull</name></member>
@@ -1476,13 +1434,11 @@
     <member refid="namespaceomexmeta_1af0e0106577bdbdc6a0b5b280effee221" kind="function"><name>PhysicalProcess_about</name></member>
     <member refid="namespaceomexmeta_1a69b135f8705d9c854218a6f6e8af6434" kind="function"><name>PhysicalProcess_isVersionOf</name></member>
     <member refid="namespaceomexmeta_1ade152f2f88f1394cfd5341d504384532" kind="function"><name>EnergyDiff_delete</name></member>
-    <member refid="namespaceomexmeta_1ac4ee432e12f736c29692417b0302f5f0" kind="function"><name>EnergyDiff_freeAll</name></member>
     <member refid="namespaceomexmeta_1a858b1b50c3090774a6ad3888e203db1d" kind="function"><name>EnergyDiff_addSource</name></member>
     <member refid="namespaceomexmeta_1a36c3e6a6c18802b28bc428abaee4f375" kind="function"><name>EnergyDiff_addSink</name></member>
     <member refid="namespaceomexmeta_1a762123263dff6284e859468c7cbcd673" kind="function"><name>EnergyDiff_setPhysicalProperty</name></member>
     <member refid="namespaceomexmeta_1afb832dfb0941da83b04ff3836ec5a30c" kind="function"><name>EnergyDiff_getNumSources</name></member>
     <member refid="namespaceomexmeta_1a755f3004700e85f530702bec868c4f22" kind="function"><name>EnergyDiff_getNumSinks</name></member>
-    <member refid="namespaceomexmeta_1a650ebb05df693cbe948004a0d4e22612" kind="function"><name>EnergyDiff_str</name></member>
     <member refid="namespaceomexmeta_1aa4b7fcd062c765cb602dc02c6e37f9b8" kind="function"><name>EnergyDiff_hasProperty</name></member>
     <member refid="namespaceomexmeta_1a80d168fd1e28693a079e2d1400917800" kind="function"><name>EnergyDiff_hasPropertyisVersionOf</name></member>
     <member refid="namespaceomexmeta_1afb70747e74699ce201f8f3fbd711bb38" kind="function"><name>EnergyDiff_hasPropertyFull</name></member>
@@ -1490,7 +1446,6 @@
     <member refid="namespaceomexmeta_1a0922f558b2bcf687cdc354fefc786e08" kind="function"><name>EnergyDiff_about</name></member>
     <member refid="namespaceomexmeta_1a0b43aced94ae55c938cc788111586fc8" kind="function"><name>PersonalInformation_delete</name></member>
     <member refid="namespaceomexmeta_1af7470fd783ea97e6b432ad24639f9ca3" kind="function"><name>PersonalInformation_getLocalUri</name></member>
-    <member refid="namespaceomexmeta_1a850c8084bb794d47eab2790283a343c0" kind="function"><name>PersonalInformation_setLocalUri</name></member>
     <member refid="namespaceomexmeta_1a63269eb1edec559bf109af8fda0381db" kind="function"><name>PersonalInformation_addCreator</name></member>
     <member refid="namespaceomexmeta_1ae0a51e16a01aa55c165594e555991d54" kind="function"><name>PersonalInformation_addName</name></member>
     <member refid="namespaceomexmeta_1acae05a2e4439588e3fe1334b51246513" kind="function"><name>PersonalInformation_addMbox</name></member>
@@ -1502,13 +1457,18 @@
     <member refid="namespaceomexmeta_1a2c506a7c5bc41b06e8163f09e1dcc661" kind="function"><name>PersonalInformation_addFoaf</name></member>
     <member refid="namespaceomexmeta_1a96087cb8a2fffd948b296d795a7f5f1f" kind="function"><name>PersonalInformation_getMetaid</name></member>
     <member refid="namespaceomexmeta_1a2636ff0b1d5f71c616f93a9f0caab74e" kind="function"><name>PersonalInformation_setMetaid</name></member>
-    <member refid="namespaceomexmeta_1aef84e089df357a1ecb63aefd16a3478b" kind="function"><name>PersonalInformation_getModelUri</name></member>
-    <member refid="namespaceomexmeta_1a9129b86c0d03f176dd0cc0bc3f23a2f5" kind="function"><name>PersonalInformation_setModelUri</name></member>
     <member refid="namespaceomexmeta_1a0a8d50daa10e421d0722520cdef0ab9a" kind="function"><name>PredicateFactory</name></member>
     <member refid="namespaceomexmeta_1a902ae2b86ac75376d9d826aecbd99b43" kind="function"><name>RDF_getBaseUri</name></member>
     <member refid="namespaceomexmeta_1ac1d5cf2bf56180edb2f88a9282715873" kind="function"><name>RDF_setBaseUri</name></member>
     <member refid="namespaceomexmeta_1a81d062026034e37ec5f03426e17e9a27" kind="function"><name>PhysicalProperty_getPropertyMetaidBase</name></member>
+    <member refid="namespaceomexmeta_1af6b8432376992c29b894c5a01047c83f" kind="function"><name>PhysicalEntity_freeAll</name></member>
+    <member refid="namespaceomexmeta_1a6a85de84e2324c2eac6e90a98efbd4ff" kind="function"><name>PhysicalEntity_str</name></member>
+    <member refid="namespaceomexmeta_1a6591a8c615162ed0f28401b3a5d0c6c0" kind="function"><name>PhysicalProcess_freeAll</name></member>
     <member refid="namespaceomexmeta_1a8e15562e61908ce32240bc46b044feb0" kind="function"><name>PhysicalProcess_setPhysicalProperty</name></member>
+    <member refid="namespaceomexmeta_1ab7de5cbc10a2f019602ce81250e8c63c" kind="function"><name>PhysicalProcess_str</name></member>
+    <member refid="namespaceomexmeta_1ac4ee432e12f736c29692417b0302f5f0" kind="function"><name>EnergyDiff_freeAll</name></member>
+    <member refid="namespaceomexmeta_1a8ed6b61c3bbe72d8f18f698d883db5c9" kind="function"><name>EnergyDiff_str</name></member>
+    <member refid="namespaceomexmeta_1a850c8084bb794d47eab2790283a343c0" kind="function"><name>PersonalInformation_setLocalUri</name></member>
   </compound>
   <compound refid="namespaceredland" kind="namespace"><name>redland</name>
     <member refid="LibrdfSerializer_8cpp_1ab3d24521870fec5bb77735a3a4a7e4d5" kind="function"><name>toIOStream</name></member>
@@ -1613,11 +1573,7 @@
   </compound>
   <compound refid="RDF_8h" kind="file"><name>RDF.h</name>
   </compound>
-  <compound refid="Resource_8h" kind="file"><name>Resource.h</name>
-  </compound>
   <compound refid="SBMLSemanticExtraction_8h" kind="file"><name>SBMLSemanticExtraction.h</name>
-  </compound>
-  <compound refid="Subject_8h" kind="file"><name>Subject.h</name>
   </compound>
   <compound refid="Triple_8h" kind="file"><name>Triple.h</name>
   </compound>
@@ -1653,11 +1609,7 @@
   </compound>
   <compound refid="RDF_8cpp" kind="file"><name>RDF.cpp</name>
   </compound>
-  <compound refid="Resource_8cpp" kind="file"><name>Resource.cpp</name>
-  </compound>
   <compound refid="SBMLSemanticExtraction_8cpp" kind="file"><name>SBMLSemanticExtraction.cpp</name>
-  </compound>
-  <compound refid="Subject_8cpp" kind="file"><name>Subject.cpp</name>
   </compound>
   <compound refid="Triple_8cpp" kind="file"><name>Triple.cpp</name>
   </compound>
@@ -2402,11 +2354,7 @@
   </compound>
   <compound refid="LibrdfStorage_8cpp" kind="file"><name>LibrdfStorage.cpp</name>
   </compound>
-  <compound refid="LibrdfStream_8cpp" kind="file"><name>LibrdfStream.cpp</name>
-  </compound>
   <compound refid="LibrdfUri_8cpp" kind="file"><name>LibrdfUri.cpp</name>
-  </compound>
-  <compound refid="RaptorIOStream_8cpp" kind="file"><name>RaptorIOStream.cpp</name>
   </compound>
   <compound refid="World_8cpp" kind="file"><name>World.cpp</name>
   </compound>

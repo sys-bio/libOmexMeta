@@ -6,41 +6,33 @@
 #define LIBOMEXMETA_LIBRDFSTATEMENT_H
 
 
-#include <memory>
-#include <iostream>
-#include "librdf.h"
-#include <unordered_map>
 #include "LibrdfNode.h"
+#include "librdf.h"
+#include <iostream>
+#include <memory>
+#include <unordered_map>
 
 namespace redland {
 
     class LibrdfStatement {
-
-    protected:
-
-        // starts as empty statement
-        librdf_statement *statement_ = librdf_new_statement(World::getWorld());
-
-        /*
-         * @brief update the contained statement with current
-         * values of subject, predicate and resource.
-         *
-         */
-        void refreshStatement();
-
-
-    protected:
-        explicit LibrdfStatement(librdf_statement *statement);
-
-
     public:
+        virtual ~LibrdfStatement();
+
         LibrdfStatement(librdf_node *subject, librdf_node *predicate, librdf_node *resource);
+
+        LibrdfStatement(const LibrdfStatement &statement) ;
+
+        LibrdfStatement(LibrdfStatement &&statement) noexcept;
+
+        LibrdfStatement &operator=(const LibrdfStatement &statement) ;
+
+        LibrdfStatement &operator=(LibrdfStatement &&statement) noexcept;
 
         bool operator==(const LibrdfStatement &rhs) const;
 
         bool operator!=(const LibrdfStatement &rhs) const;
 
-        static bool equals(librdf_statement* first, librdf_statement* second);
+        static bool equals(librdf_statement *first, librdf_statement *second);
 
         LibrdfStatement() = default;
 
@@ -50,31 +42,45 @@ namespace redland {
 
         static LibrdfStatement fromRawNodePtrs(librdf_node *subject, librdf_node *predicate, librdf_node *resource);
 
-        LibrdfStatement(const LibrdfStatement &statement) = delete;
-
-        LibrdfStatement(LibrdfStatement &&statement) noexcept;
-
-        LibrdfStatement &operator=(const LibrdfStatement &statement) = delete;
-
-        LibrdfStatement &operator=(LibrdfStatement &&statement) noexcept;
-
-        ~LibrdfStatement() = default;
-
         void freeStatement();
 
+        /**
+         * @brief returns a librdf_statement pointer and increments the
+         * usage count. The caller is responsible for calling
+         * @see freeUri to decrement the librdf_statement* again.
+         * @note when @see getUsage() is 1 the destructor
+         * will take care of freeing memory associated with
+         * librdf_statement object.
+         */
         [[nodiscard]] librdf_statement *get() const;
 
-        [[nodiscard]] librdf_node *getSubject() const;
+        /**
+         * @brief get the underlying librdf_statement*
+         * @details do not increment the shared pointer reference
+         * counter.
+         * @warning this method assumes you know what you are doing
+         * with regards to the librdf reference counting system
+         * @see LibrdfStatement::get()
+         */
+        [[nodiscard]] librdf_statement *getWithoutIncrement() const;
 
-        [[nodiscard]] librdf_node *getPredicate() const;
+        [[nodiscard]] librdf_node *getSubjectAsRawNode() const;
 
-        [[nodiscard]] librdf_node *getResource() const;
+        [[nodiscard]] librdf_node *getPredicateAsRawNode() const;
 
-        [[nodiscard]] std::string getSubjectStr() const;
+        [[nodiscard]] librdf_node *getResourceAsRawNode() const;
 
-        [[nodiscard]] std::string getPredicateStr() const;
+        [[nodiscard]] LibrdfNode getSubjectNode() const;
 
-        [[nodiscard]] std::string getResourceStr() const;
+        [[nodiscard]] LibrdfNode getPredicateNode() const;
+
+        [[nodiscard]] LibrdfNode getResourceNode() const;
+
+//        [[nodiscard]] std::string getSubjectStr() const;
+//
+//        [[nodiscard]] std::string getPredicateStr() const;
+//
+//        [[nodiscard]] std::string getResourceStr() const;
 
         void checkForNull();
 
@@ -86,14 +92,24 @@ namespace redland {
 
         bool isComplete();
 
-        std::unordered_map<std::string, int> getUsages();
+        [[maybe_unused]] [[nodiscard]] std::string getPredicateNamespaceStr() const;
 
-        void printUsages();
+        [[nodiscard]] int getUsage() const;
 
-        void freeStatementAndUris();
+        void incrementUsage() const;
 
-        std::string getPredicateNamespaceStr() const;
+    protected:
+        // starts as empty statement
+        librdf_statement *statement_ = librdf_new_statement(World::getWorld());
+
+        /*
+         * @brief update the contained statement with current
+         * values of subject, predicate and resource.
+         */
+        [[deprecated("Not needed")]] void refreshStatement();
+
+        explicit LibrdfStatement(librdf_statement *statement);
     };
-}
+}// namespace redland
 
-#endif //LIBOMEXMETA_LIBRDFSTATEMENT_H
+#endif//LIBOMEXMETA_LIBRDFSTATEMENT_H

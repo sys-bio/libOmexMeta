@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libomexmeta
-   &#160;<span id="projectnumber">1.2.3</span>
+   &#160;<span id="projectnumber">1.2.6</span>
    </div>
    <div id="projectbrief">Annotations for models in systems biology</div>
   </td>
@@ -82,9 +82,9 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a6be7468055f21d94e72e15f7daa5da5c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1Editor.html#a6be7468055f21d94e72e15f7daa5da5c">Editor</a> (std::string xml_or_file, bool create_ids, const <a class="el" href="classredland_1_1LibrdfModel.html">LibrdfModel</a> &amp;model, NamespaceMap &amp;ns_map, bool generate_new_metaids=false, bool sbml_semantic_extraction=true, const std::string &amp;repository_uri=std::string(), const std::string &amp;archive_uri=std::string(), const std::string &amp;model_uri=std::string(), const std::string &amp;local_uri=std::string())</td></tr>
-<tr class="memdesc:a6be7468055f21d94e72e15f7daa5da5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">constructor for <a class="el" href="classomexmeta_1_1Editor.html" title="Add or change annotations in xml.">Editor</a>.  <a href="classomexmeta_1_1Editor.html#a6be7468055f21d94e72e15f7daa5da5c">More...</a><br /></td></tr>
-<tr class="separator:a6be7468055f21d94e72e15f7daa5da5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a38d00e9a39b423cbae5058f9af49da3a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1Editor.html#a38d00e9a39b423cbae5058f9af49da3a">Editor</a> (std::string xml_or_file, bool create_ids, const <a class="el" href="classredland_1_1LibrdfModel.html">LibrdfModel</a> &amp;model, NamespaceMap &amp;ns_map, <a class="el" href="classomexmeta_1_1UriHandler.html">UriHandler</a> &amp;uriHandler, bool generate_new_metaids=false, bool sbml_semantic_extraction=true)</td></tr>
+<tr class="memdesc:a38d00e9a39b423cbae5058f9af49da3a"><td class="mdescLeft">&#160;</td><td class="mdescRight">constructor for <a class="el" href="classomexmeta_1_1Editor.html" title="Add or change annotations in xml.">Editor</a>.  <a href="classomexmeta_1_1Editor.html#a38d00e9a39b423cbae5058f9af49da3a">More...</a><br /></td></tr>
+<tr class="separator:a38d00e9a39b423cbae5058f9af49da3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa11380bb7e2ca7859937c3f5907b6240"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1Editor.html#aa11380bb7e2ca7859937c3f5907b6240">~Editor</a> ()=default</td></tr>
 <tr class="separator:aa11380bb7e2ca7859937c3f5907b6240"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab5b39f1f137312ce77575e73a86dfb05"><td class="memItemLeft" align="right" valign="top"><a id="ab5b39f1f137312ce77575e73a86dfb05"></a>
@@ -109,9 +109,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memitem:a052a725cee8b8e577c55e977eee81ace"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1Editor.html#a052a725cee8b8e577c55e977eee81ace">addNamespace</a> (const std::string &amp;ns, std::string prefix)</td></tr>
 <tr class="memdesc:a052a725cee8b8e577c55e977eee81ace"><td class="mdescLeft">&#160;</td><td class="mdescRight">add a namespace  <a href="classomexmeta_1_1Editor.html#a052a725cee8b8e577c55e977eee81ace">More...</a><br /></td></tr>
 <tr class="separator:a052a725cee8b8e577c55e977eee81ace"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0417b55575a244817ef981f17c8e1a8f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1Editor.html#a0417b55575a244817ef981f17c8e1a8f">addSingleAnnotation</a> (<a class="el" href="classomexmeta_1_1Subject.html">Subject</a> subject, const PredicatePtr &amp;predicate_ptr, const <a class="el" href="classomexmeta_1_1Resource.html">Resource</a> &amp;resource)</td></tr>
-<tr class="memdesc:a0417b55575a244817ef981f17c8e1a8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a SingleAnnotation (aka a <a class="el" href="classomexmeta_1_1Triple.html">Triple</a>) to the model.  <a href="classomexmeta_1_1Editor.html#a0417b55575a244817ef981f17c8e1a8f">More...</a><br /></td></tr>
-<tr class="separator:a0417b55575a244817ef981f17c8e1a8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a434304cc0ca8aa802cd236d34aaa1763"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1Editor.html#a434304cc0ca8aa802cd236d34aaa1763">addSingleAnnotation</a> (<a class="el" href="classredland_1_1LibrdfNode.html">LibrdfNode</a> subject, const PredicatePtr &amp;predicate_ptr, const <a class="el" href="classredland_1_1LibrdfNode.html">LibrdfNode</a> &amp;resource)</td></tr>
+<tr class="memdesc:a434304cc0ca8aa802cd236d34aaa1763"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a SingleAnnotation (aka a <a class="el" href="classomexmeta_1_1Triple.html">Triple</a>) to the model.  <a href="classomexmeta_1_1Editor.html#a434304cc0ca8aa802cd236d34aaa1763">More...</a><br /></td></tr>
+<tr class="separator:a434304cc0ca8aa802cd236d34aaa1763"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae46835f3f35425d8087b80d08666aaa4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1Editor.html#ae46835f3f35425d8087b80d08666aaa4">addSingleAnnotation</a> (<a class="el" href="classomexmeta_1_1Triple.html">SingularAnnotation</a> &amp;singularAnnotation)</td></tr>
 <tr class="memdesc:ae46835f3f35425d8087b80d08666aaa4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a SingleAnnotation (aka <a class="el" href="classomexmeta_1_1Triple.html">Triple</a>) to the rdf graph.  <a href="classomexmeta_1_1Editor.html#ae46835f3f35425d8087b80d08666aaa4">More...</a><br /></td></tr>
 <tr class="separator:ae46835f3f35425d8087b80d08666aaa4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -191,9 +191,9 @@ OMEXMETA_DEPRECATED void&#160;</td><td class="memItemRight" valign="bottom"><b>a
 <tr class="memitem:ace8ee873498fa72b63c0747775b729f5"><td class="memItemLeft" align="right" valign="top"><a id="ace8ee873498fa72b63c0747775b729f5"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>addTriples</b> (<a class="el" href="classomexmeta_1_1Triples.html">Triples</a> &amp;triples)</td></tr>
 <tr class="separator:ace8ee873498fa72b63c0747775b729f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad080f47ffb7b86dd4a09fca967baa493"><td class="memItemLeft" align="right" valign="top"><a id="ad080f47ffb7b86dd4a09fca967baa493"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>removePhysicalPhenomenon</b> (<a class="el" href="classomexmeta_1_1PropertyBearer.html">PropertyBearer</a> *physicalPhenomenon) const</td></tr>
-<tr class="separator:ad080f47ffb7b86dd4a09fca967baa493"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b126c390f5fc0b7ebcd1e3f691c9ece"><td class="memItemLeft" align="right" valign="top"><a id="a1b126c390f5fc0b7ebcd1e3f691c9ece"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>removePropertyBearer</b> (<a class="el" href="classomexmeta_1_1PropertyBearer.html">PropertyBearer</a> *physicalPhenomenon) const</td></tr>
+<tr class="separator:a1b126c390f5fc0b7ebcd1e3f691c9ece"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a736e49794c5a358f06d13d41c3657fe2"><td class="memItemLeft" align="right" valign="top"><a id="a736e49794c5a358f06d13d41c3657fe2"></a>
 std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1Editor.html#a736e49794c5a358f06d13d41c3657fe2">getArchiveUri</a> () const</td></tr>
 <tr class="memdesc:a736e49794c5a358f06d13d41c3657fe2"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the current value of archive_uri_ <br /></td></tr>
@@ -248,12 +248,16 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hre
 <tr class="memitem:ab36fc15581a0aa0af434af60d4f910ac"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classomexmeta_1_1PhysicalProperty.html">PhysicalProperty</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1Editor.html#ab36fc15581a0aa0af434af60d4f910ac">newPhysicalPropertyPtr</a> ()</td></tr>
 <tr class="memdesc:ab36fc15581a0aa0af434af60d4f910ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">instantiate a pointer to a new <a class="el" href="classomexmeta_1_1PhysicalProperty.html">PhysicalProperty</a> instance and return  <a href="classomexmeta_1_1Editor.html#ab36fc15581a0aa0af434af60d4f910ac">More...</a><br /></td></tr>
 <tr class="separator:ab36fc15581a0aa0af434af60d4f910ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c3c16e06d9ecbbf9958bb2feb85b56a"><td class="memItemLeft" align="right" valign="top"><a id="a0c3c16e06d9ecbbf9958bb2feb85b56a"></a>
+<a class="el" href="classomexmeta_1_1UriHandler.html">UriHandler</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1Editor.html#a0c3c16e06d9ecbbf9958bb2feb85b56a">getUriHandler</a> () const</td></tr>
+<tr class="memdesc:a0c3c16e06d9ecbbf9958bb2feb85b56a"><td class="mdescLeft">&#160;</td><td class="mdescRight">get a reference to the current <a class="el" href="classomexmeta_1_1UriHandler.html">UriHandler</a> <br /></td></tr>
+<tr class="separator:a0c3c16e06d9ecbbf9958bb2feb85b56a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Add or change annotations in xml. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a6be7468055f21d94e72e15f7daa5da5c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6be7468055f21d94e72e15f7daa5da5c">&#9670;&nbsp;</a></span>Editor()</h2>
+<a id="a38d00e9a39b423cbae5058f9af49da3a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a38d00e9a39b423cbae5058f9af49da3a">&#9670;&nbsp;</a></span>Editor()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -288,6 +292,12 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hre
         <tr>
           <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype"><a class="el" href="classomexmeta_1_1UriHandler.html">UriHandler</a> &amp;&#160;</td>
+          <td class="paramname"><em>uriHandler</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype">bool&#160;</td>
           <td class="paramname"><em>generate_new_metaids</em> = <code>false</code>, </td>
         </tr>
@@ -295,31 +305,7 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hre
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>sbml_semantic_extraction</em> = <code>true</code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>repository_uri</em> = <code>std::string()</code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>archive_uri</em> = <code>std::string()</code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>model_uri</em> = <code>std::string()</code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>local_uri</em> = <code>std::string()</code>&#160;</td>
+          <td class="paramname"><em>sbml_semantic_extraction</em> = <code>true</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -710,8 +696,52 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hre
 
 </div>
 </div>
+<a id="a434304cc0ca8aa802cd236d34aaa1763"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a434304cc0ca8aa802cd236d34aaa1763">&#9670;&nbsp;</a></span>addSingleAnnotation() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void omexmeta::Editor::addSingleAnnotation </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classredland_1_1LibrdfNode.html">LibrdfNode</a>&#160;</td>
+          <td class="paramname"><em>subject</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const PredicatePtr &amp;&#160;</td>
+          <td class="paramname"><em>predicate_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classredland_1_1LibrdfNode.html">LibrdfNode</a> &amp;&#160;</td>
+          <td class="paramname"><em>resource</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Add a SingleAnnotation (aka a <a class="el" href="classomexmeta_1_1Triple.html">Triple</a>) to the model. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">subject</td><td>the subject portion of the triple </td></tr>
+    <tr><td class="paramname">pointer</td><td>to the predicate the predicate portion of the triple. Ths is a pointer to support polymorphic calls. </td></tr>
+    <tr><td class="paramname">resource</td><td>the resource portion of the triple </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="ae46835f3f35425d8087b80d08666aaa4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae46835f3f35425d8087b80d08666aaa4">&#9670;&nbsp;</a></span>addSingleAnnotation() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ae46835f3f35425d8087b80d08666aaa4">&#9670;&nbsp;</a></span>addSingleAnnotation() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -730,50 +760,6 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hre
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">singularAnnotation</td><td>An instance of SingularAnnotation to add to the model </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a0417b55575a244817ef981f17c8e1a8f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0417b55575a244817ef981f17c8e1a8f">&#9670;&nbsp;</a></span>addSingleAnnotation() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void omexmeta::Editor::addSingleAnnotation </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classomexmeta_1_1Subject.html">Subject</a>&#160;</td>
-          <td class="paramname"><em>subject</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const PredicatePtr &amp;&#160;</td>
-          <td class="paramname"><em>predicate_ptr</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="classomexmeta_1_1Resource.html">Resource</a> &amp;&#160;</td>
-          <td class="paramname"><em>resource</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Add a SingleAnnotation (aka a <a class="el" href="classomexmeta_1_1Triple.html">Triple</a>) to the model. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">subject</td><td>the subject portion of the triple </td></tr>
-    <tr><td class="paramname">pointer</td><td>to the predicate the predicate portion of the triple. Ths is a pointer to support polymorphic calls. </td></tr>
-    <tr><td class="paramname">resource</td><td>the resource portion of the triple </td></tr>
   </table>
   </dd>
 </dl>

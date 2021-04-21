@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libomexmeta
-   &#160;<span id="projectnumber">1.2.3</span>
+   &#160;<span id="projectnumber">1.2.6</span>
    </div>
    <div id="projectbrief">Annotations for models in systems biology</div>
   </td>
@@ -83,107 +83,105 @@ $(function() {
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;omexmeta/PhysicalProperty.h&quot;</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;omexmeta/PropertyBearer.h&quot;</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;omexmeta/Query.h&quot;</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;omexmeta/Resource.h&quot;</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;omexmeta/Subject.h&quot;</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;omexmeta/Triple.h&quot;</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &quot;omexmeta_export.h&quot;</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &quot;redland/RedlandAPI.h&quot;</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;cassert&gt;</span> <span class="comment">/* assert */</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;memory&gt;</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;utility&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;omexmeta/Triple.h&quot;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;omexmeta_export.h&quot;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;redland/RedlandAPI.h&quot;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;cassert&gt;</span> <span class="comment">/* assert */</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &lt;memory&gt;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;utility&gt;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">using namespace </span>redland;</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">using namespace </span>redland;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceomexmeta.html">omexmeta</a> {</div>
-<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="classomexmeta_1_1PhysicalEntity.html">   29</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a> : <span class="keyword">public</span> <a class="code" href="classomexmeta_1_1PropertyBearer.html">PropertyBearer</a> {</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <a class="code" href="classomexmeta_1_1Resource.html">Resource</a> identity_resource_;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        Resources location_resources_;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        Resources part_resources_;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        std::string physical_entity_property_id_;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="comment">// When autogenerating metaid for property of a physical entity</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="comment">// this is used as metaid base.</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        std::string property_metaid_base_ = <span class="stringliteral">&quot;EntityProperty&quot;</span>;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceomexmeta.html">omexmeta</a> {</div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="classomexmeta_1_1PhysicalEntity.html">   27</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a> : <span class="keyword">public</span> <a class="code" href="classomexmeta_1_1PropertyBearer.html">PropertyBearer</a> {</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="classomexmeta_1_1PhysicalEntity.html#a9d29348a080c64f91ff6ec184fd45ece">   39</a></span>&#160;        <a class="code" href="classomexmeta_1_1PhysicalEntity.html#a9d29348a080c64f91ff6ec184fd45ece">PhysicalEntity</a>() = <span class="keyword">delete</span>;</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
-<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="classomexmeta_1_1PhysicalEntity.html#a9d29348a080c64f91ff6ec184fd45ece">   51</a></span>&#160;        <a class="code" href="classomexmeta_1_1PhysicalEntity.html#a9d29348a080c64f91ff6ec184fd45ece">PhysicalEntity</a>() = <span class="keyword">delete</span>;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <a class="code" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a>(librdf_model *model, std::string model_uri, std::string local_uri, <a class="code" href="classomexmeta_1_1PhysicalProperty.html">PhysicalProperty</a> physicalProperty,</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                       <a class="code" href="classomexmeta_1_1Resource.html">Resource</a> is, Resources is_part_of);</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        ~<a class="code" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a>() = <span class="keywordflow">default</span>;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <span class="keywordtype">void</span> free();</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <a class="code" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a>(librdf_model *model, <a class="code" href="classomexmeta_1_1UriHandler.html">UriHandler</a>&amp; uriHandler, <a class="code" href="classomexmeta_1_1PhysicalProperty.html">PhysicalProperty</a> physicalProperty,</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                       std::string is, std::vector&lt;std::string&gt; is_part_of);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        ~<a class="code" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="keywordtype">void</span> free();</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="classomexmeta_1_1PhysicalEntity.html#a0f6af5e55a34be889110b0d03e5f1aec">   78</a></span>&#160;        OMEXMETA_DEPRECATED <span class="keyword">explicit</span> <a class="code" href="classomexmeta_1_1PhysicalEntity.html#a0f6af5e55a34be889110b0d03e5f1aec">PhysicalEntity</a>(librdf_model *model);</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        OMEXMETA_DEPRECATED <span class="keyword">explicit</span> <a class="code" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a>(librdf_model *model);</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        <span class="keyword">explicit</span> <a class="code" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a>(librdf_model *model, <span class="keyword">const</span> std::string &amp;model_uri, <span class="keyword">const</span> std::string &amp;local_uri);</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        [[nodiscard]] <a class="code" href="classomexmeta_1_1Triples.html">Triples</a> toTriples() <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        [[nodiscard]] <span class="keyword">const</span> <a class="code" href="classomexmeta_1_1Resource.html">Resource</a> &amp;getIdentityResource() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160; </div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        [[nodiscard]] <span class="keyword">const</span> Resources &amp;getLocationResources() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; </div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;        OMEXMETA_DEPRECATED <a class="code" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a> &amp;setPhysicalProperty(std::string subject_metaid, <span class="keyword">const</span> std::string &amp;physicalProperty);</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160; </div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;        [[maybe_unused]] OMEXMETA_DEPRECATED <a class="code" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a> &amp;setPhysicalProperty(<a class="code" href="classomexmeta_1_1PhysicalProperty.html">PhysicalProperty</a> physicalProperty);</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160; </div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        <a class="code" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a> &amp;setIdentity(<span class="keyword">const</span> std::string &amp;resource);</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160; </div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;        <a class="code" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a> &amp;identity(<span class="keyword">const</span> std::string &amp;resource);</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160; </div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;        OMEXMETA_DEPRECATED <a class="code" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a> &amp;addLocation(<span class="keyword">const</span> std::string &amp;where);</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160; </div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;        [[nodiscard]] <span class="keywordtype">int</span> getNumLocations() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <span class="keyword">explicit</span> <a class="code" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a>(librdf_model *model, <a class="code" href="classomexmeta_1_1UriHandler.html">UriHandler</a>&amp; uriHandler);</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        [[nodiscard]] <a class="code" href="classomexmeta_1_1Triples.html">Triples</a> toTriples() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        [[nodiscard]] <span class="keyword">const</span> std::string &amp;getIdentityResource() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        [[nodiscard]] <span class="keyword">const</span> std::vector&lt;std::string&gt; &amp;getLocationResources() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        OMEXMETA_DEPRECATED <a class="code" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a> &amp;setPhysicalProperty(std::string subject_metaid, <span class="keyword">const</span> std::string &amp;physicalProperty);</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160; </div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;        [[maybe_unused]] OMEXMETA_DEPRECATED <a class="code" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a> &amp;setPhysicalProperty(<a class="code" href="classomexmeta_1_1PhysicalProperty.html">PhysicalProperty</a> physicalProperty);</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160; </div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        <a class="code" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a> &amp;setIdentity(std::string resource);</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160; </div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        <a class="code" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a> &amp;identity(<span class="keyword">const</span> std::string &amp;resource);</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160; </div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;        OMEXMETA_DEPRECATED <a class="code" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a> &amp;addLocation(<span class="keyword">const</span> std::string &amp;where);</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160; </div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;        [[nodiscard]] <span class="keywordtype">int</span> getNumLocations() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160; </div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;        <span class="keywordtype">bool</span> operator==(<span class="keyword">const</span> <a class="code" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a> &amp;rhs) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160; </div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;        <span class="keywordtype">bool</span> operator!=(<span class="keyword">const</span> <a class="code" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a> &amp;rhs) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160; </div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;        <a class="code" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a> &amp;propertyIsVersionOf(<span class="keyword">const</span> std::string &amp;property);</div>
 <div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160; </div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        <span class="keywordtype">bool</span> operator==(<span class="keyword">const</span> <a class="code" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a> &amp;rhs) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        <a class="code" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a> &amp;isPropertyOf(<span class="keyword">const</span> std::string &amp;is_property_of, eUriType type);</div>
 <div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160; </div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;        <span class="keywordtype">bool</span> operator!=(<span class="keyword">const</span> <a class="code" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a> &amp;rhs) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160; </div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;        <a class="code" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a> &amp;propertyIsVersionOf(<span class="keyword">const</span> std::string &amp;property);</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;        <a class="code" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a> &amp;about(<span class="keyword">const</span> std::string &amp;about, eUriType type) <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160; </div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;        <a class="code" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a> &amp;about(<span class="keyword">const</span> std::string &amp;about) <span class="keyword">override</span>;</div>
 <div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160; </div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;        <a class="code" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a> &amp;isPropertyOf(<span class="keyword">const</span> std::string &amp;is_property_of, eUriType type);</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160; </div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;        <a class="code" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a> &amp;about(<span class="keyword">const</span> std::string &amp;about, eUriType type) <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160; </div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;        <a class="code" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a> &amp;about(<span class="keyword">const</span> std::string &amp;about) <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160; </div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;        <a class="code" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a> &amp;is(<span class="keyword">const</span> std::string &amp;is);</div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160; </div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;        <a class="code" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a> &amp;isPartOf(std::string isPartOf, eUriType type = NONE);</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;        <a class="code" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a> &amp;is(<span class="keyword">const</span> std::string &amp;is);</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160; </div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;        <a class="code" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a> &amp;isPartOf(std::string isPartOf, eUriType type = NONE);</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160; </div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;        <a class="code" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a> &amp;hasPart(<span class="keyword">const</span> std::string &amp;part);</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160; </div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;        OMEXMETA_DEPRECATED <a class="code" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a> &amp;variableMetaId(<span class="keyword">const</span> std::string &amp;metaid);</div>
 <div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160; </div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;        <a class="code" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a> &amp;hasPart(<span class="keyword">const</span> std::string &amp;part);</div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160; </div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;        OMEXMETA_DEPRECATED <a class="code" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a> &amp;variableMetaId(<span class="keyword">const</span> std::string &amp;metaid);</div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160; </div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;        [[nodiscard]] OMEXMETA_DEPRECATED <span class="keyword">const</span> std::string &amp;getPropertyMetaidBase() <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;        [[nodiscard]] OMEXMETA_DEPRECATED <span class="keyword">const</span> std::string &amp;getPropertyMetaidBase() <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160; </div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;        <a class="code" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a> &amp;hasProperty(<span class="keyword">const</span> <a class="code" href="classomexmeta_1_1PhysicalProperty.html">PhysicalProperty</a> &amp;property) <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160; </div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;        <a class="code" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a> &amp;hasProperty(<span class="keyword">const</span> std::string &amp;is_version_of) <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160; </div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;        <a class="code" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a> &amp;hasProperty(<span class="keyword">const</span> std::string &amp;property_about, eUriType about_uri_type, <span class="keyword">const</span> std::string &amp;is_version_of) <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;        <span class="comment">// todo store as strings and pass to LibrdfNode not LibrdfNode to construct a librdf_node</span></div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;        std::string identity_resource_;</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;        std::vector&lt;std::string&gt; location_resources_;</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;        std::vector&lt;std::string&gt; part_resources_;</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;        std::string physical_entity_property_id_;</div>
 <div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160; </div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;        <a class="code" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a> &amp;hasProperty(<span class="keyword">const</span> <a class="code" href="classomexmeta_1_1PhysicalProperty.html">PhysicalProperty</a> &amp;property) <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160; </div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;        <a class="code" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a> &amp;hasProperty(<span class="keyword">const</span> std::string &amp;property_about, eUriType about_uri_type, <span class="keyword">const</span> std::string&amp; is_version_of, <span class="keyword">const</span> std::string&amp; is_property_of, eUriType is_property_of_uri_type) <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;        <span class="comment">// When autogenerating metaid for property of a physical entity</span></div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;        <span class="comment">// this is used as metaid base.</span></div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;        std::string property_metaid_base_ = <span class="stringliteral">&quot;EntityProperty&quot;</span>;</div>
 <div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160; </div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;        <a class="code" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a> &amp;hasProperty(<span class="keyword">const</span> std::string &amp;is_version_of) <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160; </div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;        <a class="code" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a> &amp;hasProperty(<span class="keyword">const</span> std::string &amp;property_about, eUriType about_uri_type, <span class="keyword">const</span> std::string &amp;is_version_of) <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160; </div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;    };</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;}<span class="comment">// namespace omexmeta</span></div>
 <div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160; </div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;    };</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;}<span class="comment">// namespace omexmeta</span></div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160; </div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;<span class="preprocessor">#endif//LIBOMEXMETA_PHYSICALENTITY_H</span></div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;<span class="preprocessor">#endif//LIBOMEXMETA_PHYSICALENTITY_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclassomexmeta_1_1Resource_html"><div class="ttname"><a href="classomexmeta_1_1Resource.html">omexmeta::Resource</a></div><div class="ttdef"><b>Definition:</b> Resource.h:21</div></div>
-<div class="ttc" id="aclassomexmeta_1_1PhysicalEntity_html"><div class="ttname"><a href="classomexmeta_1_1PhysicalEntity.html">omexmeta::PhysicalEntity</a></div><div class="ttdef"><b>Definition:</b> PhysicalEntity.h:29</div></div>
+<div class="ttc" id="aclassomexmeta_1_1PhysicalEntity_html"><div class="ttname"><a href="classomexmeta_1_1PhysicalEntity.html">omexmeta::PhysicalEntity</a></div><div class="ttdef"><b>Definition:</b> PhysicalEntity.h:27</div></div>
+<div class="ttc" id="aclassomexmeta_1_1UriHandler_html"><div class="ttname"><a href="classomexmeta_1_1UriHandler.html">omexmeta::UriHandler</a></div><div class="ttdef"><b>Definition:</b> UriHandler.h:21</div></div>
 <div class="ttc" id="anamespaceomexmeta_html"><div class="ttname"><a href="namespaceomexmeta.html">omexmeta</a></div><div class="ttdef"><b>Definition:</b> Editor.cpp:9</div></div>
-<div class="ttc" id="aclassomexmeta_1_1Triples_html"><div class="ttname"><a href="classomexmeta_1_1Triples.html">omexmeta::Triples</a></div><div class="ttdef"><b>Definition:</b> Triples.h:37</div></div>
-<div class="ttc" id="aclassomexmeta_1_1PhysicalProperty_html"><div class="ttname"><a href="classomexmeta_1_1PhysicalProperty.html">omexmeta::PhysicalProperty</a></div><div class="ttdef"><b>Definition:</b> PhysicalProperty.h:24</div></div>
-<div class="ttc" id="aclassomexmeta_1_1PropertyBearer_html"><div class="ttname"><a href="classomexmeta_1_1PropertyBearer.html">omexmeta::PropertyBearer</a></div><div class="ttdef"><b>Definition:</b> PropertyBearer.h:23</div></div>
+<div class="ttc" id="aclassomexmeta_1_1Triples_html"><div class="ttname"><a href="classomexmeta_1_1Triples.html">omexmeta::Triples</a></div><div class="ttdoc">A Triples object is a collection of Triple objects.</div><div class="ttdef"><b>Definition:</b> Triples.h:35</div></div>
+<div class="ttc" id="aclassomexmeta_1_1PhysicalProperty_html"><div class="ttname"><a href="classomexmeta_1_1PhysicalProperty.html">omexmeta::PhysicalProperty</a></div><div class="ttdef"><b>Definition:</b> PhysicalProperty.h:23</div></div>
+<div class="ttc" id="aclassomexmeta_1_1PhysicalEntity_html_a0f6af5e55a34be889110b0d03e5f1aec"><div class="ttname"><a href="classomexmeta_1_1PhysicalEntity.html#a0f6af5e55a34be889110b0d03e5f1aec">omexmeta::PhysicalEntity::PhysicalEntity</a></div><div class="ttdeci">OMEXMETA_DEPRECATED PhysicalEntity(librdf_model *model)</div><div class="ttdoc">constructor for PhysicalEntity object.</div></div>
+<div class="ttc" id="aclassomexmeta_1_1PropertyBearer_html"><div class="ttname"><a href="classomexmeta_1_1PropertyBearer.html">omexmeta::PropertyBearer</a></div><div class="ttdef"><b>Definition:</b> PropertyBearer.h:22</div></div>
 <div class="ttc" id="aclassomexmeta_1_1PhysicalEntity_html_a9d29348a080c64f91ff6ec184fd45ece"><div class="ttname"><a href="classomexmeta_1_1PhysicalEntity.html#a9d29348a080c64f91ff6ec184fd45ece">omexmeta::PhysicalEntity::PhysicalEntity</a></div><div class="ttdeci">PhysicalEntity()=delete</div><div class="ttdoc">default constructor for PhysicalEntity</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

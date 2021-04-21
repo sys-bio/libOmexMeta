@@ -3,7 +3,6 @@
 //
 
 #include "AnnotationSamples.h"
-#include "OmexMetaTestUtils.h"
 #include "SBMLFactory.h"
 #include "omexmeta/RDF.h"
 #include "gtest/gtest.h"
@@ -16,7 +15,6 @@ using namespace omexmeta;
 class RDFTests : public ::testing::Test {
 
 public:
-
     AnnotationSamples samples;
 
     RDFTests() = default;
@@ -85,8 +83,8 @@ TEST_F(RDFTests, TestFromStringSingularAnnotation) {
 }
 
 TEST_F(RDFTests, TestFromStringSingularAnnotationSqlite) {
-//    "hashes", "test", "hash-type='bdb',dir='.'")
-//    librdf_new_storage()
+    //    "hashes", "test", "hash-type='bdb',dir='.'")
+    //    librdf_new_storage()
     RDF rdf("sqlite", "semsim_store", "new='yes'");//"hash-type=sqlite,dir=mnt/d/libomexmeta/tests/cpp");
     rdf.addFromString(samples.singular_annotation1, "rdfxml");
     rdf.commitTransaction();
@@ -96,8 +94,9 @@ TEST_F(RDFTests, TestFromStringSingularAnnotationSqlite) {
 }
 
 TEST_F(RDFTests, TestFromStringTurtleBag) {
+    // note that rdf::bag is auto removed
     RDF rdf = RDF::fromString(samples.rdf_turtle_bag_example, "turtle");
-    int expected = 7;
+    int expected = 5;// 7 with rdf:bag
     int actual = rdf.size();
     ASSERT_EQ(expected, actual);
 }
@@ -131,7 +130,8 @@ TEST_F(RDFTests, TestToString) {
                            "";
     std::string actual = rdf.toString();
     std::cout << actual << std::endl;
-    ASSERT_TRUE(OmexMetaTestUtils::equals(&rdf, expected));
+    bool truth = RDF::equals(&rdf, expected, "turtle", true);
+    ASSERT_TRUE(truth);
 }
 
 TEST(RDFTestsNoFigure, TestRDFCanReadFromTwoStrings) {
@@ -157,8 +157,6 @@ TEST(RDFTestsNoFigure, TestRDFCanReadFromTwoStrings) {
 
     RDF rdf = RDF::fromString(rdf_string1);
     std::cout << rdf.toString() << std::endl;
-
-
 }
 
 TEST_F(RDFTests, TestAddFromString) {
@@ -182,8 +180,8 @@ TEST_F(RDFTests, TestAddFromStringMultipleTimes) {
 
 TEST_F(RDFTests, TestParseFromFile) {
     // first create a file containing annotations
-//    raptor_option_uri_prefix;
-    std::string fname = (std::filesystem::current_path()/+ "TestParseFromFile.rdf").string();
+    //    raptor_option_uri_prefix;
+    std::string fname = (std::filesystem::current_path() / +"TestParseFromFile.rdf").string();
     std::cout << fname << std::endl;
     std::ofstream f(fname);
     if (f.is_open()) {
@@ -203,7 +201,6 @@ TEST_F(RDFTests, TestParseFromFile) {
 
     // clear up file we wrote
     std::remove(fname.c_str());
-
 }
 
 
@@ -239,7 +236,7 @@ TEST_F(RDFTests, TestWriteToFile) {
     ASSERT_EQ(expected, actual);
     rdf.toFile(fname, "turtle");
 
-    std::filesystem::exists(fname);
+    ASSERT_TRUE(std::filesystem::exists(fname));
 
     // clear up file we wrote
     std::remove(fname.c_str());
@@ -252,19 +249,19 @@ TEST_F(RDFTests, TestReadFromSBMLWithExtraction) {
     std::string expected = "";
     std::string actual = rdf.toString("turtle");
     std::cout << actual << std::endl;
-//    ASSERT_STREQ(expected.c_str(), actual.c_str());
-
+    //    ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
 TEST_F(RDFTests, TestReadSBMLModelWithBagFromString) {
     RDF expectedRdf = RDF::fromString(samples.annotationFromSBMLModelWithRDFBag);
     std::string sbml = SBMLFactory::getSBML(SBML_WITH_BAG);
     RDF actualRdf = RDF::fromString(sbml, "rdfxml");
-    ASSERT_EQ(expectedRdf, actualRdf);
+
+    ASSERT_TRUE(RDF::equals(&actualRdf, &expectedRdf, "turtle"));
 }
 
 TEST_F(RDFTests, TestReadSBMLModelWithBagFromFile) {
-    std::filesystem::path fname = std::filesystem::current_path() /+ "sbml.xml";
+    std::filesystem::path fname = std::filesystem::current_path() / +"sbml.xml";
     RDF expectedRdf = RDF::fromString(samples.annotationFromSBMLModelWithRDFBag);
 
     // get sbml as string
@@ -281,22 +278,153 @@ TEST_F(RDFTests, TestReadSBMLModelWithBagFromFile) {
 
     // clean up file
     remove(fname);
-
-
 }
 
-TEST_F(RDFTests, TestRepositoryPrefix){
+TEST_F(RDFTests, TestRepositoryPrefix) {
     RDF rdf = RDF::fromString(samples.singular_annotation1);
     std::string turtle_string = rdf.toString("turtle");
     std::string arg = "@prefix OMEXlib: <http://omex-library.org/> .";
     ASSERT_TRUE(OmexMetaUtils::isSubString(turtle_string, arg));
 }
 
-TEST_F(RDFTests, TestLocalPrefix){
+TEST_F(RDFTests, TestLocalPrefix) {
     RDF rdf = RDF::fromString(samples.singular_annotation1);
     std::string turtle_string = rdf.toString("turtle");
     std::string arg = "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .";
     ASSERT_TRUE(OmexMetaUtils::isSubString(turtle_string, arg));
+}
+
+TEST_F(RDFTests, TestSerializeCellMlAnnotationNoTrailingHashes) {
+    std::string cellml = "<model xmlns=\"http://www.cellml.org/cellml/1.1#\" xmlns:cmeta=\"http://www.cellml.org/metadata/1.0#\"\n"
+                         "      name=\"annotation_examples\" cmeta:id=\"annExamples\">\n"
+                         "  <component name=\"main\">\n"
+                         "    <variable cmeta:id=\"main.Volume\" initial_value=\"100\" name=\"Volume\" units=\"dimensionless\" />\n"
+                         "    <variable cmeta:id=\"main.MembraneVoltage\" initial_value=\"-80\" name=\"MembraneVoltage\" units=\"dimensionless\" />\n"
+                         "    <variable cmeta:id=\"main.ReactionRate\" initial_value=\"1\" name=\"ReactionRate\" units=\"dimensionless\" />\n"
+                         "  </component>\n"
+                         "</model>";
+
+    RDF rdf = RDF();
+    rdf.setArchiveUri("my-omex-archive.omex");
+    rdf.setModelUri("my-model.cellml");
+    Editor editor = rdf.toEditor(cellml, false, false);
+    editor.addCreator("0000-0003-4667-9779");
+    editor.addTaxon("9895");
+    std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+                           "@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n"
+                           "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
+                           "@prefix NCBI_Taxon: <https://identifiers.org/taxonomy:> .\n"
+                           "@prefix OMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix local: <http://omex-library.org/my-omex-archive.omex/my-model.rdf#> .\n"
+                           "\n"
+                           "<http://omex-library.org/my-omex-archive.omex/my-model.cellml>\n"
+                           "    bqbiol:hasTaxon <https://identifiers.org/taxonomy:9895> ;\n"
+                           "    dc:creator <https://orcid.org/0000-0003-4667-9779> .";
+    ASSERT_TRUE(RDF::equals(&rdf, expected));
+}
+
+TEST_F(RDFTests, TestBagConversion) {
+    std::string input = "<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
+                        "                 xmlns:bqmodel=\"http://biomodels.net/model-qualifiers/\"\n"
+                        "                 xmlns:vCard=\"http://www.w3.org/2001/vcard-rdf/3.0#\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"\n"
+                        "                 xmlns:dcterms=\"http://purl.org/dc/terms/\" xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\">\n"
+                        "            <rdf:Description rdf:about=\"#_272044\">\n"
+                        "                <dc:creator>\n"
+                        "                    <rdf:Bag>\n"
+                        "                        <rdf:li rdf:parseType=\"Resource\">\n"
+                        "                            <vCard:N rdf:parseType=\"Resource\">\n"
+                        "                                <vCard:Family>Chelliah</vCard:Family>\n"
+                        "                                <vCard:Given>Vijayalakshmi</vCard:Given>\n"
+                        "                            </vCard:N>\n"
+                        "                            <vCard:EMAIL>viji@ebi.ac.uk</vCard:EMAIL>\n"
+                        "                            <vCard:ORG rdf:parseType=\"Resource\">\n"
+                        "                                <vCard:Orgname>EMBL-EBI</vCard:Orgname>\n"
+                        "                            </vCard:ORG>\n"
+                        "                        </rdf:li>\n"
+                        "                        <rdf:li rdf:parseType=\"Resource\">\n"
+                        "                            <vCard:N rdf:parseType=\"Resource\">\n"
+                        "                                <vCard:Family>Nikoloski</vCard:Family>\n"
+                        "                                <vCard:Given>Zoran</vCard:Given>\n"
+                        "                            </vCard:N>\n"
+                        "                            <vCard:EMAIL>nikoloski@mpimp-golm.mpg.de</vCard:EMAIL>\n"
+                        "                            <vCard:ORG rdf:parseType=\"Resource\">\n"
+                        "                                <vCard:Orgname>Institute of Biochemistry and Biology, University of Potsdam, 14476\n"
+                        "                                    Potsdam, Germany\n"
+                        "                                </vCard:Orgname>\n"
+                        "                            </vCard:ORG>\n"
+                        "                        </rdf:li>\n"
+                        "                        <rdf:li rdf:parseType=\"Resource\">\n"
+                        "                            <vCard:N rdf:parseType=\"Resource\">\n"
+                        "                                <vCard:Family>Arnold</vCard:Family>\n"
+                        "                                <vCard:Given>Anne</vCard:Given>\n"
+                        "                            </vCard:N>\n"
+                        "                            <vCard:EMAIL>arnold@mpimp-golm.mpg.de</vCard:EMAIL>\n"
+                        "                            <vCard:ORG rdf:parseType=\"Resource\">\n"
+                        "                                <vCard:Orgname>Max-Planck-Institute of Molecular Plant Physiology</vCard:Orgname>\n"
+                        "                            </vCard:ORG>\n"
+                        "                        </rdf:li>\n"
+                        "                    </rdf:Bag>\n"
+                        "                </dc:creator>\n"
+                        "                <dcterms:created rdf:parseType=\"Resource\">\n"
+                        "                    <dcterms:W3CDTF>2011-10-19T14:51:13Z</dcterms:W3CDTF>\n"
+                        "                </dcterms:created>\n"
+                        "                <dcterms:modified rdf:parseType=\"Resource\">\n"
+                        "                    <dcterms:W3CDTF>2012-04-20T19:52:45Z</dcterms:W3CDTF>\n"
+                        "                </dcterms:modified>\n"
+                        "                <bqmodel:is>\n"
+                        "                    <rdf:Bag>\n"
+                        "                        <rdf:li rdf:resource=\"http://identifiers.org/biomodels.db/MODEL1109270001\"/>\n"
+                        "                    </rdf:Bag>\n"
+                        "                </bqmodel:is>\n"
+                        "                <bqmodel:is>\n"
+                        "                    <rdf:Bag>\n"
+                        "                        <rdf:li rdf:resource=\"http://identifiers.org/biomodels.db/BIOMD0000000385\"/>\n"
+                        "                    </rdf:Bag>\n"
+                        "                </bqmodel:is>\n"
+                        "                <bqmodel:isDescribedBy>\n"
+                        "                    <rdf:Bag>\n"
+                        "                        <rdf:li rdf:resource=\"http://identifiers.org/pubmed/22001849\"/>\n"
+                        "                    </rdf:Bag>\n"
+                        "                </bqmodel:isDescribedBy>\n"
+                        "                <bqmodel:is>\n"
+                        "                    <rdf:Bag>\n"
+                        "                        <rdf:li rdf:resource=\"http://identifiers.org/obo.go/GO:0019253\"/>\n"
+                        "                    </rdf:Bag>\n"
+                        "                </bqmodel:is>\n"
+                        "                <bqbiol:hasTaxon>\n"
+                        "                    <rdf:Bag>\n"
+                        "                        <rdf:li rdf:resource=\"http://identifiers.org/taxonomy/33090\"/>\n"
+                        "                    </rdf:Bag>\n"
+                        "                </bqbiol:hasTaxon>\n"
+                        "            </rdf:Description>\n"
+                        "        </rdf:RDF>";
+    RDF rdf = RDF::fromString(input, "rdfxml");
+
+    std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+                           "@prefix bqmodel: <http://biomodels.net/model-qualifiers/> .\n"
+                           "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
+                           "@prefix OMEXlib: <http://omex-library.org/> .\n"
+                           "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
+                           "\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#_272044>\n"
+                           "    bqbiol:hasTaxon <http://identifiers.org/taxonomy/33090> ;\n"
+                           "    bqmodel:is <http://identifiers.org/biomodels.db/BIOMD0000000385>, <http://identifiers.org/biomodels.db/MODEL1109270001>, <http://identifiers.org/obo.go/GO:0019253> ;\n"
+                           "    bqmodel:isDescribedBy <http://identifiers.org/pubmed/22001849> ;\n"
+                           "    <http://purl.org/dc/elements/1.1/creator> [\n"
+                           "        <http://xmlns.com/foaf/0.1/Organization> \"EMBL-EBI\", \"\"\"Institute of Biochemistry and Biology, University of Potsdam, 14476\n"
+                           "                                    Potsdam, Germany\n"
+                           "                                \"\"\", \"Max-Planck-Institute of Molecular Plant Physiology\" ;\n"
+                           "        <http://xmlns.com/foaf/0.1/familyName> \"Arnold\", \"Chelliah\", \"Nikoloski\" ;\n"
+                           "        <http://xmlns.com/foaf/0.1/givenName> \"Anne\", \"Vijayalakshmi\", \"Zoran\" ;\n"
+                           "        <http://xmlns.com/foaf/0.1/mbox> \"arnold@mpimp-golm.mpg.de\", \"nikoloski@mpimp-golm.mpg.de\", \"viji@ebi.ac.uk\"\n"
+                           "    ] ;\n"
+                           "    <http://purl.org/dc/terms/created> [\n"
+                           "        <http://purl.org/dc/terms/W3CDTF> \"2011-10-19T14:51:13Z\"\n"
+                           "    ] ;\n"
+                           "    <http://purl.org/dc/terms/modified> [\n"
+                           "        <http://purl.org/dc/terms/W3CDTF> \"2012-04-20T19:52:45Z\"\n"
+                           "    ] .";
+    ASSERT_TRUE(RDF::equals(&rdf, expected, "turtle"));
 }
 
 
@@ -314,18 +442,17 @@ public:
                            "  </rdf:Description>\n"
                            "</rdf:RDF>\n";
     AnnotationSamples samples;
-    const std::string& input_string = samples.simple_input_turtle_string;
+    const std::string &input_string = samples.simple_input_turtle_string;
     ParserReadTesReadFromFileHasPrefixesTests() = default;
-
 };
 
-TEST_F(ParserReadTesReadFromFileHasPrefixesTests, TestReadFromStringHasPrefixes){
+TEST_F(ParserReadTesReadFromFileHasPrefixesTests, TestReadFromStringHasPrefixes) {
     RDF rdf = RDF::fromString(input_string, "turtle");
-    ASSERT_TRUE(OmexMetaTestUtils::equals(&rdf, expected, "rdfxml"));
+    ASSERT_TRUE(RDF::equals(&rdf, expected, "rdfxml"));
 }
 
-TEST_F(ParserReadTesReadFromFileHasPrefixesTests, TestReadFromFileHasPrefixes){
-    std::filesystem::path fname = std::filesystem::current_path() /+ "annotation_file.rdf";
+TEST_F(ParserReadTesReadFromFileHasPrefixesTests, TestReadFromFileHasPrefixes) {
+    std::filesystem::path fname = std::filesystem::current_path() / +"annotation_file.rdf";
     std::ofstream annot_file;
 
     annot_file.open(fname);
@@ -334,33 +461,6 @@ TEST_F(ParserReadTesReadFromFileHasPrefixesTests, TestReadFromFileHasPrefixes){
     RDF rdf = RDF::fromFile(fname.string(), "turtle");
     std::string output = rdf.toString("rdfxml-abbrev");
 
-    ASSERT_TRUE(OmexMetaTestUtils::equals(&rdf, expected, "rdfxml"));
+    ASSERT_TRUE(RDF::equals(&rdf, expected, "rdfxml"));
     remove(fname.string().c_str());
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

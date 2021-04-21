@@ -1,7 +1,6 @@
 //
 // Created by Ciaran on 4/15/2020.
 //
-#include "OmexMetaTestUtils.h"
 #include "SBMLFactory.h"
 #include "omexmeta/Editor.h"
 #include "omexmeta/EnergyDiff.h"
@@ -18,6 +17,8 @@ class EditorTests : public ::testing::Test {
 public:
     LibrdfStorage storage;
     LibrdfModel model;
+
+    UriHandler uriHandler;
 
     std::string cellml_example = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
                                  "<model xmlns=\"http://www.cellml.org/cellml/1.1#\" xmlns:cmeta=\"http://www.cellml.org/metadata/1.0#\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xmlns:bqs=\"http://www.cellml.org/bqs/1.0#\" xmlns:semsim=\"http://bime.uw.edu/semsim/#\" xmlns:dc=\"https://dublincore.org/specifications/dublin-core/dcmi-terms/\" xmlns:vCard=\"http://www.w3.org/2001/vcard-rdf/3.0#\" name=\"annotation_examples\" cmeta:id=\"annExamples\">\n"
@@ -89,7 +90,7 @@ TEST_F(EditorTests, TestSetModelName) {
     rdf.setArchiveUri("MyOmexArchive.omex");
     rdf.setModelUri("smad.sbml");
 
-    std::string expected = "http://omex-library.org/MyOmexArchive.omex/smad.sbml#";
+    std::string expected = "http://omex-library.org/MyOmexArchive.omex/smad.sbml";
     ASSERT_STREQ(expected.c_str(), editor.getModelUri().c_str());
 }
 
@@ -126,9 +127,9 @@ TEST_F(EditorTests, TestEditorFromSBMLInFile) {
     RDF rdf;
     Editor editor = rdf.toEditor("example.sbml", true, false);
     editor.addSingleAnnotation(
-            Subject(editor.createNodeWithModelUri("species0001")),
+            editor.createNodeWithModelUri("species0001"),
             std::make_unique<Predicate>(BiomodelsBiologyQualifier("isDescribedBy")),
-            Resource(LibrdfNode::fromUriString("pubmed:12991237")));
+            LibrdfNode::fromUriString("pubmed:12991237"));
 
     std::string actual = rdf.toString();
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
@@ -140,7 +141,7 @@ TEST_F(EditorTests, TestEditorFromSBMLInFile) {
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#species0001>\n"
                            "    bqbiol:isDescribedBy <https://identifiers.org/pubmed:12991237> .";
     std::cout << actual << std::endl;
-    ASSERT_TRUE(OmexMetaTestUtils::equals(&rdf, expected));
+    ASSERT_TRUE(RDF::equals(&rdf, expected));
 
     remove("example.sbml");
 }
@@ -152,20 +153,20 @@ TEST_F(EditorTests, TestAddAnnotation) {
     PredicatePtr predicatePtr = std::make_shared<Predicate>(
             BiomodelsBiologyQualifier("is"));
     editor.addSingleAnnotation(
-            Subject(LibrdfNode::fromUriString("species0000")),
+            LibrdfNode::fromUriString("species0000"),
             predicatePtr,
-            Resource(LibrdfNode::fromUriString("uniprot/P0DP23")));
+            LibrdfNode::fromUriString("uniprot/P0DP23"));
     ASSERT_EQ(1, editor.size());
-    //    triples.freeTriples();
+    //
 }
 
 TEST_F(EditorTests, TestAddSingleAnnotationToEditor) {
     RDF rdf;
     Editor editor = rdf.toEditor(
             SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
-    Triple triple(LibrdfNode::fromUriString("species0001").get(),
-                  BiomodelsBiologyQualifier("is").getNode(),
-                  Resource(LibrdfNode::fromUriString("uniprot/P0DP23")).getNode());
+    Triple triple(uriHandler, LibrdfNode::fromUriString("species0001").get(),
+                  BiomodelsBiologyQualifier("is").get(),
+                  LibrdfNode::fromUriString("uniprot/P0DP23").get());
     editor.addSingleAnnotation(triple);
     int expected = 1;
     int actual = editor.size();
@@ -192,10 +193,10 @@ TEST_F(EditorTests, TestAddSingleAnnotationToRDF1) {
             SBMLFactory::getSBML(SBML_NOT_ANNOTATED),
             true,
             false);
-    Subject subject = Subject(editor.createNodeWithModelUri("species0001"));
+    LibrdfNode subject = editor.createNodeWithModelUri("species0001");
     BiomodelsBiologyQualifier predicate("is");
-    Resource resource = Resource(LibrdfNode::fromUriString("uniprot/P0DP23"));
-    Triple triple(subject.getNode(), predicate.getNode(), resource.getNode());
+    LibrdfNode resource = LibrdfNode::fromUriString("uniprot/P0DP23");
+    Triple triple(uriHandler, subject.get(), predicate.get(), resource.get());
 
     editor.addSingleAnnotation(triple);
 
@@ -210,7 +211,7 @@ TEST_F(EditorTests, TestAddSingleAnnotationToRDF1) {
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#species0001>\n"
                            "    bqbiol:is <https://identifiers.org/uniprot/P0DP23> .\n"
                            "\n";
-    ASSERT_TRUE(OmexMetaTestUtils::equals(&rdf, expected));
+    ASSERT_TRUE(RDF::equals(&rdf, expected));
     triple.freeStatement();
 }
 
@@ -219,9 +220,9 @@ TEST_F(EditorTests, TestAddSingleAnnotationToRDF2) {
     Editor editor = rdf.toEditor(
             SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
     editor.addSingleAnnotation(
-            Subject(editor.createNodeWithModelUri("unit0000")),
+            editor.createNodeWithModelUri("unit0000"),
             std::make_shared<Predicate>(BiomodelsBiologyQualifier("isDescribedBy")),
-            Resource(LibrdfNode::fromUriString("pubmed/12991237")));
+            LibrdfNode::fromUriString("pubmed/12991237"));
 
     std::string actual = rdf.toString("turtle");
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
@@ -235,7 +236,7 @@ TEST_F(EditorTests, TestAddSingleAnnotationToRDF2) {
                            "\n"
                            "";
     std::cout << actual << std::endl;
-    ASSERT_TRUE(OmexMetaTestUtils::equals(&rdf, expected));
+    ASSERT_TRUE(RDF::equals(&rdf, expected));
 }
 
 TEST_F(EditorTests, TestAddSingleAnnotationToRDF3) {
@@ -243,9 +244,9 @@ TEST_F(EditorTests, TestAddSingleAnnotationToRDF3) {
     Editor editor = rdf.toEditor(
             SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
     editor.addSingleAnnotation(
-            Subject(editor.createNodeWithModelUri("species0001")),
+            editor.createNodeWithModelUri("species0001"),
             std::make_unique<Predicate>(BiomodelsBiologyQualifier("isDescribedBy")),
-            Resource(LibrdfNode::fromUriString("pubmed/12991237")));
+            LibrdfNode::fromUriString("pubmed/12991237"));
 
     std::string actual = rdf.toString();
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
@@ -257,7 +258,7 @@ TEST_F(EditorTests, TestAddSingleAnnotationToRDF3) {
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#species0001>\n"
                            "    bqbiol:isDescribedBy <https://identifiers.org/pubmed/12991237> .\n\n";
     std::cout << actual << std::endl;
-    ASSERT_TRUE(OmexMetaTestUtils::equals(&rdf, expected));
+    ASSERT_TRUE(RDF::equals(&rdf, expected));
 }
 
 TEST_F(EditorTests, TestToRDFSingularAnnotationWithLiteral) {
@@ -265,9 +266,9 @@ TEST_F(EditorTests, TestToRDFSingularAnnotationWithLiteral) {
     Editor editor = rdf.toEditor(
             SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
     editor.addSingleAnnotation(
-            Subject(editor.createNodeWithModelUri("species0001")),
+            editor.createNodeWithModelUri("species0001"),
             std::make_unique<Predicate>(DCTerm("description")),
-            Resource(LibrdfNode::fromLiteral("Cardiomyocyte cytosolic ATP concentration")));
+            LibrdfNode::fromLiteral("Cardiomyocyte cytosolic ATP concentration"));
 
     std::string actual = rdf.toString("turtle");
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
@@ -277,10 +278,10 @@ TEST_F(EditorTests, TestToRDFSingularAnnotationWithLiteral) {
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#species0001>\n"
-                           "    dc:description \"Cardiomyocyte cytosolic ATP concentration\"^^rdf:string .\n"
+                           "    dc:description \"Cardiomyocyte cytosolic ATP concentration\" .\n"
                            "\n";
     std::cout << actual << std::endl;
-    ASSERT_TRUE(OmexMetaTestUtils::equals(&rdf, expected));
+    ASSERT_TRUE(RDF::equals(&rdf, expected));
 }
 
 TEST_F(EditorTests, TestSingularAnnotWithBuilderPattern) {
@@ -309,7 +310,7 @@ TEST_F(EditorTests, TestSingularAnnotWithBuilderPattern) {
                            "    bqbiol:isVersionOf <https://identifiers.org/uniprot/PD02635> .\n"
                            "\n"
                            "";
-    ASSERT_TRUE(OmexMetaTestUtils::equals(&rdf, expected));
+    ASSERT_TRUE(RDF::equals(&rdf, expected));
 
     singularAnnotation.freeStatement();
 }
@@ -339,7 +340,7 @@ TEST_F(EditorTests, TestSingularAnnotWithBuilderPattern2) {
                            "    bqbiol:isVersionOf <https://identifiers.org/uniprot/PD02635> .\n"
                            "\n"
                            "";
-    ASSERT_TRUE(OmexMetaTestUtils::equals(&rdf, expected));
+    ASSERT_TRUE(RDF::equals(&rdf, expected));
 
     singularAnnotation.freeStatement();
 }
@@ -369,7 +370,7 @@ TEST_F(EditorTests, TestSingularAnnotWithBuilderPatternChebiResource) {
                            "    bqbiol:isVersionOf <https://identifiers.org/CHEBI:16253> .\n"
                            "\n"
                            "";
-    ASSERT_TRUE(OmexMetaTestUtils::equals(&rdf, expected));
+    ASSERT_TRUE(RDF::equals(&rdf, expected));
 
     singularAnnotation.freeStatement();
 }
@@ -399,7 +400,7 @@ TEST_F(EditorTests, TestSingularAnnotWithBuilderPatternOPBResource) {
                            "    bqbiol:isVersionOf <https://identifiers.org/OPB:16253> .\n"
                            "\n"
                            "";
-    ASSERT_TRUE(OmexMetaTestUtils::equals(&rdf, expected));
+    ASSERT_TRUE(RDF::equals(&rdf, expected));
 
     singularAnnotation.freeStatement();
 }
@@ -411,14 +412,14 @@ TEST_F(EditorTests, TestEditASingularAnnotWithBuilderPatternThenRemove) {
 
     SingularAnnotation singularAnnotation = editor.newSingularAnnotation();
     singularAnnotation
-            .about("#species0001")
+            .about("species0001")
             .setPredicate("bqbiol", "isVersionOf")
             .setResourceUri("uniprot/PD02635");
 
     editor.addSingleAnnotation(singularAnnotation);
     editor.removeSingleAnnotation(singularAnnotation);
 
-    SingularAnnotation singularAnnotation2 = editor.newSingularAnnotation("#species0001");
+    SingularAnnotation singularAnnotation2 = editor.newSingularAnnotation("species0001");
     singularAnnotation2
             .setPredicate("bqbiol", "isVersionOf")
             .setResourceUri("uniprot/PD02636");
@@ -437,7 +438,7 @@ TEST_F(EditorTests, TestEditASingularAnnotWithBuilderPatternThenRemove) {
                            "    bqbiol:isVersionOf <https://identifiers.org/uniprot/PD02636> .\n"
                            "\n"
                            "";
-    ASSERT_TRUE(OmexMetaTestUtils::equals(&rdf, expected));
+    ASSERT_TRUE(RDF::equals(&rdf, expected));
 
     singularAnnotation.freeStatement();
     singularAnnotation2.freeStatement();
@@ -449,7 +450,7 @@ TEST_F(EditorTests, TestSingularAnnotationBuilder) {
             SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
 
 
-    SingularAnnotation singularAnnotation = editor.newSingularAnnotation("#species0001");
+    SingularAnnotation singularAnnotation = editor.newSingularAnnotation("species0001");
     singularAnnotation
             .setPredicate("bqbiol", "is")
             .setResourceLiteral("resource");
@@ -470,7 +471,7 @@ TEST_F(EditorTests, TestSingularAnnotationBuilder2) {
 
     SingularAnnotation singularAnnotation = editor.newSingularAnnotation();
     singularAnnotation
-            .about("#species0001")
+            .about("species0001")
             .setPredicate("bqbiol", "is")
             .setResourceLiteral("resource");
 
@@ -500,7 +501,7 @@ TEST_F(EditorTests, TestModelLevelAnnotationAddCreator) {
                            "";
     std::string actual = rdf.toString("turtle");
     std::cout << actual << std::endl;
-    ASSERT_TRUE(OmexMetaTestUtils::equals(&rdf, expected));
+    ASSERT_TRUE(RDF::equals(&rdf, expected));
 }
 
 TEST_F(EditorTests, TestModelLevelAnnotationAddCurator) {
@@ -521,19 +522,15 @@ TEST_F(EditorTests, TestModelLevelAnnotationAddCurator) {
                            "";
     std::string actual = rdf.toString("turtle");
     std::cout << actual << std::endl;
-    ASSERT_TRUE(OmexMetaTestUtils::equals(&rdf, expected));
+    ASSERT_TRUE(RDF::equals(&rdf, expected));
 }
 
 TEST_F(EditorTests, TestModelLevelAnnotationAddDateCreated) {
-    std::cout << __FILE__ << ":" << __LINE__ << std::endl;
     RDF rdf;
-    std::cout << __FILE__ << ":" << __LINE__ << std::endl;
     Editor editor = rdf.toEditor(
             SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
-    std::cout << __FILE__ << ":" << __LINE__ << std::endl;
 
     editor.addDateCreated("14/01/1991");
-    std::cout << __FILE__ << ":" << __LINE__ << std::endl;
 
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n"
@@ -543,20 +540,14 @@ TEST_F(EditorTests, TestModelLevelAnnotationAddDateCreated) {
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml>\n"
                            "    dc:created [\n"
-                           "        dc:W3CDTF \"14/01/1991\"^^rdf:string\n"
+                           "        dc:W3CDTF \"14/01/1991\"\n"
                            "    ] .";
-    std::cout << __FILE__ << ":" << __LINE__ << std::endl;
     RDF expected_rdf = RDF::fromString(expected, "turtle");
-    std::cout << __FILE__ << ":" << __LINE__ << std::endl;
     std::cout << rdf.toString() << std::endl;
-    std::cout << __FILE__ << ":" << __LINE__ << std::endl;
     std::cout << expected_rdf.toString() << std::endl;
-    std::cout << __FILE__ << ":" << __LINE__ << std::endl;
 
-    bool passed = OmexMetaTestUtils::equals(&rdf, &expected_rdf);
-    std::cout << __FILE__ << ":" << __LINE__ << std::endl;
+    bool passed = RDF::equals(&rdf, &expected_rdf);
     ASSERT_TRUE(passed);
-    std::cout << __FILE__ << ":" << __LINE__ << std::endl;
 }
 
 TEST_F(EditorTests, TestModelLevelAnnotationAddDescription) {
@@ -573,11 +564,11 @@ TEST_F(EditorTests, TestModelLevelAnnotationAddDescription) {
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml>\n"
-                           "    <https://dublincore.org/specifications/dublin-core/dcmi-terms/description> \"Predictive model of chip butty consumer's risk of heart failure.\"^^rdf:string .\n"
+                           "    <https://dublincore.org/specifications/dublin-core/dcmi-terms/description> \"Predictive model of chip butty consumer's risk of heart failure.\" .\n"
                            "\n";
     std::string actual = rdf.toString("turtle");
     std::cout << actual << std::endl;
-    ASSERT_TRUE(OmexMetaTestUtils::equals(&rdf, expected));
+    ASSERT_TRUE(RDF::equals(&rdf, expected));
 }
 
 TEST_F(EditorTests, TestModelLevelAnnotationPubmed) {
@@ -598,7 +589,7 @@ TEST_F(EditorTests, TestModelLevelAnnotationPubmed) {
                            "    bqmodel:isDescribedBy <https://identifiers.org/pubmed:27887851> .";
     std::string actual = rdf.toString("turtle");
     std::cout << actual << std::endl;
-    ASSERT_TRUE(OmexMetaTestUtils::equals(&rdf, expected));
+    ASSERT_TRUE(RDF::equals(&rdf, expected));
 }
 
 TEST_F(EditorTests, TestModelLevelAnnotationAddParentModel) {
@@ -619,7 +610,7 @@ TEST_F(EditorTests, TestModelLevelAnnotationAddParentModel) {
                            "    bqmodel:isDerivedFrom biomod:BIOMD0000011 .";
     std::string actual = rdf.toString("turtle");
     std::cout << actual << std::endl;
-    ASSERT_TRUE(OmexMetaTestUtils::equals(&rdf, expected));
+    ASSERT_TRUE(RDF::equals(&rdf, expected));
 }
 
 TEST_F(EditorTests, TestSingularAnnotationBuilderAlternativeInterface) {
@@ -640,10 +631,10 @@ TEST_F(EditorTests, TestSingularAnnotationBuilderAlternativeInterface) {
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#species0000>\n"
-                           "    bqbiol:is \"resource\"^^rdf:string .\n\n";
+                           "    bqbiol:is \"resource\" .\n\n";
     std::string actual = singularAnnotation.str("turtle");
     std::cout << actual << std::endl;
-    ASSERT_TRUE(OmexMetaTestUtils::equals(&rdf, expected));
+    ASSERT_TRUE(RDF::equals(&rdf, expected));
 
     singularAnnotation.freeTriple();
 }
@@ -653,7 +644,7 @@ TEST_F(EditorTests, TestRemoveSingularAnnotation) {
     Editor editor = rdf.toEditor(
             SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
 
-    SingularAnnotation singularAnnotation = editor.newSingularAnnotation("#species0001");
+    SingularAnnotation singularAnnotation = editor.newSingularAnnotation("species0001");
     singularAnnotation
             .setPredicate("bqbiol", "is")
             .setResourceLiteral("resource");
@@ -710,12 +701,12 @@ TEST_F(EditorTests, TestAddPersonalInformation) {
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000>\n"
                            "    foaf:accountName <https://orcid.org/1234-1234-1234-1234> ;\n"
                            "    foaf:accountServiceHomepage <https://github.com/sys-bio/libOmexMeta> ;\n"
-                           "    foaf:mbox \"annotations@uw.edu\"^^rdf:string ;\n"
-                           "    foaf:name \"Ciaran Welsh\"^^rdf:string .\n"
+                           "    foaf:mbox \"annotations@uw.edu\" ;\n"
+                           "    foaf:name \"Ciaran Welsh\" .\n"
                            "\n"
                            "";
     std::cout << actual << std::endl;
-    ASSERT_TRUE(OmexMetaTestUtils::equals(&rdf, expected));
+    ASSERT_TRUE(RDF::equals(&rdf, expected));
 }
 
 
@@ -732,7 +723,7 @@ TEST_F(EditorTests, TestaddCreator) {
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml>\n"
                            "    dc:creator <https://orcid.org/1234-1234-1234-1234> .";
     std::cout << rdf.toString() << std::endl;
-    ASSERT_TRUE(OmexMetaTestUtils::equals(&rdf, expected));
+    ASSERT_TRUE(RDF::equals(&rdf, expected));
 }
 TEST_F(EditorTests, TestaddCurator) {
     RDF rdf;
@@ -747,7 +738,7 @@ TEST_F(EditorTests, TestaddCurator) {
                            "<http://omex-library.org/NewOmex.omex/NewModel.rdf#>\n"
                            "    dc:creator <https://orcid.org/1234-1234-1234-1234> .";
     std::cout << rdf.toString() << std::endl;
-    ASSERT_TRUE(OmexMetaTestUtils::equals(&rdf, expected));
+    ASSERT_TRUE(RDF::equals(&rdf, expected));
 }
 TEST_F(EditorTests, TestaddDateCreated) {
     RDF rdf;
@@ -761,11 +752,11 @@ TEST_F(EditorTests, TestaddDateCreated) {
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml>\n"
                            "    dc:created [\n"
-                           "        dc:W3CDTF \"20-01-2020\"^^rdf:string\n"
+                           "        dc:W3CDTF \"20-01-2020\"\n"
                            "    ] .\n"
                            "";
     std::cout << rdf.toString() << std::endl;
-    ASSERT_TRUE(OmexMetaTestUtils::equals(&rdf, expected));
+    ASSERT_TRUE(RDF::equals(&rdf, expected));
 }
 TEST_F(EditorTests, TestaddDescription) {
     RDF rdf;
@@ -778,10 +769,10 @@ TEST_F(EditorTests, TestaddDescription) {
                            "@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml>\n"
-                           "    dc:description \"Descripting\"^^rdf:string .\n"
+                           "    dc:description \"Descripting\" .\n"
                            "";
     std::cout << rdf.toString() << std::endl;
-    ASSERT_TRUE(OmexMetaTestUtils::equals(&rdf, expected));
+    ASSERT_TRUE(RDF::equals(&rdf, expected));
 }
 TEST_F(EditorTests, TestaddPubmed) {
     RDF rdf;
@@ -798,7 +789,7 @@ TEST_F(EditorTests, TestaddPubmed) {
                            "    bqmodel:isDescribedBy pubmed:12345 .\n"
                            "";
     std::cout << rdf.toString() << std::endl;
-    ASSERT_TRUE(OmexMetaTestUtils::equals(&rdf, expected));
+    ASSERT_TRUE(RDF::equals(&rdf, expected));
 }
 TEST_F(EditorTests, TestaddParentModel) {
     RDF rdf;
@@ -815,7 +806,7 @@ TEST_F(EditorTests, TestaddParentModel) {
                            "    bqmodel:isDerivedFrom biomod:BIO12345 .\n"
                            "";
     std::cout << rdf.toString() << std::endl;
-    ASSERT_TRUE(OmexMetaTestUtils::equals(&rdf, expected));
+    ASSERT_TRUE(RDF::equals(&rdf, expected));
 }
 
 TEST_F(EditorTests, TestaddTaxon) {
@@ -832,5 +823,5 @@ TEST_F(EditorTests, TestaddTaxon) {
                            "myOMEX:NewModel.xml\n"
                            "    bqbiol:hasTaxon NCBI_Taxon:9696 .";
     std::cout << rdf.toString() << std::endl;
-    ASSERT_TRUE(OmexMetaTestUtils::equals(&rdf, expected));
+    ASSERT_TRUE(RDF::equals(&rdf, expected));
 }

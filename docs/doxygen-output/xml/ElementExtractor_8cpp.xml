@@ -26,9 +26,15 @@
       <node id="11">
         <label>stdarg.h</label>
       </node>
-      <node id="47">
+      <node id="46">
         <label>LibrdfNode.h</label>
         <link refid="LibrdfNode_8h_source"/>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
         <childnode refid="8" relation="include">
         </childnode>
         <childnode refid="9" relation="include">
@@ -36,12 +42,6 @@
         <childnode refid="31" relation="include">
         </childnode>
         <childnode refid="39" relation="include">
-        </childnode>
-        <childnode refid="42" relation="include">
-        </childnode>
-        <childnode refid="32" relation="include">
-        </childnode>
-        <childnode refid="43" relation="include">
         </childnode>
       </node>
       <node id="59">
@@ -73,7 +73,7 @@
         </childnode>
         <childnode refid="48" relation="include">
         </childnode>
-        <childnode refid="47" relation="include">
+        <childnode refid="46" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
@@ -226,11 +226,11 @@
       <node id="42">
         <label>LibrdfUri.h</label>
         <link refid="LibrdfUri_8h_source"/>
-        <childnode refid="31" relation="include">
+        <childnode refid="43" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
-        <childnode refid="43" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
       </node>
       <node id="43">
@@ -258,7 +258,7 @@
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
-        <childnode refid="46" relation="include">
+        <childnode refid="47" relation="include">
         </childnode>
         <childnode refid="56" relation="include">
         </childnode>
@@ -323,14 +323,14 @@
         </childnode>
         <childnode refid="32" relation="include">
         </childnode>
-        <childnode refid="47" relation="include">
+        <childnode refid="46" relation="include">
         </childnode>
         <childnode refid="42" relation="include">
         </childnode>
         <childnode refid="48" relation="include">
         </childnode>
       </node>
-      <node id="46">
+      <node id="47">
         <label>unordered_map</label>
       </node>
       <node id="1">
@@ -367,7 +367,7 @@
         </childnode>
         <childnode refid="52" relation="include">
         </childnode>
-        <childnode refid="47" relation="include">
+        <childnode refid="46" relation="include">
         </childnode>
         <childnode refid="53" relation="include">
         </childnode>
@@ -447,13 +447,13 @@
       <node id="45">
         <label>LibrdfStatement.h</label>
         <link refid="LibrdfStatement_8h_source"/>
-        <childnode refid="31" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
+        <childnode refid="46" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
-        <childnode refid="46" relation="include">
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
         </childnode>
         <childnode refid="47" relation="include">
         </childnode>

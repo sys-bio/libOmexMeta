@@ -15,25 +15,25 @@ Inheritance diagram for omexmeta\+::Physical\+Entity\+:\begin{figure}[H]
 \item 
 \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity_a9d29348a080c64f91ff6ec184fd45ece}{Physical\+Entity}} ()=delete
 \begin{DoxyCompactList}\small\item\em default constructor for \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classomexmeta_1_1PhysicalEntity_a0341918665af91cacdb4481d037c42d2}{Physical\+Entity}} (librdf\+\_\+model $\ast$model, std\+::string model\+\_\+uri, std\+::string local\+\_\+uri, \mbox{\hyperlink{classomexmeta_1_1PhysicalProperty}{Physical\+Property}} physical\+Property, \mbox{\hyperlink{classomexmeta_1_1Resource}{Resource}} \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity_a2498e9b0b11a00200e47332c4515b1f1}{is}}, Resources is\+\_\+part\+\_\+of)
+\mbox{\hyperlink{classomexmeta_1_1PhysicalEntity_aa30078a1fa71747a37700915919bbb72}{Physical\+Entity}} (librdf\+\_\+model $\ast$model, \mbox{\hyperlink{classomexmeta_1_1UriHandler}{Uri\+Handler}} \&uri\+Handler, \mbox{\hyperlink{classomexmeta_1_1PhysicalProperty}{Physical\+Property}} physical\+Property, std\+::string \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity_a2498e9b0b11a00200e47332c4515b1f1}{is}}, std\+::vector$<$ std\+::string $>$ is\+\_\+part\+\_\+of)
 \begin{DoxyCompactList}\small\item\em constructor for instantiating a \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} object \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity_a6fd4acd7255a01322c4a53d3e84df0ba}{free}} ()
 \begin{DoxyCompactList}\small\item\em free resources uses by \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} \end{DoxyCompactList}\item 
-O\+M\+E\+X\+M\+E\+T\+A\+\_\+\+D\+E\+P\+R\+E\+C\+A\+T\+ED \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity_a6bbbce71778e374de7d4e5e2e674fc2b}{Physical\+Entity}} (librdf\+\_\+model $\ast$model)
+O\+M\+E\+X\+M\+E\+T\+A\+\_\+\+D\+E\+P\+R\+E\+C\+A\+T\+ED \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity_a0f6af5e55a34be889110b0d03e5f1aec}{Physical\+Entity}} (librdf\+\_\+model $\ast$model)
 \begin{DoxyCompactList}\small\item\em constructor for \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} object. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classomexmeta_1_1PhysicalEntity_a5f583e60ad44bbb3dfcd11fdc6bc72cc}{Physical\+Entity}} (librdf\+\_\+model $\ast$model, const std\+::string \&model\+\_\+uri, const std\+::string \&local\+\_\+uri)
+\mbox{\hyperlink{classomexmeta_1_1PhysicalEntity_a5765425cc25593f824eddb100a6f5229}{Physical\+Entity}} (librdf\+\_\+model $\ast$model, \mbox{\hyperlink{classomexmeta_1_1UriHandler}{Uri\+Handler}} \&uri\+Handler)
 \begin{DoxyCompactList}\small\item\em constructor for \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} object. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classomexmeta_1_1Triples}{Triples}} \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity_a51f5df8b2e8a1d65e5aa0d10e53b77ba}{to\+Triples}} () override
 \begin{DoxyCompactList}\small\item\em convert \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} to a \mbox{\hyperlink{classomexmeta_1_1Triples}{Triples}} object, which can then be passed to a model via the \mbox{\hyperlink{classomexmeta_1_1Editor_a0740831baafe244374ad7a324d51a87e}{Editor\+::add\+Physical\+Entity}} method. \end{DoxyCompactList}\item 
-const \mbox{\hyperlink{classomexmeta_1_1Resource}{Resource}} \& \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity_ae4b3374e9ebb817eb63f9105b491e958}{get\+Identity\+Resource}} () const
+const std\+::string \& \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity_a82f43f8355a33284876b84278027cac5}{get\+Identity\+Resource}} () const
 \begin{DoxyCompactList}\small\item\em return the Identity\+Resource in use. I.\+e. the \char`\"{}what\char`\"{} portion of the \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} \end{DoxyCompactList}\item 
-const Resources \& \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity_a3e2fba07a4622db0180650d24bf263d9}{get\+Location\+Resources}} () const
+const std\+::vector$<$ std\+::string $>$ \& \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity_a5bca97a9f5195260bd44f72b6d29d87a}{get\+Location\+Resources}} () const
 \begin{DoxyCompactList}\small\item\em return a vector of resources representing the \char`\"{}where\char`\"{} part of the \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} \end{DoxyCompactList}\item 
 O\+M\+E\+X\+M\+E\+T\+A\+\_\+\+D\+E\+P\+R\+E\+C\+A\+T\+ED \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} \& \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity_a5d7168c527d2dbdacd612de37aa9a605}{set\+Physical\+Property}} (std\+::string subject\+\_\+metaid, const std\+::string \&physical\+Property)
 \begin{DoxyCompactList}\small\item\em sets the physical property for a \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} instance. \end{DoxyCompactList}\item 
 O\+M\+E\+X\+M\+E\+T\+A\+\_\+\+D\+E\+P\+R\+E\+C\+A\+T\+ED \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} \& \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity_a9bca0cb13601b6f9617df9f264968f1f}{set\+Physical\+Property}} (\mbox{\hyperlink{classomexmeta_1_1PhysicalProperty}{Physical\+Property}} physical\+Property)
 \begin{DoxyCompactList}\small\item\em sets the physical property for a \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} instance \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} \& \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity_a4d4c3ee9572b19e44e79a44f18f1ac31}{set\+Identity}} (const std\+::string \&resource)
+\mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} \& \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity_a9029e221fb2e4125284eba3935993d8f}{set\+Identity}} (std\+::string resource)
 \begin{DoxyCompactList}\small\item\em sets the identity portion of the \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} (the \char`\"{}\+What\char`\"{}). \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classomexmeta_1_1PhysicalEntity_a6f51117462876bda1eb743244437104a}\label{classomexmeta_1_1PhysicalEntity_a6f51117462876bda1eb743244437104a}} 
 \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} \& \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity_a6f51117462876bda1eb743244437104a}{identity}} (const std\+::string \&resource)
@@ -72,9 +72,6 @@ O\+M\+E\+X\+M\+E\+T\+A\+\_\+\+D\+E\+P\+R\+E\+C\+A\+T\+ED const std\+::string \& 
 \mbox{\Hypertarget{classomexmeta_1_1PhysicalEntity_a9d8224786f634b20b32d5cbc2cccaa12}\label{classomexmeta_1_1PhysicalEntity_a9d8224786f634b20b32d5cbc2cccaa12}} 
 \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} \& {\bfseries has\+Property} (const \mbox{\hyperlink{classomexmeta_1_1PhysicalProperty}{Physical\+Property}} \&property) override
 \item 
-\mbox{\Hypertarget{classomexmeta_1_1PhysicalEntity_acf7a5abb235d3be5d65a3d675364012e}\label{classomexmeta_1_1PhysicalEntity_acf7a5abb235d3be5d65a3d675364012e}} 
-\mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} \& {\bfseries has\+Property} (const std\+::string \&property\+\_\+about, e\+Uri\+Type about\+\_\+uri\+\_\+type, const std\+::string \&is\+\_\+version\+\_\+of, const std\+::string \&is\+\_\+property\+\_\+of, e\+Uri\+Type is\+\_\+property\+\_\+of\+\_\+uri\+\_\+type) override
-\item 
 \mbox{\Hypertarget{classomexmeta_1_1PhysicalEntity_a5ca4656de18ff0bc740ebd9f2c7f8883}\label{classomexmeta_1_1PhysicalEntity_a5ca4656de18ff0bc740ebd9f2c7f8883}} 
 \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} \& {\bfseries has\+Property} (const std\+::string \&is\+\_\+version\+\_\+of) override
 \item 
@@ -98,11 +95,11 @@ The \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} type of
 
 default constructor for \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} 
 
-deliberately deleted. If you try using the builder interface (chaining setter methods) from a default instantiated \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} you will get an error, because there will be no model assicated with \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}}. Instead, always instantiate a \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} from the \mbox{\hyperlink{classomexmeta_1_1Editor_a0740831baafe244374ad7a324d51a87e}{Editor\+::add\+Physical\+Entity()}} method. \mbox{\Hypertarget{classomexmeta_1_1PhysicalEntity_a0341918665af91cacdb4481d037c42d2}\label{classomexmeta_1_1PhysicalEntity_a0341918665af91cacdb4481d037c42d2}} 
+deliberately deleted. If you try using the builder interface (chaining setter methods) from a default instantiated \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} you will get an error, because there will be no model assicated with \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}}. Instead, always instantiate a \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} from the \mbox{\hyperlink{classomexmeta_1_1Editor_a0740831baafe244374ad7a324d51a87e}{Editor\+::add\+Physical\+Entity()}} method. \mbox{\Hypertarget{classomexmeta_1_1PhysicalEntity_aa30078a1fa71747a37700915919bbb72}\label{classomexmeta_1_1PhysicalEntity_aa30078a1fa71747a37700915919bbb72}} 
 \index{omexmeta::PhysicalEntity@{omexmeta::PhysicalEntity}!PhysicalEntity@{PhysicalEntity}}
 \index{PhysicalEntity@{PhysicalEntity}!omexmeta::PhysicalEntity@{omexmeta::PhysicalEntity}}
 \doxysubsubsection{\texorpdfstring{PhysicalEntity()}{PhysicalEntity()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
-{\footnotesize\ttfamily omexmeta\+::\+Physical\+Entity\+::\+Physical\+Entity (\begin{DoxyParamCaption}\item[{librdf\+\_\+model $\ast$}]{model,  }\item[{std\+::string}]{model\+\_\+uri,  }\item[{std\+::string}]{local\+\_\+uri,  }\item[{\mbox{\hyperlink{classomexmeta_1_1PhysicalProperty}{Physical\+Property}}}]{physical\+Property,  }\item[{\mbox{\hyperlink{classomexmeta_1_1Resource}{Resource}}}]{is,  }\item[{Resources}]{is\+\_\+part\+\_\+of }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily omexmeta\+::\+Physical\+Entity\+::\+Physical\+Entity (\begin{DoxyParamCaption}\item[{librdf\+\_\+model $\ast$}]{model,  }\item[{\mbox{\hyperlink{classomexmeta_1_1UriHandler}{Uri\+Handler}} \&}]{uri\+Handler,  }\item[{\mbox{\hyperlink{classomexmeta_1_1PhysicalProperty}{Physical\+Property}}}]{physical\+Property,  }\item[{std\+::string}]{is,  }\item[{std\+::vector$<$ std\+::string $>$}]{is\+\_\+part\+\_\+of }\end{DoxyParamCaption})}
 
 
 
@@ -123,14 +120,14 @@ constructor for instantiating a \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity
 \end{DoxyParams}
 Users should not need to use this constructor directly as it is embedded in the builder interface. The
 \begin{DoxyParams}{Parameters}
-{\em is\+\_\+part\+\_\+of} & parameter is actually a std\+::vector of \mbox{\hyperlink{classomexmeta_1_1Resource}{Resource}} objects. It can be as long as needed. \\
+{\em is\+\_\+part\+\_\+of} & parameter is actually a std\+::vector of Librdf\+Node objects. It can be as long as needed. \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{classomexmeta_1_1PhysicalEntity_a6bbbce71778e374de7d4e5e2e674fc2b}\label{classomexmeta_1_1PhysicalEntity_a6bbbce71778e374de7d4e5e2e674fc2b}} 
+\mbox{\Hypertarget{classomexmeta_1_1PhysicalEntity_a0f6af5e55a34be889110b0d03e5f1aec}\label{classomexmeta_1_1PhysicalEntity_a0f6af5e55a34be889110b0d03e5f1aec}} 
 \index{omexmeta::PhysicalEntity@{omexmeta::PhysicalEntity}!PhysicalEntity@{PhysicalEntity}}
 \index{PhysicalEntity@{PhysicalEntity}!omexmeta::PhysicalEntity@{omexmeta::PhysicalEntity}}
 \doxysubsubsection{\texorpdfstring{PhysicalEntity()}{PhysicalEntity()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
-{\footnotesize\ttfamily omexmeta\+::\+Physical\+Entity\+::\+Physical\+Entity (\begin{DoxyParamCaption}\item[{librdf\+\_\+model $\ast$}]{model }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+{\footnotesize\ttfamily O\+M\+E\+X\+M\+E\+T\+A\+\_\+\+D\+E\+P\+R\+E\+C\+A\+T\+ED omexmeta\+::\+Physical\+Entity\+::\+Physical\+Entity (\begin{DoxyParamCaption}\item[{librdf\+\_\+model $\ast$}]{model }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
 
 
 
@@ -141,11 +138,11 @@ constructor for \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Enti
 {\em model} & the librdf\+\_\+model object in use. Passed down from \mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} class during instantiation.\\
 \hline
 \end{DoxyParams}
-\mbox{\hyperlink{classThis}{This}} alternative constructor is used when users use the builder interface (which should actually be most of the time). The \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} is instantiated with only the model to allow for a better way of collecting necessary information from the user. \mbox{\Hypertarget{classomexmeta_1_1PhysicalEntity_a5f583e60ad44bbb3dfcd11fdc6bc72cc}\label{classomexmeta_1_1PhysicalEntity_a5f583e60ad44bbb3dfcd11fdc6bc72cc}} 
+\mbox{\hyperlink{classThis}{This}} alternative constructor is used when users use the builder interface (which should actually be most of the time). The \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} is instantiated with only the model to allow for a better way of collecting necessary information from the user. \mbox{\Hypertarget{classomexmeta_1_1PhysicalEntity_a5765425cc25593f824eddb100a6f5229}\label{classomexmeta_1_1PhysicalEntity_a5765425cc25593f824eddb100a6f5229}} 
 \index{omexmeta::PhysicalEntity@{omexmeta::PhysicalEntity}!PhysicalEntity@{PhysicalEntity}}
 \index{PhysicalEntity@{PhysicalEntity}!omexmeta::PhysicalEntity@{omexmeta::PhysicalEntity}}
 \doxysubsubsection{\texorpdfstring{PhysicalEntity()}{PhysicalEntity()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
-{\footnotesize\ttfamily omexmeta\+::\+Physical\+Entity\+::\+Physical\+Entity (\begin{DoxyParamCaption}\item[{librdf\+\_\+model $\ast$}]{model,  }\item[{const std\+::string \&}]{model\+\_\+uri,  }\item[{const std\+::string \&}]{local\+\_\+uri }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+{\footnotesize\ttfamily omexmeta\+::\+Physical\+Entity\+::\+Physical\+Entity (\begin{DoxyParamCaption}\item[{librdf\+\_\+model $\ast$}]{model,  }\item[{\mbox{\hyperlink{classomexmeta_1_1UriHandler}{Uri\+Handler}} \&}]{uri\+Handler }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
 
 
 
@@ -183,7 +180,7 @@ Set the about portion of the \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{P
 
 
 \begin{DoxyParams}{Parameters}
-{\em about} & The string to put in rdf\+:about  \mbox{\hyperlink{classThis}{This}} function will set the \mbox{\hyperlink{classomexmeta_1_1Subject}{Subject}} subject\+\_\+ property on the \mbox{\hyperlink{classomexmeta_1_1PhysicalProperty}{Physical\+Property}} associated with this \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} \\
+{\em about} & The string to put in rdf\+:about  \mbox{\hyperlink{classThis}{This}} function will set the Librdf\+Node subject\+\_\+ property on the \mbox{\hyperlink{classomexmeta_1_1PhysicalProperty}{Physical\+Property}} associated with this \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} \\
 \hline
 \end{DoxyParams}
 
@@ -208,9 +205,9 @@ add a location to the \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical
 \begin{DoxyReturn}{Returns}
 a reference to this Physical entity. Allows chaining together builder commands.
 \end{DoxyReturn}
-The input string gets converted to a \mbox{\hyperlink{classomexmeta_1_1Resource}{Resource}} automatically. An arbitrary number of locations are allowed. The location is added to the back of a vector containing the Resources. Left most elements of this vector represent larger physiological locations which get smaller as the index of this vector increases via use of the \char`\"{}is\+Part\+Of\char`\"{} predicate. For example, a cytosolic T\+G\+Fb molecule in a dermal fibroblast could have a locations vector first containing a reference to skin, then dermis, then fibroblast, then cytosol. \mbox{\hyperlink{classThis}{This}} ends up being cytosol$<$is\+Part\+Of$>$fibroblast$<$is\+Part\+Of$>$dermis$<$is\+Part\+Of$>$skin.
+The input string gets converted to a Librdf\+Node automatically. An arbitrary number of locations are allowed. The location is added to the back of a vector containing the Resources. Left most elements of this vector represent larger physiological locations which get smaller as the index of this vector increases via use of the \char`\"{}is\+Part\+Of\char`\"{} predicate. For example, a cytosolic T\+G\+Fb molecule in a dermal fibroblast could have a locations vector first containing a reference to skin, then dermis, then fibroblast, then cytosol. \mbox{\hyperlink{classThis}{This}} ends up being cytosol$<$is\+Part\+Of$>$fibroblast$<$is\+Part\+Of$>$dermis$<$is\+Part\+Of$>$skin.
 
-See \mbox{\hyperlink{classomexmeta_1_1Resource}{Resource}} documentation for more details of valid input strings.
+See Librdf\+Node documentation for more details of valid input strings.
 
 Deprecated in favour of \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity_aeba395f9474a7b6beb1b28a6095bb62d}{Physical\+Entity\+::is\+Part\+Of}} \mbox{\Hypertarget{classomexmeta_1_1PhysicalEntity_a6fd4acd7255a01322c4a53d3e84df0ba}\label{classomexmeta_1_1PhysicalEntity_a6fd4acd7255a01322c4a53d3e84df0ba}} 
 \index{omexmeta::PhysicalEntity@{omexmeta::PhysicalEntity}!free@{free}}
@@ -222,31 +219,31 @@ Deprecated in favour of \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity_aeba395
 
 free resources uses by \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} 
 
-\mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} objects are owned either by the caller or by a \mbox{\hyperlink{classomexmeta_1_1Triples}{Triples}} object, depending on whether you have \char`\"{}given\char`\"{} the \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} to a \mbox{\hyperlink{classomexmeta_1_1Triples}{Triples}} object by calling \char`\"{}str\char`\"{} or \char`\"{}to\+Triples\char`\"{}. \mbox{\Hypertarget{classomexmeta_1_1PhysicalEntity_ae4b3374e9ebb817eb63f9105b491e958}\label{classomexmeta_1_1PhysicalEntity_ae4b3374e9ebb817eb63f9105b491e958}} 
+\mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} objects are owned either by the caller or by a \mbox{\hyperlink{classomexmeta_1_1Triples}{Triples}} object, depending on whether you have \char`\"{}given\char`\"{} the \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} to a \mbox{\hyperlink{classomexmeta_1_1Triples}{Triples}} object by calling \char`\"{}str\char`\"{} or \char`\"{}to\+Triples\char`\"{}. \mbox{\Hypertarget{classomexmeta_1_1PhysicalEntity_a82f43f8355a33284876b84278027cac5}\label{classomexmeta_1_1PhysicalEntity_a82f43f8355a33284876b84278027cac5}} 
 \index{omexmeta::PhysicalEntity@{omexmeta::PhysicalEntity}!getIdentityResource@{getIdentityResource}}
 \index{getIdentityResource@{getIdentityResource}!omexmeta::PhysicalEntity@{omexmeta::PhysicalEntity}}
 \doxysubsubsection{\texorpdfstring{getIdentityResource()}{getIdentityResource()}}
-{\footnotesize\ttfamily const \mbox{\hyperlink{classomexmeta_1_1Resource}{Resource}} \& omexmeta\+::\+Physical\+Entity\+::get\+Identity\+Resource (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+{\footnotesize\ttfamily const std\+::string \& omexmeta\+::\+Physical\+Entity\+::get\+Identity\+Resource (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
 
 
 return the Identity\+Resource in use. I.\+e. the \char`\"{}what\char`\"{} portion of the \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} 
 
 \begin{DoxyReturn}{Returns}
-the identity \mbox{\hyperlink{classomexmeta_1_1Resource}{Resource}} 
+the identity Librdf\+Node 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classomexmeta_1_1PhysicalEntity_a3e2fba07a4622db0180650d24bf263d9}\label{classomexmeta_1_1PhysicalEntity_a3e2fba07a4622db0180650d24bf263d9}} 
+\mbox{\Hypertarget{classomexmeta_1_1PhysicalEntity_a5bca97a9f5195260bd44f72b6d29d87a}\label{classomexmeta_1_1PhysicalEntity_a5bca97a9f5195260bd44f72b6d29d87a}} 
 \index{omexmeta::PhysicalEntity@{omexmeta::PhysicalEntity}!getLocationResources@{getLocationResources}}
 \index{getLocationResources@{getLocationResources}!omexmeta::PhysicalEntity@{omexmeta::PhysicalEntity}}
 \doxysubsubsection{\texorpdfstring{getLocationResources()}{getLocationResources()}}
-{\footnotesize\ttfamily const Resources \& omexmeta\+::\+Physical\+Entity\+::get\+Location\+Resources (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+{\footnotesize\ttfamily const std\+::vector$<$ std\+::string $>$ \& omexmeta\+::\+Physical\+Entity\+::get\+Location\+Resources (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
 
 
 return a vector of resources representing the \char`\"{}where\char`\"{} part of the \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} 
 
 \begin{DoxyReturn}{Returns}
-vector of \mbox{\hyperlink{classomexmeta_1_1Resource}{Resource}} objects representing anatomical location of physical entity 
+vector of Librdf\+Node objects representing anatomical location of physical entity 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classomexmeta_1_1PhysicalEntity_a33559c90dbe3e3be1b71898ab9a5bfa4}\label{classomexmeta_1_1PhysicalEntity_a33559c90dbe3e3be1b71898ab9a5bfa4}} 
 \index{omexmeta::PhysicalEntity@{omexmeta::PhysicalEntity}!getNumLocations@{getNumLocations}}
@@ -288,7 +285,7 @@ Set the {\ttfamily is} portion of the \mbox{\hyperlink{classomexmeta_1_1Physical
 
 
 \begin{DoxyParams}{Parameters}
-{\em is} & the string to be used for is. \mbox{\hyperlink{classThis}{This}} should be of the form O\+PB\+:O\+P\+B\+\_\+00134  \mbox{\hyperlink{classThis}{This}} function calls the {\ttfamily \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity_a4d4c3ee9572b19e44e79a44f18f1ac31}{Physical\+Entity\+::set\+Identity}}} method and can be used as an alternative. For developers, consider which (or both? )sets of methods to keep, {\ttfamily is} or {\ttfamily set\+Identity} \\
+{\em is} & the string to be used for is. \mbox{\hyperlink{classThis}{This}} should be of the form O\+PB\+:O\+P\+B\+\_\+00134  \mbox{\hyperlink{classThis}{This}} function calls the {\ttfamily \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity_a9029e221fb2e4125284eba3935993d8f}{Physical\+Entity\+::set\+Identity}}} method and can be used as an alternative. For developers, consider which (or both? )sets of methods to keep, {\ttfamily is} or {\ttfamily set\+Identity} \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{classomexmeta_1_1PhysicalEntity_aeba395f9474a7b6beb1b28a6095bb62d}\label{classomexmeta_1_1PhysicalEntity_aeba395f9474a7b6beb1b28a6095bb62d}} 
@@ -318,14 +315,14 @@ Set the is\+Version\+Of portion of the \mbox{\hyperlink{classomexmeta_1_1Physica
 
 
 \begin{DoxyParams}{Parameters}
-{\em property} & an opb term  Should be of the form O\+PB\+:O\+P\+B\+\_\+12345 or O\+P\+B/\+O\+P\+B\+\_\+12345. \mbox{\hyperlink{classThis}{This}} function will set the \mbox{\hyperlink{classomexmeta_1_1Resource}{Resource}} resource\+\_\+ property on the \mbox{\hyperlink{classomexmeta_1_1PhysicalProperty}{Physical\+Property}} associated with this \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}}. \\
+{\em property} & an opb term  Should be of the form O\+PB\+:O\+P\+B\+\_\+12345 or O\+P\+B/\+O\+P\+B\+\_\+12345. \mbox{\hyperlink{classThis}{This}} function will set the Librdf\+Node resource\+\_\+ property on the \mbox{\hyperlink{classomexmeta_1_1PhysicalProperty}{Physical\+Property}} associated with this \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}}. \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{classomexmeta_1_1PhysicalEntity_a4d4c3ee9572b19e44e79a44f18f1ac31}\label{classomexmeta_1_1PhysicalEntity_a4d4c3ee9572b19e44e79a44f18f1ac31}} 
+\mbox{\Hypertarget{classomexmeta_1_1PhysicalEntity_a9029e221fb2e4125284eba3935993d8f}\label{classomexmeta_1_1PhysicalEntity_a9029e221fb2e4125284eba3935993d8f}} 
 \index{omexmeta::PhysicalEntity@{omexmeta::PhysicalEntity}!setIdentity@{setIdentity}}
 \index{setIdentity@{setIdentity}!omexmeta::PhysicalEntity@{omexmeta::PhysicalEntity}}
 \doxysubsubsection{\texorpdfstring{setIdentity()}{setIdentity()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} \& omexmeta\+::\+Physical\+Entity\+::set\+Identity (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{resource }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} \& omexmeta\+::\+Physical\+Entity\+::set\+Identity (\begin{DoxyParamCaption}\item[{std\+::string}]{resource }\end{DoxyParamCaption})}
 
 
 
@@ -339,9 +336,9 @@ sets the identity portion of the \mbox{\hyperlink{classomexmeta_1_1PhysicalEntit
 \begin{DoxyReturn}{Returns}
 a reference to this Physical entity. Allows chaining together builder commands.
 \end{DoxyReturn}
-The input string gets converted to a \mbox{\hyperlink{classomexmeta_1_1Resource}{Resource}} automatically.
+The input string gets converted to a Librdf\+Node automatically.
 
-See \mbox{\hyperlink{classomexmeta_1_1Resource}{Resource}} documentation for more details of valid input strings. \mbox{\Hypertarget{classomexmeta_1_1PhysicalEntity_a9bca0cb13601b6f9617df9f264968f1f}\label{classomexmeta_1_1PhysicalEntity_a9bca0cb13601b6f9617df9f264968f1f}} 
+See Librdf\+Node documentation for more details of valid input strings. \mbox{\Hypertarget{classomexmeta_1_1PhysicalEntity_a9bca0cb13601b6f9617df9f264968f1f}\label{classomexmeta_1_1PhysicalEntity_a9bca0cb13601b6f9617df9f264968f1f}} 
 \index{omexmeta::PhysicalEntity@{omexmeta::PhysicalEntity}!setPhysicalProperty@{setPhysicalProperty}}
 \index{setPhysicalProperty@{setPhysicalProperty}!omexmeta::PhysicalEntity@{omexmeta::PhysicalEntity}}
 \doxysubsubsection{\texorpdfstring{setPhysicalProperty()}{setPhysicalProperty()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}

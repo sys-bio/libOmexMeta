@@ -87,8 +87,11 @@ class TestRDF(unittest.TestCase):
             if os.path.isfile(self.sbml_file):
                 os.remove(self.sbml_file)
 
-            if os.path.isfile(self.sqlite_fname):
-                os.remove(self.sqlite_fname)
+            try:
+                if os.path.isfile(self.sqlite_fname):
+                    os.remove(self.sqlite_fname)
+            except PermissionError:
+                pass
 
     def test_crete_new_rdf_obj(self):
         rdf = RDF()
@@ -153,7 +156,7 @@ class TestRDF(unittest.TestCase):
         rdf = RDF()
         rdf.set_model_uri("my-awesome-model.xml")
         actual = rdf.get_model_uri()
-        expected = "http://omex-library.org/NewOmex.omex/my-awesome-model.xml#"
+        expected = "http://omex-library.org/NewOmex.omex/my-awesome-model.xml"
         self.assertEqual(expected, actual)
 
     def test_get_repository_uri(self):
@@ -224,28 +227,26 @@ class EditorTests(unittest.TestCase):
 @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
 @prefix semsim: <http://bime.uw.edu/semsim/> .
 @prefix OMEXlib: <http://omex-library.org/> .
-@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
 local:MediatorParticipant0000
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#species0001> .
 
-local:Process0000
-    semsim:hasSinkParticipant local:SinkParticipant0000 ;
-    semsim:hasSourceParticipant local:SourceParticipant0000 .
+local:ProcessProperty0000
+    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#reaction0000> ;
+    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .
 
-local:Process0001
-    semsim:hasSinkParticipant local:SinkParticipant0001 ;
-    semsim:hasSourceParticipant local:SourceParticipant0001 .
+local:ProcessProperty0001
+    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#reaction0001> ;
+    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .
 
-local:Process0002
-    semsim:hasMediatorParticipant local:MediatorParticipant0000 ;
-    semsim:hasSinkParticipant local:SinkParticipant0002 ;
-    semsim:hasSourceParticipant local:SourceParticipant0002 .
+local:ProcessProperty0002
+    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#reaction0002> ;
+    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .
 
-local:Process0003
-    semsim:hasSinkParticipant local:SinkParticipant0003 ;
-    semsim:hasSourceParticipant local:SourceParticipant0003 .
+local:ProcessProperty0003
+    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#reaction0003> ;
+    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .
 
 local:SinkParticipant0000
     semsim:hasMultiplier "1"^^rdf:double ;
@@ -280,20 +281,21 @@ local:SourceParticipant0003
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#species0003> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#reaction0000>
-    bqbiol:isPropertyOf local:Process0000 ;
-    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .
+    semsim:hasSinkParticipant local:SinkParticipant0000 ;
+    semsim:hasSourceParticipant local:SourceParticipant0000 .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#reaction0001>
-    bqbiol:isPropertyOf local:Process0001 ;
-    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .
+    semsim:hasSinkParticipant local:SinkParticipant0001 ;
+    semsim:hasSourceParticipant local:SourceParticipant0001 .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#reaction0002>
-    bqbiol:isPropertyOf local:Process0002 ;
-    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .
+    semsim:hasMediatorParticipant local:MediatorParticipant0000 ;
+    semsim:hasSinkParticipant local:SinkParticipant0002 ;
+    semsim:hasSourceParticipant local:SourceParticipant0002 .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#reaction0003>
-    bqbiol:isPropertyOf local:Process0003 ;
-    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .
+    semsim:hasSinkParticipant local:SinkParticipant0003 ;
+    semsim:hasSourceParticipant local:SourceParticipant0003 .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#species0000>
     bqbiol:is <https://identifiers.org/uniprot:PD88776> ;
@@ -306,8 +308,7 @@ local:SourceParticipant0003
     bqbiol:isPartOf <http://omex-library.org/NewOmex.omex/NewModel.xml#cytosol> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#species0003>
-    bqbiol:isPartOf <http://omex-library.org/NewOmex.omex/NewModel.xml#cytosol> .
-"""
+    bqbiol:isPartOf <http://omex-library.org/NewOmex.omex/NewModel.xml#cytosol> ."""
         self.assertTrue(RDF.equals_rdf_vs_string(self.rdf, expected))
 
     def test_context_manager_single_annotation_without_sbml_extraction(self):
@@ -383,8 +384,8 @@ local:SourceParticipant0003
     dc:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000>
-    foaf:mbox "annotations@uw.edu"^^rdf:string ;
-    foaf:name "Ciaran Welsh"^^rdf:string ;
+    foaf:mbox "annotations@uw.edu" ;
+    foaf:name "Ciaran Welsh" ;
     dc:creator <https://identifiers.org/orcid/1234-1234-1234-1234> .
 
 """
@@ -1025,7 +1026,6 @@ class AnnotateAModelTest(unittest.TestCase):
 @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
 @prefix semsim: <http://bime.uw.edu/semsim/> .
 @prefix OMEXlib: <http://omex-library.org/> .
-@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
 local:EntityProperty0000
@@ -1036,19 +1036,19 @@ local:EntityProperty0001
     bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#species0001> ;
     bqbiol:isVersionOf <https://identifiers.org/OPB:OPB_00340> .
 
-local:Process0000
-    semsim:hasSinkParticipant local:SinkParticipant0000 ;
-    semsim:hasSourceParticipant local:SourceParticipant0000 .
-
-local:Process0001
-    semsim:hasSinkParticipant local:SinkParticipant0001 ;
-    semsim:hasSourceParticipant local:SourceParticipant0001 .
-
 local:ProcessProperty0000
+    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#reaction0000> ;
+    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .
+
+local:ProcessProperty0001
+    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#reaction0001> ;
+    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .
+
+local:ProcessProperty0002
     bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#reaction0000> ;
     bqbiol:isVersionOf <https://identifiers.org/OPB:OPB_00237> .
 
-local:ProcessProperty0001
+local:ProcessProperty0003
     bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#reaction0001> ;
     bqbiol:isVersionOf <https://identifiers.org/OPB:OPB_00237> .
 
@@ -1085,19 +1085,15 @@ local:SourceParticipant0003
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#species0001> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#SmadNuclearTransport>
-    <https://unknownpredicate.com/changeme#author> "Ciaran Welsh"^^rdf:string .
+    <https://unknownpredicate.com/changeme#author> "Ciaran Welsh" .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#reaction0000>
-    semsim:hasSinkParticipant local:SinkParticipant0002 ;
-    semsim:hasSourceParticipant local:SourceParticipant0002 ;
-    bqbiol:isPropertyOf local:Process0000 ;
-    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .
+    semsim:hasSinkParticipant local:SinkParticipant0000, local:SinkParticipant0002 ;
+    semsim:hasSourceParticipant local:SourceParticipant0000, local:SourceParticipant0002 .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#reaction0001>
-    semsim:hasSinkParticipant local:SinkParticipant0003 ;
-    semsim:hasSourceParticipant local:SourceParticipant0003 ;
-    bqbiol:isPropertyOf local:Process0001 ;
-    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .
+    semsim:hasSinkParticipant local:SinkParticipant0001, local:SinkParticipant0003 ;
+    semsim:hasSourceParticipant local:SourceParticipant0001, local:SourceParticipant0003 .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#species0000>
     bqbiol:is <https://identifiers.org/uniprot:P84022> ;
@@ -1106,7 +1102,6 @@ local:SourceParticipant0003
 <http://omex-library.org/NewOmex.omex/NewModel.xml#species0001>
     bqbiol:is <https://identifiers.org/uniprot:P84022> ;
     bqbiol:isPartOf <http://omex-library.org/NewOmex.omex/NewModel.xml#nucleus>, <https://identifiers.org/obo/FMA_63840>, <https://identifiers.org/obo/FMA_63877>, <https://identifiers.org/obo/FMA_7163> .
-
 """
 
         self.assertTrue(RDF.equals_rdf_vs_string(rdf, expected))
@@ -1123,16 +1118,15 @@ local:SourceParticipant0003
 @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
 @prefix semsim: <http://bime.uw.edu/semsim/> .
 @prefix OMEXlib: <http://omex-library.org/> .
-@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
-local:Process0000
-    semsim:hasSinkParticipant local:SinkParticipant0000 ;
-    semsim:hasSourceParticipant local:SourceParticipant0000 .
+local:ProcessProperty0000
+    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#reaction0000> ;
+    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .
 
-local:Process0001
-    semsim:hasSinkParticipant local:SinkParticipant0001 ;
-    semsim:hasSourceParticipant local:SourceParticipant0001 .
+local:ProcessProperty0001
+    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#reaction0001> ;
+    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .
 
 local:SinkParticipant0000
     semsim:hasMultiplier "1"^^rdf:double ;
@@ -1151,15 +1145,15 @@ local:SourceParticipant0001
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#species0000> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#SmadNuclearTransport>
-    <https://unknownpredicate.com/changeme#author> "Ciaran Welsh"^^rdf:string .
+    <https://unknownpredicate.com/changeme#author> "Ciaran Welsh" .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#reaction0000>
-    bqbiol:isPropertyOf local:Process0000 ;
-    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .
+    semsim:hasSinkParticipant local:SinkParticipant0000 ;
+    semsim:hasSourceParticipant local:SourceParticipant0000 .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#reaction0001>
-    bqbiol:isPropertyOf local:Process0001 ;
-    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .
+    semsim:hasSinkParticipant local:SinkParticipant0001 ;
+    semsim:hasSourceParticipant local:SourceParticipant0001 .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#species0000>
     bqbiol:isPartOf <http://omex-library.org/NewOmex.omex/NewModel.xml#cytosol> .
@@ -1183,7 +1177,7 @@ local:SourceParticipant0001
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#SmadNuclearTransport>
-    <https://unknownpredicate.com/changeme#author> "Ciaran Welsh"^^rdf:string .
+    <https://unknownpredicate.com/changeme#author> "Ciaran Welsh" .
 
 """
         self.assertTrue(RDF.equals_rdf_vs_string(rdf, expected))
@@ -1210,8 +1204,8 @@ local:SourceParticipant0001
 <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000>
     foaf:accountName <https://orcid.org/1234-1234-1234-1234> ;
     foaf:accountServiceHomepage <https://github.com/sys-bio/libomexmeta> ;
-    foaf:mbox "cwelsh2@uw.edu"^^rdf:string ;
-    foaf:name "Ciaran"^^rdf:string ;
+    foaf:mbox "cwelsh2@uw.edu" ;
+    foaf:name "Ciaran" ;
     dc:creator <https://identifiers.org/orcid/1234-1234-1234-1234> .
 
 """
@@ -1239,8 +1233,8 @@ local:SourceParticipant0001
 <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000>
     foaf:accountName <https://orcid.org/1234-1234-1234-1234> ;
     foaf:accountServiceHomepage <https://github.com/sys-bio/libomexmeta> ;
-    foaf:mbox "cwelsh2@uw.edu"^^rdf:string ;
-    foaf:name "Ciaran"^^rdf:string ;
+    foaf:mbox "cwelsh2@uw.edu" ;
+    foaf:name "Ciaran" ;
     dc:creator <https://identifiers.org/orcid/1234-1234-1234-1234> .
 """
         self.assertTrue(RDF.equals_rdf_vs_string(rdf, expected))

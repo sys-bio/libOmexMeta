@@ -1790,6 +1790,13 @@ int raptor_uri_get_usage_count(raptor_uri *uri){
     return uri->usage;
 }
 
+/**
+ * Add 1 to usage of uri
+ */
+void raptor_uri_increment_usage(raptor_uri *uri){
+    ++uri->usage;
+}
+
 
 
 /**

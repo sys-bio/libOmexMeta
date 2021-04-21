@@ -2,6 +2,11 @@
 \label{classomexmeta_1_1Triples}\index{omexmeta::Triples@{omexmeta::Triples}}
 
 
+A \mbox{\hyperlink{classomexmeta_1_1Triples}{Triples}} object is a collection of \mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}} objects.  
+
+
+
+
 {\ttfamily \#include $<$Triples.\+h$>$}
 
 \doxysubsection*{Public Member Functions}
@@ -20,21 +25,21 @@ bool {\bfseries operator==} (const \mbox{\hyperlink{classomexmeta_1_1Triples}{Tr
 \mbox{\Hypertarget{classomexmeta_1_1Triples_a8c9df0d37572179d682127cb7368dd82}\label{classomexmeta_1_1Triples_a8c9df0d37572179d682127cb7368dd82}} 
 bool {\bfseries operator!=} (const \mbox{\hyperlink{classomexmeta_1_1Triples}{Triples}} \&rhs) const
 \item 
-void \mbox{\hyperlink{classomexmeta_1_1Triples_a88dcf4b950f105acb621bd07f07a38a0}{move\+\_\+back}} (\mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}} \&triple)
+void \mbox{\hyperlink{classomexmeta_1_1Triples_a64e7f250d3199421c4306e9e8fbbc6e5}{move\+Back}} (\mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}} \&triple)
 \begin{DoxyCompactList}\small\item\em move a \mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}} to the back of the \mbox{\hyperlink{classomexmeta_1_1Triples}{Triples}} object. Analogous to push back but with move semantics. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classomexmeta_1_1Triples_a9882f6f582e8d2e34e09d2f7076a0e2e}{emplace\+\_\+back}} (\mbox{\hyperlink{classomexmeta_1_1Subject}{Subject}} subject, const Predicate\+Ptr \&predicate\+Ptr, const \mbox{\hyperlink{classomexmeta_1_1Resource}{Resource}} \&resource)
+void \mbox{\hyperlink{classomexmeta_1_1Triples_a106779ab1767a271708dba8d93165205}{emplace\+\_\+back}} (\mbox{\hyperlink{classomexmeta_1_1UriHandler}{Uri\+Handler}} \&uri\+Handler, \mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} subject, const Predicate\+Ptr \&predicate\+Ptr, const \mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} \&resource)
 \begin{DoxyCompactList}\small\item\em construct a \mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}} object from the necessary components and move it to the back of \mbox{\hyperlink{classomexmeta_1_1Triples}{Triples}} \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classomexmeta_1_1Triples_acab4513889a9a42c77b3044aac941728}{emplace\+\_\+back}} (\mbox{\hyperlink{classomexmeta_1_1Subject}{Subject}} subject, const \mbox{\hyperlink{classomexmeta_1_1Predicate}{Predicate}} \&predicate, const \mbox{\hyperlink{classomexmeta_1_1Resource}{Resource}} \&resource)
+void \mbox{\hyperlink{classomexmeta_1_1Triples_a5ba6faa259c9e07b06fa796ddcba0163}{emplace\+\_\+back}} (\mbox{\hyperlink{classomexmeta_1_1UriHandler}{Uri\+Handler}} \&uri\+Handler, \mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} subject, const \mbox{\hyperlink{classomexmeta_1_1Predicate}{Predicate}} \&predicate, const \mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} \&resource)
 \begin{DoxyCompactList}\small\item\em construct a \mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}} object from the necessary components and move it to the back of \mbox{\hyperlink{classomexmeta_1_1Triples}{Triples}} \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classomexmeta_1_1Triples_a862d672c0ac9d877261947cf5a7061db}{emplace\+\_\+back}} (\mbox{\hyperlink{classomexmeta_1_1Subject}{Subject}} subject, \mbox{\hyperlink{classomexmeta_1_1BiomodelsBiologyQualifier}{Biomodels\+Biology\+Qualifier}} predicate, const \mbox{\hyperlink{classomexmeta_1_1Resource}{Resource}} \&resource)
+void \mbox{\hyperlink{classomexmeta_1_1Triples_aaaa2909bb574deb4e5e129968d545ece}{emplace\+\_\+back}} (\mbox{\hyperlink{classomexmeta_1_1UriHandler}{Uri\+Handler}} \&uri\+Handler, \mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} subject, \mbox{\hyperlink{classomexmeta_1_1BiomodelsBiologyQualifier}{Biomodels\+Biology\+Qualifier}} predicate, const \mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} \&resource)
 \begin{DoxyCompactList}\small\item\em construct a \mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}} object from the necessary components and move it to the back of \mbox{\hyperlink{classomexmeta_1_1Triples}{Triples}} \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classomexmeta_1_1Triples_a87cdc3aacef07c2aebbfe06342bd70f5}{emplace\+\_\+back}} (\mbox{\hyperlink{classomexmeta_1_1Subject}{Subject}} subject, \mbox{\hyperlink{classomexmeta_1_1BiomodelsModelQualifier}{Biomodels\+Model\+Qualifier}} predicate, const \mbox{\hyperlink{classomexmeta_1_1Resource}{Resource}} \&resource)
+void \mbox{\hyperlink{classomexmeta_1_1Triples_a0b47dcbc4a0c608c7dcdb14f9db0706d}{emplace\+\_\+back}} (\mbox{\hyperlink{classomexmeta_1_1UriHandler}{Uri\+Handler}} \&uri\+Handler, \mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} subject, \mbox{\hyperlink{classomexmeta_1_1BiomodelsModelQualifier}{Biomodels\+Model\+Qualifier}} predicate, const \mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} \&resource)
 \begin{DoxyCompactList}\small\item\em construct a \mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}} object from the necessary components and move it to the back of \mbox{\hyperlink{classomexmeta_1_1Triples}{Triples}} \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classomexmeta_1_1Triples_a9f3f3152592f99ac95f65e0e7ce3b450}{emplace\+\_\+back}} (\mbox{\hyperlink{classomexmeta_1_1Subject}{Subject}} subject, \mbox{\hyperlink{classomexmeta_1_1DCTerm}{D\+C\+Term}} predicate, const \mbox{\hyperlink{classomexmeta_1_1Resource}{Resource}} \&resource)
+void \mbox{\hyperlink{classomexmeta_1_1Triples_a4821b664c8a28da93a979008f8fc7438}{emplace\+\_\+back}} (\mbox{\hyperlink{classomexmeta_1_1UriHandler}{Uri\+Handler}} \&uri\+Handler, \mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} subject, \mbox{\hyperlink{classomexmeta_1_1DCTerm}{D\+C\+Term}} predicate, const \mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} \&resource)
 \begin{DoxyCompactList}\small\item\em construct a \mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}} object from the necessary components and move it to the back of \mbox{\hyperlink{classomexmeta_1_1Triples}{Triples}} \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classomexmeta_1_1Triples_a55e7ed1c3212ae19d2189a386b81422e}{emplace\+\_\+back}} (\mbox{\hyperlink{classomexmeta_1_1Subject}{Subject}} subject, \mbox{\hyperlink{classomexmeta_1_1SemSim}{Sem\+Sim}} predicate, const \mbox{\hyperlink{classomexmeta_1_1Resource}{Resource}} \&resource)
+void \mbox{\hyperlink{classomexmeta_1_1Triples_a2b12527ab68f7d9a8a250dbb952e741e}{emplace\+\_\+back}} (\mbox{\hyperlink{classomexmeta_1_1UriHandler}{Uri\+Handler}} \&uri\+Handler, \mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} subject, \mbox{\hyperlink{classomexmeta_1_1SemSim}{Sem\+Sim}} predicate, const \mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} \&resource)
 \begin{DoxyCompactList}\small\item\em construct a \mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}} object from the necessary components and move it to the back of \mbox{\hyperlink{classomexmeta_1_1Triples}{Triples}} \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classomexmeta_1_1Triples_a3a8c150cff4d1e78aa360d62d3d6604e}{emplace\+\_\+back}} (\mbox{\hyperlink{structraptor__term}{librdf\+\_\+node}} $\ast$subject, \mbox{\hyperlink{structraptor__term}{librdf\+\_\+node}} $\ast$predicate, \mbox{\hyperlink{structraptor__term}{librdf\+\_\+node}} $\ast$resource)
+void \mbox{\hyperlink{classomexmeta_1_1Triples_a26e4fdcab8b0f3473e098846441adfe3}{emplace\+\_\+back}} (\mbox{\hyperlink{classomexmeta_1_1UriHandler}{Uri\+Handler}} \&uri\+Handler, \mbox{\hyperlink{structraptor__term}{librdf\+\_\+node}} $\ast$subject, \mbox{\hyperlink{structraptor__term}{librdf\+\_\+node}} $\ast$predicate, \mbox{\hyperlink{structraptor__term}{librdf\+\_\+node}} $\ast$resource)
 \begin{DoxyCompactList}\small\item\em construct a \mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}} object from the necessary components and move it to the back of \mbox{\hyperlink{classomexmeta_1_1Triples}{Triples}} \end{DoxyCompactList}\item 
 std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{classomexmeta_1_1Triples_a5234882414a2aaaca603eacd805df3d6}{get\+Subjects\+Str}} ()
 \begin{DoxyCompactList}\small\item\em get all subjects as strings \end{DoxyCompactList}\item 
@@ -55,20 +60,21 @@ void {\bfseries free\+Triples} ()
 \item 
 \mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}} \mbox{\hyperlink{classomexmeta_1_1Triples_a5dad8f2cde0a3f6c0ce341338f80b0cd}{pop}} ()
 \begin{DoxyCompactList}\small\item\em moves one triple of the end of triples \end{DoxyCompactList}\item 
-const \mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}} \& \mbox{\hyperlink{classomexmeta_1_1Triples_a43d540423a436986d9f72d7cf0f02d72}{operator\mbox{[}$\,$\mbox{]}}} (int index) const
+\mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}} \& \mbox{\hyperlink{classomexmeta_1_1Triples_a02d9829c76b2f7e72263b55c7cc9b640}{operator\mbox{[}$\,$\mbox{]}}} (int index)
 \begin{DoxyCompactList}\small\item\em getter operator for \mbox{\hyperlink{classomexmeta_1_1Triples}{Triples}} object \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classomexmeta_1_1Triples_a43d540423a436986d9f72d7cf0f02d72}\label{classomexmeta_1_1Triples_a43d540423a436986d9f72d7cf0f02d72}} 
+const \mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}} \& {\bfseries operator\mbox{[}$\,$\mbox{]}} (int index) const
+\item 
 bool \mbox{\hyperlink{classomexmeta_1_1Triples_a48ab93d0e38e3cfcb4eac9264b047f0a}{is\+Empty}} ()
 \begin{DoxyCompactList}\small\item\em indicates whether \mbox{\hyperlink{classomexmeta_1_1Triples}{Triples}} object is empty. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}} \mbox{\hyperlink{classomexmeta_1_1Triples_abb333b83c7a8ed1f210816ef88c8d3a0}{pop\+\_\+front}} ()
-\begin{DoxyCompactList}\small\item\em move the from \mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}} object out of the \mbox{\hyperlink{classomexmeta_1_1Triples}{Triples}} object \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{classomexmeta_1_1Triples_a1f7ba9d5cd575ba5c63ed9dbbd1f279c}{capacity}} ()
-\begin{DoxyCompactList}\small\item\em forwarded on to std\+::vector\+::capacity \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em move the from \mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}} object out of the \mbox{\hyperlink{classomexmeta_1_1Triples}{Triples}} object \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-\begin{DoxyVerb}@brief A Triples object is a collection of Triple objects.
-\end{DoxyVerb}
-  the implementation of \mbox{\hyperlink{classomexmeta_1_1Triples}{Triples}} is hampered by the inability to clone \mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}} objects. Instead triples must use move semantics to get \mbox{\hyperlink{classomexmeta_1_1Triples}{Triples}} in or out of a \mbox{\hyperlink{classomexmeta_1_1Triples}{Triples}} object. Under the hood, the \mbox{\hyperlink{classomexmeta_1_1Triples}{Triples}} object is just a std\+::vector$<$\+Triple$>$. 
+A \mbox{\hyperlink{classomexmeta_1_1Triples}{Triples}} object is a collection of \mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}} objects. 
+
+the implementation of \mbox{\hyperlink{classomexmeta_1_1Triples}{Triples}} is hampered by the inability to clone \mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}} objects. Instead triples must use move semantics to get \mbox{\hyperlink{classomexmeta_1_1Triples}{Triples}} in or out of a \mbox{\hyperlink{classomexmeta_1_1Triples}{Triples}} object. Under the hood, the \mbox{\hyperlink{classomexmeta_1_1Triples}{Triples}} object is just a std\+::vector$<$\+Triple$>$. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{classomexmeta_1_1Triples_a32ea34c1fd3bfe9887c2221377392efe}\label{classomexmeta_1_1Triples_a32ea34c1fd3bfe9887c2221377392efe}} 
@@ -122,76 +128,79 @@ this method is simply forwarded on to std\+::vector\+::begin() \mbox{\Hypertarge
 
 
 
-forwarded on to std\+::vector\+::capacity 
+move the from \mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}} object out of the \mbox{\hyperlink{classomexmeta_1_1Triples}{Triples}} object 
 
 \begin{DoxyReturn}{Returns}
+a \mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}} from position 0 in \mbox{\hyperlink{classomexmeta_1_1Triples}{Triples}}  caller is responsible for \mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}} resources
+\end{DoxyReturn}
+forwarded on to std\+::vector\+::capacity \begin{DoxyReturn}{Returns}
 int the size of \mbox{\hyperlink{classomexmeta_1_1Triples}{Triples}} currently allowed 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classomexmeta_1_1Triples_a3a8c150cff4d1e78aa360d62d3d6604e}\label{classomexmeta_1_1Triples_a3a8c150cff4d1e78aa360d62d3d6604e}} 
+\mbox{\Hypertarget{classomexmeta_1_1Triples_a26e4fdcab8b0f3473e098846441adfe3}\label{classomexmeta_1_1Triples_a26e4fdcab8b0f3473e098846441adfe3}} 
 \index{omexmeta::Triples@{omexmeta::Triples}!emplace\_back@{emplace\_back}}
 \index{emplace\_back@{emplace\_back}!omexmeta::Triples@{omexmeta::Triples}}
 \doxysubsubsection{\texorpdfstring{emplace\_back()}{emplace\_back()}\hspace{0.1cm}{\footnotesize\ttfamily [1/7]}}
-{\footnotesize\ttfamily void omexmeta\+::\+Triples\+::emplace\+\_\+back (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structraptor__term}{librdf\+\_\+node}} $\ast$}]{subject,  }\item[{\mbox{\hyperlink{structraptor__term}{librdf\+\_\+node}} $\ast$}]{predicate,  }\item[{\mbox{\hyperlink{structraptor__term}{librdf\+\_\+node}} $\ast$}]{resource }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void omexmeta\+::\+Triples\+::emplace\+\_\+back (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classomexmeta_1_1UriHandler}{Uri\+Handler}} \&}]{uri\+Handler,  }\item[{\mbox{\hyperlink{structraptor__term}{librdf\+\_\+node}} $\ast$}]{subject,  }\item[{\mbox{\hyperlink{structraptor__term}{librdf\+\_\+node}} $\ast$}]{predicate,  }\item[{\mbox{\hyperlink{structraptor__term}{librdf\+\_\+node}} $\ast$}]{resource }\end{DoxyParamCaption})}
 
 
 
 construct a \mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}} object from the necessary components and move it to the back of \mbox{\hyperlink{classomexmeta_1_1Triples}{Triples}} 
 
-this method is heavily overloaded and has several signatures all of which result in the construction and emplacement of a \mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}} at the back of \mbox{\hyperlink{classomexmeta_1_1Triples}{Triples}}. \mbox{\Hypertarget{classomexmeta_1_1Triples_a862d672c0ac9d877261947cf5a7061db}\label{classomexmeta_1_1Triples_a862d672c0ac9d877261947cf5a7061db}} 
+this method is heavily overloaded and has several signatures all of which result in the construction and emplacement of a \mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}} at the back of \mbox{\hyperlink{classomexmeta_1_1Triples}{Triples}}. \mbox{\Hypertarget{classomexmeta_1_1Triples_aaaa2909bb574deb4e5e129968d545ece}\label{classomexmeta_1_1Triples_aaaa2909bb574deb4e5e129968d545ece}} 
 \index{omexmeta::Triples@{omexmeta::Triples}!emplace\_back@{emplace\_back}}
 \index{emplace\_back@{emplace\_back}!omexmeta::Triples@{omexmeta::Triples}}
 \doxysubsubsection{\texorpdfstring{emplace\_back()}{emplace\_back()}\hspace{0.1cm}{\footnotesize\ttfamily [2/7]}}
-{\footnotesize\ttfamily void omexmeta\+::\+Triples\+::emplace\+\_\+back (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classomexmeta_1_1Subject}{Subject}}}]{subject,  }\item[{\mbox{\hyperlink{classomexmeta_1_1BiomodelsBiologyQualifier}{Biomodels\+Biology\+Qualifier}}}]{predicate,  }\item[{const \mbox{\hyperlink{classomexmeta_1_1Resource}{Resource}} \&}]{resource }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void omexmeta\+::\+Triples\+::emplace\+\_\+back (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classomexmeta_1_1UriHandler}{Uri\+Handler}} \&}]{uri\+Handler,  }\item[{\mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}}}]{subject,  }\item[{\mbox{\hyperlink{classomexmeta_1_1BiomodelsBiologyQualifier}{Biomodels\+Biology\+Qualifier}}}]{predicate,  }\item[{const \mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} \&}]{resource }\end{DoxyParamCaption})}
 
 
 
 construct a \mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}} object from the necessary components and move it to the back of \mbox{\hyperlink{classomexmeta_1_1Triples}{Triples}} 
 
-this method is heavily overloaded and has several signatures all of which result in the construction and emplacement of a \mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}} at the back of \mbox{\hyperlink{classomexmeta_1_1Triples}{Triples}}. \mbox{\Hypertarget{classomexmeta_1_1Triples_a87cdc3aacef07c2aebbfe06342bd70f5}\label{classomexmeta_1_1Triples_a87cdc3aacef07c2aebbfe06342bd70f5}} 
+this method is heavily overloaded and has several signatures all of which result in the construction and emplacement of a \mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}} at the back of \mbox{\hyperlink{classomexmeta_1_1Triples}{Triples}}. \mbox{\Hypertarget{classomexmeta_1_1Triples_a0b47dcbc4a0c608c7dcdb14f9db0706d}\label{classomexmeta_1_1Triples_a0b47dcbc4a0c608c7dcdb14f9db0706d}} 
 \index{omexmeta::Triples@{omexmeta::Triples}!emplace\_back@{emplace\_back}}
 \index{emplace\_back@{emplace\_back}!omexmeta::Triples@{omexmeta::Triples}}
 \doxysubsubsection{\texorpdfstring{emplace\_back()}{emplace\_back()}\hspace{0.1cm}{\footnotesize\ttfamily [3/7]}}
-{\footnotesize\ttfamily void omexmeta\+::\+Triples\+::emplace\+\_\+back (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classomexmeta_1_1Subject}{Subject}}}]{subject,  }\item[{\mbox{\hyperlink{classomexmeta_1_1BiomodelsModelQualifier}{Biomodels\+Model\+Qualifier}}}]{predicate,  }\item[{const \mbox{\hyperlink{classomexmeta_1_1Resource}{Resource}} \&}]{resource }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void omexmeta\+::\+Triples\+::emplace\+\_\+back (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classomexmeta_1_1UriHandler}{Uri\+Handler}} \&}]{uri\+Handler,  }\item[{\mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}}}]{subject,  }\item[{\mbox{\hyperlink{classomexmeta_1_1BiomodelsModelQualifier}{Biomodels\+Model\+Qualifier}}}]{predicate,  }\item[{const \mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} \&}]{resource }\end{DoxyParamCaption})}
 
 
 
 construct a \mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}} object from the necessary components and move it to the back of \mbox{\hyperlink{classomexmeta_1_1Triples}{Triples}} 
 
-this method is heavily overloaded and has several signatures all of which result in the construction and emplacement of a \mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}} at the back of \mbox{\hyperlink{classomexmeta_1_1Triples}{Triples}}. \mbox{\Hypertarget{classomexmeta_1_1Triples_acab4513889a9a42c77b3044aac941728}\label{classomexmeta_1_1Triples_acab4513889a9a42c77b3044aac941728}} 
+this method is heavily overloaded and has several signatures all of which result in the construction and emplacement of a \mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}} at the back of \mbox{\hyperlink{classomexmeta_1_1Triples}{Triples}}. \mbox{\Hypertarget{classomexmeta_1_1Triples_a5ba6faa259c9e07b06fa796ddcba0163}\label{classomexmeta_1_1Triples_a5ba6faa259c9e07b06fa796ddcba0163}} 
 \index{omexmeta::Triples@{omexmeta::Triples}!emplace\_back@{emplace\_back}}
 \index{emplace\_back@{emplace\_back}!omexmeta::Triples@{omexmeta::Triples}}
 \doxysubsubsection{\texorpdfstring{emplace\_back()}{emplace\_back()}\hspace{0.1cm}{\footnotesize\ttfamily [4/7]}}
-{\footnotesize\ttfamily void omexmeta\+::\+Triples\+::emplace\+\_\+back (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classomexmeta_1_1Subject}{Subject}}}]{subject,  }\item[{const \mbox{\hyperlink{classomexmeta_1_1Predicate}{Predicate}} \&}]{predicate,  }\item[{const \mbox{\hyperlink{classomexmeta_1_1Resource}{Resource}} \&}]{resource }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void omexmeta\+::\+Triples\+::emplace\+\_\+back (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classomexmeta_1_1UriHandler}{Uri\+Handler}} \&}]{uri\+Handler,  }\item[{\mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}}}]{subject,  }\item[{const \mbox{\hyperlink{classomexmeta_1_1Predicate}{Predicate}} \&}]{predicate,  }\item[{const \mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} \&}]{resource }\end{DoxyParamCaption})}
 
 
 
 construct a \mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}} object from the necessary components and move it to the back of \mbox{\hyperlink{classomexmeta_1_1Triples}{Triples}} 
 
-this method is heavily overloaded and has several signatures all of which result in the construction and emplacement of a \mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}} at the back of \mbox{\hyperlink{classomexmeta_1_1Triples}{Triples}}. \mbox{\Hypertarget{classomexmeta_1_1Triples_a9882f6f582e8d2e34e09d2f7076a0e2e}\label{classomexmeta_1_1Triples_a9882f6f582e8d2e34e09d2f7076a0e2e}} 
+this method is heavily overloaded and has several signatures all of which result in the construction and emplacement of a \mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}} at the back of \mbox{\hyperlink{classomexmeta_1_1Triples}{Triples}}. \mbox{\Hypertarget{classomexmeta_1_1Triples_a106779ab1767a271708dba8d93165205}\label{classomexmeta_1_1Triples_a106779ab1767a271708dba8d93165205}} 
 \index{omexmeta::Triples@{omexmeta::Triples}!emplace\_back@{emplace\_back}}
 \index{emplace\_back@{emplace\_back}!omexmeta::Triples@{omexmeta::Triples}}
 \doxysubsubsection{\texorpdfstring{emplace\_back()}{emplace\_back()}\hspace{0.1cm}{\footnotesize\ttfamily [5/7]}}
-{\footnotesize\ttfamily void omexmeta\+::\+Triples\+::emplace\+\_\+back (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classomexmeta_1_1Subject}{Subject}}}]{subject,  }\item[{const Predicate\+Ptr \&}]{predicate\+Ptr,  }\item[{const \mbox{\hyperlink{classomexmeta_1_1Resource}{Resource}} \&}]{resource }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void omexmeta\+::\+Triples\+::emplace\+\_\+back (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classomexmeta_1_1UriHandler}{Uri\+Handler}} \&}]{uri\+Handler,  }\item[{\mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}}}]{subject,  }\item[{const Predicate\+Ptr \&}]{predicate\+Ptr,  }\item[{const \mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} \&}]{resource }\end{DoxyParamCaption})}
 
 
 
 construct a \mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}} object from the necessary components and move it to the back of \mbox{\hyperlink{classomexmeta_1_1Triples}{Triples}} 
 
-this method is heavily overloaded and has several signatures all of which result in the construction and emplacement of a \mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}} at the back of \mbox{\hyperlink{classomexmeta_1_1Triples}{Triples}}. \mbox{\Hypertarget{classomexmeta_1_1Triples_a9f3f3152592f99ac95f65e0e7ce3b450}\label{classomexmeta_1_1Triples_a9f3f3152592f99ac95f65e0e7ce3b450}} 
+this method is heavily overloaded and has several signatures all of which result in the construction and emplacement of a \mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}} at the back of \mbox{\hyperlink{classomexmeta_1_1Triples}{Triples}}. \mbox{\Hypertarget{classomexmeta_1_1Triples_a4821b664c8a28da93a979008f8fc7438}\label{classomexmeta_1_1Triples_a4821b664c8a28da93a979008f8fc7438}} 
 \index{omexmeta::Triples@{omexmeta::Triples}!emplace\_back@{emplace\_back}}
 \index{emplace\_back@{emplace\_back}!omexmeta::Triples@{omexmeta::Triples}}
 \doxysubsubsection{\texorpdfstring{emplace\_back()}{emplace\_back()}\hspace{0.1cm}{\footnotesize\ttfamily [6/7]}}
-{\footnotesize\ttfamily void omexmeta\+::\+Triples\+::emplace\+\_\+back (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classomexmeta_1_1Subject}{Subject}}}]{subject,  }\item[{\mbox{\hyperlink{classomexmeta_1_1DCTerm}{D\+C\+Term}}}]{predicate,  }\item[{const \mbox{\hyperlink{classomexmeta_1_1Resource}{Resource}} \&}]{resource }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void omexmeta\+::\+Triples\+::emplace\+\_\+back (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classomexmeta_1_1UriHandler}{Uri\+Handler}} \&}]{uri\+Handler,  }\item[{\mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}}}]{subject,  }\item[{\mbox{\hyperlink{classomexmeta_1_1DCTerm}{D\+C\+Term}}}]{predicate,  }\item[{const \mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} \&}]{resource }\end{DoxyParamCaption})}
 
 
 
 construct a \mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}} object from the necessary components and move it to the back of \mbox{\hyperlink{classomexmeta_1_1Triples}{Triples}} 
 
-this method is heavily overloaded and has several signatures all of which result in the construction and emplacement of a \mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}} at the back of \mbox{\hyperlink{classomexmeta_1_1Triples}{Triples}}. \mbox{\Hypertarget{classomexmeta_1_1Triples_a55e7ed1c3212ae19d2189a386b81422e}\label{classomexmeta_1_1Triples_a55e7ed1c3212ae19d2189a386b81422e}} 
+this method is heavily overloaded and has several signatures all of which result in the construction and emplacement of a \mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}} at the back of \mbox{\hyperlink{classomexmeta_1_1Triples}{Triples}}. \mbox{\Hypertarget{classomexmeta_1_1Triples_a2b12527ab68f7d9a8a250dbb952e741e}\label{classomexmeta_1_1Triples_a2b12527ab68f7d9a8a250dbb952e741e}} 
 \index{omexmeta::Triples@{omexmeta::Triples}!emplace\_back@{emplace\_back}}
 \index{emplace\_back@{emplace\_back}!omexmeta::Triples@{omexmeta::Triples}}
 \doxysubsubsection{\texorpdfstring{emplace\_back()}{emplace\_back()}\hspace{0.1cm}{\footnotesize\ttfamily [7/7]}}
-{\footnotesize\ttfamily void omexmeta\+::\+Triples\+::emplace\+\_\+back (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classomexmeta_1_1Subject}{Subject}}}]{subject,  }\item[{\mbox{\hyperlink{classomexmeta_1_1SemSim}{Sem\+Sim}}}]{predicate,  }\item[{const \mbox{\hyperlink{classomexmeta_1_1Resource}{Resource}} \&}]{resource }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void omexmeta\+::\+Triples\+::emplace\+\_\+back (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classomexmeta_1_1UriHandler}{Uri\+Handler}} \&}]{uri\+Handler,  }\item[{\mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}}}]{subject,  }\item[{\mbox{\hyperlink{classomexmeta_1_1SemSim}{Sem\+Sim}}}]{predicate,  }\item[{const \mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} \&}]{resource }\end{DoxyParamCaption})}
 
 
 
@@ -230,7 +239,7 @@ All predicate uri\textquotesingle{}s as strings in a std\+::vector
 
 get all resources as strings 
 
-we do not return the \mbox{\hyperlink{classomexmeta_1_1Resource}{Resource}} itself because \mbox{\hyperlink{classomexmeta_1_1Resource}{Resource}} objects cannot be copied. \begin{DoxyReturn}{Returns}
+we do not return the Librdf\+Node itself because Librdf\+Node objects cannot be copied. \begin{DoxyReturn}{Returns}
 All resource uri\textquotesingle{}s as strings in a std\+::vector 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classomexmeta_1_1Triples_a5234882414a2aaaca603eacd805df3d6}\label{classomexmeta_1_1Triples_a5234882414a2aaaca603eacd805df3d6}} 
@@ -259,11 +268,11 @@ indicates whether \mbox{\hyperlink{classomexmeta_1_1Triples}{Triples}} object is
 \begin{DoxyReturn}{Returns}
 true if the \mbox{\hyperlink{classomexmeta_1_1Triples}{Triples}} object doesn\textquotesingle{}t contain any \mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}} objects  Useful for iterating over \mbox{\hyperlink{classomexmeta_1_1Triples}{Triples}} in a while loop without using the {\ttfamily \mbox{[}\mbox{]}} operator, which makes unwanted copies that causes memory issues. 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classomexmeta_1_1Triples_a88dcf4b950f105acb621bd07f07a38a0}\label{classomexmeta_1_1Triples_a88dcf4b950f105acb621bd07f07a38a0}} 
-\index{omexmeta::Triples@{omexmeta::Triples}!move\_back@{move\_back}}
-\index{move\_back@{move\_back}!omexmeta::Triples@{omexmeta::Triples}}
-\doxysubsubsection{\texorpdfstring{move\_back()}{move\_back()}}
-{\footnotesize\ttfamily void omexmeta\+::\+Triples\+::move\+\_\+back (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}} \&}]{triple }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{classomexmeta_1_1Triples_a64e7f250d3199421c4306e9e8fbbc6e5}\label{classomexmeta_1_1Triples_a64e7f250d3199421c4306e9e8fbbc6e5}} 
+\index{omexmeta::Triples@{omexmeta::Triples}!moveBack@{moveBack}}
+\index{moveBack@{moveBack}!omexmeta::Triples@{omexmeta::Triples}}
+\doxysubsubsection{\texorpdfstring{moveBack()}{moveBack()}}
+{\footnotesize\ttfamily void omexmeta\+::\+Triples\+::move\+Back (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}} \&}]{triple }\end{DoxyParamCaption})}
 
 
 
@@ -278,11 +287,11 @@ moves a \mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}} object to the back of
 {\em triple} & is moved into that slot. Therefore, ownership of the triple passes to the \mbox{\hyperlink{classomexmeta_1_1Triples}{Triples}} object who is reposible for freeing the \mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}}. \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{classomexmeta_1_1Triples_a43d540423a436986d9f72d7cf0f02d72}\label{classomexmeta_1_1Triples_a43d540423a436986d9f72d7cf0f02d72}} 
+\mbox{\Hypertarget{classomexmeta_1_1Triples_a02d9829c76b2f7e72263b55c7cc9b640}\label{classomexmeta_1_1Triples_a02d9829c76b2f7e72263b55c7cc9b640}} 
 \index{omexmeta::Triples@{omexmeta::Triples}!operator\mbox{[}\mbox{]}@{operator[]}}
 \index{operator\mbox{[}\mbox{]}@{operator[]}!omexmeta::Triples@{omexmeta::Triples}}
 \doxysubsubsection{\texorpdfstring{operator[]()}{operator[]()}}
-{\footnotesize\ttfamily const \mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}} \& omexmeta\+::\+Triples\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{int}]{index }\end{DoxyParamCaption}) const}
+{\footnotesize\ttfamily \mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}} \& omexmeta\+::\+Triples\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{int}]{index }\end{DoxyParamCaption})}
 
 
 
@@ -303,19 +312,6 @@ moves one triple of the end of triples
 
 \begin{DoxyReturn}{Returns}
 the triple from the end of the triples vector  No copies are made. \mbox{\hyperlink{classThis}{This}} is deliberate as it reduces risk of memory issues. When you pop, you remove from the end of the \mbox{\hyperlink{classomexmeta_1_1Triples}{Triples}} object and return it. \mbox{\hyperlink{classThis}{This}} means that responsibility for freeing the returned \mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}} switches to the caller. 
-\end{DoxyReturn}
-\mbox{\Hypertarget{classomexmeta_1_1Triples_abb333b83c7a8ed1f210816ef88c8d3a0}\label{classomexmeta_1_1Triples_abb333b83c7a8ed1f210816ef88c8d3a0}} 
-\index{omexmeta::Triples@{omexmeta::Triples}!pop\_front@{pop\_front}}
-\index{pop\_front@{pop\_front}!omexmeta::Triples@{omexmeta::Triples}}
-\doxysubsubsection{\texorpdfstring{pop\_front()}{pop\_front()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}} omexmeta\+::\+Triples\+::pop\+\_\+front (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-
-
-move the from \mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}} object out of the \mbox{\hyperlink{classomexmeta_1_1Triples}{Triples}} object 
-
-\begin{DoxyReturn}{Returns}
-a \mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}} from position 0 in \mbox{\hyperlink{classomexmeta_1_1Triples}{Triples}}  caller is responsible for \mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}} resources 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classomexmeta_1_1Triples_adc86427b3563d04849336a8da7566451}\label{classomexmeta_1_1Triples_adc86427b3563d04849336a8da7566451}} 
 \index{omexmeta::Triples@{omexmeta::Triples}!size@{size}}

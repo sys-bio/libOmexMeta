@@ -26,8 +26,6 @@ set(OMEXMETA_HEADERS
         "${OMEXMETA_INCLUDE_DIR}/omexmeta/OmexMetaUtils.h"
         "${OMEXMETA_INCLUDE_DIR}/omexmeta/CurlGet.h"
         "${OMEXMETA_INCLUDE_DIR}/omexmeta/OmexMetaXmlAssistant.h"
-        "${OMEXMETA_INCLUDE_DIR}/omexmeta/Subject.h"
-        "${OMEXMETA_INCLUDE_DIR}/omexmeta/Resource.h"
         "${OMEXMETA_INCLUDE_DIR}/omexmeta/Query.h"
         "${OMEXMETA_INCLUDE_DIR}/omexmeta/Predicate.h"
         "${OMEXMETA_INCLUDE_DIR}/omexmeta/MetaID.h"
@@ -42,7 +40,8 @@ set(OMEXMETA_HEADERS
         "${OMEXMETA_INCLUDE_DIR}/omexmeta/OmexMetaXmlType.h"
         "${OMEXMETA_INCLUDE_DIR}/omexmeta/Error.h"
         "${OMEXMETA_INCLUDE_DIR}/omexmeta/UriHandler.h"
-        #    dbg.h
+        "${OMEXMETA_INCLUDE_DIR}/omexmeta/VCardTranslator.h"
+        "${OMEXMETA_INCLUDE_DIR}/omexmeta/PurgeRDFBag.h"
         )
 
 set(OMEXMETA_SOURCES
@@ -53,8 +52,6 @@ set(OMEXMETA_SOURCES
         "Query.cpp"
         "CurlGet.cpp"
         "OmexMetaXmlAssistant.cpp"
-        "Subject.cpp"
-        "Resource.cpp"
         "Predicate.cpp"
         "Triple.cpp"
         "Triples.cpp"
@@ -70,6 +67,8 @@ set(OMEXMETA_SOURCES
         "PersonalInformation.cpp"
         "MarkupIdentifier.cpp"
         "UriHandler.cpp"
+        "VCardTranslator.cpp"
+        "PurgeRDFBag.cpp"
         )
 
 

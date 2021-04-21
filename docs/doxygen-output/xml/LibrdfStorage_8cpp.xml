@@ -23,9 +23,15 @@
       <node id="6">
         <label>stdarg.h</label>
       </node>
-      <node id="34">
+      <node id="33">
         <label>LibrdfNode.h</label>
         <link refid="LibrdfNode_8h_source"/>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
         <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
@@ -33,12 +39,6 @@
         <childnode refid="27" relation="include">
         </childnode>
         <childnode refid="31" relation="include">
-        </childnode>
-        <childnode refid="35" relation="include">
-        </childnode>
-        <childnode refid="28" relation="include">
-        </childnode>
-        <childnode refid="36" relation="include">
         </childnode>
       </node>
       <node id="28">
@@ -77,7 +77,7 @@
       <node id="30">
         <label>regex</label>
       </node>
-      <node id="37">
+      <node id="35">
         <label>exception</label>
       </node>
       <node id="21">
@@ -105,20 +105,20 @@
       <node id="16">
         <label>rdf_concepts.h</label>
       </node>
-      <node id="35">
+      <node id="36">
         <label>LibrdfUri.h</label>
         <link refid="LibrdfUri_8h_source"/>
-        <childnode refid="27" relation="include">
+        <childnode refid="34" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="36" relation="include">
+        <childnode refid="27" relation="include">
         </childnode>
       </node>
-      <node id="36">
+      <node id="34">
         <label>LibrdfException.h</label>
         <link refid="LibrdfException_8h_source"/>
-        <childnode refid="37" relation="include">
+        <childnode refid="35" relation="include">
         </childnode>
         <childnode refid="29" relation="include">
         </childnode>
@@ -143,7 +143,7 @@
       <node id="29">
         <label>iostream</label>
       </node>
-      <node id="33">
+      <node id="37">
         <label>unordered_map</label>
       </node>
       <node id="9">
@@ -207,15 +207,15 @@
       <node id="32">
         <label>LibrdfStatement.h</label>
         <link refid="LibrdfStatement_8h_source"/>
-        <childnode refid="27" relation="include">
-        </childnode>
-        <childnode refid="29" relation="include">
+        <childnode refid="33" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="33" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
-        <childnode refid="34" relation="include">
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
         </childnode>
       </node>
       <node id="1">
@@ -311,7 +311,7 @@
 <codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="70"><highlight class="normal"></highlight></codeline>
 <codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>LibrdfStorage::addStatement(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>LibrdfStatement<sp/>&amp;statement)<sp/>{</highlight></codeline>
-<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>librdf_storage_add_statement(storage_,<sp/>statement.get());</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>librdf_storage_add_statement(storage_,<sp/>statement.getWithoutIncrement());</highlight></codeline>
 <codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="74"><highlight class="normal"></highlight></codeline>
 <codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>LibrdfStorage::size()<sp/>{</highlight></codeline>

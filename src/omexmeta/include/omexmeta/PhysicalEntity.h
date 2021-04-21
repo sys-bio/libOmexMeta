@@ -10,8 +10,6 @@
 #include "omexmeta/PhysicalProperty.h"
 #include "omexmeta/PropertyBearer.h"
 #include "omexmeta/Query.h"
-#include "omexmeta/Resource.h"
-#include "omexmeta/Subject.h"
 #include "omexmeta/Triple.h"
 #include "omexmeta_export.h"
 #include "redland/RedlandAPI.h"
@@ -27,16 +25,6 @@ namespace omexmeta {
      * The PhysicalEntity type of PhysicalPhenomenon
      */
     class PhysicalEntity : public PropertyBearer {
-    private:
-        Resource identity_resource_;
-        Resources location_resources_;
-        Resources part_resources_;
-        std::string physical_entity_property_id_;
-
-        // When autogenerating metaid for property of a physical entity
-        // this is used as metaid base.
-        std::string property_metaid_base_ = "EntityProperty";
-
 
     public:
 
@@ -61,10 +49,10 @@ namespace omexmeta {
          *
          * Users should not need to use this constructor directly as it is embedded in the
          * builder interface. The @param is_part_of parameter is actually a std::vector of
-         * Resource objects. It can be as long as needed.
+         * LibrdfNode objects. It can be as long as needed.
          */
-        PhysicalEntity(librdf_model *model, std::string model_uri, std::string local_uri, PhysicalProperty physicalProperty,
-                       Resource is, Resources is_part_of);
+        PhysicalEntity(librdf_model *model, UriHandler& uriHandler, PhysicalProperty physicalProperty,
+                       std::string is, std::vector<std::string> is_part_of);
 
         ~PhysicalEntity() = default;
 
@@ -102,7 +90,7 @@ namespace omexmeta {
          * from the user. The PhysicalEntity also needs access to the model_uri, which we pass
          * here.
          */
-        explicit PhysicalEntity(librdf_model *model, const std::string &model_uri, const std::string &local_uri);
+        explicit PhysicalEntity(librdf_model *model, UriHandler& uriHandler);
 
 
         /**
@@ -121,16 +109,16 @@ namespace omexmeta {
         /**
          * @brief return the IdentityResource in use. I.e. the "what"
          * portion of the PhysicalEntity
-         * @return the identity Resource
+         * @return the identity LibrdfNode
          */
-        [[nodiscard]] const Resource &getIdentityResource() const;
+        [[nodiscard]] const std::string &getIdentityResource() const;
 
         /**
          * @brief return a vector of resources representing the
          * "where" part of the PhysicalEntity
-         * @return vector of Resource objects representing anatomical location of physical entity
+         * @return vector of LibrdfNode objects representing anatomical location of physical entity
          */
-        [[nodiscard]] const Resources &getLocationResources() const;
+        [[nodiscard]] const std::vector<std::string> &getLocationResources() const;
 
         /**
          * @brief sets the physical property for a PhysicalEntity instance.
@@ -158,11 +146,11 @@ namespace omexmeta {
          * @param resource The resource to be used for the identity.
          * @return a reference to this Physical entity. Allows chaining together builder commands.
          *
-         * The input string gets converted to a Resource automatically.
+         * The input string gets converted to a LibrdfNode automatically.
          *
-         * See Resource documentation for more details of valid input strings.
+         * See LibrdfNode documentation for more details of valid input strings.
          */
-        PhysicalEntity &setIdentity(const std::string &resource);
+        PhysicalEntity &setIdentity(std::string resource);
 
         /**
          * @brief alias for setIdentity
@@ -174,7 +162,7 @@ namespace omexmeta {
          * @param where The resource representing a location.
          * @return a reference to this Physical entity. Allows chaining together builder commands.
          *
-         * The input string gets converted to a Resource automatically. An arbitrary
+         * The input string gets converted to a LibrdfNode automatically. An arbitrary
          * number of locations are allowed. The location is added to the back of a vector
          * containing the Resources. Left most elements of this vector represent larger
          * physiological locations which get smaller as the index of this vector increases
@@ -183,7 +171,7 @@ namespace omexmeta {
          * a reference to skin, then dermis, then fibroblast, then cytosol. This ends up
          * being cytosol<isPartOf>fibroblast<isPartOf>dermis<isPartOf>skin.
          *
-         * See Resource documentation for more details of valid input strings.
+         * See LibrdfNode documentation for more details of valid input strings.
          *
          * Deprecated in favour of PhysicalEntity::isPartOf
          */
@@ -203,7 +191,7 @@ namespace omexmeta {
          * @brief Set the isVersionOf portion of the PhysicalEntity composite annotation.
          * @param property: an opb term
          * @details Should be of the form OPB:OPB_12345 or OPB/OPB_12345. This function will set
-         * the Resource resource_ property on the PhysicalProperty associated with this PhysicalEntity.
+         * the LibrdfNode resource_ property on the PhysicalProperty associated with this PhysicalEntity.
          */
         PhysicalEntity &propertyIsVersionOf(const std::string &property);
 
@@ -212,7 +200,7 @@ namespace omexmeta {
         /**
          * @brief Set the about portion of the PhysicalEntity composite annotation.
          * @param about: The string to put in rdf:about
-         * @details This function will set the Subject subject_ property on the
+         * @details This function will set the LibrdfNode subject_ property on the
          * PhysicalProperty associated with this PhysicalEntity
          */
         PhysicalEntity &about(const std::string &about, eUriType type) override;
@@ -253,11 +241,20 @@ namespace omexmeta {
 
         PhysicalEntity &hasProperty(const PhysicalProperty &property) override;
 
-        PhysicalEntity &hasProperty(const std::string &property_about, eUriType about_uri_type, const std::string& is_version_of, const std::string& is_property_of, eUriType is_property_of_uri_type) override;
-
         PhysicalEntity &hasProperty(const std::string &is_version_of) override;
 
         PhysicalEntity &hasProperty(const std::string &property_about, eUriType about_uri_type, const std::string &is_version_of) override;
+    private:
+        // todo store as strings and pass to LibrdfNode not LibrdfNode to construct a librdf_node
+        std::string identity_resource_;
+        std::vector<std::string> location_resources_;
+        std::vector<std::string> part_resources_;
+        std::string physical_entity_property_id_;
+
+        // When autogenerating metaid for property of a physical entity
+        // this is used as metaid base.
+        std::string property_metaid_base_ = "EntityProperty";
+
 
     };
 }// namespace omexmeta
