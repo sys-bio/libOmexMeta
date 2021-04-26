@@ -41,6 +41,7 @@ namespace omexmeta {
 
     private:
         RDF* rdf_;
+        unsigned int currentBlankId_;
     };
 }// namespace omexmeta
 
