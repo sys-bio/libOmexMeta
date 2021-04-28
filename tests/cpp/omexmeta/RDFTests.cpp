@@ -321,7 +321,7 @@ TEST_F(RDFTests, TestSerializeCellMlAnnotationNoTrailingHashes) {
                            "    bqbiol:hasTaxon <https://identifiers.org/taxonomy:9895> ;\n"
                            "    dc:creator <https://orcid.org/0000-0003-4667-9779> .";
     ASSERT_TRUE(RDF::equals(&rdf, expected));
-
+}
 
 TEST_F(RDFTests, TestBagConversion) {
     std::string input = "<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
