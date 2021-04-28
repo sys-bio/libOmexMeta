@@ -59,8 +59,9 @@ namespace omexmeta {
          */
         void translateEmail();
 
-
         RDF *rdf_;
+
+        unsigned int currentBlankId = 0;
     };
 
 
