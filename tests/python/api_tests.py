@@ -474,7 +474,7 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml>
-    dc:description "An awesome model"^^rdf:string .
+    dc:description "An awesome model" .
 
 """
         self.assertTrue(self.pyom.rdf_equals_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode(), True))
@@ -494,7 +494,7 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml>
     dc:created [
-        dc:W3CDTF "14/01/1001"^^rdf:string
+        dc:W3CDTF "14/01/1001"
     ] .
 
 """
@@ -1164,7 +1164,7 @@ local:SourceParticipant0000
     dc:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000>
-    foaf:name "Ciaran Welsh"^^rdf:string .
+    foaf:name "Ciaran Welsh" .
 
 """
         self.assertTrue(self.pyom.rdf_equals_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode(), True))
@@ -1190,7 +1190,7 @@ local:SourceParticipant0000
     dc:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000>
-    foaf:mbox "annotations.uw.edu"^^rdf:string .
+    foaf:mbox "annotations.uw.edu" .
 
 """
         self.assertTrue(self.pyom.rdf_equals_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode(), True))
@@ -1318,7 +1318,7 @@ local:SourceParticipant0000
     dc:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000>
-    foaf:name "literal"^^rdf:string .
+    foaf:name "literal" .
 
 """
         self.assertTrue(self.pyom.rdf_equals_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode(), True))

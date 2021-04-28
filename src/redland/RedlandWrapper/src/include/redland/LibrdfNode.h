@@ -96,7 +96,15 @@ namespace redland {
 
         static LibrdfNode fromBlank(const std::string &blank);
 
-        static LibrdfNode fromLiteral(const std::string &literal, const std::string &literal_datatype_uri = "string",
+        /**
+         * @brief construct a literal node
+         * @param literal the value to use for literal node
+         * @param literal_datatype_uri defaults to "", i.e. no defined datatype. Users can use any datatype from the
+         * RDF specification and users do not need to pass the full URI. For example, to specify a datatype was a string
+         * you only need to use "string" for this argument.
+         * @param xml_language The language for this literal. See RDF specification for more details.
+         */
+        static LibrdfNode fromLiteral(const std::string &literal, const std::string &literal_datatype_uri = "",
                                       const std::string &xml_language = std::string());
 
         static LibrdfNode newEmptyNode();

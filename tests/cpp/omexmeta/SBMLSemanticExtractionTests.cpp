@@ -6,11 +6,14 @@
 
 #include "SBMLFactory.h"
 #include "omexmeta/SBMLSemanticExtraction.h"
+#include "AnnotationSamples.h"
 
 using namespace omexmeta;
 
 class SBMLSemanticExtractionTests : public ::testing::Test {
 public:
+
+    AnnotationSamples samples;
 
     SBMLSemanticExtractionTests() = default;
 
@@ -232,13 +235,6 @@ TEST_F(SBMLSemanticExtractionTests, TestReactionExtraction){
     std::cout << actual << std::endl;
     RDF::equals(&rdf, expected);
 }
-
-
-
-
-
-
-
 
 
 

@@ -148,9 +148,13 @@ namespace omexmeta {
         node_ = LibrdfNode(node);
     }
 
+    LibrdfNode Predicate::getNode(){
+        return node_;
+    }
+
+
     void Predicate::freeNode() {
         node_.freeNode();
-//        LibrdfNode::freeNode(node_);
     }
 
     void Predicate::addSeenNamespaceToSerializer(librdf_world *world,

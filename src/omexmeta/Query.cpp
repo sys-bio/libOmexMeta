@@ -10,7 +10,7 @@
 namespace omexmeta {
 
     Query::Query(librdf_model *model, std::string query)
-            : model_(model), query_(std::move(query)) {
+        : model_(model), query_(std::move(query)) {
         q_ = librdf_new_query(
                 World::getWorld(), (const char *) "sparql",
                 nullptr, (const unsigned char *) query_.c_str(),
@@ -22,9 +22,9 @@ namespace omexmeta {
         runQuery();
     }
 
-//    Query::~Query() {
-//        librdf_free_query_results(query_results_);
-//    }
+    //    Query::~Query() {
+    //        librdf_free_query_results(query_results_);
+    //    }
 
     Query::Query(Query &&query) noexcept {
         if (query.query_results_ != nullptr) {
@@ -104,10 +104,10 @@ namespace omexmeta {
         return librdf_query_results_as_stream(query_results_);
     }
 
-//    RDF Query::resultsAsRDF() {
-//        RDF rdf = RDF::fromString(resultsAsStr("rdfxml"), "rdfxml");
-//        return rdf;
-//    }
+    //    RDF Query::resultsAsRDF() {
+    //        RDF rdf = RDF::fromString(resultsAsStr("rdfxml"), "rdfxml");
+    //        return rdf;
+    //    }
 
     int Query::getCount() {
         return librdf_query_results_get_count(query_results_);
@@ -141,7 +141,7 @@ namespace omexmeta {
         unsigned char *s = librdf_query_results_to_string2(
                 query_results_, output_format.c_str(),
                 nullptr, nullptr, uri.get());
-        std::string res = (const char *) s; // makes a copy
+        std::string res = (const char *) s;// makes a copy
         // the above string using \r\n for line endings. Convert to \n like any sane program should.
         res = OmexMetaUtils::stringReplace(res, "\r\n", "\n");
         free(s);
@@ -182,17 +182,23 @@ namespace omexmeta {
         return map;
     }
 
-//    Triples Query::resultsAsTriples() {
-//        return resultsAsRDF().toTriples();
-//    }
-
 
     std::string Query::getBindingsName(int index) {
         return librdf_query_results_get_binding_name(query_results_, index);
     }
 
+    void Query::printQueryResults() {
+        auto results = resultsAsMap();
+        for (auto [name, list] : results) {
+            std::cout << name << std::endl;
+            for (auto x : list) {
+                std::cout << "\t" << x << std::endl;
+            }
+        }
+    };
 
-}
+
+}// namespace omexmeta
 
 //todo information like MIME types etc for each syntax are
 // queryable using featuers similar to librdf_query_language_get_description

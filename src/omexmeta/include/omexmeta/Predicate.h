@@ -159,6 +159,8 @@ namespace omexmeta {
          */
         void setNode(librdf_node *node);
 
+        LibrdfNode getNode();
+
         /**
          * @brief make a shared pointer from this Predicate
          *
@@ -257,7 +259,7 @@ namespace omexmeta {
      * @class Subclass of Predicate specifically for predicates from the
      * DCTerm set of predicates. All
      * DCTerm predicates have the namespace
-     * `https://dublincore.org/specifications/dublin-core/dcmi-terms/` and a `bqmodel` prefix.
+     * `https://dublincore.org/specifications/dublin-core/dcmi-terms/`
      *
      * @example
      * @code

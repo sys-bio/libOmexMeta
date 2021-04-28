@@ -22,6 +22,7 @@
 #include "omexmeta/SBMLSemanticExtraction.h"
 #include "omexmeta/UriHandler.h"
 #include "omexmeta/logger.h"
+#include "omexmeta/VCardTranslator.h"
 
 
 using namespace redland;
@@ -30,14 +31,14 @@ namespace omexmeta {
 
     typedef std::unordered_map<std::string, std::string> NamespaceMap;
 
-
     // forward declarations
     class Editor;
     class MarkupIdentifier;
     class OmexMetaUtils;
     class SBMLSemanticExtraction;
     class Predicate;
-
+    class VCardTranslator;
+    class PurgeRDFBag;
 
     class OMEXMETA_EXPORT RDF {
 
@@ -56,6 +57,7 @@ namespace omexmeta {
         OmexMetaXmlType getXmlType() const;
         bool operator==(const RDF &rhs) const;
         bool operator!=(const RDF &rhs) const;
+
         /**
          * @brief set the xml type for the current graph.
          * @details If you have been reading from an SBML you cannot
@@ -328,6 +330,10 @@ namespace omexmeta {
          * @brief test for equality between @param first and @param second
          */
         static bool equals(const std::string &first, const std::string &second, const std::string &first_format = "turtle", const std::string &second_format = "turtle", bool verbose = false);
+
+        void purgeRDFBag();
+
+        UriHandler &getUriHandler();
 
     private:
         LibrdfStorage storage_;

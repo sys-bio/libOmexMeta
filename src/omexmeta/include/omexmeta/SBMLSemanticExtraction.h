@@ -46,12 +46,39 @@ namespace omexmeta {
         Editor* editor_ = nullptr;
 
         std::string sbml_string_;
+
     public:
+        /**
+         * @brief Construct an SBMLSemanticExtraction object
+         * with an @brief Editor.
+         */
         explicit SBMLSemanticExtraction(Editor *editor);
 
+        /**
+         * @brief Parses SBML and creates triples from
+         * the location of species.
+         * @details Takes a species and creates a single
+         * triple with the following information:
+         *  - subject node is species metaid
+         *  - predicate is always bqbiol::isPartOf
+         *  - resource is the metaid of the compartment the species belongs to
+         */
         void extractSpeciesCompartmentSemantics();
 
+        /**
+         * @brief Parses the sbml and automatically
+         * creates PhysicalProcess annotations for
+         * each reaction.
+         */
         void extractProcessesFromReactions();
+
+        /**
+         * @brief removes the "rdf::bag` construct
+         * from annotations.
+         * @details ignores anything to do with vcard,
+         * which requires special attention
+         */
+        void bagConversion();
     };
 }
 

@@ -442,8 +442,8 @@ stages:
               ParallelCount: 8
 
 
-  - stage: GenerateManyLinuxPipWheel
-    displayName: GenerateManyLinuxPipWheel
+  - stage: ManyLinux2014
+    displayName: ManyLinux2014
     dependsOn: []
     jobs:
       - job:

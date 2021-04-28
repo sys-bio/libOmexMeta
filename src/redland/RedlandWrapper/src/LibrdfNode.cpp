@@ -103,7 +103,6 @@ namespace redland {
         }
 
         else if (std::regex_search(uri_string, m, taxon_regex)) {
-            std::cout << "Taxon regex matched" << std::endl;
             uri_string_ = identifier_dot_org + uri_string;
         }
 
@@ -169,23 +168,28 @@ namespace redland {
     LibrdfNode LibrdfNode::fromLiteral(
             const std::string &literal, const std::string &literal_datatype_uri,
             const std::string &xml_language) {
-        std::string literal_datatype_ = validateLiteralDatatype(literal_datatype_uri);
+        std::string literal_datatype_;
+        if (!literal_datatype_uri.empty()) {
+            literal_datatype_ = validateLiteralDatatype(literal_datatype_uri);
+        }
         const char *xml_language_;
         if (xml_language.empty()) {
             xml_language_ = nullptr;
         } else {
             xml_language_ = xml_language.c_str();
         }
-        librdf_uri *literal_datatype_uri_ = librdf_new_uri(World::getWorld(),
-                                                           (const unsigned char *) literal_datatype_.c_str());
+        librdf_uri *literal_datatype_uri_ = nullptr;
+        if (!literal_datatype_.empty()) {
+            literal_datatype_uri_ = librdf_new_uri(
+                    World::getWorld(),
+                    (const unsigned char *) literal_datatype_.c_str());
+        }
         librdf_node *n = librdf_new_node_from_typed_literal(
                 World::getWorld(),
                 (const unsigned char *) literal.c_str(),
                 xml_language_,
                 literal_datatype_uri_);
         librdf_free_uri(literal_datatype_uri_);
-        // todo do i need to increment the ref counter here?
-        //  1 for the underlying node, one for the LibrdfNode???
         return LibrdfNode(n);
     }
 
