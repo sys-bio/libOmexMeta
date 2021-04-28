@@ -320,7 +320,7 @@ TEST_F(RDFTests, TestSerializeCellMlAnnotationNoTrailingHashes) {
                            "    bqbiol:hasTaxon <https://identifiers.org/taxonomy:9895> ;\n"
                            "    dc:creator <https://orcid.org/0000-0003-4667-9779> .";
     ASSERT_TRUE(RDF::equals(&rdf, expected));
-}
+
 
 
 class ParserReadTesReadFromFileHasPrefixesTests : public ::testing::Test {
