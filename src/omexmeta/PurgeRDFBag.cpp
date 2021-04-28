@@ -40,7 +40,7 @@ namespace omexmeta {
             const std::string &p = results["p"][i];
             const std::string &r = results["r"][i];
 
-            // std::cout << x << "; " << j << "; " << s << "; " << rdf_li << "; " << y << "; " << p << "; " << r << std::endl;
+             // std::cout << x << "; " << j << "; " << s << "; " << rdf_li << "; " << y << "; " << p << "; " << r << std::endl;
 
             // remove triples of form "r1r7268r10; http://www.w3.org/1999/02/22-rdf-syntax-ns#_1; r1r7268r3"
             Triple t1(
@@ -60,21 +60,36 @@ namespace omexmeta {
                     LibrdfNode::fromLiteral(r, "", ""));
             librdf_model_remove_statement(rdf_->getModel(), t2.getStatement());
 
-            // And remove the bag
+            // remove the model creator blank triple
             Triple t3(
+                    rdf_->getUriHandler(),
+                    LibrdfNode::fromUriString(x),
+                    LibrdfNode::fromUriString(j),
+                    LibrdfNode::fromBlank(s));
+            librdf_model_remove_statement(rdf_->getModel(), t3.getStatement());
+
+            // And remove the bag
+            Triple t4(
                     rdf_->getUriHandler(),
                     LibrdfNode::fromBlank(s),
                     LibrdfNode::fromUriString("http://www.w3.org/1999/02/22-rdf-syntax-ns#type"),
                     LibrdfNode::fromUriString("http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag"));
-            librdf_model_remove_statement(rdf_->getModel(), t3.getStatement());
+            librdf_model_remove_statement(rdf_->getModel(), t4.getStatement());
+
+            Triple t5(
+                    rdf_->getUriHandler(),
+                    LibrdfNode::fromUriString(x),
+                    LibrdfNode::fromUriString(j),
+                    LibrdfNode::fromBlank(rdf_li));
+            librdf_model_add_statement(rdf_->getModel(), t5.getStatement());
 
             // we now construct a triple to add the information back in
-            Triple t4(
+            Triple t6(
                     rdf_->getUriHandler(),
-                    LibrdfNode::fromBlank(s),
+                    LibrdfNode::fromBlank(rdf_li),
                     LibrdfNode::fromUriString(p),
                     LibrdfNode::fromLiteral(r, "", ""));
-            librdf_model_add_statement(rdf_->getModel(), t4.getStatement());
+            librdf_model_add_statement(rdf_->getModel(), t6.getStatement());
         }
     }
 

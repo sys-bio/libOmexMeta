@@ -178,19 +178,28 @@ TEST_F(PurgeRDFBagTests, WithRDFBagLists) {
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#_272044>\n"
                            "    <http://purl.org/dc/elements/1.1/creator> [\n"
-                           "        <http://xmlns.com/foaf/0.1/Organization> \"EMBL-EBI\", \"\"\"Institute of Biochemistry and Biology, University of Potsdam, 14476\n"
+                           "        <http://xmlns.com/foaf/0.1/Organization> \"EMBL-EBI\" ;\n"
+                           "        <http://xmlns.com/foaf/0.1/familyName> \"Chelliah\" ;\n"
+                           "        <http://xmlns.com/foaf/0.1/givenName> \"Vijayalakshmi\" ;\n"
+                           "        <http://xmlns.com/foaf/0.1/mbox> \"viji@ebi.ac.uk\"\n"
+                           "    ], [\n"
+                           "        <http://xmlns.com/foaf/0.1/Organization> \"\"\"Institute of Biochemistry and Biology, University of Potsdam, 14476\n"
                            "                                    Potsdam, Germany\n"
-                           "                                \"\"\", \"Max-Planck-Institute of Molecular Plant Physiology\" ;\n"
-                           "        <http://xmlns.com/foaf/0.1/familyName> \"Arnold\", \"Chelliah\", \"Nikoloski\" ;\n"
-                           "        <http://xmlns.com/foaf/0.1/givenName> \"Anne\", \"Vijayalakshmi\", \"Zoran\" ;\n"
-                           "        <http://xmlns.com/foaf/0.1/mbox> \"arnold@mpimp-golm.mpg.de\", \"nikoloski@mpimp-golm.mpg.de\", \"viji@ebi.ac.uk\"\n"
+                           "                                \"\"\" ;\n"
+                           "        <http://xmlns.com/foaf/0.1/familyName> \"Nikoloski\" ;\n"
+                           "        <http://xmlns.com/foaf/0.1/givenName> \"Zoran\" ;\n"
+                           "        <http://xmlns.com/foaf/0.1/mbox> \"nikoloski@mpimp-golm.mpg.de\"\n"
+                           "    ], [\n"
+                           "        <http://xmlns.com/foaf/0.1/Organization> \"Max-Planck-Institute of Molecular Plant Physiology\" ;\n"
+                           "        <http://xmlns.com/foaf/0.1/familyName> \"Arnold\" ;\n"
+                           "        <http://xmlns.com/foaf/0.1/givenName> \"Anne\" ;\n"
+                           "        <http://xmlns.com/foaf/0.1/mbox> \"arnold@mpimp-golm.mpg.de\"\n"
                            "    ] .";
     RDF rdf = RDF::fromString(inputWithLists);
 
-    PurgeRDFBag PurgeRDFBag(&rdf);
-    PurgeRDFBag.purge();
+    std::cout << rdf.toString() << std::endl;
 
-    ASSERT_TRUE(RDF::equals(&rdf, expected));
+    ASSERT_TRUE(RDF::equals(&rdf, expected, "turtle", true));
 }
 
 TEST_F(PurgeRDFBagTests, WithOutRDFBagLists) {
@@ -213,10 +222,10 @@ TEST_F(PurgeRDFBagTests, WithOutRDFBagLists) {
     RDF rdf = RDF::fromString(inputWithoutLists);
     PurgeRDFBag PurgeRDFBag(&rdf);
     PurgeRDFBag.purge();
-    ASSERT_TRUE(RDF::equals(&rdf, expected));
+    ASSERT_TRUE(RDF::equals(&rdf, expected, "turtle", true));
 }
 
-TEST_F(PurgeRDFBagTests, Both) {
+TEST_F(PurgeRDFBagTests, BothWithAndWithoutRdfBagLists) {
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix bqmodel: <http://biomodels.net/model-qualifiers/> .\n"
                            "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
@@ -228,12 +237,22 @@ TEST_F(PurgeRDFBagTests, Both) {
                            "    bqmodel:is <http://identifiers.org/biomodels.db/BIOMD0000000385>, <http://identifiers.org/biomodels.db/MODEL1109270001>, <http://identifiers.org/obo.go/GO:0019253> ;\n"
                            "    bqmodel:isDescribedBy <http://identifiers.org/pubmed/22001849> ;\n"
                            "    <http://purl.org/dc/elements/1.1/creator> [\n"
-                           "        <http://xmlns.com/foaf/0.1/Organization> \"EMBL-EBI\", \"\"\"Institute of Biochemistry and Biology, University of Potsdam, 14476\n"
+                           "        <http://xmlns.com/foaf/0.1/Organization> \"EMBL-EBI\" ;\n"
+                           "        <http://xmlns.com/foaf/0.1/familyName> \"Chelliah\" ;\n"
+                           "        <http://xmlns.com/foaf/0.1/givenName> \"Vijayalakshmi\" ;\n"
+                           "        <http://xmlns.com/foaf/0.1/mbox> \"viji@ebi.ac.uk\"\n"
+                           "    ], [\n"
+                           "        <http://xmlns.com/foaf/0.1/Organization> \"\"\"Institute of Biochemistry and Biology, University of Potsdam, 14476\n"
                            "                                    Potsdam, Germany\n"
-                           "                                \"\"\", \"Max-Planck-Institute of Molecular Plant Physiology\" ;\n"
-                           "        <http://xmlns.com/foaf/0.1/familyName> \"Arnold\", \"Chelliah\", \"Nikoloski\" ;\n"
-                           "        <http://xmlns.com/foaf/0.1/givenName> \"Anne\", \"Vijayalakshmi\", \"Zoran\" ;\n"
-                           "        <http://xmlns.com/foaf/0.1/mbox> \"arnold@mpimp-golm.mpg.de\", \"nikoloski@mpimp-golm.mpg.de\", \"viji@ebi.ac.uk\"\n"
+                           "                                \"\"\" ;\n"
+                           "        <http://xmlns.com/foaf/0.1/familyName> \"Nikoloski\" ;\n"
+                           "        <http://xmlns.com/foaf/0.1/givenName> \"Zoran\" ;\n"
+                           "        <http://xmlns.com/foaf/0.1/mbox> \"nikoloski@mpimp-golm.mpg.de\"\n"
+                           "    ], [\n"
+                           "        <http://xmlns.com/foaf/0.1/Organization> \"Max-Planck-Institute of Molecular Plant Physiology\" ;\n"
+                           "        <http://xmlns.com/foaf/0.1/familyName> \"Arnold\" ;\n"
+                           "        <http://xmlns.com/foaf/0.1/givenName> \"Anne\" ;\n"
+                           "        <http://xmlns.com/foaf/0.1/mbox> \"arnold@mpimp-golm.mpg.de\"\n"
                            "    ] ;\n"
                            "    <http://purl.org/dc/terms/created> [\n"
                            "        <http://purl.org/dc/terms/W3CDTF> \"2011-10-19T14:51:13Z\"\n"
