@@ -14,7 +14,7 @@ LibOmexMeta is a C++ library with a C interface that is used to build a Python f
 
 ## Live demonstration
 
-An interactive demonstration of pyomexmeta via Jupyter notebook is available via the launch binder badge above or by following this [direct link](https://mybinder.org/v2/gh/sys-bio/pyomexmeta-binder-notebook/HEAD).
+An interactive demonstration of pyomexmeta via Jupyter notebook is available via the launch binder badge above or by following this [direct link](https://mybinder.org/v2/gh/sys-bio/pyomexmeta-binder-notebook/HEAD). The source for this live demonstration is available here: https://github.com/sys-bio/pyomexmeta-binder-notebook.
 
 ## Features
 ### [Parsers](http://librdf.org/raptor/api-1.4/raptor-parsers.html)
