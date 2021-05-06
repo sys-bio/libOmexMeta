@@ -30,7 +30,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Predicate.h" line="196" column="21" bodyfile="src/omexmeta/include/omexmeta/Predicate.h" bodystart="196" bodyend="-1"/>
+        <location file="src/omexmeta/include/omexmeta/Predicate.h" line="198" column="21" bodyfile="src/omexmeta/include/omexmeta/Predicate.h" bodystart="198" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -45,7 +45,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Predicate.h" line="212" column="9"/>
+        <location file="src/omexmeta/include/omexmeta/Predicate.h" line="214" column="9"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1BiomodelsBiologyQualifier_1a4dfa8fd975ceba60da6d3ccabdfb4514" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
         <type></type>
@@ -63,7 +63,7 @@
         <inbodydescription>
 <para>note: verify cannot be a virtual function because I want to use it in the constructor. Therefore, I made <ref refid="classomexmeta_1_1Predicate_1a1e7e59b8a48c9f89eeec73f3bbaea19c" kindref="member">Predicate::verify</ref> static to reduce code duplication.</para>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Predicate.h" line="214" column="18" bodyfile="src/omexmeta/Predicate.cpp" bodystart="204" bodyend="212"/>
+        <location file="src/omexmeta/include/omexmeta/Predicate.h" line="216" column="18" bodyfile="src/omexmeta/Predicate.cpp" bodystart="208" bodyend="216"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1BiomodelsBiologyQualifier_1ade9766c18afa895e7c745aa4679ccfce" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -76,7 +76,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Predicate.h" line="216" column="14" bodyfile="src/omexmeta/Predicate.cpp" bodystart="214" bodyend="216"/>
+        <location file="src/omexmeta/include/omexmeta/Predicate.h" line="218" column="14" bodyfile="src/omexmeta/Predicate.cpp" bodystart="218" bodyend="220"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -114,7 +114,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="src/omexmeta/include/omexmeta/Predicate.h" line="194" column="5" bodyfile="src/omexmeta/include/omexmeta/Predicate.h" bodystart="194" bodyend="220"/>
+    <location file="src/omexmeta/include/omexmeta/Predicate.h" line="196" column="5" bodyfile="src/omexmeta/include/omexmeta/Predicate.h" bodystart="196" bodyend="222"/>
     <listofallmembers>
       <member refid="classomexmeta_1_1Predicate_1a4cda551beb4e1354ac56d692f0eb78cd" prot="public" virt="non-virtual"><scope>omexmeta::BiomodelsBiologyQualifier</scope><name>addSeenNamespaceToSerializer</name></member>
       <member refid="classomexmeta_1_1BiomodelsBiologyQualifier_1ad513cec40a5c2fc9ef23ce7e73e56007" prot="public" virt="non-virtual"><scope>omexmeta::BiomodelsBiologyQualifier</scope><name>BiomodelsBiologyQualifier</name></member>
@@ -122,6 +122,7 @@
       <member refid="classomexmeta_1_1Predicate_1a718a37ff90ac0f2d7cc129e8351a2c7b" prot="public" virt="non-virtual"><scope>omexmeta::BiomodelsBiologyQualifier</scope><name>freeNode</name></member>
       <member refid="classomexmeta_1_1Predicate_1a6edbc1f17d4a5cbf8ad0c1b70b683b4a" prot="public" virt="non-virtual"><scope>omexmeta::BiomodelsBiologyQualifier</scope><name>get</name></member>
       <member refid="classomexmeta_1_1Predicate_1add4ab1cd86f83de3512279bbfdad947c" prot="public" virt="non-virtual"><scope>omexmeta::BiomodelsBiologyQualifier</scope><name>getNamespace</name></member>
+      <member refid="classomexmeta_1_1Predicate_1ae2adc312e293aabfdbbffbb44018665b" prot="public" virt="non-virtual"><scope>omexmeta::BiomodelsBiologyQualifier</scope><name>getNode</name></member>
       <member refid="classomexmeta_1_1Predicate_1a0147e977f71604db05763815ae6b553f" prot="public" virt="non-virtual"><scope>omexmeta::BiomodelsBiologyQualifier</scope><name>getPrefix</name></member>
       <member refid="classomexmeta_1_1Predicate_1a54a15176bd697d37d00573bf86954630" prot="public" virt="non-virtual"><scope>omexmeta::BiomodelsBiologyQualifier</scope><name>getTerm</name></member>
       <member refid="classomexmeta_1_1Predicate_1a27fa7d62ad9a5182f3dd642bc61c8d9f" prot="public" virt="non-virtual"><scope>omexmeta::BiomodelsBiologyQualifier</scope><name>getUri</name></member>

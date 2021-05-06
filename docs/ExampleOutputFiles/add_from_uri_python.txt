@@ -1,1 +1,1 @@
-Number of annotations in graph: 87
+Number of annotations in graph: 37

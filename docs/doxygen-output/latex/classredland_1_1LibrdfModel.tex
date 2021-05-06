@@ -3,11 +3,11 @@
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classredland_1_1LibrdfModel_a1a8a3f9aad0520d6788aa2816ffb318e}\label{classredland_1_1LibrdfModel_a1a8a3f9aad0520d6788aa2816ffb318e}} 
-bool {\bfseries operator==} (const \mbox{\hyperlink{classredland_1_1LibrdfModel}{Librdf\+Model}} \&rhs) const
+\mbox{\Hypertarget{classredland_1_1LibrdfModel_a355e16664fa50a8a3085f4070347106f}\label{classredland_1_1LibrdfModel_a355e16664fa50a8a3085f4070347106f}} 
+{\bfseries Librdf\+Model} (librdf\+\_\+storage $\ast$storage, const char $\ast$options=nullptr)
 \item 
-\mbox{\Hypertarget{classredland_1_1LibrdfModel_a8cdaab0ea4c70808f015bfb6846b20bb}\label{classredland_1_1LibrdfModel_a8cdaab0ea4c70808f015bfb6846b20bb}} 
-bool {\bfseries operator!=} (const \mbox{\hyperlink{classredland_1_1LibrdfModel}{Librdf\+Model}} \&rhs) const
+\mbox{\Hypertarget{classredland_1_1LibrdfModel_a0cf5960adec8df0c240b40ebba573996}\label{classredland_1_1LibrdfModel_a0cf5960adec8df0c240b40ebba573996}} 
+{\bfseries Librdf\+Model} (\mbox{\hyperlink{classredland_1_1LibrdfStorage}{Librdf\+Storage}} \&storage, const char $\ast$options=nullptr)
 \item 
 \mbox{\Hypertarget{classredland_1_1LibrdfModel_a5a35c032585e38b1d41bc18f057128c1}\label{classredland_1_1LibrdfModel_a5a35c032585e38b1d41bc18f057128c1}} 
 {\bfseries Librdf\+Model} (const \mbox{\hyperlink{classredland_1_1LibrdfModel}{Librdf\+Model}} \&model)=delete
@@ -21,11 +21,14 @@ bool {\bfseries operator!=} (const \mbox{\hyperlink{classredland_1_1LibrdfModel}
 \mbox{\Hypertarget{classredland_1_1LibrdfModel_a9007acfb92943e018d20d6985c811033}\label{classredland_1_1LibrdfModel_a9007acfb92943e018d20d6985c811033}} 
 \mbox{\hyperlink{classredland_1_1LibrdfModel}{Librdf\+Model}} \& {\bfseries operator=} (\mbox{\hyperlink{classredland_1_1LibrdfModel}{Librdf\+Model}} \&\&model) noexcept
 \item 
+\mbox{\Hypertarget{classredland_1_1LibrdfModel_a1a8a3f9aad0520d6788aa2816ffb318e}\label{classredland_1_1LibrdfModel_a1a8a3f9aad0520d6788aa2816ffb318e}} 
+bool {\bfseries operator==} (const \mbox{\hyperlink{classredland_1_1LibrdfModel}{Librdf\+Model}} \&rhs) const
+\item 
+\mbox{\Hypertarget{classredland_1_1LibrdfModel_a8cdaab0ea4c70808f015bfb6846b20bb}\label{classredland_1_1LibrdfModel_a8cdaab0ea4c70808f015bfb6846b20bb}} 
+bool {\bfseries operator!=} (const \mbox{\hyperlink{classredland_1_1LibrdfModel}{Librdf\+Model}} \&rhs) const
+\item 
 \mbox{\Hypertarget{classredland_1_1LibrdfModel_a8b7d3063e030ce8613dcd6def7463a5a}\label{classredland_1_1LibrdfModel_a8b7d3063e030ce8613dcd6def7463a5a}} 
 {\bfseries Librdf\+Model} (librdf\+\_\+model $\ast$model)
-\item 
-\mbox{\Hypertarget{classredland_1_1LibrdfModel_a355e16664fa50a8a3085f4070347106f}\label{classredland_1_1LibrdfModel_a355e16664fa50a8a3085f4070347106f}} 
-{\bfseries Librdf\+Model} (librdf\+\_\+storage $\ast$storage, const char $\ast$options=nullptr)
 \item 
 \mbox{\Hypertarget{classredland_1_1LibrdfModel_ae1b996f1785adfe9b4a1824a73643248}\label{classredland_1_1LibrdfModel_ae1b996f1785adfe9b4a1824a73643248}} 
 librdf\+\_\+model $\ast$ {\bfseries get} () const
@@ -74,6 +77,9 @@ int {\bfseries supports\+Contexts} () const
 \item 
 \mbox{\Hypertarget{classredland_1_1LibrdfModel_ad1738d844fc31d5ae2ef581d8bcf4cd4}\label{classredland_1_1LibrdfModel_ad1738d844fc31d5ae2ef581d8bcf4cd4}} 
 bool {\bfseries contains\+Statement} (\mbox{\hyperlink{structraptor__statement}{librdf\+\_\+statement}} $\ast$statement) const
+\item 
+\mbox{\Hypertarget{classredland_1_1LibrdfModel_a495d71020195a86dfe530e0acc98a685}\label{classredland_1_1LibrdfModel_a495d71020195a86dfe530e0acc98a685}} 
+bool {\bfseries contains\+Statement} (const \mbox{\hyperlink{classredland_1_1LibrdfStatement}{Librdf\+Statement}} \&statement) const
 \item 
 \mbox{\Hypertarget{classredland_1_1LibrdfModel_a2b565a7d705e24d6163c068a40040087}\label{classredland_1_1LibrdfModel_a2b565a7d705e24d6163c068a40040087}} 
 void {\bfseries add\+Statement} (const \mbox{\hyperlink{classredland_1_1LibrdfStatement}{Librdf\+Statement}} \&statement) const

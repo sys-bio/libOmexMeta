@@ -1,0 +1,121 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+  <compounddef id="classomexmeta_1_1PurgeRDFBag" kind="class" language="C++" prot="public">
+    <compoundname>omexmeta::PurgeRDFBag</compoundname>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classomexmeta_1_1PurgeRDFBag_1a9dff7ffcf6ff4f5d62428ddfd506024f" prot="private" static="no" mutable="no">
+        <type><ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref> *</type>
+        <definition>RDF* omexmeta::PurgeRDFBag::rdf_</definition>
+        <argsstring></argsstring>
+        <name>rdf_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/PurgeRDFBag.h" line="43" column="13" bodyfile="src/omexmeta/include/omexmeta/PurgeRDFBag.h" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classomexmeta_1_1PurgeRDFBag_1ae827821eecbf95156a13609f189022cb" prot="private" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int omexmeta::PurgeRDFBag::currentBlankId_</definition>
+        <argsstring></argsstring>
+        <name>currentBlankId_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/PurgeRDFBag.h" line="44" column="22" bodyfile="src/omexmeta/include/omexmeta/PurgeRDFBag.h" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classomexmeta_1_1PurgeRDFBag_1a877dbc23ddb020d6afc4c95a574aa118" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>omexmeta::PurgeRDFBag::PurgeRDFBag</definition>
+        <argsstring>(RDF *rdf)</argsstring>
+        <name>PurgeRDFBag</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref> *</type>
+          <declname>rdf</declname>
+        </param>
+        <briefdescription>
+<para>constructor for <ref refid="classomexmeta_1_1PurgeRDFBag" kindref="compound">PurgeRDFBag</ref> </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>rdf*</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>non owning pointer to <ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref> object.  Since this class is designed to be used by the rdf*, the private member variables rdf_ will always live for longer than the lifetime of this class </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/PurgeRDFBag.h" line="23" column="9" bodyfile="src/omexmeta/PurgeRDFBag.cpp" bodystart="10" bodyend="11"/>
+      </memberdef>
+      <memberdef kind="function" id="classomexmeta_1_1PurgeRDFBag_1ab01ff84fddf7770359e0755ca42848f8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void omexmeta::PurgeRDFBag::purge</definition>
+        <argsstring>()</argsstring>
+        <name>purge</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/PurgeRDFBag.h" line="25" column="14" bodyfile="src/omexmeta/PurgeRDFBag.cpp" bodystart="13" bodyend="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classomexmeta_1_1PurgeRDFBag_1a4e64ac3b04675dff1b1597587f4f6998" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void omexmeta::PurgeRDFBag::purgeNonListBagEntries</definition>
+        <argsstring>()</argsstring>
+        <name>purgeNonListBagEntries</name>
+        <briefdescription>
+<para>Remove rdf:bag entries from the current rdf graph. The rdf:bag entries targeted are not in a rdf container (and so no rdf:_1, rdf:_2, ..., rdf:_n) which is covered in. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classomexmeta_1_1PurgeRDFBag_1ad72aeb6f969b601b8f61ea415fc416dc" kindref="member">purgeListBagEntries</ref> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/PurgeRDFBag.h" line="33" column="14" bodyfile="src/omexmeta/PurgeRDFBag.cpp" bodystart="96" bodyend="147"/>
+      </memberdef>
+      <memberdef kind="function" id="classomexmeta_1_1PurgeRDFBag_1ad72aeb6f969b601b8f61ea415fc416dc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void omexmeta::PurgeRDFBag::purgeListBagEntries</definition>
+        <argsstring>()</argsstring>
+        <name>purgeListBagEntries</name>
+        <briefdescription>
+<para>Remove rdf:bag entries from the current rdf graph. The rdf:bag entries targeted are in a rdf container rdf:_1, rdf:_2, ..., rdf:_n. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/PurgeRDFBag.h" line="40" column="14" bodyfile="src/omexmeta/PurgeRDFBag.cpp" bodystart="19" bodyend="94"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/omexmeta/include/omexmeta/PurgeRDFBag.h" line="14" column="5" bodyfile="src/omexmeta/include/omexmeta/PurgeRDFBag.h" bodystart="14" bodyend="45"/>
+    <listofallmembers>
+      <member refid="classomexmeta_1_1PurgeRDFBag_1ae827821eecbf95156a13609f189022cb" prot="private" virt="non-virtual"><scope>omexmeta::PurgeRDFBag</scope><name>currentBlankId_</name></member>
+      <member refid="classomexmeta_1_1PurgeRDFBag_1ab01ff84fddf7770359e0755ca42848f8" prot="public" virt="non-virtual"><scope>omexmeta::PurgeRDFBag</scope><name>purge</name></member>
+      <member refid="classomexmeta_1_1PurgeRDFBag_1ad72aeb6f969b601b8f61ea415fc416dc" prot="public" virt="non-virtual"><scope>omexmeta::PurgeRDFBag</scope><name>purgeListBagEntries</name></member>
+      <member refid="classomexmeta_1_1PurgeRDFBag_1a4e64ac3b04675dff1b1597587f4f6998" prot="public" virt="non-virtual"><scope>omexmeta::PurgeRDFBag</scope><name>purgeNonListBagEntries</name></member>
+      <member refid="classomexmeta_1_1PurgeRDFBag_1a877dbc23ddb020d6afc4c95a574aa118" prot="public" virt="non-virtual"><scope>omexmeta::PurgeRDFBag</scope><name>PurgeRDFBag</name></member>
+      <member refid="classomexmeta_1_1PurgeRDFBag_1a9dff7ffcf6ff4f5d62428ddfd506024f" prot="private" virt="non-virtual"><scope>omexmeta::PurgeRDFBag</scope><name>rdf_</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

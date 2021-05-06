@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Predicate &mdash; libomexmeta 1.2.5 documentation</title>
+  <title>Predicate &mdash; libomexmeta 1.2.7 documentation</title>
   
 
   
@@ -240,8 +240,8 @@
 </dd></dl>
 
 <dl class="cpp function">
-<dt id="_CPPv4NK8omexmeta9Predicate7getNodeEv">
-<span id="_CPPv3NK8omexmeta9Predicate7getNodeEv"></span><span id="_CPPv2NK8omexmeta9Predicate7getNodeEv"></span><span id="omexmeta::Predicate::getNodeC"></span><span class="target" id="classomexmeta_1_1Predicate_1a144efc75a923b9d85b9f8eaccf0400bb"></span>librdf_node *<code class="sig-name descname">get</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta9Predicate7getNodeEv" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4NK8omexmeta9Predicate3getEv">
+<span id="_CPPv3NK8omexmeta9Predicate3getEv"></span><span id="_CPPv2NK8omexmeta9Predicate3getEv"></span><span id="omexmeta::Predicate::getC"></span><span class="target" id="classomexmeta_1_1Predicate_1a6edbc1f17d4a5cbf8ad0c1b70b683b4a"></span>librdf_node *<code class="sig-name descname">get</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta9Predicate3getEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>getter for the node contained by the <a class="reference internal" href="#classomexmeta_1_1Predicate"><span class="std std-ref">Predicate</span></a> object </p>
 <p><dl class="simple">
 <dt><strong>Return</strong></dt><dd><p>the librdf_node* pointer for the redland libraries under the hood </p>
@@ -299,27 +299,14 @@
 <dt id="_CPPv4NK8omexmeta9Predicate6getUriEv">
 <span id="_CPPv3NK8omexmeta9Predicate6getUriEv"></span><span id="_CPPv2NK8omexmeta9Predicate6getUriEv"></span><span id="omexmeta::Predicate::getUriC"></span><span class="target" id="classomexmeta_1_1Predicate_1a27fa7d62ad9a5182f3dd642bc61c8d9f"></span><em class="property">const</em> std::string &amp;<code class="sig-name descname">getUri</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta9Predicate6getUriEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>getter for uri </p>
-<p><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">For</span> <span class="n">developers</span><span class="o">.</span> <span class="n">Consider</span> <span class="n">removing</span> <span class="n">since</span> <span class="nb">str</span><span class="p">()</span> <span class="n">method</span> <span class="n">does</span> <span class="n">the</span> <span class="n">same</span> <span class="n">thing</span>
-</pre></div>
-</div>
- </p>
+<p>For developers. Consider removing since <a class="reference internal" href="#classomexmeta_1_1Predicate_1a9d51ebf565f39fb4d6d4f58c1b030edf"><span class="std std-ref">str()</span></a> method does the same thing </p>
 </dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4N8omexmeta9Predicate8freeNodeEv">
 <span id="_CPPv3N8omexmeta9Predicate8freeNodeEv"></span><span id="_CPPv2N8omexmeta9Predicate8freeNodeEv"></span><span id="omexmeta::Predicate::freeNode"></span><span class="target" id="classomexmeta_1_1Predicate_1a718a37ff90ac0f2d7cc129e8351a2c7b"></span>void <code class="sig-name descname">freeNode</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta9Predicate8freeNodeEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>release resources associated with this <a class="reference internal" href="#classomexmeta_1_1Predicate"><span class="std std-ref">Predicate</span></a>. </p>
-<p><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Predicate</span> <span class="n">objects</span> <span class="n">contain</span> <span class="n">a</span> <span class="n">librdf_node</span> <span class="n">pointer</span> <span class="n">which</span>
-<span class="n">needs</span> <span class="n">to</span> <span class="n">be</span> <span class="n">freed</span> <span class="n">by</span> <span class="n">the</span> <span class="n">caller</span><span class="o">.</span> <span class="n">If</span> <span class="n">a</span> <span class="n">Predicate</span> <span class="ow">is</span> <span class="n">passed</span>
-<span class="n">to</span> <span class="n">a</span> <span class="n">Triple</span> <span class="nb">object</span> <span class="p">(</span><span class="n">which</span> <span class="n">most</span> <span class="n">of</span> <span class="n">the</span> <span class="n">time</span> <span class="ow">is</span> <span class="n">it</span><span class="p">),</span>
-<span class="n">responsibility</span> <span class="k">for</span> <span class="n">deleting</span> <span class="n">the</span> <span class="n">contained</span> <span class="n">librdf_node</span>
-<span class="ow">is</span> <span class="n">transferred</span> <span class="n">to</span> <span class="n">the</span> <span class="n">Triple</span> <span class="nb">object</span><span class="p">,</span> <span class="n">which</span> <span class="n">automatically</span>
-<span class="n">clears</span> <span class="n">up</span> <span class="n">resources</span><span class="o">.</span> <span class="n">If</span> <span class="ow">not</span><span class="p">,</span> <span class="n">then</span> <span class="n">it</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">callers</span>
-<span class="n">responsibility</span> <span class="n">to</span> <span class="n">call</span> <span class="n">this</span> <span class="n">method</span> <span class="n">when</span> <span class="n">they</span> <span class="n">are</span> <span class="n">done</span> <span class="k">with</span>
-<span class="n">Predicate</span> <span class="n">instances</span><span class="o">.</span>
-</pre></div>
-</div>
- </p>
+<p><a class="reference internal" href="#classomexmeta_1_1Predicate"><span class="std std-ref">Predicate</span></a> objects contain a librdf_node pointer which needs to be freed by the caller. If a <a class="reference internal" href="#classomexmeta_1_1Predicate"><span class="std std-ref">Predicate</span></a> is passed to a <a class="reference internal" href="Triple.html#classomexmeta_1_1Triple"><span class="std std-ref">Triple</span></a> object (which most of the time is it), responsibility for deleting the contained librdf_node is transferred to the <a class="reference internal" href="Triple.html#classomexmeta_1_1Triple"><span class="std std-ref">Triple</span></a> object, which automatically clears up resources. If not, then it is the callers responsibility to call this method when they are done with <a class="reference internal" href="#classomexmeta_1_1Predicate"><span class="std std-ref">Predicate</span></a> instances. </p>
 </dd></dl>
 
 <dl class="cpp function">
@@ -334,6 +321,11 @@
 </dl>
 </p>
 </dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta9Predicate7getNodeEv">
+<span id="_CPPv3N8omexmeta9Predicate7getNodeEv"></span><span id="_CPPv2N8omexmeta9Predicate7getNodeEv"></span><span id="omexmeta::Predicate::getNode"></span><span class="target" id="classomexmeta_1_1Predicate_1ae2adc312e293aabfdbbffbb44018665b"></span>LibrdfNode <code class="sig-name descname">getNode</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta9Predicate7getNodeEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
 
 </div>
 <div class="breathe-sectiondef docutils container">
@@ -399,7 +391,8 @@
 <dl class="cpp var">
 <dt id="_CPPv4N8omexmeta9Predicate10namespace_E">
 <span id="_CPPv3N8omexmeta9Predicate10namespace_E"></span><span id="_CPPv2N8omexmeta9Predicate10namespace_E"></span><span id="omexmeta::Predicate::namespace___ss"></span><span class="target" id="classomexmeta_1_1Predicate_1afc79b0cc43eb11e4bc2fe0b305e551bc"></span>std::string <code class="sig-name descname">namespace_</code><a class="headerlink" href="#_CPPv4N8omexmeta9Predicate10namespace_E" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>make a shared pointer from this <a class="reference internal" href="#classomexmeta_1_1Predicate"><span class="std std-ref">Predicate</span></a> </p>
+</dd></dl>
 
 <dl class="cpp var">
 <dt id="_CPPv4N8omexmeta9Predicate5term_E">
@@ -417,15 +410,14 @@
 <dd></dd></dl>
 
 <dl class="cpp var">
-<dt id="_CPPv4N8omexmeta9Predicate5node_E">
-<span id="_CPPv3N8omexmeta9Predicate5node_E"></span><span id="_CPPv2N8omexmeta9Predicate5node_E"></span><span id="omexmeta::Predicate::node___librdf_nodeP"></span><span class="target" id="classomexmeta_1_1Predicate_1ad0548a6d31dbc6f32734032b1540e58f"></span>librdf_node *<code class="sig-name descname">node_</code> = nullptr<a class="headerlink" href="#_CPPv4N8omexmeta9Predicate5node_E" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N8omexmeta9Predicate12valid_terms_E">
+<span id="_CPPv3N8omexmeta9Predicate12valid_terms_E"></span><span id="_CPPv2N8omexmeta9Predicate12valid_terms_E"></span><span id="omexmeta::Predicate::valid_terms___std::vector:ss:"></span><span class="target" id="classomexmeta_1_1Predicate_1a14ae7768fbd3aaf444bcde8650910c0b"></span>std::vector&lt;std::string&gt; <code class="sig-name descname">valid_terms_</code> = {&quot;All&quot;}<a class="headerlink" href="#_CPPv4N8omexmeta9Predicate12valid_terms_E" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp var">
-<dt id="_CPPv4N8omexmeta9Predicate12valid_terms_E">
-<span id="_CPPv3N8omexmeta9Predicate12valid_terms_E"></span><span id="_CPPv2N8omexmeta9Predicate12valid_terms_E"></span><span id="omexmeta::Predicate::valid_terms___std::vector:ss:"></span><span class="target" id="classomexmeta_1_1Predicate_1a14ae7768fbd3aaf444bcde8650910c0b"></span>std::vector&lt;std::string&gt; <code class="sig-name descname">valid_terms_</code> = {&quot;All&quot;}<a class="headerlink" href="#_CPPv4N8omexmeta9Predicate12valid_terms_E" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>predicates can only have type uri </p>
-</dd></dl>
+<dt id="_CPPv4N8omexmeta9Predicate5node_E">
+<span id="_CPPv3N8omexmeta9Predicate5node_E"></span><span id="_CPPv2N8omexmeta9Predicate5node_E"></span><span id="omexmeta::Predicate::node___LibrdfNode"></span><span class="target" id="classomexmeta_1_1Predicate_1a1c062fe0337919ecbffba1f567b77048"></span>LibrdfNode <code class="sig-name descname">node_</code><a class="headerlink" href="#_CPPv4N8omexmeta9Predicate5node_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
 
 </div>
 </dd></dl>

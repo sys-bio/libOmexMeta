@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libomexmeta
-   &#160;<span id="projectnumber">1.2.6</span>
+   &#160;<span id="projectnumber">1.2.7</span>
    </div>
    <div id="projectbrief">Annotations for models in systems biology</div>
   </td>
@@ -87,30 +87,34 @@ $(function() {
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">namespace </span>redland {</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
 <div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="classredland_1_1LibrdfQueryResults.html">   16</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classredland_1_1LibrdfQueryResults.html">LibrdfQueryResults</a> {</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        librdf_query_results * query_results_ = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <a class="code" href="classredland_1_1LibrdfQueryResults.html">LibrdfQueryResults</a>() = <span class="keywordflow">default</span>;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keyword">explicit</span> <a class="code" href="classredland_1_1LibrdfQueryResults.html">LibrdfQueryResults</a>(librdf_query_results *queryResults);</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="classredland_1_1LibrdfQueryResults.html#a965fe04027cb2ab0392e687e891f6c44">   27</a></span>&#160;        <a class="code" href="classredland_1_1LibrdfQueryResults.html#a965fe04027cb2ab0392e687e891f6c44">LibrdfQueryResults</a>(<span class="keyword">const</span> <a class="code" href="classredland_1_1LibrdfQueryResults.html">LibrdfQueryResults</a> &amp;queryResults) = <span class="keyword">delete</span>;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <a class="code" href="classredland_1_1LibrdfQueryResults.html">LibrdfQueryResults</a>(<a class="code" href="classredland_1_1LibrdfQueryResults.html">LibrdfQueryResults</a> &amp;&amp;queryResults) noexcept;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="classredland_1_1LibrdfQueryResults.html#a8b449205365d6ba353de1ff749be1b35">   37</a></span>&#160;        <a class="code" href="classredland_1_1LibrdfQueryResults.html">LibrdfQueryResults</a> &amp;<a class="code" href="classredland_1_1LibrdfQueryResults.html#a8b449205365d6ba353de1ff749be1b35">operator=</a>(<span class="keyword">const</span> <a class="code" href="classredland_1_1LibrdfQueryResults.html">LibrdfQueryResults</a> &amp;queryResults) = <span class="keyword">delete</span>;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <a class="code" href="classredland_1_1LibrdfQueryResults.html">LibrdfQueryResults</a> &amp;<a class="code" href="classredland_1_1LibrdfQueryResults.html#a8b449205365d6ba353de1ff749be1b35">operator=</a>(<a class="code" href="classredland_1_1LibrdfQueryResults.html">LibrdfQueryResults</a> &amp;&amp;queryResults) noexcept;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        [[nodiscard]] librdf_query_results *get() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        std::string str(std::string format);</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="keywordtype">void</span> freeQueryResults();</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    };</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;}<span class="comment">// namespace redland</span></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="preprocessor">#endif//LIBOMEXMETA_LIBRDFQuery_results_H</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <a class="code" href="classredland_1_1LibrdfQueryResults.html">LibrdfQueryResults</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        ~<a class="code" href="classredland_1_1LibrdfQueryResults.html">LibrdfQueryResults</a>();</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="keyword">explicit</span> <a class="code" href="classredland_1_1LibrdfQueryResults.html">LibrdfQueryResults</a>(librdf_query_results *queryResults);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="classredland_1_1LibrdfQueryResults.html#a965fe04027cb2ab0392e687e891f6c44">   28</a></span>&#160;        <a class="code" href="classredland_1_1LibrdfQueryResults.html#a965fe04027cb2ab0392e687e891f6c44">LibrdfQueryResults</a>(<span class="keyword">const</span> <a class="code" href="classredland_1_1LibrdfQueryResults.html">LibrdfQueryResults</a> &amp;queryResults) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <a class="code" href="classredland_1_1LibrdfQueryResults.html">LibrdfQueryResults</a>(<a class="code" href="classredland_1_1LibrdfQueryResults.html">LibrdfQueryResults</a> &amp;&amp;queryResults) noexcept;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="classredland_1_1LibrdfQueryResults.html#a8b449205365d6ba353de1ff749be1b35">   38</a></span>&#160;        <a class="code" href="classredland_1_1LibrdfQueryResults.html">LibrdfQueryResults</a> &amp;<a class="code" href="classredland_1_1LibrdfQueryResults.html#a8b449205365d6ba353de1ff749be1b35">operator=</a>(<span class="keyword">const</span> <a class="code" href="classredland_1_1LibrdfQueryResults.html">LibrdfQueryResults</a> &amp;queryResults) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <a class="code" href="classredland_1_1LibrdfQueryResults.html">LibrdfQueryResults</a> &amp;<a class="code" href="classredland_1_1LibrdfQueryResults.html#a8b449205365d6ba353de1ff749be1b35">operator=</a>(<a class="code" href="classredland_1_1LibrdfQueryResults.html">LibrdfQueryResults</a> &amp;&amp;queryResults) noexcept;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        [[nodiscard]] librdf_query_results *get() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        std::string str(std::string format);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="keywordtype">void</span> freeQueryResults();</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        librdf_query_results *query_results_ = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    };</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;}<span class="comment">// namespace redland</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor">#endif//LIBOMEXMETA_LIBRDFQuery_results_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aclassredland_1_1LibrdfQueryResults_html_a965fe04027cb2ab0392e687e891f6c44"><div class="ttname"><a href="classredland_1_1LibrdfQueryResults.html#a965fe04027cb2ab0392e687e891f6c44">redland::LibrdfQueryResults::LibrdfQueryResults</a></div><div class="ttdeci">LibrdfQueryResults(const LibrdfQueryResults &amp;queryResults)=delete</div></div>
 <div class="ttc" id="aclassredland_1_1LibrdfQueryResults_html_a8b449205365d6ba353de1ff749be1b35"><div class="ttname"><a href="classredland_1_1LibrdfQueryResults.html#a8b449205365d6ba353de1ff749be1b35">redland::LibrdfQueryResults::operator=</a></div><div class="ttdeci">LibrdfQueryResults &amp; operator=(const LibrdfQueryResults &amp;queryResults)=delete</div></div>

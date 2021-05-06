@@ -1,0 +1,179 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+  <compounddef id="classomexmeta_1_1VCardTranslator" kind="class" language="C++" prot="public">
+    <compoundname>omexmeta::VCardTranslator</compoundname>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classomexmeta_1_1VCardTranslator_1a665dcae68631070797d85a7adc72608e" prot="private" static="no" mutable="no">
+        <type><ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref> *</type>
+        <definition>RDF* omexmeta::VCardTranslator::rdf_</definition>
+        <argsstring></argsstring>
+        <name>rdf_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/VCardTranslator.h" line="62" column="13" bodyfile="src/omexmeta/include/omexmeta/VCardTranslator.h" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classomexmeta_1_1VCardTranslator_1af813ef0f08451e9d7a618d805b0842c9" prot="private" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int omexmeta::VCardTranslator::currentBlankId</definition>
+        <argsstring></argsstring>
+        <name>currentBlankId</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/VCardTranslator.h" line="64" column="22" bodyfile="src/omexmeta/include/omexmeta/VCardTranslator.h" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classomexmeta_1_1VCardTranslator_1a59320f47775f8b342d549ed92231c021" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>omexmeta::VCardTranslator::VCardTranslator</definition>
+        <argsstring>(RDF *rdf)</argsstring>
+        <name>VCardTranslator</name>
+        <param>
+          <type><ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref> *</type>
+          <declname>rdf</declname>
+        </param>
+        <briefdescription>
+<para>constructor takes a non-owning RDF* </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/VCardTranslator.h" line="23" column="9" bodyfile="src/omexmeta/VCardTranslator.cpp" bodystart="14" bodyend="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classomexmeta_1_1VCardTranslator_1aa4f5c15215fb26e1b80d21a1cb4b0f6d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void omexmeta::VCardTranslator::translate</definition>
+        <argsstring>()</argsstring>
+        <name>translate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/VCardTranslator.h" line="25" column="14" bodyfile="src/omexmeta/VCardTranslator.cpp" bodystart="17" bodyend="26"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classomexmeta_1_1VCardTranslator_1a8a5929e53a62e0c98224ab6d633bd927" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void omexmeta::VCardTranslator::convertVCardToFoaf</definition>
+        <argsstring>(const std::string &amp;vcardUri, const std::string &amp;foafReplacement)</argsstring>
+        <name>convertVCardToFoaf</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>vcardUri</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>foafReplacement</declname>
+        </param>
+        <briefdescription>
+<para>convert a triple that has a vcard uri for predicate into a corresponding foaf predicate. The subject is a blank node and the resource a literal node. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/VCardTranslator.h" line="34" column="14" bodyfile="src/omexmeta/VCardTranslator.cpp" bodystart="72" bodyend="99"/>
+      </memberdef>
+      <memberdef kind="function" id="classomexmeta_1_1VCardTranslator_1a79931fdad672b25254906cf76a972b44" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void omexmeta::VCardTranslator::purgeNConstructs</definition>
+        <argsstring>()</argsstring>
+        <name>purgeNConstructs</name>
+        <briefdescription>
+<para>VCard N constructs are not necessary So the first job of the translator is to remove them. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/VCardTranslator.h" line="40" column="14" bodyfile="src/omexmeta/VCardTranslator.cpp" bodystart="28" bodyend="70"/>
+      </memberdef>
+      <memberdef kind="function" id="classomexmeta_1_1VCardTranslator_1a5dfb6db0f5365196a8304b2f56f10290" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void omexmeta::VCardTranslator::translateFamilyName</definition>
+        <argsstring>()</argsstring>
+        <name>translateFamilyName</name>
+        <briefdescription>
+<para>converts vcard family name to foaf familyName </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/VCardTranslator.h" line="45" column="14" bodyfile="src/omexmeta/VCardTranslator.cpp" bodystart="101" bodyend="103"/>
+      </memberdef>
+      <memberdef kind="function" id="classomexmeta_1_1VCardTranslator_1ab774550e933e2bb1ca4e540510071719" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void omexmeta::VCardTranslator::translateGivenName</definition>
+        <argsstring>()</argsstring>
+        <name>translateGivenName</name>
+        <briefdescription>
+<para>converts vcard given name to foaf givenName </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/VCardTranslator.h" line="50" column="14" bodyfile="src/omexmeta/VCardTranslator.cpp" bodystart="105" bodyend="107"/>
+      </memberdef>
+      <memberdef kind="function" id="classomexmeta_1_1VCardTranslator_1aafae8501bc3eafe66356fac040153373" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void omexmeta::VCardTranslator::translateOrganization</definition>
+        <argsstring>()</argsstring>
+        <name>translateOrganization</name>
+        <briefdescription>
+<para>converts vcard org to foaf organization </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/VCardTranslator.h" line="55" column="14" bodyfile="src/omexmeta/VCardTranslator.cpp" bodystart="113" bodyend="150"/>
+      </memberdef>
+      <memberdef kind="function" id="classomexmeta_1_1VCardTranslator_1aac64a10f8edc75738e260c824fcd3d8a" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void omexmeta::VCardTranslator::translateEmail</definition>
+        <argsstring>()</argsstring>
+        <name>translateEmail</name>
+        <briefdescription>
+<para>converts vcard email to foaf email </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/VCardTranslator.h" line="60" column="14" bodyfile="src/omexmeta/VCardTranslator.cpp" bodystart="109" bodyend="111"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/omexmeta/include/omexmeta/VCardTranslator.h" line="16" column="5" bodyfile="src/omexmeta/include/omexmeta/VCardTranslator.h" bodystart="16" bodyend="65"/>
+    <listofallmembers>
+      <member refid="classomexmeta_1_1VCardTranslator_1a8a5929e53a62e0c98224ab6d633bd927" prot="private" virt="non-virtual"><scope>omexmeta::VCardTranslator</scope><name>convertVCardToFoaf</name></member>
+      <member refid="classomexmeta_1_1VCardTranslator_1af813ef0f08451e9d7a618d805b0842c9" prot="private" virt="non-virtual"><scope>omexmeta::VCardTranslator</scope><name>currentBlankId</name></member>
+      <member refid="classomexmeta_1_1VCardTranslator_1a79931fdad672b25254906cf76a972b44" prot="private" virt="non-virtual"><scope>omexmeta::VCardTranslator</scope><name>purgeNConstructs</name></member>
+      <member refid="classomexmeta_1_1VCardTranslator_1a665dcae68631070797d85a7adc72608e" prot="private" virt="non-virtual"><scope>omexmeta::VCardTranslator</scope><name>rdf_</name></member>
+      <member refid="classomexmeta_1_1VCardTranslator_1aa4f5c15215fb26e1b80d21a1cb4b0f6d" prot="public" virt="non-virtual"><scope>omexmeta::VCardTranslator</scope><name>translate</name></member>
+      <member refid="classomexmeta_1_1VCardTranslator_1aac64a10f8edc75738e260c824fcd3d8a" prot="private" virt="non-virtual"><scope>omexmeta::VCardTranslator</scope><name>translateEmail</name></member>
+      <member refid="classomexmeta_1_1VCardTranslator_1a5dfb6db0f5365196a8304b2f56f10290" prot="private" virt="non-virtual"><scope>omexmeta::VCardTranslator</scope><name>translateFamilyName</name></member>
+      <member refid="classomexmeta_1_1VCardTranslator_1ab774550e933e2bb1ca4e540510071719" prot="private" virt="non-virtual"><scope>omexmeta::VCardTranslator</scope><name>translateGivenName</name></member>
+      <member refid="classomexmeta_1_1VCardTranslator_1aafae8501bc3eafe66356fac040153373" prot="private" virt="non-virtual"><scope>omexmeta::VCardTranslator</scope><name>translateOrganization</name></member>
+      <member refid="classomexmeta_1_1VCardTranslator_1a59320f47775f8b342d549ed92231c021" prot="public" virt="non-virtual"><scope>omexmeta::VCardTranslator</scope><name>VCardTranslator</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
