@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libomexmeta
-   &#160;<span id="projectnumber">1.2.6</span>
+   &#160;<span id="projectnumber">1.2.7</span>
    </div>
    <div id="projectbrief">Annotations for models in systems biology</div>
   </td>
@@ -153,64 +153,65 @@ $(function() {
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        <span class="keyword">static</span> <a class="code" href="classredland_1_1LibrdfNode.html">LibrdfNode</a> fromBlank(<span class="keyword">const</span> std::string &amp;blank);</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        <span class="keyword">static</span> <a class="code" href="classredland_1_1LibrdfNode.html">LibrdfNode</a> fromLiteral(<span class="keyword">const</span> std::string &amp;literal, <span class="keyword">const</span> std::string &amp;literal_datatype_uri = <span class="stringliteral">&quot;string&quot;</span>,</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                                      <span class="keyword">const</span> std::string &amp;xml_language = std::string());</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        <span class="keyword">static</span> <a class="code" href="classredland_1_1LibrdfNode.html">LibrdfNode</a> newEmptyNode();</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        raptor_term_type getRaptorTermType();</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        <span class="keyword">static</span> std::string str(<a class="code" href="structraptor__term.html">librdf_node</a> *node);</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        [[nodiscard]] std::string str() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        <span class="keyword">static</span> <a class="code" href="classredland_1_1LibrdfNode.html">LibrdfNode</a> <a class="code" href="classredland_1_1LibrdfNode.html#a96a685f8e79ba04c91a15e024a66388f">fromLiteral</a>(<span class="keyword">const</span> std::string &amp;literal, <span class="keyword">const</span> std::string &amp;literal_datatype_uri = <span class="stringliteral">&quot;&quot;</span>,</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;                                      <span class="keyword">const</span> std::string &amp;xml_language = std::string());</div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        <a class="code" href="classredland_1_1LibrdfUri.html">LibrdfUri</a> getLiteralDatatype();</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        <span class="keyword">static</span> <a class="code" href="classredland_1_1LibrdfNode.html">LibrdfNode</a> newEmptyNode();</div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        std::string getLiteralLanguage();</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        raptor_term_type getRaptorTermType();</div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        std::string getBlankIdentifier();</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        <span class="keyword">static</span> std::string str(<a class="code" href="structraptor__term.html">librdf_node</a> *node);</div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        <a class="code" href="classredland_1_1LibrdfUri.html">LibrdfUri</a> getUri();</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        [[nodiscard]] std::string str() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        <span class="keywordtype">void</span> setUri(<span class="keyword">const</span> std::string &amp;uri);</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        <a class="code" href="classredland_1_1LibrdfUri.html">LibrdfUri</a> getLiteralDatatype();</div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        <span class="keywordtype">void</span> setLiteralDatatype(<span class="keyword">const</span> std::string &amp;datatype);</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        std::string getLiteralLanguage();</div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        <span class="keyword">static</span> std::string validateLiteralDatatype(<span class="keyword">const</span> std::string &amp;literal_datatype_uri);</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        std::string getBlankIdentifier();</div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        <span class="keywordtype">void</span> setBlankIdentifier(<span class="keyword">const</span> std::string &amp;identifier);</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        <a class="code" href="classredland_1_1LibrdfUri.html">LibrdfUri</a> getUri();</div>
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160; </div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        <span class="comment">/*</span></div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="comment">         * @brief shallow copy a node. Internal ref count incremented by 1</span></div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;<span class="comment">         */</span></div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        <span class="keyword">static</span> <a class="code" href="classredland_1_1LibrdfNode.html">LibrdfNode</a> copyNode(<span class="keyword">const</span> <a class="code" href="classredland_1_1LibrdfNode.html">LibrdfNode</a> &amp;node);</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160; </div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        <span class="keyword">static</span> <a class="code" href="classredland_1_1LibrdfNode.html">LibrdfNode</a> fromRelativeUri(<span class="keyword">const</span> std::string &amp;uri_string, <span class="keyword">const</span> std::string &amp;base_uri);</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160; </div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        std::string <a class="code" href="classredland_1_1LibrdfNode.html#a43ba1bed3f1cc6ed654a16c570598565">getNamespace</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160; </div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        <span class="keyword">static</span> std::vector&lt;std::string&gt; splitStringBy(<span class="keyword">const</span> std::string &amp;str, <span class="keywordtype">char</span> delimiter);</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160; </div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;         <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classredland_1_1LibrdfNode.html#a6dd134798082dbee9fb5601752609981">getUsage</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160; </div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;         <span class="keywordtype">void</span> incrementUsageCount();</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160; </div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        <span class="keywordtype">void</span> setUri(<span class="keyword">const</span> std::string &amp;uri);</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160; </div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        <span class="keywordtype">void</span> setLiteralDatatype(<span class="keyword">const</span> std::string &amp;datatype);</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160; </div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        <span class="keyword">static</span> std::string validateLiteralDatatype(<span class="keyword">const</span> std::string &amp;literal_datatype_uri);</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160; </div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        <span class="keywordtype">void</span> setBlankIdentifier(<span class="keyword">const</span> std::string &amp;identifier);</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160; </div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        <span class="comment">/*</span></div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;<span class="comment">         * @brief shallow copy a node. Internal ref count incremented by 1</span></div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;<span class="comment">         */</span></div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        <span class="keyword">static</span> <a class="code" href="classredland_1_1LibrdfNode.html">LibrdfNode</a> copyNode(<span class="keyword">const</span> <a class="code" href="classredland_1_1LibrdfNode.html">LibrdfNode</a> &amp;node);</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160; </div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        <span class="keyword">static</span> <a class="code" href="classredland_1_1LibrdfNode.html">LibrdfNode</a> fromRelativeUri(<span class="keyword">const</span> std::string &amp;uri_string, <span class="keyword">const</span> std::string &amp;base_uri);</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160; </div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;        std::string <a class="code" href="classredland_1_1LibrdfNode.html#a43ba1bed3f1cc6ed654a16c570598565">getNamespace</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160; </div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;        <span class="keyword">static</span> std::vector&lt;std::string&gt; splitStringBy(<span class="keyword">const</span> std::string &amp;str, <span class="keywordtype">char</span> delimiter);</div>
 <div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160; </div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        <a class="code" href="structraptor__term.html">librdf_node</a> *node_ = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    };</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;}<span class="comment">// namespace redland</span></div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;         <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classredland_1_1LibrdfNode.html#a6dd134798082dbee9fb5601752609981">getUsage</a>() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160; </div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160; </div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;<span class="preprocessor">#endif//LIBOMEXMETA_LIBRDFNODE_H</span></div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;         <span class="keywordtype">void</span> incrementUsageCount();</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160; </div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160; </div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        <a class="code" href="structraptor__term.html">librdf_node</a> *node_ = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    };</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;}<span class="comment">// namespace redland</span></div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160; </div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160; </div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;<span class="preprocessor">#endif//LIBOMEXMETA_LIBRDFNODE_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclassredland_1_1LibrdfNode_html_a6dd134798082dbee9fb5601752609981"><div class="ttname"><a href="classredland_1_1LibrdfNode.html#a6dd134798082dbee9fb5601752609981">redland::LibrdfNode::getUsage</a></div><div class="ttdeci">unsigned int getUsage() const</div><div class="ttdoc">returns the usage of the underlying librdf_node pointer</div><div class="ttdef"><b>Definition:</b> LibrdfNode.cpp:398</div></div>
+<div class="ttc" id="aclassredland_1_1LibrdfNode_html_a6dd134798082dbee9fb5601752609981"><div class="ttname"><a href="classredland_1_1LibrdfNode.html#a6dd134798082dbee9fb5601752609981">redland::LibrdfNode::getUsage</a></div><div class="ttdeci">unsigned int getUsage() const</div><div class="ttdoc">returns the usage of the underlying librdf_node pointer</div><div class="ttdef"><b>Definition:</b> LibrdfNode.cpp:402</div></div>
 <div class="ttc" id="aclassredland_1_1LibrdfNode_html"><div class="ttname"><a href="classredland_1_1LibrdfNode.html">redland::LibrdfNode</a></div><div class="ttdef"><b>Definition:</b> LibrdfNode.h:49</div></div>
 <div class="ttc" id="astructraptor__term_html"><div class="ttname"><a href="structraptor__term.html">raptor_term</a></div><div class="ttdef"><b>Definition:</b> raptor2.h:621</div></div>
-<div class="ttc" id="aclassredland_1_1LibrdfNode_html_a33162ea36efe451c100325816cf8613f"><div class="ttname"><a href="classredland_1_1LibrdfNode.html#a33162ea36efe451c100325816cf8613f">redland::LibrdfNode::get</a></div><div class="ttdeci">librdf_node * get() const</div><div class="ttdoc">return pointer to underlying librdf_node pointer</div><div class="ttdef"><b>Definition:</b> LibrdfNode.cpp:228</div></div>
-<div class="ttc" id="aclassredland_1_1LibrdfNode_html_a43ba1bed3f1cc6ed654a16c570598565"><div class="ttname"><a href="classredland_1_1LibrdfNode.html#a43ba1bed3f1cc6ed654a16c570598565">redland::LibrdfNode::getNamespace</a></div><div class="ttdeci">std::string getNamespace() const</div><div class="ttdoc">get namespace portion of the node. I.e. all but last section of the uri</div><div class="ttdef"><b>Definition:</b> LibrdfNode.cpp:372</div></div>
+<div class="ttc" id="aclassredland_1_1LibrdfNode_html_a33162ea36efe451c100325816cf8613f"><div class="ttname"><a href="classredland_1_1LibrdfNode.html#a33162ea36efe451c100325816cf8613f">redland::LibrdfNode::get</a></div><div class="ttdeci">librdf_node * get() const</div><div class="ttdoc">return pointer to underlying librdf_node pointer</div><div class="ttdef"><b>Definition:</b> LibrdfNode.cpp:232</div></div>
+<div class="ttc" id="aclassredland_1_1LibrdfNode_html_a96a685f8e79ba04c91a15e024a66388f"><div class="ttname"><a href="classredland_1_1LibrdfNode.html#a96a685f8e79ba04c91a15e024a66388f">redland::LibrdfNode::fromLiteral</a></div><div class="ttdeci">static LibrdfNode fromLiteral(const std::string &amp;literal, const std::string &amp;literal_datatype_uri=&quot;&quot;, const std::string &amp;xml_language=std::string())</div><div class="ttdoc">construct a literal node</div><div class="ttdef"><b>Definition:</b> LibrdfNode.cpp:168</div></div>
+<div class="ttc" id="aclassredland_1_1LibrdfNode_html_a43ba1bed3f1cc6ed654a16c570598565"><div class="ttname"><a href="classredland_1_1LibrdfNode.html#a43ba1bed3f1cc6ed654a16c570598565">redland::LibrdfNode::getNamespace</a></div><div class="ttdeci">std::string getNamespace() const</div><div class="ttdoc">get namespace portion of the node. I.e. all but last section of the uri</div><div class="ttdef"><b>Definition:</b> LibrdfNode.cpp:376</div></div>
 <div class="ttc" id="aclassredland_1_1LibrdfUri_html"><div class="ttname"><a href="classredland_1_1LibrdfUri.html">redland::LibrdfUri</a></div><div class="ttdef"><b>Definition:</b> LibrdfUri.h:16</div></div>
-<div class="ttc" id="aclassredland_1_1LibrdfNode_html_a0bd36d9a9140a98753bb1d35ff8c1695"><div class="ttname"><a href="classredland_1_1LibrdfNode.html#a0bd36d9a9140a98753bb1d35ff8c1695">redland::LibrdfNode::getWithoutIncrement</a></div><div class="ttdeci">librdf_node * getWithoutIncrement() const</div><div class="ttdoc">get the underlying librdf_node*</div><div class="ttdef"><b>Definition:</b> LibrdfNode.cpp:233</div></div>
+<div class="ttc" id="aclassredland_1_1LibrdfNode_html_a0bd36d9a9140a98753bb1d35ff8c1695"><div class="ttname"><a href="classredland_1_1LibrdfNode.html#a0bd36d9a9140a98753bb1d35ff8c1695">redland::LibrdfNode::getWithoutIncrement</a></div><div class="ttdeci">librdf_node * getWithoutIncrement() const</div><div class="ttdoc">get the underlying librdf_node*</div><div class="ttdef"><b>Definition:</b> LibrdfNode.cpp:237</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20

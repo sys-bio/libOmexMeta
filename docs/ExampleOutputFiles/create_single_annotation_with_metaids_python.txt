@@ -41,9 +41,9 @@
 @prefix OMEXlib: <http://omex-library.org/> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
-local:Process0000
-    semsim:hasSinkParticipant local:SinkParticipant0000 ;
-    semsim:hasSourceParticipant local:SourceParticipant0000 .
+local:ProcessProperty0000
+    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#reaction0000> ;
+    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .
 
 local:SinkParticipant0000
     semsim:hasMultiplier "1"^^rdf:double ;
@@ -54,8 +54,8 @@ local:SourceParticipant0000
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#species0001> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#reaction0000>
-    bqbiol:isPropertyOf local:Process0000 ;
-    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .
+    semsim:hasSinkParticipant local:SinkParticipant0000 ;
+    semsim:hasSourceParticipant local:SourceParticipant0000 .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#species0000>
     bqbiol:is <https://identifiers.org/uniprot/P01137> .

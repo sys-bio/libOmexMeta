@@ -70,14 +70,14 @@
         <childnode refid="2" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="3">
-        <label>exception</label>
-      </node>
       <node id="2">
         <label>Exception</label>
         <link refid="classException"/>
         <childnode refid="3" relation="public-inheritance">
         </childnode>
+      </node>
+      <node id="3">
+        <label>std::exception</label>
       </node>
     </inheritancegraph>
     <collaborationgraph>
@@ -87,14 +87,14 @@
         <childnode refid="2" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="3">
-        <label>exception</label>
-      </node>
       <node id="2">
         <label>Exception</label>
         <link refid="classException"/>
         <childnode refid="3" relation="public-inheritance">
         </childnode>
+      </node>
+      <node id="3">
+        <label>std::exception</label>
       </node>
     </collaborationgraph>
     <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfException.h" line="53" column="1" bodyfile="src/redland/RedlandWrapper/src/include/redland/LibrdfException.h" bodystart="53" bodyend="55"/>

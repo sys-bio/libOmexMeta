@@ -30,6 +30,7 @@
     <innerclass refid="classomexmeta_1_1PhysicalProperty" prot="public">omexmeta::PhysicalProperty</innerclass>
     <innerclass refid="classomexmeta_1_1Predicate" prot="public">omexmeta::Predicate</innerclass>
     <innerclass refid="classomexmeta_1_1PropertyBearer" prot="public">omexmeta::PropertyBearer</innerclass>
+    <innerclass refid="classomexmeta_1_1PurgeRDFBag" prot="public">omexmeta::PurgeRDFBag</innerclass>
     <innerclass refid="classomexmeta_1_1Query" prot="public">omexmeta::Query</innerclass>
     <innerclass refid="classomexmeta_1_1RDF" prot="public">omexmeta::RDF</innerclass>
     <innerclass refid="classomexmeta_1_1SBMLAssistant" prot="public">omexmeta::SBMLAssistant</innerclass>
@@ -41,6 +42,7 @@
     <innerclass refid="classomexmeta_1_1Triples" prot="public">omexmeta::Triples</innerclass>
     <innerclass refid="classomexmeta_1_1UriHandler" prot="public">omexmeta::UriHandler</innerclass>
     <innerclass refid="classomexmeta_1_1ValueException" prot="public">omexmeta::ValueException</innerclass>
+    <innerclass refid="classomexmeta_1_1VCardTranslator" prot="public">omexmeta::VCardTranslator</innerclass>
       <sectiondef kind="enum">
       <memberdef kind="enum" id="namespaceomexmeta_1a1129ebb8a92218ebb27b9c76ac8462f7" prot="public" static="no" strong="no">
         <type></type>
@@ -258,7 +260,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Predicate.h" line="359" column="29" bodyfile="src/omexmeta/include/omexmeta/Predicate.h" bodystart="359" bodyend="-1"/>
+        <location file="src/omexmeta/include/omexmeta/Predicate.h" line="361" column="29" bodyfile="src/omexmeta/include/omexmeta/Predicate.h" bodystart="361" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceomexmeta_1af916f97aa87900541cf46ca66139fc14" prot="public" static="no">
         <type>std::vector&lt; <ref refid="classomexmeta_1_1Predicate" kindref="compound">Predicate</ref> &gt;</type>
@@ -271,7 +273,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Predicate.h" line="360" column="25" bodyfile="src/omexmeta/include/omexmeta/Predicate.h" bodystart="360" bodyend="-1"/>
+        <location file="src/omexmeta/include/omexmeta/Predicate.h" line="362" column="25" bodyfile="src/omexmeta/include/omexmeta/Predicate.h" bodystart="362" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceomexmeta_1a84ba746aac1e9ee5c7256a2f2f393a41" prot="public" static="no">
         <type>std::vector&lt; PredicatePtr &gt;</type>
@@ -284,7 +286,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Predicate.h" line="361" column="25" bodyfile="src/omexmeta/include/omexmeta/Predicate.h" bodystart="361" bodyend="-1"/>
+        <location file="src/omexmeta/include/omexmeta/Predicate.h" line="363" column="25" bodyfile="src/omexmeta/include/omexmeta/Predicate.h" bodystart="363" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceomexmeta_1a4a755ee078afb8f071a545ff5a5631b0" prot="public" static="no">
         <type>std::shared_ptr&lt; <ref refid="classomexmeta_1_1PropertyBearer" kindref="compound">PropertyBearer</ref> &gt;</type>
@@ -3276,7 +3278,7 @@ namespace_ argument is:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/Predicate.cpp" line="253" column="18" bodyfile="src/omexmeta/Predicate.cpp" bodystart="253" bodyend="303" declfile="src/omexmeta/include/omexmeta/Predicate.h" declline="377" declcolumn="18"/>
+        <location file="src/omexmeta/Predicate.cpp" line="257" column="18" bodyfile="src/omexmeta/Predicate.cpp" bodystart="257" bodyend="307" declfile="src/omexmeta/include/omexmeta/Predicate.h" declline="379" declcolumn="18"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a902ae2b86ac75376d9d826aecbd99b43" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>OMEXMETA_CAPI_EXPORT char *</type>

@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
   <compounddef id="classredland_1_1LibrdfSerializer" kind="class" language="C++" prot="public">
     <compoundname>redland::LibrdfSerializer</compoundname>
-    <innerclass refid="structredland_1_1LibrdfSerializer_1_1deleter" prot="private">redland::LibrdfSerializer::deleter</innerclass>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classredland_1_1LibrdfSerializer_1ae44adc81197c0816451c5b26bc739691" prot="private" static="no" mutable="no">
         <type>librdf_serializer *</type>
@@ -16,39 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfSerializer.h" line="30" column="27" bodyfile="src/redland/RedlandWrapper/src/include/redland/LibrdfSerializer.h" bodystart="30" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-func">
-      <memberdef kind="function" id="classredland_1_1LibrdfSerializer_1a955dea37e1c9199ee6ef892533b2b471" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>std::vector&lt; std::string &gt;</type>
-        <definition>std::vector&lt;std::string&gt; redland::LibrdfSerializer::validateSerializerName</definition>
-        <argsstring>()</argsstring>
-        <name>validateSerializerName</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfSerializer.h" line="28" column="21"/>
-      </memberdef>
-      <memberdef kind="function" id="classredland_1_1LibrdfSerializer_1acb0b3d0424dc43a4a940ae216a6c876b" prot="private" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
-        <type></type>
-        <definition>redland::LibrdfSerializer::LibrdfSerializer</definition>
-        <argsstring>(librdf_serializer *serializer)</argsstring>
-        <name>LibrdfSerializer</name>
-        <param>
-          <type>librdf_serializer *</type>
-          <declname>serializer</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfSerializer.h" line="32" column="18" bodyfile="src/redland/RedlandWrapper/src/LibrdfSerializer.cpp" bodystart="5" bodyend="6"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfSerializer.h" line="58" column="27" bodyfile="src/redland/RedlandWrapper/src/include/redland/LibrdfSerializer.h" bodystart="58" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -63,7 +30,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfSerializer.h" line="35" column="9"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfSerializer.h" line="24" column="9"/>
       </memberdef>
       <memberdef kind="function" id="classredland_1_1LibrdfSerializer_1abd60aad8b1ae635b0d8fc3da06d7b7ed" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -76,7 +43,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfSerializer.h" line="37" column="9" bodyfile="src/redland/RedlandWrapper/src/LibrdfSerializer.cpp" bodystart="26" bodyend="28"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfSerializer.h" line="26" column="9" bodyfile="src/redland/RedlandWrapper/src/LibrdfSerializer.cpp" bodystart="26" bodyend="28"/>
       </memberdef>
       <memberdef kind="function" id="classredland_1_1LibrdfSerializer_1a084920f2dadf9aff9abff2fbe4e302e9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -93,7 +60,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfSerializer.h" line="39" column="9"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfSerializer.h" line="28" column="9"/>
       </memberdef>
       <memberdef kind="function" id="classredland_1_1LibrdfSerializer_1ac0df7aa8f6a63de75d63f33d9eb3b201" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type></type>
@@ -110,7 +77,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfSerializer.h" line="41" column="9" bodyfile="src/redland/RedlandWrapper/src/LibrdfSerializer.cpp" bodystart="30" bodyend="37"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfSerializer.h" line="30" column="9" bodyfile="src/redland/RedlandWrapper/src/LibrdfSerializer.cpp" bodystart="30" bodyend="37"/>
       </memberdef>
       <memberdef kind="function" id="classredland_1_1LibrdfSerializer_1a07c9ec356305e42c4990357dffb6bfd1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classredland_1_1LibrdfSerializer" kindref="compound">LibrdfSerializer</ref> &amp;</type>
@@ -127,7 +94,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfSerializer.h" line="43" column="26"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfSerializer.h" line="32" column="26"/>
       </memberdef>
       <memberdef kind="function" id="classredland_1_1LibrdfSerializer_1a3f1049838f6c9b3baee42fd1ab99d9e3" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="classredland_1_1LibrdfSerializer" kindref="compound">LibrdfSerializer</ref> &amp;</type>
@@ -144,7 +111,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfSerializer.h" line="45" column="26" bodyfile="src/redland/RedlandWrapper/src/LibrdfSerializer.cpp" bodystart="39" bodyend="49"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfSerializer.h" line="34" column="26" bodyfile="src/redland/RedlandWrapper/src/LibrdfSerializer.cpp" bodystart="39" bodyend="49"/>
       </memberdef>
       <memberdef kind="function" id="classredland_1_1LibrdfSerializer_1aadcc241a243f87fce5152dc6420d1625" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
         <type></type>
@@ -171,7 +138,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfSerializer.h" line="50" column="18" bodyfile="src/redland/RedlandWrapper/src/LibrdfSerializer.cpp" bodystart="8" bodyend="17"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfSerializer.h" line="38" column="18" bodyfile="src/redland/RedlandWrapper/src/LibrdfSerializer.cpp" bodystart="8" bodyend="17"/>
       </memberdef>
       <memberdef kind="function" id="classredland_1_1LibrdfSerializer_1ab5ef7eaa294357a931b826acc1ab932f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>librdf_serializer *</type>
@@ -184,7 +151,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfSerializer.h" line="53" column="28" bodyfile="src/redland/RedlandWrapper/src/LibrdfSerializer.cpp" bodystart="51" bodyend="53"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfSerializer.h" line="41" column="28" bodyfile="src/redland/RedlandWrapper/src/LibrdfSerializer.cpp" bodystart="51" bodyend="53"/>
       </memberdef>
       <memberdef kind="function" id="classredland_1_1LibrdfSerializer_1ab621a575b7244c9d39e756b5e133766b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -205,7 +172,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfSerializer.h" line="55" column="14" bodyfile="src/redland/RedlandWrapper/src/LibrdfSerializer.cpp" bodystart="56" bodyend="60"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfSerializer.h" line="43" column="14" bodyfile="src/redland/RedlandWrapper/src/LibrdfSerializer.cpp" bodystart="56" bodyend="60"/>
       </memberdef>
       <memberdef kind="function" id="classredland_1_1LibrdfSerializer_1abe500f5c5a1de1bdac86ab196a002b46" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -226,7 +193,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfSerializer.h" line="57" column="14" bodyfile="src/redland/RedlandWrapper/src/LibrdfSerializer.cpp" bodystart="62" bodyend="68"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfSerializer.h" line="45" column="14" bodyfile="src/redland/RedlandWrapper/src/LibrdfSerializer.cpp" bodystart="62" bodyend="68"/>
       </memberdef>
       <memberdef kind="function" id="classredland_1_1LibrdfSerializer_1ac205990ca1dbf0ff1e56ea45e82ec8d2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
@@ -247,7 +214,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfSerializer.h" line="59" column="21" bodyfile="src/redland/RedlandWrapper/src/LibrdfSerializer.cpp" bodystart="70" bodyend="85"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfSerializer.h" line="47" column="21" bodyfile="src/redland/RedlandWrapper/src/LibrdfSerializer.cpp" bodystart="70" bodyend="85"/>
       </memberdef>
       <memberdef kind="function" id="classredland_1_1LibrdfSerializer_1aa185a5c5708bf4b08dfa5eb6a8b897b1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -260,7 +227,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfSerializer.h" line="61" column="14" bodyfile="src/redland/RedlandWrapper/src/LibrdfSerializer.cpp" bodystart="19" bodyend="24"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfSerializer.h" line="49" column="14" bodyfile="src/redland/RedlandWrapper/src/LibrdfSerializer.cpp" bodystart="19" bodyend="24"/>
       </memberdef>
       <memberdef kind="function" id="classredland_1_1LibrdfSerializer_1a4ea50f1f63c3cb7bb63da3fc55994fee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -277,7 +244,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfSerializer.h" line="63" column="14" bodyfile="src/redland/RedlandWrapper/src/LibrdfSerializer.cpp" bodystart="92" bodyend="119"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfSerializer.h" line="51" column="14" bodyfile="src/redland/RedlandWrapper/src/LibrdfSerializer.cpp" bodystart="92" bodyend="119"/>
       </memberdef>
       <memberdef kind="function" id="classredland_1_1LibrdfSerializer_1a970fa3d23ba08a63533c758417de1808" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -298,7 +265,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfSerializer.h" line="65" column="14" bodyfile="src/redland/RedlandWrapper/src/LibrdfSerializer.cpp" bodystart="121" bodyend="137"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfSerializer.h" line="53" column="14" bodyfile="src/redland/RedlandWrapper/src/LibrdfSerializer.cpp" bodystart="121" bodyend="137"/>
       </memberdef>
       <memberdef kind="function" id="classredland_1_1LibrdfSerializer_1ad2cb2ddcd225119a2a9a33001da22478" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -311,7 +278,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfSerializer.h" line="67" column="14" bodyfile="src/redland/RedlandWrapper/src/LibrdfSerializer.cpp" bodystart="139" bodyend="144"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfSerializer.h" line="55" column="14" bodyfile="src/redland/RedlandWrapper/src/LibrdfSerializer.cpp" bodystart="139" bodyend="144"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -330,23 +297,42 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfSerializer.h" line="48" column="33" bodyfile="src/redland/RedlandWrapper/src/LibrdfSerializer.cpp" bodystart="88" bodyend="90"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfSerializer.h" line="36" column="33" bodyfile="src/redland/RedlandWrapper/src/LibrdfSerializer.cpp" bodystart="88" bodyend="90"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classredland_1_1LibrdfSerializer_1acb0b3d0424dc43a4a940ae216a6c876b" prot="private" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>redland::LibrdfSerializer::LibrdfSerializer</definition>
+        <argsstring>(librdf_serializer *serializer)</argsstring>
+        <name>LibrdfSerializer</name>
+        <param>
+          <type>librdf_serializer *</type>
+          <declname>serializer</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfSerializer.h" line="60" column="18" bodyfile="src/redland/RedlandWrapper/src/LibrdfSerializer.cpp" bodystart="5" bodyend="6"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfSerializer.h" line="22" column="5" bodyfile="src/redland/RedlandWrapper/src/include/redland/LibrdfSerializer.h" bodystart="22" bodyend="69"/>
+    <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfSerializer.h" line="21" column="5" bodyfile="src/redland/RedlandWrapper/src/include/redland/LibrdfSerializer.h" bodystart="21" bodyend="61"/>
     <listofallmembers>
       <member refid="classredland_1_1LibrdfSerializer_1aa185a5c5708bf4b08dfa5eb6a8b897b1" prot="public" virt="non-virtual"><scope>redland::LibrdfSerializer</scope><name>freeSerializer</name></member>
       <member refid="classredland_1_1LibrdfSerializer_1a58915bb2aa6b7c0eb438b5cc0148ef45" prot="public" virt="non-virtual"><scope>redland::LibrdfSerializer</scope><name>fromRawPtr</name></member>
       <member refid="classredland_1_1LibrdfSerializer_1ab5ef7eaa294357a931b826acc1ab932f" prot="public" virt="non-virtual"><scope>redland::LibrdfSerializer</scope><name>get</name></member>
-      <member refid="classredland_1_1LibrdfSerializer_1acb0b3d0424dc43a4a940ae216a6c876b" prot="private" virt="non-virtual"><scope>redland::LibrdfSerializer</scope><name>LibrdfSerializer</name></member>
       <member refid="classredland_1_1LibrdfSerializer_1a4f7129bf7e4135fd46ea04fbec445929" prot="public" virt="non-virtual"><scope>redland::LibrdfSerializer</scope><name>LibrdfSerializer</name></member>
       <member refid="classredland_1_1LibrdfSerializer_1a084920f2dadf9aff9abff2fbe4e302e9" prot="public" virt="non-virtual"><scope>redland::LibrdfSerializer</scope><name>LibrdfSerializer</name></member>
       <member refid="classredland_1_1LibrdfSerializer_1ac0df7aa8f6a63de75d63f33d9eb3b201" prot="public" virt="non-virtual"><scope>redland::LibrdfSerializer</scope><name>LibrdfSerializer</name></member>
       <member refid="classredland_1_1LibrdfSerializer_1aadcc241a243f87fce5152dc6420d1625" prot="public" virt="non-virtual"><scope>redland::LibrdfSerializer</scope><name>LibrdfSerializer</name></member>
+      <member refid="classredland_1_1LibrdfSerializer_1acb0b3d0424dc43a4a940ae216a6c876b" prot="private" virt="non-virtual"><scope>redland::LibrdfSerializer</scope><name>LibrdfSerializer</name></member>
       <member refid="classredland_1_1LibrdfSerializer_1a07c9ec356305e42c4990357dffb6bfd1" prot="public" virt="non-virtual"><scope>redland::LibrdfSerializer</scope><name>operator=</name></member>
       <member refid="classredland_1_1LibrdfSerializer_1a3f1049838f6c9b3baee42fd1ab99d9e3" prot="public" virt="non-virtual"><scope>redland::LibrdfSerializer</scope><name>operator=</name></member>
       <member refid="classredland_1_1LibrdfSerializer_1ae44adc81197c0816451c5b26bc739691" prot="private" virt="non-virtual"><scope>redland::LibrdfSerializer</scope><name>serializer_</name></member>
@@ -355,7 +341,6 @@
       <member refid="classredland_1_1LibrdfSerializer_1a970fa3d23ba08a63533c758417de1808" prot="public" virt="non-virtual"><scope>redland::LibrdfSerializer</scope><name>setOption</name></member>
       <member refid="classredland_1_1LibrdfSerializer_1ad2cb2ddcd225119a2a9a33001da22478" prot="public" virt="non-virtual"><scope>redland::LibrdfSerializer</scope><name>setOptions</name></member>
       <member refid="classredland_1_1LibrdfSerializer_1ac205990ca1dbf0ff1e56ea45e82ec8d2" prot="public" virt="non-virtual"><scope>redland::LibrdfSerializer</scope><name>toString</name></member>
-      <member refid="classredland_1_1LibrdfSerializer_1a955dea37e1c9199ee6ef892533b2b471" prot="private" virt="non-virtual"><scope>redland::LibrdfSerializer</scope><name>validateSerializerName</name></member>
       <member refid="classredland_1_1LibrdfSerializer_1a4ea50f1f63c3cb7bb63da3fc55994fee" prot="public" virt="non-virtual"><scope>redland::LibrdfSerializer</scope><name>validateSerializerName</name></member>
       <member refid="classredland_1_1LibrdfSerializer_1abd60aad8b1ae635b0d8fc3da06d7b7ed" prot="public" virt="non-virtual"><scope>redland::LibrdfSerializer</scope><name>~LibrdfSerializer</name></member>
     </listofallmembers>

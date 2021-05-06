@@ -42,12 +42,14 @@
           <declname>editor</declname>
         </param>
         <briefdescription>
+<para>Construct an <ref refid="classomexmeta_1_1SBMLSemanticExtraction" kindref="compound">SBMLSemanticExtraction</ref> object with an. </para>
         </briefdescription>
         <detaileddescription>
+<para><ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref>. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/SBMLSemanticExtraction.h" line="50" column="18" bodyfile="src/omexmeta/SBMLSemanticExtraction.cpp" bodystart="9" bodyend="11"/>
+        <location file="src/omexmeta/include/omexmeta/SBMLSemanticExtraction.h" line="55" column="18" bodyfile="src/omexmeta/SBMLSemanticExtraction.cpp" bodystart="9" bodyend="11"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1SBMLSemanticExtraction_1a53cda7f108b954af7fb1159773e44522" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -55,12 +57,19 @@
         <argsstring>()</argsstring>
         <name>extractSpeciesCompartmentSemantics</name>
         <briefdescription>
+<para>Parses SBML and creates triples from the location of species. </para>
         </briefdescription>
         <detaileddescription>
+<para>Takes a species and creates a single triple with the following information:<itemizedlist>
+<listitem><para>subject node is species metaid</para>
+</listitem><listitem><para>predicate is always bqbiol::isPartOf</para>
+</listitem><listitem><para>resource is the metaid of the compartment the species belongs to </para>
+</listitem></itemizedlist>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/SBMLSemanticExtraction.h" line="52" column="14" bodyfile="src/omexmeta/SBMLSemanticExtraction.cpp" bodystart="13" bodyend="49"/>
+        <location file="src/omexmeta/include/omexmeta/SBMLSemanticExtraction.h" line="66" column="14" bodyfile="src/omexmeta/SBMLSemanticExtraction.cpp" bodystart="13" bodyend="49"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1SBMLSemanticExtraction_1a89ed78df066e71e628c8b631175a8441" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -68,20 +77,37 @@
         <argsstring>()</argsstring>
         <name>extractProcessesFromReactions</name>
         <briefdescription>
+<para>Parses the sbml and automatically creates <ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref> annotations for each reaction. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/SBMLSemanticExtraction.h" line="54" column="14" bodyfile="src/omexmeta/SBMLSemanticExtraction.cpp" bodystart="52" bodyend="139"/>
+        <location file="src/omexmeta/include/omexmeta/SBMLSemanticExtraction.h" line="73" column="14" bodyfile="src/omexmeta/SBMLSemanticExtraction.cpp" bodystart="52" bodyend="140"/>
+      </memberdef>
+      <memberdef kind="function" id="classomexmeta_1_1SBMLSemanticExtraction_1a921d30e6df59d01be7f52eba2d0bcd01" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void omexmeta::SBMLSemanticExtraction::bagConversion</definition>
+        <argsstring>()</argsstring>
+        <name>bagConversion</name>
+        <briefdescription>
+<para>removes the "rdf::bag` construct from annotations. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>ignores anything to do with vcard, which requires special attention </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/SBMLSemanticExtraction.h" line="81" column="14"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="src/omexmeta/include/omexmeta/SBMLSemanticExtraction.h" line="44" column="5" bodyfile="src/omexmeta/include/omexmeta/SBMLSemanticExtraction.h" bodystart="44" bodyend="55"/>
+    <location file="src/omexmeta/include/omexmeta/SBMLSemanticExtraction.h" line="44" column="5" bodyfile="src/omexmeta/include/omexmeta/SBMLSemanticExtraction.h" bodystart="44" bodyend="82"/>
     <listofallmembers>
+      <member refid="classomexmeta_1_1SBMLSemanticExtraction_1a921d30e6df59d01be7f52eba2d0bcd01" prot="public" virt="non-virtual"><scope>omexmeta::SBMLSemanticExtraction</scope><name>bagConversion</name></member>
       <member refid="classomexmeta_1_1SBMLSemanticExtraction_1a6ffc358e6fa4d4c214cdb667b5c8c313" prot="private" virt="non-virtual"><scope>omexmeta::SBMLSemanticExtraction</scope><name>editor_</name></member>
       <member refid="classomexmeta_1_1SBMLSemanticExtraction_1a89ed78df066e71e628c8b631175a8441" prot="public" virt="non-virtual"><scope>omexmeta::SBMLSemanticExtraction</scope><name>extractProcessesFromReactions</name></member>
       <member refid="classomexmeta_1_1SBMLSemanticExtraction_1a53cda7f108b954af7fb1159773e44522" prot="public" virt="non-virtual"><scope>omexmeta::SBMLSemanticExtraction</scope><name>extractSpeciesCompartmentSemantics</name></member>

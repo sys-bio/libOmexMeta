@@ -24,12 +24,14 @@
     <innerfile refid="PhysicalProperty_8h">PhysicalProperty.h</innerfile>
     <innerfile refid="Predicate_8h">Predicate.h</innerfile>
     <innerfile refid="PropertyBearer_8h">PropertyBearer.h</innerfile>
+    <innerfile refid="PurgeRDFBag_8h">PurgeRDFBag.h</innerfile>
     <innerfile refid="Query_8h">Query.h</innerfile>
     <innerfile refid="RDF_8h">RDF.h</innerfile>
     <innerfile refid="SBMLSemanticExtraction_8h">SBMLSemanticExtraction.h</innerfile>
     <innerfile refid="Triple_8h">Triple.h</innerfile>
     <innerfile refid="Triples_8h">Triples.h</innerfile>
     <innerfile refid="UriHandler_8h">UriHandler.h</innerfile>
+    <innerfile refid="VCardTranslator_8h">VCardTranslator.h</innerfile>
     <briefdescription>
     </briefdescription>
     <detaileddescription>

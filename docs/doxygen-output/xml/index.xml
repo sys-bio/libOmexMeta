@@ -55,15 +55,6 @@
     <member refid="classdbg_1_1DebugOutput_1a2bcceba90497630c8a5944d8d8e50c5f" kind="function"><name>print_impl</name></member>
     <member refid="classdbg_1_1DebugOutput_1a34a7f003d727fa30f9a523fde7058ba2" kind="function"><name>ansi</name></member>
   </compound>
-  <compound refid="structredland_1_1LibrdfQuery_1_1deleter" kind="struct"><name>redland::LibrdfQuery::deleter</name>
-    <member refid="structredland_1_1LibrdfQuery_1_1deleter_1a5ada7fd745a89b425a5f693faeaa6a31" kind="function"><name>operator()</name></member>
-  </compound>
-  <compound refid="structredland_1_1LibrdfSerializer_1_1deleter" kind="struct"><name>redland::LibrdfSerializer::deleter</name>
-    <member refid="structredland_1_1LibrdfSerializer_1_1deleter_1aa6f790013fd57683c7293bb45b84f1ae" kind="function"><name>operator()</name></member>
-  </compound>
-  <compound refid="structredland_1_1LibrdfStorage_1_1deleter" kind="struct"><name>redland::LibrdfStorage::deleter</name>
-    <member refid="structredland_1_1LibrdfStorage_1_1deleter_1afbbbac0161a139b45a3fefe76cb93929" kind="function"><name>operator()</name></member>
-  </compound>
   <compound refid="structredland_1_1LibrdfStream_1_1deleter" kind="struct"><name>redland::LibrdfStream::deleter</name>
     <member refid="structredland_1_1LibrdfStream_1_1deleter_1a8bad0aa99f4ed9de92ba2fd386f98a06" kind="function"><name>operator()</name></member>
   </compound>
@@ -230,15 +221,17 @@
   </compound>
   <compound refid="classredland_1_1LibrdfModel" kind="class"><name>redland::LibrdfModel</name>
     <member refid="classredland_1_1LibrdfModel_1a909fe2f497040585a33d6789aa6d3f20" kind="variable"><name>model_</name></member>
-    <member refid="classredland_1_1LibrdfModel_1a1a8a3f9aad0520d6788aa2816ffb318e" kind="function"><name>operator==</name></member>
-    <member refid="classredland_1_1LibrdfModel_1a8cdaab0ea4c70808f015bfb6846b20bb" kind="function"><name>operator!=</name></member>
+    <member refid="classredland_1_1LibrdfModel_1a1bad530379d457eafecacc5be7003d7f" kind="function"><name>~LibrdfModel</name></member>
+    <member refid="classredland_1_1LibrdfModel_1a355e16664fa50a8a3085f4070347106f" kind="function"><name>LibrdfModel</name></member>
+    <member refid="classredland_1_1LibrdfModel_1a0cf5960adec8df0c240b40ebba573996" kind="function"><name>LibrdfModel</name></member>
     <member refid="classredland_1_1LibrdfModel_1a5a35c032585e38b1d41bc18f057128c1" kind="function"><name>LibrdfModel</name></member>
     <member refid="classredland_1_1LibrdfModel_1a583e0eaecfe167ccbbeac5d768bcd644" kind="function"><name>LibrdfModel</name></member>
     <member refid="classredland_1_1LibrdfModel_1a7bd07324b31fa8eb8f5f2e51b15044fc" kind="function"><name>operator=</name></member>
     <member refid="classredland_1_1LibrdfModel_1a9007acfb92943e018d20d6985c811033" kind="function"><name>operator=</name></member>
+    <member refid="classredland_1_1LibrdfModel_1a1a8a3f9aad0520d6788aa2816ffb318e" kind="function"><name>operator==</name></member>
+    <member refid="classredland_1_1LibrdfModel_1a8cdaab0ea4c70808f015bfb6846b20bb" kind="function"><name>operator!=</name></member>
     <member refid="classredland_1_1LibrdfModel_1ab3b289866cce16919b65da7cae01c97d" kind="function"><name>LibrdfModel</name></member>
     <member refid="classredland_1_1LibrdfModel_1a8b7d3063e030ce8613dcd6def7463a5a" kind="function"><name>LibrdfModel</name></member>
-    <member refid="classredland_1_1LibrdfModel_1a355e16664fa50a8a3085f4070347106f" kind="function"><name>LibrdfModel</name></member>
     <member refid="classredland_1_1LibrdfModel_1ae1b996f1785adfe9b4a1824a73643248" kind="function"><name>get</name></member>
     <member refid="classredland_1_1LibrdfModel_1a9bbced9329b4b9ef915789a37bf857b6" kind="function"><name>query</name></member>
     <member refid="classredland_1_1LibrdfModel_1a4d58b2d9729173c1bfd7ece4d62e2b33" kind="function"><name>toStream</name></member>
@@ -255,6 +248,7 @@
     <member refid="classredland_1_1LibrdfModel_1abf9471d407147d24bbbda8c200d92791" kind="function"><name>getTransactionRollback</name></member>
     <member refid="classredland_1_1LibrdfModel_1a64915c9b196d061d1547f9a659177ea9" kind="function"><name>supportsContexts</name></member>
     <member refid="classredland_1_1LibrdfModel_1ad1738d844fc31d5ae2ef581d8bcf4cd4" kind="function"><name>containsStatement</name></member>
+    <member refid="classredland_1_1LibrdfModel_1a495d71020195a86dfe530e0acc98a685" kind="function"><name>containsStatement</name></member>
     <member refid="classredland_1_1LibrdfModel_1a2b565a7d705e24d6163c068a40040087" kind="function"><name>addStatement</name></member>
   </compound>
   <compound refid="classredland_1_1LibrdfNode" kind="class"><name>redland::LibrdfNode</name>
@@ -286,7 +280,7 @@
     <member refid="classredland_1_1LibrdfNode_1a21d7aff6813bf11d13057f4dab8bbef7" kind="function"><name>incrementUsageCount</name></member>
     <member refid="classredland_1_1LibrdfNode_1aacf853ee60f9d706bc7e95fb426166bd" kind="function"><name>fromUriString</name></member>
     <member refid="classredland_1_1LibrdfNode_1a22ea96262be432e6abb5c1e28ede3071" kind="function"><name>fromBlank</name></member>
-    <member refid="classredland_1_1LibrdfNode_1a346fad618a010ef983ce24d62891de0e" kind="function"><name>fromLiteral</name></member>
+    <member refid="classredland_1_1LibrdfNode_1a96a685f8e79ba04c91a15e024a66388f" kind="function"><name>fromLiteral</name></member>
     <member refid="classredland_1_1LibrdfNode_1aaeeeca26bafdaf7f118af3307a4768be" kind="function"><name>newEmptyNode</name></member>
     <member refid="classredland_1_1LibrdfNode_1aa6bf7e25e68e473f2f39cb7b4cb5f39b" kind="function"><name>str</name></member>
     <member refid="classredland_1_1LibrdfNode_1a3242e29edb736ba0aa8ac42fd6b3ae58" kind="function"><name>validateLiteralDatatype</name></member>
@@ -299,7 +293,6 @@
     <member refid="classredland_1_1LibrdfParser_1a421682cecd26a1ebef97fdee07df0856" kind="variable"><name>format_</name></member>
     <member refid="classredland_1_1LibrdfParser_1a8507b62f875849eee3ed6f4238edb2ad" kind="variable"><name>mime_type_</name></member>
     <member refid="classredland_1_1LibrdfParser_1af976fc5cb1a7b021ab8cd2f345651728" kind="variable"><name>type_uri_</name></member>
-    <member refid="classredland_1_1LibrdfParser_1ab26e32f1bb8f4e68830dab00b0446855" kind="function"><name>validateParserName</name></member>
     <member refid="classredland_1_1LibrdfParser_1a985f1db485f1a2970a19e7b7a979382f" kind="function"><name>LibrdfParser</name></member>
     <member refid="classredland_1_1LibrdfParser_1a3050de98398280f1cc56b428b6d0fbf2" kind="function"><name>~LibrdfParser</name></member>
     <member refid="classredland_1_1LibrdfParser_1a884b4e7cb05942390fba7765cfb3aec8" kind="function"><name>LibrdfParser</name></member>
@@ -326,20 +319,30 @@
     <member refid="classredland_1_1LibrdfParser_1a76ecf31cd9fb96ba4e10a35f383e47fc" kind="function"><name>setTypeUri</name></member>
     <member refid="classredland_1_1LibrdfParser_1a8055c22ada8b852112f4f011d9fa5abe" kind="function"><name>makeParser</name></member>
     <member refid="classredland_1_1LibrdfParser_1abca88f90c6d20573961b10800f9b9047" kind="function"><name>getSeenNamespaces</name></member>
-    <member refid="classredland_1_1LibrdfParser_1a9fa0b6b0d21fbc8c6dd0027b66a26eb5" kind="function"><name>setFeature</name></member>
     <member refid="classredland_1_1LibrdfParser_1aafc4a6e2748ee1175471ed0815d77eff" kind="function"><name>setOption</name></member>
     <member refid="classredland_1_1LibrdfParser_1a79fcda1e0c2cccfa8a070a1aea196ebd" kind="function"><name>setOptions</name></member>
+    <member refid="classredland_1_1LibrdfParser_1ab26e32f1bb8f4e68830dab00b0446855" kind="function"><name>validateParserName</name></member>
   </compound>
   <compound refid="classredland_1_1LibrdfQuery" kind="class"><name>redland::LibrdfQuery</name>
-    <member refid="classredland_1_1LibrdfQuery_1ad943b58709569703e33ccfb604b67fa1" kind="variable"><name>query_</name></member>
+    <member refid="classredland_1_1LibrdfQuery_1a352fb225a8252cca144b6ff69ce7c132" kind="variable"><name>query_</name></member>
     <member refid="classredland_1_1LibrdfQuery_1ae2e2f6b0e18590195bd89663085ff5f1" kind="function"><name>LibrdfQuery</name></member>
+    <member refid="classredland_1_1LibrdfQuery_1aa7cdab0a0c6ff5724d9e37b94f6d7a81" kind="function"><name>~LibrdfQuery</name></member>
+    <member refid="classredland_1_1LibrdfQuery_1abad34c60ad5e99d48c11885bdd6af841" kind="function"><name>LibrdfQuery</name></member>
+    <member refid="classredland_1_1LibrdfQuery_1ae12ff45e95ba539e6cbce0e17aed6925" kind="function"><name>LibrdfQuery</name></member>
+    <member refid="classredland_1_1LibrdfQuery_1ab1b5daa7118994fe02184c40415c1c79" kind="function"><name>operator=</name></member>
+    <member refid="classredland_1_1LibrdfQuery_1acb8da6cd187d89f5e13612d2b4848703" kind="function"><name>operator=</name></member>
     <member refid="classredland_1_1LibrdfQuery_1aacca5302206092fbd8908934d2236021" kind="function"><name>LibrdfQuery</name></member>
     <member refid="classredland_1_1LibrdfQuery_1a63a49930cc3c54938203683eab2c96fb" kind="function"><name>LibrdfQuery</name></member>
     <member refid="classredland_1_1LibrdfQuery_1a0302f24051ae2050bc2e802a59364554" kind="function"><name>get</name></member>
+    <member refid="classredland_1_1LibrdfQuery_1a2f9b6a654a1ecc81dfc6eda3ab2355f5" kind="function"><name>getUsage</name></member>
+    <member refid="classredland_1_1LibrdfQuery_1a7b82158615f5d23f17ba445749cc7b96" kind="function"><name>getWithoutIncrement</name></member>
+    <member refid="classredland_1_1LibrdfQuery_1ab6fc8e42765541bd5c421d8acd98cf98" kind="function"><name>operator==</name></member>
+    <member refid="classredland_1_1LibrdfQuery_1ad60c57c20e063011c3cc6ad48d52d28c" kind="function"><name>operator!=</name></member>
   </compound>
   <compound refid="classredland_1_1LibrdfQueryResults" kind="class"><name>redland::LibrdfQueryResults</name>
     <member refid="classredland_1_1LibrdfQueryResults_1afea5534b79fe281729e7841f98491bad" kind="variable"><name>query_results_</name></member>
     <member refid="classredland_1_1LibrdfQueryResults_1add57ad7c19c5b7c3dd3c0aa5baa74c15" kind="function"><name>LibrdfQueryResults</name></member>
+    <member refid="classredland_1_1LibrdfQueryResults_1acad6e06d6cc2b4a3e7ed2eb308851e01" kind="function"><name>~LibrdfQueryResults</name></member>
     <member refid="classredland_1_1LibrdfQueryResults_1a8c9e17542c836ff3dd09da68bfc334f1" kind="function"><name>LibrdfQueryResults</name></member>
     <member refid="classredland_1_1LibrdfQueryResults_1a965fe04027cb2ab0392e687e891f6c44" kind="function"><name>LibrdfQueryResults</name></member>
     <member refid="classredland_1_1LibrdfQueryResults_1a2210255d8dd871b72279915712a612cd" kind="function"><name>LibrdfQueryResults</name></member>
@@ -351,8 +354,6 @@
   </compound>
   <compound refid="classredland_1_1LibrdfSerializer" kind="class"><name>redland::LibrdfSerializer</name>
     <member refid="classredland_1_1LibrdfSerializer_1ae44adc81197c0816451c5b26bc739691" kind="variable"><name>serializer_</name></member>
-    <member refid="classredland_1_1LibrdfSerializer_1a955dea37e1c9199ee6ef892533b2b471" kind="function"><name>validateSerializerName</name></member>
-    <member refid="classredland_1_1LibrdfSerializer_1acb0b3d0424dc43a4a940ae216a6c876b" kind="function"><name>LibrdfSerializer</name></member>
     <member refid="classredland_1_1LibrdfSerializer_1a4f7129bf7e4135fd46ea04fbec445929" kind="function"><name>LibrdfSerializer</name></member>
     <member refid="classredland_1_1LibrdfSerializer_1abd60aad8b1ae635b0d8fc3da06d7b7ed" kind="function"><name>~LibrdfSerializer</name></member>
     <member refid="classredland_1_1LibrdfSerializer_1a084920f2dadf9aff9abff2fbe4e302e9" kind="function"><name>LibrdfSerializer</name></member>
@@ -369,6 +370,7 @@
     <member refid="classredland_1_1LibrdfSerializer_1a970fa3d23ba08a63533c758417de1808" kind="function"><name>setOption</name></member>
     <member refid="classredland_1_1LibrdfSerializer_1ad2cb2ddcd225119a2a9a33001da22478" kind="function"><name>setOptions</name></member>
     <member refid="classredland_1_1LibrdfSerializer_1a58915bb2aa6b7c0eb438b5cc0148ef45" kind="function"><name>fromRawPtr</name></member>
+    <member refid="classredland_1_1LibrdfSerializer_1acb0b3d0424dc43a4a940ae216a6c876b" kind="function"><name>LibrdfSerializer</name></member>
   </compound>
   <compound refid="classredland_1_1LibrdfStatement" kind="class"><name>redland::LibrdfStatement</name>
     <member refid="classredland_1_1LibrdfStatement_1acd1e53cd114c6744cf808174a9333ce5" kind="variable"><name>statement_</name></member>
@@ -409,6 +411,7 @@
     <member refid="classredland_1_1LibrdfStorage_1af4a249b61ea425600320ac30201e171a" kind="variable"><name>valid_stores_</name></member>
     <member refid="classredland_1_1LibrdfStorage_1a63695d90f66ac13540fe4b1ef290efab" kind="variable"><name>storage_</name></member>
     <member refid="classredland_1_1LibrdfStorage_1a8e3250af4dea528dcf94865835cfb8ff" kind="function"><name>LibrdfStorage</name></member>
+    <member refid="classredland_1_1LibrdfStorage_1a1551a5717a87eb72b9a50ad5a21d533d" kind="function"><name>~LibrdfStorage</name></member>
     <member refid="classredland_1_1LibrdfStorage_1a08c025b165113efe1163c7294b989755" kind="function"><name>LibrdfStorage</name></member>
     <member refid="classredland_1_1LibrdfStorage_1a182d617ba7ab1b5359ef2693a56b272e" kind="function"><name>get</name></member>
     <member refid="classredland_1_1LibrdfStorage_1a7b08e7afd5ac5f38a0ed4cfeb77a3b99" kind="function"><name>freeStorage</name></member>
@@ -739,6 +742,7 @@
     <member refid="classomexmeta_1_1Predicate_1a27fa7d62ad9a5182f3dd642bc61c8d9f" kind="function"><name>getUri</name></member>
     <member refid="classomexmeta_1_1Predicate_1a718a37ff90ac0f2d7cc129e8351a2c7b" kind="function"><name>freeNode</name></member>
     <member refid="classomexmeta_1_1Predicate_1a0bf6030510247a6999d81cada92c1e51" kind="function"><name>setNode</name></member>
+    <member refid="classomexmeta_1_1Predicate_1ae2adc312e293aabfdbbffbb44018665b" kind="function"><name>getNode</name></member>
     <member refid="classomexmeta_1_1Predicate_1a1291e3cd9727871f568e864e0f5af3f0" kind="function"><name>namespaceMap</name></member>
     <member refid="classomexmeta_1_1Predicate_1a1e7e59b8a48c9f89eeec73f3bbaea19c" kind="function"><name>verify</name></member>
     <member refid="classomexmeta_1_1Predicate_1a8381c8b0c7bbaa27de29608cbff08bf5" kind="function"><name>namespaceKnown</name></member>
@@ -801,6 +805,14 @@
     <member refid="classomexmeta_1_1PropertyBearer_1ad5385daa0deb6a484d16a190d46fa0e7" kind="function"><name>getNewMetaidExclusionList</name></member>
     <member refid="classomexmeta_1_1PropertyBearer_1a78328bba4ba48b3bfdcfebd8256d6add" kind="function"><name>generateMetaId</name></member>
   </compound>
+  <compound refid="classomexmeta_1_1PurgeRDFBag" kind="class"><name>omexmeta::PurgeRDFBag</name>
+    <member refid="classomexmeta_1_1PurgeRDFBag_1a9dff7ffcf6ff4f5d62428ddfd506024f" kind="variable"><name>rdf_</name></member>
+    <member refid="classomexmeta_1_1PurgeRDFBag_1ae827821eecbf95156a13609f189022cb" kind="variable"><name>currentBlankId_</name></member>
+    <member refid="classomexmeta_1_1PurgeRDFBag_1a877dbc23ddb020d6afc4c95a574aa118" kind="function"><name>PurgeRDFBag</name></member>
+    <member refid="classomexmeta_1_1PurgeRDFBag_1ab01ff84fddf7770359e0755ca42848f8" kind="function"><name>purge</name></member>
+    <member refid="classomexmeta_1_1PurgeRDFBag_1a4e64ac3b04675dff1b1597587f4f6998" kind="function"><name>purgeNonListBagEntries</name></member>
+    <member refid="classomexmeta_1_1PurgeRDFBag_1ad72aeb6f969b601b8f61ea415fc416dc" kind="function"><name>purgeListBagEntries</name></member>
+  </compound>
   <compound refid="classomexmeta_1_1Query" kind="class"><name>omexmeta::Query</name>
     <member refid="classomexmeta_1_1Query_1a31f2c3d3ea8fa0b5766d2ca35d2609fd" kind="function"><name>getBindingValueByName</name></member>
     <member refid="classomexmeta_1_1Query_1aafaf7dc024ccb358467b2f7d814ec132" kind="function"><name>getBindingsCount</name></member>
@@ -814,6 +826,7 @@
     <member refid="classomexmeta_1_1Query_1ab50cc5f76dcf7f863f9fa9d0bf755071" kind="function"><name>resultsAsMap</name></member>
     <member refid="classomexmeta_1_1Query_1a7109dd08bd808bf5a20becb164622ed6" kind="function"><name>resultsAsStr</name></member>
     <member refid="classomexmeta_1_1Query_1a879a4db0413abc8f4a3470877ebf5193" kind="function"><name>runQuery</name></member>
+    <member refid="classomexmeta_1_1Query_1a9f9639927203dc97e93bfca5508b6d01" kind="function"><name>printQueryResults</name></member>
     <member refid="classomexmeta_1_1Query_1a11312167f0820409616931d54a2b7bc5" kind="variable"><name>model_</name></member>
     <member refid="classomexmeta_1_1Query_1a9481d440660afa98b6ac3dff58cbd4dd" kind="variable"><name>query_results_</name></member>
     <member refid="classomexmeta_1_1Query_1a42588f89a2f1c0bbb006c665c243fbe7" kind="variable"><name>q_</name></member>
@@ -1074,6 +1087,8 @@
     <member refid="classomexmeta_1_1RDF_1ab168be2c14d53c3fc94024121dc88ba6" kind="function"><name>query</name></member>
     <member refid="classomexmeta_1_1RDF_1a9ecf58f64ea449a01457bfc28bb53e17" kind="function"><name>addTriple</name></member>
     <member refid="classomexmeta_1_1RDF_1a7725d1260c67fbfd8ffeb98dd4bbc1d1" kind="function"><name>addTriples</name></member>
+    <member refid="classomexmeta_1_1RDF_1ac8c1f50b7fd693518b41d3000a357fa4" kind="function"><name>purgeRDFBag</name></member>
+    <member refid="classomexmeta_1_1RDF_1a56c331673e8aea821813ebbd0409e142" kind="function"><name>getUriHandler</name></member>
     <member refid="classomexmeta_1_1RDF_1a9d91b3134cdcc6dfef6d62b7b09d8da2" kind="function"><name>fromString</name></member>
     <member refid="classomexmeta_1_1RDF_1a03906aa5c3b9429a2afdbe0ad2be21e6" kind="function"><name>fromUri</name></member>
     <member refid="classomexmeta_1_1RDF_1a98a1da84161a7935bf38ec5e5d34e91f" kind="function"><name>fromFile</name></member>
@@ -1109,6 +1124,7 @@
     <member refid="classomexmeta_1_1SBMLSemanticExtraction_1a3c55dab129bd47c753f19317fade1f18" kind="function"><name>SBMLSemanticExtraction</name></member>
     <member refid="classomexmeta_1_1SBMLSemanticExtraction_1a53cda7f108b954af7fb1159773e44522" kind="function"><name>extractSpeciesCompartmentSemantics</name></member>
     <member refid="classomexmeta_1_1SBMLSemanticExtraction_1a89ed78df066e71e628c8b631175a8441" kind="function"><name>extractProcessesFromReactions</name></member>
+    <member refid="classomexmeta_1_1SBMLSemanticExtraction_1a921d30e6df59d01be7f52eba2d0bcd01" kind="function"><name>bagConversion</name></member>
   </compound>
   <compound refid="classomexmeta_1_1SemSim" kind="class"><name>omexmeta::SemSim</name>
     <member refid="classomexmeta_1_1SemSim_1af6e027f353354892e3a26abb9b6f2ece" kind="variable"><name>valid_terms_</name></member>
@@ -1226,6 +1242,18 @@
   <compound refid="classomexmeta_1_1ValueException" kind="class"><name>omexmeta::ValueException</name>
     <member refid="classomexmeta_1_1ValueException_1ad09e2a190a245199974678e2790e81ff" kind="function"><name>Exception</name></member>
     <member refid="classomexmeta_1_1ValueException_1ac50b0a25504303cc1a4a1a20de0127eb" kind="function"><name>Exception</name></member>
+  </compound>
+  <compound refid="classomexmeta_1_1VCardTranslator" kind="class"><name>omexmeta::VCardTranslator</name>
+    <member refid="classomexmeta_1_1VCardTranslator_1a665dcae68631070797d85a7adc72608e" kind="variable"><name>rdf_</name></member>
+    <member refid="classomexmeta_1_1VCardTranslator_1af813ef0f08451e9d7a618d805b0842c9" kind="variable"><name>currentBlankId</name></member>
+    <member refid="classomexmeta_1_1VCardTranslator_1a59320f47775f8b342d549ed92231c021" kind="function"><name>VCardTranslator</name></member>
+    <member refid="classomexmeta_1_1VCardTranslator_1aa4f5c15215fb26e1b80d21a1cb4b0f6d" kind="function"><name>translate</name></member>
+    <member refid="classomexmeta_1_1VCardTranslator_1a8a5929e53a62e0c98224ab6d633bd927" kind="function"><name>convertVCardToFoaf</name></member>
+    <member refid="classomexmeta_1_1VCardTranslator_1a79931fdad672b25254906cf76a972b44" kind="function"><name>purgeNConstructs</name></member>
+    <member refid="classomexmeta_1_1VCardTranslator_1a5dfb6db0f5365196a8304b2f56f10290" kind="function"><name>translateFamilyName</name></member>
+    <member refid="classomexmeta_1_1VCardTranslator_1ab774550e933e2bb1ca4e540510071719" kind="function"><name>translateGivenName</name></member>
+    <member refid="classomexmeta_1_1VCardTranslator_1aafae8501bc3eafe66356fac040153373" kind="function"><name>translateOrganization</name></member>
+    <member refid="classomexmeta_1_1VCardTranslator_1aac64a10f8edc75738e260c824fcd3d8a" kind="function"><name>translateEmail</name></member>
   </compound>
   <compound refid="classredland_1_1World" kind="class"><name>redland::World</name>
     <member refid="classredland_1_1World_1aac4a7976699e6d14787b13accd4e1e51" kind="variable"><name>world_</name></member>
@@ -1569,6 +1597,8 @@
   </compound>
   <compound refid="PropertyBearer_8h" kind="file"><name>PropertyBearer.h</name>
   </compound>
+  <compound refid="PurgeRDFBag_8h" kind="file"><name>PurgeRDFBag.h</name>
+  </compound>
   <compound refid="Query_8h" kind="file"><name>Query.h</name>
   </compound>
   <compound refid="RDF_8h" kind="file"><name>RDF.h</name>
@@ -1580,6 +1610,8 @@
   <compound refid="Triples_8h" kind="file"><name>Triples.h</name>
   </compound>
   <compound refid="UriHandler_8h" kind="file"><name>UriHandler.h</name>
+  </compound>
+  <compound refid="VCardTranslator_8h" kind="file"><name>VCardTranslator.h</name>
   </compound>
   <compound refid="MarkupIdentifier_8cpp" kind="file"><name>MarkupIdentifier.cpp</name>
   </compound>
@@ -1605,6 +1637,8 @@
   </compound>
   <compound refid="PropertyBearer_8cpp" kind="file"><name>PropertyBearer.cpp</name>
   </compound>
+  <compound refid="PurgeRDFBag_8cpp" kind="file"><name>PurgeRDFBag.cpp</name>
+  </compound>
   <compound refid="Query_8cpp" kind="file"><name>Query.cpp</name>
   </compound>
   <compound refid="RDF_8cpp" kind="file"><name>RDF.cpp</name>
@@ -1616,6 +1650,8 @@
   <compound refid="Triples_8cpp" kind="file"><name>Triples.cpp</name>
   </compound>
   <compound refid="UriHandler_8cpp" kind="file"><name>UriHandler.cpp</name>
+  </compound>
+  <compound refid="VCardTranslator_8cpp" kind="file"><name>VCardTranslator.cpp</name>
   </compound>
   <compound refid="librdf_8h" kind="file"><name>librdf.h</name>
     <member refid="librdf_8h_1ab1165c007a4339d15b9989053a104e01" kind="define"><name>REDLAND_EXPORT</name></member>
@@ -2376,8 +2412,8 @@
   </compound>
   <compound refid="dir_e793c0dc4ccd224149063390ee134027" kind="dir"><name>src/redland/RedlandWrapper/src</name>
   </compound>
-  <compound refid="_2Users_2ciaranwelsh_2Documents_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example" kind="example"><name>/Users/ciaranwelsh/Documents/libOmexMeta/src/omexmeta/include/omexmeta/OmexMetaCApi.h</name>
+  <compound refid="D_1_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example" kind="example"><name>D:/libOmexMeta/src/omexmeta/include/omexmeta/OmexMetaCApi.h</name>
   </compound>
-  <compound refid="_2Users_2ciaranwelsh_2Documents_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2Predicate_8h-example" kind="example"><name>/Users/ciaranwelsh/Documents/libOmexMeta/src/omexmeta/include/omexmeta/Predicate.h</name>
+  <compound refid="D_1_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2Predicate_8h-example" kind="example"><name>D:/libOmexMeta/src/omexmeta/include/omexmeta/Predicate.h</name>
   </compound>
 </doxygenindex>

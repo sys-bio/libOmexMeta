@@ -9,7 +9,7 @@
 <para>deleted</para>
 <para>is deleted because it makes using the underlying librdf_query and librdf_query_results pointers safer from a memory management perspective. </para>
     </detaileddescription>
-    <location file="src/omexmeta/include/omexmeta/Query.h" line="165" column="1"/>
+    <location file="src/omexmeta/include/omexmeta/Query.h" line="164" column="1"/>
     <listofallmembers>
     </listofallmembers>
   </compounddef>

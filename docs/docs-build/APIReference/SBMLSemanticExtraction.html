@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>SBMLSemanticExtraction &mdash; libomexmeta 1.2.5 documentation</title>
+  <title>SBMLSemanticExtraction &mdash; libomexmeta 1.2.7 documentation</title>
   
 
   
@@ -197,17 +197,34 @@
 <dl class="cpp function">
 <dt id="_CPPv4N8omexmeta22SBMLSemanticExtraction22SBMLSemanticExtractionEP6Editor">
 <span id="_CPPv3N8omexmeta22SBMLSemanticExtraction22SBMLSemanticExtractionEP6Editor"></span><span id="_CPPv2N8omexmeta22SBMLSemanticExtraction22SBMLSemanticExtractionEP6Editor"></span><span id="omexmeta::SBMLSemanticExtraction::SBMLSemanticExtraction__EditorP"></span><span class="target" id="classomexmeta_1_1SBMLSemanticExtraction_1a3c55dab129bd47c753f19317fade1f18"></span><code class="sig-name descname">SBMLSemanticExtraction</code><span class="sig-paren">(</span><a class="reference internal" href="Editor.html#_CPPv4N8omexmeta6EditorE" title="omexmeta::Editor">Editor</a> *<em>editor</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta22SBMLSemanticExtraction22SBMLSemanticExtractionEP6Editor" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>Construct an <a class="reference internal" href="#classomexmeta_1_1SBMLSemanticExtraction"><span class="std std-ref">SBMLSemanticExtraction</span></a> object with an. </p>
+<p><a class="reference internal" href="Editor.html#classomexmeta_1_1Editor"><span class="std std-ref">Editor</span></a>. </p>
+</dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4N8omexmeta22SBMLSemanticExtraction34extractSpeciesCompartmentSemanticsEv">
 <span id="_CPPv3N8omexmeta22SBMLSemanticExtraction34extractSpeciesCompartmentSemanticsEv"></span><span id="_CPPv2N8omexmeta22SBMLSemanticExtraction34extractSpeciesCompartmentSemanticsEv"></span><span id="omexmeta::SBMLSemanticExtraction::extractSpeciesCompartmentSemantics"></span><span class="target" id="classomexmeta_1_1SBMLSemanticExtraction_1a53cda7f108b954af7fb1159773e44522"></span>void <code class="sig-name descname">extractSpeciesCompartmentSemantics</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta22SBMLSemanticExtraction34extractSpeciesCompartmentSemanticsEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>Parses SBML and creates triples from the location of species. </p>
+<p>Takes a species and creates a single triple with the following information:<ul class="simple">
+<li><p>subject node is species metaid</p></li>
+<li><p>predicate is always bqbiol::isPartOf</p></li>
+<li><p>resource is the metaid of the compartment the species belongs to </p></li>
+</ul>
+</p>
+</dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4N8omexmeta22SBMLSemanticExtraction29extractProcessesFromReactionsEv">
 <span id="_CPPv3N8omexmeta22SBMLSemanticExtraction29extractProcessesFromReactionsEv"></span><span id="_CPPv2N8omexmeta22SBMLSemanticExtraction29extractProcessesFromReactionsEv"></span><span id="omexmeta::SBMLSemanticExtraction::extractProcessesFromReactions"></span><span class="target" id="classomexmeta_1_1SBMLSemanticExtraction_1a89ed78df066e71e628c8b631175a8441"></span>void <code class="sig-name descname">extractProcessesFromReactions</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta22SBMLSemanticExtraction29extractProcessesFromReactionsEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>Parses the sbml and automatically creates <a class="reference internal" href="PhysicalProcess.html#classomexmeta_1_1PhysicalProcess"><span class="std std-ref">PhysicalProcess</span></a> annotations for each reaction. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta22SBMLSemanticExtraction13bagConversionEv">
+<span id="_CPPv3N8omexmeta22SBMLSemanticExtraction13bagConversionEv"></span><span id="_CPPv2N8omexmeta22SBMLSemanticExtraction13bagConversionEv"></span><span id="omexmeta::SBMLSemanticExtraction::bagConversion"></span><span class="target" id="classomexmeta_1_1SBMLSemanticExtraction_1a921d30e6df59d01be7f52eba2d0bcd01"></span>void <code class="sig-name descname">bagConversion</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta22SBMLSemanticExtraction13bagConversionEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>removes the “rdf::bag` construct from annotations. </p>
+<p>ignores anything to do with vcard, which requires special attention </p>
+</dd></dl>
 
 </div>
 <div class="breathe-sectiondef docutils container">

@@ -3,16 +3,57 @@
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classomexmeta_1_1SBMLSemanticExtraction_a3c55dab129bd47c753f19317fade1f18}\label{classomexmeta_1_1SBMLSemanticExtraction_a3c55dab129bd47c753f19317fade1f18}} 
-{\bfseries S\+B\+M\+L\+Semantic\+Extraction} (\mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} $\ast$editor)
-\item 
-\mbox{\Hypertarget{classomexmeta_1_1SBMLSemanticExtraction_a53cda7f108b954af7fb1159773e44522}\label{classomexmeta_1_1SBMLSemanticExtraction_a53cda7f108b954af7fb1159773e44522}} 
-void {\bfseries extract\+Species\+Compartment\+Semantics} ()
-\item 
+\mbox{\hyperlink{classomexmeta_1_1SBMLSemanticExtraction_a3c55dab129bd47c753f19317fade1f18}{S\+B\+M\+L\+Semantic\+Extraction}} (\mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} $\ast$editor)
+\begin{DoxyCompactList}\small\item\em Construct an \mbox{\hyperlink{classomexmeta_1_1SBMLSemanticExtraction}{S\+B\+M\+L\+Semantic\+Extraction}} object with an. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classomexmeta_1_1SBMLSemanticExtraction_a53cda7f108b954af7fb1159773e44522}{extract\+Species\+Compartment\+Semantics}} ()
+\begin{DoxyCompactList}\small\item\em Parses S\+B\+ML and creates triples from the location of species. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classomexmeta_1_1SBMLSemanticExtraction_a89ed78df066e71e628c8b631175a8441}\label{classomexmeta_1_1SBMLSemanticExtraction_a89ed78df066e71e628c8b631175a8441}} 
-void {\bfseries extract\+Processes\+From\+Reactions} ()
-\end{DoxyCompactItemize}
+void \mbox{\hyperlink{classomexmeta_1_1SBMLSemanticExtraction_a89ed78df066e71e628c8b631175a8441}{extract\+Processes\+From\+Reactions}} ()
+\begin{DoxyCompactList}\small\item\em Parses the sbml and automatically creates \mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} annotations for each reaction. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classomexmeta_1_1SBMLSemanticExtraction_a921d30e6df59d01be7f52eba2d0bcd01}{bag\+Conversion}} ()
+\begin{DoxyCompactList}\small\item\em removes the "{}rdf\+::bag\`{} construct from annotations. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classomexmeta_1_1SBMLSemanticExtraction_a3c55dab129bd47c753f19317fade1f18}\label{classomexmeta_1_1SBMLSemanticExtraction_a3c55dab129bd47c753f19317fade1f18}} 
+\index{omexmeta::SBMLSemanticExtraction@{omexmeta::SBMLSemanticExtraction}!SBMLSemanticExtraction@{SBMLSemanticExtraction}}
+\index{SBMLSemanticExtraction@{SBMLSemanticExtraction}!omexmeta::SBMLSemanticExtraction@{omexmeta::SBMLSemanticExtraction}}
+\doxysubsubsection{\texorpdfstring{SBMLSemanticExtraction()}{SBMLSemanticExtraction()}}
+{\footnotesize\ttfamily omexmeta\+::\+S\+B\+M\+L\+Semantic\+Extraction\+::\+S\+B\+M\+L\+Semantic\+Extraction (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} $\ast$}]{editor }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Construct an \mbox{\hyperlink{classomexmeta_1_1SBMLSemanticExtraction}{S\+B\+M\+L\+Semantic\+Extraction}} object with an. 
+
+\mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}}. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classomexmeta_1_1SBMLSemanticExtraction_a921d30e6df59d01be7f52eba2d0bcd01}\label{classomexmeta_1_1SBMLSemanticExtraction_a921d30e6df59d01be7f52eba2d0bcd01}} 
+\index{omexmeta::SBMLSemanticExtraction@{omexmeta::SBMLSemanticExtraction}!bagConversion@{bagConversion}}
+\index{bagConversion@{bagConversion}!omexmeta::SBMLSemanticExtraction@{omexmeta::SBMLSemanticExtraction}}
+\doxysubsubsection{\texorpdfstring{bagConversion()}{bagConversion()}}
+{\footnotesize\ttfamily void omexmeta\+::\+S\+B\+M\+L\+Semantic\+Extraction\+::bag\+Conversion (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+removes the "{}rdf\+::bag\`{} construct from annotations. 
+
+ignores anything to do with vcard, which requires special attention \mbox{\Hypertarget{classomexmeta_1_1SBMLSemanticExtraction_a53cda7f108b954af7fb1159773e44522}\label{classomexmeta_1_1SBMLSemanticExtraction_a53cda7f108b954af7fb1159773e44522}} 
+\index{omexmeta::SBMLSemanticExtraction@{omexmeta::SBMLSemanticExtraction}!extractSpeciesCompartmentSemantics@{extractSpeciesCompartmentSemantics}}
+\index{extractSpeciesCompartmentSemantics@{extractSpeciesCompartmentSemantics}!omexmeta::SBMLSemanticExtraction@{omexmeta::SBMLSemanticExtraction}}
+\doxysubsubsection{\texorpdfstring{extractSpeciesCompartmentSemantics()}{extractSpeciesCompartmentSemantics()}}
+{\footnotesize\ttfamily void omexmeta\+::\+S\+B\+M\+L\+Semantic\+Extraction\+::extract\+Species\+Compartment\+Semantics (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Parses S\+B\+ML and creates triples from the location of species. 
+
+Takes a species and creates a single triple with the following information\+:
+\begin{DoxyItemize}
+\item subject node is species metaid
+\item predicate is always bqbiol\+::is\+Part\+Of
+\item resource is the metaid of the compartment the species belongs to 
+\end{DoxyItemize}
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

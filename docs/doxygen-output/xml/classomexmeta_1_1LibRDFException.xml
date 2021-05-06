@@ -64,14 +64,14 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
+      <node id="3">
+        <label>exception</label>
+      </node>
       <node id="1">
         <label>omexmeta::LibRDFException</label>
         <link refid="classomexmeta_1_1LibRDFException"/>
         <childnode refid="2" relation="public-inheritance">
         </childnode>
-      </node>
-      <node id="3">
-        <label>std::exception</label>
       </node>
       <node id="2">
         <label>omexmeta::Exception</label>
@@ -81,14 +81,14 @@
       </node>
     </inheritancegraph>
     <collaborationgraph>
+      <node id="3">
+        <label>exception</label>
+      </node>
       <node id="1">
         <label>omexmeta::LibRDFException</label>
         <link refid="classomexmeta_1_1LibRDFException"/>
         <childnode refid="2" relation="public-inheritance">
         </childnode>
-      </node>
-      <node id="3">
-        <label>std::exception</label>
       </node>
       <node id="2">
         <label>omexmeta::Exception</label>

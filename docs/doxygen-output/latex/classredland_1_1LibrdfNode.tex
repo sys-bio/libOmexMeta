@@ -79,9 +79,8 @@ static \mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} {\bfseries fr
 \mbox{\Hypertarget{classredland_1_1LibrdfNode_a22ea96262be432e6abb5c1e28ede3071}\label{classredland_1_1LibrdfNode_a22ea96262be432e6abb5c1e28ede3071}} 
 static \mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} {\bfseries from\+Blank} (const std\+::string \&blank)
 \item 
-\mbox{\Hypertarget{classredland_1_1LibrdfNode_a346fad618a010ef983ce24d62891de0e}\label{classredland_1_1LibrdfNode_a346fad618a010ef983ce24d62891de0e}} 
-static \mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} {\bfseries from\+Literal} (const std\+::string \&literal, const std\+::string \&literal\+\_\+datatype\+\_\+uri=\char`\"{}string\char`\"{}, const std\+::string \&xml\+\_\+language=std\+::string())
-\item 
+static \mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} \mbox{\hyperlink{classredland_1_1LibrdfNode_a96a685f8e79ba04c91a15e024a66388f}{from\+Literal}} (const std\+::string \&literal, const std\+::string \&literal\+\_\+datatype\+\_\+uri=\char`\"{}\char`\"{}, const std\+::string \&xml\+\_\+language=std\+::string())
+\begin{DoxyCompactList}\small\item\em construct a literal node \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classredland_1_1LibrdfNode_aaeeeca26bafdaf7f118af3307a4768be}\label{classredland_1_1LibrdfNode_aaeeeca26bafdaf7f118af3307a4768be}} 
 static \mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} {\bfseries new\+Empty\+Node} ()
 \item 
@@ -105,10 +104,29 @@ static std\+::vector$<$ std\+::string $>$ {\bfseries split\+String\+By} (const s
 \doxysubsection{Detailed Description}
 \begin{Desc}
 \item[Examples]\par
-\mbox{\hyperlink{_2Users_2ciaranwelsh_2Documents_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2Predicate_8h-example}{/\+Users/ciaranwelsh/\+Documents/lib\+Omex\+Meta/src/omexmeta/include/omexmeta/\+Predicate.\+h}}.\end{Desc}
+\mbox{\hyperlink{D_1_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2Predicate_8h-example}{D\+:/lib\+Omex\+Meta/src/omexmeta/include/omexmeta/\+Predicate.\+h}}.\end{Desc}
 
 
 \doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classredland_1_1LibrdfNode_a96a685f8e79ba04c91a15e024a66388f}\label{classredland_1_1LibrdfNode_a96a685f8e79ba04c91a15e024a66388f}} 
+\index{redland::LibrdfNode@{redland::LibrdfNode}!fromLiteral@{fromLiteral}}
+\index{fromLiteral@{fromLiteral}!redland::LibrdfNode@{redland::LibrdfNode}}
+\doxysubsubsection{\texorpdfstring{fromLiteral()}{fromLiteral()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} redland\+::\+Librdf\+Node\+::from\+Literal (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{literal,  }\item[{const std\+::string \&}]{literal\+\_\+datatype\+\_\+uri = {\ttfamily \char`\"{}\char`\"{}},  }\item[{const std\+::string \&}]{xml\+\_\+language = {\ttfamily std\+:\+:string()} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+construct a literal node 
+
+
+\begin{DoxyParams}{Parameters}
+{\em literal} & the value to use for literal node \\
+\hline
+{\em literal\+\_\+datatype\+\_\+uri} & defaults to \char`\"{}\char`\"{}, i.\+e. no defined datatype. Users can use any datatype from the R\+DF specification and users do not need to pass the full U\+RI. For example, to specify a datatype was a string you only need to use \char`\"{}string\char`\"{} for this argument. \\
+\hline
+{\em xml\+\_\+language} & The language for this literal. See R\+DF specification for more details. \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{classredland_1_1LibrdfNode_a33162ea36efe451c100325816cf8613f}\label{classredland_1_1LibrdfNode_a33162ea36efe451c100325816cf8613f}} 
 \index{redland::LibrdfNode@{redland::LibrdfNode}!get@{get}}
 \index{get@{get}!redland::LibrdfNode@{redland::LibrdfNode}}

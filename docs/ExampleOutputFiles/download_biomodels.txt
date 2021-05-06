@@ -8,3 +8,4 @@ Biomodels models from id 601 to 700 saved to D:/libOmexMeta/docs\Biomodels601-70
 Biomodels models from id 701 to 800 saved to D:/libOmexMeta/docs\Biomodels701-800.zip
 Biomodels models from id 801 to 900 saved to D:/libOmexMeta/docs\Biomodels801-900.zip
 Biomodels models from id 901 to 1000 saved to D:/libOmexMeta/docs\Biomodels901-1000.zip
+Biomodels models from id 1001 to 1002 saved to D:/libOmexMeta/docs\Biomodels1001-1002.zip

@@ -34,14 +34,6 @@
 \DoxyCodeLine{    \textcolor{keyword}{typedef} std::unordered\_map<std::string, std::string> NamespaceMap;}
 \DoxyCodeLine{}
 \DoxyCodeLine{    \textcolor{keyword}{class }Predicate \{}
-\DoxyCodeLine{    \textcolor{keyword}{protected}:}
-\DoxyCodeLine{}
-\DoxyCodeLine{        std::string namespace\_, term\_, prefix\_;}
-\DoxyCodeLine{        std::string uri\_;}
-\DoxyCodeLine{        \mbox{\hyperlink{structraptor__term}{librdf\_node}} *node\_ = \textcolor{keyword}{nullptr}; }
-\DoxyCodeLine{        std::vector<std::string> valid\_terms\_\{\textcolor{stringliteral}{"{}All"{}}\};}
-\DoxyCodeLine{}
-\DoxyCodeLine{        \textcolor{keyword}{explicit} Predicate(\mbox{\hyperlink{structraptor__term}{librdf\_node}} *node);}
 \DoxyCodeLine{}
 \DoxyCodeLine{    \textcolor{keyword}{public}:}
 \DoxyCodeLine{        Predicate() = \textcolor{keywordflow}{default};}
@@ -61,7 +53,7 @@
 \DoxyCodeLine{}
 \DoxyCodeLine{        \textcolor{keyword}{static} \textcolor{keywordtype}{bool} namespaceKnown(\textcolor{keyword}{const} std::string \&ns);}
 \DoxyCodeLine{}
-\DoxyCodeLine{        [[nodiscard]] \mbox{\hyperlink{structraptor__term}{librdf\_node}} *getNode() \textcolor{keyword}{const};}
+\DoxyCodeLine{        [[nodiscard]] \mbox{\hyperlink{structraptor__term}{librdf\_node}} *get() \textcolor{keyword}{const};}
 \DoxyCodeLine{}
 \DoxyCodeLine{        [[nodiscard]] \textcolor{keyword}{const} std::vector<std::string> \&getValidTerms() \textcolor{keyword}{const};}
 \DoxyCodeLine{}
@@ -81,8 +73,19 @@
 \DoxyCodeLine{}
 \DoxyCodeLine{        \textcolor{keywordtype}{void} setNode(\mbox{\hyperlink{structraptor__term}{librdf\_node}} *node);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\textcolor{comment}{//        std::shared\_ptr<Predicate> makeShared();}}
+\DoxyCodeLine{        \mbox{\hyperlink{classredland_1_1LibrdfNode}{LibrdfNode}} getNode();}
 \DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//        std::shared\_ptr<Predicate> makeShared();}}
+\DoxyCodeLine{    \textcolor{keyword}{protected}:}
+\DoxyCodeLine{}
+\DoxyCodeLine{        std::string namespace\_, term\_, prefix\_;}
+\DoxyCodeLine{        std::string uri\_;}
+\DoxyCodeLine{\textcolor{comment}{//        librdf\_node *node\_ = nullptr; //! predicates can only have type uri}}
+\DoxyCodeLine{        std::vector<std::string> valid\_terms\_\{\textcolor{stringliteral}{"{}All"{}}\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{        \mbox{\hyperlink{classredland_1_1LibrdfNode}{LibrdfNode}} node\_;}
+\DoxyCodeLine{}
+\DoxyCodeLine{        \textcolor{keyword}{explicit} Predicate(\mbox{\hyperlink{structraptor__term}{librdf\_node}} *node);}
 \DoxyCodeLine{    \};}
 \DoxyCodeLine{}
 \DoxyCodeLine{    \textcolor{keyword}{class }BiomodelsBiologyQualifier : \textcolor{keyword}{public} Predicate \{}

@@ -1,5 +1,13 @@
-from bioservices import BioModels
 import os
+import subprocess
+import sys
+
+try :
+    from bioservices import BioModels
+except ImportError:
+    subprocess.check_call([sys.executable, "-m", "pip", "install", "bioservices"])
+    from bioservices import BioModels
+
 import json
 import zipfile as z
 
