@@ -24,7 +24,7 @@ An interactive demonstration of pyomexmeta via Jupyter notebook is available via
   
 ### [Querying](http://librdf.org/rasqal/docs/api/)
   - Languages
-    - [SPARQL](https://www.w3.org/TR/sparql11-query/), [LAQRS](https://www.dajobe.org/2007/04/laqrs/) 
+    - [SPARQL](https://www.w3.org/TR/sparql11-query/)
   - Query result formats: 
     - xml, json, table, csv, mkr, tsv, html, turtle, rdfxml,
 
@@ -34,10 +34,10 @@ An interactive demonstration of pyomexmeta via Jupyter notebook is available via
 
 # Platform
   - Windows
-  - Linux Ubuntu 18.04, untested on other flavours. 
+  - Linux Ubuntu 18.04
+  - ManyLinux 2014
+  - MacOs
   
-libOmexMeta has not been tested on a Mac.  
-
 # Documentation
 
 https://sys-bio.github.io/libOmexMeta 
@@ -56,7 +56,7 @@ Python 3 only - if you're not using Python 3, I recommend you upgrade.
 ## Docker
 You can get a docker image using 
 
-    $ docker pull ciaranwelsh/libomexmeta:v1.1.0
+    $ docker pull ciaranwelsh/libomexmeta
     
 This is an Ubuntu 18.04 based container that has libOmexMeta prebuilt and installed under `/libOmexMeta/install-docker`. See [dockerfile](https://github.com/sys-bio/libOmexMeta/blob/master/Dockerfile) for full set of commands to build libOmexMeta on ubuntu. 
 Conda is preconfigured and pyomexmeta is installed. 
