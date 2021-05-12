@@ -2,6 +2,11 @@
 [![Build Status](https://dev.azure.com/libOmexMeta/libOmexMeta/_apis/build/status/sys-bio.libOmexMeta?branchName=master)](https://dev.azure.com/libOmexMeta/libOmexMeta/_build/latest?definitionId=1&branchName=master)
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/sys-bio/pyomexmeta-binder-notebook/HEAD)
 
+
+# Documentation
+
+https://sys-bio.github.io/libOmexMeta 
+
 # libOmexMeta
 LibOmexMeta is a library aimed at providing developer-level support for reading, writing, editing and managing semantic annotations for biosimulation models.  The [COMBINE modeling community](http://co.mbine.org/)  has developed consensus around how best to annotate models and how to package these models into archives (OMEX files) that include the modeling source code, the annotations, files that describe parameters and settings needed for simulations (in a SEDML file), and potentially the data used for these modeling efforts. This consensus was initially described in the  publication ["Harmonizing semantic annotations for computational models in biology" (Briefings in Bioinformatics, 2018)](https://academic.oup.com/bib/article/20/2/540/5164345).
 
@@ -14,7 +19,7 @@ LibOmexMeta is a C++ library with a C interface that is used to build a Python f
 
 ## Live demonstration
 
-An interactive demonstration of pyomexmeta via Jupyter notebook is available via the launch binder badge above or by following this [direct link](https://mybinder.org/v2/gh/sys-bio/pyomexmeta-binder-notebook/HEAD). The source for this live demonstration is available here: https://github.com/sys-bio/pyomexmeta-binder-notebook.
+An interactive demonstration of pyomexmeta via Jupyter notebook is available via the launch binder badge above or by following this [direct link](https://mybinder.org/v2/gh/sys-bio/pyomexmeta-binder-notebook/HEAD). When you get to the binder site, select the file called  "notebook.ipynb" to start the demo. Remember that notebooks are made of cells containing code. To execute code in a particular cell, select the cell and then pick the run button in the tool bar. The source for this live demonstration is available here: https://github.com/sys-bio/pyomexmeta-binder-notebook.
 
 ## Features
 ### [Parsers](http://librdf.org/raptor/api-1.4/raptor-parsers.html)
@@ -38,10 +43,6 @@ An interactive demonstration of pyomexmeta via Jupyter notebook is available via
   - ManyLinux 2014
   - MacOs
   
-# Documentation
-
-https://sys-bio.github.io/libOmexMeta 
-
 # Installation
 ## Python
 
