@@ -202,7 +202,7 @@ http://omex-library.org/NewOmex.omex/NewModel.rdf#source_0,http://www.bhi.washin
 
     def test_use_sqlite_storage(self):
         rdf = RDF("sqlite", self.sqlite_fname, "new='yes'")
-        rdf.add_from_string(self.rdf_str, format="rdfxml")
+        rdf.add_from_string(self.rdf_str, syntax="rdfxml")
         self.assertTrue(os.path.isfile(self.sqlite_fname))
 
 
