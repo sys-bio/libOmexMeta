@@ -289,7 +289,7 @@ TEST_F(RDFTests, TestRepositoryPrefix) {
 
 TEST_F(RDFTests, TestLocalPrefix) {
     RDF rdf = RDF::fromString(samples.singular_annotation1);
-    std::string turtle_string = rdf.toString("turtle");
+    std::string turtle_string = rdf.toString("turtl");
     std::string arg = "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .";
     ASSERT_TRUE(OmexMetaUtils::isSubString(turtle_string, arg));
 }

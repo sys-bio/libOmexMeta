@@ -34,7 +34,7 @@ namespace omexmeta {
 
         void setIsSet(bool isSet);
 
-                void setPropertyMetaidBase(const std::string &propertyMetaidBase);
+        void setPropertyMetaidBase(const std::string &propertyMetaidBase);
 
         [[nodiscard]] const std::string &getPropertyBearerBase() const;
 
