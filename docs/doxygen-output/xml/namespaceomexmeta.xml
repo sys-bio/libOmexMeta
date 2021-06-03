@@ -182,7 +182,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/OmexMetaXmlAssistant.h" line="86" column="29" bodyfile="src/omexmeta/include/omexmeta/OmexMetaXmlAssistant.h" bodystart="86" bodyend="-1"/>
+        <location file="src/omexmeta/include/omexmeta/OmexMetaXmlAssistant.h" line="94" column="29" bodyfile="src/omexmeta/include/omexmeta/OmexMetaXmlAssistant.h" bodystart="94" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceomexmeta_1a90b8619f565d06ee3a8fa4d1cfda893c" prot="public" static="no">
         <type>std::shared_ptr&lt; <ref refid="classomexmeta_1_1Participant" kindref="compound">Participant</ref> &gt;</type>

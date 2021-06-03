@@ -11,7 +11,7 @@ rdf_str = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
   bqbiol:is <https://identifiers.org/uniprot/PD12345> ."""
 
 # download model xml, scan for rdf, create rdf graph and store in sqlite database
-rdf = RDF.from_string(rdf_str, format="turtle")
+rdf = RDF.from_string(rdf_str, syntax="turtle")
 
 # pick a filename (this can be anywhere on your system)
 docs_dir = os.path.join(os.path.dirname(__file__), "source")

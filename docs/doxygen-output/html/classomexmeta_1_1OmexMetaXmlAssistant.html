@@ -74,6 +74,11 @@ $(function() {
 <div class="title">omexmeta::OmexMetaXmlAssistant Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Construct for handling xml.  
+ <a href="classomexmeta_1_1OmexMetaXmlAssistant.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="OmexMetaXmlAssistant_8h_source.html">OmexMetaXmlAssistant.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for omexmeta::OmexMetaXmlAssistant:</div>
 <div class="dyncontent">
@@ -112,7 +117,10 @@ virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><b>metaId
 virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><b>metaIdNamespace</b> () const</td></tr>
 <tr class="separator:a9d178086ee6fe1d74e683476783ed933"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Construct for handling xml. </p>
+<p>todo this design works but is a little clunky. A better design would be literally have an XML class, with a type enum to determine SBML, CellML or other and then the functions performed by this class would just be methods of the xml. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a69bb3ac99f1585b6f567b80e88f52642"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a69bb3ac99f1585b6f567b80e88f52642">&#9670;&nbsp;</a></span>getMetaidBase()</h2>
 
@@ -129,7 +137,7 @@ virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><b>metaId
 </div><div class="memdoc">
 
 <p>get the base for the metaid used by the current xml type. <a class="el" href="classThis.html" title="interface for querying an rdf graph basically a wrapper around both librdf_query and librdf_query_res...">This</a> base is used as a precursor string for generating new metaids if requested by the user by setting generate_new_metaids=true. </p>
-<p>the base is given as argument to the <a class="el" href="classomexmeta_1_1OmexMetaXmlAssistant.html">OmexMetaXmlAssistant</a> on instantiation. If base is "metaid" then ids generated will be metaid_0000 </p>
+<p>the base is given as argument to the <a class="el" href="classomexmeta_1_1OmexMetaXmlAssistant.html" title="Construct for handling xml.">OmexMetaXmlAssistant</a> on instantiation. If base is "metaid" then ids generated will be metaid_0000 </p>
 
 </div>
 </div>

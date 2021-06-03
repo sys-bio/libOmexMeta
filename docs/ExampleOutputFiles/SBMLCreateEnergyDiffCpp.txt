@@ -1,1 +1,1 @@
-D:/libOmexMeta/docs/ExampleOutputFiles\SBMLCreateEnergyDiffCpp.txt
+/Users/ciaranwelsh/Documents/libOmexMeta/docs/ExampleOutputFiles/SBMLCreateEnergyDiffCpp.txt

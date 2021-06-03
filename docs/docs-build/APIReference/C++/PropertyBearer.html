@@ -1,0 +1,507 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>PropertyBearer &mdash; libomexmeta 1.2.7 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/sphinx_tabs/semantic-ui-2.4.1/segment.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/sphinx_tabs/semantic-ui-2.4.1/menu.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/sphinx_tabs/tabs.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Query" href="Query.html" />
+    <link rel="prev" title="PhysicalPropery" href="PhysicalPropery.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> libomexmeta
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../background.html">Background to Semantic Annotations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reading_rdf/reading_rdf.html">Reading RDF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../writing_rdf/writing_rdf.html">Serializing RDF Graphs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../singular_annotations/index.html">Singular Annotations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../composite_annotations/index.html">Composite Annotations: SBML Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../composite_annotations/index.html#composite-annotations-cellml-examples">Composite Annotations: CellML Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../querying_rdf/querying_rdf.html">Querying RDF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/diagrams_index.html">Building Diagrams</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../annotating_models/annotating_models_index.html">Annotating Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../download_biomodels/download_biomodels.html">Downloading Biomodels</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api_reference_index.html">API Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../Python/index.html">Pyomexmeta API Reference</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">C++ libOmexMeta API Reference</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="RDF.html">RDF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Editor.html">Editor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="PhysicalEntity.html">PhysicalEntity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="EnergyDiff.html">EnergyDiff</a></li>
+<li class="toctree-l3"><a class="reference internal" href="PhysicalProcess.html">PhysicalProcess</a></li>
+<li class="toctree-l3"><a class="reference internal" href="PhysicalPropery.html">PhysicalPropery</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">PropertyBearer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Query.html">Query</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Triple.html">Triple</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Triples.html">Triples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ElementExtractor.html">ElementExtractor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MarkupIdentifier.html">MarkupIdentifier</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MetaID.html">MetaID</a></li>
+<li class="toctree-l3"><a class="reference internal" href="OmexMetaCAPI.html">OmexMetaCAPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="OmexMetaUtils.html">OmexMetaUtils</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Predicate.html">Predicate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SBMLSemanticExtraction.html">SBMLSemanticExtraction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="AnnotationType.html">AnnotationType</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Developers/developers_index.html">Developers Documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">libomexmeta</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../api_reference_index.html">API Reference</a> &raquo;</li>
+        
+          <li><a href="index.html">C++ libOmexMeta API Reference</a> &raquo;</li>
+        
+      <li>PropertyBearer</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/APIReference/C++/PropertyBearer.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="propertybearer">
+<h1>PropertyBearer<a class="headerlink" href="#propertybearer" title="Permalink to this headline">¶</a></h1>
+<dl class="cpp class">
+<dt id="_CPPv4N8omexmeta14PropertyBearerE">
+<span id="_CPPv3N8omexmeta14PropertyBearerE"></span><span id="_CPPv2N8omexmeta14PropertyBearerE"></span><span id="omexmeta::PropertyBearer"></span><span class="target" id="classomexmeta_1_1PropertyBearer"></span><em class="property">class </em><code class="sig-prename descclassname">omexmeta<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">PropertyBearer</code><a class="headerlink" href="#_CPPv4N8omexmeta14PropertyBearerE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Subclassed by <a class="reference internal" href="EnergyDiff.html#classomexmeta_1_1EnergyDiff"><span class="std std-ref">omexmeta::EnergyDiff</span></a>, <a class="reference internal" href="PhysicalEntity.html#classomexmeta_1_1PhysicalEntity"><span class="std std-ref">omexmeta::PhysicalEntity</span></a>, <a class="reference internal" href="PhysicalProcess.html#classomexmeta_1_1PhysicalProcess"><span class="std std-ref">omexmeta::PhysicalProcess</span></a></p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta14PropertyBearer15getAboutUriTypeEv">
+<span id="_CPPv3NK8omexmeta14PropertyBearer15getAboutUriTypeEv"></span><span id="_CPPv2NK8omexmeta14PropertyBearer15getAboutUriTypeEv"></span><span id="omexmeta::PropertyBearer::getAboutUriTypeC"></span><span class="target" id="classomexmeta_1_1PropertyBearer_1ad53dffe87d395860708c4bcfc8a76478"></span>eUriType <code class="sig-name descname">getAboutUriType</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta14PropertyBearer15getAboutUriTypeEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta14PropertyBearer15setAboutUriTypeE8eUriType">
+<span id="_CPPv3N8omexmeta14PropertyBearer15setAboutUriTypeE8eUriType"></span><span id="_CPPv2N8omexmeta14PropertyBearer15setAboutUriTypeE8eUriType"></span><span id="omexmeta::PropertyBearer::setAboutUriType__eUriType"></span><span class="target" id="classomexmeta_1_1PropertyBearer_1a50f4abd4a7a5f699343fe824612b12fb"></span>void <code class="sig-name descname">setAboutUriType</code><span class="sig-paren">(</span>eUriType <em>aboutUriType</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta14PropertyBearer15setAboutUriTypeE8eUriType" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta14PropertyBearer21getPropertyMetaidBaseEv">
+<span id="_CPPv3NK8omexmeta14PropertyBearer21getPropertyMetaidBaseEv"></span><span id="_CPPv2NK8omexmeta14PropertyBearer21getPropertyMetaidBaseEv"></span><span id="omexmeta::PropertyBearer::getPropertyMetaidBaseC"></span><span class="target" id="classomexmeta_1_1PropertyBearer_1a8f819ed67e63c84aecff651cca4b945c"></span><em class="property">const</em> std::string &amp;<code class="sig-name descname">getPropertyMetaidBase</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta14PropertyBearer21getPropertyMetaidBaseEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta14PropertyBearer14PropertyBearerEv">
+<span id="_CPPv3N8omexmeta14PropertyBearer14PropertyBearerEv"></span><span id="_CPPv2N8omexmeta14PropertyBearer14PropertyBearerEv"></span><span id="omexmeta::PropertyBearer::PropertyBearer"></span><span class="target" id="classomexmeta_1_1PropertyBearer_1a8ae678b4a1cc528b20ff969b7d728bd6"></span><code class="sig-name descname">PropertyBearer</code><span class="sig-paren">(</span><span class="sig-paren">)</span> = default<a class="headerlink" href="#_CPPv4N8omexmeta14PropertyBearer14PropertyBearerEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta14PropertyBearereqERK14PropertyBearer">
+<span id="_CPPv3NK8omexmeta14PropertyBearereqERK14PropertyBearer"></span><span id="_CPPv2NK8omexmeta14PropertyBearereqERK14PropertyBearer"></span><span id="omexmeta::PropertyBearer::eq-operator__PropertyBearerCRC"></span><span class="target" id="classomexmeta_1_1PropertyBearer_1a354440c37a048f6d85e1b8613735a0b7"></span>bool <code class="sig-name descname">operator==</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4N8omexmeta14PropertyBearerE" title="omexmeta::PropertyBearer">PropertyBearer</a> &amp;<em>rhs</em><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta14PropertyBearereqERK14PropertyBearer" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta14PropertyBearerneERK14PropertyBearer">
+<span id="_CPPv3NK8omexmeta14PropertyBearerneERK14PropertyBearer"></span><span id="_CPPv2NK8omexmeta14PropertyBearerneERK14PropertyBearer"></span><span id="omexmeta::PropertyBearer::neq-operator__PropertyBearerCRC"></span><span class="target" id="classomexmeta_1_1PropertyBearer_1a8e065b7ca6fc51c2eb4f4d63e1203fe2"></span>bool <code class="sig-name descname">operator!=</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4N8omexmeta14PropertyBearerE" title="omexmeta::PropertyBearer">PropertyBearer</a> &amp;<em>rhs</em><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta14PropertyBearerneERK14PropertyBearer" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta14PropertyBearerD0Ev">
+<span id="_CPPv3N8omexmeta14PropertyBearerD0Ev"></span><span id="_CPPv2N8omexmeta14PropertyBearerD0Ev"></span><span id="omexmeta::PropertyBearer::~PropertyBearer"></span><span class="target" id="classomexmeta_1_1PropertyBearer_1a9c492b5dde77979fedf04444c0316732"></span><code class="sig-name descname">~PropertyBearer</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta14PropertyBearerD0Ev" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta14PropertyBearer11getLocalUriEv">
+<span id="_CPPv3NK8omexmeta14PropertyBearer11getLocalUriEv"></span><span id="_CPPv2NK8omexmeta14PropertyBearer11getLocalUriEv"></span><span id="omexmeta::PropertyBearer::getLocalUriC"></span><span class="target" id="classomexmeta_1_1PropertyBearer_1a45b07ccfc203b51dfc08c45dbd37480d"></span><em class="property">const</em> std::string &amp;<code class="sig-name descname">getLocalUri</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta14PropertyBearer11getLocalUriEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta14PropertyBearer14PropertyBearerERK14PropertyBearer">
+<span id="_CPPv3N8omexmeta14PropertyBearer14PropertyBearerERK14PropertyBearer"></span><span id="_CPPv2N8omexmeta14PropertyBearer14PropertyBearerERK14PropertyBearer"></span><span id="omexmeta::PropertyBearer::PropertyBearer__PropertyBearerCR"></span><span class="target" id="classomexmeta_1_1PropertyBearer_1aba09b3a7c564ff208507dc0d533639ff"></span><code class="sig-name descname">PropertyBearer</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4N8omexmeta14PropertyBearer14PropertyBearerERK14PropertyBearer" title="omexmeta::PropertyBearer::PropertyBearer">PropertyBearer</a> &amp;<em>propertyBearer</em><span class="sig-paren">)</span> = delete<a class="headerlink" href="#_CPPv4N8omexmeta14PropertyBearer14PropertyBearerERK14PropertyBearer" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Copy constructor for <a class="reference internal" href="#classomexmeta_1_1PropertyBearer"><span class="std std-ref">PropertyBearer</span></a>. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta14PropertyBearer14PropertyBearerERR14PropertyBearer">
+<span id="_CPPv3N8omexmeta14PropertyBearer14PropertyBearerERR14PropertyBearer"></span><span id="_CPPv2N8omexmeta14PropertyBearer14PropertyBearerERR14PropertyBearer"></span><span id="omexmeta::PropertyBearer::PropertyBearer__PropertyBearerRR"></span><span class="target" id="classomexmeta_1_1PropertyBearer_1a130c3075575d8da0113ad6320a8f0794"></span><code class="sig-name descname">PropertyBearer</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4N8omexmeta14PropertyBearer14PropertyBearerERR14PropertyBearer" title="omexmeta::PropertyBearer::PropertyBearer">PropertyBearer</a> &amp;&amp;<em>propertyBearer</em><span class="sig-paren">)</span> <em class="property">noexcept</em><a class="headerlink" href="#_CPPv4N8omexmeta14PropertyBearer14PropertyBearerERR14PropertyBearer" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Move constructor for <a class="reference internal" href="#classomexmeta_1_1PropertyBearer"><span class="std std-ref">PropertyBearer</span></a>. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta14PropertyBeareraSERK14PropertyBearer">
+<span id="_CPPv3N8omexmeta14PropertyBeareraSERK14PropertyBearer"></span><span id="_CPPv2N8omexmeta14PropertyBeareraSERK14PropertyBearer"></span><span id="omexmeta::PropertyBearer::assign-operator__PropertyBearerCR"></span><span class="target" id="classomexmeta_1_1PropertyBearer_1a86f970e1522a3a180c9f9ada9df82b7e"></span><a class="reference internal" href="#_CPPv4N8omexmeta14PropertyBearerE" title="omexmeta::PropertyBearer">PropertyBearer</a> &amp;<code class="sig-name descname">operator=</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4N8omexmeta14PropertyBearerE" title="omexmeta::PropertyBearer">PropertyBearer</a> &amp;<em>propertyBearer</em><span class="sig-paren">)</span> = delete<a class="headerlink" href="#_CPPv4N8omexmeta14PropertyBeareraSERK14PropertyBearer" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>assignment operator for <a class="reference internal" href="#classomexmeta_1_1PropertyBearer"><span class="std std-ref">PropertyBearer</span></a> </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta14PropertyBeareraSERR14PropertyBearer">
+<span id="_CPPv3N8omexmeta14PropertyBeareraSERR14PropertyBearer"></span><span id="_CPPv2N8omexmeta14PropertyBeareraSERR14PropertyBearer"></span><span id="omexmeta::PropertyBearer::assign-operator__PropertyBearerRR"></span><span class="target" id="classomexmeta_1_1PropertyBearer_1a961b7de161f14f4ac92b8dd216399b6a"></span><a class="reference internal" href="#_CPPv4N8omexmeta14PropertyBearerE" title="omexmeta::PropertyBearer">PropertyBearer</a> &amp;<code class="sig-name descname">operator=</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4N8omexmeta14PropertyBearerE" title="omexmeta::PropertyBearer">PropertyBearer</a> &amp;&amp;<em>propertyBearer</em><span class="sig-paren">)</span> <em class="property">noexcept</em><a class="headerlink" href="#_CPPv4N8omexmeta14PropertyBeareraSERR14PropertyBearer" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>move assignment operator for <a class="reference internal" href="#classomexmeta_1_1PropertyBearer"><span class="std std-ref">PropertyBearer</span></a> </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta14PropertyBearer14PropertyBearerEP12librdf_modelR10UriHandler">
+<span id="_CPPv3N8omexmeta14PropertyBearer14PropertyBearerEP12librdf_modelR10UriHandler"></span><span id="_CPPv2N8omexmeta14PropertyBearer14PropertyBearerEP12librdf_modelR10UriHandler"></span><span id="omexmeta::PropertyBearer::PropertyBearer__librdf_modelP.UriHandlerR"></span><span class="target" id="classomexmeta_1_1PropertyBearer_1af6a967a6e8950c3fe550ee6cc4bb9e6e"></span><code class="sig-name descname">PropertyBearer</code><span class="sig-paren">(</span>librdf_model *<em>model</em>, UriHandler &amp;<em>uriHandler</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta14PropertyBearer14PropertyBearerEP12librdf_modelR10UriHandler" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Constructor for builder interface. </p>
+<p>Shouldn’t be needed by users directly. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta14PropertyBearer14PropertyBearerEP12librdf_modelR10UriHandler16PhysicalProperty14AnnotationType">
+<span id="_CPPv3N8omexmeta14PropertyBearer14PropertyBearerEP12librdf_modelR10UriHandler16PhysicalProperty14AnnotationType"></span><span id="_CPPv2N8omexmeta14PropertyBearer14PropertyBearerEP12librdf_modelR10UriHandler16PhysicalProperty14AnnotationType"></span><span id="omexmeta::PropertyBearer::PropertyBearer__librdf_modelP.UriHandlerR.PhysicalProperty.AnnotationType"></span><span class="target" id="classomexmeta_1_1PropertyBearer_1a55a9c4b8c46c2f14cd805e94a7b6f141"></span><code class="sig-name descname">PropertyBearer</code><span class="sig-paren">(</span>librdf_model *<em>model</em>, UriHandler &amp;<em>uriHandler</em>, <a class="reference internal" href="PhysicalPropery.html#_CPPv4N8omexmeta16PhysicalPropertyE" title="omexmeta::PhysicalProperty">PhysicalProperty</a> <em>propertyResource</em>, <a class="reference internal" href="AnnotationType.html#_CPPv4N8omexmeta14AnnotationTypeE" title="omexmeta::AnnotationType">AnnotationType</a> <em>type</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta14PropertyBearer14PropertyBearerEP12librdf_modelR10UriHandler16PhysicalProperty14AnnotationType" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>constructor for <a class="reference internal" href="#classomexmeta_1_1PropertyBearer"><span class="std std-ref">PropertyBearer</span></a> object. </p>
+<p><dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">model</span></code>: a librdf_model object assicated with <a class="reference internal" href="RDF.html#classomexmeta_1_1RDF"><span class="std std-ref">RDF</span></a> graph. </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">about</span></code>: The subject for the <a class="reference internal" href="#classomexmeta_1_1PropertyBearer"><span class="std std-ref">PropertyBearer</span></a>. This is the metaid. </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">propertyResource</span></code>: The <a class="reference internal" href="PhysicalPropery.html#classomexmeta_1_1PhysicalProperty"><span class="std std-ref">PhysicalProperty</span></a> assocaited with a composite annotation </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">type</span></code>: An AnnotationType to distinguish composite annotations. </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta14PropertyBearer11getModelUriEv">
+<span id="_CPPv3NK8omexmeta14PropertyBearer11getModelUriEv"></span><span id="_CPPv2NK8omexmeta14PropertyBearer11getModelUriEv"></span><span id="omexmeta::PropertyBearer::getModelUriC"></span><span class="target" id="classomexmeta_1_1PropertyBearer_1a6df2db1bb03c9b62da60263869f57ce6"></span><em class="property">const</em> std::string &amp;<code class="sig-name descname">getModelUri</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta14PropertyBearer11getModelUriEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta14PropertyBearer16getPropertyAboutEv">
+<span id="_CPPv3NK8omexmeta14PropertyBearer16getPropertyAboutEv"></span><span id="_CPPv2NK8omexmeta14PropertyBearer16getPropertyAboutEv"></span><span id="omexmeta::PropertyBearer::getPropertyAboutC"></span><span class="target" id="classomexmeta_1_1PropertyBearer_1ace448a5a3bf9c20e413cba3d36890442"></span><em class="property">const</em> std::string &amp;<code class="sig-name descname">getPropertyAbout</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta14PropertyBearer16getPropertyAboutEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>get the subject portion of the <a class="reference internal" href="#classomexmeta_1_1PropertyBearer"><span class="std std-ref">PropertyBearer</span></a> </p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>the string associated with the subject node </p>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta14PropertyBearer7getTypeEv">
+<span id="_CPPv3NK8omexmeta14PropertyBearer7getTypeEv"></span><span id="_CPPv2NK8omexmeta14PropertyBearer7getTypeEv"></span><span id="omexmeta::PropertyBearer::getTypeC"></span><span class="target" id="classomexmeta_1_1PropertyBearer_1a1a7ffce435c889b4e3f26fcbb66b6cc3"></span><a class="reference internal" href="AnnotationType.html#_CPPv4N8omexmeta14AnnotationTypeE" title="omexmeta::AnnotationType">AnnotationType</a> <code class="sig-name descname">getType</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta14PropertyBearer7getTypeEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>getter for Type argument </p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>the AnnotationType currently used (<a class="reference internal" href="PhysicalEntity.html#classomexmeta_1_1PhysicalEntity"><span class="std std-ref">PhysicalEntity</span></a>, <a class="reference internal" href="EnergyDiff.html#classomexmeta_1_1EnergyDiff"><span class="std std-ref">EnergyDiff</span></a> or <a class="reference internal" href="PhysicalProcess.html#classomexmeta_1_1PhysicalProcess"><span class="std std-ref">PhysicalProcess</span></a>) </p>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta14PropertyBearer19getPhysicalPropertyEv">
+<span id="_CPPv3NK8omexmeta14PropertyBearer19getPhysicalPropertyEv"></span><span id="_CPPv2NK8omexmeta14PropertyBearer19getPhysicalPropertyEv"></span><span id="omexmeta::PropertyBearer::getPhysicalPropertyC"></span><span class="target" id="classomexmeta_1_1PropertyBearer_1a38414e467fca285fa84e82184e4e26c3"></span><a class="reference internal" href="PhysicalPropery.html#_CPPv4N8omexmeta16PhysicalPropertyE" title="omexmeta::PhysicalProperty">PhysicalProperty</a> <code class="sig-name descname">getPhysicalProperty</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta14PropertyBearer19getPhysicalPropertyEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>getter for <a class="reference internal" href="PhysicalPropery.html#classomexmeta_1_1PhysicalProperty"><span class="std std-ref">PhysicalProperty</span></a> argument </p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>the resource representing the physical property being annotated </p>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta14PropertyBearer9toTriplesEv">
+<span id="_CPPv3N8omexmeta14PropertyBearer9toTriplesEv"></span><span id="_CPPv2N8omexmeta14PropertyBearer9toTriplesEv"></span><span id="omexmeta::PropertyBearer::toTriples"></span><span class="target" id="classomexmeta_1_1PropertyBearer_1adccf527f59eaebc1baf88dfce3ae9664"></span><a class="reference internal" href="Triples.html#_CPPv4N8omexmeta7TriplesE" title="omexmeta::Triples">Triples</a> <code class="sig-name descname">toTriples</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta14PropertyBearer9toTriplesEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>create a <a class="reference internal" href="Triples.html#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> object using the information contained in the <a class="reference internal" href="#classomexmeta_1_1PropertyBearer"><span class="std std-ref">PropertyBearer</span></a>. Overridden by subclasses. </p>
+<p><p>Refer to subclasses for more documentation. </p>
+<dl class="simple">
+<dt><strong>Return</strong></dt><dd><p><a class="reference internal" href="Triples.html#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> object containing the individual <a class="reference internal" href="Triple.html#classomexmeta_1_1Triple"><span class="std std-ref">Triple</span></a> objects representing the <a class="reference internal" href="#classomexmeta_1_1PropertyBearer"><span class="std std-ref">PropertyBearer</span></a></p>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt>
+<span class="target" id="classomexmeta_1_1PropertyBearer_1a54b3df74898019158a849b9f0a9112ad"></span><code class="sig-name descname">OMEXMETA_DEPRECATED void setPhysicalProperty (const PhysicalProperty &amp;physicalProperty)</code></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt>
+<span class="target" id="classomexmeta_1_1PropertyBearer_1aa2de7a52a6737252ebf1d4d8820f8035"></span><code class="sig-name descname">OMEXMETA_DEPRECATED void setType (AnnotationType type)</code></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta14PropertyBearer8getModelEv">
+<span id="_CPPv3NK8omexmeta14PropertyBearer8getModelEv"></span><span id="_CPPv2NK8omexmeta14PropertyBearer8getModelEv"></span><span id="omexmeta::PropertyBearer::getModelC"></span><span class="target" id="classomexmeta_1_1PropertyBearer_1a97a2c8ec00a740a607512db4b351467a"></span>librdf_model *<code class="sig-name descname">getModel</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta14PropertyBearer8getModelEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta14PropertyBearer11hasPropertyERK16PhysicalProperty">
+<span id="_CPPv3N8omexmeta14PropertyBearer11hasPropertyERK16PhysicalProperty"></span><span id="_CPPv2N8omexmeta14PropertyBearer11hasPropertyERK16PhysicalProperty"></span><span id="omexmeta::PropertyBearer::hasProperty__PhysicalPropertyCR"></span><span class="target" id="classomexmeta_1_1PropertyBearer_1ab70ef1dec50691f1731de28462ca3012"></span><a class="reference internal" href="#_CPPv4N8omexmeta14PropertyBearerE" title="omexmeta::PropertyBearer">PropertyBearer</a> &amp;<code class="sig-name descname">hasProperty</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="PhysicalPropery.html#_CPPv4N8omexmeta16PhysicalPropertyE" title="omexmeta::PhysicalProperty">PhysicalProperty</a> &amp;<em>property</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta14PropertyBearer11hasPropertyERK16PhysicalProperty" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt>
+<span class="target" id="classomexmeta_1_1PropertyBearer_1a6b21c3a4e722fbc37540203d8bc72a5c"></span><code class="sig-name descname">OMEXMETA_DEPRECATED PropertyBearer &amp; hasProperty (const std::string &amp;property_about, eUriType about_uri_type, const std::string &amp;is_version_of, const std::string &amp;is_property_of, eUriType is_property_of_uri_type)</code></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta14PropertyBearer11hasPropertyERKNSt6stringE">
+<span id="_CPPv3N8omexmeta14PropertyBearer11hasPropertyERKNSt6stringE"></span><span id="_CPPv2N8omexmeta14PropertyBearer11hasPropertyERKNSt6stringE"></span><span id="omexmeta::PropertyBearer::hasProperty__ssCR"></span><span class="target" id="classomexmeta_1_1PropertyBearer_1a042230eb589010b3acbb8d6b329c45cd"></span><a class="reference internal" href="#_CPPv4N8omexmeta14PropertyBearerE" title="omexmeta::PropertyBearer">PropertyBearer</a> &amp;<code class="sig-name descname">hasProperty</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>is_version_of</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta14PropertyBearer11hasPropertyERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta14PropertyBearer11hasPropertyERKNSt6stringE8eUriTypeRKNSt6stringE">
+<span id="_CPPv3N8omexmeta14PropertyBearer11hasPropertyERKNSt6stringE8eUriTypeRKNSt6stringE"></span><span id="_CPPv2N8omexmeta14PropertyBearer11hasPropertyERKNSt6stringE8eUriTypeRKNSt6stringE"></span><span id="omexmeta::PropertyBearer::hasProperty__ssCR.eUriType.ssCR"></span><span class="target" id="classomexmeta_1_1PropertyBearer_1aa2bc856917f03659ac84ac7b2e0a2c7d"></span><a class="reference internal" href="#_CPPv4N8omexmeta14PropertyBearerE" title="omexmeta::PropertyBearer">PropertyBearer</a> &amp;<code class="sig-name descname">hasProperty</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>property_about</em>, eUriType <em>about_uri_type</em>, <em class="property">const</em> std::string &amp;<em>is_version_of</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta14PropertyBearer11hasPropertyERKNSt6stringE8eUriTypeRKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta14PropertyBearer5aboutERKNSt6stringE8eUriType">
+<span id="_CPPv3N8omexmeta14PropertyBearer5aboutERKNSt6stringE8eUriType"></span><span id="_CPPv2N8omexmeta14PropertyBearer5aboutERKNSt6stringE8eUriType"></span><span id="omexmeta::PropertyBearer::about__ssCR.eUriType"></span><span class="target" id="classomexmeta_1_1PropertyBearer_1ab115d41cefd58183ebfe429af7be69dc"></span><a class="reference internal" href="#_CPPv4N8omexmeta14PropertyBearerE" title="omexmeta::PropertyBearer">PropertyBearer</a> &amp;<code class="sig-name descname">about</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>about</em>, eUriType <em>type</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta14PropertyBearer5aboutERKNSt6stringE8eUriType" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta14PropertyBearer5aboutERKNSt6stringE">
+<span id="_CPPv3N8omexmeta14PropertyBearer5aboutERKNSt6stringE"></span><span id="_CPPv2N8omexmeta14PropertyBearer5aboutERKNSt6stringE"></span><span id="omexmeta::PropertyBearer::about__ssCR"></span><span class="target" id="classomexmeta_1_1PropertyBearer_1a374759ec870893444272ff0489be538f"></span><a class="reference internal" href="#_CPPv4N8omexmeta14PropertyBearerE" title="omexmeta::PropertyBearer">PropertyBearer</a> &amp;<code class="sig-name descname">about</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>about</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta14PropertyBearer5aboutERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Since we can’t have default arguments on a virutal member function we instead have an overload where the absent eUriType parameter is assumed to be the default value of NONE. Note, it may be prudent to figure out which of LOCAL or MODEL uri would be a better default. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta14PropertyBearer8getAboutEv">
+<span id="_CPPv3NK8omexmeta14PropertyBearer8getAboutEv"></span><span id="_CPPv2NK8omexmeta14PropertyBearer8getAboutEv"></span><span id="omexmeta::PropertyBearer::getAboutC"></span><span class="target" id="classomexmeta_1_1PropertyBearer_1a5171a92883795c1ba3981443ecd21864"></span><em class="property">const</em> std::string &amp;<code class="sig-name descname">getAbout</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta14PropertyBearer8getAboutEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Protected Functions</p>
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta14PropertyBearer25getNewMetaidExclusionListEv">
+<span id="_CPPv3N8omexmeta14PropertyBearer25getNewMetaidExclusionListEv"></span><span id="_CPPv2N8omexmeta14PropertyBearer25getNewMetaidExclusionListEv"></span><span id="omexmeta::PropertyBearer::getNewMetaidExclusionList"></span><span class="target" id="classomexmeta_1_1PropertyBearer_1ad5385daa0deb6a484d16a190d46fa0e7"></span>std::vector&lt;std::string&gt; <code class="sig-name descname">getNewMetaidExclusionList</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta14PropertyBearer25getNewMetaidExclusionListEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>getter for a vector of strings that keeps track of used metaids. </p>
+<p>this mechanism is necessary in order to ensure unique metaids in the case of adding multiple instances of a type to the <a class="reference internal" href="#classomexmeta_1_1PropertyBearer"><span class="std std-ref">PropertyBearer</span></a> before commiting to the model. For instance, you can have arbitrary sink participants, which would all be given the SinkParticipant0000 metaid if not for this mechanism. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta14PropertyBearer14generateMetaIdERKNSt6stringE">
+<span id="_CPPv3N8omexmeta14PropertyBearer14generateMetaIdERKNSt6stringE"></span><span id="_CPPv2N8omexmeta14PropertyBearer14generateMetaIdERKNSt6stringE"></span><span id="omexmeta::PropertyBearer::generateMetaId__ssCR"></span><span class="target" id="classomexmeta_1_1PropertyBearer_1a78328bba4ba48b3bfdcfebd8256d6add"></span>std::string <code class="sig-name descname">generateMetaId</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>id_base</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta14PropertyBearer14generateMetaIdERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Protected Attributes</p>
+<dl class="cpp var">
+<dt id="_CPPv4N8omexmeta14PropertyBearer6model_E">
+<span id="_CPPv3N8omexmeta14PropertyBearer6model_E"></span><span id="_CPPv2N8omexmeta14PropertyBearer6model_E"></span><span id="omexmeta::PropertyBearer::model___librdf_modelP"></span><span class="target" id="classomexmeta_1_1PropertyBearer_1a2a2bcd9e87986713cff5877e39a9f994"></span>librdf_model *<code class="sig-name descname">model_</code> = nullptr<a class="headerlink" href="#_CPPv4N8omexmeta14PropertyBearer6model_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N8omexmeta14PropertyBearer18physical_property_E">
+<span id="_CPPv3N8omexmeta14PropertyBearer18physical_property_E"></span><span id="_CPPv2N8omexmeta14PropertyBearer18physical_property_E"></span><span id="omexmeta::PropertyBearer::physical_property___PhysicalProperty"></span><span class="target" id="classomexmeta_1_1PropertyBearer_1abdaa4997f02b9ef36cda61037399eb86"></span><a class="reference internal" href="PhysicalPropery.html#_CPPv4N8omexmeta16PhysicalPropertyE" title="omexmeta::PhysicalProperty">PhysicalProperty</a> <code class="sig-name descname">physical_property_</code><a class="headerlink" href="#_CPPv4N8omexmeta14PropertyBearer18physical_property_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N8omexmeta14PropertyBearer5type_E">
+<span id="_CPPv3N8omexmeta14PropertyBearer5type_E"></span><span id="_CPPv2N8omexmeta14PropertyBearer5type_E"></span><span id="omexmeta::PropertyBearer::type___AnnotationType"></span><span class="target" id="classomexmeta_1_1PropertyBearer_1a98d1be3285eaeaa15c3c888a87190f55"></span><a class="reference internal" href="AnnotationType.html#_CPPv4N8omexmeta14AnnotationTypeE" title="omexmeta::AnnotationType">AnnotationType</a> <code class="sig-name descname">type_</code> = <a class="reference internal" href="AnnotationType.html#_CPPv4N8omexmeta14AnnotationTypeE" title="omexmeta::AnnotationType">AnnotationType</a>::<a class="reference internal" href="AnnotationType.html#_CPPv4N8omexmeta14AnnotationType7UNKNOWNE" title="omexmeta::AnnotationType::UNKNOWN">UNKNOWN</a><a class="headerlink" href="#_CPPv4N8omexmeta14PropertyBearer5type_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N8omexmeta14PropertyBearer26new_metaid_exclusion_list_E">
+<span id="_CPPv3N8omexmeta14PropertyBearer26new_metaid_exclusion_list_E"></span><span id="_CPPv2N8omexmeta14PropertyBearer26new_metaid_exclusion_list_E"></span><span id="omexmeta::PropertyBearer::new_metaid_exclusion_list___std::vector:ss:"></span><span class="target" id="classomexmeta_1_1PropertyBearer_1a1ee416fecb12d19937f5bc9b6d43c7b1"></span>std::vector&lt;std::string&gt; <code class="sig-name descname">new_metaid_exclusion_list_</code><a class="headerlink" href="#_CPPv4N8omexmeta14PropertyBearer26new_metaid_exclusion_list_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N8omexmeta14PropertyBearer21property_metaid_base_E">
+<span id="_CPPv3N8omexmeta14PropertyBearer21property_metaid_base_E"></span><span id="_CPPv2N8omexmeta14PropertyBearer21property_metaid_base_E"></span><span id="omexmeta::PropertyBearer::property_metaid_base___ss"></span><span class="target" id="classomexmeta_1_1PropertyBearer_1a85572e31aba1416b88b88f9426740052"></span>std::string <code class="sig-name descname">property_metaid_base_</code><a class="headerlink" href="#_CPPv4N8omexmeta14PropertyBearer21property_metaid_base_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N8omexmeta14PropertyBearer12about_value_E">
+<span id="_CPPv3N8omexmeta14PropertyBearer12about_value_E"></span><span id="_CPPv2N8omexmeta14PropertyBearer12about_value_E"></span><span id="omexmeta::PropertyBearer::about_value___ss"></span><span class="target" id="classomexmeta_1_1PropertyBearer_1a9cd9e2ce5b8007edd315eb545e15f69f"></span>std::string <code class="sig-name descname">about_value_</code><a class="headerlink" href="#_CPPv4N8omexmeta14PropertyBearer12about_value_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N8omexmeta14PropertyBearer15about_uri_type_E">
+<span id="_CPPv3N8omexmeta14PropertyBearer15about_uri_type_E"></span><span id="_CPPv2N8omexmeta14PropertyBearer15about_uri_type_E"></span><span id="omexmeta::PropertyBearer::about_uri_type___eUriType"></span><span class="target" id="classomexmeta_1_1PropertyBearer_1a930900eac7a51e075aa0a455c63e753c"></span>eUriType <code class="sig-name descname">about_uri_type_</code> = NONE<a class="headerlink" href="#_CPPv4N8omexmeta14PropertyBearer15about_uri_type_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N8omexmeta14PropertyBearer11uriHandler_E">
+<span id="_CPPv3N8omexmeta14PropertyBearer11uriHandler_E"></span><span id="_CPPv2N8omexmeta14PropertyBearer11uriHandler_E"></span><span id="omexmeta::PropertyBearer::uriHandler___UriHandlerR"></span><span class="target" id="classomexmeta_1_1PropertyBearer_1a87848412017394e006ac24259f3f9e02"></span>UriHandler &amp;<code class="sig-name descname">uriHandler_</code><a class="headerlink" href="#_CPPv4N8omexmeta14PropertyBearer11uriHandler_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="Query.html" class="btn btn-neutral float-right" title="Query" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="PhysicalPropery.html" class="btn btn-neutral float-left" title="PhysicalPropery" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020, Ciaran Welsh.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

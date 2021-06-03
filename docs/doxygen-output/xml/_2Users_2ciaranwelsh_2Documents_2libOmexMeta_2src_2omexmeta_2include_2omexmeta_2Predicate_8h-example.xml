@@ -72,6 +72,8 @@
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>setNode(<ref refid="structraptor__term" kindref="compound">librdf_node</ref><sp/>*node);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classredland_1_1LibrdfNode" kindref="compound">LibrdfNode</ref><sp/>getNode();</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::shared_ptr&lt;Predicate&gt;<sp/>makeShared();</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>

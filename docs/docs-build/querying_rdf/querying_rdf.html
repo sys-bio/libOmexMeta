@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Querying RDF &mdash; libomexmeta 1.2.7 documentation</title>
   
@@ -20,7 +20,10 @@
 
   
   
+
   
+  
+
   
 
   
@@ -57,7 +60,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> libomexmeta
+            <a href="../index.html" class="icon icon-home"> libomexmeta
           
 
           
@@ -99,7 +102,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../diagrams/diagrams_index.html">Building Diagrams</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../annotating_models/annotating_models_index.html">Annotating Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../download_biomodels/download_biomodels.html">Downloading Biomodels</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../APIReference/api_reference_index.html">libOmexMeta API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../APIReference/api_reference_index.html">API Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Developers/developers_index.html">Developers Documentation</a></li>
 </ul>
 
@@ -141,6 +144,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -152,7 +157,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="../_sources/querying_rdf/querying_rdf.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -460,12 +465,12 @@
   &lt;/head&gt;
   &lt;results&gt;
     &lt;result&gt;
-      &lt;binding name=&quot;x&quot;&gt;&lt;uri&gt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000004&lt;/uri&gt;&lt;/binding&gt;
-      &lt;binding name=&quot;y&quot;&gt;&lt;uri&gt;http://biomodels.net/biology-qualifiers/is&lt;/uri&gt;&lt;/binding&gt;
+      &lt;binding name=&quot;x&quot;&gt;&lt;bnode&gt;r1622715102r75374r21&lt;/bnode&gt;&lt;/binding&gt;
+      &lt;binding name=&quot;y&quot;&gt;&lt;uri&gt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&lt;/uri&gt;&lt;/binding&gt;
     &lt;/result&gt;
     &lt;result&gt;
-      &lt;binding name=&quot;x&quot;&gt;&lt;uri&gt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000022&lt;/uri&gt;&lt;/binding&gt;
-      &lt;binding name=&quot;y&quot;&gt;&lt;uri&gt;http://biomodels.net/biology-qualifiers/is&lt;/uri&gt;&lt;/binding&gt;
+      &lt;binding name=&quot;x&quot;&gt;&lt;bnode&gt;r1622715102r75374r43&lt;/bnode&gt;&lt;/binding&gt;
+      &lt;binding name=&quot;y&quot;&gt;&lt;uri&gt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&lt;/uri&gt;&lt;/binding&gt;
     &lt;/result&gt;
   &lt;/results&gt;
 &lt;/sparql&gt;
@@ -483,12 +488,12 @@ Sparql results format: json
     &quot;distinct&quot; : false,
     &quot;bindings&quot; : [
       {
-        &quot;x&quot; : { &quot;type&quot;: &quot;uri&quot;, &quot;value&quot;: &quot;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000004&quot; },
-        &quot;y&quot; : { &quot;type&quot;: &quot;uri&quot;, &quot;value&quot;: &quot;http://biomodels.net/biology-qualifiers/is&quot; }
+        &quot;x&quot; : { &quot;type&quot;: &quot;bnode&quot;, &quot;value&quot;: &quot;r1622715102r75374r21&quot; },
+        &quot;y&quot; : { &quot;type&quot;: &quot;uri&quot;, &quot;value&quot;: &quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&quot; }
       },
       {
-        &quot;x&quot; : { &quot;type&quot;: &quot;uri&quot;, &quot;value&quot;: &quot;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000022&quot; },
-        &quot;y&quot; : { &quot;type&quot;: &quot;uri&quot;, &quot;value&quot;: &quot;http://biomodels.net/biology-qualifiers/is&quot; }
+        &quot;x&quot; : { &quot;type&quot;: &quot;bnode&quot;, &quot;value&quot;: &quot;r1622715102r75374r43&quot; },
+        &quot;y&quot; : { &quot;type&quot;: &quot;uri&quot;, &quot;value&quot;: &quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&quot; }
       }
     ]
   }
@@ -498,20 +503,20 @@ Sparql results format: json
 
 
 Sparql results format: table
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 |
-===========================================================================================================================================================================
-| uri&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000004&gt; | uri&lt;http://biomodels.net/biology-qualifiers/is&gt; |
-| uri&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000022&gt; | uri&lt;http://biomodels.net/biology-qualifiers/is&gt; |
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+===================================================================================
+| blank r1622715102r75374r21 | uri&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&gt; |
+| blank r1622715102r75374r43 | uri&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&gt; |
+-----------------------------------------------------------------------------------
 
 
 
 
 Sparql results format: csv
 x,y
-https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000004,http://biomodels.net/biology-qualifiers/is
-https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000022,http://biomodels.net/biology-qualifiers/is
+_:r1622715102r75374r21,http://www.w3.org/1999/02/22-rdf-syntax-ns#_1
+_:r1622715102r75374r43,http://www.w3.org/1999/02/22-rdf-syntax-ns#_1
 
 
 
@@ -520,8 +525,8 @@ Sparql results format: mkr
 result is relation with format = csv;
 begin relation result;
 x,y;
-https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000004,http://biomodels.net/biology-qualifiers/is;
-https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000022,http://biomodels.net/biology-qualifiers/is;
+_:r1622715102r75374r21,http://www.w3.org/1999/02/22-rdf-syntax-ns#_1;
+_:r1622715102r75374r43,http://www.w3.org/1999/02/22-rdf-syntax-ns#_1;
 end relation result;
 
 
@@ -529,8 +534,8 @@ end relation result;
 
 Sparql results format: tsv
 ?x	?y
-&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000004&gt;	&lt;http://biomodels.net/biology-qualifiers/is&gt;
-&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000022&gt;	&lt;http://biomodels.net/biology-qualifiers/is&gt;
+_:r1622715102r75374r21	&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&gt;
+_:r1622715102r75374r43	&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&gt;
 
 
 
@@ -550,12 +555,12 @@ Sparql results format: html
       &lt;th&gt;?y&lt;/th&gt;
     &lt;/tr&gt;
     &lt;tr class=&quot;result&quot;&gt;
-      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000004&quot;&gt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000004&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
-      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://biomodels.net/biology-qualifiers/is&quot;&gt;http://biomodels.net/biology-qualifiers/is&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;span class=&quot;blank&quot;&gt;r1622715102r75374r21&lt;/span&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&quot;&gt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr class=&quot;result&quot;&gt;
-      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000022&quot;&gt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000022&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
-      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://biomodels.net/biology-qualifiers/is&quot;&gt;http://biomodels.net/biology-qualifiers/is&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;span class=&quot;blank&quot;&gt;r1622715102r75374r43&lt;/span&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&quot;&gt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/table&gt;
   &lt;p&gt;Total number of rows: &lt;span class=&quot;count&quot;&gt;2&lt;/span&gt;.&lt;/p&gt;
@@ -574,17 +579,17 @@ Sparql results format: turtle
       rs:resultVariable  &quot;x&quot; ;
       rs:resultVariable  &quot;y&quot; ;
       rs:solution   [ rs:binding    [ rs:variable   &quot;x&quot; ;
-                                      rs:value      &lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000004&gt;
+                                      rs:value      _:r1622715102r75374r21
                                     ] ; 
                       rs:binding    [ rs:variable   &quot;y&quot; ;
-                                      rs:value      &lt;http://biomodels.net/biology-qualifiers/is&gt;
+                                      rs:value      &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&gt;
                                     ] 
       ] ;
       rs:solution   [ rs:binding    [ rs:variable   &quot;x&quot; ;
-                                      rs:value      &lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000022&gt;
+                                      rs:value      _:r1622715102r75374r43
                                     ] ; 
                       rs:binding    [ rs:variable   &quot;y&quot; ;
-                                      rs:value      &lt;http://biomodels.net/biology-qualifiers/is&gt;
+                                      rs:value      &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&gt;
                                     ] 
       ] .
 
@@ -603,13 +608,13 @@ Sparql results format: rdfxml
       &lt;rdf:Description&gt;
         &lt;rs:binding&gt;
           &lt;rdf:Description&gt;
-            &lt;rs:value rdf:resource=&quot;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000004&quot;/&gt;
+            &lt;rs:value rdf:nodeID=&quot;r1622715102r75374r21&quot;/&gt;
             &lt;rs:variable&gt;x&lt;/rs:variable&gt;
           &lt;/rdf:Description&gt;
         &lt;/rs:binding&gt;
         &lt;rs:binding&gt;
           &lt;rdf:Description&gt;
-            &lt;rs:value rdf:resource=&quot;http://biomodels.net/biology-qualifiers/is&quot;/&gt;
+            &lt;rs:value rdf:resource=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&quot;/&gt;
             &lt;rs:variable&gt;y&lt;/rs:variable&gt;
           &lt;/rdf:Description&gt;
         &lt;/rs:binding&gt;
@@ -619,13 +624,13 @@ Sparql results format: rdfxml
       &lt;rdf:Description&gt;
         &lt;rs:binding&gt;
           &lt;rdf:Description&gt;
-            &lt;rs:value rdf:resource=&quot;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000022&quot;/&gt;
+            &lt;rs:value rdf:nodeID=&quot;r1622715102r75374r43&quot;/&gt;
             &lt;rs:variable&gt;x&lt;/rs:variable&gt;
           &lt;/rdf:Description&gt;
         &lt;/rs:binding&gt;
         &lt;rs:binding&gt;
           &lt;rdf:Description&gt;
-            &lt;rs:value rdf:resource=&quot;http://biomodels.net/biology-qualifiers/is&quot;/&gt;
+            &lt;rs:value rdf:resource=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&quot;/&gt;
             &lt;rs:variable&gt;y&lt;/rs:variable&gt;
           &lt;/rdf:Description&gt;
         &lt;/rs:binding&gt;
@@ -819,37 +824,29 @@ Sparql results format: rdfxml
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="../diagrams/diagrams_index.html" class="btn btn-neutral float-right" title="Building Diagrams" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="../composite_annotations/index.html" class="btn btn-neutral float-left" title="Composite Annotations: SBML Examples" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="../diagrams/diagrams_index.html" class="btn btn-neutral float-right" title="Building Diagrams" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../composite_annotations/index.html" class="btn btn-neutral float-left" title="Composite Annotations: SBML Examples" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright 2020, Ciaran Welsh
+        &#169; Copyright 2020, Ciaran Welsh.
 
     </p>
   </div>
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 

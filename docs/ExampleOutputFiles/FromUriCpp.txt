@@ -1,1 +1,1 @@
-D:/libOmexMeta/docs/ExampleOutputFiles\FromUriCpp.txt
+/Users/ciaranwelsh/Documents/libOmexMeta/docs/ExampleOutputFiles/FromUriCpp.txt

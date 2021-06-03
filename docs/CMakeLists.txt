@@ -11,8 +11,7 @@
 # the target will find the python interpreter that you do not want to use.
 # You will need to:
 #   pip install sphinx breathe sphinxcontrib-bibtex sphinx-tabs sphinx_rtd_theme
-# you will also need to ensure doxygen is installed and findable.
-#
+# you will also need to ensure doxygen is installed and findable on PATH.
 #
 
 ############################################################
@@ -144,7 +143,6 @@ if (${BUILD_DOCS_EXAMPLES})
         if (NOT EXISTS ${DOC_EXAMPLE_RUNNER})
             message(FATAL_ERROR "No Python script found where \"run_docs_examples.py\" should be")
         endif ()
-
 
     # we do not want to use CMAKE_BINARY_DIR so we just take parent of current binary dir
     get_filename_component(PARENT_CURRENT_BINARY_DIR ${CMAKE_CURRENT_BINARY_DIR} DIRECTORY)

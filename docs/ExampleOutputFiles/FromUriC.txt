@@ -1,1 +1,1 @@
-D:/libOmexMeta/docs/ExampleOutputFiles\FromUriC.txt
+/Users/ciaranwelsh/Documents/libOmexMeta/docs/ExampleOutputFiles/FromUriC.txt

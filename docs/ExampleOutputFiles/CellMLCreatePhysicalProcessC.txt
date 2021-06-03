@@ -1,1 +1,1 @@
-D:/libOmexMeta/docs/ExampleOutputFiles\CellMLCreatePhysicalProcessC.txt
+/Users/ciaranwelsh/Documents/libOmexMeta/docs/ExampleOutputFiles/CellMLCreatePhysicalProcessC.txt

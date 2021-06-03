@@ -8,6 +8,11 @@ import shutil
 import sys
 from typing import List
 
+################################################################
+#   Some extra code for locating libOmexMeta C API binaries on
+#   developer machines directly from the source directory.
+#
+
 _THIS_DIR = os.path.dirname(__file__)
 
 _EXTRA_SEARCH_DIR_FILE = os.path.join(_THIS_DIR, "ExtraSearchDirectories.txt")
@@ -16,7 +21,8 @@ _EXTRA_SEARCH_PATHS = []
 if (os.path.isfile(_EXTRA_SEARCH_DIR_FILE)):
     with open(_EXTRA_SEARCH_DIR_FILE, "r") as f:
         _EXTRA_SEARCH_PATHS = f.read().split("\n")
-
+# remove comment lines from extra search list
+_EXTRA_SEARCH_PATHS = [p for p in _EXTRA_SEARCH_PATHS if not p.startswith("#")]
 if sys.platform == "win32":
     _EXTRA_SEARCH_PATHS = [i.replace("/", "\\") for i in _EXTRA_SEARCH_PATHS]
 
@@ -232,15 +238,15 @@ class PyOmexMetaAPI:
     # int RDF_size(RDF *rdf_ptr);
     rdf_size = utils.load_func("RDF_size", [ct.c_int64], ct.c_int)
 
-    # RDF *RDF_fromString(const char *str, const char *format, const char *baseuri = "./Annotations.rdf",
+    # RDF *RDF_fromString(const char *str, const char *format,
     #                         const char *storage_type = "memory", const char *storage_name = "semsim_store",
     #                         const char *storage_options = nullptr, const char *model_options = nullptr);
     rdf_from_string = utils.load_func("RDF_fromString",
-                                      [ct.c_char_p, ct.c_char_p, ct.c_char_p,
+                                      [ct.c_char_p, ct.c_char_p,
                                        ct.c_char_p, ct.c_char_p, ct.c_void_p, ct.c_void_p], ct.c_int64)
 
-    # int RDF_addFromString(RDF *rdf_ptr, const char *str, const char *format, const char *base_uri);
-    rdf_add_from_string = utils.load_func("RDF_addFromString", [ct.c_int64, ct.c_char_p, ct.c_char_p, ct.c_char_p],
+    # int RDF_addFromString(RDF *rdf_ptr, const char *str, const char *format);
+    rdf_add_from_string = utils.load_func("RDF_addFromString", [ct.c_int64, ct.c_char_p, ct.c_char_p],
                                           ct.c_int)
 
     # RDF *RDF_fromUri(const char *uri_string, const char *format,

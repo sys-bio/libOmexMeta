@@ -1,1 +1,1 @@
-D:/libOmexMeta/docs/ExampleOutputFiles\SBMLCreatePhysicalEntityCpp.txt
+/Users/ciaranwelsh/Documents/libOmexMeta/docs/ExampleOutputFiles/SBMLCreatePhysicalEntityCpp.txt

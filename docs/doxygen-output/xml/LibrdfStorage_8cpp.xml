@@ -4,22 +4,42 @@
     <compoundname>LibrdfStorage.cpp</compoundname>
     <includes refid="LibrdfStorage_8h" local="yes">redland/LibrdfStorage.h</includes>
     <incdepgraph>
+      <node id="2">
+        <label>redland/LibrdfStorage.h</label>
+        <link refid="LibrdfStorage_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+      </node>
       <node id="12">
         <label>stdarg.h</label>
       </node>
-      <node id="14">
-        <label>rasqal.h</label>
-        <link refid="rasqal_8h_source"/>
-        <childnode refid="13" relation="include">
+      <node id="4">
+        <label>LibrdfNode.h</label>
+        <link refid="LibrdfNode_8h_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
-      </node>
-      <node id="18">
-        <label>rdf_init.h</label>
-      </node>
-      <node id="29">
-        <label>rdf_stream.h</label>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
       </node>
       <node id="33">
         <label>World.h</label>
@@ -33,22 +53,14 @@
         <childnode refid="34" relation="include">
         </childnode>
       </node>
+      <node id="18">
+        <label>rdf_init.h</label>
+      </node>
+      <node id="29">
+        <label>rdf_stream.h</label>
+      </node>
       <node id="21">
         <label>rdf_node.h</label>
-      </node>
-      <node id="3">
-        <label>LibrdfStatement.h</label>
-        <link refid="LibrdfStatement_8h_source"/>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="32" relation="include">
-        </childnode>
-        <childnode refid="36" relation="include">
-        </childnode>
       </node>
       <node id="25">
         <label>rdf_storage.h</label>
@@ -74,66 +86,6 @@
       <node id="26">
         <label>rdf_parser.h</label>
       </node>
-      <node id="5">
-        <label>LibrdfException.h</label>
-        <link refid="LibrdfException_8h_source"/>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-      </node>
-      <node id="13">
-        <label>redland_export.h</label>
-      </node>
-      <node id="2">
-        <label>redland/LibrdfStorage.h</label>
-        <link refid="LibrdfStorage_8h_source"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="33" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="35" relation="include">
-        </childnode>
-        <childnode refid="32" relation="include">
-        </childnode>
-        <childnode refid="37" relation="include">
-        </childnode>
-      </node>
-      <node id="24">
-        <label>rdf_model.h</label>
-      </node>
-      <node id="22">
-        <label>rdf_concepts.h</label>
-      </node>
-      <node id="35">
-        <label>sstream</label>
-      </node>
-      <node id="17">
-        <label>rdf_hash.h</label>
-      </node>
-      <node id="20">
-        <label>rdf_uri.h</label>
-      </node>
-      <node id="4">
-        <label>LibrdfNode.h</label>
-        <link refid="LibrdfNode_8h_source"/>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
-        <childnode refid="33" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
-        <childnode refid="32" relation="include">
-        </childnode>
-        <childnode refid="35" relation="include">
-        </childnode>
-      </node>
       <node id="10">
         <label>raptor2.h</label>
         <link refid="raptor2_8h_source"/>
@@ -144,26 +96,14 @@
         <childnode refid="13" relation="include">
         </childnode>
       </node>
-      <node id="7">
-        <label>iostream</label>
+      <node id="13">
+        <label>redland_export.h</label>
       </node>
-      <node id="36">
-        <label>unordered_map</label>
+      <node id="24">
+        <label>rdf_model.h</label>
       </node>
-      <node id="15">
-        <label>rdf_log.h</label>
-      </node>
-      <node id="23">
-        <label>rdf_statement.h</label>
-      </node>
-      <node id="28">
-        <label>rdf_serializer.h</label>
-      </node>
-      <node id="31">
-        <label>rdf_utf8.h</label>
-      </node>
-      <node id="11">
-        <label>stdio.h</label>
+      <node id="22">
+        <label>rdf_concepts.h</label>
       </node>
       <node id="8">
         <label>LibrdfUri.h</label>
@@ -174,6 +114,40 @@
         </childnode>
         <childnode refid="32" relation="include">
         </childnode>
+      </node>
+      <node id="5">
+        <label>LibrdfException.h</label>
+        <link refid="LibrdfException_8h_source"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="35">
+        <label>sstream</label>
+      </node>
+      <node id="14">
+        <label>rasqal.h</label>
+        <link refid="rasqal_8h_source"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>rdf_hash.h</label>
+      </node>
+      <node id="20">
+        <label>rdf_uri.h</label>
+      </node>
+      <node id="7">
+        <label>iostream</label>
+      </node>
+      <node id="36">
+        <label>unordered_map</label>
+      </node>
+      <node id="15">
+        <label>rdf_log.h</label>
       </node>
       <node id="9">
         <label>librdf.h</label>
@@ -221,17 +195,43 @@
         <childnode refid="31" relation="include">
         </childnode>
       </node>
-      <node id="16">
-        <label>rdf_digest.h</label>
+      <node id="23">
+        <label>rdf_statement.h</label>
       </node>
-      <node id="32">
-        <label>memory</label>
+      <node id="28">
+        <label>rdf_serializer.h</label>
+      </node>
+      <node id="31">
+        <label>rdf_utf8.h</label>
+      </node>
+      <node id="3">
+        <label>LibrdfStatement.h</label>
+        <link refid="LibrdfStatement_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
       </node>
       <node id="1">
         <label>src/redland/RedlandWrapper/src/LibrdfStorage.cpp</label>
         <link refid="LibrdfStorage_8cpp"/>
         <childnode refid="2" relation="include">
         </childnode>
+      </node>
+      <node id="11">
+        <label>stdio.h</label>
+      </node>
+      <node id="16">
+        <label>rdf_digest.h</label>
+      </node>
+      <node id="32">
+        <label>memory</label>
       </node>
     </incdepgraph>
     <innernamespace refid="namespaceredland">redland</innernamespace>

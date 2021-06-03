@@ -110,12 +110,12 @@ class TestRDF(unittest.TestCase):
 <http://omex-library.org/NewOmex.omex/NewModel.xml#>
 <https://dublincore.org/specifications/dublin-core/dcmi-terms/creator> <https://orcid.org/1234-1234-1234-1234> .
 """
-        rdf = RDF.from_string(rdf_str, format="turtle")
+        rdf = RDF.from_string(rdf_str, "turtle")
         self.assertEqual(1, len(rdf))
 
     def test_add_from_string(self):
         rdf = RDF()
-        RDF.add_from_string(rdf, self.rdf_str, "rdfxml", "test_add_from_string.rdf")
+        rdf.add_from_string(self.rdf_str, "rdfxml")
         self.assertEqual(6, len(rdf))
 
     @unittest.skip("url broken")
@@ -126,7 +126,7 @@ class TestRDF(unittest.TestCase):
     @unittest.skip("url broken")
     def test_add_from_uri(self):
         rdf = RDF()
-        RDF.add_from_uri(rdf, self.sbml_uri, "rdfxml")
+        rdf.add_from_uri(self.sbml_uri, "rdfxml")
         self.assertEqual(277, len(rdf))
 
     def test_from_file(self):
@@ -135,7 +135,7 @@ class TestRDF(unittest.TestCase):
 
     def test_add_from_file(self):
         rdf = RDF()
-        RDF.add_from_file(rdf, self.sbml_file, "rdfxml")
+        rdf.add_from_file(self.sbml_file, "rdfxml")
         self.assertEqual(6, len(rdf))
 
     def test_set_repository_uri(self):
@@ -202,7 +202,7 @@ http://omex-library.org/NewOmex.omex/NewModel.rdf#source_0,http://www.bhi.washin
 
     def test_use_sqlite_storage(self):
         rdf = RDF("sqlite", self.sqlite_fname, "new='yes'")
-        rdf.add_from_string(self.rdf_str, format="rdfxml")
+        rdf.add_from_string(self.rdf_str, syntax="rdfxml")
         self.assertTrue(os.path.isfile(self.sqlite_fname))
 
 
@@ -371,7 +371,7 @@ local:SourceParticipant0003
             information \
                 .add_creator("1234-1234-1234-1234") \
                 .add_mbox("annotations@uw.edu") \
-                .add_name("Ciaran Welsh")
+                .add_name("Joe Smith")
 
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
@@ -385,7 +385,7 @@ local:SourceParticipant0003
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000>
     foaf:mbox "annotations@uw.edu" ;
-    foaf:name "Ciaran Welsh" ;
+    foaf:name "Joe Smith" ;
     dc:creator <https://identifiers.org/orcid/1234-1234-1234-1234> .
 
 """
@@ -985,7 +985,7 @@ class AnnotateAModelTest(unittest.TestCase):
         with editor.new_singular_annotation() as author:
             author.about("SmadNuclearTransport") \
                 .predicate_from_uri("https://unknownpredicate.com/changeme#author") \
-                .resource_literal("Ciaran Welsh")
+                .resource_literal("Joe Smith")
 
         # annotate Smad3nuc
         with editor.new_physical_entity() as smad3nuc:
@@ -1085,7 +1085,7 @@ local:SourceParticipant0003
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#species0001> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#SmadNuclearTransport>
-    <https://unknownpredicate.com/changeme#author> "Ciaran Welsh" .
+    <https://unknownpredicate.com/changeme#author> "Joe Smith" .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#reaction0000>
     semsim:hasSinkParticipant local:SinkParticipant0000, local:SinkParticipant0002 ;
@@ -1113,7 +1113,7 @@ local:SourceParticipant0003
         with editor.new_singular_annotation() as author:
             author.about("SmadNuclearTransport") \
                 .predicate_from_uri("https://unknownpredicate.com/changeme#author") \
-                .resource_literal("Ciaran Welsh")
+                .resource_literal("Joe Smith")
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
 @prefix semsim: <http://bime.uw.edu/semsim/> .
@@ -1145,7 +1145,7 @@ local:SourceParticipant0001
     semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#species0000> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#SmadNuclearTransport>
-    <https://unknownpredicate.com/changeme#author> "Ciaran Welsh" .
+    <https://unknownpredicate.com/changeme#author> "Joe Smith" .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#reaction0000>
     semsim:hasSinkParticipant local:SinkParticipant0000 ;
@@ -1169,7 +1169,7 @@ local:SourceParticipant0001
         with editor.new_singular_annotation() as author:
             author.about("SmadNuclearTransport") \
                 .predicate_from_uri("https://unknownpredicate.com/changeme#author") \
-                .resource_literal("Ciaran Welsh")
+                .resource_literal("Joe Smith")
 
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix OMEXlib: <http://omex-library.org/> .
@@ -1177,7 +1177,7 @@ local:SourceParticipant0001
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#SmadNuclearTransport>
-    <https://unknownpredicate.com/changeme#author> "Ciaran Welsh" .
+    <https://unknownpredicate.com/changeme#author> "Joe Smith" .
 
 """
         self.assertTrue(RDF.equals_rdf_vs_string(rdf, expected))

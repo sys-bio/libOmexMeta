@@ -1,3 +1,7 @@
+Python info:
+sys.executable /Users/ciaranwelsh/miniconda/envs/py38/bin/python3.8
+sys.version 3.8.5 (default, Sep  4 2020, 02:22:02) 
+[Clang 10.0.0 ]
 Sparql results format: xml
 <?xml version="1.0" encoding="utf-8"?>
 <sparql xmlns="http://www.w3.org/2005/sparql-results#">

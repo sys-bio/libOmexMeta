@@ -169,11 +169,6 @@ namespace redland {
                 "rdfxml",
                 "ntriples",
                 "turtle",
-                "trig",
-                "rss-tag-soup",
-                "grddl",
-                "guess",
-                "rdfa",
                 "nquads",
                 "guess",
                 "",// empty string is allowed

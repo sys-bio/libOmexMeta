@@ -1,4 +1,8 @@
+Python info:
+sys.executable /Users/ciaranwelsh/miniconda/envs/py38/bin/python3.8
+sys.version 3.8.5 (default, Sep  4 2020, 02:22:02) 
+[Clang 10.0.0 ]
 Serializing to ntriples:
 0
-RDF graph serialized to "D:/libOmexMeta/docs\write_to_file.rdf"
+RDF graph serialized to "/Users/ciaranwelsh/Documents/libOmexMeta/docs/write_to_file.rdf"
 Counted "7" triples
