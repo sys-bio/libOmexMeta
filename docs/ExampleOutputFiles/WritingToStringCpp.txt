@@ -1,1 +1,1 @@
-D:/libOmexMeta/docs/ExampleOutputFiles\WritingToStringCpp.txt
+/Users/ciaranwelsh/Documents/libOmexMeta/docs/ExampleOutputFiles/WritingToStringCpp.txt

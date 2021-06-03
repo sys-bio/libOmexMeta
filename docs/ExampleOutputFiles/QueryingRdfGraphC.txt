@@ -1,1 +1,1 @@
-D:/libOmexMeta/docs/ExampleOutputFiles\QueryingRdfGraphC.txt
+/Users/ciaranwelsh/Documents/libOmexMeta/docs/ExampleOutputFiles/QueryingRdfGraphC.txt

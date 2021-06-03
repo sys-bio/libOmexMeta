@@ -13,7 +13,7 @@ rdf_str = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 tyson2003 = "https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml"
 
 # first create a RDF graph, by any means available - here we choose from_string
-rdf = RDF.from_string(rdf_str, format="turtle")
+rdf = RDF.from_string(rdf_str, syntax="turtle")
 
 # And now add to it from a uri
 rdf.add_from_uri(tyson2003, "rdfxml")

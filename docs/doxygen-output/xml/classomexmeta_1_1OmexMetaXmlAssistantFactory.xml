@@ -37,14 +37,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/OmexMetaXmlAssistant.h" line="90" column="32" bodyfile="src/omexmeta/OmexMetaXmlAssistant.cpp" bodystart="201" bodyend="219"/>
+        <location file="src/omexmeta/include/omexmeta/OmexMetaXmlAssistant.h" line="98" column="32" bodyfile="src/omexmeta/OmexMetaXmlAssistant.cpp" bodystart="201" bodyend="219"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="src/omexmeta/include/omexmeta/OmexMetaXmlAssistant.h" line="88" column="5" bodyfile="src/omexmeta/include/omexmeta/OmexMetaXmlAssistant.h" bodystart="88" bodyend="91"/>
+    <location file="src/omexmeta/include/omexmeta/OmexMetaXmlAssistant.h" line="96" column="5" bodyfile="src/omexmeta/include/omexmeta/OmexMetaXmlAssistant.h" bodystart="96" bodyend="99"/>
     <listofallmembers>
       <member refid="classomexmeta_1_1OmexMetaXmlAssistantFactory_1a7fe63cdd5b14c3bb2367d1b1c9a0d124" prot="public" virt="non-virtual"><scope>omexmeta::OmexMetaXmlAssistantFactory</scope><name>generate</name></member>
     </listofallmembers>

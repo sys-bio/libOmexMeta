@@ -1,7 +1,7 @@
-PhysicalPhenomenon
+PropertyBearer
 ==================
 
-.. doxygenclass:: omexmeta::PhysicalPhenomenon
+.. doxygenclass:: omexmeta::PropertyBearer
    :members:
    :protected-members:
    :private-members:

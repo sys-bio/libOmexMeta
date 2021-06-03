@@ -1,1 +1,1 @@
-D:/libOmexMeta/docs/ExampleOutputFiles\CellMLCreateEnergyDiffC.txt
+/Users/ciaranwelsh/Documents/libOmexMeta/docs/ExampleOutputFiles/CellMLCreateEnergyDiffC.txt

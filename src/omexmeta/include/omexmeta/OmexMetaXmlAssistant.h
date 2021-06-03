@@ -20,6 +20,14 @@
 
 namespace omexmeta {
 
+    /**
+     * @brief Construct for handling xml
+     *
+     * todo this design works but is a little clunky. A better design
+     * would be literally have an XML class, with a type enum to determine
+     * SBML, CellML or other and then the functions performed by this
+     * class would just be methods of the xml.
+     */
     class OmexMetaXmlAssistant {
         std::string xml_;
         std::string metaid_base_;

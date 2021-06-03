@@ -1,0 +1,11 @@
+AnnotationType
+==============
+
+.. doxygenenum:: omexmeta::AnnotationType
+
+
+
+
+
+
+

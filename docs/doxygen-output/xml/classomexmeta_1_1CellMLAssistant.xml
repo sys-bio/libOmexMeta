@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/OmexMetaXmlAssistant.h" line="79" column="21" bodyfile="src/omexmeta/OmexMetaXmlAssistant.cpp" bodystart="187" bodyend="190"/>
+        <location file="src/omexmeta/include/omexmeta/OmexMetaXmlAssistant.h" line="87" column="21" bodyfile="src/omexmeta/OmexMetaXmlAssistant.cpp" bodystart="187" bodyend="190"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1CellMLAssistant_1a4aaccf21ed47201abaf20d67ad7bfaab" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::string</type>
@@ -30,7 +30,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/OmexMetaXmlAssistant.h" line="81" column="21" bodyfile="src/omexmeta/OmexMetaXmlAssistant.cpp" bodystart="192" bodyend="194"/>
+        <location file="src/omexmeta/include/omexmeta/OmexMetaXmlAssistant.h" line="89" column="21" bodyfile="src/omexmeta/OmexMetaXmlAssistant.cpp" bodystart="192" bodyend="194"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1CellMLAssistant_1a856b49e96c2015b5445f6921d5738388" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::string</type>
@@ -44,7 +44,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/OmexMetaXmlAssistant.h" line="83" column="22" bodyfile="src/omexmeta/OmexMetaXmlAssistant.cpp" bodystart="196" bodyend="198"/>
+        <location file="src/omexmeta/include/omexmeta/OmexMetaXmlAssistant.h" line="91" column="22" bodyfile="src/omexmeta/OmexMetaXmlAssistant.cpp" bodystart="196" bodyend="198"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1CellMLAssistant_1af619a65dd28d04dfabd1930ff4110ce0" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
         <type></type>
@@ -76,7 +76,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/OmexMetaXmlAssistant.h" line="77" column="9" bodyfile="src/omexmeta/OmexMetaXmlAssistant.cpp" bodystart="8" bodyend="12"/>
+        <location file="src/omexmeta/include/omexmeta/OmexMetaXmlAssistant.h" line="85" column="9" bodyfile="src/omexmeta/OmexMetaXmlAssistant.cpp" bodystart="8" bodyend="12"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -107,7 +107,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="src/omexmeta/include/omexmeta/OmexMetaXmlAssistant.h" line="75" column="5" bodyfile="src/omexmeta/include/omexmeta/OmexMetaXmlAssistant.h" bodystart="75" bodyend="84"/>
+    <location file="src/omexmeta/include/omexmeta/OmexMetaXmlAssistant.h" line="83" column="5" bodyfile="src/omexmeta/include/omexmeta/OmexMetaXmlAssistant.h" bodystart="83" bodyend="92"/>
     <listofallmembers>
       <member refid="classomexmeta_1_1OmexMetaXmlAssistant_1aeef7e70a554aaf70fb694297e37e7cc8" prot="public" virt="non-virtual"><scope>omexmeta::CellMLAssistant</scope><name>addMetaIds</name></member>
       <member refid="classomexmeta_1_1OmexMetaXmlAssistant_1a9ff89057f4fe7e8cb2e25f5431bf2bb5" prot="public" virt="non-virtual"><scope>omexmeta::CellMLAssistant</scope><name>generateNewMetaids</name></member>

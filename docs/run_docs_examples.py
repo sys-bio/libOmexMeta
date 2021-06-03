@@ -2,15 +2,44 @@ import os, sys, subprocess, glob
 import argparse
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--install-folder", help="absolute path to where you install libomexmeta", default=r"D:\libOmexMeta\install-msvc", type=str)
-parser.add_argument("--pyomexmeta-package-dir", help="absolute path to where the pyomexmeta package lives", default=r"D:\libOmexMeta\src", type=str)
-parser.add_argument("--output-location", help="where to save the output from examples", default=r"D:\libOmexMeta\docs\ExampleOutputFiles", type=str)
+parser.add_argument("--install-folder", help="absolute path to where you install libomexmeta",  type=str)
+parser.add_argument("--pyomexmeta-package-dir", help="absolute path to where the pyomexmeta package lives", type=str)
+parser.add_argument("--output-location", help="where to save the output from examples", type=str)
 args = parser.parse_args()
 
-print(args)
+print("\n\n================================================")
+print("Generating libOmexMeta documentation examples ")
+print("================================================")
+print("Documentation examples are run every time the docs are built. ")
+print("The doc examples are run from the install folder so you must ")
+print("ensure you have just build the install cmake target before ")
+print("building the documentation. ")
+print("Arguments used are: ")
+print("\tinstall_folder:", args.install_folder)
+print("\toutput_location", args.output_location)
+print("\tpyomexmeta_package_dir", args.pyomexmeta_package_dir)
+print("\t", args)
+
+# Examples are excuted from the install folder, not the build folder.
+# Therefore we must ensure the install folder exists and is updated
+print("")
+
+# Advance warning for when pyomexmeta is installed in site-packages
+# since this will be used for generating examples and docs
+# rather than the new version in source
+if "pyomexmeta" in sys.modules:
+    raise ValueError("pyomexmeta is a package in in your python installation "
+                     "which probably means that you have a local copy "
+                     "of pyomexmeta installed. In this is the case, then "
+                     "the installed copy will be used for running examples "
+                     "and generating documentation, which is *not* what you want. "
+                     "Please run `pip uninstall pyomexmeta` and/or check "
+                     "your are using the correct Python environment.")
+
 CURRENT_DIRECTORY = DOCS_DIRECTORY = os.path.join(os.path.dirname(__file__))
 PYTHON_FILES = glob.glob(os.path.join(DOCS_DIRECTORY, "*/*/*.py"))
 
+# We do not want to include test binaries when we search for example binaries to run
 EXCLUSION_LIST = [
     "OmexMetaCAPITests",
     "OmexMetaTests",
@@ -30,17 +59,31 @@ EXCLUSION_LIST = [i + ext for i in EXCLUSION_LIST]
 
 # USER SUPPLIED
 INSTALL_BIN_FOLDER = os.path.join(args.install_folder, "bin")
-print("INSTALL_BIN_FOLDER", INSTALL_BIN_FOLDER)
+print("INSTALL_BIN_FOLDER:\n\t", INSTALL_BIN_FOLDER)
 
+print("================================================")
 BINARY_FILES = glob.glob(os.path.join(INSTALL_BIN_FOLDER, "*"+ext))
 
 for exclusion in EXCLUSION_LIST:
     BINARY_FILES = [i for i in BINARY_FILES if exclusion not in i]
-print("Binary files: ", BINARY_FILES)
+print("Example binary files for execution: ")
+for i in BINARY_FILES:
+    print("\t", i)
+print("Example python files for execution: ")
+for i in PYTHON_FILES:
+    print("\t", i)
+
 # we must prepend this to any python file that gets executed.
 path_code = f"""
 import sys
-sys.path.append('{args.pyomexmeta_package_dir}')
+import os
+#sys.path.append('{args.pyomexmeta_package_dir}')
+sys.path.append('{os.path.dirname(args.pyomexmeta_package_dir)}')
+
+print("Python info:")
+print("sys.executable", sys.executable)
+print("sys.version", sys.version)
+
 """
 
 
@@ -51,7 +94,7 @@ def run_python_files():
             python_code = f.read()
         python_code = path_code + python_code
 
-        tmp = os.path.join(os.path.dirname(__file__), "tmp{}.py")
+        tmp = os.path.join(os.path.dirname(__file__), f"tmp_{os.path.split(python_file)[1]}")
         with open(tmp, "w") as f:
             f.write(python_code)
 

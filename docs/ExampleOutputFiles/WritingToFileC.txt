@@ -1,1 +1,1 @@
-D:/libOmexMeta/docs/ExampleOutputFiles\WritingToFileC.txt
+/Users/ciaranwelsh/Documents/libOmexMeta/docs/ExampleOutputFiles/WritingToFileC.txt

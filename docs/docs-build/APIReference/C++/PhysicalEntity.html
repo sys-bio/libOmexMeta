@@ -1,0 +1,588 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>PhysicalEntity &mdash; libomexmeta 1.2.7 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/sphinx_tabs/semantic-ui-2.4.1/segment.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/sphinx_tabs/semantic-ui-2.4.1/menu.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/sphinx_tabs/tabs.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="EnergyDiff" href="EnergyDiff.html" />
+    <link rel="prev" title="Editor" href="Editor.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> libomexmeta
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../background.html">Background to Semantic Annotations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reading_rdf/reading_rdf.html">Reading RDF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../writing_rdf/writing_rdf.html">Serializing RDF Graphs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../singular_annotations/index.html">Singular Annotations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../composite_annotations/index.html">Composite Annotations: SBML Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../composite_annotations/index.html#composite-annotations-cellml-examples">Composite Annotations: CellML Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../querying_rdf/querying_rdf.html">Querying RDF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/diagrams_index.html">Building Diagrams</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../annotating_models/annotating_models_index.html">Annotating Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../download_biomodels/download_biomodels.html">Downloading Biomodels</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api_reference_index.html">API Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../Python/index.html">Pyomexmeta API Reference</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">C++ libOmexMeta API Reference</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="RDF.html">RDF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Editor.html">Editor</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">PhysicalEntity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="EnergyDiff.html">EnergyDiff</a></li>
+<li class="toctree-l3"><a class="reference internal" href="PhysicalProcess.html">PhysicalProcess</a></li>
+<li class="toctree-l3"><a class="reference internal" href="PhysicalPropery.html">PhysicalPropery</a></li>
+<li class="toctree-l3"><a class="reference internal" href="PropertyBearer.html">PropertyBearer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Query.html">Query</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Triple.html">Triple</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Triples.html">Triples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ElementExtractor.html">ElementExtractor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MarkupIdentifier.html">MarkupIdentifier</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MetaID.html">MetaID</a></li>
+<li class="toctree-l3"><a class="reference internal" href="OmexMetaCAPI.html">OmexMetaCAPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="OmexMetaUtils.html">OmexMetaUtils</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Predicate.html">Predicate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SBMLSemanticExtraction.html">SBMLSemanticExtraction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="AnnotationType.html">AnnotationType</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Developers/developers_index.html">Developers Documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">libomexmeta</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../api_reference_index.html">API Reference</a> &raquo;</li>
+        
+          <li><a href="index.html">C++ libOmexMeta API Reference</a> &raquo;</li>
+        
+      <li>PhysicalEntity</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/APIReference/C++/PhysicalEntity.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="physicalentity">
+<h1>PhysicalEntity<a class="headerlink" href="#physicalentity" title="Permalink to this headline">¶</a></h1>
+<dl class="cpp class">
+<dt id="_CPPv4N8omexmeta14PhysicalEntityE">
+<span id="_CPPv3N8omexmeta14PhysicalEntityE"></span><span id="_CPPv2N8omexmeta14PhysicalEntityE"></span><span id="omexmeta::PhysicalEntity"></span><span class="target" id="classomexmeta_1_1PhysicalEntity"></span><em class="property">class </em><code class="sig-prename descclassname">omexmeta<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">PhysicalEntity</code> : <em class="property">public</em> omexmeta::<a class="reference internal" href="PropertyBearer.html#_CPPv4N8omexmeta14PropertyBearerE" title="omexmeta::PropertyBearer">PropertyBearer</a><a class="headerlink" href="#_CPPv4N8omexmeta14PhysicalEntityE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The <a class="reference internal" href="#classomexmeta_1_1PhysicalEntity"><span class="std std-ref">PhysicalEntity</span></a> type of PhysicalPhenomenon </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta14PhysicalEntity14PhysicalEntityEv">
+<span id="_CPPv3N8omexmeta14PhysicalEntity14PhysicalEntityEv"></span><span id="_CPPv2N8omexmeta14PhysicalEntity14PhysicalEntityEv"></span><span id="omexmeta::PhysicalEntity::PhysicalEntity"></span><span class="target" id="classomexmeta_1_1PhysicalEntity_1a9d29348a080c64f91ff6ec184fd45ece"></span><code class="sig-name descname">PhysicalEntity</code><span class="sig-paren">(</span><span class="sig-paren">)</span> = delete<a class="headerlink" href="#_CPPv4N8omexmeta14PhysicalEntity14PhysicalEntityEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>default constructor for <a class="reference internal" href="#classomexmeta_1_1PhysicalEntity"><span class="std std-ref">PhysicalEntity</span></a> </p>
+<p>deliberately deleted. If you try using the builder interface (chaining setter methods) from a default instantiated <a class="reference internal" href="#classomexmeta_1_1PhysicalEntity"><span class="std std-ref">PhysicalEntity</span></a> you will get an error, because there will be no model assicated with <a class="reference internal" href="#classomexmeta_1_1PhysicalEntity"><span class="std std-ref">PhysicalEntity</span></a>. Instead, always instantiate a <a class="reference internal" href="#classomexmeta_1_1PhysicalEntity"><span class="std std-ref">PhysicalEntity</span></a> from the <a class="reference internal" href="Editor.html#classomexmeta_1_1Editor_1a0740831baafe244374ad7a324d51a87e"><span class="std std-ref">Editor::addPhysicalEntity()</span></a> method. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta14PhysicalEntity14PhysicalEntityEP12librdf_modelR10UriHandler16PhysicalPropertyNSt6stringENSt6vectorINSt6stringEEE">
+<span id="_CPPv3N8omexmeta14PhysicalEntity14PhysicalEntityEP12librdf_modelR10UriHandler16PhysicalPropertyNSt6stringENSt6vectorINSt6stringEEE"></span><span id="_CPPv2N8omexmeta14PhysicalEntity14PhysicalEntityEP12librdf_modelR10UriHandler16PhysicalPropertyNSt6stringENSt6vectorINSt6stringEEE"></span><span id="omexmeta::PhysicalEntity::PhysicalEntity__librdf_modelP.UriHandlerR.PhysicalProperty.ss.std::vector:ss:"></span><span class="target" id="classomexmeta_1_1PhysicalEntity_1aa30078a1fa71747a37700915919bbb72"></span><code class="sig-name descname">PhysicalEntity</code><span class="sig-paren">(</span>librdf_model *<em>model</em>, UriHandler &amp;<em>uriHandler</em>, <a class="reference internal" href="PhysicalPropery.html#_CPPv4N8omexmeta16PhysicalPropertyE" title="omexmeta::PhysicalProperty">PhysicalProperty</a> <em>physicalProperty</em>, std::string <em>is</em>, std::vector&lt;std::string&gt; <em>is_part_of</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta14PhysicalEntity14PhysicalEntityEP12librdf_modelR10UriHandler16PhysicalPropertyNSt6stringENSt6vectorINSt6stringEEE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>constructor for instantiating a <a class="reference internal" href="#classomexmeta_1_1PhysicalEntity"><span class="std std-ref">PhysicalEntity</span></a> object </p>
+<p><p>Users should not need to use this constructor directly as it is embedded in the builder interface. The</p>
+<dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">model</span></code>: the model being used by the current rdf graph. </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">about</span></code>: The subject portion of the <a class="reference internal" href="#classomexmeta_1_1PhysicalEntity"><span class="std std-ref">PhysicalEntity</span></a> representing the metaid for the <a class="reference internal" href="#classomexmeta_1_1PhysicalEntity"><span class="std std-ref">PhysicalEntity</span></a> </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">physicalProperty</span></code>: A term from the ontology of physical for biology of type <a class="reference internal" href="PhysicalPropery.html#classomexmeta_1_1PhysicalProperty"><span class="std std-ref">PhysicalProperty</span></a>. </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">is</span></code>: The “what” portion of a <a class="reference internal" href="#classomexmeta_1_1PhysicalEntity"><span class="std std-ref">PhysicalEntity</span></a> object. </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">is_part_of</span></code>: The “where” portion of the <a class="reference internal" href="#classomexmeta_1_1PhysicalEntity"><span class="std std-ref">PhysicalEntity</span></a> object.</p></li>
+</ul>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">is_part_of</span></code>: parameter is actually a std::vector of LibrdfNode objects. It can be as long as needed. </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta14PhysicalEntityD0Ev">
+<span id="_CPPv3N8omexmeta14PhysicalEntityD0Ev"></span><span id="_CPPv2N8omexmeta14PhysicalEntityD0Ev"></span><span id="omexmeta::PhysicalEntity::~PhysicalEntity"></span><span class="target" id="classomexmeta_1_1PhysicalEntity_1ab905eecead2704afb14285fa44899958"></span><code class="sig-name descname">~PhysicalEntity</code><span class="sig-paren">(</span><span class="sig-paren">)</span> = default<a class="headerlink" href="#_CPPv4N8omexmeta14PhysicalEntityD0Ev" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta14PhysicalEntity4freeEv">
+<span id="_CPPv3N8omexmeta14PhysicalEntity4freeEv"></span><span id="_CPPv2N8omexmeta14PhysicalEntity4freeEv"></span><span id="omexmeta::PhysicalEntity::free"></span><span class="target" id="classomexmeta_1_1PhysicalEntity_1a6fd4acd7255a01322c4a53d3e84df0ba"></span>void <code class="sig-name descname">free</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta14PhysicalEntity4freeEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>free resources uses by <a class="reference internal" href="#classomexmeta_1_1PhysicalEntity"><span class="std std-ref">PhysicalEntity</span></a> </p>
+<p><a class="reference internal" href="#classomexmeta_1_1PhysicalEntity"><span class="std std-ref">PhysicalEntity</span></a> objects are owned either by the caller or by a <a class="reference internal" href="Triples.html#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> object, depending on whether you have “given” the <a class="reference internal" href="#classomexmeta_1_1PhysicalEntity"><span class="std std-ref">PhysicalEntity</span></a> to a <a class="reference internal" href="Triples.html#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> object by calling “str” or “toTriples”. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta14PhysicalEntity14PhysicalEntityEP12librdf_model">
+<span id="_CPPv3N8omexmeta14PhysicalEntity14PhysicalEntityEP12librdf_model"></span><span id="_CPPv2N8omexmeta14PhysicalEntity14PhysicalEntityEP12librdf_model"></span><span id="omexmeta::PhysicalEntity::PhysicalEntity__librdf_modelP"></span><span class="target" id="classomexmeta_1_1PhysicalEntity_1a0f6af5e55a34be889110b0d03e5f1aec"></span>OMEXMETA_DEPRECATED <code class="sig-name descname">PhysicalEntity</code><span class="sig-paren">(</span>librdf_model *<em>model</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta14PhysicalEntity14PhysicalEntityEP12librdf_model" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>constructor for <a class="reference internal" href="#classomexmeta_1_1PhysicalEntity"><span class="std std-ref">PhysicalEntity</span></a> object. </p>
+<p>This alternative constructor is used when users use the builder interface (which should actually be most of the time). The <a class="reference internal" href="#classomexmeta_1_1PhysicalEntity"><span class="std std-ref">PhysicalEntity</span></a> is instantiated with only the model to allow for a better way of collecting necessary information from the user. <dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">model</span></code>: the librdf_model object in use. Passed down from <a class="reference internal" href="Editor.html#classomexmeta_1_1Editor"><span class="std std-ref">Editor</span></a> class during instantiation.</p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta14PhysicalEntity14PhysicalEntityEP12librdf_modelR10UriHandler">
+<span id="_CPPv3N8omexmeta14PhysicalEntity14PhysicalEntityEP12librdf_modelR10UriHandler"></span><span id="_CPPv2N8omexmeta14PhysicalEntity14PhysicalEntityEP12librdf_modelR10UriHandler"></span><span id="omexmeta::PhysicalEntity::PhysicalEntity__librdf_modelP.UriHandlerR"></span><span class="target" id="classomexmeta_1_1PhysicalEntity_1a5765425cc25593f824eddb100a6f5229"></span><code class="sig-name descname">PhysicalEntity</code><span class="sig-paren">(</span>librdf_model *<em>model</em>, UriHandler &amp;<em>uriHandler</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta14PhysicalEntity14PhysicalEntityEP12librdf_modelR10UriHandler" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>constructor for <a class="reference internal" href="#classomexmeta_1_1PhysicalEntity"><span class="std std-ref">PhysicalEntity</span></a> object. </p>
+<p>This alternative constructor is used when users use the builder interface (which should actually be most of the time). The <a class="reference internal" href="#classomexmeta_1_1PhysicalEntity"><span class="std std-ref">PhysicalEntity</span></a> is instantiated with only the model to allow for a better way of collecting necessary information from the user. The <a class="reference internal" href="#classomexmeta_1_1PhysicalEntity"><span class="std std-ref">PhysicalEntity</span></a> also needs access to the model_uri, which we pass here. <dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">model</span></code>: the librdf_model object in use. Passed down from <a class="reference internal" href="Editor.html#classomexmeta_1_1Editor"><span class="std std-ref">Editor</span></a> class during instantiation. </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">model_uri</span></code>: the current localName argument. Passed down from <a class="reference internal" href="Editor.html#classomexmeta_1_1Editor"><span class="std std-ref">Editor</span></a></p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta14PhysicalEntity9toTriplesEv">
+<span id="_CPPv3N8omexmeta14PhysicalEntity9toTriplesEv"></span><span id="_CPPv2N8omexmeta14PhysicalEntity9toTriplesEv"></span><span id="omexmeta::PhysicalEntity::toTriples"></span><span class="target" id="classomexmeta_1_1PhysicalEntity_1a51f5df8b2e8a1d65e5aa0d10e53b77ba"></span><a class="reference internal" href="Triples.html#_CPPv4N8omexmeta7TriplesE" title="omexmeta::Triples">Triples</a> <code class="sig-name descname">toTriples</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">override</em><a class="headerlink" href="#_CPPv4N8omexmeta14PhysicalEntity9toTriplesEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>convert <a class="reference internal" href="#classomexmeta_1_1PhysicalEntity"><span class="std std-ref">PhysicalEntity</span></a> to a <a class="reference internal" href="Triples.html#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> object, which can then be passed to a model via the <a class="reference internal" href="Editor.html#classomexmeta_1_1Editor_1a0740831baafe244374ad7a324d51a87e"><span class="std std-ref">Editor::addPhysicalEntity</span></a> method. </p>
+<p><p>When using “toTriples” you are giving ownership of the nodes used by </p>
+<a class="reference internal" href="#classomexmeta_1_1PhysicalEntity"><span class="std std-ref">PhysicalEntity</span></a> to the returned <a class="reference internal" href="Triples.html#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> object, which automatically cleans up after itself in its destructor. If you instantiate a <a class="reference internal" href="#classomexmeta_1_1PhysicalEntity"><span class="std std-ref">PhysicalEntity</span></a> and do not call toTriples (which will not be often), then the caller is responsible for calling <a class="reference internal" href="#classomexmeta_1_1PhysicalEntity_1a6fd4acd7255a01322c4a53d3e84df0ba"><span class="std std-ref">PhysicalEntity::free</span></a> when finished. <dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>a <a class="reference internal" href="Triples.html#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> objects containing the <a class="reference internal" href="Triple.html#classomexmeta_1_1Triple"><span class="std std-ref">Triple</span></a> objects associated with this <a class="reference internal" href="#classomexmeta_1_1PhysicalEntity"><span class="std std-ref">PhysicalEntity</span></a></p>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta14PhysicalEntity19getIdentityResourceEv">
+<span id="_CPPv3NK8omexmeta14PhysicalEntity19getIdentityResourceEv"></span><span id="_CPPv2NK8omexmeta14PhysicalEntity19getIdentityResourceEv"></span><span id="omexmeta::PhysicalEntity::getIdentityResourceC"></span><span class="target" id="classomexmeta_1_1PhysicalEntity_1a82f43f8355a33284876b84278027cac5"></span><em class="property">const</em> std::string &amp;<code class="sig-name descname">getIdentityResource</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta14PhysicalEntity19getIdentityResourceEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>return the IdentityResource in use. I.e. the “what” portion of the <a class="reference internal" href="#classomexmeta_1_1PhysicalEntity"><span class="std std-ref">PhysicalEntity</span></a> </p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>the identity LibrdfNode </p>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta14PhysicalEntity20getLocationResourcesEv">
+<span id="_CPPv3NK8omexmeta14PhysicalEntity20getLocationResourcesEv"></span><span id="_CPPv2NK8omexmeta14PhysicalEntity20getLocationResourcesEv"></span><span id="omexmeta::PhysicalEntity::getLocationResourcesC"></span><span class="target" id="classomexmeta_1_1PhysicalEntity_1a5bca97a9f5195260bd44f72b6d29d87a"></span><em class="property">const</em> std::vector&lt;std::string&gt; &amp;<code class="sig-name descname">getLocationResources</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta14PhysicalEntity20getLocationResourcesEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>return a vector of resources representing the “where” part of the <a class="reference internal" href="#classomexmeta_1_1PhysicalEntity"><span class="std std-ref">PhysicalEntity</span></a> </p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>vector of LibrdfNode objects representing anatomical location of physical entity </p>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt>
+<span class="target" id="classomexmeta_1_1PhysicalEntity_1a5d7168c527d2dbdacd612de37aa9a605"></span><code class="sig-name descname">OMEXMETA_DEPRECATED PhysicalEntity &amp; setPhysicalProperty (std::string subject_metaid, const std::string &amp;physicalProperty)</code></dt>
+<dd><p>sets the physical property for a <a class="reference internal" href="#classomexmeta_1_1PhysicalEntity"><span class="std std-ref">PhysicalEntity</span></a> instance. </p>
+<p><p>The OBP argument requires a string of the form “obp:opbxxx” where “xxx” is the id for the OPB term. An instance of </p>
+<a class="reference internal" href="PhysicalPropery.html#classomexmeta_1_1PhysicalProperty"><span class="std std-ref">PhysicalProperty</span></a> is instantiated with<dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>a reference to this Physical entity. Allows chaining together builder commands.</p>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">physicalProperty</span></code>: a string representing the OPB term used by the <a class="reference internal" href="#classomexmeta_1_1PhysicalEntity"><span class="std std-ref">PhysicalEntity</span></a> </p></li>
+</ul>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">physicalProperty</span></code>: as its value. </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt>
+<span class="target" id="classomexmeta_1_1PhysicalEntity_1a9bca0cb13601b6f9617df9f264968f1f"></span><code class="sig-name descname">OMEXMETA_DEPRECATED PhysicalEntity &amp; setPhysicalProperty (PhysicalProperty physicalProperty)</code></dt>
+<dd><p>sets the physical property for a <a class="reference internal" href="#classomexmeta_1_1PhysicalEntity"><span class="std std-ref">PhysicalEntity</span></a> instance </p>
+<p><p>Prefer the alternative setPhysicalProperty instance, since you do not need to instantiate the </p>
+<a class="reference internal" href="PhysicalPropery.html#classomexmeta_1_1PhysicalProperty"><span class="std std-ref">PhysicalProperty</span></a> yourself.<dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>a reference to this Physical entity. Allows chaining together builder commands.</p>
+</dd>
+</dl>
+</p>
+<p>For developers. Consider removing. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta14PhysicalEntity11setIdentityENSt6stringE">
+<span id="_CPPv3N8omexmeta14PhysicalEntity11setIdentityENSt6stringE"></span><span id="_CPPv2N8omexmeta14PhysicalEntity11setIdentityENSt6stringE"></span><span id="omexmeta::PhysicalEntity::setIdentity__ss"></span><span class="target" id="classomexmeta_1_1PhysicalEntity_1a9029e221fb2e4125284eba3935993d8f"></span><a class="reference internal" href="#_CPPv4N8omexmeta14PhysicalEntityE" title="omexmeta::PhysicalEntity">PhysicalEntity</a> &amp;<code class="sig-name descname">setIdentity</code><span class="sig-paren">(</span>std::string <em>resource</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta14PhysicalEntity11setIdentityENSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>sets the identity portion of the <a class="reference internal" href="#classomexmeta_1_1PhysicalEntity"><span class="std std-ref">PhysicalEntity</span></a> (the “What”). </p>
+<p><p>The input string gets converted to a LibrdfNode automatically.</p>
+<dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>a reference to this Physical entity. Allows chaining together builder commands.</p>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">resource</span></code>: The resource to be used for the identity. </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+<p>See LibrdfNode documentation for more details of valid input strings. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta14PhysicalEntity8identityERKNSt6stringE">
+<span id="_CPPv3N8omexmeta14PhysicalEntity8identityERKNSt6stringE"></span><span id="_CPPv2N8omexmeta14PhysicalEntity8identityERKNSt6stringE"></span><span id="omexmeta::PhysicalEntity::identity__ssCR"></span><span class="target" id="classomexmeta_1_1PhysicalEntity_1a6f51117462876bda1eb743244437104a"></span><a class="reference internal" href="#_CPPv4N8omexmeta14PhysicalEntityE" title="omexmeta::PhysicalEntity">PhysicalEntity</a> &amp;<code class="sig-name descname">identity</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>resource</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta14PhysicalEntity8identityERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>alias for setIdentity </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt>
+<span class="target" id="classomexmeta_1_1PhysicalEntity_1a82e77be3327c537b2426b571afaa5045"></span><code class="sig-name descname">OMEXMETA_DEPRECATED PhysicalEntity &amp; addLocation (const std::string &amp;where)</code></dt>
+<dd><p>add a location to the <a class="reference internal" href="#classomexmeta_1_1PhysicalEntity"><span class="std std-ref">PhysicalEntity</span></a>. </p>
+<p><p>The input string gets converted to a LibrdfNode automatically. An arbitrary number of locations are allowed. The location is added to the back of a vector containing the Resources. Left most elements of this vector represent larger physiological locations which get smaller as the index of this vector increases via use of the “isPartOf” predicate. For example, a cytosolic TGFb molecule in a dermal fibroblast could have a locations vector first containing a reference to skin, then dermis, then fibroblast, then cytosol. </p>
+This ends up being cytosol&lt;isPartOf&gt;fibroblast&lt;isPartOf&gt;dermis&lt;isPartOf&gt;skin.<dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>a reference to this Physical entity. Allows chaining together builder commands.</p>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">where</span></code>: The resource representing a location. </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+<p>See LibrdfNode documentation for more details of valid input strings.</p>
+<p>Deprecated in favour of <a class="reference internal" href="#classomexmeta_1_1PhysicalEntity_1aeba395f9474a7b6beb1b28a6095bb62d"><span class="std std-ref">PhysicalEntity::isPartOf</span></a> </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta14PhysicalEntity15getNumLocationsEv">
+<span id="_CPPv3NK8omexmeta14PhysicalEntity15getNumLocationsEv"></span><span id="_CPPv2NK8omexmeta14PhysicalEntity15getNumLocationsEv"></span><span id="omexmeta::PhysicalEntity::getNumLocationsC"></span><span class="target" id="classomexmeta_1_1PhysicalEntity_1a33559c90dbe3e3be1b71898ab9a5bfa4"></span>int <code class="sig-name descname">getNumLocations</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta14PhysicalEntity15getNumLocationsEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>returns the number of locations used by <a class="reference internal" href="#classomexmeta_1_1PhysicalEntity"><span class="std std-ref">PhysicalEntity</span></a> </p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>the number of locations in a <a class="reference internal" href="#classomexmeta_1_1PhysicalEntity"><span class="std std-ref">PhysicalEntity</span></a> </p>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta14PhysicalEntityeqERK14PhysicalEntity">
+<span id="_CPPv3NK8omexmeta14PhysicalEntityeqERK14PhysicalEntity"></span><span id="_CPPv2NK8omexmeta14PhysicalEntityeqERK14PhysicalEntity"></span><span id="omexmeta::PhysicalEntity::eq-operator__PhysicalEntityCRC"></span><span class="target" id="classomexmeta_1_1PhysicalEntity_1a5f54e5c2df0fd5c3b9121e1426b23af6"></span>bool <code class="sig-name descname">operator==</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4N8omexmeta14PhysicalEntityE" title="omexmeta::PhysicalEntity">PhysicalEntity</a> &amp;<em>rhs</em><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta14PhysicalEntityeqERK14PhysicalEntity" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta14PhysicalEntityneERK14PhysicalEntity">
+<span id="_CPPv3NK8omexmeta14PhysicalEntityneERK14PhysicalEntity"></span><span id="_CPPv2NK8omexmeta14PhysicalEntityneERK14PhysicalEntity"></span><span id="omexmeta::PhysicalEntity::neq-operator__PhysicalEntityCRC"></span><span class="target" id="classomexmeta_1_1PhysicalEntity_1afee546a420f16e128ed1add9fec35b4f"></span>bool <code class="sig-name descname">operator!=</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4N8omexmeta14PhysicalEntityE" title="omexmeta::PhysicalEntity">PhysicalEntity</a> &amp;<em>rhs</em><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta14PhysicalEntityneERK14PhysicalEntity" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta14PhysicalEntity19propertyIsVersionOfERKNSt6stringE">
+<span id="_CPPv3N8omexmeta14PhysicalEntity19propertyIsVersionOfERKNSt6stringE"></span><span id="_CPPv2N8omexmeta14PhysicalEntity19propertyIsVersionOfERKNSt6stringE"></span><span id="omexmeta::PhysicalEntity::propertyIsVersionOf__ssCR"></span><span class="target" id="classomexmeta_1_1PhysicalEntity_1ad3b863794c49c8baf4477b88d5e1d8a2"></span><a class="reference internal" href="#_CPPv4N8omexmeta14PhysicalEntityE" title="omexmeta::PhysicalEntity">PhysicalEntity</a> &amp;<code class="sig-name descname">propertyIsVersionOf</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>property</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta14PhysicalEntity19propertyIsVersionOfERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Set the isVersionOf portion of the <a class="reference internal" href="#classomexmeta_1_1PhysicalEntity"><span class="std std-ref">PhysicalEntity</span></a> composite annotation. </p>
+<p><dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">property</span></code>: an opb term  Should be of the form OPB:OPB_12345 or OPB/OPB_12345. This function will set the LibrdfNode resource_ property on the <a class="reference internal" href="PhysicalPropery.html#classomexmeta_1_1PhysicalProperty"><span class="std std-ref">PhysicalProperty</span></a> associated with this <a class="reference internal" href="#classomexmeta_1_1PhysicalEntity"><span class="std std-ref">PhysicalEntity</span></a>. </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta14PhysicalEntity12isPropertyOfERKNSt6stringE8eUriType">
+<span id="_CPPv3N8omexmeta14PhysicalEntity12isPropertyOfERKNSt6stringE8eUriType"></span><span id="_CPPv2N8omexmeta14PhysicalEntity12isPropertyOfERKNSt6stringE8eUriType"></span><span id="omexmeta::PhysicalEntity::isPropertyOf__ssCR.eUriType"></span><span class="target" id="classomexmeta_1_1PhysicalEntity_1ab61ca0ab001120b8cce16de4a1f5b96d"></span><a class="reference internal" href="#_CPPv4N8omexmeta14PhysicalEntityE" title="omexmeta::PhysicalEntity">PhysicalEntity</a> &amp;<code class="sig-name descname">isPropertyOf</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>is_property_of</em>, eUriType <em>type</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta14PhysicalEntity12isPropertyOfERKNSt6stringE8eUriType" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta14PhysicalEntity5aboutERKNSt6stringE8eUriType">
+<span id="_CPPv3N8omexmeta14PhysicalEntity5aboutERKNSt6stringE8eUriType"></span><span id="_CPPv2N8omexmeta14PhysicalEntity5aboutERKNSt6stringE8eUriType"></span><span id="omexmeta::PhysicalEntity::about__ssCR.eUriType"></span><span class="target" id="classomexmeta_1_1PhysicalEntity_1adae8f23418feee0833e8d63458175f19"></span><a class="reference internal" href="#_CPPv4N8omexmeta14PhysicalEntityE" title="omexmeta::PhysicalEntity">PhysicalEntity</a> &amp;<code class="sig-name descname">about</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>about</em>, eUriType <em>type</em><span class="sig-paren">)</span> <em class="property">override</em><a class="headerlink" href="#_CPPv4N8omexmeta14PhysicalEntity5aboutERKNSt6stringE8eUriType" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Set the about portion of the <a class="reference internal" href="#classomexmeta_1_1PhysicalEntity"><span class="std std-ref">PhysicalEntity</span></a> composite annotation. </p>
+<p><dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">about</span></code>: The string to put in rdf:about  This function will set the LibrdfNode subject_ property on the <a class="reference internal" href="PhysicalPropery.html#classomexmeta_1_1PhysicalProperty"><span class="std std-ref">PhysicalProperty</span></a> associated with this <a class="reference internal" href="#classomexmeta_1_1PhysicalEntity"><span class="std std-ref">PhysicalEntity</span></a> </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta14PhysicalEntity5aboutERKNSt6stringE">
+<span id="_CPPv3N8omexmeta14PhysicalEntity5aboutERKNSt6stringE"></span><span id="_CPPv2N8omexmeta14PhysicalEntity5aboutERKNSt6stringE"></span><span id="omexmeta::PhysicalEntity::about__ssCR"></span><span class="target" id="classomexmeta_1_1PhysicalEntity_1a6edbf68a1473211edc3dcc9c7a15d03c"></span><a class="reference internal" href="#_CPPv4N8omexmeta14PhysicalEntityE" title="omexmeta::PhysicalEntity">PhysicalEntity</a> &amp;<code class="sig-name descname">about</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>about</em><span class="sig-paren">)</span> <em class="property">override</em><a class="headerlink" href="#_CPPv4N8omexmeta14PhysicalEntity5aboutERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Since we can’t have default arguments on a virutal member function we instead have an overload where the absent eUriType parameter is assumed to be the default value of NONE. Note, it may be prudent to figure out which of LOCAL or MODEL uri would be a better default. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta14PhysicalEntity2isERKNSt6stringE">
+<span id="_CPPv3N8omexmeta14PhysicalEntity2isERKNSt6stringE"></span><span id="_CPPv2N8omexmeta14PhysicalEntity2isERKNSt6stringE"></span><span id="omexmeta::PhysicalEntity::is__ssCR"></span><span class="target" id="classomexmeta_1_1PhysicalEntity_1a2498e9b0b11a00200e47332c4515b1f1"></span><a class="reference internal" href="#_CPPv4N8omexmeta14PhysicalEntityE" title="omexmeta::PhysicalEntity">PhysicalEntity</a> &amp;<code class="sig-name descname">is</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>is</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta14PhysicalEntity2isERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Set the <code class="docutils literal notranslate"><span class="pre">is</span></code> portion of the <a class="reference internal" href="#classomexmeta_1_1PhysicalEntity"><span class="std std-ref">PhysicalEntity</span></a> composite annotation. </p>
+<p><dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">is</span></code>: the string to be used for is. This should be of the form OPB:OPB_00134  This function calls the <code class="docutils literal notranslate"><a class="reference internal" href="#classomexmeta_1_1PhysicalEntity_1a9029e221fb2e4125284eba3935993d8f"><span class="std std-ref"><span class="pre">PhysicalEntity::setIdentity</span></span></a></code> method and can be used as an alternative. For developers, consider which (or both? )sets of methods to keep, <code class="docutils literal notranslate"><span class="pre">is</span></code> or <code class="docutils literal notranslate"><span class="pre">setIdentity</span></code> </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta14PhysicalEntity8isPartOfENSt6stringE8eUriType">
+<span id="_CPPv3N8omexmeta14PhysicalEntity8isPartOfENSt6stringE8eUriType"></span><span id="_CPPv2N8omexmeta14PhysicalEntity8isPartOfENSt6stringE8eUriType"></span><span id="omexmeta::PhysicalEntity::isPartOf__ss.eUriType"></span><span class="target" id="classomexmeta_1_1PhysicalEntity_1aeba395f9474a7b6beb1b28a6095bb62d"></span><a class="reference internal" href="#_CPPv4N8omexmeta14PhysicalEntityE" title="omexmeta::PhysicalEntity">PhysicalEntity</a> &amp;<code class="sig-name descname">isPartOf</code><span class="sig-paren">(</span>std::string <em>isPartOf</em>, eUriType <em>type</em> = NONE<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta14PhysicalEntity8isPartOfENSt6stringE8eUriType" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Set the location (<code class="docutils literal notranslate"><span class="pre">isPartOf</span></code>) portion of the <a class="reference internal" href="#classomexmeta_1_1PhysicalEntity"><span class="std std-ref">PhysicalEntity</span></a> composite annotation. </p>
+<p><dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">isPartOf</span></code>: the string to be used for isPartOf predicate. This should be of the form fma:FMA:12345 or fma/FMA:12345  This function calls the <code class="docutils literal notranslate"><a class="reference internal" href="#classomexmeta_1_1PhysicalEntity_1a82e77be3327c537b2426b571afaa5045"><span class="std std-ref"><span class="pre">PhysicalEntity::addLocation</span></span></a></code> method and can be used as an alternative. For developers, consider which (or both? )sets of methods to keep, <code class="docutils literal notranslate"><span class="pre">addLocation</span></code> or <code class="docutils literal notranslate"><span class="pre">isPartOf</span></code> </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta14PhysicalEntity7hasPartERKNSt6stringE">
+<span id="_CPPv3N8omexmeta14PhysicalEntity7hasPartERKNSt6stringE"></span><span id="_CPPv2N8omexmeta14PhysicalEntity7hasPartERKNSt6stringE"></span><span id="omexmeta::PhysicalEntity::hasPart__ssCR"></span><span class="target" id="classomexmeta_1_1PhysicalEntity_1a200859dbbda1b17c244ced477d21f06f"></span><a class="reference internal" href="#_CPPv4N8omexmeta14PhysicalEntityE" title="omexmeta::PhysicalEntity">PhysicalEntity</a> &amp;<code class="sig-name descname">hasPart</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>part</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta14PhysicalEntity7hasPartERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Add item to an “hasPart” triple on the <a class="reference internal" href="#classomexmeta_1_1PhysicalEntity"><span class="std std-ref">PhysicalEntity</span></a> composite annotation. </p>
+<p><dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">part</span></code>: the string to be used for hasPart predicate.  used in the case of annotating complexes which have no identity but several parts. </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt>
+<span class="target" id="classomexmeta_1_1PhysicalEntity_1a6aff4d003c2e39aad8bd00ab536ec00e"></span><code class="sig-name descname">OMEXMETA_DEPRECATED PhysicalEntity &amp; variableMetaId (const std::string &amp;metaid)</code></dt>
+<dd><p>set the metaid of variable such as kinetic parameter </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt>
+<span class="target" id="classomexmeta_1_1PhysicalEntity_1ac77ef003e4111cbdaf4c9c7f0c5fb680"></span><code class="sig-name descname">OMEXMETA_DEPRECATED const std::string &amp; getPropertyMetaidBase () const override</code></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta14PhysicalEntity11hasPropertyERK16PhysicalProperty">
+<span id="_CPPv3N8omexmeta14PhysicalEntity11hasPropertyERK16PhysicalProperty"></span><span id="_CPPv2N8omexmeta14PhysicalEntity11hasPropertyERK16PhysicalProperty"></span><span id="omexmeta::PhysicalEntity::hasProperty__PhysicalPropertyCR"></span><span class="target" id="classomexmeta_1_1PhysicalEntity_1a9d8224786f634b20b32d5cbc2cccaa12"></span><a class="reference internal" href="#_CPPv4N8omexmeta14PhysicalEntityE" title="omexmeta::PhysicalEntity">PhysicalEntity</a> &amp;<code class="sig-name descname">hasProperty</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="PhysicalPropery.html#_CPPv4N8omexmeta16PhysicalPropertyE" title="omexmeta::PhysicalProperty">PhysicalProperty</a> &amp;<em>property</em><span class="sig-paren">)</span> <em class="property">override</em><a class="headerlink" href="#_CPPv4N8omexmeta14PhysicalEntity11hasPropertyERK16PhysicalProperty" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta14PhysicalEntity11hasPropertyERKNSt6stringE">
+<span id="_CPPv3N8omexmeta14PhysicalEntity11hasPropertyERKNSt6stringE"></span><span id="_CPPv2N8omexmeta14PhysicalEntity11hasPropertyERKNSt6stringE"></span><span id="omexmeta::PhysicalEntity::hasProperty__ssCR"></span><span class="target" id="classomexmeta_1_1PhysicalEntity_1a5ca4656de18ff0bc740ebd9f2c7f8883"></span><a class="reference internal" href="#_CPPv4N8omexmeta14PhysicalEntityE" title="omexmeta::PhysicalEntity">PhysicalEntity</a> &amp;<code class="sig-name descname">hasProperty</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>is_version_of</em><span class="sig-paren">)</span> <em class="property">override</em><a class="headerlink" href="#_CPPv4N8omexmeta14PhysicalEntity11hasPropertyERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta14PhysicalEntity11hasPropertyERKNSt6stringE8eUriTypeRKNSt6stringE">
+<span id="_CPPv3N8omexmeta14PhysicalEntity11hasPropertyERKNSt6stringE8eUriTypeRKNSt6stringE"></span><span id="_CPPv2N8omexmeta14PhysicalEntity11hasPropertyERKNSt6stringE8eUriTypeRKNSt6stringE"></span><span id="omexmeta::PhysicalEntity::hasProperty__ssCR.eUriType.ssCR"></span><span class="target" id="classomexmeta_1_1PhysicalEntity_1a151fae24b38b8c568fe2b0309bc8d113"></span><a class="reference internal" href="#_CPPv4N8omexmeta14PhysicalEntityE" title="omexmeta::PhysicalEntity">PhysicalEntity</a> &amp;<code class="sig-name descname">hasProperty</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>property_about</em>, eUriType <em>about_uri_type</em>, <em class="property">const</em> std::string &amp;<em>is_version_of</em><span class="sig-paren">)</span> <em class="property">override</em><a class="headerlink" href="#_CPPv4N8omexmeta14PhysicalEntity11hasPropertyERKNSt6stringE8eUriTypeRKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Private Members</p>
+<dl class="cpp var">
+<dt id="_CPPv4N8omexmeta14PhysicalEntity18identity_resource_E">
+<span id="_CPPv3N8omexmeta14PhysicalEntity18identity_resource_E"></span><span id="_CPPv2N8omexmeta14PhysicalEntity18identity_resource_E"></span><span id="omexmeta::PhysicalEntity::identity_resource___ss"></span><span class="target" id="classomexmeta_1_1PhysicalEntity_1a68cdd5a93cbf3c225ec97b6852994999"></span>std::string <code class="sig-name descname">identity_resource_</code><a class="headerlink" href="#_CPPv4N8omexmeta14PhysicalEntity18identity_resource_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N8omexmeta14PhysicalEntity19location_resources_E">
+<span id="_CPPv3N8omexmeta14PhysicalEntity19location_resources_E"></span><span id="_CPPv2N8omexmeta14PhysicalEntity19location_resources_E"></span><span id="omexmeta::PhysicalEntity::location_resources___std::vector:ss:"></span><span class="target" id="classomexmeta_1_1PhysicalEntity_1a3966efdc86f7f455e1abe8edc7225a25"></span>std::vector&lt;std::string&gt; <code class="sig-name descname">location_resources_</code><a class="headerlink" href="#_CPPv4N8omexmeta14PhysicalEntity19location_resources_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N8omexmeta14PhysicalEntity15part_resources_E">
+<span id="_CPPv3N8omexmeta14PhysicalEntity15part_resources_E"></span><span id="_CPPv2N8omexmeta14PhysicalEntity15part_resources_E"></span><span id="omexmeta::PhysicalEntity::part_resources___std::vector:ss:"></span><span class="target" id="classomexmeta_1_1PhysicalEntity_1a18d640c67df3fd6c153c1298e2c9de9d"></span>std::vector&lt;std::string&gt; <code class="sig-name descname">part_resources_</code><a class="headerlink" href="#_CPPv4N8omexmeta14PhysicalEntity15part_resources_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N8omexmeta14PhysicalEntity28physical_entity_property_id_E">
+<span id="_CPPv3N8omexmeta14PhysicalEntity28physical_entity_property_id_E"></span><span id="_CPPv2N8omexmeta14PhysicalEntity28physical_entity_property_id_E"></span><span id="omexmeta::PhysicalEntity::physical_entity_property_id___ss"></span><span class="target" id="classomexmeta_1_1PhysicalEntity_1a95bbbce8e02d4575f8bb00987494216e"></span>std::string <code class="sig-name descname">physical_entity_property_id_</code><a class="headerlink" href="#_CPPv4N8omexmeta14PhysicalEntity28physical_entity_property_id_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N8omexmeta14PhysicalEntity21property_metaid_base_E">
+<span id="_CPPv3N8omexmeta14PhysicalEntity21property_metaid_base_E"></span><span id="_CPPv2N8omexmeta14PhysicalEntity21property_metaid_base_E"></span><span id="omexmeta::PhysicalEntity::property_metaid_base___ss"></span><span class="target" id="classomexmeta_1_1PhysicalEntity_1aef6d38bfa93a0c5eba971755f5241ba8"></span>std::string <code class="sig-name descname">property_metaid_base_</code> = &quot;EntityProperty&quot;<a class="headerlink" href="#_CPPv4N8omexmeta14PhysicalEntity21property_metaid_base_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="EnergyDiff.html" class="btn btn-neutral float-right" title="EnergyDiff" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="Editor.html" class="btn btn-neutral float-left" title="Editor" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020, Ciaran Welsh.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

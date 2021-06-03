@@ -9,7 +9,7 @@ rdf_str = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
                  <https://dublincore.org/specifications/dublin-core/dcmi-terms/creator> <https://orcid.org/1234-1234-1234-1234> ."""
 
 # read the annotations into RDF graph
-rdf = RDF.from_string(rdf_str, format="turtle")
+rdf = RDF.from_string(rdf_str, syntax="turtle")
 
 # serialize the string to rdfxml-abbrev
 xml_string = rdf.to_string("rdfxml-abbrev")

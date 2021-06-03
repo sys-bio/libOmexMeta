@@ -1,1 +1,1 @@
-D:/libOmexMeta/docs/ExampleOutputFiles\QueryingRdfGraphCpp.txt
+/Users/ciaranwelsh/Documents/libOmexMeta/docs/ExampleOutputFiles/QueryingRdfGraphCpp.txt

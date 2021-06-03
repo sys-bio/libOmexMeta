@@ -19,7 +19,7 @@ rdf_str2 = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
                   bqbiol:is <https://identifiers.org/uniprot/PD12345> ."""
 
 # read the first string into our RDF graph
-rdf = RDF.from_string(rdf_str1, format="turtle")
+rdf = RDF.from_string(rdf_str1, syntax="turtle")
 # Add to our RDF graph by reading the second string
 rdf.add_from_string(rdf_str2)
 

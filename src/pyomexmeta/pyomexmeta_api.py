@@ -8,6 +8,11 @@ import shutil
 import sys
 from typing import List
 
+################################################################
+#   Some extra code for locating libOmexMeta C API binaries on
+#   developer machines directly from the source directory.
+#
+
 _THIS_DIR = os.path.dirname(__file__)
 
 _EXTRA_SEARCH_DIR_FILE = os.path.join(_THIS_DIR, "ExtraSearchDirectories.txt")
@@ -16,7 +21,8 @@ _EXTRA_SEARCH_PATHS = []
 if (os.path.isfile(_EXTRA_SEARCH_DIR_FILE)):
     with open(_EXTRA_SEARCH_DIR_FILE, "r") as f:
         _EXTRA_SEARCH_PATHS = f.read().split("\n")
-
+# remove comment lines from extra search list
+_EXTRA_SEARCH_PATHS = [p for p in _EXTRA_SEARCH_PATHS if not p.startswith("#")]
 if sys.platform == "win32":
     _EXTRA_SEARCH_PATHS = [i.replace("/", "\\") for i in _EXTRA_SEARCH_PATHS]
 

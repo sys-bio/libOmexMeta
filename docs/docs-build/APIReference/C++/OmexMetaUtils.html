@@ -1,0 +1,538 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>OmexMetaUtils &mdash; libomexmeta 1.2.7 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/sphinx_tabs/semantic-ui-2.4.1/segment.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/sphinx_tabs/semantic-ui-2.4.1/menu.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/sphinx_tabs/tabs.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Predicate" href="Predicate.html" />
+    <link rel="prev" title="OmexMetaCAPI" href="OmexMetaCAPI.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> libomexmeta
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../background.html">Background to Semantic Annotations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reading_rdf/reading_rdf.html">Reading RDF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../writing_rdf/writing_rdf.html">Serializing RDF Graphs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../singular_annotations/index.html">Singular Annotations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../composite_annotations/index.html">Composite Annotations: SBML Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../composite_annotations/index.html#composite-annotations-cellml-examples">Composite Annotations: CellML Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../querying_rdf/querying_rdf.html">Querying RDF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/diagrams_index.html">Building Diagrams</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../annotating_models/annotating_models_index.html">Annotating Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../download_biomodels/download_biomodels.html">Downloading Biomodels</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api_reference_index.html">API Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../Python/index.html">Pyomexmeta API Reference</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">C++ libOmexMeta API Reference</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="RDF.html">RDF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Editor.html">Editor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="PhysicalEntity.html">PhysicalEntity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="EnergyDiff.html">EnergyDiff</a></li>
+<li class="toctree-l3"><a class="reference internal" href="PhysicalProcess.html">PhysicalProcess</a></li>
+<li class="toctree-l3"><a class="reference internal" href="PhysicalPropery.html">PhysicalPropery</a></li>
+<li class="toctree-l3"><a class="reference internal" href="PropertyBearer.html">PropertyBearer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Query.html">Query</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Triple.html">Triple</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Triples.html">Triples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ElementExtractor.html">ElementExtractor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MarkupIdentifier.html">MarkupIdentifier</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MetaID.html">MetaID</a></li>
+<li class="toctree-l3"><a class="reference internal" href="OmexMetaCAPI.html">OmexMetaCAPI</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">OmexMetaUtils</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Predicate.html">Predicate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SBMLSemanticExtraction.html">SBMLSemanticExtraction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="AnnotationType.html">AnnotationType</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Developers/developers_index.html">Developers Documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">libomexmeta</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../api_reference_index.html">API Reference</a> &raquo;</li>
+        
+          <li><a href="index.html">C++ libOmexMeta API Reference</a> &raquo;</li>
+        
+      <li>OmexMetaUtils</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/APIReference/C++/OmexMetaUtils.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="omexmetautils">
+<h1>OmexMetaUtils<a class="headerlink" href="#omexmetautils" title="Permalink to this headline">¶</a></h1>
+<dl class="cpp class">
+<dt id="_CPPv4N8omexmeta13OmexMetaUtilsE">
+<span id="_CPPv3N8omexmeta13OmexMetaUtilsE"></span><span id="_CPPv2N8omexmeta13OmexMetaUtilsE"></span><span id="omexmeta::OmexMetaUtils"></span><span class="target" id="classomexmeta_1_1OmexMetaUtils"></span><em class="property">class </em><code class="sig-prename descclassname">omexmeta<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">OmexMetaUtils</code><a class="headerlink" href="#_CPPv4N8omexmeta13OmexMetaUtilsE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta13OmexMetaUtils13OmexMetaUtilsEv">
+<span id="_CPPv3N8omexmeta13OmexMetaUtils13OmexMetaUtilsEv"></span><span id="_CPPv2N8omexmeta13OmexMetaUtils13OmexMetaUtilsEv"></span><span id="omexmeta::OmexMetaUtils::OmexMetaUtils"></span><span class="target" id="classomexmeta_1_1OmexMetaUtils_1a28ab6d86e458158ac441457d74d0ebd7"></span><code class="sig-name descname">OmexMetaUtils</code><span class="sig-paren">(</span><span class="sig-paren">)</span> = default<a class="headerlink" href="#_CPPv4N8omexmeta13OmexMetaUtils13OmexMetaUtilsEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Static Functions</p>
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta13OmexMetaUtils6existsERKNSt6stringE">
+<span id="_CPPv3N8omexmeta13OmexMetaUtils6existsERKNSt6stringE"></span><span id="_CPPv2N8omexmeta13OmexMetaUtils6existsERKNSt6stringE"></span><span id="omexmeta::OmexMetaUtils::exists__ssCR"></span><span class="target" id="classomexmeta_1_1OmexMetaUtils_1ab72b362607e6bbdd0025eefa574cd073"></span>bool <code class="sig-name descname">exists</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>filename</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta13OmexMetaUtils6existsERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>return true when filename is a file that exists on system </p>
+<p><dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">filename</span></code>: </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta13OmexMetaUtils10removeFileERKNSt6stringE">
+<span id="_CPPv3N8omexmeta13OmexMetaUtils10removeFileERKNSt6stringE"></span><span id="_CPPv2N8omexmeta13OmexMetaUtils10removeFileERKNSt6stringE"></span><span id="omexmeta::OmexMetaUtils::removeFile__ssCR"></span><span class="target" id="classomexmeta_1_1OmexMetaUtils_1a9c445a8e0cc6589b25d6fa630686c171"></span>int <code class="sig-name descname">removeFile</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>filename</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta13OmexMetaUtils10removeFileERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>remove file called </p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>int 0 when successful. </p>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">filename</span></code>: </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">filename</span></code>: to remove </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta13OmexMetaUtils14removeIfExistsERKNSt6stringE">
+<span id="_CPPv3N8omexmeta13OmexMetaUtils14removeIfExistsERKNSt6stringE"></span><span id="_CPPv2N8omexmeta13OmexMetaUtils14removeIfExistsERKNSt6stringE"></span><span id="omexmeta::OmexMetaUtils::removeIfExists__ssCR"></span><span class="target" id="classomexmeta_1_1OmexMetaUtils_1a8e629136cb2685ed839ea3a0e88094e6"></span>void <code class="sig-name descname">removeIfExists</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>filename</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta13OmexMetaUtils14removeIfExistsERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>remove a file, checking for its existance first </p>
+<p><dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">filename</span></code>: to remove </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta13OmexMetaUtils8downloadERKNSt6stringENSt6stringE">
+<span id="_CPPv3N8omexmeta13OmexMetaUtils8downloadERKNSt6stringENSt6stringE"></span><span id="_CPPv2N8omexmeta13OmexMetaUtils8downloadERKNSt6stringENSt6stringE"></span><span id="omexmeta::OmexMetaUtils::download__ssCR.ss"></span><span class="target" id="classomexmeta_1_1OmexMetaUtils_1a046b603d6308242b70b55de6cb72325c"></span>void <code class="sig-name descname">download</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>url</em>, std::string <em>filename</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta13OmexMetaUtils8downloadERKNSt6stringENSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>download a file from </p>
+<p><dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">url</span></code>: to</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">filename</span></code>: <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wrapper</span> <span class="n">around</span> <span class="n">the</span> <span class="n">CurlGet</span> <span class="n">function</span><span class="p">,</span> <span class="k">as</span> <span class="n">the</span> <span class="n">utils</span>
+</pre></div>
+</div>
+ class seems like a good place for the download features. </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta13OmexMetaUtils13splitStringByERKNSt6stringEc">
+<span id="_CPPv3N8omexmeta13OmexMetaUtils13splitStringByERKNSt6stringEc"></span><span id="_CPPv2N8omexmeta13OmexMetaUtils13splitStringByERKNSt6stringEc"></span><span id="omexmeta::OmexMetaUtils::splitStringBy__ssCR.c"></span><span class="target" id="classomexmeta_1_1OmexMetaUtils_1aac769ce6e901f32820cd7dc3fef989fa"></span>std::vector&lt;std::string&gt; <code class="sig-name descname">splitStringBy</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>str</em>, char <em>delimiter</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta13OmexMetaUtils13splitStringByERKNSt6stringEc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>split a string into a vector of strings by </p>
+<p><dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">delimiter</span></code>: </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta13OmexMetaUtils20generateUniqueMetaidEP12librdf_modelRKNSt6stringERKNSt6vectorINSt6stringEEE">
+<span id="_CPPv3N8omexmeta13OmexMetaUtils20generateUniqueMetaidEP12librdf_modelRKNSt6stringERKNSt6vectorINSt6stringEEE"></span><span id="_CPPv2N8omexmeta13OmexMetaUtils20generateUniqueMetaidEP12librdf_modelRKNSt6stringERKNSt6vectorINSt6stringEEE"></span><span id="omexmeta::OmexMetaUtils::generateUniqueMetaid__librdf_modelP.ssCR.std::vector:ss:CR"></span><span class="target" id="classomexmeta_1_1OmexMetaUtils_1a596094a1ce72a362238682c8a864f616"></span>std::string <code class="sig-name descname">generateUniqueMetaid</code><span class="sig-paren">(</span>librdf_model *<em>model</em>, <em class="property">const</em> std::string &amp;<em>metaid_base</em>, <em class="property">const</em> std::vector&lt;std::string&gt; &amp;<em>exclusions</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta13OmexMetaUtils20generateUniqueMetaidEP12librdf_modelRKNSt6stringERKNSt6vectorINSt6stringEEE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>utility for generating unique metaids given an xml document </p>
+<p>model a librdf_model* pointer</p>
+<p>a string that will be used for the ID. There will be 4 digits, though this can be changed.</p>
+<p>exclusions. Mostly needed internally for dealing with metaids that already exist. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta13OmexMetaUtils14prepareBaseUriENSt6stringEb">
+<span id="_CPPv3N8omexmeta13OmexMetaUtils14prepareBaseUriENSt6stringEb"></span><span id="_CPPv2N8omexmeta13OmexMetaUtils14prepareBaseUriENSt6stringEb"></span><span id="omexmeta::OmexMetaUtils::prepareBaseUri__ss.b"></span><span class="target" id="classomexmeta_1_1OmexMetaUtils_1a6694715cf3f5dccd33d416ecc84ff375"></span>std::string <code class="sig-name descname">prepareBaseUri</code><span class="sig-paren">(</span>std::string <em>str</em>, bool <em>absolute_path</em> = false<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta13OmexMetaUtils14prepareBaseUriENSt6stringEb" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>process a string intended to be a base uri. </p>
+<p><p>Base uri’s are important in redland libraries. If they do not begin with </p>
+<code class="docutils literal notranslate"></code> <code class="docutils literal notranslate"><span class="pre">http</span></code> or <code class="docutils literal notranslate"><span class="pre">https</span></code>, sparql querying will break down. This is a helper function to ensure the base uri is properly formatted. <dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">str</span></code>: The string that will become a base uri </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">absolute_path</span></code>: automatically make str an absolute path to the current working directory.</p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta13OmexMetaUtils19getNamespaceFromUriERKNSt6stringE">
+<span id="_CPPv3N8omexmeta13OmexMetaUtils19getNamespaceFromUriERKNSt6stringE"></span><span id="_CPPv2N8omexmeta13OmexMetaUtils19getNamespaceFromUriERKNSt6stringE"></span><span id="omexmeta::OmexMetaUtils::getNamespaceFromUri__ssCR"></span><span class="target" id="classomexmeta_1_1OmexMetaUtils_1a0956bde073b212596d8e4b2ffc983e47"></span>std::string <code class="sig-name descname">getNamespaceFromUri</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>uri</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta13OmexMetaUtils19getNamespaceFromUriERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>takes a uri as std::string and returns the string with the last section removed; </p>
+<p>Example: www.uri.com/identifer/PD12345 will turn into www.uri.com/identifier/ </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta13OmexMetaUtils14isFormattedUriENSt6stringE">
+<span id="_CPPv3N8omexmeta13OmexMetaUtils14isFormattedUriENSt6stringE"></span><span id="_CPPv2N8omexmeta13OmexMetaUtils14isFormattedUriENSt6stringE"></span><span id="omexmeta::OmexMetaUtils::isFormattedUri__ss"></span><span class="target" id="classomexmeta_1_1OmexMetaUtils_1af663724f2efb0324a64c6a57e8491c13"></span>bool <code class="sig-name descname">isFormattedUri</code><span class="sig-paren">(</span>std::string <em>uri</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta13OmexMetaUtils14isFormattedUriENSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>helper function that returns true when uri starts with either <code class="docutils literal notranslate"></code> <code class="docutils literal notranslate"></code> or <code class="docutils literal notranslate"></code> </p>
+<p><dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">uri</span></code>: the uri to test. </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta13OmexMetaUtils8endsWithERKNSt6stringERKNSt6stringE">
+<span id="_CPPv3N8omexmeta13OmexMetaUtils8endsWithERKNSt6stringERKNSt6stringE"></span><span id="_CPPv2N8omexmeta13OmexMetaUtils8endsWithERKNSt6stringERKNSt6stringE"></span><span id="omexmeta::OmexMetaUtils::endsWith__ssCR.ssCR"></span><span class="target" id="classomexmeta_1_1OmexMetaUtils_1a9c2b712b85f74fff9740477660f7b371"></span>bool <code class="sig-name descname">endsWith</code><span class="sig-paren">(</span>std::string <em class="property">const</em> &amp;<em>full_string</em>, std::string <em class="property">const</em> &amp;<em>ending</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta13OmexMetaUtils8endsWithERKNSt6stringERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>test to see whether a string ends with another string </p>
+<p><dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fullString</span></code>: the string to test </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ending</span></code>: the ending to test for </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta13OmexMetaUtils30assertRegexMatchSplitByNewLineERKNSt6stringERKNSt6stringE">
+<span id="_CPPv3N8omexmeta13OmexMetaUtils30assertRegexMatchSplitByNewLineERKNSt6stringERKNSt6stringE"></span><span id="_CPPv2N8omexmeta13OmexMetaUtils30assertRegexMatchSplitByNewLineERKNSt6stringERKNSt6stringE"></span><span id="omexmeta::OmexMetaUtils::assertRegexMatchSplitByNewLine__ssCR.ssCR"></span><span class="target" id="classomexmeta_1_1OmexMetaUtils_1a4ec81c80bf33d232331ea9ef0b94da61"></span>bool <code class="sig-name descname">assertRegexMatchSplitByNewLine</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>expected_string</em>, <em class="property">const</em> std::string &amp;<em>actual_string</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta13OmexMetaUtils30assertRegexMatchSplitByNewLineERKNSt6stringERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>test that expected_string matches actual_string when split by new lines and matched as a regex </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta13OmexMetaUtils20assertMatchByNewLineERKNSt6stringERKNSt6stringE">
+<span id="_CPPv3N8omexmeta13OmexMetaUtils20assertMatchByNewLineERKNSt6stringERKNSt6stringE"></span><span id="_CPPv2N8omexmeta13OmexMetaUtils20assertMatchByNewLineERKNSt6stringERKNSt6stringE"></span><span id="omexmeta::OmexMetaUtils::assertMatchByNewLine__ssCR.ssCR"></span><span class="target" id="classomexmeta_1_1OmexMetaUtils_1a6ddc16d56f238ef7ff3c8ab355163ef7"></span>bool <code class="sig-name descname">assertMatchByNewLine</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>expected_string</em>, <em class="property">const</em> std::string &amp;<em>actual_string</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta13OmexMetaUtils20assertMatchByNewLineERKNSt6stringERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta13OmexMetaUtils22configurePrefixStringsENSt6stringENSt6stringENSt6stringE">
+<span id="_CPPv3N8omexmeta13OmexMetaUtils22configurePrefixStringsENSt6stringENSt6stringENSt6stringE"></span><span id="_CPPv2N8omexmeta13OmexMetaUtils22configurePrefixStringsENSt6stringENSt6stringENSt6stringE"></span><span id="omexmeta::OmexMetaUtils::configurePrefixStrings__ss.ss.ss"></span><span class="target" id="classomexmeta_1_1OmexMetaUtils_1a744a0575136f1cc60b76a6560a5595e9"></span>std::vector&lt;std::string&gt; <code class="sig-name descname">configurePrefixStrings</code><span class="sig-paren">(</span>std::string <em>repository_name</em>, std::string <em>omex_name</em>, std::string <em>model_name</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta13OmexMetaUtils22configurePrefixStringsENSt6stringENSt6stringENSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>configures the “OMEXlib”, “myOMEX” and “local” prefixes &#64; param omex_name the name of the omex container your model is in </p>
+<p><dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">model_name</span></code>: the name of the model your are annotating. Extension should be included or it will be given the “.xml” suffix. </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta13OmexMetaUtils18concatMetaIdAndUriENSt6stringENSt6stringE">
+<span id="_CPPv3N8omexmeta13OmexMetaUtils18concatMetaIdAndUriENSt6stringENSt6stringE"></span><span id="_CPPv2N8omexmeta13OmexMetaUtils18concatMetaIdAndUriENSt6stringENSt6stringE"></span><span id="omexmeta::OmexMetaUtils::concatMetaIdAndUri__ss.ss"></span><span class="target" id="classomexmeta_1_1OmexMetaUtils_1ae645af49ce57dac8bd0e0eba9e39a6c0"></span>std::string <code class="sig-name descname">concatMetaIdAndUri</code><span class="sig-paren">(</span>std::string <em>metaid</em>, std::string <em>uri</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta13OmexMetaUtils18concatMetaIdAndUriENSt6stringENSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>concatonate metaid and uri strings </p>
+<p><dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">metaid</span></code>: string. Like “#metaid” or “metaid” </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">uri</span></code>: string. Like “https://omex-library/jeff2019.omex/mymodel.xml” or “https://omex-library/jeff2019.omex/mymodel.rdf”  Sometimes a uri has a trailing “#” and somtimes a metaid has a leading “#”. This method concatonates whilst accounting for permutations of “#” </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta13OmexMetaUtils13stringReplaceENSt6stringERKNSt6stringERKNSt6stringE">
+<span id="_CPPv3N8omexmeta13OmexMetaUtils13stringReplaceENSt6stringERKNSt6stringERKNSt6stringE"></span><span id="_CPPv2N8omexmeta13OmexMetaUtils13stringReplaceENSt6stringERKNSt6stringERKNSt6stringE"></span><span id="omexmeta::OmexMetaUtils::stringReplace__ss.ssCR.ssCR"></span><span class="target" id="classomexmeta_1_1OmexMetaUtils_1aca2230ca99338b9dc0fc7d296b0c553b"></span>std::string <code class="sig-name descname">stringReplace</code><span class="sig-paren">(</span>std::string <em>str</em>, <em class="property">const</em> std::string &amp;<em>string_to_replace</em>, <em class="property">const</em> std::string &amp;<em>replacement</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta13OmexMetaUtils13stringReplaceENSt6stringERKNSt6stringERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>replace a part of a string </p>
+<p><dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">string_to_replace</span></code>: from a main</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">string</span></code>: with a replacement string</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">replacement</span></code>: </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta13OmexMetaUtils10startsWithERKNSt6stringERKNSt6stringE">
+<span id="_CPPv3N8omexmeta13OmexMetaUtils10startsWithERKNSt6stringERKNSt6stringE"></span><span id="_CPPv2N8omexmeta13OmexMetaUtils10startsWithERKNSt6stringERKNSt6stringE"></span><span id="omexmeta::OmexMetaUtils::startsWith__ssCR.ssCR"></span><span class="target" id="classomexmeta_1_1OmexMetaUtils_1a66d58e0ebcbee1857b23ead70c87de7f"></span>bool <code class="sig-name descname">startsWith</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>full_string</em>, <em class="property">const</em> std::string &amp;<em>start</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta13OmexMetaUtils10startsWithERKNSt6stringERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>returns true when </p>
+<p><dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">full_string</span></code>: starts with the substring</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">start</span></code>: </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta13OmexMetaUtils14stringInVectorENSt6vectorINSt6stringEEERKNSt6stringE">
+<span id="_CPPv3N8omexmeta13OmexMetaUtils14stringInVectorENSt6vectorINSt6stringEEERKNSt6stringE"></span><span id="_CPPv2N8omexmeta13OmexMetaUtils14stringInVectorENSt6vectorINSt6stringEEERKNSt6stringE"></span><span id="omexmeta::OmexMetaUtils::stringInVector__std::vector:ss:.ssCR"></span><span class="target" id="classomexmeta_1_1OmexMetaUtils_1a6f8e406b8798bd2f1f0ae0d1bd07ed2b"></span>bool <code class="sig-name descname">stringInVector</code><span class="sig-paren">(</span>std::vector&lt;std::string&gt; <em>vec</em>, <em class="property">const</em> std::string &amp;<em>string</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta13OmexMetaUtils14stringInVectorENSt6vectorINSt6stringEEERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>returns true when </p>
+<p>return true if</p>
+<p><dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">string</span></code>: is in</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">vec</span></code>: </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta13OmexMetaUtils16parseXmlDocumentERKNSt6stringE">
+<span id="_CPPv3N8omexmeta13OmexMetaUtils16parseXmlDocumentERKNSt6stringE"></span><span id="_CPPv2N8omexmeta13OmexMetaUtils16parseXmlDocumentERKNSt6stringE"></span><span id="omexmeta::OmexMetaUtils::parseXmlDocument__ssCR"></span><span class="target" id="classomexmeta_1_1OmexMetaUtils_1a718710d8ba7fc7598bd73a5456b3d903"></span>xmlDoc *<code class="sig-name descname">parseXmlDocument</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>xml_string</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta13OmexMetaUtils16parseXmlDocumentERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>read an xml document using libxml2. </p>
+<p><dl class="simple">
+<dt><strong>Return</strong></dt><dd><p>xmlDoc*. Caller is responsible for calling xmlFreeDoc(doc). </p>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta13OmexMetaUtils18getXmlNodePropertyEP7xmlNodeRKNSt6stringE">
+<span id="_CPPv3N8omexmeta13OmexMetaUtils18getXmlNodePropertyEP7xmlNodeRKNSt6stringE"></span><span id="_CPPv2N8omexmeta13OmexMetaUtils18getXmlNodePropertyEP7xmlNodeRKNSt6stringE"></span><span id="omexmeta::OmexMetaUtils::getXmlNodeProperty__xmlNodeP.ssCR"></span><span class="target" id="classomexmeta_1_1OmexMetaUtils_1a29cc8222c809162eadbc424a0687cbf3"></span>std::string <code class="sig-name descname">getXmlNodeProperty</code><span class="sig-paren">(</span>xmlNode *<em>node</em>, <em class="property">const</em> std::string &amp;<em>property</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta13OmexMetaUtils18getXmlNodePropertyEP7xmlNodeRKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta13OmexMetaUtils21getChildElementCalledEP7xmlNodeRKNSt6stringE">
+<span id="_CPPv3N8omexmeta13OmexMetaUtils21getChildElementCalledEP7xmlNodeRKNSt6stringE"></span><span id="_CPPv2N8omexmeta13OmexMetaUtils21getChildElementCalledEP7xmlNodeRKNSt6stringE"></span><span id="omexmeta::OmexMetaUtils::getChildElementCalled__xmlNodeP.ssCR"></span><span class="target" id="classomexmeta_1_1OmexMetaUtils_1a1dbcd874b2b72531e7f4f9e82524d8e8"></span>xmlNode *<code class="sig-name descname">getChildElementCalled</code><span class="sig-paren">(</span>xmlNode *<em>node</em>, <em class="property">const</em> std::string &amp;<em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta13OmexMetaUtils21getChildElementCalledEP7xmlNodeRKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta13OmexMetaUtils19getAllChildElementsEP7xmlNode">
+<span id="_CPPv3N8omexmeta13OmexMetaUtils19getAllChildElementsEP7xmlNode"></span><span id="_CPPv2N8omexmeta13OmexMetaUtils19getAllChildElementsEP7xmlNode"></span><span id="omexmeta::OmexMetaUtils::getAllChildElements__xmlNodeP"></span><span class="target" id="classomexmeta_1_1OmexMetaUtils_1a4d6f7d2140c42435be9339edf975b949"></span>std::vector&lt;xmlNode*&gt; <code class="sig-name descname">getAllChildElements</code><span class="sig-paren">(</span>xmlNode *<em>node</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta13OmexMetaUtils19getAllChildElementsEP7xmlNode" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta13OmexMetaUtils11isSubStringERKNSt6stringERKNSt6stringE">
+<span id="_CPPv3N8omexmeta13OmexMetaUtils11isSubStringERKNSt6stringERKNSt6stringE"></span><span id="_CPPv2N8omexmeta13OmexMetaUtils11isSubStringERKNSt6stringERKNSt6stringE"></span><span id="omexmeta::OmexMetaUtils::isSubString__ssCR.ssCR"></span><span class="target" id="classomexmeta_1_1OmexMetaUtils_1a96e93667c8799b9569cb30fc102b129b"></span>bool <code class="sig-name descname">isSubString</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>full_string</em>, <em class="property">const</em> std::string &amp;<em>substring</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta13OmexMetaUtils11isSubStringERKNSt6stringERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta13OmexMetaUtils12readFromFileERKNSt6stringE">
+<span id="_CPPv3N8omexmeta13OmexMetaUtils12readFromFileERKNSt6stringE"></span><span id="_CPPv2N8omexmeta13OmexMetaUtils12readFromFileERKNSt6stringE"></span><span id="omexmeta::OmexMetaUtils::readFromFile__ssCR"></span><span class="target" id="classomexmeta_1_1OmexMetaUtils_1a68c571d229b00a082f3b5c9ad2f10dbc"></span>std::string <code class="sig-name descname">readFromFile</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>file</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta13OmexMetaUtils12readFromFileERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>read </p>
+<p><dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">file</span></code>: into std::string </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4I0EN8omexmeta13OmexMetaUtils13isStringEmptyEbR1TRKNSt6stringE">
+<span id="_CPPv3I0EN8omexmeta13OmexMetaUtils13isStringEmptyER1TRKNSt6stringE"></span><span id="_CPPv2I0EN8omexmeta13OmexMetaUtils13isStringEmptyER1TRKNSt6stringE"></span>template&lt;class <code class="sig-name descname">T</code>&gt;<br /><span class="target" id="classomexmeta_1_1OmexMetaUtils_1a2493ba8fb1c95d05faa9f206be566ba2"></span>bool <code class="sig-name descname">isStringEmpty</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4I0EN8omexmeta13OmexMetaUtils13isStringEmptyEbR1TRKNSt6stringE" title="omexmeta::OmexMetaUtils::isStringEmpty::T">T</a> &amp;<em>cls</em>, <em class="property">const</em> std::string &amp;<em>s</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I0EN8omexmeta13OmexMetaUtils13isStringEmptyEbR1TRKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>return true when </p>
+<p><dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">s</span></code>: is empty OR equal to model or local uri’s </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">T</span></code>: must implement the methods getModelUri and getLocalUri </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="Predicate.html" class="btn btn-neutral float-right" title="Predicate" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="OmexMetaCAPI.html" class="btn btn-neutral float-left" title="OmexMetaCAPI" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020, Ciaran Welsh.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

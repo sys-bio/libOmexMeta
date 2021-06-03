@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Serializing RDF Graphs &mdash; libomexmeta 1.2.7 documentation</title>
   
@@ -20,7 +20,10 @@
 
   
   
+
   
+  
+
   
 
   
@@ -57,7 +60,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> libomexmeta
+            <a href="../index.html" class="icon icon-home"> libomexmeta
           
 
           
@@ -103,7 +106,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../diagrams/diagrams_index.html">Building Diagrams</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../annotating_models/annotating_models_index.html">Annotating Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../download_biomodels/download_biomodels.html">Downloading Biomodels</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../APIReference/api_reference_index.html">libOmexMeta API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../APIReference/api_reference_index.html">API Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Developers/developers_index.html">Developers Documentation</a></li>
 </ul>
 
@@ -145,6 +148,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -156,7 +161,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="../_sources/writing_rdf/writing_rdf.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -637,7 +642,9 @@ that are supported by libOmexMeta, including:</p>
 340
 341
 342
-343</pre></div></td><td class="code"><div class="highlight"><pre><span></span>Serializing to ntriples
+343
+344
+345</pre></div></td><td class="code"><div class="highlight"><pre><span></span>Serializing to ntriples
 &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#OmexMetaId0001&gt; &lt;http://biomodels.net/biology-qualifiers/isPropertyOf&gt; &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&gt; .
 &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#OmexMetaId0001&gt; &lt;http://biomodels.net/biology-qualifiers/isVersionOf&gt; &lt;https://identifiers.org/OPB/OPB_00340&gt; .
 &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&gt; &lt;http://biomodels.net/biology-qualifiers/is&gt; &lt;https://identifiers.org/uniprot/P84022&gt; .
@@ -653,6 +660,7 @@ Serializing to turtle
 @prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
 @prefix bqbiol: &lt;http://biomodels.net/biology-qualifiers/&gt; .
 @prefix OMEXlib: &lt;http://omex-library.org/&gt; .
+@prefix myOMEX: &lt;http://omex-library.org/NewOmex.omex/&gt; .
 @prefix local: &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#&gt; .
 
 local:EntityProperty0000
@@ -672,6 +680,7 @@ Serializing to rdfxml-abbrev
 &lt;rdf:RDF xmlns:OMEXlib=&quot;http://omex-library.org/&quot;
    xmlns:bqbiol=&quot;http://biomodels.net/biology-qualifiers/&quot;
    xmlns:local=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#&quot;
+   xmlns:myOMEX=&quot;http://omex-library.org/NewOmex.omex/&quot;
    xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;&gt;
   &lt;rdf:Description rdf:about=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&quot;&gt;
     &lt;bqbiol:is rdf:resource=&quot;https://identifiers.org/uniprot/P84022&quot;/&gt;
@@ -691,7 +700,7 @@ Serializing to rdfxml-abbrev
 
 Serializing to rdfxml
 &lt;?xml version=&quot;1.1&quot; encoding=&quot;utf-8&quot;?&gt;
-&lt;rdf:RDF xmlns:OMEXlib=&quot;http://omex-library.org/&quot; xmlns:bqbiol=&quot;http://biomodels.net/biology-qualifiers/&quot; xmlns:local=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#&quot; xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;&gt;
+&lt;rdf:RDF xmlns:OMEXlib=&quot;http://omex-library.org/&quot; xmlns:bqbiol=&quot;http://biomodels.net/biology-qualifiers/&quot; xmlns:local=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#&quot; xmlns:myOMEX=&quot;http://omex-library.org/NewOmex.omex/&quot; xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;&gt;
   &lt;rdf:Description rdf:about=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#OmexMetaId0001&quot;&gt;
     &lt;bqbiol:isPropertyOf rdf:resource=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&quot;/&gt;
   &lt;/rdf:Description&gt;
@@ -745,7 +754,7 @@ digraph {
 
 	// Literals
 
-	label=&quot;\n\nModel:\nbase\n\nNamespaces:\nbqbiol: http://biomodels.net/biology-qualifiers/\nOMEXlib: http://omex-library.org/\nlocal: http://omex-library.org/NewOmex.omex/NewModel.rdf#\n&quot;;
+	label=&quot;\n\nModel:\nbase\n\nNamespaces:\nbqbiol: http://biomodels.net/biology-qualifiers/\nOMEXlib: http://omex-library.org/\nmyOMEX: http://omex-library.org/NewOmex.omex/\nlocal: http://omex-library.org/NewOmex.omex/NewModel.rdf#\n&quot;;
 }
 
 
@@ -1305,8 +1314,8 @@ Serializing to html
 2
 3
 4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">Serializing</span> <span class="n">to</span> <span class="n">ntriples</span><span class="p">:</span>
-<span class="mi">0</span>
-<span class="n">RDF</span> <span class="n">graph</span> <span class="n">serialized</span> <span class="n">to</span> <span class="s2">&quot;D:/libOmexMeta/docs\write_to_file.rdf&quot;</span>
+<span class="kc">None</span>
+<span class="n">RDF</span> <span class="n">graph</span> <span class="n">serialized</span> <span class="n">to</span> <span class="s2">&quot;/Users/ciaranwelsh/Documents/libOmexMeta/docs/write_to_file.rdf&quot;</span>
 <span class="n">Counted</span> <span class="s2">&quot;7&quot;</span> <span class="n">triples</span>
 </pre></div>
 </td></tr></table></div>
@@ -1521,37 +1530,29 @@ Serializing to html
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="../singular_annotations/index.html" class="btn btn-neutral float-right" title="Singular Annotations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="../reading_rdf/reading_rdf.html" class="btn btn-neutral float-left" title="Reading RDF" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="../singular_annotations/index.html" class="btn btn-neutral float-right" title="Singular Annotations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../reading_rdf/reading_rdf.html" class="btn btn-neutral float-left" title="Reading RDF" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright 2020, Ciaran Welsh
+        &#169; Copyright 2020, Ciaran Welsh.
 
     </p>
   </div>
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 
