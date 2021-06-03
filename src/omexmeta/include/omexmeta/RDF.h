@@ -61,7 +61,7 @@ namespace omexmeta {
         /**
          * @brief set the xml type for the current graph.
          * @details If you have been reading from an SBML you cannot
-         * then read from another format (such as cellml).
+         * then read from another syntax (such as cellml).
          */
         void setXmlType(OmexMetaXmlType xmlType);
 
@@ -173,28 +173,28 @@ namespace omexmeta {
          * @brief instantiate an RDF instance and read
          * annotations from a string. This is a static method.
          * @param str a reference to the string containing annotations
-         * @param format which format str is in. Default="guess" : try to guess.
+         * @param syntax which syntax str is in. Default="guess" : try to guess.
          */
         static RDF fromString(const std::string &str,
-                              const std::string &format = "guess");
+                              const std::string &syntax = "guess");
 
         /**
          * @brief non-static variant of RDF::fromString(). Reads rdf into
          * an RDF instance. See RDF::fromString() for argument requirements.
          */
         void addFromString(const std::string &str,
-                           const std::string &format = "guess");
+                           const std::string &syntax = "guess");
 
         /**
          * @brief parse RDF directly from a uri
          * @param uri_string the uri to download containing RDF
-         * @param format the format that the RDF is in
+         * @param syntax the syntax that the RDF is in
          * @return RDF an instantiated RDF object.
          *
          * @details downloads uri from the internet and creates an RDF graph.
          * See Librdf::parseUri() for more details.
          */
-        static RDF fromUri(const std::string &uri_string, const std::string &format = "guess");
+        static RDF fromUri(const std::string &uri_string, const std::string &syntax = "guess");
 
         /**
          * @brief non-static counterpart of RDF::fromUri. Downloads and
@@ -202,25 +202,25 @@ namespace omexmeta {
          *
          * @details See RDF::fromUri for details.
          */
-        void addFromUri(const std::string &uri_string, const std::string &format = "guess");
+        void addFromUri(const std::string &uri_string, const std::string &syntax = "guess");
 
         /**
          * @brief read rdf from annotations in a file
          * @param filename the filename to read as string
-         * @param format the format of the RDF in filename
+         * @param syntax the syntax of the RDF in filename
          * @return an instantiated RDF object
          * @details Uses LibrdfParser::fromFile under the hood
          */
-        static RDF fromFile(const std::string &filename, const std::string &format);
+        static RDF fromFile(const std::string &filename, const std::string &syntax);
 
         /**
          * @brief non-static counter part of RDF::fromFile. Reads rdf from annotations in a file
          * @param filename the filename to read as string
-         * @param format the format of the RDF in filename
+         * @param syntax the syntax of the RDF in filename
          * @return an instantiated RDF object
          * @details Uses LibrdfParser::fromFile under the hood
          */
-        void addFromFile(const std::string &filename, const std::string &format);
+        void addFromFile(const std::string &filename, const std::string &syntax);
 
         /**
          * @brief non static version of RDF::fromString that takes
@@ -232,7 +232,7 @@ namespace omexmeta {
          *
          */
         [[maybe_unused]] static void
-        fromString(RDF *rdf, const std::string &str, const std::string &format,
+        fromString(RDF *rdf, const std::string &str, const std::string &syntax,
                    std::string base_uri = "Annotations.rdf");
 
         /**
@@ -247,16 +247,16 @@ namespace omexmeta {
 
         /**
          * @brief serialize RDF graph to string
-         * @param format the expected output format. Options include:
+         * @param syntax the expected output syntax. Options include:
          * "ntriples", "turtle", "rdfxml-xmp", "rdfxml-abbrev",
          * "rdfxml", "dot", "json-triples", "json", "nquads", "html".
          */
-        std::string toString(const std::string &format = "turtle",
+        std::string toString(const std::string &syntax = "turtle",
                              const char *mime_type = nullptr, const char *type_uri = nullptr);
 
         /**
          * @brief Write annotations to file
-         * @param format the expected output format. Options include:
+         * @param syntax the expected output syntax. Options include:
          * "ntriples", "turtle", "rdfxml-xmp", "rdfxml-abbrev",
          * "rdfxml", "dot", "json-triples", "json", "nquads", "html".
          * @param filename full path of file to write
@@ -264,7 +264,7 @@ namespace omexmeta {
          * @param type_uri optional type uri
          *
          */
-        void toFile(const std::string &filename, const std::string &format = "turtle", const char *mime_type = nullptr,
+        void toFile(const std::string &filename, const std::string &syntax = "turtle", const char *mime_type = nullptr,
                     const char *type_uri = nullptr);
 
         /**
@@ -294,7 +294,7 @@ namespace omexmeta {
 
         static std::ostringstream listOptions();
 
-        std::string query(const std::string &query_str, const std::string &results_format) const;
+        std::string query(const std::string &query_str, const std::string &results_syntax) const;
 
         /**
          * @brief add a Triple to the current model
@@ -309,27 +309,27 @@ namespace omexmeta {
         /**
          * @brief test for equality between @param actual and @param expected
          */
-        static bool equals(RDF *actual, const std::string &expected, const std::string &format = "turtle", bool verbose = false);
+        static bool equals(RDF *actual, const std::string &expected, const std::string &syntax = "turtle", bool verbose = false);
 
         /**
          * @brief test for equality between @param actual and @param expected
          */
-        static bool equals(const Triple &actual, const std::string &expected, const std::string &format = "turtle", bool verbose = false);
+        static bool equals(const Triple &actual, const std::string &expected, const std::string &syntax = "turtle", bool verbose = false);
 
         /**
          * @brief test for equality between @param actual and @param expected
          */
-        static bool equals(Triples &actual, const std::string &expected, const std::string &format = "turtle", bool verbose = false);
+        static bool equals(Triples &actual, const std::string &expected, const std::string &syntax = "turtle", bool verbose = false);
 
         /**
          * @brief test for equality between @param actual and @param expected
          */
-        static bool equals(RDF *actual, RDF *expected, const std::string &format = "turtle", bool verbose = false);
+        static bool equals(RDF *actual, RDF *expected, const std::string &syntax = "turtle", bool verbose = false);
 
         /**
          * @brief test for equality between @param first and @param second
          */
-        static bool equals(const std::string &first, const std::string &second, const std::string &first_format = "turtle", const std::string &second_format = "turtle", bool verbose = false);
+        static bool equals(const std::string &first, const std::string &second, const std::string &first_syntax = "turtle", const std::string &second_syntax = "turtle", bool verbose = false);
 
         void purgeRDFBag();
 
@@ -346,12 +346,12 @@ namespace omexmeta {
         /**
          * @brief autoset the xmlType variable based on xml content.
          */
-        void classifyXmlType(const std::string &xml, const std::string &input_format);
+        void classifyXmlType(const std::string &xml, const std::string &input_syntax);
 
         /**
          * @brief reads xml from file before calling classifyXmlType
          */
-        void classifyXmlTypeFromFile(const std::string &xml_file, const std::string &input_format);
+        void classifyXmlTypeFromFile(const std::string &xml_file, const std::string &input_syntax);
 
         /**
          * @brief pull semantic information out of the sbml
