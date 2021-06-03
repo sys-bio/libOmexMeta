@@ -39,6 +39,7 @@ stages:
           CCACHE_DIR: '$(Pipeline.Workspace)/ccache'
           BUILD_DIRECTORY: '$(System.DefaultWorkingDirectory)/build'
           SOURCE_DIRECTORY: '$(System.DefaultWorkingDirectory)'
+          DOXYGEN_DIRECTORY: '$(System.DefaultWorkingDirectory)/doxygen'
           INSTALL_DIRECTORY: '$(System.DefaultWorkingDirectory)/install-azure'
           LINUX_WHEEL: '$(INSTALL_DIRECTORY)/libOmexMeta-x64Ubuntu/dist'
           PIP_WHEELS: '$(Build.ArtifactStagingDirectory)/PipWheels'
@@ -114,6 +115,14 @@ stages:
               $(PipExecutable) install $wheel
               $(PythonExecutable) -c "import pyomexmeta;pyomexmeta.run_tests()"
             displayName: Build and install pip wheel then run tests from within Python
+#          - script: |
+#              git clone https://github.com/doxygen/doxygen.git '$(DOXYGEN_DIRECTORY)'
+#              cd doxygen
+#              mkdir build
+#              cd build
+#              cmake -DCMAKE_INSTALL_PREFIX=../install-doxygen
+#
+#            displayName: Build Doxygen
           - powershell: gci env:* | sort-object name | Format-Table -AutoSize | Out-File $env:BUILD_ARTIFACTSTAGINGDIRECTORY/environment-variables.txt
 
           - task: CopyFiles@2
@@ -153,10 +162,10 @@ stages:
           CCACHE_DIR: '$(Pipeline.Workspace)/ccache'
           BUILD_DIRECTORY: '$(System.DefaultWorkingDirectory)/build'
           SOURCE_DIRECTORY: '$(System.DefaultWorkingDirectory)'
+          DOXYGEN_DIRECTORY: '$(System.DefaultWorkingDirectory)/doxygen'
           INSTALL_DIRECTORY: '$(System.DefaultWorkingDirectory)/install-azure'
           MAC_WHEEL: '$(INSTALL_DIRECTORY)/libOmexMeta-x64Mac/dist'
           PIP_WHEELS: '$(Build.ArtifactStagingDirectory)/PipWheels'
-
           MinicondaRoot: '/usr/local/miniconda'
           PythonRoot: '$(MinicondaRoot)/envs/$(PythonName)'
           PythonLibDir: '$(PythonRoot)/lib'
@@ -272,6 +281,7 @@ stages:
           CCACHE_DIR: '$(Pipeline.Workspace)/ccache'
           BUILD_DIRECTORY: '$(System.DefaultWorkingDirectory)/build'
           SOURCE_DIRECTORY: '$(System.DefaultWorkingDirectory)'
+          DOXYGEN_DIRECTORY: '$(System.DefaultWorkingDirectory)/doxygen'
           INSTALL_DIRECTORY: '$(System.DefaultWorkingDirectory)/install-azure'
           CONDA_ACTIVATE: 'C:\Miniconda\bin\activate.exe'
           PIP: 'C:\Miniconda\Scripts\pip.exe'
@@ -466,6 +476,7 @@ stages:
           CCACHE_DIR: '$(Pipeline.Workspace)/ccache'
           BUILD_DIRECTORY: '$(System.DefaultWorkingDirectory)/build'
           SOURCE_DIRECTORY: '$(System.DefaultWorkingDirectory)'
+          DOXYGEN_DIRECTORY: '$(System.DefaultWorkingDirectory)/doxygen'
           INSTALL_DIRECTORY: '$(System.DefaultWorkingDirectory)/install-azure'
 
           MinicondaRoot: '/Miniconda3'
