@@ -2,8 +2,8 @@
 // Created by Ciaran on 5/17/2020.
 //
 
-#ifndef LIBOMEXMETA_WORLD_H
-#define LIBOMEXMETA_WORLD_H
+#ifndef LIBOMEXMETA_LIBRDFWORLD_H
+#define LIBOMEXMETA_LIBRDFWORLD_H
 
 #include "librdf.h"
 
@@ -39,14 +39,14 @@ namespace redland {
      * way that the other wrapper classes need to be
      * (i.e. stack not heap)
      */
-    class World {
+    class LibrdfWorld {
 
         static librdf_world *world_;
 
         /*
          * Private constructor prevents instancing
          */
-        World();
+        LibrdfWorld();
 
         struct deleter {
             void operator()(librdf_world *world);
@@ -65,22 +65,4 @@ namespace redland {
 
 }
 
-#endif //LIBOMEXMETA_WORLD_H
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#endif//LIBOMEXMETA_LIBRDFWORLD_H

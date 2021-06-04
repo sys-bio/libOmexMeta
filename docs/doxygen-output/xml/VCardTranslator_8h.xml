@@ -297,30 +297,6 @@
         <childnode refid="2" relation="include">
         </childnode>
       </node>
-      <node id="6">
-        <label>src/omexmeta/include/omexmeta/SBMLSemanticExtraction.h</label>
-        <link refid="SBMLSemanticExtraction_8h_source"/>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="2" relation="include">
-        </childnode>
-      </node>
-      <node id="5">
-        <label>src/omexmeta/include/omexmeta/PurgeRDFBag.h</label>
-        <link refid="PurgeRDFBag_8h_source"/>
-      </node>
-      <node id="7">
-        <label>src/omexmeta/include/omexmeta/Editor.h</label>
-        <link refid="Editor_8h_source"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-      </node>
       <node id="4">
         <label>src/omexmeta/include/omexmeta/OmexMetaCApi.h</label>
         <link refid="OmexMetaCApi_8h_source"/>
@@ -331,10 +307,6 @@
         <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
         </childnode>
       </node>
       <node id="3">
@@ -367,7 +339,7 @@
 <codeline lineno="16" refid="classomexmeta_1_1VCardTranslator" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classomexmeta_1_1VCardTranslator" kindref="compound">VCardTranslator</ref><sp/>{</highlight></codeline>
 <codeline lineno="17"><highlight class="normal"></highlight></codeline>
 <codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classomexmeta_1_1VCardTranslator" kindref="compound">VCardTranslator</ref>(<ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref><sp/>*rdf);</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1VCardTranslator" kindref="compound">VCardTranslator</ref>(<ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref><sp/>*rdf);</highlight></codeline>
 <codeline lineno="24"><highlight class="normal"></highlight></codeline>
 <codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>translate();</highlight></codeline>
 <codeline lineno="26"><highlight class="normal"></highlight></codeline>

@@ -78,15 +78,15 @@ $(function() {
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#ifndef LIBOMEXMETA_PURGERDFBAG_H</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#define LIBOMEXMETA_PURGERDFBAG_H</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;omexmeta/RDF.h&quot;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;omexmeta/IRDF.h&quot;</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceomexmeta.html">omexmeta</a> {</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keyword">class </span>RDF;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keyword">class </span>IRDF;</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
 <div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="classomexmeta_1_1PurgeRDFBag.html">   14</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classomexmeta_1_1PurgeRDFBag.html">PurgeRDFBag</a> {</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <a class="code" href="classomexmeta_1_1PurgeRDFBag.html#a877dbc23ddb020d6afc4c95a574aa118">PurgeRDFBag</a>(<a class="code" href="classomexmeta_1_1RDF.html">RDF</a> *rdf);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="keyword">explicit</span> <a class="code" href="classomexmeta_1_1PurgeRDFBag.html#abc703c31325f99d55ac99f4be4b46d94">PurgeRDFBag</a>(<a class="code" href="classomexmeta_1_1IRDF.html">IRDF</a> *rdf);</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keywordtype">void</span> purge();</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
@@ -95,17 +95,17 @@ $(function() {
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classomexmeta_1_1PurgeRDFBag.html#ad72aeb6f969b601b8f61ea415fc416dc">purgeListBagEntries</a>();</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <a class="code" href="classomexmeta_1_1RDF.html">RDF</a>* rdf_;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> currentBlankId_;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <a class="code" href="classomexmeta_1_1IRDF.html">IRDF</a>* rdf_;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> currentBlankId_ = 0;</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    };</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;}<span class="comment">// namespace omexmeta</span></div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">#endif//LIBOMEXMETA_PURGERDFBAG_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclassomexmeta_1_1PurgeRDFBag_html_a877dbc23ddb020d6afc4c95a574aa118"><div class="ttname"><a href="classomexmeta_1_1PurgeRDFBag.html#a877dbc23ddb020d6afc4c95a574aa118">omexmeta::PurgeRDFBag::PurgeRDFBag</a></div><div class="ttdeci">PurgeRDFBag(RDF *rdf)</div><div class="ttdoc">constructor for PurgeRDFBag</div><div class="ttdef"><b>Definition:</b> PurgeRDFBag.cpp:10</div></div>
+<div class="ttc" id="aclassomexmeta_1_1IRDF_html"><div class="ttname"><a href="classomexmeta_1_1IRDF.html">omexmeta::IRDF</a></div><div class="ttdoc">public interface for RDF types.</div><div class="ttdef"><b>Definition:</b> IRDF.h:26</div></div>
+<div class="ttc" id="aclassomexmeta_1_1PurgeRDFBag_html_abc703c31325f99d55ac99f4be4b46d94"><div class="ttname"><a href="classomexmeta_1_1PurgeRDFBag.html#abc703c31325f99d55ac99f4be4b46d94">omexmeta::PurgeRDFBag::PurgeRDFBag</a></div><div class="ttdeci">PurgeRDFBag(IRDF *rdf)</div><div class="ttdoc">constructor for PurgeRDFBag</div><div class="ttdef"><b>Definition:</b> PurgeRDFBag.cpp:10</div></div>
 <div class="ttc" id="anamespaceomexmeta_html"><div class="ttname"><a href="namespaceomexmeta.html">omexmeta</a></div><div class="ttdef"><b>Definition:</b> Editor.cpp:9</div></div>
-<div class="ttc" id="aclassomexmeta_1_1RDF_html"><div class="ttname"><a href="classomexmeta_1_1RDF.html">omexmeta::RDF</a></div><div class="ttdef"><b>Definition:</b> RDF.h:43</div></div>
-<div class="ttc" id="aclassomexmeta_1_1PurgeRDFBag_html_a4e64ac3b04675dff1b1597587f4f6998"><div class="ttname"><a href="classomexmeta_1_1PurgeRDFBag.html#a4e64ac3b04675dff1b1597587f4f6998">omexmeta::PurgeRDFBag::purgeNonListBagEntries</a></div><div class="ttdeci">void purgeNonListBagEntries()</div><div class="ttdoc">Remove rdf:bag entries from the current rdf graph. The rdf:bag entries targeted are not in a rdf cont...</div><div class="ttdef"><b>Definition:</b> PurgeRDFBag.cpp:96</div></div>
+<div class="ttc" id="aclassomexmeta_1_1PurgeRDFBag_html_a4e64ac3b04675dff1b1597587f4f6998"><div class="ttname"><a href="classomexmeta_1_1PurgeRDFBag.html#a4e64ac3b04675dff1b1597587f4f6998">omexmeta::PurgeRDFBag::purgeNonListBagEntries</a></div><div class="ttdeci">void purgeNonListBagEntries()</div><div class="ttdoc">Remove rdf:bag entries from the current rdf graph. The rdf:bag entries targeted are not in a rdf cont...</div><div class="ttdef"><b>Definition:</b> PurgeRDFBag.cpp:97</div></div>
 <div class="ttc" id="aclassomexmeta_1_1PurgeRDFBag_html_ad72aeb6f969b601b8f61ea415fc416dc"><div class="ttname"><a href="classomexmeta_1_1PurgeRDFBag.html#ad72aeb6f969b601b8f61ea415fc416dc">omexmeta::PurgeRDFBag::purgeListBagEntries</a></div><div class="ttdeci">void purgeListBagEntries()</div><div class="ttdoc">Remove rdf:bag entries from the current rdf graph. The rdf:bag entries targeted are in a rdf containe...</div><div class="ttdef"><b>Definition:</b> PurgeRDFBag.cpp:19</div></div>
 <div class="ttc" id="aclassomexmeta_1_1PurgeRDFBag_html"><div class="ttname"><a href="classomexmeta_1_1PurgeRDFBag.html">omexmeta::PurgeRDFBag</a></div><div class="ttdef"><b>Definition:</b> PurgeRDFBag.h:14</div></div>
 <!-- start footer part -->

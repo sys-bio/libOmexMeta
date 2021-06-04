@@ -1,0 +1,123 @@
+\hypertarget{classomexmeta_1_1IRDF}{}\doxysection{omexmeta\+::I\+R\+DF Class Reference}
+\label{classomexmeta_1_1IRDF}\index{omexmeta::IRDF@{omexmeta::IRDF}}
+
+
+public interface for \mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} types.  
+
+
+
+
+{\ttfamily \#include $<$I\+R\+D\+F.\+h$>$}
+
+Inheritance diagram for omexmeta\+::I\+R\+DF\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classomexmeta_1_1IRDF}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classomexmeta_1_1IRDF_a2086b9e03996090d9ae0d47980d21362}\label{classomexmeta_1_1IRDF_a2086b9e03996090d9ae0d47980d21362}} 
+virtual Omex\+Meta\+Xml\+Type {\bfseries get\+Xml\+Type} () const =0
+\item 
+\mbox{\Hypertarget{classomexmeta_1_1IRDF_a842d156fe9fd94ac2762f813cb1e8a44}\label{classomexmeta_1_1IRDF_a842d156fe9fd94ac2762f813cb1e8a44}} 
+virtual void {\bfseries set\+Xml\+Type} (Omex\+Meta\+Xml\+Type xml\+Type)=0
+\item 
+\mbox{\Hypertarget{classomexmeta_1_1IRDF_a5be6df9c2dfe0ac487f80fd280cda45a}\label{classomexmeta_1_1IRDF_a5be6df9c2dfe0ac487f80fd280cda45a}} 
+virtual const std\+::string \& {\bfseries get\+Repository\+Uri} () const =0
+\item 
+\mbox{\Hypertarget{classomexmeta_1_1IRDF_a5cbbc6f0c8364656cf7beb27c9f29fa4}\label{classomexmeta_1_1IRDF_a5cbbc6f0c8364656cf7beb27c9f29fa4}} 
+virtual void {\bfseries set\+Repository\+Uri} (const std\+::string \&repository\+Name)=0
+\item 
+\mbox{\Hypertarget{classomexmeta_1_1IRDF_aea1cc8d44420baade3246b7fa9cb937f}\label{classomexmeta_1_1IRDF_aea1cc8d44420baade3246b7fa9cb937f}} 
+virtual const std\+::string \& {\bfseries get\+Archive\+Uri} () const =0
+\item 
+\mbox{\Hypertarget{classomexmeta_1_1IRDF_a2a441ed8298f7d743dc4ba5aa83b8eef}\label{classomexmeta_1_1IRDF_a2a441ed8298f7d743dc4ba5aa83b8eef}} 
+virtual void {\bfseries set\+Archive\+Uri} (const std\+::string \&archive\+Name)=0
+\item 
+\mbox{\Hypertarget{classomexmeta_1_1IRDF_a0e2ab7f825c02de3d038f6165490abc3}\label{classomexmeta_1_1IRDF_a0e2ab7f825c02de3d038f6165490abc3}} 
+virtual const std\+::string \& {\bfseries get\+Model\+Uri} () const =0
+\item 
+\mbox{\Hypertarget{classomexmeta_1_1IRDF_a3740c0f6591c94dd7ff6cca94382a43a}\label{classomexmeta_1_1IRDF_a3740c0f6591c94dd7ff6cca94382a43a}} 
+virtual void {\bfseries set\+Model\+Uri} (std\+::string model\+Name)=0
+\item 
+\mbox{\Hypertarget{classomexmeta_1_1IRDF_af50f054c1e3520a00b587e1961e9fbea}\label{classomexmeta_1_1IRDF_af50f054c1e3520a00b587e1961e9fbea}} 
+virtual const std\+::string \& {\bfseries get\+Local\+Uri} () const =0
+\item 
+\mbox{\Hypertarget{classomexmeta_1_1IRDF_aecfe18ec1c54af5308079656f4e94add}\label{classomexmeta_1_1IRDF_aecfe18ec1c54af5308079656f4e94add}} 
+virtual int {\bfseries size} () const =0
+\item 
+\mbox{\Hypertarget{classomexmeta_1_1IRDF_a7677907fb2f50601910db2fa950a8004}\label{classomexmeta_1_1IRDF_a7677907fb2f50601910db2fa950a8004}} 
+virtual bool {\bfseries empty} () const =0
+\item 
+\mbox{\Hypertarget{classomexmeta_1_1IRDF_a75d577cd26b9ecaa564df281e176cf9d}\label{classomexmeta_1_1IRDF_a75d577cd26b9ecaa564df281e176cf9d}} 
+virtual void {\bfseries add\+From\+String} (const std\+::string \&str, const std\+::string \&syntax=\char`\"{}guess\char`\"{})=0
+\item 
+\mbox{\Hypertarget{classomexmeta_1_1IRDF_a65870ee3c430ed69b5725f5788d3d13f}\label{classomexmeta_1_1IRDF_a65870ee3c430ed69b5725f5788d3d13f}} 
+virtual void {\bfseries add\+From\+Uri} (const std\+::string \&uri\+\_\+string, const std\+::string \&syntax=\char`\"{}guess\char`\"{})=0
+\item 
+\mbox{\Hypertarget{classomexmeta_1_1IRDF_aa5e41fde69be8051f767d219dfa680b6}\label{classomexmeta_1_1IRDF_aa5e41fde69be8051f767d219dfa680b6}} 
+virtual void {\bfseries add\+From\+File} (const std\+::string \&filename, const std\+::string \&syntax)=0
+\item 
+\mbox{\Hypertarget{classomexmeta_1_1IRDF_ae686e65ae3cff9025c80abfb5c7643b2}\label{classomexmeta_1_1IRDF_ae686e65ae3cff9025c80abfb5c7643b2}} 
+virtual std\+::unordered\+\_\+map$<$ std\+::string, std\+::string $>$ {\bfseries propagate\+Namespaces\+From\+Parser} (const std\+::vector$<$ std\+::string $>$ \&seen\+\_\+namespaces)=0
+\item 
+\mbox{\Hypertarget{classomexmeta_1_1IRDF_ab7dc920117857da3e4bb8a33b2abde22}\label{classomexmeta_1_1IRDF_ab7dc920117857da3e4bb8a33b2abde22}} 
+virtual std\+::string {\bfseries to\+String} (const std\+::string \&syntax=\char`\"{}turtle\char`\"{}, const char $\ast$mime\+\_\+type=nullptr, const char $\ast$type\+\_\+uri=nullptr)=0
+\item 
+\mbox{\Hypertarget{classomexmeta_1_1IRDF_abb9b34078ac32441906715ad723585db}\label{classomexmeta_1_1IRDF_abb9b34078ac32441906715ad723585db}} 
+virtual void {\bfseries to\+File} (const std\+::string \&filename, const std\+::string \&syntax=\char`\"{}turtle\char`\"{}, const char $\ast$mime\+\_\+type=nullptr, const char $\ast$type\+\_\+uri=nullptr)=0
+\item 
+\mbox{\Hypertarget{classomexmeta_1_1IRDF_a9aea8384b8020a56e0a3cdaddd4fc2a8}\label{classomexmeta_1_1IRDF_a9aea8384b8020a56e0a3cdaddd4fc2a8}} 
+virtual \mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} {\bfseries to\+Editor} (const std\+::string \&xml, bool generate\+\_\+new\+\_\+metaids=false, bool sbml\+\_\+semantic\+\_\+extraction=true)=0
+\item 
+\mbox{\Hypertarget{classomexmeta_1_1IRDF_a675b2df700c826523be8f413dc9d3879}\label{classomexmeta_1_1IRDF_a675b2df700c826523be8f413dc9d3879}} 
+virtual \mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} $\ast$ {\bfseries to\+Editor\+Ptr} (const std\+::string \&xml, bool generate\+\_\+new\+\_\+metaids=false, bool sbml\+\_\+semantic\+\_\+extraction=true)=0
+\item 
+\mbox{\Hypertarget{classomexmeta_1_1IRDF_aa5cd6b46b5d9375df9d77fadad10f771}\label{classomexmeta_1_1IRDF_aa5cd6b46b5d9375df9d77fadad10f771}} 
+virtual librdf\+\_\+model $\ast$ {\bfseries get\+Model} () const =0
+\item 
+\mbox{\Hypertarget{classomexmeta_1_1IRDF_aa2cdee7e3a85019f36299756bd11158a}\label{classomexmeta_1_1IRDF_aa2cdee7e3a85019f36299756bd11158a}} 
+virtual librdf\+\_\+storage $\ast$ {\bfseries get\+Storage} () const =0
+\item 
+\mbox{\Hypertarget{classomexmeta_1_1IRDF_a2a69a4b100bd6ee9c4fc81c9096d1e77}\label{classomexmeta_1_1IRDF_a2a69a4b100bd6ee9c4fc81c9096d1e77}} 
+virtual int {\bfseries commit\+Transaction} () const =0
+\item 
+\mbox{\Hypertarget{classomexmeta_1_1IRDF_a8cf7f2394f706e98aae511126e5ce7bf}\label{classomexmeta_1_1IRDF_a8cf7f2394f706e98aae511126e5ce7bf}} 
+virtual int {\bfseries start\+Transaction} () const =0
+\item 
+\mbox{\Hypertarget{classomexmeta_1_1IRDF_aaccc0e3c4fb1b7692d15ecb75216ccb3}\label{classomexmeta_1_1IRDF_aaccc0e3c4fb1b7692d15ecb75216ccb3}} 
+virtual void $\ast$ {\bfseries get\+Transaction\+Handle} () const =0
+\item 
+\mbox{\Hypertarget{classomexmeta_1_1IRDF_ad2e4378996118885b2105b00a0986d2c}\label{classomexmeta_1_1IRDF_ad2e4378996118885b2105b00a0986d2c}} 
+virtual int {\bfseries start\+Transaction\+With\+Handle} (void $\ast$handle) const =0
+\item 
+\mbox{\Hypertarget{classomexmeta_1_1IRDF_a7fefdb7f8725c44d77ddb2194ad09ff8}\label{classomexmeta_1_1IRDF_a7fefdb7f8725c44d77ddb2194ad09ff8}} 
+virtual int {\bfseries get\+Transaction\+Rollback} () const =0
+\item 
+\mbox{\Hypertarget{classomexmeta_1_1IRDF_adb6598e962e1f7fb8f5acb05a31d9364}\label{classomexmeta_1_1IRDF_adb6598e962e1f7fb8f5acb05a31d9364}} 
+virtual std\+::string {\bfseries query\+Results\+As\+String} (const std\+::string \&query\+\_\+str, const std\+::string \&results\+\_\+syntax) const =0
+\item 
+\mbox{\Hypertarget{classomexmeta_1_1IRDF_a37c014e34fa398b5818db14fedbec8d3}\label{classomexmeta_1_1IRDF_a37c014e34fa398b5818db14fedbec8d3}} 
+virtual Results\+Map {\bfseries query\+Results\+As\+Map} (const std\+::string \&query\+\_\+str) const =0
+\item 
+\mbox{\Hypertarget{classomexmeta_1_1IRDF_a0ff7b6b9535210e9e0174adbe548cc5c}\label{classomexmeta_1_1IRDF_a0ff7b6b9535210e9e0174adbe548cc5c}} 
+virtual void {\bfseries add\+Triple} (const \mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}} \&triple)=0
+\item 
+\mbox{\Hypertarget{classomexmeta_1_1IRDF_a45c579cbc2f6fe177bc51f97747cf949}\label{classomexmeta_1_1IRDF_a45c579cbc2f6fe177bc51f97747cf949}} 
+virtual void {\bfseries add\+Triples} (\mbox{\hyperlink{classomexmeta_1_1Triples}{Triples}} \&triples)=0
+\item 
+\mbox{\Hypertarget{classomexmeta_1_1IRDF_af30397ff81b27bdaede2c9491b7558ee}\label{classomexmeta_1_1IRDF_af30397ff81b27bdaede2c9491b7558ee}} 
+virtual \mbox{\hyperlink{classomexmeta_1_1UriHandler}{Uri\+Handler}} \& {\bfseries get\+Uri\+Handler} ()=0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+public interface for \mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} types. 
+
+for developers. \mbox{\hyperlink{classThis}{This}} interface was introduced ad-\/hoc for the sake of being able to mock \mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} in test classes. It is therefore expected that the interface segregation principle is broken here. However, it is unlikely that we\textquotesingle{}ll have need for another \mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} class -\/ if we do, then we\textquotesingle{}ll rethink the design of this interface. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/omexmeta/include/omexmeta/I\+R\+D\+F.\+h\end{DoxyCompactItemize}
