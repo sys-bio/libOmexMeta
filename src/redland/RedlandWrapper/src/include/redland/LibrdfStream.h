@@ -9,7 +9,7 @@
 #include "librdf.h"
 #include <memory>
 
-#include "World.h"
+#include "LibrdfWorld.h"
 
 namespace redland {
 

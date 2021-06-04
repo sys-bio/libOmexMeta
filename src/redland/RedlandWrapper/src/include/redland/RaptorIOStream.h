@@ -5,9 +5,9 @@
 #ifndef LIBOMEXMETA_SUPERBUILD_RAPTORIOSTREAM_H
 #define LIBOMEXMETA_SUPERBUILD_RAPTORIOSTREAM_H
 
-#include <memory>
+#include "LibrdfWorld.h"
 #include "librdf.h"
-#include "World.h"
+#include <memory>
 
 
 #include "utility"

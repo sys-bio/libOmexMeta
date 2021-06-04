@@ -9,8 +9,8 @@ namespace redland {
         validateSerializerName(format);
         librdf_uri *type_uri_ = nullptr;
         if (type_uri)
-            type_uri_ = librdf_new_uri(World::getWorld(), (const unsigned char *) type_uri);
-        serializer_ = librdf_new_serializer(World::getWorld(),
+            type_uri_ = librdf_new_uri(LibrdfWorld::getWorld(), (const unsigned char *) type_uri);
+        serializer_ = librdf_new_serializer(LibrdfWorld::getWorld(),
                                             format, mime_type, type_uri_
         );
         setOptions();
@@ -70,7 +70,7 @@ namespace redland {
     std::string LibrdfSerializer::toString(const std::string &uri, const LibrdfModel &model) {
         void *buffer_to_hold_string = nullptr;
         raptor_iostream *ios = raptor_new_iostream_to_string(
-                World::getRaptor(), (void **) &buffer_to_hold_string, nullptr, malloc);
+                LibrdfWorld::getRaptor(), (void **) &buffer_to_hold_string, nullptr, malloc);
         if (!ios)
             throw RedlandNullPointerException("Writer::toString(): raptor_iostream");
         LibrdfUri u(uri);

@@ -5,7 +5,7 @@
 #ifndef LIBOMEXMETA_PREDICATE_H
 #define LIBOMEXMETA_PREDICATE_H
 
-#include "redland/World.h"
+#include "redland/LibrdfWorld.h"
 #include "redland/librdf.h"
 
 #include "omexmeta/OmexMetaUtils.h"

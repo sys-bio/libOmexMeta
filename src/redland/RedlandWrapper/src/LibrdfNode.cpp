@@ -8,7 +8,7 @@
 /*
  * todo put name of exception in all error messages.
  */
-#include "redland/World.h"
+#include "redland/LibrdfWorld.h"
 
 namespace redland {
 
@@ -131,20 +131,20 @@ namespace redland {
         }
 
         librdf_node *n = librdf_new_node_from_uri_string(
-                World::getWorld(), (const unsigned char *) uri_string_.c_str());
+                LibrdfWorld::getWorld(), (const unsigned char *) uri_string_.c_str());
         return LibrdfNode(n);
     }
 
     LibrdfNode LibrdfNode::fromRelativeUri(const std::string &uri_string, const std::string &base_uri) {
         LibrdfUri uri(base_uri);
         librdf_uri *u = librdf_new_uri_relative_to_base(uri.get(), (const unsigned char *) uri_string.c_str());
-        librdf_node *n = librdf_new_node_from_uri(World::getWorld(), u);
+        librdf_node *n = librdf_new_node_from_uri(LibrdfWorld::getWorld(), u);
         return LibrdfNode(n);
     }
 
     LibrdfNode LibrdfNode::fromBlank(const std::string &blank) {
         return LibrdfNode(librdf_new_node_from_blank_identifier(
-                World::getWorld(), (const unsigned char *) blank.c_str()));
+                LibrdfWorld::getWorld(), (const unsigned char *) blank.c_str()));
     }
 
     std::string LibrdfNode::validateLiteralDatatype(const std::string &literal_datatype_uri) {
@@ -181,11 +181,11 @@ namespace redland {
         librdf_uri *literal_datatype_uri_ = nullptr;
         if (!literal_datatype_.empty()) {
             literal_datatype_uri_ = librdf_new_uri(
-                    World::getWorld(),
+                    LibrdfWorld::getWorld(),
                     (const unsigned char *) literal_datatype_.c_str());
         }
         librdf_node *n = librdf_new_node_from_typed_literal(
-                World::getWorld(),
+                LibrdfWorld::getWorld(),
                 (const unsigned char *) literal.c_str(),
                 xml_language_,
                 literal_datatype_uri_);
@@ -194,7 +194,7 @@ namespace redland {
     }
 
     LibrdfNode LibrdfNode::newEmptyNode() {
-        return LibrdfNode(librdf_new_node(World::getWorld()));
+        return LibrdfNode(librdf_new_node(LibrdfWorld::getWorld()));
     }
 
     /*
@@ -276,7 +276,7 @@ namespace redland {
          * new one with the new uri.
          */
         node_ = librdf_new_node_from_uri_string(
-                World::getWorld(), (const unsigned char *) uri.c_str());
+                LibrdfWorld::getWorld(), (const unsigned char *) uri.c_str());
     }
 
     void LibrdfNode::setLiteralDatatype(const std::string &datatype) {
@@ -306,10 +306,10 @@ namespace redland {
 
         // reset node with node information
         node_ = librdf_new_node_from_typed_literal(
-                World::getWorld(),
+                LibrdfWorld::getWorld(),
                 (const unsigned char *) value.c_str(),
                 (const char *) language_used,
-                librdf_new_uri(World::getWorld(), (unsigned char *) literal_datatype_.c_str()));
+                librdf_new_uri(LibrdfWorld::getWorld(), (unsigned char *) literal_datatype_.c_str()));
     }
 
     void LibrdfNode::setBlankIdentifier(const std::string &identifier) {
@@ -321,7 +321,7 @@ namespace redland {
             node_ = nullptr;
         }
         node_ = librdf_new_node_from_blank_identifier(
-                World::getWorld(),
+                LibrdfWorld::getWorld(),
                 (const unsigned char *) identifier.c_str());
     }
 

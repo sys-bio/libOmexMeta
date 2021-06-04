@@ -85,9 +85,9 @@ namespace omexmeta {
                 "http://omex-library.org/", std::move(omex_name), std::move(model_name));
 
         // make uri's for the namespaces
-        librdf_uri *OMEXlib = librdf_new_uri(World::getWorld(), (const unsigned char *) nsvec[0].c_str());
-        librdf_uri *myomex = librdf_new_uri(World::getWorld(), (const unsigned char *) nsvec[1].c_str());
-        librdf_uri *local = librdf_new_uri(World::getWorld(), (const unsigned char *) nsvec[2].c_str());
+        librdf_uri *OMEXlib = librdf_new_uri(LibrdfWorld::getWorld(), (const unsigned char *) nsvec[0].c_str());
+        librdf_uri *myomex = librdf_new_uri(LibrdfWorld::getWorld(), (const unsigned char *) nsvec[1].c_str());
+        librdf_uri *local = librdf_new_uri(LibrdfWorld::getWorld(), (const unsigned char *) nsvec[2].c_str());
 
         librdf_serializer_set_namespace(serializer, OMEXlib, "OMEXlib");
         librdf_serializer_set_namespace(serializer, myomex, "myOMEX");

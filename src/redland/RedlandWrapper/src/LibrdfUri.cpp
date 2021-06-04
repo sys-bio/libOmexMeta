@@ -3,7 +3,7 @@
 //
 #include "redland/LibrdfUri.h"
 #include "librdf.h"
-#include "redland/World.h"
+#include "redland/LibrdfWorld.h"
 
 /*
  * developer notes. Do not try to implement a deep copy/clone
@@ -68,7 +68,7 @@ namespace redland {
         : uri_(uri) {}
 
     LibrdfUri::LibrdfUri(const std::string &uri)
-        : uri_(librdf_new_uri(World::getWorld(), (const unsigned char *) uri.c_str())) {
+        : uri_(librdf_new_uri(LibrdfWorld::getWorld(), (const unsigned char *) uri.c_str())) {
     }
 
     std::string LibrdfUri::str() const {
@@ -113,7 +113,7 @@ namespace redland {
     }
 
     LibrdfUri LibrdfUri::fromFilename(const std::string &filename) {
-        librdf_uri *uri = librdf_new_uri_from_filename(World::getWorld(), filename.c_str());
+        librdf_uri *uri = librdf_new_uri_from_filename(LibrdfWorld::getWorld(), filename.c_str());
         return LibrdfUri(uri);
     }
 

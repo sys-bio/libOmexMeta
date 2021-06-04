@@ -3,7 +3,7 @@
 //
 
 #include "redland/LibrdfStatement.h"
-#include "redland/World.h"
+#include "redland/LibrdfWorld.h"
 
 
 namespace redland {
@@ -20,13 +20,13 @@ namespace redland {
 
     LibrdfStatement::LibrdfStatement(librdf_node *subject, librdf_node *predicate, librdf_node *resource)
         : statement_(librdf_new_statement_from_nodes(
-                  World::getWorld(), subject, predicate, resource)) {
+                  LibrdfWorld::getWorld(), subject, predicate, resource)) {
         checkForNull();
     }
 
     LibrdfStatement::LibrdfStatement(const LibrdfNode &subject, const LibrdfNode &predicate, const LibrdfNode &resource)
         : statement_(librdf_new_statement_from_nodes(
-                  World::getWorld(), subject.get(), predicate.get(), resource.get())) {
+                  LibrdfWorld::getWorld(), subject.get(), predicate.get(), resource.get())) {
         checkForNull();
     }
 
@@ -142,7 +142,7 @@ namespace redland {
             getPredicateAsRawNode() != nullptr &&
             getResourceAsRawNode() != nullptr) {
             statement_ = librdf_new_statement_from_nodes(
-                    World::getWorld(), getSubjectAsRawNode(), getPredicateAsRawNode(), getResourceAsRawNode());
+                    LibrdfWorld::getWorld(), getSubjectAsRawNode(), getPredicateAsRawNode(), getResourceAsRawNode());
         }
     }
 

@@ -77,7 +77,11 @@ namespace omexmeta {
 
     OMEXMETA_CAPI_EXPORT int RDF_addFromFile(RDF *rdf_ptr, const char *uri_string, const char *format);
 
-    OMEXMETA_CAPI_EXPORT char *RDF_query(RDF *rdf_ptr, const char *query_str, const char *results_format);
+    OMEXMETA_CAPI_EXPORT char *RDF_queryResultsAsString(RDF *rdf_ptr, const char *query_str, const char *results_format);
+
+    OMEXMETA_CAPI_EXPORT ResultsMap * RDF_queryResultsAsMap(RDF *rdf_ptr, const char *query_str);
+
+    OMEXMETA_CAPI_EXPORT void deleteResultsMap(ResultsMap* map);
 
     OMEXMETA_CAPI_EXPORT int RDF_size(RDF *rdf_ptr);
 

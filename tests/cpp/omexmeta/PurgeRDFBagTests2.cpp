@@ -4,11 +4,11 @@
 #include <utility>
 
 #include "MockRDF.h"
-#include "omexmeta/RDF.h"
 #include "SBMLFactory.h"
+#include "omexmeta/Options.h"
 #include "omexmeta/PurgeRDFBag.h"
 #include "omexmeta/Query.h"
-#include "omexmeta/Options.h"
+#include "omexmeta/RDF.h"
 #include "gtest/gtest.h"
 
 #include "redland/RedlandAPI.h"
@@ -21,8 +21,6 @@ using namespace testing;
  */
 class PurgeRDFBagTests2 : public ::testing::Test {
 public:
-
-
     std::string biomd385FullString = "<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
                                      "         xmlns:bqmodel=\"http://biomodels.net/model-qualifiers/\"\n"
                                      "         xmlns:vCard=\"http://www.w3.org/2001/vcard-rdf/3.0#\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"\n"
@@ -113,8 +111,8 @@ public:
                     "WHERE {\n"
                     "    ?x ?y ?z \n"
                     "}\n";
-    PurgeRDFBagTests2(){
-        Options::translateVCard_ = false; // we'll do it manually during tests
+    PurgeRDFBagTests2() {
+        Options::translateVCard_ = false;// we'll do it manually during tests
     };
 
 
@@ -125,13 +123,6 @@ public:
         parser.parseString(input, model, "https://baseUriNotNeeded.com");
         Query query(model.get(), std::move(queryString));
         return query.resultsAsMap();
-    }
-
-    void checkRDFBagIsPurged(const std::string& inputString, const std::string& inputSyntax, std::string expectedTurtle){
-        RDF rdf = RDF::fromString(inputString, inputSyntax);
-        PurgeRDFBag purgeRdfBag(&rdf);
-        purgeRdfBag.purge();
-        ASSERT_TRUE(RDF::equals(&rdf, expectedTurtle, "turtle", true));
     }
 
     void printResultsMap(ResultsMap &resultsMap) {
@@ -187,10 +178,10 @@ TEST_F(PurgeRDFBagTests2, WithRDdFBagLists2) {
                            "    s:students <http://example.org/students/Amy>, <http://example.org/students/Mohamed> .";
 
     checkRDFBagIsPurged(in, "turtle", expected);
-//    std::cout << expected <<std::endl;
-//    std::cout << toTurtle(in, "turtle", "rdfxml");
-//    auto results = runQuery(in, "turtle", PurgeRDFBag::rdfBagQueryString());
-//    printResultsMap(results);
+    //    std::cout << expected <<std::endl;
+    //    std::cout << toTurtle(in, "turtle", "rdfxml");
+    //    auto results = runQuery(in, "turtle", PurgeRDFBag::rdfBagQueryString());
+    //    printResultsMap(results);
 
     //    EXPECT_CALL(mockRdf, getModel)
     //        .WillRepeatedly(Return(model.get()));
@@ -240,9 +231,121 @@ TEST_F(PurgeRDFBagTests2, CreatorFromBIOMD385) {
                      "        a rdf:Bag\n"
                      "    ] .";
 
-    std::string expected = "";
+    std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+                           "\n"
+                           "<https://baseUriNotNeeded.com#_272044>\n"
+                           "    <http://purl.org/dc/elements/1.1/creator> \n"
+                           "        <http://www.w3.org/2001/vcard-rdf/3.0#EMAIL> \"viji@ebi.ac.uk\" ;\n"
+                           "        <http://www.w3.org/2001/vcard-rdf/3.0#N> [\n"
+                           "                <http://www.w3.org/2001/vcard-rdf/3.0#Family> \"Chelliah\" ;\n"
+                           "                <http://www.w3.org/2001/vcard-rdf/3.0#Given> \"Vijayalakshmi\"\n"
+                           "        ] ;\n"
+                           "        <http://www.w3.org/2001/vcard-rdf/3.0#ORG> [\n"
+                           "            <http://www.w3.org/2001/vcard-rdf/3.0#Orgname> \"EMBL-EBI\"\n"
+                           "        ] ;\n"
+                           "        <http://www.w3.org/2001/vcard-rdf/3.0#EMAIL> \"nikoloski@mpimp-golm.mpg.de\" ;\n"
+                           "        <http://www.w3.org/2001/vcard-rdf/3.0#N> [\n"
+                           "            <http://www.w3.org/2001/vcard-rdf/3.0#Family> \"Nikoloski\" ;\n"
+                           "            <http://www.w3.org/2001/vcard-rdf/3.0#Given> \"Zoran\"\n"
+                           "        ] ;\n"
+                           "        <http://www.w3.org/2001/vcard-rdf/3.0#ORG> [\n"
+                           "            <http://www.w3.org/2001/vcard-rdf/3.0#Orgname> \"\"\"Institute of Biochemistry and Biology, University of Potsdam, 14476\n"
+                           "                        Potsdam, Germany\n"
+                           "                    \"\"\"\n"
+                           "        ]\n"
+                           "        <http://www.w3.org/2001/vcard-rdf/3.0#EMAIL> \"arnold@mpimp-golm.mpg.de\" ;\n"
+                           "        <http://www.w3.org/2001/vcard-rdf/3.0#N> [\n"
+                           "            <http://www.w3.org/2001/vcard-rdf/3.0#Family> \"Arnold\" ;\n"
+                           "            <http://www.w3.org/2001/vcard-rdf/3.0#Given> \"Anne\"\n"
+                           "        ] ;\n"
+                           "        <http://www.w3.org/2001/vcard-rdf/3.0#ORG> [\n"
+                           "            <http://www.w3.org/2001/vcard-rdf/3.0#Orgname> \"Max-Planck-Institute of Molecular Plant Physiology\"\n"
+                           "        ]\n"
+                           "    ] .";
 
+    std::cout << expected << std::endl;
     //    std::cout << toTurtle(in, "rdfxml")<< std::endl;
     checkRDFBagIsPurged(in, "turtle", expected);
+}
 
+TEST_F(PurgeRDFBagTests2, x) {
+    std::string in = "            <rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
+                     "                     xmlns:bqmodel=\"http://biomodels.net/model-qualifiers/\"\n"
+                     "                     xmlns:vCard=\"http://www.w3.org/2001/vcard-rdf/3.0#\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"\n"
+                     "                     xmlns:dcterms=\"http://purl.org/dc/terms/\" xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\">\n"
+                     "                <rdf:Description rdf:about=\"#_272044\">\n"
+                     "                    <dc:creator>\n"
+                     "                        <rdf:Bag>\n"
+                     "                            <rdf:li rdf:parseType=\"Resource\">\n"
+                     "                                <vCard:N rdf:parseType=\"Resource\">\n"
+                     "                                    <vCard:Family>Chelliah</vCard:Family>\n"
+                     "                                    <vCard:Given>Vijayalakshmi</vCard:Given>\n"
+                     "                                </vCard:N>\n"
+                     "                                <vCard:EMAIL>viji@ebi.ac.uk</vCard:EMAIL>\n"
+                     "                                <vCard:ORG rdf:parseType=\"Resource\">\n"
+                     "                                    <vCard:Orgname>EMBL-EBI</vCard:Orgname>\n"
+                     "                                </vCard:ORG>\n"
+                     "                            </rdf:li>\n"
+                     "                            <rdf:li rdf:parseType=\"Resource\">\n"
+                     "                                <vCard:N rdf:parseType=\"Resource\">\n"
+                     "                                    <vCard:Family>Nikoloski</vCard:Family>\n"
+                     "                                    <vCard:Given>Zoran</vCard:Given>\n"
+                     "                                </vCard:N>\n"
+                     "                                <vCard:EMAIL>nikoloski@mpimp-golm.mpg.de</vCard:EMAIL>\n"
+                     "                                <vCard:ORG rdf:parseType=\"Resource\">\n"
+                     "                                    <vCard:Orgname>Institute of Biochemistry and Biology, University of Potsdam, 14476\n"
+                     "                                        Potsdam, Germany\n"
+                     "                                    </vCard:Orgname>\n"
+                     "                                </vCard:ORG>\n"
+                     "                            </rdf:li>\n"
+                     "                            <rdf:li rdf:parseType=\"Resource\">\n"
+                     "                                <vCard:N rdf:parseType=\"Resource\">\n"
+                     "                                    <vCard:Family>Arnold</vCard:Family>\n"
+                     "                                    <vCard:Given>Anne</vCard:Given>\n"
+                     "                                </vCard:N>\n"
+                     "                                <vCard:EMAIL>arnold@mpimp-golm.mpg.de</vCard:EMAIL>\n"
+                     "                                <vCard:ORG rdf:parseType=\"Resource\">\n"
+                     "                                    <vCard:Orgname>Max-Planck-Institute of Molecular Plant Physiology</vCard:Orgname>\n"
+                     "                                </vCard:ORG>\n"
+                     "                            </rdf:li>\n"
+                     "                        </rdf:Bag>\n"
+                     "                    </dc:creator>\n"
+                     "                    <dcterms:created rdf:parseType=\"Resource\">\n"
+                     "                        <dcterms:W3CDTF>2011-10-19T14:51:13Z</dcterms:W3CDTF>\n"
+                     "                    </dcterms:created>\n"
+                     "                    <dcterms:modified rdf:parseType=\"Resource\">\n"
+                     "                        <dcterms:W3CDTF>2012-04-20T19:52:45Z</dcterms:W3CDTF>\n"
+                     "                    </dcterms:modified>\n"
+                     "                    <bqmodel:is>\n"
+                     "                        <rdf:Bag>\n"
+                     "                            <rdf:li rdf:resource=\"http://identifiers.org/biomodels.db/MODEL1109270001\"/>\n"
+                     "                        </rdf:Bag>\n"
+                     "                    </bqmodel:is>\n"
+                     "                    <bqmodel:is>\n"
+                     "                        <rdf:Bag>\n"
+                     "                            <rdf:li rdf:resource=\"http://identifiers.org/biomodels.db/BIOMD0000000385\"/>\n"
+                     "                        </rdf:Bag>\n"
+                     "                    </bqmodel:is>\n"
+                     "                    <bqmodel:isDescribedBy>\n"
+                     "                        <rdf:Bag>\n"
+                     "                            <rdf:li rdf:resource=\"http://identifiers.org/pubmed/22001849\"/>\n"
+                     "                        </rdf:Bag>\n"
+                     "                    </bqmodel:isDescribedBy>\n"
+                     "                    <bqmodel:is>\n"
+                     "                        <rdf:Bag>\n"
+                     "                            <rdf:li rdf:resource=\"http://identifiers.org/obo.go/GO:0019253\"/>\n"
+                     "                        </rdf:Bag>\n"
+                     "                    </bqmodel:is>\n"
+                     "                    <bqbiol:hasTaxon>\n"
+                     "                        <rdf:Bag>\n"
+                     "                            <rdf:li rdf:resource=\"http://identifiers.org/taxonomy/33090\"/>\n"
+                     "                        </rdf:Bag>\n"
+                     "                    </bqbiol:hasTaxon>\n"
+                     "                </rdf:Description>\n"
+                     "            </rdf:RDF>";
+
+    std::string expected;
+
+
+    checkRDFBagIsPurged(in, "rdfxml", expected, "rdfxml");
 }

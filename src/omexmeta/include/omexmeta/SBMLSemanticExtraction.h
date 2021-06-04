@@ -6,13 +6,12 @@
 #define LIBOMEXMETA_SBMLSEMANTICEXTRACTION_H
 
 #include "omexmeta/Editor.h"
-#include "omexmeta/RDF.h"
 #include "omexmeta/ElementExtractor.h"
 
 #include <iostream>
 
 /**
-         * Here's the basic logic that we use in SemGen to determine which OPB physical property is represented by a <species> in an SBML model:
+ * Here's the basic logic that we use in SemGen to determine which OPB physical property is represented by a <species> in an SBML model:
  *
  * Using libSBML, we first look up the substance base units for the model and also whether the species's "hasOnlySubstanceUnits" attribute is true...
  *
@@ -72,13 +71,6 @@ namespace omexmeta {
          */
         void extractProcessesFromReactions();
 
-        /**
-         * @brief removes the "rdf::bag` construct
-         * from annotations.
-         * @details ignores anything to do with vcard,
-         * which requires special attention
-         */
-        void bagConversion();
     };
 }
 

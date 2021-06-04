@@ -4,6 +4,7 @@
 #include "gtest/gtest.h"
 #include "omexmeta/RDF.h"
 #include "omexmeta/VCardTranslator.h"
+#include "SBMLFactory.h"
 
 using namespace omexmeta;
 
@@ -51,6 +52,7 @@ public:
                         "        ] ;\n"
                         "        a rdf:Bag\n"
                         "    ] .";
+
     VCardTranslatorTests() = default;
 };
 
@@ -87,8 +89,9 @@ TEST_F(VCardTranslatorTests, purgeNConstruct){
                            "        a rdf:Bag\n"
                            "    ] .";
     RDF rdf = RDF::fromString(input);
-    VCardTranslator vCardTranslator(&rdf);
-    vCardTranslator.translate();
+    // these were inserted into constructor anyway.
+//    VCardTranslator vCardTranslator(&rdf);
+//    vCardTranslator.translate();
     RDF::equals(&rdf, expected);
 
 }

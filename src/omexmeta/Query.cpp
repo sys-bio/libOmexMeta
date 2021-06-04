@@ -12,7 +12,7 @@ namespace omexmeta {
     Query::Query(librdf_model *model, std::string query)
         : model_(model), query_(std::move(query)) {
         q_ = librdf_new_query(
-                World::getWorld(), (const char *) "sparql",
+                LibrdfWorld::getWorld(), (const char *) "sparql",
                 nullptr, (const unsigned char *) query_.c_str(),
                 nullptr);
         if (!q_) {

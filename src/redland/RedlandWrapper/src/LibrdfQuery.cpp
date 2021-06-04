@@ -71,13 +71,13 @@ namespace redland {
                              const char *base_uri) {
         librdf_uri *uri_ = nullptr;
         if (!uri)
-            uri_ = librdf_new_uri(World::getWorld(), uri);
+            uri_ = librdf_new_uri(LibrdfWorld::getWorld(), uri);
 
         librdf_uri *base_uri_ = nullptr;
         if (!base_uri)
-            base_uri_ = librdf_new_uri(World::getWorld(), uri);
+            base_uri_ = librdf_new_uri(LibrdfWorld::getWorld(), uri);
         query_ = librdf_new_query(
-                World::getWorld(), name.c_str(), uri_, (const unsigned char *) query.c_str(), base_uri_);
+                LibrdfWorld::getWorld(), name.c_str(), uri_, (const unsigned char *) query.c_str(), base_uri_);
     }
 
 

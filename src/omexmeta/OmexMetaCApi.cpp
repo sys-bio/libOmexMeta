@@ -148,9 +148,9 @@ namespace omexmeta {
         }
     }
 
-    char *RDF_query(RDF *rdf_ptr, const char *query_str, const char *results_format) {
+    char *RDF_queryResultsAsString(RDF *rdf_ptr, const char *query_str, const char *results_format) {
         try {
-            std::string results = rdf_ptr->query(query_str, results_format);
+            std::string results = rdf_ptr->queryResultsAsString(query_str, results_format);
             char *s = (char *) malloc((results.size() + 1) * sizeof(char *));
             strcpy(s, results.c_str());
             return s;
@@ -158,6 +158,31 @@ namespace omexmeta {
             setLastError(error.what());
             return nullptr;
         }
+    }
+
+    /**
+     * @brief run a sparql query on rdf_ptr. Return the results as a ResultsMap*.
+     * @details Caller is responsible for freeing memory associated with returned map ptr
+     */
+    ResultsMap* RDF_queryResultsAsMap(RDF *rdf_ptr, const char *query_str) {
+        try {
+            ResultsMap resultsMap = rdf_ptr->queryResultsAsMap(query_str);
+            auto* rOut = new ResultsMap{};
+            rOut->insert(resultsMap.begin(), resultsMap.end());
+            return rOut;
+
+        } catch (std::exception &error) {
+            setLastError(error.what());
+            return nullptr;
+        }
+    }
+
+    /**
+     * @brief RDF_queryResultsAsMap allocates a ResultsMap to the heap.
+     * This method deletes that memory
+     */
+    void deleteResultsMap(ResultsMap* map){
+        delete map;
     }
 
     int RDF_size(RDF *rdf_ptr) {

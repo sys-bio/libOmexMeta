@@ -5,16 +5,16 @@
 #ifndef LIBOMEXMETA_LIBRDFMODEL_H
 #define LIBOMEXMETA_LIBRDFMODEL_H
 
+#include "LibrdfQuery.h"
+#include "LibrdfQueryResults.h"
+#include "LibrdfStatement.h"
+#include "LibrdfStorage.h"
+#include "LibrdfStream.h"
+#include "LibrdfWorld.h"
 #include "librdf.h"
+#include <iostream>
 #include <memory>
 #include <string>
-#include <iostream>
-#include "LibrdfStatement.h"
-#include "LibrdfQueryResults.h"
-#include "LibrdfQuery.h"
-#include "LibrdfStorage.h"
-#include "World.h"
-#include "LibrdfStream.h"
 
 
 namespace redland {
