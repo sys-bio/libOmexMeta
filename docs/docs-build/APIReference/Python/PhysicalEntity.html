@@ -110,6 +110,7 @@
 <li class="toctree-l3"><a class="reference internal" href="PhysicalProcess.html">PhysicalProcess</a></li>
 <li class="toctree-l3"><a class="reference internal" href="EnergyDiff.html">EnergyDiff</a></li>
 <li class="toctree-l3"><a class="reference internal" href="PersonalInformation.html">PersonalInformation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_PropertyBearer.html">_PropertyBearer</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../C%2B%2B/index.html">C++ libOmexMeta API Reference</a></li>
@@ -240,6 +241,27 @@ each physical property that is implicitly represented in an SBML model. Note tha
 not have to be done when annotating an SBML parameter because the SBML parameter element
 includes a metadata ID that can be explicitly referenced in the OMEX metadata file.</p>
 <dl class="py method">
+<dt id="pyomexmeta.PhysicalEntity.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">physical_entity_ptr</span><span class="p">:</span> <span class="n">ctypes.c_long</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyomexmeta.PhysicalEntity.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructor for <a class="reference internal" href="#pyomexmeta.PhysicalEntity" title="pyomexmeta.PhysicalEntity"><code class="xref py py-class docutils literal notranslate"><span class="pre">PhysicalEntity</span></code></a>.</p>
+<p>This constructor is not designed to be used directly by users. Instead
+users should create a <a class="reference internal" href="#pyomexmeta.PhysicalEntity" title="pyomexmeta.PhysicalEntity"><code class="xref py py-class docutils literal notranslate"><span class="pre">PhysicalEntity</span></code></a> directly from the an instance
+of <a class="reference internal" href="Editor.html#pyomexmeta.Editor" title="pyomexmeta.Editor"><code class="xref py py-class docutils literal notranslate"><span class="pre">Editor</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>physical_entity_ptr</strong> – A ctypes int64 integer representing the memory address (pointer)
+of this PhysicalEntity.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="pyomexmeta.PhysicalEntity.__weakref__">
+<code class="sig-name descname">__weakref__</code><a class="headerlink" href="#pyomexmeta.PhysicalEntity.__weakref__" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of weak references to the object (if defined)</p>
+</dd></dl>
+
+<dl class="py method">
 <dt id="pyomexmeta.PhysicalEntity.about">
 <code class="sig-name descname">about</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">about</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">type</span><span class="p">:</span> <span class="n">pyomexmeta.pyomexmeta_api.eUriType</span></em><span class="sig-paren">)</span> &#x2192; pyomexmeta.pyomexmeta.PhysicalEntity<a class="headerlink" href="#pyomexmeta.PhysicalEntity.about" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets the about (subject) portion of the PhysicalEntity.</p>
@@ -297,6 +319,12 @@ as its unique within the RDF graph.</p></li>
 </dd></dl>
 
 <dl class="py method">
+<dt id="pyomexmeta.PhysicalEntity.get_num_locations">
+<code class="sig-name descname">get_num_locations</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#pyomexmeta.PhysicalEntity.get_num_locations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the number of location portions that exist in this <a class="reference internal" href="#pyomexmeta.PhysicalEntity" title="pyomexmeta.PhysicalEntity"><code class="xref py py-class docutils literal notranslate"><span class="pre">PhysicalEntity</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
 <dt id="pyomexmeta.PhysicalEntity.get_ptr">
 <code class="sig-name descname">get_ptr</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; ctypes.c_long<a class="headerlink" href="#pyomexmeta.PhysicalEntity.get_ptr" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the memory address that points to this PhysicalEntity</p>
@@ -335,46 +363,23 @@ is passed to <a class="reference internal" href="#pyomexmeta.PhysicalEntity.has_
 <dd class="field-odd"><p><strong>is_version_of</strong> – (str) represents an OPB term from the Ontology of Physical Biology.</p>
 </dd>
 </dl>
-<p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rdf</span> <span class="o">=</span> <span class="n">RDF</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">editor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rdf</span><span class="o">.</span><span class="n">to_editor</span><span class="p">(</span><span class="s2">&quot;insert sbml here&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">editor</span><span class="o">.</span><span class="n">new_physical_entity</span><span class="p">()</span> <span class="k">as</span> <span class="n">physical_entity</span><span class="p">:</span>
-<span class="gp">... </span>    <span class="n">physical_entity</span><span class="o">.</span><span class="n">about</span><span class="p">(</span><span class="s2">&quot;species0000&quot;</span><span class="p">,</span> <span class="n">eUriType</span><span class="o">.</span><span class="n">MODEL_URI</span><span class="p">)</span>             <span class="o">...</span>         <span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="s2">&quot;uniprot:PD12345&quot;</span><span class="p">)</span>             <span class="o">...</span>         <span class="o">.</span><span class="n">is_part_of</span><span class="p">(</span><span class="s2">&quot;fma:1234&quot;</span><span class="p">)</span>             <span class="o">...</span>         <span class="o">.</span><span class="n">has_property</span><span class="p">(</span><span class="s2">&quot;opb:OPB_12345&quot;</span><span class="p">)</span> <span class="c1"># same as has_property(is_version_of=&quot;opb:OPB_12345&quot;)</span>
-</pre></div>
-</div>
 <p>In the above case, the necessary local identifiers are created automatically and are guarenteed
 to be unique throughout your RDF graph. In some circumstances, you might want to have control
 over the metaids used for local uri’s. The above would create a <a class="reference internal" href="PhysicalProperty.html#pyomexmeta.PhysicalProperty" title="pyomexmeta.PhysicalProperty"><code class="xref py py-class docutils literal notranslate"><span class="pre">PhysicalProperty</span></code></a>
 with the subject or “about” portion equal to <cite>local:EntityProperty0000</cite>. We can set this ourselves
-using the second overload, which requires three arguments:
-:param <cite>property_about</cite>: The subject or “about” portion of the <a class="reference internal" href="PhysicalProperty.html#pyomexmeta.PhysicalProperty" title="pyomexmeta.PhysicalProperty"><code class="xref py py-class docutils literal notranslate"><span class="pre">PhysicalProperty</span></code></a> triples.
-:param <cite>about_uri_type</cite>  eUriType.LOCAL_URI if the uri for <cite>property_about</cite> should be local to the: annotation (rdf) graph or eUriType.MODEL_URI if it instead points to a</p>
-<blockquote>
-<div><p>element of the model (which is common in CellML).</p>
-</div></blockquote>
+using the second overload, which requires three arguments:</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>The OPB term to use for the &quot;isVersionOf&quot; predicate</strong> (<em>is_version_of</em>) – </p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>property_about</strong> – The subject or “about” portion of the <a class="reference internal" href="PhysicalProperty.html#pyomexmeta.PhysicalProperty" title="pyomexmeta.PhysicalProperty"><code class="xref py py-class docutils literal notranslate"><span class="pre">PhysicalProperty</span></code></a> triples.</p></li>
+<li><p><strong>eUriType.LOCAL_URI if the uri for property_about should be local to the</strong> (<em>about_uri_type</em>) – annotation (rdf) graph or eUriType.MODEL_URI if it instead points to a
+element of the model (which is common in CellML).</p></li>
+<li><p><strong>The OPB term to use for the &quot;isVersionOf&quot; predicate</strong> (<em>is_version_of</em>) – </p></li>
+</ul>
 </dd>
 </dl>
-<p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rdf</span> <span class="o">=</span> <span class="n">RDF</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">editor</span> <span class="o">=</span> <span class="n">rdf</span><span class="o">.</span><span class="n">to_editor</span><span class="p">(</span><span class="s2">&quot;&lt;insert sbml here&gt;&quot;</span><span class="p">,</span> <span class="n">generate_new_metaids</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sbml_semantic_extraction</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">editor</span><span class="o">.</span><span class="n">new_physical_entity</span><span class="p">()</span> <span class="k">as</span> <span class="n">physical_entity</span><span class="p">:</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="n">physical_entity</span><span class="o">.</span><span class="n">about</span><span class="p">(</span><span class="s2">&quot;species0000&quot;</span><span class="p">,</span> <span class="n">eUriType</span><span class="o">.</span><span class="n">MODEL_URI</span><span class="p">)</span>             <span class="o">...</span>         <span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="s2">&quot;uniprot:PD12345&quot;</span><span class="p">)</span>             <span class="o">...</span>         <span class="o">.</span><span class="n">is_part_of</span><span class="p">(</span><span class="s2">&quot;fma:1234&quot;</span><span class="p">)</span>             <span class="o">...</span>         <span class="o">.</span><span class="n">has_property</span><span class="p">(</span><span class="s2">&quot;EntityProperty&quot;</span><span class="p">,</span> <span class="n">eUriType</span><span class="o">.</span><span class="n">LOCAL_URI</span><span class="p">,</span> <span class="s2">&quot;opb:OPB_12345&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
 <p>Finally, you can create the <code class="xref py py-class docutils literal notranslate"><span class="pre">Property</span></code> yourself and pass that to <a class="reference internal" href="#pyomexmeta.PhysicalEntity.has_property" title="pyomexmeta.PhysicalEntity.has_property"><code class="xref py py-meth docutils literal notranslate"><span class="pre">has_property()</span></code></a> instead.
 This is often more useful in CellML models.</p>
-<p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rdf</span> <span class="o">=</span> <span class="n">RDF</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">editor</span> <span class="o">=</span> <span class="n">rdf</span><span class="o">.</span><span class="n">to_editor</span><span class="s2">&quot;(&lt;insert cellml here&gt;&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">property</span> <span class="o">=</span> <span class="n">editor</span><span class="o">.</span><span class="n">new_physical_property</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">property</span><span class="o">.</span><span class="n">about</span><span class="p">(</span><span class="s2">&quot;main.Volume&quot;</span><span class="p">,</span> <span class="n">eUriType</span><span class="o">.</span><span class="n">MODEL_URI</span><span class="p">)</span>             <span class="o">...</span>     <span class="o">.</span><span class="n">is_version_of</span><span class="p">(</span><span class="s2">&quot;opb:OPB_00154&quot;</span><span class="p">)</span>             <span class="o">...</span>     <span class="o">.</span><span class="n">is_property_of</span><span class="p">(</span><span class="s2">&quot;entity0&quot;</span><span class="p">,</span> <span class="n">eUriType</span><span class="o">.</span><span class="n">LOCAL_URI</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">editor</span><span class="o">.</span><span class="n">new_physical_entity</span><span class="p">()</span> <span class="k">as</span> <span class="n">physical_entity</span><span class="p">:</span>
-<span class="gp">... </span>    <span class="n">physical_entity</span><span class="o">.</span><span class="n">about</span><span class="p">(</span><span class="s2">&quot;entity0&quot;</span><span class="p">,</span> <span class="n">eUriType</span><span class="o">.</span><span class="n">LOCAL_URI</span><span class="p">)</span>             <span class="o">...</span>         <span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="s2">&quot;fma:9570&quot;</span><span class="p">)</span>             <span class="o">...</span>         <span class="o">.</span><span class="n">is_part_of</span><span class="p">(</span><span class="s2">&quot;fma:18228&quot;</span><span class="p">)</span>             <span class="o">...</span>         <span class="o">.</span><span class="n">has_property</span><span class="p">(</span><span class="nb">property</span><span class="o">=</span><span class="nb">property</span><span class="p">)</span>
-</pre></div>
-</div>
 </dd></dl>
 
 <dl class="py method">

@@ -110,6 +110,7 @@
 <li class="toctree-l3"><a class="reference internal" href="PhysicalProcess.html">PhysicalProcess</a></li>
 <li class="toctree-l3"><a class="reference internal" href="EnergyDiff.html">EnergyDiff</a></li>
 <li class="toctree-l3"><a class="reference internal" href="PersonalInformation.html">PersonalInformation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_PropertyBearer.html">_PropertyBearer</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../C%2B%2B/index.html">C++ libOmexMeta API Reference</a></li>
@@ -223,40 +224,28 @@ definitions of model elements.</p>
 <p>The following is an example singular semantic annotation indicating that the
 model element with meta- data ID “meta0013” from the model file “MyModel.sbml”
 represents adenosine tri-phosphate:</p>
-<blockquote>
-<div><p>myOMEX:MyModel.sbml#meta0013 bqbiol:is chebi:15422 .</p>
-</div></blockquote>
 <p>The following is an example free-text description of a model variable with metadata ID “meta0014”:</p>
-<blockquote>
-<div><dl class="simple">
-<dt>myOMEX:MyModel.sbml#meta0014</dt><dd><p>dc:description  “Cardiomyocyte cytosolic ATP concentration” .</p>
+<dl class="py method">
+<dt id="pyomexmeta.SingularAnnotation.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">singular_annotation_ptr</span><span class="p">:</span> <span class="n">ctypes.c_long</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyomexmeta.SingularAnnotation.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructor for a <a class="reference internal" href="#pyomexmeta.SingularAnnotation" title="pyomexmeta.SingularAnnotation"><code class="xref py py-meth docutils literal notranslate"><span class="pre">SingularAnnotation()</span></code></a> object.</p>
+<p>This constructor should not be used directly by users. Instead
+use the <a class="reference internal" href="Editor.html#pyomexmeta.Editor.new_singular_annotation" title="pyomexmeta.Editor.new_singular_annotation"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Editor.new_singular_annotation()</span></code></a> method.</p>
+<p>Methods in this class implement a builder interface, by returning a
+a reference to self. This allows optional chaining of methods together.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>singular_annotation_ptr</strong> – A pointer to an SingularAnnotation which exist in memory</p>
 </dd>
 </dl>
-</div></blockquote>
-<p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Note that these examples are semantically nonesense!</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">rdf</span> <span class="o">=</span> <span class="n">RDF</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">editor</span> <span class="o">=</span> <span class="n">rdf</span><span class="o">.</span><span class="n">to_editor</span><span class="p">(</span><span class="s2">&quot;&lt;insert xml here&gt;&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">editor</span><span class="o">.</span><span class="n">new_singular_annotation</span><span class="p">()</span> <span class="k">as</span> <span class="n">s1</span><span class="p">:</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="n">s1</span><span class="o">.</span><span class="n">about</span><span class="p">(</span><span class="s2">&quot;species0000&quot;</span><span class="p">)</span> \ <span class="c1"># species0000 is a metaid in sbml</span>
-<span class="gp">... </span>        <span class="o">.</span><span class="n">predicate</span><span class="p">(</span><span class="s2">&quot;bqbiol&quot;</span><span class="p">,</span> <span class="s2">&quot;is&quot;</span><span class="p">)</span> \ <span class="c1">#use the &quot;is&quot; predicate from bqbiol (BiomodelsBiologyQualifier) namespace</span>
-<span class="gp">... </span>        <span class="o">.</span><span class="n">resource_uri</span><span class="p">(</span><span class="s2">&quot;uniprot:PD88776&quot;</span><span class="p">)</span> <span class="c1"># create a uri resource node</span>
-</pre></div>
-</div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">editor</span><span class="o">.</span><span class="n">new_singular_annotation</span><span class="p">()</span> <span class="k">as</span> <span class="n">s2</span><span class="p">:</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="n">s2</span><span class="o">.</span><span class="n">about</span><span class="p">(</span><span class="s2">&quot;species0000&quot;</span><span class="p">)</span> \ <span class="c1"># species0000 is a metaid in sbml</span>
-<span class="gp">... </span>        <span class="o">.</span><span class="n">predicate</span><span class="p">(</span><span class="s2">&quot;bqmodel&quot;</span><span class="p">,</span> <span class="s2">&quot;isDerivedFrom&quot;</span><span class="p">)</span> \ <span class="c1">#use the &quot;isDerivedFrom&quot; predicate from bqmodel (BiomodelsModelQualifier) namespace</span>
-<span class="gp">... </span>        <span class="o">.</span><span class="n">resource_literal</span><span class="p">(</span><span class="s2">&quot;Something Literal&quot;</span><span class="p">)</span> <span class="c1"># create a uri resource node</span>
-</pre></div>
-</div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">editor</span><span class="o">.</span><span class="n">new_singular_annotation</span><span class="p">()</span> <span class="k">as</span> <span class="n">s3a</span><span class="p">:</span>
-<span class="gp">&gt;&gt;&gt; </span>    <span class="n">s3a</span><span class="o">.</span><span class="n">about</span><span class="p">(</span><span class="s2">&quot;species0000&quot;</span><span class="p">)</span> \ <span class="c1"># species0000 is a metaid in sbml</span>
-<span class="gp">... </span>        <span class="o">.</span><span class="n">set_predicate_from_uri</span><span class="p">(</span><span class="s2">&quot;http://homegrownpredicate.org&quot;</span><span class="p">)</span> \ <span class="c1">#use a predicate directly from a uri</span>
-<span class="gp">... </span>        <span class="o">.</span><span class="n">resource_blank</span><span class="p">(</span><span class="s2">&quot;This Is A Blank Identifier&quot;</span><span class="p">)</span> <span class="c1"># create a blank resource node</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">editor</span><span class="o">.</span><span class="n">new_singular_annotation</span><span class="p">()</span> <span class="k">as</span> <span class="n">s3b</span><span class="p">:</span>
-<span class="gp">... </span>    <span class="n">s3b</span><span class="o">.</span><span class="n">about</span><span class="p">(</span><span class="s2">&quot;This Is A Blank Identifier&quot;</span><span class="p">)</span>         <span class="o">...</span>         <span class="o">.</span><span class="n">set_predicate_from_uri</span><span class="p">(</span><span class="s2">&quot;foaf&quot;</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">)</span>         <span class="o">...</span>         <span class="o">.</span><span class="n">set_resource_literal</span><span class="p">(</span><span class="s2">&quot;James&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="pyomexmeta.SingularAnnotation.__weakref__">
+<code class="sig-name descname">__weakref__</code><a class="headerlink" href="#pyomexmeta.SingularAnnotation.__weakref__" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of weak references to the object (if defined)</p>
+</dd></dl>
+
 <dl class="py method">
 <dt id="pyomexmeta.SingularAnnotation.about">
 <code class="sig-name descname">about</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">about</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; pyomexmeta.pyomexmeta.SingularAnnotation<a class="headerlink" href="#pyomexmeta.SingularAnnotation.about" title="Permalink to this definition">¶</a></dt>

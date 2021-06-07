@@ -285,11 +285,17 @@ It is likely that these could also be downloaded using a similar strategy, but w
  97
  98
  99
-100</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+100
+101
+102
+103
+104
+105
+106</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">subprocess</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 
-<span class="k">try</span> <span class="p">:</span>
+<span class="k">try</span><span class="p">:</span>
     <span class="kn">from</span> <span class="nn">bioservices</span> <span class="kn">import</span> <span class="n">BioModels</span>
 <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
     <span class="n">subprocess</span><span class="o">.</span><span class="n">check_call</span><span class="p">([</span><span class="n">sys</span><span class="o">.</span><span class="n">executable</span><span class="p">,</span> <span class="s2">&quot;-m&quot;</span><span class="p">,</span> <span class="s2">&quot;pip&quot;</span><span class="p">,</span> <span class="s2">&quot;install&quot;</span><span class="p">,</span> <span class="s2">&quot;bioservices&quot;</span><span class="p">])</span>
@@ -301,6 +307,7 @@ It is likely that these could also be downloaded using a similar strategy, but w
 <span class="n">thisDir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">))</span>
 
 <span class="n">s</span> <span class="o">=</span> <span class="n">BioModels</span><span class="p">()</span>
+
 
 <span class="k">def</span> <span class="nf">get_number_of_curated_models</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Figure out how many curated models there are in biomodels right now&quot;&quot;&quot;</span>
@@ -314,7 +321,7 @@ It is likely that these could also be downloaded using a similar strategy, but w
     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Somethings not quite right&quot;</span><span class="p">)</span>
 
 
-<span class="k">def</span> <span class="nf">download_biomodels</span><span class="p">(</span><span class="n">directory</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">num_per_download</span> <span class="o">=</span> <span class="mi">100</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">download_biomodels</span><span class="p">(</span><span class="n">directory</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">num_per_download</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;downloads sbml models from the curated section of biomodels</span>
 
 <span class="sd">    Biomodels has a strict limit of 100 models per download so in this</span>
@@ -325,7 +332,7 @@ It is likely that these could also be downloaded using a similar strategy, but w
 <span class="sd">    :param num_per_download: How many sbml models to download at a time.</span>
 <span class="sd">    :return:</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="n">num_per_download</span> <span class="o">&gt;</span> <span class="mi">100</span> <span class="p">:</span>
+    <span class="k">if</span> <span class="n">num_per_download</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Maximum number of models that can be downloaded at a time is 100&quot;</span><span class="p">)</span>
 
     <span class="c1"># do index math.</span>
@@ -341,12 +348,12 @@ It is likely that these could also be downloaded using a similar strategy, but w
     <span class="k">for</span> <span class="n">download_number</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">num_downloads</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">download_number</span> <span class="o">==</span> <span class="n">num_downloads</span><span class="p">:</span>
             <span class="c1"># handle last, which may have remainder</span>
-            <span class="n">end</span> <span class="o">=</span> <span class="n">total_models</span> <span class="o">+</span> <span class="mi">1</span> <span class="c1"># account for 0 indexed python, 1 indexed biomodels</span>
+            <span class="n">end</span> <span class="o">=</span> <span class="n">total_models</span> <span class="o">+</span> <span class="mi">1</span>  <span class="c1"># account for 0 indexed python, 1 indexed biomodels</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">end</span> <span class="o">=</span> <span class="p">(</span><span class="n">download_number</span> <span class="o">*</span> <span class="n">num_per_download</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span> <span class="c1"># account for 0 indexed python, 1 indexed biomodels</span>
+            <span class="n">end</span> <span class="o">=</span> <span class="p">(</span><span class="n">download_number</span> <span class="o">*</span> <span class="n">num_per_download</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>  <span class="c1"># account for 0 indexed python, 1 indexed biomodels</span>
         <span class="c1"># do something ...</span>
 
-        <span class="n">fname</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Biomodels</span><span class="si">{</span><span class="n">start</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">end</span><span class="o">-</span><span class="mi">1</span><span class="si">}</span><span class="s2">.zip&quot;</span><span class="p">)</span>
+        <span class="n">fname</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Biomodels</span><span class="si">{</span><span class="n">start</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">end</span> <span class="o">-</span> <span class="mi">1</span><span class="si">}</span><span class="s2">.zip&quot;</span><span class="p">)</span>
         <span class="n">filenames</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">fname</span><span class="p">):</span>
@@ -355,7 +362,7 @@ It is likely that these could also be downloaded using a similar strategy, but w
         <span class="n">biomodels_ids</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;BIOMD</span><span class="si">{</span><span class="n">i</span><span class="si">:</span><span class="s2">010</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">)]</span>
 
         <span class="n">s</span><span class="o">.</span><span class="n">search_download</span><span class="p">(</span><span class="n">biomodels_ids</span><span class="p">,</span> <span class="n">output_filename</span><span class="o">=</span><span class="n">fname</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Biomodels models from id </span><span class="si">{</span><span class="n">start</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">end</span><span class="o">-</span><span class="mi">1</span><span class="si">}</span><span class="s2"> saved to </span><span class="si">{</span><span class="n">fname</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Biomodels models from id </span><span class="si">{</span><span class="n">start</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">end</span> <span class="o">-</span> <span class="mi">1</span><span class="si">}</span><span class="s2"> saved to </span><span class="si">{</span><span class="n">fname</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
         <span class="n">start</span> <span class="o">=</span> <span class="n">end</span>
 
@@ -381,10 +388,15 @@ It is likely that these could also be downloaded using a similar strategy, but w
     <span class="k">return</span> <span class="n">filenames</span>
 
 
-
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
 
-    <span class="n">download_biomodels</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)))</span>
+    <span class="c1"># set to true to actually do the download</span>
+    <span class="n">ACTIVATE_DOWNLOAD</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="c1"># we do this so that we do not need to download biomodels</span>
+    <span class="c1"># every time the documentation is built.</span>
+    <span class="k">if</span> <span class="n">ACTIVATE_DOWNLOAD</span><span class="p">:</span>
+        <span class="n">download_biomodels</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)))</span>
 </pre></div>
 </td></tr></table></div>
 </div>
