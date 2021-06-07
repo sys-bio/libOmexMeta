@@ -106,7 +106,7 @@ if (${BUILD_DOCS_EXAMPLES})
     # Composite annotation examples
     add_doc_example(SBMLCreatePhysicalEntityC source/composite_annotations/sbml_create_physical_entity_c.cpp)
     add_doc_example(CellMLCreatePhysicalEntityC source/composite_annotations/cellml_create_physical_entity_c.cpp)
-    add_doc_example(SBMLCreatePhysicalEntityCpp source/composite_annotations/sbml_create_physical_entity_cpp.cpp)
+    add_doc_example(SBMLCreatePhysicalEntityCpp2 source/composite_annotations/sbml_create_physical_entity_cpp.cpp)
     add_doc_example(CellMLCreatePhysicalEntityCpp source/composite_annotations/cellml_create_physical_entity_cpp.cpp)
     add_doc_example(SBMLCreatePhysicalProcessC source/composite_annotations/sbml_create_physical_process_c.cpp)
     add_doc_example(CellMLCreatePhysicalProcessC source/composite_annotations/cellml_create_physical_process_c.cpp)
@@ -129,6 +129,10 @@ if (${BUILD_DOCS_EXAMPLES})
 
     add_doc_example(AnnotatingABiologicalComplexCpp source/annotating_models/annotating_a_biological_complex_cpp.cpp)
     add_doc_example(AnnotatingABiologicalComplexC source/annotating_models/annotating_a_biological_complex_c.cpp)
+
+    # strip annotations from sbml
+    add_doc_example(StrippingAnnotationsC source/stripping_annotations/stripping_anotations_c.cpp)
+    add_doc_example(StrippingAnnotationsCpp source/stripping_annotations/stripping_anotations_cpp.cpp)
 
     add_custom_target(AllDocExamples
             DEPENDS ${EXAMPLE_EXECUTABLES_TARGETS}

@@ -10,7 +10,7 @@
 #include "omexmeta/Error.h"
 #include "omexmeta/MarkupIdentifier.h"
 #include "omexmeta/OmexMetaUtils.h"
-#include "omexmeta/OmexMetaXmlAssistant.h"
+#include "omexmeta/OmexMetaXml.h"
 #include "omexmeta/Participant.h"
 #include "omexmeta/PersonalInformation.h"
 #include "omexmeta/PhysicalEntity.h"
@@ -69,7 +69,6 @@ namespace omexmeta {
         ~Editor() = default;
 
         [[nodiscard]] int size() const;
-
 
         /**
          * @brief returns a hashmap of namespaces to prefixes.
@@ -380,6 +379,23 @@ namespace omexmeta {
          */
         UriHandler &getUriHandler() const;
 
+        /**
+         * @brief remove all <annotation> elements from the xml
+         * associated with this Editor instance.
+         *
+         * @param annotationElementName the name of the element that contains the annotations.
+         * The default is "annotation" since sbml embedded annotations are all contained within
+         * an <annotation> element. Other languages
+         *
+         * @details returns a copy of xml without any annotations (i.e. CellML) may not
+         * follow this convention and have the option of changing check element contains
+         * the annotations. Users should be warned that no verification is in place
+         * to prevent you from stripping away arbitrary elements with this method - all elements
+         * named @param annotationElementName will be removed from this xml document, regardless
+         * of content.
+         */
+        std::string stripAnnotations(const std::string& annotationElementName = "annotation");
+
     private:
         std::string xml_;
         std::vector<std::string> metaids_;
@@ -390,8 +406,8 @@ namespace omexmeta {
         bool sbml_semantic_extraction_;
         std::string metaid_base_ = "#OmexMetaId";
         OmexMetaXmlType type_;
+        OmexMetaXmlPtr omexMetaXmlPtr_;
 
-    private:
         UriHandler &uriHandler_;
 
         void extractNamespacesFromTriplesVector(PropertyBearer *pp);

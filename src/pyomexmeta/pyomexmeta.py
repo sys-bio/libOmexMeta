@@ -1275,6 +1275,9 @@ class Editor:
         propagate_omexmeta_error(self._obj)
         return self
 
+    def strip_annotations(self, annotationElementName:str = "annotation") -> str:
+        return _pyom.get_and_free_c_str(_pyom.editor_strip_annotations(self._obj, annotationElementName.encode()))
+
 
 class SingularAnnotation:
     """Interface for handling single annotations or Triples (or rdf statements).

@@ -9,8 +9,6 @@ class \mbox{\hyperlink{classomexmeta_1_1BiomodelsBiologyQualifier}{Biomodels\+Bi
 \item 
 class \mbox{\hyperlink{classomexmeta_1_1BiomodelsModelQualifier}{Biomodels\+Model\+Qualifier}}
 \item 
-class \mbox{\hyperlink{classomexmeta_1_1CellMLAssistant}{Cell\+M\+L\+Assistant}}
-\item 
 class \mbox{\hyperlink{classomexmeta_1_1CurlGet}{Curl\+Get}}
 \begin{DoxyCompactList}\small\item\em Use libcurl to download from url. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classomexmeta_1_1DCTerm}{D\+C\+Term}}
@@ -41,9 +39,13 @@ class \mbox{\hyperlink{classomexmeta_1_1NotImplementedException}{Not\+Implemente
 \item 
 class \mbox{\hyperlink{classomexmeta_1_1NullPointerException}{Null\+Pointer\+Exception}}
 \item 
+class \mbox{\hyperlink{classomexmeta_1_1OmexMetaCellML}{Omex\+Meta\+Cell\+ML}}
+\item 
+class \mbox{\hyperlink{classomexmeta_1_1OmexMetaSBML}{Omex\+Meta\+S\+B\+ML}}
+\item 
 class \mbox{\hyperlink{classomexmeta_1_1OmexMetaUtils}{Omex\+Meta\+Utils}}
 \item 
-class \mbox{\hyperlink{classomexmeta_1_1OmexMetaXmlAssistant}{Omex\+Meta\+Xml\+Assistant}}
+class \mbox{\hyperlink{classomexmeta_1_1OmexMetaXml}{Omex\+Meta\+Xml}}
 \begin{DoxyCompactList}\small\item\em Construct for handling xml. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classomexmeta_1_1OmexMetaXmlAssistantFactory}{Omex\+Meta\+Xml\+Assistant\+Factory}}
 \item 
@@ -67,8 +69,6 @@ class \mbox{\hyperlink{classomexmeta_1_1Query}{Query}}
 \item 
 class \mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}}
 \item 
-class \mbox{\hyperlink{classomexmeta_1_1SBMLAssistant}{S\+B\+M\+L\+Assistant}}
-\item 
 class \mbox{\hyperlink{classomexmeta_1_1SBMLSemanticExtraction}{S\+B\+M\+L\+Semantic\+Extraction}}
 \item 
 class \mbox{\hyperlink{classomexmeta_1_1SemSim}{Sem\+Sim}}
@@ -90,8 +90,8 @@ class \mbox{\hyperlink{classomexmeta_1_1VCardTranslator}{V\+Card\+Translator}}
 \doxysubsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_a602c5d1094d065496b79af07e9a3b28a}\label{namespaceomexmeta_a602c5d1094d065496b79af07e9a3b28a}} 
-typedef std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classomexmeta_1_1OmexMetaXmlAssistant}{Omex\+Meta\+Xml\+Assistant}} $>$ {\bfseries Xml\+Assistant\+Ptr}
+\mbox{\Hypertarget{namespaceomexmeta_afa49c461d4bbb021107b742e3a5d6687}\label{namespaceomexmeta_afa49c461d4bbb021107b742e3a5d6687}} 
+typedef std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classomexmeta_1_1OmexMetaXml}{Omex\+Meta\+Xml}} $>$ {\bfseries Omex\+Meta\+Xml\+Ptr}
 \item 
 \mbox{\Hypertarget{namespaceomexmeta_a90b8619f565d06ee3a8fa4d1cfda893c}\label{namespaceomexmeta_a90b8619f565d06ee3a8fa4d1cfda893c}} 
 typedef std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classomexmeta_1_1Participant}{Participant}} $>$ {\bfseries Participant\+Ptr}
@@ -323,6 +323,9 @@ char $\ast$ {\bfseries Editor\+\_\+get\+Model\+Uri} (\mbox{\hyperlink{classomexm
 \item 
 \mbox{\Hypertarget{namespaceomexmeta_a8ee43bb384d91cdd2f9709bbbcb40e45}\label{namespaceomexmeta_a8ee43bb384d91cdd2f9709bbbcb40e45}} 
 char $\ast$ {\bfseries Editor\+\_\+get\+Repository\+Uri} (\mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} $\ast$editor\+\_\+ptr)
+\item 
+\mbox{\Hypertarget{namespaceomexmeta_a0e81fbc188ac82167accc86c9a28d421}\label{namespaceomexmeta_a0e81fbc188ac82167accc86c9a28d421}} 
+char $\ast$ {\bfseries Editor\+\_\+strip\+Annotations} (\mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} $\ast$editor\+\_\+ptr, const char $\ast$annotation\+Element\+Name)
 \item 
 \mbox{\Hypertarget{namespaceomexmeta_a8d5c2ca0fc85c34655773735b68db9af}\label{namespaceomexmeta_a8d5c2ca0fc85c34655773735b68db9af}} 
 \mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} $\ast$ {\bfseries Editor\+\_\+add\+Creator} (\mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} $\ast$editor\+\_\+ptr, const char $\ast$orcid\+\_\+id)
@@ -557,6 +560,9 @@ char $\ast$ {\bfseries Personal\+Information\+\_\+get\+Metaid} (\mbox{\hyperlink
 \item 
 \mbox{\Hypertarget{namespaceomexmeta_a2636ff0b1d5f71c616f93a9f0caab74e}\label{namespaceomexmeta_a2636ff0b1d5f71c616f93a9f0caab74e}} 
 int {\bfseries Personal\+Information\+\_\+set\+Metaid} (\mbox{\hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information}} $\ast$information, const char $\ast$metaid)
+\item 
+\mbox{\Hypertarget{namespaceomexmeta_a17e4b403c1f6627264259b7d300f5cb1}\label{namespaceomexmeta_a17e4b403c1f6627264259b7d300f5cb1}} 
+void {\bfseries remove\+Element\+Recursion} (xml\+Node\+Ptr a\+\_\+node, const std\+::string \&element\+Name)
 \item 
 Predicate\+Ptr \mbox{\hyperlink{namespaceomexmeta_a0a8d50daa10e421d0722520cdef0ab9a}{Predicate\+Factory}} (std\+::string namespace\+\_\+, const std\+::string \&term)
 \item 

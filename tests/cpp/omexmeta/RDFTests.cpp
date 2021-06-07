@@ -294,6 +294,13 @@ TEST_F(RDFTests, TestLocalPrefix) {
     ASSERT_TRUE(OmexMetaUtils::isSubString(turtle_string, arg));
 }
 
+TEST_F(RDFTests, f) {
+    RDF rdf;
+    Editor editor = rdf.toEditor(SBMLFactory::getSBML(SBML_BIOMD626));
+    std::cout << editor.getXml() << std::endl;
+}
+
+
 TEST_F(RDFTests, TestSerializeCellMlAnnotationNoTrailingHashes) {
     std::string cellml = "<model xmlns=\"http://www.cellml.org/cellml/1.1#\" xmlns:cmeta=\"http://www.cellml.org/metadata/1.0#\"\n"
                          "      name=\"annotation_examples\" cmeta:id=\"annExamples\">\n"

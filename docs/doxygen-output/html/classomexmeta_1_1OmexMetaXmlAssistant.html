@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.20"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>libomexmeta: omexmeta::OmexMetaXmlAssistant Class Reference</title>
+<title>libomexmeta: omexmeta::OmexMetaXml Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -63,7 +63,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="namespaceomexmeta.html">omexmeta</a></li><li class="navelem"><a class="el" href="classomexmeta_1_1OmexMetaXmlAssistant.html">OmexMetaXmlAssistant</a></li>  </ul>
+<li class="navelem"><a class="el" href="namespaceomexmeta.html">omexmeta</a></li><li class="navelem"><a class="el" href="classomexmeta_1_1OmexMetaXmlAssistant.html">OmexMetaXml</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -71,22 +71,22 @@ $(function() {
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="classomexmeta_1_1OmexMetaXmlAssistant-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">omexmeta::OmexMetaXmlAssistant Class Reference</div>  </div>
+<div class="title">omexmeta::OmexMetaXml Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
 <p>Construct for handling xml.  
  <a href="classomexmeta_1_1OmexMetaXmlAssistant.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="OmexMetaXmlAssistant_8h_source.html">OmexMetaXmlAssistant.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="OmexMetaXmlAssistant_8h_source.html">OmexMetaXml.h</a>&gt;</code></p>
 <div class="dynheader">
-Inheritance diagram for omexmeta::OmexMetaXmlAssistant:</div>
+Inheritance diagram for omexmeta::OmexMetaXml:</div>
 <div class="dyncontent">
  <div class="center">
   <img src="classomexmeta_1_1OmexMetaXmlAssistant.png" usemap="#omexmeta::OmexMetaXmlAssistant_map" alt=""/>
   <map id="omexmeta::OmexMetaXmlAssistant_map" name="omexmeta::OmexMetaXmlAssistant_map">
-<area href="classomexmeta_1_1CellMLAssistant.html" alt="omexmeta::CellMLAssistant" shape="rect" coords="0,56,204,80"/>
-<area href="classomexmeta_1_1SBMLAssistant.html" alt="omexmeta::SBMLAssistant" shape="rect" coords="214,56,418,80"/>
+<area href="classomexmeta_1_1CellMLAssistant.html" alt="omexmeta::OmexMetaCellML" shape="rect" coords="0,56,204,80"/>
+<area href="classomexmeta_1_1SBMLAssistant.html" alt="omexmeta::OmexMetaSBML" shape="rect" coords="214,56,418,80"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -102,7 +102,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>getMetaidNumDigits</b>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>generateNewMetaids</b> () const</td></tr>
 <tr class="separator:a9ff89057f4fe7e8cb2e25f5431bf2bb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af619a65dd28d04dfabd1930ff4110ce0"><td class="memItemLeft" align="right" valign="top"><a id="af619a65dd28d04dfabd1930ff4110ce0"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>OmexMetaXmlAssistant</b> (std::string xml, std::string metaid_base=&quot;MetaID&quot;, int metaid_num_digits=4, bool generate_new_metaids=false)</td></tr>
+&#160;</td><td class="memItemRight" valign="bottom"><b>OmexMetaXml</b> (std::string xml, std::string metaid_base=&quot;MetaID&quot;, int metaid_num_digits=4, bool generate_new_metaids=false)</td></tr>
 <tr class="separator:af619a65dd28d04dfabd1930ff4110ce0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeef7e70a554aaf70fb694297e37e7cc8"><td class="memItemLeft" align="right" valign="top"><a id="aeef7e70a554aaf70fb694297e37e7cc8"></a>
 std::pair&lt; std::string, std::vector&lt; std::string &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>addMetaIds</b> ()</td></tr>
@@ -128,7 +128,7 @@ virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><b>metaId
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const std::string &amp; omexmeta::OmexMetaXmlAssistant::getMetaidBase </td>
+          <td class="memname">const std::string &amp; omexmeta::OmexMetaXml::getMetaidBase </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -137,13 +137,13 @@ virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><b>metaId
 </div><div class="memdoc">
 
 <p>get the base for the metaid used by the current xml type. <a class="el" href="classThis.html" title="interface for querying an rdf graph basically a wrapper around both librdf_query and librdf_query_res...">This</a> base is used as a precursor string for generating new metaids if requested by the user by setting generate_new_metaids=true. </p>
-<p>the base is given as argument to the <a class="el" href="classomexmeta_1_1OmexMetaXmlAssistant.html" title="Construct for handling xml.">OmexMetaXmlAssistant</a> on instantiation. If base is "metaid" then ids generated will be metaid_0000 </p>
+<p>the base is given as argument to the <a class="el" href="classomexmeta_1_1OmexMetaXmlAssistant.html" title="Construct for handling xml.">OmexMetaXml</a> on instantiation. If base is "metaid" then ids generated will be metaid_0000 </p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>src/omexmeta/include/omexmeta/<a class="el" href="OmexMetaXmlAssistant_8h_source.html">OmexMetaXmlAssistant.h</a></li>
-<li>src/omexmeta/OmexMetaXmlAssistant.cpp</li>
+<li>src/omexmeta/include/omexmeta/<a class="el" href="OmexMetaXmlAssistant_8h_source.html">OmexMetaXml.h</a></li>
+<li>src/omexmeta/OmexMetaXml.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

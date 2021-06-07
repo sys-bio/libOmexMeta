@@ -133,7 +133,9 @@ std\+::string \mbox{\hyperlink{classomexmeta_1_1Editor_a2264cbd2efae17d1d72c3f40
 \begin{DoxyCompactList}\small\item\em instantiate a pointer to a new \mbox{\hyperlink{classomexmeta_1_1PhysicalProperty}{Physical\+Property}} instance and return \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classomexmeta_1_1Editor_a0c3c16e06d9ecbbf9958bb2feb85b56a}\label{classomexmeta_1_1Editor_a0c3c16e06d9ecbbf9958bb2feb85b56a}} 
 \mbox{\hyperlink{classomexmeta_1_1UriHandler}{Uri\+Handler}} \& \mbox{\hyperlink{classomexmeta_1_1Editor_a0c3c16e06d9ecbbf9958bb2feb85b56a}{get\+Uri\+Handler}} () const
-\begin{DoxyCompactList}\small\item\em get a reference to the current \mbox{\hyperlink{classomexmeta_1_1UriHandler}{Uri\+Handler}} \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em get a reference to the current \mbox{\hyperlink{classomexmeta_1_1UriHandler}{Uri\+Handler}} \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classomexmeta_1_1Editor_a6f201bae38c324800d0d55e778cb6135}{strip\+Annotations}} (const std\+::string \&annotation\+Element\+Name=\char`\"{}annotation\char`\"{})
+\begin{DoxyCompactList}\small\item\em remove all $<$annotation$>$ elements from the xml associated with this \mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} instance. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -681,6 +683,26 @@ setter for the current xml type identification variable.
 \begin{DoxyReturn}{Returns}
 void  \mbox{\hyperlink{classThis}{This}} should be set automatically in the \mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} constructor 
 \end{DoxyReturn}
+\mbox{\Hypertarget{classomexmeta_1_1Editor_a6f201bae38c324800d0d55e778cb6135}\label{classomexmeta_1_1Editor_a6f201bae38c324800d0d55e778cb6135}} 
+\index{omexmeta::Editor@{omexmeta::Editor}!stripAnnotations@{stripAnnotations}}
+\index{stripAnnotations@{stripAnnotations}!omexmeta::Editor@{omexmeta::Editor}}
+\doxysubsubsection{\texorpdfstring{stripAnnotations()}{stripAnnotations()}}
+{\footnotesize\ttfamily std\+::string omexmeta\+::\+Editor\+::strip\+Annotations (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{annotation\+Element\+Name = {\ttfamily \char`\"{}annotation\char`\"{}} }\end{DoxyParamCaption})}
+
+
+
+remove all $<$annotation$>$ elements from the xml associated with this \mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} instance. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em annotation\+Element\+Name} & the name of the element that contains the annotations. The default is \char`\"{}annotation\char`\"{} since sbml embedded annotations are all contained within an $<$annotation$>$ element. Other languages\\
+\hline
+\end{DoxyParams}
+returns a copy of xml without any annotations (i.\+e. Cell\+ML) may not follow this convention and have the option of changing check element contains the annotations. Users should be warned that no verification is in place to prevent you from stripping away arbitrary elements with this method -\/ all elements named
+\begin{DoxyParams}{Parameters}
+{\em annotation\+Element\+Name} & will be removed from this xml document, regardless of content. \\
+\hline
+\end{DoxyParams}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

@@ -393,6 +393,9 @@ class PyOmexMetaAPI:
     # Editor* Editor_addCreator(Editor *editor_ptr, std::string orcid_id);
     editor_add_creator = utils.load_func("Editor_addCreator", [ct.c_int64, ct.c_char_p], ct.c_int64)
 
+    # char *Editor_stripAnnotations(Editor *editor_ptr, const char* annotationElementName)
+    editor_strip_annotations = utils.load_func("Editor_stripAnnotations", [ct.c_int64, ct.c_char_p], ct.c_int64)
+
     # Editor* Editor_addCurator(Editor *editor_ptr, std::string orcid_id);
     editor_add_curator = utils.load_func("Editor_addCurator", [ct.c_int64, ct.c_char_p], ct.c_int64)
 

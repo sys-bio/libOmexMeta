@@ -383,6 +383,77 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
         self.assertEqual(expected, actual)
         self.pyom.editor_delete(editor_ptr)
 
+    def test_editor_strip_annotations(self):
+        editor_ptr = self.pyom.rdf_to_editor(self.rdf, TestStrings.sbml_with_annotations.encode(), True, False)
+        actual = self.pyom.get_and_free_c_str(
+            self.pyom.editor_strip_annotations(editor_ptr, "annotation".encode())
+        )
+        expected = """<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level3/version1/core" level="3" version="1">
+    <model metaid="ToyModel" id="ToyModel">
+        <listOfCompartments>
+            <compartment id="cytosol" metaid="comp1" spatialDimensions="3" size="1" constant="true"/>
+            <compartment id="extraCell" metaid="comp2" spatialDimensions="3" size="10" constant="true"/>
+        </listOfCompartments>
+        <listOfSpecies>
+            <species id="A" metaid="sp_1" compartment="cytosol" initialConcentration="10" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+                
+            </species>
+            <species id="B" metaid="sp_2" compartment="cytosol" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+            <species id="Ca" metaid="sp_3" compartment="cytosol" initialConcentration="2" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+            <species id="PlasmaCa" metaid="sp_4" compartment="extraCell" initialConcentration="3" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+            <species id="Enzyme" metaid="sp_5" compartment="cytosol" initialConcentration="2" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+        </listOfSpecies>
+        <listOfParameters>
+            <parameter id="k1" value="0.1" constant="true"/>
+            <parameter id="k2" value="0.1" constant="true"/>
+        </listOfParameters>
+        <listOfReactions>
+            <reaction id="r1" metaid="react1" reversible="false" fast="false">
+                <listOfReactants>
+                    <speciesReference species="B" stoichiometry="1" constant="true"/>
+                </listOfReactants>
+                <listOfProducts>
+                    <speciesReference species="A" stoichiometry="2" constant="true"/>
+                </listOfProducts>
+                <kineticLaw>
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <apply>
+                            <times/>
+                            <ci>k2</ci>
+                            <ci>B</ci>
+                        </apply>
+                    </math>
+                </kineticLaw>
+            </reaction>
+            <reaction id="r2" metaid="react2" reversible="false" fast="false">
+                <listOfReactants>
+                    <speciesReference species="Ca" stoichiometry="1" constant="true"/>
+                    <speciesReference species="A" stoichiometry="1" constant="true"/>
+                </listOfReactants>
+                <listOfProducts>
+                    <speciesReference species="PlasmaCa" stoichiometry="1" constant="true"/>
+                </listOfProducts>
+                <listOfModifiers>
+                    <modifierSpeciesReference species="Enzyme"/>
+                </listOfModifiers>
+                <kineticLaw>
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <apply>
+                            <times/>
+                            <ci>k2</ci>
+                            <ci>Ca</ci>
+                        </apply>
+                    </math>
+                </kineticLaw>
+            </reaction>
+        </listOfReactions>
+    </model>
+</sbml>
+"""
+        self.assertEqual(expected, actual)
+        self.pyom.editor_delete(editor_ptr)
+
     def test_editor_add_creator(self):
         editor_ptr = self.pyom.rdf_to_editor(self.rdf, TestStrings.xml.encode(), True, False)
         self.pyom.editor_add_creator(editor_ptr, "1234-1234-1234-1234".encode())

@@ -598,6 +598,18 @@ namespace omexmeta {
         }
     }
 
+    char *Editor_stripAnnotations(Editor *editor_ptr, const char* annotationElementName) {
+        try {
+            std::string str = editor_ptr->stripAnnotations(annotationElementName);
+            char *cstr = (char *) malloc((str.size() + 1) * sizeof(char *));
+            strcpy(cstr, str.c_str());
+            return cstr;
+        } catch (std::exception &error) {
+            setLastError(error.what());
+            return nullptr;
+        }
+    }
+
     Editor *Editor_addCreator(Editor *editor_ptr, const char *orcid_id) {
         try {
             editor_ptr->addCreator(orcid_id);
@@ -667,7 +679,6 @@ namespace omexmeta {
             return nullptr;
         }
     }
-
 
     int SingularAnnotation_delete(SingularAnnotation *singularAnnotation) {
         try {

@@ -1,0 +1,125 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+  <compounddef id="classomexmeta_1_1OmexMetaSBML" kind="class" language="C++" prot="public">
+    <compoundname>omexmeta::OmexMetaSBML</compoundname>
+    <basecompoundref refid="classomexmeta_1_1OmexMetaXml" prot="public" virt="non-virtual">omexmeta::OmexMetaXml</basecompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classomexmeta_1_1OmexMetaSBML_1a3cb2cf767bbdb821e37f322f9d0ef976" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>std::vector&lt; std::string &gt;</type>
+        <definition>std::vector&lt; std::string &gt; omexmeta::OmexMetaSBML::getValidElements</definition>
+        <argsstring>() const override</argsstring>
+        <name>getValidElements</name>
+        <reimplements refid="classomexmeta_1_1OmexMetaXml_1a53ca1d90f339c6e2492a93aa9d139300">getValidElements</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/OmexMetaXml.h" line="93" column="22" bodyfile="src/omexmeta/OmexMetaXml.cpp" bodystart="233" bodyend="244"/>
+      </memberdef>
+      <memberdef kind="function" id="classomexmeta_1_1OmexMetaSBML_1a24dd24d2e28a152aeee93d155d0ff44c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>std::string</type>
+        <definition>std::string omexmeta::OmexMetaSBML::metaIdTagName</definition>
+        <argsstring>() const override</argsstring>
+        <name>metaIdTagName</name>
+        <reimplements refid="classomexmeta_1_1OmexMetaXml_1aa3f4b687b01be45593a72a84b528e0b7">metaIdTagName</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/OmexMetaXml.h" line="97" column="22" bodyfile="src/omexmeta/OmexMetaXml.cpp" bodystart="246" bodyend="248"/>
+      </memberdef>
+      <memberdef kind="function" id="classomexmeta_1_1OmexMetaSBML_1a78e71a49421e5069c52594c44e5965c5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>std::string</type>
+        <definition>std::string omexmeta::OmexMetaSBML::metaIdNamespace</definition>
+        <argsstring>() const override</argsstring>
+        <name>metaIdNamespace</name>
+        <reimplements refid="classomexmeta_1_1OmexMetaXml_1aa2570f9e9020aab9f2ecf3637d500d95">metaIdNamespace</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/OmexMetaXml.h" line="99" column="22" bodyfile="src/omexmeta/OmexMetaXml.cpp" bodystart="250" bodyend="252"/>
+      </memberdef>
+      <memberdef kind="function" id="classomexmeta_1_1OmexMetaSBML_1af04658b1edf47aa401b5dcba9b6f44bd" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>omexmeta::OmexMetaXml::OmexMetaXml</definition>
+        <argsstring>(std::string xml, std::string metaid_base=&quot;MetaID&quot;, int metaid_num_digits=4, bool generate_new_metaids=false)</argsstring>
+        <name>OmexMetaXml</name>
+        <param>
+          <type>std::string</type>
+          <declname>xml</declname>
+        </param>
+        <param>
+          <type>std::string</type>
+          <declname>metaid_base</declname>
+          <defval>&quot;MetaID&quot;</defval>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>metaid_num_digits</declname>
+          <defval>4</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>generate_new_metaids</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/OmexMetaXml.h" line="95" column="9" bodyfile="src/omexmeta/OmexMetaXml.cpp" bodystart="10" bodyend="16"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>omexmeta::OmexMetaSBML</label>
+        <link refid="classomexmeta_1_1OmexMetaSBML"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>omexmeta::OmexMetaXml</label>
+        <link refid="classomexmeta_1_1OmexMetaXml"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>omexmeta::OmexMetaSBML</label>
+        <link refid="classomexmeta_1_1OmexMetaSBML"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>omexmeta::OmexMetaXml</label>
+        <link refid="classomexmeta_1_1OmexMetaXml"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/omexmeta/include/omexmeta/OmexMetaXml.h" line="90" column="5" bodyfile="src/omexmeta/include/omexmeta/OmexMetaXml.h" bodystart="90" bodyend="100"/>
+    <listofallmembers>
+      <member refid="classomexmeta_1_1OmexMetaXml_1ad9d10f9320a4d8c0764c86ba967de43f" prot="public" virt="non-virtual"><scope>omexmeta::OmexMetaSBML</scope><name>addMetaIds</name></member>
+      <member refid="classomexmeta_1_1OmexMetaXml_1a82ac21ac48b494d028cb9b40f673cf83" prot="public" virt="non-virtual"><scope>omexmeta::OmexMetaSBML</scope><name>generateNewMetaids</name></member>
+      <member refid="classomexmeta_1_1OmexMetaXml_1a0971092abfca49f1510a83540047d2d0" prot="public" virt="non-virtual"><scope>omexmeta::OmexMetaSBML</scope><name>getMetaidBase</name></member>
+      <member refid="classomexmeta_1_1OmexMetaXml_1a443985100a5a783588c4b5721800ba0e" prot="public" virt="non-virtual"><scope>omexmeta::OmexMetaSBML</scope><name>getMetaidNumDigits</name></member>
+      <member refid="classomexmeta_1_1OmexMetaSBML_1a3cb2cf767bbdb821e37f322f9d0ef976" prot="public" virt="virtual"><scope>omexmeta::OmexMetaSBML</scope><name>getValidElements</name></member>
+      <member refid="classomexmeta_1_1OmexMetaSBML_1a78e71a49421e5069c52594c44e5965c5" prot="public" virt="virtual"><scope>omexmeta::OmexMetaSBML</scope><name>metaIdNamespace</name></member>
+      <member refid="classomexmeta_1_1OmexMetaSBML_1a24dd24d2e28a152aeee93d155d0ff44c" prot="public" virt="virtual"><scope>omexmeta::OmexMetaSBML</scope><name>metaIdTagName</name></member>
+      <member refid="classomexmeta_1_1OmexMetaSBML_1af04658b1edf47aa401b5dcba9b6f44bd" prot="public" virt="non-virtual"><scope>omexmeta::OmexMetaSBML</scope><name>OmexMetaXml</name></member>
+      <member refid="classomexmeta_1_1OmexMetaXml_1af04658b1edf47aa401b5dcba9b6f44bd" prot="public" virt="non-virtual" ambiguityscope="omexmeta::OmexMetaXml::"><scope>omexmeta::OmexMetaSBML</scope><name>OmexMetaXml</name></member>
+      <member refid="classomexmeta_1_1OmexMetaXml_1ae5ec502a76aa8b133de07f7b98926c6d" prot="public" virt="non-virtual"><scope>omexmeta::OmexMetaSBML</scope><name>removeElement</name></member>
+      <member refid="classomexmeta_1_1OmexMetaXml_1aaa0e43035473faa50350e1b5d703e445" prot="public" virt="non-virtual"><scope>omexmeta::OmexMetaSBML</scope><name>toString</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

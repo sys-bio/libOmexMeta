@@ -40,9 +40,9 @@ namespace omexmeta {
                     " be either SBML or CellML. ");
         }
         assert(getType() != OMEXMETA_TYPE_NOTSET);// this should never happen
-        XmlAssistantPtr xmlAssistantPtr = OmexMetaXmlAssistantFactory::generate(
+        omexMetaXmlPtr_ = OmexMetaXmlAssistantFactory::generate(
                 xml_, getType(), generate_new_metaids, "OmexMetaId", 4);
-        std::pair<std::string, std::vector<std::string>> xml_and_metaids = xmlAssistantPtr->addMetaIds();
+        std::pair<std::string, std::vector<std::string>> xml_and_metaids = omexMetaXmlPtr_->addMetaIds();
         xml_ = xml_and_metaids.first;
         metaids_ = xml_and_metaids.second;
         if (getType() == OMEXMETA_TYPE_SBML && sbml_semantic_extraction) {
@@ -451,6 +451,10 @@ namespace omexmeta {
     void Editor::setType(OmexMetaXmlType type) { type_ = type; }
     UriHandler &Editor::getUriHandler() const {
         return uriHandler_;
+    }
+
+    std::string Editor::stripAnnotations(const std::string& annotationElementName) {
+        return omexMetaXmlPtr_->removeElement(annotationElementName);
     }
 
 

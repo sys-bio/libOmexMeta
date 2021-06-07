@@ -536,7 +536,7 @@
         </childnode>
       </node>
       <node id="27">
-        <label>src/omexmeta/include/omexmeta/OmexMetaXmlAssistant.h</label>
+        <label>src/omexmeta/include/omexmeta/OmexMetaXml.h</label>
         <link refid="OmexMetaXmlAssistant_8h_source"/>
         <childnode refid="3" relation="include">
         </childnode>

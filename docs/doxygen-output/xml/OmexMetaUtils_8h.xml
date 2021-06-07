@@ -22,7 +22,7 @@
     <includedby refid="EnergyDiff_8h" local="yes">src/omexmeta/include/omexmeta/EnergyDiff.h</includedby>
     <includedby refid="MarkupIdentifier_8h" local="yes">src/omexmeta/include/omexmeta/MarkupIdentifier.h</includedby>
     <includedby refid="OmexMetaCApi_8h" local="yes">src/omexmeta/include/omexmeta/OmexMetaCApi.h</includedby>
-    <includedby refid="OmexMetaXmlAssistant_8h" local="yes">src/omexmeta/include/omexmeta/OmexMetaXmlAssistant.h</includedby>
+    <includedby refid="OmexMetaXml_8h" local="yes">src/omexmeta/include/omexmeta/OmexMetaXml.h</includedby>
     <includedby refid="PhysicalEntity_8h" local="yes">src/omexmeta/include/omexmeta/PhysicalEntity.h</includedby>
     <includedby refid="PhysicalProcess_8h" local="yes">src/omexmeta/include/omexmeta/PhysicalProcess.h</includedby>
     <includedby refid="Predicate_8h" local="yes">src/omexmeta/include/omexmeta/Predicate.h</includedby>
@@ -568,6 +568,14 @@
         <childnode refid="19" relation="include">
         </childnode>
       </node>
+      <node id="12">
+        <label>src/omexmeta/include/omexmeta/OmexMetaXml.h</label>
+        <link refid="OmexMetaXml_8h_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
       <node id="15">
         <label>src/omexmeta/include/omexmeta/Predicate.h</label>
         <link refid="Predicate_8h_source"/>
@@ -700,14 +708,6 @@
         <childnode refid="10" relation="include">
         </childnode>
         <childnode refid="14" relation="include">
-        </childnode>
-      </node>
-      <node id="12">
-        <label>src/omexmeta/include/omexmeta/OmexMetaXmlAssistant.h</label>
-        <link refid="OmexMetaXmlAssistant_8h_source"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
         </childnode>
       </node>
       <node id="1">

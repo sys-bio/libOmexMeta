@@ -2,8 +2,8 @@
 // Created by Ciaran on 4/14/2020.
 //
 
-#ifndef LIBOMEXMETA_OMEXMETAXMLASSISTANT_H
-#define LIBOMEXMETA_OMEXMETAXMLASSISTANT_H
+#ifndef LIBOMEXMETA_OMEXMETAXML_H
+#define LIBOMEXMETA_OMEXMETAXML_H
 
 
 #include <libxml/parser.h>
@@ -28,11 +28,20 @@ namespace omexmeta {
      * SBML, CellML or other and then the functions performed by this
      * class would just be methods of the xml.
      */
-    class OmexMetaXmlAssistant {
+    class OmexMetaXml {
         std::string xml_;
         std::string metaid_base_;
         int metaid_num_digits_;
         bool generate_new_metaids_;
+
+        xmlDocPtr doc; /* the resulting document tree */
+
+        /**
+         * Parse xml into libxml2. If @param xml provided,
+         * use this xml, otherwise use private member variable xml_
+         *
+         */
+        xmlDocPtr parseDoc(const std::string& xml = std::string());
 
         void addMetaIdsRecursion(xmlDocPtr doc, xmlNode *a_node, std::vector<std::string> &seen_metaids);
 
@@ -41,7 +50,6 @@ namespace omexmeta {
                 const MetaID &metaid_gen, std::string &id);
 
     public:
-
         /**
          * @brief get the base for the metaid used by the current xml type.
          * This base is used as a precursor string for generating new metaids
@@ -55,7 +63,7 @@ namespace omexmeta {
 
         [[nodiscard]] bool generateNewMetaids() const;
 
-        explicit OmexMetaXmlAssistant(std::string xml, std::string metaid_base = "MetaID", int metaid_num_digits = 4, bool generate_new_metaids = false);
+        explicit OmexMetaXml(std::string xml, std::string metaid_base = "MetaID", int metaid_num_digits = 4, bool generate_new_metaids = false);
 
         std::pair<std::string, std::vector<std::string>> addMetaIds();
 
@@ -64,15 +72,27 @@ namespace omexmeta {
         [[nodiscard]] virtual std::string metaIdTagName() const;
 
         [[nodiscard]] virtual std::string metaIdNamespace() const;
-    };
+
+        /**
+         * @brief returns a copy of the xml with all elemenents
+         * named @param elementName removed from the document.
+         */
+        std::string removeElement(const std::string &elementName);
+
+        /**
+         * @brief write the current document to string
+         */
+        std::string toString();
+
+        };
 
 
-    class SBMLAssistant : public OmexMetaXmlAssistant {
+    class OmexMetaSBML : public OmexMetaXml {
 
     public:
         [[nodiscard]] std::vector<std::string> getValidElements() const override;
 
-        using OmexMetaXmlAssistant::OmexMetaXmlAssistant;
+        using OmexMetaXml::OmexMetaXml;
 
         [[nodiscard]] std::string metaIdTagName() const override;
 
@@ -80,9 +100,9 @@ namespace omexmeta {
     };
 
 
-    class CellMLAssistant : public OmexMetaXmlAssistant {
+    class OmexMetaCellML : public OmexMetaXml {
     public:
-        using OmexMetaXmlAssistant::OmexMetaXmlAssistant;
+        using OmexMetaXml::OmexMetaXml;
 
         std::vector<std::string> getValidElements() const override;
 
@@ -91,11 +111,11 @@ namespace omexmeta {
         [[nodiscard]] std::string metaIdNamespace() const override;
     };
 
-    typedef std::unique_ptr<OmexMetaXmlAssistant> XmlAssistantPtr;
+    typedef std::unique_ptr<OmexMetaXml> OmexMetaXmlPtr;
 
     class OmexMetaXmlAssistantFactory {
     public:
-        static XmlAssistantPtr generate(const std::string &xml, OmexMetaXmlType type, bool generate_new_metaids = false, std::string metaid_base = "#OmexMetaId", int metaid_num_digits = 4);
+        static OmexMetaXmlPtr generate(const std::string &xml, OmexMetaXmlType type, bool generate_new_metaids = false, std::string metaid_base = "#OmexMetaId", int metaid_num_digits = 4);
     };
 }// namespace omexmeta
-#endif//LIBOMEXMETA_OMEXMETAXMLASSISTANT_H
+#endif//LIBOMEXMETA_OMEXMETAXML_H

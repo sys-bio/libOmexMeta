@@ -16,7 +16,7 @@
     <innerfile refid="OmexMeta_8h">OmexMeta.h</innerfile>
     <innerfile refid="OmexMetaCApi_8h">OmexMetaCApi.h</innerfile>
     <innerfile refid="OmexMetaUtils_8h">OmexMetaUtils.h</innerfile>
-    <innerfile refid="OmexMetaXmlAssistant_8h">OmexMetaXmlAssistant.h</innerfile>
+    <innerfile refid="OmexMetaXml_8h">OmexMetaXml.h</innerfile>
     <innerfile refid="OmexMetaXmlType_8h">OmexMetaXmlType.h</innerfile>
     <innerfile refid="Options_8h">Options.h</innerfile>
     <innerfile refid="Participant_8h">Participant.h</innerfile>

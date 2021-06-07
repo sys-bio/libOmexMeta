@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
   <compounddef id="OmexMetaXmlAssistant_8h" kind="file" language="C++">
-    <compoundname>OmexMetaXmlAssistant.h</compoundname>
+    <compoundname>OmexMetaXml.h</compoundname>
     <includes local="no">libxml/parser.h</includes>
     <includes local="no">libxml/tree.h</includes>
     <includes refid="MetaID_8h" local="yes">omexmeta/MetaID.h</includes>
@@ -11,7 +11,7 @@
     <includes local="no">memory</includes>
     <includes local="no">utility</includes>
     <includes local="no">vector</includes>
-    <includedby refid="OmexMetaXmlAssistant_8cpp" local="yes">src/omexmeta/OmexMetaXmlAssistant.cpp</includedby>
+    <includedby refid="OmexMetaXmlAssistant_8cpp" local="yes">src/omexmeta/OmexMetaXml.cpp</includedby>
     <includedby refid="Editor_8h" local="yes">src/omexmeta/include/omexmeta/Editor.h</includedby>
     <includedby refid="OmexMetaCApi_8h" local="yes">src/omexmeta/include/omexmeta/OmexMetaCApi.h</includedby>
     <incdepgraph>
@@ -450,7 +450,7 @@
         </childnode>
       </node>
       <node id="1">
-        <label>src/omexmeta/include/omexmeta/OmexMetaXmlAssistant.h</label>
+        <label>src/omexmeta/include/omexmeta/OmexMetaXml.h</label>
         <link refid="OmexMetaXmlAssistant_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
@@ -563,7 +563,7 @@
         <link refid="OmexMeta_8h_source"/>
       </node>
       <node id="1">
-        <label>src/omexmeta/include/omexmeta/OmexMetaXmlAssistant.h</label>
+        <label>src/omexmeta/include/omexmeta/OmexMetaXml.h</label>
         <link refid="OmexMetaXmlAssistant_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
@@ -571,9 +571,9 @@
         </childnode>
       </node>
     </invincdepgraph>
-    <innerclass refid="classomexmeta_1_1OmexMetaXmlAssistant" prot="public">omexmeta::OmexMetaXmlAssistant</innerclass>
-    <innerclass refid="classomexmeta_1_1SBMLAssistant" prot="public">omexmeta::SBMLAssistant</innerclass>
-    <innerclass refid="classomexmeta_1_1CellMLAssistant" prot="public">omexmeta::CellMLAssistant</innerclass>
+    <innerclass refid="classomexmeta_1_1OmexMetaXmlAssistant" prot="public">omexmeta::OmexMetaXml</innerclass>
+    <innerclass refid="classomexmeta_1_1SBMLAssistant" prot="public">omexmeta::OmexMetaSBML</innerclass>
+    <innerclass refid="classomexmeta_1_1CellMLAssistant" prot="public">omexmeta::OmexMetaCellML</innerclass>
     <innerclass refid="classomexmeta_1_1OmexMetaXmlAssistantFactory" prot="public">omexmeta::OmexMetaXmlAssistantFactory</innerclass>
     <innernamespace refid="namespaceomexmeta">omexmeta</innernamespace>
     <briefdescription>
@@ -585,8 +585,8 @@
 <codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Created<sp/>by<sp/>Ciaran<sp/>on<sp/>4/14/2020.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="4"><highlight class="normal"></highlight></codeline>
-<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>LIBOMEXMETA_OMEXMETAXMLASSISTANT_H</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LIBOMEXMETA_OMEXMETAXMLASSISTANT_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>LIBOMEXMETA_OMEXMETAXML_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LIBOMEXMETA_OMEXMETAXML_H</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="7"><highlight class="normal"></highlight></codeline>
 <codeline lineno="8"><highlight class="normal"></highlight></codeline>
 <codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;libxml/parser.h&gt;</highlight><highlight class="normal"></highlight></codeline>
@@ -603,7 +603,7 @@
 <codeline lineno="20"><highlight class="normal"></highlight></codeline>
 <codeline lineno="21"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceomexmeta" kindref="compound">omexmeta</ref><sp/>{</highlight></codeline>
 <codeline lineno="22"><highlight class="normal"></highlight></codeline>
-<codeline lineno="31" refid="classomexmeta_1_1OmexMetaXmlAssistant" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classomexmeta_1_1OmexMetaXmlAssistant" kindref="compound">OmexMetaXmlAssistant</ref><sp/>{</highlight></codeline>
+<codeline lineno="31" refid="classomexmeta_1_1OmexMetaXmlAssistant" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classomexmeta_1_1OmexMetaXmlAssistant" kindref="compound">OmexMetaXml</ref><sp/>{</highlight></codeline>
 <codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>xml_;</highlight></codeline>
 <codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>metaid_base_;</highlight></codeline>
 <codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>metaid_num_digits_;</highlight></codeline>
@@ -623,7 +623,7 @@
 <codeline lineno="55"><highlight class="normal"></highlight></codeline>
 <codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>generateNewMetaids()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="57"><highlight class="normal"></highlight></codeline>
-<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1OmexMetaXmlAssistant" kindref="compound">OmexMetaXmlAssistant</ref>(std::string<sp/>xml,<sp/>std::string<sp/>metaid_base<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;MetaID&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>metaid_num_digits<sp/>=<sp/>4,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>generate_new_metaids<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1OmexMetaXmlAssistant" kindref="compound">OmexMetaXml</ref>(std::string<sp/>xml,<sp/>std::string<sp/>metaid_base<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;MetaID&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>metaid_num_digits<sp/>=<sp/>4,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>generate_new_metaids<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="59"><highlight class="normal"></highlight></codeline>
 <codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::pair&lt;std::string,<sp/>std::vector&lt;std::string&gt;&gt;<sp/>addMetaIds();</highlight></codeline>
 <codeline lineno="61"><highlight class="normal"></highlight></codeline>
@@ -635,12 +635,12 @@
 <codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
 <codeline lineno="68"><highlight class="normal"></highlight></codeline>
 <codeline lineno="69"><highlight class="normal"></highlight></codeline>
-<codeline lineno="70" refid="classomexmeta_1_1SBMLAssistant" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classomexmeta_1_1SBMLAssistant" kindref="compound">SBMLAssistant</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1OmexMetaXmlAssistant" kindref="compound">OmexMetaXmlAssistant</ref><sp/>{</highlight></codeline>
+<codeline lineno="70" refid="classomexmeta_1_1SBMLAssistant" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classomexmeta_1_1SBMLAssistant" kindref="compound">OmexMetaSBML</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1OmexMetaXmlAssistant" kindref="compound">OmexMetaXml</ref><sp/>{</highlight></codeline>
 <codeline lineno="71"><highlight class="normal"></highlight></codeline>
 <codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/>std::vector&lt;std::string&gt;<sp/>getValidElements()<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="74"><highlight class="normal"></highlight></codeline>
-<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>OmexMetaXmlAssistant::OmexMetaXmlAssistant;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>OmexMetaXml::OmexMetaXml;</highlight></codeline>
 <codeline lineno="76"><highlight class="normal"></highlight></codeline>
 <codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/>std::string<sp/>metaIdTagName()<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="78"><highlight class="normal"></highlight></codeline>
@@ -648,9 +648,9 @@
 <codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
 <codeline lineno="81"><highlight class="normal"></highlight></codeline>
 <codeline lineno="82"><highlight class="normal"></highlight></codeline>
-<codeline lineno="83" refid="classomexmeta_1_1CellMLAssistant" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classomexmeta_1_1CellMLAssistant" kindref="compound">CellMLAssistant</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1OmexMetaXmlAssistant" kindref="compound">OmexMetaXmlAssistant</ref><sp/>{</highlight></codeline>
+<codeline lineno="83" refid="classomexmeta_1_1CellMLAssistant" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classomexmeta_1_1CellMLAssistant" kindref="compound">OmexMetaCellML</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1OmexMetaXmlAssistant" kindref="compound">OmexMetaXml</ref><sp/>{</highlight></codeline>
 <codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>OmexMetaXmlAssistant::OmexMetaXmlAssistant;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>OmexMetaXml::OmexMetaXml;</highlight></codeline>
 <codeline lineno="86"><highlight class="normal"></highlight></codeline>
 <codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;std::string&gt;<sp/>getValidElements()<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="88"><highlight class="normal"></highlight></codeline>
@@ -659,15 +659,15 @@
 <codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/>std::string<sp/>metaIdNamespace()<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
 <codeline lineno="93"><highlight class="normal"></highlight></codeline>
-<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>std::unique_ptr&lt;OmexMetaXmlAssistant&gt;<sp/>XmlAssistantPtr;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>std::unique_ptr&lt;OmexMetaXml&gt;<sp/>OmexMetaXmlPtr;</highlight></codeline>
 <codeline lineno="95"><highlight class="normal"></highlight></codeline>
 <codeline lineno="96" refid="classomexmeta_1_1OmexMetaXmlAssistantFactory" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classomexmeta_1_1OmexMetaXmlAssistantFactory" kindref="compound">OmexMetaXmlAssistantFactory</ref><sp/>{</highlight></codeline>
 <codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>XmlAssistantPtr<sp/>generate(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;xml,<sp/>OmexMetaXmlType<sp/>type,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>generate_new_metaids<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,<sp/>std::string<sp/>metaid_base<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;#OmexMetaId&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>metaid_num_digits<sp/>=<sp/>4);</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>OmexMetaXmlPtr<sp/>generate(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;xml,<sp/>OmexMetaXmlType<sp/>type,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>generate_new_metaids<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,<sp/>std::string<sp/>metaid_base<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;#OmexMetaId&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>metaid_num_digits<sp/>=<sp/>4);</highlight></codeline>
 <codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
 <codeline lineno="100"><highlight class="normal">}</highlight><highlight class="comment">//<sp/>namespace<sp/>omexmeta</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="101"><highlight class="normal"></highlight><highlight class="preprocessor">#endif//LIBOMEXMETA_OMEXMETAXMLASSISTANT_H</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight><highlight class="preprocessor">#endif//LIBOMEXMETA_OMEXMETAXML_H</highlight></codeline>
     </programlisting>
-    <location file="src/omexmeta/include/omexmeta/OmexMetaXmlAssistant.h"/>
+    <location file="src/omexmeta/include/omexmeta/OmexMetaXml.h"/>
   </compounddef>
 </doxygen>

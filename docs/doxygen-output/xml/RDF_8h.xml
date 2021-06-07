@@ -331,6 +331,28 @@
       <node id="9">
         <label>redland_export.h</label>
       </node>
+      <node id="80">
+        <label>omexmeta/OmexMetaXml.h</label>
+        <link refid="OmexMetaXml_8h_source"/>
+        <childnode refid="79" relation="include">
+        </childnode>
+        <childnode refid="63" relation="include">
+        </childnode>
+        <childnode refid="59" relation="include">
+        </childnode>
+        <childnode refid="55" relation="include">
+        </childnode>
+        <childnode refid="48" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="62" relation="include">
+        </childnode>
+      </node>
       <node id="20">
         <label>rdf_model.h</label>
       </node>
@@ -837,28 +859,6 @@
       </node>
       <node id="71">
         <label>algorithm</label>
-      </node>
-      <node id="80">
-        <label>omexmeta/OmexMetaXmlAssistant.h</label>
-        <link refid="OmexMetaXmlAssistant_8h_source"/>
-        <childnode refid="79" relation="include">
-        </childnode>
-        <childnode refid="63" relation="include">
-        </childnode>
-        <childnode refid="59" relation="include">
-        </childnode>
-        <childnode refid="55" relation="include">
-        </childnode>
-        <childnode refid="48" relation="include">
-        </childnode>
-        <childnode refid="30" relation="include">
-        </childnode>
-        <childnode refid="28" relation="include">
-        </childnode>
-        <childnode refid="46" relation="include">
-        </childnode>
-        <childnode refid="62" relation="include">
-        </childnode>
       </node>
       <node id="55">
         <label>omexmeta/OmexMetaUtils.h</label>

@@ -26,7 +26,6 @@ public:
     CAPITests() {
         fname = fnamep.string();
     }
-
 };
 
 
@@ -132,7 +131,6 @@ TEST_F(CAPITests, RDF_addFromUriSqliteStorage) {
     ASSERT_TRUE(RDF::equals(rdf_ptr, expected, "turtle"));
     ASSERT_TRUE(std::filesystem::exists(fname));
     RDF_delete(rdf_ptr);
-
 }
 
 TEST_F(CAPITests, RDF_fromFile) {
@@ -440,7 +438,6 @@ TEST_F(CAPITests, TestPhysicalEntitySBML2) {
     Editor_delete(editor_ptr);
     PhysicalEntity_delete(physical_entity_ptr);
     RDF_delete(rdf_ptr);
-
 }
 
 TEST_F(CAPITests, TestPhysicalEntitySBML3) {
@@ -478,16 +475,16 @@ TEST_F(CAPITests, TestPhysicalEntitySBML3) {
 
 TEST_F(CAPITests, TestPhysicalEntityCellML1) {
 
-    RDF* rdf_ptr = RDF_new();
-    Editor* editor_ptr = RDF_toEditor(rdf_ptr,
-            CellMLFactory::getCellML(CELLML_TOY).c_str(), false, false);
+    RDF *rdf_ptr = RDF_new();
+    Editor *editor_ptr = RDF_toEditor(rdf_ptr,
+                                      CellMLFactory::getCellML(CELLML_TOY).c_str(), false, false);
 
-    PhysicalProperty* entity_property = Editor_newPhysicalProperty(editor_ptr);
+    PhysicalProperty *entity_property = Editor_newPhysicalProperty(editor_ptr);
     entity_property = PhysicalProperty_about(entity_property, "main.Volume", MODEL_URI);
     entity_property = PhysicalProperty_isVersionOf(entity_property, "opb:OPB_00154");
     entity_property = PhysicalProperty_isPropertyOf(entity_property, "entity0", LOCAL_URI);
 
-    PhysicalEntity* entity = Editor_newPhysicalEntity(editor_ptr);
+    PhysicalEntity *entity = Editor_newPhysicalEntity(editor_ptr);
     entity = PhysicalEntity_about(entity, "entity0", LOCAL_URI);
     entity = PhysicalEntity_identity(entity, "fma:9670");
     entity = PhysicalEntity_isPartOf(entity, "fma:18228", IDENTIFIERS_URI);
@@ -518,11 +515,11 @@ TEST_F(CAPITests, TestPhysicalEntityCellML1) {
 
 TEST_F(CAPITests, TestPhysicalEntityCellML2) {
 
-    RDF* rdf_ptr = RDF_new();
-    Editor* editor_ptr = RDF_toEditor(rdf_ptr,
-            CellMLFactory::getCellML(CELLML_TOY).c_str(), false, false);
+    RDF *rdf_ptr = RDF_new();
+    Editor *editor_ptr = RDF_toEditor(rdf_ptr,
+                                      CellMLFactory::getCellML(CELLML_TOY).c_str(), false, false);
 
-    PhysicalEntity* entity = Editor_newPhysicalEntity(editor_ptr);
+    PhysicalEntity *entity = Editor_newPhysicalEntity(editor_ptr);
     entity = PhysicalEntity_about(entity, "entity0", LOCAL_URI);
     entity = PhysicalEntity_identity(entity, "fma:9670");
     entity = PhysicalEntity_isPartOf(entity, "fma:18228", IDENTIFIERS_URI);
@@ -553,11 +550,11 @@ TEST_F(CAPITests, TestPhysicalEntityCellML2) {
 
 TEST_F(CAPITests, TestPhysicalEntityCellML3) {
 
-    RDF* rdf_ptr = RDF_new();
-    Editor* editor_ptr = RDF_toEditor(rdf_ptr,
-            CellMLFactory::getCellML(CELLML_TOY).c_str(), false, false);
+    RDF *rdf_ptr = RDF_new();
+    Editor *editor_ptr = RDF_toEditor(rdf_ptr,
+                                      CellMLFactory::getCellML(CELLML_TOY).c_str(), false, false);
 
-    PhysicalEntity* entity = Editor_newPhysicalEntity(editor_ptr);
+    PhysicalEntity *entity = Editor_newPhysicalEntity(editor_ptr);
     entity = PhysicalEntity_identity(entity, "fma:9670");
     entity = PhysicalEntity_isPartOf(entity, "fma:18228", IDENTIFIERS_URI);
     entity = PhysicalEntity_hasPropertyFull(entity, "main.Volume", MODEL_URI, "opb:OPB_00154");
@@ -623,7 +620,7 @@ TEST_F(CAPITests, TestPhysicalProcessSBML1) {
 
     Editor_addPhysicalProcess(editor_ptr, physical_process_ptr);
 
-    const char* expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+    const char *expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
                            "@prefix semsim: <http://bime.uw.edu/semsim/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
@@ -667,11 +664,11 @@ TEST_F(CAPITests, TestPhysicalProcessSBML2) {
     physical_process_ptr = PhysicalProcess_addSource(physical_process_ptr, "species0000", MODEL_URI, 1);
     physical_process_ptr = PhysicalProcess_addSink(physical_process_ptr, "species0001", MODEL_URI, 1);
     physical_process_ptr = PhysicalProcess_addMediator(physical_process_ptr, "species0002", MODEL_URI);
-    physical_process_ptr = PhysicalProcess_hasPropertyisVersionOf(physical_process_ptr,  "opb:OPB_00592");
+    physical_process_ptr = PhysicalProcess_hasPropertyisVersionOf(physical_process_ptr, "opb:OPB_00592");
 
     Editor_addPhysicalProcess(editor_ptr, physical_process_ptr);
 
-    const char* expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+    const char *expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
                            "@prefix semsim: <http://bime.uw.edu/semsim/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
@@ -716,11 +713,11 @@ TEST_F(CAPITests, TestPhysicalProcessCellML1) {
     physical_process_ptr = PhysicalProcess_addSource(physical_process_ptr, "entity1", LOCAL_URI, 1);
     physical_process_ptr = PhysicalProcess_addSink(physical_process_ptr, "entity2", LOCAL_URI, 1);
     physical_process_ptr = PhysicalProcess_addMediator(physical_process_ptr, "entity3", LOCAL_URI);
-    physical_process_ptr = PhysicalProcess_hasPropertyFull(physical_process_ptr, "main.ReactionRate",MODEL_URI, "opb:OPB_00592");
+    physical_process_ptr = PhysicalProcess_hasPropertyFull(physical_process_ptr, "main.ReactionRate", MODEL_URI, "opb:OPB_00592");
 
     Editor_addPhysicalProcess(editor_ptr, physical_process_ptr);
 
-    const char* expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+    const char *expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix semsim: <http://bime.uw.edu/semsim/> .\n"
                            "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
@@ -767,7 +764,7 @@ TEST_F(CAPITests, TestPhysicalProcessCellML2) {
 
     Editor_addPhysicalProcess(editor_ptr, physical_process_ptr);
 
-    const char* expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+    const char *expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix semsim: <http://bime.uw.edu/semsim/> .\n"
                            "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
@@ -810,11 +807,11 @@ TEST_F(CAPITests, TestEnergyDiffSBML1) {
     energy_diff_ptr = EnergyDiff_about(energy_diff_ptr, "main.MembraneVoltage", MODEL_URI);
     energy_diff_ptr = EnergyDiff_addSource(energy_diff_ptr, "source_23", MODEL_URI);
     energy_diff_ptr = EnergyDiff_addSink(energy_diff_ptr, "sink_12", MODEL_URI);
-    energy_diff_ptr  = EnergyDiff_hasPropertyFull(energy_diff_ptr, "parameter_metaid_0", LOCAL_URI, "opb:OPB_01058");
+    energy_diff_ptr = EnergyDiff_hasPropertyFull(energy_diff_ptr, "parameter_metaid_0", LOCAL_URI, "opb:OPB_01058");
 
     Editor_addEnergyDiff(editor_ptr, energy_diff_ptr);
 
-    const char* expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+    const char *expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
                            "@prefix semsim: <http://bime.uw.edu/semsim/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
@@ -850,11 +847,11 @@ TEST_F(CAPITests, TestEnergyDiffSBML2) {
     energy_diff_ptr = EnergyDiff_about(energy_diff_ptr, "main.MembraneVoltage", MODEL_URI);
     energy_diff_ptr = EnergyDiff_addSource(energy_diff_ptr, "source_23", MODEL_URI);
     energy_diff_ptr = EnergyDiff_addSink(energy_diff_ptr, "sink_12", MODEL_URI);
-    energy_diff_ptr  = EnergyDiff_hasPropertyisVersionOf(energy_diff_ptr, "opb:OPB_01058");
+    energy_diff_ptr = EnergyDiff_hasPropertyisVersionOf(energy_diff_ptr, "opb:OPB_01058");
 
     Editor_addEnergyDiff(editor_ptr, energy_diff_ptr);
 
-    const char* expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+    const char *expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
                            "@prefix semsim: <http://bime.uw.edu/semsim/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
@@ -891,11 +888,11 @@ TEST_F(CAPITests, TestEnergyDiffCellML1) {
     energy_diff_ptr = EnergyDiff_about(energy_diff_ptr, "main.MembraneVoltage", MODEL_URI);
     energy_diff_ptr = EnergyDiff_addSource(energy_diff_ptr, "entity1", LOCAL_URI);
     energy_diff_ptr = EnergyDiff_addSink(energy_diff_ptr, "entity2", LOCAL_URI);
-    energy_diff_ptr = EnergyDiff_hasPropertyFull(energy_diff_ptr, "EnergyDiffProperty",MODEL_URI, "opb:OPB_00592");
+    energy_diff_ptr = EnergyDiff_hasPropertyFull(energy_diff_ptr, "EnergyDiffProperty", MODEL_URI, "opb:OPB_00592");
 
     Editor_addEnergyDiff(editor_ptr, energy_diff_ptr);
 
-    const char* expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+    const char *expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
                            "@prefix semsim: <http://bime.uw.edu/semsim/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
@@ -921,7 +918,6 @@ TEST_F(CAPITests, TestEnergyDiffCellML1) {
     EnergyDiff_delete(energy_diff_ptr);
     RDF_delete(rdf_ptr);
 }
-
 
 
 TEST_F(CAPITests, TestRDFTwice1) {
@@ -1600,6 +1596,80 @@ TEST_F(CAPITests, RDFToEditorTestWithoutSemanticExtraction) {
                            "\n";
     printf("%s", actual);
     ASSERT_TRUE(RDF::equals(rdf_ptr, expected, "turtle"));
+
+    Editor_delete(editor_ptr);
+    free_c_char_star(actual);
+    RDF_delete(rdf_ptr);
+}
+
+TEST_F(CAPITests, EditorStripAnnotations) {
+    RDF *rdf_ptr = RDF_new();
+    Editor *editor_ptr = RDF_toEditor(rdf_ptr, SBMLFactory::getSBML(SBML_Semantic_Extraction_Model).c_str(), true, false);
+    char *actual = Editor_stripAnnotations(editor_ptr);
+    const char *expected = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
+                           "<sbml xmlns=\"http://www.sbml.org/sbml/level3/version1/core\" level=\"3\" version=\"1\">\n"
+                           "    <model metaid=\"ToyModel\" id=\"ToyModel\">\n"
+                           "        <listOfCompartments>\n"
+                           "            <compartment id=\"cytosol\" metaid=\"comp1\" spatialDimensions=\"3\" size=\"1\" constant=\"true\"/>\n"
+                           "            <compartment id=\"extraCell\" metaid=\"comp2\" spatialDimensions=\"3\" size=\"10\" constant=\"true\"/>\n"
+                           "        </listOfCompartments>\n"
+                           "        <listOfSpecies>\n"
+                           "            <species id=\"A\" metaid=\"sp_1\" compartment=\"cytosol\" initialConcentration=\"10\" hasOnlySubstanceUnits=\"false\" boundaryCondition=\"false\" constant=\"false\">\n"
+                           "                \n"
+                           "            </species>\n"
+                           "            <species id=\"B\" metaid=\"sp_2\" compartment=\"cytosol\" initialConcentration=\"0\" hasOnlySubstanceUnits=\"false\" boundaryCondition=\"false\" constant=\"false\"/>\n"
+                           "            <species id=\"Ca\" metaid=\"sp_3\" compartment=\"cytosol\" initialConcentration=\"2\" hasOnlySubstanceUnits=\"false\" boundaryCondition=\"false\" constant=\"false\"/>\n"
+                           "            <species id=\"PlasmaCa\" metaid=\"sp_4\" compartment=\"extraCell\" initialConcentration=\"3\" hasOnlySubstanceUnits=\"false\" boundaryCondition=\"false\" constant=\"false\"/>\n"
+                           "            <species id=\"Enzyme\" metaid=\"sp_5\" compartment=\"cytosol\" initialConcentration=\"2\" hasOnlySubstanceUnits=\"false\" boundaryCondition=\"false\" constant=\"false\"/>\n"
+                           "        </listOfSpecies>\n"
+                           "        <listOfParameters>\n"
+                           "            <parameter id=\"k1\" value=\"0.1\" constant=\"true\"/>\n"
+                           "            <parameter id=\"k2\" value=\"0.1\" constant=\"true\"/>\n"
+                           "        </listOfParameters>\n"
+                           "        <listOfReactions>\n"
+                           "            <reaction id=\"r1\" metaid=\"react1\" reversible=\"false\" fast=\"false\">\n"
+                           "                <listOfReactants>\n"
+                           "                    <speciesReference species=\"B\" stoichiometry=\"1\" constant=\"true\"/>\n"
+                           "                </listOfReactants>\n"
+                           "                <listOfProducts>\n"
+                           "                    <speciesReference species=\"A\" stoichiometry=\"2\" constant=\"true\"/>\n"
+                           "                </listOfProducts>\n"
+                           "                <kineticLaw>\n"
+                           "                    <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n"
+                           "                        <apply>\n"
+                           "                            <times/>\n"
+                           "                            <ci>k2</ci>\n"
+                           "                            <ci>B</ci>\n"
+                           "                        </apply>\n"
+                           "                    </math>\n"
+                           "                </kineticLaw>\n"
+                           "            </reaction>\n"
+                           "            <reaction id=\"r2\" metaid=\"react2\" reversible=\"false\" fast=\"false\">\n"
+                           "                <listOfReactants>\n"
+                           "                    <speciesReference species=\"Ca\" stoichiometry=\"1\" constant=\"true\"/>\n"
+                           "                    <speciesReference species=\"A\" stoichiometry=\"1\" constant=\"true\"/>\n"
+                           "                </listOfReactants>\n"
+                           "                <listOfProducts>\n"
+                           "                    <speciesReference species=\"PlasmaCa\" stoichiometry=\"1\" constant=\"true\"/>\n"
+                           "                </listOfProducts>\n"
+                           "                <listOfModifiers>\n"
+                           "                    <modifierSpeciesReference species=\"Enzyme\"/>\n"
+                           "                </listOfModifiers>\n"
+                           "                <kineticLaw>\n"
+                           "                    <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n"
+                           "                        <apply>\n"
+                           "                            <times/>\n"
+                           "                            <ci>k2</ci>\n"
+                           "                            <ci>Ca</ci>\n"
+                           "                        </apply>\n"
+                           "                    </math>\n"
+                           "                </kineticLaw>\n"
+                           "            </reaction>\n"
+                           "        </listOfReactions>\n"
+                           "    </model>\n"
+                           "</sbml>\n";
+    printf("%s", actual);
+    ASSERT_STREQ(expected, actual);
 
     Editor_delete(editor_ptr);
     free_c_char_star(actual);

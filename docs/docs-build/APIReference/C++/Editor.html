@@ -223,7 +223,7 @@
 </dd>
 <dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">model</span></code>: and</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">ns_map</span></code>: arguments. When instantiated, the editor class automatically reads the XML and adds metaids to some or all of the elements, depending on the XML type parameter. If the user specifies that they are annotating an SBML model, the elements returned by SBMLAssistant::getValidElements() are given metaids (if not exist), while if the user chooses cellml the elements returned by CellMLAssistant::getValidElements() are used. If the type is unknown, then all elements are given metaids. </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ns_map</span></code>: arguments. When instantiated, the editor class automatically reads the XML and adds metaids to some or all of the elements, depending on the XML type parameter. If the user specifies that they are annotating an SBML model, the elements returned by OmexMetaSBML::getValidElements() are given metaids (if not exist), while if the user chooses cellml the elements returned by OmexMetaCellML::getValidElements() are used. If the type is unknown, then all elements are given metaids. </p></li>
 </ul>
 </dd>
 </dl>

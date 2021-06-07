@@ -1,7 +1,6 @@
 //
 // Created by Ciaran on 20/04/2021.
 //
-#include "MockRDF.h"
 #include "SBMLFactory.h"
 #include "omexmeta/PurgeRDFBag.h"
 #include "omexmeta/RDF.h"
