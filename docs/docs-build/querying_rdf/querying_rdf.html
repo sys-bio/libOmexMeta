@@ -237,7 +237,7 @@
 <span class="n">teusink_biomod_link</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml&quot;</span>
 
 <span class="c1"># download model xml, scan for rdf, create rdf graph and store in sqlite database</span>
-<span class="n">rdf</span> <span class="o">=</span> <span class="n">RDF</span><span class="o">.</span><span class="n">from_uri</span><span class="p">(</span><span class="n">teusink_biomod_link</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;rdfxml&quot;</span><span class="p">,</span>
+<span class="n">rdf</span> <span class="o">=</span> <span class="n">RDF</span><span class="o">.</span><span class="n">from_uri</span><span class="p">(</span><span class="n">teusink_biomod_link</span><span class="p">,</span> <span class="n">syntax</span><span class="o">=</span><span class="s2">&quot;rdfxml&quot;</span><span class="p">,</span>
                    <span class="n">storage_type</span><span class="o">=</span><span class="s2">&quot;sqlite&quot;</span><span class="p">,</span> <span class="n">storage_name</span><span class="o">=</span><span class="s2">&quot;TeusinkAnnotations2000&quot;</span><span class="p">,</span>
                    <span class="n">storage_options</span><span class="o">=</span><span class="s2">&quot;new=&#39;yes&#39;&quot;</span><span class="p">)</span>
 
@@ -263,7 +263,7 @@
 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">results_formats</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sparql results format: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">rdf</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">query_string</span><span class="p">,</span> <span class="n">results_format</span><span class="o">=</span><span class="n">i</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">rdf</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">query_string</span><span class="p">,</span> <span class="n">results_syntax</span><span class="o">=</span><span class="n">i</span><span class="p">))</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">)</span>
 
 </pre></div>
@@ -456,7 +456,15 @@
 183
 184
 185
-186</pre></div></td><td class="code"><div class="highlight"><pre><span></span>Sparql results format: xml
+186
+187
+188
+189
+190</pre></div></td><td class="code"><div class="highlight"><pre><span></span>Python info:
+sys.executable /Users/ciaranwelsh/miniconda/envs/py38/bin/python3.8
+sys.version 3.8.5 (default, Sep  4 2020, 02:22:02) 
+[Clang 10.0.0 ]
+Sparql results format: xml
 &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
 &lt;sparql xmlns=&quot;http://www.w3.org/2005/sparql-results#&quot;&gt;
   &lt;head&gt;
@@ -465,12 +473,12 @@
   &lt;/head&gt;
   &lt;results&gt;
     &lt;result&gt;
-      &lt;binding name=&quot;x&quot;&gt;&lt;bnode&gt;r1622715102r75374r21&lt;/bnode&gt;&lt;/binding&gt;
-      &lt;binding name=&quot;y&quot;&gt;&lt;uri&gt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&lt;/uri&gt;&lt;/binding&gt;
+      &lt;binding name=&quot;x&quot;&gt;&lt;uri&gt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000004&lt;/uri&gt;&lt;/binding&gt;
+      &lt;binding name=&quot;y&quot;&gt;&lt;uri&gt;http://biomodels.net/biology-qualifiers/is&lt;/uri&gt;&lt;/binding&gt;
     &lt;/result&gt;
     &lt;result&gt;
-      &lt;binding name=&quot;x&quot;&gt;&lt;bnode&gt;r1622715102r75374r43&lt;/bnode&gt;&lt;/binding&gt;
-      &lt;binding name=&quot;y&quot;&gt;&lt;uri&gt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&lt;/uri&gt;&lt;/binding&gt;
+      &lt;binding name=&quot;x&quot;&gt;&lt;uri&gt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000022&lt;/uri&gt;&lt;/binding&gt;
+      &lt;binding name=&quot;y&quot;&gt;&lt;uri&gt;http://biomodels.net/biology-qualifiers/is&lt;/uri&gt;&lt;/binding&gt;
     &lt;/result&gt;
   &lt;/results&gt;
 &lt;/sparql&gt;
@@ -488,12 +496,12 @@ Sparql results format: json
     &quot;distinct&quot; : false,
     &quot;bindings&quot; : [
       {
-        &quot;x&quot; : { &quot;type&quot;: &quot;bnode&quot;, &quot;value&quot;: &quot;r1622715102r75374r21&quot; },
-        &quot;y&quot; : { &quot;type&quot;: &quot;uri&quot;, &quot;value&quot;: &quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&quot; }
+        &quot;x&quot; : { &quot;type&quot;: &quot;uri&quot;, &quot;value&quot;: &quot;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000004&quot; },
+        &quot;y&quot; : { &quot;type&quot;: &quot;uri&quot;, &quot;value&quot;: &quot;http://biomodels.net/biology-qualifiers/is&quot; }
       },
       {
-        &quot;x&quot; : { &quot;type&quot;: &quot;bnode&quot;, &quot;value&quot;: &quot;r1622715102r75374r43&quot; },
-        &quot;y&quot; : { &quot;type&quot;: &quot;uri&quot;, &quot;value&quot;: &quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&quot; }
+        &quot;x&quot; : { &quot;type&quot;: &quot;uri&quot;, &quot;value&quot;: &quot;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000022&quot; },
+        &quot;y&quot; : { &quot;type&quot;: &quot;uri&quot;, &quot;value&quot;: &quot;http://biomodels.net/biology-qualifiers/is&quot; }
       }
     ]
   }
@@ -503,20 +511,20 @@ Sparql results format: json
 
 
 Sparql results format: table
------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 |
-===================================================================================
-| blank r1622715102r75374r21 | uri&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&gt; |
-| blank r1622715102r75374r43 | uri&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&gt; |
------------------------------------------------------------------------------------
+===========================================================================================================================================================================
+| uri&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000004&gt; | uri&lt;http://biomodels.net/biology-qualifiers/is&gt; |
+| uri&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000022&gt; | uri&lt;http://biomodels.net/biology-qualifiers/is&gt; |
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 
 
 Sparql results format: csv
 x,y
-_:r1622715102r75374r21,http://www.w3.org/1999/02/22-rdf-syntax-ns#_1
-_:r1622715102r75374r43,http://www.w3.org/1999/02/22-rdf-syntax-ns#_1
+https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000004,http://biomodels.net/biology-qualifiers/is
+https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000022,http://biomodels.net/biology-qualifiers/is
 
 
 
@@ -525,8 +533,8 @@ Sparql results format: mkr
 result is relation with format = csv;
 begin relation result;
 x,y;
-_:r1622715102r75374r21,http://www.w3.org/1999/02/22-rdf-syntax-ns#_1;
-_:r1622715102r75374r43,http://www.w3.org/1999/02/22-rdf-syntax-ns#_1;
+https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000004,http://biomodels.net/biology-qualifiers/is;
+https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000022,http://biomodels.net/biology-qualifiers/is;
 end relation result;
 
 
@@ -534,8 +542,8 @@ end relation result;
 
 Sparql results format: tsv
 ?x	?y
-_:r1622715102r75374r21	&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&gt;
-_:r1622715102r75374r43	&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&gt;
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000004&gt;	&lt;http://biomodels.net/biology-qualifiers/is&gt;
+&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000022&gt;	&lt;http://biomodels.net/biology-qualifiers/is&gt;
 
 
 
@@ -555,12 +563,12 @@ Sparql results format: html
       &lt;th&gt;?y&lt;/th&gt;
     &lt;/tr&gt;
     &lt;tr class=&quot;result&quot;&gt;
-      &lt;td&gt;&lt;span class=&quot;blank&quot;&gt;r1622715102r75374r21&lt;/span&gt;&lt;/td&gt;
-      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&quot;&gt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000004&quot;&gt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000004&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://biomodels.net/biology-qualifiers/is&quot;&gt;http://biomodels.net/biology-qualifiers/is&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr class=&quot;result&quot;&gt;
-      &lt;td&gt;&lt;span class=&quot;blank&quot;&gt;r1622715102r75374r43&lt;/span&gt;&lt;/td&gt;
-      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&quot;&gt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000022&quot;&gt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000022&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://biomodels.net/biology-qualifiers/is&quot;&gt;http://biomodels.net/biology-qualifiers/is&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/table&gt;
   &lt;p&gt;Total number of rows: &lt;span class=&quot;count&quot;&gt;2&lt;/span&gt;.&lt;/p&gt;
@@ -579,17 +587,17 @@ Sparql results format: turtle
       rs:resultVariable  &quot;x&quot; ;
       rs:resultVariable  &quot;y&quot; ;
       rs:solution   [ rs:binding    [ rs:variable   &quot;x&quot; ;
-                                      rs:value      _:r1622715102r75374r21
+                                      rs:value      &lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000004&gt;
                                     ] ; 
                       rs:binding    [ rs:variable   &quot;y&quot; ;
-                                      rs:value      &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&gt;
+                                      rs:value      &lt;http://biomodels.net/biology-qualifiers/is&gt;
                                     ] 
       ] ;
       rs:solution   [ rs:binding    [ rs:variable   &quot;x&quot; ;
-                                      rs:value      _:r1622715102r75374r43
+                                      rs:value      &lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000022&gt;
                                     ] ; 
                       rs:binding    [ rs:variable   &quot;y&quot; ;
-                                      rs:value      &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&gt;
+                                      rs:value      &lt;http://biomodels.net/biology-qualifiers/is&gt;
                                     ] 
       ] .
 
@@ -608,13 +616,13 @@ Sparql results format: rdfxml
       &lt;rdf:Description&gt;
         &lt;rs:binding&gt;
           &lt;rdf:Description&gt;
-            &lt;rs:value rdf:nodeID=&quot;r1622715102r75374r21&quot;/&gt;
+            &lt;rs:value rdf:resource=&quot;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000004&quot;/&gt;
             &lt;rs:variable&gt;x&lt;/rs:variable&gt;
           &lt;/rdf:Description&gt;
         &lt;/rs:binding&gt;
         &lt;rs:binding&gt;
           &lt;rdf:Description&gt;
-            &lt;rs:value rdf:resource=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&quot;/&gt;
+            &lt;rs:value rdf:resource=&quot;http://biomodels.net/biology-qualifiers/is&quot;/&gt;
             &lt;rs:variable&gt;y&lt;/rs:variable&gt;
           &lt;/rdf:Description&gt;
         &lt;/rs:binding&gt;
@@ -624,13 +632,13 @@ Sparql results format: rdfxml
       &lt;rdf:Description&gt;
         &lt;rs:binding&gt;
           &lt;rdf:Description&gt;
-            &lt;rs:value rdf:nodeID=&quot;r1622715102r75374r43&quot;/&gt;
+            &lt;rs:value rdf:resource=&quot;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000022&quot;/&gt;
             &lt;rs:variable&gt;x&lt;/rs:variable&gt;
           &lt;/rdf:Description&gt;
         &lt;/rs:binding&gt;
         &lt;rs:binding&gt;
           &lt;rdf:Description&gt;
-            &lt;rs:value rdf:resource=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#_1&quot;/&gt;
+            &lt;rs:value rdf:resource=&quot;http://biomodels.net/biology-qualifiers/is&quot;/&gt;
             &lt;rs:variable&gt;y&lt;/rs:variable&gt;
           &lt;/rdf:Description&gt;
         &lt;/rs:binding&gt;
@@ -713,7 +721,7 @@ Sparql results format: rdfxml
 
     <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="o">&amp;</span><span class="nl">f</span> <span class="p">:</span> <span class="n">results_formats</span><span class="p">){</span>
         <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Sparql results format: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">f</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
-        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">rdf</span><span class="p">.</span><span class="n">query</span><span class="p">(</span><span class="n">query_string</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">rdf</span><span class="p">.</span><span class="n">queryResultsAsString</span><span class="p">(</span><span class="n">query_string</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
         <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
         <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
     <span class="p">}</span>
@@ -723,7 +731,7 @@ Sparql results format: rdfxml
 </div>
 <div class="literal-block-wrapper docutils container" id="id4">
 <div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id4" title="Permalink to this code">¶</a></div>
-<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">D</span><span class="p">:</span><span class="o">/</span><span class="n">libOmexMeta</span><span class="o">/</span><span class="n">docs</span><span class="o">/</span><span class="n">ExampleOutputFiles</span>\<span class="n">QueryingRdfGraphCpp</span><span class="o">.</span><span class="n">txt</span>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">ciaranwelsh</span><span class="o">/</span><span class="n">Documents</span><span class="o">/</span><span class="n">libOmexMeta</span><span class="o">/</span><span class="n">docs</span><span class="o">/</span><span class="n">ExampleOutputFiles</span><span class="o">/</span><span class="n">QueryingRdfGraphCpp</span><span class="o">.</span><span class="n">txt</span>
 </pre></div>
 </td></tr></table></div>
 </div>
@@ -799,7 +807,7 @@ Sparql results format: rdfxml
 
     <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">9</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
         <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Sparql results format: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">results_formats</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
-        <span class="kt">char</span><span class="o">*</span> <span class="n">string</span> <span class="o">=</span> <span class="n">RDF_query</span><span class="p">(</span><span class="n">rdf</span><span class="p">,</span> <span class="n">query_string</span><span class="p">,</span> <span class="n">results_formats</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+        <span class="kt">char</span><span class="o">*</span> <span class="n">string</span> <span class="o">=</span> <span class="n">RDF_queryResultsAsString</span><span class="p">(</span><span class="n">rdf</span><span class="p">,</span> <span class="n">query_string</span><span class="p">,</span> <span class="n">results_formats</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
         <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s</span><span class="se">\n\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">string</span><span class="p">);</span>
         <span class="n">free</span><span class="p">(</span><span class="n">string</span><span class="p">);</span>
     <span class="p">}</span>
@@ -811,7 +819,7 @@ Sparql results format: rdfxml
 </div>
 <div class="literal-block-wrapper docutils container" id="id6">
 <div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id6" title="Permalink to this code">¶</a></div>
-<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">D</span><span class="p">:</span><span class="o">/</span><span class="n">libOmexMeta</span><span class="o">/</span><span class="n">docs</span><span class="o">/</span><span class="n">ExampleOutputFiles</span>\<span class="n">QueryingRdfGraphC</span><span class="o">.</span><span class="n">txt</span>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">ciaranwelsh</span><span class="o">/</span><span class="n">Documents</span><span class="o">/</span><span class="n">libOmexMeta</span><span class="o">/</span><span class="n">docs</span><span class="o">/</span><span class="n">ExampleOutputFiles</span><span class="o">/</span><span class="n">QueryingRdfGraphC</span><span class="o">.</span><span class="n">txt</span>
 </pre></div>
 </td></tr></table></div>
 </div>

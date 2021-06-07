@@ -234,7 +234,7 @@ of the Teusink annotations.</p>
 <span class="s2">  bqbiol:is &lt;https://identifiers.org/uniprot/PD12345&gt; .&quot;&quot;&quot;</span>
 
 <span class="c1"># download model xml, scan for rdf, create rdf graph and store in sqlite database</span>
-<span class="n">rdf</span> <span class="o">=</span> <span class="n">RDF</span><span class="o">.</span><span class="n">from_string</span><span class="p">(</span><span class="n">rdf_str</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;turtle&quot;</span><span class="p">)</span>
+<span class="n">rdf</span> <span class="o">=</span> <span class="n">RDF</span><span class="o">.</span><span class="n">from_string</span><span class="p">(</span><span class="n">rdf_str</span><span class="p">,</span> <span class="n">syntax</span><span class="o">=</span><span class="s2">&quot;turtle&quot;</span><span class="p">)</span>
 
 <span class="c1"># pick a filename (this can be anywhere on your system)</span>
 <span class="n">docs_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">),</span> <span class="s2">&quot;source&quot;</span><span class="p">)</span>

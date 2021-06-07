@@ -106,7 +106,6 @@
 <li class="toctree-l3"><a class="reference internal" href="Editor.html">Editor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="SingularAnnotation.html">SingularAnnotation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="PhysicalProperty.html">PhysicalProperty</a></li>
-<li class="toctree-l3"><a class="reference internal" href="_PropertyBearer.html">_PropertyBearer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="PhysicalEntity.html">PhysicalEntity</a></li>
 <li class="toctree-l3"><a class="reference internal" href="PhysicalProcess.html">PhysicalProcess</a></li>
 <li class="toctree-l3"><a class="reference internal" href="EnergyDiff.html">EnergyDiff</a></li>
@@ -201,7 +200,7 @@
 
 <dl class="py method">
 <dt id="pyomexmeta.RDF.draw">
-<code class="sig-name descname">draw</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filename</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyomexmeta.RDF.draw" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">draw</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filename</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyomexmeta.RDF.draw" title="Permalink to this definition">¶</a></dt>
 <dd><p>render an graph of RDF and save to <cite>filename</cite></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -216,9 +215,200 @@
 </dd></dl>
 
 <dl class="py method">
+<dt id="pyomexmeta.RDF.from_file">
+<em class="property">static </em><code class="sig-name descname">from_file</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filename</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">syntax</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'guess'</span></em>, <em class="sig-param"><span class="n">storage_type</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'hashes'</span></em>, <em class="sig-param"><span class="n">storage_name</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'pyomexmeta_storage'</span></em>, <em class="sig-param"><span class="n">storage_options</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">model_options</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; pyomexmeta.pyomexmeta.RDF<a class="headerlink" href="#pyomexmeta.RDF.from_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create an <a class="reference internal" href="#pyomexmeta.RDF" title="pyomexmeta.RDF"><code class="xref py py-class docutils literal notranslate"><span class="pre">RDF</span></code></a> graph from a file on disk.</p>
+<p>This is a static method and is therefore called without an instance of <a class="reference internal" href="#pyomexmeta.RDF" title="pyomexmeta.RDF"><code class="xref py py-class docutils literal notranslate"><span class="pre">RDF</span></code></a> (see example)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> – The location on disk of the file containing rdf for parsing</p></li>
+<li><p><strong>syntax</strong> – The syntax for the rdf content in <cite>filename</cite>. See <a class="reference internal" href="#pyomexmeta.RDF" title="pyomexmeta.RDF"><code class="xref py py-class docutils literal notranslate"><span class="pre">RDF</span></code></a>.</p></li>
+<li><p><strong>storage_type</strong> – See <code class="xref py py-meth docutils literal notranslate"><span class="pre">RDF.__init__()</span></code></p></li>
+<li><p><strong>storage_name</strong> – See <code class="xref py py-meth docutils literal notranslate"><span class="pre">RDF.__init__()</span></code></p></li>
+<li><p><strong>storage_options</strong> – See <code class="xref py py-meth docutils literal notranslate"><span class="pre">RDF.__init__()</span></code></p></li>
+<li><p><strong>model_options</strong> – See <code class="xref py py-meth docutils literal notranslate"><span class="pre">RDF.__init__()</span></code></p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns:</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rdf</span> <span class="o">=</span> <span class="n">RDF</span><span class="o">.</span><span class="n">from_file</span><span class="p">(</span><span class="s2">&quot;/path/to/rdf_file.rdf&quot;</span><span class="p">,</span> <span class="s2">&quot;turtle&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><code class="xref py py-meth docutils literal notranslate"><span class="pre">RDF.add_from_file()</span></code></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
 <dt id="pyomexmeta.RDF.from_string">
-<em class="property">static </em><code class="sig-name descname">from_string</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">rdf_string</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">format</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'guess'</span></em>, <em class="sig-param"><span class="n">base_uri</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'Annotations.rdf'</span></em>, <em class="sig-param"><span class="n">storage_type</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'hashes'</span></em>, <em class="sig-param"><span class="n">storage_name</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'semsim_storage'</span></em>, <em class="sig-param"><span class="n">storage_options</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">model_options</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; pyomexmeta.pyomexmeta.RDF<a class="headerlink" href="#pyomexmeta.RDF.from_string" title="Permalink to this definition">¶</a></dt>
-<dd><p>read rdf from a string</p>
+<em class="property">static </em><code class="sig-name descname">from_string</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">rdf_string</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">syntax</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'guess'</span></em>, <em class="sig-param"><span class="n">storage_type</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'hashes'</span></em>, <em class="sig-param"><span class="n">storage_name</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'pyomexmeta_storage'</span></em>, <em class="sig-param"><span class="n">storage_options</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">model_options</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; pyomexmeta.pyomexmeta.RDF<a class="headerlink" href="#pyomexmeta.RDF.from_string" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read RDF from a string and create an <a class="reference internal" href="#pyomexmeta.RDF" title="pyomexmeta.RDF"><code class="xref py py-class docutils literal notranslate"><span class="pre">RDF</span></code></a> object with it.</p>
+<p>This is a static method, i.e. it should be used without an instantiated instance of <a class="reference internal" href="#pyomexmeta.RDF" title="pyomexmeta.RDF"><code class="xref py py-class docutils literal notranslate"><span class="pre">RDF</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rdf_string</strong> – The rdf string to parse. It can be in any supported syntax.</p></li>
+<li><p><strong>syntax</strong> – <cite>guess</cite> is default which will try to make an educated guess
+as to what syntax is contained in <cite>rdf_string</cite>. However, sometimes
+the syntax cannot be identified and this will need to be specified
+manually. Other options are rdfxml, ntriples, turtle, nquads, guess.
+Note: the easiest way to get a list of available syntax options is to
+run your program with deliberately the wrong <cite>syntax</cite> argument</p></li>
+<li><p><strong>storage_type</strong> – See <code class="xref py py-meth docutils literal notranslate"><span class="pre">RDF.__init__()</span></code></p></li>
+<li><p><strong>storage_name</strong> – See <code class="xref py py-meth docutils literal notranslate"><span class="pre">RDF.__init__()</span></code></p></li>
+<li><p><strong>storage_options</strong> – See <code class="xref py py-meth docutils literal notranslate"><span class="pre">RDF.__init__()</span></code></p></li>
+<li><p><strong>model_options</strong> – See <code class="xref py py-meth docutils literal notranslate"><span class="pre">RDF.__init__()</span></code></p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns: An <a class="reference internal" href="#pyomexmeta.RDF" title="pyomexmeta.RDF"><code class="xref py py-class docutils literal notranslate"><span class="pre">RDF</span></code></a> object that contains the RDF graph described by rdf_string.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rdf_string</span> <span class="o">=</span> <span class="s2">&quot;RDF string encoded in turtle syntax&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rdf</span> <span class="o">=</span> <span class="n">RDF</span><span class="o">.</span><span class="n">from_string</span><span class="p">(</span><span class="n">rdf_string</span><span class="p">,</span> <span class="s2">&quot;turtle&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><code class="xref py py-meth docutils literal notranslate"><span class="pre">RDF.add_from_string()</span></code></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyomexmeta.RDF.from_uri">
+<em class="property">static </em><code class="sig-name descname">from_uri</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">uri_string</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">syntax</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'guess'</span></em>, <em class="sig-param"><span class="n">storage_type</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'hashes'</span></em>, <em class="sig-param"><span class="n">storage_name</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'pyomexmeta_storage'</span></em>, <em class="sig-param"><span class="n">storage_options</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">model_options</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; pyomexmeta.pyomexmeta.RDF<a class="headerlink" href="#pyomexmeta.RDF.from_uri" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create an <a class="reference internal" href="#pyomexmeta.RDF" title="pyomexmeta.RDF"><code class="xref py py-class docutils literal notranslate"><span class="pre">RDF</span></code></a> object from content in a URI.</p>
+<p>This is a static method i.e. called without an instance of <a class="reference internal" href="#pyomexmeta.RDF" title="pyomexmeta.RDF"><code class="xref py py-class docutils literal notranslate"><span class="pre">RDF</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>uri_string</strong> – The uri from which to download an <a class="reference internal" href="#pyomexmeta.RDF" title="pyomexmeta.RDF"><code class="xref py py-class docutils literal notranslate"><span class="pre">RDF</span></code></a> graph from.</p></li>
+<li><p><strong>syntax</strong> – The syntax of the graph pointed to by uri_string.</p></li>
+<li><p><strong>storage_type</strong> – See <code class="xref py py-meth docutils literal notranslate"><span class="pre">RDF.__init__()</span></code></p></li>
+<li><p><strong>storage_name</strong> – See <code class="xref py py-meth docutils literal notranslate"><span class="pre">RDF.__init__()</span></code></p></li>
+<li><p><strong>storage_options</strong> – See <code class="xref py py-meth docutils literal notranslate"><span class="pre">RDF.__init__()</span></code></p></li>
+<li><p><strong>model_options</strong> – See <code class="xref py py-meth docutils literal notranslate"><span class="pre">RDF.__init__()</span></code></p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns: <a class="reference internal" href="#pyomexmeta.RDF" title="pyomexmeta.RDF"><code class="xref py py-class docutils literal notranslate"><span class="pre">RDF</span></code></a></p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rdf</span> <span class="o">=</span> <span class="n">RDF</span><span class="o">.</span><span class="n">from_uri</span><span class="p">(</span><span class="s2">&quot;http://myrdfgraph.org/rdfspecial&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyomexmeta.RDF.get_archive_uri">
+<code class="sig-name descname">get_archive_uri</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#pyomexmeta.RDF.get_archive_uri" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the string used for archive (i.e. omex) uri</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyomexmeta.RDF.get_local_uri">
+<code class="sig-name descname">get_local_uri</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#pyomexmeta.RDF.get_local_uri" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the string used for local uri.</p>
+<p>This is set indirectly through the model_uri</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyomexmeta.RDF.get_model_uri">
+<code class="sig-name descname">get_model_uri</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#pyomexmeta.RDF.get_model_uri" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the string used for model uri.</p>
+<p>This string also gets used for local uri</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyomexmeta.RDF.get_repository_uri">
+<code class="sig-name descname">get_repository_uri</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#pyomexmeta.RDF.get_repository_uri" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the string used for repository uri</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyomexmeta.RDF.query">
+<code class="sig-name descname">query</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">query_str</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">results_syntax</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#pyomexmeta.RDF.query" title="Permalink to this definition">¶</a></dt>
+<dd><p>Query the <a class="reference internal" href="#pyomexmeta.RDF" title="pyomexmeta.RDF"><code class="xref py py-class docutils literal notranslate"><span class="pre">RDF</span></code></a> using sparql.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>query_str</strong> – (str) A SPAQRL query</p></li>
+<li><p><strong>results_syntax</strong> – What syntax to use for the results?
+Options are: xml, json, table, csv, mkr, tsv, html, turtle, rdfxml
+If incorrect string given, options are presented to user.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns: string. Results</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rdf</span> <span class="o">=</span> <span class="n">RDF</span><span class="o">.</span><span class="n">from_file</span><span class="p">(</span><span class="s2">&quot;annot.rdf&quot;</span><span class="p">)</span> <span class="c1"># read from file on disk</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rdf</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;SELECT *?x ?y ?z WHERE { ?x ?y ?z }&quot;</span><span class="p">)</span> <span class="c1"># selects everything</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyomexmeta.RDF.to_editor">
+<code class="sig-name descname">to_editor</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">xml</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">generate_new_metaids</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">False</span></em>, <em class="sig-param"><span class="n">sbml_semantic_extraction</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">True</span></em><span class="sig-paren">)</span> &#x2192; pyomexmeta.pyomexmeta.Editor<a class="headerlink" href="#pyomexmeta.RDF.to_editor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create an Editor object which is the interface for creating and removing annotations
+associated with a given xml.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>xml</strong> – The xml string for annotation (creating/deleting/amending)</p></li>
+<li><p><strong>generate_new_metaids</strong> – (bool) When True, if metaids are not available on xml elements, this flag automatically creates them</p></li>
+<li><p><strong>sbml_semantic_extraction</strong> – When xml is an sbml string, this flag determines whether to automatically
+extract semantic information from the sbml. Does nothing if xml is not sbml.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns: <a class="reference internal" href="Editor.html#pyomexmeta.Editor" title="pyomexmeta.Editor"><code class="xref py py-class docutils literal notranslate"><span class="pre">Editor</span></code></a></p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rdf</span> <span class="o">=</span> <span class="n">RDF</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">editor</span> <span class="o">=</span> <span class="n">rdf</span><span class="o">.</span><span class="n">to_editor</span><span class="p">(</span><span class="s2">&quot;&lt;insert sbml string here&gt;&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">editor</span><span class="o">.</span><span class="n">add_description</span><span class="p">(</span><span class="s2">&quot;Insulin signalling network&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="Editor.html#pyomexmeta.Editor" title="pyomexmeta.Editor"><code class="xref py py-class docutils literal notranslate"><span class="pre">Editor</span></code></a></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyomexmeta.RDF.to_string">
+<code class="sig-name descname">to_string</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">syntax</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'turtle'</span></em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#pyomexmeta.RDF.to_string" title="Permalink to this definition">¶</a></dt>
+<dd><p>Serialize this :class”:<cite>RDF</cite> graph using <cite>syntax</cite> syntax.</p>
+<p>This method is used by <code class="xref py py-meth docutils literal notranslate"><span class="pre">RDF.__str__()</span></code> for printing an RDF graph
+as default “turtle” syntax</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>syntax</strong> – <p>The syntax to use for serializing content contained in this <a class="reference internal" href="#pyomexmeta.RDF" title="pyomexmeta.RDF"><code class="xref py py-class docutils literal notranslate"><span class="pre">RDF</span></code></a> graph.
+Options are:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>ntriples, turtle, rdfxml-abbrev, rdfxml,
+dot, json-triples, json, nquads, html</p></li>
+</ul>
+</div></blockquote>
+<dl class="simple">
+<dt>Note: deliberately run your program with the wrong string arg to be presented</dt><dd><p>with a list of valid syntaxes.</p>
+</dd>
+</dl>
+</p>
+</dd>
+</dl>
+<p>Returns: (str) serialized RDF graph as string.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rdf</span> <span class="o">=</span> <span class="n">RDF</span><span class="o">.</span><span class="n">from_file</span><span class="p">(</span><span class="s2">&quot;annot.rdf&quot;</span><span class="p">,</span> <span class="s2">&quot;rdfxml&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rdf</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="s2">&quot;turtle&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><code class="xref py py-meth docutils literal notranslate"><span class="pre">RDF.__str__()</span></code></p>
+</div>
 </dd></dl>
 
 </dd></dl>

@@ -644,7 +644,13 @@ that are supported by libOmexMeta, including:</p>
 342
 343
 344
-345</pre></div></td><td class="code"><div class="highlight"><pre><span></span>Serializing to ntriples
+345
+346
+347</pre></div></td><td class="code"><div class="highlight"><pre><span></span>Python info:
+sys.executable /Users/ciaranwelsh/miniconda/envs/py38/bin/python3.8
+sys.version 3.8.5 (default, Sep  4 2020, 02:22:02) 
+[Clang 10.0.0 ]
+Serializing to ntriples
 &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#OmexMetaId0001&gt; &lt;http://biomodels.net/biology-qualifiers/isPropertyOf&gt; &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&gt; .
 &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#OmexMetaId0001&gt; &lt;http://biomodels.net/biology-qualifiers/isVersionOf&gt; &lt;https://identifiers.org/OPB/OPB_00340&gt; .
 &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&gt; &lt;http://biomodels.net/biology-qualifiers/is&gt; &lt;https://identifiers.org/uniprot/P84022&gt; .
@@ -660,7 +666,6 @@ Serializing to turtle
 @prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
 @prefix bqbiol: &lt;http://biomodels.net/biology-qualifiers/&gt; .
 @prefix OMEXlib: &lt;http://omex-library.org/&gt; .
-@prefix myOMEX: &lt;http://omex-library.org/NewOmex.omex/&gt; .
 @prefix local: &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#&gt; .
 
 local:EntityProperty0000
@@ -680,7 +685,6 @@ Serializing to rdfxml-abbrev
 &lt;rdf:RDF xmlns:OMEXlib=&quot;http://omex-library.org/&quot;
    xmlns:bqbiol=&quot;http://biomodels.net/biology-qualifiers/&quot;
    xmlns:local=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#&quot;
-   xmlns:myOMEX=&quot;http://omex-library.org/NewOmex.omex/&quot;
    xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;&gt;
   &lt;rdf:Description rdf:about=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&quot;&gt;
     &lt;bqbiol:is rdf:resource=&quot;https://identifiers.org/uniprot/P84022&quot;/&gt;
@@ -700,7 +704,7 @@ Serializing to rdfxml-abbrev
 
 Serializing to rdfxml
 &lt;?xml version=&quot;1.1&quot; encoding=&quot;utf-8&quot;?&gt;
-&lt;rdf:RDF xmlns:OMEXlib=&quot;http://omex-library.org/&quot; xmlns:bqbiol=&quot;http://biomodels.net/biology-qualifiers/&quot; xmlns:local=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#&quot; xmlns:myOMEX=&quot;http://omex-library.org/NewOmex.omex/&quot; xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;&gt;
+&lt;rdf:RDF xmlns:OMEXlib=&quot;http://omex-library.org/&quot; xmlns:bqbiol=&quot;http://biomodels.net/biology-qualifiers/&quot; xmlns:local=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#&quot; xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;&gt;
   &lt;rdf:Description rdf:about=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#OmexMetaId0001&quot;&gt;
     &lt;bqbiol:isPropertyOf rdf:resource=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&quot;/&gt;
   &lt;/rdf:Description&gt;
@@ -754,7 +758,7 @@ digraph {
 
 	// Literals
 
-	label=&quot;\n\nModel:\nbase\n\nNamespaces:\nbqbiol: http://biomodels.net/biology-qualifiers/\nOMEXlib: http://omex-library.org/\nmyOMEX: http://omex-library.org/NewOmex.omex/\nlocal: http://omex-library.org/NewOmex.omex/NewModel.rdf#\n&quot;;
+	label=&quot;\n\nModel:\nbase\n\nNamespaces:\nbqbiol: http://biomodels.net/biology-qualifiers/\nOMEXlib: http://omex-library.org/\nlocal: http://omex-library.org/NewOmex.omex/NewModel.rdf#\n&quot;;
 }
 
 
@@ -1094,7 +1098,7 @@ Serializing to html
 </div>
 <div class="literal-block-wrapper docutils container" id="id4">
 <div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id4" title="Permalink to this code">¶</a></div>
-<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">D</span><span class="p">:</span><span class="o">/</span><span class="n">libOmexMeta</span><span class="o">/</span><span class="n">docs</span><span class="o">/</span><span class="n">ExampleOutputFiles</span>\<span class="n">WritingToStringCpp</span><span class="o">.</span><span class="n">txt</span>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">ciaranwelsh</span><span class="o">/</span><span class="n">Documents</span><span class="o">/</span><span class="n">libOmexMeta</span><span class="o">/</span><span class="n">docs</span><span class="o">/</span><span class="n">ExampleOutputFiles</span><span class="o">/</span><span class="n">WritingToStringCpp</span><span class="o">.</span><span class="n">txt</span>
 </pre></div>
 </td></tr></table></div>
 </div>
@@ -1202,7 +1206,7 @@ Serializing to html
 </div>
 <div class="literal-block-wrapper docutils container" id="id6">
 <div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id6" title="Permalink to this code">¶</a></div>
-<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">D</span><span class="p">:</span><span class="o">/</span><span class="n">libOmexMeta</span><span class="o">/</span><span class="n">docs</span><span class="o">/</span><span class="n">ExampleOutputFiles</span>\<span class="n">WritingToStringC</span><span class="o">.</span><span class="n">txt</span>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">ciaranwelsh</span><span class="o">/</span><span class="n">Documents</span><span class="o">/</span><span class="n">libOmexMeta</span><span class="o">/</span><span class="n">docs</span><span class="o">/</span><span class="n">ExampleOutputFiles</span><span class="o">/</span><span class="n">WritingToStringC</span><span class="o">.</span><span class="n">txt</span>
 </pre></div>
 </td></tr></table></div>
 </div>
@@ -1295,7 +1299,7 @@ Serializing to html
 <span class="n">syntax</span> <span class="o">=</span> <span class="s2">&quot;ntriples&quot;</span>
 <span class="n">filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">),</span> <span class="s2">&quot;write_to_file.rdf&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Serializing to </span><span class="si">{}</span><span class="s2">:&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">syntax</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">rdf</span><span class="o">.</span><span class="n">to_file</span><span class="p">(</span><span class="n">syntax</span><span class="p">,</span> <span class="n">filename</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">rdf</span><span class="o">.</span><span class="n">to_file</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">syntax</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;RDF graph serialized to </span><span class="se">\&quot;</span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="se">\&quot;</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Counted </span><span class="se">\&quot;</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">rdf</span><span class="p">)</span><span class="si">}</span><span class="se">\&quot;</span><span class="s2"> triples&quot;</span><span class="p">)</span>
 
@@ -1313,8 +1317,16 @@ Serializing to html
 <div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
-4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">Serializing</span> <span class="n">to</span> <span class="n">ntriples</span><span class="p">:</span>
-<span class="kc">None</span>
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">Python</span> <span class="n">info</span><span class="p">:</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">executable</span> <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">ciaranwelsh</span><span class="o">/</span><span class="n">miniconda</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">py38</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">python3</span><span class="o">.</span><span class="mi">8</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">version</span> <span class="mf">3.8</span><span class="o">.</span><span class="mi">5</span> <span class="p">(</span><span class="n">default</span><span class="p">,</span> <span class="n">Sep</span>  <span class="mi">4</span> <span class="mi">2020</span><span class="p">,</span> <span class="mi">02</span><span class="p">:</span><span class="mi">22</span><span class="p">:</span><span class="mi">02</span><span class="p">)</span> 
+<span class="p">[</span><span class="n">Clang</span> <span class="mf">10.0</span><span class="o">.</span><span class="mi">0</span> <span class="p">]</span>
+<span class="n">Serializing</span> <span class="n">to</span> <span class="n">ntriples</span><span class="p">:</span>
+<span class="mi">0</span>
 <span class="n">RDF</span> <span class="n">graph</span> <span class="n">serialized</span> <span class="n">to</span> <span class="s2">&quot;/Users/ciaranwelsh/Documents/libOmexMeta/docs/write_to_file.rdf&quot;</span>
 <span class="n">Counted</span> <span class="s2">&quot;7&quot;</span> <span class="n">triples</span>
 </pre></div>
@@ -1410,7 +1422,7 @@ Serializing to html
 </div>
 <div class="literal-block-wrapper docutils container" id="id10">
 <div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id10" title="Permalink to this code">¶</a></div>
-<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">D</span><span class="p">:</span><span class="o">/</span><span class="n">libOmexMeta</span><span class="o">/</span><span class="n">docs</span><span class="o">/</span><span class="n">ExampleOutputFiles</span>\<span class="n">WritingToFileCpp</span><span class="o">.</span><span class="n">txt</span>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">ciaranwelsh</span><span class="o">/</span><span class="n">Documents</span><span class="o">/</span><span class="n">libOmexMeta</span><span class="o">/</span><span class="n">docs</span><span class="o">/</span><span class="n">ExampleOutputFiles</span><span class="o">/</span><span class="n">WritingToFileCpp</span><span class="o">.</span><span class="n">txt</span>
 </pre></div>
 </td></tr></table></div>
 </div>
@@ -1464,7 +1476,8 @@ Serializing to html
 44
 45
 46
-47</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;omexmeta/OmexMeta.h&quot;</span><span class="cp"></span>
+47
+48</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;omexmeta/OmexMeta.h&quot;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&quot;omexmeta/OmexMetaCApi.h&quot;</span><span class="cp"></span>
 
 <span class="n">using</span> <span class="n">namespace</span> <span class="n">omexmeta</span><span class="p">;</span>
@@ -1492,20 +1505,21 @@ Serializing to html
     <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">syntax</span> <span class="o">=</span> <span class="s">&quot;ntriples&quot;</span><span class="p">;</span>
 
     <span class="c1">// we cheat and use c++ for system independent filepath</span>
-    <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">filename</span> <span class="o">=</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">filesystem</span><span class="o">::</span><span class="n">current_path</span><span class="p">()</span> <span class="o">/+</span> <span class="s">&quot;annotations.rdf&quot;</span><span class="p">).</span><span class="n">string</span><span class="p">().</span><span class="n">c_str</span><span class="p">();</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">filesystem</span><span class="o">::</span><span class="n">path</span> <span class="n">p</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">filesystem</span><span class="o">::</span><span class="n">current_path</span><span class="p">()</span> <span class="o">/</span> <span class="s">&quot;annotations.rdf&quot;</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">fname</span> <span class="o">=</span> <span class="n">p</span><span class="p">.</span><span class="n">string</span><span class="p">();</span>
 
     <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Serializing to %s </span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">syntax</span><span class="p">);</span>
-    <span class="kt">int</span> <span class="n">failed</span> <span class="o">=</span> <span class="n">RDF_toFile</span><span class="p">(</span><span class="n">rdf</span><span class="p">,</span> <span class="n">syntax</span><span class="p">,</span> <span class="n">filename</span><span class="p">);</span> <span class="c1">// 1 if failed else 0</span>
+    <span class="kt">int</span> <span class="n">failed</span> <span class="o">=</span> <span class="n">RDF_toFile</span><span class="p">(</span><span class="n">rdf</span><span class="p">,</span> <span class="n">syntax</span><span class="p">,</span> <span class="n">fname</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span> <span class="c1">// 1 if failed else 0</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">failed</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">printf</span><span class="p">(</span><span class="s">&quot;You broke C&quot;</span><span class="p">);</span>
         <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
     <span class="p">}</span>
-    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;RDF graph serialized to </span><span class="se">\&quot;</span><span class="s">%s</span><span class="se">\&quot;</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">filename</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;RDF graph serialized to </span><span class="se">\&quot;</span><span class="s">%s</span><span class="se">\&quot;</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">fname</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span>
     <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Counted </span><span class="se">\&quot;</span><span class="s">%d</span><span class="se">\&quot;</span><span class="s"> triples&quot;</span><span class="p">,</span> <span class="n">RDF_size</span><span class="p">(</span><span class="n">rdf</span><span class="p">));</span>
 
     <span class="c1">// clean up (more cheating)</span>
-    <span class="k">if</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">filesystem</span><span class="o">::</span><span class="n">exists</span><span class="p">(</span><span class="n">filename</span><span class="p">)){</span>
-        <span class="n">std</span><span class="o">::</span><span class="n">filesystem</span><span class="o">::</span><span class="n">remove</span><span class="p">(</span><span class="n">filename</span><span class="p">);</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">filesystem</span><span class="o">::</span><span class="n">exists</span><span class="p">(</span><span class="n">fname</span><span class="p">)){</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">filesystem</span><span class="o">::</span><span class="n">remove</span><span class="p">(</span><span class="n">fname</span><span class="p">);</span>
     <span class="p">}</span>
 
     <span class="n">RDF_delete</span><span class="p">(</span><span class="n">rdf</span><span class="p">);</span>
@@ -1516,7 +1530,7 @@ Serializing to html
 </div>
 <div class="literal-block-wrapper docutils container" id="id12">
 <div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id12" title="Permalink to this code">¶</a></div>
-<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">D</span><span class="p">:</span><span class="o">/</span><span class="n">libOmexMeta</span><span class="o">/</span><span class="n">docs</span><span class="o">/</span><span class="n">ExampleOutputFiles</span>\<span class="n">WritingToFileC</span><span class="o">.</span><span class="n">txt</span>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">ciaranwelsh</span><span class="o">/</span><span class="n">Documents</span><span class="o">/</span><span class="n">libOmexMeta</span><span class="o">/</span><span class="n">docs</span><span class="o">/</span><span class="n">ExampleOutputFiles</span><span class="o">/</span><span class="n">WritingToFileC</span><span class="o">.</span><span class="n">txt</span>
 </pre></div>
 </td></tr></table></div>
 </div>

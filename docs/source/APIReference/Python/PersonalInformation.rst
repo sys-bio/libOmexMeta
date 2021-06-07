@@ -1,5 +1,5 @@
 PersonalInformation
-================
+====================
 
 
 .. autoclass::  pyomexmeta.PersonalInformation

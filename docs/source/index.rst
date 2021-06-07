@@ -18,7 +18,6 @@ libOmexMeta documentation!
    annotating_models/annotating_models_index.rst
    download_biomodels/download_biomodels.rst
    APIReference/api_reference_index.rst
-   PythonAPIReference/api_reference_index.rst
    Developers/developers_index.rst
 
 LibOMEXmeta is a library aimed at providing developer-level support for
