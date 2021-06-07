@@ -58,11 +58,11 @@
   <compound refid="structredland_1_1LibrdfStream_1_1deleter" kind="struct"><name>redland::LibrdfStream::deleter</name>
     <member refid="structredland_1_1LibrdfStream_1_1deleter_1a8bad0aa99f4ed9de92ba2fd386f98a06" kind="function"><name>operator()</name></member>
   </compound>
+  <compound refid="structredland_1_1LibrdfWorld_1_1deleter" kind="struct"><name>redland::LibrdfWorld::deleter</name>
+    <member refid="structredland_1_1LibrdfWorld_1_1deleter_1aed0283a51bec4db7cb1aa8aef28027f6" kind="function"><name>operator()</name></member>
+  </compound>
   <compound refid="structredland_1_1RaptorIOStream_1_1deleter" kind="struct"><name>redland::RaptorIOStream::deleter</name>
     <member refid="structredland_1_1RaptorIOStream_1_1deleter_1aee1bffa3eb2e372cf056e8fdef420616" kind="function"><name>operator()</name></member>
-  </compound>
-  <compound refid="structredland_1_1World_1_1deleter" kind="struct"><name>redland::World::deleter</name>
-    <member refid="structredland_1_1World_1_1deleter_1a65ccd95d5ad0420bde2a5ed2abca0043" kind="function"><name>operator()</name></member>
   </compound>
   <compound refid="structdbg_1_1detail__detector_1_1detector" kind="struct"><name>dbg::detail_detector::detector</name>
     <member refid="structdbg_1_1detail__detector_1_1detector_1af1b6da4282d723669e926c52f446a989" kind="typedef"><name>value_t</name></member>
@@ -489,6 +489,13 @@
     <member refid="classredland_1_1LibrdfUri_1a58ab2ce202cc9b563d1dc60a20a545b2" kind="function"><name>concatonate</name></member>
     <member refid="classredland_1_1LibrdfUri_1a4992fcae8de6b2814b6c9061f8f3d5b8" kind="function"><name>LibrdfUri</name></member>
   </compound>
+  <compound refid="classredland_1_1LibrdfWorld" kind="class"><name>redland::LibrdfWorld</name>
+    <member refid="classredland_1_1LibrdfWorld_1ac075f25d0a6c12a2285169593d52414b" kind="variable"><name>world_</name></member>
+    <member refid="classredland_1_1LibrdfWorld_1aa8dd8487d9a3eb21d9a3bf3b401642fc" kind="function"><name>LibrdfWorld</name></member>
+    <member refid="classredland_1_1LibrdfWorld_1aa4a670af0f22a0f9671933c2701636f1" kind="function"><name>getWorld</name></member>
+    <member refid="classredland_1_1LibrdfWorld_1a53091a6bf84dc9c31171d1421b97fb42" kind="function"><name>getRaptor</name></member>
+    <member refid="classredland_1_1LibrdfWorld_1a7cd379f33151b5e0d72663860a71647b" kind="function"><name>free</name></member>
+  </compound>
   <compound refid="structLogData" kind="struct"><name>LogData</name>
     <member refid="structLogData_1added55423a3b24a6ef757e8f749795ea" kind="variable"><name>list</name></member>
   </compound>
@@ -581,6 +588,11 @@
   </compound>
   <compound refid="classomexmeta_1_1OmexMetaXmlAssistantFactory" kind="class"><name>omexmeta::OmexMetaXmlAssistantFactory</name>
     <member refid="classomexmeta_1_1OmexMetaXmlAssistantFactory_1a7fe63cdd5b14c3bb2367d1b1c9a0d124" kind="function"><name>generate</name></member>
+  </compound>
+  <compound refid="classOptions" kind="class"><name>Options</name>
+    <member refid="classOptions_1a70ee261bcbdb118b5e3b23606888cb71" kind="variable"><name>removeRDFBag_</name></member>
+    <member refid="classOptions_1a9103fe7c299390bb2e072d54279be51a" kind="variable"><name>translateVCard_</name></member>
+    <member refid="classOptions_1a37e99102a22a33f1ddd51e30f674b9c5" kind="function"><name>Options</name></member>
   </compound>
   <compound refid="structPair" kind="struct"><name>Pair</name>
     <member refid="structPair_1acccddd6bdff96957a1e0714e539ef256" kind="variable"><name>first</name></member>
@@ -841,10 +853,16 @@
   <compound refid="classomexmeta_1_1PurgeRDFBag" kind="class"><name>omexmeta::PurgeRDFBag</name>
     <member refid="classomexmeta_1_1PurgeRDFBag_1a7276e92137b8ab3a02ea50428b9d2d1f" kind="variable"><name>rdf_</name></member>
     <member refid="classomexmeta_1_1PurgeRDFBag_1ae827821eecbf95156a13609f189022cb" kind="variable"><name>currentBlankId_</name></member>
+    <member refid="classomexmeta_1_1PurgeRDFBag_1a43a67f24bcf7c99c320ae21f6c2210be" kind="variable"><name>rdf_type</name></member>
+    <member refid="classomexmeta_1_1PurgeRDFBag_1a40f7b6f7923f00ba0123ecd0e7b05d45" kind="variable"><name>rdf_bag</name></member>
+    <member refid="classomexmeta_1_1PurgeRDFBag_1a7da52ea982b57aab6874c9a7196b5874" kind="variable"><name>creatorType1</name></member>
+    <member refid="classomexmeta_1_1PurgeRDFBag_1a6d580edda160a96c7749ef7500ea55c8" kind="variable"><name>creatorType2</name></member>
     <member refid="classomexmeta_1_1PurgeRDFBag_1abc703c31325f99d55ac99f4be4b46d94" kind="function"><name>PurgeRDFBag</name></member>
     <member refid="classomexmeta_1_1PurgeRDFBag_1ab01ff84fddf7770359e0755ca42848f8" kind="function"><name>purge</name></member>
-    <member refid="classomexmeta_1_1PurgeRDFBag_1a4e64ac3b04675dff1b1597587f4f6998" kind="function"><name>purgePattern2</name></member>
-    <member refid="classomexmeta_1_1PurgeRDFBag_1ad72aeb6f969b601b8f61ea415fc416dc" kind="function"><name>purgePattern1</name></member>
+    <member refid="classomexmeta_1_1PurgeRDFBag_1adf413be32ae861c7439acf89b59aedd7" kind="function"><name>purgePattern1</name></member>
+    <member refid="classomexmeta_1_1PurgeRDFBag_1ac368f06fcfd66622f1ff6d3e17c05363" kind="function"><name>purgePattern2</name></member>
+    <member refid="classomexmeta_1_1PurgeRDFBag_1a6bfab9190b6f548756c71c5dd3c5807f" kind="function"><name>purgePattern3</name></member>
+    <member refid="classomexmeta_1_1PurgeRDFBag_1af11f91c2751c9daeb041973d5d1e6356" kind="function"><name>rdfBagQueryString</name></member>
   </compound>
   <compound refid="classomexmeta_1_1Query" kind="class"><name>omexmeta::Query</name>
     <member refid="classomexmeta_1_1Query_1a31f2c3d3ea8fa0b5766d2ca35d2609fd" kind="function"><name>getBindingValueByName</name></member>
@@ -1122,10 +1140,11 @@
     <member refid="classomexmeta_1_1RDF_1ab6b74c206a0b9cbce946f9d7bd8d1f56" kind="function"><name>addTriple</name></member>
     <member refid="classomexmeta_1_1RDF_1aa8f640de046b3c1bd43de0fe5aba0958" kind="function"><name>addTriples</name></member>
     <member refid="classomexmeta_1_1RDF_1a9565b7c0ad81abed2243c0a76f1ebea3" kind="function"><name>getUriHandler</name></member>
+    <member refid="classomexmeta_1_1RDF_1ac8c1f50b7fd693518b41d3000a357fa4" kind="function"><name>purgeRDFBag</name></member>
+    <member refid="classomexmeta_1_1RDF_1aea054c0e60e0aade66d52998b3559eec" kind="function"><name>translateVcard</name></member>
     <member refid="classomexmeta_1_1RDF_1ab282cd4a6d76e87fa9ca91077936eeb5" kind="function"><name>fromString</name></member>
     <member refid="classomexmeta_1_1RDF_1a18f57a8d85f89ff7b0575540ab280a2f" kind="function"><name>fromUri</name></member>
     <member refid="classomexmeta_1_1RDF_1a87ab63ef63126945d345d463e0a14f5e" kind="function"><name>fromFile</name></member>
-    <member refid="classomexmeta_1_1RDF_1a64aad2ca67fb7b7efe175354bb78440f" kind="function"><name>fromString</name></member>
     <member refid="classomexmeta_1_1RDF_1ae01ed260e02eda2141ffe1288f78c177" kind="function"><name>listOptions</name></member>
     <member refid="classomexmeta_1_1RDF_1a436984961a0a9881824e031b855b7413" kind="function"><name>equals</name></member>
     <member refid="classomexmeta_1_1RDF_1a43fa92ba852b2181e0b437c812abac7d" kind="function"><name>equals</name></member>
@@ -1286,13 +1305,6 @@
     <member refid="classomexmeta_1_1VCardTranslator_1ab774550e933e2bb1ca4e540510071719" kind="function"><name>translateGivenName</name></member>
     <member refid="classomexmeta_1_1VCardTranslator_1aafae8501bc3eafe66356fac040153373" kind="function"><name>translateOrganization</name></member>
     <member refid="classomexmeta_1_1VCardTranslator_1aac64a10f8edc75738e260c824fcd3d8a" kind="function"><name>translateEmail</name></member>
-  </compound>
-  <compound refid="classredland_1_1World" kind="class"><name>redland::World</name>
-    <member refid="classredland_1_1World_1aac4a7976699e6d14787b13accd4e1e51" kind="variable"><name>world_</name></member>
-    <member refid="classredland_1_1World_1a2526a796e3b25f0fee0d38690ca77b47" kind="function"><name>World</name></member>
-    <member refid="classredland_1_1World_1ad7618363c9b7da4c87367707c1a159d7" kind="function"><name>getWorld</name></member>
-    <member refid="classredland_1_1World_1aac0ce4018279ced7b38a36d74bb10cec" kind="function"><name>getRaptor</name></member>
-    <member refid="classredland_1_1World_1ade64918f10ee6ee0f5b8a0cb2e01666b" kind="function"><name>free</name></member>
   </compound>
   <compound refid="namespacedbg" kind="namespace"><name>dbg</name>
     <member refid="dbg_8h_1a4fff29dc9282f3e887a7c1290477708c" kind="typedef"><name>is_detected</name></member>
@@ -1537,7 +1549,7 @@
   </compound>
   <compound refid="CMakeLists_8txt" kind="file"><name>CMakeLists.txt</name>
     <member refid="CMakeLists_8txt_1ac6e62319442999cf52a6433a996aa8d2" kind="function"><name>set</name></member>
-    <member refid="CMakeLists_8txt_1ac64eece789d749999c9ece835f6ceb52" kind="function"><name>SET</name></member>
+    <member refid="CMakeLists_8txt_1ab3501bae4f2614b0bf421130347b9931" kind="function"><name>SET</name></member>
   </compound>
   <compound refid="CurlGet_8cpp" kind="file"><name>CurlGet.cpp</name>
   </compound>
@@ -1619,6 +1631,8 @@
   </compound>
   <compound refid="OmexMetaXmlType_8h" kind="file"><name>OmexMetaXmlType.h</name>
   </compound>
+  <compound refid="Options_8h" kind="file"><name>Options.h</name>
+  </compound>
   <compound refid="Participant_8h" kind="file"><name>Participant.h</name>
   </compound>
   <compound refid="PersonalInformation_8h" kind="file"><name>PersonalInformation.h</name>
@@ -1658,6 +1672,8 @@
   <compound refid="OmexMetaUtils_8cpp" kind="file"><name>OmexMetaUtils.cpp</name>
   </compound>
   <compound refid="OmexMetaXmlAssistant_8cpp" kind="file"><name>OmexMetaXmlAssistant.cpp</name>
+  </compound>
+  <compound refid="Options_8cpp" kind="file"><name>Options.cpp</name>
   </compound>
   <compound refid="Participant_8cpp" kind="file"><name>Participant.cpp</name>
   </compound>
@@ -1753,6 +1769,8 @@
   <compound refid="LibrdfStream_8h" kind="file"><name>LibrdfStream.h</name>
   </compound>
   <compound refid="LibrdfUri_8h" kind="file"><name>LibrdfUri.h</name>
+  </compound>
+  <compound refid="LibrdfWorld_8h" kind="file"><name>LibrdfWorld.h</name>
   </compound>
   <compound refid="raptor2_8h" kind="file"><name>raptor2.h</name>
     <member refid="raptor2_8h_1a0e1a23d85c6cfbe9914b68a3f6ca3fe3" kind="define"><name>RAPTOR_V2_AVAILABLE</name></member>
@@ -2408,8 +2426,6 @@
   </compound>
   <compound refid="RedlandAPI_8h" kind="file"><name>RedlandAPI.h</name>
   </compound>
-  <compound refid="World_8h" kind="file"><name>World.h</name>
-  </compound>
   <compound refid="LibrdfModel_8cpp" kind="file"><name>LibrdfModel.cpp</name>
   </compound>
   <compound refid="LibrdfNode_8cpp" kind="file"><name>LibrdfNode.cpp</name>
@@ -2428,7 +2444,7 @@
   </compound>
   <compound refid="LibrdfUri_8cpp" kind="file"><name>LibrdfUri.cpp</name>
   </compound>
-  <compound refid="World_8cpp" kind="file"><name>World.cpp</name>
+  <compound refid="LibrdfWorld_8cpp" kind="file"><name>LibrdfWorld.cpp</name>
   </compound>
   <compound refid="dir_0ff2839f0436a7bd3ba130866134b3e9" kind="dir"><name>src/omexmeta/include</name>
   </compound>

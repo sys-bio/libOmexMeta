@@ -1100,11 +1100,15 @@ public:
     }
 };
 
+/**
+ * Note, this sbml is too long for fussy windows. So we split into multiple strings
+ * End result is the same
+ */
 class BIOMD626 : SBMLModel {
 public:
     BIOMD626() = default;
 
-    std::string str() override {
+    std::string part1() {
         return "<?xml version='1.0' encoding='UTF-8' standalone='no'?>\n"
                "<sbml xmlns=\"http://www.sbml.org/sbml/level2/version4\" level=\"2\" metaid=\"_042fa558-7f67-472a-9dbb-3db573be8fea\"\n"
                "      version=\"4\">\n"
@@ -1742,8 +1746,11 @@ public:
                "                                    <rdf:li rdf:resource=\"http://identifiers.org/fma/FMA:68646\"/>\n"
                "                                </rdf:Bag>\n"
                "                            </bqbiol:is>\n"
-               "\n"
-               "                            <bqbiol:isVersionOf>\n"
+               "\n";
+    }
+
+    std::string part2() {
+        return "                            <bqbiol:isVersionOf>\n"
                "                                <rdf:Bag>\n"
                "                                    <rdf:li rdf:resource=\"http://identifiers.org/go/GO:0005623\"/>\n"
                "                                </rdf:Bag>\n"
@@ -2211,8 +2218,11 @@ public:
                "                                        </bqbiol:isDescribedBy>\n"
                "                                    </rdf:Description>\n"
                "\n"
-               "\n"
-               "                                </rdf:RDF>\n"
+               "\n";
+    }
+
+    std::string part3() {
+        return "                                </rdf:RDF>\n"
                "                            </annotation>\n"
                "                        </parameter>\n"
                "                    </listOfParameters>\n"
@@ -2716,13 +2726,17 @@ public:
                "    </model>\n"
                "</sbml>";
     }
+
+    std::string str() override{
+        return part1() + part2() + part3();
+    }
 };
 
 class BIOMD689 : SBMLModel {
 public:
     BIOMD689() = default;
 
-    std::string str() override {
+    std::string part1() {
         return "<?xml version='1.0' encoding='UTF-8' standalone='no'?>\n"
                "<sbml xmlns=\"http://www.sbml.org/sbml/level2/version4\" level=\"2\" metaid=\"_5c18ed35-4c99-4466-83ea-df9046ed7c5c\" version=\"4\">\n"
                "  <model id=\"Thiaville2016___Folate_pathway_model_with_induced_PanB_reaction\" metaid=\"COPASI0\" name=\"Thiaville2016 - Folate pathway model (PanB overexpression)\">\n"
@@ -3379,8 +3393,11 @@ public:
                "\t\n"
                "\t\n"
                "\t\n"
-               "          </rdf:RDF>\n"
-               "          <COPASI xmlns=\"http://www.copasi.org/static/sbml\">\n"
+               "          </rdf:RDF>\n";
+    }
+
+    std::string part2() {
+        return "          <COPASI xmlns=\"http://www.copasi.org/static/sbml\">\n"
                "            <rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xmlns:CopasiMT=\"http://www.copasi.org/RDF/MiriamTerms#\" xmlns:dcterms=\"http://purl.org/dc/terms/\">\n"
                "              <rdf:Description rdf:about=\"#COPASI10\">\n"
                "                <dcterms:created>\n"
@@ -4280,6 +4297,10 @@ public:
                "  </model>\n"
                "</sbml>";
     }
+
+    std::string str() override {
+        return part1() + part2();
+    }
 };
 
 class ADHModel : SBMLModel {
@@ -4963,7 +4984,6 @@ public:
                "    </model>\n"
                "</sbml>";
     }
-
 };
 
 

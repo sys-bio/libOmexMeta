@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+  <compounddef id="classredland_1_1LibrdfWorld" kind="class" language="C++" prot="public">
+    <compoundname>redland::LibrdfWorld</compoundname>
+    <innerclass refid="structredland_1_1LibrdfWorld_1_1deleter" prot="private">redland::LibrdfWorld::deleter</innerclass>
+      <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="classredland_1_1LibrdfWorld_1ac075f25d0a6c12a2285169593d52414b" prot="private" static="yes" mutable="no">
+        <type>librdf_world *</type>
+        <definition>librdf_world * redland::LibrdfWorld::world_</definition>
+        <argsstring></argsstring>
+        <name>world_</name>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfWorld.h" line="44" column="29" bodyfile="src/redland/RedlandWrapper/src/include/redland/LibrdfWorld.h" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classredland_1_1LibrdfWorld_1aa8dd8487d9a3eb21d9a3bf3b401642fc" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>redland::LibrdfWorld::LibrdfWorld</definition>
+        <argsstring>()</argsstring>
+        <name>LibrdfWorld</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfWorld.h" line="49" column="9"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classredland_1_1LibrdfWorld_1aa4a670af0f22a0f9671933c2701636f1" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>librdf_world *</type>
+        <definition>librdf_world * redland::LibrdfWorld::getWorld</definition>
+        <argsstring>()</argsstring>
+        <name>getWorld</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfWorld.h" line="57" column="29" bodyfile="src/redland/RedlandWrapper/src/LibrdfWorld.cpp" bodystart="17" bodyend="23"/>
+      </memberdef>
+      <memberdef kind="function" id="classredland_1_1LibrdfWorld_1a53091a6bf84dc9c31171d1421b97fb42" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>raptor_world *</type>
+        <definition>raptor_world * redland::LibrdfWorld::getRaptor</definition>
+        <argsstring>()</argsstring>
+        <name>getRaptor</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfWorld.h" line="59" column="29" bodyfile="src/redland/RedlandWrapper/src/LibrdfWorld.cpp" bodystart="25" bodyend="27"/>
+      </memberdef>
+      <memberdef kind="function" id="classredland_1_1LibrdfWorld_1a7cd379f33151b5e0d72663860a71647b" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void redland::LibrdfWorld::free</definition>
+        <argsstring>(librdf_world *world)</argsstring>
+        <name>free</name>
+        <param>
+          <type>librdf_world *</type>
+          <declname>world</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfWorld.h" line="61" column="21" bodyfile="src/redland/RedlandWrapper/src/LibrdfWorld.cpp" bodystart="29" bodyend="35"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfWorld.h" line="42" column="5" bodyfile="src/redland/RedlandWrapper/src/include/redland/LibrdfWorld.h" bodystart="42" bodyend="63"/>
+    <listofallmembers>
+      <member refid="classredland_1_1LibrdfWorld_1a7cd379f33151b5e0d72663860a71647b" prot="public" virt="non-virtual"><scope>redland::LibrdfWorld</scope><name>free</name></member>
+      <member refid="classredland_1_1LibrdfWorld_1a53091a6bf84dc9c31171d1421b97fb42" prot="public" virt="non-virtual"><scope>redland::LibrdfWorld</scope><name>getRaptor</name></member>
+      <member refid="classredland_1_1LibrdfWorld_1aa4a670af0f22a0f9671933c2701636f1" prot="public" virt="non-virtual"><scope>redland::LibrdfWorld</scope><name>getWorld</name></member>
+      <member refid="classredland_1_1LibrdfWorld_1aa8dd8487d9a3eb21d9a3bf3b401642fc" prot="private" virt="non-virtual"><scope>redland::LibrdfWorld</scope><name>LibrdfWorld</name></member>
+      <member refid="classredland_1_1LibrdfWorld_1ac075f25d0a6c12a2285169593d52414b" prot="private" virt="non-virtual"><scope>redland::LibrdfWorld</scope><name>world_</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

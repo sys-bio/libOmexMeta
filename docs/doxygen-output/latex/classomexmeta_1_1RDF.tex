@@ -107,6 +107,11 @@ void \mbox{\hyperlink{classomexmeta_1_1RDF_aa8f640de046b3c1bd43de0fe5aba0958}{ad
 \begin{DoxyCompactList}\small\item\em add a set of \mbox{\hyperlink{classomexmeta_1_1Triples}{Triples}} to the current model \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classomexmeta_1_1RDF_a9565b7c0ad81abed2243c0a76f1ebea3}\label{classomexmeta_1_1RDF_a9565b7c0ad81abed2243c0a76f1ebea3}} 
 \mbox{\hyperlink{classomexmeta_1_1UriHandler}{Uri\+Handler}} \& {\bfseries get\+Uri\+Handler} () override
+\item 
+\mbox{\Hypertarget{classomexmeta_1_1RDF_ac8c1f50b7fd693518b41d3000a357fa4}\label{classomexmeta_1_1RDF_ac8c1f50b7fd693518b41d3000a357fa4}} 
+void \mbox{\hyperlink{classomexmeta_1_1RDF_ac8c1f50b7fd693518b41d3000a357fa4}{purge\+R\+D\+F\+Bag}} ()
+\begin{DoxyCompactList}\small\item\em remove rdf\+:Bag constructs from the current rdf graph \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classomexmeta_1_1RDF_aea054c0e60e0aade66d52998b3559eec}{translate\+Vcard}} ()
 \end{DoxyCompactItemize}
 \doxysubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
@@ -117,8 +122,6 @@ static \mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} \mbox{\hyperlink{classomex
 \begin{DoxyCompactList}\small\item\em parse \mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} directly from a uri \end{DoxyCompactList}\item 
 static \mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} \mbox{\hyperlink{classomexmeta_1_1RDF_a87ab63ef63126945d345d463e0a14f5e}{from\+File}} (const std\+::string \&filename, const std\+::string \&syntax)
 \begin{DoxyCompactList}\small\item\em read rdf from annotations in a file \end{DoxyCompactList}\item 
-static void \mbox{\hyperlink{classomexmeta_1_1RDF_a64aad2ca67fb7b7efe175354bb78440f}{from\+String}} (\mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} $\ast$rdf, const std\+::string \&str, const std\+::string \&syntax, std\+::string base\+\_\+uri=\char`\"{}Annotations.\+rdf\char`\"{})
-\begin{DoxyCompactList}\small\item\em non static version of \mbox{\hyperlink{classomexmeta_1_1RDF_ab282cd4a6d76e87fa9ca91077936eeb5}{R\+D\+F\+::from\+String}} that takes a $\ast$ \mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} pointer object and modifies in place. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classomexmeta_1_1RDF_ae01ed260e02eda2141ffe1288f78c177}\label{classomexmeta_1_1RDF_ae01ed260e02eda2141ffe1288f78c177}} 
 static std\+::ostringstream {\bfseries list\+Options} ()
 \item 
@@ -139,8 +142,7 @@ Namespace\+Map \mbox{\hyperlink{classomexmeta_1_1RDF_a1979d7d70a4c20f2e63f00c7fa
 \item 
 std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{classomexmeta_1_1RDF_a82bc53feb93e1243970400fd104174da}{seen\+\_\+namespaces\+\_\+}}
 \item 
-\mbox{\Hypertarget{classomexmeta_1_1RDF_a59014bbb45a43dbfa760480f1713c473}\label{classomexmeta_1_1RDF_a59014bbb45a43dbfa760480f1713c473}} 
-const std\+::string {\bfseries O\+M\+E\+Xlib\+\_\+} = \char`\"{}http\+://O\+M\+E\+Xlibrary.\+org/\char`\"{}
+const std\+::string \mbox{\hyperlink{classomexmeta_1_1RDF_a59014bbb45a43dbfa760480f1713c473}{O\+M\+E\+Xlib\+\_\+}} = \char`\"{}http\+://O\+M\+E\+Xlibrary.\+org/\char`\"{}
 \end{DoxyCompactItemize}
 
 
@@ -340,7 +342,7 @@ an instantiated \mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} object  Uses Libr
 \mbox{\Hypertarget{classomexmeta_1_1RDF_ab282cd4a6d76e87fa9ca91077936eeb5}\label{classomexmeta_1_1RDF_ab282cd4a6d76e87fa9ca91077936eeb5}} 
 \index{omexmeta::RDF@{omexmeta::RDF}!fromString@{fromString}}
 \index{fromString@{fromString}!omexmeta::RDF@{omexmeta::RDF}}
-\doxysubsubsection{\texorpdfstring{fromString()}{fromString()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+\doxysubsubsection{\texorpdfstring{fromString()}{fromString()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} omexmeta\+::\+R\+D\+F\+::from\+String (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{str,  }\item[{const std\+::string \&}]{syntax = {\ttfamily \char`\"{}guess\char`\"{}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
@@ -354,19 +356,7 @@ instantiate an \mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} instance and read 
 {\em syntax} & which syntax str is in. Default=\char`\"{}guess\char`\"{} \+: try to guess. \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{classomexmeta_1_1RDF_a64aad2ca67fb7b7efe175354bb78440f}\label{classomexmeta_1_1RDF_a64aad2ca67fb7b7efe175354bb78440f}} 
-\index{omexmeta::RDF@{omexmeta::RDF}!fromString@{fromString}}
-\index{fromString@{fromString}!omexmeta::RDF@{omexmeta::RDF}}
-\doxysubsubsection{\texorpdfstring{fromString()}{fromString()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily void omexmeta\+::\+R\+D\+F\+::from\+String (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} $\ast$}]{rdf,  }\item[{const std\+::string \&}]{str,  }\item[{const std\+::string \&}]{syntax,  }\item[{std\+::string}]{base\+\_\+uri = {\ttfamily \char`\"{}Annotations.rdf\char`\"{}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
-
-
-
-non static version of \mbox{\hyperlink{classomexmeta_1_1RDF_ab282cd4a6d76e87fa9ca91077936eeb5}{R\+D\+F\+::from\+String}} that takes a $\ast$ \mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} pointer object and modifies in place. 
-
-Primarily used for C A\+PI For developers\+: look into replacing this function fully with \mbox{\hyperlink{classomexmeta_1_1RDF_ad403d7c62ef1cf902fcb8b65c5ad641f}{R\+D\+F\+::add\+From\+String()}} method.
-
-todo test whether deleting this method breaks any tests. if not, delete. \mbox{\Hypertarget{classomexmeta_1_1RDF_a18f57a8d85f89ff7b0575540ab280a2f}\label{classomexmeta_1_1RDF_a18f57a8d85f89ff7b0575540ab280a2f}} 
+\mbox{\Hypertarget{classomexmeta_1_1RDF_a18f57a8d85f89ff7b0575540ab280a2f}\label{classomexmeta_1_1RDF_a18f57a8d85f89ff7b0575540ab280a2f}} 
 \index{omexmeta::RDF@{omexmeta::RDF}!fromUri@{fromUri}}
 \index{fromUri@{fromUri}!omexmeta::RDF@{omexmeta::RDF}}
 \doxysubsubsection{\texorpdfstring{fromUri()}{fromUri()}}
@@ -577,7 +567,7 @@ Write annotations to file.
 
 
 \begin{DoxyParams}{Parameters}
-{\em syntax} & the expected output syntax. Options include\+: \char`\"{}ntriples\char`\"{}, \char`\"{}turtle\char`\"{}, \char`\"{}rdfxml-\/xmp\char`\"{}, \char`\"{}rdfxml-\/abbrev\char`\"{}, \char`\"{}rdfxml\char`\"{}, \char`\"{}dot\char`\"{}, \char`\"{}json-\/triples\char`\"{}, \char`\"{}json\char`\"{}, \char`\"{}nquads\char`\"{}, \char`\"{}html\char`\"{}. \\
+{\em syntax} & the expected output syntax. \mbox{\hyperlink{classOptions}{Options}} include\+: \char`\"{}ntriples\char`\"{}, \char`\"{}turtle\char`\"{}, \char`\"{}rdfxml-\/xmp\char`\"{}, \char`\"{}rdfxml-\/abbrev\char`\"{}, \char`\"{}rdfxml\char`\"{}, \char`\"{}dot\char`\"{}, \char`\"{}json-\/triples\char`\"{}, \char`\"{}json\char`\"{}, \char`\"{}nquads\char`\"{}, \char`\"{}html\char`\"{}. \\
 \hline
 {\em filename} & full path of file to write \\
 \hline
@@ -602,14 +592,20 @@ serialize \mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} graph to string
 
 
 \begin{DoxyParams}{Parameters}
-{\em syntax} & the expected output syntax. Options include\+: \char`\"{}ntriples\char`\"{}, \char`\"{}turtle\char`\"{}, \char`\"{}rdfxml-\/xmp\char`\"{}, \char`\"{}rdfxml-\/abbrev\char`\"{}, \char`\"{}rdfxml\char`\"{}, \char`\"{}dot\char`\"{}, \char`\"{}json-\/triples\char`\"{}, \char`\"{}json\char`\"{}, \char`\"{}nquads\char`\"{}, \char`\"{}html\char`\"{}. \\
+{\em syntax} & the expected output syntax. \mbox{\hyperlink{classOptions}{Options}} include\+: \char`\"{}ntriples\char`\"{}, \char`\"{}turtle\char`\"{}, \char`\"{}rdfxml-\/xmp\char`\"{}, \char`\"{}rdfxml-\/abbrev\char`\"{}, \char`\"{}rdfxml\char`\"{}, \char`\"{}dot\char`\"{}, \char`\"{}json-\/triples\char`\"{}, \char`\"{}json\char`\"{}, \char`\"{}nquads\char`\"{}, \char`\"{}html\char`\"{}. \\
 \hline
 \end{DoxyParams}
 
 
 Implements \mbox{\hyperlink{classomexmeta_1_1IRDF}{omexmeta\+::\+I\+R\+DF}}.
 
+\mbox{\Hypertarget{classomexmeta_1_1RDF_aea054c0e60e0aade66d52998b3559eec}\label{classomexmeta_1_1RDF_aea054c0e60e0aade66d52998b3559eec}} 
+\index{omexmeta::RDF@{omexmeta::RDF}!translateVcard@{translateVcard}}
+\index{translateVcard@{translateVcard}!omexmeta::RDF@{omexmeta::RDF}}
+\doxysubsubsection{\texorpdfstring{translateVcard()}{translateVcard()}}
+{\footnotesize\ttfamily void omexmeta\+::\+R\+D\+F\+::translate\+Vcard (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+Translate V\+C\+A\+RD into foaf 
 
 \doxysubsection{Member Data Documentation}
 \mbox{\Hypertarget{classomexmeta_1_1RDF_a1979d7d70a4c20f2e63f00c7fa668b1f}\label{classomexmeta_1_1RDF_a1979d7d70a4c20f2e63f00c7fa668b1f}} 
@@ -618,7 +614,13 @@ Implements \mbox{\hyperlink{classomexmeta_1_1IRDF}{omexmeta\+::\+I\+R\+DF}}.
 \doxysubsubsection{\texorpdfstring{namespaces\_}{namespaces\_}}
 {\footnotesize\ttfamily Namespace\+Map omexmeta\+::\+R\+D\+F\+::namespaces\+\_\+}
 
-Storage for namespaces and prefixes \mbox{\Hypertarget{classomexmeta_1_1RDF_a82bc53feb93e1243970400fd104174da}\label{classomexmeta_1_1RDF_a82bc53feb93e1243970400fd104174da}} 
+Storage for namespaces and prefixes \mbox{\Hypertarget{classomexmeta_1_1RDF_a59014bbb45a43dbfa760480f1713c473}\label{classomexmeta_1_1RDF_a59014bbb45a43dbfa760480f1713c473}} 
+\index{omexmeta::RDF@{omexmeta::RDF}!OMEXlib\_@{OMEXlib\_}}
+\index{OMEXlib\_@{OMEXlib\_}!omexmeta::RDF@{omexmeta::RDF}}
+\doxysubsubsection{\texorpdfstring{OMEXlib\_}{OMEXlib\_}}
+{\footnotesize\ttfamily const std\+::string omexmeta\+::\+R\+D\+F\+::\+O\+M\+E\+Xlib\+\_\+ = \char`\"{}http\+://O\+M\+E\+Xlibrary.\+org/\char`\"{}}
+
+Default repository uri \mbox{\Hypertarget{classomexmeta_1_1RDF_a82bc53feb93e1243970400fd104174da}\label{classomexmeta_1_1RDF_a82bc53feb93e1243970400fd104174da}} 
 \index{omexmeta::RDF@{omexmeta::RDF}!seen\_namespaces\_@{seen\_namespaces\_}}
 \index{seen\_namespaces\_@{seen\_namespaces\_}!omexmeta::RDF@{omexmeta::RDF}}
 \doxysubsubsection{\texorpdfstring{seen\_namespaces\_}{seen\_namespaces\_}}

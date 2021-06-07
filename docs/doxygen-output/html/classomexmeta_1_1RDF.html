@@ -213,6 +213,12 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memitem:a9565b7c0ad81abed2243c0a76f1ebea3"><td class="memItemLeft" align="right" valign="top"><a id="a9565b7c0ad81abed2243c0a76f1ebea3"></a>
 <a class="el" href="classomexmeta_1_1UriHandler.html">UriHandler</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getUriHandler</b> () override</td></tr>
 <tr class="separator:a9565b7c0ad81abed2243c0a76f1ebea3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8c1f50b7fd693518b41d3000a357fa4"><td class="memItemLeft" align="right" valign="top"><a id="ac8c1f50b7fd693518b41d3000a357fa4"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1RDF.html#ac8c1f50b7fd693518b41d3000a357fa4">purgeRDFBag</a> ()</td></tr>
+<tr class="memdesc:ac8c1f50b7fd693518b41d3000a357fa4"><td class="mdescLeft">&#160;</td><td class="mdescRight">remove rdf:Bag constructs from the current rdf graph <br /></td></tr>
+<tr class="separator:ac8c1f50b7fd693518b41d3000a357fa4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea054c0e60e0aade66d52998b3559eec"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1RDF.html#aea054c0e60e0aade66d52998b3559eec">translateVcard</a> ()</td></tr>
+<tr class="separator:aea054c0e60e0aade66d52998b3559eec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -225,9 +231,6 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a87ab63ef63126945d345d463e0a14f5e"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classomexmeta_1_1RDF.html">RDF</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1RDF.html#a87ab63ef63126945d345d463e0a14f5e">fromFile</a> (const std::string &amp;filename, const std::string &amp;syntax)</td></tr>
 <tr class="memdesc:a87ab63ef63126945d345d463e0a14f5e"><td class="mdescLeft">&#160;</td><td class="mdescRight">read rdf from annotations in a file  <a href="classomexmeta_1_1RDF.html#a87ab63ef63126945d345d463e0a14f5e">More...</a><br /></td></tr>
 <tr class="separator:a87ab63ef63126945d345d463e0a14f5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a64aad2ca67fb7b7efe175354bb78440f"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1RDF.html#a64aad2ca67fb7b7efe175354bb78440f">fromString</a> (<a class="el" href="classomexmeta_1_1RDF.html">RDF</a> *rdf, const std::string &amp;str, const std::string &amp;syntax, std::string base_uri=&quot;Annotations.rdf&quot;)</td></tr>
-<tr class="memdesc:a64aad2ca67fb7b7efe175354bb78440f"><td class="mdescLeft">&#160;</td><td class="mdescRight">non static version of <a class="el" href="classomexmeta_1_1RDF.html#ab282cd4a6d76e87fa9ca91077936eeb5" title="instantiate an RDF instance and read annotations from a string. This is a static method.">RDF::fromString</a> that takes a * <a class="el" href="classomexmeta_1_1RDF.html">RDF</a> pointer object and modifies in place.  <a href="classomexmeta_1_1RDF.html#a64aad2ca67fb7b7efe175354bb78440f">More...</a><br /></td></tr>
-<tr class="separator:a64aad2ca67fb7b7efe175354bb78440f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae01ed260e02eda2141ffe1288f78c177"><td class="memItemLeft" align="right" valign="top"><a id="ae01ed260e02eda2141ffe1288f78c177"></a>
 static std::ostringstream&#160;</td><td class="memItemRight" valign="bottom"><b>listOptions</b> ()</td></tr>
 <tr class="separator:ae01ed260e02eda2141ffe1288f78c177"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -253,8 +256,7 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a1979d7d70a4c20f2e63f00c7fa668b1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a82bc53feb93e1243970400fd104174da"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1RDF.html#a82bc53feb93e1243970400fd104174da">seen_namespaces_</a></td></tr>
 <tr class="separator:a82bc53feb93e1243970400fd104174da"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a59014bbb45a43dbfa760480f1713c473"><td class="memItemLeft" align="right" valign="top"><a id="a59014bbb45a43dbfa760480f1713c473"></a>
-const std::string&#160;</td><td class="memItemRight" valign="bottom"><b>OMEXlib_</b> = &quot;http://OMEXlibrary.org/&quot;</td></tr>
+<tr class="memitem:a59014bbb45a43dbfa760480f1713c473"><td class="memItemLeft" align="right" valign="top">const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1RDF.html#a59014bbb45a43dbfa760480f1713c473">OMEXlib_</a> = &quot;http://OMEXlibrary.org/&quot;</td></tr>
 <tr class="separator:a59014bbb45a43dbfa760480f1713c473"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
@@ -803,7 +805,7 @@ const std::string&#160;</td><td class="memItemRight" valign="bottom"><b>OMEXlib_
 </div>
 </div>
 <a id="ab282cd4a6d76e87fa9ca91077936eeb5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab282cd4a6d76e87fa9ca91077936eeb5">&#9670;&nbsp;</a></span>fromString() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ab282cd4a6d76e87fa9ca91077936eeb5">&#9670;&nbsp;</a></span>fromString()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -844,58 +846,6 @@ const std::string&#160;</td><td class="memItemRight" valign="bottom"><b>OMEXlib_
   </table>
   </dd>
 </dl>
-
-</div>
-</div>
-<a id="a64aad2ca67fb7b7efe175354bb78440f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a64aad2ca67fb7b7efe175354bb78440f">&#9670;&nbsp;</a></span>fromString() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void omexmeta::RDF::fromString </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classomexmeta_1_1RDF.html">RDF</a> *&#160;</td>
-          <td class="paramname"><em>rdf</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>str</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>syntax</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">std::string&#160;</td>
-          <td class="paramname"><em>base_uri</em> = <code>&quot;Annotations.rdf&quot;</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>non static version of <a class="el" href="classomexmeta_1_1RDF.html#ab282cd4a6d76e87fa9ca91077936eeb5" title="instantiate an RDF instance and read annotations from a string. This is a static method.">RDF::fromString</a> that takes a * <a class="el" href="classomexmeta_1_1RDF.html">RDF</a> pointer object and modifies in place. </p>
-<p>Primarily used for C API For developers: look into replacing this function fully with <a class="el" href="classomexmeta_1_1RDF.html#ad403d7c62ef1cf902fcb8b65c5ad641f" title="non-static variant of RDF::fromString(). Reads rdf into an RDF instance. See RDF::fromString() for ar...">RDF::addFromString()</a> method.</p>
-<p>todo test whether deleting this method breaks any tests. if not, delete. </p>
 
 </div>
 </div>
@@ -1373,7 +1323,7 @@ const std::string&#160;</td><td class="memItemRight" valign="bottom"><b>OMEXlib_
 <p>Write annotations to file. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">syntax</td><td>the expected output syntax. Options include: "ntriples", "turtle", "rdfxml-xmp", "rdfxml-abbrev", "rdfxml", "dot", "json-triples", "json", "nquads", "html". </td></tr>
+    <tr><td class="paramname">syntax</td><td>the expected output syntax. <a class="el" href="classOptions.html" title="global options for libOmexMeta">Options</a> include: "ntriples", "turtle", "rdfxml-xmp", "rdfxml-abbrev", "rdfxml", "dot", "json-triples", "json", "nquads", "html". </td></tr>
     <tr><td class="paramname">filename</td><td>full path of file to write </td></tr>
     <tr><td class="paramname">mime_type</td><td>optional valid mime </td></tr>
     <tr><td class="paramname">type_uri</td><td>optional type uri </td></tr>
@@ -1428,12 +1378,30 @@ const std::string&#160;</td><td class="memItemRight" valign="bottom"><b>OMEXlib_
 <p>serialize <a class="el" href="classomexmeta_1_1RDF.html">RDF</a> graph to string </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">syntax</td><td>the expected output syntax. Options include: "ntriples", "turtle", "rdfxml-xmp", "rdfxml-abbrev", "rdfxml", "dot", "json-triples", "json", "nquads", "html". </td></tr>
+    <tr><td class="paramname">syntax</td><td>the expected output syntax. <a class="el" href="classOptions.html" title="global options for libOmexMeta">Options</a> include: "ntriples", "turtle", "rdfxml-xmp", "rdfxml-abbrev", "rdfxml", "dot", "json-triples", "json", "nquads", "html". </td></tr>
   </table>
   </dd>
 </dl>
 
 <p>Implements <a class="el" href="classomexmeta_1_1IRDF.html">omexmeta::IRDF</a>.</p>
+
+</div>
+</div>
+<a id="aea054c0e60e0aade66d52998b3559eec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea054c0e60e0aade66d52998b3559eec">&#9670;&nbsp;</a></span>translateVcard()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void omexmeta::RDF::translateVcard </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Translate VCARD into foaf </p>
 
 </div>
 </div>
@@ -1450,6 +1418,21 @@ const std::string&#160;</td><td class="memItemRight" valign="bottom"><b>OMEXlib_
       </table>
 </div><div class="memdoc">
 <p>Storage for namespaces and prefixes </p>
+
+</div>
+</div>
+<a id="a59014bbb45a43dbfa760480f1713c473"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a59014bbb45a43dbfa760480f1713c473">&#9670;&nbsp;</a></span>OMEXlib_</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::string omexmeta::RDF::OMEXlib_ = &quot;http://OMEXlibrary.org/&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Default repository uri </p>
 
 </div>
 </div>

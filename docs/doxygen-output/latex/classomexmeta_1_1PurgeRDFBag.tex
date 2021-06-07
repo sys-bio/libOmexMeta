@@ -8,11 +8,18 @@
 \mbox{\Hypertarget{classomexmeta_1_1PurgeRDFBag_ab01ff84fddf7770359e0755ca42848f8}\label{classomexmeta_1_1PurgeRDFBag_ab01ff84fddf7770359e0755ca42848f8}} 
 void {\bfseries purge} ()
 \item 
-void \mbox{\hyperlink{classomexmeta_1_1PurgeRDFBag_a4e64ac3b04675dff1b1597587f4f6998}{purge\+Non\+List\+Bag\+Entries}} ()
+void \mbox{\hyperlink{classomexmeta_1_1PurgeRDFBag_adf413be32ae861c7439acf89b59aedd7}{purge\+Pattern1}} ()
+\begin{DoxyCompactList}\small\item\em Remove rdf\+:bag entries from the current rdf graph. The rdf\+:bag entries targeted are in a rdf container rdf\+:\+\_\+1, rdf\+:\+\_\+2, ..., rdf\+:\+\_\+n Target the creator predicate. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classomexmeta_1_1PurgeRDFBag_ac368f06fcfd66622f1ff6d3e17c05363}{purge\+Pattern2}} ()
 \begin{DoxyCompactList}\small\item\em Remove rdf\+:bag entries from the current rdf graph. The rdf\+:bag entries targeted are not in a rdf container (and so no rdf\+:\+\_\+1, rdf\+:\+\_\+2, ..., rdf\+:\+\_\+n) which is covered in. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classomexmeta_1_1PurgeRDFBag_ad72aeb6f969b601b8f61ea415fc416dc}\label{classomexmeta_1_1PurgeRDFBag_ad72aeb6f969b601b8f61ea415fc416dc}} 
-void \mbox{\hyperlink{classomexmeta_1_1PurgeRDFBag_ad72aeb6f969b601b8f61ea415fc416dc}{purge\+List\+Bag\+Entries}} ()
-\begin{DoxyCompactList}\small\item\em Remove rdf\+:bag entries from the current rdf graph. The rdf\+:bag entries targeted are in a rdf container rdf\+:\+\_\+1, rdf\+:\+\_\+2, ..., rdf\+:\+\_\+n. \end{DoxyCompactList}\end{DoxyCompactItemize}
+void \mbox{\hyperlink{classomexmeta_1_1PurgeRDFBag_a6bfab9190b6f548756c71c5dd3c5807f}{purge\+Pattern3}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classomexmeta_1_1PurgeRDFBag_af11f91c2751c9daeb041973d5d1e6356}\label{classomexmeta_1_1PurgeRDFBag_af11f91c2751c9daeb041973d5d1e6356}} 
+static std\+::string {\bfseries rdf\+Bag\+Query\+String} ()
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Constructor \& Destructor Documentation}
@@ -34,20 +41,44 @@ constructor for \mbox{\hyperlink{classomexmeta_1_1PurgeRDFBag}{Purge\+R\+D\+F\+B
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{classomexmeta_1_1PurgeRDFBag_a4e64ac3b04675dff1b1597587f4f6998}\label{classomexmeta_1_1PurgeRDFBag_a4e64ac3b04675dff1b1597587f4f6998}} 
-\index{omexmeta::PurgeRDFBag@{omexmeta::PurgeRDFBag}!purgeNonListBagEntries@{purgeNonListBagEntries}}
-\index{purgeNonListBagEntries@{purgeNonListBagEntries}!omexmeta::PurgeRDFBag@{omexmeta::PurgeRDFBag}}
-\doxysubsubsection{\texorpdfstring{purgeNonListBagEntries()}{purgeNonListBagEntries()}}
-{\footnotesize\ttfamily void omexmeta\+::\+Purge\+R\+D\+F\+Bag\+::purge\+Non\+List\+Bag\+Entries (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{classomexmeta_1_1PurgeRDFBag_adf413be32ae861c7439acf89b59aedd7}\label{classomexmeta_1_1PurgeRDFBag_adf413be32ae861c7439acf89b59aedd7}} 
+\index{omexmeta::PurgeRDFBag@{omexmeta::PurgeRDFBag}!purgePattern1@{purgePattern1}}
+\index{purgePattern1@{purgePattern1}!omexmeta::PurgeRDFBag@{omexmeta::PurgeRDFBag}}
+\doxysubsubsection{\texorpdfstring{purgePattern1()}{purgePattern1()}}
+{\footnotesize\ttfamily void omexmeta\+::\+Purge\+R\+D\+F\+Bag\+::purge\+Pattern1 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Remove rdf\+:bag entries from the current rdf graph. The rdf\+:bag entries targeted are in a rdf container rdf\+:\+\_\+1, rdf\+:\+\_\+2, ..., rdf\+:\+\_\+n Target the creator predicate. 
+
+Note, we might be able to do another query that says \char`\"{}if the query matches\char`\"{} do something with it.\mbox{\Hypertarget{classomexmeta_1_1PurgeRDFBag_ac368f06fcfd66622f1ff6d3e17c05363}\label{classomexmeta_1_1PurgeRDFBag_ac368f06fcfd66622f1ff6d3e17c05363}} 
+\index{omexmeta::PurgeRDFBag@{omexmeta::PurgeRDFBag}!purgePattern2@{purgePattern2}}
+\index{purgePattern2@{purgePattern2}!omexmeta::PurgeRDFBag@{omexmeta::PurgeRDFBag}}
+\doxysubsubsection{\texorpdfstring{purgePattern2()}{purgePattern2()}}
+{\footnotesize\ttfamily void omexmeta\+::\+Purge\+R\+D\+F\+Bag\+::purge\+Pattern2 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
 
 Remove rdf\+:bag entries from the current rdf graph. The rdf\+:bag entries targeted are not in a rdf container (and so no rdf\+:\+\_\+1, rdf\+:\+\_\+2, ..., rdf\+:\+\_\+n) which is covered in. 
 
 \begin{DoxySeeAlso}{See also}
-\mbox{\hyperlink{classomexmeta_1_1PurgeRDFBag_ad72aeb6f969b601b8f61ea415fc416dc}{purge\+List\+Bag\+Entries}} 
+\mbox{\hyperlink{classomexmeta_1_1PurgeRDFBag_adf413be32ae861c7439acf89b59aedd7}{purge\+Pattern1}} 
 \end{DoxySeeAlso}
+\mbox{\hyperlink{classThis}{This}} query is not as specific as I would like it to be because there is some \char`\"{}cross-\/reactivity\char`\"{} with triples that use rdf\+:\+\_\+1, rdf\+:\+\_\+2, ... which is handled by a different sparql query.
 
+One \char`\"{}cheat\char`\"{} way around this is to only apply changes when this sparql query locates more than one \char`\"{}row\char`\"{} (if you think of the keys in Result\+Map as columns and the values as cells).
+
+\mbox{\hyperlink{classThis}{This}} is not guarenteed to work for every use case, but we\textquotesingle{}ll see\mbox{\Hypertarget{classomexmeta_1_1PurgeRDFBag_a6bfab9190b6f548756c71c5dd3c5807f}\label{classomexmeta_1_1PurgeRDFBag_a6bfab9190b6f548756c71c5dd3c5807f}} 
+\index{omexmeta::PurgeRDFBag@{omexmeta::PurgeRDFBag}!purgePattern3@{purgePattern3}}
+\index{purgePattern3@{purgePattern3}!omexmeta::PurgeRDFBag@{omexmeta::PurgeRDFBag}}
+\doxysubsubsection{\texorpdfstring{purgePattern3()}{purgePattern3()}}
+{\footnotesize\ttfamily void omexmeta\+::\+Purge\+R\+D\+F\+Bag\+::purge\+Pattern3 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\hyperlink{classThis}{This}} query is not as specific as I would like it to be because there is some \char`\"{}cross-\/reactivity\char`\"{} with triples that use rdf\+:\+\_\+1, rdf\+:\+\_\+2, ... which is handled by a different sparql query.
+
+One \char`\"{}cheat\char`\"{} way around this is to only apply changes when this sparql query locates more than one \char`\"{}row\char`\"{} (if you think of the keys in Result\+Map as columns and the values as cells).
+
+\mbox{\hyperlink{classThis}{This}} is not guarenteed to work for every use case, but we\textquotesingle{}ll see
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

@@ -41,8 +41,8 @@
     <includedby refid="LibrdfStorage_8h" local="yes">src/redland/RedlandWrapper/src/include/redland/LibrdfStorage.h</includedby>
     <includedby refid="LibrdfStream_8h" local="yes">src/redland/RedlandWrapper/src/include/redland/LibrdfStream.h</includedby>
     <includedby refid="LibrdfUri_8h" local="yes">src/redland/RedlandWrapper/src/include/redland/LibrdfUri.h</includedby>
+    <includedby refid="LibrdfWorld_8h" local="yes">src/redland/RedlandWrapper/src/include/redland/LibrdfWorld.h</includedby>
     <includedby refid="RaptorIOStream_8h" local="yes">src/redland/RedlandWrapper/src/include/redland/RaptorIOStream.h</includedby>
-    <includedby refid="World_8h" local="yes">src/redland/RedlandWrapper/src/include/redland/World.h</includedby>
     <incdepgraph>
       <node id="4">
         <label>stdarg.h</label>
@@ -196,32 +196,6 @@
         <label>src/omexmeta/include/omexmeta/VCardTranslator.h</label>
         <link refid="VCardTranslator_8h_source"/>
         <childnode refid="5" relation="include">
-        </childnode>
-      </node>
-      <node id="39">
-        <label>src/redland/RedlandWrapper/src/include/redland/World.h</label>
-        <link refid="World_8h_source"/>
-        <childnode refid="16" relation="include">
-        </childnode>
-        <childnode refid="25" relation="include">
-        </childnode>
-        <childnode refid="31" relation="include">
-        </childnode>
-        <childnode refid="27" relation="include">
-        </childnode>
-        <childnode refid="34" relation="include">
-        </childnode>
-        <childnode refid="35" relation="include">
-        </childnode>
-        <childnode refid="30" relation="include">
-        </childnode>
-        <childnode refid="33" relation="include">
-        </childnode>
-        <childnode refid="36" relation="include">
-        </childnode>
-        <childnode refid="38" relation="include">
-        </childnode>
-        <childnode refid="28" relation="include">
         </childnode>
       </node>
       <node id="28">
@@ -572,7 +546,7 @@
         <childnode refid="39" relation="include">
         </childnode>
       </node>
-      <node id="38">
+      <node id="39">
         <label>src/redland/RedlandWrapper/src/include/redland/RaptorIOStream.h</label>
         <link refid="RaptorIOStream_8h_source"/>
         <childnode refid="30" relation="include">
@@ -588,6 +562,32 @@
         <childnode refid="25" relation="include">
         </childnode>
         <childnode refid="33" relation="include">
+        </childnode>
+      </node>
+      <node id="38">
+        <label>src/redland/RedlandWrapper/src/include/redland/LibrdfWorld.h</label>
+        <link refid="LibrdfWorld_8h_source"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
         </childnode>
       </node>
       <node id="13">

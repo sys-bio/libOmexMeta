@@ -14,7 +14,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PurgeRDFBag.h" line="43" column="14" bodyfile="src/omexmeta/include/omexmeta/PurgeRDFBag.h" bodystart="43" bodyend="-1"/>
+        <location file="src/omexmeta/include/omexmeta/PurgeRDFBag.h" line="49" column="14" bodyfile="src/omexmeta/include/omexmeta/PurgeRDFBag.h" bodystart="49" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classomexmeta_1_1PurgeRDFBag_1ae827821eecbf95156a13609f189022cb" prot="private" static="no" mutable="no">
         <type>unsigned int</type>
@@ -28,7 +28,63 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PurgeRDFBag.h" line="44" column="22" bodyfile="src/omexmeta/include/omexmeta/PurgeRDFBag.h" bodystart="44" bodyend="-1"/>
+        <location file="src/omexmeta/include/omexmeta/PurgeRDFBag.h" line="50" column="22" bodyfile="src/omexmeta/include/omexmeta/PurgeRDFBag.h" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classomexmeta_1_1PurgeRDFBag_1a43a67f24bcf7c99c320ae21f6c2210be" prot="private" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string omexmeta::PurgeRDFBag::rdf_type</definition>
+        <argsstring></argsstring>
+        <name>rdf_type</name>
+        <initializer>= &quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/PurgeRDFBag.h" line="51" column="27" bodyfile="src/omexmeta/include/omexmeta/PurgeRDFBag.h" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classomexmeta_1_1PurgeRDFBag_1a40f7b6f7923f00ba0123ecd0e7b05d45" prot="private" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string omexmeta::PurgeRDFBag::rdf_bag</definition>
+        <argsstring></argsstring>
+        <name>rdf_bag</name>
+        <initializer>= &quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/PurgeRDFBag.h" line="52" column="27" bodyfile="src/omexmeta/include/omexmeta/PurgeRDFBag.h" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classomexmeta_1_1PurgeRDFBag_1a7da52ea982b57aab6874c9a7196b5874" prot="private" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string omexmeta::PurgeRDFBag::creatorType1</definition>
+        <argsstring></argsstring>
+        <name>creatorType1</name>
+        <initializer>= &quot;http://purl.org/dc/elements/1.1/creator&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/PurgeRDFBag.h" line="53" column="27" bodyfile="src/omexmeta/include/omexmeta/PurgeRDFBag.h" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classomexmeta_1_1PurgeRDFBag_1a6d580edda160a96c7749ef7500ea55c8" prot="private" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string omexmeta::PurgeRDFBag::creatorType2</definition>
+        <argsstring></argsstring>
+        <name>creatorType2</name>
+        <initializer>= &quot;http://purl.org/dc/terms/creator&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/PurgeRDFBag.h" line="54" column="27" bodyfile="src/omexmeta/include/omexmeta/PurgeRDFBag.h" bodystart="54" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -71,9 +127,24 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PurgeRDFBag.h" line="25" column="14" bodyfile="src/omexmeta/PurgeRDFBag.cpp" bodystart="13" bodyend="16"/>
+        <location file="src/omexmeta/include/omexmeta/PurgeRDFBag.h" line="27" column="14" bodyfile="src/omexmeta/PurgeRDFBag.cpp" bodystart="34" bodyend="38"/>
       </memberdef>
-      <memberdef kind="function" id="classomexmeta_1_1PurgeRDFBag_1a4e64ac3b04675dff1b1597587f4f6998" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classomexmeta_1_1PurgeRDFBag_1adf413be32ae861c7439acf89b59aedd7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void omexmeta::PurgeRDFBag::purgePattern1</definition>
+        <argsstring>()</argsstring>
+        <name>purgePattern1</name>
+        <briefdescription>
+<para>Remove rdf:bag entries from the current rdf graph. The rdf:bag entries targeted are in a rdf container rdf:_1, rdf:_2, ..., rdf:_n Target the creator predicate. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+<para>Note, we might be able to do another query that says &quot;if the query matches&quot; do something with it.</para>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/PurgeRDFBag.h" line="36" column="14" bodyfile="src/omexmeta/PurgeRDFBag.cpp" bodystart="40" bodyend="142"/>
+      </memberdef>
+      <memberdef kind="function" id="classomexmeta_1_1PurgeRDFBag_1ac368f06fcfd66622f1ff6d3e17c05363" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void omexmeta::PurgeRDFBag::purgePattern2</definition>
         <argsstring>()</argsstring>
@@ -82,41 +153,67 @@
 <para>Remove rdf:bag entries from the current rdf graph. The rdf:bag entries targeted are not in a rdf container (and so no rdf:_1, rdf:_2, ..., rdf:_n) which is covered in. </para>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="see"><para><ref refid="classomexmeta_1_1PurgeRDFBag_1ad72aeb6f969b601b8f61ea415fc416dc" kindref="member">purgePattern1</ref> </para>
+<para><simplesect kind="see"><para><ref refid="classomexmeta_1_1PurgeRDFBag_1adf413be32ae861c7439acf89b59aedd7" kindref="member">purgePattern1</ref> </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
+<para><ref refid="classThis" kindref="compound">This</ref> query is not as specific as I would like it to be because there is some &quot;cross-reactivity&quot; with triples that use rdf:_1, rdf:_2, ... which is handled by a different sparql query.</para>
+<para>One &quot;cheat&quot; way around this is to only apply changes when this sparql query locates more than one &quot;row&quot; (if you think of the keys in ResultMap as columns and the values as cells).</para>
+<para><ref refid="classThis" kindref="compound">This</ref> is not guarenteed to work for every use case, but we&apos;ll see</para>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PurgeRDFBag.h" line="33" column="14" bodyfile="src/omexmeta/PurgeRDFBag.cpp" bodystart="97" bodyend="146"/>
+        <location file="src/omexmeta/include/omexmeta/PurgeRDFBag.h" line="44" column="14" bodyfile="src/omexmeta/PurgeRDFBag.cpp" bodystart="144" bodyend="216"/>
       </memberdef>
-      <memberdef kind="function" id="classomexmeta_1_1PurgeRDFBag_1ad72aeb6f969b601b8f61ea415fc416dc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classomexmeta_1_1PurgeRDFBag_1a6bfab9190b6f548756c71c5dd3c5807f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
-        <definition>void omexmeta::PurgeRDFBag::purgePattern1</definition>
+        <definition>void omexmeta::PurgeRDFBag::purgePattern3</definition>
         <argsstring>()</argsstring>
-        <name>purgePattern1</name>
+        <name>purgePattern3</name>
         <briefdescription>
-<para>Remove rdf:bag entries from the current rdf graph. The rdf:bag entries targeted are in a rdf container rdf:_1, rdf:_2, ..., rdf:_n. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+<para><ref refid="classThis" kindref="compound">This</ref> query is not as specific as I would like it to be because there is some &quot;cross-reactivity&quot; with triples that use rdf:_1, rdf:_2, ... which is handled by a different sparql query.</para>
+<para>One &quot;cheat&quot; way around this is to only apply changes when this sparql query locates more than one &quot;row&quot; (if you think of the keys in ResultMap as columns and the values as cells).</para>
+<para><ref refid="classThis" kindref="compound">This</ref> is not guarenteed to work for every use case, but we&apos;ll see</para>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/PurgeRDFBag.h" line="46" column="14" bodyfile="src/omexmeta/PurgeRDFBag.cpp" bodystart="218" bodyend="290"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classomexmeta_1_1PurgeRDFBag_1af11f91c2751c9daeb041973d5d1e6356" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string omexmeta::PurgeRDFBag::rdfBagQueryString</definition>
+        <argsstring>()</argsstring>
+        <name>rdfBagQueryString</name>
+        <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PurgeRDFBag.h" line="40" column="14" bodyfile="src/omexmeta/PurgeRDFBag.cpp" bodystart="19" bodyend="95"/>
+        <location file="src/omexmeta/include/omexmeta/PurgeRDFBag.h" line="25" column="28" bodyfile="src/omexmeta/PurgeRDFBag.cpp" bodystart="13" bodyend="32"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="src/omexmeta/include/omexmeta/PurgeRDFBag.h" line="14" column="5" bodyfile="src/omexmeta/include/omexmeta/PurgeRDFBag.h" bodystart="14" bodyend="45"/>
+    <location file="src/omexmeta/include/omexmeta/PurgeRDFBag.h" line="14" column="5" bodyfile="src/omexmeta/include/omexmeta/PurgeRDFBag.h" bodystart="14" bodyend="56"/>
     <listofallmembers>
+      <member refid="classomexmeta_1_1PurgeRDFBag_1a7da52ea982b57aab6874c9a7196b5874" prot="private" virt="non-virtual"><scope>omexmeta::PurgeRDFBag</scope><name>creatorType1</name></member>
+      <member refid="classomexmeta_1_1PurgeRDFBag_1a6d580edda160a96c7749ef7500ea55c8" prot="private" virt="non-virtual"><scope>omexmeta::PurgeRDFBag</scope><name>creatorType2</name></member>
       <member refid="classomexmeta_1_1PurgeRDFBag_1ae827821eecbf95156a13609f189022cb" prot="private" virt="non-virtual"><scope>omexmeta::PurgeRDFBag</scope><name>currentBlankId_</name></member>
       <member refid="classomexmeta_1_1PurgeRDFBag_1ab01ff84fddf7770359e0755ca42848f8" prot="public" virt="non-virtual"><scope>omexmeta::PurgeRDFBag</scope><name>purge</name></member>
-      <member refid="classomexmeta_1_1PurgeRDFBag_1ad72aeb6f969b601b8f61ea415fc416dc" prot="public" virt="non-virtual"><scope>omexmeta::PurgeRDFBag</scope><name>purgePattern1</name></member>
-      <member refid="classomexmeta_1_1PurgeRDFBag_1a4e64ac3b04675dff1b1597587f4f6998" prot="public" virt="non-virtual"><scope>omexmeta::PurgeRDFBag</scope><name>purgePattern2</name></member>
+      <member refid="classomexmeta_1_1PurgeRDFBag_1adf413be32ae861c7439acf89b59aedd7" prot="public" virt="non-virtual"><scope>omexmeta::PurgeRDFBag</scope><name>purgePattern1</name></member>
+      <member refid="classomexmeta_1_1PurgeRDFBag_1ac368f06fcfd66622f1ff6d3e17c05363" prot="public" virt="non-virtual"><scope>omexmeta::PurgeRDFBag</scope><name>purgePattern2</name></member>
+      <member refid="classomexmeta_1_1PurgeRDFBag_1a6bfab9190b6f548756c71c5dd3c5807f" prot="public" virt="non-virtual"><scope>omexmeta::PurgeRDFBag</scope><name>purgePattern3</name></member>
       <member refid="classomexmeta_1_1PurgeRDFBag_1abc703c31325f99d55ac99f4be4b46d94" prot="public" virt="non-virtual"><scope>omexmeta::PurgeRDFBag</scope><name>PurgeRDFBag</name></member>
       <member refid="classomexmeta_1_1PurgeRDFBag_1a7276e92137b8ab3a02ea50428b9d2d1f" prot="private" virt="non-virtual"><scope>omexmeta::PurgeRDFBag</scope><name>rdf_</name></member>
+      <member refid="classomexmeta_1_1PurgeRDFBag_1a40f7b6f7923f00ba0123ecd0e7b05d45" prot="private" virt="non-virtual"><scope>omexmeta::PurgeRDFBag</scope><name>rdf_bag</name></member>
+      <member refid="classomexmeta_1_1PurgeRDFBag_1a43a67f24bcf7c99c320ae21f6c2210be" prot="private" virt="non-virtual"><scope>omexmeta::PurgeRDFBag</scope><name>rdf_type</name></member>
+      <member refid="classomexmeta_1_1PurgeRDFBag_1af11f91c2751c9daeb041973d5d1e6356" prot="public" virt="non-virtual"><scope>omexmeta::PurgeRDFBag</scope><name>rdfBagQueryString</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>
