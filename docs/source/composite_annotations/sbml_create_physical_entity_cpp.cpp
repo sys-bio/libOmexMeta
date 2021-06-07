@@ -104,17 +104,13 @@ int main(){
                        "</sbml>";
 
     RDF rdf;
-
     Editor editor = rdf.toEditor(sbml, true, true);
-
     PhysicalEntity physicalEntity = editor.newPhysicalEntity();
     physicalEntity
-            .about("Species0001", MODEL_URI)
+            .about("SpeciesA", MODEL_URI)
             .identity("uniprot/PD12345")
             .isPartOf("fma:1234")
             .hasProperty("EntityProperty", LOCAL_URI, "opb:OPB_12345");
-
-
     editor.addPhysicalEntity(physicalEntity);
     std::cout << rdf.toString() << std::endl;
     return 0;

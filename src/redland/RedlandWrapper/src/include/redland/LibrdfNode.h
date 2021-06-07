@@ -8,7 +8,7 @@
 //
 #include "LibrdfException.h"
 #include "LibrdfUri.h"
-#include "World.h"
+#include "LibrdfWorld.h"
 #include "librdf.h"
 #include "raptor2.h"
 #include <memory>

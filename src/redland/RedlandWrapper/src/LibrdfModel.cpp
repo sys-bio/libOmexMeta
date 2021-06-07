@@ -52,10 +52,10 @@ namespace redland {
      * For developers: passing a raw pointer to librdf_storage* helps prevent memory leaks.
      */
     LibrdfModel::LibrdfModel(librdf_storage *storage, const char *options)
-        : model_(librdf_new_model(World::getWorld(), storage, options)) {}
+        : model_(librdf_new_model(LibrdfWorld::getWorld(), storage, options)) {}
 
     LibrdfModel::LibrdfModel(LibrdfStorage &storage, const char *options)
-        : model_(librdf_new_model(World::getWorld(), storage.get(), options)) {}
+        : model_(librdf_new_model(LibrdfWorld::getWorld(), storage.get(), options)) {}
 
     void LibrdfModel::addStatement(librdf_statement *statement) const {
         librdf_model_add_statement(model_, statement);

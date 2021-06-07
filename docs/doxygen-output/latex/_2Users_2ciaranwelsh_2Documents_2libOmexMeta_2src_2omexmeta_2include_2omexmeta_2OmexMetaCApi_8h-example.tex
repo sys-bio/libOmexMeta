@@ -78,7 +78,11 @@ R\+D\+F$\ast$ rdf\+\_\+ptr = R\+D\+F\+\_\+from\+String(string\+\_\+annotations, 
 \DoxyCodeLine{}
 \DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{int} RDF\_addFromFile(RDF *rdf\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *uri\_string, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *format);}
 \DoxyCodeLine{}
-\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{char} *RDF\_query(RDF *rdf\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *query\_str, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *results\_format);}
+\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{char} *RDF\_queryResultsAsString(RDF *rdf\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *query\_str, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *results\_format);}
+\DoxyCodeLine{}
+\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT ResultsMap * \mbox{\hyperlink{namespaceomexmeta_a03fca9cddea3f90911a1eb3a1eda5e22}{RDF\_queryResultsAsMap}}(RDF *rdf\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *query\_str);}
+\DoxyCodeLine{}
+\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{void} \mbox{\hyperlink{namespaceomexmeta_aac58f146c00ed4c492efebb1e239c90b}{deleteResultsMap}}(ResultsMap* map);}
 \DoxyCodeLine{}
 \DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{int} RDF\_size(RDF *rdf\_ptr);}
 \DoxyCodeLine{}

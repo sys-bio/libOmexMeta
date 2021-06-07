@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+  <compounddef id="classOptions" kind="class" language="C++" prot="public">
+    <compoundname>Options</compoundname>
+    <includes refid="Options_8h" local="no">Options.h</includes>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classOptions_1a70ee261bcbdb118b5e3b23606888cb71" prot="public" static="yes" mutable="no">
+        <type>bool</type>
+        <definition>bool Options::removeRDFBag_</definition>
+        <argsstring></argsstring>
+        <name>removeRDFBag_</name>
+        <initializer>= true</initializer>
+        <briefdescription>
+<para>when true, parsing rdf will remove rdf:Bag constructs </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Set default static options </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/Options.h" line="18" column="17" bodyfile="src/omexmeta/include/omexmeta/Options.h" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classOptions_1a9103fe7c299390bb2e072d54279be51a" prot="public" static="yes" mutable="no">
+        <type>bool</type>
+        <definition>bool Options::translateVCard_</definition>
+        <argsstring></argsstring>
+        <name>translateVCard_</name>
+        <initializer>= true</initializer>
+        <briefdescription>
+<para>when true, VCARD constructs wil be replaced with FOAF counterparts </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/Options.h" line="23" column="17" bodyfile="src/omexmeta/include/omexmeta/Options.h" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classOptions_1a37e99102a22a33f1ddd51e30f674b9c5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Options::Options</definition>
+        <argsstring>()=default</argsstring>
+        <name>Options</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/Options.h" line="13" column="5"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>global options for libOmexMeta </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/omexmeta/include/omexmeta/Options.h" line="11" column="1" bodyfile="src/omexmeta/include/omexmeta/Options.h" bodystart="11" bodyend="24"/>
+    <listofallmembers>
+      <member refid="classOptions_1a37e99102a22a33f1ddd51e30f674b9c5" prot="public" virt="non-virtual"><scope>Options</scope><name>Options</name></member>
+      <member refid="classOptions_1a70ee261bcbdb118b5e3b23606888cb71" prot="public" virt="non-virtual"><scope>Options</scope><name>removeRDFBag_</name></member>
+      <member refid="classOptions_1a9103fe7c299390bb2e072d54279be51a" prot="public" virt="non-virtual"><scope>Options</scope><name>translateVCard_</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -12,8 +12,8 @@
     <innerclass refid="classredland_1_1LibrdfStorage" prot="public">redland::LibrdfStorage</innerclass>
     <innerclass refid="classredland_1_1LibrdfStream" prot="public">redland::LibrdfStream</innerclass>
     <innerclass refid="classredland_1_1LibrdfUri" prot="public">redland::LibrdfUri</innerclass>
+    <innerclass refid="classredland_1_1LibrdfWorld" prot="public">redland::LibrdfWorld</innerclass>
     <innerclass refid="classredland_1_1RaptorIOStream" prot="public">redland::RaptorIOStream</innerclass>
-    <innerclass refid="classredland_1_1World" prot="public">redland::World</innerclass>
       <sectiondef kind="func">
       <memberdef kind="function" id="LibrdfSerializer_8cpp_1ab3d24521870fec5bb77735a3a4a7e4d5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>

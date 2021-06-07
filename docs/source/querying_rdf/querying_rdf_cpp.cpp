@@ -28,7 +28,7 @@ int main() {
 
     for (auto &f : results_formats){
         std::cout << "Sparql results format: " << f << std::endl;
-        std::cout << rdf.query(query_string, f) << std::endl;
+        std::cout << rdf.queryResultsAsString(query_string, f) << std::endl;
         std::cout << std::endl;
         std::cout << std::endl;
     }

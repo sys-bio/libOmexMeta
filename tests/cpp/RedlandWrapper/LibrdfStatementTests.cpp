@@ -5,7 +5,7 @@
 #include "redland/LibrdfModel.h"
 #include "redland/LibrdfStatement.h"
 #include "redland/LibrdfStorage.h"
-#include "redland/World.h"
+#include "redland/LibrdfWorld.h"
 #include "gtest/gtest.h"
 
 using namespace redland;

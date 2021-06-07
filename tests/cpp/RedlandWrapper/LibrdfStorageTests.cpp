@@ -1,11 +1,11 @@
 //
 // Created by Ciaran on 5/17/2020.
 //
-#include "redland/LibrdfModel.h"
-#include "gtest/gtest.h"
-#include "redland/World.h"
-#include "redland/LibrdfStorage.h"
 #include "iostream"
+#include "redland/LibrdfModel.h"
+#include "redland/LibrdfStorage.h"
+#include "redland/LibrdfWorld.h"
+#include "gtest/gtest.h"
 #include <filesystem>
 
 
@@ -18,7 +18,7 @@ public:
     librdf_statement *statement = nullptr;
 
     LibrdfStorageTests() {
-        world = World::getWorld();
+        world = LibrdfWorld::getWorld();
         statement = librdf_new_statement_from_nodes(
                 world,
                 librdf_new_node_from_uri_string(world, (const unsigned char *) "http://www.dajobe.org/"),

@@ -7,7 +7,6 @@
 
 #include "redland/RedlandAPI.h"
 
-
 #include "omexmeta/OmexMetaXmlType.h"
 #include "omexmeta_export.h"
 
@@ -16,6 +15,7 @@
 #include <unordered_map>
 #include <utility>
 
+#include "omexmeta/IRDF.h"
 #include "omexmeta/Editor.h"
 #include "omexmeta/MarkupIdentifier.h"
 #include "omexmeta/OmexMetaUtils.h"
@@ -40,75 +40,9 @@ namespace omexmeta {
     class VCardTranslator;
     class PurgeRDFBag;
 
-    class OMEXMETA_EXPORT RDF {
+    class OMEXMETA_EXPORT RDF: public IRDF {
 
     public:
-        NamespaceMap namespaces_;
-        std::vector<std::string> seen_namespaces_;
-        const std::string OMEXlib_ = "http://OMEXlibrary.org/";
-
-        /**
-         * @brief getter for xmlType attribue.
-         * @details when the rdf graph is sbml, it
-         * will return OMEXMETA_TYPE_SBML. When cellML
-         * it will return OMEXMETA_TYPE_CELLML. Otherwise
-         * it is OMEXMETA_TYPE_UNKNOWN.
-         */
-        OmexMetaXmlType getXmlType() const;
-        bool operator==(const RDF &rhs) const;
-        bool operator!=(const RDF &rhs) const;
-
-        /**
-         * @brief set the xml type for the current graph.
-         * @details If you have been reading from an SBML you cannot
-         * then read from another format (such as cellml).
-         */
-        void setXmlType(OmexMetaXmlType xmlType);
-
-        /**
-         * @brief getter for repository uri which defaults
-         * to "http://omex-library.org/"
-         */
-        const std::string &getRepositoryUri() const;
-
-        /**
-         * @brief setter for the repository uri which
-         * defaults to "http://omex-library.org/".
-         * @param repositoryName the repository uri.
-         */
-        void setRepositoryUri(const std::string &repositoryName);
-
-        /**
-         * @brief getter for archiveUri attribute.
-         * @details default to http://omex-library.org/NewOmex.omex/
-         */
-        const std::string &getArchiveUri() const;
-
-        /**
-         * @brief setter for archiveUri attribute.
-         * @param archiveName the new name for archive uri attribute
-         * @details default to http://omex-library.org/NewOmex.omex/
-         */
-        void setArchiveUri(const std::string &archiveName);
-
-        /**
-         * @brief getter for model uri.
-         * @details defaults to http://omex-library.org/NewOmex.omex/NewModel.xml
-         */
-        const std::string &getModelUri() const;
-
-        /**
-         * @brief setter for model uri.
-         * @param modelName string for new model uri.
-         * @details defaults to http://omex-library.org/NewOmex.omex/NewModel.xml
-         */
-        void setModelUri(std::string modelName);
-
-        /**
-         * @brief getter for local uri attribute.
-         * @details defaults to http://omex-library.org/NewOmex.omex/NewModel.rdf#
-         */
-        const std::string &getLocalUri() const;
 
         /**
          * @brief constructor for RDF class
@@ -142,8 +76,7 @@ namespace omexmeta {
         /**
          * @brief move constructor for RDF class
          */
-        RDF(RDF &&rdf)
-        noexcept;
+        RDF(RDF &&rdf) noexcept;
 
         /**
          * @brief copy assignment constructor for RDF ojects
@@ -161,40 +94,38 @@ namespace omexmeta {
          * @brief returns the number of triples currently present
          * in the RDF graph.
          */
-        int size() const;
+        int size() const override;
 
         /**
          * @brief indicator for whether the RDF graph is empty
          * @returns true if RDF graph has no triples, false otherwise.
          */
-        bool empty() const;
+        bool empty() const override;
 
         /**
          * @brief instantiate an RDF instance and read
          * annotations from a string. This is a static method.
          * @param str a reference to the string containing annotations
-         * @param format which format str is in. Default="guess" : try to guess.
+         * @param syntax which syntax str is in. Default="guess" : try to guess.
          */
-        static RDF fromString(const std::string &str,
-                              const std::string &format = "guess");
+        static RDF fromString(const std::string &str, const std::string &syntax = "guess");
 
         /**
          * @brief non-static variant of RDF::fromString(). Reads rdf into
          * an RDF instance. See RDF::fromString() for argument requirements.
          */
-        void addFromString(const std::string &str,
-                           const std::string &format = "guess");
+        void addFromString(const std::string &str, const std::string &syntax = "guess") override;
 
         /**
          * @brief parse RDF directly from a uri
          * @param uri_string the uri to download containing RDF
-         * @param format the format that the RDF is in
+         * @param syntax the syntax that the RDF is in
          * @return RDF an instantiated RDF object.
          *
          * @details downloads uri from the internet and creates an RDF graph.
          * See Librdf::parseUri() for more details.
          */
-        static RDF fromUri(const std::string &uri_string, const std::string &format = "guess");
+        static RDF fromUri(const std::string &uri_string, const std::string &syntax = "guess");
 
         /**
          * @brief non-static counterpart of RDF::fromUri. Downloads and
@@ -202,38 +133,78 @@ namespace omexmeta {
          *
          * @details See RDF::fromUri for details.
          */
-        void addFromUri(const std::string &uri_string, const std::string &format = "guess");
+        void addFromUri(const std::string &uri_string, const std::string &syntax = "guess") override;
 
         /**
          * @brief read rdf from annotations in a file
          * @param filename the filename to read as string
-         * @param format the format of the RDF in filename
+         * @param syntax the syntax of the RDF in filename
          * @return an instantiated RDF object
          * @details Uses LibrdfParser::fromFile under the hood
          */
-        static RDF fromFile(const std::string &filename, const std::string &format);
+        static RDF fromFile(const std::string &filename, const std::string &syntax);
 
         /**
          * @brief non-static counter part of RDF::fromFile. Reads rdf from annotations in a file
          * @param filename the filename to read as string
-         * @param format the format of the RDF in filename
+         * @param syntax the syntax of the RDF in filename
          * @return an instantiated RDF object
          * @details Uses LibrdfParser::fromFile under the hood
          */
-        void addFromFile(const std::string &filename, const std::string &format);
+        void addFromFile(const std::string &filename, const std::string &syntax) override;
 
         /**
-         * @brief non static version of RDF::fromString that takes
-         * a * RDF pointer object and modifies in place.
-         *
-         * @details Primarily used for C API
-         * For developers: look into replacing this function
-         * fully with RDF::addFromString() method.
+         * @brief serialize RDF graph to string
+         * @param syntax the expected output syntax. Options include:
+         * "ntriples", "turtle", "rdfxml-xmp", "rdfxml-abbrev",
+         * "rdfxml", "dot", "json-triples", "json", "nquads", "html".
+         */
+        std::string toString(const std::string &syntax = "turtle",
+                             const char *mime_type = nullptr, const char *type_uri = nullptr) override;
+
+        /**
+         * @brief Write annotations to file
+         * @param syntax the expected output syntax. Options include:
+         * "ntriples", "turtle", "rdfxml-xmp", "rdfxml-abbrev",
+         * "rdfxml", "dot", "json-triples", "json", "nquads", "html".
+         * @param filename full path of file to write
+         * @param mime_type optional valid mime
+         * @param type_uri optional type uri
          *
          */
-        [[maybe_unused]] static void
-        fromString(RDF *rdf, const std::string &str, const std::string &format,
-                   std::string base_uri = "Annotations.rdf");
+        void toFile(const std::string &filename, const std::string &syntax = "turtle", const char *mime_type = nullptr,
+                    const char *type_uri = nullptr) override;
+
+        /**
+         * @brief instantiate an Editor object.
+         * @param xml the xml you want to open for editing. This can be any type of xml document, but SBML and CellML are most common.
+         * @param generate_new_metaids When true, will add metaids onto a copy of the xml source code for annotation. Default = false.
+         * @param OmexMetaXmlType an indicator enum specifying whether the xml is sbml, cellml or unknown. Default is "OMEXMETA_TYPE_NOTSET"
+         * @details
+         */
+        Editor toEditor(const std::string &xml, bool generate_new_metaids = false, bool sbml_semantic_extraction = true) override;
+
+        Editor *toEditorPtr(const std::string &xml, bool generate_new_metaids = false, bool sbml_semantic_extraction = true) override;
+
+        librdf_model *getModel() const override;
+
+        librdf_storage *getStorage() const override;
+
+        int commitTransaction() const override;
+
+        int startTransaction() const override;
+
+        void *getTransactionHandle() const override;
+
+        int startTransactionWithHandle(void *handle) const override;
+
+        int getTransactionRollback() const override;
+
+        static std::ostringstream listOptions();
+
+        std::string queryResultsAsString(const std::string &query_str, const std::string &results_syntax) const override;
+
+        ResultsMap queryResultsAsMap(const std::string &query_str) const override;
 
         /**
          * @brief compared namespaces seen with namespaces
@@ -243,115 +214,147 @@ namespace omexmeta {
          *
          */
         std::unordered_map<std::string, std::string>
-        propagateNamespacesFromParser(const std::vector<std::string> &seen_namespaces);
+        propagateNamespacesFromParser(const std::vector<std::string> &seen_namespaces) override;
 
         /**
-         * @brief serialize RDF graph to string
-         * @param format the expected output format. Options include:
-         * "ntriples", "turtle", "rdfxml-xmp", "rdfxml-abbrev",
-         * "rdfxml", "dot", "json-triples", "json", "nquads", "html".
+         * @brief getter for xmlType attribue.
+         * @details when the rdf graph is sbml, it
+         * will return OMEXMETA_TYPE_SBML. When cellML
+         * it will return OMEXMETA_TYPE_CELLML. Otherwise
+         * it is OMEXMETA_TYPE_UNKNOWN.
          */
-        std::string toString(const std::string &format = "turtle",
-                             const char *mime_type = nullptr, const char *type_uri = nullptr);
+        OmexMetaXmlType getXmlType() const override;
+        bool operator==(const RDF &rhs) const;
+        bool operator!=(const RDF &rhs) const;
 
         /**
-         * @brief Write annotations to file
-         * @param format the expected output format. Options include:
-         * "ntriples", "turtle", "rdfxml-xmp", "rdfxml-abbrev",
-         * "rdfxml", "dot", "json-triples", "json", "nquads", "html".
-         * @param filename full path of file to write
-         * @param mime_type optional valid mime
-         * @param type_uri optional type uri
-         *
+         * @brief set the xml type for the current graph.
+         * @details If you have been reading from an SBML you cannot
+         * then read from another syntax (such as cellml).
          */
-        void toFile(const std::string &filename, const std::string &format = "turtle", const char *mime_type = nullptr,
-                    const char *type_uri = nullptr);
+        void setXmlType(OmexMetaXmlType xmlType) override;
 
         /**
-         * @brief instantiate an Editor object.
-         * @param xml the xml you want to open for editing. This can be any type of xml document, but SBML and CellML are most common.
-         * @param generate_new_metaids When true, will add metaids onto a copy of the xml source code for annotation. Default = false.
-         * @param OmexMetaXmlType an indicator enum specifying whether the xml is sbml, cellml or unknown. Default is "OMEXMETA_TYPE_NOTSET"
-         * @details
+         * @brief getter for repository uri which defaults
+         * to "http://omex-library.org/"
          */
-        Editor toEditor(const std::string &xml, bool generate_new_metaids = false, bool sbml_semantic_extraction = true);
+        const std::string &getRepositoryUri() const override;
 
-        Editor *toEditorPtr(const std::string &xml, bool generate_new_metaids = false, bool sbml_semantic_extraction = true);
+        /**
+         * @brief setter for the repository uri which
+         * defaults to "http://omex-library.org/".
+         * @param repositoryName the repository uri.
+         */
+        void setRepositoryUri(const std::string &repositoryName) override;
 
-        librdf_model *getModel() const;
+        /**
+         * @brief getter for archiveUri attribute.
+         * @details default to http://omex-library.org/NewOmex.omex/
+         */
+        const std::string &getArchiveUri() const override;
 
-        librdf_storage *getStorage() const;
+        /**
+         * @brief setter for archiveUri attribute.
+         * @param archiveName the new name for archive uri attribute
+         * @details default to http://omex-library.org/NewOmex.omex/
+         */
+        void setArchiveUri(const std::string &archiveName) override;
 
-        int commitTransaction() const;
+        /**
+         * @brief getter for model uri.
+         * @details defaults to http://omex-library.org/NewOmex.omex/NewModel.xml
+         */
+        const std::string &getModelUri() const override;
 
-        int startTransaction() const;
+        /**
+         * @brief setter for model uri.
+         * @param modelName string for new model uri.
+         * @details defaults to http://omex-library.org/NewOmex.omex/NewModel.xml
+         */
+        void setModelUri(std::string modelName) override;
 
-        void *getTransactionHandle() const;
-
-        int startTransactionWithHandle(void *handle) const;
-
-        int getTransactionRollback() const;
-
-        static std::ostringstream listOptions();
-
-        std::string query(const std::string &query_str, const std::string &results_format) const;
+        /**
+         * @brief getter for local uri attribute.
+         * @details defaults to http://omex-library.org/NewOmex.omex/NewModel.rdf#
+         */
+        const std::string &getLocalUri() const override;
 
         /**
          * @brief add a Triple to the current model
          */
-        void addTriple(const Triple &triple);
+        void addTriple(const Triple &triple) override;
 
         /**
          * @brief add a set of Triples to the current model
          */
-        void addTriples(Triples &triples);
+        void addTriples(Triples &triples) override;
 
         /**
          * @brief test for equality between @param actual and @param expected
          */
-        static bool equals(RDF *actual, const std::string &expected, const std::string &format = "turtle", bool verbose = false);
+        static bool equals(RDF *actual, const std::string &expected, const std::string &syntax = "turtle", bool verbose = false);
 
         /**
          * @brief test for equality between @param actual and @param expected
          */
-        static bool equals(const Triple &actual, const std::string &expected, const std::string &format = "turtle", bool verbose = false);
+        static bool equals(const Triple &actual, const std::string &expected, const std::string &syntax = "turtle", bool verbose = false);
 
         /**
          * @brief test for equality between @param actual and @param expected
          */
-        static bool equals(Triples &actual, const std::string &expected, const std::string &format = "turtle", bool verbose = false);
+        static bool equals(Triples &actual, const std::string &expected, const std::string &syntax = "turtle", bool verbose = false);
 
         /**
          * @brief test for equality between @param actual and @param expected
          */
-        static bool equals(RDF *actual, RDF *expected, const std::string &format = "turtle", bool verbose = false);
+        static bool equals(RDF *actual, RDF *expected, const std::string &syntax = "turtle", bool verbose = false);
 
         /**
          * @brief test for equality between @param first and @param second
          */
-        static bool equals(const std::string &first, const std::string &second, const std::string &first_format = "turtle", const std::string &second_format = "turtle", bool verbose = false);
+        static bool equals(const std::string &first, const std::string &second, const std::string &first_syntax = "turtle", const std::string &second_syntax = "turtle", bool verbose = false);
 
+        UriHandler &getUriHandler() override;
+
+        /**
+         * @brief remove rdf:Bag constructs from the current rdf graph
+         */
         void purgeRDFBag();
 
-        UriHandler &getUriHandler();
+        /**
+         * Translate VCARD into foaf
+         */
+        void translateVcard();
+
+        /**
+         * Storage for namespaces and prefixes
+         */
+        NamespaceMap namespaces_;
+
+        /**
+         * Part of the mechanism that propogates namespaces
+         * through to serializer.
+         *
+         * todo observer pattern might make for more elegant design.
+         */
+        std::vector<std::string> seen_namespaces_;
+
+        /**
+         * Default repository uri
+         */
+        const std::string OMEXlib_ = "http://OMEXlibrary.org/";
 
     private:
-        LibrdfStorage storage_;
-        LibrdfModel model_;
-
-        OmexMetaXmlType xmlType = OMEXMETA_TYPE_NOTSET;
-
-        UriHandler uriHandler_;
 
         /**
          * @brief autoset the xmlType variable based on xml content.
          */
-        void classifyXmlType(const std::string &xml, const std::string &input_format);
+        void classifyXmlType(const std::string &xml, const std::string &input_syntax);
 
         /**
          * @brief reads xml from file before calling classifyXmlType
          */
-        void classifyXmlTypeFromFile(const std::string &xml_file, const std::string &input_format);
+        void classifyXmlTypeFromFile(const std::string &xml_file, const std::string &input_syntax);
 
         /**
          * @brief pull semantic information out of the sbml
@@ -365,6 +368,13 @@ namespace omexmeta {
          * so users normally do not need this function.
          */
         void freeRDF();
+
+        LibrdfStorage storage_;
+        LibrdfModel model_;
+        OmexMetaXmlType xmlType = OMEXMETA_TYPE_NOTSET;
+        UriHandler uriHandler_;
+
+
     };
 }// namespace omexmeta
 

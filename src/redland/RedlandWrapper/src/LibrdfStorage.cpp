@@ -21,7 +21,7 @@ namespace redland {
             throw std::invalid_argument(err.str());
         }
         storage_ = librdf_new_storage(
-                World::getWorld(), storage_name.c_str(),
+                LibrdfWorld::getWorld(), storage_name.c_str(),
                 name.c_str(), options);
         if (storage_ == nullptr) {
             throw RedlandNullPointerException(
@@ -81,7 +81,7 @@ namespace redland {
     }
 
     void LibrdfStorage::printAvailableStorages() {
-        print_available_storages(World::getWorld());
+        print_available_storages(LibrdfWorld::getWorld());
     }
 
 

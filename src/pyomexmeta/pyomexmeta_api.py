@@ -10,17 +10,17 @@ from typing import List
 
 ################################################################
 #   Some extra code for locating libOmexMeta C API binaries on
-#   developer machines directly from the source directory.
+#   developer machines for running pyomexmeta directly from the source directory.
 #
 
+# todo wrap in a function
 _THIS_DIR = os.path.dirname(__file__)
-
 _EXTRA_SEARCH_DIR_FILE = os.path.join(_THIS_DIR, "ExtraSearchDirectories.txt")
-
 _EXTRA_SEARCH_PATHS = []
 if (os.path.isfile(_EXTRA_SEARCH_DIR_FILE)):
     with open(_EXTRA_SEARCH_DIR_FILE, "r") as f:
         _EXTRA_SEARCH_PATHS = f.read().split("\n")
+
 # remove comment lines from extra search list
 _EXTRA_SEARCH_PATHS = [p for p in _EXTRA_SEARCH_PATHS if not p.startswith("#")]
 if sys.platform == "win32":
@@ -57,6 +57,7 @@ def get_version():
 __version__ = get_version()
 
 if sys.platform == "win32":
+    # This really was a pain on windows. Whyy?
     try:
         import win32api
     except ImportError as e:
@@ -77,21 +78,6 @@ class Util:
 
     def __init__(self):
         self._lib = self.load_lib()
-
-    @staticmethod
-    def wsl_available() -> bool:
-        """
-        heuristic to detect if Windows Subsystem for Linux is available.
-
-        Uses presence of /etc/os-release in the WSL image to say Linux is there.
-        This is a de facto file standard across Linux distros.
-        """
-        if os.name == "nt":
-            wsl = shutil.which("wsl")
-            if not wsl:
-                return False
-            return True
-        return False
 
     def load_lib(self):
         """
@@ -279,8 +265,12 @@ class PyOmexMetaAPI:
     # int RDF_delete(RDF *rdf_ptr);
     rdf_delete = utils.load_func("RDF_delete", [ct.c_int64], ct.c_int)
 
-    # char *RDF_query(RDF *rdf_ptr, const char *query_str, const char *results_format);
-    rdf_query_results_as_str = utils.load_func("RDF_query", [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_int64)
+    # char *RDF_queryResultsAsString(RDF *rdf_ptr, const char *query_str, const char *results_format);
+    rdf_query_results_as_str = utils.load_func("RDF_queryResultsAsString", [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_int64)
+
+    # Note yet supported - how to get std::unordered_map into a Python dict? Problem for later
+    # ResultsMap RDF_queryResultsAsMap(RDF *rdf_ptr, const char *query_str, const char *results_format);
+    # rdf_query_results_as_map = utils.load_func("RDF_queryResultsAsMap", [ct.c_int64, ct.c_char_p], ct.c_int64)
 
     # int RDF_setRepositoryUri(RDF *rdf_ptr, std::string repository_uri);
     rdf_set_repository_uri = utils.load_func("RDF_setRepositoryUri", [ct.c_int64, ct.c_char_p], ct.c_int)

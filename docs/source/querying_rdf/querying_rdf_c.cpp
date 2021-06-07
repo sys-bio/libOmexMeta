@@ -29,7 +29,7 @@ int main() {
 
     for (int i=0; i<9; i++){
         printf("Sparql results format: %s\n", results_formats[i]);
-        char* string = RDF_query(rdf, query_string, results_formats[i]);
+        char* string = RDF_queryResultsAsString(rdf, query_string, results_formats[i]);
         printf("%s\n\n", string);
         free(string);
     }

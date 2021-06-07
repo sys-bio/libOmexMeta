@@ -27,6 +27,8 @@ class \mbox{\hyperlink{classomexmeta_1_1Foaf}{Foaf}}
 \item 
 class \mbox{\hyperlink{classomexmeta_1_1InappropriateResourceException}{Inappropriate\+Resource\+Exception}}
 \item 
+class \mbox{\hyperlink{classomexmeta_1_1IRDF}{I\+R\+DF}}
+\begin{DoxyCompactList}\small\item\em public interface for \mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} types. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classomexmeta_1_1LibRDFException}{Lib\+R\+D\+F\+Exception}}
 \item 
 class \mbox{\hyperlink{classomexmeta_1_1MarkupIdentifier}{Markup\+Identifier}}
@@ -200,9 +202,14 @@ char $\ast$ {\bfseries R\+D\+F\+\_\+to\+String} (\mbox{\hyperlink{classomexmeta_
 \mbox{\Hypertarget{namespaceomexmeta_a7d6969824c986313680325bbdd8ab23e}\label{namespaceomexmeta_a7d6969824c986313680325bbdd8ab23e}} 
 int {\bfseries R\+D\+F\+\_\+to\+File} (\mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} $\ast$rdf\+\_\+ptr, const char $\ast$format, const char $\ast$filename)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_a662050c4f97651516374d8202c9a151e}\label{namespaceomexmeta_a662050c4f97651516374d8202c9a151e}} 
-char $\ast$ {\bfseries R\+D\+F\+\_\+query} (\mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} $\ast$rdf\+\_\+ptr, const char $\ast$query\+\_\+str, const char $\ast$results\+\_\+format)
+\mbox{\Hypertarget{namespaceomexmeta_a2b499081dec3a7ccedcbcfc461f8bb52}\label{namespaceomexmeta_a2b499081dec3a7ccedcbcfc461f8bb52}} 
+char $\ast$ {\bfseries R\+D\+F\+\_\+query\+Results\+As\+String} (\mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} $\ast$rdf\+\_\+ptr, const char $\ast$query\+\_\+str, const char $\ast$results\+\_\+format)
 \item 
+Results\+Map $\ast$ \mbox{\hyperlink{namespaceomexmeta_a03fca9cddea3f90911a1eb3a1eda5e22}{R\+D\+F\+\_\+query\+Results\+As\+Map}} (\mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} $\ast$rdf\+\_\+ptr, const char $\ast$query\+\_\+str)
+\begin{DoxyCompactList}\small\item\em run a sparql query on rdf\+\_\+ptr. Return the results as a Results\+Map$\ast$. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceomexmeta_aac58f146c00ed4c492efebb1e239c90b}\label{namespaceomexmeta_aac58f146c00ed4c492efebb1e239c90b}} 
+void \mbox{\hyperlink{namespaceomexmeta_aac58f146c00ed4c492efebb1e239c90b}{delete\+Results\+Map}} (Results\+Map $\ast$map)
+\begin{DoxyCompactList}\small\item\em R\+D\+F\+\_\+query\+Results\+As\+Map allocates a Results\+Map to the heap. \mbox{\hyperlink{classThis}{This}} method deletes that memory. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{namespaceomexmeta_a967e800ddd20443000bdda84ee8c08dc}\label{namespaceomexmeta_a967e800ddd20443000bdda84ee8c08dc}} 
 int {\bfseries R\+D\+F\+\_\+size} (\mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} $\ast$rdf\+\_\+ptr)
 \item 
@@ -598,9 +605,7 @@ std\+::string {\bfseries L\+A\+S\+T\+\_\+\+E\+R\+R\+OR}
 \end{DoxyVerb}
  For developers\+: Possibly not needed.
 
-\begin{DoxyVerb}    Here's the basic logic that we use in SemGen to determine which OPB physical property is represented by a <species> in an SBML model:
-\end{DoxyVerb}
-
+Here\textquotesingle{}s the basic logic that we use in Sem\+Gen to determine which O\+PB physical property is represented by a $<$species$>$ in an S\+B\+ML model\+:
 
 Using lib\+S\+B\+ML, we first look up the substance base units for the model and also whether the species\textquotesingle{}s \char`\"{}has\+Only\+Substance\+Units\char`\"{} attribute is true...
 
@@ -752,6 +757,19 @@ a shared\+\_\+ptr to a object from the predicate heirachy.
 \mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} methods
 
 \mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} class methods \begin{Desc}
+\item[Examples]\par
+\mbox{\hyperlink{_2Users_2ciaranwelsh_2Documents_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example}{/\+Users/ciaranwelsh/\+Documents/lib\+Omex\+Meta/src/omexmeta/include/omexmeta/\+Omex\+Meta\+C\+Api.\+h}}.\end{Desc}
+\mbox{\Hypertarget{namespaceomexmeta_a03fca9cddea3f90911a1eb3a1eda5e22}\label{namespaceomexmeta_a03fca9cddea3f90911a1eb3a1eda5e22}} 
+\index{omexmeta@{omexmeta}!RDF\_queryResultsAsMap@{RDF\_queryResultsAsMap}}
+\index{RDF\_queryResultsAsMap@{RDF\_queryResultsAsMap}!omexmeta@{omexmeta}}
+\doxysubsubsection{\texorpdfstring{RDF\_queryResultsAsMap()}{RDF\_queryResultsAsMap()}}
+{\footnotesize\ttfamily O\+M\+E\+X\+M\+E\+T\+A\+\_\+\+C\+A\+P\+I\+\_\+\+E\+X\+P\+O\+RT Results\+Map $\ast$ omexmeta\+::\+R\+D\+F\+\_\+query\+Results\+As\+Map (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} $\ast$}]{rdf\+\_\+ptr,  }\item[{const char $\ast$}]{query\+\_\+str }\end{DoxyParamCaption})}
+
+
+
+run a sparql query on rdf\+\_\+ptr. Return the results as a Results\+Map$\ast$. 
+
+Caller is responsible for freeing memory associated with returned map ptr \begin{Desc}
 \item[Examples]\par
 \mbox{\hyperlink{_2Users_2ciaranwelsh_2Documents_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example}{/\+Users/ciaranwelsh/\+Documents/lib\+Omex\+Meta/src/omexmeta/include/omexmeta/\+Omex\+Meta\+C\+Api.\+h}}.\end{Desc}
 \mbox{\Hypertarget{namespaceomexmeta_a86245ea959cf5a3e8f389941cca41f1a}\label{namespaceomexmeta_a86245ea959cf5a3e8f389941cca41f1a}} 

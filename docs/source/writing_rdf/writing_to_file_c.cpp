@@ -26,20 +26,21 @@ int main() {
     const char* syntax = "ntriples";
 
     // we cheat and use c++ for system independent filepath
-    const char* filename = (std::filesystem::current_path() /+ "annotations.rdf").string().c_str();
+    std::filesystem::path p = std::filesystem::current_path() / "annotations.rdf";
+    std::string fname = p.string();
 
     printf("Serializing to %s \n", syntax);
-    int failed = RDF_toFile(rdf, syntax, filename); // 1 if failed else 0
+    int failed = RDF_toFile(rdf, syntax, fname.c_str()); // 1 if failed else 0
     if (failed) {
         printf("You broke C");
         exit(1);
     }
-    printf("RDF graph serialized to \"%s\"", filename);
+    printf("RDF graph serialized to \"%s\"", fname.c_str());
     printf("Counted \"%d\" triples", RDF_size(rdf));
 
     // clean up (more cheating)
-    if(std::filesystem::exists(filename)){
-        std::filesystem::remove(filename);
+    if(std::filesystem::exists(fname)){
+        std::filesystem::remove(fname);
     }
 
     RDF_delete(rdf);

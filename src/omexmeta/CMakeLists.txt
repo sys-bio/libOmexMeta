@@ -8,7 +8,9 @@ set(OMEXMETA_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/include")
 
 # Note: this doesn't work as intended when using the install tree.
 SET(OMEXMETA_PUBLIC_HEADERS
+        "${OMEXMETA_INCLUDE_DIR}/omexmeta/Options.h"
         "${OMEXMETA_INCLUDE_DIR}/omexmeta/RDF.h"
+        "${OMEXMETA_INCLUDE_DIR}/omexmeta/IRDF.h"
         "${OMEXMETA_INCLUDE_DIR}/omexmeta/Editor.h"
         "${OMEXMETA_INCLUDE_DIR}/omexmeta/Triple.h"
         "${OMEXMETA_INCLUDE_DIR}/omexmeta/Triples.h"
@@ -58,7 +60,7 @@ set(OMEXMETA_SOURCES
         "PhysicalProperty.cpp"
         "MetaID.cpp"
         "Participant.cpp"
-
+        "Options.cpp"
         "PhysicalEntity.cpp"
         "PropertyBearer.cpp"
         "Editor.cpp"

@@ -31,6 +31,7 @@ using namespace redland;
 
 namespace omexmeta {
 
+    class IRDF;
 
     /**
      * @brief Add or change annotations in xml.

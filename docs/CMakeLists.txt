@@ -148,7 +148,7 @@ if (${BUILD_DOCS_EXAMPLES})
     get_filename_component(PARENT_CURRENT_BINARY_DIR ${CMAKE_CURRENT_BINARY_DIR} DIRECTORY)
     # later we'll set the build docs target to depend on this
         add_custom_target(RunDocExamplesAndGenerateOutput
-                COMMAND Python::Interpreter ${DOC_EXAMPLE_RUNNER} --install-folder ${CMAKE_INSTALL_PREFIX} --pyomexmeta-package-dir ${PYOMEXMETA_DIR} --output-location "${CMAKE_CURRENT_SOURCE_DIR}/ExampleOutputFiles"
+                COMMAND Python::Interpreter ${DOC_EXAMPLE_RUNNER} --install-folder ${CMAKE_INSTALL_PREFIX} --pyomexmeta-site-package-dir ${CMAKE_BINARY_DIR}/site-packages --output-location "${CMAKE_CURRENT_SOURCE_DIR}/ExampleOutputFiles"
                 DEPENDS AllDocExamples
                 )
 

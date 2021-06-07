@@ -3,7 +3,7 @@
   <compounddef id="LibrdfStatement_8cpp" kind="file" language="C++">
     <compoundname>LibrdfStatement.cpp</compoundname>
     <includes refid="LibrdfStatement_8h" local="yes">redland/LibrdfStatement.h</includes>
-    <includes refid="World_8h" local="yes">redland/World.h</includes>
+    <includes refid="LibrdfWorld_8h" local="yes">redland/LibrdfWorld.h</includes>
     <incdepgraph>
       <node id="11">
         <label>stdarg.h</label>
@@ -24,18 +24,6 @@
         <childnode refid="31" relation="include">
         </childnode>
         <childnode refid="34" relation="include">
-        </childnode>
-      </node>
-      <node id="32">
-        <label>World.h</label>
-        <link refid="World_8h_source"/>
-        <childnode refid="8" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="31" relation="include">
-        </childnode>
-        <childnode refid="33" relation="include">
         </childnode>
       </node>
       <node id="17">
@@ -208,6 +196,18 @@
         <childnode refid="35" relation="include">
         </childnode>
       </node>
+      <node id="32">
+        <label>LibrdfWorld.h</label>
+        <link refid="LibrdfWorld_8h_source"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+      </node>
       <node id="10">
         <label>stdio.h</label>
       </node>
@@ -229,7 +229,7 @@
 <codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="4"><highlight class="normal"></highlight></codeline>
 <codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;redland/LibrdfStatement.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;redland/World.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;redland/LibrdfWorld.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="7"><highlight class="normal"></highlight></codeline>
 <codeline lineno="8"><highlight class="normal"></highlight></codeline>
 <codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">redland<sp/>{</highlight></codeline>
@@ -246,13 +246,13 @@
 <codeline lineno="20"><highlight class="normal"></highlight></codeline>
 <codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>LibrdfStatement::LibrdfStatement(<ref refid="structraptor__term" kindref="compound">librdf_node</ref><sp/>*subject,<sp/><ref refid="structraptor__term" kindref="compound">librdf_node</ref><sp/>*predicate,<sp/><ref refid="structraptor__term" kindref="compound">librdf_node</ref><sp/>*resource)</highlight></codeline>
 <codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>statement_(librdf_new_statement_from_nodes(</highlight></codeline>
-<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>World::getWorld(),<sp/>subject,<sp/>predicate,<sp/>resource))<sp/>{</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LibrdfWorld::getWorld(),<sp/>subject,<sp/>predicate,<sp/>resource))<sp/>{</highlight></codeline>
 <codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>checkForNull();</highlight></codeline>
 <codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="26"><highlight class="normal"></highlight></codeline>
 <codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>LibrdfStatement::LibrdfStatement(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>LibrdfNode<sp/>&amp;subject,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>LibrdfNode<sp/>&amp;predicate,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>LibrdfNode<sp/>&amp;resource)</highlight></codeline>
 <codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>statement_(librdf_new_statement_from_nodes(</highlight></codeline>
-<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>World::getWorld(),<sp/>subject.get(),<sp/>predicate.get(),<sp/>resource.get()))<sp/>{</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LibrdfWorld::getWorld(),<sp/>subject.get(),<sp/>predicate.get(),<sp/>resource.get()))<sp/>{</highlight></codeline>
 <codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>checkForNull();</highlight></codeline>
 <codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="32"><highlight class="normal"></highlight></codeline>
@@ -275,12 +275,12 @@
 <codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;RedlandNullPointerException:<sp/>LibrdfStatement::checkForNull():<sp/>statement_<sp/>is<sp/>null&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="51"><highlight class="normal"></highlight></codeline>
-<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structraptor__statement" kindref="compound">librdf_statement</ref><sp/>*<ref refid="classredland_1_1LibrdfStatement_1a6b655a56f37dbe95fec840a0a1f0ed53" kindref="member">LibrdfStatement::get</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structraptor__statement" kindref="compound">librdf_statement</ref><sp/>*LibrdfStatement::get()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
 <codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>incrementUsage();</highlight></codeline>
 <codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>statement_;</highlight></codeline>
 <codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="56"><highlight class="normal"></highlight></codeline>
-<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structraptor__statement" kindref="compound">librdf_statement</ref><sp/>*<ref refid="classredland_1_1LibrdfStatement_1aae6c894388cf0e0af0cb427e03224d38" kindref="member">LibrdfStatement::getWithoutIncrement</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structraptor__statement" kindref="compound">librdf_statement</ref><sp/>*LibrdfStatement::getWithoutIncrement()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
 <codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>statement_;</highlight></codeline>
 <codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="60"><highlight class="normal"></highlight></codeline>
@@ -351,7 +351,7 @@
 <codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!getPredicateAsRawNode())</highlight></codeline>
 <codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="classRedlandNullPointerException" kindref="compound">RedlandNullPointerException</ref>(</highlight></codeline>
 <codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;RedlandNullPointerException:<sp/>LibrdfStatement::getPredicateAsRawNode():<sp/>predicate_<sp/>is<sp/>nullptr&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>getPredicateNode().<ref refid="classredland_1_1LibrdfNode_1a43ba1bed3f1cc6ed654a16c570598565" kindref="member">getNamespace</ref>();</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>getPredicateNode().getNamespace();</highlight></codeline>
 <codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="130"><highlight class="normal"></highlight></codeline>
 <codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/>LibrdfStatement<sp/>LibrdfStatement::fromRawStatementPtr(<ref refid="structraptor__statement" kindref="compound">librdf_statement</ref><sp/>*statement)<sp/>{</highlight></codeline>
@@ -368,7 +368,7 @@
 <codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>getPredicateAsRawNode()<sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal"><sp/>&amp;&amp;</highlight></codeline>
 <codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>getResourceAsRawNode()<sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
 <codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>statement_<sp/>=<sp/>librdf_new_statement_from_nodes(</highlight></codeline>
-<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>World::getWorld(),<sp/>getSubjectAsRawNode(),<sp/>getPredicateAsRawNode(),<sp/>getResourceAsRawNode());</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LibrdfWorld::getWorld(),<sp/>getSubjectAsRawNode(),<sp/>getPredicateAsRawNode(),<sp/>getResourceAsRawNode());</highlight></codeline>
 <codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="148"><highlight class="normal"></highlight></codeline>
