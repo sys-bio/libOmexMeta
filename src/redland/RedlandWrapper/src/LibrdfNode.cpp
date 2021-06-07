@@ -82,6 +82,7 @@ namespace redland {
         std::regex opb_regex("^[Oo][Pp][Bb]:\d*");
         std::regex fma_regex("^[Ff][Mm][Aa]:\d*");
         std::regex chebi_regex("^[Cc][Hh][Ee][Bb][Ii]:\d*");
+        std::regex urn_miriam_regex("^urn:miriam:.*");
 
         std::smatch m;
         std::string uri_string_;
@@ -120,6 +121,11 @@ namespace redland {
 
         else if (std::regex_search(uri_string, m, fma_regex)) {
             uri_string_ = identifier_dot_org + uri_string;
+        }
+
+        // urn:miriam: resources stay the same
+        else if (std::regex_search(uri_string, m, urn_miriam_regex)) {
+            uri_string_ = uri_string;
         }
 
         else if (std::regex_search(uri_string, m, identifiers_org_form1)) {

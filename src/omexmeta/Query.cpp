@@ -114,10 +114,14 @@ namespace omexmeta {
     }
 
     std::string Query::getBindingValueByName(const std::string &name) {
-        LibrdfNode node(librdf_query_results_get_binding_value_by_name(
-                query_results_, (const char *) name.c_str()));
-        std::string s = node.str();
-        return s;
+        librdf_node* n = librdf_query_results_get_binding_value_by_name(
+                query_results_, (const char *) name.c_str());
+        if (n){
+            LibrdfNode node(n);
+            std::string s = node.str();
+            return s;
+        }
+        return std::string();
     }
 
     int Query::getBindingsCount() {

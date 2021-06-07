@@ -75,14 +75,14 @@
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PurgeRDFBag_1a4e64ac3b04675dff1b1597587f4f6998" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
-        <definition>void omexmeta::PurgeRDFBag::purgeNonListBagEntries</definition>
+        <definition>void omexmeta::PurgeRDFBag::purgePattern2</definition>
         <argsstring>()</argsstring>
-        <name>purgeNonListBagEntries</name>
+        <name>purgePattern2</name>
         <briefdescription>
 <para>Remove rdf:bag entries from the current rdf graph. The rdf:bag entries targeted are not in a rdf container (and so no rdf:_1, rdf:_2, ..., rdf:_n) which is covered in. </para>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="see"><para><ref refid="classomexmeta_1_1PurgeRDFBag_1ad72aeb6f969b601b8f61ea415fc416dc" kindref="member">purgeListBagEntries</ref> </para>
+<para><simplesect kind="see"><para><ref refid="classomexmeta_1_1PurgeRDFBag_1ad72aeb6f969b601b8f61ea415fc416dc" kindref="member">purgePattern1</ref> </para>
 </simplesect>
 </para>
         </detaileddescription>
@@ -92,9 +92,9 @@
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PurgeRDFBag_1ad72aeb6f969b601b8f61ea415fc416dc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
-        <definition>void omexmeta::PurgeRDFBag::purgeListBagEntries</definition>
+        <definition>void omexmeta::PurgeRDFBag::purgePattern1</definition>
         <argsstring>()</argsstring>
-        <name>purgeListBagEntries</name>
+        <name>purgePattern1</name>
         <briefdescription>
 <para>Remove rdf:bag entries from the current rdf graph. The rdf:bag entries targeted are in a rdf container rdf:_1, rdf:_2, ..., rdf:_n. </para>
         </briefdescription>
@@ -113,8 +113,8 @@
     <listofallmembers>
       <member refid="classomexmeta_1_1PurgeRDFBag_1ae827821eecbf95156a13609f189022cb" prot="private" virt="non-virtual"><scope>omexmeta::PurgeRDFBag</scope><name>currentBlankId_</name></member>
       <member refid="classomexmeta_1_1PurgeRDFBag_1ab01ff84fddf7770359e0755ca42848f8" prot="public" virt="non-virtual"><scope>omexmeta::PurgeRDFBag</scope><name>purge</name></member>
-      <member refid="classomexmeta_1_1PurgeRDFBag_1ad72aeb6f969b601b8f61ea415fc416dc" prot="public" virt="non-virtual"><scope>omexmeta::PurgeRDFBag</scope><name>purgeListBagEntries</name></member>
-      <member refid="classomexmeta_1_1PurgeRDFBag_1a4e64ac3b04675dff1b1597587f4f6998" prot="public" virt="non-virtual"><scope>omexmeta::PurgeRDFBag</scope><name>purgeNonListBagEntries</name></member>
+      <member refid="classomexmeta_1_1PurgeRDFBag_1ad72aeb6f969b601b8f61ea415fc416dc" prot="public" virt="non-virtual"><scope>omexmeta::PurgeRDFBag</scope><name>purgePattern1</name></member>
+      <member refid="classomexmeta_1_1PurgeRDFBag_1a4e64ac3b04675dff1b1597587f4f6998" prot="public" virt="non-virtual"><scope>omexmeta::PurgeRDFBag</scope><name>purgePattern2</name></member>
       <member refid="classomexmeta_1_1PurgeRDFBag_1abc703c31325f99d55ac99f4be4b46d94" prot="public" virt="non-virtual"><scope>omexmeta::PurgeRDFBag</scope><name>PurgeRDFBag</name></member>
       <member refid="classomexmeta_1_1PurgeRDFBag_1a7276e92137b8ab3a02ea50428b9d2d1f" prot="private" virt="non-virtual"><scope>omexmeta::PurgeRDFBag</scope><name>rdf_</name></member>
     </listofallmembers>

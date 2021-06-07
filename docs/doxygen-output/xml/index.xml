@@ -843,8 +843,8 @@
     <member refid="classomexmeta_1_1PurgeRDFBag_1ae827821eecbf95156a13609f189022cb" kind="variable"><name>currentBlankId_</name></member>
     <member refid="classomexmeta_1_1PurgeRDFBag_1abc703c31325f99d55ac99f4be4b46d94" kind="function"><name>PurgeRDFBag</name></member>
     <member refid="classomexmeta_1_1PurgeRDFBag_1ab01ff84fddf7770359e0755ca42848f8" kind="function"><name>purge</name></member>
-    <member refid="classomexmeta_1_1PurgeRDFBag_1a4e64ac3b04675dff1b1597587f4f6998" kind="function"><name>purgeNonListBagEntries</name></member>
-    <member refid="classomexmeta_1_1PurgeRDFBag_1ad72aeb6f969b601b8f61ea415fc416dc" kind="function"><name>purgeListBagEntries</name></member>
+    <member refid="classomexmeta_1_1PurgeRDFBag_1a4e64ac3b04675dff1b1597587f4f6998" kind="function"><name>purgePattern2</name></member>
+    <member refid="classomexmeta_1_1PurgeRDFBag_1ad72aeb6f969b601b8f61ea415fc416dc" kind="function"><name>purgePattern1</name></member>
   </compound>
   <compound refid="classomexmeta_1_1Query" kind="class"><name>omexmeta::Query</name>
     <member refid="classomexmeta_1_1Query_1a31f2c3d3ea8fa0b5766d2ca35d2609fd" kind="function"><name>getBindingValueByName</name></member>

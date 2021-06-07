@@ -176,8 +176,6 @@
                         </rdf:Bag>
                     </bqbiol:hasProperty>
                 </rdf:Description>
-
-
             </rdf:RDF>
             <COPASI xmlns="http://www.copasi.org/static/sbml">
                 <rdf:RDF xmlns:CopasiMT="http://www.copasi.org/RDF/MiriamTerms#"
@@ -683,6 +681,8 @@
                                 </rdf:Bag>
                             </bqbiol:isVersionOf>
                         </rdf:Description>
+
+
                     </rdf:RDF>
                     <COPASI xmlns="http://www.copasi.org/static/sbml">
                         <rdf:RDF xmlns:CopasiMT="http://www.copasi.org/RDF/MiriamTerms#"
@@ -724,6 +724,8 @@
                                 </rdf:Bag>
                             </bqbiol:isVersionOf>
                         </rdf:Description>
+
+
                     </rdf:RDF>
                     <COPASI xmlns="http://www.copasi.org/static/sbml">
                         <rdf:RDF xmlns:CopasiMT="http://www.copasi.org/RDF/MiriamTerms#"
@@ -765,6 +767,8 @@
                                 </rdf:Bag>
                             </bqbiol:isVersionOf>
                         </rdf:Description>
+
+
                     </rdf:RDF>
                     <COPASI xmlns="http://www.copasi.org/static/sbml">
                         <rdf:RDF xmlns:CopasiMT="http://www.copasi.org/RDF/MiriamTerms#"
@@ -993,8 +997,6 @@
                                             </rdf:Bag>
                                         </bqbiol:isDescribedBy>
                                     </rdf:Description>
-
-
                                 </rdf:RDF>
                             </annotation>
                         </parameter>
@@ -1011,8 +1013,6 @@
                                             </rdf:Bag>
                                         </bqbiol:isDescribedBy>
                                     </rdf:Description>
-
-
                                 </rdf:RDF>
                             </annotation>
                         </parameter>
@@ -1080,8 +1080,6 @@
                                             </rdf:Bag>
                                         </bqbiol:isDescribedBy>
                                     </rdf:Description>
-
-
                                 </rdf:RDF>
                             </annotation>
                         </parameter>
@@ -1097,8 +1095,6 @@
                                             </rdf:Bag>
                                         </bqbiol:isDescribedBy>
                                     </rdf:Description>
-
-
                                 </rdf:RDF>
                             </annotation>
                         </parameter>
@@ -1169,8 +1165,6 @@
                                             </rdf:Bag>
                                         </bqbiol:isDescribedBy>
                                     </rdf:Description>
-
-
                                 </rdf:RDF>
                             </annotation>
                         </parameter>
@@ -1186,8 +1180,6 @@
                                             </rdf:Bag>
                                         </bqbiol:isDescribedBy>
                                     </rdf:Description>
-
-
                                 </rdf:RDF>
                             </annotation>
                         </parameter>
@@ -1203,8 +1195,6 @@
                                             </rdf:Bag>
                                         </bqbiol:isDescribedBy>
                                     </rdf:Description>
-
-
                                 </rdf:RDF>
                             </annotation>
                         </parameter>
@@ -1280,8 +1270,6 @@
                                             </rdf:Bag>
                                         </bqbiol:isDescribedBy>
                                     </rdf:Description>
-
-
                                 </rdf:RDF>
                             </annotation>
                         </parameter>
@@ -1296,8 +1284,6 @@
                                             </rdf:Bag>
                                         </bqbiol:isDescribedBy>
                                     </rdf:Description>
-
-
                                 </rdf:RDF>
                             </annotation>
                         </parameter>
@@ -1312,8 +1298,6 @@
                                             </rdf:Bag>
                                         </bqbiol:isDescribedBy>
                                     </rdf:Description>
-
-
                                 </rdf:RDF>
                             </annotation>
                         </parameter>
@@ -1329,8 +1313,6 @@
                                             </rdf:Bag>
                                         </bqbiol:isDescribedBy>
                                     </rdf:Description>
-
-
                                 </rdf:RDF>
                             </annotation>
                         </parameter>
@@ -1345,8 +1327,6 @@
                                             </rdf:Bag>
                                         </bqbiol:isDescribedBy>
                                     </rdf:Description>
-
-
                                 </rdf:RDF>
                             </annotation>
                         </parameter>
@@ -1364,8 +1344,6 @@
                                             </rdf:Bag>
                                         </bqbiol:isDescribedBy>
                                     </rdf:Description>
-
-
                                 </rdf:RDF>
                             </annotation>
                         </parameter>
@@ -1436,8 +1414,6 @@
                                             </rdf:Bag>
                                         </bqbiol:isDescribedBy>
                                     </rdf:Description>
-
-
                                 </rdf:RDF>
                             </annotation>
                         </parameter>
@@ -1452,8 +1428,6 @@
                                             </rdf:Bag>
                                         </bqbiol:isDescribedBy>
                                     </rdf:Description>
-
-
                                 </rdf:RDF>
                             </annotation>
                         </parameter>
@@ -1526,8 +1500,6 @@
                                             </rdf:Bag>
                                         </bqbiol:isDescribedBy>
                                     </rdf:Description>
-
-
                                 </rdf:RDF>
                             </annotation>
                         </parameter>
@@ -1542,8 +1514,6 @@
                                             </rdf:Bag>
                                         </bqbiol:isDescribedBy>
                                     </rdf:Description>
-
-
                                 </rdf:RDF>
                             </annotation>
                         </parameter>
@@ -1558,8 +1528,6 @@
                                             </rdf:Bag>
                                         </bqbiol:isDescribedBy>
                                     </rdf:Description>
-
-
                                 </rdf:RDF>
                             </annotation>
                         </parameter>
@@ -1574,8 +1542,6 @@
                                             </rdf:Bag>
                                         </bqbiol:isDescribedBy>
                                     </rdf:Description>
-
-
                                 </rdf:RDF>
                             </annotation>
                         </parameter>
@@ -1591,8 +1557,6 @@
                                             </rdf:Bag>
                                         </bqbiol:isDescribedBy>
                                     </rdf:Description>
-
-
                                 </rdf:RDF>
                             </annotation>
                         </parameter>

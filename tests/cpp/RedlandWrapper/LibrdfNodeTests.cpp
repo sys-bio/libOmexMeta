@@ -22,6 +22,13 @@ TEST_F(LibrdfNodeTests, TestCreate) {
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
+TEST_F(LibrdfNodeTests, UriNodeUrnMiriam) {
+    std::string expected = "urn:miriam:reactome:R12345";
+    LibrdfNode node = LibrdfNode::fromUriString(expected);
+    std::string actual = node.str();
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
 TEST_F(LibrdfNodeTests, TestUnderlyingNodeHasUri) {
     std::string expected = "https://notarealaddress.com";
     LibrdfNode node = LibrdfNode::fromUriString(expected);

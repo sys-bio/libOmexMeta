@@ -43,7 +43,7 @@ set(OMEXMETA_HEADERS
         "${OMEXMETA_INCLUDE_DIR}/omexmeta/Error.h"
         "${OMEXMETA_INCLUDE_DIR}/omexmeta/UriHandler.h"
         "${OMEXMETA_INCLUDE_DIR}/omexmeta/VCardTranslator.h"
-        "${OMEXMETA_INCLUDE_DIR}/omexmeta/PurgeRDFBag2.h"
+        "${OMEXMETA_INCLUDE_DIR}/omexmeta/PurgeRDFBag.h"
         )
 
 set(OMEXMETA_SOURCES
@@ -61,7 +61,6 @@ set(OMEXMETA_SOURCES
         "MetaID.cpp"
         "Participant.cpp"
         "Options.cpp"
-
         "PhysicalEntity.cpp"
         "PropertyBearer.cpp"
         "Editor.cpp"
@@ -71,7 +70,7 @@ set(OMEXMETA_SOURCES
         "MarkupIdentifier.cpp"
         "UriHandler.cpp"
         "VCardTranslator.cpp"
-        "PurgeRDFBag2.cpp"
+        "PurgeRDFBag.cpp"
         )
 
 
