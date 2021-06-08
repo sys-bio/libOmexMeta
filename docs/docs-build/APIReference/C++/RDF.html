@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>RDF &mdash; libomexmeta 1.2.7 documentation</title>
+  <title>RDF &mdash; libomexmeta 1.2.8 documentation</title>
   
 
   
@@ -96,6 +96,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../singular_annotations/index.html">Singular Annotations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../composite_annotations/index.html">Composite Annotations: SBML Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../composite_annotations/index.html#composite-annotations-cellml-examples">Composite Annotations: CellML Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../stripping_annotations/index.html">Stripping Annotations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../querying_rdf/querying_rdf.html">Querying RDF</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../diagrams/diagrams_index.html">Building Diagrams</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../annotating_models/annotating_models_index.html">Annotating Models</a></li>
@@ -201,99 +202,9 @@
 <h1>RDF<a class="headerlink" href="#rdf" title="Permalink to this headline">¶</a></h1>
 <dl class="cpp class">
 <dt id="_CPPv4N8omexmeta3RDFE">
-<span id="_CPPv3N8omexmeta3RDFE"></span><span id="_CPPv2N8omexmeta3RDFE"></span><span id="omexmeta::RDF"></span><span class="target" id="classomexmeta_1_1RDF"></span><em class="property">class </em><code class="sig-prename descclassname">omexmeta<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">RDF</code><a class="headerlink" href="#_CPPv4N8omexmeta3RDFE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N8omexmeta3RDFE"></span><span id="_CPPv2N8omexmeta3RDFE"></span><span id="omexmeta::RDF"></span><span class="target" id="classomexmeta_1_1RDF"></span><em class="property">class </em><code class="sig-prename descclassname">omexmeta<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">RDF</code> : <em class="property">public</em> omexmeta::IRDF<a class="headerlink" href="#_CPPv4N8omexmeta3RDFE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric">Public Functions</p>
-<dl class="cpp function">
-<dt id="_CPPv4NK8omexmeta3RDF10getXmlTypeEv">
-<span id="_CPPv3NK8omexmeta3RDF10getXmlTypeEv"></span><span id="_CPPv2NK8omexmeta3RDF10getXmlTypeEv"></span><span id="omexmeta::RDF::getXmlTypeC"></span><span class="target" id="classomexmeta_1_1RDF_1a6979e6ca2688cf5cae1e9e1cf3a7309a"></span>OmexMetaXmlType <code class="sig-name descname">getXmlType</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta3RDF10getXmlTypeEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>getter for xmlType attribue. </p>
-<p>when the rdf graph is sbml, it will return OMEXMETA_TYPE_SBML. When cellML it will return OMEXMETA_TYPE_CELLML. Otherwise it is OMEXMETA_TYPE_UNKNOWN. </p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv4NK8omexmeta3RDFeqERK3RDF">
-<span id="_CPPv3NK8omexmeta3RDFeqERK3RDF"></span><span id="_CPPv2NK8omexmeta3RDFeqERK3RDF"></span><span id="omexmeta::RDF::eq-operator__RDFCRC"></span><span class="target" id="classomexmeta_1_1RDF_1add69d33d544dc31789b2ff0a71182a84"></span>bool <code class="sig-name descname">operator==</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4N8omexmeta3RDFE" title="omexmeta::RDF">RDF</a> &amp;<em>rhs</em><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta3RDFeqERK3RDF" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv4NK8omexmeta3RDFneERK3RDF">
-<span id="_CPPv3NK8omexmeta3RDFneERK3RDF"></span><span id="_CPPv2NK8omexmeta3RDFneERK3RDF"></span><span id="omexmeta::RDF::neq-operator__RDFCRC"></span><span class="target" id="classomexmeta_1_1RDF_1ac652b39964477c8ea69e5218f2203013"></span>bool <code class="sig-name descname">operator!=</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4N8omexmeta3RDFE" title="omexmeta::RDF">RDF</a> &amp;<em>rhs</em><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta3RDFneERK3RDF" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv4N8omexmeta3RDF10setXmlTypeE15OmexMetaXmlType">
-<span id="_CPPv3N8omexmeta3RDF10setXmlTypeE15OmexMetaXmlType"></span><span id="_CPPv2N8omexmeta3RDF10setXmlTypeE15OmexMetaXmlType"></span><span id="omexmeta::RDF::setXmlType__OmexMetaXmlType"></span><span class="target" id="classomexmeta_1_1RDF_1a8fc7b226619580fac47afce0a7ec2628"></span>void <code class="sig-name descname">setXmlType</code><span class="sig-paren">(</span>OmexMetaXmlType <em>xmlType</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta3RDF10setXmlTypeE15OmexMetaXmlType" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>set the xml type for the current graph. </p>
-<p>If you have been reading from an SBML you cannot then read from another format (such as cellml). </p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv4NK8omexmeta3RDF16getRepositoryUriEv">
-<span id="_CPPv3NK8omexmeta3RDF16getRepositoryUriEv"></span><span id="_CPPv2NK8omexmeta3RDF16getRepositoryUriEv"></span><span id="omexmeta::RDF::getRepositoryUriC"></span><span class="target" id="classomexmeta_1_1RDF_1a60b4a0a8c0c4f30a9cc71f9899bffabc"></span><em class="property">const</em> std::string &amp;<code class="sig-name descname">getRepositoryUri</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta3RDF16getRepositoryUriEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>getter for repository uri which defaults to “http://omex-library.org/” </p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv4N8omexmeta3RDF16setRepositoryUriERKNSt6stringE">
-<span id="_CPPv3N8omexmeta3RDF16setRepositoryUriERKNSt6stringE"></span><span id="_CPPv2N8omexmeta3RDF16setRepositoryUriERKNSt6stringE"></span><span id="omexmeta::RDF::setRepositoryUri__ssCR"></span><span class="target" id="classomexmeta_1_1RDF_1ab1542acaf8d67ce96ace2825600ac600"></span>void <code class="sig-name descname">setRepositoryUri</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>repositoryName</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta3RDF16setRepositoryUriERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>setter for the repository uri which defaults to “http://omex-library.org/”. </p>
-<p><dl class="simple">
-<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">repositoryName</span></code>: the repository uri. </p></li>
-</ul>
-</dd>
-</dl>
-</p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv4NK8omexmeta3RDF13getArchiveUriEv">
-<span id="_CPPv3NK8omexmeta3RDF13getArchiveUriEv"></span><span id="_CPPv2NK8omexmeta3RDF13getArchiveUriEv"></span><span id="omexmeta::RDF::getArchiveUriC"></span><span class="target" id="classomexmeta_1_1RDF_1a1b3bd1292e77c1d87720f854ec5a04bd"></span><em class="property">const</em> std::string &amp;<code class="sig-name descname">getArchiveUri</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta3RDF13getArchiveUriEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>getter for archiveUri attribute. </p>
-<p>default to <a class="reference external" href="http://omex-library.org/NewOmex.omex/">http://omex-library.org/NewOmex.omex/</a> </p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv4N8omexmeta3RDF13setArchiveUriERKNSt6stringE">
-<span id="_CPPv3N8omexmeta3RDF13setArchiveUriERKNSt6stringE"></span><span id="_CPPv2N8omexmeta3RDF13setArchiveUriERKNSt6stringE"></span><span id="omexmeta::RDF::setArchiveUri__ssCR"></span><span class="target" id="classomexmeta_1_1RDF_1a1670aa8c6379324aa414d0c56cfa7e4a"></span>void <code class="sig-name descname">setArchiveUri</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>archiveName</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta3RDF13setArchiveUriERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>setter for archiveUri attribute. </p>
-<p><dl class="simple">
-<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">archiveName</span></code>: the new name for archive uri attribute  default to <a class="reference external" href="http://omex-library.org/NewOmex.omex/">http://omex-library.org/NewOmex.omex/</a> </p></li>
-</ul>
-</dd>
-</dl>
-</p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv4NK8omexmeta3RDF11getModelUriEv">
-<span id="_CPPv3NK8omexmeta3RDF11getModelUriEv"></span><span id="_CPPv2NK8omexmeta3RDF11getModelUriEv"></span><span id="omexmeta::RDF::getModelUriC"></span><span class="target" id="classomexmeta_1_1RDF_1ac579ac8b79eb7d374a9077114837d2ef"></span><em class="property">const</em> std::string &amp;<code class="sig-name descname">getModelUri</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta3RDF11getModelUriEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>getter for model uri. </p>
-<p>defaults to <a class="reference external" href="http://omex-library.org/NewOmex.omex/NewModel.xml">http://omex-library.org/NewOmex.omex/NewModel.xml</a> </p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv4N8omexmeta3RDF11setModelUriENSt6stringE">
-<span id="_CPPv3N8omexmeta3RDF11setModelUriENSt6stringE"></span><span id="_CPPv2N8omexmeta3RDF11setModelUriENSt6stringE"></span><span id="omexmeta::RDF::setModelUri__ss"></span><span class="target" id="classomexmeta_1_1RDF_1ad5310903d0e1a7a7ee890478f18b6181"></span>void <code class="sig-name descname">setModelUri</code><span class="sig-paren">(</span>std::string <em>modelName</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta3RDF11setModelUriENSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>setter for model uri. </p>
-<p><dl class="simple">
-<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">modelName</span></code>: string for new model uri.  defaults to <a class="reference external" href="http://omex-library.org/NewOmex.omex/NewModel.xml">http://omex-library.org/NewOmex.omex/NewModel.xml</a> </p></li>
-</ul>
-</dd>
-</dl>
-</p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv4NK8omexmeta3RDF11getLocalUriEv">
-<span id="_CPPv3NK8omexmeta3RDF11getLocalUriEv"></span><span id="_CPPv2NK8omexmeta3RDF11getLocalUriEv"></span><span id="omexmeta::RDF::getLocalUriC"></span><span class="target" id="classomexmeta_1_1RDF_1a58b64a5972f74564994028504d8d227c"></span><em class="property">const</em> std::string &amp;<code class="sig-name descname">getLocalUri</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta3RDF11getLocalUriEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>getter for local uri attribute. </p>
-<p>defaults to <a class="reference external" href="http://omex-library.org/NewOmex.omex/NewModel.rdf#">http://omex-library.org/NewOmex.omex/NewModel.rdf#</a> </p>
-</dd></dl>
-
 <dl class="cpp function">
 <dt id="_CPPv4N8omexmeta3RDF3RDFERKNSt6stringERKNSt6stringEPKcPKc">
 <span id="_CPPv3N8omexmeta3RDF3RDFERKNSt6stringERKNSt6stringEPKcPKc"></span><span id="_CPPv2N8omexmeta3RDF3RDFERKNSt6stringERKNSt6stringEPKcPKc"></span><span id="omexmeta::RDF::RDF__ssCR.ssCR.cCP.cCP"></span><span class="target" id="classomexmeta_1_1RDF_1aecb90e51830082f78ff055c045f4b439"></span><code class="sig-name descname">RDF</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>storage_type</em> = &quot;memory&quot;, <em class="property">const</em> std::string &amp;<em>storage_name</em> = &quot;SemsimStore&quot;, <em class="property">const</em> char *<em>storage_options</em> = nullptr, <em class="property">const</em> char *<em>model_options</em> = nullptr<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta3RDF3RDFERKNSt6stringERKNSt6stringEPKcPKc" title="Permalink to this definition">¶</a><br /></dt>
@@ -323,6 +234,12 @@
 </dd></dl>
 
 <dl class="cpp function">
+<dt id="_CPPv4N8omexmeta3RDF3RDFERR3RDF">
+<span id="_CPPv3N8omexmeta3RDF3RDFERR3RDF"></span><span id="_CPPv2N8omexmeta3RDF3RDFERR3RDF"></span><span id="omexmeta::RDF::RDF__RDFRR"></span><span class="target" id="classomexmeta_1_1RDF_1a6490b2ea0d10e3026bea587a305b7fb9"></span><code class="sig-name descname">RDF</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4N8omexmeta3RDF3RDFERR3RDF" title="omexmeta::RDF::RDF">RDF</a> &amp;&amp;<em>rdf</em><span class="sig-paren">)</span> <em class="property">noexcept</em><a class="headerlink" href="#_CPPv4N8omexmeta3RDF3RDFERR3RDF" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>move constructor for <a class="reference internal" href="#classomexmeta_1_1RDF"><span class="std std-ref">RDF</span></a> class </p>
+</dd></dl>
+
+<dl class="cpp function">
 <dt id="_CPPv4N8omexmeta3RDFaSERK3RDF">
 <span id="_CPPv3N8omexmeta3RDFaSERK3RDF"></span><span id="_CPPv2N8omexmeta3RDFaSERK3RDF"></span><span id="omexmeta::RDF::assign-operator__RDFCR"></span><span class="target" id="classomexmeta_1_1RDF_1a9d1b20d798969d3c1dac412c621247b9"></span><a class="reference internal" href="#_CPPv4N8omexmeta3RDFE" title="omexmeta::RDF">RDF</a> &amp;<code class="sig-name descname">operator=</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4N8omexmeta3RDFE" title="omexmeta::RDF">RDF</a> &amp;<em>rdf</em><span class="sig-paren">)</span> = delete<a class="headerlink" href="#_CPPv4N8omexmeta3RDFaSERK3RDF" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>copy assignment constructor for <a class="reference internal" href="#classomexmeta_1_1RDF"><span class="std std-ref">RDF</span></a> ojects </p>
@@ -337,13 +254,13 @@
 
 <dl class="cpp function">
 <dt id="_CPPv4NK8omexmeta3RDF4sizeEv">
-<span id="_CPPv3NK8omexmeta3RDF4sizeEv"></span><span id="_CPPv2NK8omexmeta3RDF4sizeEv"></span><span id="omexmeta::RDF::sizeC"></span><span class="target" id="classomexmeta_1_1RDF_1a63247bb3a05957abf7320c060543c3ca"></span>int <code class="sig-name descname">size</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta3RDF4sizeEv" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3NK8omexmeta3RDF4sizeEv"></span><span id="_CPPv2NK8omexmeta3RDF4sizeEv"></span><span id="omexmeta::RDF::sizeC"></span><span class="target" id="classomexmeta_1_1RDF_1a1ebd37b6dbce97660ed48031686d7f30"></span>int <code class="sig-name descname">size</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em> <em class="property">override</em><a class="headerlink" href="#_CPPv4NK8omexmeta3RDF4sizeEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>returns the number of triples currently present in the <a class="reference internal" href="#classomexmeta_1_1RDF"><span class="std std-ref">RDF</span></a> graph. </p>
 </dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4NK8omexmeta3RDF5emptyEv">
-<span id="_CPPv3NK8omexmeta3RDF5emptyEv"></span><span id="_CPPv2NK8omexmeta3RDF5emptyEv"></span><span id="omexmeta::RDF::emptyC"></span><span class="target" id="classomexmeta_1_1RDF_1ab6525e8db606ffd48425b05ad2a204d8"></span>bool <code class="sig-name descname">empty</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta3RDF5emptyEv" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3NK8omexmeta3RDF5emptyEv"></span><span id="_CPPv2NK8omexmeta3RDF5emptyEv"></span><span id="omexmeta::RDF::emptyC"></span><span class="target" id="classomexmeta_1_1RDF_1a6d8ab2edd8f798006ee77a4202bf462e"></span>bool <code class="sig-name descname">empty</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em> <em class="property">override</em><a class="headerlink" href="#_CPPv4NK8omexmeta3RDF5emptyEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>indicator for whether the <a class="reference internal" href="#classomexmeta_1_1RDF"><span class="std std-ref">RDF</span></a> graph is empty </p>
 <p><dl class="simple">
 <dt><strong>Return</strong></dt><dd><p>true if <a class="reference internal" href="#classomexmeta_1_1RDF"><span class="std std-ref">RDF</span></a> graph has no triples, false otherwise. </p>
@@ -354,40 +271,27 @@
 
 <dl class="cpp function">
 <dt id="_CPPv4N8omexmeta3RDF13addFromStringERKNSt6stringERKNSt6stringE">
-<span id="_CPPv3N8omexmeta3RDF13addFromStringERKNSt6stringERKNSt6stringE"></span><span id="_CPPv2N8omexmeta3RDF13addFromStringERKNSt6stringERKNSt6stringE"></span><span id="omexmeta::RDF::addFromString__ssCR.ssCR"></span><span class="target" id="classomexmeta_1_1RDF_1a9a29912bc44d47d371a2357b75194fc3"></span>void <code class="sig-name descname">addFromString</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>str</em>, <em class="property">const</em> std::string &amp;<em>format</em> = &quot;guess&quot;<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta3RDF13addFromStringERKNSt6stringERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>non-static variant of <a class="reference internal" href="#classomexmeta_1_1RDF_1a9d91b3134cdcc6dfef6d62b7b09d8da2"><span class="std std-ref">RDF::fromString()</span></a>. Reads rdf into an <a class="reference internal" href="#classomexmeta_1_1RDF"><span class="std std-ref">RDF</span></a> instance. See <a class="reference internal" href="#classomexmeta_1_1RDF_1a9d91b3134cdcc6dfef6d62b7b09d8da2"><span class="std std-ref">RDF::fromString()</span></a> for argument requirements. </p>
+<span id="_CPPv3N8omexmeta3RDF13addFromStringERKNSt6stringERKNSt6stringE"></span><span id="_CPPv2N8omexmeta3RDF13addFromStringERKNSt6stringERKNSt6stringE"></span><span id="omexmeta::RDF::addFromString__ssCR.ssCR"></span><span class="target" id="classomexmeta_1_1RDF_1ad403d7c62ef1cf902fcb8b65c5ad641f"></span>void <code class="sig-name descname">addFromString</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>str</em>, <em class="property">const</em> std::string &amp;<em>syntax</em> = &quot;guess&quot;<span class="sig-paren">)</span> <em class="property">override</em><a class="headerlink" href="#_CPPv4N8omexmeta3RDF13addFromStringERKNSt6stringERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>non-static variant of <a class="reference internal" href="#classomexmeta_1_1RDF_1ab282cd4a6d76e87fa9ca91077936eeb5"><span class="std std-ref">RDF::fromString()</span></a>. Reads rdf into an <a class="reference internal" href="#classomexmeta_1_1RDF"><span class="std std-ref">RDF</span></a> instance. See <a class="reference internal" href="#classomexmeta_1_1RDF_1ab282cd4a6d76e87fa9ca91077936eeb5"><span class="std std-ref">RDF::fromString()</span></a> for argument requirements. </p>
 </dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4N8omexmeta3RDF10addFromUriERKNSt6stringERKNSt6stringE">
-<span id="_CPPv3N8omexmeta3RDF10addFromUriERKNSt6stringERKNSt6stringE"></span><span id="_CPPv2N8omexmeta3RDF10addFromUriERKNSt6stringERKNSt6stringE"></span><span id="omexmeta::RDF::addFromUri__ssCR.ssCR"></span><span class="target" id="classomexmeta_1_1RDF_1af99201be3782319d32e963ca7bed5b2b"></span>void <code class="sig-name descname">addFromUri</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>uri_string</em>, <em class="property">const</em> std::string &amp;<em>format</em> = &quot;guess&quot;<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta3RDF10addFromUriERKNSt6stringERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>non-static counterpart of <a class="reference internal" href="#classomexmeta_1_1RDF_1a03906aa5c3b9429a2afdbe0ad2be21e6"><span class="std std-ref">RDF::fromUri</span></a>. Downloads and parses rdf from a URI. </p>
-<p>See <a class="reference internal" href="#classomexmeta_1_1RDF_1a03906aa5c3b9429a2afdbe0ad2be21e6"><span class="std std-ref">RDF::fromUri</span></a> for details. </p>
+<span id="_CPPv3N8omexmeta3RDF10addFromUriERKNSt6stringERKNSt6stringE"></span><span id="_CPPv2N8omexmeta3RDF10addFromUriERKNSt6stringERKNSt6stringE"></span><span id="omexmeta::RDF::addFromUri__ssCR.ssCR"></span><span class="target" id="classomexmeta_1_1RDF_1a602c7ca8ca94b151dd97b8a513cef0a4"></span>void <code class="sig-name descname">addFromUri</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>uri_string</em>, <em class="property">const</em> std::string &amp;<em>syntax</em> = &quot;guess&quot;<span class="sig-paren">)</span> <em class="property">override</em><a class="headerlink" href="#_CPPv4N8omexmeta3RDF10addFromUriERKNSt6stringERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>non-static counterpart of <a class="reference internal" href="#classomexmeta_1_1RDF_1a18f57a8d85f89ff7b0575540ab280a2f"><span class="std std-ref">RDF::fromUri</span></a>. Downloads and parses rdf from a URI. </p>
+<p>See <a class="reference internal" href="#classomexmeta_1_1RDF_1a18f57a8d85f89ff7b0575540ab280a2f"><span class="std std-ref">RDF::fromUri</span></a> for details. </p>
 </dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4N8omexmeta3RDF11addFromFileERKNSt6stringERKNSt6stringE">
-<span id="_CPPv3N8omexmeta3RDF11addFromFileERKNSt6stringERKNSt6stringE"></span><span id="_CPPv2N8omexmeta3RDF11addFromFileERKNSt6stringERKNSt6stringE"></span><span id="omexmeta::RDF::addFromFile__ssCR.ssCR"></span><span class="target" id="classomexmeta_1_1RDF_1ac88eeb1a0f6911a2c1e4c43cef1b9047"></span>void <code class="sig-name descname">addFromFile</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>filename</em>, <em class="property">const</em> std::string &amp;<em>format</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta3RDF11addFromFileERKNSt6stringERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>non-static counter part of <a class="reference internal" href="#classomexmeta_1_1RDF_1a98a1da84161a7935bf38ec5e5d34e91f"><span class="std std-ref">RDF::fromFile</span></a>. Reads rdf from annotations in a file </p>
+<span id="_CPPv3N8omexmeta3RDF11addFromFileERKNSt6stringERKNSt6stringE"></span><span id="_CPPv2N8omexmeta3RDF11addFromFileERKNSt6stringERKNSt6stringE"></span><span id="omexmeta::RDF::addFromFile__ssCR.ssCR"></span><span class="target" id="classomexmeta_1_1RDF_1af62debd6edc14e6ff06c28d7726cfef4"></span>void <code class="sig-name descname">addFromFile</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>filename</em>, <em class="property">const</em> std::string &amp;<em>syntax</em><span class="sig-paren">)</span> <em class="property">override</em><a class="headerlink" href="#_CPPv4N8omexmeta3RDF11addFromFileERKNSt6stringERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>non-static counter part of <a class="reference internal" href="#classomexmeta_1_1RDF_1a87ab63ef63126945d345d463e0a14f5e"><span class="std std-ref">RDF::fromFile</span></a>. Reads rdf from annotations in a file </p>
 <p><dl class="simple">
 <dt><strong>Return</strong></dt><dd><p>an instantiated <a class="reference internal" href="#classomexmeta_1_1RDF"><span class="std std-ref">RDF</span></a> object  Uses LibrdfParser::fromFile under the hood </p>
 </dd>
 <dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">filename</span></code>: the filename to read as string </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">format</span></code>: the format of the <a class="reference internal" href="#classomexmeta_1_1RDF"><span class="std std-ref">RDF</span></a> in filename </p></li>
-</ul>
-</dd>
-</dl>
-</p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv4N8omexmeta3RDF29propagateNamespacesFromParserERKNSt6vectorINSt6stringEEE">
-<span id="_CPPv3N8omexmeta3RDF29propagateNamespacesFromParserERKNSt6vectorINSt6stringEEE"></span><span id="_CPPv2N8omexmeta3RDF29propagateNamespacesFromParserERKNSt6vectorINSt6stringEEE"></span><span id="omexmeta::RDF::propagateNamespacesFromParser__std::vector:ss:CR"></span><span class="target" id="classomexmeta_1_1RDF_1af5f598560ab2a4ebe661f9bdb8665755"></span>std::unordered_map&lt;std::string, std::string&gt; <code class="sig-name descname">propagateNamespacesFromParser</code><span class="sig-paren">(</span><em class="property">const</em> std::vector&lt;std::string&gt; &amp;<em>seen_namespaces</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta3RDF29propagateNamespacesFromParserERKNSt6vectorINSt6stringEEE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>compared namespaces seen with namespaces known and ensures models that use a known namespace use that namespace. </p>
-<p><dl class="simple">
-<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">seen_namespaces</span></code>: a vector of strings of namespaces the parser has seen before. </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">syntax</span></code>: the syntax of the <a class="reference internal" href="#classomexmeta_1_1RDF"><span class="std std-ref">RDF</span></a> in filename </p></li>
 </ul>
 </dd>
 </dl>
@@ -396,11 +300,11 @@
 
 <dl class="cpp function">
 <dt id="_CPPv4N8omexmeta3RDF8toStringERKNSt6stringEPKcPKc">
-<span id="_CPPv3N8omexmeta3RDF8toStringERKNSt6stringEPKcPKc"></span><span id="_CPPv2N8omexmeta3RDF8toStringERKNSt6stringEPKcPKc"></span><span id="omexmeta::RDF::toString__ssCR.cCP.cCP"></span><span class="target" id="classomexmeta_1_1RDF_1a53bc4c91a3c39eef9b27886873badca2"></span>std::string <code class="sig-name descname">toString</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>format</em> = &quot;turtle&quot;, <em class="property">const</em> char *<em>mime_type</em> = nullptr, <em class="property">const</em> char *<em>type_uri</em> = nullptr<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta3RDF8toStringERKNSt6stringEPKcPKc" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N8omexmeta3RDF8toStringERKNSt6stringEPKcPKc"></span><span id="_CPPv2N8omexmeta3RDF8toStringERKNSt6stringEPKcPKc"></span><span id="omexmeta::RDF::toString__ssCR.cCP.cCP"></span><span class="target" id="classomexmeta_1_1RDF_1a1fa12a4283c03d068f03ae33c5114c54"></span>std::string <code class="sig-name descname">toString</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>syntax</em> = &quot;turtle&quot;, <em class="property">const</em> char *<em>mime_type</em> = nullptr, <em class="property">const</em> char *<em>type_uri</em> = nullptr<span class="sig-paren">)</span> <em class="property">override</em><a class="headerlink" href="#_CPPv4N8omexmeta3RDF8toStringERKNSt6stringEPKcPKc" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>serialize <a class="reference internal" href="#classomexmeta_1_1RDF"><span class="std std-ref">RDF</span></a> graph to string </p>
 <p><dl class="simple">
 <dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">format</span></code>: the expected output format. Options include: “ntriples”, “turtle”, “rdfxml-xmp”, “rdfxml-abbrev”, “rdfxml”, “dot”, “json-triples”, “json”, “nquads”, “html”. </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">syntax</span></code>: the expected output syntax. Options include: “ntriples”, “turtle”, “rdfxml-xmp”, “rdfxml-abbrev”, “rdfxml”, “dot”, “json-triples”, “json”, “nquads”, “html”. </p></li>
 </ul>
 </dd>
 </dl>
@@ -409,11 +313,11 @@
 
 <dl class="cpp function">
 <dt id="_CPPv4N8omexmeta3RDF6toFileERKNSt6stringERKNSt6stringEPKcPKc">
-<span id="_CPPv3N8omexmeta3RDF6toFileERKNSt6stringERKNSt6stringEPKcPKc"></span><span id="_CPPv2N8omexmeta3RDF6toFileERKNSt6stringERKNSt6stringEPKcPKc"></span><span id="omexmeta::RDF::toFile__ssCR.ssCR.cCP.cCP"></span><span class="target" id="classomexmeta_1_1RDF_1a42a7be2a6261f03dc275b24a152dcaae"></span>void <code class="sig-name descname">toFile</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>filename</em>, <em class="property">const</em> std::string &amp;<em>format</em> = &quot;turtle&quot;, <em class="property">const</em> char *<em>mime_type</em> = nullptr, <em class="property">const</em> char *<em>type_uri</em> = nullptr<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta3RDF6toFileERKNSt6stringERKNSt6stringEPKcPKc" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N8omexmeta3RDF6toFileERKNSt6stringERKNSt6stringEPKcPKc"></span><span id="_CPPv2N8omexmeta3RDF6toFileERKNSt6stringERKNSt6stringEPKcPKc"></span><span id="omexmeta::RDF::toFile__ssCR.ssCR.cCP.cCP"></span><span class="target" id="classomexmeta_1_1RDF_1a3ca48d8b9790b4ccd091204c4d9a0c05"></span>void <code class="sig-name descname">toFile</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>filename</em>, <em class="property">const</em> std::string &amp;<em>syntax</em> = &quot;turtle&quot;, <em class="property">const</em> char *<em>mime_type</em> = nullptr, <em class="property">const</em> char *<em>type_uri</em> = nullptr<span class="sig-paren">)</span> <em class="property">override</em><a class="headerlink" href="#_CPPv4N8omexmeta3RDF6toFileERKNSt6stringERKNSt6stringEPKcPKc" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Write annotations to file. </p>
 <p><dl class="simple">
 <dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">format</span></code>: the expected output format. Options include: “ntriples”, “turtle”, “rdfxml-xmp”, “rdfxml-abbrev”, “rdfxml”, “dot”, “json-triples”, “json”, “nquads”, “html”. </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">syntax</span></code>: the expected output syntax. Options include: “ntriples”, “turtle”, “rdfxml-xmp”, “rdfxml-abbrev”, “rdfxml”, “dot”, “json-triples”, “json”, “nquads”, “html”. </p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">filename</span></code>: full path of file to write </p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">mime_type</span></code>: optional valid mime </p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">type_uri</span></code>: optional type uri </p></li>
@@ -425,7 +329,7 @@
 
 <dl class="cpp function">
 <dt id="_CPPv4N8omexmeta3RDF8toEditorERKNSt6stringEbb">
-<span id="_CPPv3N8omexmeta3RDF8toEditorERKNSt6stringEbb"></span><span id="_CPPv2N8omexmeta3RDF8toEditorERKNSt6stringEbb"></span><span id="omexmeta::RDF::toEditor__ssCR.b.b"></span><span class="target" id="classomexmeta_1_1RDF_1ac09044c8a4c1af4f9536dbf29b4c3f3c"></span><a class="reference internal" href="Editor.html#_CPPv4N8omexmeta6EditorE" title="omexmeta::Editor">Editor</a> <code class="sig-name descname">toEditor</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>xml</em>, bool <em>generate_new_metaids</em> = false, bool <em>sbml_semantic_extraction</em> = true<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta3RDF8toEditorERKNSt6stringEbb" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N8omexmeta3RDF8toEditorERKNSt6stringEbb"></span><span id="_CPPv2N8omexmeta3RDF8toEditorERKNSt6stringEbb"></span><span id="omexmeta::RDF::toEditor__ssCR.b.b"></span><span class="target" id="classomexmeta_1_1RDF_1a99bf8d2fd11cc200501ead29f4a8656f"></span><a class="reference internal" href="Editor.html#_CPPv4N8omexmeta6EditorE" title="omexmeta::Editor">Editor</a> <code class="sig-name descname">toEditor</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>xml</em>, bool <em>generate_new_metaids</em> = false, bool <em>sbml_semantic_extraction</em> = true<span class="sig-paren">)</span> <em class="property">override</em><a class="headerlink" href="#_CPPv4N8omexmeta3RDF8toEditorERKNSt6stringEbb" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>instantiate an <a class="reference internal" href="Editor.html#classomexmeta_1_1Editor"><span class="std std-ref">Editor</span></a> object. </p>
 <p><dl class="simple">
 <dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
@@ -440,70 +344,185 @@
 
 <dl class="cpp function">
 <dt id="_CPPv4N8omexmeta3RDF11toEditorPtrERKNSt6stringEbb">
-<span id="_CPPv3N8omexmeta3RDF11toEditorPtrERKNSt6stringEbb"></span><span id="_CPPv2N8omexmeta3RDF11toEditorPtrERKNSt6stringEbb"></span><span id="omexmeta::RDF::toEditorPtr__ssCR.b.b"></span><span class="target" id="classomexmeta_1_1RDF_1a80c6ad0b9c9daddd5e2150ababcc7476"></span><a class="reference internal" href="Editor.html#_CPPv4N8omexmeta6EditorE" title="omexmeta::Editor">Editor</a> *<code class="sig-name descname">toEditorPtr</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>xml</em>, bool <em>generate_new_metaids</em> = false, bool <em>sbml_semantic_extraction</em> = true<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta3RDF11toEditorPtrERKNSt6stringEbb" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N8omexmeta3RDF11toEditorPtrERKNSt6stringEbb"></span><span id="_CPPv2N8omexmeta3RDF11toEditorPtrERKNSt6stringEbb"></span><span id="omexmeta::RDF::toEditorPtr__ssCR.b.b"></span><span class="target" id="classomexmeta_1_1RDF_1a072496a750958bd7c59471bb5229f0bb"></span><a class="reference internal" href="Editor.html#_CPPv4N8omexmeta6EditorE" title="omexmeta::Editor">Editor</a> *<code class="sig-name descname">toEditorPtr</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>xml</em>, bool <em>generate_new_metaids</em> = false, bool <em>sbml_semantic_extraction</em> = true<span class="sig-paren">)</span> <em class="property">override</em><a class="headerlink" href="#_CPPv4N8omexmeta3RDF11toEditorPtrERKNSt6stringEbb" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4NK8omexmeta3RDF8getModelEv">
-<span id="_CPPv3NK8omexmeta3RDF8getModelEv"></span><span id="_CPPv2NK8omexmeta3RDF8getModelEv"></span><span id="omexmeta::RDF::getModelC"></span><span class="target" id="classomexmeta_1_1RDF_1a8007b0ce5729c7dd3f8cab86d42216f5"></span>librdf_model *<code class="sig-name descname">getModel</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta3RDF8getModelEv" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3NK8omexmeta3RDF8getModelEv"></span><span id="_CPPv2NK8omexmeta3RDF8getModelEv"></span><span id="omexmeta::RDF::getModelC"></span><span class="target" id="classomexmeta_1_1RDF_1a081395bf83bcbbbf7b1ca5df10642b5e"></span>librdf_model *<code class="sig-name descname">getModel</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em> <em class="property">override</em><a class="headerlink" href="#_CPPv4NK8omexmeta3RDF8getModelEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4NK8omexmeta3RDF10getStorageEv">
-<span id="_CPPv3NK8omexmeta3RDF10getStorageEv"></span><span id="_CPPv2NK8omexmeta3RDF10getStorageEv"></span><span id="omexmeta::RDF::getStorageC"></span><span class="target" id="classomexmeta_1_1RDF_1a71b0e5f3b85a87c2231e7700d86060c3"></span>librdf_storage *<code class="sig-name descname">getStorage</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta3RDF10getStorageEv" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3NK8omexmeta3RDF10getStorageEv"></span><span id="_CPPv2NK8omexmeta3RDF10getStorageEv"></span><span id="omexmeta::RDF::getStorageC"></span><span class="target" id="classomexmeta_1_1RDF_1aa143aa353145b64fd6e715ae83fe40af"></span>librdf_storage *<code class="sig-name descname">getStorage</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em> <em class="property">override</em><a class="headerlink" href="#_CPPv4NK8omexmeta3RDF10getStorageEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4NK8omexmeta3RDF17commitTransactionEv">
-<span id="_CPPv3NK8omexmeta3RDF17commitTransactionEv"></span><span id="_CPPv2NK8omexmeta3RDF17commitTransactionEv"></span><span id="omexmeta::RDF::commitTransactionC"></span><span class="target" id="classomexmeta_1_1RDF_1a711f228bb86c5cbf9740f64b8633d04c"></span>int <code class="sig-name descname">commitTransaction</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta3RDF17commitTransactionEv" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3NK8omexmeta3RDF17commitTransactionEv"></span><span id="_CPPv2NK8omexmeta3RDF17commitTransactionEv"></span><span id="omexmeta::RDF::commitTransactionC"></span><span class="target" id="classomexmeta_1_1RDF_1ab833a4b13d27b5c7e3667dcfe2937e98"></span>int <code class="sig-name descname">commitTransaction</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em> <em class="property">override</em><a class="headerlink" href="#_CPPv4NK8omexmeta3RDF17commitTransactionEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4NK8omexmeta3RDF16startTransactionEv">
-<span id="_CPPv3NK8omexmeta3RDF16startTransactionEv"></span><span id="_CPPv2NK8omexmeta3RDF16startTransactionEv"></span><span id="omexmeta::RDF::startTransactionC"></span><span class="target" id="classomexmeta_1_1RDF_1afa2b148ecb235b3ac9497fa3b528d2ed"></span>int <code class="sig-name descname">startTransaction</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta3RDF16startTransactionEv" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3NK8omexmeta3RDF16startTransactionEv"></span><span id="_CPPv2NK8omexmeta3RDF16startTransactionEv"></span><span id="omexmeta::RDF::startTransactionC"></span><span class="target" id="classomexmeta_1_1RDF_1a6a9df7e508c0a516e793614e12771759"></span>int <code class="sig-name descname">startTransaction</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em> <em class="property">override</em><a class="headerlink" href="#_CPPv4NK8omexmeta3RDF16startTransactionEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4NK8omexmeta3RDF20getTransactionHandleEv">
-<span id="_CPPv3NK8omexmeta3RDF20getTransactionHandleEv"></span><span id="_CPPv2NK8omexmeta3RDF20getTransactionHandleEv"></span><span id="omexmeta::RDF::getTransactionHandleC"></span><span class="target" id="classomexmeta_1_1RDF_1ad30bbe5c9b274713f87d4d4a5f2b28e9"></span>void *<code class="sig-name descname">getTransactionHandle</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta3RDF20getTransactionHandleEv" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3NK8omexmeta3RDF20getTransactionHandleEv"></span><span id="_CPPv2NK8omexmeta3RDF20getTransactionHandleEv"></span><span id="omexmeta::RDF::getTransactionHandleC"></span><span class="target" id="classomexmeta_1_1RDF_1a752cdbce8114f3bb9b39734c263ac98b"></span>void *<code class="sig-name descname">getTransactionHandle</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em> <em class="property">override</em><a class="headerlink" href="#_CPPv4NK8omexmeta3RDF20getTransactionHandleEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4NK8omexmeta3RDF26startTransactionWithHandleEPv">
-<span id="_CPPv3NK8omexmeta3RDF26startTransactionWithHandleEPv"></span><span id="_CPPv2NK8omexmeta3RDF26startTransactionWithHandleEPv"></span><span id="omexmeta::RDF::startTransactionWithHandle__voidPC"></span><span class="target" id="classomexmeta_1_1RDF_1a278b78d5b1b88397c2eb4143f23dab8b"></span>int <code class="sig-name descname">startTransactionWithHandle</code><span class="sig-paren">(</span>void *<em>handle</em><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta3RDF26startTransactionWithHandleEPv" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3NK8omexmeta3RDF26startTransactionWithHandleEPv"></span><span id="_CPPv2NK8omexmeta3RDF26startTransactionWithHandleEPv"></span><span id="omexmeta::RDF::startTransactionWithHandle__voidPC"></span><span class="target" id="classomexmeta_1_1RDF_1a8962e4cfd044a0a76fc09f35d125c40a"></span>int <code class="sig-name descname">startTransactionWithHandle</code><span class="sig-paren">(</span>void *<em>handle</em><span class="sig-paren">)</span> <em class="property">const</em> <em class="property">override</em><a class="headerlink" href="#_CPPv4NK8omexmeta3RDF26startTransactionWithHandleEPv" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4NK8omexmeta3RDF22getTransactionRollbackEv">
-<span id="_CPPv3NK8omexmeta3RDF22getTransactionRollbackEv"></span><span id="_CPPv2NK8omexmeta3RDF22getTransactionRollbackEv"></span><span id="omexmeta::RDF::getTransactionRollbackC"></span><span class="target" id="classomexmeta_1_1RDF_1af5c7c6104496c09762518d56e94e6048"></span>int <code class="sig-name descname">getTransactionRollback</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta3RDF22getTransactionRollbackEv" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3NK8omexmeta3RDF22getTransactionRollbackEv"></span><span id="_CPPv2NK8omexmeta3RDF22getTransactionRollbackEv"></span><span id="omexmeta::RDF::getTransactionRollbackC"></span><span class="target" id="classomexmeta_1_1RDF_1a3fd8f1647bbe570d1f4efdffe378d624"></span>int <code class="sig-name descname">getTransactionRollback</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em> <em class="property">override</em><a class="headerlink" href="#_CPPv4NK8omexmeta3RDF22getTransactionRollbackEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
-<dt id="_CPPv4NK8omexmeta3RDF5queryERKNSt6stringERKNSt6stringE">
-<span id="_CPPv3NK8omexmeta3RDF5queryERKNSt6stringERKNSt6stringE"></span><span id="_CPPv2NK8omexmeta3RDF5queryERKNSt6stringERKNSt6stringE"></span><span id="omexmeta::RDF::query__ssCR.ssCRC"></span><span class="target" id="classomexmeta_1_1RDF_1ab168be2c14d53c3fc94024121dc88ba6"></span>std::string <code class="sig-name descname">query</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>query_str</em>, <em class="property">const</em> std::string &amp;<em>results_format</em><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta3RDF5queryERKNSt6stringERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4NK8omexmeta3RDF20queryResultsAsStringERKNSt6stringERKNSt6stringE">
+<span id="_CPPv3NK8omexmeta3RDF20queryResultsAsStringERKNSt6stringERKNSt6stringE"></span><span id="_CPPv2NK8omexmeta3RDF20queryResultsAsStringERKNSt6stringERKNSt6stringE"></span><span id="omexmeta::RDF::queryResultsAsString__ssCR.ssCRC"></span><span class="target" id="classomexmeta_1_1RDF_1a6b6244dac65b1cdfab6f450646c857b6"></span>std::string <code class="sig-name descname">queryResultsAsString</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>query_str</em>, <em class="property">const</em> std::string &amp;<em>results_syntax</em><span class="sig-paren">)</span> <em class="property">const</em> <em class="property">override</em><a class="headerlink" href="#_CPPv4NK8omexmeta3RDF20queryResultsAsStringERKNSt6stringERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta3RDF17queryResultsAsMapERKNSt6stringE">
+<span id="_CPPv3NK8omexmeta3RDF17queryResultsAsMapERKNSt6stringE"></span><span id="_CPPv2NK8omexmeta3RDF17queryResultsAsMapERKNSt6stringE"></span><span id="omexmeta::RDF::queryResultsAsMap__ssCRC"></span><span class="target" id="classomexmeta_1_1RDF_1a44015b8feae5e1b8f816501f44530732"></span>ResultsMap <code class="sig-name descname">queryResultsAsMap</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>query_str</em><span class="sig-paren">)</span> <em class="property">const</em> <em class="property">override</em><a class="headerlink" href="#_CPPv4NK8omexmeta3RDF17queryResultsAsMapERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta3RDF29propagateNamespacesFromParserERKNSt6vectorINSt6stringEEE">
+<span id="_CPPv3N8omexmeta3RDF29propagateNamespacesFromParserERKNSt6vectorINSt6stringEEE"></span><span id="_CPPv2N8omexmeta3RDF29propagateNamespacesFromParserERKNSt6vectorINSt6stringEEE"></span><span id="omexmeta::RDF::propagateNamespacesFromParser__std::vector:ss:CR"></span><span class="target" id="classomexmeta_1_1RDF_1a867deb1681500712e942b61e4e1460c6"></span>std::unordered_map&lt;std::string, std::string&gt; <code class="sig-name descname">propagateNamespacesFromParser</code><span class="sig-paren">(</span><em class="property">const</em> std::vector&lt;std::string&gt; &amp;<em>seen_namespaces</em><span class="sig-paren">)</span> <em class="property">override</em><a class="headerlink" href="#_CPPv4N8omexmeta3RDF29propagateNamespacesFromParserERKNSt6vectorINSt6stringEEE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>compared namespaces seen with namespaces known and ensures models that use a known namespace use that namespace. </p>
+<p><dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">seen_namespaces</span></code>: a vector of strings of namespaces the parser has seen before. </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta3RDF10getXmlTypeEv">
+<span id="_CPPv3NK8omexmeta3RDF10getXmlTypeEv"></span><span id="_CPPv2NK8omexmeta3RDF10getXmlTypeEv"></span><span id="omexmeta::RDF::getXmlTypeC"></span><span class="target" id="classomexmeta_1_1RDF_1a501c173fc1b60932391f5f7a3ff8212e"></span>OmexMetaXmlType <code class="sig-name descname">getXmlType</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em> <em class="property">override</em><a class="headerlink" href="#_CPPv4NK8omexmeta3RDF10getXmlTypeEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>getter for xmlType attribue. </p>
+<p>when the rdf graph is sbml, it will return OMEXMETA_TYPE_SBML. When cellML it will return OMEXMETA_TYPE_CELLML. Otherwise it is OMEXMETA_TYPE_UNKNOWN. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta3RDFeqERK3RDF">
+<span id="_CPPv3NK8omexmeta3RDFeqERK3RDF"></span><span id="_CPPv2NK8omexmeta3RDFeqERK3RDF"></span><span id="omexmeta::RDF::eq-operator__RDFCRC"></span><span class="target" id="classomexmeta_1_1RDF_1add69d33d544dc31789b2ff0a71182a84"></span>bool <code class="sig-name descname">operator==</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4N8omexmeta3RDFE" title="omexmeta::RDF">RDF</a> &amp;<em>rhs</em><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta3RDFeqERK3RDF" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta3RDFneERK3RDF">
+<span id="_CPPv3NK8omexmeta3RDFneERK3RDF"></span><span id="_CPPv2NK8omexmeta3RDFneERK3RDF"></span><span id="omexmeta::RDF::neq-operator__RDFCRC"></span><span class="target" id="classomexmeta_1_1RDF_1ac652b39964477c8ea69e5218f2203013"></span>bool <code class="sig-name descname">operator!=</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4N8omexmeta3RDFE" title="omexmeta::RDF">RDF</a> &amp;<em>rhs</em><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta3RDFneERK3RDF" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta3RDF10setXmlTypeE15OmexMetaXmlType">
+<span id="_CPPv3N8omexmeta3RDF10setXmlTypeE15OmexMetaXmlType"></span><span id="_CPPv2N8omexmeta3RDF10setXmlTypeE15OmexMetaXmlType"></span><span id="omexmeta::RDF::setXmlType__OmexMetaXmlType"></span><span class="target" id="classomexmeta_1_1RDF_1a72705a830be2b6d6ed40d2cb65136335"></span>void <code class="sig-name descname">setXmlType</code><span class="sig-paren">(</span>OmexMetaXmlType <em>xmlType</em><span class="sig-paren">)</span> <em class="property">override</em><a class="headerlink" href="#_CPPv4N8omexmeta3RDF10setXmlTypeE15OmexMetaXmlType" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>set the xml type for the current graph. </p>
+<p>If you have been reading from an SBML you cannot then read from another syntax (such as cellml). </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta3RDF16getRepositoryUriEv">
+<span id="_CPPv3NK8omexmeta3RDF16getRepositoryUriEv"></span><span id="_CPPv2NK8omexmeta3RDF16getRepositoryUriEv"></span><span id="omexmeta::RDF::getRepositoryUriC"></span><span class="target" id="classomexmeta_1_1RDF_1ae4ba9a6a862c4acce2f6757a99b4c4c2"></span><em class="property">const</em> std::string &amp;<code class="sig-name descname">getRepositoryUri</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em> <em class="property">override</em><a class="headerlink" href="#_CPPv4NK8omexmeta3RDF16getRepositoryUriEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>getter for repository uri which defaults to “http://omex-library.org/” </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta3RDF16setRepositoryUriERKNSt6stringE">
+<span id="_CPPv3N8omexmeta3RDF16setRepositoryUriERKNSt6stringE"></span><span id="_CPPv2N8omexmeta3RDF16setRepositoryUriERKNSt6stringE"></span><span id="omexmeta::RDF::setRepositoryUri__ssCR"></span><span class="target" id="classomexmeta_1_1RDF_1a9f35a52ca041be0f036197989cdca3e7"></span>void <code class="sig-name descname">setRepositoryUri</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>repositoryName</em><span class="sig-paren">)</span> <em class="property">override</em><a class="headerlink" href="#_CPPv4N8omexmeta3RDF16setRepositoryUriERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>setter for the repository uri which defaults to “http://omex-library.org/”. </p>
+<p><dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">repositoryName</span></code>: the repository uri. </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta3RDF13getArchiveUriEv">
+<span id="_CPPv3NK8omexmeta3RDF13getArchiveUriEv"></span><span id="_CPPv2NK8omexmeta3RDF13getArchiveUriEv"></span><span id="omexmeta::RDF::getArchiveUriC"></span><span class="target" id="classomexmeta_1_1RDF_1a6cba8783aa84a3df928825ce44555733"></span><em class="property">const</em> std::string &amp;<code class="sig-name descname">getArchiveUri</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em> <em class="property">override</em><a class="headerlink" href="#_CPPv4NK8omexmeta3RDF13getArchiveUriEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>getter for archiveUri attribute. </p>
+<p>default to <a class="reference external" href="http://omex-library.org/NewOmex.omex/">http://omex-library.org/NewOmex.omex/</a> </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta3RDF13setArchiveUriERKNSt6stringE">
+<span id="_CPPv3N8omexmeta3RDF13setArchiveUriERKNSt6stringE"></span><span id="_CPPv2N8omexmeta3RDF13setArchiveUriERKNSt6stringE"></span><span id="omexmeta::RDF::setArchiveUri__ssCR"></span><span class="target" id="classomexmeta_1_1RDF_1aabb921ecd37e3e9fc0e29066b658bf59"></span>void <code class="sig-name descname">setArchiveUri</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>archiveName</em><span class="sig-paren">)</span> <em class="property">override</em><a class="headerlink" href="#_CPPv4N8omexmeta3RDF13setArchiveUriERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>setter for archiveUri attribute. </p>
+<p><dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">archiveName</span></code>: the new name for archive uri attribute  default to <a class="reference external" href="http://omex-library.org/NewOmex.omex/">http://omex-library.org/NewOmex.omex/</a> </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta3RDF11getModelUriEv">
+<span id="_CPPv3NK8omexmeta3RDF11getModelUriEv"></span><span id="_CPPv2NK8omexmeta3RDF11getModelUriEv"></span><span id="omexmeta::RDF::getModelUriC"></span><span class="target" id="classomexmeta_1_1RDF_1a0529edb78dde0798541cdc9761e2a0e7"></span><em class="property">const</em> std::string &amp;<code class="sig-name descname">getModelUri</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em> <em class="property">override</em><a class="headerlink" href="#_CPPv4NK8omexmeta3RDF11getModelUriEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>getter for model uri. </p>
+<p>defaults to <a class="reference external" href="http://omex-library.org/NewOmex.omex/NewModel.xml">http://omex-library.org/NewOmex.omex/NewModel.xml</a> </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta3RDF11setModelUriENSt6stringE">
+<span id="_CPPv3N8omexmeta3RDF11setModelUriENSt6stringE"></span><span id="_CPPv2N8omexmeta3RDF11setModelUriENSt6stringE"></span><span id="omexmeta::RDF::setModelUri__ss"></span><span class="target" id="classomexmeta_1_1RDF_1a0c6ec28bb9cd9730224331ed69d41cad"></span>void <code class="sig-name descname">setModelUri</code><span class="sig-paren">(</span>std::string <em>modelName</em><span class="sig-paren">)</span> <em class="property">override</em><a class="headerlink" href="#_CPPv4N8omexmeta3RDF11setModelUriENSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>setter for model uri. </p>
+<p><dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">modelName</span></code>: string for new model uri.  defaults to <a class="reference external" href="http://omex-library.org/NewOmex.omex/NewModel.xml">http://omex-library.org/NewOmex.omex/NewModel.xml</a> </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4NK8omexmeta3RDF11getLocalUriEv">
+<span id="_CPPv3NK8omexmeta3RDF11getLocalUriEv"></span><span id="_CPPv2NK8omexmeta3RDF11getLocalUriEv"></span><span id="omexmeta::RDF::getLocalUriC"></span><span class="target" id="classomexmeta_1_1RDF_1a7399a80108553b138bf168a76f8a4adf"></span><em class="property">const</em> std::string &amp;<code class="sig-name descname">getLocalUri</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em> <em class="property">override</em><a class="headerlink" href="#_CPPv4NK8omexmeta3RDF11getLocalUriEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>getter for local uri attribute. </p>
+<p>defaults to <a class="reference external" href="http://omex-library.org/NewOmex.omex/NewModel.rdf#">http://omex-library.org/NewOmex.omex/NewModel.rdf#</a> </p>
+</dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4N8omexmeta3RDF9addTripleERK6Triple">
-<span id="_CPPv3N8omexmeta3RDF9addTripleERK6Triple"></span><span id="_CPPv2N8omexmeta3RDF9addTripleERK6Triple"></span><span id="omexmeta::RDF::addTriple__TripleCR"></span><span class="target" id="classomexmeta_1_1RDF_1a9ecf58f64ea449a01457bfc28bb53e17"></span>void <code class="sig-name descname">addTriple</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="Triple.html#_CPPv4N8omexmeta6TripleE" title="omexmeta::Triple">Triple</a> &amp;<em>triple</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta3RDF9addTripleERK6Triple" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N8omexmeta3RDF9addTripleERK6Triple"></span><span id="_CPPv2N8omexmeta3RDF9addTripleERK6Triple"></span><span id="omexmeta::RDF::addTriple__TripleCR"></span><span class="target" id="classomexmeta_1_1RDF_1ab6b74c206a0b9cbce946f9d7bd8d1f56"></span>void <code class="sig-name descname">addTriple</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="Triple.html#_CPPv4N8omexmeta6TripleE" title="omexmeta::Triple">Triple</a> &amp;<em>triple</em><span class="sig-paren">)</span> <em class="property">override</em><a class="headerlink" href="#_CPPv4N8omexmeta3RDF9addTripleERK6Triple" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>add a <a class="reference internal" href="Triple.html#classomexmeta_1_1Triple"><span class="std std-ref">Triple</span></a> to the current model </p>
 </dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4N8omexmeta3RDF10addTriplesER7Triples">
-<span id="_CPPv3N8omexmeta3RDF10addTriplesER7Triples"></span><span id="_CPPv2N8omexmeta3RDF10addTriplesER7Triples"></span><span id="omexmeta::RDF::addTriples__TriplesR"></span><span class="target" id="classomexmeta_1_1RDF_1a7725d1260c67fbfd8ffeb98dd4bbc1d1"></span>void <code class="sig-name descname">addTriples</code><span class="sig-paren">(</span><a class="reference internal" href="Triples.html#_CPPv4N8omexmeta7TriplesE" title="omexmeta::Triples">Triples</a> &amp;<em>triples</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta3RDF10addTriplesER7Triples" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N8omexmeta3RDF10addTriplesER7Triples"></span><span id="_CPPv2N8omexmeta3RDF10addTriplesER7Triples"></span><span id="omexmeta::RDF::addTriples__TriplesR"></span><span class="target" id="classomexmeta_1_1RDF_1aa8f640de046b3c1bd43de0fe5aba0958"></span>void <code class="sig-name descname">addTriples</code><span class="sig-paren">(</span><a class="reference internal" href="Triples.html#_CPPv4N8omexmeta7TriplesE" title="omexmeta::Triples">Triples</a> &amp;<em>triples</em><span class="sig-paren">)</span> <em class="property">override</em><a class="headerlink" href="#_CPPv4N8omexmeta3RDF10addTriplesER7Triples" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>add a set of <a class="reference internal" href="Triples.html#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> to the current model </p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt id="_CPPv4N8omexmeta3RDF11purgeRDFBagEv">
-<span id="_CPPv3N8omexmeta3RDF11purgeRDFBagEv"></span><span id="_CPPv2N8omexmeta3RDF11purgeRDFBagEv"></span><span id="omexmeta::RDF::purgeRDFBag"></span><span class="target" id="classomexmeta_1_1RDF_1ac8c1f50b7fd693518b41d3000a357fa4"></span>void <code class="sig-name descname">purgeRDFBag</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta3RDF11purgeRDFBagEv" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4N8omexmeta3RDF13getUriHandlerEv">
+<span id="_CPPv3N8omexmeta3RDF13getUriHandlerEv"></span><span id="_CPPv2N8omexmeta3RDF13getUriHandlerEv"></span><span id="omexmeta::RDF::getUriHandler"></span><span class="target" id="classomexmeta_1_1RDF_1a9565b7c0ad81abed2243c0a76f1ebea3"></span>UriHandler &amp;<code class="sig-name descname">getUriHandler</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">override</em><a class="headerlink" href="#_CPPv4N8omexmeta3RDF13getUriHandlerEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
-<dt id="_CPPv4N8omexmeta3RDF13getUriHandlerEv">
-<span id="_CPPv3N8omexmeta3RDF13getUriHandlerEv"></span><span id="_CPPv2N8omexmeta3RDF13getUriHandlerEv"></span><span id="omexmeta::RDF::getUriHandler"></span><span class="target" id="classomexmeta_1_1RDF_1a56c331673e8aea821813ebbd0409e142"></span>UriHandler &amp;<code class="sig-name descname">getUriHandler</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta3RDF13getUriHandlerEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dt id="_CPPv4N8omexmeta3RDF11purgeRDFBagEv">
+<span id="_CPPv3N8omexmeta3RDF11purgeRDFBagEv"></span><span id="_CPPv2N8omexmeta3RDF11purgeRDFBagEv"></span><span id="omexmeta::RDF::purgeRDFBag"></span><span class="target" id="classomexmeta_1_1RDF_1ac8c1f50b7fd693518b41d3000a357fa4"></span>void <code class="sig-name descname">purgeRDFBag</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta3RDF11purgeRDFBagEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>remove rdf:Bag constructs from the current rdf graph </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta3RDF14translateVcardEv">
+<span id="_CPPv3N8omexmeta3RDF14translateVcardEv"></span><span id="_CPPv2N8omexmeta3RDF14translateVcardEv"></span><span id="omexmeta::RDF::translateVcard"></span><span class="target" id="classomexmeta_1_1RDF_1aea054c0e60e0aade66d52998b3559eec"></span>void <code class="sig-name descname">translateVcard</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta3RDF14translateVcardEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Translate VCARD into foaf </p>
+</dd></dl>
 
 </div>
 <div class="breathe-sectiondef docutils container">
@@ -511,22 +530,20 @@
 <dl class="cpp var">
 <dt id="_CPPv4N8omexmeta3RDF11namespaces_E">
 <span id="_CPPv3N8omexmeta3RDF11namespaces_E"></span><span id="_CPPv2N8omexmeta3RDF11namespaces_E"></span><span id="omexmeta::RDF::namespaces___NamespaceMap"></span><span class="target" id="classomexmeta_1_1RDF_1a1979d7d70a4c20f2e63f00c7fa668b1f"></span>NamespaceMap <code class="sig-name descname">namespaces_</code><a class="headerlink" href="#_CPPv4N8omexmeta3RDF11namespaces_E" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>Storage for namespaces and prefixes </p>
+</dd></dl>
 
 <dl class="cpp var">
 <dt id="_CPPv4N8omexmeta3RDF16seen_namespaces_E">
 <span id="_CPPv3N8omexmeta3RDF16seen_namespaces_E"></span><span id="_CPPv2N8omexmeta3RDF16seen_namespaces_E"></span><span id="omexmeta::RDF::seen_namespaces___std::vector:ss:"></span><span class="target" id="classomexmeta_1_1RDF_1a82bc53feb93e1243970400fd104174da"></span>std::vector&lt;std::string&gt; <code class="sig-name descname">seen_namespaces_</code><a class="headerlink" href="#_CPPv4N8omexmeta3RDF16seen_namespaces_E" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dd><p>Part of the mechanism that propogates namespaces through to serializer.</p>
+<p>todo observer pattern might make for more elegant design. </p>
+</dd></dl>
 
 <dl class="cpp var">
 <dt id="_CPPv4N8omexmeta3RDF8OMEXlib_E">
 <span id="_CPPv3N8omexmeta3RDF8OMEXlib_E"></span><span id="_CPPv2N8omexmeta3RDF8OMEXlib_E"></span><span id="omexmeta::RDF::OMEXlib___ssC"></span><span class="target" id="classomexmeta_1_1RDF_1a59014bbb45a43dbfa760480f1713c473"></span><em class="property">const</em> std::string <code class="sig-name descname">OMEXlib_</code> = &quot;http://OMEXlibrary.org/&quot;<a class="headerlink" href="#_CPPv4N8omexmeta3RDF8OMEXlib_E" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp var">
-<dt>
-<span class="target" id="classomexmeta_1_1RDF_1a654ae548e17aa6b098531f24c116dde1"></span><code class="sig-name descname">noexcept</code></dt>
-<dd><p>move constructor for <a class="reference internal" href="#classomexmeta_1_1RDF"><span class="std std-ref">RDF</span></a> class </p>
+<dd><p>Default repository uri </p>
 </dd></dl>
 
 </div>
@@ -534,12 +551,12 @@
 <p class="breathe-sectiondef-title rubric">Public Static Functions</p>
 <dl class="cpp function">
 <dt id="_CPPv4N8omexmeta3RDF10fromStringERKNSt6stringERKNSt6stringE">
-<span id="_CPPv3N8omexmeta3RDF10fromStringERKNSt6stringERKNSt6stringE"></span><span id="_CPPv2N8omexmeta3RDF10fromStringERKNSt6stringERKNSt6stringE"></span><span id="omexmeta::RDF::fromString__ssCR.ssCR"></span><span class="target" id="classomexmeta_1_1RDF_1a9d91b3134cdcc6dfef6d62b7b09d8da2"></span><a class="reference internal" href="#_CPPv4N8omexmeta3RDFE" title="omexmeta::RDF">RDF</a> <code class="sig-name descname">fromString</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>str</em>, <em class="property">const</em> std::string &amp;<em>format</em> = &quot;guess&quot;<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta3RDF10fromStringERKNSt6stringERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N8omexmeta3RDF10fromStringERKNSt6stringERKNSt6stringE"></span><span id="_CPPv2N8omexmeta3RDF10fromStringERKNSt6stringERKNSt6stringE"></span><span id="omexmeta::RDF::fromString__ssCR.ssCR"></span><span class="target" id="classomexmeta_1_1RDF_1ab282cd4a6d76e87fa9ca91077936eeb5"></span><a class="reference internal" href="#_CPPv4N8omexmeta3RDFE" title="omexmeta::RDF">RDF</a> <code class="sig-name descname">fromString</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>str</em>, <em class="property">const</em> std::string &amp;<em>syntax</em> = &quot;guess&quot;<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta3RDF10fromStringERKNSt6stringERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>instantiate an <a class="reference internal" href="#classomexmeta_1_1RDF"><span class="std std-ref">RDF</span></a> instance and read annotations from a string. This is a static method. </p>
 <p><dl class="simple">
 <dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">str</span></code>: a reference to the string containing annotations </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">format</span></code>: which format str is in. Default=”guess” : try to guess. </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">syntax</span></code>: which syntax str is in. Default=”guess” : try to guess. </p></li>
 </ul>
 </dd>
 </dl>
@@ -548,7 +565,7 @@
 
 <dl class="cpp function">
 <dt id="_CPPv4N8omexmeta3RDF7fromUriERKNSt6stringERKNSt6stringE">
-<span id="_CPPv3N8omexmeta3RDF7fromUriERKNSt6stringERKNSt6stringE"></span><span id="_CPPv2N8omexmeta3RDF7fromUriERKNSt6stringERKNSt6stringE"></span><span id="omexmeta::RDF::fromUri__ssCR.ssCR"></span><span class="target" id="classomexmeta_1_1RDF_1a03906aa5c3b9429a2afdbe0ad2be21e6"></span><a class="reference internal" href="#_CPPv4N8omexmeta3RDFE" title="omexmeta::RDF">RDF</a> <code class="sig-name descname">fromUri</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>uri_string</em>, <em class="property">const</em> std::string &amp;<em>format</em> = &quot;guess&quot;<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta3RDF7fromUriERKNSt6stringERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N8omexmeta3RDF7fromUriERKNSt6stringERKNSt6stringE"></span><span id="_CPPv2N8omexmeta3RDF7fromUriERKNSt6stringERKNSt6stringE"></span><span id="omexmeta::RDF::fromUri__ssCR.ssCR"></span><span class="target" id="classomexmeta_1_1RDF_1a18f57a8d85f89ff7b0575540ab280a2f"></span><a class="reference internal" href="#_CPPv4N8omexmeta3RDFE" title="omexmeta::RDF">RDF</a> <code class="sig-name descname">fromUri</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>uri_string</em>, <em class="property">const</em> std::string &amp;<em>syntax</em> = &quot;guess&quot;<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta3RDF7fromUriERKNSt6stringERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>parse <a class="reference internal" href="#classomexmeta_1_1RDF"><span class="std std-ref">RDF</span></a> directly from a uri </p>
 <p><p>downloads uri from the internet and creates an </p>
 <a class="reference internal" href="#classomexmeta_1_1RDF"><span class="std std-ref">RDF</span></a> graph. See Librdf::parseUri() for more details. <dl class="simple">
@@ -556,7 +573,7 @@
 </dd>
 <dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">uri_string</span></code>: the uri to download containing <a class="reference internal" href="#classomexmeta_1_1RDF"><span class="std std-ref">RDF</span></a> </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">format</span></code>: the format that the <a class="reference internal" href="#classomexmeta_1_1RDF"><span class="std std-ref">RDF</span></a> is in </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">syntax</span></code>: the syntax that the <a class="reference internal" href="#classomexmeta_1_1RDF"><span class="std std-ref">RDF</span></a> is in </p></li>
 </ul>
 </dd>
 </dl>
@@ -565,25 +582,18 @@
 
 <dl class="cpp function">
 <dt id="_CPPv4N8omexmeta3RDF8fromFileERKNSt6stringERKNSt6stringE">
-<span id="_CPPv3N8omexmeta3RDF8fromFileERKNSt6stringERKNSt6stringE"></span><span id="_CPPv2N8omexmeta3RDF8fromFileERKNSt6stringERKNSt6stringE"></span><span id="omexmeta::RDF::fromFile__ssCR.ssCR"></span><span class="target" id="classomexmeta_1_1RDF_1a98a1da84161a7935bf38ec5e5d34e91f"></span><a class="reference internal" href="#_CPPv4N8omexmeta3RDFE" title="omexmeta::RDF">RDF</a> <code class="sig-name descname">fromFile</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>filename</em>, <em class="property">const</em> std::string &amp;<em>format</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta3RDF8fromFileERKNSt6stringERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N8omexmeta3RDF8fromFileERKNSt6stringERKNSt6stringE"></span><span id="_CPPv2N8omexmeta3RDF8fromFileERKNSt6stringERKNSt6stringE"></span><span id="omexmeta::RDF::fromFile__ssCR.ssCR"></span><span class="target" id="classomexmeta_1_1RDF_1a87ab63ef63126945d345d463e0a14f5e"></span><a class="reference internal" href="#_CPPv4N8omexmeta3RDFE" title="omexmeta::RDF">RDF</a> <code class="sig-name descname">fromFile</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>filename</em>, <em class="property">const</em> std::string &amp;<em>syntax</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta3RDF8fromFileERKNSt6stringERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>read rdf from annotations in a file </p>
 <p><dl class="simple">
 <dt><strong>Return</strong></dt><dd><p>an instantiated <a class="reference internal" href="#classomexmeta_1_1RDF"><span class="std std-ref">RDF</span></a> object  Uses LibrdfParser::fromFile under the hood </p>
 </dd>
 <dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">filename</span></code>: the filename to read as string </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">format</span></code>: the format of the <a class="reference internal" href="#classomexmeta_1_1RDF"><span class="std std-ref">RDF</span></a> in filename </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">syntax</span></code>: the syntax of the <a class="reference internal" href="#classomexmeta_1_1RDF"><span class="std std-ref">RDF</span></a> in filename </p></li>
 </ul>
 </dd>
 </dl>
 </p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt id="_CPPv4N8omexmeta3RDF10fromStringEP3RDFRKNSt6stringERKNSt6stringENSt6stringE">
-<span id="_CPPv3N8omexmeta3RDF10fromStringEP3RDFRKNSt6stringERKNSt6stringENSt6stringE"></span><span id="_CPPv2N8omexmeta3RDF10fromStringEP3RDFRKNSt6stringERKNSt6stringENSt6stringE"></span><span id="omexmeta::RDF::fromString__RDFP.ssCR.ssCR.ss"></span><span class="target" id="classomexmeta_1_1RDF_1ab2dadc7ff1cf25edbb401b2c879a21b0"></span>void <code class="sig-name descname">fromString</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4N8omexmeta3RDFE" title="omexmeta::RDF">RDF</a> *<em>rdf</em>, <em class="property">const</em> std::string &amp;<em>str</em>, <em class="property">const</em> std::string &amp;<em>format</em>, std::string <em>base_uri</em> = &quot;Annotations.rdf&quot;<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta3RDF10fromStringEP3RDFRKNSt6stringERKNSt6stringENSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>non static version of <a class="reference internal" href="#classomexmeta_1_1RDF_1a9d91b3134cdcc6dfef6d62b7b09d8da2"><span class="std std-ref">RDF::fromString</span></a> that takes a * <a class="reference internal" href="#classomexmeta_1_1RDF"><span class="std std-ref">RDF</span></a> pointer object and modifies in place. </p>
-<p>Primarily used for C API For developers: look into replacing this function fully with <a class="reference internal" href="#classomexmeta_1_1RDF_1a9a29912bc44d47d371a2357b75194fc3"><span class="std std-ref">RDF::addFromString()</span></a> method. </p>
 </dd></dl>
 
 <dl class="cpp function">
@@ -593,7 +603,7 @@
 
 <dl class="cpp function">
 <dt id="_CPPv4N8omexmeta3RDF6equalsEP3RDFRKNSt6stringERKNSt6stringEb">
-<span id="_CPPv3N8omexmeta3RDF6equalsEP3RDFRKNSt6stringERKNSt6stringEb"></span><span id="_CPPv2N8omexmeta3RDF6equalsEP3RDFRKNSt6stringERKNSt6stringEb"></span><span id="omexmeta::RDF::equals__RDFP.ssCR.ssCR.b"></span><span class="target" id="classomexmeta_1_1RDF_1ac584ebe8f6cf3b4dc314a87cda9b2605"></span>bool <code class="sig-name descname">equals</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4N8omexmeta3RDFE" title="omexmeta::RDF">RDF</a> *<em>actual</em>, <em class="property">const</em> std::string &amp;<em>expected</em>, <em class="property">const</em> std::string &amp;<em>format</em> = &quot;turtle&quot;, bool <em>verbose</em> = false<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta3RDF6equalsEP3RDFRKNSt6stringERKNSt6stringEb" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N8omexmeta3RDF6equalsEP3RDFRKNSt6stringERKNSt6stringEb"></span><span id="_CPPv2N8omexmeta3RDF6equalsEP3RDFRKNSt6stringERKNSt6stringEb"></span><span id="omexmeta::RDF::equals__RDFP.ssCR.ssCR.b"></span><span class="target" id="classomexmeta_1_1RDF_1a436984961a0a9881824e031b855b7413"></span>bool <code class="sig-name descname">equals</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4N8omexmeta3RDFE" title="omexmeta::RDF">RDF</a> *<em>actual</em>, <em class="property">const</em> std::string &amp;<em>expected</em>, <em class="property">const</em> std::string &amp;<em>syntax</em> = &quot;turtle&quot;, bool <em>verbose</em> = false<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta3RDF6equalsEP3RDFRKNSt6stringERKNSt6stringEb" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>test for equality between </p>
 <p><dl class="simple">
 <dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
@@ -607,7 +617,7 @@
 
 <dl class="cpp function">
 <dt id="_CPPv4N8omexmeta3RDF6equalsERK6TripleRKNSt6stringERKNSt6stringEb">
-<span id="_CPPv3N8omexmeta3RDF6equalsERK6TripleRKNSt6stringERKNSt6stringEb"></span><span id="_CPPv2N8omexmeta3RDF6equalsERK6TripleRKNSt6stringERKNSt6stringEb"></span><span id="omexmeta::RDF::equals__TripleCR.ssCR.ssCR.b"></span><span class="target" id="classomexmeta_1_1RDF_1ab7ba68741f9e2c96c9606a883559d6d2"></span>bool <code class="sig-name descname">equals</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="Triple.html#_CPPv4N8omexmeta6TripleE" title="omexmeta::Triple">Triple</a> &amp;<em>actual</em>, <em class="property">const</em> std::string &amp;<em>expected</em>, <em class="property">const</em> std::string &amp;<em>format</em> = &quot;turtle&quot;, bool <em>verbose</em> = false<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta3RDF6equalsERK6TripleRKNSt6stringERKNSt6stringEb" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N8omexmeta3RDF6equalsERK6TripleRKNSt6stringERKNSt6stringEb"></span><span id="_CPPv2N8omexmeta3RDF6equalsERK6TripleRKNSt6stringERKNSt6stringEb"></span><span id="omexmeta::RDF::equals__TripleCR.ssCR.ssCR.b"></span><span class="target" id="classomexmeta_1_1RDF_1a43fa92ba852b2181e0b437c812abac7d"></span>bool <code class="sig-name descname">equals</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="Triple.html#_CPPv4N8omexmeta6TripleE" title="omexmeta::Triple">Triple</a> &amp;<em>actual</em>, <em class="property">const</em> std::string &amp;<em>expected</em>, <em class="property">const</em> std::string &amp;<em>syntax</em> = &quot;turtle&quot;, bool <em>verbose</em> = false<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta3RDF6equalsERK6TripleRKNSt6stringERKNSt6stringEb" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>test for equality between </p>
 <p><dl class="simple">
 <dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
@@ -621,7 +631,7 @@
 
 <dl class="cpp function">
 <dt id="_CPPv4N8omexmeta3RDF6equalsER7TriplesRKNSt6stringERKNSt6stringEb">
-<span id="_CPPv3N8omexmeta3RDF6equalsER7TriplesRKNSt6stringERKNSt6stringEb"></span><span id="_CPPv2N8omexmeta3RDF6equalsER7TriplesRKNSt6stringERKNSt6stringEb"></span><span id="omexmeta::RDF::equals__TriplesR.ssCR.ssCR.b"></span><span class="target" id="classomexmeta_1_1RDF_1a496f1a75f8a9896f8c755eb0264c7ada"></span>bool <code class="sig-name descname">equals</code><span class="sig-paren">(</span><a class="reference internal" href="Triples.html#_CPPv4N8omexmeta7TriplesE" title="omexmeta::Triples">Triples</a> &amp;<em>actual</em>, <em class="property">const</em> std::string &amp;<em>expected</em>, <em class="property">const</em> std::string &amp;<em>format</em> = &quot;turtle&quot;, bool <em>verbose</em> = false<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta3RDF6equalsER7TriplesRKNSt6stringERKNSt6stringEb" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N8omexmeta3RDF6equalsER7TriplesRKNSt6stringERKNSt6stringEb"></span><span id="_CPPv2N8omexmeta3RDF6equalsER7TriplesRKNSt6stringERKNSt6stringEb"></span><span id="omexmeta::RDF::equals__TriplesR.ssCR.ssCR.b"></span><span class="target" id="classomexmeta_1_1RDF_1a91068cb9e9f5f5b3295de96dbf9d243b"></span>bool <code class="sig-name descname">equals</code><span class="sig-paren">(</span><a class="reference internal" href="Triples.html#_CPPv4N8omexmeta7TriplesE" title="omexmeta::Triples">Triples</a> &amp;<em>actual</em>, <em class="property">const</em> std::string &amp;<em>expected</em>, <em class="property">const</em> std::string &amp;<em>syntax</em> = &quot;turtle&quot;, bool <em>verbose</em> = false<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta3RDF6equalsER7TriplesRKNSt6stringERKNSt6stringEb" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>test for equality between </p>
 <p><dl class="simple">
 <dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
@@ -635,7 +645,7 @@
 
 <dl class="cpp function">
 <dt id="_CPPv4N8omexmeta3RDF6equalsEP3RDFP3RDFRKNSt6stringEb">
-<span id="_CPPv3N8omexmeta3RDF6equalsEP3RDFP3RDFRKNSt6stringEb"></span><span id="_CPPv2N8omexmeta3RDF6equalsEP3RDFP3RDFRKNSt6stringEb"></span><span id="omexmeta::RDF::equals__RDFP.RDFP.ssCR.b"></span><span class="target" id="classomexmeta_1_1RDF_1a57cd25efd5b6812d352d1d7ea2123e99"></span>bool <code class="sig-name descname">equals</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4N8omexmeta3RDFE" title="omexmeta::RDF">RDF</a> *<em>actual</em>, <a class="reference internal" href="#_CPPv4N8omexmeta3RDFE" title="omexmeta::RDF">RDF</a> *<em>expected</em>, <em class="property">const</em> std::string &amp;<em>format</em> = &quot;turtle&quot;, bool <em>verbose</em> = false<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta3RDF6equalsEP3RDFP3RDFRKNSt6stringEb" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N8omexmeta3RDF6equalsEP3RDFP3RDFRKNSt6stringEb"></span><span id="_CPPv2N8omexmeta3RDF6equalsEP3RDFP3RDFRKNSt6stringEb"></span><span id="omexmeta::RDF::equals__RDFP.RDFP.ssCR.b"></span><span class="target" id="classomexmeta_1_1RDF_1a60d25001511fbde99b4ca802d8e7621c"></span>bool <code class="sig-name descname">equals</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4N8omexmeta3RDFE" title="omexmeta::RDF">RDF</a> *<em>actual</em>, <a class="reference internal" href="#_CPPv4N8omexmeta3RDFE" title="omexmeta::RDF">RDF</a> *<em>expected</em>, <em class="property">const</em> std::string &amp;<em>syntax</em> = &quot;turtle&quot;, bool <em>verbose</em> = false<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta3RDF6equalsEP3RDFP3RDFRKNSt6stringEb" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>test for equality between </p>
 <p><dl class="simple">
 <dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
@@ -649,7 +659,7 @@
 
 <dl class="cpp function">
 <dt id="_CPPv4N8omexmeta3RDF6equalsERKNSt6stringERKNSt6stringERKNSt6stringERKNSt6stringEb">
-<span id="_CPPv3N8omexmeta3RDF6equalsERKNSt6stringERKNSt6stringERKNSt6stringERKNSt6stringEb"></span><span id="_CPPv2N8omexmeta3RDF6equalsERKNSt6stringERKNSt6stringERKNSt6stringERKNSt6stringEb"></span><span id="omexmeta::RDF::equals__ssCR.ssCR.ssCR.ssCR.b"></span><span class="target" id="classomexmeta_1_1RDF_1a9757a8f6dfaa36a7b3e68e7fa6a68d4f"></span>bool <code class="sig-name descname">equals</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>first</em>, <em class="property">const</em> std::string &amp;<em>second</em>, <em class="property">const</em> std::string &amp;<em>first_format</em> = &quot;turtle&quot;, <em class="property">const</em> std::string &amp;<em>second_format</em> = &quot;turtle&quot;, bool <em>verbose</em> = false<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta3RDF6equalsERKNSt6stringERKNSt6stringERKNSt6stringERKNSt6stringEb" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N8omexmeta3RDF6equalsERKNSt6stringERKNSt6stringERKNSt6stringERKNSt6stringEb"></span><span id="_CPPv2N8omexmeta3RDF6equalsERKNSt6stringERKNSt6stringERKNSt6stringERKNSt6stringEb"></span><span id="omexmeta::RDF::equals__ssCR.ssCR.ssCR.ssCR.b"></span><span class="target" id="classomexmeta_1_1RDF_1a1ec9f1e100bd55b556065856f1def174"></span>bool <code class="sig-name descname">equals</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>first</em>, <em class="property">const</em> std::string &amp;<em>second</em>, <em class="property">const</em> std::string &amp;<em>first_syntax</em> = &quot;turtle&quot;, <em class="property">const</em> std::string &amp;<em>second_syntax</em> = &quot;turtle&quot;, bool <em>verbose</em> = false<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta3RDF6equalsERKNSt6stringERKNSt6stringERKNSt6stringERKNSt6stringEb" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>test for equality between </p>
 <p><dl class="simple">
 <dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
@@ -666,13 +676,13 @@
 <p class="breathe-sectiondef-title rubric">Private Functions</p>
 <dl class="cpp function">
 <dt id="_CPPv4N8omexmeta3RDF15classifyXmlTypeERKNSt6stringERKNSt6stringE">
-<span id="_CPPv3N8omexmeta3RDF15classifyXmlTypeERKNSt6stringERKNSt6stringE"></span><span id="_CPPv2N8omexmeta3RDF15classifyXmlTypeERKNSt6stringERKNSt6stringE"></span><span id="omexmeta::RDF::classifyXmlType__ssCR.ssCR"></span><span class="target" id="classomexmeta_1_1RDF_1a91574f34be1fe3054f4f7ce6830098b4"></span>void <code class="sig-name descname">classifyXmlType</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>xml</em>, <em class="property">const</em> std::string &amp;<em>input_format</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta3RDF15classifyXmlTypeERKNSt6stringERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N8omexmeta3RDF15classifyXmlTypeERKNSt6stringERKNSt6stringE"></span><span id="_CPPv2N8omexmeta3RDF15classifyXmlTypeERKNSt6stringERKNSt6stringE"></span><span id="omexmeta::RDF::classifyXmlType__ssCR.ssCR"></span><span class="target" id="classomexmeta_1_1RDF_1a8383a1214020b9228ba5018868612a74"></span>void <code class="sig-name descname">classifyXmlType</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>xml</em>, <em class="property">const</em> std::string &amp;<em>input_syntax</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta3RDF15classifyXmlTypeERKNSt6stringERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>autoset the xmlType variable based on xml content. </p>
 </dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4N8omexmeta3RDF23classifyXmlTypeFromFileERKNSt6stringERKNSt6stringE">
-<span id="_CPPv3N8omexmeta3RDF23classifyXmlTypeFromFileERKNSt6stringERKNSt6stringE"></span><span id="_CPPv2N8omexmeta3RDF23classifyXmlTypeFromFileERKNSt6stringERKNSt6stringE"></span><span id="omexmeta::RDF::classifyXmlTypeFromFile__ssCR.ssCR"></span><span class="target" id="classomexmeta_1_1RDF_1a71b3dd4837a918a273f8d15aaa5c6c7b"></span>void <code class="sig-name descname">classifyXmlTypeFromFile</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>xml_file</em>, <em class="property">const</em> std::string &amp;<em>input_format</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta3RDF23classifyXmlTypeFromFileERKNSt6stringERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N8omexmeta3RDF23classifyXmlTypeFromFileERKNSt6stringERKNSt6stringE"></span><span id="_CPPv2N8omexmeta3RDF23classifyXmlTypeFromFileERKNSt6stringERKNSt6stringE"></span><span id="omexmeta::RDF::classifyXmlTypeFromFile__ssCR.ssCR"></span><span class="target" id="classomexmeta_1_1RDF_1a2b7d4e2ddeaa44c26d4d82478b789a5e"></span>void <code class="sig-name descname">classifyXmlTypeFromFile</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>xml_file</em>, <em class="property">const</em> std::string &amp;<em>input_syntax</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta3RDF23classifyXmlTypeFromFileERKNSt6stringERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>reads xml from file before calling classifyXmlType </p>
 </dd></dl>
 

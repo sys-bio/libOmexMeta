@@ -30,7 +30,7 @@ namespace redland {
             throw std::invalid_argument(
                     "std::invalid_argument: LibrdfParser::makeParser(): Need at "
                     "least one of format, mime_type or type_uri arguments");
-        librdf_parser *parser = librdf_new_parser(World::getWorld(), name_used, mime_type_used, type_uri_);
+        librdf_parser *parser = librdf_new_parser(LibrdfWorld::getWorld(), name_used, mime_type_used, type_uri_);
         // must set options each time we create new parser
         // i.e. when we change a parameter, like format
         setOptions(parser);
@@ -80,7 +80,7 @@ namespace redland {
             librdf_free_uri(type_uri_);
             type_uri_ = nullptr;
         }
-        type_uri_ = librdf_new_uri(World::getWorld(), (const unsigned char *) type_uri.c_str());
+        type_uri_ = librdf_new_uri(LibrdfWorld::getWorld(), (const unsigned char *) type_uri.c_str());
     }
 
 

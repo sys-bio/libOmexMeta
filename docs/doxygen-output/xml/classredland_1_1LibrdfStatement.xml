@@ -9,7 +9,7 @@
         <definition>librdf_statement* redland::LibrdfStatement::statement_</definition>
         <argsstring></argsstring>
         <name>statement_</name>
-        <initializer>= librdf_new_statement(World::getWorld())</initializer>
+        <initializer>= librdf_new_statement(LibrdfWorld::getWorld())</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>

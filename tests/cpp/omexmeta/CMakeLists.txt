@@ -15,7 +15,7 @@ set(
 
         #        CurlGetTests.cpp # periodically breaks due to file size changes and link changes
         MetaIDTests.cpp
-        XmlAssistantTests.cpp
+        OmexMetaXmlTests.cpp
         ParticipantTests.cpp
 
         PhysicalEntityTests.cpp
@@ -58,9 +58,9 @@ add_test_executable(SBMLSemanticExtractionTests OmexMetaTests SBMLSemanticExtrac
 add_test_executable(TripleTests OmexMetaTests TripleTests.cpp)
 add_test_executable(TriplesTests OmexMetaTests TriplesTests.cpp)
 add_test_executable(UrlHandlerTests OmexMetaTests UrlHandlerTests.cpp )
-add_test_executable(XmlAssistantTests OmexMetaTests XmlAssistantTests.cpp )
+add_test_executable(XmlAssistantTests OmexMetaTests OmexMetaXmlTests.cpp)
 add_test_executable(VCardTranslatorTests OmexMetaTests VCardTranslatorTests.cpp )
-add_test_executable(PurgeRDFBagTests OmexMetaTests PurgeRDFBagTests.cpp )
+add_test_executable(PurgeRDFBagTests OmexMetaTests PurgeRDFBagTests.cpp MockRDF.h)
 
 
 

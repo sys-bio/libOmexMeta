@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libomexmeta
-   &#160;<span id="projectnumber">1.2.7</span>
+   &#160;<span id="projectnumber">1.2.8</span>
    </div>
    <div id="projectbrief">Annotations for models in systems biology</div>
   </td>
@@ -81,7 +81,7 @@ $(function() {
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">//</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;LibrdfException.h&quot;</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;LibrdfUri.h&quot;</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;World.h&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;LibrdfWorld.h&quot;</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;librdf.h&quot;</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;raptor2.h&quot;</span></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;memory&gt;</span></div>
@@ -204,14 +204,14 @@ $(function() {
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160; </div>
 <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;<span class="preprocessor">#endif//LIBOMEXMETA_LIBRDFNODE_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclassredland_1_1LibrdfNode_html_a6dd134798082dbee9fb5601752609981"><div class="ttname"><a href="classredland_1_1LibrdfNode.html#a6dd134798082dbee9fb5601752609981">redland::LibrdfNode::getUsage</a></div><div class="ttdeci">unsigned int getUsage() const</div><div class="ttdoc">returns the usage of the underlying librdf_node pointer</div><div class="ttdef"><b>Definition:</b> LibrdfNode.cpp:402</div></div>
+<div class="ttc" id="aclassredland_1_1LibrdfNode_html_a6dd134798082dbee9fb5601752609981"><div class="ttname"><a href="classredland_1_1LibrdfNode.html#a6dd134798082dbee9fb5601752609981">redland::LibrdfNode::getUsage</a></div><div class="ttdeci">unsigned int getUsage() const</div><div class="ttdoc">returns the usage of the underlying librdf_node pointer</div><div class="ttdef"><b>Definition:</b> LibrdfNode.cpp:408</div></div>
 <div class="ttc" id="aclassredland_1_1LibrdfNode_html"><div class="ttname"><a href="classredland_1_1LibrdfNode.html">redland::LibrdfNode</a></div><div class="ttdef"><b>Definition:</b> LibrdfNode.h:49</div></div>
 <div class="ttc" id="astructraptor__term_html"><div class="ttname"><a href="structraptor__term.html">raptor_term</a></div><div class="ttdef"><b>Definition:</b> raptor2.h:621</div></div>
-<div class="ttc" id="aclassredland_1_1LibrdfNode_html_a33162ea36efe451c100325816cf8613f"><div class="ttname"><a href="classredland_1_1LibrdfNode.html#a33162ea36efe451c100325816cf8613f">redland::LibrdfNode::get</a></div><div class="ttdeci">librdf_node * get() const</div><div class="ttdoc">return pointer to underlying librdf_node pointer</div><div class="ttdef"><b>Definition:</b> LibrdfNode.cpp:232</div></div>
-<div class="ttc" id="aclassredland_1_1LibrdfNode_html_a96a685f8e79ba04c91a15e024a66388f"><div class="ttname"><a href="classredland_1_1LibrdfNode.html#a96a685f8e79ba04c91a15e024a66388f">redland::LibrdfNode::fromLiteral</a></div><div class="ttdeci">static LibrdfNode fromLiteral(const std::string &amp;literal, const std::string &amp;literal_datatype_uri=&quot;&quot;, const std::string &amp;xml_language=std::string())</div><div class="ttdoc">construct a literal node</div><div class="ttdef"><b>Definition:</b> LibrdfNode.cpp:168</div></div>
-<div class="ttc" id="aclassredland_1_1LibrdfNode_html_a43ba1bed3f1cc6ed654a16c570598565"><div class="ttname"><a href="classredland_1_1LibrdfNode.html#a43ba1bed3f1cc6ed654a16c570598565">redland::LibrdfNode::getNamespace</a></div><div class="ttdeci">std::string getNamespace() const</div><div class="ttdoc">get namespace portion of the node. I.e. all but last section of the uri</div><div class="ttdef"><b>Definition:</b> LibrdfNode.cpp:376</div></div>
+<div class="ttc" id="aclassredland_1_1LibrdfNode_html_a33162ea36efe451c100325816cf8613f"><div class="ttname"><a href="classredland_1_1LibrdfNode.html#a33162ea36efe451c100325816cf8613f">redland::LibrdfNode::get</a></div><div class="ttdeci">librdf_node * get() const</div><div class="ttdoc">return pointer to underlying librdf_node pointer</div><div class="ttdef"><b>Definition:</b> LibrdfNode.cpp:238</div></div>
+<div class="ttc" id="aclassredland_1_1LibrdfNode_html_a96a685f8e79ba04c91a15e024a66388f"><div class="ttname"><a href="classredland_1_1LibrdfNode.html#a96a685f8e79ba04c91a15e024a66388f">redland::LibrdfNode::fromLiteral</a></div><div class="ttdeci">static LibrdfNode fromLiteral(const std::string &amp;literal, const std::string &amp;literal_datatype_uri=&quot;&quot;, const std::string &amp;xml_language=std::string())</div><div class="ttdoc">construct a literal node</div><div class="ttdef"><b>Definition:</b> LibrdfNode.cpp:174</div></div>
+<div class="ttc" id="aclassredland_1_1LibrdfNode_html_a43ba1bed3f1cc6ed654a16c570598565"><div class="ttname"><a href="classredland_1_1LibrdfNode.html#a43ba1bed3f1cc6ed654a16c570598565">redland::LibrdfNode::getNamespace</a></div><div class="ttdeci">std::string getNamespace() const</div><div class="ttdoc">get namespace portion of the node. I.e. all but last section of the uri</div><div class="ttdef"><b>Definition:</b> LibrdfNode.cpp:382</div></div>
 <div class="ttc" id="aclassredland_1_1LibrdfUri_html"><div class="ttname"><a href="classredland_1_1LibrdfUri.html">redland::LibrdfUri</a></div><div class="ttdef"><b>Definition:</b> LibrdfUri.h:16</div></div>
-<div class="ttc" id="aclassredland_1_1LibrdfNode_html_a0bd36d9a9140a98753bb1d35ff8c1695"><div class="ttname"><a href="classredland_1_1LibrdfNode.html#a0bd36d9a9140a98753bb1d35ff8c1695">redland::LibrdfNode::getWithoutIncrement</a></div><div class="ttdeci">librdf_node * getWithoutIncrement() const</div><div class="ttdoc">get the underlying librdf_node*</div><div class="ttdef"><b>Definition:</b> LibrdfNode.cpp:237</div></div>
+<div class="ttc" id="aclassredland_1_1LibrdfNode_html_a0bd36d9a9140a98753bb1d35ff8c1695"><div class="ttname"><a href="classredland_1_1LibrdfNode.html#a0bd36d9a9140a98753bb1d35ff8c1695">redland::LibrdfNode::getWithoutIncrement</a></div><div class="ttdeci">librdf_node * getWithoutIncrement() const</div><div class="ttdoc">get the underlying librdf_node*</div><div class="ttdef"><b>Definition:</b> LibrdfNode.cpp:243</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20

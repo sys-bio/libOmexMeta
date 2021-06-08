@@ -5,6 +5,7 @@ import os
 from contextlib import contextmanager
 from sys import executable as _python_interpretor
 from typing import List
+from functools import wraps
 
 try:
     # for use from outside the package, as a python package
@@ -45,6 +46,7 @@ def propagate_omexmeta_error(func):
 
     """
     if callable(func):
+        @wraps(func)
         def raise_error_if_necessary(*args, **kwargs):
             failed = func(*args, **kwargs)
             if failed is None:
@@ -57,7 +59,6 @@ def propagate_omexmeta_error(func):
                     _pyom.clear_last_error()
                     raise OmexMetaException(err)
             return failed
-
         return raise_error_if_necessary
     else:
         value = func
@@ -95,11 +96,13 @@ class RDF:
             rdf_ptr:         A pointer (or memory address), stored as ctypes c_int64, that points to a preexisting instance
                              of an :class:`RDF` in memory. todo consider whether to remove this option in favour of using only :class:`RDF`._set_rdf_ptr.
 
-        Examples:
+        .. code-block: python
+            :linenos:
+
             # create an empty :class:`RDF` graph in memory
-            >>> rdf = RDF()
+            rdf = RDF()
             # create a new sqlite database storage called MyFavouriteAnnotations
-            >>> RDF("sqlite", "MyFavouriteAnnotations", "new='yes'")
+            RDF("sqlite", "MyFavouriteAnnotations", "new='yes'")
 
         """
         # when pointer argument not given by user, create new instance of :class:`RDF`
@@ -196,7 +199,6 @@ class RDF:
         Returns: None
 
         Examples:
-            # creat new :class:`RDF` then add from string
             >>> rdf = RDF()
             >>> rdf.add_from_string("insert rdf string here")
 
@@ -307,11 +309,13 @@ class RDF:
 
         Returns: bool
 
-        Examples:
-            >>> rdf1 = RDF.from_string("first rdf string")
-            >>> rdf2 = RDF.from_string("second rdf string")
-            >>> if RDF.equals_rdf_vs_rdf(rdf1, rdf2):
-            ...     print("rdf1 and rdf2 are equivalent RDF graphs")
+        .. code-block: python
+            :linenos:
+
+            rdf1 = RDF.from_string("first rdf string")
+            rdf2 = RDF.from_string("second rdf string")
+            if RDF.equals_rdf_vs_rdf(rdf1, rdf2):
+                print("rdf1 and rdf2 are equivalent RDF graphs")
 
         See Also:
             :meth:`equals_rdf_vs_string`
@@ -337,11 +341,13 @@ class RDF:
 
         Returns: bool
 
-        Examples:
-            >>> rdf1 = RDF.from_string("first rdf string")
-            >>> rdf_string = "second rdf string"
-            >>> if RDF.equals_rdf_vs_string(rdf1, rdf_string):
-            ...     print("rdf1 and rdf_string are equivalent RDF graphs")
+        .. code-block: python
+            :linenos:
+
+            rdf1 = RDF.from_string("first rdf string")
+            rdf_string = "second rdf string"
+            if RDF.equals_rdf_vs_string(rdf1, rdf_string):
+                print("rdf1 and rdf_string are equivalent RDF graphs")
 
         See Also:
             :meth:`equals_rdf_vs_rdf`
@@ -373,11 +379,13 @@ class RDF:
         Returns: bool
 
 
-        Examples:
-            >>> rdf_string1 = "first rdf string"
-            >>> rdf_string2 = "second rdf string"
-            >>> if RDF.equals_string_vs_string(rdf_string1, rdf_string2):
-            ...    print("rdf_string1 and rdf_string2 are equivalent RDF graphs")
+        .. code-block: python
+            :linenos:
+
+            rdf_string1 = "first rdf string"
+            rdf_string2 = "second rdf string"
+            if RDF.equals_string_vs_string(rdf_string1, rdf_string2):
+               print("rdf_string1 and rdf_string2 are equivalent RDF graphs")
 
         See Also:
             :meth:`equals_rdf_vs_rdf`
@@ -432,13 +440,16 @@ class RDF:
 
         Args:
             syntax: The syntax to use for serializing content contained in this :class:`RDF` graph.
-                    Options are:
-                       - ntriples, turtle, rdfxml-abbrev, rdfxml,
-                         dot, json-triples, json, nquads, html
-                    Note: deliberately run your program with the wrong string arg to be presented
-                          with a list of valid syntaxes.
+                    Options are ntriples, turtle, rdfxml-abbrev, rdfxml, dot,
+                    json-triples, json, nquads, html
 
-        Returns: (str) serialized RDF graph as string.
+                .. note:
+
+                    Deliberately run your program with the wrong string arg to be presented
+                    with a list of valid syntaxes.
+
+        Returns:
+            (str) serialized RDF graph as string.
 
         Examples:
             >>> rdf = RDF.from_file("annot.rdf", "rdfxml")
@@ -475,7 +486,7 @@ class RDF:
         Args:
             repository_uri: (str) uri to use for replacing the default
                             respository uri (http://omex-library.org/)
-        Examples
+        Examples:
             >>> rdf = RDF.from_file("annot.rdf")
             >>> rdf.set_repository_uri("https://Repositorious.org")
             >>> rdf.set_archive_uri("Arch.omex")
@@ -496,7 +507,7 @@ class RDF:
 
         Returns: None
 
-        Examples
+        Examples:
             >>> rdf = RDF.from_file("annot.rdf")
             >>> rdf.set_repository_uri("https://Repositorious.org")
             >>> rdf.set_archive_uri("Arch.omex")
@@ -704,24 +715,26 @@ class Editor:
         Args:
             singular_annotation: An instance of SingularAnnotation to add to the model
 
-        Examples:
+        .. code-block: python
+            :linenos:
+
             # Users should do the following. This implicitly calls the
             # :meth:`Editor.add_singular_annotation` after the `with` block has finished.
-            >>> rdf = RDF()
-            >>> editor = rdf.to_editor("<insert xml here>")
-            >>> with editor.new_singular_annotation() as singular_annotation:
-            ...    singular_annotation.about("SmadNuclearTransport") \
-            ...         .predicate_from_uri("http://CaptainPredicate.org")\
-            ...         .resource_literal("Literally a resource")
+            rdf = RDF()
+            editor = rdf.to_editor("<insert xml here>")
+            with editor.new_singular_annotation() as singular_annotation:
+               singular_annotation.about("SmadNuclearTransport") \
+                    .predicate_from_uri("http://CaptainPredicate.org")\
+                    .resource_literal("Literally a resource")
 
             # If the context manager is not used, you must manually call :meth:`Editor.add_singular_annotation`
-            >>> rdf = RDF()
-            >>> editor = rdf.to_editor("<insert xml here>")
-            >>> singular_annotation = editor.new_singular_annotation()
-            >>> singular_annotation.about("SmadNuclearTransport") \
-            >>>     .predicate_from_uri("http://CaptainPredicate.org")\
-            >>>     .resource_literal("Literally a resource")
-            >>> editor.add_singular_annotation(singular_annotation)
+            rdf = RDF()
+            editor = rdf.to_editor("<insert xml here>")
+            singular_annotation = editor.new_singular_annotation()
+            singular_annotation.about("SmadNuclearTransport") \
+                .predicate_from_uri("http://CaptainPredicate.org")\
+                .resource_literal("Literally a resource")
+            editor.add_singular_annotation(singular_annotation)
 
         See Also:
             :class:`SingularAnnotation`
@@ -747,30 +760,32 @@ class Editor:
         Args:
             physical_entity: An instance of :class:`PhysicalEntity` to add to the model
 
-        Examples:
+        .. code-block: python
+            :linenos:
+
             # Users should do the following. This implicitly calls the
             # :meth:`Editor.add_physical_entity` after the `with` block has finished.
-            >>> rdf = RDF()
-            >>> editor = rdf.to_editor("<insert sbml here>")
-            >>> with editor.new_physical_entity() as physical_entity:
-            ...    physical_entity \
-            ...        .about("species0000", eUriType.MODEL_URI) \
-            ...        .has_property(is_version_of="OPB:OPB_00340") \
-            ...        .identity("uniprot:P84022") \
-            ...        .is_part_of("obo/FMA_7163") \
-            ...        .is_part_of("obo/FMA_264020")
+            rdf = RDF()
+            editor = rdf.to_editor("<insert sbml here>")
+            with editor.new_physical_entity() as physical_entity:
+               physical_entity \
+                   .about("species0000", eUriType.MODEL_URI) \
+                   .has_property(is_version_of="OPB:OPB_00340") \
+                   .identity("uniprot:P84022") \
+                   .is_part_of("obo/FMA_7163") \
+                   .is_part_of("obo/FMA_264020")
 
             # If the context manager is not used, you must manually call :meth:`Editor.add_physical_entity`
-            >>> rdf = RDF()
-            >>> editor = rdf.to_editor("<insert xml here>")
-            >>> physical_entity = editor.new_physical_entity()
-            >>> physical_entity \
-            ...     .about("species0000", eUriType.MODEL_URI) \
-            ...     .has_property(is_version_of="OPB:OPB_00340") \
-            ...     .identity("uniprot:P84022") \
-            ...     .is_part_of("obo/FMA_7163") \
-            ...     .is_part_of("obo/FMA_264020")
-            >>> editor.add_physical_entity(physical_entity)
+            rdf = RDF()
+            editor = rdf.to_editor("<insert xml here>")
+            physical_entity = editor.new_physical_entity()
+            physical_entity \
+                .about("species0000", eUriType.MODEL_URI) \
+                .has_property(is_version_of="OPB:OPB_00340") \
+                .identity("uniprot:P84022") \
+                .is_part_of("obo/FMA_7163") \
+                .is_part_of("obo/FMA_264020")
+            editor.add_physical_entity(physical_entity)
 
         See Also:
             :class:`PhysicalEntity`
@@ -796,28 +811,30 @@ class Editor:
         Args:
             physical_process: An instance of :class:`PhysicalProcess` to add to the model
 
-        Examples:
+        .. code-block: python
+            :linenos:
+
             # Users should do the following. This implicitly calls the
             # :meth:`Editor.add_physical_process` after the `with` block has finished.
-            >>> rdf = RDF()
-            >>> editor = rdf.to_editor("<insert sbml here>")
-            >>> with editor.new_physical_process() as physical_process:
-            ...     physical_process \
-            ...         .about("reaction0000", eUriType.MODEL_URI) \
-            ...         .has_property(is_version_of="OPB:OPB_00237") \
-            ...         .add_source("species0000", eUriType.MODEL_URI, 1) \
-            ...         .add_sink("species0001", eUriType.MODEL_URI, 1)
+            rdf = RDF()
+            editor = rdf.to_editor("<insert sbml here>")
+            with editor.new_physical_process() as physical_process:
+                physical_process \
+                    .about("reaction0000", eUriType.MODEL_URI) \
+                    .has_property(is_version_of="OPB:OPB_00237") \
+                    .add_source("species0000", eUriType.MODEL_URI, 1) \
+                    .add_sink("species0001", eUriType.MODEL_URI, 1)
 
             # If the context manager is not used, you must manually call :meth:`Editor.add_physical_process`
-            >>> rdf = RDF()
-            >>> editor = rdf.to_editor("<insert xml here>")
-            >>> physical_process = editor.new_physical_process()
-            ... physical_process \
-            ...     .about("reaction0000", eUriType.MODEL_URI) \
-            ...     .has_property(is_version_of="OPB:OPB_00237") \
-            ...     .add_source("species0000", eUriType.MODEL_URI, 1) \
-            ...     .add_sink("species0001", eUriType.MODEL_URI, 1)
-            >>> editor.add_physical_process(physical_process)
+            rdf = RDF()
+            editor = rdf.to_editor("<insert xml here>")
+            physical_process = editor.new_physical_process()
+            physical_process \
+                .about("reaction0000", eUriType.MODEL_URI) \
+                .has_property(is_version_of="OPB:OPB_00237") \
+                .add_source("species0000", eUriType.MODEL_URI, 1) \
+                .add_sink("species0001", eUriType.MODEL_URI, 1)
+            editor.add_physical_process(physical_process)
 
         See Also:
             :class:`PhysicalProcess`
@@ -842,27 +859,29 @@ class Editor:
         Args:
             energy_diff: An instance of :class:`EnergyDiff` to add to the model
 
-        Examples:
+        .. code-block: python
+            :linenos:
+
             # Users should do the following. This implicitly calls the
             # :meth:`Editor.add_energy_diff` after the `with` block has finished.
-            >>> rdf = RDF()
-            >>> editor = rdf.to_editor("<insert sbml here>")
-            >>> with editor.new_energy_diff() as energy_diff:
-            ...    energy_diff.about("reaction0000", eUriType.MODEL_URI) \
-            ...        .add_source("species0000", eUriType.MODEL_URI) \
-            ...        .add_sink("species0001", eUriType.MODEL_URI) \
-            ...        .has_property("localParameter0000", eUriType.LOCAL_URI, "opb:OPB_01058")
+            rdf = RDF()
+            editor = rdf.to_editor("<insert sbml here>")
+            with editor.new_energy_diff() as energy_diff:
+               energy_diff.about("reaction0000", eUriType.MODEL_URI) \
+                   .add_source("species0000", eUriType.MODEL_URI) \
+                   .add_sink("species0001", eUriType.MODEL_URI) \
+                   .has_property("localParameter0000", eUriType.LOCAL_URI, "opb:OPB_01058")
 
             # If the context manager is not used, you must manually call :meth:`Editor.add_energy_diff`
-            >>> rdf = RDF()
-            >>> editor = rdf.to_editor("<insert xml here>")
-            >>> energy_diff = editor.new_energy_diff()
-            ... energy_diff \
-            ...     .about("reaction0000", eUriType.MODEL_URI) \
-            ...     .has_property(is_version_of="OPB:OPB_00237") \
-            ...     .add_source("species0000", eUriType.MODEL_URI, 1) \
-            ...     .add_sink("species0001", eUriType.MODEL_URI, 1)
-            >>> editor.add_energy_diff(energy_diff)
+            rdf = RDF()
+            editor = rdf.to_editor("<insert xml here>")
+            energy_diff = editor.new_energy_diff()
+            energy_diff \
+                .about("reaction0000", eUriType.MODEL_URI) \
+                .has_property(is_version_of="OPB:OPB_00237") \
+                .add_source("species0000", eUriType.MODEL_URI, 1) \
+                .add_sink("species0001", eUriType.MODEL_URI, 1)
+            editor.add_energy_diff(energy_diff)
             
         See Also:
             :class:`EnergyDiff`
@@ -887,28 +906,30 @@ class Editor:
         Args:
             personal_information: An instance of :class:`PersonalInformation` to add to the model
 
-        Examples:
+        .. code-block: python
+            :linenos:
+
             # Users should do the following. This implicitly calls the
             # :meth:`Editor.add_personal_information` after the `with` block has finished.
-            >>> rdf = RDF()
-            >>> editor = rdf.to_editor("<insert sbml here>")
-            >>> with editor.new_personal_information() as personal_information:
-            ...     personal_information.add_creator("1234-1234-1234-1234") \
-            ...         .add_name("Ciaran") \
-            ...         .add_mbox("cwelsh2@uw.edu") \
-            ...         .add_account_name("1234-1234-1234-1234") \
-            ...         .add_account_service_homepage("https://github.com/sys-bio/libomexmeta")
+            rdf = RDF()
+            editor = rdf.to_editor("<insert sbml here>")
+            with editor.new_personal_information() as personal_information:
+                personal_information.add_creator("1234-1234-1234-1234") \
+                    .add_name("Ciaran") \
+                    .add_mbox("cwelsh2@uw.edu") \
+                    .add_account_name("1234-1234-1234-1234") \
+                    .add_account_service_homepage("https://github.com/sys-bio/libomexmeta")
 
             # If the context manager is not used, you must manually call :meth:`Editor.add_personal_information`
-            >>> rdf = RDF()
-            >>> editor = rdf.to_editor("<insert xml here>")
-            >>> personal_information = editor.new_personal_information()
-            >>> personal_information \
-            ...     .about("reaction0000", eUriType.MODEL_URI) \
-            ...     .has_property(is_version_of="OPB:OPB_00237") \
-            ...     .add_source("species0000", eUriType.MODEL_URI, 1) \
-            ...     .add_sink("species0001", eUriType.MODEL_URI, 1)
-            >>> editor.add_personal_information(personal_information)
+            rdf = RDF()
+            editor = rdf.to_editor("<insert xml here>")
+            personal_information = editor.new_personal_information()
+            personal_information \
+                .about("reaction0000", eUriType.MODEL_URI) \
+                .has_property(is_version_of="OPB:OPB_00237") \
+                .add_source("species0000", eUriType.MODEL_URI, 1) \
+                .add_sink("species0001", eUriType.MODEL_URI, 1)
+            editor.add_personal_information(personal_information)
             
         See Also:
             :class:`PersonalInformation`
@@ -936,22 +957,24 @@ class Editor:
         Args:
             property: An instance of :class:`PhysicalProperty` to add to the model
 
-        Examples:
+        .. code-block: python
+            :linenos:
+
             # Users should do the following. This implicitly calls the
             # :meth:`Editor.add_personal_information` after the `with` block has finished.
-            >>> rdf = RDF()
-            >>> editor = rdf.to_editor("<insert sbml here>")
-            >>> property = editor.new_physical_property()
-            >>> property.about("EntityProperty", eUriType.LOCAL_URI) \
-            ...     .is_version_of("opb:OPB_12345") \
-            ...     .is_property_of("species0001", eUriType.MODEL_URI)
-            >>> with editor.new_physical_entity() as physical_entity:
-            ...     physical_entity.about("species0001", eUriType.MODEL_URI) \
-            ...         .identity("uniprot:PD12345") \
-            ...         .is_part_of("fma:1234") \
-            ...         .has_property(property=property)
+            rdf = RDF()
+            editor = rdf.to_editor("<insert sbml here>")
+            property = editor.new_physical_property()
+            property.about("EntityProperty", eUriType.LOCAL_URI) \
+                .is_version_of("opb:OPB_12345") \
+                .is_property_of("species0001", eUriType.MODEL_URI)
+            with editor.new_physical_entity() as physical_entity:
+                physical_entity.about("species0001", eUriType.MODEL_URI) \
+                    .identity("uniprot:PD12345") \
+                    .is_part_of("fma:1234") \
+                    .has_property(property=property)
             # Or to add the property outside of a composite annotation
-            >>> editor.add_physical_property(property)
+            editor.add_physical_property(property)
 
         See Also:
             :class:`PhysicalProperty`
@@ -1015,13 +1038,15 @@ class Editor:
         add the :class:`SingularAnnotation` to the :class:`RDF` 
         using :meth:`add_singular_annotation`
         
-        Examples:
-            >>> rdf = RDF()
-            >>> editor = rdf.to_editor("insert xml here")
-            >>> with editor.new_singular_annotation() as singular_annotation:
-            ...    singular_annotation.about("SmadNuclearTransport") \
-            ...         .predicate_from_uri("http://CaptainPredicate.org")\
-            ...         .resource_literal("Literally a resource")
+        .. code-block: python
+            :linenos:
+
+            rdf = RDF()
+            editor = rdf.to_editor("insert xml here")
+            with editor.new_singular_annotation() as singular_annotation:
+               singular_annotation.about("SmadNuclearTransport") \
+                    .predicate_from_uri("http://CaptainPredicate.org")\
+                    .resource_literal("Literally a resource")
 
         See Also:
             :class:`SingularAnnotation`
@@ -1049,15 +1074,17 @@ class Editor:
         add the :class:`PersonalInformation` to the :class:`RDF`
         using :meth:`add_personal_information`
 
-        Examples:
-            >>> rdf = RDF()
-            >>> editor = rdf.to_editor("<insert sbml here>")
-            >>> with editor.new_personal_information() as personal_information:
-            ...     personal_information.add_creator("1234-1234-1234-1234") \
-            ...         .add_name("Ciaran") \
-            ...         .add_mbox("cwelsh2@uw.edu") \
-            ...         .add_account_name("1234-1234-1234-1234") \
-            ...         .add_account_service_homepage("https://github.com/sys-bio/libomexmeta")
+        .. code-block: python
+            :linenos:
+
+            rdf = RDF()
+            editor = rdf.to_editor("<insert sbml here>")
+            with editor.new_personal_information() as personal_information:
+                personal_information.add_creator("1234-1234-1234-1234") \
+                    .add_name("Ciaran") \
+                    .add_mbox("cwelsh2@uw.edu") \
+                    .add_account_name("1234-1234-1234-1234") \
+                    .add_account_service_homepage("https://github.com/sys-bio/libomexmeta")
 
 
         See Also:
@@ -1086,16 +1113,18 @@ class Editor:
         add the :class:`PhysicalEntity` to the :class:`RDF`
         using :meth:`add_physical_entity`
 
-        Examples:
-            >>> rdf = RDF()
-            >>> editor = rdf.to_editor("<insert sbml here>")
-            >>> with editor.new_physical_entity() as physical_entity:
-            ...    physical_entity \
-            ...        .about("species0000", eUriType.MODEL_URI) \
-            ...        .has_property(is_version_of="OPB:OPB_00340") \
-            ...        .identity("uniprot:P84022") \
-            ...        .is_part_of("obo/FMA_7163") \
-            ...        .is_part_of("obo/FMA_264020")
+        .. code-block: python
+            :linenos:
+
+            rdf = RDF()
+            editor = rdf.to_editor("<insert sbml here>")
+            with editor.new_physical_entity() as physical_entity:
+               physical_entity \
+                   .about("species0000", eUriType.MODEL_URI) \
+                   .has_property(is_version_of="OPB:OPB_00340") \
+                   .identity("uniprot:P84022") \
+                   .is_part_of("obo/FMA_7163") \
+                   .is_part_of("obo/FMA_264020")
 
 
         See Also:
@@ -1124,15 +1153,17 @@ class Editor:
         add the :class:`PhysicalProcess` to the :class:`RDF`
         using :meth:`add_physical_process`
 
-        Examples:
-            >>> rdf = RDF()
-            >>> editor = rdf.to_editor("<insert sbml here>")
-            >>> with editor.new_physical_process() as physical_process:
-            ...     physical_process \
-            ...         .about("reaction0000", eUriType.MODEL_URI) \
-            ...         .has_property(is_version_of="OPB:OPB_00237") \
-            ...         .add_source("species0000", eUriType.MODEL_URI, 1) \
-            ...         .add_sink("species0001", eUriType.MODEL_URI, 1)
+        .. code-block: python
+            :linenos:
+
+            rdf = RDF()
+            editor = rdf.to_editor("<insert sbml here>")
+            with editor.new_physical_process() as physical_process:
+                physical_process \
+                    .about("reaction0000", eUriType.MODEL_URI) \
+                    .has_property(is_version_of="OPB:OPB_00237") \
+                    .add_source("species0000", eUriType.MODEL_URI, 1) \
+                    .add_sink("species0001", eUriType.MODEL_URI, 1)
 
 
         See Also:
@@ -1161,14 +1192,16 @@ class Editor:
         add the :class:`EnergyDiff` to the :class:`RDF`
         using :meth:`add_energy_diff`
 
-        Examples:
-            >>> rdf = RDF()
-            >>> editor = rdf.to_editor("<insert sbml here>")
-            >>> with editor.new_energy_diff() as energy_diff:
-            ...    energy_diff.about("reaction0000", eUriType.MODEL_URI) \
-            ...        .add_source("species0000", eUriType.MODEL_URI) \
-            ...        .add_sink("species0001", eUriType.MODEL_URI) \
-            ...        .has_property("localParameter0000", eUriType.LOCAL_URI, "opb:OPB_01058")
+        .. code-block: python
+            :linenos:
+
+            rdf = RDF()
+            editor = rdf.to_editor("<insert sbml here>")
+            with editor.new_energy_diff() as energy_diff:
+               energy_diff.about("reaction0000", eUriType.MODEL_URI) \
+                   .add_source("species0000", eUriType.MODEL_URI) \
+                   .add_sink("species0001", eUriType.MODEL_URI) \
+                   .has_property("localParameter0000", eUriType.LOCAL_URI, "opb:OPB_01058")
 
 
 
@@ -1242,6 +1275,9 @@ class Editor:
         propagate_omexmeta_error(self._obj)
         return self
 
+    def strip_annotations(self, annotationElementName:str = "annotation") -> str:
+        return _pyom.get_and_free_c_str(_pyom.editor_strip_annotations(self._obj, annotationElementName.encode()))
+
 
 class SingularAnnotation:
     """Interface for handling single annotations or Triples (or rdf statements).
@@ -1260,9 +1296,10 @@ class SingularAnnotation:
     full uri using :meth:`SingularAnnotation.set_predicate_from_uri` method
 
     The resource portion of the triple may be set with one of
-        - :meth:`SingularAnnotation.set_resource_literal`
-        - :meth:`SingularAnnotation.set_resource_uri`
-        - :meth:`SingularAnnotation.set_resource_blank`
+        * :meth:`SingularAnnotation.set_resource_literal`
+        * :meth:`SingularAnnotation.set_resource_uri`
+        * :meth:`SingularAnnotation.set_resource_blank`
+
     for creating a literal, uri or blank note respectively.
 
     From section 2.3.6 in the OmexMeta specification:
@@ -1280,35 +1317,41 @@ class SingularAnnotation:
     model element with meta- data ID “meta0013” from the model file “MyModel.sbml”
     represents adenosine tri-phosphate:
 
+    .. code-block:
+
         myOMEX:MyModel.sbml#meta0013 bqbiol:is chebi:15422 .
 
     The following is an example free-text description of a model variable with metadata ID “meta0014”:
 
+    .. code-block:
+
         myOMEX:MyModel.sbml#meta0014
               dc:description  "Cardiomyocyte cytosolic ATP concentration" .
 
-    Examples:
-        >>> # Note that these examples are semantically nonesense!
-        >>> rdf = RDF()
-        >>> editor = rdf.to_editor("<insert xml here>")
-        >>> with editor.new_singular_annotation() as s1:
-        >>>     s1.about("species0000") \ # species0000 is a metaid in sbml
-        ...         .predicate("bqbiol", "is") \ #use the "is" predicate from bqbiol (BiomodelsBiologyQualifier) namespace
-        ...         .resource_uri("uniprot:PD88776") # create a uri resource node
+    .. code-block: python
+        :linenos:
 
-        >>> with editor.new_singular_annotation() as s2:
-        >>>     s2.about("species0000") \ # species0000 is a metaid in sbml
-        ...         .predicate("bqmodel", "isDerivedFrom") \ #use the "isDerivedFrom" predicate from bqmodel (BiomodelsModelQualifier) namespace
-        ...         .resource_literal("Something Literal") # create a uri resource node
+        # Note that these examples are semantically nonesense!
+        rdf = RDF()
+        editor = rdf.to_editor("<insert xml here>")
+        with editor.new_singular_annotation() as s1:
+            s1.about("species0000") \ # species0000 is a metaid in sbml
+                .predicate("bqbiol", "is") \ #use the "is" predicate from bqbiol (BiomodelsBiologyQualifier) namespace
+                .resource_uri("uniprot:PD88776") # create a uri resource node
 
-        >>> with editor.new_singular_annotation() as s3a:
-        >>>     s3a.about("species0000") \ # species0000 is a metaid in sbml
-        ...         .set_predicate_from_uri("http://homegrownpredicate.org") \ #use a predicate directly from a uri
-        ...         .resource_blank("This Is A Blank Identifier") # create a blank resource node
-        >>> with editor.new_singular_annotation() as s3b:
-        ...     s3b.about("This Is A Blank Identifier") \
-        ...         .set_predicate_from_uri("foaf", "name") \
-        ...         .set_resource_literal("James")
+        with editor.new_singular_annotation() as s2:
+            s2.about("species0000") \ # species0000 is a metaid in sbml
+                .predicate("bqmodel", "isDerivedFrom") \ #use the "isDerivedFrom" predicate from bqmodel (BiomodelsModelQualifier) namespace
+                .resource_literal("Something Literal") # create a uri resource node
+
+        with editor.new_singular_annotation() as s3a:
+            s3a.about("species0000") \ # species0000 is a metaid in sbml
+                .set_predicate_from_uri("http://homegrownpredicate.org") \ #use a predicate directly from a uri
+                .resource_blank("This Is A Blank Identifier") # create a blank resource node
+        with editor.new_singular_annotation() as s3b:
+            s3b.about("This Is A Blank Identifier") \
+                .set_predicate_from_uri("foaf", "name") \
+                .set_resource_literal("James")
     """
 
     def __init__(self, singular_annotation_ptr: ct.c_int64):
@@ -1590,20 +1633,23 @@ class _PropertyBearer:
         Args:
             is_version_of: (str) represents an OPB term from the Ontology of Physical Biology.
 
-        Examples:
-            >>> rdf = RDF()
-            >>> editor = self.rdf.to_editor("insert sbml here")
-            >>> with editor.new_physical_entity() as physical_entity:
-            ...     physical_entity.about("species0000", eUriType.MODEL_URI) \
-            ...         .identity("uniprot:PD12345") \
-            ...         .is_part_of("fma:1234") \
-            ...         .has_property("opb:OPB_12345") # same as has_property(is_version_of="opb:OPB_12345")
+        .. code-block: python
+            :linenos:
+
+            rdf = RDF()
+            editor = self.rdf.to_editor("insert sbml here")
+            with editor.new_physical_entity() as physical_entity:
+                physical_entity.about("species0000", eUriType.MODEL_URI) \
+                    .identity("uniprot:PD12345") \
+                    .is_part_of("fma:1234") \
+                    .has_property("opb:OPB_12345") # same as has_property(is_version_of="opb:OPB_12345")
 
         In the above case, the necessary local identifiers are created automatically and are guarenteed
         to be unique throughout your RDF graph. In some circumstances, you might want to have control
         over the metaids used for local uri's. The above would create a :class:`PhysicalProperty`
         with the subject or "about" portion equal to `local:EntityProperty0000`. We can set this ourselves
         using the second overload, which requires three arguments:
+
         Args:
             `property_about`: The subject or "about" portion of the :class:`PhysicalProperty` triples.
             `about_uri_type`  eUriType.LOCAL_URI if the uri for `property_about` should be local to the
@@ -1611,30 +1657,34 @@ class _PropertyBearer:
                               element of the model (which is common in CellML).
             `is_version_of` The OPB term to use for the "isVersionOf" predicate
 
-        Examples:
-            >>> rdf = RDF()
-            >>> editor = rdf.to_editor("<insert sbml here>", generate_new_metaids=True, sbml_semantic_extraction=False)
-            >>> with editor.new_physical_entity() as physical_entity:
-            >>>     physical_entity.about("species0000", eUriType.MODEL_URI) \
-            ...         .identity("uniprot:PD12345") \
-            ...         .is_part_of("fma:1234") \
-            ...         .has_property("EntityProperty", eUriType.LOCAL_URI, "opb:OPB_12345")
+        .. code-block: python
+            :linenos:
+
+            rdf = RDF()
+            editor = rdf.to_editor("<insert sbml here>", generate_new_metaids=True, sbml_semantic_extraction=False)
+            with editor.new_physical_entity() as physical_entity:
+                physical_entity.about("species0000", eUriType.MODEL_URI) \
+                    .identity("uniprot:PD12345") \
+                    .is_part_of("fma:1234") \
+                    .has_property("EntityProperty", eUriType.LOCAL_URI, "opb:OPB_12345")
 
         Finally, you can create the :class:`Property` yourself and pass that to :meth:`has_property` instead.
         This is often more useful in CellML models.
 
-        Examples:
-            >>> rdf = RDF()
-            >>> editor = rdf.to_editor"(<insert cellml here>")
-            >>> property = editor.new_physical_property()
-            >>> property.about("main.Volume", eUriType.MODEL_URI) \
-            ...     .is_version_of("opb:OPB_00154") \
-            ...     .is_property_of("entity0", eUriType.LOCAL_URI)
-            >>> with editor.new_physical_entity() as physical_entity:
-            ...     physical_entity.about("entity0", eUriType.LOCAL_URI) \
-            ...         .identity("fma:9570") \
-            ...         .is_part_of("fma:18228") \
-            ...         .has_property(property=property)
+        .. code-block: python
+            :linenos:
+
+            rdf = RDF()
+            editor = rdf.to_editor"(<insert cellml here>")
+            property = editor.new_physical_property()
+            property.about("main.Volume", eUriType.MODEL_URI) \
+                .is_version_of("opb:OPB_00154") \
+                .is_property_of("entity0", eUriType.LOCAL_URI)
+            with editor.new_physical_entity() as physical_entity:
+                physical_entity.about("entity0", eUriType.LOCAL_URI) \
+                    .identity("fma:9570") \
+                    .is_part_of("fma:18228") \
+                    .has_property(property=property)
 
         """
         _valid = ["physical_entity", "physical_process", "energy_diff"]
@@ -2155,7 +2205,7 @@ class EnergyDiff(_PropertyBearer):
         """Adds an energetic source to this :class:`PhysicalProcess`, such as a reactant in a reaction
 
         .. note::
-            A source in a :class:`EnergyDiff` does not have a multiplier, like the :class:`PhysicalProcess does
+            A source in a :class:`EnergyDiff` does not have a multiplier, like the :class:`PhysicalProcess` does
 
         Args:
             physical_entity_reference: The string of the metaid for the energetic source.
@@ -2180,7 +2230,7 @@ class EnergyDiff(_PropertyBearer):
         """Adds an energetic sink to this :class:`EnergyDiff`, such as a product in a reaction
 
         .. note::
-            A source in a :class:`EnergyDiff` does not have a multiplier, like the :class:`PhysicalProcess does
+            A source in a :class:`EnergyDiff` does not have a multiplier, like the :class:`PhysicalProcess` does
 
 
         Args:

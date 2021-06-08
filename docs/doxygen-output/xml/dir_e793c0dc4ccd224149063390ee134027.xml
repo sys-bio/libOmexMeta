@@ -12,7 +12,7 @@
     <innerfile refid="LibrdfStatement_8cpp">LibrdfStatement.cpp</innerfile>
     <innerfile refid="LibrdfStorage_8cpp">LibrdfStorage.cpp</innerfile>
     <innerfile refid="LibrdfUri_8cpp">LibrdfUri.cpp</innerfile>
-    <innerfile refid="World_8cpp">World.cpp</innerfile>
+    <innerfile refid="LibrdfWorld_8cpp">LibrdfWorld.cpp</innerfile>
     <briefdescription>
     </briefdescription>
     <detaileddescription>

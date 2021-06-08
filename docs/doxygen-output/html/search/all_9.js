@@ -13,5 +13,6 @@ var searchData=
   ['librdfstorage_143',['LibrdfStorage',['../classredland_1_1LibrdfStorage.html',1,'redland']]],
   ['librdfstream_144',['LibrdfStream',['../classredland_1_1LibrdfStream.html',1,'redland']]],
   ['librdfuri_145',['LibrdfUri',['../classredland_1_1LibrdfUri.html',1,'redland']]],
-  ['logdata_146',['LogData',['../structLogData.html',1,'']]]
+  ['librdfworld_146',['LibrdfWorld',['../classredland_1_1LibrdfWorld.html',1,'redland']]],
+  ['logdata_147',['LogData',['../structLogData.html',1,'']]]
 ];

@@ -10,7 +10,7 @@ int main(){
                        "<sbml xmlns=\"http://www.sbml.org/sbml/level3/version1/core\" level=\"3\" version=\"1\">\n"
                        "  <model metaid=\"SimpleRegulation\" id=\"SimpleRegulation\">\n"
                        "    <listOfCompartments>\n"
-                       "      <compartment id=\"cell\" spatialDimensions=\"3\" size=\"1\" constant=\"true\" metaid=\"#OmexMetaId0000\"/>\n"
+                       "      <compartment id=\"cell\" spatialDimensions=\"3\" size=\"1\" constant=\"true\" metaid=\"omexMetaId0000\"/>\n"
                        "    </listOfCompartments>\n"
                        "    <listOfSpecies>\n"
                        "      <species id=\"A\" compartment=\"cell\" initialConcentration=\"10\" hasOnlySubstanceUnits=\"false\" boundaryCondition=\"false\" constant=\"false\" metaid=\"SpeciesA\"/>\n"
@@ -61,7 +61,7 @@ int main(){
                        "          </math>\n"
                        "        </kineticLaw>\n"
                        "      </reaction>\n"
-                       "      <reaction id=\"R3\" reversible=\"false\" fast=\"false\" metaid=\"#OmexMetaId0009\">\n"
+                       "      <reaction id=\"R3\" reversible=\"false\" fast=\"false\" metaid=\"omexMetaId0009\">\n"
                        "        <listOfReactants>\n"
                        "          <speciesReference species=\"C\" stoichiometry=\"1\" constant=\"true\"/>\n"
                        "        </listOfReactants>\n"
@@ -71,7 +71,7 @@ int main(){
                        "        <listOfModifiers>\n"
                        "          <modifierSpeciesReference species=\"B\"/>\n"
                        "        </listOfModifiers>\n"
-                       "        <kineticLaw metaid=\"#OmexMetaId0010\">\n"
+                       "        <kineticLaw metaid=\"omexMetaId0010\">\n"
                        "          <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n"
                        "            <apply>\n"
                        "              <times/>\n"
@@ -82,14 +82,14 @@ int main(){
                        "          </math>\n"
                        "        </kineticLaw>\n"
                        "      </reaction>\n"
-                       "      <reaction id=\"R4\" reversible=\"false\" fast=\"false\" metaid=\"#OmexMetaId0011\">\n"
+                       "      <reaction id=\"R4\" reversible=\"false\" fast=\"false\" metaid=\"omexMetaId0011\">\n"
                        "        <listOfReactants>\n"
                        "          <speciesReference species=\"D\" stoichiometry=\"1\" constant=\"true\"/>\n"
                        "        </listOfReactants>\n"
                        "        <listOfProducts>\n"
                        "          <speciesReference species=\"C\" stoichiometry=\"1\" constant=\"true\"/>\n"
                        "        </listOfProducts>\n"
-                       "        <kineticLaw metaid=\"#OmexMetaId0012\">\n"
+                       "        <kineticLaw metaid=\"omexMetaId0012\">\n"
                        "          <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n"
                        "            <apply>\n"
                        "              <times/>\n"
@@ -104,17 +104,13 @@ int main(){
                        "</sbml>";
 
     RDF rdf;
-
     Editor editor = rdf.toEditor(sbml, true, true);
-
     PhysicalEntity physicalEntity = editor.newPhysicalEntity();
     physicalEntity
-            .about("Species0001", MODEL_URI)
+            .about("SimpleRegulation", MODEL_URI)
             .identity("uniprot/PD12345")
             .isPartOf("fma:1234")
-            .hasProperty("EntityProperty", LOCAL_URI, "opb:OPB_12345");
-
-
+            .hasProperty("opb:OPB_12345");
     editor.addPhysicalEntity(physicalEntity);
     std::cout << rdf.toString() << std::endl;
     return 0;

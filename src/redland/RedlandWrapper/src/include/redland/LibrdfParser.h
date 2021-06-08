@@ -12,7 +12,7 @@
 #include "LibrdfModel.h"
 #include "LibrdfNode.h"
 #include "LibrdfUri.h"
-#include "World.h"
+#include "LibrdfWorld.h"
 
 namespace redland {
 

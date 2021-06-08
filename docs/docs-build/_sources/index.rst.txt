@@ -13,12 +13,12 @@ libOmexMeta documentation!
    writing_rdf/writing_rdf.rst
    singular_annotations/index.rst
    composite_annotations/index.rst
+   stripping_annotations/index.rst
    querying_rdf/querying_rdf.rst
    diagrams/diagrams_index.rst
    annotating_models/annotating_models_index.rst
    download_biomodels/download_biomodels.rst
    APIReference/api_reference_index.rst
-   PythonAPIReference/api_reference_index.rst
    Developers/developers_index.rst
 
 LibOMEXmeta is a library aimed at providing developer-level support for

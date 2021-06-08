@@ -376,9 +376,9 @@ set(WRAPPER_SOURCES
         ${WRAPPER_SOURCE_DIR}/LibrdfStatement.cpp
         ${WRAPPER_SOURCE_DIR}/LibrdfStorage.cpp
         ${WRAPPER_SOURCE_DIR}/LibrdfUri.cpp
-        ${WRAPPER_SOURCE_DIR}/World.cpp
+        ${WRAPPER_SOURCE_DIR}/LibrdfWorld.cpp
         ${WRAPPER_INCLUDE_DIR}/redland/RedlandAPI.h
-        ${WRAPPER_INCLUDE_DIR}/redland/World.h
+        ${WRAPPER_INCLUDE_DIR}/redland/LibrdfWorld.h
         ${WRAPPER_INCLUDE_DIR}/redland/LibrdfModel.h
         ${WRAPPER_INCLUDE_DIR}/redland/LibrdfNode.h
         ${WRAPPER_INCLUDE_DIR}/redland/LibrdfParser.h

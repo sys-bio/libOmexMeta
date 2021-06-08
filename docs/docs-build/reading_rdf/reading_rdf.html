@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Reading RDF &mdash; libomexmeta 1.2.7 documentation</title>
+  <title>Reading RDF &mdash; libomexmeta 1.2.8 documentation</title>
   
 
   
@@ -104,6 +104,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../singular_annotations/index.html">Singular Annotations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../composite_annotations/index.html">Composite Annotations: SBML Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../composite_annotations/index.html#composite-annotations-cellml-examples">Composite Annotations: CellML Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stripping_annotations/index.html">Stripping Annotations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../querying_rdf/querying_rdf.html">Querying RDF</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../diagrams/diagrams_index.html">Building Diagrams</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../annotating_models/annotating_models_index.html">Annotating Models</a></li>
@@ -242,7 +243,7 @@ formats are:</p>
 <span class="s2">                 &lt;https://dublincore.org/specifications/dublin-core/dcmi-terms/creator&gt; &lt;https://orcid.org/1234-1234-1234-1234&gt; .&quot;&quot;&quot;</span>
 
 <span class="c1"># read the annotations into RDF graph</span>
-<span class="n">rdf</span> <span class="o">=</span> <span class="n">RDF</span><span class="o">.</span><span class="n">from_string</span><span class="p">(</span><span class="n">rdf_str</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;turtle&quot;</span><span class="p">)</span>
+<span class="n">rdf</span> <span class="o">=</span> <span class="n">RDF</span><span class="o">.</span><span class="n">from_string</span><span class="p">(</span><span class="n">rdf_str</span><span class="p">,</span> <span class="n">syntax</span><span class="o">=</span><span class="s2">&quot;turtle&quot;</span><span class="p">)</span>
 
 <span class="c1"># serialize the string to rdfxml-abbrev</span>
 <span class="n">xml_string</span> <span class="o">=</span> <span class="n">rdf</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="s2">&quot;rdfxml-abbrev&quot;</span><span class="p">)</span>
@@ -263,13 +264,11 @@ formats are:</p>
  9
 10
 11
-12
-13</pre></div></td><td class="code"><div class="highlight"><pre><span></span>RDF graph serialized to rdfxml abbreviated is:
+12</pre></div></td><td class="code"><div class="highlight"><pre><span></span>RDF graph serialized to rdfxml abbreviated is:
 
 &lt;?xml version=&quot;1.1&quot; encoding=&quot;utf-8&quot;?&gt;
 &lt;rdf:RDF xmlns:OMEXlib=&quot;http://omex-library.org/&quot;
    xmlns:local=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#&quot;
-   xmlns:myOMEX=&quot;http://omex-library.org/NewOmex.omex/&quot;
    xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;&gt;
   &lt;rdf:Description rdf:about=&quot;http://omex-library.org/NewOmex.omex/NewModel.xml#&quot;&gt;
     &lt;ns1:creator xmlns:ns1=&quot;https://dublincore.org/specifications/dublin-core/dcmi-terms/&quot;
@@ -336,7 +335,29 @@ formats are:</p>
 </div>
 <div class="literal-block-wrapper docutils container" id="id4">
 <div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id4" title="Permalink to this code">¶</a></div>
-<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">D</span><span class="p">:</span><span class="o">/</span><span class="n">libOmexMeta</span><span class="o">/</span><span class="n">docs</span><span class="o">/</span><span class="n">ExampleOutputFiles</span>\<span class="n">FromStringCpp</span><span class="o">.</span><span class="n">txt</span>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></div></td><td class="code"><div class="highlight"><pre><span></span>RDF graph serialized to rdfxml abbreviated is:
+
+&lt;?xml version=&quot;1.1&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;rdf:RDF xmlns:OMEXlib=&quot;http://omex-library.org/&quot;
+   xmlns:local=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#&quot;
+   xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;&gt;
+  &lt;rdf:Description rdf:about=&quot;http://omex-library.org/NewOmex.omex/NewModel.xml#&quot;&gt;
+    &lt;ns1:creator xmlns:ns1=&quot;https://dublincore.org/specifications/dublin-core/dcmi-terms/&quot;
+       rdf:resource=&quot;https://orcid.org/1234-1234-1234-1234&quot;/&gt;
+  &lt;/rdf:Description&gt;
+&lt;/rdf:RDF&gt;
+
 </pre></div>
 </td></tr></table></div>
 </div>
@@ -400,7 +421,27 @@ formats are:</p>
 </div>
 <div class="literal-block-wrapper docutils container" id="id6">
 <div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id6" title="Permalink to this code">¶</a></div>
-<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">D</span><span class="p">:</span><span class="o">/</span><span class="n">libOmexMeta</span><span class="o">/</span><span class="n">docs</span><span class="o">/</span><span class="n">ExampleOutputFiles</span>\<span class="n">FromStringC</span><span class="o">.</span><span class="n">txt</span>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="highlight"><pre><span></span>RDF graph serialized to rdfxml abbreviated is:
+
+&lt;?xml version=&quot;1.1&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;rdf:RDF xmlns:OMEXlib=&quot;http://omex-library.org/&quot;
+   xmlns:local=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#&quot;
+   xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;&gt;
+  &lt;rdf:Description rdf:about=&quot;http://omex-library.org/NewOmex.omex/NewModel.xml#&quot;&gt;
+    &lt;ns1:creator xmlns:ns1=&quot;https://dublincore.org/specifications/dublin-core/dcmi-terms/&quot;
+       rdf:resource=&quot;https://orcid.org/1234-1234-1234-1234&quot;/&gt;
+  &lt;/rdf:Description&gt;
+&lt;/rdf:RDF&gt;
 </pre></div>
 </td></tr></table></div>
 </div>
@@ -478,7 +519,7 @@ formats are:</p>
 <span class="s2">                  bqbiol:is &lt;https://identifiers.org/uniprot/PD12345&gt; .&quot;&quot;&quot;</span>
 
 <span class="c1"># read the first string into our RDF graph</span>
-<span class="n">rdf</span> <span class="o">=</span> <span class="n">RDF</span><span class="o">.</span><span class="n">from_string</span><span class="p">(</span><span class="n">rdf_str1</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;turtle&quot;</span><span class="p">)</span>
+<span class="n">rdf</span> <span class="o">=</span> <span class="n">RDF</span><span class="o">.</span><span class="n">from_string</span><span class="p">(</span><span class="n">rdf_str1</span><span class="p">,</span> <span class="n">syntax</span><span class="o">=</span><span class="s2">&quot;turtle&quot;</span><span class="p">)</span>
 <span class="c1"># Add to our RDF graph by reading the second string</span>
 <span class="n">rdf</span><span class="o">.</span><span class="n">add_from_string</span><span class="p">(</span><span class="n">rdf_str2</span><span class="p">)</span>
 
@@ -505,14 +546,12 @@ formats are:</p>
 13
 14
 15
-16
-17</pre></div></td><td class="code"><div class="highlight"><pre><span></span>RDF graph serialized to rdfxml abbreviated is:
+16</pre></div></td><td class="code"><div class="highlight"><pre><span></span>RDF graph serialized to rdfxml abbreviated is:
 
 &lt;?xml version=&quot;1.1&quot; encoding=&quot;utf-8&quot;?&gt;
 &lt;rdf:RDF xmlns:OMEXlib=&quot;http://omex-library.org/&quot;
    xmlns:bqbiol=&quot;http://biomodels.net/biology-qualifiers/&quot;
    xmlns:local=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#&quot;
-   xmlns:myOMEX=&quot;http://omex-library.org/NewOmex.omex/&quot;
    xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;&gt;
   &lt;rdf:Description rdf:about=&quot;http://omex-library.org/NewOmex.omex/NewModel.xml#&quot;&gt;
     &lt;ns1:creator xmlns:ns1=&quot;https://dublincore.org/specifications/dublin-core/dcmi-terms/&quot;
@@ -610,7 +649,37 @@ formats are:</p>
 </div>
 <div class="literal-block-wrapper docutils container" id="id10">
 <div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id10" title="Permalink to this code">¶</a></div>
-<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">D</span><span class="p">:</span><span class="o">/</span><span class="n">libOmexMeta</span><span class="o">/</span><span class="n">docs</span><span class="o">/</span><span class="n">ExampleOutputFiles</span>\<span class="n">AddFromStringCpp</span><span class="o">.</span><span class="n">txt</span>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16</pre></div></td><td class="code"><div class="highlight"><pre><span></span>RDF graph serialized to rdfxml abbreviated is:
+
+&lt;?xml version=&quot;1.1&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;rdf:RDF xmlns:OMEXlib=&quot;http://omex-library.org/&quot;
+   xmlns:bqbiol=&quot;http://biomodels.net/biology-qualifiers/&quot;
+   xmlns:dc=&quot;https://dublincore.org/specifications/dublin-core/dcmi-terms/&quot;
+   xmlns:local=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#&quot;
+   xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;&gt;
+  &lt;rdf:Description rdf:about=&quot;http://omex-library.org/NewOmex.omex/NewModel.xml&quot;&gt;
+    &lt;dc:creator rdf:resource=&quot;https://orcid.org/1234-1234-1234-1234&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0000&quot;&gt;
+    &lt;bqbiol:is rdf:resource=&quot;https://identifiers.org/uniprot/PD12345&quot;/&gt;
+  &lt;/rdf:Description&gt;
+&lt;/rdf:RDF&gt;
+
 </pre></div>
 </td></tr></table></div>
 </div>
@@ -704,7 +773,35 @@ formats are:</p>
 </div>
 <div class="literal-block-wrapper docutils container" id="id12">
 <div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id12" title="Permalink to this code">¶</a></div>
-<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">D</span><span class="p">:</span><span class="o">/</span><span class="n">libOmexMeta</span><span class="o">/</span><span class="n">docs</span><span class="o">/</span><span class="n">ExampleOutputFiles</span>\<span class="n">AddFromStringC</span><span class="o">.</span><span class="n">txt</span>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15</pre></div></td><td class="code"><div class="highlight"><pre><span></span>RDF graph serialized to rdfxml abbreviated is:
+
+&lt;?xml version=&quot;1.1&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;rdf:RDF xmlns:OMEXlib=&quot;http://omex-library.org/&quot;
+   xmlns:bqbiol=&quot;http://biomodels.net/biology-qualifiers/&quot;
+   xmlns:dc=&quot;https://dublincore.org/specifications/dublin-core/dcmi-terms/&quot;
+   xmlns:local=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#&quot;
+   xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;&gt;
+  &lt;rdf:Description rdf:about=&quot;http://omex-library.org/NewOmex.omex/NewModel.xml&quot;&gt;
+    &lt;dc:creator rdf:resource=&quot;https://orcid.org/1234-1234-1234-1234&quot;/&gt;
+  &lt;/rdf:Description&gt;
+  &lt;rdf:Description rdf:about=&quot;http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0001&quot;&gt;
+    &lt;bqbiol:is rdf:resource=&quot;https://identifiers.org/uniprot/PD12345&quot;/&gt;
+  &lt;/rdf:Description&gt;
+&lt;/rdf:RDF&gt;
 </pre></div>
 </td></tr></table></div>
 </div>
@@ -886,7 +983,7 @@ formats are:</p>
 </div>
 <div class="literal-block-wrapper docutils container" id="id16">
 <div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id16" title="Permalink to this code">¶</a></div>
-<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">D</span><span class="p">:</span><span class="o">/</span><span class="n">libOmexMeta</span><span class="o">/</span><span class="n">docs</span><span class="o">/</span><span class="n">ExampleOutputFiles</span>\<span class="n">FromFileCpp</span><span class="o">.</span><span class="n">txt</span>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="n">triples</span> <span class="n">read</span> <span class="kn">from</span> <span class="nn">file</span>
 </pre></div>
 </td></tr></table></div>
 </div>
@@ -998,7 +1095,7 @@ formats are:</p>
 </div>
 <div class="literal-block-wrapper docutils container" id="id18">
 <div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id18" title="Permalink to this code">¶</a></div>
-<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">D</span><span class="p">:</span><span class="o">/</span><span class="n">libOmexMeta</span><span class="o">/</span><span class="n">docs</span><span class="o">/</span><span class="n">ExampleOutputFiles</span>\<span class="n">FromFileC</span><span class="o">.</span><span class="n">txt</span>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="n">triples</span> <span class="n">read</span> <span class="kn">from</span> <span class="nn">file</span>
 </pre></div>
 </td></tr></table></div>
 </div>
@@ -1107,12 +1204,10 @@ formats are:</p>
  7
  8
  9
-10
-11</pre></div></td><td class="code"><div class="highlight"><pre><span></span>&lt;?xml version=&quot;1.1&quot; encoding=&quot;utf-8&quot;?&gt;
+10</pre></div></td><td class="code"><div class="highlight"><pre><span></span>&lt;?xml version=&quot;1.1&quot; encoding=&quot;utf-8&quot;?&gt;
 &lt;rdf:RDF xmlns:OMEXlib=&quot;http://omex-library.org/&quot;
    xmlns:bqbiol=&quot;http://biomodels.net/biology-qualifiers/&quot;
    xmlns:local=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#&quot;
-   xmlns:myOMEX=&quot;http://omex-library.org/NewOmex.omex/&quot;
    xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;&gt;
   &lt;rdf:Description rdf:about=&quot;http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0000&quot;&gt;
     &lt;bqbiol:is rdf:resource=&quot;https://identifiers.org/uniprot/PD12345&quot;/&gt;
@@ -1232,7 +1327,25 @@ formats are:</p>
 </div>
 <div class="literal-block-wrapper docutils container" id="id22">
 <div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id22" title="Permalink to this code">¶</a></div>
-<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">D</span><span class="p">:</span><span class="o">/</span><span class="n">libOmexMeta</span><span class="o">/</span><span class="n">docs</span><span class="o">/</span><span class="n">ExampleOutputFiles</span>\<span class="n">AddFromFileCpp</span><span class="o">.</span><span class="n">txt</span>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="highlight"><pre><span></span>&lt;?xml version=&quot;1.1&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;rdf:RDF xmlns:OMEXlib=&quot;http://omex-library.org/&quot;
+   xmlns:bqbiol=&quot;http://biomodels.net/biology-qualifiers/&quot;
+   xmlns:local=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#&quot;
+   xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;&gt;
+  &lt;rdf:Description rdf:about=&quot;http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0000&quot;&gt;
+    &lt;bqbiol:is rdf:resource=&quot;https://identifiers.org/uniprot/PD12345&quot;/&gt;
+  &lt;/rdf:Description&gt;
+&lt;/rdf:RDF&gt;
+
 </pre></div>
 </td></tr></table></div>
 </div>
@@ -1370,7 +1483,23 @@ formats are:</p>
 </div>
 <div class="literal-block-wrapper docutils container" id="id24">
 <div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id24" title="Permalink to this code">¶</a></div>
-<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">D</span><span class="p">:</span><span class="o">/</span><span class="n">libOmexMeta</span><span class="o">/</span><span class="n">docs</span><span class="o">/</span><span class="n">ExampleOutputFiles</span>\<span class="n">AddFromFileC</span><span class="o">.</span><span class="n">txt</span>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre><span></span>&lt;?xml version=&quot;1.1&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;rdf:RDF xmlns:OMEXlib=&quot;http://omex-library.org/&quot;
+   xmlns:bqbiol=&quot;http://biomodels.net/biology-qualifiers/&quot;
+   xmlns:local=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#&quot;
+   xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;&gt;
+  &lt;rdf:Description rdf:about=&quot;http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0000&quot;&gt;
+    &lt;bqbiol:is rdf:resource=&quot;https://identifiers.org/uniprot/PD12345&quot;/&gt;
+  &lt;/rdf:Description&gt;
+&lt;/rdf:RDF&gt;
 </pre></div>
 </td></tr></table></div>
 </div>

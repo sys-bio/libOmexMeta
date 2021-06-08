@@ -1,0 +1,628 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+  <compounddef id="classomexmeta_1_1IRDF" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>omexmeta::IRDF</compoundname>
+    <derivedcompoundref refid="classomexmeta_1_1RDF" prot="public" virt="non-virtual">omexmeta::RDF</derivedcompoundref>
+    <includes refid="IRDF_8h" local="no">IRDF.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classomexmeta_1_1IRDF_1a2086b9e03996090d9ae0d47980d21362" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>OmexMetaXmlType</type>
+        <definition>virtual OmexMetaXmlType omexmeta::IRDF::getXmlType</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getXmlType</name>
+        <reimplementedby refid="classomexmeta_1_1RDF_1a501c173fc1b60932391f5f7a3ff8212e">getXmlType</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/IRDF.h" line="29" column="33"/>
+      </memberdef>
+      <memberdef kind="function" id="classomexmeta_1_1IRDF_1a842d156fe9fd94ac2762f813cb1e8a44" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void omexmeta::IRDF::setXmlType</definition>
+        <argsstring>(OmexMetaXmlType xmlType)=0</argsstring>
+        <name>setXmlType</name>
+        <reimplementedby refid="classomexmeta_1_1RDF_1a72705a830be2b6d6ed40d2cb65136335">setXmlType</reimplementedby>
+        <param>
+          <type>OmexMetaXmlType</type>
+          <declname>xmlType</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/IRDF.h" line="30" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classomexmeta_1_1IRDF_1a5be6df9c2dfe0ac487f80fd280cda45a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>const std::string &amp;</type>
+        <definition>virtual const std::string&amp; omexmeta::IRDF::getRepositoryUri</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getRepositoryUri</name>
+        <reimplementedby refid="classomexmeta_1_1RDF_1ae4ba9a6a862c4acce2f6757a99b4c4c2">getRepositoryUri</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/IRDF.h" line="31" column="35"/>
+      </memberdef>
+      <memberdef kind="function" id="classomexmeta_1_1IRDF_1a5cbbc6f0c8364656cf7beb27c9f29fa4" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void omexmeta::IRDF::setRepositoryUri</definition>
+        <argsstring>(const std::string &amp;repositoryName)=0</argsstring>
+        <name>setRepositoryUri</name>
+        <reimplementedby refid="classomexmeta_1_1RDF_1a9f35a52ca041be0f036197989cdca3e7">setRepositoryUri</reimplementedby>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>repositoryName</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/IRDF.h" line="32" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classomexmeta_1_1IRDF_1aea1cc8d44420baade3246b7fa9cb937f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>const std::string &amp;</type>
+        <definition>virtual const std::string&amp; omexmeta::IRDF::getArchiveUri</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getArchiveUri</name>
+        <reimplementedby refid="classomexmeta_1_1RDF_1a6cba8783aa84a3df928825ce44555733">getArchiveUri</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/IRDF.h" line="33" column="35"/>
+      </memberdef>
+      <memberdef kind="function" id="classomexmeta_1_1IRDF_1a2a441ed8298f7d743dc4ba5aa83b8eef" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void omexmeta::IRDF::setArchiveUri</definition>
+        <argsstring>(const std::string &amp;archiveName)=0</argsstring>
+        <name>setArchiveUri</name>
+        <reimplementedby refid="classomexmeta_1_1RDF_1aabb921ecd37e3e9fc0e29066b658bf59">setArchiveUri</reimplementedby>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>archiveName</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/IRDF.h" line="34" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classomexmeta_1_1IRDF_1a0e2ab7f825c02de3d038f6165490abc3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>const std::string &amp;</type>
+        <definition>virtual const std::string&amp; omexmeta::IRDF::getModelUri</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getModelUri</name>
+        <reimplementedby refid="classomexmeta_1_1RDF_1a0529edb78dde0798541cdc9761e2a0e7">getModelUri</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/IRDF.h" line="35" column="35"/>
+      </memberdef>
+      <memberdef kind="function" id="classomexmeta_1_1IRDF_1a3740c0f6591c94dd7ff6cca94382a43a" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void omexmeta::IRDF::setModelUri</definition>
+        <argsstring>(std::string modelName)=0</argsstring>
+        <name>setModelUri</name>
+        <reimplementedby refid="classomexmeta_1_1RDF_1a0c6ec28bb9cd9730224331ed69d41cad">setModelUri</reimplementedby>
+        <param>
+          <type>std::string</type>
+          <declname>modelName</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/IRDF.h" line="36" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classomexmeta_1_1IRDF_1af50f054c1e3520a00b587e1961e9fbea" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>const std::string &amp;</type>
+        <definition>virtual const std::string&amp; omexmeta::IRDF::getLocalUri</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getLocalUri</name>
+        <reimplementedby refid="classomexmeta_1_1RDF_1a7399a80108553b138bf168a76f8a4adf">getLocalUri</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/IRDF.h" line="37" column="35"/>
+      </memberdef>
+      <memberdef kind="function" id="classomexmeta_1_1IRDF_1aecfe18ec1c54af5308079656f4e94add" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>int</type>
+        <definition>virtual int omexmeta::IRDF::size</definition>
+        <argsstring>() const =0</argsstring>
+        <name>size</name>
+        <reimplementedby refid="classomexmeta_1_1RDF_1a1ebd37b6dbce97660ed48031686d7f30">size</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/IRDF.h" line="38" column="21"/>
+      </memberdef>
+      <memberdef kind="function" id="classomexmeta_1_1IRDF_1a7677907fb2f50601910db2fa950a8004" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool omexmeta::IRDF::empty</definition>
+        <argsstring>() const =0</argsstring>
+        <name>empty</name>
+        <reimplementedby refid="classomexmeta_1_1RDF_1a6d8ab2edd8f798006ee77a4202bf462e">empty</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/IRDF.h" line="39" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classomexmeta_1_1IRDF_1a75d577cd26b9ecaa564df281e176cf9d" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void omexmeta::IRDF::addFromString</definition>
+        <argsstring>(const std::string &amp;str, const std::string &amp;syntax=&quot;guess&quot;)=0</argsstring>
+        <name>addFromString</name>
+        <reimplementedby refid="classomexmeta_1_1RDF_1ad403d7c62ef1cf902fcb8b65c5ad641f">addFromString</reimplementedby>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>str</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>syntax</declname>
+          <defval>&quot;guess&quot;</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/IRDF.h" line="40" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classomexmeta_1_1IRDF_1a65870ee3c430ed69b5725f5788d3d13f" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void omexmeta::IRDF::addFromUri</definition>
+        <argsstring>(const std::string &amp;uri_string, const std::string &amp;syntax=&quot;guess&quot;)=0</argsstring>
+        <name>addFromUri</name>
+        <reimplementedby refid="classomexmeta_1_1RDF_1a602c7ca8ca94b151dd97b8a513cef0a4">addFromUri</reimplementedby>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>uri_string</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>syntax</declname>
+          <defval>&quot;guess&quot;</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/IRDF.h" line="41" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classomexmeta_1_1IRDF_1aa5e41fde69be8051f767d219dfa680b6" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void omexmeta::IRDF::addFromFile</definition>
+        <argsstring>(const std::string &amp;filename, const std::string &amp;syntax)=0</argsstring>
+        <name>addFromFile</name>
+        <reimplementedby refid="classomexmeta_1_1RDF_1af62debd6edc14e6ff06c28d7726cfef4">addFromFile</reimplementedby>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>filename</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>syntax</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/IRDF.h" line="42" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classomexmeta_1_1IRDF_1ae686e65ae3cff9025c80abfb5c7643b2" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::unordered_map&lt; std::string, std::string &gt;</type>
+        <definition>virtual std::unordered_map&lt;std::string, std::string&gt; omexmeta::IRDF::propagateNamespacesFromParser</definition>
+        <argsstring>(const std::vector&lt; std::string &gt; &amp;seen_namespaces)=0</argsstring>
+        <name>propagateNamespacesFromParser</name>
+        <reimplementedby refid="classomexmeta_1_1RDF_1a867deb1681500712e942b61e4e1460c6">propagateNamespacesFromParser</reimplementedby>
+        <param>
+          <type>const std::vector&lt; std::string &gt; &amp;</type>
+          <declname>seen_namespaces</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/IRDF.h" line="43" column="36"/>
+      </memberdef>
+      <memberdef kind="function" id="classomexmeta_1_1IRDF_1ab7dc920117857da3e4bb8a33b2abde22" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::string</type>
+        <definition>virtual std::string omexmeta::IRDF::toString</definition>
+        <argsstring>(const std::string &amp;syntax=&quot;turtle&quot;, const char *mime_type=nullptr, const char *type_uri=nullptr)=0</argsstring>
+        <name>toString</name>
+        <reimplementedby refid="classomexmeta_1_1RDF_1a1fa12a4283c03d068f03ae33c5114c54">toString</reimplementedby>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>syntax</declname>
+          <defval>&quot;turtle&quot;</defval>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>mime_type</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>type_uri</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/IRDF.h" line="44" column="29"/>
+      </memberdef>
+      <memberdef kind="function" id="classomexmeta_1_1IRDF_1abb9b34078ac32441906715ad723585db" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void omexmeta::IRDF::toFile</definition>
+        <argsstring>(const std::string &amp;filename, const std::string &amp;syntax=&quot;turtle&quot;, const char *mime_type=nullptr, const char *type_uri=nullptr)=0</argsstring>
+        <name>toFile</name>
+        <reimplementedby refid="classomexmeta_1_1RDF_1a3ca48d8b9790b4ccd091204c4d9a0c05">toFile</reimplementedby>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>filename</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>syntax</declname>
+          <defval>&quot;turtle&quot;</defval>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>mime_type</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>type_uri</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/IRDF.h" line="45" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classomexmeta_1_1IRDF_1a9aea8384b8020a56e0a3cdaddd4fc2a8" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref></type>
+        <definition>virtual Editor omexmeta::IRDF::toEditor</definition>
+        <argsstring>(const std::string &amp;xml, bool generate_new_metaids=false, bool sbml_semantic_extraction=true)=0</argsstring>
+        <name>toEditor</name>
+        <reimplementedby refid="classomexmeta_1_1RDF_1a99bf8d2fd11cc200501ead29f4a8656f">toEditor</reimplementedby>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>xml</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>generate_new_metaids</declname>
+          <defval>false</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>sbml_semantic_extraction</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/IRDF.h" line="46" column="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classomexmeta_1_1IRDF_1a675b2df700c826523be8f413dc9d3879" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> *</type>
+        <definition>virtual Editor* omexmeta::IRDF::toEditorPtr</definition>
+        <argsstring>(const std::string &amp;xml, bool generate_new_metaids=false, bool sbml_semantic_extraction=true)=0</argsstring>
+        <name>toEditorPtr</name>
+        <reimplementedby refid="classomexmeta_1_1RDF_1a072496a750958bd7c59471bb5229f0bb">toEditorPtr</reimplementedby>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>xml</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>generate_new_metaids</declname>
+          <defval>false</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>sbml_semantic_extraction</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/IRDF.h" line="47" column="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classomexmeta_1_1IRDF_1aa5cd6b46b5d9375df9d77fadad10f771" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>librdf_model *</type>
+        <definition>virtual librdf_model* omexmeta::IRDF::getModel</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getModel</name>
+        <reimplementedby refid="classomexmeta_1_1RDF_1a081395bf83bcbbbf7b1ca5df10642b5e">getModel</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/IRDF.h" line="48" column="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classomexmeta_1_1IRDF_1aa2cdee7e3a85019f36299756bd11158a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>librdf_storage *</type>
+        <definition>virtual librdf_storage* omexmeta::IRDF::getStorage</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getStorage</name>
+        <reimplementedby refid="classomexmeta_1_1RDF_1aa143aa353145b64fd6e715ae83fe40af">getStorage</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/IRDF.h" line="49" column="32"/>
+      </memberdef>
+      <memberdef kind="function" id="classomexmeta_1_1IRDF_1a2a69a4b100bd6ee9c4fc81c9096d1e77" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>int</type>
+        <definition>virtual int omexmeta::IRDF::commitTransaction</definition>
+        <argsstring>() const =0</argsstring>
+        <name>commitTransaction</name>
+        <reimplementedby refid="classomexmeta_1_1RDF_1ab833a4b13d27b5c7e3667dcfe2937e98">commitTransaction</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/IRDF.h" line="50" column="21"/>
+      </memberdef>
+      <memberdef kind="function" id="classomexmeta_1_1IRDF_1a8cf7f2394f706e98aae511126e5ce7bf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>int</type>
+        <definition>virtual int omexmeta::IRDF::startTransaction</definition>
+        <argsstring>() const =0</argsstring>
+        <name>startTransaction</name>
+        <reimplementedby refid="classomexmeta_1_1RDF_1a6a9df7e508c0a516e793614e12771759">startTransaction</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/IRDF.h" line="51" column="21"/>
+      </memberdef>
+      <memberdef kind="function" id="classomexmeta_1_1IRDF_1aaccc0e3c4fb1b7692d15ecb75216ccb3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>void *</type>
+        <definition>virtual void* omexmeta::IRDF::getTransactionHandle</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getTransactionHandle</name>
+        <reimplementedby refid="classomexmeta_1_1RDF_1a752cdbce8114f3bb9b39734c263ac98b">getTransactionHandle</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/IRDF.h" line="52" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classomexmeta_1_1IRDF_1ad2e4378996118885b2105b00a0986d2c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>int</type>
+        <definition>virtual int omexmeta::IRDF::startTransactionWithHandle</definition>
+        <argsstring>(void *handle) const =0</argsstring>
+        <name>startTransactionWithHandle</name>
+        <reimplementedby refid="classomexmeta_1_1RDF_1a8962e4cfd044a0a76fc09f35d125c40a">startTransactionWithHandle</reimplementedby>
+        <param>
+          <type>void *</type>
+          <declname>handle</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/IRDF.h" line="53" column="21"/>
+      </memberdef>
+      <memberdef kind="function" id="classomexmeta_1_1IRDF_1a7fefdb7f8725c44d77ddb2194ad09ff8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>int</type>
+        <definition>virtual int omexmeta::IRDF::getTransactionRollback</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getTransactionRollback</name>
+        <reimplementedby refid="classomexmeta_1_1RDF_1a3fd8f1647bbe570d1f4efdffe378d624">getTransactionRollback</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/IRDF.h" line="54" column="21"/>
+      </memberdef>
+      <memberdef kind="function" id="classomexmeta_1_1IRDF_1adb6598e962e1f7fb8f5acb05a31d9364" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::string</type>
+        <definition>virtual std::string omexmeta::IRDF::queryResultsAsString</definition>
+        <argsstring>(const std::string &amp;query_str, const std::string &amp;results_syntax) const =0</argsstring>
+        <name>queryResultsAsString</name>
+        <reimplementedby refid="classomexmeta_1_1RDF_1a6b6244dac65b1cdfab6f450646c857b6">queryResultsAsString</reimplementedby>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>query_str</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>results_syntax</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/IRDF.h" line="55" column="29"/>
+      </memberdef>
+      <memberdef kind="function" id="classomexmeta_1_1IRDF_1a37c014e34fa398b5818db14fedbec8d3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>ResultsMap</type>
+        <definition>virtual ResultsMap omexmeta::IRDF::queryResultsAsMap</definition>
+        <argsstring>(const std::string &amp;query_str) const =0</argsstring>
+        <name>queryResultsAsMap</name>
+        <reimplementedby refid="classomexmeta_1_1RDF_1a44015b8feae5e1b8f816501f44530732">queryResultsAsMap</reimplementedby>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>query_str</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/IRDF.h" line="56" column="28"/>
+      </memberdef>
+      <memberdef kind="function" id="classomexmeta_1_1IRDF_1a0ff7b6b9535210e9e0174adbe548cc5c" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void omexmeta::IRDF::addTriple</definition>
+        <argsstring>(const Triple &amp;triple)=0</argsstring>
+        <name>addTriple</name>
+        <reimplementedby refid="classomexmeta_1_1RDF_1ab6b74c206a0b9cbce946f9d7bd8d1f56">addTriple</reimplementedby>
+        <param>
+          <type>const <ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref> &amp;</type>
+          <declname>triple</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/IRDF.h" line="57" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classomexmeta_1_1IRDF_1a45c579cbc2f6fe177bc51f97747cf949" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void omexmeta::IRDF::addTriples</definition>
+        <argsstring>(Triples &amp;triples)=0</argsstring>
+        <name>addTriples</name>
+        <reimplementedby refid="classomexmeta_1_1RDF_1aa8f640de046b3c1bd43de0fe5aba0958">addTriples</reimplementedby>
+        <param>
+          <type><ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref> &amp;</type>
+          <declname>triples</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/IRDF.h" line="58" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classomexmeta_1_1IRDF_1af30397ff81b27bdaede2c9491b7558ee" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classomexmeta_1_1UriHandler" kindref="compound">UriHandler</ref> &amp;</type>
+        <definition>virtual UriHandler&amp; omexmeta::IRDF::getUriHandler</definition>
+        <argsstring>()=0</argsstring>
+        <name>getUriHandler</name>
+        <reimplementedby refid="classomexmeta_1_1RDF_1a9565b7c0ad81abed2243c0a76f1ebea3">getUriHandler</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/IRDF.h" line="59" column="28"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>public interface for <ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref> types. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>for developers. <ref refid="classThis" kindref="compound">This</ref> interface was introduced ad-hoc for the sake of being able to mock <ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref> in test classes. It is therefore expected that the interface segregation principle is broken here. However, it is unlikely that we&apos;ll have need for another <ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref> class - if we do, then we&apos;ll rethink the design of this interface. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>omexmeta::IRDF</label>
+        <link refid="classomexmeta_1_1IRDF"/>
+      </node>
+      <node id="2">
+        <label>omexmeta::RDF</label>
+        <link refid="classomexmeta_1_1RDF"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="src/omexmeta/include/omexmeta/IRDF.h" line="26" column="5" bodyfile="src/omexmeta/include/omexmeta/IRDF.h" bodystart="26" bodyend="60"/>
+    <listofallmembers>
+      <member refid="classomexmeta_1_1IRDF_1aa5e41fde69be8051f767d219dfa680b6" prot="public" virt="pure-virtual"><scope>omexmeta::IRDF</scope><name>addFromFile</name></member>
+      <member refid="classomexmeta_1_1IRDF_1a75d577cd26b9ecaa564df281e176cf9d" prot="public" virt="pure-virtual"><scope>omexmeta::IRDF</scope><name>addFromString</name></member>
+      <member refid="classomexmeta_1_1IRDF_1a65870ee3c430ed69b5725f5788d3d13f" prot="public" virt="pure-virtual"><scope>omexmeta::IRDF</scope><name>addFromUri</name></member>
+      <member refid="classomexmeta_1_1IRDF_1a0ff7b6b9535210e9e0174adbe548cc5c" prot="public" virt="pure-virtual"><scope>omexmeta::IRDF</scope><name>addTriple</name></member>
+      <member refid="classomexmeta_1_1IRDF_1a45c579cbc2f6fe177bc51f97747cf949" prot="public" virt="pure-virtual"><scope>omexmeta::IRDF</scope><name>addTriples</name></member>
+      <member refid="classomexmeta_1_1IRDF_1a2a69a4b100bd6ee9c4fc81c9096d1e77" prot="public" virt="pure-virtual"><scope>omexmeta::IRDF</scope><name>commitTransaction</name></member>
+      <member refid="classomexmeta_1_1IRDF_1a7677907fb2f50601910db2fa950a8004" prot="public" virt="pure-virtual"><scope>omexmeta::IRDF</scope><name>empty</name></member>
+      <member refid="classomexmeta_1_1IRDF_1aea1cc8d44420baade3246b7fa9cb937f" prot="public" virt="pure-virtual"><scope>omexmeta::IRDF</scope><name>getArchiveUri</name></member>
+      <member refid="classomexmeta_1_1IRDF_1af50f054c1e3520a00b587e1961e9fbea" prot="public" virt="pure-virtual"><scope>omexmeta::IRDF</scope><name>getLocalUri</name></member>
+      <member refid="classomexmeta_1_1IRDF_1aa5cd6b46b5d9375df9d77fadad10f771" prot="public" virt="pure-virtual"><scope>omexmeta::IRDF</scope><name>getModel</name></member>
+      <member refid="classomexmeta_1_1IRDF_1a0e2ab7f825c02de3d038f6165490abc3" prot="public" virt="pure-virtual"><scope>omexmeta::IRDF</scope><name>getModelUri</name></member>
+      <member refid="classomexmeta_1_1IRDF_1a5be6df9c2dfe0ac487f80fd280cda45a" prot="public" virt="pure-virtual"><scope>omexmeta::IRDF</scope><name>getRepositoryUri</name></member>
+      <member refid="classomexmeta_1_1IRDF_1aa2cdee7e3a85019f36299756bd11158a" prot="public" virt="pure-virtual"><scope>omexmeta::IRDF</scope><name>getStorage</name></member>
+      <member refid="classomexmeta_1_1IRDF_1aaccc0e3c4fb1b7692d15ecb75216ccb3" prot="public" virt="pure-virtual"><scope>omexmeta::IRDF</scope><name>getTransactionHandle</name></member>
+      <member refid="classomexmeta_1_1IRDF_1a7fefdb7f8725c44d77ddb2194ad09ff8" prot="public" virt="pure-virtual"><scope>omexmeta::IRDF</scope><name>getTransactionRollback</name></member>
+      <member refid="classomexmeta_1_1IRDF_1af30397ff81b27bdaede2c9491b7558ee" prot="public" virt="pure-virtual"><scope>omexmeta::IRDF</scope><name>getUriHandler</name></member>
+      <member refid="classomexmeta_1_1IRDF_1a2086b9e03996090d9ae0d47980d21362" prot="public" virt="pure-virtual"><scope>omexmeta::IRDF</scope><name>getXmlType</name></member>
+      <member refid="classomexmeta_1_1IRDF_1ae686e65ae3cff9025c80abfb5c7643b2" prot="public" virt="pure-virtual"><scope>omexmeta::IRDF</scope><name>propagateNamespacesFromParser</name></member>
+      <member refid="classomexmeta_1_1IRDF_1a37c014e34fa398b5818db14fedbec8d3" prot="public" virt="pure-virtual"><scope>omexmeta::IRDF</scope><name>queryResultsAsMap</name></member>
+      <member refid="classomexmeta_1_1IRDF_1adb6598e962e1f7fb8f5acb05a31d9364" prot="public" virt="pure-virtual"><scope>omexmeta::IRDF</scope><name>queryResultsAsString</name></member>
+      <member refid="classomexmeta_1_1IRDF_1a2a441ed8298f7d743dc4ba5aa83b8eef" prot="public" virt="pure-virtual"><scope>omexmeta::IRDF</scope><name>setArchiveUri</name></member>
+      <member refid="classomexmeta_1_1IRDF_1a3740c0f6591c94dd7ff6cca94382a43a" prot="public" virt="pure-virtual"><scope>omexmeta::IRDF</scope><name>setModelUri</name></member>
+      <member refid="classomexmeta_1_1IRDF_1a5cbbc6f0c8364656cf7beb27c9f29fa4" prot="public" virt="pure-virtual"><scope>omexmeta::IRDF</scope><name>setRepositoryUri</name></member>
+      <member refid="classomexmeta_1_1IRDF_1a842d156fe9fd94ac2762f813cb1e8a44" prot="public" virt="pure-virtual"><scope>omexmeta::IRDF</scope><name>setXmlType</name></member>
+      <member refid="classomexmeta_1_1IRDF_1aecfe18ec1c54af5308079656f4e94add" prot="public" virt="pure-virtual"><scope>omexmeta::IRDF</scope><name>size</name></member>
+      <member refid="classomexmeta_1_1IRDF_1a8cf7f2394f706e98aae511126e5ce7bf" prot="public" virt="pure-virtual"><scope>omexmeta::IRDF</scope><name>startTransaction</name></member>
+      <member refid="classomexmeta_1_1IRDF_1ad2e4378996118885b2105b00a0986d2c" prot="public" virt="pure-virtual"><scope>omexmeta::IRDF</scope><name>startTransactionWithHandle</name></member>
+      <member refid="classomexmeta_1_1IRDF_1a9aea8384b8020a56e0a3cdaddd4fc2a8" prot="public" virt="pure-virtual"><scope>omexmeta::IRDF</scope><name>toEditor</name></member>
+      <member refid="classomexmeta_1_1IRDF_1a675b2df700c826523be8f413dc9d3879" prot="public" virt="pure-virtual"><scope>omexmeta::IRDF</scope><name>toEditorPtr</name></member>
+      <member refid="classomexmeta_1_1IRDF_1abb9b34078ac32441906715ad723585db" prot="public" virt="pure-virtual"><scope>omexmeta::IRDF</scope><name>toFile</name></member>
+      <member refid="classomexmeta_1_1IRDF_1ab7dc920117857da3e4bb8a33b2abde22" prot="public" virt="pure-virtual"><scope>omexmeta::IRDF</scope><name>toString</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

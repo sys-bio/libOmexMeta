@@ -1,14 +1,13 @@
 //
 // Created by Ciaran on 5/17/2020.
 //
-#include <fstream>
-#include "gtest/gtest.h"
-#include "redland/World.h"
-#include "redland/LibrdfParser.h"
+#include "filesystem"
 #include "iostream"
-#include "filesystem"
-#include "filesystem"
 #include "raptor2.h"
+#include "redland/LibrdfParser.h"
+#include "redland/LibrdfWorld.h"
+#include "gtest/gtest.h"
+#include <fstream>
 //#include "AnnotationSamples.h"
 
 using namespace redland;

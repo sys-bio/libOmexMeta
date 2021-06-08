@@ -100,7 +100,7 @@ namespace redland {
 
     protected:
         // starts as empty statement
-        librdf_statement *statement_ = librdf_new_statement(World::getWorld());
+        librdf_statement *statement_ = librdf_new_statement(LibrdfWorld::getWorld());
 
         /*
          * @brief update the contained statement with current

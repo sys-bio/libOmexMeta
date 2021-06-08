@@ -3,7 +3,7 @@
 //
 #include "redland/LibrdfNode.h"
 #include "redland/LibrdfStatement.h"
-#include "redland/World.h"
+#include "redland/LibrdfWorld.h"
 #include "gtest/gtest.h"
 
 using namespace redland;
@@ -17,6 +17,13 @@ public:
 
 TEST_F(LibrdfNodeTests, TestCreate) {
     std::string expected = "https://notarealaddress.com";
+    LibrdfNode node = LibrdfNode::fromUriString(expected);
+    std::string actual = node.str();
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+TEST_F(LibrdfNodeTests, UriNodeUrnMiriam) {
+    std::string expected = "urn:miriam:reactome:R12345";
     LibrdfNode node = LibrdfNode::fromUriString(expected);
     std::string actual = node.str();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
@@ -124,7 +131,7 @@ TEST_F(LibrdfNodeTests, TestUseNodesToMakeARawLibrdfStatementObj) {
     LibrdfNode resource = LibrdfNode::fromUriString("resource");
 
     librdf_statement *stmt = librdf_new_statement_from_nodes(
-            World::getWorld(), subject.get(), predicate.get(), resource.get());
+            LibrdfWorld::getWorld(), subject.get(), predicate.get(), resource.get());
 
     librdf_node *n = librdf_statement_get_subject(stmt);
     librdf_uri *uri = librdf_node_get_uri(n);
@@ -254,7 +261,7 @@ TEST_F(LibrdfNodeTests, TestCopyNodeUri) {
  * Uri works as expected.
  */
 TEST_F(LibrdfNodeTests, TestCopyNodeUriNoWrapper) {
-    librdf_uri *uri1 = librdf_new_uri(World::getWorld(), (const unsigned char *) "https://uri.com");
+    librdf_uri *uri1 = librdf_new_uri(LibrdfWorld::getWorld(), (const unsigned char *) "https://uri.com");
     librdf_uri *uri2 = librdf_new_uri_from_uri(uri1);
     int expected = 2;
     int uri1_count = librdf_uri_get_usage(uri1);
@@ -276,8 +283,8 @@ TEST_F(LibrdfNodeTests, TestCopyNodeLiteral) {
 
 TEST_F(LibrdfNodeTests, TestTwoNodesUriCountDifferentContentUsingRaptor) {
     // n1 and n2 are two different nodes
-    librdf_node *n1 = librdf_new_node_from_uri_string(World::getWorld(), (const unsigned char *) "node1");
-    librdf_node *n2 = librdf_new_node_from_uri_string(World::getWorld(), (const unsigned char *) "node2");
+    librdf_node *n1 = librdf_new_node_from_uri_string(LibrdfWorld::getWorld(), (const unsigned char *) "node1");
+    librdf_node *n2 = librdf_new_node_from_uri_string(LibrdfWorld::getWorld(), (const unsigned char *) "node2");
 
     ASSERT_EQ(1, n1->usage);
     ASSERT_EQ(1, n2->usage);
@@ -289,8 +296,8 @@ TEST_F(LibrdfNodeTests, TestTwoNodesUriCountDifferentContentUsingRaptor) {
 
 TEST_F(LibrdfNodeTests, TestTwoNodesUriCountSameContentUsingRaptor) {
     // n1 and n2 are different nodes but they share the same uri
-    librdf_node *n1 = librdf_new_node_from_uri_string(World::getWorld(), (const unsigned char *) "node1");
-    librdf_node *n2 = librdf_new_node_from_uri_string(World::getWorld(), (const unsigned char *) "node1");
+    librdf_node *n1 = librdf_new_node_from_uri_string(LibrdfWorld::getWorld(), (const unsigned char *) "node1");
+    librdf_node *n2 = librdf_new_node_from_uri_string(LibrdfWorld::getWorld(), (const unsigned char *) "node1");
 
     ASSERT_EQ(1, n1->usage);
     ASSERT_EQ(1, n2->usage);

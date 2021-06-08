@@ -10,9 +10,16 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
-# import os
-# import sys
-# sys.path.insert(0, os.path.abspath('.'))
+import os
+from os.path import dirname, join, isdir, isfile
+import sys
+
+docs_source = dirname(__file__)
+docs_root = dirname(docs_source)
+libomexmeta_root = dirname(docs_root)
+libomexmeta_source = join(libomexmeta_root, "src")
+
+sys.path += ["/Users/ciaranwelsh/Documents/libOmexMeta/cmake-build-release/site-packages"]
 
 
 # -- Project information -----------------------------------------------------
@@ -22,7 +29,7 @@ copyright = '2020, Ciaran Welsh'
 author = 'Ciaran Welsh'
 
 # The full version, including alpha/beta/rc tags
-release = '1.2.7'
+release = '1.2.8'
 
 
 # -- General configuration ---------------------------------------------------
@@ -31,36 +38,19 @@ release = '1.2.7'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-    "breathe",
+    "breathe", # links to doxygen generated docs.
     # "exhale",
     # 'sphinx.ext.pngmath',
-    'sphinx.ext.todo',
-    "sphinxcontrib.bibtex",
-    "sphinx_tabs.tabs",
-    "sphinx.ext.doctest"
+    'sphinx.ext.todo',  #provides the todo box
+    "sphinxcontrib.bibtex", # references
+    "sphinx_tabs.tabs", # provides the tab construct
+    "sphinx.ext.doctest", # not used.
+    "sphinx.ext.autodoc",  # semi auto python docs
+    "sphinx.ext.napoleon" # enable google/numpy style docs
 ]
 
-doctest_global_setup = '''
-try:
-    
-    import os
-    import site
-    import unittest
-    
-    # take care of directories so we can test the pyomexmeta api
-    docs_dir = os.path.abspath(os.path.dirname(__file__))
-    proj_dir = os.path.dirname(docs_dir)
-    src_dir = os.path.join(proj_dir, "src")
-    pyomexmeta_dir = os.path.join(src_dir, "pyomexmeta")
-    
-    site.addsitedir(src_dir)
-    
-    from pyomexmeta import PyOmexMetaAPI
-except ImportError as e:
-    print("could not import pyomexmeta, is it installed? ")
-    raise e
-'''
-# Breathe Configuration
+bibtex_bibfiles = [os.path.join(os.path.dirname(__file__), 'refs.bib')]
+
 breathe_default_project = "libomexmeta"
 breathe_projects = {
     "libomexmeta": r"/Users/ciaranwelsh/Documents/libOmexMeta/docs/doxygen-output/xml"

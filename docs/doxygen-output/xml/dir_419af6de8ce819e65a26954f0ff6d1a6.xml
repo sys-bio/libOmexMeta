@@ -14,11 +14,11 @@
     <innerfile refid="LibrdfStorage_8h">LibrdfStorage.h</innerfile>
     <innerfile refid="LibrdfStream_8h">LibrdfStream.h</innerfile>
     <innerfile refid="LibrdfUri_8h">LibrdfUri.h</innerfile>
+    <innerfile refid="LibrdfWorld_8h">LibrdfWorld.h</innerfile>
     <innerfile refid="raptor2_8h">raptor2.h</innerfile>
     <innerfile refid="RaptorIOStream_8h">RaptorIOStream.h</innerfile>
     <innerfile refid="rasqal_8h">rasqal.h</innerfile>
     <innerfile refid="RedlandAPI_8h">RedlandAPI.h</innerfile>
-    <innerfile refid="World_8h">World.h</innerfile>
     <briefdescription>
     </briefdescription>
     <detaileddescription>

@@ -20,7 +20,7 @@ namespace omexmeta {
          * @brief constructor
          * takes a non-owning RDF*
          */
-        VCardTranslator(RDF *rdf);
+        explicit VCardTranslator(RDF *rdf);
 
         void translate();
 

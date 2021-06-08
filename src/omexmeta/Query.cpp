@@ -12,7 +12,7 @@ namespace omexmeta {
     Query::Query(librdf_model *model, std::string query)
         : model_(model), query_(std::move(query)) {
         q_ = librdf_new_query(
-                World::getWorld(), (const char *) "sparql",
+                LibrdfWorld::getWorld(), (const char *) "sparql",
                 nullptr, (const unsigned char *) query_.c_str(),
                 nullptr);
         if (!q_) {
@@ -114,10 +114,14 @@ namespace omexmeta {
     }
 
     std::string Query::getBindingValueByName(const std::string &name) {
-        LibrdfNode node(librdf_query_results_get_binding_value_by_name(
-                query_results_, (const char *) name.c_str()));
-        std::string s = node.str();
-        return s;
+        librdf_node* n = librdf_query_results_get_binding_value_by_name(
+                query_results_, (const char *) name.c_str());
+        if (n){
+            LibrdfNode node(n);
+            std::string s = node.str();
+            return s;
+        }
+        return std::string();
     }
 
     int Query::getBindingsCount() {

@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
   <compounddef id="classomexmeta_1_1CellMLAssistant" kind="class" language="C++" prot="public">
-    <compoundname>omexmeta::CellMLAssistant</compoundname>
-    <basecompoundref refid="classomexmeta_1_1OmexMetaXmlAssistant" prot="public" virt="non-virtual">omexmeta::OmexMetaXmlAssistant</basecompoundref>
+    <compoundname>omexmeta::OmexMetaCellML</compoundname>
+    <basecompoundref refid="classomexmeta_1_1OmexMetaXmlAssistant" prot="public" virt="non-virtual">omexmeta::OmexMetaXml</basecompoundref>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="classomexmeta_1_1CellMLAssistant_1ad0fa4e23c94197d5682a0f8e1dec0889" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::vector&lt; std::string &gt;</type>
-        <definition>std::vector&lt; std::string &gt; omexmeta::CellMLAssistant::getValidElements</definition>
+        <definition>std::vector&lt; std::string &gt; omexmeta::OmexMetaCellML::getValidElements</definition>
         <argsstring>() const override</argsstring>
         <name>getValidElements</name>
         <reimplements refid="classomexmeta_1_1OmexMetaXmlAssistant_1a3a6631e92df490f87f469abca81e1ba1">getValidElements</reimplements>
@@ -16,11 +16,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/OmexMetaXmlAssistant.h" line="87" column="21" bodyfile="src/omexmeta/OmexMetaXmlAssistant.cpp" bodystart="187" bodyend="190"/>
+        <location file="src/omexmeta/include/omexmeta/OmexMetaXml.h" line="87" column="21" bodyfile="src/omexmeta/OmexMetaXml.cpp" bodystart="187" bodyend="190"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1CellMLAssistant_1a4aaccf21ed47201abaf20d67ad7bfaab" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::string</type>
-        <definition>std::string omexmeta::CellMLAssistant::metaIdTagName</definition>
+        <definition>std::string omexmeta::OmexMetaCellML::metaIdTagName</definition>
         <argsstring>() const override</argsstring>
         <name>metaIdTagName</name>
         <reimplements refid="classomexmeta_1_1OmexMetaXmlAssistant_1adbfc8d96f2adffa35ee01726a97dbcce">metaIdTagName</reimplements>
@@ -30,11 +30,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/OmexMetaXmlAssistant.h" line="89" column="21" bodyfile="src/omexmeta/OmexMetaXmlAssistant.cpp" bodystart="192" bodyend="194"/>
+        <location file="src/omexmeta/include/omexmeta/OmexMetaXml.h" line="89" column="21" bodyfile="src/omexmeta/OmexMetaXml.cpp" bodystart="192" bodyend="194"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1CellMLAssistant_1a856b49e96c2015b5445f6921d5738388" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::string</type>
-        <definition>std::string omexmeta::CellMLAssistant::metaIdNamespace</definition>
+        <definition>std::string omexmeta::OmexMetaCellML::metaIdNamespace</definition>
         <argsstring>() const override</argsstring>
         <name>metaIdNamespace</name>
         <reimplements refid="classomexmeta_1_1OmexMetaXmlAssistant_1a9d178086ee6fe1d74e683476783ed933">metaIdNamespace</reimplements>
@@ -44,13 +44,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/OmexMetaXmlAssistant.h" line="91" column="22" bodyfile="src/omexmeta/OmexMetaXmlAssistant.cpp" bodystart="196" bodyend="198"/>
+        <location file="src/omexmeta/include/omexmeta/OmexMetaXml.h" line="91" column="22" bodyfile="src/omexmeta/OmexMetaXml.cpp" bodystart="196" bodyend="198"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1CellMLAssistant_1af619a65dd28d04dfabd1930ff4110ce0" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
         <type></type>
-        <definition>omexmeta::OmexMetaXmlAssistant::OmexMetaXmlAssistant</definition>
+        <definition>omexmeta::OmexMetaXml::OmexMetaXml</definition>
         <argsstring>(std::string xml, std::string metaid_base=&quot;MetaID&quot;, int metaid_num_digits=4, bool generate_new_metaids=false)</argsstring>
-        <name>OmexMetaXmlAssistant</name>
+        <name>OmexMetaXml</name>
         <param>
           <type>std::string</type>
           <declname>xml</declname>
@@ -76,7 +76,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/OmexMetaXmlAssistant.h" line="85" column="9" bodyfile="src/omexmeta/OmexMetaXmlAssistant.cpp" bodystart="8" bodyend="12"/>
+        <location file="src/omexmeta/include/omexmeta/OmexMetaXml.h" line="85" column="9" bodyfile="src/omexmeta/OmexMetaXml.cpp" bodystart="8" bodyend="12"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -85,11 +85,11 @@
     </detaileddescription>
     <inheritancegraph>
       <node id="2">
-        <label>omexmeta::OmexMetaXmlAssistant</label>
+        <label>omexmeta::OmexMetaXml</label>
         <link refid="classomexmeta_1_1OmexMetaXmlAssistant"/>
       </node>
       <node id="1">
-        <label>omexmeta::CellMLAssistant</label>
+        <label>omexmeta::OmexMetaCellML</label>
         <link refid="classomexmeta_1_1CellMLAssistant"/>
         <childnode refid="2" relation="public-inheritance">
         </childnode>
@@ -97,27 +97,27 @@
     </inheritancegraph>
     <collaborationgraph>
       <node id="2">
-        <label>omexmeta::OmexMetaXmlAssistant</label>
+        <label>omexmeta::OmexMetaXml</label>
         <link refid="classomexmeta_1_1OmexMetaXmlAssistant"/>
       </node>
       <node id="1">
-        <label>omexmeta::CellMLAssistant</label>
+        <label>omexmeta::OmexMetaCellML</label>
         <link refid="classomexmeta_1_1CellMLAssistant"/>
         <childnode refid="2" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="src/omexmeta/include/omexmeta/OmexMetaXmlAssistant.h" line="83" column="5" bodyfile="src/omexmeta/include/omexmeta/OmexMetaXmlAssistant.h" bodystart="83" bodyend="92"/>
+    <location file="src/omexmeta/include/omexmeta/OmexMetaXml.h" line="83" column="5" bodyfile="src/omexmeta/include/omexmeta/OmexMetaXml.h" bodystart="83" bodyend="92"/>
     <listofallmembers>
-      <member refid="classomexmeta_1_1OmexMetaXmlAssistant_1aeef7e70a554aaf70fb694297e37e7cc8" prot="public" virt="non-virtual"><scope>omexmeta::CellMLAssistant</scope><name>addMetaIds</name></member>
-      <member refid="classomexmeta_1_1OmexMetaXmlAssistant_1a9ff89057f4fe7e8cb2e25f5431bf2bb5" prot="public" virt="non-virtual"><scope>omexmeta::CellMLAssistant</scope><name>generateNewMetaids</name></member>
-      <member refid="classomexmeta_1_1OmexMetaXmlAssistant_1a69bb3ac99f1585b6f567b80e88f52642" prot="public" virt="non-virtual"><scope>omexmeta::CellMLAssistant</scope><name>getMetaidBase</name></member>
-      <member refid="classomexmeta_1_1OmexMetaXmlAssistant_1a4c9759afd4af42595a4f0a4feb913524" prot="public" virt="non-virtual"><scope>omexmeta::CellMLAssistant</scope><name>getMetaidNumDigits</name></member>
-      <member refid="classomexmeta_1_1CellMLAssistant_1ad0fa4e23c94197d5682a0f8e1dec0889" prot="public" virt="virtual"><scope>omexmeta::CellMLAssistant</scope><name>getValidElements</name></member>
-      <member refid="classomexmeta_1_1CellMLAssistant_1a856b49e96c2015b5445f6921d5738388" prot="public" virt="virtual"><scope>omexmeta::CellMLAssistant</scope><name>metaIdNamespace</name></member>
-      <member refid="classomexmeta_1_1CellMLAssistant_1a4aaccf21ed47201abaf20d67ad7bfaab" prot="public" virt="virtual"><scope>omexmeta::CellMLAssistant</scope><name>metaIdTagName</name></member>
-      <member refid="classomexmeta_1_1CellMLAssistant_1af619a65dd28d04dfabd1930ff4110ce0" prot="public" virt="non-virtual"><scope>omexmeta::CellMLAssistant</scope><name>OmexMetaXmlAssistant</name></member>
-      <member refid="classomexmeta_1_1OmexMetaXmlAssistant_1af619a65dd28d04dfabd1930ff4110ce0" prot="public" virt="non-virtual" ambiguityscope="omexmeta::OmexMetaXmlAssistant::"><scope>omexmeta::CellMLAssistant</scope><name>OmexMetaXmlAssistant</name></member>
+      <member refid="classomexmeta_1_1OmexMetaXmlAssistant_1aeef7e70a554aaf70fb694297e37e7cc8" prot="public" virt="non-virtual"><scope>omexmeta::OmexMetaCellML</scope><name>addMetaIds</name></member>
+      <member refid="classomexmeta_1_1OmexMetaXmlAssistant_1a9ff89057f4fe7e8cb2e25f5431bf2bb5" prot="public" virt="non-virtual"><scope>omexmeta::OmexMetaCellML</scope><name>generateNewMetaids</name></member>
+      <member refid="classomexmeta_1_1OmexMetaXmlAssistant_1a69bb3ac99f1585b6f567b80e88f52642" prot="public" virt="non-virtual"><scope>omexmeta::OmexMetaCellML</scope><name>getMetaidBase</name></member>
+      <member refid="classomexmeta_1_1OmexMetaXmlAssistant_1a4c9759afd4af42595a4f0a4feb913524" prot="public" virt="non-virtual"><scope>omexmeta::OmexMetaCellML</scope><name>getMetaidNumDigits</name></member>
+      <member refid="classomexmeta_1_1CellMLAssistant_1ad0fa4e23c94197d5682a0f8e1dec0889" prot="public" virt="virtual"><scope>omexmeta::OmexMetaCellML</scope><name>getValidElements</name></member>
+      <member refid="classomexmeta_1_1CellMLAssistant_1a856b49e96c2015b5445f6921d5738388" prot="public" virt="virtual"><scope>omexmeta::OmexMetaCellML</scope><name>metaIdNamespace</name></member>
+      <member refid="classomexmeta_1_1CellMLAssistant_1a4aaccf21ed47201abaf20d67ad7bfaab" prot="public" virt="virtual"><scope>omexmeta::OmexMetaCellML</scope><name>metaIdTagName</name></member>
+      <member refid="classomexmeta_1_1CellMLAssistant_1af619a65dd28d04dfabd1930ff4110ce0" prot="public" virt="non-virtual"><scope>omexmeta::OmexMetaCellML</scope><name>OmexMetaXml</name></member>
+      <member refid="classomexmeta_1_1OmexMetaXmlAssistant_1af619a65dd28d04dfabd1930ff4110ce0" prot="public" virt="non-virtual" ambiguityscope="omexmeta::OmexMetaXml::"><scope>omexmeta::OmexMetaCellML</scope><name>OmexMetaXml</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

@@ -5,6 +5,7 @@
 #include "gtest/gtest.h"
 
 #include "SBMLFactory.h"
+#include "omexmeta/RDF.h"
 #include "omexmeta/SBMLSemanticExtraction.h"
 #include "AnnotationSamples.h"
 

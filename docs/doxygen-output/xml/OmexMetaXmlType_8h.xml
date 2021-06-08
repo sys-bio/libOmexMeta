@@ -2,10 +2,10 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
   <compounddef id="OmexMetaXmlType_8h" kind="file" language="C++">
     <compoundname>OmexMetaXmlType.h</compoundname>
-    <includedby refid="OmexMetaXmlAssistant_8h" local="yes">src/omexmeta/include/omexmeta/OmexMetaXmlAssistant.h</includedby>
+    <includedby refid="OmexMetaXml_8h" local="yes">src/omexmeta/include/omexmeta/OmexMetaXml.h</includedby>
     <includedby refid="RDF_8h" local="yes">src/omexmeta/include/omexmeta/RDF.h</includedby>
     <invincdepgraph>
-      <node id="8">
+      <node id="9">
         <label>src/omexmeta/include/omexmeta/SBMLSemanticExtraction.h</label>
         <link refid="SBMLSemanticExtraction_8h_source"/>
         <childnode refid="3" relation="include">
@@ -13,20 +13,38 @@
         <childnode refid="6" relation="include">
         </childnode>
       </node>
-      <node id="7">
+      <node id="5">
         <label>src/omexmeta/include/omexmeta/PurgeRDFBag.h</label>
         <link refid="PurgeRDFBag_8h_source"/>
+      </node>
+      <node id="4">
+        <label>src/omexmeta/include/omexmeta/IRDF.h</label>
+        <link refid="IRDF_8h_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>src/omexmeta/include/omexmeta/OmexMetaXml.h</label>
+        <link refid="OmexMetaXml_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
       </node>
       <node id="3">
         <label>src/omexmeta/include/omexmeta/Editor.h</label>
         <link refid="Editor_8h_source"/>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="5" relation="include">
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="8" relation="include">
+        <childnode refid="9" relation="include">
         </childnode>
       </node>
       <node id="1">
@@ -37,33 +55,21 @@
         <childnode refid="6" relation="include">
         </childnode>
       </node>
-      <node id="5">
+      <node id="8">
         <label>src/omexmeta/include/omexmeta/OmexMetaCApi.h</label>
         <link refid="OmexMetaCApi_8h_source"/>
       </node>
       <node id="6">
         <label>src/omexmeta/include/omexmeta/RDF.h</label>
         <link refid="RDF_8h_source"/>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
         <childnode refid="7" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
       </node>
-      <node id="4">
+      <node id="7">
         <label>src/omexmeta/include/omexmeta/OmexMeta.h</label>
         <link refid="OmexMeta_8h_source"/>
-      </node>
-      <node id="2">
-        <label>src/omexmeta/include/omexmeta/OmexMetaXmlAssistant.h</label>
-        <link refid="OmexMetaXmlAssistant_8h_source"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
       </node>
     </invincdepgraph>
     <innernamespace refid="namespaceomexmeta">omexmeta</innernamespace>

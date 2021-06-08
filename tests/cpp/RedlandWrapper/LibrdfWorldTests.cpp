@@ -1,5 +1,5 @@
+#include "redland/LibrdfWorld.h"
 #include "gtest/gtest.h"
-#include "redland/World.h"
 #include <cstdint>
 
 using namespace redland;
@@ -17,8 +17,8 @@ public:
 //    std::cout<< "jbiyb" << std::endl;
 //}
 TEST_F(LibrdfWorldTests, TestSingleton) {
-    librdf_world *world1 = World::getWorld();
-    librdf_world *world2 = World::getWorld();
+    librdf_world *world1 = LibrdfWorld::getWorld();
+    librdf_world *world2 = LibrdfWorld::getWorld();
     ASSERT_EQ(world1, world2);
 }
 

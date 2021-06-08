@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.20"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>libomexmeta: src/omexmeta/include/omexmeta/OmexMetaXmlAssistant.h Source File</title>
+<title>libomexmeta: src/omexmeta/include/omexmeta/OmexMetaXml.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libomexmeta
-   &#160;<span id="projectnumber">1.2.7</span>
+   &#160;<span id="projectnumber">1.2.8</span>
    </div>
    <div id="projectbrief">Annotations for models in systems biology</div>
   </td>
@@ -68,15 +68,15 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="headertitle">
-<div class="title">OmexMetaXmlAssistant.h</div>  </div>
+<div class="title">OmexMetaXml.h</div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// Created by Ciaran on 4/14/2020.</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">//</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#ifndef LIBOMEXMETA_OMEXMETAXMLASSISTANT_H</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#define LIBOMEXMETA_OMEXMETAXMLASSISTANT_H</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#ifndef LIBOMEXMETA_OMEXMETAXML_H</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#define LIBOMEXMETA_OMEXMETAXML_H</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;libxml/parser.h&gt;</span></div>
@@ -93,7 +93,7 @@ $(function() {
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceomexmeta.html">omexmeta</a> {</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="classomexmeta_1_1OmexMetaXmlAssistant.html">   31</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classomexmeta_1_1OmexMetaXmlAssistant.html">OmexMetaXmlAssistant</a> {</div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="classomexmeta_1_1OmexMetaXmlAssistant.html">   31</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classomexmeta_1_1OmexMetaXmlAssistant.html">OmexMetaXml</a> {</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        std::string xml_;</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        std::string metaid_base_;</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keywordtype">int</span> metaid_num_digits_;</div>
@@ -113,7 +113,7 @@ $(function() {
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        [[nodiscard]] <span class="keywordtype">bool</span> generateNewMetaids() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="keyword">explicit</span> <a class="code" href="classomexmeta_1_1OmexMetaXmlAssistant.html">OmexMetaXmlAssistant</a>(std::string xml, std::string metaid_base = <span class="stringliteral">&quot;MetaID&quot;</span>, <span class="keywordtype">int</span> metaid_num_digits = 4, <span class="keywordtype">bool</span> generate_new_metaids = <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="keyword">explicit</span> <a class="code" href="classomexmeta_1_1OmexMetaXmlAssistant.html">OmexMetaXml</a>(std::string xml, std::string metaid_base = <span class="stringliteral">&quot;MetaID&quot;</span>, <span class="keywordtype">int</span> metaid_num_digits = 4, <span class="keywordtype">bool</span> generate_new_metaids = <span class="keyword">false</span>);</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        std::pair&lt;std::string, std::vector&lt;std::string&gt;&gt; addMetaIds();</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
@@ -125,12 +125,12 @@ $(function() {
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    };</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
-<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="classomexmeta_1_1SBMLAssistant.html">   70</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classomexmeta_1_1SBMLAssistant.html">SBMLAssistant</a> : <span class="keyword">public</span> <a class="code" href="classomexmeta_1_1OmexMetaXmlAssistant.html">OmexMetaXmlAssistant</a> {</div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="classomexmeta_1_1SBMLAssistant.html">   70</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classomexmeta_1_1SBMLAssistant.html">OmexMetaSBML</a> : <span class="keyword">public</span> <a class="code" href="classomexmeta_1_1OmexMetaXmlAssistant.html">OmexMetaXml</a> {</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keyword">public</span>:</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        [[nodiscard]] std::vector&lt;std::string&gt; getValidElements() <span class="keyword">const override</span>;</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keyword">using</span> OmexMetaXmlAssistant::OmexMetaXmlAssistant;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keyword">using</span> OmexMetaXml::OmexMetaXml;</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        [[nodiscard]] std::string metaIdTagName() <span class="keyword">const override</span>;</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
@@ -138,9 +138,9 @@ $(function() {
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    };</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
-<div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="classomexmeta_1_1CellMLAssistant.html">   83</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classomexmeta_1_1CellMLAssistant.html">CellMLAssistant</a> : <span class="keyword">public</span> <a class="code" href="classomexmeta_1_1OmexMetaXmlAssistant.html">OmexMetaXmlAssistant</a> {</div>
+<div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="classomexmeta_1_1CellMLAssistant.html">   83</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classomexmeta_1_1CellMLAssistant.html">OmexMetaCellML</a> : <span class="keyword">public</span> <a class="code" href="classomexmeta_1_1OmexMetaXmlAssistant.html">OmexMetaXml</a> {</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        <span class="keyword">using</span> OmexMetaXmlAssistant::OmexMetaXmlAssistant;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        <span class="keyword">using</span> OmexMetaXml::OmexMetaXml;</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        std::vector&lt;std::string&gt; getValidElements() <span class="keyword">const override</span>;</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
@@ -149,22 +149,22 @@ $(function() {
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        [[nodiscard]] std::string metaIdNamespace() <span class="keyword">const override</span>;</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    };</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keyword">typedef</span> std::unique_ptr&lt;OmexMetaXmlAssistant&gt; XmlAssistantPtr;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keyword">typedef</span> std::unique_ptr&lt;OmexMetaXml&gt; OmexMetaXmlPtr;</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
 <div class="line"><a name="l00096"></a><span class="lineno"><a class="line" href="classomexmeta_1_1OmexMetaXmlAssistantFactory.html">   96</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classomexmeta_1_1OmexMetaXmlAssistantFactory.html">OmexMetaXmlAssistantFactory</a> {</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        <span class="keyword">static</span> XmlAssistantPtr generate(<span class="keyword">const</span> std::string &amp;xml, OmexMetaXmlType type, <span class="keywordtype">bool</span> generate_new_metaids = <span class="keyword">false</span>, std::string metaid_base = <span class="stringliteral">&quot;#OmexMetaId&quot;</span>, <span class="keywordtype">int</span> metaid_num_digits = 4);</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        <span class="keyword">static</span> OmexMetaXmlPtr generate(<span class="keyword">const</span> std::string &amp;xml, OmexMetaXmlType type, <span class="keywordtype">bool</span> generate_new_metaids = <span class="keyword">false</span>, std::string metaid_base = <span class="stringliteral">&quot;#OmexMetaId&quot;</span>, <span class="keywordtype">int</span> metaid_num_digits = 4);</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    };</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;}<span class="comment">// namespace omexmeta</span></div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="preprocessor">#endif//LIBOMEXMETA_OMEXMETAXMLASSISTANT_H</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="preprocessor">#endif//LIBOMEXMETA_OMEXMETAXML_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aclassomexmeta_1_1MetaID_html"><div class="ttname"><a href="classomexmeta_1_1MetaID.html">omexmeta::MetaID</a></div><div class="ttdoc">an ID generator</div><div class="ttdef"><b>Definition:</b> MetaID.h:19</div></div>
-<div class="ttc" id="aclassomexmeta_1_1OmexMetaXmlAssistantFactory_html"><div class="ttname"><a href="classomexmeta_1_1OmexMetaXmlAssistantFactory.html">omexmeta::OmexMetaXmlAssistantFactory</a></div><div class="ttdef"><b>Definition:</b> OmexMetaXmlAssistant.h:96</div></div>
+<div class="ttc" id="aclassomexmeta_1_1OmexMetaXmlAssistantFactory_html"><div class="ttname"><a href="classomexmeta_1_1OmexMetaXmlAssistantFactory.html">omexmeta::OmexMetaXmlAssistantFactory</a></div><div class="ttdef"><b>Definition:</b> OmexMetaXml.h:96</div></div>
 <div class="ttc" id="anamespaceomexmeta_html"><div class="ttname"><a href="namespaceomexmeta.html">omexmeta</a></div><div class="ttdef"><b>Definition:</b> Editor.cpp:9</div></div>
-<div class="ttc" id="aclassomexmeta_1_1SBMLAssistant_html"><div class="ttname"><a href="classomexmeta_1_1SBMLAssistant.html">omexmeta::SBMLAssistant</a></div><div class="ttdef"><b>Definition:</b> OmexMetaXmlAssistant.h:70</div></div>
-<div class="ttc" id="aclassomexmeta_1_1CellMLAssistant_html"><div class="ttname"><a href="classomexmeta_1_1CellMLAssistant.html">omexmeta::CellMLAssistant</a></div><div class="ttdef"><b>Definition:</b> OmexMetaXmlAssistant.h:83</div></div>
-<div class="ttc" id="aclassomexmeta_1_1OmexMetaXmlAssistant_html"><div class="ttname"><a href="classomexmeta_1_1OmexMetaXmlAssistant.html">omexmeta::OmexMetaXmlAssistant</a></div><div class="ttdoc">Construct for handling xml.</div><div class="ttdef"><b>Definition:</b> OmexMetaXmlAssistant.h:31</div></div>
-<div class="ttc" id="aclassomexmeta_1_1OmexMetaXmlAssistant_html_a69bb3ac99f1585b6f567b80e88f52642"><div class="ttname"><a href="classomexmeta_1_1OmexMetaXmlAssistant.html#a69bb3ac99f1585b6f567b80e88f52642">omexmeta::OmexMetaXmlAssistant::getMetaidBase</a></div><div class="ttdeci">const std::string &amp; getMetaidBase() const</div><div class="ttdoc">get the base for the metaid used by the current xml type. This base is used as a precursor string for...</div><div class="ttdef"><b>Definition:</b> OmexMetaXmlAssistant.cpp:158</div></div>
+<div class="ttc" id="aclassomexmeta_1_1SBMLAssistant_html"><div class="ttname"><a href="classomexmeta_1_1SBMLAssistant.html">omexmeta::OmexMetaSBML</a></div><div class="ttdef"><b>Definition:</b> OmexMetaXml.h:70</div></div>
+<div class="ttc" id="aclassomexmeta_1_1CellMLAssistant_html"><div class="ttname"><a href="classomexmeta_1_1CellMLAssistant.html">omexmeta::OmexMetaCellML</a></div><div class="ttdef"><b>Definition:</b> OmexMetaXml.h:83</div></div>
+<div class="ttc" id="aclassomexmeta_1_1OmexMetaXmlAssistant_html"><div class="ttname"><a href="classomexmeta_1_1OmexMetaXmlAssistant.html">omexmeta::OmexMetaXml</a></div><div class="ttdoc">Construct for handling xml.</div><div class="ttdef"><b>Definition:</b> OmexMetaXml.h:31</div></div>
+<div class="ttc" id="aclassomexmeta_1_1OmexMetaXmlAssistant_html_a69bb3ac99f1585b6f567b80e88f52642"><div class="ttname"><a href="classomexmeta_1_1OmexMetaXmlAssistant.html#a69bb3ac99f1585b6f567b80e88f52642">omexmeta::OmexMetaXml::getMetaidBase</a></div><div class="ttdeci">const std::string &amp; getMetaidBase() const</div><div class="ttdoc">get the base for the metaid used by the current xml type. This base is used as a precursor string for...</div><div class="ttdef"><b>Definition:</b> OmexMetaXml.cpp:158</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20

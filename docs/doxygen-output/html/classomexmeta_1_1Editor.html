@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libomexmeta
-   &#160;<span id="projectnumber">1.2.7</span>
+   &#160;<span id="projectnumber">1.2.8</span>
    </div>
    <div id="projectbrief">Annotations for models in systems biology</div>
   </td>
@@ -252,6 +252,9 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hre
 <a class="el" href="classomexmeta_1_1UriHandler.html">UriHandler</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1Editor.html#a0c3c16e06d9ecbbf9958bb2feb85b56a">getUriHandler</a> () const</td></tr>
 <tr class="memdesc:a0c3c16e06d9ecbbf9958bb2feb85b56a"><td class="mdescLeft">&#160;</td><td class="mdescRight">get a reference to the current <a class="el" href="classomexmeta_1_1UriHandler.html">UriHandler</a> <br /></td></tr>
 <tr class="separator:a0c3c16e06d9ecbbf9958bb2feb85b56a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f201bae38c324800d0d55e778cb6135"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1Editor.html#a6f201bae38c324800d0d55e778cb6135">stripAnnotations</a> (const std::string &amp;annotationElementName=&quot;annotation&quot;)</td></tr>
+<tr class="memdesc:a6f201bae38c324800d0d55e778cb6135"><td class="mdescLeft">&#160;</td><td class="mdescRight">remove all &lt;annotation&gt; elements from the xml associated with this <a class="el" href="classomexmeta_1_1Editor.html" title="Add or change annotations in xml.">Editor</a> instance.  <a href="classomexmeta_1_1Editor.html#a6f201bae38c324800d0d55e778cb6135">More...</a><br /></td></tr>
+<tr class="separator:a6f201bae38c324800d0d55e778cb6135"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Add or change annotations in xml. </p>
@@ -1234,6 +1237,38 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hre
 
 <p>setter for the current xml type identification variable. </p>
 <dl class="section return"><dt>Returns</dt><dd>void  <a class="el" href="classThis.html" title="interface for querying an rdf graph basically a wrapper around both librdf_query and librdf_query_res...">This</a> should be set automatically in the <a class="el" href="classomexmeta_1_1Editor.html" title="Add or change annotations in xml.">Editor</a> constructor </dd></dl>
+
+</div>
+</div>
+<a id="a6f201bae38c324800d0d55e778cb6135"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f201bae38c324800d0d55e778cb6135">&#9670;&nbsp;</a></span>stripAnnotations()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string omexmeta::Editor::stripAnnotations </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>annotationElementName</em> = <code>&quot;annotation&quot;</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>remove all &lt;annotation&gt; elements from the xml associated with this <a class="el" href="classomexmeta_1_1Editor.html" title="Add or change annotations in xml.">Editor</a> instance. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">annotationElementName</td><td>the name of the element that contains the annotations. The default is "annotation" since sbml embedded annotations are all contained within an &lt;annotation&gt; element. Other languages</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>returns a copy of xml without any annotations (i.e. CellML) may not follow this convention and have the option of changing check element contains the annotations. Users should be warned that no verification is in place to prevent you from stripping away arbitrary elements with this method - all elements named</p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">annotationElementName</td><td>will be removed from this xml document, regardless of content. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

@@ -147,7 +147,7 @@ create metaids
 
     .. tab:: C++
 
-        .. literalinclude:: create_single_annotation_with_metaids_cpp.CPP
+        .. literalinclude:: create_single_annotation_with_metaids_cpp.cpp
             :linenos:
             :language: C++
             :caption: Create a single annotation in C++ and create metaids

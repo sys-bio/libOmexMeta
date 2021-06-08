@@ -3,7 +3,7 @@ import argparse
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--install-folder", help="absolute path to where you install libomexmeta",  type=str)
-parser.add_argument("--pyomexmeta-package-dir", help="absolute path to where the pyomexmeta package lives", type=str)
+parser.add_argument("--pyomexmeta-site-package-dir", help="absolute path to where the pyomexmeta site package dir", type=str)
 parser.add_argument("--output-location", help="where to save the output from examples", type=str)
 args = parser.parse_args()
 
@@ -17,7 +17,7 @@ print("building the documentation. ")
 print("Arguments used are: ")
 print("\tinstall_folder:", args.install_folder)
 print("\toutput_location", args.output_location)
-print("\tpyomexmeta_package_dir", args.pyomexmeta_package_dir)
+print("\tpyomexmeta_site_package_dir", args.pyomexmeta_site_package_dir)
 print("\t", args)
 
 # Examples are excuted from the install folder, not the build folder.
@@ -77,13 +77,7 @@ for i in PYTHON_FILES:
 path_code = f"""
 import sys
 import os
-#sys.path.append('{args.pyomexmeta_package_dir}')
-sys.path.append('{os.path.dirname(args.pyomexmeta_package_dir)}')
-
-print("Python info:")
-print("sys.executable", sys.executable)
-print("sys.version", sys.version)
-
+sys.path.append('{args.pyomexmeta_site_package_dir}')
 """
 
 
@@ -124,13 +118,14 @@ def run_binary_files():
         output_filename = os.path.split(os.path.splitext(binary)[0])[1]
 
         output_filename = os.path.join(args.output_location, output_filename + ".txt")
-        with open(output_filename, "wb") as f:
+        with open(output_filename, "w") as f:
             try:
-                f.write(output_filename.encode())
+                f.write(output.decode())
             except UnicodeDecodeError: # for python programs that produce diagrams
                 continue
 
         print(f"output written to \"{output_filename}\"")
+
 
 
 if __name__ == "__main__":

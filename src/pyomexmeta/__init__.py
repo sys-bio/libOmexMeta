@@ -1,9 +1,15 @@
-from .pyomexmeta import PersonalInformation
-from .pyomexmeta import EnergyDiff
-from .pyomexmeta import PhysicalProcess
-from .pyomexmeta import RDF, Editor, PhysicalEntity
-from .pyomexmeta import SingularAnnotation
-from .pyomexmeta import OmexMetaException
+from .pyomexmeta import (
+    PersonalInformation,
+    EnergyDiff,
+    PhysicalProcess,
+    _PropertyBearer,
+    PhysicalProperty,
+    RDF,
+    Editor,
+    PhysicalEntity,
+    SingularAnnotation,
+    OmexMetaException
+)
 from .pyomexmeta_api import PyOmexMetaAPI, get_version, eUriType, eXmlType
 
 __version__ = get_version()

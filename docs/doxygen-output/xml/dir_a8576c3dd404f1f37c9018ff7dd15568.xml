@@ -9,14 +9,16 @@
     <innerfile refid="ElementExtractor_8h">ElementExtractor.h</innerfile>
     <innerfile refid="EnergyDiff_8h">EnergyDiff.h</innerfile>
     <innerfile refid="Error_8h">Error.h</innerfile>
+    <innerfile refid="IRDF_8h">IRDF.h</innerfile>
     <innerfile refid="logger_8h">logger.h</innerfile>
     <innerfile refid="MarkupIdentifier_8h">MarkupIdentifier.h</innerfile>
     <innerfile refid="MetaID_8h">MetaID.h</innerfile>
     <innerfile refid="OmexMeta_8h">OmexMeta.h</innerfile>
     <innerfile refid="OmexMetaCApi_8h">OmexMetaCApi.h</innerfile>
     <innerfile refid="OmexMetaUtils_8h">OmexMetaUtils.h</innerfile>
-    <innerfile refid="OmexMetaXmlAssistant_8h">OmexMetaXmlAssistant.h</innerfile>
+    <innerfile refid="OmexMetaXml_8h">OmexMetaXml.h</innerfile>
     <innerfile refid="OmexMetaXmlType_8h">OmexMetaXmlType.h</innerfile>
+    <innerfile refid="Options_8h">Options.h</innerfile>
     <innerfile refid="Participant_8h">Participant.h</innerfile>
     <innerfile refid="PersonalInformation_8h">PersonalInformation.h</innerfile>
     <innerfile refid="PhysicalEntity_8h">PhysicalEntity.h</innerfile>

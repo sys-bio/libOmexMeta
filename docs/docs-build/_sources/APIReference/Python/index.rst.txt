@@ -13,6 +13,7 @@ Pyomexmeta API Reference
     PhysicalProcess.rst
     EnergyDiff.rst
     PersonalInformation.rst
+    _PropertyBearer.rst
 
 
 

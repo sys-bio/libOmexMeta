@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Editor &mdash; libomexmeta 1.2.7 documentation</title>
+  <title>Editor &mdash; libomexmeta 1.2.8 documentation</title>
   
 
   
@@ -96,6 +96,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../singular_annotations/index.html">Singular Annotations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../composite_annotations/index.html">Composite Annotations: SBML Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../composite_annotations/index.html#composite-annotations-cellml-examples">Composite Annotations: CellML Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../stripping_annotations/index.html">Stripping Annotations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../querying_rdf/querying_rdf.html">Querying RDF</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../diagrams/diagrams_index.html">Building Diagrams</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../annotating_models/annotating_models_index.html">Annotating Models</a></li>
@@ -106,11 +107,11 @@
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Editor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="SingularAnnotation.html">SingularAnnotation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="PhysicalProperty.html">PhysicalProperty</a></li>
-<li class="toctree-l3"><a class="reference internal" href="_PropertyBearer.html">_PropertyBearer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="PhysicalEntity.html">PhysicalEntity</a></li>
 <li class="toctree-l3"><a class="reference internal" href="PhysicalProcess.html">PhysicalProcess</a></li>
 <li class="toctree-l3"><a class="reference internal" href="EnergyDiff.html">EnergyDiff</a></li>
 <li class="toctree-l3"><a class="reference internal" href="PersonalInformation.html">PersonalInformation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_PropertyBearer.html">_PropertyBearer</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../C%2B%2B/index.html">C++ libOmexMeta API Reference</a></li>
@@ -193,7 +194,397 @@
 <dl class="py class">
 <dt id="pyomexmeta.Editor">
 <em class="property">class </em><code class="sig-prename descclassname">pyomexmeta.</code><code class="sig-name descname">Editor</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">editor_ptr</span><span class="p">:</span> <span class="n">ctypes.c_long</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyomexmeta.Editor" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Primary interface for creating new, modifying existing or deleting annotations from an rdf graph</p>
+<dl class="py method">
+<dt id="pyomexmeta.Editor.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">editor_ptr</span><span class="p">:</span> <span class="n">ctypes.c_long</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyomexmeta.Editor.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Editor constructor.</p>
+<p>Most users should not use the constructor directly but instead use the
+creator method <a class="reference internal" href="RDF.html#pyomexmeta.RDF.to_editor" title="pyomexmeta.RDF.to_editor"><code class="xref py py-meth docutils literal notranslate"><span class="pre">RDF.to_editor()</span></code></a>. This ensures that the necessary references
+to the parent RDF object (and existing namespaces etc) are properly passed
+to the <a class="reference internal" href="#pyomexmeta.Editor" title="pyomexmeta.Editor"><code class="xref py py-class docutils literal notranslate"><span class="pre">Editor</span></code></a> class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>editor_ptr</strong> – A pointer (a ctypes c_int64) that points to an Editor object in memory</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>See Also</dt><dd><p><a class="reference internal" href="RDF.html#pyomexmeta.RDF.to_editor" title="pyomexmeta.RDF.to_editor"><code class="xref py py-meth docutils literal notranslate"><span class="pre">RDF.to_editor()</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="pyomexmeta.Editor.__weakref__">
+<code class="sig-name descname">__weakref__</code><a class="headerlink" href="#pyomexmeta.Editor.__weakref__" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of weak references to the object (if defined)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyomexmeta.Editor.add_creator">
+<code class="sig-name descname">add_creator</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">creator</span></em><span class="sig-paren">)</span> &#x2192; pyomexmeta.pyomexmeta.Editor<a class="headerlink" href="#pyomexmeta.Editor.add_creator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add model level annotation “creator” to the rdf graph</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyomexmeta.Editor.add_curator">
+<code class="sig-name descname">add_curator</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">curator</span></em><span class="sig-paren">)</span> &#x2192; pyomexmeta.pyomexmeta.Editor<a class="headerlink" href="#pyomexmeta.Editor.add_curator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add model level annotation “curator” to the rdf graph</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyomexmeta.Editor.add_date_created">
+<code class="sig-name descname">add_date_created</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">date_created</span></em><span class="sig-paren">)</span> &#x2192; pyomexmeta.pyomexmeta.Editor<a class="headerlink" href="#pyomexmeta.Editor.add_date_created" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add model level annotation “date created” to the rdf graph</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyomexmeta.Editor.add_description">
+<code class="sig-name descname">add_description</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">description</span></em><span class="sig-paren">)</span> &#x2192; pyomexmeta.pyomexmeta.Editor<a class="headerlink" href="#pyomexmeta.Editor.add_description" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add model level annotation “description” to the rdf graph</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyomexmeta.Editor.add_energy_diff">
+<code class="sig-name descname">add_energy_diff</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">energy_diff</span><span class="p">:</span> <span class="n">pyomexmeta.pyomexmeta.EnergyDiff</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#pyomexmeta.Editor.add_energy_diff" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a EnergyDiff to the relevant RDF graph (the one that created
+this <a class="reference internal" href="#pyomexmeta.Editor" title="pyomexmeta.Editor"><code class="xref py py-class docutils literal notranslate"><span class="pre">Editor</span></code></a>).</p>
+<p>Users do not normally call this method themselves, because the preferred
+user interface is to use the context manager for <a class="reference internal" href="EnergyDiff.html#pyomexmeta.EnergyDiff" title="pyomexmeta.EnergyDiff"><code class="xref py py-class docutils literal notranslate"><span class="pre">EnergyDiff</span></code></a>.
+If the context manager for <a class="reference internal" href="EnergyDiff.html#pyomexmeta.EnergyDiff" title="pyomexmeta.EnergyDiff"><code class="xref py py-class docutils literal notranslate"><span class="pre">EnergyDiff</span></code></a> is not used to
+create the <a class="reference internal" href="EnergyDiff.html#pyomexmeta.EnergyDiff" title="pyomexmeta.EnergyDiff"><code class="xref py py-class docutils literal notranslate"><span class="pre">EnergyDiff</span></code></a> object, then this method must be called
+to add the <a class="reference internal" href="EnergyDiff.html#pyomexmeta.EnergyDiff" title="pyomexmeta.EnergyDiff"><code class="xref py py-class docutils literal notranslate"><span class="pre">EnergyDiff</span></code></a> object to the relevant <a class="reference internal" href="RDF.html#pyomexmeta.RDF" title="pyomexmeta.RDF"><code class="xref py py-class docutils literal notranslate"><span class="pre">RDF</span></code></a> object
+See Examples.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>energy_diff</strong> – An instance of <a class="reference internal" href="EnergyDiff.html#pyomexmeta.EnergyDiff" title="pyomexmeta.EnergyDiff"><code class="xref py py-class docutils literal notranslate"><span class="pre">EnergyDiff</span></code></a> to add to the model</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="EnergyDiff.html#pyomexmeta.EnergyDiff" title="pyomexmeta.EnergyDiff"><code class="xref py py-class docutils literal notranslate"><span class="pre">EnergyDiff</span></code></a></p>
+</div>
+<p>Returns: None</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyomexmeta.Editor.add_namespace">
+<code class="sig-name descname">add_namespace</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">namespace</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">prefix</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#pyomexmeta.Editor.add_namespace" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a new namespace to the RDF graph.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>namespace</strong> – The full uri for the namespace</p></li>
+<li><p><strong>prefix</strong> – The prefix that may be used instead of the full uri</p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns: None</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rdf</span> <span class="o">=</span> <span class="n">RDF</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">editor</span> <span class="o">=</span> <span class="n">rdf</span><span class="o">.</span><span class="n">to_editor</span><span class="p">(</span><span class="s2">&quot;&lt;insert xml here&gt;&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">editor</span><span class="o">.</span><span class="n">add_namespace</span><span class="p">(</span><span class="s2">&quot;http://fantasticalNamespace&quot;</span><span class="p">,</span> <span class="s2">&quot;fanta&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyomexmeta.Editor.add_parent_model">
+<code class="sig-name descname">add_parent_model</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">parent_model</span></em><span class="sig-paren">)</span> &#x2192; pyomexmeta.pyomexmeta.Editor<a class="headerlink" href="#pyomexmeta.Editor.add_parent_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add model level annotation “parent model” to the rdf graph</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyomexmeta.Editor.add_personal_information">
+<code class="sig-name descname">add_personal_information</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">personal_information</span><span class="p">:</span> <span class="n">pyomexmeta.pyomexmeta.PersonalInformation</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#pyomexmeta.Editor.add_personal_information" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a PersonalInformation to the relevant RDF graph (the one that created
+this <a class="reference internal" href="#pyomexmeta.Editor" title="pyomexmeta.Editor"><code class="xref py py-class docutils literal notranslate"><span class="pre">Editor</span></code></a>).</p>
+<p>Users do not normally call this method themselves, because the preferred
+user interface is to use the context manager for <a class="reference internal" href="PersonalInformation.html#pyomexmeta.PersonalInformation" title="pyomexmeta.PersonalInformation"><code class="xref py py-class docutils literal notranslate"><span class="pre">PersonalInformation</span></code></a>.
+If the context manager for <a class="reference internal" href="PersonalInformation.html#pyomexmeta.PersonalInformation" title="pyomexmeta.PersonalInformation"><code class="xref py py-class docutils literal notranslate"><span class="pre">PersonalInformation</span></code></a> is not used to
+create the <a class="reference internal" href="PersonalInformation.html#pyomexmeta.PersonalInformation" title="pyomexmeta.PersonalInformation"><code class="xref py py-class docutils literal notranslate"><span class="pre">PersonalInformation</span></code></a> object, then this method must be called
+to add the <a class="reference internal" href="PersonalInformation.html#pyomexmeta.PersonalInformation" title="pyomexmeta.PersonalInformation"><code class="xref py py-class docutils literal notranslate"><span class="pre">PersonalInformation</span></code></a> object to the relevant <a class="reference internal" href="RDF.html#pyomexmeta.RDF" title="pyomexmeta.RDF"><code class="xref py py-class docutils literal notranslate"><span class="pre">RDF</span></code></a> object
+See Examples.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>personal_information</strong> – An instance of <a class="reference internal" href="PersonalInformation.html#pyomexmeta.PersonalInformation" title="pyomexmeta.PersonalInformation"><code class="xref py py-class docutils literal notranslate"><span class="pre">PersonalInformation</span></code></a> to add to the model</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="PersonalInformation.html#pyomexmeta.PersonalInformation" title="pyomexmeta.PersonalInformation"><code class="xref py py-class docutils literal notranslate"><span class="pre">PersonalInformation</span></code></a></p>
+</div>
+<p>Returns: None</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyomexmeta.Editor.add_physical_entity">
+<code class="sig-name descname">add_physical_entity</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">physical_entity</span><span class="p">:</span> <span class="n">pyomexmeta.pyomexmeta.PhysicalEntity</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#pyomexmeta.Editor.add_physical_entity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a PhysicalEntity to the relevant RDF graph (the one that created
+this <a class="reference internal" href="#pyomexmeta.Editor" title="pyomexmeta.Editor"><code class="xref py py-class docutils literal notranslate"><span class="pre">Editor</span></code></a>).</p>
+<p>Users do not normally call this method themselves, because the preferred
+user interface is to use the context manager for <a class="reference internal" href="PhysicalEntity.html#pyomexmeta.PhysicalEntity" title="pyomexmeta.PhysicalEntity"><code class="xref py py-class docutils literal notranslate"><span class="pre">PhysicalEntity</span></code></a>.
+If the context manager for <a class="reference internal" href="PhysicalEntity.html#pyomexmeta.PhysicalEntity" title="pyomexmeta.PhysicalEntity"><code class="xref py py-class docutils literal notranslate"><span class="pre">PhysicalEntity</span></code></a> is not used to
+create the <a class="reference internal" href="PhysicalEntity.html#pyomexmeta.PhysicalEntity" title="pyomexmeta.PhysicalEntity"><code class="xref py py-class docutils literal notranslate"><span class="pre">PhysicalEntity</span></code></a> object, then this method must be called
+to add the <a class="reference internal" href="PhysicalEntity.html#pyomexmeta.PhysicalEntity" title="pyomexmeta.PhysicalEntity"><code class="xref py py-class docutils literal notranslate"><span class="pre">PhysicalEntity</span></code></a> object to the relevant <a class="reference internal" href="RDF.html#pyomexmeta.RDF" title="pyomexmeta.RDF"><code class="xref py py-class docutils literal notranslate"><span class="pre">RDF</span></code></a> object
+See Examples.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>physical_entity</strong> – An instance of <a class="reference internal" href="PhysicalEntity.html#pyomexmeta.PhysicalEntity" title="pyomexmeta.PhysicalEntity"><code class="xref py py-class docutils literal notranslate"><span class="pre">PhysicalEntity</span></code></a> to add to the model</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="PhysicalEntity.html#pyomexmeta.PhysicalEntity" title="pyomexmeta.PhysicalEntity"><code class="xref py py-class docutils literal notranslate"><span class="pre">PhysicalEntity</span></code></a></p>
+</div>
+<p>Returns: None</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyomexmeta.Editor.add_physical_process">
+<code class="sig-name descname">add_physical_process</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">physical_process</span><span class="p">:</span> <span class="n">pyomexmeta.pyomexmeta.PhysicalProcess</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#pyomexmeta.Editor.add_physical_process" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a PhysicalProcess to the relevant RDF graph (the one that created
+this <a class="reference internal" href="#pyomexmeta.Editor" title="pyomexmeta.Editor"><code class="xref py py-class docutils literal notranslate"><span class="pre">Editor</span></code></a>).</p>
+<p>Users do not normally call this method themselves, because the preferred
+user interface is to use the context manager for <a class="reference internal" href="PhysicalProcess.html#pyomexmeta.PhysicalProcess" title="pyomexmeta.PhysicalProcess"><code class="xref py py-class docutils literal notranslate"><span class="pre">PhysicalProcess</span></code></a>.
+If the context manager for <a class="reference internal" href="PhysicalProcess.html#pyomexmeta.PhysicalProcess" title="pyomexmeta.PhysicalProcess"><code class="xref py py-class docutils literal notranslate"><span class="pre">PhysicalProcess</span></code></a> is not used to
+create the <a class="reference internal" href="PhysicalProcess.html#pyomexmeta.PhysicalProcess" title="pyomexmeta.PhysicalProcess"><code class="xref py py-class docutils literal notranslate"><span class="pre">PhysicalProcess</span></code></a> object, then this method must be called
+to add the <a class="reference internal" href="PhysicalProcess.html#pyomexmeta.PhysicalProcess" title="pyomexmeta.PhysicalProcess"><code class="xref py py-class docutils literal notranslate"><span class="pre">PhysicalProcess</span></code></a> object to the relevant <a class="reference internal" href="RDF.html#pyomexmeta.RDF" title="pyomexmeta.RDF"><code class="xref py py-class docutils literal notranslate"><span class="pre">RDF</span></code></a> object
+See Examples.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>physical_process</strong> – An instance of <a class="reference internal" href="PhysicalProcess.html#pyomexmeta.PhysicalProcess" title="pyomexmeta.PhysicalProcess"><code class="xref py py-class docutils literal notranslate"><span class="pre">PhysicalProcess</span></code></a> to add to the model</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="PhysicalProcess.html#pyomexmeta.PhysicalProcess" title="pyomexmeta.PhysicalProcess"><code class="xref py py-class docutils literal notranslate"><span class="pre">PhysicalProcess</span></code></a></p>
+</div>
+<p>Returns: None</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyomexmeta.Editor.add_physical_property">
+<code class="sig-name descname">add_physical_property</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">property</span><span class="p">:</span> <span class="n">pyomexmeta.pyomexmeta.PhysicalProperty</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#pyomexmeta.Editor.add_physical_property" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a PhysicalProperty to the relevant RDF graph (the one that created
+this <a class="reference internal" href="#pyomexmeta.Editor" title="pyomexmeta.Editor"><code class="xref py py-class docutils literal notranslate"><span class="pre">Editor</span></code></a>).</p>
+<p>Composite annotations usually create their own <a class="reference internal" href="PhysicalProperty.html#pyomexmeta.PhysicalProperty" title="pyomexmeta.PhysicalProperty"><code class="xref py py-class docutils literal notranslate"><span class="pre">PhysicalProperty</span></code></a> but this method
+gives users the option to add one manually.</p>
+<p>Users do not normally call this method themselves, because the preferred
+user interface is to use the context manager for <a class="reference internal" href="PhysicalProperty.html#pyomexmeta.PhysicalProperty" title="pyomexmeta.PhysicalProperty"><code class="xref py py-class docutils literal notranslate"><span class="pre">PhysicalProperty</span></code></a>.
+If the context manager for <a class="reference internal" href="PhysicalProperty.html#pyomexmeta.PhysicalProperty" title="pyomexmeta.PhysicalProperty"><code class="xref py py-class docutils literal notranslate"><span class="pre">PhysicalProperty</span></code></a> is not used to
+create the <a class="reference internal" href="PhysicalProperty.html#pyomexmeta.PhysicalProperty" title="pyomexmeta.PhysicalProperty"><code class="xref py py-class docutils literal notranslate"><span class="pre">PhysicalProperty</span></code></a> object, then this method must be called
+to add the <a class="reference internal" href="PhysicalProperty.html#pyomexmeta.PhysicalProperty" title="pyomexmeta.PhysicalProperty"><code class="xref py py-class docutils literal notranslate"><span class="pre">PhysicalProperty</span></code></a> object to the relevant <a class="reference internal" href="RDF.html#pyomexmeta.RDF" title="pyomexmeta.RDF"><code class="xref py py-class docutils literal notranslate"><span class="pre">RDF</span></code></a> object
+See Examples.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>property</strong> – An instance of <a class="reference internal" href="PhysicalProperty.html#pyomexmeta.PhysicalProperty" title="pyomexmeta.PhysicalProperty"><code class="xref py py-class docutils literal notranslate"><span class="pre">PhysicalProperty</span></code></a> to add to the model</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="PhysicalProperty.html#pyomexmeta.PhysicalProperty" title="pyomexmeta.PhysicalProperty"><code class="xref py py-class docutils literal notranslate"><span class="pre">PhysicalProperty</span></code></a></p>
+</div>
+<p>Returns: None</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyomexmeta.Editor.add_pubmed">
+<code class="sig-name descname">add_pubmed</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">pubmed</span></em><span class="sig-paren">)</span> &#x2192; pyomexmeta.pyomexmeta.Editor<a class="headerlink" href="#pyomexmeta.Editor.add_pubmed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add model level annotation “pubmed” to the rdf graph</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyomexmeta.Editor.add_singular_annotation">
+<code class="sig-name descname">add_singular_annotation</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">singular_annotation</span><span class="p">:</span> <span class="n">pyomexmeta.pyomexmeta.SingularAnnotation</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#pyomexmeta.Editor.add_singular_annotation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a SingularAnnotation, which represents a single Triple. The SingularAnnotation
+is added to the RDF graph that created this <a class="reference internal" href="#pyomexmeta.Editor" title="pyomexmeta.Editor"><code class="xref py py-class docutils literal notranslate"><span class="pre">Editor</span></code></a> object.</p>
+<p>Users can add arbitrary singular annotations to an RDF graph.</p>
+<p>Users do not normally call this method themselves, because the preferred
+user interface is to use the context manager for <a class="reference internal" href="SingularAnnotation.html#pyomexmeta.SingularAnnotation" title="pyomexmeta.SingularAnnotation"><code class="xref py py-class docutils literal notranslate"><span class="pre">SingularAnnotation</span></code></a>.
+If the context manager for <a class="reference internal" href="SingularAnnotation.html#pyomexmeta.SingularAnnotation" title="pyomexmeta.SingularAnnotation"><code class="xref py py-class docutils literal notranslate"><span class="pre">SingularAnnotation</span></code></a> is not used to
+create the <a class="reference internal" href="SingularAnnotation.html#pyomexmeta.SingularAnnotation" title="pyomexmeta.SingularAnnotation"><code class="xref py py-class docutils literal notranslate"><span class="pre">SingularAnnotation</span></code></a> object, then this method must be called
+to add the <a class="reference internal" href="SingularAnnotation.html#pyomexmeta.SingularAnnotation" title="pyomexmeta.SingularAnnotation"><code class="xref py py-class docutils literal notranslate"><span class="pre">SingularAnnotation</span></code></a> object to the relevant <a class="reference internal" href="RDF.html#pyomexmeta.RDF" title="pyomexmeta.RDF"><code class="xref py py-class docutils literal notranslate"><span class="pre">RDF</span></code></a> object
+See Examples.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>singular_annotation</strong> – An instance of SingularAnnotation to add to the model</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="SingularAnnotation.html#pyomexmeta.SingularAnnotation" title="pyomexmeta.SingularAnnotation"><code class="xref py py-class docutils literal notranslate"><span class="pre">SingularAnnotation</span></code></a></p>
+</div>
+<p>Returns: None</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyomexmeta.Editor.add_taxon">
+<code class="sig-name descname">add_taxon</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">taxon</span></em><span class="sig-paren">)</span> &#x2192; pyomexmeta.pyomexmeta.Editor<a class="headerlink" href="#pyomexmeta.Editor.add_taxon" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add model level annotation “taxon” to the rdf graph</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyomexmeta.Editor.check_valid_metaid">
+<code class="sig-name descname">check_valid_metaid</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">id</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#pyomexmeta.Editor.check_valid_metaid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convenience method for checking whether the metaid <cite>id</cite> is valid for this RDF graph</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyomexmeta.Editor.delete">
+<code class="sig-name descname">delete</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyomexmeta.Editor.delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>clean up resources used by this <a class="reference internal" href="#pyomexmeta.Editor" title="pyomexmeta.Editor"><code class="xref py py-class docutils literal notranslate"><span class="pre">Editor</span></code></a> object</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyomexmeta.Editor.get_metaids">
+<code class="sig-name descname">get_metaids</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span>str<span class="p">]</span><a class="headerlink" href="#pyomexmeta.Editor.get_metaids" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list of available metaids for current xml model</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyomexmeta.Editor.get_xml">
+<code class="sig-name descname">get_xml</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#pyomexmeta.Editor.get_xml" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the xml currently being edited by this <a class="reference internal" href="#pyomexmeta.Editor" title="pyomexmeta.Editor"><code class="xref py py-class docutils literal notranslate"><span class="pre">Editor</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyomexmeta.Editor.new_energy_diff">
+<code class="sig-name descname">new_energy_diff</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; pyomexmeta.pyomexmeta.EnergyDiff<a class="headerlink" href="#pyomexmeta.Editor.new_energy_diff" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new <a class="reference internal" href="EnergyDiff.html#pyomexmeta.EnergyDiff" title="pyomexmeta.EnergyDiff"><code class="xref py py-class docutils literal notranslate"><span class="pre">EnergyDiff</span></code></a> object.</p>
+<p>This is a context manager, i.e. designed to be used inside a <cite>with</cite> block.
+Doing so, automatically adds this <a class="reference internal" href="EnergyDiff.html#pyomexmeta.EnergyDiff" title="pyomexmeta.EnergyDiff"><code class="xref py py-class docutils literal notranslate"><span class="pre">EnergyDiff</span></code></a> to the relevant
+<a class="reference internal" href="RDF.html#pyomexmeta.RDF" title="pyomexmeta.RDF"><code class="xref py py-class docutils literal notranslate"><span class="pre">RDF</span></code></a> object. Use without a context manager requires users to manually
+add the <a class="reference internal" href="EnergyDiff.html#pyomexmeta.EnergyDiff" title="pyomexmeta.EnergyDiff"><code class="xref py py-class docutils literal notranslate"><span class="pre">EnergyDiff</span></code></a> to the <a class="reference internal" href="RDF.html#pyomexmeta.RDF" title="pyomexmeta.RDF"><code class="xref py py-class docutils literal notranslate"><span class="pre">RDF</span></code></a>
+using <a class="reference internal" href="#pyomexmeta.Editor.add_energy_diff" title="pyomexmeta.Editor.add_energy_diff"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_energy_diff()</span></code></a></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="EnergyDiff.html#pyomexmeta.EnergyDiff" title="pyomexmeta.EnergyDiff"><code class="xref py py-class docutils literal notranslate"><span class="pre">EnergyDiff</span></code></a></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><a class="reference internal" href="EnergyDiff.html#pyomexmeta.EnergyDiff" title="pyomexmeta.EnergyDiff"><code class="xref py py-class docutils literal notranslate"><span class="pre">EnergyDiff</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyomexmeta.Editor.new_personal_information">
+<code class="sig-name descname">new_personal_information</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; pyomexmeta.pyomexmeta.PersonalInformation<a class="headerlink" href="#pyomexmeta.Editor.new_personal_information" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new <a class="reference internal" href="PersonalInformation.html#pyomexmeta.PersonalInformation" title="pyomexmeta.PersonalInformation"><code class="xref py py-class docutils literal notranslate"><span class="pre">PersonalInformation</span></code></a> object.</p>
+<p>This is a context manager, i.e. designed to be used inside a <cite>with</cite> block.
+Doing so, automatically adds this <a class="reference internal" href="PersonalInformation.html#pyomexmeta.PersonalInformation" title="pyomexmeta.PersonalInformation"><code class="xref py py-class docutils literal notranslate"><span class="pre">PersonalInformation</span></code></a> to the relevant
+<a class="reference internal" href="RDF.html#pyomexmeta.RDF" title="pyomexmeta.RDF"><code class="xref py py-class docutils literal notranslate"><span class="pre">RDF</span></code></a> object. Use without a context manager requires users to manually
+add the <a class="reference internal" href="PersonalInformation.html#pyomexmeta.PersonalInformation" title="pyomexmeta.PersonalInformation"><code class="xref py py-class docutils literal notranslate"><span class="pre">PersonalInformation</span></code></a> to the <a class="reference internal" href="RDF.html#pyomexmeta.RDF" title="pyomexmeta.RDF"><code class="xref py py-class docutils literal notranslate"><span class="pre">RDF</span></code></a>
+using <a class="reference internal" href="#pyomexmeta.Editor.add_personal_information" title="pyomexmeta.Editor.add_personal_information"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_personal_information()</span></code></a></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="PersonalInformation.html#pyomexmeta.PersonalInformation" title="pyomexmeta.PersonalInformation"><code class="xref py py-class docutils literal notranslate"><span class="pre">PersonalInformation</span></code></a></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><a class="reference internal" href="PersonalInformation.html#pyomexmeta.PersonalInformation" title="pyomexmeta.PersonalInformation"><code class="xref py py-class docutils literal notranslate"><span class="pre">PersonalInformation</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyomexmeta.Editor.new_physical_entity">
+<code class="sig-name descname">new_physical_entity</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; pyomexmeta.pyomexmeta.PhysicalEntity<a class="headerlink" href="#pyomexmeta.Editor.new_physical_entity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new <a class="reference internal" href="PhysicalEntity.html#pyomexmeta.PhysicalEntity" title="pyomexmeta.PhysicalEntity"><code class="xref py py-class docutils literal notranslate"><span class="pre">PhysicalEntity</span></code></a> object.</p>
+<p>This is a context manager, i.e. designed to be used inside a <cite>with</cite> block.
+Doing so, automatically adds this <a class="reference internal" href="PhysicalEntity.html#pyomexmeta.PhysicalEntity" title="pyomexmeta.PhysicalEntity"><code class="xref py py-class docutils literal notranslate"><span class="pre">PhysicalEntity</span></code></a> to the relevant
+<a class="reference internal" href="RDF.html#pyomexmeta.RDF" title="pyomexmeta.RDF"><code class="xref py py-class docutils literal notranslate"><span class="pre">RDF</span></code></a> object. Use without a context manager requires users to manually
+add the <a class="reference internal" href="PhysicalEntity.html#pyomexmeta.PhysicalEntity" title="pyomexmeta.PhysicalEntity"><code class="xref py py-class docutils literal notranslate"><span class="pre">PhysicalEntity</span></code></a> to the <a class="reference internal" href="RDF.html#pyomexmeta.RDF" title="pyomexmeta.RDF"><code class="xref py py-class docutils literal notranslate"><span class="pre">RDF</span></code></a>
+using <a class="reference internal" href="#pyomexmeta.Editor.add_physical_entity" title="pyomexmeta.Editor.add_physical_entity"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_physical_entity()</span></code></a></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="PhysicalEntity.html#pyomexmeta.PhysicalEntity" title="pyomexmeta.PhysicalEntity"><code class="xref py py-class docutils literal notranslate"><span class="pre">PhysicalEntity</span></code></a></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><a class="reference internal" href="PhysicalEntity.html#pyomexmeta.PhysicalEntity" title="pyomexmeta.PhysicalEntity"><code class="xref py py-class docutils literal notranslate"><span class="pre">PhysicalEntity</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyomexmeta.Editor.new_physical_process">
+<code class="sig-name descname">new_physical_process</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; pyomexmeta.pyomexmeta.PhysicalProcess<a class="headerlink" href="#pyomexmeta.Editor.new_physical_process" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new <a class="reference internal" href="PhysicalProcess.html#pyomexmeta.PhysicalProcess" title="pyomexmeta.PhysicalProcess"><code class="xref py py-class docutils literal notranslate"><span class="pre">PhysicalProcess</span></code></a> object.</p>
+<p>This is a context manager, i.e. designed to be used inside a <cite>with</cite> block.
+Doing so, automatically adds this <a class="reference internal" href="PhysicalProcess.html#pyomexmeta.PhysicalProcess" title="pyomexmeta.PhysicalProcess"><code class="xref py py-class docutils literal notranslate"><span class="pre">PhysicalProcess</span></code></a> to the relevant
+<a class="reference internal" href="RDF.html#pyomexmeta.RDF" title="pyomexmeta.RDF"><code class="xref py py-class docutils literal notranslate"><span class="pre">RDF</span></code></a> object. Use without a context manager requires users to manually
+add the <a class="reference internal" href="PhysicalProcess.html#pyomexmeta.PhysicalProcess" title="pyomexmeta.PhysicalProcess"><code class="xref py py-class docutils literal notranslate"><span class="pre">PhysicalProcess</span></code></a> to the <a class="reference internal" href="RDF.html#pyomexmeta.RDF" title="pyomexmeta.RDF"><code class="xref py py-class docutils literal notranslate"><span class="pre">RDF</span></code></a>
+using <a class="reference internal" href="#pyomexmeta.Editor.add_physical_process" title="pyomexmeta.Editor.add_physical_process"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_physical_process()</span></code></a></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="PhysicalProcess.html#pyomexmeta.PhysicalProcess" title="pyomexmeta.PhysicalProcess"><code class="xref py py-class docutils literal notranslate"><span class="pre">PhysicalProcess</span></code></a></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><a class="reference internal" href="PhysicalProcess.html#pyomexmeta.PhysicalProcess" title="pyomexmeta.PhysicalProcess"><code class="xref py py-class docutils literal notranslate"><span class="pre">PhysicalProcess</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyomexmeta.Editor.new_physical_property">
+<code class="sig-name descname">new_physical_property</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; pyomexmeta.pyomexmeta.PhysicalProperty<a class="headerlink" href="#pyomexmeta.Editor.new_physical_property" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new <a class="reference internal" href="EnergyDiff.html#pyomexmeta.EnergyDiff" title="pyomexmeta.EnergyDiff"><code class="xref py py-class docutils literal notranslate"><span class="pre">EnergyDiff</span></code></a> object</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyomexmeta.Editor.new_singular_annotation">
+<code class="sig-name descname">new_singular_annotation</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; pyomexmeta.pyomexmeta.SingularAnnotation<a class="headerlink" href="#pyomexmeta.Editor.new_singular_annotation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new <a class="reference internal" href="SingularAnnotation.html#pyomexmeta.SingularAnnotation" title="pyomexmeta.SingularAnnotation"><code class="xref py py-class docutils literal notranslate"><span class="pre">SingularAnnotation</span></code></a> object.</p>
+<p>This is a context manager, i.e. designed to be used inside a <cite>with</cite> block.
+Doing so, automatically adds this <a class="reference internal" href="SingularAnnotation.html#pyomexmeta.SingularAnnotation" title="pyomexmeta.SingularAnnotation"><code class="xref py py-class docutils literal notranslate"><span class="pre">SingularAnnotation</span></code></a> to the relevant
+<a class="reference internal" href="RDF.html#pyomexmeta.RDF" title="pyomexmeta.RDF"><code class="xref py py-class docutils literal notranslate"><span class="pre">RDF</span></code></a> object. Use without a context manager requires users to manually
+add the <a class="reference internal" href="SingularAnnotation.html#pyomexmeta.SingularAnnotation" title="pyomexmeta.SingularAnnotation"><code class="xref py py-class docutils literal notranslate"><span class="pre">SingularAnnotation</span></code></a> to the <a class="reference internal" href="RDF.html#pyomexmeta.RDF" title="pyomexmeta.RDF"><code class="xref py py-class docutils literal notranslate"><span class="pre">RDF</span></code></a>
+using <a class="reference internal" href="#pyomexmeta.Editor.add_singular_annotation" title="pyomexmeta.Editor.add_singular_annotation"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_singular_annotation()</span></code></a></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="SingularAnnotation.html#pyomexmeta.SingularAnnotation" title="pyomexmeta.SingularAnnotation"><code class="xref py py-class docutils literal notranslate"><span class="pre">SingularAnnotation</span></code></a></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><a class="reference internal" href="SingularAnnotation.html#pyomexmeta.SingularAnnotation" title="pyomexmeta.SingularAnnotation"><code class="xref py py-class docutils literal notranslate"><span class="pre">SingularAnnotation</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyomexmeta.Editor.remove_energy_diff">
+<code class="sig-name descname">remove_energy_diff</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">energy_diff_ptr</span><span class="p">:</span> <span class="n">ctypes.c_long</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#pyomexmeta.Editor.remove_energy_diff" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove a <a class="reference internal" href="EnergyDiff.html#pyomexmeta.EnergyDiff" title="pyomexmeta.EnergyDiff"><code class="xref py py-class docutils literal notranslate"><span class="pre">EnergyDiff</span></code></a> from the RDF graph. Does nothing if not exists</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyomexmeta.Editor.remove_personal_information">
+<code class="sig-name descname">remove_personal_information</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">personal_information_ptr</span><span class="p">:</span> <span class="n">ctypes.c_long</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#pyomexmeta.Editor.remove_personal_information" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove a <a class="reference internal" href="PersonalInformation.html#pyomexmeta.PersonalInformation" title="pyomexmeta.PersonalInformation"><code class="xref py py-class docutils literal notranslate"><span class="pre">PersonalInformation</span></code></a> from the RDF graph. Does nothing if not exists</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyomexmeta.Editor.remove_physical_entity">
+<code class="sig-name descname">remove_physical_entity</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">physical_entity_ptr</span><span class="p">:</span> <span class="n">ctypes.c_long</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#pyomexmeta.Editor.remove_physical_entity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove a <a class="reference internal" href="PhysicalEntity.html#pyomexmeta.PhysicalEntity" title="pyomexmeta.PhysicalEntity"><code class="xref py py-class docutils literal notranslate"><span class="pre">PhysicalEntity</span></code></a> from the RDF graph. Does nothing if not exists</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyomexmeta.Editor.remove_physical_process">
+<code class="sig-name descname">remove_physical_process</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">physical_process_ptr</span><span class="p">:</span> <span class="n">ctypes.c_long</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#pyomexmeta.Editor.remove_physical_process" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove a <a class="reference internal" href="PhysicalProcess.html#pyomexmeta.PhysicalProcess" title="pyomexmeta.PhysicalProcess"><code class="xref py py-class docutils literal notranslate"><span class="pre">PhysicalProcess</span></code></a> from the RDF graph. Does nothing if not exists</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyomexmeta.Editor.remove_single_annotation">
+<code class="sig-name descname">remove_single_annotation</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">single_annotaiton_ptr</span><span class="p">:</span> <span class="n">ctypes.c_long</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#pyomexmeta.Editor.remove_single_annotation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove a <a class="reference internal" href="SingularAnnotation.html#pyomexmeta.SingularAnnotation" title="pyomexmeta.SingularAnnotation"><code class="xref py py-class docutils literal notranslate"><span class="pre">SingularAnnotation</span></code></a> from the RDF graph. Does nothing if not exists</p>
+</dd></dl>
+
+</dd></dl>
 
 </div>
 

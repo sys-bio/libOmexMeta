@@ -3,7 +3,7 @@
 //
 #include "iostream"
 #include "redland/LibrdfQuery.h"
-#include "redland/World.h"
+#include "redland/LibrdfWorld.h"
 #include "gtest/gtest.h"
 
 using namespace redland;

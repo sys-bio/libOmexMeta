@@ -8,7 +8,7 @@
 #include "omexmeta/Editor.h"
 #include "omexmeta/EnergyDiff.h"
 #include "omexmeta/OmexMetaUtils.h"
-#include "omexmeta/OmexMetaXmlAssistant.h"
+#include "omexmeta/OmexMetaXml.h"
 #include "omexmeta/PhysicalEntity.h"
 #include "omexmeta/PhysicalProcess.h"
 #include "omexmeta/RDF.h"
@@ -77,7 +77,11 @@ namespace omexmeta {
 
     OMEXMETA_CAPI_EXPORT int RDF_addFromFile(RDF *rdf_ptr, const char *uri_string, const char *format);
 
-    OMEXMETA_CAPI_EXPORT char *RDF_query(RDF *rdf_ptr, const char *query_str, const char *results_format);
+    OMEXMETA_CAPI_EXPORT char *RDF_queryResultsAsString(RDF *rdf_ptr, const char *query_str, const char *results_format);
+
+    OMEXMETA_CAPI_EXPORT ResultsMap * RDF_queryResultsAsMap(RDF *rdf_ptr, const char *query_str);
+
+    OMEXMETA_CAPI_EXPORT void deleteResultsMap(ResultsMap* map);
 
     OMEXMETA_CAPI_EXPORT int RDF_size(RDF *rdf_ptr);
 
@@ -162,6 +166,8 @@ namespace omexmeta {
     OMEXMETA_CAPI_EXPORT char *Editor_getModelUri(Editor *editor_ptr);
 
     OMEXMETA_CAPI_EXPORT char *Editor_getRepositoryUri(Editor *editor_ptr);
+
+    OMEXMETA_CAPI_EXPORT char *Editor_stripAnnotations(Editor *editor_ptr, const char* annotationElementName = "annotation");
 
     OMEXMETA_CAPI_EXPORT Editor* Editor_addCreator(Editor *editor_ptr, const char *orcid_id);
 

@@ -5,6 +5,7 @@
 #include "omexmeta/RDF.h"
 
 #include "omexmeta/PurgeRDFBag.h"
+#include "omexmeta/Options.h"
 
 namespace omexmeta {
 
@@ -49,12 +50,12 @@ namespace omexmeta {
         return size() == 0;
     }
 
-    RDF RDF::fromString(const std::string &str, const std::string &format) {
+    RDF RDF::fromString(const std::string &str, const std::string &syntax) {
         RDF rdf;
-        LibrdfParser parser(format);
+        LibrdfParser parser(syntax);
         LibrdfUri u(rdf.getModelUri());
         parser.parseString(str, rdf.model_, u);
-        u.freeUri();
+        u.freeUri(); // shouldnt be neeeded
 
         // update the list of "seen" namespaces
         rdf.seen_namespaces_ = parser.getSeenNamespaces(std::vector<std::string>());
@@ -64,58 +65,38 @@ namespace omexmeta {
         rdf.namespaces_ = rdf.propagateNamespacesFromParser(rdf.seen_namespaces_);
 
         // when reading xml types, we try to classify the string as sbml or cellml.
-        // other formats ignored.
+        // other syntaxs ignored.
         // this will set the xmlType variable if sbml or cellml
-        rdf.classifyXmlType(str, format);
+        rdf.classifyXmlType(str, syntax);
         // Here we use the semantic extraction tool to collect
         // information if were using sbml
         rdf.extractSemanticInformationFromSBML(str);
 
-        // use the VCard translator
-        // (make sure to use before purgeRDFBag)
-        VCardTranslator translator(&rdf);
-        translator.translate();
+        if (Options::translateVCard_)
+            rdf.translateVcard();
 
-        // remove rdf bag constructs
-        PurgeRDFBag purger(&rdf);
-        purger.purge();
+        if (Options::removeRDFBag_)
+            rdf.purgeRDFBag();
 
         return rdf;
     }
 
-    [[maybe_unused]] void
-    RDF::fromString(RDF *rdf, const std::string &str, const std::string &format, std::string base_uri) {
-        // if the base_uri is a web uri we leave it alone
-        base_uri = OmexMetaUtils::prepareBaseUri(base_uri);
-
-        LibrdfParser parser(format);
-        parser.parseString(str, rdf->model_, LibrdfUri(base_uri));
-
-        // update the list of "seen" namespaces
-        rdf->seen_namespaces_ = parser.getSeenNamespaces(std::vector<std::string>());
-
-        // Compare against predefined set of namespaces: bqbiol etc.
-        // This allows us to only use the ones that are needed
-        rdf->namespaces_ = rdf->propagateNamespacesFromParser(rdf->seen_namespaces_);
-
-        // this will set the xmlType variable if sbml or cellml
-        rdf->classifyXmlType(str, format);
-        rdf->extractSemanticInformationFromSBML(str);
-
-        // use the VCard translator
-        // (make sure to use before purgeRDFBag)
-        VCardTranslator translator(rdf);
-        translator.translate();
-
+    void RDF::purgeRDFBag(){
         // remove rdf bag constructs
-        PurgeRDFBag purger(rdf);
+        PurgeRDFBag purger(this);
         purger.purge();
     }
 
-    void RDF::addFromString(const std::string &str,
-                            const std::string &format) {
+    void RDF::translateVcard(){
+        // remove rdf bag constructs
+        VCardTranslator translator(this);
+        translator.translate();
+    }
 
-        LibrdfParser parser(format);
+    void RDF::addFromString(const std::string &str,
+                            const std::string &syntax) {
+
+        LibrdfParser parser(syntax);
 
         LibrdfUri u = LibrdfUri::fromFilename(getModelUri());
         parser.parseString(str, model_, u);
@@ -129,32 +110,29 @@ namespace omexmeta {
         namespaces_ = propagateNamespacesFromParser(seen_namespaces_);
 
         // this will set the xmlType variable if sbml or cellml
-        classifyXmlType(str, format);
+        classifyXmlType(str, syntax);
 
         extractSemanticInformationFromSBML(str);
 
-        // use the VCard translator
-        // (make sure to use before purgeRDFBag)
-        VCardTranslator translator(this);
-        translator.translate();
+        if (Options::translateVCard_)
+            translateVcard();
 
-        // remove rdf bag constructs
-        PurgeRDFBag purger(this);
-        purger.purge();
+        if (Options::removeRDFBag_)
+            purgeRDFBag();
     }
 
     /**
      * @brief parse RDF directly from a uri
      * @param uri_string the uri to download containing RDF
-     * @param format the format that the RDF is in
+     * @param syntax the syntax that the RDF is in
      * @return RDF an instantiated RDF object.
      *
      * @details downloads uri from the internet and creates an RDF graph.
      * See Librdf::parseUri() for more details.
      */
-    RDF RDF::fromUri(const std::string &uri_string, const std::string &format) {
+    RDF RDF::fromUri(const std::string &uri_string, const std::string &syntax) {
         RDF rdf;
-        LibrdfParser parser(format);
+        LibrdfParser parser(syntax);
         parser.parseUri(uri_string, rdf.model_);
 
         // update the list of "seen" namespaces
@@ -165,14 +143,13 @@ namespace omexmeta {
         rdf.namespaces_ = rdf.propagateNamespacesFromParser(rdf.seen_namespaces_);
         rdf.extractSemanticInformationFromSBML(uri_string);
 
-        // use the VCard translator
-        // (make sure to use before purgeRDFBag)
-        VCardTranslator translator(&rdf);
-        translator.translate();
 
-        // remove rdf bag constructs
-        PurgeRDFBag purger(&rdf);
-        purger.purge();
+        if (Options::translateVCard_)
+            rdf.translateVcard();
+
+        if (Options::removeRDFBag_)
+            rdf.purgeRDFBag();
+
         return rdf;
     }
 
@@ -182,8 +159,8 @@ namespace omexmeta {
      *
      * @details See RDF::fromUri for details.
      */
-    void RDF::addFromUri(const std::string &uri_string, const std::string &format) {
-        LibrdfParser parser(format);
+    void RDF::addFromUri(const std::string &uri_string, const std::string &syntax) {
+        LibrdfParser parser(syntax);
         parser.parseUri(uri_string, model_);
 
         // update the list of "seen" namespaces
@@ -194,21 +171,19 @@ namespace omexmeta {
         namespaces_ = propagateNamespacesFromParser(seen_namespaces_);
         extractSemanticInformationFromSBML(uri_string);
 
-        // use the VCard translator
-        // (make sure to use before purgeRDFBag)
-        VCardTranslator translator(this);
-        translator.translate();
+        if (Options::translateVCard_)
+            translateVcard();
 
-        // remove rdf bag constructs
-        PurgeRDFBag purger(this);
-        purger.purge();
+        if (Options::removeRDFBag_)
+            purgeRDFBag();
+
     }
 
-    RDF RDF::fromFile(const std::string &filename, const std::string &format) {
+    RDF RDF::fromFile(const std::string &filename, const std::string &syntax) {
         RDF rdf;
-        LibrdfParser parser(format);
+        LibrdfParser parser(syntax);
         parser.parseFile(filename, rdf.model_, rdf.getModelUri());
-        rdf.classifyXmlTypeFromFile(filename, format);
+        rdf.classifyXmlTypeFromFile(filename, syntax);
         // update the list of "seen" namespaces
         rdf.seen_namespaces_ = parser.getSeenNamespaces(rdf.seen_namespaces_);
         // Compare against predefined set of namespaces: bqbiol etc.
@@ -218,21 +193,19 @@ namespace omexmeta {
         // information if were using sbml
         rdf.extractSemanticInformationFromSBML(filename);
 
-        // use the VCard translator
-        // (make sure to use before purgeRDFBag)
-        VCardTranslator translator(&rdf);
-        translator.translate();
+        if (Options::translateVCard_)
+            rdf.translateVcard();
 
-        // remove rdf bag constructs
-        PurgeRDFBag purger(&rdf);
-        purger.purge();
+        if (Options::removeRDFBag_)
+            rdf.purgeRDFBag();
+
         return rdf;
     }
 
-    void RDF::addFromFile(const std::string &filename, const std::string &format) {
-        LibrdfParser parser(format);
+    void RDF::addFromFile(const std::string &filename, const std::string &syntax) {
+        LibrdfParser parser(syntax);
         parser.parseFile(filename, model_, getModelUri());
-        classifyXmlTypeFromFile(filename, format);
+        classifyXmlTypeFromFile(filename, syntax);
         // update the list of "seen" namespaces
         seen_namespaces_ = parser.getSeenNamespaces(seen_namespaces_);
 
@@ -242,14 +215,12 @@ namespace omexmeta {
 
         extractSemanticInformationFromSBML(filename);
 
-        // use the VCard translator
-        // (make sure to use before purgeRDFBag)
-        VCardTranslator translator(this);
-        translator.translate();
+        if (Options::translateVCard_)
+            translateVcard();
 
-        // remove rdf bag constructs
-        PurgeRDFBag purger(this);
-        purger.purge();
+        if (Options::removeRDFBag_)
+            purgeRDFBag();
+
     }
 
     /**
@@ -278,10 +249,10 @@ namespace omexmeta {
         return keep_map;
     }
 
-    std::string RDF::toString(const std::string &format,
+    std::string RDF::toString(const std::string &syntax,
                               const char *mime_type,
                               const char *type_uri) {
-        LibrdfSerializer serializer(format.c_str(), mime_type, type_uri);
+        LibrdfSerializer serializer(syntax.c_str(), mime_type, type_uri);
         // remember to add namespaces taken from parser
         for (auto &it : namespaces_) {
             serializer.setNamespace(it.first, it.second);
@@ -291,19 +262,25 @@ namespace omexmeta {
         return serializer.toString("base", model_);
     }
 
-    std::string RDF::query(const std::string &query_str, const std::string &results_format) const {
+    std::string RDF::queryResultsAsString(const std::string &query_str, const std::string &results_syntax) const {
         Query query(getModel(), query_str);
-        std::string results = query.resultsAsStr(results_format);
+        std::string results = query.resultsAsStr(results_syntax);
         query.freeQuery();
         return results;
     }
 
-    void
-    RDF::toFile(const std::string &filename, const std::string &format, const char *mime_type, const char *type_uri) {
-        std::string syntax = toString(format, mime_type, type_uri);
+    ResultsMap RDF::queryResultsAsMap(const std::string &query_str) const {
+        Query query(getModel(), query_str);
+        ResultsMap results = query.resultsAsMap();
+        query.freeQuery();
+        return results;
+    }
+
+    void RDF::toFile(const std::string &filename, const std::string &syntax, const char *mime_type, const char *type_uri) {
+        std::string string_syntax = toString(syntax, mime_type, type_uri);
         std::ofstream f(filename);
         if (f.is_open()) {
-            f << syntax << std::endl;
+            f << string_syntax << std::endl;
             f.flush();
             f.close();
         } else {
@@ -349,7 +326,7 @@ namespace omexmeta {
     }
 
     std::ostringstream RDF::listOptions() {
-        raptor_world *raptor_world_ptr = World::getRaptor();
+        raptor_world *raptor_world_ptr = LibrdfWorld::getRaptor();
         int num_raptor_options = (int) raptor_option_get_count() - 1;
         std::ostringstream os;
         os << "option, name, label, domain, value type, uri" << std::endl;
@@ -424,9 +401,9 @@ namespace omexmeta {
         RDF::xmlType = xmlType;
     }
 
-    void RDF::classifyXmlType(const std::string &xml, const std::string &input_format) {
+    void RDF::classifyXmlType(const std::string &xml, const std::string &input_syntax) {
         // when reading xml types, we try to classify the string
-        if (input_format == "rdfxml" || input_format == "rdfxml-abbrev" || input_format == "rdfxml-xmp") {
+        if (input_syntax == "rdfxml" || input_syntax == "rdfxml-abbrev" || input_syntax == "rdfxml-xmp") {
             MarkupIdentifier identifier(xml);
             if (getXmlType() == OMEXMETA_TYPE_NOTSET) {
                 if (identifier.isSBML())
@@ -447,7 +424,7 @@ namespace omexmeta {
         }
     }
 
-    void RDF::classifyXmlTypeFromFile(const std::string &xml_file, const std::string &input_format) {
+    void RDF::classifyXmlTypeFromFile(const std::string &xml_file, const std::string &input_syntax) {
         if (!OmexMetaUtils::exists(xml_file)) {
             std::ostringstream os;
             os << "File called \"" + xml_file + "\" does not exist.";
@@ -455,7 +432,7 @@ namespace omexmeta {
         }
         std::ifstream t(xml_file);
         std::string str((std::istreambuf_iterator<char>(t)), std::istreambuf_iterator<char>());
-        classifyXmlType(str, input_format);
+        classifyXmlType(str, input_syntax);
     }
 
     void RDF::extractSemanticInformationFromSBML(const std::string &sbml) {
@@ -499,31 +476,31 @@ namespace omexmeta {
     }
 
 
-    bool RDF::equals(RDF *actual, RDF *expected, const std::string &format, bool verbose) {
+    bool RDF::equals(RDF *actual, RDF *expected, const std::string &syntax, bool verbose) {
         bool equal = *expected == *actual;
         if (verbose && !equal) {
             std::cout << "Expected does not equal actual: " << std::endl;
             std::cout << "Expected:" << std::endl;
-            std::cout << expected->toString(format) << std::endl;
+            std::cout << expected->toString(syntax) << std::endl;
             std::cout << "Actual : " << std::endl;
-            std::cout << actual->toString(format) << std::endl;
+            std::cout << actual->toString(syntax) << std::endl;
         }
         return equal;
     }
-    bool RDF::equals(RDF *actual, const std::string &expected_string, const std::string &format, bool verbose) {
-        RDF expected = RDF::fromString(expected_string, format);
+    bool RDF::equals(RDF *actual, const std::string &expected_string, const std::string &syntax, bool verbose) {
+        RDF expected = RDF::fromString(expected_string, syntax);
         bool equal = expected == *actual;
         if (verbose && !equal) {
             std::cout << "Expected does not equal actual: " << std::endl;
             std::cout << "Expected:" << std::endl;
-            std::cout << expected.toString(format) << std::endl;
+            std::cout << expected.toString(syntax) << std::endl;
             std::cout << "Actual : " << std::endl;
-            std::cout << actual->toString(format) << std::endl;
+            std::cout << actual->toString(syntax) << std::endl;
         }
         return equal;
     }
 
-    bool RDF::equals(const Triple &actual, const std::string &expected_string, const std::string &format, bool verbose) {
+    bool RDF::equals(const Triple &actual, const std::string &expected_string, const std::string &syntax, bool verbose) {
         RDF actual_rdf;
         actual_rdf.addTriple(actual);
 
@@ -532,14 +509,14 @@ namespace omexmeta {
         if (verbose && !equal) {
             std::cout << "Expected does not equal actual: " << std::endl;
             std::cout << "Expected:" << std::endl;
-            std::cout << expected_rdf.toString(format) << std::endl;
+            std::cout << expected_rdf.toString(syntax) << std::endl;
             std::cout << "Actual : " << std::endl;
-            std::cout << actual_rdf.toString(format) << std::endl;
+            std::cout << actual_rdf.toString(syntax) << std::endl;
         }
         return equal;
     }
 
-    bool RDF::equals(Triples &actual, const std::string &expected_string, const std::string &format, bool verbose) {
+    bool RDF::equals(Triples &actual, const std::string &expected_string, const std::string &syntax, bool verbose) {
         RDF actual_rdf;
         actual_rdf.addTriples(actual);
 
@@ -548,17 +525,17 @@ namespace omexmeta {
         if (verbose && !equal) {
             std::cout << "Expected does not equal actual: " << std::endl;
             std::cout << "Expected:" << std::endl;
-            std::cout << expected_rdf.toString(format) << std::endl;
+            std::cout << expected_rdf.toString(syntax) << std::endl;
             std::cout << "Actual : " << std::endl;
-            std::cout << actual_rdf.toString(format) << std::endl;
+            std::cout << actual_rdf.toString(syntax) << std::endl;
         }
         return equal;
     }
 
-    bool RDF::equals(const std::string &first, const std::string &second, const std::string &first_format, const std::string &second_format, bool verbose) {
-        RDF first_rdf = RDF::fromString(first, first_format);
-        RDF second_rdf = RDF::fromString(second, second_format);
-        bool equal = first_format == second_format;
+    bool RDF::equals(const std::string &first, const std::string &second, const std::string &first_syntax, const std::string &second_syntax, bool verbose) {
+        RDF first_rdf = RDF::fromString(first, first_syntax);
+        RDF second_rdf = RDF::fromString(second, second_syntax);
+        bool equal = first_syntax == second_syntax;
         if (verbose && !equal) {
             std::cout << "First rdf string does not equal second rdf string: " << std::endl;
             std::cout << "first:" << std::endl;

@@ -1,1 +1,11 @@
-/Users/ciaranwelsh/Documents/libOmexMeta/docs/ExampleOutputFiles/FromStringC.txt
+RDF graph serialized to rdfxml abbreviated is:
+
+<?xml version="1.1" encoding="utf-8"?>
+<rdf:RDF xmlns:OMEXlib="http://omex-library.org/"
+   xmlns:local="http://omex-library.org/NewOmex.omex/NewModel.rdf#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <rdf:Description rdf:about="http://omex-library.org/NewOmex.omex/NewModel.xml#">
+    <ns1:creator xmlns:ns1="https://dublincore.org/specifications/dublin-core/dcmi-terms/"
+       rdf:resource="https://orcid.org/1234-1234-1234-1234"/>
+  </rdf:Description>
+</rdf:RDF>

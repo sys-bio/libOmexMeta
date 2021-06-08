@@ -32,7 +32,7 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="classomexmeta_1_1VCardTranslator_1a59320f47775f8b342d549ed92231c021" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classomexmeta_1_1VCardTranslator_1a59320f47775f8b342d549ed92231c021" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
         <type></type>
         <definition>omexmeta::VCardTranslator::VCardTranslator</definition>
         <argsstring>(RDF *rdf)</argsstring>
@@ -48,7 +48,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/VCardTranslator.h" line="23" column="9" bodyfile="src/omexmeta/VCardTranslator.cpp" bodystart="14" bodyend="15"/>
+        <location file="src/omexmeta/include/omexmeta/VCardTranslator.h" line="23" column="18" bodyfile="src/omexmeta/VCardTranslator.cpp" bodystart="14" bodyend="15"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1VCardTranslator_1aa4f5c15215fb26e1b80d21a1cb4b0f6d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>

@@ -6,7 +6,7 @@
 #define LIBOMEXMETA_LIBRDFSTORAGE_H
 
 #include "LibrdfStatement.h"
-#include "World.h"
+#include "LibrdfWorld.h"
 #include "librdf.h"
 #include "sstream"
 #include <memory>

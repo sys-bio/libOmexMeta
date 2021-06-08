@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>PersonalInformation &mdash; libomexmeta 1.2.7 documentation</title>
+  <title>PersonalInformation &mdash; libomexmeta 1.2.8 documentation</title>
   
 
   
@@ -43,7 +43,7 @@
     
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="C++ libOmexMeta API Reference" href="../C%2B%2B/index.html" />
+    <link rel="next" title="_PropertyBearer" href="_PropertyBearer.html" />
     <link rel="prev" title="EnergyDiff" href="EnergyDiff.html" /> 
 </head>
 
@@ -96,6 +96,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../singular_annotations/index.html">Singular Annotations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../composite_annotations/index.html">Composite Annotations: SBML Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../composite_annotations/index.html#composite-annotations-cellml-examples">Composite Annotations: CellML Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../stripping_annotations/index.html">Stripping Annotations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../querying_rdf/querying_rdf.html">Querying RDF</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../diagrams/diagrams_index.html">Building Diagrams</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../annotating_models/annotating_models_index.html">Annotating Models</a></li>
@@ -106,11 +107,11 @@
 <li class="toctree-l3"><a class="reference internal" href="Editor.html">Editor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="SingularAnnotation.html">SingularAnnotation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="PhysicalProperty.html">PhysicalProperty</a></li>
-<li class="toctree-l3"><a class="reference internal" href="_PropertyBearer.html">_PropertyBearer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="PhysicalEntity.html">PhysicalEntity</a></li>
 <li class="toctree-l3"><a class="reference internal" href="PhysicalProcess.html">PhysicalProcess</a></li>
 <li class="toctree-l3"><a class="reference internal" href="EnergyDiff.html">EnergyDiff</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">PersonalInformation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_PropertyBearer.html">_PropertyBearer</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../C%2B%2B/index.html">C++ libOmexMeta API Reference</a></li>
@@ -193,7 +194,113 @@
 <dl class="py class">
 <dt id="pyomexmeta.PersonalInformation">
 <em class="property">class </em><code class="sig-prename descclassname">pyomexmeta.</code><code class="sig-name descname">PersonalInformation</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">personal_information_ptr</span><span class="p">:</span> <span class="n">ctypes.c_long</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyomexmeta.PersonalInformation" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Interface for creating a PersonalInformation set of triples</p>
+<dl class="py method">
+<dt id="pyomexmeta.PersonalInformation.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">personal_information_ptr</span><span class="p">:</span> <span class="n">ctypes.c_long</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyomexmeta.PersonalInformation.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructor for <a class="reference internal" href="#pyomexmeta.PersonalInformation" title="pyomexmeta.PersonalInformation"><code class="xref py py-class docutils literal notranslate"><span class="pre">PersonalInformation</span></code></a>.</p>
+<p>This constructor is not designed to be used directly by users. Instead
+users should create a <a class="reference internal" href="#pyomexmeta.PersonalInformation" title="pyomexmeta.PersonalInformation"><code class="xref py py-class docutils literal notranslate"><span class="pre">PersonalInformation</span></code></a> directly from the an instance
+of <a class="reference internal" href="Editor.html#pyomexmeta.Editor" title="pyomexmeta.Editor"><code class="xref py py-class docutils literal notranslate"><span class="pre">Editor</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>personal_information_ptr</strong> – A ctypes int64 integer representing the memory address (pointer)
+of this PersonalInformation.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="pyomexmeta.PersonalInformation.__weakref__">
+<code class="sig-name descname">__weakref__</code><a class="headerlink" href="#pyomexmeta.PersonalInformation.__weakref__" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of weak references to the object (if defined)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyomexmeta.PersonalInformation.add_account_name">
+<code class="sig-name descname">add_account_name</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; pyomexmeta.pyomexmeta.PersonalInformation<a class="headerlink" href="#pyomexmeta.PersonalInformation.add_account_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a account name to this PersonalInformation</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyomexmeta.PersonalInformation.add_account_service_homepage">
+<code class="sig-name descname">add_account_service_homepage</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; pyomexmeta.pyomexmeta.PersonalInformation<a class="headerlink" href="#pyomexmeta.PersonalInformation.add_account_service_homepage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a webpage to this PersonalInformation</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyomexmeta.PersonalInformation.add_creator">
+<code class="sig-name descname">add_creator</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; pyomexmeta.pyomexmeta.PersonalInformation<a class="headerlink" href="#pyomexmeta.PersonalInformation.add_creator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a creator to this PersonalInformation</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyomexmeta.PersonalInformation.add_foaf_blank">
+<code class="sig-name descname">add_foaf_blank</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; pyomexmeta.pyomexmeta.PersonalInformation<a class="headerlink" href="#pyomexmeta.PersonalInformation.add_foaf_blank" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a blank resource node with a foaf predicate</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyomexmeta.PersonalInformation.add_foaf_literal">
+<code class="sig-name descname">add_foaf_literal</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; pyomexmeta.pyomexmeta.PersonalInformation<a class="headerlink" href="#pyomexmeta.PersonalInformation.add_foaf_literal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a literal resource node with a foaf predicate</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyomexmeta.PersonalInformation.add_foaf_uri">
+<code class="sig-name descname">add_foaf_uri</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; pyomexmeta.pyomexmeta.PersonalInformation<a class="headerlink" href="#pyomexmeta.PersonalInformation.add_foaf_uri" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a uri resource node with a foaf predicate</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyomexmeta.PersonalInformation.add_mbox">
+<code class="sig-name descname">add_mbox</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; pyomexmeta.pyomexmeta.PersonalInformation<a class="headerlink" href="#pyomexmeta.PersonalInformation.add_mbox" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a email to this PersonalInformation</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyomexmeta.PersonalInformation.add_name">
+<code class="sig-name descname">add_name</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; pyomexmeta.pyomexmeta.PersonalInformation<a class="headerlink" href="#pyomexmeta.PersonalInformation.add_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a name to this PersonalInformation</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyomexmeta.PersonalInformation.delete">
+<code class="sig-name descname">delete</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyomexmeta.PersonalInformation.delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clean up resources associated with this object</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyomexmeta.PersonalInformation.get_local_uri">
+<code class="sig-name descname">get_local_uri</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#pyomexmeta.PersonalInformation.get_local_uri" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deprecated. Get uri’s only from the <a class="reference internal" href="RDF.html#pyomexmeta.RDF" title="pyomexmeta.RDF"><code class="xref py py-class docutils literal notranslate"><span class="pre">RDF</span></code></a> or <a class="reference internal" href="Editor.html#pyomexmeta.Editor" title="pyomexmeta.Editor"><code class="xref py py-class docutils literal notranslate"><span class="pre">Editor</span></code></a> classes</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyomexmeta.PersonalInformation.get_metaid">
+<code class="sig-name descname">get_metaid</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#pyomexmeta.PersonalInformation.get_metaid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the metaid to which this class:<cite>PersonalInformation</cite> associates</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyomexmeta.PersonalInformation.get_model_uri">
+<code class="sig-name descname">get_model_uri</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#pyomexmeta.PersonalInformation.get_model_uri" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deprecated. Use <a class="reference internal" href="Editor.html#pyomexmeta.Editor" title="pyomexmeta.Editor"><code class="xref py py-class docutils literal notranslate"><span class="pre">Editor</span></code></a> or <a class="reference internal" href="RDF.html#pyomexmeta.RDF" title="pyomexmeta.RDF"><code class="xref py py-class docutils literal notranslate"><span class="pre">RDF</span></code></a> for accesing Uris</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyomexmeta.PersonalInformation.get_ptr">
+<code class="sig-name descname">get_ptr</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; ctypes.c_long<a class="headerlink" href="#pyomexmeta.PersonalInformation.get_ptr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the memory address that points to this PhysicalProcess</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyomexmeta.PersonalInformation.set_metaid">
+<code class="sig-name descname">set_metaid</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">metaid</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#pyomexmeta.PersonalInformation.set_metaid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the metaid to which this class:<cite>PersonalInformation</cite> associates</p>
+</dd></dl>
+
+</dd></dl>
 
 </div>
 
@@ -203,7 +310,7 @@
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="../C%2B%2B/index.html" class="btn btn-neutral float-right" title="C++ libOmexMeta API Reference" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="_PropertyBearer.html" class="btn btn-neutral float-right" title="_PropertyBearer" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
         <a href="EnergyDiff.html" class="btn btn-neutral float-left" title="EnergyDiff" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 

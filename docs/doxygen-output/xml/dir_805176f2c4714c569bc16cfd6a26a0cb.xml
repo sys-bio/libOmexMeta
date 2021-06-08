@@ -11,7 +11,8 @@
     <innerfile refid="MetaID_8cpp">MetaID.cpp</innerfile>
     <innerfile refid="OmexMetaCApi_8cpp">OmexMetaCApi.cpp</innerfile>
     <innerfile refid="OmexMetaUtils_8cpp">OmexMetaUtils.cpp</innerfile>
-    <innerfile refid="OmexMetaXmlAssistant_8cpp">OmexMetaXmlAssistant.cpp</innerfile>
+    <innerfile refid="OmexMetaXml_8cpp">OmexMetaXml.cpp</innerfile>
+    <innerfile refid="Options_8cpp">Options.cpp</innerfile>
     <innerfile refid="Participant_8cpp">Participant.cpp</innerfile>
     <innerfile refid="PersonalInformation_8cpp">PersonalInformation.cpp</innerfile>
     <innerfile refid="PhysicalEntity_8cpp">PhysicalEntity.cpp</innerfile>
