@@ -96,6 +96,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../singular_annotations/index.html">Singular Annotations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../composite_annotations/index.html">Composite Annotations: SBML Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../composite_annotations/index.html#composite-annotations-cellml-examples">Composite Annotations: CellML Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../stripping_annotations/index.html">Stripping Annotations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../querying_rdf/querying_rdf.html">Querying RDF</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../diagrams/diagrams_index.html">Building Diagrams</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../annotating_models/annotating_models_index.html">Annotating Models</a></li>
@@ -223,7 +224,7 @@
 </dd>
 <dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">model</span></code>: and</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">ns_map</span></code>: arguments. When instantiated, the editor class automatically reads the XML and adds metaids to some or all of the elements, depending on the XML type parameter. If the user specifies that they are annotating an SBML model, the elements returned by OmexMetaSBML::getValidElements() are given metaids (if not exist), while if the user chooses cellml the elements returned by OmexMetaCellML::getValidElements() are used. If the type is unknown, then all elements are given metaids. </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ns_map</span></code>: arguments. When instantiated, the editor class automatically reads the XML and adds metaids to some or all of the elements, depending on the XML type parameter. If the user specifies that they are annotating an SBML model, the elements returned by SBMLAssistant::getValidElements() are given metaids (if not exist), while if the user chooses cellml the elements returned by CellMLAssistant::getValidElements() are used. If the type is unknown, then all elements are given metaids. </p></li>
 </ul>
 </dd>
 </dl>
@@ -746,6 +747,24 @@
 <dd><p>get a reference to the current UriHandler </p>
 </dd></dl>
 
+<dl class="cpp function">
+<dt id="_CPPv4N8omexmeta6Editor16stripAnnotationsERKNSt6stringE">
+<span id="_CPPv3N8omexmeta6Editor16stripAnnotationsERKNSt6stringE"></span><span id="_CPPv2N8omexmeta6Editor16stripAnnotationsERKNSt6stringE"></span><span id="omexmeta::Editor::stripAnnotations__ssCR"></span><span class="target" id="classomexmeta_1_1Editor_1a6f201bae38c324800d0d55e778cb6135"></span>std::string <code class="sig-name descname">stripAnnotations</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>annotationElementName</em> = &quot;annotation&quot;<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta6Editor16stripAnnotationsERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>remove all &lt;annotation&gt; elements from the xml associated with this <a class="reference internal" href="#classomexmeta_1_1Editor"><span class="std std-ref">Editor</span></a> instance. </p>
+<p><p>returns a copy of xml without any annotations (i.e. CellML) may not follow this convention and have the option of changing check element contains the annotations. Users should be warned that no verification is in place to prevent you from stripping away arbitrary elements with this method - all elements named</p>
+<dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">annotationElementName</span></code>: the name of the element that contains the annotations. The default is “annotation” since sbml embedded annotations are all contained within an &lt;annotation&gt; element. Other languages</p></li>
+</ul>
+</dd>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">annotationElementName</span></code>: will be removed from this xml document, regardless of content. </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
 </div>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric">Private Functions</p>
@@ -800,6 +819,11 @@
 <dl class="cpp var">
 <dt id="_CPPv4N8omexmeta6Editor5type_E">
 <span id="_CPPv3N8omexmeta6Editor5type_E"></span><span id="_CPPv2N8omexmeta6Editor5type_E"></span><span id="omexmeta::Editor::type___OmexMetaXmlType"></span><span class="target" id="classomexmeta_1_1Editor_1a2676967741d009a5e9115d031b018318"></span>OmexMetaXmlType <code class="sig-name descname">type_</code><a class="headerlink" href="#_CPPv4N8omexmeta6Editor5type_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt id="_CPPv4N8omexmeta6Editor15omexMetaXmlPtr_E">
+<span id="_CPPv3N8omexmeta6Editor15omexMetaXmlPtr_E"></span><span id="_CPPv2N8omexmeta6Editor15omexMetaXmlPtr_E"></span><span id="omexmeta::Editor::omexMetaXmlPtr___OmexMetaXmlPtr"></span><span class="target" id="classomexmeta_1_1Editor_1abf4cd9407efdec0a0b8b07189d26cf21"></span>OmexMetaXmlPtr <code class="sig-name descname">omexMetaXmlPtr_</code><a class="headerlink" href="#_CPPv4N8omexmeta6Editor15omexMetaXmlPtr_E" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp var">

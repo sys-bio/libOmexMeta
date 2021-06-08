@@ -96,6 +96,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../singular_annotations/index.html">Singular Annotations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../composite_annotations/index.html">Composite Annotations: SBML Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../composite_annotations/index.html#composite-annotations-cellml-examples">Composite Annotations: CellML Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../stripping_annotations/index.html">Stripping Annotations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../querying_rdf/querying_rdf.html">Querying RDF</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../diagrams/diagrams_index.html">Building Diagrams</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../annotating_models/annotating_models_index.html">Annotating Models</a></li>
@@ -296,9 +297,10 @@ Other options are rdfxml, ntriples, turtle, nquads, guess.</p></li>
 </dl>
 <p>Returns: None</p>
 <p class="rubric">Examples</p>
-<p># creat new <a class="reference internal" href="#pyomexmeta.RDF" title="pyomexmeta.RDF"><code class="xref py py-class docutils literal notranslate"><span class="pre">RDF</span></code></a> then add from string
-&gt;&gt;&gt; rdf = RDF()
-&gt;&gt;&gt; rdf.add_from_string(“insert rdf string here”)</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rdf</span> <span class="o">=</span> <span class="n">RDF</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rdf</span><span class="o">.</span><span class="n">add_from_string</span><span class="p">(</span><span class="s2">&quot;insert rdf string here&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="py method">

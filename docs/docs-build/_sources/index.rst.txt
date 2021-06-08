@@ -13,6 +13,7 @@ libOmexMeta documentation!
    writing_rdf/writing_rdf.rst
    singular_annotations/index.rst
    composite_annotations/index.rst
+   stripping_annotations/index.rst
    querying_rdf/querying_rdf.rst
    diagrams/diagrams_index.rst
    annotating_models/annotating_models_index.rst

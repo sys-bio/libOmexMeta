@@ -112,6 +112,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../composite_annotations/index.html">Composite Annotations: SBML Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../composite_annotations/index.html#composite-annotations-cellml-examples">Composite Annotations: CellML Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stripping_annotations/index.html">Stripping Annotations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../querying_rdf/querying_rdf.html">Querying RDF</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../diagrams/diagrams_index.html">Building Diagrams</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../annotating_models/annotating_models_index.html">Annotating Models</a></li>
@@ -532,7 +533,9 @@ add this annotation to our RDF graph and serialize to Turtle syntax.</p>
 73
 74
 75
-76</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;omexmeta/OmexMeta.h&quot;</span><span class="cp"></span>
+76
+77</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;omexmeta/OmexMeta.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
 
 <span class="k">using</span> <span class="k">namespace</span> <span class="n">omexmeta</span><span class="p">;</span>
 
@@ -1534,7 +1537,7 @@ RDF graph.</p>
 <span class="n">sys</span><span class="o">.</span><span class="n">executable</span> <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">ciaranwelsh</span><span class="o">/</span><span class="n">miniconda</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">py38</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">python3</span><span class="o">.</span><span class="mi">8</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">version</span> <span class="mf">3.8</span><span class="o">.</span><span class="mi">5</span> <span class="p">(</span><span class="n">default</span><span class="p">,</span> <span class="n">Sep</span>  <span class="mi">4</span> <span class="mi">2020</span><span class="p">,</span> <span class="mi">02</span><span class="p">:</span><span class="mi">22</span><span class="p">:</span><span class="mi">02</span><span class="p">)</span> 
 <span class="p">[</span><span class="n">Clang</span> <span class="mf">10.0</span><span class="o">.</span><span class="mi">0</span> <span class="p">]</span>
-<span class="o">&lt;</span><span class="n">pyomexmeta</span><span class="o">.</span><span class="n">pyomexmeta</span><span class="o">.</span><span class="n">SingularAnnotation</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x7fd0f617bd00</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">pyomexmeta</span><span class="o">.</span><span class="n">pyomexmeta</span><span class="o">.</span><span class="n">SingularAnnotation</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x7fe72127bd00</span><span class="o">&gt;</span>
 </pre></div>
 </td></tr></table></div>
 </div>

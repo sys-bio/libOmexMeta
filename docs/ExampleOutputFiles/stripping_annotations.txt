@@ -1,6 +1,8 @@
-from pyomexmeta import RDF, Editor
-
-sbml = """<?xml version="1.0" encoding="UTF-8"?>
+Python info:
+sys.executable /Users/ciaranwelsh/miniconda/envs/py38/bin/python3.8
+sys.version 3.8.5 (default, Sep  4 2020, 02:22:02) 
+[Clang 10.0.0 ]
+<?xml version="1.0" encoding="UTF-8"?>
 <sbml xmlns="http://www.sbml.org/sbml/level3/version1/core" level="3" version="1">
     <model metaid="ToyModel" id="ToyModel">
         <listOfCompartments>
@@ -8,30 +10,13 @@ sbml = """<?xml version="1.0" encoding="UTF-8"?>
             <compartment id="extraCell" metaid="comp2" spatialDimensions="3" size="10" constant="true"/>
         </listOfCompartments>
         <listOfSpecies>
-            <species id="A" metaid="sp_1" compartment="cytosol" initialConcentration="10" hasOnlySubstanceUnits="false"
-                     boundaryCondition="false" constant="false">
-                <annotation>
-                    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-                             xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
-                        <rdf:Description rdf:about="#DescriptionAnnotationWithBag">
-                            <bqbiol:is>
-                                <rdf:Bag>
-                                    <rdf:li rdf:resource="http://identifiers.org/uniprot/P00742"/>
-                                    <rdf:li rdf:resource="http://identifiers.org/uniprot/P00743"/>
-                                </rdf:Bag>
-                            </bqbiol:is>
-                        </rdf:Description>
-                    </rdf:RDF>
-                </annotation>
+            <species id="A" metaid="sp_1" compartment="cytosol" initialConcentration="10" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+                
             </species>
-            <species id="B" metaid="sp_2" compartment="cytosol" initialConcentration="0" hasOnlySubstanceUnits="false"
-                     boundaryCondition="false" constant="false"/>
-            <species id="Ca" metaid="sp_3" compartment="cytosol" initialConcentration="2" hasOnlySubstanceUnits="false"
-                     boundaryCondition="false" constant="false"/>
-            <species id="PlasmaCa" metaid="sp_4" compartment="extraCell" initialConcentration="3"
-                     hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
-            <species id="Enzyme" metaid="sp_5" compartment="cytosol" initialConcentration="2"
-                     hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+            <species id="B" metaid="sp_2" compartment="cytosol" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+            <species id="Ca" metaid="sp_3" compartment="cytosol" initialConcentration="2" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+            <species id="PlasmaCa" metaid="sp_4" compartment="extraCell" initialConcentration="3" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+            <species id="Enzyme" metaid="sp_5" compartment="cytosol" initialConcentration="2" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
         </listOfSpecies>
         <listOfParameters>
             <parameter id="k1" value="0.1" constant="true"/>
@@ -78,9 +63,5 @@ sbml = """<?xml version="1.0" encoding="UTF-8"?>
             </reaction>
         </listOfReactions>
     </model>
-</sbml>"""
-
-rdf = RDF()
-editor = rdf.to_editor(sbml, False)
-print(editor.strip_annotations())
+</sbml>
 

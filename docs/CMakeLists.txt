@@ -134,6 +134,8 @@ if (${BUILD_DOCS_EXAMPLES})
     add_doc_example(StrippingAnnotationsC source/stripping_annotations/stripping_anotations_c.cpp)
     add_doc_example(StrippingAnnotationsCpp source/stripping_annotations/stripping_anotations_cpp.cpp)
 
+    message(STATUS "EXAMPLE_EXECUTABLES_TARGETS ${EXAMPLE_EXECUTABLES_TARGETS}")
+
     add_custom_target(AllDocExamples
             DEPENDS ${EXAMPLE_EXECUTABLES_TARGETS}
             )
