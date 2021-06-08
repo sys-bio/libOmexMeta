@@ -1,1 +1,83 @@
-/Users/ciaranwelsh/Documents/libOmexMeta/docs/ExampleOutputFiles/SBMLCreatePhysicalEntityCpp.txt
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix semsim: <http://bime.uw.edu/semsim/> .
+@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
+@prefix OMEXlib: <http://omex-library.org/> .
+@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
+
+local:EntityProperty0000
+    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#SimpleRegulation> ;
+    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_12345> .
+
+local:MediatorParticipant0000
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#SpeciesB> .
+
+local:ProcessProperty0000
+    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#Reaction1> ;
+    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .
+
+local:ProcessProperty0001
+    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#Reaction2> ;
+    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .
+
+local:ProcessProperty0002
+    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#omexMetaId0009> ;
+    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .
+
+local:ProcessProperty0003
+    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#omexMetaId0011> ;
+    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .
+
+local:SinkParticipant0000
+    semsim:hasMultiplier "1"^^rdf:double ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#SpeciesB> .
+
+local:SinkParticipant0001
+    semsim:hasMultiplier "1"^^rdf:double ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#SpeciesA> .
+
+local:SinkParticipant0002
+    semsim:hasMultiplier "1"^^rdf:double ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#SpeciesD> .
+
+local:SinkParticipant0003
+    semsim:hasMultiplier "1"^^rdf:double ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#SpeciesC> .
+
+local:SourceParticipant0000
+    semsim:hasMultiplier "1"^^rdf:double ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#SpeciesA> .
+
+local:SourceParticipant0001
+    semsim:hasMultiplier "1"^^rdf:double ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#SpeciesB> .
+
+local:SourceParticipant0002
+    semsim:hasMultiplier "1"^^rdf:double ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#SpeciesC> .
+
+local:SourceParticipant0003
+    semsim:hasMultiplier "1"^^rdf:double ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#SpeciesD> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#Reaction1>
+    semsim:hasSinkParticipant local:SinkParticipant0000 ;
+    semsim:hasSourceParticipant local:SourceParticipant0000 .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#Reaction2>
+    semsim:hasSinkParticipant local:SinkParticipant0001 ;
+    semsim:hasSourceParticipant local:SourceParticipant0001 .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#SimpleRegulation>
+    bqbiol:is <https://identifiers.org/uniprot/PD12345> ;
+    bqbiol:isPartOf <https://identifiers.org/fma:1234> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#omexMetaId0009>
+    semsim:hasMediatorParticipant local:MediatorParticipant0000 ;
+    semsim:hasSinkParticipant local:SinkParticipant0002 ;
+    semsim:hasSourceParticipant local:SourceParticipant0002 .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#omexMetaId0011>
+    semsim:hasSinkParticipant local:SinkParticipant0003 ;
+    semsim:hasSourceParticipant local:SourceParticipant0003 .
+
+

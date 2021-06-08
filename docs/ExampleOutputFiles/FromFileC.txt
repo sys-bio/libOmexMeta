@@ -1,1 +1,1 @@
-/Users/ciaranwelsh/Documents/libOmexMeta/docs/ExampleOutputFiles/FromFileC.txt
+1 triples read from file

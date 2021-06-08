@@ -1,1 +1,14 @@
-/Users/ciaranwelsh/Documents/libOmexMeta/docs/ExampleOutputFiles/CellMLCreatePhysicalEntityC.txt
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
+@prefix OMEXlib: <http://omex-library.org/> .
+@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
+
+local:entity0
+    bqbiol:is <https://identifiers.org/fma:9670> ;
+    bqbiol:isPartOf <https://identifiers.org/fma:18228> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#main.Volume>
+    bqbiol:isPropertyOf local:entity0 ;
+    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00154> .
+
+

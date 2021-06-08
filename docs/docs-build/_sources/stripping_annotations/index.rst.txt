@@ -2,13 +2,13 @@
 Stripping Annotations
 =====================
 
-Here are some exampes of how to remove annotations from an xml document
+Here are some examples of how to remove annotations from an xml document
 
 .. tabs::
 
     .. tab:: python
 
-        .. literalinclude:: stripping_annotations.py
+        .. literalinclude:: stripping_annotations_python.py
             :linenos:
             :caption: Remove annotation elements from an sbml document in Python
 

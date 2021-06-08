@@ -78,11 +78,6 @@ path_code = f"""
 import sys
 import os
 sys.path.append('{args.pyomexmeta_site_package_dir}')
-
-print("Python info:")
-print("sys.executable", sys.executable)
-print("sys.version", sys.version)
-
 """
 
 
@@ -123,13 +118,14 @@ def run_binary_files():
         output_filename = os.path.split(os.path.splitext(binary)[0])[1]
 
         output_filename = os.path.join(args.output_location, output_filename + ".txt")
-        with open(output_filename, "wb") as f:
+        with open(output_filename, "w") as f:
             try:
-                f.write(output_filename.encode())
+                f.write(output.decode())
             except UnicodeDecodeError: # for python programs that produce diagrams
                 continue
 
         print(f"output written to \"{output_filename}\"")
+
 
 
 if __name__ == "__main__":

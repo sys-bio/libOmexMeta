@@ -1,7 +1,3 @@
-Python info:
-sys.executable /Users/ciaranwelsh/miniconda/envs/py38/bin/python3.8
-sys.version 3.8.5 (default, Sep  4 2020, 02:22:02) 
-[Clang 10.0.0 ]
 Serializing to ntriples
 <http://omex-library.org/NewOmex.omex/NewModel.rdf#OmexMetaId0001> <http://biomodels.net/biology-qualifiers/isPropertyOf> <http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000> .
 <http://omex-library.org/NewOmex.omex/NewModel.rdf#OmexMetaId0001> <http://biomodels.net/biology-qualifiers/isVersionOf> <https://identifiers.org/OPB/OPB_00340> .

@@ -1,6 +1,2 @@
-Python info:
-sys.executable /Users/ciaranwelsh/miniconda/envs/py38/bin/python3.8
-sys.version 3.8.5 (default, Sep  4 2020, 02:22:02) 
-[Clang 10.0.0 ]
 RDF graph saved to "/Users/ciaranwelsh/Documents/libOmexMeta/docs/source/diagrams/Diagram"
 file saved to /Users/ciaranwelsh/Documents/libOmexMeta/docs/source/diagrams/Diagram.pdf
