@@ -347,15 +347,46 @@ TEST_F(OmexMetaXMLTests, RemoveElementCalledAnnotation) {
 }
 
 
+TEST_F(OmexMetaXMLTests, FindFirstOccuranceOfNodeCalledModelSBML) {
+    std::string sbml = SBMLFactory::getSBML(SBML_Semantic_Extraction_Model);
+    OmexMetaSBML omexMetaSbml(sbml, "OmexMetaId", 4, false);
+    xmlNodePtr modelNode = omexMetaSbml.findFirstOccuranceOfNodeCalled("model");
+    ASSERT_STREQ((const char*)modelNode->name, "model");
+}
+
+TEST_F(OmexMetaXMLTests, FindFirstOccuranceOfNodeCalledSpeciesSBML) {
+    std::string sbml = SBMLFactory::getSBML(SBML_Semantic_Extraction_Model);
+    OmexMetaSBML omexMetaSbml(sbml, "OmexMetaId", 4, false);
+    xmlNodePtr modelNode = omexMetaSbml.findFirstOccuranceOfNodeCalled("species");
+    ASSERT_STREQ((const char*)modelNode->name, "species");
+    xmlChar* metaid = xmlGetProp(modelNode, (const xmlChar*)"metaid");
+    const char* expected = "sp_1";
+    ASSERT_STREQ(expected, (const char*) metaid);
+}
+
+TEST_F(OmexMetaXMLTests, FindFirstOccuranceOfNodeCalledModelCellML) {
+    std::string cellml = CellMLFactory::getCellML(CELLML_TOY);
+    OmexMetaCellML omexMetaCellMl(cellml, "OmexMetaId", 4, false);
+    xmlNodePtr modelNode = omexMetaCellMl.findFirstOccuranceOfNodeCalled("model");
+    ASSERT_STREQ((const char*)modelNode->name, "model");
+}
+
+
 TEST_F(OmexMetaXMLTests, GetSBMLModelElementMetaid) {
     std::string sbml = SBMLFactory::getSBML(SBML_Semantic_Extraction_Model);
     OmexMetaSBML omexMetaSbml(sbml, "OmexMetaId", 4, false);
     std::string actual = omexMetaSbml.getDefaultModelMetaid();
     std::string expected = "ToyModel";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
-
 }
 
+TEST_F(OmexMetaXMLTests, GetCellMLModelElementMetaid) {
+    std::string cellml = CellMLFactory::getCellML(CELLML_TOY);
+    OmexMetaCellML omexMetaCellMl(cellml, "OmexMetaId", 4, false);
+    std::string actual = omexMetaCellMl.getDefaultModelMetaid();
+    std::string expected = "annExamples";
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
 
 
 

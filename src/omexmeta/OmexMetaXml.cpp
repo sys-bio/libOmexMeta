@@ -7,12 +7,19 @@
 #include <libxml/xmlwriter.h>
 
 namespace omexmeta {
-    OmexMetaXml::OmexMetaXml(std::string xml, std::string metaid_base, int metaid_num_digits, bool generate_new_metaids)
-        : xml_(std::move(xml)),
-          doc(parseDoc(xml_)),
+    OmexMetaXml::OmexMetaXml(const std::string &xml, std::string metaid_base, int metaid_num_digits, bool generate_new_metaids)
+        : xml_(xml),
+          doc(parseDoc(xml)),
           metaid_base_(std::move(metaid_base)),
           metaid_num_digits_(metaid_num_digits),
           generate_new_metaids_(generate_new_metaids) {
+    }
+
+    OmexMetaXml::~OmexMetaXml() noexcept {
+        if (doc) {
+            xmlFreeDoc(doc);
+            doc = nullptr;
+        }
     }
 
     std::vector<std::string> OmexMetaXml::getValidElements() const {
@@ -207,7 +214,7 @@ namespace omexmeta {
             doc = xmlParseDoc((const xmlChar *) xml.c_str());
         }
         if (doc == nullptr) {
-            throw NullPointerException("NullPointerException:  OmexMetaXmlAssistant::addMetaIds(): doc");
+            throw NullPointerException("NullPointerException:  OmexMetaXmlAssistant::addMetaIds(): OmexMetaXml could not parse xml");
         }
         return doc;
     }
@@ -229,6 +236,65 @@ namespace omexmeta {
         return out;
     }
 
+    std::string OmexMetaXml::getDefaultModelMetaid(xmlNodePtr root) {
+        {
+            if (!root)
+                root = xmlDocGetRootElement(doc);
+            if (root == nullptr) {
+                throw std::invalid_argument("OmexMetaSBML::getDefaultModelMetaid: doc is null");
+            }
+            xmlNodePtr modelNode = nullptr;
+            if (std::string((const char *) root->name) == "model") {
+                // for cellml
+                modelNode = root;
+            } else {
+                // for sbml
+                modelNode = root->children->next;
+            }
+            if (!modelNode) {
+                throw std::invalid_argument("OmexMetaXml::getDefaultModelMetaid: No children of root node found.");
+            }
+            // all models should have a model element directly under the root node.
+            if (std::string((const char *) modelNode->name) != "model") {
+                throw std::logic_error("OmexMetaXml::getDefaultModelMetaid: Expected an element called \"model\"");
+            }
+            xmlChar *x = xmlGetProp(modelNode, (const xmlChar *) metaIdTagName().c_str());
+            std::string out = (const char *) x;// make a copy as string
+            xmlFree(x);
+            return out;
+        }
+    }
+
+    xmlNodePtr OmexMetaXml::findNodeByName(xmlNodePtr rootnode, const xmlChar * nodename)
+    {
+        xmlNodePtr node = rootnode;
+        if(node == nullptr){
+            return nullptr;
+        }
+
+        while(node != nullptr){
+
+            if(!xmlStrcmp(node->name, nodename)){
+                return node;
+            }
+            else if(node->children != nullptr){
+                xmlNodePtr intNode =  findNodeByName(node->children, nodename);
+                if(intNode != nullptr){
+                    return intNode;
+                }
+            }
+            node = node->next;
+        }
+        return nullptr;
+    }
+
+    xmlNodePtr OmexMetaXml::findFirstOccuranceOfNodeCalled(const std::string &name) {
+        xmlNodePtr root = xmlDocGetRootElement(doc);
+        if (!root) {
+            throw std::invalid_argument("OmexMetaXml::findFirstOccuranceOfNodeCalled: root node is nullptr");
+        }
+        return findNodeByName(root, (const xmlChar*)name.c_str());
+    }
 
     std::vector<std::string> OmexMetaSBML::getValidElements() const {
         std::vector<std::string> valid_elements_ = {
@@ -250,9 +316,6 @@ namespace omexmeta {
     std::string OmexMetaSBML::metaIdNamespace() const {
         return std::string();
     }
-    std::string OmexMetaSBML::getDefaultModelMetaid() {
-        return std::string();
-    }
 
     std::vector<std::string> OmexMetaCellML::getValidElements() const {
         std::vector<std::string> valid_elements_ = {"model", "component", "variable"};
@@ -265,9 +328,6 @@ namespace omexmeta {
 
     std::string OmexMetaCellML::metaIdNamespace() const {
         return "http://www.cellml.org/metadata/1.0#";
-    }
-    std::string OmexMetaCellML::getDefaultModelMetaid() {
-        return std::string();
     }
 
     OmexMetaXmlPtr

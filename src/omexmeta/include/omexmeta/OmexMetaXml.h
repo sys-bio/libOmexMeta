@@ -43,7 +43,9 @@ namespace omexmeta {
 
         [[nodiscard]] bool generateNewMetaids() const;
 
-        explicit OmexMetaXml(std::string xml, std::string metaid_base = "MetaID", int metaid_num_digits = 4, bool generate_new_metaids = false);
+        explicit OmexMetaXml(const std::string& xml, std::string metaid_base = "MetaID", int metaid_num_digits = 4, bool generate_new_metaids = false);
+
+        virtual ~OmexMetaXml() noexcept;
 
         std::pair<std::string, std::vector<std::string>> addMetaIds();
 
@@ -60,6 +62,12 @@ namespace omexmeta {
         std::string removeElement(const std::string &elementName);
 
         /**
+         * @brief search the current xml document for a node called @param name.
+         * @details if multiple such nodes exist, the first found is return
+         */
+        xmlNodePtr findFirstOccuranceOfNodeCalled(const std::string& name);
+
+        /**
          * @brief write the current document to string
          */
         std::string toString();
@@ -68,9 +76,9 @@ namespace omexmeta {
          * @brief get the model elements metaid
          * @details the model element is often a child of the sbml or cellml element
          */
-         virtual std::string getDefaultModelMetaid() = 0;
+        std::string getDefaultModelMetaid(xmlNodePtr root = nullptr);
 
-    private:
+     protected:
         /**
          * xml document tree
          */
@@ -93,6 +101,7 @@ namespace omexmeta {
         std::string metaid_base_;
         int metaid_num_digits_;
         bool generate_new_metaids_;
+        xmlNodePtr findNodeByName(xmlNodePtr rootnode, const xmlChar *nodename);
     };
 
 
@@ -107,7 +116,6 @@ namespace omexmeta {
 
         [[nodiscard]] std::string metaIdNamespace() const override;
 
-        std::string getDefaultModelMetaid() override;
     };
 
 
@@ -121,7 +129,6 @@ namespace omexmeta {
 
         [[nodiscard]] std::string metaIdNamespace() const override;
 
-        std::string getDefaultModelMetaid() override;
     };
 
     typedef std::unique_ptr<OmexMetaXml> OmexMetaXmlPtr;
