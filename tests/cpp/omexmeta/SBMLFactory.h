@@ -42,7 +42,7 @@ public:
     std::string str() override {
         return "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
                "<sbml xmlns=\"http://www.sbml.org/sbml/level3/version2/core\" level=\"3\" version=\"2\">\n"
-               "  <model id=\"beta_cell_model\">\n"
+               "  <model id=\"beta_cell_model\" metaid=\"beta_cell_model\">\n"
                "    <listOfUnitDefinitions>\n"
                "      <unitDefinition id=\"molar\">\n"
                "        <listOfUnits>\n"
@@ -84,7 +84,7 @@ public:
     std::string str() override {
         return "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
                "<sbml xmlns=\"http://www.sbml.org/sbml/level3/version2/core\" level=\"3\" version=\"2\">\n"
-               "  <model id=\"TestModelNotAnnotated\">\n"
+               "  <model id=\"TestModelNotAnnotated\" metaid=\"TestModelNotAnnotated\">\n"
                "    <listOfUnitDefinitions>\n"
                "      <unitDefinition id=\"molar\">\n"
                "        <listOfUnits>\n"
@@ -147,7 +147,7 @@ public:
     std::string str() override {
         return "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
                "<sbml xmlns=\"http://www.sbml.org/sbml/level3/version2/core\" level=\"3\" version=\"2\">\n"
-               "  <model id=\"TestModelNotAnnotated\">\n"
+               "  <model id=\"TestModelNotAnnotated\" metaid=\"TestModelNotAnnotated\">\n"
                "    <listOfUnitDefinitions>\n"
                "      <unitDefinition id=\"molar\">\n"
                "        <listOfUnits>\n"

@@ -24,7 +24,7 @@
     <innerclass refid="classomexmeta_1_1OmexMetaSBML" prot="public">omexmeta::OmexMetaSBML</innerclass>
     <innerclass refid="classomexmeta_1_1OmexMetaUtils" prot="public">omexmeta::OmexMetaUtils</innerclass>
     <innerclass refid="classomexmeta_1_1OmexMetaXml" prot="public">omexmeta::OmexMetaXml</innerclass>
-    <innerclass refid="classomexmeta_1_1OmexMetaXmlAssistantFactory" prot="public">omexmeta::OmexMetaXmlAssistantFactory</innerclass>
+    <innerclass refid="classomexmeta_1_1OmexMetaXmlAssistantFactory" prot="public">omexmeta::OmexMetaXmlFactory</innerclass>
     <innerclass refid="classomexmeta_1_1Participant" prot="public">omexmeta::Participant</innerclass>
     <innerclass refid="classomexmeta_1_1PersonalInformation" prot="public">omexmeta::PersonalInformation</innerclass>
     <innerclass refid="classomexmeta_1_1PhysicalEntity" prot="public">omexmeta::PhysicalEntity</innerclass>

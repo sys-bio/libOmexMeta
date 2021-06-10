@@ -42,58 +42,58 @@ TEST_F(OmexMetaXMLTests, TestValidElementsSBML) {
 
 TEST_F(OmexMetaXMLTests, TestMetaIdsAll) {
     std::string sbml = SBMLFactory::getSBML(SBML_NOT_ANNOTATED);
-    OmexMetaXml SemsimXmlAssistant(sbml, "#OmexMetaId", 4, true);
+    OmexMetaSBML SemsimXmlAssistant(sbml, "#OmexMetaId", 4, true);
     auto sbml_and_meta_ids = SemsimXmlAssistant.addMetaIds();
     sbml = sbml_and_meta_ids.first;
     std::cout << sbml << std::endl;
     std::string expected = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
-                           "<sbml xmlns=\"http://www.sbml.org/sbml/level3/version2/core\" level=\"3\" version=\"2\" =\"sbml0000\">\n"
-                           "  <model id=\"TestModelNotAnnotated\" =\"model0000\">\n"
-                           "    <listOfUnitDefinitions =\"listOfUnitDefinitions0000\">\n"
-                           "      <unitDefinition id=\"molar\" =\"unitDefinition0000\">\n"
-                           "        <listOfUnits =\"listOfUnits0000\">\n"
-                           "          <unit kind=\"mole\" exponent=\"1\" scale=\"1\" multiplier=\"1\" =\"unit0000\"/>\n"
-                           "          <unit kind=\"litre\" exponent=\"-1\" scale=\"1\" multiplier=\"1\" =\"unit0001\"/>\n"
+                           "<sbml xmlns=\"http://www.sbml.org/sbml/level3/version2/core\" level=\"3\" version=\"2\">\n"
+                           "  <model id=\"TestModelNotAnnotated\" metaid=\"TestModelNotAnnotated\">\n"
+                           "    <listOfUnitDefinitions>\n"
+                           "      <unitDefinition id=\"molar\">\n"
+                           "        <listOfUnits>\n"
+                           "          <unit kind=\"mole\" exponent=\"1\" scale=\"1\" multiplier=\"1\" metaid=\"unit0000\"/>\n"
+                           "          <unit kind=\"litre\" exponent=\"-1\" scale=\"1\" multiplier=\"1\" metaid=\"unit0001\"/>\n"
                            "        </listOfUnits>\n"
                            "      </unitDefinition>\n"
                            "    </listOfUnitDefinitions>\n"
-                           "    <listOfCompartments =\"listOfCompartments0001\">\n"
-                           "      <compartment metaid=\"#cytosol\" id=\"cytosol\" size=\"1\" constant=\"true\" =\"compartment0000\"/>\n"
+                           "    <listOfCompartments>\n"
+                           "      <compartment metaid=\"#cytosol\" id=\"cytosol\" size=\"1\" constant=\"true\"/>\n"
                            "    </listOfCompartments>\n"
-                           "    <listOfSpecies =\"listOfSpecies0002\">\n"
-                           "      <species metaid=\"#Meta00001\" id=\"X\" compartment=\"cytosol\" initialConcentration=\"10\" substanceUnits=\"molar\" hasOnlySubstanceUnits=\"false\" boundaryCondition=\"false\" constant=\"false\" =\"species0000\"/>\n"
-                           "      <species id=\"Y\" compartment=\"cytosol\" initialConcentration=\"20\" substanceUnits=\"molar\" hasOnlySubstanceUnits=\"false\" boundaryCondition=\"false\" constant=\"false\" =\"species0001\"/>\n"
-                           "      <species id=\"Y\" compartment=\"cytosol\" initialConcentration=\"15\" substanceUnits=\"molar\" hasOnlySubstanceUnits=\"false\" boundaryCondition=\"false\" constant=\"false\" =\"species0002\"/>\n"
+                           "    <listOfSpecies>\n"
+                           "      <species metaid=\"#Meta00001\" id=\"X\" compartment=\"cytosol\" initialConcentration=\"10\" substanceUnits=\"molar\" hasOnlySubstanceUnits=\"false\" boundaryCondition=\"false\" constant=\"false\"/>\n"
+                           "      <species id=\"Y\" compartment=\"cytosol\" initialConcentration=\"20\" substanceUnits=\"molar\" hasOnlySubstanceUnits=\"false\" boundaryCondition=\"false\" constant=\"false\" metaid=\"species0000\"/>\n"
+                           "      <species id=\"Y\" compartment=\"cytosol\" initialConcentration=\"15\" substanceUnits=\"molar\" hasOnlySubstanceUnits=\"false\" boundaryCondition=\"false\" constant=\"false\" metaid=\"species0001\"/>\n"
                            "    </listOfSpecies>\n"
-                           "    <listOfReactions =\"listOfReactions0003\">\n"
-                           "      <reaction id=\"X2Y\" reversible=\"false\" =\"reaction0000\">\n"
-                           "        <listOfProducts =\"listOfProducts0000\">\n"
-                           "          <speciesReference species=\"Y\" constant=\"false\" =\"speciesReference0000\"/>\n"
+                           "    <listOfReactions>\n"
+                           "      <reaction id=\"X2Y\" reversible=\"false\" metaid=\"reaction0000\">\n"
+                           "        <listOfProducts>\n"
+                           "          <speciesReference species=\"Y\" constant=\"false\"/>\n"
                            "        </listOfProducts>\n"
-                           "        <kineticLaw =\"kineticLaw0001\">\n"
-                           "          <math xmlns=\"http://www.w3.org/1998/Math/MathML\" =\"math0000\">\n"
-                           "            <apply =\"apply0000\">\n"
-                           "              <times =\"times0000\"/>\n"
-                           "              <ci =\"ci0001\"> x </ci>\n"
-                           "              <ci =\"ci0002\"> kx2y </ci>\n"
+                           "        <kineticLaw metaid=\"kineticLaw0000\">\n"
+                           "          <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n"
+                           "            <apply>\n"
+                           "              <times/>\n"
+                           "              <ci> x </ci>\n"
+                           "              <ci> kx2y </ci>\n"
                            "            </apply>\n"
                            "          </math>\n"
-                           "          <listOfLocalParameters =\"listOfLocalParameters0001\">\n"
-                           "            <localParameter id=\"kx2y\" value=\"1\" =\"localParameter0000\"/>\n"
-                           "            <localParameter id=\"ky2z\" value=\"1\" =\"localParameter0001\"/>\n"
+                           "          <listOfLocalParameters>\n"
+                           "            <localParameter id=\"kx2y\" value=\"1\"/>\n"
+                           "            <localParameter id=\"ky2z\" value=\"1\"/>\n"
                            "          </listOfLocalParameters>\n"
                            "        </kineticLaw>\n"
                            "      </reaction>\n"
-                           "      <reaction id=\"y2z\" reversible=\"false\" =\"reaction0001\">\n"
-                           "        <listOfProducts =\"listOfProducts0001\">\n"
-                           "          <speciesReference species=\"Z\" constant=\"false\" =\"speciesReference0001\"/>\n"
+                           "      <reaction id=\"y2z\" reversible=\"false\" metaid=\"reaction0001\">\n"
+                           "        <listOfProducts>\n"
+                           "          <speciesReference species=\"Z\" constant=\"false\"/>\n"
                            "        </listOfProducts>\n"
-                           "        <kineticLaw =\"kineticLaw0002\">\n"
-                           "          <math xmlns=\"http://www.w3.org/1998/Math/MathML\" =\"math0001\">\n"
-                           "            <apply =\"apply0001\">\n"
-                           "              <times =\"times0001\"/>\n"
-                           "              <ci =\"ci0003\"> y </ci>\n"
-                           "              <ci =\"ci0004\"> ky2z </ci>\n"
+                           "        <kineticLaw metaid=\"kineticLaw0001\">\n"
+                           "          <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n"
+                           "            <apply>\n"
+                           "              <times/>\n"
+                           "              <ci> y </ci>\n"
+                           "              <ci> ky2z </ci>\n"
                            "            </apply>\n"
                            "          </math>\n"
                            "        </kineticLaw>\n"
@@ -114,7 +114,7 @@ TEST_F(OmexMetaXMLTests, TestMetaIdsSBML) {
     std::cout << sbml << std::endl;
     std::string expected = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
                            "<sbml xmlns=\"http://www.sbml.org/sbml/level3/version2/core\" level=\"3\" version=\"2\">\n"
-                           "  <model id=\"TestModelNotAnnotated\" metaid=\"model0000\">\n"
+                           "  <model id=\"TestModelNotAnnotated\" metaid=\"TestModelNotAnnotated\">\n"
                            "    <listOfUnitDefinitions>\n"
                            "      <unitDefinition id=\"molar\">\n"
                            "        <listOfUnits>\n"
@@ -180,7 +180,7 @@ TEST_F(OmexMetaXMLTests, TestMetaIdsGenerateNewMetaidsFlagFalseSBML) {
     std::cout << sbmlAssistant.metaIdTagName() << std::endl;
     std::cout << sbmlAssistant.metaIdNamespace() << std::endl;
     auto sbml_and_meta_ids = sbmlAssistant.addMetaIds();
-    std::vector<std::string> expected = {"#cytosol", "#glucose"};
+    std::vector<std::string> expected = {"beta_cell_model", "#cytosol", "#glucose"};
     ASSERT_EQ(expected, sbml_and_meta_ids.second);
 }
 
@@ -197,7 +197,7 @@ TEST_F(OmexMetaXMLTests, TestMetaIdsGenerateNewMetaidsFlagFalseMetaid) {
     for (auto &it : metaids) {
         std::cout << it << std::endl;
     }
-    std::vector<std::string> expected = {"model0000", "unit0000", "unit0001", "#cytosol",
+    std::vector<std::string> expected = {"beta_cell_model", "unit0000", "unit0001", "#cytosol",
                                          "#glucose", "reaction0000", "kineticLaw0000"};
     ASSERT_EQ(expected, metaids);
 }
@@ -242,7 +242,7 @@ TEST_F(OmexMetaXMLTests, ToStringTest) {
 TEST_F(OmexMetaXMLTests, RemoveElement) {
     std::string expected = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
                            "<sbml xmlns=\"http://www.sbml.org/sbml/level3/version2/core\" level=\"3\" version=\"2\">\n"
-                           "  <model id=\"beta_cell_model\">\n"
+                           "  <model id=\"beta_cell_model\" metaid=\"beta_cell_model\">\n"
                            "    <listOfUnitDefinitions>\n"
                            "      <unitDefinition id=\"molar\">\n"
                            "        \n"

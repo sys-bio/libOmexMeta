@@ -34,6 +34,9 @@ namespace omexmeta {
         virtual void setArchiveUri(const std::string &archiveName) = 0;
         virtual const std::string &getModelUri() const = 0;
         virtual void setModelUri(std::string modelName) = 0;
+        virtual const std::string &getModelMetaid() = 0;
+        virtual void setModelMetaid(const std::string& modelMetaid) = 0;
+        virtual std::string getModelLevelAnnotationUri() = 0 ;
         virtual const std::string &getLocalUri() const = 0;
         virtual int size() const = 0;
         virtual bool empty() const = 0;

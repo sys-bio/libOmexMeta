@@ -179,8 +179,7 @@ TEST_F(CAPITests, RDF_addFromFile) {
 TEST_F(CAPITests, TestCheckValidMetaid) {
     RDF *rdf_ptr = RDF_new();
 
-    Editor *editor_ptr = RDF_toEditor(rdf_ptr,
-                                      SBMLFactory::getSBML(SBML_NOT_ANNOTATED).c_str(), true, false);
+    Editor *editor_ptr = RDF_toEditor(rdf_ptr, SBMLFactory::getSBML(SBML_NOT_ANNOTATED).c_str(), true, false);
     Editor_checkValidMetaid(editor_ptr, "model0000");
 
     Editor_delete(editor_ptr);

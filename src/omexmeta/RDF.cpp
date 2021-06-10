@@ -389,6 +389,18 @@ namespace omexmeta {
         uriHandler_.setModelUri(std::move(modelName));
     }
 
+    const std::string &RDF::getModelMetaid() {
+        return uriHandler_.getModelMetaid();
+    }
+
+    void RDF::setModelMetaid(const std::string& modelMetaid) {
+        uriHandler_.setModelMetaid(modelMetaid);
+    }
+
+    std::string RDF::getModelLevelAnnotationUri() {
+        return uriHandler_.getModelLevelAnnotationUri();
+    }
+
     const std::string &RDF::getLocalUri() const {
         return uriHandler_.getLocalUri();
     }

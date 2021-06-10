@@ -296,6 +296,12 @@ namespace omexmeta {
         [[nodiscard]] std::string getModelUri() const;
 
         /**
+         * @brief get the current value of the uri used to
+         * annotate model level annotations
+         */
+        std::string getModelLevelAnnotationUri() const;
+
+        /**
          * @brief get the current value of archive_uri_
          */
         [[nodiscard]] std::string getRepositoryUri() const;

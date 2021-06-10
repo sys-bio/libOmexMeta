@@ -598,7 +598,7 @@
     <member refid="classomexmeta_1_1OmexMetaXml_1ae5ec502a76aa8b133de07f7b98926c6d" kind="function"><name>removeElement</name></member>
     <member refid="classomexmeta_1_1OmexMetaXml_1aaa0e43035473faa50350e1b5d703e445" kind="function"><name>toString</name></member>
   </compound>
-  <compound refid="classomexmeta_1_1OmexMetaXmlAssistantFactory" kind="class"><name>omexmeta::OmexMetaXmlAssistantFactory</name>
+  <compound refid="classomexmeta_1_1OmexMetaXmlAssistantFactory" kind="class"><name>omexmeta::OmexMetaXmlFactory</name>
     <member refid="classomexmeta_1_1OmexMetaXmlAssistantFactory_1aa992454185c6c7ee2d189eedbedb8f3d" kind="function"><name>generate</name></member>
   </compound>
   <compound refid="classOptions" kind="class"><name>Options</name>

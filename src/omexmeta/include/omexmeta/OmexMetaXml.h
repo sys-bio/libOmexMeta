@@ -39,13 +39,13 @@ namespace omexmeta {
          */
         [[maybe_unused]] const std::string &getMetaidBase() const;
 
+        virtual ~OmexMetaXml();
+
         int getMetaidNumDigits() const;
 
         [[nodiscard]] bool generateNewMetaids() const;
 
         explicit OmexMetaXml(const std::string& xml, std::string metaid_base = "MetaID", int metaid_num_digits = 4, bool generate_new_metaids = false);
-
-        virtual ~OmexMetaXml() noexcept;
 
         std::pair<std::string, std::vector<std::string>> addMetaIds();
 
@@ -76,7 +76,7 @@ namespace omexmeta {
          * @brief get the model elements metaid
          * @details the model element is often a child of the sbml or cellml element
          */
-        std::string getDefaultModelMetaid(xmlNodePtr root = nullptr);
+        std::string getDefaultModelMetaid();
 
      protected:
         /**
@@ -87,7 +87,6 @@ namespace omexmeta {
         /**
          * Parse xml into libxml2. If @param xml provided,
          * use this xml, otherwise use private member variable xml_
-         *
          */
         xmlDocPtr parseDoc(const std::string &xml = std::string());
 
@@ -97,20 +96,26 @@ namespace omexmeta {
                 std::vector<std::string> &seen_metaids, long count,
                 const MetaID &metaid_gen, std::string &id);
 
+        /**
+         * @brief looks for a node called @param nodename
+         * in @param rootnode. Returns the first it finds.
+         */
+        xmlNodePtr findNodeByName(xmlNodePtr rootnode, const xmlChar *nodename);
         std::string xml_;
         std::string metaid_base_;
         int metaid_num_digits_;
         bool generate_new_metaids_;
-        xmlNodePtr findNodeByName(xmlNodePtr rootnode, const xmlChar *nodename);
     };
 
 
     class OmexMetaSBML : public OmexMetaXml {
 
     public:
-        [[nodiscard]] std::vector<std::string> getValidElements() const override;
-
         using OmexMetaXml::OmexMetaXml;
+
+        ~OmexMetaSBML() override;
+
+        [[nodiscard]] std::vector<std::string> getValidElements() const override;
 
         [[nodiscard]] std::string metaIdTagName() const override;
 
@@ -123,6 +128,8 @@ namespace omexmeta {
     public:
         using OmexMetaXml::OmexMetaXml;
 
+        ~OmexMetaCellML() override;
+
         std::vector<std::string> getValidElements() const override;
 
         std::string metaIdTagName() const override;
@@ -133,9 +140,9 @@ namespace omexmeta {
 
     typedef std::unique_ptr<OmexMetaXml> OmexMetaXmlPtr;
 
-    class OmexMetaXmlAssistantFactory {
+    class OmexMetaXmlFactory {
     public:
-        static OmexMetaXmlPtr generate(const std::string &xml, OmexMetaXmlType type, bool generate_new_metaids = false, std::string metaid_base = "#OmexMetaId", int metaid_num_digits = 4);
+        static OmexMetaXmlPtr generate(const std::string &xml, OmexMetaXmlType type, bool generate_new_metaids = false, const std::string& metaid_base = "#OmexMetaId", int metaid_num_digits = 4);
     };
 }// namespace omexmeta
 #endif//LIBOMEXMETA_OMEXMETAXML_H
