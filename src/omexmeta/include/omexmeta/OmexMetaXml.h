@@ -29,26 +29,6 @@ namespace omexmeta {
      * class would just be methods of the xml.
      */
     class OmexMetaXml {
-        std::string xml_;
-        std::string metaid_base_;
-        int metaid_num_digits_;
-        bool generate_new_metaids_;
-
-        xmlDocPtr doc; /* the resulting document tree */
-
-        /**
-         * Parse xml into libxml2. If @param xml provided,
-         * use this xml, otherwise use private member variable xml_
-         *
-         */
-        xmlDocPtr parseDoc(const std::string& xml = std::string());
-
-        void addMetaIdsRecursion(xmlDocPtr doc, xmlNode *a_node, std::vector<std::string> &seen_metaids);
-
-        void generateMetaId(
-                std::vector<std::string> &seen_metaids, long count,
-                const MetaID &metaid_gen, std::string &id);
-
     public:
         /**
          * @brief get the base for the metaid used by the current xml type.
@@ -84,7 +64,36 @@ namespace omexmeta {
          */
         std::string toString();
 
-        };
+        /**
+         * @brief get the model elements metaid
+         * @details the model element is often a child of the sbml or cellml element
+         */
+         virtual std::string getDefaultModelMetaid() = 0;
+
+    private:
+        /**
+         * xml document tree
+         */
+        xmlDocPtr doc;
+
+        /**
+         * Parse xml into libxml2. If @param xml provided,
+         * use this xml, otherwise use private member variable xml_
+         *
+         */
+        xmlDocPtr parseDoc(const std::string &xml = std::string());
+
+        void addMetaIdsRecursion(xmlDocPtr doc, xmlNode *a_node, std::vector<std::string> &seen_metaids);
+
+        void generateMetaId(
+                std::vector<std::string> &seen_metaids, long count,
+                const MetaID &metaid_gen, std::string &id);
+
+        std::string xml_;
+        std::string metaid_base_;
+        int metaid_num_digits_;
+        bool generate_new_metaids_;
+    };
 
 
     class OmexMetaSBML : public OmexMetaXml {
@@ -97,6 +106,8 @@ namespace omexmeta {
         [[nodiscard]] std::string metaIdTagName() const override;
 
         [[nodiscard]] std::string metaIdNamespace() const override;
+
+        std::string getDefaultModelMetaid() override;
     };
 
 
@@ -109,6 +120,8 @@ namespace omexmeta {
         std::string metaIdTagName() const override;
 
         [[nodiscard]] std::string metaIdNamespace() const override;
+
+        std::string getDefaultModelMetaid() override;
     };
 
     typedef std::unique_ptr<OmexMetaXml> OmexMetaXmlPtr;

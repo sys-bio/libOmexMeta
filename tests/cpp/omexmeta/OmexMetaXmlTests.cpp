@@ -341,12 +341,20 @@ TEST_F(OmexMetaXMLTests, RemoveElementCalledAnnotation) {
                            "    </model>\n"
                            "</sbml>\n";
     std::string sbml = SBMLFactory::getSBML(SBML_Semantic_Extraction_Model);
-    OmexMetaXml xml(sbml, "OmexMetaId", 4, false);
+    OmexMetaSBML xml(sbml, "OmexMetaId", 4, false);
     std::string actual = xml.removeElement("annotation");
     ASSERT_STREQ(actual.c_str(), expected.c_str());
 }
 
 
+TEST_F(OmexMetaXMLTests, GetSBMLModelElementMetaid) {
+    std::string sbml = SBMLFactory::getSBML(SBML_Semantic_Extraction_Model);
+    OmexMetaSBML omexMetaSbml(sbml, "OmexMetaId", 4, false);
+    std::string actual = omexMetaSbml.getDefaultModelMetaid();
+    std::string expected = "ToyModel";
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+
+}
 
 
 

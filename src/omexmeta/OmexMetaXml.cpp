@@ -250,6 +250,9 @@ namespace omexmeta {
     std::string OmexMetaSBML::metaIdNamespace() const {
         return std::string();
     }
+    std::string OmexMetaSBML::getDefaultModelMetaid() {
+        return std::string();
+    }
 
     std::vector<std::string> OmexMetaCellML::getValidElements() const {
         std::vector<std::string> valid_elements_ = {"model", "component", "variable"};
@@ -262,6 +265,9 @@ namespace omexmeta {
 
     std::string OmexMetaCellML::metaIdNamespace() const {
         return "http://www.cellml.org/metadata/1.0#";
+    }
+    std::string OmexMetaCellML::getDefaultModelMetaid() {
+        return std::string();
     }
 
     OmexMetaXmlPtr
