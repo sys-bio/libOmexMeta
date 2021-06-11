@@ -17,6 +17,14 @@ const std\+::string \& \mbox{\hyperlink{classomexmeta_1_1UriHandler_ad135d8d4d6f
 \begin{DoxyCompactList}\small\item\em setter for model uri. \end{DoxyCompactList}\item 
 const std\+::string \& \mbox{\hyperlink{classomexmeta_1_1UriHandler_a4c20a7d29388f3e3d8ce736dcce386d6}{get\+Local\+Uri}} () const
 \begin{DoxyCompactList}\small\item\em getter for local uri. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classomexmeta_1_1UriHandler_a25e8869750d8cdf28af0ab1fd6157df5}\label{classomexmeta_1_1UriHandler_a25e8869750d8cdf28af0ab1fd6157df5}} 
+const std\+::string \& \mbox{\hyperlink{classomexmeta_1_1UriHandler_a25e8869750d8cdf28af0ab1fd6157df5}{get\+Model\+Metaid}} () const
+\begin{DoxyCompactList}\small\item\em getter for model metaid. \mbox{\hyperlink{classThis}{This}} is used in model level annotations \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classomexmeta_1_1UriHandler_a72f33038ba13647c39381b04f8087763}{get\+Model\+Level\+Annotation\+Uri}} ()
+\begin{DoxyCompactList}\small\item\em get the full uri for model level annotations. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classomexmeta_1_1UriHandler_a870e030a93112076f1c0880572e22db0}\label{classomexmeta_1_1UriHandler_a870e030a93112076f1c0880572e22db0}} 
+\mbox{\hyperlink{classomexmeta_1_1UriHandler}{Uri\+Handler}} \& \mbox{\hyperlink{classomexmeta_1_1UriHandler_a870e030a93112076f1c0880572e22db0}{set\+Model\+Metaid}} (const std\+::string \&model\+Metaid)
+\begin{DoxyCompactList}\small\item\em setting for model metaid. \mbox{\hyperlink{classThis}{This}} is used in model level annotations \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classomexmeta_1_1UriHandler_ad30de26a22a4e9bfd0417cc19c7c67cc}\label{classomexmeta_1_1UriHandler_ad30de26a22a4e9bfd0417cc19c7c67cc}} 
 std\+::string {\bfseries uri\+Modifier} (std\+::string uri\+\_\+to\+\_\+modify, e\+Uri\+Type type) const
 \item 
@@ -55,7 +63,17 @@ default is\char`\"{}\+New\+Omex.\+omex\char`\"{} which produces the full uri \ch
 
 getter for local uri. 
 
-default is\char`\"{}\+New\+Model.\+rdf\char`\"{} and produces the full uri \char`\"{}http\+://omex-\/library.\+org/\+New\+Omex.\+omex/\+New\+Model.\+rdf\#\char`\"{} when assembled. There is no setter for local\+\_\+uri\+\_\+ because it\textquotesingle{}ll take on the name of model\+\_\+uri\+\_\+ with the \char`\"{}xml\char`\"{} extension replaced with \char`\"{}rdf\char`\"{} \mbox{\Hypertarget{classomexmeta_1_1UriHandler_ad135d8d4d6fdb3af194f1cb24758e745}\label{classomexmeta_1_1UriHandler_ad135d8d4d6fdb3af194f1cb24758e745}} 
+default is\char`\"{}\+New\+Model.\+rdf\char`\"{} and produces the full uri \char`\"{}http\+://omex-\/library.\+org/\+New\+Omex.\+omex/\+New\+Model.\+rdf\#\char`\"{} when assembled. There is no setter for local\+\_\+uri\+\_\+ because it\textquotesingle{}ll take on the name of model\+\_\+uri\+\_\+ with the \char`\"{}xml\char`\"{} extension replaced with \char`\"{}rdf\char`\"{} \mbox{\Hypertarget{classomexmeta_1_1UriHandler_a72f33038ba13647c39381b04f8087763}\label{classomexmeta_1_1UriHandler_a72f33038ba13647c39381b04f8087763}} 
+\index{omexmeta::UriHandler@{omexmeta::UriHandler}!getModelLevelAnnotationUri@{getModelLevelAnnotationUri}}
+\index{getModelLevelAnnotationUri@{getModelLevelAnnotationUri}!omexmeta::UriHandler@{omexmeta::UriHandler}}
+\doxysubsubsection{\texorpdfstring{getModelLevelAnnotationUri()}{getModelLevelAnnotationUri()}}
+{\footnotesize\ttfamily std\+::string omexmeta\+::\+Uri\+Handler\+::get\+Model\+Level\+Annotation\+Uri (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+get the full uri for model level annotations. 
+
+the model\+Uri concatonated with the model metaid fragment \mbox{\Hypertarget{classomexmeta_1_1UriHandler_ad135d8d4d6fdb3af194f1cb24758e745}\label{classomexmeta_1_1UriHandler_ad135d8d4d6fdb3af194f1cb24758e745}} 
 \index{omexmeta::UriHandler@{omexmeta::UriHandler}!getModelUri@{getModelUri}}
 \index{getModelUri@{getModelUri}!omexmeta::UriHandler@{omexmeta::UriHandler}}
 \doxysubsubsection{\texorpdfstring{getModelUri()}{getModelUri()}}

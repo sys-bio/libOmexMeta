@@ -384,7 +384,7 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
         self.pyom.editor_delete(editor_ptr)
 
     def test_editor_strip_annotations(self):
-        editor_ptr = self.pyom.rdf_to_editor(self.rdf, TestStrings.sbml_with_annotations.encode(), True, False)
+        editor_ptr = self.pyom.rdf_to_editor(self.rdf, TestStrings.sbml_with_annotations.encode(), False, False)
         actual = self.pyom.get_and_free_c_str(
             self.pyom.editor_strip_annotations(editor_ptr, "annotation".encode())
         )
@@ -467,7 +467,7 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
-<http://omex-library.org/NewOmex.omex/NewModel.xml>
+<http://omex-library.org/NewOmex.omex/NewModel.xml#model0000>
     dc:creator <https://orcid.org/1234-1234-1234-1234> .
 """
         self.assertTrue(self.pyom.rdf_equals_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode(), True))
@@ -505,7 +505,7 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
-<http://omex-library.org/NewOmex.omex/NewModel.xml>
+<http://omex-library.org/NewOmex.omex/NewModel.xml#model0000>
     bqbiol:hasTaxon <https://identifiers.org/taxonomy:9898> .
 
 """
@@ -525,7 +525,7 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
-<http://omex-library.org/NewOmex.omex/NewModel.xml>
+<http://omex-library.org/NewOmex.omex/NewModel.xml#model0000>
     bqmodel:isDescribedBy <https://identifiers.org/pubmed:1234568> .
 
 """
@@ -544,7 +544,7 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
-<http://omex-library.org/NewOmex.omex/NewModel.xml>
+<http://omex-library.org/NewOmex.omex/NewModel.xml#model0000>
     dc:description "An awesome model" .
 
 """
@@ -563,7 +563,7 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
-<http://omex-library.org/NewOmex.omex/NewModel.xml>
+<http://omex-library.org/NewOmex.omex/NewModel.xml#model0000>
     dc:created [
         dc:W3CDTF "14/01/1001"
     ] .
@@ -585,7 +585,7 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
-<http://omex-library.org/NewOmex.omex/NewModel.xml>
+<http://omex-library.org/NewOmex.omex/NewModel.xml#model0000>
     bqmodel:isDerivedFrom <https://identifiers.org/biomodels.db:BIOMDtoomany0s1.xml> .
 
 
@@ -1205,7 +1205,7 @@ local:SourceParticipant0000
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
-<http://omex-library.org/NewOmex.omex/NewModel.xml>
+<http://omex-library.org/NewOmex.omex/NewModel.xml#model0000>
     dc:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000>
@@ -1231,7 +1231,7 @@ local:SourceParticipant0000
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
-<http://omex-library.org/NewOmex.omex/NewModel.xml>
+<http://omex-library.org/NewOmex.omex/NewModel.xml#model0000>
     dc:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000>
@@ -1257,7 +1257,7 @@ local:SourceParticipant0000
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
-<http://omex-library.org/NewOmex.omex/NewModel.xml>
+<http://omex-library.org/NewOmex.omex/NewModel.xml#model0000>
     dc:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000>
@@ -1280,7 +1280,7 @@ local:SourceParticipant0000
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
-<http://omex-library.org/NewOmex.omex/NewModel.xml>
+<http://omex-library.org/NewOmex.omex/NewModel.xml#model0000>
     dc:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000>
@@ -1307,7 +1307,7 @@ local:SourceParticipant0000
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
-<http://omex-library.org/NewOmex.omex/NewModel.xml>
+<http://omex-library.org/NewOmex.omex/NewModel.xml#model0000>
     dc:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000>
@@ -1333,7 +1333,7 @@ local:SourceParticipant0000
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
-<http://omex-library.org/NewOmex.omex/NewModel.xml>
+<http://omex-library.org/NewOmex.omex/NewModel.xml#model0000>
     dc:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000>
@@ -1359,7 +1359,7 @@ local:SourceParticipant0000
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
-<http://omex-library.org/NewOmex.omex/NewModel.xml>
+<http://omex-library.org/NewOmex.omex/NewModel.xml#model0000>
     dc:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000>
@@ -1385,7 +1385,7 @@ local:SourceParticipant0000
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
-<http://omex-library.org/NewOmex.omex/NewModel.xml>
+<http://omex-library.org/NewOmex.omex/NewModel.xml#model0000>
     dc:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000>

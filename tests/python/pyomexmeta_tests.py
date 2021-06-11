@@ -1295,7 +1295,7 @@ local:SourceParticipant0001
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
-<http://omex-library.org/NewOmex.omex/NewModel.xml>
+<http://omex-library.org/NewOmex.omex/NewModel.xml#SmadNuclearTransport>
     dc:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000>
@@ -1305,7 +1305,7 @@ local:SourceParticipant0001
     foaf:name "Ciaran" ;
     dc:creator <https://identifiers.org/orcid/1234-1234-1234-1234> .
 """
-        self.assertTrue(RDF.equals_rdf_vs_string(rdf, expected))
+        self.assertTrue(RDF.equals_rdf_vs_string(rdf, expected, "turtle", True))
 
 
 class GoldStandardOmexArchiveTests(unittest.TestCase):

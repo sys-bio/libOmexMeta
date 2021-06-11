@@ -187,56 +187,58 @@ $(function() {
 <div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160; </div>
 <div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;        [[nodiscard]] std::string getModelUri() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160; </div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;        [[nodiscard]] std::string getRepositoryUri() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160; </div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;        [[nodiscard]] <a class="code" href="classredland_1_1LibrdfNode.html">LibrdfNode</a> createNodeWithModelUri(<span class="keyword">const</span> std::string &amp;<span class="keywordtype">string</span>) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;        std::string getModelLevelAnnotationUri() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160; </div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;        [[nodiscard]] std::string getRepositoryUri() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160; </div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;        <a class="code" href="classomexmeta_1_1Editor.html">Editor</a> &amp;addCreator(std::string orcid_id);</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;        [[nodiscard]] <a class="code" href="classredland_1_1LibrdfNode.html">LibrdfNode</a> createNodeWithModelUri(<span class="keyword">const</span> std::string &amp;<span class="keywordtype">string</span>) <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160; </div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;        <a class="code" href="classomexmeta_1_1Editor.html">Editor</a> &amp;addCurator(std::string orcid_id);</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;        <a class="code" href="classomexmeta_1_1Editor.html">Editor</a> &amp;addCreator(std::string orcid_id);</div>
 <div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160; </div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;        <a class="code" href="classomexmeta_1_1Editor.html">Editor</a> &amp;addTaxon(<span class="keyword">const</span> std::string &amp;taxon_id);</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;        <a class="code" href="classomexmeta_1_1Editor.html">Editor</a> &amp;addCurator(std::string orcid_id);</div>
 <div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160; </div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;        <a class="code" href="classomexmeta_1_1Editor.html">Editor</a> &amp;addPubmed(<span class="keyword">const</span> std::string &amp;pubmedid);</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;        <a class="code" href="classomexmeta_1_1Editor.html">Editor</a> &amp;addTaxon(<span class="keyword">const</span> std::string &amp;taxon_id);</div>
 <div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160; </div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;        <a class="code" href="classomexmeta_1_1Editor.html">Editor</a> &amp;addDescription(<span class="keyword">const</span> std::string &amp;date);</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;        <a class="code" href="classomexmeta_1_1Editor.html">Editor</a> &amp;addPubmed(<span class="keyword">const</span> std::string &amp;pubmedid);</div>
 <div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160; </div>
-<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;        <a class="code" href="classomexmeta_1_1Editor.html">Editor</a> &amp;addDateCreated(<span class="keyword">const</span> std::string &amp;date);</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;        <a class="code" href="classomexmeta_1_1Editor.html">Editor</a> &amp;addDescription(<span class="keyword">const</span> std::string &amp;date);</div>
 <div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160; </div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;        <a class="code" href="classomexmeta_1_1Triple.html">SingularAnnotation</a> newSingularAnnotation(std::string metaid) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160; </div>
-<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;        <a class="code" href="classomexmeta_1_1Editor.html">Editor</a> &amp;addParentModel(<span class="keyword">const</span> std::string &amp;biomod_id);</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;        <a class="code" href="classomexmeta_1_1Editor.html">Editor</a> &amp;addDateCreated(<span class="keyword">const</span> std::string &amp;date);</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160; </div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;        <a class="code" href="classomexmeta_1_1Triple.html">SingularAnnotation</a> newSingularAnnotation(std::string metaid) <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160; </div>
-<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;        <a class="code" href="classomexmeta_1_1Triple.html">SingularAnnotation</a> newSingularAnnotation() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160; </div>
-<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;        <a class="code" href="classomexmeta_1_1PhysicalProperty.html">PhysicalProperty</a> newPhysicalProperty();</div>
-<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160; </div>
-<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;        <a class="code" href="classomexmeta_1_1PhysicalProperty.html">PhysicalProperty</a> *newPhysicalPropertyPtr();</div>
-<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160; </div>
-<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;        <a class="code" href="classomexmeta_1_1UriHandler.html">UriHandler</a> &amp;getUriHandler() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160; </div>
-<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;        std::string stripAnnotations(<span class="keyword">const</span> std::string&amp; annotationElementName = <span class="stringliteral">&quot;annotation&quot;</span>);</div>
-<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160; </div>
-<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;        std::string xml_;</div>
-<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;        std::vector&lt;std::string&gt; metaids_;</div>
-<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;        <span class="keyword">const</span> <a class="code" href="classredland_1_1LibrdfModel.html">LibrdfModel</a> &amp;model_;</div>
-<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;        <span class="keywordtype">bool</span> create_ids_ = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;        std::unordered_map&lt;std::string, std::string&gt; &amp;namespaces_;</div>
-<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;        <span class="keywordtype">bool</span> generate_new_metaids_;</div>
-<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;        <span class="keywordtype">bool</span> sbml_semantic_extraction_;</div>
-<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;        std::string metaid_base_ = <span class="stringliteral">&quot;#OmexMetaId&quot;</span>;</div>
-<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;        OmexMetaXmlType type_;</div>
-<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;        OmexMetaXmlPtr omexMetaXmlPtr_;</div>
-<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160; </div>
-<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;        <a class="code" href="classomexmeta_1_1UriHandler.html">UriHandler</a> &amp;uriHandler_;</div>
-<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160; </div>
-<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;        <span class="keywordtype">void</span> extractNamespacesFromTriplesVector(<a class="code" href="classomexmeta_1_1PropertyBearer.html">PropertyBearer</a> *pp);</div>
-<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;    };</div>
-<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160; </div>
-<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;}<span class="comment">// namespace omexmeta</span></div>
-<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160; </div>
-<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;<span class="preprocessor">#endif//LIBOMEXMETA_EDITOR_H</span></div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;        <a class="code" href="classomexmeta_1_1Editor.html">Editor</a> &amp;addParentModel(<span class="keyword">const</span> std::string &amp;biomod_id);</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160; </div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;        <a class="code" href="classomexmeta_1_1Triple.html">SingularAnnotation</a> newSingularAnnotation() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160; </div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;        <a class="code" href="classomexmeta_1_1PhysicalProperty.html">PhysicalProperty</a> newPhysicalProperty();</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160; </div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;        <a class="code" href="classomexmeta_1_1PhysicalProperty.html">PhysicalProperty</a> *newPhysicalPropertyPtr();</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160; </div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;        <a class="code" href="classomexmeta_1_1UriHandler.html">UriHandler</a> &amp;getUriHandler() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160; </div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;        std::string stripAnnotations(<span class="keyword">const</span> std::string&amp; annotationElementName = <span class="stringliteral">&quot;annotation&quot;</span>);</div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160; </div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;        std::string xml_;</div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;        std::vector&lt;std::string&gt; metaids_;</div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;        <span class="keyword">const</span> <a class="code" href="classredland_1_1LibrdfModel.html">LibrdfModel</a> &amp;model_;</div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;        <span class="keywordtype">bool</span> create_ids_ = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;        std::unordered_map&lt;std::string, std::string&gt; &amp;namespaces_;</div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;        <span class="keywordtype">bool</span> generate_new_metaids_;</div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;        <span class="keywordtype">bool</span> sbml_semantic_extraction_;</div>
+<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;        std::string metaid_base_ = <span class="stringliteral">&quot;#OmexMetaId&quot;</span>;</div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;        OmexMetaXmlType type_;</div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;        OmexMetaXmlPtr omexMetaXmlPtr_;</div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160; </div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;        <a class="code" href="classomexmeta_1_1UriHandler.html">UriHandler</a> &amp;uriHandler_;</div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160; </div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;        <span class="keywordtype">void</span> extractNamespacesFromTriplesVector(<a class="code" href="classomexmeta_1_1PropertyBearer.html">PropertyBearer</a> *pp);</div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;    };</div>
+<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160; </div>
+<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;}<span class="comment">// namespace omexmeta</span></div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160; </div>
+<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;<span class="preprocessor">#endif//LIBOMEXMETA_EDITOR_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aclassomexmeta_1_1Triple_html"><div class="ttname"><a href="classomexmeta_1_1Triple.html">omexmeta::Triple</a></div><div class="ttdef"><b>Definition:</b> Triple.h:33</div></div>
 <div class="ttc" id="aclassomexmeta_1_1PhysicalEntity_html"><div class="ttname"><a href="classomexmeta_1_1PhysicalEntity.html">omexmeta::PhysicalEntity</a></div><div class="ttdef"><b>Definition:</b> PhysicalEntity.h:27</div></div>

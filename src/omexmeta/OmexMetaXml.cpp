@@ -15,12 +15,12 @@ namespace omexmeta {
           generate_new_metaids_(generate_new_metaids) {
     }
 
-    OmexMetaXml::~OmexMetaXml() {
-        if (doc) {
-            xmlFreeDoc(doc);
-            doc = nullptr;
-        }
-    }
+//    OmexMetaXml::~OmexMetaXml() {
+//        if (doc) {
+//            xmlFreeDoc(doc);
+//            doc = nullptr;
+//        }
+//    }
 
     std::vector<std::string> OmexMetaXml::getValidElements() const {
         return std::vector<std::string>({"Any"});
@@ -305,9 +305,9 @@ namespace omexmeta {
         return std::string();
     }
 
-    OmexMetaSBML::~OmexMetaSBML() {
-        OmexMetaXml::~OmexMetaXml();
-    }
+//    OmexMetaSBML::~OmexMetaSBML() {
+//        OmexMetaXml::~OmexMetaXml();
+//    }
 
     std::vector<std::string> OmexMetaCellML::getValidElements() const {
         std::vector<std::string> valid_elements_ = {"model", "component", "variable"};
@@ -322,9 +322,9 @@ namespace omexmeta {
         return "http://www.cellml.org/metadata/1.0#";
     }
 
-    OmexMetaCellML::~OmexMetaCellML() {
-        OmexMetaXml::~OmexMetaXml();
-    }
+//    OmexMetaCellML::~OmexMetaCellML() {
+//        OmexMetaXml::~OmexMetaXml();
+//    }
 
     OmexMetaXmlPtr
     OmexMetaXmlFactory::generate(const std::string &xml, OmexMetaXmlType type, bool generate_new_metaids,

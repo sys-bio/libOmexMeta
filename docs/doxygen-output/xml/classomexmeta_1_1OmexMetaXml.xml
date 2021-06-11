@@ -5,8 +5,22 @@
     <derivedcompoundref refid="classomexmeta_1_1OmexMetaCellML" prot="public" virt="non-virtual">omexmeta::OmexMetaCellML</derivedcompoundref>
     <derivedcompoundref refid="classomexmeta_1_1OmexMetaSBML" prot="public" virt="non-virtual">omexmeta::OmexMetaSBML</derivedcompoundref>
     <includes refid="OmexMetaXml_8h" local="no">OmexMetaXml.h</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="classomexmeta_1_1OmexMetaXml_1aaca7a37ac733433d4f3a143adbbccbc1" prot="private" static="no" mutable="no">
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classomexmeta_1_1OmexMetaXml_1a92ec0ce7118744de652eb02943ec39ef" prot="protected" static="no" mutable="no">
+        <type>xmlDocPtr</type>
+        <definition>xmlDocPtr omexmeta::OmexMetaXml::doc</definition>
+        <argsstring></argsstring>
+        <name>doc</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>xml document tree </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/OmexMetaXml.h" line="85" column="19" bodyfile="src/omexmeta/include/omexmeta/OmexMetaXml.h" bodystart="85" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classomexmeta_1_1OmexMetaXml_1aaca7a37ac733433d4f3a143adbbccbc1" prot="protected" static="no" mutable="no">
         <type>std::string</type>
         <definition>std::string omexmeta::OmexMetaXml::xml_</definition>
         <argsstring></argsstring>
@@ -17,9 +31,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/OmexMetaXml.h" line="32" column="21" bodyfile="src/omexmeta/include/omexmeta/OmexMetaXml.h" bodystart="32" bodyend="-1"/>
+        <location file="src/omexmeta/include/omexmeta/OmexMetaXml.h" line="104" column="21" bodyfile="src/omexmeta/include/omexmeta/OmexMetaXml.h" bodystart="104" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classomexmeta_1_1OmexMetaXml_1abd146e2722c99125fd93b36a5fdd1a5e" prot="private" static="no" mutable="no">
+      <memberdef kind="variable" id="classomexmeta_1_1OmexMetaXml_1abd146e2722c99125fd93b36a5fdd1a5e" prot="protected" static="no" mutable="no">
         <type>std::string</type>
         <definition>std::string omexmeta::OmexMetaXml::metaid_base_</definition>
         <argsstring></argsstring>
@@ -30,9 +44,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/OmexMetaXml.h" line="33" column="21" bodyfile="src/omexmeta/include/omexmeta/OmexMetaXml.h" bodystart="33" bodyend="-1"/>
+        <location file="src/omexmeta/include/omexmeta/OmexMetaXml.h" line="105" column="21" bodyfile="src/omexmeta/include/omexmeta/OmexMetaXml.h" bodystart="105" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classomexmeta_1_1OmexMetaXml_1a45b17aa02c86936bc84d3b9d90c96a4e" prot="private" static="no" mutable="no">
+      <memberdef kind="variable" id="classomexmeta_1_1OmexMetaXml_1a45b17aa02c86936bc84d3b9d90c96a4e" prot="protected" static="no" mutable="no">
         <type>int</type>
         <definition>int omexmeta::OmexMetaXml::metaid_num_digits_</definition>
         <argsstring></argsstring>
@@ -43,9 +57,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/OmexMetaXml.h" line="34" column="13" bodyfile="src/omexmeta/include/omexmeta/OmexMetaXml.h" bodystart="34" bodyend="-1"/>
+        <location file="src/omexmeta/include/omexmeta/OmexMetaXml.h" line="106" column="13" bodyfile="src/omexmeta/include/omexmeta/OmexMetaXml.h" bodystart="106" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classomexmeta_1_1OmexMetaXml_1a31d0a3daf83e963f0994b56700342672" prot="private" static="no" mutable="no">
+      <memberdef kind="variable" id="classomexmeta_1_1OmexMetaXml_1a31d0a3daf83e963f0994b56700342672" prot="protected" static="no" mutable="no">
         <type>bool</type>
         <definition>bool omexmeta::OmexMetaXml::generate_new_metaids_</definition>
         <argsstring></argsstring>
@@ -56,104 +70,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/OmexMetaXml.h" line="35" column="14" bodyfile="src/omexmeta/include/omexmeta/OmexMetaXml.h" bodystart="35" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="classomexmeta_1_1OmexMetaXml_1a92ec0ce7118744de652eb02943ec39ef" prot="private" static="no" mutable="no">
-        <type>xmlDocPtr</type>
-        <definition>xmlDocPtr omexmeta::OmexMetaXml::doc</definition>
-        <argsstring></argsstring>
-        <name>doc</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/OmexMetaXml.h" line="37" column="19" bodyfile="src/omexmeta/include/omexmeta/OmexMetaXml.h" bodystart="37" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-func">
-      <memberdef kind="function" id="classomexmeta_1_1OmexMetaXml_1a6c5c36bbaee3d6b14d4e9567d248d2b5" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>xmlDocPtr</type>
-        <definition>xmlDocPtr omexmeta::OmexMetaXml::parseDoc</definition>
-        <argsstring>(const std::string &amp;xml=std::string())</argsstring>
-        <name>parseDoc</name>
-        <param>
-          <type>const std::string &amp;</type>
-          <declname>xml</declname>
-          <defval>std::string()</defval>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-<para>Parse xml into libxml2. If<parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>xml</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>provided, use this xml, otherwise use private member variable xml_ </para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/OmexMetaXml.h" line="44" column="19" bodyfile="src/omexmeta/OmexMetaXml.cpp" bodystart="203" bodyend="213"/>
-      </memberdef>
-      <memberdef kind="function" id="classomexmeta_1_1OmexMetaXml_1a1b230c4076abe31aee3471ecf01c1330" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void omexmeta::OmexMetaXml::addMetaIdsRecursion</definition>
-        <argsstring>(xmlDocPtr doc, xmlNode *a_node, std::vector&lt; std::string &gt; &amp;seen_metaids)</argsstring>
-        <name>addMetaIdsRecursion</name>
-        <param>
-          <type>xmlDocPtr</type>
-          <declname>doc</declname>
-        </param>
-        <param>
-          <type>xmlNode *</type>
-          <declname>a_node</declname>
-        </param>
-        <param>
-          <type>std::vector&lt; std::string &gt; &amp;</type>
-          <declname>seen_metaids</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/OmexMetaXml.h" line="46" column="14" bodyfile="src/omexmeta/OmexMetaXml.cpp" bodystart="32" bodyend="125"/>
-      </memberdef>
-      <memberdef kind="function" id="classomexmeta_1_1OmexMetaXml_1a1088e109afa905248c3577b95e291f21" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void omexmeta::OmexMetaXml::generateMetaId</definition>
-        <argsstring>(std::vector&lt; std::string &gt; &amp;seen_metaids, long count, const MetaID &amp;metaid_gen, std::string &amp;id)</argsstring>
-        <name>generateMetaId</name>
-        <param>
-          <type>std::vector&lt; std::string &gt; &amp;</type>
-          <declname>seen_metaids</declname>
-        </param>
-        <param>
-          <type>long</type>
-          <declname>count</declname>
-        </param>
-        <param>
-          <type>const <ref refid="classomexmeta_1_1MetaID" kindref="compound">MetaID</ref> &amp;</type>
-          <declname>metaid_gen</declname>
-        </param>
-        <param>
-          <type>std::string &amp;</type>
-          <declname>id</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/OmexMetaXml.h" line="48" column="14" bodyfile="src/omexmeta/OmexMetaXml.cpp" bodystart="22" bodyend="30"/>
+        <location file="src/omexmeta/include/omexmeta/OmexMetaXml.h" line="107" column="14" bodyfile="src/omexmeta/include/omexmeta/OmexMetaXml.h" bodystart="107" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -170,7 +87,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/OmexMetaXml.h" line="60" column="28" bodyfile="src/omexmeta/OmexMetaXml.cpp" bodystart="162" bodyend="164"/>
+        <location file="src/omexmeta/include/omexmeta/OmexMetaXml.h" line="40" column="28" bodyfile="src/omexmeta/OmexMetaXml.cpp" bodystart="169" bodyend="171"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1OmexMetaXml_1a443985100a5a783588c4b5721800ba0e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -183,7 +100,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/OmexMetaXml.h" line="62" column="13" bodyfile="src/omexmeta/OmexMetaXml.cpp" bodystart="166" bodyend="168"/>
+        <location file="src/omexmeta/include/omexmeta/OmexMetaXml.h" line="44" column="13" bodyfile="src/omexmeta/OmexMetaXml.cpp" bodystart="173" bodyend="175"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1OmexMetaXml_1a82ac21ac48b494d028cb9b40f673cf83" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -196,15 +113,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/OmexMetaXml.h" line="64" column="15" bodyfile="src/omexmeta/OmexMetaXml.cpp" bodystart="158" bodyend="160"/>
+        <location file="src/omexmeta/include/omexmeta/OmexMetaXml.h" line="46" column="15" bodyfile="src/omexmeta/OmexMetaXml.cpp" bodystart="165" bodyend="167"/>
       </memberdef>
-      <memberdef kind="function" id="classomexmeta_1_1OmexMetaXml_1af04658b1edf47aa401b5dcba9b6f44bd" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classomexmeta_1_1OmexMetaXml_1acb185d817563f308ecde94491623ced0" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
         <type></type>
         <definition>omexmeta::OmexMetaXml::OmexMetaXml</definition>
-        <argsstring>(std::string xml, std::string metaid_base=&quot;MetaID&quot;, int metaid_num_digits=4, bool generate_new_metaids=false)</argsstring>
+        <argsstring>(const std::string &amp;xml, std::string metaid_base=&quot;MetaID&quot;, int metaid_num_digits=4, bool generate_new_metaids=false)</argsstring>
         <name>OmexMetaXml</name>
         <param>
-          <type>std::string</type>
+          <type>const std::string &amp;</type>
           <declname>xml</declname>
         </param>
         <param>
@@ -228,7 +145,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/OmexMetaXml.h" line="66" column="18" bodyfile="src/omexmeta/OmexMetaXml.cpp" bodystart="10" bodyend="16"/>
+        <location file="src/omexmeta/include/omexmeta/OmexMetaXml.h" line="48" column="18" bodyfile="src/omexmeta/OmexMetaXml.cpp" bodystart="10" bodyend="16"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1OmexMetaXml_1ad9d10f9320a4d8c0764c86ba967de43f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::pair&lt; std::string, std::vector&lt; std::string &gt; &gt;</type>
@@ -241,7 +158,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/OmexMetaXml.h" line="68" column="19" bodyfile="src/omexmeta/OmexMetaXml.cpp" bodystart="128" bodyend="149"/>
+        <location file="src/omexmeta/include/omexmeta/OmexMetaXml.h" line="50" column="19" bodyfile="src/omexmeta/OmexMetaXml.cpp" bodystart="135" bodyend="156"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1OmexMetaXml_1a53ca1d90f339c6e2492a93aa9d139300" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::vector&lt; std::string &gt;</type>
@@ -256,7 +173,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/OmexMetaXml.h" line="70" column="30" bodyfile="src/omexmeta/OmexMetaXml.cpp" bodystart="18" bodyend="20"/>
+        <location file="src/omexmeta/include/omexmeta/OmexMetaXml.h" line="52" column="30" bodyfile="src/omexmeta/OmexMetaXml.cpp" bodystart="25" bodyend="27"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1OmexMetaXml_1aa3f4b687b01be45593a72a84b528e0b7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::string</type>
@@ -271,7 +188,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/OmexMetaXml.h" line="72" column="30" bodyfile="src/omexmeta/OmexMetaXml.cpp" bodystart="151" bodyend="153"/>
+        <location file="src/omexmeta/include/omexmeta/OmexMetaXml.h" line="54" column="30" bodyfile="src/omexmeta/OmexMetaXml.cpp" bodystart="158" bodyend="160"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1OmexMetaXml_1aa2570f9e9020aab9f2ecf3637d500d95" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::string</type>
@@ -286,7 +203,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/OmexMetaXml.h" line="74" column="30" bodyfile="src/omexmeta/OmexMetaXml.cpp" bodystart="155" bodyend="157"/>
+        <location file="src/omexmeta/include/omexmeta/OmexMetaXml.h" line="56" column="30" bodyfile="src/omexmeta/OmexMetaXml.cpp" bodystart="162" bodyend="164"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1OmexMetaXml_1ae5ec502a76aa8b133de07f7b98926c6d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
@@ -314,7 +231,35 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/OmexMetaXml.h" line="80" column="21" bodyfile="src/omexmeta/OmexMetaXml.cpp" bodystart="190" bodyend="201"/>
+        <location file="src/omexmeta/include/omexmeta/OmexMetaXml.h" line="62" column="21" bodyfile="src/omexmeta/OmexMetaXml.cpp" bodystart="197" bodyend="208"/>
+      </memberdef>
+      <memberdef kind="function" id="classomexmeta_1_1OmexMetaXml_1a14f30f51af1d210cd02d90cbcc855148" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>xmlNodePtr</type>
+        <definition>xmlNodePtr omexmeta::OmexMetaXml::findFirstOccuranceOfNodeCalled</definition>
+        <argsstring>(const std::string &amp;name)</argsstring>
+        <name>findFirstOccuranceOfNodeCalled</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+<para>search the current xml document for a node called </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name.</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if multiple such nodes exist, the first found is return </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/OmexMetaXml.h" line="68" column="20" bodyfile="src/omexmeta/OmexMetaXml.cpp" bodystart="279" bodyend="285"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1OmexMetaXml_1aaa0e43035473faa50350e1b5d703e445" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
@@ -328,7 +273,146 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/OmexMetaXml.h" line="85" column="21" bodyfile="src/omexmeta/OmexMetaXml.cpp" bodystart="215" bodyend="230"/>
+        <location file="src/omexmeta/include/omexmeta/OmexMetaXml.h" line="73" column="21" bodyfile="src/omexmeta/OmexMetaXml.cpp" bodystart="222" bodyend="237"/>
+      </memberdef>
+      <memberdef kind="function" id="classomexmeta_1_1OmexMetaXml_1a81b34fa445228b70d618d352772e8838" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string omexmeta::OmexMetaXml::getDefaultModelMetaid</definition>
+        <argsstring>()</argsstring>
+        <name>getDefaultModelMetaid</name>
+        <briefdescription>
+<para>get the model elements metaid </para>
+        </briefdescription>
+        <detaileddescription>
+<para>the model element is often a child of the sbml or cellml element </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/OmexMetaXml.h" line="79" column="21" bodyfile="src/omexmeta/OmexMetaXml.cpp" bodystart="239" bodyend="255"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classomexmeta_1_1OmexMetaXml_1a6c5c36bbaee3d6b14d4e9567d248d2b5" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>xmlDocPtr</type>
+        <definition>xmlDocPtr omexmeta::OmexMetaXml::parseDoc</definition>
+        <argsstring>(const std::string &amp;xml=std::string())</argsstring>
+        <name>parseDoc</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>xml</declname>
+          <defval>std::string()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Parse xml into libxml2. If<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>xml</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>provided, use this xml, otherwise use private member variable xml_ </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/OmexMetaXml.h" line="91" column="19" bodyfile="src/omexmeta/OmexMetaXml.cpp" bodystart="210" bodyend="220"/>
+      </memberdef>
+      <memberdef kind="function" id="classomexmeta_1_1OmexMetaXml_1a1b230c4076abe31aee3471ecf01c1330" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void omexmeta::OmexMetaXml::addMetaIdsRecursion</definition>
+        <argsstring>(xmlDocPtr doc, xmlNode *a_node, std::vector&lt; std::string &gt; &amp;seen_metaids)</argsstring>
+        <name>addMetaIdsRecursion</name>
+        <param>
+          <type>xmlDocPtr</type>
+          <declname>doc</declname>
+        </param>
+        <param>
+          <type>xmlNode *</type>
+          <declname>a_node</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; std::string &gt; &amp;</type>
+          <declname>seen_metaids</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/OmexMetaXml.h" line="93" column="14" bodyfile="src/omexmeta/OmexMetaXml.cpp" bodystart="39" bodyend="132"/>
+      </memberdef>
+      <memberdef kind="function" id="classomexmeta_1_1OmexMetaXml_1a1088e109afa905248c3577b95e291f21" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void omexmeta::OmexMetaXml::generateMetaId</definition>
+        <argsstring>(std::vector&lt; std::string &gt; &amp;seen_metaids, long count, const MetaID &amp;metaid_gen, std::string &amp;id)</argsstring>
+        <name>generateMetaId</name>
+        <param>
+          <type>std::vector&lt; std::string &gt; &amp;</type>
+          <declname>seen_metaids</declname>
+        </param>
+        <param>
+          <type>long</type>
+          <declname>count</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classomexmeta_1_1MetaID" kindref="compound">MetaID</ref> &amp;</type>
+          <declname>metaid_gen</declname>
+        </param>
+        <param>
+          <type>std::string &amp;</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/OmexMetaXml.h" line="95" column="14" bodyfile="src/omexmeta/OmexMetaXml.cpp" bodystart="29" bodyend="37"/>
+      </memberdef>
+      <memberdef kind="function" id="classomexmeta_1_1OmexMetaXml_1a9ad99abda52b82b105416148a5d1da97" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>xmlNodePtr</type>
+        <definition>xmlNodePtr omexmeta::OmexMetaXml::findNodeByName</definition>
+        <argsstring>(xmlNodePtr rootnode, const xmlChar *nodename)</argsstring>
+        <name>findNodeByName</name>
+        <param>
+          <type>xmlNodePtr</type>
+          <declname>rootnode</declname>
+        </param>
+        <param>
+          <type>const xmlChar *</type>
+          <declname>nodename</declname>
+        </param>
+        <briefdescription>
+<para>looks for a node called </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>nodename</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>in</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>rootnode.</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Returns the first it finds. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/OmexMetaXml.h" line="103" column="20" bodyfile="src/omexmeta/OmexMetaXml.cpp" bodystart="258" bodyend="277"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -355,26 +439,29 @@
         <link refid="classomexmeta_1_1OmexMetaXml"/>
       </node>
     </inheritancegraph>
-    <location file="src/omexmeta/include/omexmeta/OmexMetaXml.h" line="31" column="5" bodyfile="src/omexmeta/include/omexmeta/OmexMetaXml.h" bodystart="31" bodyend="87"/>
+    <location file="src/omexmeta/include/omexmeta/OmexMetaXml.h" line="31" column="5" bodyfile="src/omexmeta/include/omexmeta/OmexMetaXml.h" bodystart="31" bodyend="108"/>
     <listofallmembers>
       <member refid="classomexmeta_1_1OmexMetaXml_1ad9d10f9320a4d8c0764c86ba967de43f" prot="public" virt="non-virtual"><scope>omexmeta::OmexMetaXml</scope><name>addMetaIds</name></member>
-      <member refid="classomexmeta_1_1OmexMetaXml_1a1b230c4076abe31aee3471ecf01c1330" prot="private" virt="non-virtual"><scope>omexmeta::OmexMetaXml</scope><name>addMetaIdsRecursion</name></member>
-      <member refid="classomexmeta_1_1OmexMetaXml_1a92ec0ce7118744de652eb02943ec39ef" prot="private" virt="non-virtual"><scope>omexmeta::OmexMetaXml</scope><name>doc</name></member>
-      <member refid="classomexmeta_1_1OmexMetaXml_1a31d0a3daf83e963f0994b56700342672" prot="private" virt="non-virtual"><scope>omexmeta::OmexMetaXml</scope><name>generate_new_metaids_</name></member>
-      <member refid="classomexmeta_1_1OmexMetaXml_1a1088e109afa905248c3577b95e291f21" prot="private" virt="non-virtual"><scope>omexmeta::OmexMetaXml</scope><name>generateMetaId</name></member>
+      <member refid="classomexmeta_1_1OmexMetaXml_1a1b230c4076abe31aee3471ecf01c1330" prot="protected" virt="non-virtual"><scope>omexmeta::OmexMetaXml</scope><name>addMetaIdsRecursion</name></member>
+      <member refid="classomexmeta_1_1OmexMetaXml_1a92ec0ce7118744de652eb02943ec39ef" prot="protected" virt="non-virtual"><scope>omexmeta::OmexMetaXml</scope><name>doc</name></member>
+      <member refid="classomexmeta_1_1OmexMetaXml_1a14f30f51af1d210cd02d90cbcc855148" prot="public" virt="non-virtual"><scope>omexmeta::OmexMetaXml</scope><name>findFirstOccuranceOfNodeCalled</name></member>
+      <member refid="classomexmeta_1_1OmexMetaXml_1a9ad99abda52b82b105416148a5d1da97" prot="protected" virt="non-virtual"><scope>omexmeta::OmexMetaXml</scope><name>findNodeByName</name></member>
+      <member refid="classomexmeta_1_1OmexMetaXml_1a31d0a3daf83e963f0994b56700342672" prot="protected" virt="non-virtual"><scope>omexmeta::OmexMetaXml</scope><name>generate_new_metaids_</name></member>
+      <member refid="classomexmeta_1_1OmexMetaXml_1a1088e109afa905248c3577b95e291f21" prot="protected" virt="non-virtual"><scope>omexmeta::OmexMetaXml</scope><name>generateMetaId</name></member>
       <member refid="classomexmeta_1_1OmexMetaXml_1a82ac21ac48b494d028cb9b40f673cf83" prot="public" virt="non-virtual"><scope>omexmeta::OmexMetaXml</scope><name>generateNewMetaids</name></member>
+      <member refid="classomexmeta_1_1OmexMetaXml_1a81b34fa445228b70d618d352772e8838" prot="public" virt="non-virtual"><scope>omexmeta::OmexMetaXml</scope><name>getDefaultModelMetaid</name></member>
       <member refid="classomexmeta_1_1OmexMetaXml_1a0971092abfca49f1510a83540047d2d0" prot="public" virt="non-virtual"><scope>omexmeta::OmexMetaXml</scope><name>getMetaidBase</name></member>
       <member refid="classomexmeta_1_1OmexMetaXml_1a443985100a5a783588c4b5721800ba0e" prot="public" virt="non-virtual"><scope>omexmeta::OmexMetaXml</scope><name>getMetaidNumDigits</name></member>
       <member refid="classomexmeta_1_1OmexMetaXml_1a53ca1d90f339c6e2492a93aa9d139300" prot="public" virt="virtual"><scope>omexmeta::OmexMetaXml</scope><name>getValidElements</name></member>
-      <member refid="classomexmeta_1_1OmexMetaXml_1abd146e2722c99125fd93b36a5fdd1a5e" prot="private" virt="non-virtual"><scope>omexmeta::OmexMetaXml</scope><name>metaid_base_</name></member>
-      <member refid="classomexmeta_1_1OmexMetaXml_1a45b17aa02c86936bc84d3b9d90c96a4e" prot="private" virt="non-virtual"><scope>omexmeta::OmexMetaXml</scope><name>metaid_num_digits_</name></member>
+      <member refid="classomexmeta_1_1OmexMetaXml_1abd146e2722c99125fd93b36a5fdd1a5e" prot="protected" virt="non-virtual"><scope>omexmeta::OmexMetaXml</scope><name>metaid_base_</name></member>
+      <member refid="classomexmeta_1_1OmexMetaXml_1a45b17aa02c86936bc84d3b9d90c96a4e" prot="protected" virt="non-virtual"><scope>omexmeta::OmexMetaXml</scope><name>metaid_num_digits_</name></member>
       <member refid="classomexmeta_1_1OmexMetaXml_1aa2570f9e9020aab9f2ecf3637d500d95" prot="public" virt="virtual"><scope>omexmeta::OmexMetaXml</scope><name>metaIdNamespace</name></member>
       <member refid="classomexmeta_1_1OmexMetaXml_1aa3f4b687b01be45593a72a84b528e0b7" prot="public" virt="virtual"><scope>omexmeta::OmexMetaXml</scope><name>metaIdTagName</name></member>
-      <member refid="classomexmeta_1_1OmexMetaXml_1af04658b1edf47aa401b5dcba9b6f44bd" prot="public" virt="non-virtual"><scope>omexmeta::OmexMetaXml</scope><name>OmexMetaXml</name></member>
-      <member refid="classomexmeta_1_1OmexMetaXml_1a6c5c36bbaee3d6b14d4e9567d248d2b5" prot="private" virt="non-virtual"><scope>omexmeta::OmexMetaXml</scope><name>parseDoc</name></member>
+      <member refid="classomexmeta_1_1OmexMetaXml_1acb185d817563f308ecde94491623ced0" prot="public" virt="non-virtual"><scope>omexmeta::OmexMetaXml</scope><name>OmexMetaXml</name></member>
+      <member refid="classomexmeta_1_1OmexMetaXml_1a6c5c36bbaee3d6b14d4e9567d248d2b5" prot="protected" virt="non-virtual"><scope>omexmeta::OmexMetaXml</scope><name>parseDoc</name></member>
       <member refid="classomexmeta_1_1OmexMetaXml_1ae5ec502a76aa8b133de07f7b98926c6d" prot="public" virt="non-virtual"><scope>omexmeta::OmexMetaXml</scope><name>removeElement</name></member>
       <member refid="classomexmeta_1_1OmexMetaXml_1aaa0e43035473faa50350e1b5d703e445" prot="public" virt="non-virtual"><scope>omexmeta::OmexMetaXml</scope><name>toString</name></member>
-      <member refid="classomexmeta_1_1OmexMetaXml_1aaca7a37ac733433d4f3a143adbbccbc1" prot="private" virt="non-virtual"><scope>omexmeta::OmexMetaXml</scope><name>xml_</name></member>
+      <member refid="classomexmeta_1_1OmexMetaXml_1aaca7a37ac733433d4f3a143adbbccbc1" prot="protected" virt="non-virtual"><scope>omexmeta::OmexMetaXml</scope><name>xml_</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

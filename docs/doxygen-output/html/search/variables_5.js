@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['translatevcard_5f_617',['translateVCard_',['../classOptions.html#a9103fe7c299390bb2e072d54279be51a',1,'Options']]]
+  ['seen_5fnamespaces_5f_634',['seen_namespaces_',['../classomexmeta_1_1RDF.html#a82bc53feb93e1243970400fd104174da',1,'omexmeta::RDF']]]
 ];

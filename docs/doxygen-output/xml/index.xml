@@ -117,6 +117,7 @@
     <member refid="classomexmeta_1_1Editor_1a736e49794c5a358f06d13d41c3657fe2" kind="function"><name>getArchiveUri</name></member>
     <member refid="classomexmeta_1_1Editor_1a8494826923de713c19f971fd9c7908c0" kind="function"><name>getLocalUri</name></member>
     <member refid="classomexmeta_1_1Editor_1a0020d3b9c3e91fb37c134ba8b211c13e" kind="function"><name>getModelUri</name></member>
+    <member refid="classomexmeta_1_1Editor_1ad05a3dc568f8919db829e544babbfc6b" kind="function"><name>getModelLevelAnnotationUri</name></member>
     <member refid="classomexmeta_1_1Editor_1a2264cbd2efae17d1d72c3f402d8721bf" kind="function"><name>getRepositoryUri</name></member>
     <member refid="classomexmeta_1_1Editor_1a5143e1f8db82393faed322810acf5e92" kind="function"><name>createNodeWithModelUri</name></member>
     <member refid="classomexmeta_1_1Editor_1a1926b789086e29102e33808169a5af0c" kind="function"><name>addCreator</name></member>
@@ -211,6 +212,9 @@
     <member refid="classomexmeta_1_1IRDF_1a2a441ed8298f7d743dc4ba5aa83b8eef" kind="function"><name>setArchiveUri</name></member>
     <member refid="classomexmeta_1_1IRDF_1a0e2ab7f825c02de3d038f6165490abc3" kind="function"><name>getModelUri</name></member>
     <member refid="classomexmeta_1_1IRDF_1a3740c0f6591c94dd7ff6cca94382a43a" kind="function"><name>setModelUri</name></member>
+    <member refid="classomexmeta_1_1IRDF_1a0cd8eed096c3179dcc9de525e0235610" kind="function"><name>getModelMetaid</name></member>
+    <member refid="classomexmeta_1_1IRDF_1acb06886f7cfb72a4d685e55ef4e21b50" kind="function"><name>setModelMetaid</name></member>
+    <member refid="classomexmeta_1_1IRDF_1ac9130997e714afb210c2067b01cd071c" kind="function"><name>getModelLevelAnnotationUri</name></member>
     <member refid="classomexmeta_1_1IRDF_1af50f054c1e3520a00b587e1961e9fbea" kind="function"><name>getLocalUri</name></member>
     <member refid="classomexmeta_1_1IRDF_1aecfe18ec1c54af5308079656f4e94add" kind="function"><name>size</name></member>
     <member refid="classomexmeta_1_1IRDF_1a7677907fb2f50601910db2fa950a8004" kind="function"><name>empty</name></member>
@@ -543,13 +547,13 @@
     <member refid="classomexmeta_1_1OmexMetaCellML_1ac7d90828137e6071243af3d030fe71ec" kind="function"><name>getValidElements</name></member>
     <member refid="classomexmeta_1_1OmexMetaCellML_1a5023d57287069c38cf68f231e1ca3de9" kind="function"><name>metaIdTagName</name></member>
     <member refid="classomexmeta_1_1OmexMetaCellML_1a80de71f720afc3bd31dc2b089d194d9d" kind="function"><name>metaIdNamespace</name></member>
-    <member refid="classomexmeta_1_1OmexMetaCellML_1af04658b1edf47aa401b5dcba9b6f44bd" kind="function"><name>OmexMetaXml</name></member>
+    <member refid="classomexmeta_1_1OmexMetaCellML_1acb185d817563f308ecde94491623ced0" kind="function"><name>OmexMetaXml</name></member>
   </compound>
   <compound refid="classomexmeta_1_1OmexMetaSBML" kind="class"><name>omexmeta::OmexMetaSBML</name>
     <member refid="classomexmeta_1_1OmexMetaSBML_1a3cb2cf767bbdb821e37f322f9d0ef976" kind="function"><name>getValidElements</name></member>
     <member refid="classomexmeta_1_1OmexMetaSBML_1a24dd24d2e28a152aeee93d155d0ff44c" kind="function"><name>metaIdTagName</name></member>
     <member refid="classomexmeta_1_1OmexMetaSBML_1a78e71a49421e5069c52594c44e5965c5" kind="function"><name>metaIdNamespace</name></member>
-    <member refid="classomexmeta_1_1OmexMetaSBML_1af04658b1edf47aa401b5dcba9b6f44bd" kind="function"><name>OmexMetaXml</name></member>
+    <member refid="classomexmeta_1_1OmexMetaSBML_1acb185d817563f308ecde94491623ced0" kind="function"><name>OmexMetaXml</name></member>
   </compound>
   <compound refid="classomexmeta_1_1OmexMetaUtils" kind="class"><name>omexmeta::OmexMetaUtils</name>
     <member refid="classomexmeta_1_1OmexMetaUtils_1a28ab6d86e458158ac441457d74d0ebd7" kind="function"><name>OmexMetaUtils</name></member>
@@ -579,27 +583,30 @@
     <member refid="classomexmeta_1_1OmexMetaUtils_1a2493ba8fb1c95d05faa9f206be566ba2" kind="function"><name>isStringEmpty</name></member>
   </compound>
   <compound refid="classomexmeta_1_1OmexMetaXml" kind="class"><name>omexmeta::OmexMetaXml</name>
+    <member refid="classomexmeta_1_1OmexMetaXml_1a92ec0ce7118744de652eb02943ec39ef" kind="variable"><name>doc</name></member>
     <member refid="classomexmeta_1_1OmexMetaXml_1aaca7a37ac733433d4f3a143adbbccbc1" kind="variable"><name>xml_</name></member>
     <member refid="classomexmeta_1_1OmexMetaXml_1abd146e2722c99125fd93b36a5fdd1a5e" kind="variable"><name>metaid_base_</name></member>
     <member refid="classomexmeta_1_1OmexMetaXml_1a45b17aa02c86936bc84d3b9d90c96a4e" kind="variable"><name>metaid_num_digits_</name></member>
     <member refid="classomexmeta_1_1OmexMetaXml_1a31d0a3daf83e963f0994b56700342672" kind="variable"><name>generate_new_metaids_</name></member>
-    <member refid="classomexmeta_1_1OmexMetaXml_1a92ec0ce7118744de652eb02943ec39ef" kind="variable"><name>doc</name></member>
-    <member refid="classomexmeta_1_1OmexMetaXml_1a6c5c36bbaee3d6b14d4e9567d248d2b5" kind="function"><name>parseDoc</name></member>
-    <member refid="classomexmeta_1_1OmexMetaXml_1a1b230c4076abe31aee3471ecf01c1330" kind="function"><name>addMetaIdsRecursion</name></member>
-    <member refid="classomexmeta_1_1OmexMetaXml_1a1088e109afa905248c3577b95e291f21" kind="function"><name>generateMetaId</name></member>
     <member refid="classomexmeta_1_1OmexMetaXml_1a0971092abfca49f1510a83540047d2d0" kind="function"><name>getMetaidBase</name></member>
     <member refid="classomexmeta_1_1OmexMetaXml_1a443985100a5a783588c4b5721800ba0e" kind="function"><name>getMetaidNumDigits</name></member>
     <member refid="classomexmeta_1_1OmexMetaXml_1a82ac21ac48b494d028cb9b40f673cf83" kind="function"><name>generateNewMetaids</name></member>
-    <member refid="classomexmeta_1_1OmexMetaXml_1af04658b1edf47aa401b5dcba9b6f44bd" kind="function"><name>OmexMetaXml</name></member>
+    <member refid="classomexmeta_1_1OmexMetaXml_1acb185d817563f308ecde94491623ced0" kind="function"><name>OmexMetaXml</name></member>
     <member refid="classomexmeta_1_1OmexMetaXml_1ad9d10f9320a4d8c0764c86ba967de43f" kind="function"><name>addMetaIds</name></member>
     <member refid="classomexmeta_1_1OmexMetaXml_1a53ca1d90f339c6e2492a93aa9d139300" kind="function"><name>getValidElements</name></member>
     <member refid="classomexmeta_1_1OmexMetaXml_1aa3f4b687b01be45593a72a84b528e0b7" kind="function"><name>metaIdTagName</name></member>
     <member refid="classomexmeta_1_1OmexMetaXml_1aa2570f9e9020aab9f2ecf3637d500d95" kind="function"><name>metaIdNamespace</name></member>
     <member refid="classomexmeta_1_1OmexMetaXml_1ae5ec502a76aa8b133de07f7b98926c6d" kind="function"><name>removeElement</name></member>
+    <member refid="classomexmeta_1_1OmexMetaXml_1a14f30f51af1d210cd02d90cbcc855148" kind="function"><name>findFirstOccuranceOfNodeCalled</name></member>
     <member refid="classomexmeta_1_1OmexMetaXml_1aaa0e43035473faa50350e1b5d703e445" kind="function"><name>toString</name></member>
+    <member refid="classomexmeta_1_1OmexMetaXml_1a81b34fa445228b70d618d352772e8838" kind="function"><name>getDefaultModelMetaid</name></member>
+    <member refid="classomexmeta_1_1OmexMetaXml_1a6c5c36bbaee3d6b14d4e9567d248d2b5" kind="function"><name>parseDoc</name></member>
+    <member refid="classomexmeta_1_1OmexMetaXml_1a1b230c4076abe31aee3471ecf01c1330" kind="function"><name>addMetaIdsRecursion</name></member>
+    <member refid="classomexmeta_1_1OmexMetaXml_1a1088e109afa905248c3577b95e291f21" kind="function"><name>generateMetaId</name></member>
+    <member refid="classomexmeta_1_1OmexMetaXml_1a9ad99abda52b82b105416148a5d1da97" kind="function"><name>findNodeByName</name></member>
   </compound>
-  <compound refid="classomexmeta_1_1OmexMetaXmlAssistantFactory" kind="class"><name>omexmeta::OmexMetaXmlFactory</name>
-    <member refid="classomexmeta_1_1OmexMetaXmlAssistantFactory_1aa992454185c6c7ee2d189eedbedb8f3d" kind="function"><name>generate</name></member>
+  <compound refid="classomexmeta_1_1OmexMetaXmlFactory" kind="class"><name>omexmeta::OmexMetaXmlFactory</name>
+    <member refid="classomexmeta_1_1OmexMetaXmlFactory_1a81227d7a1b10ee933b9f56ff404460dd" kind="function"><name>generate</name></member>
   </compound>
   <compound refid="classOptions" kind="class"><name>Options</name>
     <member refid="classOptions_1a70ee261bcbdb118b5e3b23606888cb71" kind="variable"><name>removeRDFBag_</name></member>
@@ -1106,6 +1113,7 @@
     <member refid="structrasqal__xsd__datetime_1a2fd4b146de5847a40fb925303d9e97a4" kind="variable"><name>have_tz</name></member>
   </compound>
   <compound refid="classomexmeta_1_1RDF" kind="class"><name>omexmeta::RDF</name>
+    <member refid="classomexmeta_1_1RDF_1a654ae548e17aa6b098531f24c116dde1" kind="variable"><name>noexcept</name></member>
     <member refid="classomexmeta_1_1RDF_1a1979d7d70a4c20f2e63f00c7fa668b1f" kind="variable"><name>namespaces_</name></member>
     <member refid="classomexmeta_1_1RDF_1a82bc53feb93e1243970400fd104174da" kind="variable"><name>seen_namespaces_</name></member>
     <member refid="classomexmeta_1_1RDF_1a59014bbb45a43dbfa760480f1713c473" kind="variable"><name>OMEXlib_</name></member>
@@ -1116,7 +1124,6 @@
     <member refid="classomexmeta_1_1RDF_1aecb90e51830082f78ff055c045f4b439" kind="function"><name>RDF</name></member>
     <member refid="classomexmeta_1_1RDF_1a87b1eb7fe49f4928e61c399edf49e09c" kind="function"><name>~RDF</name></member>
     <member refid="classomexmeta_1_1RDF_1ad95c4a8588988efe399c7f984e304990" kind="function"><name>RDF</name></member>
-    <member refid="classomexmeta_1_1RDF_1a6490b2ea0d10e3026bea587a305b7fb9" kind="function"><name>RDF</name></member>
     <member refid="classomexmeta_1_1RDF_1a9d1b20d798969d3c1dac412c621247b9" kind="function"><name>operator=</name></member>
     <member refid="classomexmeta_1_1RDF_1ae3739bda3be0986547c31559381f3df4" kind="function"><name>operator=</name></member>
     <member refid="classomexmeta_1_1RDF_1a1ebd37b6dbce97660ed48031686d7f30" kind="function"><name>size</name></member>
@@ -1148,6 +1155,9 @@
     <member refid="classomexmeta_1_1RDF_1aabb921ecd37e3e9fc0e29066b658bf59" kind="function"><name>setArchiveUri</name></member>
     <member refid="classomexmeta_1_1RDF_1a0529edb78dde0798541cdc9761e2a0e7" kind="function"><name>getModelUri</name></member>
     <member refid="classomexmeta_1_1RDF_1a0c6ec28bb9cd9730224331ed69d41cad" kind="function"><name>setModelUri</name></member>
+    <member refid="classomexmeta_1_1RDF_1a2f1d018479ca77e429760f7bd517f597" kind="function"><name>getModelMetaid</name></member>
+    <member refid="classomexmeta_1_1RDF_1a653aeeb8b6ed38c98277a3f9c900bd93" kind="function"><name>setModelMetaid</name></member>
+    <member refid="classomexmeta_1_1RDF_1ae7e24ae8c944722562a545e69520264b" kind="function"><name>getModelLevelAnnotationUri</name></member>
     <member refid="classomexmeta_1_1RDF_1a7399a80108553b138bf168a76f8a4adf" kind="function"><name>getLocalUri</name></member>
     <member refid="classomexmeta_1_1RDF_1ab6b74c206a0b9cbce946f9d7bd8d1f56" kind="function"><name>addTriple</name></member>
     <member refid="classomexmeta_1_1RDF_1aa8f640de046b3c1bd43de0fe5aba0958" kind="function"><name>addTriples</name></member>
@@ -1283,6 +1293,7 @@
     <member refid="classomexmeta_1_1UriHandler_1a9b4ed97d0a608e10550c495b4dc0a98a" kind="variable"><name>archive_uri_</name></member>
     <member refid="classomexmeta_1_1UriHandler_1af0dd80b7c4b17229ca645744249e2cea" kind="variable"><name>model_uri_</name></member>
     <member refid="classomexmeta_1_1UriHandler_1a0a4ab87004debc7c614abde4cb2a16f1" kind="variable"><name>local_uri_</name></member>
+    <member refid="classomexmeta_1_1UriHandler_1aa915a5af3620d2d3da034d249bb18585" kind="variable"><name>model_metaid_</name></member>
     <member refid="classomexmeta_1_1UriHandler_1a3fc8f7022dc611dbbed4d9994a937de7" kind="function"><name>UriHandler</name></member>
     <member refid="classomexmeta_1_1UriHandler_1a57e13ab5ccdb36c87793d458f9c4961d" kind="function"><name>getRepositoryUri</name></member>
     <member refid="classomexmeta_1_1UriHandler_1a58c427641e81597583e6defaa497857c" kind="function"><name>setRepositoryUri</name></member>
@@ -1291,6 +1302,9 @@
     <member refid="classomexmeta_1_1UriHandler_1ad135d8d4d6fdb3af194f1cb24758e745" kind="function"><name>getModelUri</name></member>
     <member refid="classomexmeta_1_1UriHandler_1acab34dfe7bdef8ddc4fbe956f74dbd69" kind="function"><name>setModelUri</name></member>
     <member refid="classomexmeta_1_1UriHandler_1a4c20a7d29388f3e3d8ce736dcce386d6" kind="function"><name>getLocalUri</name></member>
+    <member refid="classomexmeta_1_1UriHandler_1a25e8869750d8cdf28af0ab1fd6157df5" kind="function"><name>getModelMetaid</name></member>
+    <member refid="classomexmeta_1_1UriHandler_1a72f33038ba13647c39381b04f8087763" kind="function"><name>getModelLevelAnnotationUri</name></member>
+    <member refid="classomexmeta_1_1UriHandler_1a870e030a93112076f1c0880572e22db0" kind="function"><name>setModelMetaid</name></member>
     <member refid="classomexmeta_1_1UriHandler_1ad30de26a22a4e9bfd0417cc19c7c67cc" kind="function"><name>uriModifier</name></member>
     <member refid="classomexmeta_1_1UriHandler_1a2549db1e5246b677be92914cca82f6a6" kind="function"><name>operator==</name></member>
     <member refid="classomexmeta_1_1UriHandler_1a53ad815e57019fd58402c04edbd53ed3" kind="function"><name>operator!=</name></member>

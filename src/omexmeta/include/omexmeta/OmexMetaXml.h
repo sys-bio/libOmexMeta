@@ -39,7 +39,7 @@ namespace omexmeta {
          */
         [[maybe_unused]] const std::string &getMetaidBase() const;
 
-        virtual ~OmexMetaXml();
+//        virtual ~OmexMetaXml();
 
         int getMetaidNumDigits() const;
 
@@ -113,7 +113,7 @@ namespace omexmeta {
     public:
         using OmexMetaXml::OmexMetaXml;
 
-        ~OmexMetaSBML() override;
+//        ~OmexMetaSBML() override;
 
         [[nodiscard]] std::vector<std::string> getValidElements() const override;
 
@@ -128,7 +128,7 @@ namespace omexmeta {
     public:
         using OmexMetaXml::OmexMetaXml;
 
-        ~OmexMetaCellML() override;
+//        ~OmexMetaCellML() override;
 
         std::vector<std::string> getValidElements() const override;
 

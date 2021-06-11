@@ -24,7 +24,7 @@
     <innerclass refid="classomexmeta_1_1OmexMetaSBML" prot="public">omexmeta::OmexMetaSBML</innerclass>
     <innerclass refid="classomexmeta_1_1OmexMetaUtils" prot="public">omexmeta::OmexMetaUtils</innerclass>
     <innerclass refid="classomexmeta_1_1OmexMetaXml" prot="public">omexmeta::OmexMetaXml</innerclass>
-    <innerclass refid="classomexmeta_1_1OmexMetaXmlAssistantFactory" prot="public">omexmeta::OmexMetaXmlFactory</innerclass>
+    <innerclass refid="classomexmeta_1_1OmexMetaXmlFactory" prot="public">omexmeta::OmexMetaXmlFactory</innerclass>
     <innerclass refid="classomexmeta_1_1Participant" prot="public">omexmeta::Participant</innerclass>
     <innerclass refid="classomexmeta_1_1PersonalInformation" prot="public">omexmeta::PersonalInformation</innerclass>
     <innerclass refid="classomexmeta_1_1PhysicalEntity" prot="public">omexmeta::PhysicalEntity</innerclass>
@@ -183,7 +183,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/OmexMetaXml.h" line="114" column="29" bodyfile="src/omexmeta/include/omexmeta/OmexMetaXml.h" bodystart="114" bodyend="-1"/>
+        <location file="src/omexmeta/include/omexmeta/OmexMetaXml.h" line="141" column="29" bodyfile="src/omexmeta/include/omexmeta/OmexMetaXml.h" bodystart="141" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceomexmeta_1a90b8619f565d06ee3a8fa4d1cfda893c" prot="public" static="no">
         <type>std::shared_ptr&lt; <ref refid="classomexmeta_1_1Participant" kindref="compound">Participant</ref> &gt;</type>
@@ -3312,7 +3312,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/OmexMetaXml.cpp" line="170" column="10" bodyfile="src/omexmeta/OmexMetaXml.cpp" bodystart="170" bodyend="188"/>
+        <location file="src/omexmeta/OmexMetaXml.cpp" line="177" column="10" bodyfile="src/omexmeta/OmexMetaXml.cpp" bodystart="177" bodyend="195"/>
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a0a8d50daa10e421d0722520cdef0ab9a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>PredicatePtr</type>

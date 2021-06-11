@@ -99,6 +99,17 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a4c20a7d29388f3e3d8ce736dcce386d6"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1UriHandler.html#a4c20a7d29388f3e3d8ce736dcce386d6">getLocalUri</a> () const</td></tr>
 <tr class="memdesc:a4c20a7d29388f3e3d8ce736dcce386d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">getter for local uri.  <a href="classomexmeta_1_1UriHandler.html#a4c20a7d29388f3e3d8ce736dcce386d6">More...</a><br /></td></tr>
 <tr class="separator:a4c20a7d29388f3e3d8ce736dcce386d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25e8869750d8cdf28af0ab1fd6157df5"><td class="memItemLeft" align="right" valign="top"><a id="a25e8869750d8cdf28af0ab1fd6157df5"></a>
+const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1UriHandler.html#a25e8869750d8cdf28af0ab1fd6157df5">getModelMetaid</a> () const</td></tr>
+<tr class="memdesc:a25e8869750d8cdf28af0ab1fd6157df5"><td class="mdescLeft">&#160;</td><td class="mdescRight">getter for model metaid. <a class="el" href="classThis.html" title="interface for querying an rdf graph basically a wrapper around both librdf_query and librdf_query_res...">This</a> is used in model level annotations <br /></td></tr>
+<tr class="separator:a25e8869750d8cdf28af0ab1fd6157df5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72f33038ba13647c39381b04f8087763"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1UriHandler.html#a72f33038ba13647c39381b04f8087763">getModelLevelAnnotationUri</a> ()</td></tr>
+<tr class="memdesc:a72f33038ba13647c39381b04f8087763"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the full uri for model level annotations.  <a href="classomexmeta_1_1UriHandler.html#a72f33038ba13647c39381b04f8087763">More...</a><br /></td></tr>
+<tr class="separator:a72f33038ba13647c39381b04f8087763"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a870e030a93112076f1c0880572e22db0"><td class="memItemLeft" align="right" valign="top"><a id="a870e030a93112076f1c0880572e22db0"></a>
+<a class="el" href="classomexmeta_1_1UriHandler.html">UriHandler</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1UriHandler.html#a870e030a93112076f1c0880572e22db0">setModelMetaid</a> (const std::string &amp;modelMetaid)</td></tr>
+<tr class="memdesc:a870e030a93112076f1c0880572e22db0"><td class="mdescLeft">&#160;</td><td class="mdescRight">setting for model metaid. <a class="el" href="classThis.html" title="interface for querying an rdf graph basically a wrapper around both librdf_query and librdf_query_res...">This</a> is used in model level annotations <br /></td></tr>
+<tr class="separator:a870e030a93112076f1c0880572e22db0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad30de26a22a4e9bfd0417cc19c7c67cc"><td class="memItemLeft" align="right" valign="top"><a id="ad30de26a22a4e9bfd0417cc19c7c67cc"></a>
 std::string&#160;</td><td class="memItemRight" valign="bottom"><b>uriModifier</b> (std::string uri_to_modify, eUriType type) const</td></tr>
 <tr class="separator:ad30de26a22a4e9bfd0417cc19c7c67cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -154,6 +165,26 @@ template&lt;class T &gt; </td></tr>
 
 <p>getter for local uri. </p>
 <p>default is"NewModel.rdf" and produces the full uri "http://omex-library.org/NewOmex.omex/NewModel.rdf#" when assembled. There is no setter for local_uri_ because it'll take on the name of model_uri_ with the "xml" extension replaced with "rdf" </p>
+
+</div>
+</div>
+<a id="a72f33038ba13647c39381b04f8087763"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a72f33038ba13647c39381b04f8087763">&#9670;&nbsp;</a></span>getModelLevelAnnotationUri()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string omexmeta::UriHandler::getModelLevelAnnotationUri </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>get the full uri for model level annotations. </p>
+<p>the modelUri concatonated with the model metaid fragment </p>
 
 </div>
 </div>
