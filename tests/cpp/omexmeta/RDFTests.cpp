@@ -294,10 +294,19 @@ TEST_F(RDFTests, TestLocalPrefix) {
     ASSERT_TRUE(OmexMetaUtils::isSubString(turtle_string, arg));
 }
 
-TEST_F(RDFTests, f) {
-    RDF rdf;
-    Editor editor = rdf.toEditor(SBMLFactory::getSBML(SBML_BIOMD626));
-    std::cout << editor.getXml() << std::endl;
+TEST_F(RDFTests, getModelLevelAnnotationUri) {
+    RDF rdf = RDF::fromString(samples.singular_annotation1);
+    // default string is this:
+    std::string expected = "http://omex-library.org/NewOmex.omex/NewModel.xml#NewModel";
+    ASSERT_STREQ(expected.c_str(), rdf.getModelLevelAnnotationUri().c_str());
+}
+
+TEST_F(RDFTests, setModelMetaid) {
+    RDF rdf = RDF::fromString(samples.singular_annotation1);
+    rdf.setModelMetaid("ModelMetaid");
+    ASSERT_STREQ(rdf.getModelMetaid().c_str(), "ModelMetaid");
+    std::string expected = "http://omex-library.org/NewOmex.omex/NewModel.xml#ModelMetaid";
+    ASSERT_STREQ(expected.c_str(), rdf.getModelLevelAnnotationUri().c_str());
 }
 
 

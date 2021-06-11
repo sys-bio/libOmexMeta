@@ -544,6 +544,84 @@ class RDF:
         """
         return _pyom.rdf_set_model_uri(self._obj, model_uri.encode())
 
+    def get_model_metaid(self) -> str:
+        """return the current string being used for the model elements metaid.
+
+        This defaults to the string "NewModel" but is replaced with the metaid for the
+        first "model" element it finds when an XML is opened in the :meth:`Editor`.
+
+        See Also:
+            :meth:`RDF.set_model_metaid`
+            :meth:`RDF.get_model_level_annotation_uri`
+
+        Examples:
+            >>> rdf = RDF.from_file("annot.rdf")
+            >>> rdf.get_model_metaid()
+            NewModel
+            >>> rdf.get_model_level_annotation_uri()
+            http://omex-library.org/NewOmex.omex/NewModel.xml#NewModel
+            >>> rdf.set_model_metaid("ModelMetaid")
+            >>> rdf.get_model_metaid()
+            ModelMetaid
+            >>> rdf.get_model_level_annotation_uri()
+            http://omex-library.org/NewOmex.omex/NewModel.xml#ModelMetaid
+
+        Returns: str
+
+        """
+        return _pyom.get_and_free_c_str(_pyom.rdf_get_model_metaid(self._obj))
+
+    def set_model_metaid(self, model_metaid: str) -> None:
+        """Set the string to use for the model level annotation uri.
+
+        Model level annotations should be placed on the ``model`` element that has a metaid.
+        This method provides a way of changing which ``model`` element is annotated, in case
+        there is more than one. The default is "NewModel" which gets changed to the name
+        of the metaid of the first ``model`` element that is found, once an xml is loaded into
+        the Editor class.
+
+        Args:
+            model_metaid: (str) a new name for a model metaid. It is the users responsibility to ensure this name is accurate.
+
+        Examples:
+            >>> rdf = RDF.from_file("annot.rdf")
+            >>> rdf.get_model_metaid()
+            NewModel
+            >>> rdf.get_model_level_annotation_uri()
+            http://omex-library.org/NewOmex.omex/NewModel.xml#NewModel
+            >>> rdf.set_model_metaid("ModelMetaid")
+            >>> rdf.get_model_metaid()
+            ModelMetaid
+            >>> rdf.get_model_level_annotation_uri()
+            http://omex-library.org/NewOmex.omex/NewModel.xml#ModelMetaid
+
+        Returns: None
+
+        """
+        return _pyom.rdf_set_model_metaid(self._obj, model_metaid.encode())
+
+    def get_model_level_annotation_uri(self) -> str:
+        """Returns the uri that is used for model level annotations as a string
+
+        This string is the "model_uri" concatonated with the metaid for the "model" element.
+
+        Returns: (str) the uri
+
+        Examples:
+            >>> rdf = RDF.from_file("annot.rdf")
+            >>> rdf.get_model_metaid()
+            NewModel
+            >>> rdf.get_model_level_annotation_uri()
+            http://omex-library.org/NewOmex.omex/NewModel.xml#NewModel
+            >>> rdf.set_model_metaid("ModelMetaid")
+            >>> rdf.get_model_metaid()
+            ModelMetaid
+            >>> rdf.get_model_level_annotation_uri()
+            http://omex-library.org/NewOmex.omex/NewModel.xml#ModelMetaid
+
+        """
+        return _pyom.get_and_free_c_str(_pyom.rdf_get_model_level_annotation_uri(self._obj))
+
     def get_repository_uri(self) -> str:
         """Returns the string used for repository uri"""
         string_ptr = _pyom.rdf_get_repository_uri(self._obj)

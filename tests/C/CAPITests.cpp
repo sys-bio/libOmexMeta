@@ -984,6 +984,30 @@ TEST_F(CAPITests, RDFgetOmexRepository) {
     RDF_delete(rdf_ptr);
 }
 
+TEST_F(CAPITests, RDFgetModelLevelAnnotationUri) {
+    RDF *rdf_ptr = RDF_new();
+    char *actual = RDF_getModelLevelAnnotationUri(rdf_ptr);
+    const char *expected = "http://omex-library.org/NewOmex.omex/NewModel.xml#NewModel";
+    std::cout << actual << std::endl;
+    ASSERT_STREQ(expected, actual);
+    free_c_char_star(actual);
+    RDF_delete(rdf_ptr);
+}
+
+
+TEST_F(CAPITests, RDFsetModelMetaid) {
+    RDF *rdf_ptr = RDF_new();
+    RDF_setModelMetaid(rdf_ptr, "ModelMetaid");
+    const char *expected = "http://omex-library.org/NewOmex.omex/NewModel.xml#ModelMetaid";
+    char* metaid = RDF_getModelMetaid(rdf_ptr);
+    ASSERT_STREQ("ModelMetaid", metaid);
+    free_c_char_star(metaid);
+    char* actual = RDF_getModelLevelAnnotationUri(rdf_ptr);
+    ASSERT_STREQ(expected, actual);
+    free_c_char_star(actual);
+    RDF_delete(rdf_ptr);
+}
+
 
 TEST_F(CAPITests, EditorgetLocalUri) {
     RDF *rdf_ptr = RDF_new();

@@ -40,15 +40,15 @@ R\+D\+F$\ast$ rdf\+\_\+ptr = R\+D\+F\+\_\+from\+String(string\+\_\+annotations, 
 \DoxyCodeLine{}
 \DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{int} free\_c\_char\_star(\textcolor{keywordtype}{char} *c);}
 \DoxyCodeLine{}
-\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{void} setLastError(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* msg);}
+\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{void} setLastError(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *msg);}
 \DoxyCodeLine{}
-\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{char}* getLastError();}
+\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{char} *getLastError();}
 \DoxyCodeLine{}
-\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{void} clearLastError(\textcolor{keyword}{const} std::string\& err);}
+\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{void} clearLastError(\textcolor{keyword}{const} std::string \&err);}
 \DoxyCodeLine{}
 \DoxyCodeLine{}
 \DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT RDF *\mbox{\hyperlink{namespaceomexmeta_a2f3a19ccb17e0be38e706861fa141fcc}{RDF\_new}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *storage\_type = \textcolor{stringliteral}{"{}memory"{}}, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *storage\_name = \textcolor{stringliteral}{"{}semsim\_store"{}},}
-\DoxyCodeLine{                            \textcolor{keyword}{const} \textcolor{keywordtype}{char} *storage\_options = \textcolor{keyword}{nullptr}, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *model\_options = \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{                                      \textcolor{keyword}{const} \textcolor{keywordtype}{char} *storage\_options = \textcolor{keyword}{nullptr}, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *model\_options = \textcolor{keyword}{nullptr});}
 \DoxyCodeLine{}
 \DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{void} RDF\_delete(RDF *rdf\_ptr);}
 \DoxyCodeLine{}
@@ -58,31 +58,31 @@ R\+D\+F$\ast$ rdf\+\_\+ptr = R\+D\+F\+\_\+from\+String(string\+\_\+annotations, 
 \DoxyCodeLine{}
 \DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{char} *RDF\_toString(RDF *rdf\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *format);}
 \DoxyCodeLine{}
-\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{int} RDF\_toFile(RDF *rdf\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* format, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *filename);}
+\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{int} RDF\_toFile(RDF *rdf\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *format, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *filename);}
 \DoxyCodeLine{}
 \DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT RDF *RDF\_fromString(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *str, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *format,}
-\DoxyCodeLine{                                   \textcolor{keyword}{const} \textcolor{keywordtype}{char} *storage\_type = \textcolor{stringliteral}{"{}memory"{}}, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *storage\_name = \textcolor{stringliteral}{"{}semsim\_store"{}},}
-\DoxyCodeLine{                                   \textcolor{keyword}{const} \textcolor{keywordtype}{char} *storage\_options = \textcolor{keyword}{nullptr}, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *model\_options = \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{                                             \textcolor{keyword}{const} \textcolor{keywordtype}{char} *storage\_type = \textcolor{stringliteral}{"{}memory"{}}, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *storage\_name = \textcolor{stringliteral}{"{}semsim\_store"{}},}
+\DoxyCodeLine{                                             \textcolor{keyword}{const} \textcolor{keywordtype}{char} *storage\_options = \textcolor{keyword}{nullptr}, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *model\_options = \textcolor{keyword}{nullptr});}
 \DoxyCodeLine{}
 \DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{int} RDF\_addFromString(RDF *rdf\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *str, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *format);}
 \DoxyCodeLine{}
 \DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT RDF *RDF\_fromUri(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *uri\_string, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *format,}
-\DoxyCodeLine{                                \textcolor{keyword}{const} \textcolor{keywordtype}{char} *storage\_type = \textcolor{stringliteral}{"{}memory"{}}, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *storage\_name = \textcolor{stringliteral}{"{}semsim\_store"{}},}
-\DoxyCodeLine{                                \textcolor{keyword}{const} \textcolor{keywordtype}{char} *storage\_options = \textcolor{keyword}{nullptr}, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *model\_options = \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{                                          \textcolor{keyword}{const} \textcolor{keywordtype}{char} *storage\_type = \textcolor{stringliteral}{"{}memory"{}}, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *storage\_name = \textcolor{stringliteral}{"{}semsim\_store"{}},}
+\DoxyCodeLine{                                          \textcolor{keyword}{const} \textcolor{keywordtype}{char} *storage\_options = \textcolor{keyword}{nullptr}, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *model\_options = \textcolor{keyword}{nullptr});}
 \DoxyCodeLine{}
 \DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{int} RDF\_addFromUri(RDF *rdf\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *uri\_string, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *format);}
 \DoxyCodeLine{}
 \DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT RDF *RDF\_fromFile(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *filename, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *format, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *storage\_type = \textcolor{stringliteral}{"{}memory"{}},}
-\DoxyCodeLine{                                 \textcolor{keyword}{const} \textcolor{keywordtype}{char} *storage\_name = \textcolor{stringliteral}{"{}semsim\_store"{}},}
-\DoxyCodeLine{                                 \textcolor{keyword}{const} \textcolor{keywordtype}{char} *storage\_options = \textcolor{keyword}{nullptr}, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *model\_options = \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{                                           \textcolor{keyword}{const} \textcolor{keywordtype}{char} *storage\_name = \textcolor{stringliteral}{"{}semsim\_store"{}},}
+\DoxyCodeLine{                                           \textcolor{keyword}{const} \textcolor{keywordtype}{char} *storage\_options = \textcolor{keyword}{nullptr}, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *model\_options = \textcolor{keyword}{nullptr});}
 \DoxyCodeLine{}
 \DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{int} RDF\_addFromFile(RDF *rdf\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *uri\_string, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *format);}
 \DoxyCodeLine{}
 \DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{char} *RDF\_queryResultsAsString(RDF *rdf\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *query\_str, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *results\_format);}
 \DoxyCodeLine{}
-\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT ResultsMap * \mbox{\hyperlink{namespaceomexmeta_a03fca9cddea3f90911a1eb3a1eda5e22}{RDF\_queryResultsAsMap}}(RDF *rdf\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *query\_str);}
+\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT ResultsMap *\mbox{\hyperlink{namespaceomexmeta_a03fca9cddea3f90911a1eb3a1eda5e22}{RDF\_queryResultsAsMap}}(RDF *rdf\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *query\_str);}
 \DoxyCodeLine{}
-\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{void} \mbox{\hyperlink{namespaceomexmeta_aac58f146c00ed4c492efebb1e239c90b}{deleteResultsMap}}(ResultsMap* map);}
+\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{void} \mbox{\hyperlink{namespaceomexmeta_aac58f146c00ed4c492efebb1e239c90b}{deleteResultsMap}}(ResultsMap *map);}
 \DoxyCodeLine{}
 \DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{int} RDF\_size(RDF *rdf\_ptr);}
 \DoxyCodeLine{}
@@ -100,11 +100,17 @@ R\+D\+F$\ast$ rdf\+\_\+ptr = R\+D\+F\+\_\+from\+String(string\+\_\+annotations, 
 \DoxyCodeLine{}
 \DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{char} *RDF\_getLocalUri(RDF *rdf\_ptr);}
 \DoxyCodeLine{}
-\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{bool} RDF\_equals\_rdf\_vs\_string(RDF* rdf\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* serialized\_rdf, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* format = \textcolor{stringliteral}{"{}turtle"{}}, \textcolor{keywordtype}{bool} verbose = \textcolor{keyword}{false});}
+\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{int} RDF\_setModelMetaid(RDF *rdf\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *model\_metaid);}
 \DoxyCodeLine{}
-\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{bool} RDF\_equals\_rdf\_vs\_rdf(RDF* rdf\_ptr1, RDF* rdf\_ptr2, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* format = \textcolor{stringliteral}{"{}turtle"{}}, \textcolor{keywordtype}{bool} verbose = \textcolor{keyword}{false});}
+\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{char} *RDF\_getModelMetaid(RDF *rdf\_ptr);}
 \DoxyCodeLine{}
-\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{bool} RDF\_equals\_string\_vs\_string(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* first\_rdf\_graph, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* second\_rdf\_graph, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* format = \textcolor{stringliteral}{"{}turtle"{}}, \textcolor{keywordtype}{bool} verbose = \textcolor{keyword}{false});}
+\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{char} *RDF\_getModelLevelAnnotationUri(RDF *rdf\_ptr);}
+\DoxyCodeLine{}
+\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{bool} RDF\_equals\_rdf\_vs\_string(RDF *rdf\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *serialized\_rdf, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *format = \textcolor{stringliteral}{"{}turtle"{}}, \textcolor{keywordtype}{bool} verbose = \textcolor{keyword}{false});}
+\DoxyCodeLine{}
+\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{bool} RDF\_equals\_rdf\_vs\_rdf(RDF *rdf\_ptr1, RDF *rdf\_ptr2, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *format = \textcolor{stringliteral}{"{}turtle"{}}, \textcolor{keywordtype}{bool} verbose = \textcolor{keyword}{false});}
+\DoxyCodeLine{}
+\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{bool} RDF\_equals\_string\_vs\_string(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *first\_rdf\_graph, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *second\_rdf\_graph, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *format = \textcolor{stringliteral}{"{}turtle"{}}, \textcolor{keywordtype}{bool} verbose = \textcolor{keyword}{false});}
 \DoxyCodeLine{}
 \DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT Editor *}
 \DoxyCodeLine{    RDF\_toEditor(RDF *rdf\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *xml, \textcolor{keywordtype}{bool} generate\_new\_metaids, \textcolor{keywordtype}{bool} sbml\_semantic\_extraction);}
@@ -165,21 +171,21 @@ R\+D\+F$\ast$ rdf\+\_\+ptr = R\+D\+F\+\_\+from\+String(string\+\_\+annotations, 
 \DoxyCodeLine{}
 \DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{char} *Editor\_getRepositoryUri(Editor *editor\_ptr);}
 \DoxyCodeLine{}
-\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{char} *Editor\_stripAnnotations(Editor *editor\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* annotationElementName = \textcolor{stringliteral}{"{}annotation"{}});}
+\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{char} *Editor\_stripAnnotations(Editor *editor\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *annotationElementName = \textcolor{stringliteral}{"{}annotation"{}});}
 \DoxyCodeLine{}
-\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT Editor* Editor\_addCreator(Editor *editor\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *orcid\_id);}
+\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT Editor *Editor\_addCreator(Editor *editor\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *orcid\_id);}
 \DoxyCodeLine{}
-\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT Editor* Editor\_addCurator(Editor *editor\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *orcid\_id);}
+\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT Editor *Editor\_addCurator(Editor *editor\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *orcid\_id);}
 \DoxyCodeLine{}
-\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT Editor* Editor\_addTaxon(Editor *editor\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *taxon\_id);}
+\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT Editor *Editor\_addTaxon(Editor *editor\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *taxon\_id);}
 \DoxyCodeLine{}
-\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT Editor* Editor\_addPubmed(Editor *editor\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *pubmedid);}
+\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT Editor *Editor\_addPubmed(Editor *editor\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *pubmedid);}
 \DoxyCodeLine{}
-\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT Editor* Editor\_addDescription(Editor *editor\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *date);}
+\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT Editor *Editor\_addDescription(Editor *editor\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *date);}
 \DoxyCodeLine{}
-\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT Editor* Editor\_addDateCreated(Editor *editor\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *date);}
+\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT Editor *Editor\_addDateCreated(Editor *editor\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *date);}
 \DoxyCodeLine{}
-\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT Editor* Editor\_addParentModel(Editor *editor\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *biomod\_id);}
+\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT Editor *Editor\_addParentModel(Editor *editor\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *biomod\_id);}
 \DoxyCodeLine{}
 \DoxyCodeLine{}
 \DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{int} \mbox{\hyperlink{namespaceomexmeta_a86245ea959cf5a3e8f389941cca41f1a}{SingularAnnotation\_delete}}(SingularAnnotation *singularAnnotation);}
@@ -227,21 +233,21 @@ R\+D\+F$\ast$ rdf\+\_\+ptr = R\+D\+F\+\_\+from\+String(string\+\_\+annotations, 
 \DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{char} *SingularAnnotation\_getResource(SingularAnnotation *singular\_annotation);}
 \DoxyCodeLine{}
 \DoxyCodeLine{}
-\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{char}* \mbox{\hyperlink{namespaceomexmeta_a386a15d5d186e00467ffdbb15dc9b2e3}{PhysicalProperty\_getAbout}}(PhysicalProperty* property) ;}
+\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{char} *\mbox{\hyperlink{namespaceomexmeta_a386a15d5d186e00467ffdbb15dc9b2e3}{PhysicalProperty\_getAbout}}(PhysicalProperty *property);}
 \DoxyCodeLine{}
-\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT PhysicalProperty* PhysicalProperty\_about(PhysicalProperty* property, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* about, eUriType type = eUriType::NONE);}
+\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT PhysicalProperty *PhysicalProperty\_about(PhysicalProperty *property, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *about, eUriType type = eUriType::NONE);}
 \DoxyCodeLine{}
-\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{char}*  PhysicalProperty\_getIsVersionOfValue(PhysicalProperty* property);}
+\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{char} *PhysicalProperty\_getIsVersionOfValue(PhysicalProperty *property);}
 \DoxyCodeLine{}
-\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT PhysicalProperty* PhysicalProperty\_isPropertyOf(PhysicalProperty* property, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* is\_property\_of, eUriType type);}
+\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT PhysicalProperty *PhysicalProperty\_isPropertyOf(PhysicalProperty *property, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *is\_property\_of, eUriType type);}
 \DoxyCodeLine{}
-\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT PhysicalProperty* PhysicalProperty\_isVersionOf(PhysicalProperty* property, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* is\_version\_of);}
+\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT PhysicalProperty *PhysicalProperty\_isVersionOf(PhysicalProperty *property, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *is\_version\_of);}
 \DoxyCodeLine{}
-\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{char}* PhysicalProperty\_getIsPropertyOfValue(PhysicalProperty* property);}
+\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{char} *PhysicalProperty\_getIsPropertyOfValue(PhysicalProperty *property);}
 \DoxyCodeLine{}
-\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{char}* PhysicalProperty\_getPropertyMetaidBase(PhysicalProperty* property);}
+\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{char} *PhysicalProperty\_getPropertyMetaidBase(PhysicalProperty *property);}
 \DoxyCodeLine{}
-\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{int} PhysicalProperty\_delete(PhysicalProperty* property);}
+\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{int} PhysicalProperty\_delete(PhysicalProperty *property);}
 \DoxyCodeLine{}
 \DoxyCodeLine{}
 \DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{int} \mbox{\hyperlink{namespaceomexmeta_afbe0ad46666e43033c32182a23fba6d7}{PhysicalEntity\_delete}}(PhysicalEntity *physical\_entity\_ptr);}
@@ -261,11 +267,11 @@ R\+D\+F$\ast$ rdf\+\_\+ptr = R\+D\+F\+\_\+from\+String(string\+\_\+annotations, 
 \DoxyCodeLine{}
 \DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{char} *PhysicalEntity\_str(PhysicalEntity *physical\_entity\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *format, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *base\_uri);}
 \DoxyCodeLine{}
-\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT PhysicalEntity *PhysicalEntity\_hasProperty(PhysicalEntity *physical\_entity\_ptr, PhysicalProperty* property);}
+\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT PhysicalEntity *PhysicalEntity\_hasProperty(PhysicalEntity *physical\_entity\_ptr, PhysicalProperty *property);}
 \DoxyCodeLine{}
-\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT PhysicalEntity *PhysicalEntity\_hasPropertyisVersionOf(PhysicalEntity *physical\_entity\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* isVersionOf) ;}
+\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT PhysicalEntity *PhysicalEntity\_hasPropertyisVersionOf(PhysicalEntity *physical\_entity\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *isVersionOf);}
 \DoxyCodeLine{}
-\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT PhysicalEntity *PhysicalEntity\_hasPropertyFull(PhysicalEntity *physical\_entity\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* property\_about, eUriType about\_uri\_type, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* is\_version\_of) ;}
+\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT PhysicalEntity *PhysicalEntity\_hasPropertyFull(PhysicalEntity *physical\_entity\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *property\_about, eUriType about\_uri\_type, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *is\_version\_of);}
 \DoxyCodeLine{}
 \DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT PhysicalEntity *PhysicalEntity\_isPartOf(PhysicalEntity *physical\_entity\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *is\_part\_of, eUriType type);}
 \DoxyCodeLine{}
@@ -283,7 +289,7 @@ R\+D\+F$\ast$ rdf\+\_\+ptr = R\+D\+F\+\_\+from\+String(string\+\_\+annotations, 
 \DoxyCodeLine{}
 \DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT PhysicalProcess *PhysicalProcess\_addSource(}
 \DoxyCodeLine{            PhysicalProcess *physical\_process,}
-\DoxyCodeLine{            \textcolor{keyword}{const} \textcolor{keywordtype}{char} *physical\_entity\_reference, eUriType type,\textcolor{keywordtype}{double} multiplier);}
+\DoxyCodeLine{            \textcolor{keyword}{const} \textcolor{keywordtype}{char} *physical\_entity\_reference, eUriType type, \textcolor{keywordtype}{double} multiplier);}
 \DoxyCodeLine{}
 \DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT PhysicalProcess *PhysicalProcess\_addSink(}
 \DoxyCodeLine{            PhysicalProcess *physical\_process,}
@@ -299,11 +305,11 @@ R\+D\+F$\ast$ rdf\+\_\+ptr = R\+D\+F\+\_\+from\+String(string\+\_\+annotations, 
 \DoxyCodeLine{}
 \DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT PhysicalProcess *PhysicalProcess\_isVersionOf(PhysicalProcess *physical\_process\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *version, eUriType type);}
 \DoxyCodeLine{}
-\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT PhysicalProcess *PhysicalProcess\_hasProperty(PhysicalProcess *physical\_process\_ptr, PhysicalProperty* property);}
+\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT PhysicalProcess *PhysicalProcess\_hasProperty(PhysicalProcess *physical\_process\_ptr, PhysicalProperty *property);}
 \DoxyCodeLine{}
-\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT PhysicalProcess *PhysicalProcess\_hasPropertyisVersionOf(PhysicalProcess *physical\_process\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* isVersionOf) ;}
+\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT PhysicalProcess *PhysicalProcess\_hasPropertyisVersionOf(PhysicalProcess *physical\_process\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *isVersionOf);}
 \DoxyCodeLine{}
-\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT PhysicalProcess *PhysicalProcess\_hasPropertyFull(PhysicalProcess *physical\_process\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* property\_about, eUriType about\_uri\_type, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* is\_version\_of) ;}
+\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT PhysicalProcess *PhysicalProcess\_hasPropertyFull(PhysicalProcess *physical\_process\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *property\_about, eUriType about\_uri\_type, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *is\_version\_of);}
 \DoxyCodeLine{}
 \DoxyCodeLine{}
 \DoxyCodeLine{}
@@ -332,11 +338,11 @@ R\+D\+F$\ast$ rdf\+\_\+ptr = R\+D\+F\+\_\+from\+String(string\+\_\+annotations, 
 \DoxyCodeLine{}
 \DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT EnergyDiff *EnergyDiff\_about(EnergyDiff *energy\_diff\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *about, eUriType type = eUriType::NONE);}
 \DoxyCodeLine{}
-\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT EnergyDiff *EnergyDiff\_hasProperty(EnergyDiff *energy\_diff\_ptr, PhysicalProperty* property);}
+\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT EnergyDiff *EnergyDiff\_hasProperty(EnergyDiff *energy\_diff\_ptr, PhysicalProperty *property);}
 \DoxyCodeLine{}
-\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT EnergyDiff *EnergyDiff\_hasPropertyisVersionOf(EnergyDiff *energy\_diff\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* isVersionOf) ;}
+\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT EnergyDiff *EnergyDiff\_hasPropertyisVersionOf(EnergyDiff *energy\_diff\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *isVersionOf);}
 \DoxyCodeLine{}
-\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT EnergyDiff *EnergyDiff\_hasPropertyFull(EnergyDiff *energy\_diff\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* property\_about, eUriType about\_uri\_type, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* is\_version\_of) ;}
+\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT EnergyDiff *EnergyDiff\_hasPropertyFull(EnergyDiff *energy\_diff\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *property\_about, eUriType about\_uri\_type, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *is\_version\_of);}
 \DoxyCodeLine{}
 \DoxyCodeLine{}
 \DoxyCodeLine{}
@@ -379,33 +385,8 @@ R\+D\+F$\ast$ rdf\+\_\+ptr = R\+D\+F\+\_\+from\+String(string\+\_\+annotations, 
 \DoxyCodeLine{\textcolor{preprocessor}{\#ifdef \_\_cplusplus}}
 \DoxyCodeLine{    \}}
 \DoxyCodeLine{\textcolor{preprocessor}{\#endif}}
-\DoxyCodeLine{\}}
+\DoxyCodeLine{\}\textcolor{comment}{// namespace omexmeta}}
 \DoxyCodeLine{}
-\DoxyCodeLine{\textcolor{preprocessor}{\#endif //LIBOMEXMETA\_OMEXMETACAPI\_H}}
-\DoxyCodeLine{}
-\DoxyCodeLine{}
-\DoxyCodeLine{}
-\DoxyCodeLine{}
-\DoxyCodeLine{}
-\DoxyCodeLine{}
-\DoxyCodeLine{}
-\DoxyCodeLine{}
-\DoxyCodeLine{}
-\DoxyCodeLine{}
-\DoxyCodeLine{}
-\DoxyCodeLine{}
-\DoxyCodeLine{}
-\DoxyCodeLine{}
-\DoxyCodeLine{}
-\DoxyCodeLine{}
-\DoxyCodeLine{}
-\DoxyCodeLine{}
-\DoxyCodeLine{}
-\DoxyCodeLine{}
-\DoxyCodeLine{}
-\DoxyCodeLine{}
-\DoxyCodeLine{}
-\DoxyCodeLine{}
-\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{preprocessor}{\#endif//LIBOMEXMETA\_OMEXMETACAPI\_H}}
 \end{DoxyCodeInclude}
  

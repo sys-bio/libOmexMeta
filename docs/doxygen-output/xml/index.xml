@@ -1436,7 +1436,10 @@
     <member refid="namespaceomexmeta_1a34f2cd25e68df0cf0a3660af9456a344" kind="function"><name>RDF_setRepositoryUri</name></member>
     <member refid="namespaceomexmeta_1a3c766c3258d07b7318a11a3c49d1bee0" kind="function"><name>RDF_setArchiveUri</name></member>
     <member refid="namespaceomexmeta_1a58acadf8b603b25e1e2a90fc2d6009d1" kind="function"><name>RDF_setModelUri</name></member>
+    <member refid="namespaceomexmeta_1aef604a8cb5b43d310932f6a475a03ce2" kind="function"><name>RDF_setModelMetaid</name></member>
+    <member refid="namespaceomexmeta_1ac63fcc1bda560a244af3e0c55b7e87ee" kind="function"><name>RDF_getModelMetaid</name></member>
     <member refid="namespaceomexmeta_1ae7bfdd220c9cbcaba60d4409ecd4a441" kind="function"><name>RDF_getRepositoryUri</name></member>
+    <member refid="namespaceomexmeta_1ab6e11e7e4da0753cb78931a84d166ee8" kind="function"><name>RDF_getModelLevelAnnotationUri</name></member>
     <member refid="namespaceomexmeta_1a5b5329943434433e159fba88df8779da" kind="function"><name>RDF_getArchiveUri</name></member>
     <member refid="namespaceomexmeta_1a9a9ed2edfc0f1086171a1fee84f85924" kind="function"><name>RDF_getModelUri</name></member>
     <member refid="namespaceomexmeta_1ae8e96ffbbc5b63d413101f408a6c47bd" kind="function"><name>RDF_getLocalUri</name></member>
