@@ -380,7 +380,7 @@ local:SourceParticipant0003
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
-<http://omex-library.org/NewOmex.omex/NewModel.xml>
+<http://omex-library.org/NewOmex.omex/NewModel.xml#TestModel>
     dc:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000>
@@ -389,7 +389,7 @@ local:SourceParticipant0003
     dc:creator <https://identifiers.org/orcid/1234-1234-1234-1234> .
 
 """
-        self.assertTrue(RDF.equals_rdf_vs_string(self.rdf, expected))
+        self.assertTrue(RDF.equals_rdf_vs_string(self.rdf, expected, "turtle", True))
 
     def test_physical_entity_sbml1(self):
         editor = self.rdf.to_editor(TestStrings.sbml, True, False)
@@ -1266,7 +1266,7 @@ local:SourceParticipant0001
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
-<http://omex-library.org/NewOmex.omex/NewModel.xml>
+<http://omex-library.org/NewOmex.omex/NewModel.xml#SmadNuclearTransport>
     dc:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000>
@@ -1277,7 +1277,7 @@ local:SourceParticipant0001
     dc:creator <https://identifiers.org/orcid/1234-1234-1234-1234> .
 
 """
-        self.assertTrue(RDF.equals_rdf_vs_string(rdf, expected))
+        self.assertTrue(RDF.equals_rdf_vs_string(rdf, expected, "turtle", True))
 
     def test_model_level_annotation(self):
         rdf = RDF()
@@ -1443,17 +1443,6 @@ class DrawTests(unittest.TestCase):
                     .resource_uri("fma/FMA_66835")
         rdf.draw(self.output_filename, format="jpeg")
         self.assertTrue(os.path.isfile(self.output_filename))
-
-
-class ErrorTests(unittest.TestCase):
-
-    def test_make_a_mistake(self):
-        from pyomexmeta import OmexMetaException
-        rdf = RDF()
-        editor = rdf.to_editor(TestStrings.sbml, False, False)
-        with self.assertRaises(OmexMetaException):
-            with editor.new_singular_annotation() as s:
-                s.about("something")
 
 
 if __name__ == "__main__":
