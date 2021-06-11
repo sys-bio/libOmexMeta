@@ -24,18 +24,18 @@ namespace omexmeta {
 
     OMEXMETA_CAPI_EXPORT int free_c_char_star(char *c);
 
-    OMEXMETA_CAPI_EXPORT void setLastError(const char* msg);
+    OMEXMETA_CAPI_EXPORT void setLastError(const char *msg);
 
-    OMEXMETA_CAPI_EXPORT char* getLastError();
+    OMEXMETA_CAPI_EXPORT char *getLastError();
 
-    OMEXMETA_CAPI_EXPORT void clearLastError(const std::string& err);
+    OMEXMETA_CAPI_EXPORT void clearLastError(const std::string &err);
 
-/***************************************************
+    /***************************************************
  * RDF class methods
  */
 
     OMEXMETA_CAPI_EXPORT RDF *RDF_new(const char *storage_type = "memory", const char *storage_name = "semsim_store",
-                            const char *storage_options = nullptr, const char *model_options = nullptr);
+                                      const char *storage_options = nullptr, const char *model_options = nullptr);
 
     OMEXMETA_CAPI_EXPORT void RDF_delete(RDF *rdf_ptr);
 
@@ -45,7 +45,7 @@ namespace omexmeta {
 
     OMEXMETA_CAPI_EXPORT char *RDF_toString(RDF *rdf_ptr, const char *format);
 
-    OMEXMETA_CAPI_EXPORT int RDF_toFile(RDF *rdf_ptr, const char* format, const char *filename);
+    OMEXMETA_CAPI_EXPORT int RDF_toFile(RDF *rdf_ptr, const char *format, const char *filename);
 
     /**
      * @brief read RDF formatted annotations a string.
@@ -60,28 +60,28 @@ namespace omexmeta {
      * RDF* rdf_ptr = RDF_fromString(string_annotations, "rdfxml", "string_annotations_base_uri");
      */
     OMEXMETA_CAPI_EXPORT RDF *RDF_fromString(const char *str, const char *format,
-                                   const char *storage_type = "memory", const char *storage_name = "semsim_store",
-                                   const char *storage_options = nullptr, const char *model_options = nullptr);
+                                             const char *storage_type = "memory", const char *storage_name = "semsim_store",
+                                             const char *storage_options = nullptr, const char *model_options = nullptr);
 
     OMEXMETA_CAPI_EXPORT int RDF_addFromString(RDF *rdf_ptr, const char *str, const char *format);
 
     OMEXMETA_CAPI_EXPORT RDF *RDF_fromUri(const char *uri_string, const char *format,
-                                const char *storage_type = "memory", const char *storage_name = "semsim_store",
-                                const char *storage_options = nullptr, const char *model_options = nullptr);
+                                          const char *storage_type = "memory", const char *storage_name = "semsim_store",
+                                          const char *storage_options = nullptr, const char *model_options = nullptr);
 
     OMEXMETA_CAPI_EXPORT int RDF_addFromUri(RDF *rdf_ptr, const char *uri_string, const char *format);
 
     OMEXMETA_CAPI_EXPORT RDF *RDF_fromFile(const char *filename, const char *format, const char *storage_type = "memory",
-                                 const char *storage_name = "semsim_store",
-                                 const char *storage_options = nullptr, const char *model_options = nullptr);
+                                           const char *storage_name = "semsim_store",
+                                           const char *storage_options = nullptr, const char *model_options = nullptr);
 
     OMEXMETA_CAPI_EXPORT int RDF_addFromFile(RDF *rdf_ptr, const char *uri_string, const char *format);
 
     OMEXMETA_CAPI_EXPORT char *RDF_queryResultsAsString(RDF *rdf_ptr, const char *query_str, const char *results_format);
 
-    OMEXMETA_CAPI_EXPORT ResultsMap * RDF_queryResultsAsMap(RDF *rdf_ptr, const char *query_str);
+    OMEXMETA_CAPI_EXPORT ResultsMap *RDF_queryResultsAsMap(RDF *rdf_ptr, const char *query_str);
 
-    OMEXMETA_CAPI_EXPORT void deleteResultsMap(ResultsMap* map);
+    OMEXMETA_CAPI_EXPORT void deleteResultsMap(ResultsMap *map);
 
     OMEXMETA_CAPI_EXPORT int RDF_size(RDF *rdf_ptr);
 
@@ -99,16 +99,22 @@ namespace omexmeta {
 
     OMEXMETA_CAPI_EXPORT char *RDF_getLocalUri(RDF *rdf_ptr);
 
-    OMEXMETA_CAPI_EXPORT bool RDF_equals_rdf_vs_string(RDF* rdf_ptr, const char* serialized_rdf, const char* format = "turtle", bool verbose = false);
+    OMEXMETA_CAPI_EXPORT int RDF_setModelMetaid(RDF *rdf_ptr, const char *model_metaid);
 
-    OMEXMETA_CAPI_EXPORT bool RDF_equals_rdf_vs_rdf(RDF* rdf_ptr1, RDF* rdf_ptr2, const char* format = "turtle", bool verbose = false);
+    OMEXMETA_CAPI_EXPORT char *RDF_getModelMetaid(RDF *rdf_ptr);
 
-    OMEXMETA_CAPI_EXPORT bool RDF_equals_string_vs_string(const char* first_rdf_graph, const char* second_rdf_graph, const char* format = "turtle", bool verbose = false);
+    OMEXMETA_CAPI_EXPORT char *RDF_getModelLevelAnnotationUri(RDF *rdf_ptr);
+
+    OMEXMETA_CAPI_EXPORT bool RDF_equals_rdf_vs_string(RDF *rdf_ptr, const char *serialized_rdf, const char *format = "turtle", bool verbose = false);
+
+    OMEXMETA_CAPI_EXPORT bool RDF_equals_rdf_vs_rdf(RDF *rdf_ptr1, RDF *rdf_ptr2, const char *format = "turtle", bool verbose = false);
+
+    OMEXMETA_CAPI_EXPORT bool RDF_equals_string_vs_string(const char *first_rdf_graph, const char *second_rdf_graph, const char *format = "turtle", bool verbose = false);
 
     OMEXMETA_CAPI_EXPORT Editor *
     RDF_toEditor(RDF *rdf_ptr, const char *xml, bool generate_new_metaids, bool sbml_semantic_extraction);
 
-/*********************************************
+    /*********************************************
  *  Editor class methods
  */
 
@@ -167,23 +173,23 @@ namespace omexmeta {
 
     OMEXMETA_CAPI_EXPORT char *Editor_getRepositoryUri(Editor *editor_ptr);
 
-    OMEXMETA_CAPI_EXPORT char *Editor_stripAnnotations(Editor *editor_ptr, const char* annotationElementName = "annotation");
+    OMEXMETA_CAPI_EXPORT char *Editor_stripAnnotations(Editor *editor_ptr, const char *annotationElementName = "annotation");
 
-    OMEXMETA_CAPI_EXPORT Editor* Editor_addCreator(Editor *editor_ptr, const char *orcid_id);
+    OMEXMETA_CAPI_EXPORT Editor *Editor_addCreator(Editor *editor_ptr, const char *orcid_id);
 
-    OMEXMETA_CAPI_EXPORT Editor* Editor_addCurator(Editor *editor_ptr, const char *orcid_id);
+    OMEXMETA_CAPI_EXPORT Editor *Editor_addCurator(Editor *editor_ptr, const char *orcid_id);
 
-    OMEXMETA_CAPI_EXPORT Editor* Editor_addTaxon(Editor *editor_ptr, const char *taxon_id);
+    OMEXMETA_CAPI_EXPORT Editor *Editor_addTaxon(Editor *editor_ptr, const char *taxon_id);
 
-    OMEXMETA_CAPI_EXPORT Editor* Editor_addPubmed(Editor *editor_ptr, const char *pubmedid);
+    OMEXMETA_CAPI_EXPORT Editor *Editor_addPubmed(Editor *editor_ptr, const char *pubmedid);
 
-    OMEXMETA_CAPI_EXPORT Editor* Editor_addDescription(Editor *editor_ptr, const char *date);
+    OMEXMETA_CAPI_EXPORT Editor *Editor_addDescription(Editor *editor_ptr, const char *date);
 
-    OMEXMETA_CAPI_EXPORT Editor* Editor_addDateCreated(Editor *editor_ptr, const char *date);
+    OMEXMETA_CAPI_EXPORT Editor *Editor_addDateCreated(Editor *editor_ptr, const char *date);
 
-    OMEXMETA_CAPI_EXPORT Editor* Editor_addParentModel(Editor *editor_ptr, const char *biomod_id);
+    OMEXMETA_CAPI_EXPORT Editor *Editor_addParentModel(Editor *editor_ptr, const char *biomod_id);
 
-/*********************************************************************
+    /*********************************************************************
  * SingularAnnotation class methods
  */
 
@@ -231,27 +237,27 @@ namespace omexmeta {
 
     OMEXMETA_CAPI_EXPORT char *SingularAnnotation_getResource(SingularAnnotation *singular_annotation);
 
-/*********************************************************************
+    /*********************************************************************
  * PhysicalProperty class methods
  */
 
-    OMEXMETA_CAPI_EXPORT char* PhysicalProperty_getAbout(PhysicalProperty* property) ;
+    OMEXMETA_CAPI_EXPORT char *PhysicalProperty_getAbout(PhysicalProperty *property);
 
-    OMEXMETA_CAPI_EXPORT PhysicalProperty* PhysicalProperty_about(PhysicalProperty* property, const char* about, eUriType type = eUriType::NONE);
+    OMEXMETA_CAPI_EXPORT PhysicalProperty *PhysicalProperty_about(PhysicalProperty *property, const char *about, eUriType type = eUriType::NONE);
 
-    OMEXMETA_CAPI_EXPORT char*  PhysicalProperty_getIsVersionOfValue(PhysicalProperty* property);
+    OMEXMETA_CAPI_EXPORT char *PhysicalProperty_getIsVersionOfValue(PhysicalProperty *property);
 
-    OMEXMETA_CAPI_EXPORT PhysicalProperty* PhysicalProperty_isPropertyOf(PhysicalProperty* property, const char* is_property_of, eUriType type);
+    OMEXMETA_CAPI_EXPORT PhysicalProperty *PhysicalProperty_isPropertyOf(PhysicalProperty *property, const char *is_property_of, eUriType type);
 
-    OMEXMETA_CAPI_EXPORT PhysicalProperty* PhysicalProperty_isVersionOf(PhysicalProperty* property, const char* is_version_of);
+    OMEXMETA_CAPI_EXPORT PhysicalProperty *PhysicalProperty_isVersionOf(PhysicalProperty *property, const char *is_version_of);
 
-    OMEXMETA_CAPI_EXPORT char* PhysicalProperty_getIsPropertyOfValue(PhysicalProperty* property);
+    OMEXMETA_CAPI_EXPORT char *PhysicalProperty_getIsPropertyOfValue(PhysicalProperty *property);
 
-    OMEXMETA_CAPI_EXPORT char* PhysicalProperty_getPropertyMetaidBase(PhysicalProperty* property);
+    OMEXMETA_CAPI_EXPORT char *PhysicalProperty_getPropertyMetaidBase(PhysicalProperty *property);
 
-    OMEXMETA_CAPI_EXPORT int PhysicalProperty_delete(PhysicalProperty* property);
+    OMEXMETA_CAPI_EXPORT int PhysicalProperty_delete(PhysicalProperty *property);
 
-/*********************************************************************
+    /*********************************************************************
  * PhysicalEntity class methods
  */
 
@@ -272,11 +278,11 @@ namespace omexmeta {
 
     OMEXMETA_CAPI_EXPORT char *PhysicalEntity_str(PhysicalEntity *physical_entity_ptr, const char *format, const char *base_uri);
 
-    OMEXMETA_CAPI_EXPORT PhysicalEntity *PhysicalEntity_hasProperty(PhysicalEntity *physical_entity_ptr, PhysicalProperty* property);
+    OMEXMETA_CAPI_EXPORT PhysicalEntity *PhysicalEntity_hasProperty(PhysicalEntity *physical_entity_ptr, PhysicalProperty *property);
 
-    OMEXMETA_CAPI_EXPORT PhysicalEntity *PhysicalEntity_hasPropertyisVersionOf(PhysicalEntity *physical_entity_ptr, const char* isVersionOf) ;
+    OMEXMETA_CAPI_EXPORT PhysicalEntity *PhysicalEntity_hasPropertyisVersionOf(PhysicalEntity *physical_entity_ptr, const char *isVersionOf);
 
-    OMEXMETA_CAPI_EXPORT PhysicalEntity *PhysicalEntity_hasPropertyFull(PhysicalEntity *physical_entity_ptr, const char* property_about, eUriType about_uri_type, const char* is_version_of) ;
+    OMEXMETA_CAPI_EXPORT PhysicalEntity *PhysicalEntity_hasPropertyFull(PhysicalEntity *physical_entity_ptr, const char *property_about, eUriType about_uri_type, const char *is_version_of);
 
     OMEXMETA_CAPI_EXPORT PhysicalEntity *PhysicalEntity_isPartOf(PhysicalEntity *physical_entity_ptr, const char *is_part_of, eUriType type);
 
@@ -284,7 +290,7 @@ namespace omexmeta {
 
     OMEXMETA_CAPI_EXPORT PhysicalEntity *PhysicalEntity_about(PhysicalEntity *physical_entity_ptr, const char *about, eUriType type = eUriType::NONE);
 
-/*********************************************************************
+    /*********************************************************************
  * PhysicalProcess class methods
  */
 
@@ -297,7 +303,7 @@ namespace omexmeta {
 
     OMEXMETA_CAPI_EXPORT PhysicalProcess *PhysicalProcess_addSource(
             PhysicalProcess *physical_process,
-            const char *physical_entity_reference, eUriType type,double multiplier);
+            const char *physical_entity_reference, eUriType type, double multiplier);
 
     OMEXMETA_CAPI_EXPORT PhysicalProcess *PhysicalProcess_addSink(
             PhysicalProcess *physical_process,
@@ -313,14 +319,14 @@ namespace omexmeta {
 
     OMEXMETA_CAPI_EXPORT PhysicalProcess *PhysicalProcess_isVersionOf(PhysicalProcess *physical_process_ptr, const char *version, eUriType type);
 
-    OMEXMETA_CAPI_EXPORT PhysicalProcess *PhysicalProcess_hasProperty(PhysicalProcess *physical_process_ptr, PhysicalProperty* property);
+    OMEXMETA_CAPI_EXPORT PhysicalProcess *PhysicalProcess_hasProperty(PhysicalProcess *physical_process_ptr, PhysicalProperty *property);
 
-    OMEXMETA_CAPI_EXPORT PhysicalProcess *PhysicalProcess_hasPropertyisVersionOf(PhysicalProcess *physical_process_ptr, const char* isVersionOf) ;
+    OMEXMETA_CAPI_EXPORT PhysicalProcess *PhysicalProcess_hasPropertyisVersionOf(PhysicalProcess *physical_process_ptr, const char *isVersionOf);
 
-    OMEXMETA_CAPI_EXPORT PhysicalProcess *PhysicalProcess_hasPropertyFull(PhysicalProcess *physical_process_ptr, const char* property_about, eUriType about_uri_type, const char* is_version_of) ;
+    OMEXMETA_CAPI_EXPORT PhysicalProcess *PhysicalProcess_hasPropertyFull(PhysicalProcess *physical_process_ptr, const char *property_about, eUriType about_uri_type, const char *is_version_of);
 
 
-/*********************************************************************
+    /*********************************************************************
  * EnergyDiff class methods
  */
 
@@ -358,14 +364,14 @@ namespace omexmeta {
 
     OMEXMETA_CAPI_EXPORT EnergyDiff *EnergyDiff_about(EnergyDiff *energy_diff_ptr, const char *about, eUriType type = eUriType::NONE);
 
-    OMEXMETA_CAPI_EXPORT EnergyDiff *EnergyDiff_hasProperty(EnergyDiff *energy_diff_ptr, PhysicalProperty* property);
+    OMEXMETA_CAPI_EXPORT EnergyDiff *EnergyDiff_hasProperty(EnergyDiff *energy_diff_ptr, PhysicalProperty *property);
 
-    OMEXMETA_CAPI_EXPORT EnergyDiff *EnergyDiff_hasPropertyisVersionOf(EnergyDiff *energy_diff_ptr, const char* isVersionOf) ;
+    OMEXMETA_CAPI_EXPORT EnergyDiff *EnergyDiff_hasPropertyisVersionOf(EnergyDiff *energy_diff_ptr, const char *isVersionOf);
 
-    OMEXMETA_CAPI_EXPORT EnergyDiff *EnergyDiff_hasPropertyFull(EnergyDiff *energy_diff_ptr, const char* property_about, eUriType about_uri_type, const char* is_version_of) ;
+    OMEXMETA_CAPI_EXPORT EnergyDiff *EnergyDiff_hasPropertyFull(EnergyDiff *energy_diff_ptr, const char *property_about, eUriType about_uri_type, const char *is_version_of);
 
 
-/*********************************************************************
+    /*********************************************************************
  * PersonalInformation class methods
  */
 
@@ -409,31 +415,6 @@ namespace omexmeta {
 #ifdef __cplusplus
     }
 #endif
-}
+}// namespace omexmeta
 
-#endif //LIBOMEXMETA_OMEXMETACAPI_H
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#endif//LIBOMEXMETA_OMEXMETACAPI_H

@@ -165,6 +165,25 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
         expected = "http://omex-library.org/"
         self.assertEqual(expected, actual)
 
+    def test_rdf_get_model_level_annotations(self):
+        actual = self.pyom.get_and_free_c_str(
+            self.pyom.rdf_get_model_level_annotation_uri(self.rdf)
+        )
+        expected = "http://omex-library.org/NewOmex.omex/NewModel.xml#NewModel"
+        self.assertEqual(expected, actual)
+
+    def test_rdf_set_model_metaid(self):
+        self.pyom.rdf_set_model_metaid(self.rdf, "ModelMetaid".encode())
+        model_metaid = self.pyom.get_and_free_c_str(
+            self.pyom.rdf_get_model_metaid(self.rdf)
+        )
+        self.assertEqual("ModelMetaid", model_metaid)
+        full_model_uri = self.pyom.get_and_free_c_str(
+            self.pyom.rdf_get_model_level_annotation_uri(self.rdf)
+        )
+        expected = "http://omex-library.org/NewOmex.omex/NewModel.xml#ModelMetaid"
+        self.assertEqual(expected, full_model_uri)
+
     def test_rdf_get_archive_uri(self):
         actual = self.pyom.get_and_free_c_str(
             self.pyom.rdf_get_archive_uri(self.rdf)
