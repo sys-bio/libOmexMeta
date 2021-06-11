@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libomexmeta
-   &#160;<span id="projectnumber">1.2.8</span>
+   &#160;<span id="projectnumber">1.2.9</span>
    </div>
    <div id="projectbrief">Annotations for models in systems biology</div>
   </td>
@@ -69,6 +69,8 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-methods">Protected Member Functions</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="classomexmeta_1_1OmexMetaXml-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">omexmeta::OmexMetaXml Class Reference</div>  </div>
@@ -101,9 +103,9 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>getMetaidNumDigits</b>
 <tr class="memitem:a82ac21ac48b494d028cb9b40f673cf83"><td class="memItemLeft" align="right" valign="top"><a id="a82ac21ac48b494d028cb9b40f673cf83"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>generateNewMetaids</b> () const</td></tr>
 <tr class="separator:a82ac21ac48b494d028cb9b40f673cf83"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af04658b1edf47aa401b5dcba9b6f44bd"><td class="memItemLeft" align="right" valign="top"><a id="af04658b1edf47aa401b5dcba9b6f44bd"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>OmexMetaXml</b> (std::string xml, std::string metaid_base=&quot;MetaID&quot;, int metaid_num_digits=4, bool generate_new_metaids=false)</td></tr>
-<tr class="separator:af04658b1edf47aa401b5dcba9b6f44bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acb185d817563f308ecde94491623ced0"><td class="memItemLeft" align="right" valign="top"><a id="acb185d817563f308ecde94491623ced0"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>OmexMetaXml</b> (const std::string &amp;xml, std::string metaid_base=&quot;MetaID&quot;, int metaid_num_digits=4, bool generate_new_metaids=false)</td></tr>
+<tr class="separator:acb185d817563f308ecde94491623ced0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad9d10f9320a4d8c0764c86ba967de43f"><td class="memItemLeft" align="right" valign="top"><a id="ad9d10f9320a4d8c0764c86ba967de43f"></a>
 std::pair&lt; std::string, std::vector&lt; std::string &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>addMetaIds</b> ()</td></tr>
 <tr class="separator:ad9d10f9320a4d8c0764c86ba967de43f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -119,15 +121,143 @@ virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><b>metaId
 <tr class="memitem:ae5ec502a76aa8b133de07f7b98926c6d"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1OmexMetaXml.html#ae5ec502a76aa8b133de07f7b98926c6d">removeElement</a> (const std::string &amp;elementName)</td></tr>
 <tr class="memdesc:ae5ec502a76aa8b133de07f7b98926c6d"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns a copy of the xml with all elemenents named  <a href="classomexmeta_1_1OmexMetaXml.html#ae5ec502a76aa8b133de07f7b98926c6d">More...</a><br /></td></tr>
 <tr class="separator:ae5ec502a76aa8b133de07f7b98926c6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14f30f51af1d210cd02d90cbcc855148"><td class="memItemLeft" align="right" valign="top">xmlNodePtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1OmexMetaXml.html#a14f30f51af1d210cd02d90cbcc855148">findFirstOccuranceOfNodeCalled</a> (const std::string &amp;name)</td></tr>
+<tr class="memdesc:a14f30f51af1d210cd02d90cbcc855148"><td class="mdescLeft">&#160;</td><td class="mdescRight">search the current xml document for a node called  <a href="classomexmeta_1_1OmexMetaXml.html#a14f30f51af1d210cd02d90cbcc855148">More...</a><br /></td></tr>
+<tr class="separator:a14f30f51af1d210cd02d90cbcc855148"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaa0e43035473faa50350e1b5d703e445"><td class="memItemLeft" align="right" valign="top"><a id="aaa0e43035473faa50350e1b5d703e445"></a>
 std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1OmexMetaXml.html#aaa0e43035473faa50350e1b5d703e445">toString</a> ()</td></tr>
 <tr class="memdesc:aaa0e43035473faa50350e1b5d703e445"><td class="mdescLeft">&#160;</td><td class="mdescRight">write the current document to string <br /></td></tr>
 <tr class="separator:aaa0e43035473faa50350e1b5d703e445"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81b34fa445228b70d618d352772e8838"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1OmexMetaXml.html#a81b34fa445228b70d618d352772e8838">getDefaultModelMetaid</a> ()</td></tr>
+<tr class="memdesc:a81b34fa445228b70d618d352772e8838"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the model elements metaid  <a href="classomexmeta_1_1OmexMetaXml.html#a81b34fa445228b70d618d352772e8838">More...</a><br /></td></tr>
+<tr class="separator:a81b34fa445228b70d618d352772e8838"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
+Protected Member Functions</h2></td></tr>
+<tr class="memitem:a6c5c36bbaee3d6b14d4e9567d248d2b5"><td class="memItemLeft" align="right" valign="top">xmlDocPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1OmexMetaXml.html#a6c5c36bbaee3d6b14d4e9567d248d2b5">parseDoc</a> (const std::string &amp;xml=std::string())</td></tr>
+<tr class="separator:a6c5c36bbaee3d6b14d4e9567d248d2b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b230c4076abe31aee3471ecf01c1330"><td class="memItemLeft" align="right" valign="top"><a id="a1b230c4076abe31aee3471ecf01c1330"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>addMetaIdsRecursion</b> (xmlDocPtr <a class="el" href="classomexmeta_1_1OmexMetaXml.html#a92ec0ce7118744de652eb02943ec39ef">doc</a>, xmlNode *a_node, std::vector&lt; std::string &gt; &amp;seen_metaids)</td></tr>
+<tr class="separator:a1b230c4076abe31aee3471ecf01c1330"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1088e109afa905248c3577b95e291f21"><td class="memItemLeft" align="right" valign="top"><a id="a1088e109afa905248c3577b95e291f21"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>generateMetaId</b> (std::vector&lt; std::string &gt; &amp;seen_metaids, long count, const <a class="el" href="classomexmeta_1_1MetaID.html">MetaID</a> &amp;metaid_gen, std::string &amp;id)</td></tr>
+<tr class="separator:a1088e109afa905248c3577b95e291f21"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ad99abda52b82b105416148a5d1da97"><td class="memItemLeft" align="right" valign="top">xmlNodePtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1OmexMetaXml.html#a9ad99abda52b82b105416148a5d1da97">findNodeByName</a> (xmlNodePtr rootnode, const xmlChar *nodename)</td></tr>
+<tr class="memdesc:a9ad99abda52b82b105416148a5d1da97"><td class="mdescLeft">&#160;</td><td class="mdescRight">looks for a node called  <a href="classomexmeta_1_1OmexMetaXml.html#a9ad99abda52b82b105416148a5d1da97">More...</a><br /></td></tr>
+<tr class="separator:a9ad99abda52b82b105416148a5d1da97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:a92ec0ce7118744de652eb02943ec39ef"><td class="memItemLeft" align="right" valign="top">xmlDocPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1OmexMetaXml.html#a92ec0ce7118744de652eb02943ec39ef">doc</a></td></tr>
+<tr class="separator:a92ec0ce7118744de652eb02943ec39ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaca7a37ac733433d4f3a143adbbccbc1"><td class="memItemLeft" align="right" valign="top"><a id="aaca7a37ac733433d4f3a143adbbccbc1"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>xml_</b></td></tr>
+<tr class="separator:aaca7a37ac733433d4f3a143adbbccbc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd146e2722c99125fd93b36a5fdd1a5e"><td class="memItemLeft" align="right" valign="top"><a id="abd146e2722c99125fd93b36a5fdd1a5e"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>metaid_base_</b></td></tr>
+<tr class="separator:abd146e2722c99125fd93b36a5fdd1a5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45b17aa02c86936bc84d3b9d90c96a4e"><td class="memItemLeft" align="right" valign="top"><a id="a45b17aa02c86936bc84d3b9d90c96a4e"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>metaid_num_digits_</b></td></tr>
+<tr class="separator:a45b17aa02c86936bc84d3b9d90c96a4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31d0a3daf83e963f0994b56700342672"><td class="memItemLeft" align="right" valign="top"><a id="a31d0a3daf83e963f0994b56700342672"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>generate_new_metaids_</b></td></tr>
+<tr class="separator:a31d0a3daf83e963f0994b56700342672"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Construct for handling xml. </p>
 <p>todo this design works but is a little clunky. A better design would be literally have an XML class, with a type enum to determine SBML, CellML or other and then the functions performed by this class would just be methods of the xml. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a14f30f51af1d210cd02d90cbcc855148"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a14f30f51af1d210cd02d90cbcc855148">&#9670;&nbsp;</a></span>findFirstOccuranceOfNodeCalled()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">xmlNodePtr omexmeta::OmexMetaXml::findFirstOccuranceOfNodeCalled </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>search the current xml document for a node called </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name.</td><td>if multiple such nodes exist, the first found is return </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a9ad99abda52b82b105416148a5d1da97"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ad99abda52b82b105416148a5d1da97">&#9670;&nbsp;</a></span>findNodeByName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">xmlNodePtr omexmeta::OmexMetaXml::findNodeByName </td>
+          <td>(</td>
+          <td class="paramtype">xmlNodePtr&#160;</td>
+          <td class="paramname"><em>rootnode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const xmlChar *&#160;</td>
+          <td class="paramname"><em>nodename</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>looks for a node called </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nodename</td><td>in</td></tr>
+    <tr><td class="paramname">rootnode.</td><td>Returns the first it finds. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a81b34fa445228b70d618d352772e8838"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81b34fa445228b70d618d352772e8838">&#9670;&nbsp;</a></span>getDefaultModelMetaid()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string omexmeta::OmexMetaXml::getDefaultModelMetaid </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>get the model elements metaid </p>
+<p>the model element is often a child of the sbml or cellml element </p>
+
+</div>
+</div>
 <a id="a0971092abfca49f1510a83540047d2d0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0971092abfca49f1510a83540047d2d0">&#9670;&nbsp;</a></span>getMetaidBase()</h2>
 
@@ -145,6 +275,38 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hre
 
 <p>get the base for the metaid used by the current xml type. <a class="el" href="classThis.html" title="interface for querying an rdf graph basically a wrapper around both librdf_query and librdf_query_res...">This</a> base is used as a precursor string for generating new metaids if requested by the user by setting generate_new_metaids=true. </p>
 <p>the base is given as argument to the OmexMetaXmlAssistant on instantiation. If base is "metaid" then ids generated will be metaid_0000 </p>
+
+</div>
+</div>
+<a id="a6c5c36bbaee3d6b14d4e9567d248d2b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6c5c36bbaee3d6b14d4e9567d248d2b5">&#9670;&nbsp;</a></span>parseDoc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">xmlDocPtr omexmeta::OmexMetaXml::parseDoc </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>xml</em> = <code>std::string()</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Parse xml into libxml2. If</p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">xml</td><td>provided, use this xml, otherwise use private member variable xml_ </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -171,6 +333,30 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hre
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a92ec0ce7118744de652eb02943ec39ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a92ec0ce7118744de652eb02943ec39ef">&#9670;&nbsp;</a></span>doc</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">xmlDocPtr omexmeta::OmexMetaXml::doc</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>xml document tree </p>
 
 </div>
 </div>

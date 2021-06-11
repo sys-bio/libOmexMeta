@@ -167,7 +167,7 @@ namespace omexmeta {
                                         "Trying to create a PersonalInformation composite annotation triples without"
                                         "a `model_uri`. Please use setModelUri() and try again.");
         }
-        LibrdfNode n = LibrdfNode::fromUriString(uriHandler_.getModelUri());
+        LibrdfNode n = LibrdfNode::fromUriString(uriHandler_.getModelLevelAnnotationUri());
         PredicatePtr creatorPtr = std::make_shared<DCTerm>("creator");
         LibrdfNode r = LibrdfNode::fromUriString(metaid_);
         Triple triple(uriHandler_, n, creatorPtr, r);

@@ -26,8 +26,8 @@ int {\bfseries get\+Metaid\+Num\+Digits} () const
 \mbox{\Hypertarget{classomexmeta_1_1OmexMetaXml_a82ac21ac48b494d028cb9b40f673cf83}\label{classomexmeta_1_1OmexMetaXml_a82ac21ac48b494d028cb9b40f673cf83}} 
 bool {\bfseries generate\+New\+Metaids} () const
 \item 
-\mbox{\Hypertarget{classomexmeta_1_1OmexMetaXml_af04658b1edf47aa401b5dcba9b6f44bd}\label{classomexmeta_1_1OmexMetaXml_af04658b1edf47aa401b5dcba9b6f44bd}} 
-{\bfseries Omex\+Meta\+Xml} (std\+::string xml, std\+::string metaid\+\_\+base=\char`\"{}Meta\+ID\char`\"{}, int metaid\+\_\+num\+\_\+digits=4, bool generate\+\_\+new\+\_\+metaids=false)
+\mbox{\Hypertarget{classomexmeta_1_1OmexMetaXml_acb185d817563f308ecde94491623ced0}\label{classomexmeta_1_1OmexMetaXml_acb185d817563f308ecde94491623ced0}} 
+{\bfseries Omex\+Meta\+Xml} (const std\+::string \&xml, std\+::string metaid\+\_\+base=\char`\"{}Meta\+ID\char`\"{}, int metaid\+\_\+num\+\_\+digits=4, bool generate\+\_\+new\+\_\+metaids=false)
 \item 
 \mbox{\Hypertarget{classomexmeta_1_1OmexMetaXml_ad9d10f9320a4d8c0764c86ba967de43f}\label{classomexmeta_1_1OmexMetaXml_ad9d10f9320a4d8c0764c86ba967de43f}} 
 std\+::pair$<$ std\+::string, std\+::vector$<$ std\+::string $>$ $>$ {\bfseries add\+Meta\+Ids} ()
@@ -43,9 +43,43 @@ virtual std\+::string {\bfseries meta\+Id\+Namespace} () const
 \item 
 std\+::string \mbox{\hyperlink{classomexmeta_1_1OmexMetaXml_ae5ec502a76aa8b133de07f7b98926c6d}{remove\+Element}} (const std\+::string \&element\+Name)
 \begin{DoxyCompactList}\small\item\em returns a copy of the xml with all elemenents named \end{DoxyCompactList}\item 
+xml\+Node\+Ptr \mbox{\hyperlink{classomexmeta_1_1OmexMetaXml_a14f30f51af1d210cd02d90cbcc855148}{find\+First\+Occurance\+Of\+Node\+Called}} (const std\+::string \&name)
+\begin{DoxyCompactList}\small\item\em search the current xml document for a node called \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classomexmeta_1_1OmexMetaXml_aaa0e43035473faa50350e1b5d703e445}\label{classomexmeta_1_1OmexMetaXml_aaa0e43035473faa50350e1b5d703e445}} 
 std\+::string \mbox{\hyperlink{classomexmeta_1_1OmexMetaXml_aaa0e43035473faa50350e1b5d703e445}{to\+String}} ()
-\begin{DoxyCompactList}\small\item\em write the current document to string \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em write the current document to string \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classomexmeta_1_1OmexMetaXml_a81b34fa445228b70d618d352772e8838}{get\+Default\+Model\+Metaid}} ()
+\begin{DoxyCompactList}\small\item\em get the model elements metaid \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+xml\+Doc\+Ptr \mbox{\hyperlink{classomexmeta_1_1OmexMetaXml_a6c5c36bbaee3d6b14d4e9567d248d2b5}{parse\+Doc}} (const std\+::string \&xml=std\+::string())
+\item 
+\mbox{\Hypertarget{classomexmeta_1_1OmexMetaXml_a1b230c4076abe31aee3471ecf01c1330}\label{classomexmeta_1_1OmexMetaXml_a1b230c4076abe31aee3471ecf01c1330}} 
+void {\bfseries add\+Meta\+Ids\+Recursion} (xml\+Doc\+Ptr \mbox{\hyperlink{classomexmeta_1_1OmexMetaXml_a92ec0ce7118744de652eb02943ec39ef}{doc}}, xml\+Node $\ast$a\+\_\+node, std\+::vector$<$ std\+::string $>$ \&seen\+\_\+metaids)
+\item 
+\mbox{\Hypertarget{classomexmeta_1_1OmexMetaXml_a1088e109afa905248c3577b95e291f21}\label{classomexmeta_1_1OmexMetaXml_a1088e109afa905248c3577b95e291f21}} 
+void {\bfseries generate\+Meta\+Id} (std\+::vector$<$ std\+::string $>$ \&seen\+\_\+metaids, long count, const \mbox{\hyperlink{classomexmeta_1_1MetaID}{Meta\+ID}} \&metaid\+\_\+gen, std\+::string \&id)
+\item 
+xml\+Node\+Ptr \mbox{\hyperlink{classomexmeta_1_1OmexMetaXml_a9ad99abda52b82b105416148a5d1da97}{find\+Node\+By\+Name}} (xml\+Node\+Ptr rootnode, const xml\+Char $\ast$nodename)
+\begin{DoxyCompactList}\small\item\em looks for a node called \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+xml\+Doc\+Ptr \mbox{\hyperlink{classomexmeta_1_1OmexMetaXml_a92ec0ce7118744de652eb02943ec39ef}{doc}}
+\item 
+\mbox{\Hypertarget{classomexmeta_1_1OmexMetaXml_aaca7a37ac733433d4f3a143adbbccbc1}\label{classomexmeta_1_1OmexMetaXml_aaca7a37ac733433d4f3a143adbbccbc1}} 
+std\+::string {\bfseries xml\+\_\+}
+\item 
+\mbox{\Hypertarget{classomexmeta_1_1OmexMetaXml_abd146e2722c99125fd93b36a5fdd1a5e}\label{classomexmeta_1_1OmexMetaXml_abd146e2722c99125fd93b36a5fdd1a5e}} 
+std\+::string {\bfseries metaid\+\_\+base\+\_\+}
+\item 
+\mbox{\Hypertarget{classomexmeta_1_1OmexMetaXml_a45b17aa02c86936bc84d3b9d90c96a4e}\label{classomexmeta_1_1OmexMetaXml_a45b17aa02c86936bc84d3b9d90c96a4e}} 
+int {\bfseries metaid\+\_\+num\+\_\+digits\+\_\+}
+\item 
+\mbox{\Hypertarget{classomexmeta_1_1OmexMetaXml_a31d0a3daf83e963f0994b56700342672}\label{classomexmeta_1_1OmexMetaXml_a31d0a3daf83e963f0994b56700342672}} 
+bool {\bfseries generate\+\_\+new\+\_\+metaids\+\_\+}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -54,7 +88,49 @@ Construct for handling xml.
 todo this design works but is a little clunky. A better design would be literally have an X\+ML class, with a type enum to determine S\+B\+ML, Cell\+ML or other and then the functions performed by this class would just be methods of the xml. 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{classomexmeta_1_1OmexMetaXml_a0971092abfca49f1510a83540047d2d0}\label{classomexmeta_1_1OmexMetaXml_a0971092abfca49f1510a83540047d2d0}} 
+\mbox{\Hypertarget{classomexmeta_1_1OmexMetaXml_a14f30f51af1d210cd02d90cbcc855148}\label{classomexmeta_1_1OmexMetaXml_a14f30f51af1d210cd02d90cbcc855148}} 
+\index{omexmeta::OmexMetaXml@{omexmeta::OmexMetaXml}!findFirstOccuranceOfNodeCalled@{findFirstOccuranceOfNodeCalled}}
+\index{findFirstOccuranceOfNodeCalled@{findFirstOccuranceOfNodeCalled}!omexmeta::OmexMetaXml@{omexmeta::OmexMetaXml}}
+\doxysubsubsection{\texorpdfstring{findFirstOccuranceOfNodeCalled()}{findFirstOccuranceOfNodeCalled()}}
+{\footnotesize\ttfamily xml\+Node\+Ptr omexmeta\+::\+Omex\+Meta\+Xml\+::find\+First\+Occurance\+Of\+Node\+Called (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption})}
+
+
+
+search the current xml document for a node called 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name.} & if multiple such nodes exist, the first found is return \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classomexmeta_1_1OmexMetaXml_a9ad99abda52b82b105416148a5d1da97}\label{classomexmeta_1_1OmexMetaXml_a9ad99abda52b82b105416148a5d1da97}} 
+\index{omexmeta::OmexMetaXml@{omexmeta::OmexMetaXml}!findNodeByName@{findNodeByName}}
+\index{findNodeByName@{findNodeByName}!omexmeta::OmexMetaXml@{omexmeta::OmexMetaXml}}
+\doxysubsubsection{\texorpdfstring{findNodeByName()}{findNodeByName()}}
+{\footnotesize\ttfamily xml\+Node\+Ptr omexmeta\+::\+Omex\+Meta\+Xml\+::find\+Node\+By\+Name (\begin{DoxyParamCaption}\item[{xml\+Node\+Ptr}]{rootnode,  }\item[{const xml\+Char $\ast$}]{nodename }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+looks for a node called 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nodename} & in\\
+\hline
+{\em rootnode.} & Returns the first it finds. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classomexmeta_1_1OmexMetaXml_a81b34fa445228b70d618d352772e8838}\label{classomexmeta_1_1OmexMetaXml_a81b34fa445228b70d618d352772e8838}} 
+\index{omexmeta::OmexMetaXml@{omexmeta::OmexMetaXml}!getDefaultModelMetaid@{getDefaultModelMetaid}}
+\index{getDefaultModelMetaid@{getDefaultModelMetaid}!omexmeta::OmexMetaXml@{omexmeta::OmexMetaXml}}
+\doxysubsubsection{\texorpdfstring{getDefaultModelMetaid()}{getDefaultModelMetaid()}}
+{\footnotesize\ttfamily std\+::string omexmeta\+::\+Omex\+Meta\+Xml\+::get\+Default\+Model\+Metaid (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+get the model elements metaid 
+
+the model element is often a child of the sbml or cellml element \mbox{\Hypertarget{classomexmeta_1_1OmexMetaXml_a0971092abfca49f1510a83540047d2d0}\label{classomexmeta_1_1OmexMetaXml_a0971092abfca49f1510a83540047d2d0}} 
 \index{omexmeta::OmexMetaXml@{omexmeta::OmexMetaXml}!getMetaidBase@{getMetaidBase}}
 \index{getMetaidBase@{getMetaidBase}!omexmeta::OmexMetaXml@{omexmeta::OmexMetaXml}}
 \doxysubsubsection{\texorpdfstring{getMetaidBase()}{getMetaidBase()}}
@@ -64,7 +140,18 @@ todo this design works but is a little clunky. A better design would be literall
 
 get the base for the metaid used by the current xml type. \mbox{\hyperlink{classThis}{This}} base is used as a precursor string for generating new metaids if requested by the user by setting generate\+\_\+new\+\_\+metaids=true. 
 
-the base is given as argument to the Omex\+Meta\+Xml\+Assistant on instantiation. If base is \char`\"{}metaid\char`\"{} then ids generated will be metaid\+\_\+0000 \mbox{\Hypertarget{classomexmeta_1_1OmexMetaXml_ae5ec502a76aa8b133de07f7b98926c6d}\label{classomexmeta_1_1OmexMetaXml_ae5ec502a76aa8b133de07f7b98926c6d}} 
+the base is given as argument to the Omex\+Meta\+Xml\+Assistant on instantiation. If base is \char`\"{}metaid\char`\"{} then ids generated will be metaid\+\_\+0000 \mbox{\Hypertarget{classomexmeta_1_1OmexMetaXml_a6c5c36bbaee3d6b14d4e9567d248d2b5}\label{classomexmeta_1_1OmexMetaXml_a6c5c36bbaee3d6b14d4e9567d248d2b5}} 
+\index{omexmeta::OmexMetaXml@{omexmeta::OmexMetaXml}!parseDoc@{parseDoc}}
+\index{parseDoc@{parseDoc}!omexmeta::OmexMetaXml@{omexmeta::OmexMetaXml}}
+\doxysubsubsection{\texorpdfstring{parseDoc()}{parseDoc()}}
+{\footnotesize\ttfamily xml\+Doc\+Ptr omexmeta\+::\+Omex\+Meta\+Xml\+::parse\+Doc (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{xml = {\ttfamily std\+:\+:string()} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Parse xml into libxml2. If
+\begin{DoxyParams}{Parameters}
+{\em xml} & provided, use this xml, otherwise use private member variable xml\+\_\+ \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classomexmeta_1_1OmexMetaXml_ae5ec502a76aa8b133de07f7b98926c6d}\label{classomexmeta_1_1OmexMetaXml_ae5ec502a76aa8b133de07f7b98926c6d}} 
 \index{omexmeta::OmexMetaXml@{omexmeta::OmexMetaXml}!removeElement@{removeElement}}
 \index{removeElement@{removeElement}!omexmeta::OmexMetaXml@{omexmeta::OmexMetaXml}}
 \doxysubsubsection{\texorpdfstring{removeElement()}{removeElement()}}
@@ -80,6 +167,15 @@ returns a copy of the xml with all elemenents named
 \hline
 \end{DoxyParams}
 
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classomexmeta_1_1OmexMetaXml_a92ec0ce7118744de652eb02943ec39ef}\label{classomexmeta_1_1OmexMetaXml_a92ec0ce7118744de652eb02943ec39ef}} 
+\index{omexmeta::OmexMetaXml@{omexmeta::OmexMetaXml}!doc@{doc}}
+\index{doc@{doc}!omexmeta::OmexMetaXml@{omexmeta::OmexMetaXml}}
+\doxysubsubsection{\texorpdfstring{doc}{doc}}
+{\footnotesize\ttfamily xml\+Doc\+Ptr omexmeta\+::\+Omex\+Meta\+Xml\+::doc\hspace{0.3cm}{\ttfamily [protected]}}
+
+xml document tree 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

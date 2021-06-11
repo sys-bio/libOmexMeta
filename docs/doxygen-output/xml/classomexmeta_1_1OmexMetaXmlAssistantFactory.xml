@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
   <compounddef id="classomexmeta_1_1OmexMetaXmlAssistantFactory" kind="class" language="C++" prot="public">
-    <compoundname>omexmeta::OmexMetaXmlAssistantFactory</compoundname>
+    <compoundname>omexmeta::OmexMetaXmlFactory</compoundname>
       <sectiondef kind="public-static-func">
       <memberdef kind="function" id="classomexmeta_1_1OmexMetaXmlAssistantFactory_1aa992454185c6c7ee2d189eedbedb8f3d" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>OmexMetaXmlPtr</type>
-        <definition>OmexMetaXmlPtr omexmeta::OmexMetaXmlAssistantFactory::generate</definition>
+        <definition>OmexMetaXmlPtr omexmeta::OmexMetaXmlFactory::generate</definition>
         <argsstring>(const std::string &amp;xml, OmexMetaXmlType type, bool generate_new_metaids=false, std::string metaid_base=&quot;#OmexMetaId&quot;, int metaid_num_digits=4)</argsstring>
         <name>generate</name>
         <param>
@@ -46,7 +46,7 @@
     </detaileddescription>
     <location file="src/omexmeta/include/omexmeta/OmexMetaXml.h" line="116" column="5" bodyfile="src/omexmeta/include/omexmeta/OmexMetaXml.h" bodystart="116" bodyend="119"/>
     <listofallmembers>
-      <member refid="classomexmeta_1_1OmexMetaXmlAssistantFactory_1aa992454185c6c7ee2d189eedbedb8f3d" prot="public" virt="non-virtual"><scope>omexmeta::OmexMetaXmlAssistantFactory</scope><name>generate</name></member>
+      <member refid="classomexmeta_1_1OmexMetaXmlAssistantFactory_1aa992454185c6c7ee2d189eedbedb8f3d" prot="public" virt="non-virtual"><scope>omexmeta::OmexMetaXmlFactory</scope><name>generate</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

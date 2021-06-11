@@ -17,7 +17,7 @@ public:
     UriHandler uriHandler;
 
     PersonalInformationTests() {
-        model = redland::LibrdfModel(storage.get());
+        model = redland::LibrdfModel(storage);
     }
 
     ~PersonalInformationTests() override {
@@ -28,6 +28,7 @@ public:
 
 TEST_F(PersonalInformationTests, TestAddFoaf) {
     uriHandler.setModelUri("TestModel.sbml");
+    uriHandler.setModelMetaid("TestModelMetaId");
     PersonalInformation information(model.get(), uriHandler);
     LibrdfNode value = LibrdfNode::fromLiteral("Joe Blogs");
     information.addFoaf("name", value);
@@ -38,7 +39,7 @@ TEST_F(PersonalInformationTests, TestAddFoaf) {
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/TestModel.rdf#> .\n"
                            "\n"
-                           "<http://omex-library.org/NewOmex.omex/TestModel.sbml>\n"
+                           "<http://omex-library.org/NewOmex.omex/TestModel.sbml#TestModelMetaId>\n"
                            "    dc:creator <http://omex-library.org/NewOmex.omex/TestModel.sbml#PersonalInfo0000> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/TestModel.sbml#PersonalInfo0000>\n"
@@ -59,7 +60,7 @@ TEST_F(PersonalInformationTests, TestAddFoafUsingLiteral) {
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/TestModel.rdf#> .\n"
                            "\n"
-                           "<http://omex-library.org/NewOmex.omex/TestModel.sbml>\n"
+                           "<http://omex-library.org/NewOmex.omex/TestModel.sbml#NewModel>\n"
                            "    dc:creator <http://omex-library.org/NewOmex.omex/TestModel.sbml#PersonalInfo0000> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/TestModel.sbml#PersonalInfo0000>\n"
@@ -82,7 +83,7 @@ TEST_F(PersonalInformationTests, TestAddFoafUsingUri) {
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
-                           "<http://omex-library.org/NewOmex.omex/TestModel.sbml>\n"
+                           "<http://omex-library.org/NewOmex.omex/TestModel.sbml#NewModel>\n"
                            "    dc:creator <http://omex-library.org/NewOmex.omex/TestModel.sbml#PersonalInfo0000> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/TestModel.sbml#PersonalInfo0000>\n"
@@ -102,7 +103,7 @@ TEST_F(PersonalInformationTests, TestAddName) {
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
-                           "<http://omex-library.org/NewOmex.omex/TestModel.sbml>\n"
+                           "<http://omex-library.org/NewOmex.omex/TestModel.sbml#NewModel>\n"
                            "    dc:creator <http://omex-library.org/NewOmex.omex/TestModel.sbml#PersonalInfo0000> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/TestModel.sbml#PersonalInfo0000>\n"
@@ -123,7 +124,7 @@ TEST_F(PersonalInformationTests, TestMBox) {
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/TestModel.rdf#> .\n"
                            "\n"
-                           "<http://omex-library.org/NewOmex.omex/TestModel.sbml>\n"
+                           "<http://omex-library.org/NewOmex.omex/TestModel.sbml#NewModel>\n"
                            "    dc:creator <http://omex-library.org/NewOmex.omex/TestModel.sbml#PersonalInfo0000> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/TestModel.sbml#PersonalInfo0000>\n"
@@ -144,7 +145,7 @@ TEST_F(PersonalInformationTests, TestAccountName) {
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
-                           "<http://omex-library.org/NewOmex.omex/TestModel.sbml>\n"
+                           "<http://omex-library.org/NewOmex.omex/TestModel.sbml#NewModel>\n"
                            "    dc:creator <http://omex-library.org/NewOmex.omex/TestModel.sbml#PersonalInfo0000> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/TestModel.sbml#PersonalInfo0000>\n"
@@ -165,7 +166,7 @@ TEST_F(PersonalInformationTests, TestaddAccountServiceHomepage) {
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
-                           "<http://omex-library.org/NewOmex.omex/TestModel.sbml>\n"
+                           "<http://omex-library.org/NewOmex.omex/TestModel.sbml#NewModel>\n"
                            "    dc:creator <http://omex-library.org/NewOmex.omex/TestModel.sbml#PersonalInfo0000> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/TestModel.sbml#PersonalInfo0000>\n"
@@ -190,7 +191,7 @@ TEST_F(PersonalInformationTests, TestMultipleEntries) {
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
-                           "<http://omex-library.org/NewOmex.omex/TestModel.sbml>\n"
+                           "<http://omex-library.org/NewOmex.omex/TestModel.sbml#NewModel>\n"
                            "    dc:creator <http://omex-library.org/NewOmex.omex/TestModel.sbml#PersonalInfo0000> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/TestModel.sbml#PersonalInfo0000>\n"

@@ -133,6 +133,52 @@
         </inbodydescription>
         <location file="src/omexmeta/include/omexmeta/IRDF.h" line="36" column="22"/>
       </memberdef>
+      <memberdef kind="function" id="classomexmeta_1_1IRDF_1a0cd8eed096c3179dcc9de525e0235610" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>const std::string &amp;</type>
+        <definition>virtual const std::string&amp; omexmeta::IRDF::getModelMetaid</definition>
+        <argsstring>()=0</argsstring>
+        <name>getModelMetaid</name>
+        <reimplementedby refid="classomexmeta_1_1RDF_1a2f1d018479ca77e429760f7bd517f597">getModelMetaid</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/IRDF.h" line="37" column="35"/>
+      </memberdef>
+      <memberdef kind="function" id="classomexmeta_1_1IRDF_1acb06886f7cfb72a4d685e55ef4e21b50" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void omexmeta::IRDF::setModelMetaid</definition>
+        <argsstring>(const std::string &amp;modelMetaid)=0</argsstring>
+        <name>setModelMetaid</name>
+        <reimplementedby refid="classomexmeta_1_1RDF_1a653aeeb8b6ed38c98277a3f9c900bd93">setModelMetaid</reimplementedby>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>modelMetaid</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/IRDF.h" line="38" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classomexmeta_1_1IRDF_1ac9130997e714afb210c2067b01cd071c" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::string</type>
+        <definition>virtual std::string omexmeta::IRDF::getModelLevelAnnotationUri</definition>
+        <argsstring>()=0</argsstring>
+        <name>getModelLevelAnnotationUri</name>
+        <reimplementedby refid="classomexmeta_1_1RDF_1ae7e24ae8c944722562a545e69520264b">getModelLevelAnnotationUri</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/IRDF.h" line="39" column="29"/>
+      </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1IRDF_1af50f054c1e3520a00b587e1961e9fbea" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>const std::string &amp;</type>
         <definition>virtual const std::string&amp; omexmeta::IRDF::getLocalUri</definition>
@@ -145,7 +191,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/IRDF.h" line="37" column="35"/>
+        <location file="src/omexmeta/include/omexmeta/IRDF.h" line="40" column="35"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1IRDF_1aecfe18ec1c54af5308079656f4e94add" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>int</type>
@@ -159,7 +205,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/IRDF.h" line="38" column="21"/>
+        <location file="src/omexmeta/include/omexmeta/IRDF.h" line="41" column="21"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1IRDF_1a7677907fb2f50601910db2fa950a8004" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>bool</type>
@@ -173,7 +219,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/IRDF.h" line="39" column="22"/>
+        <location file="src/omexmeta/include/omexmeta/IRDF.h" line="42" column="22"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1IRDF_1a75d577cd26b9ecaa564df281e176cf9d" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -196,7 +242,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/IRDF.h" line="40" column="22"/>
+        <location file="src/omexmeta/include/omexmeta/IRDF.h" line="43" column="22"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1IRDF_1a65870ee3c430ed69b5725f5788d3d13f" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -219,7 +265,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/IRDF.h" line="41" column="22"/>
+        <location file="src/omexmeta/include/omexmeta/IRDF.h" line="44" column="22"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1IRDF_1aa5e41fde69be8051f767d219dfa680b6" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -241,7 +287,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/IRDF.h" line="42" column="22"/>
+        <location file="src/omexmeta/include/omexmeta/IRDF.h" line="45" column="22"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1IRDF_1ae686e65ae3cff9025c80abfb5c7643b2" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>std::unordered_map&lt; std::string, std::string &gt;</type>
@@ -259,7 +305,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/IRDF.h" line="43" column="36"/>
+        <location file="src/omexmeta/include/omexmeta/IRDF.h" line="46" column="36"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1IRDF_1ab7dc920117857da3e4bb8a33b2abde22" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>std::string</type>
@@ -288,7 +334,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/IRDF.h" line="44" column="29"/>
+        <location file="src/omexmeta/include/omexmeta/IRDF.h" line="47" column="29"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1IRDF_1abb9b34078ac32441906715ad723585db" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -321,7 +367,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/IRDF.h" line="45" column="22"/>
+        <location file="src/omexmeta/include/omexmeta/IRDF.h" line="48" column="22"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1IRDF_1a9aea8384b8020a56e0a3cdaddd4fc2a8" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref></type>
@@ -349,7 +395,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/IRDF.h" line="46" column="24"/>
+        <location file="src/omexmeta/include/omexmeta/IRDF.h" line="49" column="24"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1IRDF_1a675b2df700c826523be8f413dc9d3879" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> *</type>
@@ -377,7 +423,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/IRDF.h" line="47" column="24"/>
+        <location file="src/omexmeta/include/omexmeta/IRDF.h" line="50" column="24"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1IRDF_1aa5cd6b46b5d9375df9d77fadad10f771" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>librdf_model *</type>
@@ -391,7 +437,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/IRDF.h" line="48" column="30"/>
+        <location file="src/omexmeta/include/omexmeta/IRDF.h" line="51" column="30"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1IRDF_1aa2cdee7e3a85019f36299756bd11158a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>librdf_storage *</type>
@@ -405,7 +451,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/IRDF.h" line="49" column="32"/>
+        <location file="src/omexmeta/include/omexmeta/IRDF.h" line="52" column="32"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1IRDF_1a2a69a4b100bd6ee9c4fc81c9096d1e77" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>int</type>
@@ -419,7 +465,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/IRDF.h" line="50" column="21"/>
+        <location file="src/omexmeta/include/omexmeta/IRDF.h" line="53" column="21"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1IRDF_1a8cf7f2394f706e98aae511126e5ce7bf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>int</type>
@@ -433,7 +479,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/IRDF.h" line="51" column="21"/>
+        <location file="src/omexmeta/include/omexmeta/IRDF.h" line="54" column="21"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1IRDF_1aaccc0e3c4fb1b7692d15ecb75216ccb3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>void *</type>
@@ -447,7 +493,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/IRDF.h" line="52" column="22"/>
+        <location file="src/omexmeta/include/omexmeta/IRDF.h" line="55" column="22"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1IRDF_1ad2e4378996118885b2105b00a0986d2c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>int</type>
@@ -465,7 +511,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/IRDF.h" line="53" column="21"/>
+        <location file="src/omexmeta/include/omexmeta/IRDF.h" line="56" column="21"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1IRDF_1a7fefdb7f8725c44d77ddb2194ad09ff8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>int</type>
@@ -479,7 +525,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/IRDF.h" line="54" column="21"/>
+        <location file="src/omexmeta/include/omexmeta/IRDF.h" line="57" column="21"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1IRDF_1adb6598e962e1f7fb8f5acb05a31d9364" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::string</type>
@@ -501,7 +547,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/IRDF.h" line="55" column="29"/>
+        <location file="src/omexmeta/include/omexmeta/IRDF.h" line="58" column="29"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1IRDF_1a37c014e34fa398b5818db14fedbec8d3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>ResultsMap</type>
@@ -519,7 +565,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/IRDF.h" line="56" column="28"/>
+        <location file="src/omexmeta/include/omexmeta/IRDF.h" line="59" column="28"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1IRDF_1a0ff7b6b9535210e9e0174adbe548cc5c" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -537,7 +583,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/IRDF.h" line="57" column="22"/>
+        <location file="src/omexmeta/include/omexmeta/IRDF.h" line="60" column="22"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1IRDF_1a45c579cbc2f6fe177bc51f97747cf949" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -555,7 +601,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/IRDF.h" line="58" column="22"/>
+        <location file="src/omexmeta/include/omexmeta/IRDF.h" line="61" column="22"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1IRDF_1af30397ff81b27bdaede2c9491b7558ee" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classomexmeta_1_1UriHandler" kindref="compound">UriHandler</ref> &amp;</type>
@@ -569,7 +615,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/IRDF.h" line="59" column="28"/>
+        <location file="src/omexmeta/include/omexmeta/IRDF.h" line="62" column="28"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -590,7 +636,7 @@
         </childnode>
       </node>
     </inheritancegraph>
-    <location file="src/omexmeta/include/omexmeta/IRDF.h" line="26" column="5" bodyfile="src/omexmeta/include/omexmeta/IRDF.h" bodystart="26" bodyend="60"/>
+    <location file="src/omexmeta/include/omexmeta/IRDF.h" line="26" column="5" bodyfile="src/omexmeta/include/omexmeta/IRDF.h" bodystart="26" bodyend="63"/>
     <listofallmembers>
       <member refid="classomexmeta_1_1IRDF_1aa5e41fde69be8051f767d219dfa680b6" prot="public" virt="pure-virtual"><scope>omexmeta::IRDF</scope><name>addFromFile</name></member>
       <member refid="classomexmeta_1_1IRDF_1a75d577cd26b9ecaa564df281e176cf9d" prot="public" virt="pure-virtual"><scope>omexmeta::IRDF</scope><name>addFromString</name></member>
@@ -602,6 +648,8 @@
       <member refid="classomexmeta_1_1IRDF_1aea1cc8d44420baade3246b7fa9cb937f" prot="public" virt="pure-virtual"><scope>omexmeta::IRDF</scope><name>getArchiveUri</name></member>
       <member refid="classomexmeta_1_1IRDF_1af50f054c1e3520a00b587e1961e9fbea" prot="public" virt="pure-virtual"><scope>omexmeta::IRDF</scope><name>getLocalUri</name></member>
       <member refid="classomexmeta_1_1IRDF_1aa5cd6b46b5d9375df9d77fadad10f771" prot="public" virt="pure-virtual"><scope>omexmeta::IRDF</scope><name>getModel</name></member>
+      <member refid="classomexmeta_1_1IRDF_1ac9130997e714afb210c2067b01cd071c" prot="public" virt="pure-virtual"><scope>omexmeta::IRDF</scope><name>getModelLevelAnnotationUri</name></member>
+      <member refid="classomexmeta_1_1IRDF_1a0cd8eed096c3179dcc9de525e0235610" prot="public" virt="pure-virtual"><scope>omexmeta::IRDF</scope><name>getModelMetaid</name></member>
       <member refid="classomexmeta_1_1IRDF_1a0e2ab7f825c02de3d038f6165490abc3" prot="public" virt="pure-virtual"><scope>omexmeta::IRDF</scope><name>getModelUri</name></member>
       <member refid="classomexmeta_1_1IRDF_1a5be6df9c2dfe0ac487f80fd280cda45a" prot="public" virt="pure-virtual"><scope>omexmeta::IRDF</scope><name>getRepositoryUri</name></member>
       <member refid="classomexmeta_1_1IRDF_1aa2cdee7e3a85019f36299756bd11158a" prot="public" virt="pure-virtual"><scope>omexmeta::IRDF</scope><name>getStorage</name></member>
@@ -613,6 +661,7 @@
       <member refid="classomexmeta_1_1IRDF_1a37c014e34fa398b5818db14fedbec8d3" prot="public" virt="pure-virtual"><scope>omexmeta::IRDF</scope><name>queryResultsAsMap</name></member>
       <member refid="classomexmeta_1_1IRDF_1adb6598e962e1f7fb8f5acb05a31d9364" prot="public" virt="pure-virtual"><scope>omexmeta::IRDF</scope><name>queryResultsAsString</name></member>
       <member refid="classomexmeta_1_1IRDF_1a2a441ed8298f7d743dc4ba5aa83b8eef" prot="public" virt="pure-virtual"><scope>omexmeta::IRDF</scope><name>setArchiveUri</name></member>
+      <member refid="classomexmeta_1_1IRDF_1acb06886f7cfb72a4d685e55ef4e21b50" prot="public" virt="pure-virtual"><scope>omexmeta::IRDF</scope><name>setModelMetaid</name></member>
       <member refid="classomexmeta_1_1IRDF_1a3740c0f6591c94dd7ff6cca94382a43a" prot="public" virt="pure-virtual"><scope>omexmeta::IRDF</scope><name>setModelUri</name></member>
       <member refid="classomexmeta_1_1IRDF_1a5cbbc6f0c8364656cf7beb27c9f29fa4" prot="public" virt="pure-virtual"><scope>omexmeta::IRDF</scope><name>setRepositoryUri</name></member>
       <member refid="classomexmeta_1_1IRDF_1a842d156fe9fd94ac2762f813cb1e8a44" prot="public" virt="pure-virtual"><scope>omexmeta::IRDF</scope><name>setXmlType</name></member>

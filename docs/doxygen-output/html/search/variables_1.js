@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['namespace_5f_612',['namespace_',['../classomexmeta_1_1Predicate.html#afc79b0cc43eb11e4bc2fe0b305e551bc',1,'omexmeta::Predicate']]],
-  ['namespaces_5f_613',['namespaces_',['../classomexmeta_1_1RDF.html#a1979d7d70a4c20f2e63f00c7fa668b1f',1,'omexmeta::RDF']]]
+  ['msg_5f_628',['msg_',['../classomexmeta_1_1Exception.html#a99067aa4ed7e38cf27b986cca3734512',1,'omexmeta::Exception::msg_()'],['../classException.html#a5d59cc46086c61391ed26773ce861780',1,'Exception::msg_()']]]
 ];

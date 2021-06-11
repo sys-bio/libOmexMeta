@@ -7,13 +7,20 @@
 #include <libxml/xmlwriter.h>
 
 namespace omexmeta {
-    OmexMetaXml::OmexMetaXml(std::string xml, std::string metaid_base, int metaid_num_digits, bool generate_new_metaids)
-        : xml_(std::move(xml)),
-          doc(parseDoc(xml_)),
-          metaid_base_(std::move(metaid_base)),
+    OmexMetaXml::OmexMetaXml(const std::string &xml, std::string metaid_base, int metaid_num_digits, bool generate_new_metaids)
+        : xml_(xml),
+          doc(parseDoc(xml)),
+          metaid_base_(metaid_base),
           metaid_num_digits_(metaid_num_digits),
           generate_new_metaids_(generate_new_metaids) {
     }
+
+//    OmexMetaXml::~OmexMetaXml() {
+//        if (doc) {
+//            xmlFreeDoc(doc);
+//            doc = nullptr;
+//        }
+//    }
 
     std::vector<std::string> OmexMetaXml::getValidElements() const {
         return std::vector<std::string>({"Any"});
@@ -127,11 +134,11 @@ namespace omexmeta {
 
     std::pair<std::string, std::vector<std::string>> OmexMetaXml::addMetaIds() {
         LIBXML_TEST_VERSION;
-        xmlDocPtr doc; /* the resulting document tree */
-        doc = xmlParseDoc((const xmlChar *) xml_.c_str());
-        if (doc == nullptr) {
-            throw NullPointerException("NullPointerException:  OmexMetaXmlAssistant::addMetaIds(): doc");
-        }
+//        xmlDocPtr doc; /* the resulting document tree */
+//        doc = xmlParseDoc((const xmlChar *) xml_.c_str());
+//        if (doc == nullptr) {
+//            throw NullPointerException("NullPointerException:  OmexMetaXmlAssistant::addMetaIds(): doc");
+//        }
         xmlNodePtr root_element = xmlDocGetRootElement(doc);
         std::vector<std::string> seen_metaids = {};
         addMetaIdsRecursion(doc, root_element, seen_metaids);
@@ -142,7 +149,7 @@ namespace omexmeta {
             throw std::bad_alloc();
         std::string x = std::string((const char *) s);
         xmlFree(s);
-        xmlFreeDoc(doc);
+//        xmlFreeDoc(doc);
         xmlCleanupParser();
         std::pair<std::string, std::vector<std::string>> sbml_with_metaid(x, seen_metaids);
         return sbml_with_metaid;
@@ -207,7 +214,7 @@ namespace omexmeta {
             doc = xmlParseDoc((const xmlChar *) xml.c_str());
         }
         if (doc == nullptr) {
-            throw NullPointerException("NullPointerException:  OmexMetaXmlAssistant::addMetaIds(): doc");
+            throw NullPointerException("NullPointerException:  OmexMetaXmlAssistant::addMetaIds(): OmexMetaXml could not parse xml");
         }
         return doc;
     }
@@ -229,6 +236,53 @@ namespace omexmeta {
         return out;
     }
 
+    std::string OmexMetaXml::getDefaultModelMetaid() {
+        xmlNodePtr modelNode = findFirstOccuranceOfNodeCalled("model");
+        if (!modelNode) {
+            throw std::invalid_argument("OmexMetaXml::getDefaultModelMetaid: No children of root node found.");
+        }
+        // all models should have a model element directly under the root node.
+        if (std::string((const char *) modelNode->name) != "model") {
+            throw std::logic_error("OmexMetaXml::getDefaultModelMetaid: Expected an element called \"model\"");
+        }
+        xmlChar *x = xmlGetProp(modelNode, (const xmlChar *) metaIdTagName().c_str());
+        if (!x){
+            throw std::invalid_argument("OmexMetaXml::getDefaultModelMetaid: Input error. Input xml has a model element that does not have a metaid.");
+        }
+        std::string out = (const char *) x;// make a copy as string
+        xmlFree(x);
+        return out;
+    }
+
+
+    xmlNodePtr OmexMetaXml::findNodeByName(xmlNodePtr rootnode, const xmlChar *nodename) {
+        xmlNodePtr node = rootnode;
+        if (node == nullptr) {
+            return nullptr;
+        }
+
+        while (node != nullptr) {
+
+            if (!xmlStrcmp(node->name, nodename)) {
+                return node;
+            } else if (node->children != nullptr) {
+                xmlNodePtr intNode = findNodeByName(node->children, nodename);
+                if (intNode != nullptr) {
+                    return intNode;
+                }
+            }
+            node = node->next;
+        }
+        return nullptr;
+    }
+
+    xmlNodePtr OmexMetaXml::findFirstOccuranceOfNodeCalled(const std::string &name) {
+        xmlNodePtr root = xmlDocGetRootElement(doc);
+        if (!root) {
+            throw std::invalid_argument("OmexMetaXml::findFirstOccuranceOfNodeCalled: root node is nullptr");
+        }
+        return findNodeByName(root, (const xmlChar *) name.c_str());
+    }
 
     std::vector<std::string> OmexMetaSBML::getValidElements() const {
         std::vector<std::string> valid_elements_ = {
@@ -251,6 +305,10 @@ namespace omexmeta {
         return std::string();
     }
 
+//    OmexMetaSBML::~OmexMetaSBML() {
+//        OmexMetaXml::~OmexMetaXml();
+//    }
+
     std::vector<std::string> OmexMetaCellML::getValidElements() const {
         std::vector<std::string> valid_elements_ = {"model", "component", "variable"};
         return valid_elements_;
@@ -264,25 +322,32 @@ namespace omexmeta {
         return "http://www.cellml.org/metadata/1.0#";
     }
 
+//    OmexMetaCellML::~OmexMetaCellML() {
+//        OmexMetaXml::~OmexMetaXml();
+//    }
+
     OmexMetaXmlPtr
-    OmexMetaXmlAssistantFactory::generate(const std::string &xml, OmexMetaXmlType type, bool generate_new_metaids,
-                                          std::string metaid_base, int metaid_num_digits) {
+    OmexMetaXmlFactory::generate(const std::string &xml, OmexMetaXmlType type, bool generate_new_metaids,
+                                 const std::string& metaid_base, int metaid_num_digits) {
+        OmexMetaXml* ptr = nullptr;
         switch (type) {
             case OMEXMETA_TYPE_SBML: {
-                OmexMetaSBML sbmlAssistant(xml, metaid_base, metaid_num_digits, generate_new_metaids);
-                return std::make_unique<OmexMetaSBML>(sbmlAssistant);
+                ptr = new OmexMetaSBML(xml, metaid_base, metaid_num_digits, generate_new_metaids);
+                break;
             }
             case OMEXMETA_TYPE_CELLML: {
-                OmexMetaCellML cellMlAssistant(xml, metaid_base, metaid_num_digits, generate_new_metaids);
-                return std::make_unique<OmexMetaCellML>(cellMlAssistant);
+                ptr = new OmexMetaCellML(xml, metaid_base, metaid_num_digits, generate_new_metaids);
+                break;
             }
             case OMEXMETA_TYPE_UNKNOWN: {
-                OmexMetaXml xmlAssistant(xml, metaid_base, metaid_num_digits, generate_new_metaids);
-                return std::make_unique<OmexMetaXml>(xmlAssistant);
+                ptr = new OmexMetaXml(xml, metaid_base, metaid_num_digits, generate_new_metaids);
+                break;
             }
             default:
                 throw std::invalid_argument("Not a correct type");
         }
+        std::unique_ptr<OmexMetaXml> uptr(ptr);
+        return std::move(uptr);
     }
 
 }// namespace omexmeta
