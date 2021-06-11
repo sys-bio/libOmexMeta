@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['msg_5f_611',['msg_',['../classomexmeta_1_1Exception.html#a99067aa4ed7e38cf27b986cca3734512',1,'omexmeta::Exception::msg_()'],['../classException.html#a5d59cc46086c61391ed26773ce861780',1,'Exception::msg_()']]]
+  ['doc_627',['doc',['../classomexmeta_1_1OmexMetaXml.html#a92ec0ce7118744de652eb02943ec39ef',1,'omexmeta::OmexMetaXml']]]
 ];

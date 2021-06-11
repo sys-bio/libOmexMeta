@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['removerdfbag_5f_615',['removeRDFBag_',['../classOptions.html#a70ee261bcbdb118b5e3b23606888cb71',1,'Options']]]
+  ['omexlib_5f_632',['OMEXlib_',['../classomexmeta_1_1RDF.html#a59014bbb45a43dbfa760480f1713c473',1,'omexmeta::RDF']]]
 ];

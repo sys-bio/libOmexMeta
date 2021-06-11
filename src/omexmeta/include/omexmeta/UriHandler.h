@@ -76,6 +76,22 @@ namespace omexmeta {
          */
         [[nodiscard]] const std::string &getLocalUri() const;
 
+        /**
+         * @brief getter for model metaid. This is used in model level annotations
+         */
+        const std::string &getModelMetaid() const;
+
+        /**
+         * @brief get the full uri for model level annotations.
+         * @details the modelUri concatonated with the model metaid fragment
+         */
+         std::string getModelLevelAnnotationUri();
+
+        /**
+         * @brief setting for model metaid. This is used in model level annotations
+         */
+        UriHandler& setModelMetaid(const std::string &modelMetaid);
+
         [[nodiscard]] std::string uriModifier(std::string uri_to_modify, eUriType type) const;
 
         template<class T>
@@ -119,7 +135,6 @@ namespace omexmeta {
 
         bool operator!=(const UriHandler &rhs) const;
 
-
     private:
         /*
          * Users set these values which are built with the getter values.
@@ -130,6 +145,8 @@ namespace omexmeta {
         std::string archive_uri_ = repository_uri_ + "NewOmex.omex/";
         std::string model_uri_ = archive_uri_ + "NewModel.xml";
         std::string local_uri_ = archive_uri_ + "NewModel.rdf#";
+        std::string model_metaid_ = "NewModel"; // should be changed by client code.
+
     };
 
 

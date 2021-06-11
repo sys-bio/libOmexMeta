@@ -147,8 +147,23 @@ namespace omexmeta {
                model_uri_ == rhs.model_uri_ &&
                local_uri_ == rhs.local_uri_;
     }
+
     bool UriHandler::operator!=(const UriHandler &rhs) const {
         return !(rhs == *this);
+    }
+
+    const std::string &UriHandler::getModelMetaid() const {
+        return model_metaid_;
+    }
+
+    std::string UriHandler::getModelLevelAnnotationUri(){
+            return getModelUri() + "#" + getModelMetaid();
+    };
+
+
+    UriHandler& UriHandler::setModelMetaid(const std::string &modelMetaid) {
+        model_metaid_ = modelMetaid;
+        return *this;
     }
 
 

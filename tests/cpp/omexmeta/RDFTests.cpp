@@ -324,10 +324,10 @@ TEST_F(RDFTests, TestSerializeCellMlAnnotationNoTrailingHashes) {
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix local: <http://omex-library.org/my-omex-archive.omex/my-model.rdf#> .\n"
                            "\n"
-                           "<http://omex-library.org/my-omex-archive.omex/my-model.cellml>\n"
+                           "<http://omex-library.org/my-omex-archive.omex/my-model.cellml#annExamples>\n"
                            "    bqbiol:hasTaxon <https://identifiers.org/taxonomy:9895> ;\n"
                            "    dc:creator <https://orcid.org/0000-0003-4667-9779> .";
-    ASSERT_TRUE(RDF::equals(&rdf, expected));
+    ASSERT_TRUE(RDF::equals(&rdf, expected, "turtle", true));
 }
 
 TEST_F(RDFTests, TestBagConversion) {

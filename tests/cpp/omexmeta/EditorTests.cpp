@@ -42,10 +42,9 @@ public:
 
 TEST_F(EditorTests, TestMetaIds) {
     RDF rdf;
-    Editor editor = rdf.toEditor(
-            SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
+    Editor editor = rdf.toEditor(SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
     const auto &metaids = editor.getMetaids();
-    std::vector<std::string> expected = {"model0000", "unit0000", "unit0001", "#cytosol", "#Meta00001", "species0000", "species0001", "reaction0000", "kineticLaw0000", "reaction0001", "kineticLaw0001"};
+    std::vector<std::string> expected = {"TestModelNotAnnotated", "unit0000", "unit0001", "#cytosol", "#Meta00001", "species0000", "species0001", "reaction0000", "kineticLaw0000", "reaction0001", "kineticLaw0001"};
     ASSERT_EQ(expected, metaids);
 }
 
@@ -53,10 +52,10 @@ TEST_F(EditorTests, TestRepositoryName1) {
     RDF rdf;
     Editor editor = rdf.toEditor(
             SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
-
     std::string expected = "http://omex-library.org/";
     std::string actual = editor.getRepositoryUri();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
+    std::cout << "here" << std::endl;
 }
 
 TEST_F(EditorTests, TestepositoryName2) {
@@ -495,7 +494,7 @@ TEST_F(EditorTests, TestModelLevelAnnotationAddCreator) {
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
-                           "<http://omex-library.org/NewOmex.omex/NewModel.xml>\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#TestModelNotAnnotated>\n"
                            "    <https://dublincore.org/specifications/dublin-core/dcmi-terms/creator> <https://orcid.org/0000-1111-2222-3333> .\n"
                            "\n"
                            "";
@@ -538,7 +537,7 @@ TEST_F(EditorTests, TestModelLevelAnnotationAddDateCreated) {
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
-                           "<http://omex-library.org/NewOmex.omex/NewModel.xml>\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#TestModelNotAnnotated>\n"
                            "    dc:created [\n"
                            "        dc:W3CDTF \"14/01/1991\"\n"
                            "    ] .";
@@ -563,7 +562,7 @@ TEST_F(EditorTests, TestModelLevelAnnotationAddDescription) {
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
-                           "<http://omex-library.org/NewOmex.omex/NewModel.xml>\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#TestModelNotAnnotated>\n"
                            "    <https://dublincore.org/specifications/dublin-core/dcmi-terms/description> \"Predictive model of chip butty consumer's risk of heart failure.\" .\n"
                            "\n";
     std::string actual = rdf.toString("turtle");
@@ -585,7 +584,7 @@ TEST_F(EditorTests, TestModelLevelAnnotationPubmed) {
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
-                           "<http://omex-library.org/NewOmex.omex/NewModel.xml>\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#TestModelNotAnnotated>\n"
                            "    bqmodel:isDescribedBy <https://identifiers.org/pubmed:27887851> .";
     std::string actual = rdf.toString("turtle");
     std::cout << actual << std::endl;
@@ -606,7 +605,7 @@ TEST_F(EditorTests, TestModelLevelAnnotationAddParentModel) {
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
-                           "<http://omex-library.org/NewOmex.omex/NewModel.xml>\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#TestModelNotAnnotated>\n"
                            "    bqmodel:isDerivedFrom biomod:BIOMD0000011 .";
     std::string actual = rdf.toString("turtle");
     std::cout << actual << std::endl;
@@ -695,7 +694,7 @@ TEST_F(EditorTests, TestAddPersonalInformation) {
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
-                           "<http://omex-library.org/NewOmex.omex/NewModel.xml>\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#TestModelNotAnnotated>\n"
                            "    dc:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000>\n"
@@ -720,7 +719,7 @@ TEST_F(EditorTests, TestaddCreator) {
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
-                           "<http://omex-library.org/NewOmex.omex/NewModel.xml>\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#TestModelNotAnnotated>\n"
                            "    dc:creator <https://orcid.org/1234-1234-1234-1234> .";
     std::cout << rdf.toString() << std::endl;
     ASSERT_TRUE(RDF::equals(&rdf, expected));
@@ -750,7 +749,7 @@ TEST_F(EditorTests, TestaddDateCreated) {
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
-                           "<http://omex-library.org/NewOmex.omex/NewModel.xml>\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#TestModelNotAnnotated>\n"
                            "    dc:created [\n"
                            "        dc:W3CDTF \"20-01-2020\"\n"
                            "    ] .\n"
@@ -768,7 +767,7 @@ TEST_F(EditorTests, TestaddDescription) {
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n"
                            "\n"
-                           "<http://omex-library.org/NewOmex.omex/NewModel.xml>\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#TestModelNotAnnotated>\n"
                            "    dc:description \"Descripting\" .\n"
                            "";
     std::cout << rdf.toString() << std::endl;
@@ -785,7 +784,7 @@ TEST_F(EditorTests, TestaddPubmed) {
                            "@prefix bqmodel: <http://biomodels.net/model-qualifiers/> .\n"
                            "@prefix pubmed: <https://identifiers.org/pubmed:> .\n"
                            "\n"
-                           "<http://omex-library.org/NewOmex.omex/NewModel.xml>\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#TestModelNotAnnotated>\n"
                            "    bqmodel:isDescribedBy pubmed:12345 .\n"
                            "";
     std::cout << rdf.toString() << std::endl;
@@ -802,11 +801,11 @@ TEST_F(EditorTests, TestaddParentModel) {
                            "@prefix biomod: <https://identifiers.org/biomodels.db:> .\n"
                            "@prefix bqmodel: <http://biomodels.net/model-qualifiers/> .\n"
                            "\n"
-                           "<http://omex-library.org/NewOmex.omex/NewModel.xml>\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#TestModelNotAnnotated>\n"
                            "    bqmodel:isDerivedFrom biomod:BIO12345 .\n"
                            "";
     std::cout << rdf.toString() << std::endl;
-    ASSERT_TRUE(RDF::equals(&rdf, expected));
+    ASSERT_TRUE(RDF::equals(&rdf, expected, "turtle", true));
 }
 
 TEST_F(EditorTests, TestaddTaxon) {
@@ -817,10 +816,9 @@ TEST_F(EditorTests, TestaddTaxon) {
                            "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
                            "@prefix NCBI_Taxon: <https://identifiers.org/taxonomy:> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
-                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
-                           "myOMEX:NewModel.xml\n"
+                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#TestModelNotAnnotated>\n"
                            "    bqbiol:hasTaxon NCBI_Taxon:9696 .";
     std::cout << rdf.toString() << std::endl;
     ASSERT_TRUE(RDF::equals(&rdf, expected));
@@ -892,7 +890,7 @@ TEST_F(EditorTests, StripAnnotationElements) {
                            "</sbml>\n";
     RDF rdf;
     std::cout << SBMLFactory::getSBML(SBML_Semantic_Extraction_Model) << std::endl;
-    Editor editor = rdf.toEditor(SBMLFactory::getSBML(SBML_Semantic_Extraction_Model), true, false);
+    Editor editor = rdf.toEditor(SBMLFactory::getSBML(SBML_Semantic_Extraction_Model), false, false);
     std::string stripped = editor.stripAnnotations();
     std::cout << stripped << std::endl;
     ASSERT_STREQ(expected.c_str(), stripped.c_str());

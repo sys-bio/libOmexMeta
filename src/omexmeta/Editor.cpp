@@ -29,6 +29,7 @@ namespace omexmeta {
                 xml_ = OmexMetaUtils::readFromFile(xml_);
             }
         }
+        // identiy the type of xml that we have parsed
         MarkupIdentifier identifier(xml_);
         if (identifier.isSBML()) {
             type_ = OMEXMETA_TYPE_SBML;
@@ -40,11 +41,18 @@ namespace omexmeta {
                     " be either SBML or CellML. ");
         }
         assert(getType() != OMEXMETA_TYPE_NOTSET);// this should never happen
-        omexMetaXmlPtr_ = OmexMetaXmlAssistantFactory::generate(
-                xml_, getType(), generate_new_metaids, "OmexMetaId", 4);
+
+        // instantiate an instance of OmexMetaXml, depending on what type we have
+        omexMetaXmlPtr_ = OmexMetaXmlFactory::generate(xml_, getType(), generate_new_metaids, "OmexMetaId", 4);
+
+        // add metaids if we want to
         std::pair<std::string, std::vector<std::string>> xml_and_metaids = omexMetaXmlPtr_->addMetaIds();
         xml_ = xml_and_metaids.first;
         metaids_ = xml_and_metaids.second;
+
+        // collect metaid of first model element in the model. This is default for model level annotations
+        uriHandler.setModelMetaid(omexMetaXmlPtr_->getDefaultModelMetaid());
+
         if (getType() == OMEXMETA_TYPE_SBML && sbml_semantic_extraction) {
             // with sbml models we extract some information directly from the sbml
             SBMLSemanticExtraction extraction(this);
@@ -326,7 +334,7 @@ namespace omexmeta {
         if (orcid_id.rfind(orcid_namespace, 0) != 0) {
             orcid_id = orcid_namespace + orcid_id;
         }
-        Triple triple(uriHandler_, LibrdfNode::fromUriString(getModelUri()).get(),
+        Triple triple(uriHandler_, LibrdfNode::fromUriString(getModelLevelAnnotationUri()).get(),
                       PredicateFactory("dc", "creator")->get(),
                       LibrdfNode::fromUriString(orcid_id).get());
         model_.addStatement(triple);
@@ -349,7 +357,7 @@ namespace omexmeta {
 
     Editor &Editor::addDateCreated(const std::string &date) {
         LibrdfNode anon = LibrdfNode::fromBlank("");
-        Triple triple1(uriHandler_, LibrdfNode::fromUriString(getModelUri()).get(),
+        Triple triple1(uriHandler_, LibrdfNode::fromUriString(getModelLevelAnnotationUri()).get(),
                        PredicateFactory("dc", "created")->get(),
                        anon.get());
         Triple triple2(uriHandler_, anon.get(),
@@ -362,7 +370,7 @@ namespace omexmeta {
     }
 
     Editor &Editor::addDescription(const std::string &date) {
-        Triple triple(uriHandler_, LibrdfNode::fromUriString(getModelUri()).get(),
+        Triple triple(uriHandler_, LibrdfNode::fromUriString(getModelLevelAnnotationUri()).get(),
                       PredicateFactory("dc", "description")->get(),
                       LibrdfNode::fromLiteral(date).get());
         model_.addStatement(triple);
@@ -371,7 +379,7 @@ namespace omexmeta {
     }
 
     Editor &Editor::addPubmed(const std::string &pubmedid) {
-        Triple triple(uriHandler_, LibrdfNode::fromUriString(getModelUri()).get(),
+        Triple triple(uriHandler_, LibrdfNode::fromUriString(getModelLevelAnnotationUri()).get(),
                       PredicateFactory("bqmodel", "isDescribedBy")->get(),
                       LibrdfNode::fromUriString("pubmed:" + pubmedid).get());
         model_.addStatement(triple);
@@ -381,7 +389,7 @@ namespace omexmeta {
     }
 
     Editor &Editor::addParentModel(const std::string &biomod_id) {
-        Triple triple(uriHandler_, LibrdfNode::fromUriString(getModelUri()).get(),
+        Triple triple(uriHandler_, LibrdfNode::fromUriString(getModelLevelAnnotationUri()).get(),
                       PredicateFactory("bqmodel", "isDerivedFrom")->get(),
                       LibrdfNode::fromUriString("biomodels.db:" + biomod_id).get());
         model_.addStatement(triple);
@@ -391,7 +399,7 @@ namespace omexmeta {
     }
 
     Editor &Editor::addTaxon(const std::string &taxon_id) {
-        Triple triple(uriHandler_, LibrdfNode::fromUriString(getModelUri()).get(),
+        Triple triple(uriHandler_, LibrdfNode::fromUriString(getModelLevelAnnotationUri()).get(),
                       PredicateFactory("bqbiol", "hasTaxon")->get(),
                       LibrdfNode::fromUriString("taxonomy:" + taxon_id).get());
         model_.addStatement(triple);
@@ -404,6 +412,8 @@ namespace omexmeta {
     std::string Editor::getLocalUri() const { return uriHandler_.getLocalUri(); }
 
     std::string Editor::getModelUri() const { return uriHandler_.getModelUri(); }
+
+    std::string Editor::getModelLevelAnnotationUri() const { return uriHandler_.getModelLevelAnnotationUri(); }
 
     std::string Editor::getArchiveUri() const { return uriHandler_.getArchiveUri(); }
 

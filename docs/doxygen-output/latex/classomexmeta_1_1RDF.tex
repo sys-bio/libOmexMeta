@@ -16,13 +16,10 @@ Inheritance diagram for omexmeta\+::R\+DF\+:\begin{figure}[H]
 \begin{DoxyCompactList}\small\item\em destructor for \mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classomexmeta_1_1RDF_ad95c4a8588988efe399c7f984e304990}{R\+DF}} (const \mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} \&rdf)=delete
 \begin{DoxyCompactList}\small\item\em copy constructor for \mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} class \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classomexmeta_1_1RDF_a6490b2ea0d10e3026bea587a305b7fb9}\label{classomexmeta_1_1RDF_a6490b2ea0d10e3026bea587a305b7fb9}} 
-\mbox{\hyperlink{classomexmeta_1_1RDF_a6490b2ea0d10e3026bea587a305b7fb9}{R\+DF}} (\mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} \&\&rdf) noexcept
-\begin{DoxyCompactList}\small\item\em move constructor for \mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} class \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} \& \mbox{\hyperlink{classomexmeta_1_1RDF_a9d1b20d798969d3c1dac412c621247b9}{operator=}} (const \mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} \&rdf)=delete
 \begin{DoxyCompactList}\small\item\em copy assignment constructor for \mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} ojects \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classomexmeta_1_1RDF_ae3739bda3be0986547c31559381f3df4}\label{classomexmeta_1_1RDF_ae3739bda3be0986547c31559381f3df4}} 
-\mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} \& \mbox{\hyperlink{classomexmeta_1_1RDF_ae3739bda3be0986547c31559381f3df4}{operator=}} (\mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} \&\&rdf) noexcept
+\mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} \& \mbox{\hyperlink{classomexmeta_1_1RDF_ae3739bda3be0986547c31559381f3df4}{operator=}} (\mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} \&\&rdf) \mbox{\hyperlink{classomexmeta_1_1RDF_a654ae548e17aa6b098531f24c116dde1}{noexcept}}
 \begin{DoxyCompactList}\small\item\em move assignment operator for \mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classomexmeta_1_1RDF_a1ebd37b6dbce97660ed48031686d7f30}\label{classomexmeta_1_1RDF_a1ebd37b6dbce97660ed48031686d7f30}} 
 int \mbox{\hyperlink{classomexmeta_1_1RDF_a1ebd37b6dbce97660ed48031686d7f30}{size}} () const override
@@ -97,6 +94,14 @@ const std\+::string \& \mbox{\hyperlink{classomexmeta_1_1RDF_a0529edb78dde079854
 \begin{DoxyCompactList}\small\item\em getter for model uri. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classomexmeta_1_1RDF_a0c6ec28bb9cd9730224331ed69d41cad}{set\+Model\+Uri}} (std\+::string model\+Name) override
 \begin{DoxyCompactList}\small\item\em setter for model uri. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classomexmeta_1_1RDF_a2f1d018479ca77e429760f7bd517f597}\label{classomexmeta_1_1RDF_a2f1d018479ca77e429760f7bd517f597}} 
+const std\+::string \& \mbox{\hyperlink{classomexmeta_1_1RDF_a2f1d018479ca77e429760f7bd517f597}{get\+Model\+Metaid}} () override
+\begin{DoxyCompactList}\small\item\em gets the uri fragment used for model level annotations. \mbox{\hyperlink{classThis}{This}} must be a valid metaid in your model and should be attached to a \char`\"{}model\char`\"{} element \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classomexmeta_1_1RDF_a653aeeb8b6ed38c98277a3f9c900bd93}\label{classomexmeta_1_1RDF_a653aeeb8b6ed38c98277a3f9c900bd93}} 
+void \mbox{\hyperlink{classomexmeta_1_1RDF_a653aeeb8b6ed38c98277a3f9c900bd93}{set\+Model\+Metaid}} (const std\+::string \&model\+Metaid) override
+\begin{DoxyCompactList}\small\item\em sets the uri fragment used for model level annotations. \mbox{\hyperlink{classThis}{This}} must be a valid metaid in your model and should be attached to a \char`\"{}model\char`\"{} element \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classomexmeta_1_1RDF_ae7e24ae8c944722562a545e69520264b}{get\+Model\+Level\+Annotation\+Uri}} () override
+\begin{DoxyCompactList}\small\item\em get the full uri for model level annotations. \end{DoxyCompactList}\item 
 const std\+::string \& \mbox{\hyperlink{classomexmeta_1_1RDF_a7399a80108553b138bf168a76f8a4adf}{get\+Local\+Uri}} () const override
 \begin{DoxyCompactList}\small\item\em getter for local uri attribute. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classomexmeta_1_1RDF_ab6b74c206a0b9cbce946f9d7bd8d1f56}\label{classomexmeta_1_1RDF_ab6b74c206a0b9cbce946f9d7bd8d1f56}} 
@@ -138,6 +143,9 @@ static bool \mbox{\hyperlink{classomexmeta_1_1RDF_a1ec9f1e100bd55b556065856f1def
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
+\mbox{\Hypertarget{classomexmeta_1_1RDF_a654ae548e17aa6b098531f24c116dde1}\label{classomexmeta_1_1RDF_a654ae548e17aa6b098531f24c116dde1}} 
+\mbox{\hyperlink{classomexmeta_1_1RDF_a654ae548e17aa6b098531f24c116dde1}{noexcept}}
+\begin{DoxyCompactList}\small\item\em move constructor for \mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} class \end{DoxyCompactList}\item 
 Namespace\+Map \mbox{\hyperlink{classomexmeta_1_1RDF_a1979d7d70a4c20f2e63f00c7fa668b1f}{namespaces\+\_\+}}
 \item 
 std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{classomexmeta_1_1RDF_a82bc53feb93e1243970400fd104174da}{seen\+\_\+namespaces\+\_\+}}
@@ -401,6 +409,20 @@ Implements \mbox{\hyperlink{classomexmeta_1_1IRDF}{omexmeta\+::\+I\+R\+DF}}.
 getter for local uri attribute. 
 
 defaults to \href{http://omex-library.org/NewOmex.omex/NewModel.rdf\#}{\texttt{ http\+://omex-\/library.\+org/\+New\+Omex.\+omex/\+New\+Model.\+rdf\#}} 
+
+Implements \mbox{\hyperlink{classomexmeta_1_1IRDF}{omexmeta\+::\+I\+R\+DF}}.
+
+\mbox{\Hypertarget{classomexmeta_1_1RDF_ae7e24ae8c944722562a545e69520264b}\label{classomexmeta_1_1RDF_ae7e24ae8c944722562a545e69520264b}} 
+\index{omexmeta::RDF@{omexmeta::RDF}!getModelLevelAnnotationUri@{getModelLevelAnnotationUri}}
+\index{getModelLevelAnnotationUri@{getModelLevelAnnotationUri}!omexmeta::RDF@{omexmeta::RDF}}
+\doxysubsubsection{\texorpdfstring{getModelLevelAnnotationUri()}{getModelLevelAnnotationUri()}}
+{\footnotesize\ttfamily std\+::string omexmeta\+::\+R\+D\+F\+::get\+Model\+Level\+Annotation\+Uri (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+get the full uri for model level annotations. 
+
+the model\+Uri concatonated with the model metaid fragment 
 
 Implements \mbox{\hyperlink{classomexmeta_1_1IRDF}{omexmeta\+::\+I\+R\+DF}}.
 

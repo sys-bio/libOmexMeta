@@ -15,14 +15,14 @@
 #include <unordered_map>
 #include <utility>
 
-#include "omexmeta/IRDF.h"
 #include "omexmeta/Editor.h"
+#include "omexmeta/IRDF.h"
 #include "omexmeta/MarkupIdentifier.h"
 #include "omexmeta/OmexMetaUtils.h"
 #include "omexmeta/SBMLSemanticExtraction.h"
 #include "omexmeta/UriHandler.h"
-#include "omexmeta/logger.h"
 #include "omexmeta/VCardTranslator.h"
+#include "omexmeta/logger.h"
 
 
 using namespace redland;
@@ -40,10 +40,9 @@ namespace omexmeta {
     class VCardTranslator;
     class PurgeRDFBag;
 
-    class OMEXMETA_EXPORT RDF: public IRDF {
+    class OMEXMETA_EXPORT RDF : public IRDF {
 
     public:
-
         /**
          * @brief constructor for RDF class
          * @param storage_type. Defaults to memory. Other options include:
@@ -76,7 +75,8 @@ namespace omexmeta {
         /**
          * @brief move constructor for RDF class
          */
-        RDF(RDF &&rdf) noexcept;
+        RDF(RDF &&rdf)
+        noexcept;
 
         /**
          * @brief copy assignment constructor for RDF ojects
@@ -274,6 +274,23 @@ namespace omexmeta {
         void setModelUri(std::string modelName) override;
 
         /**
+         * @brief gets the uri fragment used for model level annotations. This must
+         * be a valid metaid in your model and should be attached to a "model" element
+         */
+        const std::string &getModelMetaid() override;
+
+        /**
+         * @brief sets the uri fragment used for model level annotations. This must
+         * be a valid metaid in your model and should be attached to a "model" element
+         */
+        void setModelMetaid(const std::string& modelMetaid) override;
+
+        /**
+         * @brief get the full uri for model level annotations.
+         * @details the modelUri concatonated with the model metaid fragment
+         */
+        std::string getModelLevelAnnotationUri() override;
+        /**
          * @brief getter for local uri attribute.
          * @details defaults to http://omex-library.org/NewOmex.omex/NewModel.rdf#
          */
@@ -345,7 +362,6 @@ namespace omexmeta {
         const std::string OMEXlib_ = "http://OMEXlibrary.org/";
 
     private:
-
         /**
          * @brief autoset the xmlType variable based on xml content.
          */
@@ -373,8 +389,6 @@ namespace omexmeta {
         LibrdfModel model_;
         OmexMetaXmlType xmlType = OMEXMETA_TYPE_NOTSET;
         UriHandler uriHandler_;
-
-
     };
 }// namespace omexmeta
 

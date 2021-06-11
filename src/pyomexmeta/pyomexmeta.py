@@ -1276,7 +1276,9 @@ class Editor:
         return self
 
     def strip_annotations(self, annotationElementName:str = "annotation") -> str:
-        return _pyom.get_and_free_c_str(_pyom.editor_strip_annotations(self._obj, annotationElementName.encode()))
+        xml = _pyom.get_and_free_c_str(_pyom.editor_strip_annotations(self._obj, annotationElementName.encode()))
+        propagate_omexmeta_error(self._obj)
+        return xml
 
 
 class SingularAnnotation:
