@@ -224,9 +224,43 @@ namespace omexmeta {
         }
     }
 
+    int RDF_setModelMetaid(RDF *rdf_ptr, const char *model_metaid) {
+        try {
+            rdf_ptr->setModelMetaid(model_metaid);
+            return 0;
+        } catch (std::exception &error) {
+            setLastError(error.what());
+            return -1;
+        }
+    }
+
+    char *RDF_getModelMetaid(RDF *rdf_ptr) {
+        try {
+            const std::string &str = rdf_ptr->getModelMetaid();
+            char *cstr = (char *) malloc((str.size() + 1) * sizeof(char *));
+            strcpy(cstr, str.c_str());
+            return cstr;
+        } catch (std::exception &error) {
+            setLastError(error.what());
+            return nullptr;
+        }
+    }
+
     char *RDF_getRepositoryUri(RDF *rdf_ptr) {
         try {
             const std::string &str = rdf_ptr->getRepositoryUri();
+            char *cstr = (char *) malloc((str.size() + 1) * sizeof(char *));
+            strcpy(cstr, str.c_str());
+            return cstr;
+        } catch (std::exception &error) {
+            setLastError(error.what());
+            return nullptr;
+        }
+    }
+
+    char *RDF_getModelLevelAnnotationUri(RDF *rdf_ptr) {
+        try {
+            const std::string &str = rdf_ptr->getModelLevelAnnotationUri();
             char *cstr = (char *) malloc((str.size() + 1) * sizeof(char *));
             strcpy(cstr, str.c_str());
             return cstr;

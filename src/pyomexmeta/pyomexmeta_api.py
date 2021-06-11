@@ -273,16 +273,22 @@ class PyOmexMetaAPI:
     # rdf_query_results_as_map = utils.load_func("RDF_queryResultsAsMap", [ct.c_int64, ct.c_char_p], ct.c_int64)
 
     # int RDF_setRepositoryUri(RDF *rdf_ptr, std::string repository_uri);
-    rdf_set_repository_uri = utils.load_func("RDF_setRepositoryUri", [ct.c_int64, ct.c_char_p], ct.c_int)
+    rdf_set_repository_uri = utils.load_func("RDF_setRepositoryUri", [ct.c_int64, ct.c_char_p], ct.c_int64)
 
     # int RDF_setArchiveUri(RDF *rdf_ptr, std::string archive_uri);
-    rdf_set_archive_uri = utils.load_func("RDF_setArchiveUri", [ct.c_int64, ct.c_char_p], ct.c_int)
+    rdf_set_archive_uri = utils.load_func("RDF_setArchiveUri", [ct.c_int64, ct.c_char_p], ct.c_int64)
 
     # int RDF_setModelUri(RDF *rdf_ptr, std::string model_uri);
-    rdf_set_model_uri = utils.load_func("RDF_setModelUri", [ct.c_int64, ct.c_char_p], ct.c_int)
+    rdf_set_model_uri = utils.load_func("RDF_setModelUri", [ct.c_int64, ct.c_char_p], ct.c_int64)
+
+    # void RDF::setModelMetaid(const std::string& modelMetaid);
+    rdf_set_model_metaid = utils.load_func("RDF_setModelMetaid", [ct.c_int64, ct.c_char_p], ct.c_int64)
 
     # char* RDF_getRepositoryUri(RDF *rdf_ptr);
     rdf_get_repository_uri = utils.load_func("RDF_getRepositoryUri", [ct.c_int64], ct.c_int64)
+
+    # char *RDF_getModelLevelAnnotationUri(RDF *rdf_ptr);
+    rdf_get_model_level_annotation_uri = utils.load_func("RDF_getModelLevelAnnotationUri", [ct.c_int64], ct.c_int64)
 
     # char* RDF_getArchiveUri(RDF *rdf_ptr);
     rdf_get_archive_uri = utils.load_func("RDF_getArchiveUri", [ct.c_int64], ct.c_int64)
@@ -292,6 +298,9 @@ class PyOmexMetaAPI:
 
     # char* RDF_getLocalUri(RDF *rdf_ptr);
     rdf_get_local_uri = utils.load_func("RDF_getLocalUri", [ct.c_int64], ct.c_int64)
+
+    # const std::string &RDF::getModelMetaid();
+    rdf_get_model_metaid = utils.load_func("RDF_getModelMetaid", [ct.c_int64], ct.c_int64)
 
     # Editor RDF_toEditor(RDF *rdf_ptr, const char *xml, bool generate_new_metaids, bool sbml_semantic_extraction);
     rdf_to_editor = utils.load_func("RDF_toEditor", [ct.c_int64, ct.c_char_p, ct.c_bool, ct.c_bool], ct.c_int64)

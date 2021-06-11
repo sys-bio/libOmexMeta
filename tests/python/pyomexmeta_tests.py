@@ -145,6 +145,21 @@ class TestRDF(unittest.TestCase):
         expected = "https://my-awesome-repository.org/"
         self.assertEqual(expected, actual)
 
+    def test_set_model_metaid(self):
+        rdf = RDF()
+        rdf.set_model_metaid("ModelMetaid")
+        metaid = rdf.get_model_metaid()
+        self.assertEqual("ModelMetaid", metaid)
+        full_uri = rdf.get_model_level_annotation_uri()
+        expected = "http://omex-library.org/NewOmex.omex/NewModel.xml#ModelMetaid"
+        self.assertEqual(expected, full_uri)
+
+    def test_get_model_level_annotation_uri(self):
+        rdf = RDF()
+        full_uri = rdf.get_model_level_annotation_uri()
+        expected = "http://omex-library.org/NewOmex.omex/NewModel.xml#NewModel"
+        self.assertEqual(expected, full_uri)
+
     def test_set_archive_uri(self):
         rdf = RDF()
         rdf.set_archive_uri("my-awesome-archive.omex")
