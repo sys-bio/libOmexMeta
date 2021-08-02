@@ -654,9 +654,9 @@ namespace omexmeta {
         }
     }
 
-    Editor *Editor_addCurator(Editor *editor_ptr, const char *orcid_id) {
+    Editor *Editor_addContributor(Editor *editor_ptr, const char *orcid_id) {
         try {
-            editor_ptr->addCurator(orcid_id);
+            editor_ptr->addContributor(orcid_id);
             return editor_ptr;
         } catch (std::exception &error) {
             setLastError(error.what());

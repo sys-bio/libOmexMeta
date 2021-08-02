@@ -1171,9 +1171,9 @@ Composite annotations currently supported are <ref refid="classomexmeta_1_1Physi
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Editor_1abc8dd83a176d73f9211386ad08bb35b3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> &amp;</type>
-        <definition>Editor &amp; omexmeta::Editor::addCurator</definition>
+        <definition>Editor &amp; omexmeta::Editor::addContributor</definition>
         <argsstring>(std::string orcid_id)</argsstring>
-        <name>addCurator</name>
+        <name>addContributor</name>
         <param>
           <type>std::string</type>
           <declname>orcid_id</declname>
@@ -1495,7 +1495,7 @@ returns a copy of xml without any annotations (i.e. CellML) may not follow this 
       <member refid="classomexmeta_1_1Editor_1a81e9e3e81a86ac079f81239a47f18092" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>addCompositeAnnotation</name></member>
       <member refid="classomexmeta_1_1Editor_1a415aa94ed30686392c65f99b4318aa84" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>addCompositeAnnotation2</name></member>
       <member refid="classomexmeta_1_1Editor_1a1926b789086e29102e33808169a5af0c" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>addCreator</name></member>
-      <member refid="classomexmeta_1_1Editor_1abc8dd83a176d73f9211386ad08bb35b3" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>addCurator</name></member>
+      <member refid="classomexmeta_1_1Editor_1abc8dd83a176d73f9211386ad08bb35b3" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>addContributor</name></member>
       <member refid="classomexmeta_1_1Editor_1ace652a3364ba755330179e2aeb630761" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>addDateCreated</name></member>
       <member refid="classomexmeta_1_1Editor_1a58db6f81ad362189bed21780be5f3611" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>addDescription</name></member>
       <member refid="classomexmeta_1_1Editor_1a0e7eb192448ba81b1ca7f91b15785030" prot="public" virt="non-virtual"><scope>omexmeta::Editor</scope><name>addEnergyDiff</name></member>

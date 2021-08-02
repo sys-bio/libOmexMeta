@@ -1147,18 +1147,18 @@ TEST_F(CAPITests, EditoraddCreator) {
     RDF_delete(rdf_ptr);
 }
 
-TEST_F(CAPITests, EditoraddCurator) {
+TEST_F(CAPITests, EditoraddContributor) {
     RDF *rdf_ptr = RDF_new();
     Editor *editor_ptr = RDF_toEditor(rdf_ptr,
                                       SBMLFactory::getSBML(SBML_NOT_ANNOTATED).c_str(), true, false);
-    Editor_addCurator(editor_ptr, "1234-1234-1234-1234");
+    Editor_addContributor(editor_ptr, "1234-1234-1234-1234");
     const char *expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.rdf#>\n"
-                           "    <http://purl.org/dc/terms/creator> <https://orcid.org/1234-1234-1234-1234> .\n"
+                           "    <http://purl.org/dc/terms/contributor> <https://orcid.org/1234-1234-1234-1234> .\n"
                            "\n"
                            "";
     char *actual = RDF_toString(rdf_ptr, "turtle");

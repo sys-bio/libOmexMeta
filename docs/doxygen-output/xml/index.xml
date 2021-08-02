@@ -121,7 +121,7 @@
     <member refid="classomexmeta_1_1Editor_1a2264cbd2efae17d1d72c3f402d8721bf" kind="function"><name>getRepositoryUri</name></member>
     <member refid="classomexmeta_1_1Editor_1a5143e1f8db82393faed322810acf5e92" kind="function"><name>createNodeWithModelUri</name></member>
     <member refid="classomexmeta_1_1Editor_1a1926b789086e29102e33808169a5af0c" kind="function"><name>addCreator</name></member>
-    <member refid="classomexmeta_1_1Editor_1abc8dd83a176d73f9211386ad08bb35b3" kind="function"><name>addCurator</name></member>
+    <member refid="classomexmeta_1_1Editor_1abc8dd83a176d73f9211386ad08bb35b3" kind="function"><name>addContributor</name></member>
     <member refid="classomexmeta_1_1Editor_1a4da72139f63090ab5682bf51c96d7886" kind="function"><name>addTaxon</name></member>
     <member refid="classomexmeta_1_1Editor_1a9eeaa4cfeeb9bae8b5d5f7705e170de4" kind="function"><name>addPubmed</name></member>
     <member refid="classomexmeta_1_1Editor_1a58db6f81ad362189bed21780be5f3611" kind="function"><name>addDescription</name></member>
@@ -1476,7 +1476,7 @@
     <member refid="namespaceomexmeta_1a8ee43bb384d91cdd2f9709bbbcb40e45" kind="function"><name>Editor_getRepositoryUri</name></member>
     <member refid="namespaceomexmeta_1a0e81fbc188ac82167accc86c9a28d421" kind="function"><name>Editor_stripAnnotations</name></member>
     <member refid="namespaceomexmeta_1a8d5c2ca0fc85c34655773735b68db9af" kind="function"><name>Editor_addCreator</name></member>
-    <member refid="namespaceomexmeta_1a776f05da2b18bedbbd262368787e8263" kind="function"><name>Editor_addCurator</name></member>
+    <member refid="namespaceomexmeta_1a776f05da2b18bedbbd262368787e8263" kind="function"><name>Editor_addContributor</name></member>
     <member refid="namespaceomexmeta_1a77fe370e4e25069aed5ca78d49e7f320" kind="function"><name>Editor_addTaxon</name></member>
     <member refid="namespaceomexmeta_1aad15c06d5442ef8153a123f07a06687a" kind="function"><name>Editor_addPubmed</name></member>
     <member refid="namespaceomexmeta_1af27e22df149490815e7f07f7fe6193c0" kind="function"><name>Editor_addDescription</name></member>

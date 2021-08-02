@@ -342,13 +342,13 @@ namespace omexmeta {
         return *this;
     }
 
-    Editor &Editor::addCurator(std::string orcid_id) {
+    Editor &Editor::addContributor(std::string orcid_id) {
         std::string orcid_namespace = "https://orcid.org/";
         if (orcid_id.rfind(orcid_namespace, 0) != 0) {
             orcid_id = orcid_namespace + orcid_id;
         }
         Triple triple(uriHandler_, LibrdfNode::fromUriString(getLocalUri()).get(),
-                      PredicateFactory("dc", "creator")->get(),
+                      PredicateFactory("dc", "contributor")->get(),
                       LibrdfNode::fromUriString(orcid_id).get());
         model_.addStatement(triple);
         addNamespace(Predicate::namespaceMap()["dc"], "dc");

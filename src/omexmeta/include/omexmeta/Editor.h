@@ -322,7 +322,7 @@ namespace omexmeta {
          * @brief add the "curator" model level annotation
          * @param an orcid_id as string
          */
-        Editor &addCurator(std::string orcid_id);
+        Editor &addContributor(std::string orcid_id);
 
         /**
          * @brief add the "taxon id" model level annotation

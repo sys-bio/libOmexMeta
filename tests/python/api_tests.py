@@ -492,9 +492,9 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
         self.assertTrue(self.pyom.rdf_equals_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode(), True))
         self.pyom.editor_delete(editor_ptr)
 
-    def test_editor_add_curator(self):
+    def test_editor_add_contributor(self):
         editor_ptr = self.pyom.rdf_to_editor(self.rdf, TestStrings.xml.encode(), True, False)
-        self.pyom.editor_add_curator(editor_ptr, "1234-1234-1234-1234".encode())
+        self.pyom.editor_add_contributor(editor_ptr, "1234-1234-1234-1234".encode())
         actual = self.pyom.get_and_free_c_str(
             self.pyom.rdf_to_string(self.rdf, "turtle".encode())
         )
@@ -505,7 +505,7 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.rdf#>
-    dc:creator <https://orcid.org/1234-1234-1234-1234> .
+    dc:contributor <https://orcid.org/1234-1234-1234-1234> .
 
 """
         self.assertTrue(self.pyom.rdf_equals_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode(), True))

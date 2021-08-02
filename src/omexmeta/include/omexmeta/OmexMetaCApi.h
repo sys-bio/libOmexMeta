@@ -177,7 +177,7 @@ namespace omexmeta {
 
     OMEXMETA_CAPI_EXPORT Editor *Editor_addCreator(Editor *editor_ptr, const char *orcid_id);
 
-    OMEXMETA_CAPI_EXPORT Editor *Editor_addCurator(Editor *editor_ptr, const char *orcid_id);
+    OMEXMETA_CAPI_EXPORT Editor *Editor_addContributor(Editor *editor_ptr, const char *orcid_id);
 
     OMEXMETA_CAPI_EXPORT Editor *Editor_addTaxon(Editor *editor_ptr, const char *taxon_id);
 

@@ -44,53 +44,20 @@ TEST_F(EditorTestsModelLevelAnnotationsFromString, AddCreator) {
     ASSERT_TRUE(RDF::equals(&rdf, expected));
 }
 
-TEST_F(EditorTestsModelLevelAnnotationsFromString, AddCreatorFromFile) {
-    RDF rdf;
-
-    const std::string &sbml = SBMLFactory::getSBML(SBML_NOT_ANNOTATED);
-    const fs::path sbmlFile = fs::current_path() / "sbml.sbml";
-    std::ofstream filestream(sbmlFile);
-    filestream << sbml;
-    filestream.close();
-    std::cout << sbmlFile << std::endl;
-    Editor editor = rdf.toEditor(sbmlFile.string(), true, false);
-
-    editor.addCreator("0000-1111-2222-3333");
-
-    std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix OMEXlib: <http://omex-library.org/> .\n"
-                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
-                           "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
-                           "\n"
-                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#TestModelNotAnnotated>\n"
-                           "    <http://purl.org/dc/terms/creator> <https://orcid.org/0000-1111-2222-3333> .\n"
-                           "\n"
-                           "";
-    std::string actual = rdf.toString("turtle");
-    std::cout << actual << std::endl;
-    ASSERT_TRUE(RDF::equals(&rdf, expected));
-
-    if (fs::exists(sbmlFile)) {
-        fs::remove(sbmlFile);
-    }
-}
-
-TEST_F(EditorTestsModelLevelAnnotationsFromString, AddCurator) {
+TEST_F(EditorTestsModelLevelAnnotationsFromString, AddContributor) {
     RDF rdf;
     Editor editor = rdf.toEditor(
             SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
 
-    editor.addCurator("0000-1111-2222-3333");
+    editor.addContributor("0000-1111-2222-3333");
 
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+                           "@prefix dc: <http://purl.org/dc/terms/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
-                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.rdf#>\n"
-                           "    <http://purl.org/dc/terms/creator> <https://orcid.org/0000-1111-2222-3333> .\n"
-                           "\n"
-                           "";
+                           "    dc:contributor <https://orcid.org/0000-1111-2222-3333> .";
     std::string actual = rdf.toString("turtle");
     std::cout << actual << std::endl;
     ASSERT_TRUE(RDF::equals(&rdf, expected));
@@ -142,7 +109,7 @@ TEST_F(EditorTestsModelLevelAnnotationsFromString, AddDescription) {
     ASSERT_TRUE(RDF::equals(&rdf, expected));
 }
 
-TEST_F(EditorTestsModelLevelAnnotationsFromString, Pubmed) {
+TEST_F(EditorTestsModelLevelAnnotationsFromString, AddPubmed) {
     RDF rdf;
     Editor editor = rdf.toEditor(
             SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
@@ -184,92 +151,7 @@ TEST_F(EditorTestsModelLevelAnnotationsFromString, AddParentModel) {
     ASSERT_TRUE(RDF::equals(&rdf, expected));
 }
 
-
-TEST_F(EditorTestsModelLevelAnnotationsFromString, TestaddCurator) {
-    RDF rdf;
-    Editor editor = rdf.toEditor(SBMLFactory::getSBML(SBML_NOT_ANNOTATED2), true, false);
-    editor.addCurator("1234-1234-1234-1234");
-    std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix OMEXlib: <http://omex-library.org/> .\n"
-                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
-                           "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
-                           "@prefix dc: <http://purl.org/dc/terms/> .\n"
-                           "\n"
-                           "<http://omex-library.org/NewOmex.omex/NewModel.rdf#>\n"
-                           "    dc:creator <https://orcid.org/1234-1234-1234-1234> .";
-    std::cout << rdf.toString() << std::endl;
-    ASSERT_TRUE(RDF::equals(&rdf, expected));
-}
-TEST_F(EditorTestsModelLevelAnnotationsFromString, TestaddDateCreated) {
-    RDF rdf;
-    Editor editor = rdf.toEditor(SBMLFactory::getSBML(SBML_NOT_ANNOTATED2), true, false);
-    editor.addDateCreated("20-01-2020");
-    std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix dc: <http://purl.org/dc/terms/> .\n"
-                           "@prefix OMEXlib: <http://omex-library.org/> .\n"
-                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
-                           "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
-                           "\n"
-                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#TestModelNotAnnotated>\n"
-                           "    dc:created [\n"
-                           "        dc:W3CDTF \"20-01-2020\"\n"
-                           "    ] .\n"
-                           "";
-    std::cout << rdf.toString() << std::endl;
-    ASSERT_TRUE(RDF::equals(&rdf, expected));
-}
-TEST_F(EditorTestsModelLevelAnnotationsFromString, TestaddDescription) {
-    RDF rdf;
-    Editor editor = rdf.toEditor(SBMLFactory::getSBML(SBML_NOT_ANNOTATED2), true, false);
-    editor.addDescription("Descripting");
-    std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix OMEXlib: <http://omex-library.org/> .\n"
-                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
-                           "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
-                           "@prefix dc: <http://purl.org/dc/terms/> .\n"
-                           "\n"
-                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#TestModelNotAnnotated>\n"
-                           "    dc:description \"Descripting\" .\n"
-                           "";
-    std::cout << rdf.toString() << std::endl;
-    ASSERT_TRUE(RDF::equals(&rdf, expected));
-}
-TEST_F(EditorTestsModelLevelAnnotationsFromString, TestaddPubmed) {
-    RDF rdf;
-    Editor editor = rdf.toEditor(SBMLFactory::getSBML(SBML_NOT_ANNOTATED2), true, false);
-    editor.addPubmed("12345");
-    std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix OMEXlib: <http://omex-library.org/> .\n"
-                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
-                           "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
-                           "@prefix bqmodel: <http://biomodels.net/model-qualifiers/> .\n"
-                           "@prefix pubmed: <https://identifiers.org/pubmed:> .\n"
-                           "\n"
-                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#TestModelNotAnnotated>\n"
-                           "    bqmodel:isDescribedBy pubmed:12345 .\n"
-                           "";
-    std::cout << rdf.toString() << std::endl;
-    ASSERT_TRUE(RDF::equals(&rdf, expected));
-}
-TEST_F(EditorTestsModelLevelAnnotationsFromString, TestaddParentModel) {
-    RDF rdf;
-    Editor editor = rdf.toEditor(SBMLFactory::getSBML(SBML_NOT_ANNOTATED2), true, false);
-    editor.addParentModel("BIO12345");
-    std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix OMEXlib: <http://omex-library.org/> .\n"
-                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
-                           "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
-                           "@prefix biomod: <https://identifiers.org/biomodels.db:> .\n"
-                           "@prefix bqmodel: <http://biomodels.net/model-qualifiers/> .\n"
-                           "\n"
-                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#TestModelNotAnnotated>\n"
-                           "    bqmodel:isDerivedFrom biomod:BIO12345 .\n"
-                           "";
-    std::cout << rdf.toString() << std::endl;
-    ASSERT_TRUE(RDF::equals(&rdf, expected, "turtle", true));
-}
-
-TEST_F(EditorTestsModelLevelAnnotationsFromString, TestaddTaxon) {
+TEST_F(EditorTestsModelLevelAnnotationsFromString, AddTaxon) {
     RDF rdf;
     Editor editor = rdf.toEditor(SBMLFactory::getSBML(SBML_NOT_ANNOTATED2), true, false);
     editor.addTaxon("9696");
@@ -309,10 +191,7 @@ public:
             delete editor;
             editor = nullptr;
         }
-
     };
-
-
 };
 
 
@@ -332,15 +211,15 @@ TEST_F(EditorTestsModelLevelAnnotationsFromFile, AddCreator){
     ASSERT_TRUE(RDF::equals(&rdf, expected, "turtle", true));
 }
 
-TEST_F(EditorTestsModelLevelAnnotationsFromFile, AddCurator){
+TEST_F(EditorTestsModelLevelAnnotationsFromFile, AddContributor){
     const std::string& expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                                   "@prefix dc: <http://purl.org/dc/terms/> .\n"
                                   "@prefix OMEXlib: <http://omex-library.org/> .\n"
                                   "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                                   "\n"
                                   "<http://omex-library.org/NewOmex.omex/NewModel.rdf#>\n"
-                                  "    dc:creator <https://orcid.org/1234-1234-1234-1234> .";
-    editor->addCurator("1234-1234-1234-1234");
+                                  "    dc:contributor <https://orcid.org/1234-1234-1234-1234> .";
+    editor->addContributor("1234-1234-1234-1234");
     ASSERT_TRUE(RDF::equals(&rdf, expected, "turtle", true));
 }
 

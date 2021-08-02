@@ -1668,9 +1668,9 @@
       </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a776f05da2b18bedbbd262368787e8263" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> *</type>
-        <definition>OMEXMETA_CAPI_EXPORT Editor * omexmeta::Editor_addCurator</definition>
+        <definition>OMEXMETA_CAPI_EXPORT Editor * omexmeta::Editor_addContributor</definition>
         <argsstring>(Editor *editor_ptr, const char *orcid_id)</argsstring>
-        <name>Editor_addCurator</name>
+        <name>Editor_addContributor</name>
         <param>
           <type><ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> *</type>
           <declname>editor_ptr</declname>

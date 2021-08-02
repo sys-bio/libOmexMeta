@@ -1319,7 +1319,7 @@ class Editor:
 
     def add_curator(self, curator) -> Editor:
         """Add model level annotation "curator" to the rdf graph"""
-        self._obj = _pyom.editor_add_curator(self._obj, curator.encode())
+        self._obj = _pyom.editor_add_contributor(self._obj, curator.encode())
         propagate_omexmeta_error(self._obj)
         return self
 
