@@ -57,7 +57,8 @@ namespace omexmeta {
 
         Triple(UriHandler &uriHandler, const LibrdfNode &subject, const LibrdfNode &predicate, const LibrdfNode &resource);
 
-        [[deprecated("Triple(UriHandler &uriHandler, const LibrdfNode &subject, const PredicatePtr &predicate_ptr, const LibrdfNode &resource);")]] Triple(UriHandler &uriHandler, librdf_node *subject, librdf_node *predicate, librdf_node *resource);
+        [[deprecated("Use the following signature:\n\nTriple(UriHandler &uriHandler, const LibrdfNode &subject, const PredicatePtr &predicate_ptr, const LibrdfNode &resource);")]]
+        Triple(UriHandler &uriHandler, librdf_node *subject, librdf_node *predicate, librdf_node *resource);
 
         const std::string &getLocalUri() const;
 

@@ -41,6 +41,7 @@ set(
 #
 
 add_test_executable(EditorTests OmexMetaTests EditorTests.cpp)
+add_test_executable(EditorTestsModelLevelAnnotations OmexMetaTests EditorTestsModelLevelAnnotations.cpp)
 add_test_executable(ElementExtractorTests OmexMetaTests ElementExtractorTests.cpp)
 add_test_executable(EnergyDiffTests OmexMetaTests EnergyDiffTests.cpp)
 add_test_executable(MarkupIdentifierTests OmexMetaTests MarkupIdentifierTests.cpp)

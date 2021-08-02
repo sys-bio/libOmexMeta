@@ -24,7 +24,7 @@ public:
     UriHandler uriHandler;
 
     PhysicalPropertyBearerTests() {
-        model = LibrdfModel(storage.get());
+        model = LibrdfModel(storage);
     };
     ~PhysicalPropertyBearerTests() override {
         model.freeModel();
