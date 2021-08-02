@@ -130,7 +130,7 @@ TEST(LibrdfStatementTestsNoFixture, TestBlankInEquality3) {
 
     LibrdfStatement statement1(
             LibrdfNode::fromUriString("http://omex-library.org/NewOmex.omex/NewModel.xml"),
-            LibrdfNode::fromUriString("https://dublincore.org/specifications/dublin-core/dcmi-terms/created"),
+            LibrdfNode::fromUriString("http://purl.org/dc/terms/created"),
             LibrdfNode::fromBlank(""));
     model1.addStatement(statement1);
     ASSERT_TRUE(model1.containsStatement(statement1));

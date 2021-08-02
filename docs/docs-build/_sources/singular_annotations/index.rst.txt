@@ -346,7 +346,7 @@ the namespace and the term, i.e:
       - Prefix
     * - http://xmlns.cppom/foaf/0.1/
       - foaf
-    * - https://dublincore.org/specifications/dublin-core/dcmi-terms/
+    * - http://purl.org/dc/terms/
       - dc
     * - http://biomodels.net/model-qualifiers/"
       - bqmodel

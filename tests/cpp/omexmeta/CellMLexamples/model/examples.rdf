@@ -3,7 +3,7 @@
     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
     xmlns:bqmodel="http://biomodels.net/model-qualifiers/"
     xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
-    xmlns:dc="https://dublincore.org/specifications/dublin-core/dcmi-terms/"
+    xmlns:dc="http://purl.org/dc/terms/"
     xmlns:myOMEX="http://omex-library.org/CellMLexamples.omex"
     xmlns:foaf="http://xmlns.com/foaf/0.1/"
     xmlns:local="http://omex-library.org/CellMLexamples.omex/examples.rdf">

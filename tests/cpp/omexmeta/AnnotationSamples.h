@@ -103,7 +103,7 @@ public:
 
     std::string singular_annotation4 = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
                                        "    <rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\""
-                                       "             xmlns:dcterms=\"https://dublincore.org/specifications/dublin-core/dcmi-terms/\"\n"
+                                       "             xmlns:dcterms=\"http://purl.org/dc/terms/\"\n"
                                        "             xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
                                        "             xmlns:OMEXlib=\"http://omex-library.org/\"\n"
                                        "             xmlns:myOMEX=\"http://omex-library.org/NewOmex.omex/\"\n"
@@ -263,7 +263,7 @@ public:
                                              "     bqbiol:is <https://identifiers.org/uniprot/PD12345> .\n";
 
     std::string cellml_example = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
-                                 "<model xmlns=\"http://www.cellml.org/cellml/1.1#\" xmlns:cmeta=\"http://www.cellml.org/metadata/1.0#\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xmlns:bqs=\"http://www.cellml.org/bqs/1.0#\" xmlns:semsim=\"http://www.bhi.washington.edu/SemSim#\" xmlns:dc=\"https://dublincore.org/specifications/dublin-core/dcmi-terms/\" xmlns:vCard=\"http://www.w3.org/2001/vcard-rdf/3.0#\" name=\"annotation_examples\" cmeta:id=\"annExamples\">\n"
+                                 "<model xmlns=\"http://www.cellml.org/cellml/1.1#\" xmlns:cmeta=\"http://www.cellml.org/metadata/1.0#\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xmlns:bqs=\"http://www.cellml.org/bqs/1.0#\" xmlns:semsim=\"http://www.bhi.washington.edu/SemSim#\" xmlns:dc=\"http://purl.org/dc/terms/\" xmlns:vCard=\"http://www.w3.org/2001/vcard-rdf/3.0#\" name=\"annotation_examples\" cmeta:id=\"annExamples\">\n"
                                  "  <component name=\"main\">\n"
                                  "    <variable cmeta:id=\"main.Volume\" initial_value=\"100\" name=\"Volume\" units=\"dimensionless\" />\n"
                                  "    <variable cmeta:id=\"main.MembraneVoltage\" initial_value=\"-80\" name=\"MembraneVoltage\" units=\"dimensionless\" />\n"
@@ -276,7 +276,7 @@ public:
                                             "    xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
                                             "    xmlns:bqmodel=\"http://biomodels.net/model-qualifiers/\"\n"
                                             "    xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
-                                            "    xmlns:dc=\"https://dublincore.org/specifications/dublin-core/dcmi-terms/\"\n"
+                                            "    xmlns:dc=\"http://purl.org/dc/terms/\"\n"
                                             "    xmlns:myOMEX=\"http://omex-library.org/CellMLexamples.omex\"\n"
                                             "    xmlns:foaf=\"http://xmlns.com/foaf/0.1/\"\n"
                                             "    xmlns:local=\"http://omex-library.org/CellMLexamples.omex/examples.rdf\">\n"

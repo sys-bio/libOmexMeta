@@ -1475,7 +1475,7 @@ class SingularAnnotation:
             namespace: One of
                 * "bqbiol"   BiomodelsBiologyQualifier. http://biomodels.net/biology-qualifiers/
                 * "bqmodel"  BiomodelsModelQualifier.   http://biomodels.net/model-qualifiers/
-                * "dc"       DCTerm.                    https://dublincore.org/specifications/dublin-core/dcmi-terms/
+                * "dc"       DCTerm.                    http://purl.org/dc/terms/
                 * "semsim"   SemSim.                    http://bime.uw.edu/semsim/
                 * "foaf"     Foaf.                      http://xmlns.com/foaf/0.1/
 

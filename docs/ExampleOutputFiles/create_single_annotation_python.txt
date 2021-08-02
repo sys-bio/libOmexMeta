@@ -1,6 +1,6 @@
 ['ToyModel', 'compartment0000', 'species0000', 'species0001', 'parameter0000', 'parameter0001', 'reaction0000', 'kineticLaw0000']
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
+@prefix dc: <http://purl.org/dc/terms/> .
 @prefix semsim: <http://bime.uw.edu/semsim/> .
 @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
 @prefix OMEXlib: <http://omex-library.org/> .

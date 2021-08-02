@@ -108,7 +108,7 @@ class TestRDF(unittest.TestCase):
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 <http://omex-library.org/NewOmex.omex/NewModel.xml#>
-<https://dublincore.org/specifications/dublin-core/dcmi-terms/creator> <https://orcid.org/1234-1234-1234-1234> .
+<http://purl.org/dc/terms/creator> <https://orcid.org/1234-1234-1234-1234> .
 """
         rdf = RDF.from_string(rdf_str, "turtle")
         self.assertEqual(1, len(rdf))
@@ -389,7 +389,7 @@ local:SourceParticipant0003
                 .add_name("Joe Smith")
 
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
+@prefix dc: <http://purl.org/dc/terms/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix OMEXlib: <http://omex-library.org/> .
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
@@ -1275,7 +1275,7 @@ local:SourceParticipant0001
                 .add_account_name("1234-1234-1234-1234") \
                 .add_account_service_homepage("https://github.com/sys-bio/libomexmeta")
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
+@prefix dc: <http://purl.org/dc/terms/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix OMEXlib: <http://omex-library.org/> .
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
@@ -1304,7 +1304,7 @@ local:SourceParticipant0001
                 .add_account_name("1234-1234-1234-1234") \
                 .add_account_service_homepage("https://github.com/sys-bio/libomexmeta")
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
+@prefix dc: <http://purl.org/dc/terms/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix OMEXlib: <http://omex-library.org/> .
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .

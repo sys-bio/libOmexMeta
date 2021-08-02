@@ -34,7 +34,7 @@ TEST_F(PersonalInformationTests, TestAddFoaf) {
     information.addFoaf("name", value);
     Triples triples = information.getTriples();
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n"
+                           "@prefix dc: <http://purl.org/dc/terms/> .\n"
                            "@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/TestModel.rdf#> .\n"
@@ -55,7 +55,7 @@ TEST_F(PersonalInformationTests, TestAddFoafUsingLiteral) {
     information.addFoafLiteral("name", "Ciaran Welsh");
     Triples triples = information.getTriples();
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n"
+                           "@prefix dc: <http://purl.org/dc/terms/> .\n"
                            "@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/TestModel.rdf#> .\n"
@@ -78,7 +78,7 @@ TEST_F(PersonalInformationTests, TestAddFoafUsingUri) {
     information.addFoafUri("accountName", "https://orcid.org/0000-0001-8254-4957");
     Triples triples = information.getTriples();
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n"
+                           "@prefix dc: <http://purl.org/dc/terms/> .\n"
                            "@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
@@ -98,7 +98,7 @@ TEST_F(PersonalInformationTests, TestAddName) {
     Triples triples = information.getTriples();
 
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n"
+                           "@prefix dc: <http://purl.org/dc/terms/> .\n"
                            "@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
@@ -119,7 +119,7 @@ TEST_F(PersonalInformationTests, TestMBox) {
     Triples triples = information.getTriples();
 
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n"
+                           "@prefix dc: <http://purl.org/dc/terms/> .\n"
                            "@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/TestModel.rdf#> .\n"
@@ -140,7 +140,7 @@ TEST_F(PersonalInformationTests, TestAccountName) {
     Triples triples = information.getTriples();
 
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n"
+                           "@prefix dc: <http://purl.org/dc/terms/> .\n"
                            "@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
@@ -161,7 +161,7 @@ TEST_F(PersonalInformationTests, TestaddAccountServiceHomepage) {
     Triples triples = information.getTriples();
 
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n"
+                           "@prefix dc: <http://purl.org/dc/terms/> .\n"
                            "@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
@@ -186,7 +186,7 @@ TEST_F(PersonalInformationTests, TestMultipleEntries) {
     Triples triples = information.getTriples();
 
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n"
+                           "@prefix dc: <http://purl.org/dc/terms/> .\n"
                            "@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"

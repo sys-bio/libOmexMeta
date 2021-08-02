@@ -97,7 +97,7 @@ namespace omexmeta {
     std::unordered_map<std::string, std::string> Predicate::namespaceMap() {
         return std::unordered_map<std::string, std::string>{
                 {"foaf",                            "http://xmlns.com/foaf/0.1/"},
-                {"dc",                              "https://dublincore.org/specifications/dublin-core/dcmi-terms/"},
+                {"dc",                              "http://purl.org/dc/terms/"},
                 {"orcid",                           "https://orcid.org/"},
                 {"bqmodel",                         "http://biomodels.net/model-qualifiers/"},
                 {"bqbiol",                          "http://biomodels.net/biology-qualifiers/"},
