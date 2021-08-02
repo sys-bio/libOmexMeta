@@ -19,7 +19,7 @@ docs_root = dirname(docs_source)
 libomexmeta_root = dirname(docs_root)
 libomexmeta_source = join(libomexmeta_root, "src")
 
-sys.path += ["/Users/ciaranwelsh/Documents/libOmexMeta/cmake-build-release/site-packages"]
+sys.path += ["D:/libOmexMeta/cmake-build-release/site-packages"]
 
 
 # -- Project information -----------------------------------------------------
@@ -53,7 +53,7 @@ bibtex_bibfiles = [os.path.join(os.path.dirname(__file__), 'refs.bib')]
 
 breathe_default_project = "libomexmeta"
 breathe_projects = {
-    "libomexmeta": r"/Users/ciaranwelsh/Documents/libOmexMeta/docs/doxygen-output/xml"
+    "libomexmeta": r"D:/libOmexMeta/docs/doxygen-output/xml"
 }
 
 

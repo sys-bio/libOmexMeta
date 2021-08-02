@@ -1,2 +1,3 @@
-RDF graph saved to "/Users/ciaranwelsh/Documents/libOmexMeta/docs/source/diagrams/Diagram"
-file saved to /Users/ciaranwelsh/Documents/libOmexMeta/docs/source/diagrams/Diagram.pdf
+sys.executable C:\Miniconda3\envs\py39\python.exe
+RDF graph saved to "D:\libOmexMeta\docs\source\diagrams\Diagram"
+file saved to D:\libOmexMeta\docs\source\diagrams\Diagram.pdf

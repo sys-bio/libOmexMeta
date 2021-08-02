@@ -7,16 +7,15 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>MetaID &mdash; libomexmeta 1.2.8 documentation</title>
+  <title>MetaID &mdash; libomexmeta 1.2.10 documentation</title>
   
 
   
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/sphinx_tabs/semantic-ui-2.4.1/segment.min.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/sphinx_tabs/semantic-ui-2.4.1/menu.min.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/sphinx_tabs/tabs.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
 
   
   
@@ -33,10 +32,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -91,6 +90,8 @@
             
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../background.html">Background to Semantic Annotations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Install/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Install/install.html#build-from-source">Build from Source</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../reading_rdf/reading_rdf.html">Reading RDF</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../writing_rdf/writing_rdf.html">Serializing RDF Graphs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../singular_annotations/index.html">Singular Annotations</a></li>
@@ -201,107 +202,105 @@
   <div class="section" id="metaid">
 <h1>MetaID<a class="headerlink" href="#metaid" title="Permalink to this headline">¶</a></h1>
 <dl class="cpp class">
-<dt id="_CPPv4N8omexmeta6MetaIDE">
-<span id="_CPPv3N8omexmeta6MetaIDE"></span><span id="_CPPv2N8omexmeta6MetaIDE"></span><span id="omexmeta::MetaID"></span><span class="target" id="classomexmeta_1_1MetaID"></span><em class="property">class </em><code class="sig-prename descclassname">omexmeta<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">MetaID</code><a class="headerlink" href="#_CPPv4N8omexmeta6MetaIDE" title="Permalink to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N8omexmeta6MetaIDE">
+<span id="_CPPv3N8omexmeta6MetaIDE"></span><span id="_CPPv2N8omexmeta6MetaIDE"></span><span id="omexmeta::MetaID"></span><span class="target" id="classomexmeta_1_1MetaID"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">omexmeta</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">MetaID</span></span></span><a class="headerlink" href="#_CPPv4N8omexmeta6MetaIDE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>an ID generator </p>
 <div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
 <dl class="cpp function">
-<dt id="_CPPv4N8omexmeta6MetaID6MetaIDENSt6stringEli">
-<span id="_CPPv3N8omexmeta6MetaID6MetaIDENSt6stringEli"></span><span id="_CPPv2N8omexmeta6MetaID6MetaIDENSt6stringEli"></span><span id="omexmeta::MetaID::MetaID__ss.l.i"></span><span class="target" id="classomexmeta_1_1MetaID_1af5cc076ccd6db8c411de98902d2a1218"></span><code class="sig-name descname">MetaID</code><span class="sig-paren">(</span>std::string <em>base</em>, long <em>start_number</em>, int <em>num_digits</em> = 4<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta6MetaID6MetaIDENSt6stringEli" title="Permalink to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N8omexmeta6MetaID6MetaIDENSt6stringEli">
+<span id="_CPPv3N8omexmeta6MetaID6MetaIDENSt6stringEli"></span><span id="_CPPv2N8omexmeta6MetaID6MetaIDENSt6stringEli"></span><span id="omexmeta::MetaID::MetaID__ss.l.i"></span><span class="target" id="classomexmeta_1_1MetaID_1af5cc076ccd6db8c411de98902d2a1218"></span><span class="sig-name descname"><span class="n"><span class="pre">MetaID</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">base</span></span>, <span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">start_number</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">num_digits</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">4</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta6MetaID6MetaIDENSt6stringEli" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>an ID generator used when creating IDs in the <a class="reference internal" href="Editor.html#classomexmeta_1_1Editor"><span class="std std-ref">Editor</span></a>. </p>
-<p><dl class="simple">
-<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">base_</span></code>: the constant portion of the id. Like semsim in semsim00001 </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">start_number_</span></code>: the start_number portion of the id, like 1 in semsim00001 </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">num_digits</span></code>: specifies the start_number of digits to use in the id. So semsim00001 has 5 digits.</p></li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>base_</strong> – the constant portion of the id. Like semsim in semsim00001 </p></li>
+<li><p><strong>start_number_</strong> – the start_number portion of the id, like 1 in semsim00001 </p></li>
+<li><p><strong>num_digits</strong> – specifies the start_number of digits to use in the id. So semsim00001 has 5 digits.</p></li>
 </ul>
 </dd>
 </dl>
-</p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt id="_CPPv4NK8omexmeta6MetaIDeqERK6MetaID">
-<span id="_CPPv3NK8omexmeta6MetaIDeqERK6MetaID"></span><span id="_CPPv2NK8omexmeta6MetaIDeqERK6MetaID"></span><span id="omexmeta::MetaID::eq-operator__MetaIDCRC"></span><span class="target" id="classomexmeta_1_1MetaID_1a3d6466efca8d9e931ca8c440c0809584"></span>bool <code class="sig-name descname">operator==</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4N8omexmeta6MetaIDE" title="omexmeta::MetaID">MetaID</a> &amp;<em>rhs</em><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta6MetaIDeqERK6MetaID" title="Permalink to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4NK8omexmeta6MetaIDeqERK6MetaID">
+<span id="_CPPv3NK8omexmeta6MetaIDeqERK6MetaID"></span><span id="_CPPv2NK8omexmeta6MetaIDeqERK6MetaID"></span><span id="omexmeta::MetaID::eq-operator__MetaIDCRC"></span><span class="target" id="classomexmeta_1_1MetaID_1a3d6466efca8d9e931ca8c440c0809584"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="k"><span class="pre">operator</span></span><span class="o"><span class="pre">==</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N8omexmeta6MetaIDE" title="omexmeta::MetaID"><span class="n"><span class="pre">MetaID</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">rhs</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK8omexmeta6MetaIDeqERK6MetaID" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
-<dt id="_CPPv4NK8omexmeta6MetaIDneERK6MetaID">
-<span id="_CPPv3NK8omexmeta6MetaIDneERK6MetaID"></span><span id="_CPPv2NK8omexmeta6MetaIDneERK6MetaID"></span><span id="omexmeta::MetaID::neq-operator__MetaIDCRC"></span><span class="target" id="classomexmeta_1_1MetaID_1a25af693b284b0110914c537b48b20937"></span>bool <code class="sig-name descname">operator!=</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4N8omexmeta6MetaIDE" title="omexmeta::MetaID">MetaID</a> &amp;<em>rhs</em><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta6MetaIDneERK6MetaID" title="Permalink to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4NK8omexmeta6MetaIDneERK6MetaID">
+<span id="_CPPv3NK8omexmeta6MetaIDneERK6MetaID"></span><span id="_CPPv2NK8omexmeta6MetaIDneERK6MetaID"></span><span id="omexmeta::MetaID::neq-operator__MetaIDCRC"></span><span class="target" id="classomexmeta_1_1MetaID_1a25af693b284b0110914c537b48b20937"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="k"><span class="pre">operator</span></span><span class="o"><span class="pre">!=</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N8omexmeta6MetaIDE" title="omexmeta::MetaID"><span class="n"><span class="pre">MetaID</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">rhs</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK8omexmeta6MetaIDneERK6MetaID" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
-<dt id="_CPPv4NK8omexmeta6MetaID8generateEv">
-<span id="_CPPv3NK8omexmeta6MetaID8generateEv"></span><span id="_CPPv2NK8omexmeta6MetaID8generateEv"></span><span id="omexmeta::MetaID::generateC"></span><span class="target" id="classomexmeta_1_1MetaID_1a95e709df9b0ee47473bc40012738cdc8"></span>std::string <code class="sig-name descname">generate</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta6MetaID8generateEv" title="Permalink to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4NK8omexmeta6MetaID8generateEv">
+<span id="_CPPv3NK8omexmeta6MetaID8generateEv"></span><span id="_CPPv2NK8omexmeta6MetaID8generateEv"></span><span id="omexmeta::MetaID::generateC"></span><span class="target" id="classomexmeta_1_1MetaID_1a95e709df9b0ee47473bc40012738cdc8"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">generate</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK8omexmeta6MetaID8generateEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>generate the string for a metaid </p>
-<p><dl class="simple">
-<dt><strong>Return</strong></dt><dd><p>a metaid defined by the parameters in instantiation </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a metaid defined by the parameters in instantiation </p>
 </dd>
 </dl>
-</p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt id="_CPPv4NK8omexmeta6MetaID8generateEl">
-<span id="_CPPv3NK8omexmeta6MetaID8generateEl"></span><span id="_CPPv2NK8omexmeta6MetaID8generateEl"></span><span id="omexmeta::MetaID::generate__lC"></span><span class="target" id="classomexmeta_1_1MetaID_1a9a3c9b479d522e7630275d85582edd26"></span>std::string <code class="sig-name descname">generate</code><span class="sig-paren">(</span>long <em>n</em><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta6MetaID8generateEl" title="Permalink to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4NK8omexmeta6MetaID8generateEl">
+<span id="_CPPv3NK8omexmeta6MetaID8generateEl"></span><span id="_CPPv2NK8omexmeta6MetaID8generateEl"></span><span id="omexmeta::MetaID::generate__lC"></span><span class="target" id="classomexmeta_1_1MetaID_1a9a3c9b479d522e7630275d85582edd26"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">generate</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">n</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK8omexmeta6MetaID8generateEl" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>generate the string for a metaid </p>
-<p><dl class="simple">
-<dt><strong>Return</strong></dt><dd><p>a metaid defined by the parameters in instantiation </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>number</strong> – of digits </p>
 </dd>
-<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">number</span></code>: of digits </p></li>
-</ul>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a metaid defined by the parameters in instantiation </p>
 </dd>
 </dl>
-</p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt id="_CPPv4NK8omexmeta6MetaID9maxNumberEv">
-<span id="_CPPv3NK8omexmeta6MetaID9maxNumberEv"></span><span id="_CPPv2NK8omexmeta6MetaID9maxNumberEv"></span><span id="omexmeta::MetaID::maxNumberC"></span><span class="target" id="classomexmeta_1_1MetaID_1a343f4b48c9673f8943e03057370f01e4"></span>int <code class="sig-name descname">maxNumber</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta6MetaID9maxNumberEv" title="Permalink to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4NK8omexmeta6MetaID9maxNumberEv">
+<span id="_CPPv3NK8omexmeta6MetaID9maxNumberEv"></span><span id="_CPPv2NK8omexmeta6MetaID9maxNumberEv"></span><span id="omexmeta::MetaID::maxNumberC"></span><span class="target" id="classomexmeta_1_1MetaID_1a343f4b48c9673f8943e03057370f01e4"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">maxNumber</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK8omexmeta6MetaID9maxNumberEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>figure out the max number possible with user parameters </p>
-<p><dl class="simple">
-<dt><strong>Return</strong></dt><dd><p>the maximum possible number with user parameters </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the maximum possible number with user parameters </p>
 </dd>
 </dl>
-</p>
 </dd></dl>
 
 </div>
 <div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric">Public Static Functions</p>
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-static-functions">Public Static Functions</p>
 <dl class="cpp function">
-<dt id="_CPPv4N8omexmeta6MetaID11countDigitsEx">
-<span id="_CPPv3N8omexmeta6MetaID11countDigitsEx"></span><span id="_CPPv2N8omexmeta6MetaID11countDigitsEx"></span><span id="omexmeta::MetaID::countDigits__l-l-i"></span><span class="target" id="classomexmeta_1_1MetaID_1ae4fe83a3512f64065e8e2997bc710be6"></span>int <code class="sig-name descname">countDigits</code><span class="sig-paren">(</span>long long int <em>n</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta6MetaID11countDigitsEx" title="Permalink to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N8omexmeta6MetaID11countDigitsEx">
+<span id="_CPPv3N8omexmeta6MetaID11countDigitsEx"></span><span id="_CPPv2N8omexmeta6MetaID11countDigitsEx"></span><span id="omexmeta::MetaID::countDigits__l-l-i"></span><span class="target" id="classomexmeta_1_1MetaID_1ae4fe83a3512f64065e8e2997bc710be6"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">countDigits</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">long</span> <span class="pre">long</span> <span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">n</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta6MetaID11countDigitsEx" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>count the digits in a number </p>
-<p><dl class="simple">
-<dt><strong>Return</strong></dt><dd><p>the number of digits in n </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>n</strong> – the number to count digits in </p>
 </dd>
-<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">n</span></code>: the number to count digits in </p></li>
-</ul>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the number of digits in n </p>
 </dd>
 </dl>
-</p>
 </dd></dl>
 
 </div>
 <div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric">Private Members</p>
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-private-members">Private Members</p>
 <dl class="cpp var">
-<dt id="_CPPv4N8omexmeta6MetaID5base_E">
-<span id="_CPPv3N8omexmeta6MetaID5base_E"></span><span id="_CPPv2N8omexmeta6MetaID5base_E"></span><span id="omexmeta::MetaID::base___ss"></span><span class="target" id="classomexmeta_1_1MetaID_1a51a9bc3c81218b25902e0285c878a2b9"></span>std::string <code class="sig-name descname">base_</code><a class="headerlink" href="#_CPPv4N8omexmeta6MetaID5base_E" title="Permalink to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N8omexmeta6MetaID5base_E">
+<span id="_CPPv3N8omexmeta6MetaID5base_E"></span><span id="_CPPv2N8omexmeta6MetaID5base_E"></span><span id="omexmeta::MetaID::base___ss"></span><span class="target" id="classomexmeta_1_1MetaID_1a51a9bc3c81218b25902e0285c878a2b9"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">base_</span></span></span><a class="headerlink" href="#_CPPv4N8omexmeta6MetaID5base_E" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp var">
-<dt id="_CPPv4N8omexmeta6MetaID13start_number_E">
-<span id="_CPPv3N8omexmeta6MetaID13start_number_E"></span><span id="_CPPv2N8omexmeta6MetaID13start_number_E"></span><span id="omexmeta::MetaID::start_number___l"></span><span class="target" id="classomexmeta_1_1MetaID_1a1b8a1a9c3d4ace9ff2274aabc99fa6af"></span>long <code class="sig-name descname">start_number_</code><a class="headerlink" href="#_CPPv4N8omexmeta6MetaID13start_number_E" title="Permalink to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N8omexmeta6MetaID13start_number_E">
+<span id="_CPPv3N8omexmeta6MetaID13start_number_E"></span><span id="_CPPv2N8omexmeta6MetaID13start_number_E"></span><span id="omexmeta::MetaID::start_number___l"></span><span class="target" id="classomexmeta_1_1MetaID_1a1b8a1a9c3d4ace9ff2274aabc99fa6af"></span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">start_number_</span></span></span><a class="headerlink" href="#_CPPv4N8omexmeta6MetaID13start_number_E" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp var">
-<dt id="_CPPv4N8omexmeta6MetaID11num_digits_E">
-<span id="_CPPv3N8omexmeta6MetaID11num_digits_E"></span><span id="_CPPv2N8omexmeta6MetaID11num_digits_E"></span><span id="omexmeta::MetaID::num_digits___i"></span><span class="target" id="classomexmeta_1_1MetaID_1a3c01cb2fbb554fe2aa1fe83b2470d9cb"></span>int <code class="sig-name descname">num_digits_</code><a class="headerlink" href="#_CPPv4N8omexmeta6MetaID11num_digits_E" title="Permalink to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N8omexmeta6MetaID11num_digits_E">
+<span id="_CPPv3N8omexmeta6MetaID11num_digits_E"></span><span id="_CPPv2N8omexmeta6MetaID11num_digits_E"></span><span id="omexmeta::MetaID::num_digits___i"></span><span class="target" id="classomexmeta_1_1MetaID_1a3c01cb2fbb554fe2aa1fe83b2470d9cb"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">num_digits_</span></span></span><a class="headerlink" href="#_CPPv4N8omexmeta6MetaID11num_digits_E" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 </div>

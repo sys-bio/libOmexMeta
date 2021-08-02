@@ -3,6 +3,7 @@
 \begin{DoxyCode}{0}
 \DoxyCodeLine{BiomodelBiologyQualifier is(\textcolor{stringliteral}{"{}is"{}});}
 \DoxyCodeLine{std::cout << is.str() << std::endl;}
+
 \end{DoxyCode}
  will output \href{http://biomodels.net/biology-qualifiers/is}{\texttt{ http\+://biomodels.\+net/biology-\/qualifiers/is}} to console.
 
@@ -15,7 +16,7 @@
 \DoxyCodeLine{\textcolor{preprocessor}{\#ifndef LIBOMEXMETA\_PREDICATE\_H}}
 \DoxyCodeLine{\textcolor{preprocessor}{\#define LIBOMEXMETA\_PREDICATE\_H}}
 \DoxyCodeLine{}
-\DoxyCodeLine{\textcolor{preprocessor}{\#include "{}redland/World.h"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include "{}redland/LibrdfWorld.h"{}}}
 \DoxyCodeLine{\textcolor{preprocessor}{\#include "{}redland/librdf.h"{}}}
 \DoxyCodeLine{}
 \DoxyCodeLine{\textcolor{preprocessor}{\#include "{}omexmeta/OmexMetaUtils.h"{}}}
@@ -73,7 +74,7 @@
 \DoxyCodeLine{}
 \DoxyCodeLine{        \textcolor{keywordtype}{void} setNode(\mbox{\hyperlink{structraptor__term}{librdf\_node}} *node);}
 \DoxyCodeLine{}
-\DoxyCodeLine{        \mbox{\hyperlink{classredland_1_1LibrdfNode}{LibrdfNode}} getNode();}
+\DoxyCodeLine{        LibrdfNode getNode();}
 \DoxyCodeLine{}
 \DoxyCodeLine{\textcolor{comment}{//        std::shared\_ptr<Predicate> makeShared();}}
 \DoxyCodeLine{    \textcolor{keyword}{protected}:}
@@ -83,7 +84,7 @@
 \DoxyCodeLine{\textcolor{comment}{//        librdf\_node *node\_ = nullptr; //! predicates can only have type uri}}
 \DoxyCodeLine{        std::vector<std::string> valid\_terms\_\{\textcolor{stringliteral}{"{}All"{}}\};}
 \DoxyCodeLine{}
-\DoxyCodeLine{        \mbox{\hyperlink{classredland_1_1LibrdfNode}{LibrdfNode}} node\_;}
+\DoxyCodeLine{        LibrdfNode node\_;}
 \DoxyCodeLine{}
 \DoxyCodeLine{        \textcolor{keyword}{explicit} Predicate(\mbox{\hyperlink{structraptor__term}{librdf\_node}} *node);}
 \DoxyCodeLine{    \};}
@@ -202,6 +203,7 @@
 \DoxyCodeLine{\}}
 \DoxyCodeLine{}
 \DoxyCodeLine{}
-\DoxyCodeLine{\textcolor{preprocessor}{\#endif //LIBOMEXMETA\_PREDICATE\_H}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#endif }\textcolor{comment}{//LIBOMEXMETA\_PREDICATE\_H}}
+
 \end{DoxyCodeInclude}
  

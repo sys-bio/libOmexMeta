@@ -1,2 +1,2 @@
-Serializing to ntriples 
-RDF graph serialized to "/Users/ciaranwelsh/Documents/libOmexMeta/cmake-build-release/docs/annotations.rdf"Counted "7" triples
+Serializing to ntriples 
+RDF graph serialized to "D:\libOmexMeta\cmake-build-release\docs\annotations.rdf"Counted "7" triples

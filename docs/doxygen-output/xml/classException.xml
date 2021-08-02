@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="classException" kind="class" language="C++" prot="public">
     <compoundname>Exception</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">exception</basecompoundref>
+    <basecompoundref prot="public" virt="non-virtual">std::exception</basecompoundref>
     <derivedcompoundref refid="classRedlandLibrdfException" prot="public" virt="non-virtual">RedlandLibrdfException</derivedcompoundref>
     <derivedcompoundref refid="classRedlandNullPointerException" prot="public" virt="non-virtual">RedlandNullPointerException</derivedcompoundref>
       <sectiondef kind="protected-attrib">
@@ -124,25 +124,25 @@
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="2">
-        <label>exception</label>
-      </node>
       <node id="1">
         <label>Exception</label>
         <link refid="classException"/>
         <childnode refid="2" relation="public-inheritance">
         </childnode>
+      </node>
+      <node id="2">
+        <label>std::exception</label>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="2">
-        <label>exception</label>
-      </node>
       <node id="1">
         <label>Exception</label>
         <link refid="classException"/>
         <childnode refid="2" relation="public-inheritance">
         </childnode>
+      </node>
+      <node id="2">
+        <label>std::exception</label>
       </node>
     </collaborationgraph>
     <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfException.h" line="11" column="1" bodyfile="src/redland/RedlandWrapper/src/include/redland/LibrdfException.h" bodystart="11" bodyend="47"/>

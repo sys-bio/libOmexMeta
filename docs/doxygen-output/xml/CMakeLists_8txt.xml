@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="CMakeLists_8txt" kind="file" language="C++">
     <compoundname>CMakeLists.txt</compoundname>
       <sectiondef kind="func">
@@ -295,9 +295,9 @@
 <codeline lineno="251"><highlight class="normal"></highlight><highlight class="preprocessor">#</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="252"><highlight class="normal"></highlight><highlight class="preprocessor">#</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="253"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/><sp/>#<sp/>curl<sp/>was<sp/>statically<sp/>linked<sp/>in<sp/>the<sp/>end</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="254"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/><sp/>#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>install(FILES<sp/>&quot;${CURL_LIBRARY}&quot;<sp/>DESTINATION<sp/>${PYOMEXMETA_DIR}<sp/>RENAME<sp/>libsqlite.so.0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="254"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/><sp/>#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>install(FILES<sp/>&quot;${CURL_LIBRARY}&quot;</highlight><highlight class="normal"><sp/>DESTINATION<sp/>${PYOMEXMETA_DIR}<sp/>RENAME<sp/>libsqlite.so.0)</highlight></codeline>
 <codeline lineno="255"><highlight class="normal"></highlight><highlight class="preprocessor">#</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="256"><highlight class="normal"></highlight><highlight class="preprocessor">#elseif<sp/>(PLATFORM<sp/>STREQUAL<sp/>&quot;windows-msvc&quot;)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="256"><highlight class="normal"></highlight><highlight class="preprocessor">#elseif<sp/>(PLATFORM<sp/>STREQUAL<sp/>&quot;windows-msvc&quot;</highlight><highlight class="normal">)</highlight></codeline>
 <codeline lineno="257"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/><sp/>#<sp/>Just<sp/>take<sp/>all<sp/>of<sp/>them<sp/>on<sp/>windows,<sp/>since<sp/>we&apos;ve<sp/>linked<sp/>dynamically<sp/>to<sp/>everything</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="258"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/><sp/>install(FILES<sp/>${LIBRARIES}<sp/>DESTINATION<sp/>bin)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="259"><highlight class="normal"></highlight><highlight class="preprocessor">#</highlight><highlight class="normal"></highlight></codeline>
@@ -306,7 +306,7 @@
 <codeline lineno="262"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/><sp/>install(FILES<sp/>$&lt;TARGET_FILE:redland-combined&gt;<sp/>DESTINATION<sp/>${PYOMEXMETA_DIR})</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="263"><highlight class="normal"></highlight><highlight class="preprocessor">#</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="264"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/><sp/>#<sp/>Note:<sp/>I<sp/>deleted<sp/>the<sp/>code<sp/>that<sp/>copies<sp/>windows<sp/>redistributables<sp/>because</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="265"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/><sp/>#<sp/><sp/>the<sp/>package<sp/>&quot;InstallRequiredSystemLibraries&quot;<sp/>does<sp/>this<sp/>for<sp/>me</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="265"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/><sp/>#<sp/><sp/>the<sp/>package<sp/>&quot;InstallRequiredSystemLibraries&quot;</highlight><highlight class="normal"><sp/>does<sp/>this<sp/>for<sp/>me</highlight></codeline>
 <codeline lineno="266"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/><sp/>#<sp/><sp/>just<sp/>by<sp/>including<sp/>it.<sp/>(Very<sp/>nice).</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="267"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/><sp/>find_file(API_MS_WIN_CORE_WOW64_L1_1_0_LIBRARY<sp/>NAMES<sp/>api-ms-win-core-wow64-l1-1-0.dll<sp/>PATHS<sp/>C:/Windows/System32/downlevel)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="268"><highlight class="normal"></highlight><highlight class="preprocessor">#</highlight><highlight class="normal"></highlight></codeline>
@@ -320,16 +320,16 @@
 <codeline lineno="276"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>${CMAKE_INSTALL_PREFIX}/bin/vcruntime140_1.dll</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="277"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>${API_MS_WIN_CORE_WOW64_L1_1_0_LIBRARY}</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="278"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="279"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/><sp/>if<sp/>(EXISTS<sp/>&quot;${CMAKE_INSTALL_PREFIX}&quot;)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="279"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/><sp/>if<sp/>(EXISTS<sp/>&quot;${CMAKE_INSTALL_PREFIX}&quot;</highlight><highlight class="normal">)</highlight></codeline>
 <codeline lineno="280"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>install(FILES<sp/>${REDISTRIB}<sp/>DESTINATION<sp/>${PYOMEXMETA_DIR})</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="281"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>message(FATAL_ERROR<sp/>&quot;libOmexMeta<sp/>needs<sp/>to<sp/>be<sp/>installed<sp/>before<sp/>you<sp/>\</highlight></codeline>
 <codeline lineno="282"><highlight class="preprocessor">#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#can<sp/>copy<sp/>windows<sp/>redistributables<sp/>into<sp/>python<sp/>directory.<sp/>Please<sp/>-DBUILD_PACKAGING=OFF<sp/>until<sp/>\</highlight></codeline>
-<codeline lineno="283"><highlight class="preprocessor">#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#you<sp/>have<sp/>built<sp/>the<sp/>windows<sp/>install<sp/>tree.&quot;)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="283"><highlight class="preprocessor">#<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#you<sp/>have<sp/>built<sp/>the<sp/>windows<sp/>install<sp/>tree.&quot;</highlight><highlight class="normal">)</highlight></codeline>
 <codeline lineno="284"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/><sp/>endif<sp/>()</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="285"><highlight class="normal"></highlight><highlight class="preprocessor">#</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="286"><highlight class="normal"></highlight><highlight class="preprocessor">#</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="287"><highlight class="normal"></highlight><highlight class="preprocessor">#elseif<sp/>(PLATFORM<sp/>STREQUAL<sp/>&quot;macos&quot;)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="288"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/><sp/>message(STATUS<sp/>&quot;macos<sp/>==<sp/>sad<sp/>face<sp/>=[&quot;)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="287"><highlight class="normal"></highlight><highlight class="preprocessor">#elseif<sp/>(PLATFORM<sp/>STREQUAL<sp/>&quot;macos&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/><sp/>message(STATUS<sp/>&quot;macos<sp/>==<sp/>sad<sp/>face<sp/>=[&quot;</highlight><highlight class="normal">)</highlight></codeline>
 <codeline lineno="289"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>()</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="290"><highlight class="normal"></highlight><highlight class="preprocessor">#</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="291"><highlight class="normal"></highlight><highlight class="preprocessor">#</highlight><highlight class="normal"></highlight></codeline>

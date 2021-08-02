@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="classomexmeta_1_1OmexMetaUtils" kind="class" language="C++" prot="public">
     <compoundname>omexmeta::OmexMetaUtils</compoundname>
       <sectiondef kind="public-func">
@@ -451,11 +451,11 @@ Base uri&apos;s are important in redland libraries. If they do not begin with <c
 <parametername>uri</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>string. Like &quot;https://omex-library/jeff2019.omex/mymodel.xml&quot; or &quot;https://omex-library/jeff2019.omex/mymodel.rdf&quot;  Sometimes a uri has a trailing &quot;#&quot; and somtimes a metaid has a leading &quot;#&quot;. <ref refid="classThis" kindref="compound">This</ref> method concatonates whilst accounting for permutations of &quot;#&quot; </para>
+<para>string. Like &quot;https://omex-library/jeff2019.omex/mymodel.xml&quot; or &quot;https://omex-library/jeff2019.omex/mymodel.rdf&quot;</para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-</para>
+Sometimes a uri has a trailing &quot;#&quot; and somtimes a metaid has a leading &quot;#&quot;. <ref refid="classThis" kindref="compound">This</ref> method concatonates whilst accounting for permutations of &quot;#&quot; </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>

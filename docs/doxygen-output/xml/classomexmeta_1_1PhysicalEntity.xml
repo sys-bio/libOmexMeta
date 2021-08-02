@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="classomexmeta_1_1PhysicalEntity" kind="class" language="C++" prot="public">
     <compoundname>omexmeta::PhysicalEntity</compoundname>
     <basecompoundref refid="classomexmeta_1_1PropertyBearer" prot="public" virt="non-virtual">omexmeta::PropertyBearer</basecompoundref>
@@ -537,11 +537,11 @@ The input string gets converted to a LibrdfNode automatically. An arbitrary numb
 <parametername>property</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>an opb term  Should be of the form OPB:OPB_12345 or OPB/OPB_12345. <ref refid="classThis" kindref="compound">This</ref> function will set the LibrdfNode resource_ property on the <ref refid="classomexmeta_1_1PhysicalProperty" kindref="compound">PhysicalProperty</ref> associated with this <ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref>. </para>
+<para>an opb term</para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-</para>
+Should be of the form OPB:OPB_12345 or OPB/OPB_12345. <ref refid="classThis" kindref="compound">This</ref> function will set the LibrdfNode resource_ property on the <ref refid="classomexmeta_1_1PhysicalProperty" kindref="compound">PhysicalProperty</ref> associated with this <ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref>. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -591,11 +591,11 @@ The input string gets converted to a LibrdfNode automatically. An arbitrary numb
 <parametername>about</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The string to put in rdf:about  <ref refid="classThis" kindref="compound">This</ref> function will set the LibrdfNode subject_ property on the <ref refid="classomexmeta_1_1PhysicalProperty" kindref="compound">PhysicalProperty</ref> associated with this <ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> </para>
+<para>The string to put in rdf:about</para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-</para>
+<ref refid="classThis" kindref="compound">This</ref> function will set the LibrdfNode subject_ property on the <ref refid="classomexmeta_1_1PhysicalProperty" kindref="compound">PhysicalProperty</ref> associated with this <ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -638,11 +638,11 @@ The input string gets converted to a LibrdfNode automatically. An arbitrary numb
 <parametername>is</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>the string to be used for is. <ref refid="classThis" kindref="compound">This</ref> should be of the form OPB:OPB_00134  <ref refid="classThis" kindref="compound">This</ref> function calls the <computeroutput><ref refid="classomexmeta_1_1PhysicalEntity_1a9029e221fb2e4125284eba3935993d8f" kindref="member">PhysicalEntity::setIdentity</ref></computeroutput> method and can be used as an alternative. For developers, consider which (or both? )sets of methods to keep, <computeroutput>is</computeroutput> or <computeroutput>setIdentity</computeroutput> </para>
+<para>the string to be used for is. <ref refid="classThis" kindref="compound">This</ref> should be of the form OPB:OPB_00134</para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-</para>
+<ref refid="classThis" kindref="compound">This</ref> function calls the <computeroutput><ref refid="classomexmeta_1_1PhysicalEntity_1a9029e221fb2e4125284eba3935993d8f" kindref="member">PhysicalEntity::setIdentity</ref></computeroutput> method and can be used as an alternative. For developers, consider which (or both? )sets of methods to keep, <computeroutput>is</computeroutput> or <computeroutput>setIdentity</computeroutput> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -671,11 +671,11 @@ The input string gets converted to a LibrdfNode automatically. An arbitrary numb
 <parametername>isPartOf</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>the string to be used for isPartOf predicate. <ref refid="classThis" kindref="compound">This</ref> should be of the form fma:FMA:12345 or fma/FMA:12345  <ref refid="classThis" kindref="compound">This</ref> function calls the <computeroutput><ref refid="classomexmeta_1_1PhysicalEntity_1a82e77be3327c537b2426b571afaa5045" kindref="member">PhysicalEntity::addLocation</ref></computeroutput> method and can be used as an alternative. For developers, consider which (or both? )sets of methods to keep, <computeroutput>addLocation</computeroutput> or <computeroutput>isPartOf</computeroutput> </para>
+<para>the string to be used for isPartOf predicate. <ref refid="classThis" kindref="compound">This</ref> should be of the form fma:FMA:12345 or fma/FMA:12345</para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-</para>
+<ref refid="classThis" kindref="compound">This</ref> function calls the <computeroutput><ref refid="classomexmeta_1_1PhysicalEntity_1a82e77be3327c537b2426b571afaa5045" kindref="member">PhysicalEntity::addLocation</ref></computeroutput> method and can be used as an alternative. For developers, consider which (or both? )sets of methods to keep, <computeroutput>addLocation</computeroutput> or <computeroutput>isPartOf</computeroutput> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -699,11 +699,11 @@ The input string gets converted to a LibrdfNode automatically. An arbitrary numb
 <parametername>part</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>the string to be used for hasPart predicate.  used in the case of annotating complexes which have no identity but several parts. </para>
+<para>the string to be used for hasPart predicate.</para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-</para>
+used in the case of annotating complexes which have no identity but several parts. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>

@@ -1,92 +1,92 @@
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix semsim: <http://bime.uw.edu/semsim/> .
-@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
-@prefix OMEXlib: <http://omex-library.org/> .
-@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
-
-local:MediatorParticipant0000
-    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#SpeciesB> .
-
-local:MediatorParticipant0001
-    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#SpeciesC> .
-
-local:ProcessProperty0000
-    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#R1> ;
-    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .
-
-local:ProcessProperty0001
-    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#R2> ;
-    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .
-
-local:ProcessProperty0002
-    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#R3> ;
-    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .
-
-local:ProcessProperty0003
-    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#R4> ;
-    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .
-
-local:ProcessProperty0004
-    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#R1> ;
-    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .
-
-local:SinkParticipant0000
-    semsim:hasMultiplier "1"^^rdf:double ;
-    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#SpeciesB> .
-
-local:SinkParticipant0001
-    semsim:hasMultiplier "1"^^rdf:double ;
-    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#SpeciesA> .
-
-local:SinkParticipant0002
-    semsim:hasMultiplier "1"^^rdf:double ;
-    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#SpeciesD> .
-
-local:SinkParticipant0003
-    semsim:hasMultiplier "1"^^rdf:double ;
-    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#SpeciesC> .
-
-local:SinkParticipant0004
-    semsim:hasMultiplier "1"^^rdf:double ;
-    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#SpeciesB> .
-
-local:SourceParticipant0000
-    semsim:hasMultiplier "1"^^rdf:double ;
-    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#SpeciesA> .
-
-local:SourceParticipant0001
-    semsim:hasMultiplier "1"^^rdf:double ;
-    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#SpeciesB> .
-
-local:SourceParticipant0002
-    semsim:hasMultiplier "1"^^rdf:double ;
-    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#SpeciesC> .
-
-local:SourceParticipant0003
-    semsim:hasMultiplier "1"^^rdf:double ;
-    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#SpeciesD> .
-
-local:SourceParticipant0004
-    semsim:hasMultiplier "1"^^rdf:double ;
-    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#SpeciesA> .
-
-<http://omex-library.org/NewOmex.omex/NewModel.xml#R1>
-    semsim:hasMediatorParticipant local:MediatorParticipant0001 ;
-    semsim:hasSinkParticipant local:SinkParticipant0000, local:SinkParticipant0004 ;
-    semsim:hasSourceParticipant local:SourceParticipant0000, local:SourceParticipant0004 ;
-    bqbiol:isVersionOf <https://identifiers.org/GO:12345> .
-
-<http://omex-library.org/NewOmex.omex/NewModel.xml#R2>
-    semsim:hasSinkParticipant local:SinkParticipant0001 ;
-    semsim:hasSourceParticipant local:SourceParticipant0001 .
-
-<http://omex-library.org/NewOmex.omex/NewModel.xml#R3>
-    semsim:hasMediatorParticipant local:MediatorParticipant0000 ;
-    semsim:hasSinkParticipant local:SinkParticipant0002 ;
-    semsim:hasSourceParticipant local:SourceParticipant0002 .
-
-<http://omex-library.org/NewOmex.omex/NewModel.xml#R4>
-    semsim:hasSinkParticipant local:SinkParticipant0003 ;
-    semsim:hasSourceParticipant local:SourceParticipant0003 .
-
-
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
+@prefix semsim: <http://bime.uw.edu/semsim/> .
+@prefix OMEXlib: <http://omex-library.org/> .
+@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
+
+local:MediatorParticipant0000
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#SpeciesB> .
+
+local:MediatorParticipant0001
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#SpeciesC> .
+
+local:ProcessProperty0000
+    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#R1> ;
+    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .
+
+local:ProcessProperty0001
+    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#R2> ;
+    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .
+
+local:ProcessProperty0002
+    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#R3> ;
+    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .
+
+local:ProcessProperty0003
+    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#R4> ;
+    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .
+
+local:ProcessProperty0004
+    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#R1> ;
+    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .
+
+local:SinkParticipant0000
+    semsim:hasMultiplier "1"^^rdf:double ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#SpeciesB> .
+
+local:SinkParticipant0001
+    semsim:hasMultiplier "1"^^rdf:double ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#SpeciesA> .
+
+local:SinkParticipant0002
+    semsim:hasMultiplier "1"^^rdf:double ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#SpeciesD> .
+
+local:SinkParticipant0003
+    semsim:hasMultiplier "1"^^rdf:double ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#SpeciesC> .
+
+local:SinkParticipant0004
+    semsim:hasMultiplier "1"^^rdf:double ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#SpeciesB> .
+
+local:SourceParticipant0000
+    semsim:hasMultiplier "1"^^rdf:double ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#SpeciesA> .
+
+local:SourceParticipant0001
+    semsim:hasMultiplier "1"^^rdf:double ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#SpeciesB> .
+
+local:SourceParticipant0002
+    semsim:hasMultiplier "1"^^rdf:double ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#SpeciesC> .
+
+local:SourceParticipant0003
+    semsim:hasMultiplier "1"^^rdf:double ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#SpeciesD> .
+
+local:SourceParticipant0004
+    semsim:hasMultiplier "1"^^rdf:double ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#SpeciesA> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#R1>
+    semsim:hasMediatorParticipant local:MediatorParticipant0001 ;
+    semsim:hasSinkParticipant local:SinkParticipant0000, local:SinkParticipant0004 ;
+    semsim:hasSourceParticipant local:SourceParticipant0000, local:SourceParticipant0004 ;
+    bqbiol:isVersionOf <https://identifiers.org/GO:12345> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#R2>
+    semsim:hasSinkParticipant local:SinkParticipant0001 ;
+    semsim:hasSourceParticipant local:SourceParticipant0001 .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#R3>
+    semsim:hasMediatorParticipant local:MediatorParticipant0000 ;
+    semsim:hasSinkParticipant local:SinkParticipant0002 ;
+    semsim:hasSourceParticipant local:SourceParticipant0002 .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#R4>
+    semsim:hasSinkParticipant local:SinkParticipant0003 ;
+    semsim:hasSourceParticipant local:SourceParticipant0003 .
+
+

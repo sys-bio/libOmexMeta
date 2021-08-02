@@ -7,16 +7,15 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>PhysicalProcess &mdash; libomexmeta 1.2.8 documentation</title>
+  <title>PhysicalProcess &mdash; libomexmeta 1.2.10 documentation</title>
   
 
   
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/sphinx_tabs/semantic-ui-2.4.1/segment.min.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/sphinx_tabs/semantic-ui-2.4.1/menu.min.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/sphinx_tabs/tabs.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
 
   
   
@@ -33,10 +32,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -91,6 +90,8 @@
             
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../background.html">Background to Semantic Annotations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Install/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Install/install.html#build-from-source">Build from Source</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../reading_rdf/reading_rdf.html">Reading RDF</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../writing_rdf/writing_rdf.html">Serializing RDF Graphs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../singular_annotations/index.html">Singular Annotations</a></li>
@@ -192,8 +193,8 @@
   <div class="section" id="physicalprocess">
 <h1>PhysicalProcess<a class="headerlink" href="#physicalprocess" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
-<dt id="pyomexmeta.PhysicalProcess">
-<em class="property">class </em><code class="sig-prename descclassname">pyomexmeta.</code><code class="sig-name descname">PhysicalProcess</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">physical_process_ptr</span><span class="p">:</span> <span class="n">ctypes.c_long</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyomexmeta.PhysicalProcess" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="pyomexmeta.PhysicalProcess">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">pyomexmeta.</span></span><span class="sig-name descname"><span class="pre">PhysicalProcess</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">physical_process_ptr</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">ctypes.c_longlong</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyomexmeta.PhysicalProcess" title="Permalink to this definition">¶</a></dt>
 <dd><p>Interface for creating PhysicalProcess type composite annotations</p>
 <p>From section 2.3.7.2 of the OmexMeta specification:</p>
 <p>The example annotation above is for a physical property of a physical entity. However,
@@ -264,8 +265,8 @@ in the RDF metadata. This way, the community can more easily apply RDF-processin
 tools to analyze, query, and reason over semantic metadata in COMBINE archives,
 in a manner that is independent of the source code used by the model.</p>
 <dl class="py method">
-<dt id="pyomexmeta.PhysicalProcess.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">physical_process_ptr</span><span class="p">:</span> <span class="n">ctypes.c_long</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyomexmeta.PhysicalProcess.__init__" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="pyomexmeta.PhysicalProcess.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">physical_process_ptr</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">ctypes.c_longlong</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyomexmeta.PhysicalProcess.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Constructor for <a class="reference internal" href="#pyomexmeta.PhysicalProcess" title="pyomexmeta.PhysicalProcess"><code class="xref py py-class docutils literal notranslate"><span class="pre">PhysicalProcess</span></code></a>.</p>
 <p>This constructor is not designed to be used directly by users. Instead
 users should create a <a class="reference internal" href="#pyomexmeta.PhysicalProcess" title="pyomexmeta.PhysicalProcess"><code class="xref py py-class docutils literal notranslate"><span class="pre">PhysicalProcess</span></code></a> directly from the an instance
@@ -279,14 +280,14 @@ of this PhysicalProcess.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="pyomexmeta.PhysicalProcess.__weakref__">
-<code class="sig-name descname">__weakref__</code><a class="headerlink" href="#pyomexmeta.PhysicalProcess.__weakref__" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="pyomexmeta.PhysicalProcess.__weakref__">
+<span class="sig-name descname"><span class="pre">__weakref__</span></span><a class="headerlink" href="#pyomexmeta.PhysicalProcess.__weakref__" title="Permalink to this definition">¶</a></dt>
 <dd><p>list of weak references to the object (if defined)</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="pyomexmeta.PhysicalProcess.about">
-<code class="sig-name descname">about</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">about</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">uri_type</span><span class="p">:</span> <span class="n">pyomexmeta.pyomexmeta_api.eUriType</span></em><span class="sig-paren">)</span> &#x2192; pyomexmeta.pyomexmeta.PhysicalProcess<a class="headerlink" href="#pyomexmeta.PhysicalProcess.about" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="pyomexmeta.PhysicalProcess.about">
+<span class="sig-name descname"><span class="pre">about</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">about</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uri_type</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pyomexmeta.pyomexmeta_api.eUriType</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#pyomexmeta.PhysicalProcess" title="pyomexmeta.pyomexmeta.PhysicalProcess"><span class="pre">pyomexmeta.pyomexmeta.PhysicalProcess</span></a><a class="headerlink" href="#pyomexmeta.PhysicalProcess.about" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets the about (subject) portion of the PhysicalProcess.</p>
 <dl class="simple">
 <dt>This can be either:</dt><dd><ul class="simple">
@@ -314,8 +315,8 @@ as its unique within the RDF graph.</p></li>
 </dd></dl>
 
 <dl class="py method">
-<dt id="pyomexmeta.PhysicalProcess.add_mediator">
-<code class="sig-name descname">add_mediator</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">physical_entity_reference</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">uri_type</span><span class="p">:</span> <span class="n">pyomexmeta.pyomexmeta_api.eUriType</span></em><span class="sig-paren">)</span> &#x2192; pyomexmeta.pyomexmeta.PhysicalProcess<a class="headerlink" href="#pyomexmeta.PhysicalProcess.add_mediator" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="pyomexmeta.PhysicalProcess.add_mediator">
+<span class="sig-name descname"><span class="pre">add_mediator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">physical_entity_reference</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uri_type</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pyomexmeta.pyomexmeta_api.eUriType</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#pyomexmeta.PhysicalProcess" title="pyomexmeta.pyomexmeta.PhysicalProcess"><span class="pre">pyomexmeta.pyomexmeta.PhysicalProcess</span></a><a class="headerlink" href="#pyomexmeta.PhysicalProcess.add_mediator" title="Permalink to this definition">¶</a></dt>
 <dd><p>Adds an energetic mediator to this <a class="reference internal" href="#pyomexmeta.PhysicalProcess" title="pyomexmeta.PhysicalProcess"><code class="xref py py-class docutils literal notranslate"><span class="pre">PhysicalProcess</span></code></a>, such as a enzyme or other catalyst in a reaction</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -337,8 +338,8 @@ in the rdf document</p></li>
 </dd></dl>
 
 <dl class="py method">
-<dt id="pyomexmeta.PhysicalProcess.add_sink">
-<code class="sig-name descname">add_sink</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">physical_entity_reference</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">uri_type</span><span class="p">:</span> <span class="n">pyomexmeta.pyomexmeta_api.eUriType</span></em>, <em class="sig-param"><span class="n">multiplier</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">1.0</span></em><span class="sig-paren">)</span> &#x2192; pyomexmeta.pyomexmeta.PhysicalProcess<a class="headerlink" href="#pyomexmeta.PhysicalProcess.add_sink" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="pyomexmeta.PhysicalProcess.add_sink">
+<span class="sig-name descname"><span class="pre">add_sink</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">physical_entity_reference</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uri_type</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pyomexmeta.pyomexmeta_api.eUriType</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">multiplier</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#pyomexmeta.PhysicalProcess" title="pyomexmeta.pyomexmeta.PhysicalProcess"><span class="pre">pyomexmeta.pyomexmeta.PhysicalProcess</span></a><a class="headerlink" href="#pyomexmeta.PhysicalProcess.add_sink" title="Permalink to this definition">¶</a></dt>
 <dd><p>Adds an energetic sink to this <a class="reference internal" href="#pyomexmeta.PhysicalProcess" title="pyomexmeta.PhysicalProcess"><code class="xref py py-class docutils literal notranslate"><span class="pre">PhysicalProcess</span></code></a>, such as a product in a reaction</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -360,8 +361,8 @@ in the rdf document</p></li>
 </dd></dl>
 
 <dl class="py method">
-<dt id="pyomexmeta.PhysicalProcess.add_source">
-<code class="sig-name descname">add_source</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">physical_entity_reference</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">uri_type</span><span class="p">:</span> <span class="n">pyomexmeta.pyomexmeta_api.eUriType</span></em>, <em class="sig-param"><span class="n">multiplier</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">1.0</span></em><span class="sig-paren">)</span> &#x2192; pyomexmeta.pyomexmeta.PhysicalProcess<a class="headerlink" href="#pyomexmeta.PhysicalProcess.add_source" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="pyomexmeta.PhysicalProcess.add_source">
+<span class="sig-name descname"><span class="pre">add_source</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">physical_entity_reference</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uri_type</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pyomexmeta.pyomexmeta_api.eUriType</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">multiplier</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#pyomexmeta.PhysicalProcess" title="pyomexmeta.pyomexmeta.PhysicalProcess"><span class="pre">pyomexmeta.pyomexmeta.PhysicalProcess</span></a><a class="headerlink" href="#pyomexmeta.PhysicalProcess.add_source" title="Permalink to this definition">¶</a></dt>
 <dd><p>Adds an energetic source to this <a class="reference internal" href="#pyomexmeta.PhysicalProcess" title="pyomexmeta.PhysicalProcess"><code class="xref py py-class docutils literal notranslate"><span class="pre">PhysicalProcess</span></code></a>, such as a reactant in a reaction</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -383,20 +384,20 @@ in the rdf document</p></li>
 </dd></dl>
 
 <dl class="py method">
-<dt id="pyomexmeta.PhysicalProcess.delete">
-<code class="sig-name descname">delete</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#pyomexmeta.PhysicalProcess.delete" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="pyomexmeta.PhysicalProcess.delete">
+<span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#pyomexmeta.PhysicalProcess.delete" title="Permalink to this definition">¶</a></dt>
 <dd><p>Clear up resources used by this <a class="reference internal" href="#pyomexmeta.PhysicalProcess" title="pyomexmeta.PhysicalProcess"><code class="xref py py-class docutils literal notranslate"><span class="pre">PhysicalProcess</span></code></a></p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="pyomexmeta.PhysicalProcess.get_ptr">
-<code class="sig-name descname">get_ptr</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; ctypes.c_long<a class="headerlink" href="#pyomexmeta.PhysicalProcess.get_ptr" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="pyomexmeta.PhysicalProcess.get_ptr">
+<span class="sig-name descname"><span class="pre">get_ptr</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">ctypes.c_longlong</span><a class="headerlink" href="#pyomexmeta.PhysicalProcess.get_ptr" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the memory address that points to this PhysicalProcess</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="pyomexmeta.PhysicalProcess.has_property">
-<code class="sig-name descname">has_property</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">property_about</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">about_uri_type</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>pyomexmeta.pyomexmeta_api.eUriType<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">is_version_of</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">property</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>pyomexmeta.pyomexmeta.PhysicalProperty<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; pyomexmeta.pyomexmeta._PropertyBearer<a class="headerlink" href="#pyomexmeta.PhysicalProcess.has_property" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="pyomexmeta.PhysicalProcess.has_property">
+<span class="sig-name descname"><span class="pre">has_property</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">property_about</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">about_uri_type</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">pyomexmeta.pyomexmeta_api.eUriType</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_version_of</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">property</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="PhysicalProperty.html#pyomexmeta.PhysicalProperty" title="pyomexmeta.pyomexmeta.PhysicalProperty"><span class="pre">pyomexmeta.pyomexmeta.PhysicalProperty</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="_PropertyBearer.html#pyomexmeta._PropertyBearer" title="pyomexmeta.pyomexmeta._PropertyBearer"><span class="pre">pyomexmeta.pyomexmeta._PropertyBearer</span></a><a class="headerlink" href="#pyomexmeta.PhysicalProcess.has_property" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a PhysicalProperty associated with a PhysicalEntity, EnergyDiff or PhysicalProcess.</p>
 <p>This method has 3 signatures in the underlying C++ library. This method unpacks the
 user supplied arguments and passes them to the correct signature, depending on what is supplied.</p>
@@ -429,8 +430,8 @@ This is often more useful in CellML models.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="pyomexmeta.PhysicalProcess.is_version_of">
-<code class="sig-name descname">is_version_of</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">version</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">uri_type</span><span class="p">:</span> <span class="n">pyomexmeta.pyomexmeta_api.eUriType</span> <span class="o">=</span> <span class="default_value">3</span></em><span class="sig-paren">)</span> &#x2192; pyomexmeta.pyomexmeta.PhysicalProcess<a class="headerlink" href="#pyomexmeta.PhysicalProcess.is_version_of" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="pyomexmeta.PhysicalProcess.is_version_of">
+<span class="sig-name descname"><span class="pre">is_version_of</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uri_type</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pyomexmeta.pyomexmeta_api.eUriType</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">3</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#pyomexmeta.PhysicalProcess" title="pyomexmeta.pyomexmeta.PhysicalProcess"><span class="pre">pyomexmeta.pyomexmeta.PhysicalProcess</span></a><a class="headerlink" href="#pyomexmeta.PhysicalProcess.is_version_of" title="Permalink to this definition">¶</a></dt>
 <dd><p>Deprecated. Use hasProperty intead</p>
 </dd></dl>
 

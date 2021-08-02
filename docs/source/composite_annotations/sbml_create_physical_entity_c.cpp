@@ -8,7 +8,7 @@ int main(){
                        "<sbml xmlns=\"http://www.sbml.org/sbml/level3/version1/core\" level=\"3\" version=\"1\">\n"
                        "  <model metaid=\"SimpleRegulation\" id=\"SimpleRegulation\">\n"
                        "    <listOfCompartments>\n"
-                       "      <compartment id=\"cell\" spatialDimensions=\"3\" size=\"1\" constant=\"true\" metaid=\"#OmexMetaId0000\"/>\n"
+                       "      <compartment id=\"cell\" spatialDimensions=\"3\" size=\"1\" constant=\"true\" metaid=\"OmexMetaId0000\"/>\n"
                        "    </listOfCompartments>\n"
                        "    <listOfSpecies>\n"
                        "      <species id=\"A\" compartment=\"cell\" initialConcentration=\"10\" hasOnlySubstanceUnits=\"false\" boundaryCondition=\"false\" constant=\"false\" metaid=\"SpeciesA\"/>\n"

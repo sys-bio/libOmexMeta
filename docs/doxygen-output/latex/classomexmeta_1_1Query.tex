@@ -6,7 +6,7 @@ librdf\+\_\+query\+\_\+results\+\_\+get\+\_\+binding\+\_\+value\+\_\+by\+\_\+nam
 
 Get one binding value for a given name in the current result.
 
-Return value\+: a new \#librdf\+\_\+node binding value or N\+U\+LL on failure \begin{DoxyCompactItemize}
+Return value\+: a new \#librdf\+\_\+node binding value or NULL on failure \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{classomexmeta_1_1Query_a405a2bcace57e7b9a78b42ff0bb04a27}\label{classomexmeta_1_1Query_a405a2bcace57e7b9a78b42ff0bb04a27}} 
 \mbox{\hyperlink{classomexmeta_1_1Query_a405a2bcace57e7b9a78b42ff0bb04a27}{Query}} (librdf\+\_\+model $\ast$model, std\+::string query)
@@ -76,6 +76,7 @@ If the query looks like this\+:
 \DoxyCodeLine{\textcolor{stringliteral}{                             "{}}   ?x ?y ?z\textcolor{stringliteral}{"{}}}
 \DoxyCodeLine{\textcolor{stringliteral}{                             "{}}\}\textcolor{stringliteral}{"{};}}
 \DoxyCodeLine{\textcolor{stringliteral}{Query query(query\_string);}}
+
 \end{DoxyCode}
  The column names will be x, y and z and the results will be string representations of all subjects (?x), predicates (?y) and resources (?z) in a vector of size {\ttfamily n}, where n is the number of query results. \mbox{\Hypertarget{classomexmeta_1_1Query_a7109dd08bd808bf5a20becb164622ed6}\label{classomexmeta_1_1Query_a7109dd08bd808bf5a20becb164622ed6}} 
 \index{omexmeta::Query@{omexmeta::Query}!resultsAsStr@{resultsAsStr}}

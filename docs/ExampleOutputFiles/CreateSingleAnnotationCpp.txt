@@ -1,28 +1,28 @@
-ToyModel, compartment0000, species0000, species0001, parameter0000, parameter0001, reaction0000, kineticLaw0000, 
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix dc: <http://purl.org/dc/terms/> .
-@prefix semsim: <http://bime.uw.edu/semsim/> .
-@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
-@prefix OMEXlib: <http://omex-library.org/> .
-@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
-
-local:ProcessProperty0000
-    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#reaction0000> ;
-    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .
-
-local:SinkParticipant0000
-    semsim:hasMultiplier "1"^^rdf:double ;
-    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#species0000> .
-
-local:SourceParticipant0000
-    semsim:hasMultiplier "1"^^rdf:double ;
-    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#species0001> .
-
-<http://omex-library.org/NewOmex.omex/NewModel.xml#ToyModel>
-    dc:description "This is a toy model for demonstration purposes" .
-
-<http://omex-library.org/NewOmex.omex/NewModel.xml#reaction0000>
-    semsim:hasSinkParticipant local:SinkParticipant0000 ;
-    semsim:hasSourceParticipant local:SourceParticipant0000 .
-
-
+ToyModel, compartment0000, species0000, species0001, parameter0000, parameter0001, reaction0000, kineticLaw0000, 
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
+@prefix semsim: <http://bime.uw.edu/semsim/> .
+@prefix OMEXlib: <http://omex-library.org/> .
+@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
+
+local:ProcessProperty0000
+    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#reaction0000> ;
+    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .
+
+local:SinkParticipant0000
+    semsim:hasMultiplier "1"^^rdf:double ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#species0000> .
+
+local:SourceParticipant0000
+    semsim:hasMultiplier "1"^^rdf:double ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#species0001> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#ToyModel>
+    dc:description "This is a toy model for demonstration purposes" .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#reaction0000>
+    semsim:hasSinkParticipant local:SinkParticipant0000 ;
+    semsim:hasSourceParticipant local:SourceParticipant0000 .
+
+

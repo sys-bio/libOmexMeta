@@ -1,4 +1,5 @@
+sys.executable C:\Miniconda3\envs\py39\python.exe
 Serializing to ntriples:
 0
-RDF graph serialized to "/Users/ciaranwelsh/Documents/libOmexMeta/docs/write_to_file.rdf"
+RDF graph serialized to "D:\libOmexMeta\docs\write_to_file.rdf"
 Counted "7" triples

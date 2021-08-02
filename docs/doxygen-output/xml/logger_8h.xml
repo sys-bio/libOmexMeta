@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="logger_8h" kind="file" language="C++">
     <compoundname>logger.h</compoundname>
     <includes local="no">iostream</includes>
@@ -7,27 +7,17 @@
     <includedby refid="OmexMetaUtils_8cpp" local="yes">src/omexmeta/OmexMetaUtils.cpp</includedby>
     <includedby refid="RDF_8h" local="yes">src/omexmeta/include/omexmeta/RDF.h</includedby>
     <incdepgraph>
-      <node id="1">
-        <label>src/omexmeta/include/omexmeta/logger.h</label>
-        <link refid="logger_8h"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-      </node>
       <node id="2">
         <label>iostream</label>
       </node>
-    </incdepgraph>
-    <invincdepgraph>
       <node id="1">
         <label>src/omexmeta/include/omexmeta/logger.h</label>
         <link refid="logger_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
       </node>
-      <node id="4">
-        <label>src/omexmeta/include/omexmeta/OmexMetaCApi.h</label>
-        <link refid="OmexMetaCApi_8h_source"/>
-      </node>
+    </incdepgraph>
+    <invincdepgraph>
       <node id="2">
         <label>src/omexmeta/include/omexmeta/RDF.h</label>
         <link refid="RDF_8h_source"/>
@@ -39,6 +29,16 @@
       <node id="3">
         <label>src/omexmeta/include/omexmeta/OmexMeta.h</label>
         <link refid="OmexMeta_8h_source"/>
+      </node>
+      <node id="1">
+        <label>src/omexmeta/include/omexmeta/logger.h</label>
+        <link refid="logger_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>src/omexmeta/include/omexmeta/OmexMetaCApi.h</label>
+        <link refid="OmexMetaCApi_8h_source"/>
       </node>
     </invincdepgraph>
     <innerclass refid="structNone" prot="public">None</innerclass>
@@ -263,7 +263,7 @@
 <codeline lineno="56"><highlight class="normal"></highlight></codeline>
 <codeline lineno="57"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LOG(x)<sp/>(log(__FILE__,__LINE__,LogData&lt;None&gt;()<sp/>&lt;&lt;<sp/>x))</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="58"><highlight class="normal"></highlight></codeline>
-<codeline lineno="59"><highlight class="normal"></highlight><highlight class="preprocessor">#endif//EVOGYM_LOGGER_H</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="comment">//EVOGYM_LOGGER_H</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="src/omexmeta/include/omexmeta/logger.h"/>
   </compounddef>

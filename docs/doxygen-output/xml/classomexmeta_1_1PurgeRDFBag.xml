@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="classomexmeta_1_1PurgeRDFBag" kind="class" language="C++" prot="public">
     <compoundname>omexmeta::PurgeRDFBag</compoundname>
       <sectiondef kind="private-attrib">
@@ -106,11 +106,11 @@
 <parametername>rdf*</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>non owning pointer to <ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref> object.  Since this class is designed to be used by the rdf*, the private member variables rdf_ will always live for longer than the lifetime of this class </para>
+<para>non owning pointer to <ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref> object.</para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-</para>
+Since this class is designed to be used by the rdf*, the private member variables rdf_ will always live for longer than the lifetime of this class </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>

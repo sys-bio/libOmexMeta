@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="classomexmeta_1_1Exception" kind="class" language="C++" prot="public">
     <compoundname>omexmeta::Exception</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">exception</basecompoundref>
+    <basecompoundref prot="public" virt="non-virtual">std::exception</basecompoundref>
     <derivedcompoundref refid="classomexmeta_1_1AnnotationBuilderException" prot="public" virt="non-virtual">omexmeta::AnnotationBuilderException</derivedcompoundref>
     <derivedcompoundref refid="classomexmeta_1_1InappropriateResourceException" prot="public" virt="non-virtual">omexmeta::InappropriateResourceException</derivedcompoundref>
     <derivedcompoundref refid="classomexmeta_1_1LibRDFException" prot="public" virt="non-virtual">omexmeta::LibRDFException</derivedcompoundref>

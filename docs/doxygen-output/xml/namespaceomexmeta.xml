@@ -1,48 +1,48 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="namespaceomexmeta" kind="namespace" language="C++">
     <compoundname>omexmeta</compoundname>
-    <innerclass refid="classomexmeta_1_1AnnotationBuilderException" prot="public">omexmeta::AnnotationBuilderException</innerclass>
-    <innerclass refid="classomexmeta_1_1BiomodelsBiologyQualifier" prot="public">omexmeta::BiomodelsBiologyQualifier</innerclass>
-    <innerclass refid="classomexmeta_1_1BiomodelsModelQualifier" prot="public">omexmeta::BiomodelsModelQualifier</innerclass>
     <innerclass refid="classomexmeta_1_1CurlGet" prot="public">omexmeta::CurlGet</innerclass>
-    <innerclass refid="classomexmeta_1_1DCTerm" prot="public">omexmeta::DCTerm</innerclass>
     <innerclass refid="classomexmeta_1_1Editor" prot="public">omexmeta::Editor</innerclass>
     <innerclass refid="classomexmeta_1_1ElementExtractor" prot="public">omexmeta::ElementExtractor</innerclass>
     <innerclass refid="classomexmeta_1_1EnergyDiff" prot="public">omexmeta::EnergyDiff</innerclass>
     <innerclass refid="classomexmeta_1_1Exception" prot="public">omexmeta::Exception</innerclass>
-    <innerclass refid="classomexmeta_1_1Foaf" prot="public">omexmeta::Foaf</innerclass>
-    <innerclass refid="classomexmeta_1_1InappropriateResourceException" prot="public">omexmeta::InappropriateResourceException</innerclass>
-    <innerclass refid="classomexmeta_1_1IRDF" prot="public">omexmeta::IRDF</innerclass>
-    <innerclass refid="classomexmeta_1_1LibRDFException" prot="public">omexmeta::LibRDFException</innerclass>
-    <innerclass refid="classomexmeta_1_1MarkupIdentifier" prot="public">omexmeta::MarkupIdentifier</innerclass>
-    <innerclass refid="classomexmeta_1_1MediatorParticipant" prot="public">omexmeta::MediatorParticipant</innerclass>
-    <innerclass refid="classomexmeta_1_1MetaID" prot="public">omexmeta::MetaID</innerclass>
-    <innerclass refid="classomexmeta_1_1NotImplementedException" prot="public">omexmeta::NotImplementedException</innerclass>
     <innerclass refid="classomexmeta_1_1NullPointerException" prot="public">omexmeta::NullPointerException</innerclass>
-    <innerclass refid="classomexmeta_1_1OmexMetaCellML" prot="public">omexmeta::OmexMetaCellML</innerclass>
-    <innerclass refid="classomexmeta_1_1OmexMetaSBML" prot="public">omexmeta::OmexMetaSBML</innerclass>
+    <innerclass refid="classomexmeta_1_1InappropriateResourceException" prot="public">omexmeta::InappropriateResourceException</innerclass>
+    <innerclass refid="classomexmeta_1_1NotImplementedException" prot="public">omexmeta::NotImplementedException</innerclass>
+    <innerclass refid="classomexmeta_1_1LibRDFException" prot="public">omexmeta::LibRDFException</innerclass>
+    <innerclass refid="classomexmeta_1_1ValueException" prot="public">omexmeta::ValueException</innerclass>
+    <innerclass refid="classomexmeta_1_1AnnotationBuilderException" prot="public">omexmeta::AnnotationBuilderException</innerclass>
+    <innerclass refid="classomexmeta_1_1IRDF" prot="public">omexmeta::IRDF</innerclass>
+    <innerclass refid="classomexmeta_1_1MarkupIdentifier" prot="public">omexmeta::MarkupIdentifier</innerclass>
+    <innerclass refid="classomexmeta_1_1MetaID" prot="public">omexmeta::MetaID</innerclass>
     <innerclass refid="classomexmeta_1_1OmexMetaUtils" prot="public">omexmeta::OmexMetaUtils</innerclass>
     <innerclass refid="classomexmeta_1_1OmexMetaXml" prot="public">omexmeta::OmexMetaXml</innerclass>
+    <innerclass refid="classomexmeta_1_1OmexMetaSBML" prot="public">omexmeta::OmexMetaSBML</innerclass>
+    <innerclass refid="classomexmeta_1_1OmexMetaCellML" prot="public">omexmeta::OmexMetaCellML</innerclass>
     <innerclass refid="classomexmeta_1_1OmexMetaXmlFactory" prot="public">omexmeta::OmexMetaXmlFactory</innerclass>
     <innerclass refid="classomexmeta_1_1Participant" prot="public">omexmeta::Participant</innerclass>
+    <innerclass refid="classomexmeta_1_1SourceParticipant" prot="public">omexmeta::SourceParticipant</innerclass>
+    <innerclass refid="classomexmeta_1_1SinkParticipant" prot="public">omexmeta::SinkParticipant</innerclass>
+    <innerclass refid="classomexmeta_1_1MediatorParticipant" prot="public">omexmeta::MediatorParticipant</innerclass>
     <innerclass refid="classomexmeta_1_1PersonalInformation" prot="public">omexmeta::PersonalInformation</innerclass>
     <innerclass refid="classomexmeta_1_1PhysicalEntity" prot="public">omexmeta::PhysicalEntity</innerclass>
     <innerclass refid="classomexmeta_1_1PhysicalProcess" prot="public">omexmeta::PhysicalProcess</innerclass>
     <innerclass refid="classomexmeta_1_1PhysicalProperty" prot="public">omexmeta::PhysicalProperty</innerclass>
     <innerclass refid="classomexmeta_1_1Predicate" prot="public">omexmeta::Predicate</innerclass>
+    <innerclass refid="classomexmeta_1_1BiomodelsBiologyQualifier" prot="public">omexmeta::BiomodelsBiologyQualifier</innerclass>
+    <innerclass refid="classomexmeta_1_1BiomodelsModelQualifier" prot="public">omexmeta::BiomodelsModelQualifier</innerclass>
+    <innerclass refid="classomexmeta_1_1DCTerm" prot="public">omexmeta::DCTerm</innerclass>
+    <innerclass refid="classomexmeta_1_1SemSim" prot="public">omexmeta::SemSim</innerclass>
+    <innerclass refid="classomexmeta_1_1Foaf" prot="public">omexmeta::Foaf</innerclass>
     <innerclass refid="classomexmeta_1_1PropertyBearer" prot="public">omexmeta::PropertyBearer</innerclass>
     <innerclass refid="classomexmeta_1_1PurgeRDFBag" prot="public">omexmeta::PurgeRDFBag</innerclass>
     <innerclass refid="classomexmeta_1_1Query" prot="public">omexmeta::Query</innerclass>
     <innerclass refid="classomexmeta_1_1RDF" prot="public">omexmeta::RDF</innerclass>
     <innerclass refid="classomexmeta_1_1SBMLSemanticExtraction" prot="public">omexmeta::SBMLSemanticExtraction</innerclass>
-    <innerclass refid="classomexmeta_1_1SemSim" prot="public">omexmeta::SemSim</innerclass>
-    <innerclass refid="classomexmeta_1_1SinkParticipant" prot="public">omexmeta::SinkParticipant</innerclass>
-    <innerclass refid="classomexmeta_1_1SourceParticipant" prot="public">omexmeta::SourceParticipant</innerclass>
     <innerclass refid="classomexmeta_1_1Triple" prot="public">omexmeta::Triple</innerclass>
     <innerclass refid="classomexmeta_1_1Triples" prot="public">omexmeta::Triples</innerclass>
     <innerclass refid="classomexmeta_1_1UriHandler" prot="public">omexmeta::UriHandler</innerclass>
-    <innerclass refid="classomexmeta_1_1ValueException" prot="public">omexmeta::ValueException</innerclass>
     <innerclass refid="classomexmeta_1_1VCardTranslator" prot="public">omexmeta::VCardTranslator</innerclass>
       <sectiondef kind="enum">
       <memberdef kind="enum" id="namespaceomexmeta_1a1129ebb8a92218ebb27b9c76ac8462f7" prot="public" static="no" strong="no">
@@ -326,7 +326,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Triple.h" line="132" column="20" bodyfile="src/omexmeta/include/omexmeta/Triple.h" bodystart="132" bodyend="-1"/>
+        <location file="src/omexmeta/include/omexmeta/Triple.h" line="133" column="20" bodyfile="src/omexmeta/include/omexmeta/Triple.h" bodystart="133" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceomexmeta_1a866d550d1c1d6bdadd778a73fef571bb" prot="public" static="no">
         <type>std::vector&lt; std::shared_ptr&lt; <ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref> &gt; &gt;</type>
@@ -1532,8 +1532,7 @@
         </briefdescription>
         <detaileddescription>
 <para><verbatim>@brief get the xml from the editor
-</verbatim></para>
-<para>The returned string is owned by the caller. </para>
+</verbatim> The returned string is owned by the caller. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -1666,7 +1665,7 @@
         </inbodydescription>
         <location file="src/omexmeta/OmexMetaCApi.cpp" line="647" column="12" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="647" bodyend="655" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="178" declcolumn="33"/>
       </memberdef>
-      <memberdef kind="function" id="namespaceomexmeta_1a776f05da2b18bedbbd262368787e8263" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespaceomexmeta_1af766e6b663620adf984a6946304517a4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> *</type>
         <definition>OMEXMETA_CAPI_EXPORT Editor * omexmeta::Editor_addContributor</definition>
         <argsstring>(Editor *editor_ptr, const char *orcid_id)</argsstring>

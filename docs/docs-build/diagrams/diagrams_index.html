@@ -7,16 +7,15 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Building Diagrams &mdash; libomexmeta 1.2.8 documentation</title>
+  <title>Building Diagrams &mdash; libomexmeta 1.2.10 documentation</title>
   
 
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/segment.min.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/menu.min.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/sphinx_tabs/tabs.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
 
   
   
@@ -33,12 +32,11 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
-        <script src="../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.js"></script>
-        <script src="../_static/sphinx_tabs/tabs.js"></script>
+        <script src="../_static/tabs.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -93,6 +91,8 @@
             
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../background.html">Background to Semantic Annotations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Install/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Install/install.html#build-from-source">Build from Source</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reading_rdf/reading_rdf.html">Reading RDF</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../writing_rdf/writing_rdf.html">Serializing RDF Graphs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../singular_annotations/index.html">Singular Annotations</a></li>
@@ -181,82 +181,38 @@ using graphviz. Here is an example where we download the <cite>Teusink2000</cite
 model, use an sqlite3 database as a triple store and produce a graph
 of the Teusink annotations.</p>
 <div class="sphinx-tabs docutils container">
-<div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-0-0 docutils container">
-<div class="docutils container">
-<p>Python</p>
-</div>
-</div>
-<div class="item sphinx-data-tab-0-1 docutils container">
-<div class="docutils container">
-<p>C++</p>
-</div>
-</div>
-<div class="item sphinx-data-tab-0-2 docutils container">
-<div class="docutils container">
-<p>C</p>
-</div>
-</div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-0 active docutils container">
-<div class="literal-block-wrapper docutils container" id="id1">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">Python</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">C++</button><button aria-controls="panel-0-0-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-2" name="0-2" role="tab" tabindex="-1">C</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id1">
 <div class="code-block-caption"><span class="caption-text">Example of drawing a diagram of the RDF graph using graphviz in Python</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
-<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">from</span> <span class="nn">pyomexmeta</span> <span class="kn">import</span> <span class="n">RDF</span><span class="p">,</span> <span class="n">eUriType</span>
-
-<span class="n">rdf_str</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .</span>
-<span class="s2">@prefix bqbiol: &lt;http://biomodels.net/biology-qualifiers/&gt; .</span>
-<span class="s2">@prefix OMEXlib: &lt;http://omex-library.org/&gt; .</span>
-<span class="s2">@prefix myOMEX: &lt;http://omex-library.org/NewOmex.omex/&gt; .</span>
-<span class="s2">@prefix local: &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#&gt; .</span>
-
-<span class="s2">&lt;http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0000&gt;</span>
-<span class="s2">  bqbiol:is &lt;https://identifiers.org/uniprot/PD12345&gt; .&quot;&quot;&quot;</span>
-
-<span class="c1"># download model xml, scan for rdf, create rdf graph and store in sqlite database</span>
-<span class="n">rdf</span> <span class="o">=</span> <span class="n">RDF</span><span class="o">.</span><span class="n">from_string</span><span class="p">(</span><span class="n">rdf_str</span><span class="p">,</span> <span class="n">syntax</span><span class="o">=</span><span class="s2">&quot;turtle&quot;</span><span class="p">)</span>
-
-<span class="c1"># pick a filename (this can be anywhere on your system)</span>
-<span class="n">docs_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">),</span> <span class="s2">&quot;source&quot;</span><span class="p">)</span>
-<span class="n">diagrams_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">docs_dir</span><span class="p">,</span> <span class="s2">&quot;diagrams&quot;</span><span class="p">)</span>
-<span class="n">fname</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">diagrams_dir</span><span class="p">,</span> <span class="s2">&quot;Diagram&quot;</span><span class="p">)</span>
-<span class="c1"># draw a diagram</span>
-<span class="n">rdf</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;file saved to </span><span class="si">{</span><span class="n">fname</span><span class="si">}</span><span class="s2">.pdf&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">os</span>
+<span class="linenos"> 2</span><span class="kn">from</span> <span class="nn">pyomexmeta</span> <span class="kn">import</span> <span class="n">RDF</span><span class="p">,</span> <span class="n">eUriType</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="n">rdf_str</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .</span>
+<span class="linenos"> 5</span><span class="s2">@prefix bqbiol: &lt;http://biomodels.net/biology-qualifiers/&gt; .</span>
+<span class="linenos"> 6</span><span class="s2">@prefix OMEXlib: &lt;http://omex-library.org/&gt; .</span>
+<span class="linenos"> 7</span><span class="s2">@prefix myOMEX: &lt;http://omex-library.org/NewOmex.omex/&gt; .</span>
+<span class="linenos"> 8</span><span class="s2">@prefix local: &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#&gt; .</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span><span class="s2">&lt;http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0000&gt;</span>
+<span class="linenos">11</span><span class="s2">  bqbiol:is &lt;https://identifiers.org/uniprot/PD12345&gt; .&quot;&quot;&quot;</span>
+<span class="linenos">12</span>
+<span class="linenos">13</span><span class="c1"># download model xml, scan for rdf, create rdf graph and store in sqlite database</span>
+<span class="linenos">14</span><span class="n">rdf</span> <span class="o">=</span> <span class="n">RDF</span><span class="o">.</span><span class="n">from_string</span><span class="p">(</span><span class="n">rdf_str</span><span class="p">,</span> <span class="n">syntax</span><span class="o">=</span><span class="s2">&quot;turtle&quot;</span><span class="p">)</span>
+<span class="linenos">15</span>
+<span class="linenos">16</span><span class="c1"># pick a filename (this can be anywhere on your system)</span>
+<span class="linenos">17</span><span class="n">docs_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">),</span> <span class="s2">&quot;source&quot;</span><span class="p">)</span>
+<span class="linenos">18</span><span class="n">diagrams_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">docs_dir</span><span class="p">,</span> <span class="s2">&quot;diagrams&quot;</span><span class="p">)</span>
+<span class="linenos">19</span><span class="n">fname</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">diagrams_dir</span><span class="p">,</span> <span class="s2">&quot;Diagram&quot;</span><span class="p">)</span>
+<span class="linenos">20</span><span class="c1"># draw a diagram</span>
+<span class="linenos">21</span><span class="n">rdf</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span>
+<span class="linenos">22</span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;file saved to </span><span class="si">{</span><span class="n">fname</span><span class="si">}</span><span class="s2">.pdf&quot;</span><span class="p">)</span>
 </pre></div>
-</td></tr></table></div>
+</div>
 </div>
 <p>Output:</p>
 <object data="docs-build/_images/Diagram.pdf" type="application/pdf"></object><a class="reference internal image-reference" href="../_images/Diagram.pdf"><img alt="../_images/Diagram.pdf" src="../_images/Diagram.pdf" style="width: 400px;" /></a>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-1 docutils container">
-<p>This feature is not yet supported in C++</p>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-2 docutils container">
-<p>This feature is not yet supported in C</p>
-</div>
-</div>
+</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><p>This feature is not yet supported in C++</p>
+</div><div aria-labelledby="tab-0-0-2" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-2" name="0-2" role="tabpanel" tabindex="0"><p>This feature is not yet supported in C</p>
+</div></div>
 </div>
 
 

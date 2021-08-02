@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="classomexmeta_1_1PhysicalProcess" kind="class" language="C++" prot="public">
     <compoundname>omexmeta::PhysicalProcess</compoundname>
     <basecompoundref refid="classomexmeta_1_1PropertyBearer" prot="public" virt="non-virtual">omexmeta::PropertyBearer</basecompoundref>
@@ -497,11 +497,11 @@ When used, the ownership of nodes in <ref refid="classomexmeta_1_1PhysicalProces
 <parametername>about</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>the string to be used as the LibrdfNode portion of the isVersionOf <ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref>. <ref refid="classThis" kindref="compound">This</ref> should be an existing metaid on the model you are annotating. Will error when metaid does not exist.  <ref refid="classThis" kindref="compound">This</ref> method will set the LibrdfNode subject_ attribute of the <ref refid="classomexmeta_1_1PhysicalProperty" kindref="compound">PhysicalProperty</ref> associated with the <ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref>. </para>
+<para>the string to be used as the LibrdfNode portion of the isVersionOf <ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref>. <ref refid="classThis" kindref="compound">This</ref> should be an existing metaid on the model you are annotating. Will error when metaid does not exist.</para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-</para>
+<ref refid="classThis" kindref="compound">This</ref> method will set the LibrdfNode subject_ attribute of the <ref refid="classomexmeta_1_1PhysicalProperty" kindref="compound">PhysicalProperty</ref> associated with the <ref refid="classomexmeta_1_1PhysicalProcess" kindref="compound">PhysicalProcess</ref>. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>

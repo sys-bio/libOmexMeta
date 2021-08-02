@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygenindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="index.xsd" version="1.8.20" xml:lang="en-US">
+<doxygenindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="index.xsd" version="1.9.1" xml:lang="en-US">
   <compound refid="classomexmeta_1_1AnnotationBuilderException" kind="class"><name>omexmeta::AnnotationBuilderException</name>
     <member refid="classomexmeta_1_1AnnotationBuilderException_1ad09e2a190a245199974678e2790e81ff" kind="function"><name>Exception</name></member>
     <member refid="classomexmeta_1_1AnnotationBuilderException_1ac50b0a25504303cc1a4a1a20de0127eb" kind="function"><name>Exception</name></member>
@@ -15,8 +15,6 @@
     <member refid="classomexmeta_1_1BiomodelsModelQualifier_1a58c6b2b810a9e14bdae6faf935187602" kind="function"><name>BiomodelsModelQualifier</name></member>
     <member refid="classomexmeta_1_1BiomodelsModelQualifier_1a9842d4d8aa136cf4d617a53e12dc6f82" kind="function"><name>BiomodelsModelQualifier</name></member>
     <member refid="classomexmeta_1_1BiomodelsModelQualifier_1a3d55d1629ea82f6bb20068818b462fee" kind="function"><name>verify</name></member>
-  </compound>
-  <compound refid="classcopy" kind="class"><name>copy</name>
   </compound>
   <compound refid="classcopy" kind="class"><name>copy</name>
   </compound>
@@ -121,7 +119,7 @@
     <member refid="classomexmeta_1_1Editor_1a2264cbd2efae17d1d72c3f402d8721bf" kind="function"><name>getRepositoryUri</name></member>
     <member refid="classomexmeta_1_1Editor_1a5143e1f8db82393faed322810acf5e92" kind="function"><name>createNodeWithModelUri</name></member>
     <member refid="classomexmeta_1_1Editor_1a1926b789086e29102e33808169a5af0c" kind="function"><name>addCreator</name></member>
-    <member refid="classomexmeta_1_1Editor_1abc8dd83a176d73f9211386ad08bb35b3" kind="function"><name>addContributor</name></member>
+    <member refid="classomexmeta_1_1Editor_1a87d3b7e4ab717c18653acf92a2c2c9d4" kind="function"><name>addContributor</name></member>
     <member refid="classomexmeta_1_1Editor_1a4da72139f63090ab5682bf51c96d7886" kind="function"><name>addTaxon</name></member>
     <member refid="classomexmeta_1_1Editor_1a9eeaa4cfeeb9bae8b5d5f7705e170de4" kind="function"><name>addPubmed</name></member>
     <member refid="classomexmeta_1_1Editor_1a58db6f81ad362189bed21780be5f3611" kind="function"><name>addDescription</name></member>
@@ -177,19 +175,19 @@
     <member refid="classomexmeta_1_1EnergyDiff_1a950d70967fe0976d3583c0eb318cd9aa" kind="function"><name>hasProperty</name></member>
     <member refid="classomexmeta_1_1EnergyDiff_1ae5077644798fd94176a8ec67be9e808f" kind="function"><name>hasProperty</name></member>
   </compound>
-  <compound refid="classomexmeta_1_1Exception" kind="class"><name>omexmeta::Exception</name>
-    <member refid="classomexmeta_1_1Exception_1a99067aa4ed7e38cf27b986cca3734512" kind="variable"><name>msg_</name></member>
-    <member refid="classomexmeta_1_1Exception_1ad09e2a190a245199974678e2790e81ff" kind="function"><name>Exception</name></member>
-    <member refid="classomexmeta_1_1Exception_1ac50b0a25504303cc1a4a1a20de0127eb" kind="function"><name>Exception</name></member>
-    <member refid="classomexmeta_1_1Exception_1aaa08b2467c40a3e28586c0da5da45736" kind="function"><name>~Exception</name></member>
-    <member refid="classomexmeta_1_1Exception_1af9c3f258e4715dd2102f5c2db5fbe260" kind="function"><name>what</name></member>
-  </compound>
   <compound refid="classException" kind="class"><name>Exception</name>
     <member refid="classException_1a5d59cc46086c61391ed26773ce861780" kind="variable"><name>msg_</name></member>
     <member refid="classException_1ac541ead5c20548813d7dea73c28c7fab" kind="function"><name>Exception</name></member>
     <member refid="classException_1a0b1693d4d5007815322070c907ee5cc2" kind="function"><name>Exception</name></member>
     <member refid="classException_1ab834fdbc275748cf287b994503521ada" kind="function"><name>~Exception</name></member>
     <member refid="classException_1ae7ba8334eb35e001b4b0c6df9339c0dc" kind="function"><name>what</name></member>
+  </compound>
+  <compound refid="classomexmeta_1_1Exception" kind="class"><name>omexmeta::Exception</name>
+    <member refid="classomexmeta_1_1Exception_1a99067aa4ed7e38cf27b986cca3734512" kind="variable"><name>msg_</name></member>
+    <member refid="classomexmeta_1_1Exception_1ad09e2a190a245199974678e2790e81ff" kind="function"><name>Exception</name></member>
+    <member refid="classomexmeta_1_1Exception_1ac50b0a25504303cc1a4a1a20de0127eb" kind="function"><name>Exception</name></member>
+    <member refid="classomexmeta_1_1Exception_1aaa08b2467c40a3e28586c0da5da45736" kind="function"><name>~Exception</name></member>
+    <member refid="classomexmeta_1_1Exception_1af9c3f258e4715dd2102f5c2db5fbe260" kind="function"><name>what</name></member>
   </compound>
   <compound refid="classomexmeta_1_1Foaf" kind="class"><name>omexmeta::Foaf</name>
     <member refid="classomexmeta_1_1Foaf_1a5a91260f5319adc671c749a09ef0cf0a" kind="variable"><name>valid_terms_</name></member>
@@ -1207,14 +1205,6 @@
   </compound>
   <compound refid="classSubclass" kind="class"><name>Subclass</name>
   </compound>
-  <compound refid="classSubclass" kind="class"><name>Subclass</name>
-  </compound>
-  <compound refid="classSubclass" kind="class"><name>Subclass</name>
-  </compound>
-  <compound refid="classSubclass" kind="class"><name>Subclass</name>
-  </compound>
-  <compound refid="classSubclass" kind="class"><name>Subclass</name>
-  </compound>
   <compound refid="classThis" kind="class"><name>This</name>
   </compound>
   <compound refid="structdbg_1_1time" kind="struct"><name>dbg::time</name>
@@ -1376,7 +1366,7 @@
     <member refid="dbg_8h_1a19adefcfcaddecb9f32e810ebcae4856" kind="typedef"><name>detect_size_t</name></member>
     <member refid="dbg_8h_1a2c6a2bc0c8581b3b0d285d1d2971e44d" kind="typedef"><name>ostream_operator_t</name></member>
   </compound>
-  <compound refid="namespacedbg_1_1detail_1_1_0d0" kind="namespace"><name>dbg::detail::@0</name>
+  <compound refid="namespacedbg_1_1detail_1_1_0d28" kind="namespace"><name>dbg::detail::@28</name>
   </compound>
   <compound refid="namespacedbg_1_1detail__detector" kind="namespace"><name>dbg::detail_detector</name>
     <member refid="dbg_8h_1a1dbadccf461338e71c55ea392d4ed47c" kind="typedef"><name>void_t</name></member>
@@ -1476,7 +1466,7 @@
     <member refid="namespaceomexmeta_1a8ee43bb384d91cdd2f9709bbbcb40e45" kind="function"><name>Editor_getRepositoryUri</name></member>
     <member refid="namespaceomexmeta_1a0e81fbc188ac82167accc86c9a28d421" kind="function"><name>Editor_stripAnnotations</name></member>
     <member refid="namespaceomexmeta_1a8d5c2ca0fc85c34655773735b68db9af" kind="function"><name>Editor_addCreator</name></member>
-    <member refid="namespaceomexmeta_1a776f05da2b18bedbbd262368787e8263" kind="function"><name>Editor_addContributor</name></member>
+    <member refid="namespaceomexmeta_1af766e6b663620adf984a6946304517a4" kind="function"><name>Editor_addContributor</name></member>
     <member refid="namespaceomexmeta_1a77fe370e4e25069aed5ca78d49e7f320" kind="function"><name>Editor_addTaxon</name></member>
     <member refid="namespaceomexmeta_1aad15c06d5442ef8153a123f07a06687a" kind="function"><name>Editor_addPubmed</name></member>
     <member refid="namespaceomexmeta_1af27e22df149490815e7f07f7fe6193c0" kind="function"><name>Editor_addDescription</name></member>
@@ -1571,6 +1561,8 @@
   </compound>
   <compound refid="namespaceredland" kind="namespace"><name>redland</name>
     <member refid="LibrdfSerializer_8cpp_1ab3d24521870fec5bb77735a3a4a7e4d5" kind="function"><name>toIOStream</name></member>
+  </compound>
+  <compound refid="namespacestd" kind="namespace"><name>std</name>
   </compound>
   <compound refid="CMakeLists_8txt" kind="file"><name>CMakeLists.txt</name>
     <member refid="CMakeLists_8txt_1ac6e62319442999cf52a6433a996aa8d2" kind="function"><name>set</name></member>
@@ -2475,13 +2467,13 @@
   </compound>
   <compound refid="dir_a8b1a2e1698ec3f4d0b5a380075ccb82" kind="dir"><name>src/redland/RedlandWrapper/src/include</name>
   </compound>
-  <compound refid="dir_a8576c3dd404f1f37c9018ff7dd15568" kind="dir"><name>src/omexmeta/include/omexmeta</name>
-  </compound>
   <compound refid="dir_805176f2c4714c569bc16cfd6a26a0cb" kind="dir"><name>src/omexmeta</name>
   </compound>
-  <compound refid="dir_419af6de8ce819e65a26954f0ff6d1a6" kind="dir"><name>src/redland/RedlandWrapper/src/include/redland</name>
+  <compound refid="dir_a8576c3dd404f1f37c9018ff7dd15568" kind="dir"><name>src/omexmeta/include/omexmeta</name>
   </compound>
   <compound refid="dir_b2c8ecc5605cd25eaa6ecdbd929ab620" kind="dir"><name>src/redland</name>
+  </compound>
+  <compound refid="dir_419af6de8ce819e65a26954f0ff6d1a6" kind="dir"><name>src/redland/RedlandWrapper/src/include/redland</name>
   </compound>
   <compound refid="dir_b65acc6ced5d737b2c7790d05db72194" kind="dir"><name>src/redland/RedlandWrapper</name>
   </compound>
@@ -2489,8 +2481,8 @@
   </compound>
   <compound refid="dir_e793c0dc4ccd224149063390ee134027" kind="dir"><name>src/redland/RedlandWrapper/src</name>
   </compound>
-  <compound refid="_2Users_2ciaranwelsh_2Documents_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example" kind="example"><name>/Users/ciaranwelsh/Documents/libOmexMeta/src/omexmeta/include/omexmeta/OmexMetaCApi.h</name>
+  <compound refid="D_1_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example" kind="example"><name>D:/libOmexMeta/src/omexmeta/include/omexmeta/OmexMetaCApi.h</name>
   </compound>
-  <compound refid="_2Users_2ciaranwelsh_2Documents_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2Predicate_8h-example" kind="example"><name>/Users/ciaranwelsh/Documents/libOmexMeta/src/omexmeta/include/omexmeta/Predicate.h</name>
+  <compound refid="D_1_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2Predicate_8h-example" kind="example"><name>D:/libOmexMeta/src/omexmeta/include/omexmeta/Predicate.h</name>
   </compound>
 </doxygenindex>

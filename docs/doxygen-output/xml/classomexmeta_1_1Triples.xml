@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="classomexmeta_1_1Triples" kind="class" language="C++" prot="public">
     <compoundname>omexmeta::Triples</compoundname>
     <includes refid="Triples_8h" local="no">Triples.h</includes>
@@ -78,11 +78,11 @@
 <parametername>triple</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The triple to put into triples  The triple is moved into element 0 of a new <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref> object. The <ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref> must be passed by reference so that the triple is moved directly, instead of copied and then moved into the <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref> object (which is a memory leak). </para>
+<para>The triple to put into triples</para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-</para>
+The triple is moved into element 0 of a new <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref> object. The <ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref> must be passed by reference so that the triple is moved directly, instead of copied and then moved into the <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref> object (which is a memory leak). </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -159,10 +159,11 @@
 <parametername>triple</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The <ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref> object to move.  The vector storing the <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref> is increased in size by 1 and the</para>
+<para>The <ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref> object to move.</para>
 </parameterdescription>
 </parameteritem>
-<parameteritem>
+</parameterlist>
+The vector storing the <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref> is increased in size by 1 and the<parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>triple</parametername>
 </parameternamelist>
@@ -558,11 +559,11 @@
 <parametername>model_name</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>the omex portion of the current local uri. Default is NewModel.xml  See RDF::str for more details regarding arguments. <ref refid="classThis" kindref="compound">This</ref> method is only for checking to see what <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref> object looks like when serialized. The annotations are not added to the main <ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref> graph. <ref refid="classThis" kindref="compound">This</ref> is analogous to <ref refid="classomexmeta_1_1Triple_1a2cabbc7a28348a9472bd50f059469183" kindref="member">Triple::str</ref>. </para>
+<para>the omex portion of the current local uri. Default is NewModel.xml</para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-</para>
+See RDF::str for more details regarding arguments. <ref refid="classThis" kindref="compound">This</ref> method is only for checking to see what <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref> object looks like when serialized. The annotations are not added to the main <ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref> graph. <ref refid="classThis" kindref="compound">This</ref> is analogous to <ref refid="classomexmeta_1_1Triple_1a2cabbc7a28348a9472bd50f059469183" kindref="member">Triple::str</ref>. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -590,9 +591,9 @@
 <para>moves one triple of the end of triples </para>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="return"><para>the triple from the end of the triples vector  No copies are made. <ref refid="classThis" kindref="compound">This</ref> is deliberate as it reduces risk of memory issues. When you pop, you remove from the end of the <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref> object and return it. <ref refid="classThis" kindref="compound">This</ref> means that responsibility for freeing the returned <ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref> switches to the caller. </para>
+<para><simplesect kind="return"><para>the triple from the end of the triples vector</para>
 </simplesect>
-</para>
+No copies are made. <ref refid="classThis" kindref="compound">This</ref> is deliberate as it reduces risk of memory issues. When you pop, you remove from the end of the <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref> object and return it. <ref refid="classThis" kindref="compound">This</ref> means that responsibility for freeing the returned <ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref> switches to the caller. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -611,9 +612,9 @@
 <para>getter operator for <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref> object </para>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="return"><para>a reference to the <ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref> at index <computeroutput>index</computeroutput>  A copy is made of the <ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref> you want to return. To get a reference without copying see <ref refid="classomexmeta_1_1Triples_1a5dad8f2cde0a3f6c0ce341338f80b0cd" kindref="member">Triples::pop()</ref>. Remember that iterating over a <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref> object and making copies will cause complications with freeing the objects. </para>
+<para><simplesect kind="return"><para>a reference to the <ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref> at index <computeroutput>index</computeroutput></para>
 </simplesect>
-</para>
+A copy is made of the <ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref> you want to return. To get a reference without copying see <ref refid="classomexmeta_1_1Triples_1a5dad8f2cde0a3f6c0ce341338f80b0cd" kindref="member">Triples::pop()</ref>. Remember that iterating over a <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref> object and making copies will cause complications with freeing the objects. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -645,9 +646,9 @@
 <para>indicates whether <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref> object is empty. </para>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="return"><para>true if the <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref> object doesn&apos;t contain any <ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref> objects  Useful for iterating over <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref> in a while loop without using the <computeroutput>[]</computeroutput> operator, which makes unwanted copies that causes memory issues. </para>
+<para><simplesect kind="return"><para>true if the <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref> object doesn&apos;t contain any <ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref> objects</para>
 </simplesect>
-</para>
+Useful for iterating over <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref> in a while loop without using the <computeroutput>[]</computeroutput> operator, which makes unwanted copies that causes memory issues. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -662,9 +663,10 @@
 <para>move the from <ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref> object out of the <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref> object </para>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="return"><para>a <ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref> from position 0 in <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref>  caller is responsible for <ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref> resources</para>
+<para><simplesect kind="return"><para>a <ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref> from position 0 in <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref></para>
 </simplesect>
-forwarded on to std::vector::capacity <simplesect kind="return"><para>int the size of <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref> currently allowed </para>
+caller is responsible for <ref refid="classomexmeta_1_1Triple" kindref="compound">Triple</ref> resources</para>
+<para>forwarded on to std::vector::capacity <simplesect kind="return"><para>int the size of <ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref> currently allowed </para>
 </simplesect>
 </para>
         </detaileddescription>
