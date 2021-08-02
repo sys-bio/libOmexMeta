@@ -240,350 +240,349 @@ that are supported by libOmexMeta, including:</p>
 </div>
 <div class="literal-block-wrapper docutils container" id="id2">
 <div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">  1</span>sys.executable C:\Miniconda3\envs\py39\python.exe
-<span class="linenos">  2</span>Serializing to ntriples
-<span class="linenos">  3</span>&lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#OmexMetaId0001&gt; &lt;http://biomodels.net/biology-qualifiers/isPropertyOf&gt; &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&gt; .
-<span class="linenos">  4</span>&lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#OmexMetaId0001&gt; &lt;http://biomodels.net/biology-qualifiers/isVersionOf&gt; &lt;https://identifiers.org/OPB/OPB_00340&gt; .
-<span class="linenos">  5</span>&lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&gt; &lt;http://biomodels.net/biology-qualifiers/is&gt; &lt;https://identifiers.org/uniprot/P84022&gt; .
-<span class="linenos">  6</span>&lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&gt; &lt;http://biomodels.net/biology-qualifiers/isPartOf&gt; &lt;https://identifiers.org/fma/FMA:24178&gt; .
-<span class="linenos">  7</span>&lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&gt; &lt;http://biomodels.net/biology-qualifiers/isPartOf&gt; &lt;https://identifiers.org/fma/FMA:63877&gt; .
-<span class="linenos">  8</span>&lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&gt; &lt;http://biomodels.net/biology-qualifiers/isPartOf&gt; &lt;https://identifiers.org/fma/FMA:70737&gt; .
-<span class="linenos">  9</span>&lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&gt; &lt;http://biomodels.net/biology-qualifiers/isPartOf&gt; &lt;https://identifiers.org/fma/FMA:7163&gt; .
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">  1</span>Serializing to ntriples
+<span class="linenos">  2</span>&lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#OmexMetaId0001&gt; &lt;http://biomodels.net/biology-qualifiers/isPropertyOf&gt; &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&gt; .
+<span class="linenos">  3</span>&lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#OmexMetaId0001&gt; &lt;http://biomodels.net/biology-qualifiers/isVersionOf&gt; &lt;https://identifiers.org/OPB/OPB_00340&gt; .
+<span class="linenos">  4</span>&lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&gt; &lt;http://biomodels.net/biology-qualifiers/is&gt; &lt;https://identifiers.org/uniprot/P84022&gt; .
+<span class="linenos">  5</span>&lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&gt; &lt;http://biomodels.net/biology-qualifiers/isPartOf&gt; &lt;https://identifiers.org/fma/FMA:24178&gt; .
+<span class="linenos">  6</span>&lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&gt; &lt;http://biomodels.net/biology-qualifiers/isPartOf&gt; &lt;https://identifiers.org/fma/FMA:63877&gt; .
+<span class="linenos">  7</span>&lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&gt; &lt;http://biomodels.net/biology-qualifiers/isPartOf&gt; &lt;https://identifiers.org/fma/FMA:70737&gt; .
+<span class="linenos">  8</span>&lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&gt; &lt;http://biomodels.net/biology-qualifiers/isPartOf&gt; &lt;https://identifiers.org/fma/FMA:7163&gt; .
+<span class="linenos">  9</span>
 <span class="linenos"> 10</span>
 <span class="linenos"> 11</span>
 <span class="linenos"> 12</span>
-<span class="linenos"> 13</span>
-<span class="linenos"> 14</span>Serializing to turtle
-<span class="linenos"> 15</span>@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
-<span class="linenos"> 16</span>@prefix bqbiol: &lt;http://biomodels.net/biology-qualifiers/&gt; .
-<span class="linenos"> 17</span>@prefix OMEXlib: &lt;http://omex-library.org/&gt; .
-<span class="linenos"> 18</span>@prefix local: &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#&gt; .
-<span class="linenos"> 19</span>
-<span class="linenos"> 20</span>local:EntityProperty0000
-<span class="linenos"> 21</span>    bqbiol:is &lt;https://identifiers.org/uniprot/P84022&gt; ;
-<span class="linenos"> 22</span>    bqbiol:isPartOf &lt;https://identifiers.org/fma/FMA:24178&gt;, &lt;https://identifiers.org/fma/FMA:63877&gt;, &lt;https://identifiers.org/fma/FMA:70737&gt;, &lt;https://identifiers.org/fma/FMA:7163&gt; .
-<span class="linenos"> 23</span>
-<span class="linenos"> 24</span>local:OmexMetaId0001
-<span class="linenos"> 25</span>    bqbiol:isPropertyOf local:EntityProperty0000 ;
-<span class="linenos"> 26</span>    bqbiol:isVersionOf &lt;https://identifiers.org/OPB/OPB_00340&gt; .
+<span class="linenos"> 13</span>Serializing to turtle
+<span class="linenos"> 14</span>@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+<span class="linenos"> 15</span>@prefix bqbiol: &lt;http://biomodels.net/biology-qualifiers/&gt; .
+<span class="linenos"> 16</span>@prefix OMEXlib: &lt;http://omex-library.org/&gt; .
+<span class="linenos"> 17</span>@prefix local: &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#&gt; .
+<span class="linenos"> 18</span>
+<span class="linenos"> 19</span>local:EntityProperty0000
+<span class="linenos"> 20</span>    bqbiol:is &lt;https://identifiers.org/uniprot/P84022&gt; ;
+<span class="linenos"> 21</span>    bqbiol:isPartOf &lt;https://identifiers.org/fma/FMA:24178&gt;, &lt;https://identifiers.org/fma/FMA:63877&gt;, &lt;https://identifiers.org/fma/FMA:70737&gt;, &lt;https://identifiers.org/fma/FMA:7163&gt; .
+<span class="linenos"> 22</span>
+<span class="linenos"> 23</span>local:OmexMetaId0001
+<span class="linenos"> 24</span>    bqbiol:isPropertyOf local:EntityProperty0000 ;
+<span class="linenos"> 25</span>    bqbiol:isVersionOf &lt;https://identifiers.org/OPB/OPB_00340&gt; .
+<span class="linenos"> 26</span>
 <span class="linenos"> 27</span>
 <span class="linenos"> 28</span>
 <span class="linenos"> 29</span>
 <span class="linenos"> 30</span>
-<span class="linenos"> 31</span>
-<span class="linenos"> 32</span>Serializing to rdfxml-abbrev
-<span class="linenos"> 33</span>&lt;?xml version=&quot;1.1&quot; encoding=&quot;utf-8&quot;?&gt;
-<span class="linenos"> 34</span>&lt;rdf:RDF xmlns:OMEXlib=&quot;http://omex-library.org/&quot;
-<span class="linenos"> 35</span>   xmlns:bqbiol=&quot;http://biomodels.net/biology-qualifiers/&quot;
-<span class="linenos"> 36</span>   xmlns:local=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#&quot;
-<span class="linenos"> 37</span>   xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;&gt;
-<span class="linenos"> 38</span>  &lt;rdf:Description rdf:about=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&quot;&gt;
-<span class="linenos"> 39</span>    &lt;bqbiol:is rdf:resource=&quot;https://identifiers.org/uniprot/P84022&quot;/&gt;
-<span class="linenos"> 40</span>    &lt;bqbiol:isPartOf rdf:resource=&quot;https://identifiers.org/fma/FMA:24178&quot;/&gt;
-<span class="linenos"> 41</span>    &lt;bqbiol:isPartOf rdf:resource=&quot;https://identifiers.org/fma/FMA:63877&quot;/&gt;
-<span class="linenos"> 42</span>    &lt;bqbiol:isPartOf rdf:resource=&quot;https://identifiers.org/fma/FMA:70737&quot;/&gt;
-<span class="linenos"> 43</span>    &lt;bqbiol:isPartOf rdf:resource=&quot;https://identifiers.org/fma/FMA:7163&quot;/&gt;
-<span class="linenos"> 44</span>  &lt;/rdf:Description&gt;
-<span class="linenos"> 45</span>  &lt;rdf:Description rdf:about=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#OmexMetaId0001&quot;&gt;
-<span class="linenos"> 46</span>    &lt;bqbiol:isPropertyOf rdf:resource=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&quot;/&gt;
-<span class="linenos"> 47</span>    &lt;bqbiol:isVersionOf rdf:resource=&quot;https://identifiers.org/OPB/OPB_00340&quot;/&gt;
-<span class="linenos"> 48</span>  &lt;/rdf:Description&gt;
-<span class="linenos"> 49</span>&lt;/rdf:RDF&gt;
+<span class="linenos"> 31</span>Serializing to rdfxml-abbrev
+<span class="linenos"> 32</span>&lt;?xml version=&quot;1.1&quot; encoding=&quot;utf-8&quot;?&gt;
+<span class="linenos"> 33</span>&lt;rdf:RDF xmlns:OMEXlib=&quot;http://omex-library.org/&quot;
+<span class="linenos"> 34</span>   xmlns:bqbiol=&quot;http://biomodels.net/biology-qualifiers/&quot;
+<span class="linenos"> 35</span>   xmlns:local=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#&quot;
+<span class="linenos"> 36</span>   xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;&gt;
+<span class="linenos"> 37</span>  &lt;rdf:Description rdf:about=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&quot;&gt;
+<span class="linenos"> 38</span>    &lt;bqbiol:is rdf:resource=&quot;https://identifiers.org/uniprot/P84022&quot;/&gt;
+<span class="linenos"> 39</span>    &lt;bqbiol:isPartOf rdf:resource=&quot;https://identifiers.org/fma/FMA:24178&quot;/&gt;
+<span class="linenos"> 40</span>    &lt;bqbiol:isPartOf rdf:resource=&quot;https://identifiers.org/fma/FMA:63877&quot;/&gt;
+<span class="linenos"> 41</span>    &lt;bqbiol:isPartOf rdf:resource=&quot;https://identifiers.org/fma/FMA:70737&quot;/&gt;
+<span class="linenos"> 42</span>    &lt;bqbiol:isPartOf rdf:resource=&quot;https://identifiers.org/fma/FMA:7163&quot;/&gt;
+<span class="linenos"> 43</span>  &lt;/rdf:Description&gt;
+<span class="linenos"> 44</span>  &lt;rdf:Description rdf:about=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#OmexMetaId0001&quot;&gt;
+<span class="linenos"> 45</span>    &lt;bqbiol:isPropertyOf rdf:resource=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&quot;/&gt;
+<span class="linenos"> 46</span>    &lt;bqbiol:isVersionOf rdf:resource=&quot;https://identifiers.org/OPB/OPB_00340&quot;/&gt;
+<span class="linenos"> 47</span>  &lt;/rdf:Description&gt;
+<span class="linenos"> 48</span>&lt;/rdf:RDF&gt;
+<span class="linenos"> 49</span>
 <span class="linenos"> 50</span>
 <span class="linenos"> 51</span>
 <span class="linenos"> 52</span>
-<span class="linenos"> 53</span>
-<span class="linenos"> 54</span>Serializing to rdfxml
-<span class="linenos"> 55</span>&lt;?xml version=&quot;1.1&quot; encoding=&quot;utf-8&quot;?&gt;
-<span class="linenos"> 56</span>&lt;rdf:RDF xmlns:OMEXlib=&quot;http://omex-library.org/&quot; xmlns:bqbiol=&quot;http://biomodels.net/biology-qualifiers/&quot; xmlns:local=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#&quot; xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;&gt;
-<span class="linenos"> 57</span>  &lt;rdf:Description rdf:about=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#OmexMetaId0001&quot;&gt;
-<span class="linenos"> 58</span>    &lt;bqbiol:isPropertyOf rdf:resource=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&quot;/&gt;
-<span class="linenos"> 59</span>  &lt;/rdf:Description&gt;
-<span class="linenos"> 60</span>  &lt;rdf:Description rdf:about=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#OmexMetaId0001&quot;&gt;
-<span class="linenos"> 61</span>    &lt;bqbiol:isVersionOf rdf:resource=&quot;https://identifiers.org/OPB/OPB_00340&quot;/&gt;
-<span class="linenos"> 62</span>  &lt;/rdf:Description&gt;
-<span class="linenos"> 63</span>  &lt;rdf:Description rdf:about=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&quot;&gt;
-<span class="linenos"> 64</span>    &lt;bqbiol:is rdf:resource=&quot;https://identifiers.org/uniprot/P84022&quot;/&gt;
-<span class="linenos"> 65</span>  &lt;/rdf:Description&gt;
-<span class="linenos"> 66</span>  &lt;rdf:Description rdf:about=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&quot;&gt;
-<span class="linenos"> 67</span>    &lt;bqbiol:isPartOf rdf:resource=&quot;https://identifiers.org/fma/FMA:24178&quot;/&gt;
-<span class="linenos"> 68</span>  &lt;/rdf:Description&gt;
-<span class="linenos"> 69</span>  &lt;rdf:Description rdf:about=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&quot;&gt;
-<span class="linenos"> 70</span>    &lt;bqbiol:isPartOf rdf:resource=&quot;https://identifiers.org/fma/FMA:63877&quot;/&gt;
-<span class="linenos"> 71</span>  &lt;/rdf:Description&gt;
-<span class="linenos"> 72</span>  &lt;rdf:Description rdf:about=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&quot;&gt;
-<span class="linenos"> 73</span>    &lt;bqbiol:isPartOf rdf:resource=&quot;https://identifiers.org/fma/FMA:70737&quot;/&gt;
-<span class="linenos"> 74</span>  &lt;/rdf:Description&gt;
-<span class="linenos"> 75</span>  &lt;rdf:Description rdf:about=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&quot;&gt;
-<span class="linenos"> 76</span>    &lt;bqbiol:isPartOf rdf:resource=&quot;https://identifiers.org/fma/FMA:7163&quot;/&gt;
-<span class="linenos"> 77</span>  &lt;/rdf:Description&gt;
-<span class="linenos"> 78</span>&lt;/rdf:RDF&gt;
+<span class="linenos"> 53</span>Serializing to rdfxml
+<span class="linenos"> 54</span>&lt;?xml version=&quot;1.1&quot; encoding=&quot;utf-8&quot;?&gt;
+<span class="linenos"> 55</span>&lt;rdf:RDF xmlns:OMEXlib=&quot;http://omex-library.org/&quot; xmlns:bqbiol=&quot;http://biomodels.net/biology-qualifiers/&quot; xmlns:local=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#&quot; xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;&gt;
+<span class="linenos"> 56</span>  &lt;rdf:Description rdf:about=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#OmexMetaId0001&quot;&gt;
+<span class="linenos"> 57</span>    &lt;bqbiol:isPropertyOf rdf:resource=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&quot;/&gt;
+<span class="linenos"> 58</span>  &lt;/rdf:Description&gt;
+<span class="linenos"> 59</span>  &lt;rdf:Description rdf:about=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#OmexMetaId0001&quot;&gt;
+<span class="linenos"> 60</span>    &lt;bqbiol:isVersionOf rdf:resource=&quot;https://identifiers.org/OPB/OPB_00340&quot;/&gt;
+<span class="linenos"> 61</span>  &lt;/rdf:Description&gt;
+<span class="linenos"> 62</span>  &lt;rdf:Description rdf:about=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&quot;&gt;
+<span class="linenos"> 63</span>    &lt;bqbiol:is rdf:resource=&quot;https://identifiers.org/uniprot/P84022&quot;/&gt;
+<span class="linenos"> 64</span>  &lt;/rdf:Description&gt;
+<span class="linenos"> 65</span>  &lt;rdf:Description rdf:about=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&quot;&gt;
+<span class="linenos"> 66</span>    &lt;bqbiol:isPartOf rdf:resource=&quot;https://identifiers.org/fma/FMA:24178&quot;/&gt;
+<span class="linenos"> 67</span>  &lt;/rdf:Description&gt;
+<span class="linenos"> 68</span>  &lt;rdf:Description rdf:about=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&quot;&gt;
+<span class="linenos"> 69</span>    &lt;bqbiol:isPartOf rdf:resource=&quot;https://identifiers.org/fma/FMA:63877&quot;/&gt;
+<span class="linenos"> 70</span>  &lt;/rdf:Description&gt;
+<span class="linenos"> 71</span>  &lt;rdf:Description rdf:about=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&quot;&gt;
+<span class="linenos"> 72</span>    &lt;bqbiol:isPartOf rdf:resource=&quot;https://identifiers.org/fma/FMA:70737&quot;/&gt;
+<span class="linenos"> 73</span>  &lt;/rdf:Description&gt;
+<span class="linenos"> 74</span>  &lt;rdf:Description rdf:about=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&quot;&gt;
+<span class="linenos"> 75</span>    &lt;bqbiol:isPartOf rdf:resource=&quot;https://identifiers.org/fma/FMA:7163&quot;/&gt;
+<span class="linenos"> 76</span>  &lt;/rdf:Description&gt;
+<span class="linenos"> 77</span>&lt;/rdf:RDF&gt;
+<span class="linenos"> 78</span>
 <span class="linenos"> 79</span>
 <span class="linenos"> 80</span>
 <span class="linenos"> 81</span>
-<span class="linenos"> 82</span>
-<span class="linenos"> 83</span>Serializing to dot
-<span class="linenos"> 84</span>digraph {
-<span class="linenos"> 85</span>	rankdir = LR;
-<span class="linenos"> 86</span>	charset=&quot;utf-8&quot;;
-<span class="linenos"> 87</span>
-<span class="linenos"> 88</span>	&quot;ROMEXlib:NewOmex.omex/NewModel.rdf#OmexMetaId0001&quot; -&gt; &quot;ROMEXlib:NewOmex.omex/NewModel.rdf#EntityProperty0000&quot; [ label=&quot;bqbiol:isPropertyOf&quot; ];
-<span class="linenos"> 89</span>	&quot;ROMEXlib:NewOmex.omex/NewModel.rdf#OmexMetaId0001&quot; -&gt; &quot;Rhttps://identifiers.org/OPB/OPB_00340&quot; [ label=&quot;bqbiol:isVersionOf&quot; ];
-<span class="linenos"> 90</span>	&quot;ROMEXlib:NewOmex.omex/NewModel.rdf#EntityProperty0000&quot; -&gt; &quot;Rhttps://identifiers.org/uniprot/P84022&quot; [ label=&quot;bqbiol:is&quot; ];
-<span class="linenos"> 91</span>	&quot;ROMEXlib:NewOmex.omex/NewModel.rdf#EntityProperty0000&quot; -&gt; &quot;Rhttps://identifiers.org/fma/FMA:24178&quot; [ label=&quot;bqbiol:isPartOf&quot; ];
-<span class="linenos"> 92</span>	&quot;ROMEXlib:NewOmex.omex/NewModel.rdf#EntityProperty0000&quot; -&gt; &quot;Rhttps://identifiers.org/fma/FMA:63877&quot; [ label=&quot;bqbiol:isPartOf&quot; ];
-<span class="linenos"> 93</span>	&quot;ROMEXlib:NewOmex.omex/NewModel.rdf#EntityProperty0000&quot; -&gt; &quot;Rhttps://identifiers.org/fma/FMA:70737&quot; [ label=&quot;bqbiol:isPartOf&quot; ];
-<span class="linenos"> 94</span>	&quot;ROMEXlib:NewOmex.omex/NewModel.rdf#EntityProperty0000&quot; -&gt; &quot;Rhttps://identifiers.org/fma/FMA:7163&quot; [ label=&quot;bqbiol:isPartOf&quot; ];
-<span class="linenos"> 95</span>
-<span class="linenos"> 96</span>	// Resources
-<span class="linenos"> 97</span>	&quot;ROMEXlib:NewOmex.omex/NewModel.rdf#OmexMetaId0001&quot; [ label=&quot;OMEXlib:NewOmex.omex/NewModel.rdf#OmexMetaId0001&quot;, shape = ellipse, color = blue ];
-<span class="linenos"> 98</span>	&quot;ROMEXlib:NewOmex.omex/NewModel.rdf#EntityProperty0000&quot; [ label=&quot;OMEXlib:NewOmex.omex/NewModel.rdf#EntityProperty0000&quot;, shape = ellipse, color = blue ];
-<span class="linenos"> 99</span>	&quot;Rhttps://identifiers.org/OPB/OPB_00340&quot; [ label=&quot;https://identifiers.org/OPB/OPB_00340&quot;, shape = ellipse, color = blue ];
-<span class="linenos">100</span>	&quot;Rhttps://identifiers.org/uniprot/P84022&quot; [ label=&quot;https://identifiers.org/uniprot/P84022&quot;, shape = ellipse, color = blue ];
-<span class="linenos">101</span>	&quot;Rhttps://identifiers.org/fma/FMA:24178&quot; [ label=&quot;https://identifiers.org/fma/FMA:24178&quot;, shape = ellipse, color = blue ];
-<span class="linenos">102</span>	&quot;Rhttps://identifiers.org/fma/FMA:63877&quot; [ label=&quot;https://identifiers.org/fma/FMA:63877&quot;, shape = ellipse, color = blue ];
-<span class="linenos">103</span>	&quot;Rhttps://identifiers.org/fma/FMA:70737&quot; [ label=&quot;https://identifiers.org/fma/FMA:70737&quot;, shape = ellipse, color = blue ];
-<span class="linenos">104</span>	&quot;Rhttps://identifiers.org/fma/FMA:7163&quot; [ label=&quot;https://identifiers.org/fma/FMA:7163&quot;, shape = ellipse, color = blue ];
-<span class="linenos">105</span>
-<span class="linenos">106</span>	// Anonymous nodes
-<span class="linenos">107</span>
-<span class="linenos">108</span>	// Literals
-<span class="linenos">109</span>
-<span class="linenos">110</span>	label=&quot;\n\nModel:\nbase\n\nNamespaces:\nbqbiol: http://biomodels.net/biology-qualifiers/\nOMEXlib: http://omex-library.org/\nlocal: http://omex-library.org/NewOmex.omex/NewModel.rdf#\n&quot;;
-<span class="linenos">111</span>}
+<span class="linenos"> 82</span>Serializing to dot
+<span class="linenos"> 83</span>digraph {
+<span class="linenos"> 84</span>	rankdir = LR;
+<span class="linenos"> 85</span>	charset=&quot;utf-8&quot;;
+<span class="linenos"> 86</span>
+<span class="linenos"> 87</span>	&quot;ROMEXlib:NewOmex.omex/NewModel.rdf#OmexMetaId0001&quot; -&gt; &quot;ROMEXlib:NewOmex.omex/NewModel.rdf#EntityProperty0000&quot; [ label=&quot;bqbiol:isPropertyOf&quot; ];
+<span class="linenos"> 88</span>	&quot;ROMEXlib:NewOmex.omex/NewModel.rdf#OmexMetaId0001&quot; -&gt; &quot;Rhttps://identifiers.org/OPB/OPB_00340&quot; [ label=&quot;bqbiol:isVersionOf&quot; ];
+<span class="linenos"> 89</span>	&quot;ROMEXlib:NewOmex.omex/NewModel.rdf#EntityProperty0000&quot; -&gt; &quot;Rhttps://identifiers.org/uniprot/P84022&quot; [ label=&quot;bqbiol:is&quot; ];
+<span class="linenos"> 90</span>	&quot;ROMEXlib:NewOmex.omex/NewModel.rdf#EntityProperty0000&quot; -&gt; &quot;Rhttps://identifiers.org/fma/FMA:24178&quot; [ label=&quot;bqbiol:isPartOf&quot; ];
+<span class="linenos"> 91</span>	&quot;ROMEXlib:NewOmex.omex/NewModel.rdf#EntityProperty0000&quot; -&gt; &quot;Rhttps://identifiers.org/fma/FMA:63877&quot; [ label=&quot;bqbiol:isPartOf&quot; ];
+<span class="linenos"> 92</span>	&quot;ROMEXlib:NewOmex.omex/NewModel.rdf#EntityProperty0000&quot; -&gt; &quot;Rhttps://identifiers.org/fma/FMA:70737&quot; [ label=&quot;bqbiol:isPartOf&quot; ];
+<span class="linenos"> 93</span>	&quot;ROMEXlib:NewOmex.omex/NewModel.rdf#EntityProperty0000&quot; -&gt; &quot;Rhttps://identifiers.org/fma/FMA:7163&quot; [ label=&quot;bqbiol:isPartOf&quot; ];
+<span class="linenos"> 94</span>
+<span class="linenos"> 95</span>	// Resources
+<span class="linenos"> 96</span>	&quot;ROMEXlib:NewOmex.omex/NewModel.rdf#OmexMetaId0001&quot; [ label=&quot;OMEXlib:NewOmex.omex/NewModel.rdf#OmexMetaId0001&quot;, shape = ellipse, color = blue ];
+<span class="linenos"> 97</span>	&quot;ROMEXlib:NewOmex.omex/NewModel.rdf#EntityProperty0000&quot; [ label=&quot;OMEXlib:NewOmex.omex/NewModel.rdf#EntityProperty0000&quot;, shape = ellipse, color = blue ];
+<span class="linenos"> 98</span>	&quot;Rhttps://identifiers.org/OPB/OPB_00340&quot; [ label=&quot;https://identifiers.org/OPB/OPB_00340&quot;, shape = ellipse, color = blue ];
+<span class="linenos"> 99</span>	&quot;Rhttps://identifiers.org/uniprot/P84022&quot; [ label=&quot;https://identifiers.org/uniprot/P84022&quot;, shape = ellipse, color = blue ];
+<span class="linenos">100</span>	&quot;Rhttps://identifiers.org/fma/FMA:24178&quot; [ label=&quot;https://identifiers.org/fma/FMA:24178&quot;, shape = ellipse, color = blue ];
+<span class="linenos">101</span>	&quot;Rhttps://identifiers.org/fma/FMA:63877&quot; [ label=&quot;https://identifiers.org/fma/FMA:63877&quot;, shape = ellipse, color = blue ];
+<span class="linenos">102</span>	&quot;Rhttps://identifiers.org/fma/FMA:70737&quot; [ label=&quot;https://identifiers.org/fma/FMA:70737&quot;, shape = ellipse, color = blue ];
+<span class="linenos">103</span>	&quot;Rhttps://identifiers.org/fma/FMA:7163&quot; [ label=&quot;https://identifiers.org/fma/FMA:7163&quot;, shape = ellipse, color = blue ];
+<span class="linenos">104</span>
+<span class="linenos">105</span>	// Anonymous nodes
+<span class="linenos">106</span>
+<span class="linenos">107</span>	// Literals
+<span class="linenos">108</span>
+<span class="linenos">109</span>	label=&quot;\n\nModel:\nbase\n\nNamespaces:\nbqbiol: http://biomodels.net/biology-qualifiers/\nOMEXlib: http://omex-library.org/\nlocal: http://omex-library.org/NewOmex.omex/NewModel.rdf#\n&quot;;
+<span class="linenos">110</span>}
+<span class="linenos">111</span>
 <span class="linenos">112</span>
 <span class="linenos">113</span>
 <span class="linenos">114</span>
-<span class="linenos">115</span>
-<span class="linenos">116</span>Serializing to json-triples
-<span class="linenos">117</span>{
-<span class="linenos">118</span>  &quot;triples&quot; : [
-<span class="linenos">119</span>    {
-<span class="linenos">120</span>      &quot;subject&quot; : {
-<span class="linenos">121</span>        &quot;value&quot; : &quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#OmexMetaId0001&quot;,
-<span class="linenos">122</span>        &quot;type&quot; : &quot;uri&quot;
-<span class="linenos">123</span>        },
-<span class="linenos">124</span>      &quot;predicate&quot; : {
-<span class="linenos">125</span>        &quot;value&quot; : &quot;http://biomodels.net/biology-qualifiers/isPropertyOf&quot;,
-<span class="linenos">126</span>        &quot;type&quot; : &quot;uri&quot;
-<span class="linenos">127</span>        },
-<span class="linenos">128</span>      &quot;object&quot; : {
-<span class="linenos">129</span>        &quot;value&quot; : &quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&quot;,
-<span class="linenos">130</span>        &quot;type&quot; : &quot;uri&quot;
-<span class="linenos">131</span>        }
-<span class="linenos">132</span>      },
-<span class="linenos">133</span>    {
-<span class="linenos">134</span>      &quot;subject&quot; : {
-<span class="linenos">135</span>        &quot;value&quot; : &quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#OmexMetaId0001&quot;,
-<span class="linenos">136</span>        &quot;type&quot; : &quot;uri&quot;
-<span class="linenos">137</span>        },
-<span class="linenos">138</span>      &quot;predicate&quot; : {
-<span class="linenos">139</span>        &quot;value&quot; : &quot;http://biomodels.net/biology-qualifiers/isVersionOf&quot;,
-<span class="linenos">140</span>        &quot;type&quot; : &quot;uri&quot;
-<span class="linenos">141</span>        },
-<span class="linenos">142</span>      &quot;object&quot; : {
-<span class="linenos">143</span>        &quot;value&quot; : &quot;https://identifiers.org/OPB/OPB_00340&quot;,
-<span class="linenos">144</span>        &quot;type&quot; : &quot;uri&quot;
-<span class="linenos">145</span>        }
-<span class="linenos">146</span>      },
-<span class="linenos">147</span>    {
-<span class="linenos">148</span>      &quot;subject&quot; : {
-<span class="linenos">149</span>        &quot;value&quot; : &quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&quot;,
-<span class="linenos">150</span>        &quot;type&quot; : &quot;uri&quot;
-<span class="linenos">151</span>        },
-<span class="linenos">152</span>      &quot;predicate&quot; : {
-<span class="linenos">153</span>        &quot;value&quot; : &quot;http://biomodels.net/biology-qualifiers/is&quot;,
-<span class="linenos">154</span>        &quot;type&quot; : &quot;uri&quot;
-<span class="linenos">155</span>        },
-<span class="linenos">156</span>      &quot;object&quot; : {
-<span class="linenos">157</span>        &quot;value&quot; : &quot;https://identifiers.org/uniprot/P84022&quot;,
-<span class="linenos">158</span>        &quot;type&quot; : &quot;uri&quot;
-<span class="linenos">159</span>        }
-<span class="linenos">160</span>      },
-<span class="linenos">161</span>    {
-<span class="linenos">162</span>      &quot;subject&quot; : {
-<span class="linenos">163</span>        &quot;value&quot; : &quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&quot;,
-<span class="linenos">164</span>        &quot;type&quot; : &quot;uri&quot;
-<span class="linenos">165</span>        },
-<span class="linenos">166</span>      &quot;predicate&quot; : {
-<span class="linenos">167</span>        &quot;value&quot; : &quot;http://biomodels.net/biology-qualifiers/isPartOf&quot;,
-<span class="linenos">168</span>        &quot;type&quot; : &quot;uri&quot;
-<span class="linenos">169</span>        },
-<span class="linenos">170</span>      &quot;object&quot; : {
-<span class="linenos">171</span>        &quot;value&quot; : &quot;https://identifiers.org/fma/FMA:24178&quot;,
-<span class="linenos">172</span>        &quot;type&quot; : &quot;uri&quot;
-<span class="linenos">173</span>        }
-<span class="linenos">174</span>      },
-<span class="linenos">175</span>    {
-<span class="linenos">176</span>      &quot;subject&quot; : {
-<span class="linenos">177</span>        &quot;value&quot; : &quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&quot;,
-<span class="linenos">178</span>        &quot;type&quot; : &quot;uri&quot;
-<span class="linenos">179</span>        },
-<span class="linenos">180</span>      &quot;predicate&quot; : {
-<span class="linenos">181</span>        &quot;value&quot; : &quot;http://biomodels.net/biology-qualifiers/isPartOf&quot;,
-<span class="linenos">182</span>        &quot;type&quot; : &quot;uri&quot;
-<span class="linenos">183</span>        },
-<span class="linenos">184</span>      &quot;object&quot; : {
-<span class="linenos">185</span>        &quot;value&quot; : &quot;https://identifiers.org/fma/FMA:63877&quot;,
-<span class="linenos">186</span>        &quot;type&quot; : &quot;uri&quot;
-<span class="linenos">187</span>        }
-<span class="linenos">188</span>      },
-<span class="linenos">189</span>    {
-<span class="linenos">190</span>      &quot;subject&quot; : {
-<span class="linenos">191</span>        &quot;value&quot; : &quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&quot;,
-<span class="linenos">192</span>        &quot;type&quot; : &quot;uri&quot;
-<span class="linenos">193</span>        },
-<span class="linenos">194</span>      &quot;predicate&quot; : {
-<span class="linenos">195</span>        &quot;value&quot; : &quot;http://biomodels.net/biology-qualifiers/isPartOf&quot;,
-<span class="linenos">196</span>        &quot;type&quot; : &quot;uri&quot;
-<span class="linenos">197</span>        },
-<span class="linenos">198</span>      &quot;object&quot; : {
-<span class="linenos">199</span>        &quot;value&quot; : &quot;https://identifiers.org/fma/FMA:70737&quot;,
-<span class="linenos">200</span>        &quot;type&quot; : &quot;uri&quot;
-<span class="linenos">201</span>        }
-<span class="linenos">202</span>      },
-<span class="linenos">203</span>    {
-<span class="linenos">204</span>      &quot;subject&quot; : {
-<span class="linenos">205</span>        &quot;value&quot; : &quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&quot;,
-<span class="linenos">206</span>        &quot;type&quot; : &quot;uri&quot;
-<span class="linenos">207</span>        },
-<span class="linenos">208</span>      &quot;predicate&quot; : {
-<span class="linenos">209</span>        &quot;value&quot; : &quot;http://biomodels.net/biology-qualifiers/isPartOf&quot;,
-<span class="linenos">210</span>        &quot;type&quot; : &quot;uri&quot;
-<span class="linenos">211</span>        },
-<span class="linenos">212</span>      &quot;object&quot; : {
-<span class="linenos">213</span>        &quot;value&quot; : &quot;https://identifiers.org/fma/FMA:7163&quot;,
-<span class="linenos">214</span>        &quot;type&quot; : &quot;uri&quot;
-<span class="linenos">215</span>        }
-<span class="linenos">216</span>      }
-<span class="linenos">217</span>    ]
-<span class="linenos">218</span>  }
+<span class="linenos">115</span>Serializing to json-triples
+<span class="linenos">116</span>{
+<span class="linenos">117</span>  &quot;triples&quot; : [
+<span class="linenos">118</span>    {
+<span class="linenos">119</span>      &quot;subject&quot; : {
+<span class="linenos">120</span>        &quot;value&quot; : &quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#OmexMetaId0001&quot;,
+<span class="linenos">121</span>        &quot;type&quot; : &quot;uri&quot;
+<span class="linenos">122</span>        },
+<span class="linenos">123</span>      &quot;predicate&quot; : {
+<span class="linenos">124</span>        &quot;value&quot; : &quot;http://biomodels.net/biology-qualifiers/isPropertyOf&quot;,
+<span class="linenos">125</span>        &quot;type&quot; : &quot;uri&quot;
+<span class="linenos">126</span>        },
+<span class="linenos">127</span>      &quot;object&quot; : {
+<span class="linenos">128</span>        &quot;value&quot; : &quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&quot;,
+<span class="linenos">129</span>        &quot;type&quot; : &quot;uri&quot;
+<span class="linenos">130</span>        }
+<span class="linenos">131</span>      },
+<span class="linenos">132</span>    {
+<span class="linenos">133</span>      &quot;subject&quot; : {
+<span class="linenos">134</span>        &quot;value&quot; : &quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#OmexMetaId0001&quot;,
+<span class="linenos">135</span>        &quot;type&quot; : &quot;uri&quot;
+<span class="linenos">136</span>        },
+<span class="linenos">137</span>      &quot;predicate&quot; : {
+<span class="linenos">138</span>        &quot;value&quot; : &quot;http://biomodels.net/biology-qualifiers/isVersionOf&quot;,
+<span class="linenos">139</span>        &quot;type&quot; : &quot;uri&quot;
+<span class="linenos">140</span>        },
+<span class="linenos">141</span>      &quot;object&quot; : {
+<span class="linenos">142</span>        &quot;value&quot; : &quot;https://identifiers.org/OPB/OPB_00340&quot;,
+<span class="linenos">143</span>        &quot;type&quot; : &quot;uri&quot;
+<span class="linenos">144</span>        }
+<span class="linenos">145</span>      },
+<span class="linenos">146</span>    {
+<span class="linenos">147</span>      &quot;subject&quot; : {
+<span class="linenos">148</span>        &quot;value&quot; : &quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&quot;,
+<span class="linenos">149</span>        &quot;type&quot; : &quot;uri&quot;
+<span class="linenos">150</span>        },
+<span class="linenos">151</span>      &quot;predicate&quot; : {
+<span class="linenos">152</span>        &quot;value&quot; : &quot;http://biomodels.net/biology-qualifiers/is&quot;,
+<span class="linenos">153</span>        &quot;type&quot; : &quot;uri&quot;
+<span class="linenos">154</span>        },
+<span class="linenos">155</span>      &quot;object&quot; : {
+<span class="linenos">156</span>        &quot;value&quot; : &quot;https://identifiers.org/uniprot/P84022&quot;,
+<span class="linenos">157</span>        &quot;type&quot; : &quot;uri&quot;
+<span class="linenos">158</span>        }
+<span class="linenos">159</span>      },
+<span class="linenos">160</span>    {
+<span class="linenos">161</span>      &quot;subject&quot; : {
+<span class="linenos">162</span>        &quot;value&quot; : &quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&quot;,
+<span class="linenos">163</span>        &quot;type&quot; : &quot;uri&quot;
+<span class="linenos">164</span>        },
+<span class="linenos">165</span>      &quot;predicate&quot; : {
+<span class="linenos">166</span>        &quot;value&quot; : &quot;http://biomodels.net/biology-qualifiers/isPartOf&quot;,
+<span class="linenos">167</span>        &quot;type&quot; : &quot;uri&quot;
+<span class="linenos">168</span>        },
+<span class="linenos">169</span>      &quot;object&quot; : {
+<span class="linenos">170</span>        &quot;value&quot; : &quot;https://identifiers.org/fma/FMA:24178&quot;,
+<span class="linenos">171</span>        &quot;type&quot; : &quot;uri&quot;
+<span class="linenos">172</span>        }
+<span class="linenos">173</span>      },
+<span class="linenos">174</span>    {
+<span class="linenos">175</span>      &quot;subject&quot; : {
+<span class="linenos">176</span>        &quot;value&quot; : &quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&quot;,
+<span class="linenos">177</span>        &quot;type&quot; : &quot;uri&quot;
+<span class="linenos">178</span>        },
+<span class="linenos">179</span>      &quot;predicate&quot; : {
+<span class="linenos">180</span>        &quot;value&quot; : &quot;http://biomodels.net/biology-qualifiers/isPartOf&quot;,
+<span class="linenos">181</span>        &quot;type&quot; : &quot;uri&quot;
+<span class="linenos">182</span>        },
+<span class="linenos">183</span>      &quot;object&quot; : {
+<span class="linenos">184</span>        &quot;value&quot; : &quot;https://identifiers.org/fma/FMA:63877&quot;,
+<span class="linenos">185</span>        &quot;type&quot; : &quot;uri&quot;
+<span class="linenos">186</span>        }
+<span class="linenos">187</span>      },
+<span class="linenos">188</span>    {
+<span class="linenos">189</span>      &quot;subject&quot; : {
+<span class="linenos">190</span>        &quot;value&quot; : &quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&quot;,
+<span class="linenos">191</span>        &quot;type&quot; : &quot;uri&quot;
+<span class="linenos">192</span>        },
+<span class="linenos">193</span>      &quot;predicate&quot; : {
+<span class="linenos">194</span>        &quot;value&quot; : &quot;http://biomodels.net/biology-qualifiers/isPartOf&quot;,
+<span class="linenos">195</span>        &quot;type&quot; : &quot;uri&quot;
+<span class="linenos">196</span>        },
+<span class="linenos">197</span>      &quot;object&quot; : {
+<span class="linenos">198</span>        &quot;value&quot; : &quot;https://identifiers.org/fma/FMA:70737&quot;,
+<span class="linenos">199</span>        &quot;type&quot; : &quot;uri&quot;
+<span class="linenos">200</span>        }
+<span class="linenos">201</span>      },
+<span class="linenos">202</span>    {
+<span class="linenos">203</span>      &quot;subject&quot; : {
+<span class="linenos">204</span>        &quot;value&quot; : &quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&quot;,
+<span class="linenos">205</span>        &quot;type&quot; : &quot;uri&quot;
+<span class="linenos">206</span>        },
+<span class="linenos">207</span>      &quot;predicate&quot; : {
+<span class="linenos">208</span>        &quot;value&quot; : &quot;http://biomodels.net/biology-qualifiers/isPartOf&quot;,
+<span class="linenos">209</span>        &quot;type&quot; : &quot;uri&quot;
+<span class="linenos">210</span>        },
+<span class="linenos">211</span>      &quot;object&quot; : {
+<span class="linenos">212</span>        &quot;value&quot; : &quot;https://identifiers.org/fma/FMA:7163&quot;,
+<span class="linenos">213</span>        &quot;type&quot; : &quot;uri&quot;
+<span class="linenos">214</span>        }
+<span class="linenos">215</span>      }
+<span class="linenos">216</span>    ]
+<span class="linenos">217</span>  }
+<span class="linenos">218</span>
 <span class="linenos">219</span>
 <span class="linenos">220</span>
 <span class="linenos">221</span>
-<span class="linenos">222</span>
-<span class="linenos">223</span>Serializing to json
-<span class="linenos">224</span>
-<span class="linenos">225</span>{
-<span class="linenos">226</span>  &quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&quot; : {
-<span class="linenos">227</span>    &quot;http://biomodels.net/biology-qualifiers/is&quot; : [ {
-<span class="linenos">228</span>        &quot;value&quot; : &quot;https://identifiers.org/uniprot/P84022&quot;,
-<span class="linenos">229</span>        &quot;type&quot; : &quot;uri&quot;
-<span class="linenos">230</span>        }
-<span class="linenos">231</span>      
-<span class="linenos">232</span>      ],
-<span class="linenos">233</span>    &quot;http://biomodels.net/biology-qualifiers/isPartOf&quot; : [ {
-<span class="linenos">234</span>        &quot;value&quot; : &quot;https://identifiers.org/fma/FMA:24178&quot;,
-<span class="linenos">235</span>        &quot;type&quot; : &quot;uri&quot;
-<span class="linenos">236</span>        }
-<span class="linenos">237</span>      ,
-<span class="linenos">238</span>      {
-<span class="linenos">239</span>        &quot;value&quot; : &quot;https://identifiers.org/fma/FMA:63877&quot;,
-<span class="linenos">240</span>        &quot;type&quot; : &quot;uri&quot;
-<span class="linenos">241</span>        }
-<span class="linenos">242</span>      ,
-<span class="linenos">243</span>      {
-<span class="linenos">244</span>        &quot;value&quot; : &quot;https://identifiers.org/fma/FMA:70737&quot;,
-<span class="linenos">245</span>        &quot;type&quot; : &quot;uri&quot;
-<span class="linenos">246</span>        }
-<span class="linenos">247</span>      ,
-<span class="linenos">248</span>      {
-<span class="linenos">249</span>        &quot;value&quot; : &quot;https://identifiers.org/fma/FMA:7163&quot;,
-<span class="linenos">250</span>        &quot;type&quot; : &quot;uri&quot;
-<span class="linenos">251</span>        }
-<span class="linenos">252</span>      
-<span class="linenos">253</span>      ]
-<span class="linenos">254</span>    }
-<span class="linenos">255</span>  ,
-<span class="linenos">256</span>  &quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#OmexMetaId0001&quot; : {
-<span class="linenos">257</span>    &quot;http://biomodels.net/biology-qualifiers/isPropertyOf&quot; : [ {
-<span class="linenos">258</span>        &quot;value&quot; : &quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&quot;,
-<span class="linenos">259</span>        &quot;type&quot; : &quot;uri&quot;
-<span class="linenos">260</span>        }
-<span class="linenos">261</span>      
-<span class="linenos">262</span>      ],
-<span class="linenos">263</span>    &quot;http://biomodels.net/biology-qualifiers/isVersionOf&quot; : [ {
-<span class="linenos">264</span>        &quot;value&quot; : &quot;https://identifiers.org/OPB/OPB_00340&quot;,
-<span class="linenos">265</span>        &quot;type&quot; : &quot;uri&quot;
-<span class="linenos">266</span>        }
-<span class="linenos">267</span>      
-<span class="linenos">268</span>      ]
-<span class="linenos">269</span>    }
-<span class="linenos">270</span>  }
+<span class="linenos">222</span>Serializing to json
+<span class="linenos">223</span>
+<span class="linenos">224</span>{
+<span class="linenos">225</span>  &quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&quot; : {
+<span class="linenos">226</span>    &quot;http://biomodels.net/biology-qualifiers/is&quot; : [ {
+<span class="linenos">227</span>        &quot;value&quot; : &quot;https://identifiers.org/uniprot/P84022&quot;,
+<span class="linenos">228</span>        &quot;type&quot; : &quot;uri&quot;
+<span class="linenos">229</span>        }
+<span class="linenos">230</span>      
+<span class="linenos">231</span>      ],
+<span class="linenos">232</span>    &quot;http://biomodels.net/biology-qualifiers/isPartOf&quot; : [ {
+<span class="linenos">233</span>        &quot;value&quot; : &quot;https://identifiers.org/fma/FMA:24178&quot;,
+<span class="linenos">234</span>        &quot;type&quot; : &quot;uri&quot;
+<span class="linenos">235</span>        }
+<span class="linenos">236</span>      ,
+<span class="linenos">237</span>      {
+<span class="linenos">238</span>        &quot;value&quot; : &quot;https://identifiers.org/fma/FMA:63877&quot;,
+<span class="linenos">239</span>        &quot;type&quot; : &quot;uri&quot;
+<span class="linenos">240</span>        }
+<span class="linenos">241</span>      ,
+<span class="linenos">242</span>      {
+<span class="linenos">243</span>        &quot;value&quot; : &quot;https://identifiers.org/fma/FMA:70737&quot;,
+<span class="linenos">244</span>        &quot;type&quot; : &quot;uri&quot;
+<span class="linenos">245</span>        }
+<span class="linenos">246</span>      ,
+<span class="linenos">247</span>      {
+<span class="linenos">248</span>        &quot;value&quot; : &quot;https://identifiers.org/fma/FMA:7163&quot;,
+<span class="linenos">249</span>        &quot;type&quot; : &quot;uri&quot;
+<span class="linenos">250</span>        }
+<span class="linenos">251</span>      
+<span class="linenos">252</span>      ]
+<span class="linenos">253</span>    }
+<span class="linenos">254</span>  ,
+<span class="linenos">255</span>  &quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#OmexMetaId0001&quot; : {
+<span class="linenos">256</span>    &quot;http://biomodels.net/biology-qualifiers/isPropertyOf&quot; : [ {
+<span class="linenos">257</span>        &quot;value&quot; : &quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&quot;,
+<span class="linenos">258</span>        &quot;type&quot; : &quot;uri&quot;
+<span class="linenos">259</span>        }
+<span class="linenos">260</span>      
+<span class="linenos">261</span>      ],
+<span class="linenos">262</span>    &quot;http://biomodels.net/biology-qualifiers/isVersionOf&quot; : [ {
+<span class="linenos">263</span>        &quot;value&quot; : &quot;https://identifiers.org/OPB/OPB_00340&quot;,
+<span class="linenos">264</span>        &quot;type&quot; : &quot;uri&quot;
+<span class="linenos">265</span>        }
+<span class="linenos">266</span>      
+<span class="linenos">267</span>      ]
+<span class="linenos">268</span>    }
+<span class="linenos">269</span>  }
+<span class="linenos">270</span>
 <span class="linenos">271</span>
 <span class="linenos">272</span>
 <span class="linenos">273</span>
-<span class="linenos">274</span>
-<span class="linenos">275</span>Serializing to nquads
-<span class="linenos">276</span>&lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#OmexMetaId0001&gt; &lt;http://biomodels.net/biology-qualifiers/isPropertyOf&gt; &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&gt; .
-<span class="linenos">277</span>&lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#OmexMetaId0001&gt; &lt;http://biomodels.net/biology-qualifiers/isVersionOf&gt; &lt;https://identifiers.org/OPB/OPB_00340&gt; .
-<span class="linenos">278</span>&lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&gt; &lt;http://biomodels.net/biology-qualifiers/is&gt; &lt;https://identifiers.org/uniprot/P84022&gt; .
-<span class="linenos">279</span>&lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&gt; &lt;http://biomodels.net/biology-qualifiers/isPartOf&gt; &lt;https://identifiers.org/fma/FMA:24178&gt; .
-<span class="linenos">280</span>&lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&gt; &lt;http://biomodels.net/biology-qualifiers/isPartOf&gt; &lt;https://identifiers.org/fma/FMA:63877&gt; .
-<span class="linenos">281</span>&lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&gt; &lt;http://biomodels.net/biology-qualifiers/isPartOf&gt; &lt;https://identifiers.org/fma/FMA:70737&gt; .
-<span class="linenos">282</span>&lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&gt; &lt;http://biomodels.net/biology-qualifiers/isPartOf&gt; &lt;https://identifiers.org/fma/FMA:7163&gt; .
+<span class="linenos">274</span>Serializing to nquads
+<span class="linenos">275</span>&lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#OmexMetaId0001&gt; &lt;http://biomodels.net/biology-qualifiers/isPropertyOf&gt; &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&gt; .
+<span class="linenos">276</span>&lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#OmexMetaId0001&gt; &lt;http://biomodels.net/biology-qualifiers/isVersionOf&gt; &lt;https://identifiers.org/OPB/OPB_00340&gt; .
+<span class="linenos">277</span>&lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&gt; &lt;http://biomodels.net/biology-qualifiers/is&gt; &lt;https://identifiers.org/uniprot/P84022&gt; .
+<span class="linenos">278</span>&lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&gt; &lt;http://biomodels.net/biology-qualifiers/isPartOf&gt; &lt;https://identifiers.org/fma/FMA:24178&gt; .
+<span class="linenos">279</span>&lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&gt; &lt;http://biomodels.net/biology-qualifiers/isPartOf&gt; &lt;https://identifiers.org/fma/FMA:63877&gt; .
+<span class="linenos">280</span>&lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&gt; &lt;http://biomodels.net/biology-qualifiers/isPartOf&gt; &lt;https://identifiers.org/fma/FMA:70737&gt; .
+<span class="linenos">281</span>&lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&gt; &lt;http://biomodels.net/biology-qualifiers/isPartOf&gt; &lt;https://identifiers.org/fma/FMA:7163&gt; .
+<span class="linenos">282</span>
 <span class="linenos">283</span>
 <span class="linenos">284</span>
 <span class="linenos">285</span>
-<span class="linenos">286</span>
-<span class="linenos">287</span>Serializing to html
-<span class="linenos">288</span>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
-<span class="linenos">289</span>&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.1//EN&quot;
-<span class="linenos">290</span>        &quot;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&quot;&gt;
-<span class="linenos">291</span>&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
-<span class="linenos">292</span>&lt;head&gt;
-<span class="linenos">293</span>  &lt;title&gt;Raptor Graph Serialisation&lt;/title&gt;
-<span class="linenos">294</span>&lt;/head&gt;
-<span class="linenos">295</span>&lt;body&gt;
-<span class="linenos">296</span>  &lt;table id=&quot;triples&quot; border=&quot;1&quot;&gt;
-<span class="linenos">297</span>    &lt;tr&gt;
-<span class="linenos">298</span>      &lt;th&gt;Subject&lt;/th&gt;
-<span class="linenos">299</span>      &lt;th&gt;Predicate&lt;/th&gt;
-<span class="linenos">300</span>      &lt;th&gt;Object&lt;/th&gt;
-<span class="linenos">301</span>    &lt;/tr&gt;
-<span class="linenos">302</span>    &lt;tr class=&quot;triple&quot;&gt;
-<span class="linenos">303</span>      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#OmexMetaId0001&quot;&gt;http://omex-library.org/NewOmex.omex/NewModel.rdf#OmexMetaId0001&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
-<span class="linenos">304</span>      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://biomodels.net/biology-qualifiers/isPropertyOf&quot;&gt;http://biomodels.net/biology-qualifiers/isPropertyOf&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
-<span class="linenos">305</span>      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&quot;&gt;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
-<span class="linenos">306</span>    &lt;/tr&gt;
-<span class="linenos">307</span>    &lt;tr class=&quot;triple&quot;&gt;
-<span class="linenos">308</span>      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#OmexMetaId0001&quot;&gt;http://omex-library.org/NewOmex.omex/NewModel.rdf#OmexMetaId0001&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
-<span class="linenos">309</span>      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://biomodels.net/biology-qualifiers/isVersionOf&quot;&gt;http://biomodels.net/biology-qualifiers/isVersionOf&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
-<span class="linenos">310</span>      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;https://identifiers.org/OPB/OPB_00340&quot;&gt;https://identifiers.org/OPB/OPB_00340&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
-<span class="linenos">311</span>    &lt;/tr&gt;
-<span class="linenos">312</span>    &lt;tr class=&quot;triple&quot;&gt;
-<span class="linenos">313</span>      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&quot;&gt;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
-<span class="linenos">314</span>      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://biomodels.net/biology-qualifiers/is&quot;&gt;http://biomodels.net/biology-qualifiers/is&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
-<span class="linenos">315</span>      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;https://identifiers.org/uniprot/P84022&quot;&gt;https://identifiers.org/uniprot/P84022&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
-<span class="linenos">316</span>    &lt;/tr&gt;
-<span class="linenos">317</span>    &lt;tr class=&quot;triple&quot;&gt;
-<span class="linenos">318</span>      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&quot;&gt;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
-<span class="linenos">319</span>      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://biomodels.net/biology-qualifiers/isPartOf&quot;&gt;http://biomodels.net/biology-qualifiers/isPartOf&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
-<span class="linenos">320</span>      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;https://identifiers.org/fma/FMA:24178&quot;&gt;https://identifiers.org/fma/FMA:24178&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
-<span class="linenos">321</span>    &lt;/tr&gt;
-<span class="linenos">322</span>    &lt;tr class=&quot;triple&quot;&gt;
-<span class="linenos">323</span>      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&quot;&gt;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
-<span class="linenos">324</span>      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://biomodels.net/biology-qualifiers/isPartOf&quot;&gt;http://biomodels.net/biology-qualifiers/isPartOf&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
-<span class="linenos">325</span>      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;https://identifiers.org/fma/FMA:63877&quot;&gt;https://identifiers.org/fma/FMA:63877&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
-<span class="linenos">326</span>    &lt;/tr&gt;
-<span class="linenos">327</span>    &lt;tr class=&quot;triple&quot;&gt;
-<span class="linenos">328</span>      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&quot;&gt;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
-<span class="linenos">329</span>      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://biomodels.net/biology-qualifiers/isPartOf&quot;&gt;http://biomodels.net/biology-qualifiers/isPartOf&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
-<span class="linenos">330</span>      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;https://identifiers.org/fma/FMA:70737&quot;&gt;https://identifiers.org/fma/FMA:70737&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
-<span class="linenos">331</span>    &lt;/tr&gt;
-<span class="linenos">332</span>    &lt;tr class=&quot;triple&quot;&gt;
-<span class="linenos">333</span>      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&quot;&gt;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
-<span class="linenos">334</span>      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://biomodels.net/biology-qualifiers/isPartOf&quot;&gt;http://biomodels.net/biology-qualifiers/isPartOf&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
-<span class="linenos">335</span>      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;https://identifiers.org/fma/FMA:7163&quot;&gt;https://identifiers.org/fma/FMA:7163&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
-<span class="linenos">336</span>    &lt;/tr&gt;
-<span class="linenos">337</span>  &lt;/table&gt;
-<span class="linenos">338</span>  &lt;p&gt;Total number of triples: &lt;span class=&quot;count&quot;&gt;7&lt;/span&gt;.&lt;/p&gt;
-<span class="linenos">339</span>&lt;/body&gt;
-<span class="linenos">340</span>&lt;/html&gt;
+<span class="linenos">286</span>Serializing to html
+<span class="linenos">287</span>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+<span class="linenos">288</span>&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.1//EN&quot;
+<span class="linenos">289</span>        &quot;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&quot;&gt;
+<span class="linenos">290</span>&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+<span class="linenos">291</span>&lt;head&gt;
+<span class="linenos">292</span>  &lt;title&gt;Raptor Graph Serialisation&lt;/title&gt;
+<span class="linenos">293</span>&lt;/head&gt;
+<span class="linenos">294</span>&lt;body&gt;
+<span class="linenos">295</span>  &lt;table id=&quot;triples&quot; border=&quot;1&quot;&gt;
+<span class="linenos">296</span>    &lt;tr&gt;
+<span class="linenos">297</span>      &lt;th&gt;Subject&lt;/th&gt;
+<span class="linenos">298</span>      &lt;th&gt;Predicate&lt;/th&gt;
+<span class="linenos">299</span>      &lt;th&gt;Object&lt;/th&gt;
+<span class="linenos">300</span>    &lt;/tr&gt;
+<span class="linenos">301</span>    &lt;tr class=&quot;triple&quot;&gt;
+<span class="linenos">302</span>      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#OmexMetaId0001&quot;&gt;http://omex-library.org/NewOmex.omex/NewModel.rdf#OmexMetaId0001&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
+<span class="linenos">303</span>      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://biomodels.net/biology-qualifiers/isPropertyOf&quot;&gt;http://biomodels.net/biology-qualifiers/isPropertyOf&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
+<span class="linenos">304</span>      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&quot;&gt;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
+<span class="linenos">305</span>    &lt;/tr&gt;
+<span class="linenos">306</span>    &lt;tr class=&quot;triple&quot;&gt;
+<span class="linenos">307</span>      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#OmexMetaId0001&quot;&gt;http://omex-library.org/NewOmex.omex/NewModel.rdf#OmexMetaId0001&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
+<span class="linenos">308</span>      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://biomodels.net/biology-qualifiers/isVersionOf&quot;&gt;http://biomodels.net/biology-qualifiers/isVersionOf&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
+<span class="linenos">309</span>      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;https://identifiers.org/OPB/OPB_00340&quot;&gt;https://identifiers.org/OPB/OPB_00340&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
+<span class="linenos">310</span>    &lt;/tr&gt;
+<span class="linenos">311</span>    &lt;tr class=&quot;triple&quot;&gt;
+<span class="linenos">312</span>      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&quot;&gt;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
+<span class="linenos">313</span>      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://biomodels.net/biology-qualifiers/is&quot;&gt;http://biomodels.net/biology-qualifiers/is&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
+<span class="linenos">314</span>      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;https://identifiers.org/uniprot/P84022&quot;&gt;https://identifiers.org/uniprot/P84022&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
+<span class="linenos">315</span>    &lt;/tr&gt;
+<span class="linenos">316</span>    &lt;tr class=&quot;triple&quot;&gt;
+<span class="linenos">317</span>      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&quot;&gt;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
+<span class="linenos">318</span>      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://biomodels.net/biology-qualifiers/isPartOf&quot;&gt;http://biomodels.net/biology-qualifiers/isPartOf&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
+<span class="linenos">319</span>      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;https://identifiers.org/fma/FMA:24178&quot;&gt;https://identifiers.org/fma/FMA:24178&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
+<span class="linenos">320</span>    &lt;/tr&gt;
+<span class="linenos">321</span>    &lt;tr class=&quot;triple&quot;&gt;
+<span class="linenos">322</span>      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&quot;&gt;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
+<span class="linenos">323</span>      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://biomodels.net/biology-qualifiers/isPartOf&quot;&gt;http://biomodels.net/biology-qualifiers/isPartOf&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
+<span class="linenos">324</span>      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;https://identifiers.org/fma/FMA:63877&quot;&gt;https://identifiers.org/fma/FMA:63877&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
+<span class="linenos">325</span>    &lt;/tr&gt;
+<span class="linenos">326</span>    &lt;tr class=&quot;triple&quot;&gt;
+<span class="linenos">327</span>      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&quot;&gt;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
+<span class="linenos">328</span>      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://biomodels.net/biology-qualifiers/isPartOf&quot;&gt;http://biomodels.net/biology-qualifiers/isPartOf&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
+<span class="linenos">329</span>      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;https://identifiers.org/fma/FMA:70737&quot;&gt;https://identifiers.org/fma/FMA:70737&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
+<span class="linenos">330</span>    &lt;/tr&gt;
+<span class="linenos">331</span>    &lt;tr class=&quot;triple&quot;&gt;
+<span class="linenos">332</span>      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&quot;&gt;http://omex-library.org/NewOmex.omex/NewModel.rdf#EntityProperty0000&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
+<span class="linenos">333</span>      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://biomodels.net/biology-qualifiers/isPartOf&quot;&gt;http://biomodels.net/biology-qualifiers/isPartOf&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
+<span class="linenos">334</span>      &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;https://identifiers.org/fma/FMA:7163&quot;&gt;https://identifiers.org/fma/FMA:7163&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
+<span class="linenos">335</span>    &lt;/tr&gt;
+<span class="linenos">336</span>  &lt;/table&gt;
+<span class="linenos">337</span>  &lt;p&gt;Total number of triples: &lt;span class=&quot;count&quot;&gt;7&lt;/span&gt;.&lt;/p&gt;
+<span class="linenos">338</span>&lt;/body&gt;
+<span class="linenos">339</span>&lt;/html&gt;
+<span class="linenos">340</span>
 <span class="linenos">341</span>
 <span class="linenos">342</span>
 <span class="linenos">343</span>
-<span class="linenos">344</span>
 </pre></div>
 </div>
 </div>
@@ -2091,11 +2090,10 @@ that are supported by libOmexMeta, including:</p>
 </div>
 <div class="literal-block-wrapper docutils container" id="id8">
 <div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id8" title="Permalink to this code">¶</a></div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">sys</span><span class="o">.</span><span class="n">executable</span> <span class="n">C</span><span class="p">:</span>\<span class="n">Miniconda3</span>\<span class="n">envs</span>\<span class="n">py39</span>\<span class="n">python</span><span class="o">.</span><span class="n">exe</span>
-<span class="linenos">2</span><span class="n">Serializing</span> <span class="n">to</span> <span class="n">ntriples</span><span class="p">:</span>
-<span class="linenos">3</span><span class="mi">0</span>
-<span class="linenos">4</span><span class="n">RDF</span> <span class="n">graph</span> <span class="n">serialized</span> <span class="n">to</span> <span class="s2">&quot;D:\libOmexMeta\docs\write_to_file.rdf&quot;</span>
-<span class="linenos">5</span><span class="n">Counted</span> <span class="s2">&quot;7&quot;</span> <span class="n">triples</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">Serializing</span> <span class="n">to</span> <span class="n">ntriples</span><span class="p">:</span>
+<span class="linenos">2</span><span class="mi">0</span>
+<span class="linenos">3</span><span class="n">RDF</span> <span class="n">graph</span> <span class="n">serialized</span> <span class="n">to</span> <span class="s2">&quot;D:\libOmexMeta\docs\write_to_file.rdf&quot;</span>
+<span class="linenos">4</span><span class="n">Counted</span> <span class="s2">&quot;7&quot;</span> <span class="n">triples</span>
 </pre></div>
 </div>
 </div>

@@ -11,7 +11,7 @@ _TESTS_DIR = os.path.dirname(_PYTHON_TESTS_DIR)
 _PROJECT_ROOT = os.path.dirname(_TESTS_DIR)
 _SRC_DIR = os.path.join(_PROJECT_ROOT, "src")
 
-sys.path.append(_SRC_DIR)
+sys.path += [_PYTHON_TESTS_DIR, _SRC_DIR]
 
 # module not found by IDE, but it does exist and and tests do run
 from pyomexmeta import *

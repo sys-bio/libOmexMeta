@@ -328,119 +328,118 @@ add more locations.</p>
 </div>
 <div class="literal-block-wrapper docutils container" id="id6">
 <div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id6" title="Permalink to this code">¶</a></div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">  1</span>sys.executable C:\Miniconda3\envs\py39\python.exe
-<span class="linenos">  2</span>&lt;?xml version=&quot;1.1&quot; encoding=&quot;UTF-8&quot;?&gt;
-<span class="linenos">  3</span>&lt;!-- Created by libAntimony version v2.12.0 with libSBML version 5.18.1. --&gt;
-<span class="linenos">  4</span>&lt;sbml xmlns=&quot;http://www.sbml.org/sbml/level3/version1/core&quot; level=&quot;3&quot; version=&quot;1&quot;&gt;
-<span class="linenos">  5</span>  &lt;model metaid=&quot;SimpleRegulation&quot; id=&quot;SimpleRegulation&quot;&gt;
-<span class="linenos">  6</span>    &lt;listOfCompartments&gt;
-<span class="linenos">  7</span>      &lt;compartment id=&quot;cell&quot; spatialDimensions=&quot;3&quot; size=&quot;1&quot; constant=&quot;true&quot; metaid=&quot;compartment0000&quot;/&gt;
-<span class="linenos">  8</span>    &lt;/listOfCompartments&gt;
-<span class="linenos">  9</span>    &lt;listOfSpecies&gt;
-<span class="linenos"> 10</span>      &lt;species id=&quot;A&quot; metaid=&quot;SpeciesA&quot; compartment=&quot;cell&quot; initialConcentration=&quot;10&quot; hasOnlySubstanceUnits=&quot;false&quot; boundaryCondition=&quot;false&quot; constant=&quot;false&quot;/&gt;
-<span class="linenos"> 11</span>      &lt;species id=&quot;B&quot; metaid=&quot;SpeciesB&quot; compartment=&quot;cell&quot; initialConcentration=&quot;0&quot; hasOnlySubstanceUnits=&quot;false&quot; boundaryCondition=&quot;false&quot; constant=&quot;false&quot;/&gt;
-<span class="linenos"> 12</span>      &lt;species id=&quot;C&quot; metaid=&quot;SpeciesC&quot; compartment=&quot;cell&quot; initialConcentration=&quot;10&quot; hasOnlySubstanceUnits=&quot;false&quot; boundaryCondition=&quot;false&quot; constant=&quot;false&quot;/&gt;
-<span class="linenos"> 13</span>      &lt;species id=&quot;D&quot; metaid=&quot;SpeciesD&quot; compartment=&quot;cell&quot; initialConcentration=&quot;0&quot; hasOnlySubstanceUnits=&quot;false&quot; boundaryCondition=&quot;false&quot; constant=&quot;false&quot;/&gt;
-<span class="linenos"> 14</span>    &lt;/listOfSpecies&gt;
-<span class="linenos"> 15</span>    &lt;listOfParameters&gt;
-<span class="linenos"> 16</span>      &lt;parameter id=&quot;S&quot; metaid=&quot;S&quot; value=&quot;0&quot; constant=&quot;true&quot;/&gt;
-<span class="linenos"> 17</span>      &lt;parameter id=&quot;k1&quot; metaid=&quot;k1&quot; value=&quot;0.1&quot; constant=&quot;true&quot;/&gt;
-<span class="linenos"> 18</span>      &lt;parameter id=&quot;k2&quot; metaid=&quot;k2&quot; value=&quot;0.1&quot; constant=&quot;true&quot;/&gt;
-<span class="linenos"> 19</span>      &lt;parameter id=&quot;k3&quot; metaid=&quot;k3&quot; value=&quot;0.1&quot; constant=&quot;true&quot;/&gt;
-<span class="linenos"> 20</span>      &lt;parameter id=&quot;k4&quot; metaid=&quot;k4&quot; value=&quot;0.1&quot; constant=&quot;true&quot;/&gt;
-<span class="linenos"> 21</span>    &lt;/listOfParameters&gt;
-<span class="linenos"> 22</span>    &lt;listOfReactions&gt;
-<span class="linenos"> 23</span>      &lt;reaction id=&quot;R1&quot; metaid=&quot;R1&quot; reversible=&quot;false&quot; fast=&quot;false&quot;&gt;
-<span class="linenos"> 24</span>        &lt;listOfReactants&gt;
-<span class="linenos"> 25</span>          &lt;speciesReference species=&quot;A&quot; stoichiometry=&quot;1&quot; constant=&quot;true&quot;/&gt;
-<span class="linenos"> 26</span>        &lt;/listOfReactants&gt;
-<span class="linenos"> 27</span>        &lt;listOfProducts&gt;
-<span class="linenos"> 28</span>          &lt;speciesReference species=&quot;B&quot; stoichiometry=&quot;1&quot; constant=&quot;true&quot;/&gt;
-<span class="linenos"> 29</span>        &lt;/listOfProducts&gt;
-<span class="linenos"> 30</span>        &lt;kineticLaw metaid=&quot;KineticLawForReaction1&quot;&gt;
-<span class="linenos"> 31</span>          &lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;
-<span class="linenos"> 32</span>            &lt;apply&gt;
-<span class="linenos"> 33</span>              &lt;times/&gt;
-<span class="linenos"> 34</span>              &lt;ci&gt; k1 &lt;/ci&gt;
-<span class="linenos"> 35</span>              &lt;ci&gt; A &lt;/ci&gt;
-<span class="linenos"> 36</span>              &lt;ci&gt; S &lt;/ci&gt;
-<span class="linenos"> 37</span>            &lt;/apply&gt;
-<span class="linenos"> 38</span>          &lt;/math&gt;
-<span class="linenos"> 39</span>        &lt;/kineticLaw&gt;
-<span class="linenos"> 40</span>      &lt;/reaction&gt;
-<span class="linenos"> 41</span>      &lt;reaction id=&quot;R2&quot; metaid=&quot;R2&quot; reversible=&quot;false&quot; fast=&quot;false&quot;&gt;
-<span class="linenos"> 42</span>        &lt;listOfReactants&gt;
-<span class="linenos"> 43</span>          &lt;speciesReference species=&quot;B&quot; stoichiometry=&quot;1&quot; constant=&quot;true&quot;/&gt;
-<span class="linenos"> 44</span>        &lt;/listOfReactants&gt;
-<span class="linenos"> 45</span>        &lt;listOfProducts&gt;
-<span class="linenos"> 46</span>          &lt;speciesReference species=&quot;A&quot; stoichiometry=&quot;1&quot; constant=&quot;true&quot;/&gt;
-<span class="linenos"> 47</span>        &lt;/listOfProducts&gt;
-<span class="linenos"> 48</span>        &lt;kineticLaw metaid=&quot;KineticLawForReaction2&quot;&gt;
-<span class="linenos"> 49</span>          &lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;
-<span class="linenos"> 50</span>            &lt;apply&gt;
-<span class="linenos"> 51</span>              &lt;times/&gt;
-<span class="linenos"> 52</span>              &lt;ci&gt; k2 &lt;/ci&gt;
-<span class="linenos"> 53</span>              &lt;ci&gt; B &lt;/ci&gt;
-<span class="linenos"> 54</span>            &lt;/apply&gt;
-<span class="linenos"> 55</span>          &lt;/math&gt;
-<span class="linenos"> 56</span>        &lt;/kineticLaw&gt;
-<span class="linenos"> 57</span>      &lt;/reaction&gt;
-<span class="linenos"> 58</span>      &lt;reaction id=&quot;R3&quot; reversible=&quot;false&quot; fast=&quot;false&quot; metaid=&quot;reaction0000&quot;&gt;
-<span class="linenos"> 59</span>        &lt;listOfReactants&gt;
-<span class="linenos"> 60</span>          &lt;speciesReference species=&quot;C&quot; stoichiometry=&quot;1&quot; constant=&quot;true&quot;/&gt;
-<span class="linenos"> 61</span>        &lt;/listOfReactants&gt;
-<span class="linenos"> 62</span>        &lt;listOfProducts&gt;
-<span class="linenos"> 63</span>          &lt;speciesReference species=&quot;D&quot; stoichiometry=&quot;1&quot; constant=&quot;true&quot;/&gt;
-<span class="linenos"> 64</span>        &lt;/listOfProducts&gt;
-<span class="linenos"> 65</span>        &lt;listOfModifiers&gt;
-<span class="linenos"> 66</span>          &lt;modifierSpeciesReference species=&quot;B&quot;/&gt;
-<span class="linenos"> 67</span>        &lt;/listOfModifiers&gt;
-<span class="linenos"> 68</span>        &lt;kineticLaw metaid=&quot;kineticLaw0000&quot;&gt;
-<span class="linenos"> 69</span>          &lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;
-<span class="linenos"> 70</span>            &lt;apply&gt;
-<span class="linenos"> 71</span>              &lt;times/&gt;
-<span class="linenos"> 72</span>              &lt;ci&gt; k3 &lt;/ci&gt;
-<span class="linenos"> 73</span>              &lt;ci&gt; C &lt;/ci&gt;
-<span class="linenos"> 74</span>              &lt;ci&gt; B &lt;/ci&gt;
-<span class="linenos"> 75</span>            &lt;/apply&gt;
-<span class="linenos"> 76</span>          &lt;/math&gt;
-<span class="linenos"> 77</span>        &lt;/kineticLaw&gt;
-<span class="linenos"> 78</span>      &lt;/reaction&gt;
-<span class="linenos"> 79</span>      &lt;reaction id=&quot;R4&quot; reversible=&quot;false&quot; fast=&quot;false&quot; metaid=&quot;reaction0001&quot;&gt;
-<span class="linenos"> 80</span>        &lt;listOfReactants&gt;
-<span class="linenos"> 81</span>          &lt;speciesReference species=&quot;D&quot; stoichiometry=&quot;1&quot; constant=&quot;true&quot;/&gt;
-<span class="linenos"> 82</span>        &lt;/listOfReactants&gt;
-<span class="linenos"> 83</span>        &lt;listOfProducts&gt;
-<span class="linenos"> 84</span>          &lt;speciesReference species=&quot;C&quot; stoichiometry=&quot;1&quot; constant=&quot;true&quot;/&gt;
-<span class="linenos"> 85</span>        &lt;/listOfProducts&gt;
-<span class="linenos"> 86</span>        &lt;kineticLaw metaid=&quot;kineticLaw0001&quot;&gt;
-<span class="linenos"> 87</span>          &lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;
-<span class="linenos"> 88</span>            &lt;apply&gt;
-<span class="linenos"> 89</span>              &lt;times/&gt;
-<span class="linenos"> 90</span>              &lt;ci&gt; k4 &lt;/ci&gt;
-<span class="linenos"> 91</span>              &lt;ci&gt; D &lt;/ci&gt;
-<span class="linenos"> 92</span>            &lt;/apply&gt;
-<span class="linenos"> 93</span>          &lt;/math&gt;
-<span class="linenos"> 94</span>        &lt;/kineticLaw&gt;
-<span class="linenos"> 95</span>      &lt;/reaction&gt;
-<span class="linenos"> 96</span>    &lt;/listOfReactions&gt;
-<span class="linenos"> 97</span>  &lt;/model&gt;
-<span class="linenos"> 98</span>&lt;/sbml&gt;
-<span class="linenos"> 99</span>
-<span class="linenos">100</span>@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
-<span class="linenos">101</span>@prefix bqbiol: &lt;http://biomodels.net/biology-qualifiers/&gt; .
-<span class="linenos">102</span>@prefix OMEXlib: &lt;http://omex-library.org/&gt; .
-<span class="linenos">103</span>@prefix local: &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#&gt; .
-<span class="linenos">104</span>
-<span class="linenos">105</span>local:EntityProperty
-<span class="linenos">106</span>    bqbiol:isPropertyOf &lt;http://omex-library.org/NewOmex.omex/NewModel.xml#SpeciesA&gt; ;
-<span class="linenos">107</span>    bqbiol:isVersionOf &lt;https://identifiers.org/opb:OPB_12345&gt; .
-<span class="linenos">108</span>
-<span class="linenos">109</span>&lt;http://omex-library.org/NewOmex.omex/NewModel.xml#SpeciesA&gt;
-<span class="linenos">110</span>    bqbiol:is &lt;https://identifiers.org/uniprot/PD12345&gt; ;
-<span class="linenos">111</span>    bqbiol:isPartOf &lt;https://identifiers.org/fma:1234&gt; .
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">  1</span>&lt;?xml version=&quot;1.1&quot; encoding=&quot;UTF-8&quot;?&gt;
+<span class="linenos">  2</span>&lt;!-- Created by libAntimony version v2.12.0 with libSBML version 5.18.1. --&gt;
+<span class="linenos">  3</span>&lt;sbml xmlns=&quot;http://www.sbml.org/sbml/level3/version1/core&quot; level=&quot;3&quot; version=&quot;1&quot;&gt;
+<span class="linenos">  4</span>  &lt;model metaid=&quot;SimpleRegulation&quot; id=&quot;SimpleRegulation&quot;&gt;
+<span class="linenos">  5</span>    &lt;listOfCompartments&gt;
+<span class="linenos">  6</span>      &lt;compartment id=&quot;cell&quot; spatialDimensions=&quot;3&quot; size=&quot;1&quot; constant=&quot;true&quot; metaid=&quot;compartment0000&quot;/&gt;
+<span class="linenos">  7</span>    &lt;/listOfCompartments&gt;
+<span class="linenos">  8</span>    &lt;listOfSpecies&gt;
+<span class="linenos">  9</span>      &lt;species id=&quot;A&quot; metaid=&quot;SpeciesA&quot; compartment=&quot;cell&quot; initialConcentration=&quot;10&quot; hasOnlySubstanceUnits=&quot;false&quot; boundaryCondition=&quot;false&quot; constant=&quot;false&quot;/&gt;
+<span class="linenos"> 10</span>      &lt;species id=&quot;B&quot; metaid=&quot;SpeciesB&quot; compartment=&quot;cell&quot; initialConcentration=&quot;0&quot; hasOnlySubstanceUnits=&quot;false&quot; boundaryCondition=&quot;false&quot; constant=&quot;false&quot;/&gt;
+<span class="linenos"> 11</span>      &lt;species id=&quot;C&quot; metaid=&quot;SpeciesC&quot; compartment=&quot;cell&quot; initialConcentration=&quot;10&quot; hasOnlySubstanceUnits=&quot;false&quot; boundaryCondition=&quot;false&quot; constant=&quot;false&quot;/&gt;
+<span class="linenos"> 12</span>      &lt;species id=&quot;D&quot; metaid=&quot;SpeciesD&quot; compartment=&quot;cell&quot; initialConcentration=&quot;0&quot; hasOnlySubstanceUnits=&quot;false&quot; boundaryCondition=&quot;false&quot; constant=&quot;false&quot;/&gt;
+<span class="linenos"> 13</span>    &lt;/listOfSpecies&gt;
+<span class="linenos"> 14</span>    &lt;listOfParameters&gt;
+<span class="linenos"> 15</span>      &lt;parameter id=&quot;S&quot; metaid=&quot;S&quot; value=&quot;0&quot; constant=&quot;true&quot;/&gt;
+<span class="linenos"> 16</span>      &lt;parameter id=&quot;k1&quot; metaid=&quot;k1&quot; value=&quot;0.1&quot; constant=&quot;true&quot;/&gt;
+<span class="linenos"> 17</span>      &lt;parameter id=&quot;k2&quot; metaid=&quot;k2&quot; value=&quot;0.1&quot; constant=&quot;true&quot;/&gt;
+<span class="linenos"> 18</span>      &lt;parameter id=&quot;k3&quot; metaid=&quot;k3&quot; value=&quot;0.1&quot; constant=&quot;true&quot;/&gt;
+<span class="linenos"> 19</span>      &lt;parameter id=&quot;k4&quot; metaid=&quot;k4&quot; value=&quot;0.1&quot; constant=&quot;true&quot;/&gt;
+<span class="linenos"> 20</span>    &lt;/listOfParameters&gt;
+<span class="linenos"> 21</span>    &lt;listOfReactions&gt;
+<span class="linenos"> 22</span>      &lt;reaction id=&quot;R1&quot; metaid=&quot;R1&quot; reversible=&quot;false&quot; fast=&quot;false&quot;&gt;
+<span class="linenos"> 23</span>        &lt;listOfReactants&gt;
+<span class="linenos"> 24</span>          &lt;speciesReference species=&quot;A&quot; stoichiometry=&quot;1&quot; constant=&quot;true&quot;/&gt;
+<span class="linenos"> 25</span>        &lt;/listOfReactants&gt;
+<span class="linenos"> 26</span>        &lt;listOfProducts&gt;
+<span class="linenos"> 27</span>          &lt;speciesReference species=&quot;B&quot; stoichiometry=&quot;1&quot; constant=&quot;true&quot;/&gt;
+<span class="linenos"> 28</span>        &lt;/listOfProducts&gt;
+<span class="linenos"> 29</span>        &lt;kineticLaw metaid=&quot;KineticLawForReaction1&quot;&gt;
+<span class="linenos"> 30</span>          &lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;
+<span class="linenos"> 31</span>            &lt;apply&gt;
+<span class="linenos"> 32</span>              &lt;times/&gt;
+<span class="linenos"> 33</span>              &lt;ci&gt; k1 &lt;/ci&gt;
+<span class="linenos"> 34</span>              &lt;ci&gt; A &lt;/ci&gt;
+<span class="linenos"> 35</span>              &lt;ci&gt; S &lt;/ci&gt;
+<span class="linenos"> 36</span>            &lt;/apply&gt;
+<span class="linenos"> 37</span>          &lt;/math&gt;
+<span class="linenos"> 38</span>        &lt;/kineticLaw&gt;
+<span class="linenos"> 39</span>      &lt;/reaction&gt;
+<span class="linenos"> 40</span>      &lt;reaction id=&quot;R2&quot; metaid=&quot;R2&quot; reversible=&quot;false&quot; fast=&quot;false&quot;&gt;
+<span class="linenos"> 41</span>        &lt;listOfReactants&gt;
+<span class="linenos"> 42</span>          &lt;speciesReference species=&quot;B&quot; stoichiometry=&quot;1&quot; constant=&quot;true&quot;/&gt;
+<span class="linenos"> 43</span>        &lt;/listOfReactants&gt;
+<span class="linenos"> 44</span>        &lt;listOfProducts&gt;
+<span class="linenos"> 45</span>          &lt;speciesReference species=&quot;A&quot; stoichiometry=&quot;1&quot; constant=&quot;true&quot;/&gt;
+<span class="linenos"> 46</span>        &lt;/listOfProducts&gt;
+<span class="linenos"> 47</span>        &lt;kineticLaw metaid=&quot;KineticLawForReaction2&quot;&gt;
+<span class="linenos"> 48</span>          &lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;
+<span class="linenos"> 49</span>            &lt;apply&gt;
+<span class="linenos"> 50</span>              &lt;times/&gt;
+<span class="linenos"> 51</span>              &lt;ci&gt; k2 &lt;/ci&gt;
+<span class="linenos"> 52</span>              &lt;ci&gt; B &lt;/ci&gt;
+<span class="linenos"> 53</span>            &lt;/apply&gt;
+<span class="linenos"> 54</span>          &lt;/math&gt;
+<span class="linenos"> 55</span>        &lt;/kineticLaw&gt;
+<span class="linenos"> 56</span>      &lt;/reaction&gt;
+<span class="linenos"> 57</span>      &lt;reaction id=&quot;R3&quot; reversible=&quot;false&quot; fast=&quot;false&quot; metaid=&quot;reaction0000&quot;&gt;
+<span class="linenos"> 58</span>        &lt;listOfReactants&gt;
+<span class="linenos"> 59</span>          &lt;speciesReference species=&quot;C&quot; stoichiometry=&quot;1&quot; constant=&quot;true&quot;/&gt;
+<span class="linenos"> 60</span>        &lt;/listOfReactants&gt;
+<span class="linenos"> 61</span>        &lt;listOfProducts&gt;
+<span class="linenos"> 62</span>          &lt;speciesReference species=&quot;D&quot; stoichiometry=&quot;1&quot; constant=&quot;true&quot;/&gt;
+<span class="linenos"> 63</span>        &lt;/listOfProducts&gt;
+<span class="linenos"> 64</span>        &lt;listOfModifiers&gt;
+<span class="linenos"> 65</span>          &lt;modifierSpeciesReference species=&quot;B&quot;/&gt;
+<span class="linenos"> 66</span>        &lt;/listOfModifiers&gt;
+<span class="linenos"> 67</span>        &lt;kineticLaw metaid=&quot;kineticLaw0000&quot;&gt;
+<span class="linenos"> 68</span>          &lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;
+<span class="linenos"> 69</span>            &lt;apply&gt;
+<span class="linenos"> 70</span>              &lt;times/&gt;
+<span class="linenos"> 71</span>              &lt;ci&gt; k3 &lt;/ci&gt;
+<span class="linenos"> 72</span>              &lt;ci&gt; C &lt;/ci&gt;
+<span class="linenos"> 73</span>              &lt;ci&gt; B &lt;/ci&gt;
+<span class="linenos"> 74</span>            &lt;/apply&gt;
+<span class="linenos"> 75</span>          &lt;/math&gt;
+<span class="linenos"> 76</span>        &lt;/kineticLaw&gt;
+<span class="linenos"> 77</span>      &lt;/reaction&gt;
+<span class="linenos"> 78</span>      &lt;reaction id=&quot;R4&quot; reversible=&quot;false&quot; fast=&quot;false&quot; metaid=&quot;reaction0001&quot;&gt;
+<span class="linenos"> 79</span>        &lt;listOfReactants&gt;
+<span class="linenos"> 80</span>          &lt;speciesReference species=&quot;D&quot; stoichiometry=&quot;1&quot; constant=&quot;true&quot;/&gt;
+<span class="linenos"> 81</span>        &lt;/listOfReactants&gt;
+<span class="linenos"> 82</span>        &lt;listOfProducts&gt;
+<span class="linenos"> 83</span>          &lt;speciesReference species=&quot;C&quot; stoichiometry=&quot;1&quot; constant=&quot;true&quot;/&gt;
+<span class="linenos"> 84</span>        &lt;/listOfProducts&gt;
+<span class="linenos"> 85</span>        &lt;kineticLaw metaid=&quot;kineticLaw0001&quot;&gt;
+<span class="linenos"> 86</span>          &lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;
+<span class="linenos"> 87</span>            &lt;apply&gt;
+<span class="linenos"> 88</span>              &lt;times/&gt;
+<span class="linenos"> 89</span>              &lt;ci&gt; k4 &lt;/ci&gt;
+<span class="linenos"> 90</span>              &lt;ci&gt; D &lt;/ci&gt;
+<span class="linenos"> 91</span>            &lt;/apply&gt;
+<span class="linenos"> 92</span>          &lt;/math&gt;
+<span class="linenos"> 93</span>        &lt;/kineticLaw&gt;
+<span class="linenos"> 94</span>      &lt;/reaction&gt;
+<span class="linenos"> 95</span>    &lt;/listOfReactions&gt;
+<span class="linenos"> 96</span>  &lt;/model&gt;
+<span class="linenos"> 97</span>&lt;/sbml&gt;
+<span class="linenos"> 98</span>
+<span class="linenos"> 99</span>@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+<span class="linenos">100</span>@prefix bqbiol: &lt;http://biomodels.net/biology-qualifiers/&gt; .
+<span class="linenos">101</span>@prefix OMEXlib: &lt;http://omex-library.org/&gt; .
+<span class="linenos">102</span>@prefix local: &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#&gt; .
+<span class="linenos">103</span>
+<span class="linenos">104</span>local:EntityProperty
+<span class="linenos">105</span>    bqbiol:isPropertyOf &lt;http://omex-library.org/NewOmex.omex/NewModel.xml#SpeciesA&gt; ;
+<span class="linenos">106</span>    bqbiol:isVersionOf &lt;https://identifiers.org/opb:OPB_12345&gt; .
+<span class="linenos">107</span>
+<span class="linenos">108</span>&lt;http://omex-library.org/NewOmex.omex/NewModel.xml#SpeciesA&gt;
+<span class="linenos">109</span>    bqbiol:is &lt;https://identifiers.org/uniprot/PD12345&gt; ;
+<span class="linenos">110</span>    bqbiol:isPartOf &lt;https://identifiers.org/fma:1234&gt; .
+<span class="linenos">111</span>
 <span class="linenos">112</span>
-<span class="linenos">113</span>
 </pre></div>
 </div>
 </div>
@@ -1035,35 +1034,34 @@ add more locations.</p>
 </div>
 <div class="literal-block-wrapper docutils container" id="id12">
 <div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id12" title="Permalink to this code">¶</a></div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">sys</span><span class="o">.</span><span class="n">executable</span> <span class="n">C</span><span class="p">:</span>\<span class="n">Miniconda3</span>\<span class="n">envs</span>\<span class="n">py39</span>\<span class="n">python</span><span class="o">.</span><span class="n">exe</span>
-<span class="linenos"> 2</span><span class="nd">@prefix</span> <span class="n">rdf</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">w3</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="mi">1999</span><span class="o">/</span><span class="mi">02</span><span class="o">/</span><span class="mi">22</span><span class="o">-</span><span class="n">rdf</span><span class="o">-</span><span class="n">syntax</span><span class="o">-</span><span class="n">ns</span><span class="c1">#&gt; .</span>
-<span class="linenos"> 3</span><span class="nd">@prefix</span> <span class="n">bqbiol</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">biomodels</span><span class="o">.</span><span class="n">net</span><span class="o">/</span><span class="n">biology</span><span class="o">-</span><span class="n">qualifiers</span><span class="o">/&gt;</span> <span class="o">.</span>
-<span class="linenos"> 4</span><span class="nd">@prefix</span> <span class="n">semsim</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">bime</span><span class="o">.</span><span class="n">uw</span><span class="o">.</span><span class="n">edu</span><span class="o">/</span><span class="n">semsim</span><span class="o">/&gt;</span> <span class="o">.</span>
-<span class="linenos"> 5</span><span class="nd">@prefix</span> <span class="n">OMEXlib</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/&gt;</span> <span class="o">.</span>
-<span class="linenos"> 6</span><span class="nd">@prefix</span> <span class="n">local</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">rdf</span><span class="c1">#&gt; .</span>
-<span class="linenos"> 7</span>
-<span class="linenos"> 8</span><span class="n">local</span><span class="p">:</span><span class="n">MediatorParticipant0000</span>
-<span class="linenos"> 9</span>    <span class="n">semsim</span><span class="p">:</span><span class="n">hasPhysicalEntityReference</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">xml</span><span class="c1">#SpeciesC&gt; .</span>
-<span class="linenos">10</span>
-<span class="linenos">11</span><span class="n">local</span><span class="p">:</span><span class="n">ProcessProperty0000</span>
-<span class="linenos">12</span>    <span class="n">bqbiol</span><span class="p">:</span><span class="n">isPropertyOf</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">xml</span><span class="c1">#R1&gt; ;</span>
-<span class="linenos">13</span>    <span class="n">bqbiol</span><span class="p">:</span><span class="n">isVersionOf</span> <span class="o">&lt;</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">identifiers</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">OPB</span><span class="p">:</span><span class="n">OPB_00593</span><span class="o">&gt;</span> <span class="o">.</span>
-<span class="linenos">14</span>
-<span class="linenos">15</span><span class="n">local</span><span class="p">:</span><span class="n">SinkParticipant0000</span>
-<span class="linenos">16</span>    <span class="n">semsim</span><span class="p">:</span><span class="n">hasMultiplier</span> <span class="s2">&quot;1&quot;</span><span class="o">^^</span><span class="n">rdf</span><span class="p">:</span><span class="n">double</span> <span class="p">;</span>
-<span class="linenos">17</span>    <span class="n">semsim</span><span class="p">:</span><span class="n">hasPhysicalEntityReference</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">xml</span><span class="c1">#SpeciesB&gt; .</span>
-<span class="linenos">18</span>
-<span class="linenos">19</span><span class="n">local</span><span class="p">:</span><span class="n">SourceParticipant0000</span>
-<span class="linenos">20</span>    <span class="n">semsim</span><span class="p">:</span><span class="n">hasMultiplier</span> <span class="s2">&quot;1&quot;</span><span class="o">^^</span><span class="n">rdf</span><span class="p">:</span><span class="n">double</span> <span class="p">;</span>
-<span class="linenos">21</span>    <span class="n">semsim</span><span class="p">:</span><span class="n">hasPhysicalEntityReference</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">xml</span><span class="c1">#SpeciesA&gt; .</span>
-<span class="linenos">22</span>
-<span class="linenos">23</span><span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">xml</span><span class="c1">#R1&gt;</span>
-<span class="linenos">24</span>    <span class="n">semsim</span><span class="p">:</span><span class="n">hasMediatorParticipant</span> <span class="n">local</span><span class="p">:</span><span class="n">MediatorParticipant0000</span> <span class="p">;</span>
-<span class="linenos">25</span>    <span class="n">semsim</span><span class="p">:</span><span class="n">hasSinkParticipant</span> <span class="n">local</span><span class="p">:</span><span class="n">SinkParticipant0000</span> <span class="p">;</span>
-<span class="linenos">26</span>    <span class="n">semsim</span><span class="p">:</span><span class="n">hasSourceParticipant</span> <span class="n">local</span><span class="p">:</span><span class="n">SourceParticipant0000</span> <span class="p">;</span>
-<span class="linenos">27</span>    <span class="n">bqbiol</span><span class="p">:</span><span class="n">isVersionOf</span> <span class="o">&lt;</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">identifiers</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">GO</span><span class="o">/</span><span class="n">GO12345</span><span class="o">&gt;</span> <span class="o">.</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="nd">@prefix</span> <span class="n">rdf</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">w3</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="mi">1999</span><span class="o">/</span><span class="mi">02</span><span class="o">/</span><span class="mi">22</span><span class="o">-</span><span class="n">rdf</span><span class="o">-</span><span class="n">syntax</span><span class="o">-</span><span class="n">ns</span><span class="c1">#&gt; .</span>
+<span class="linenos"> 2</span><span class="nd">@prefix</span> <span class="n">bqbiol</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">biomodels</span><span class="o">.</span><span class="n">net</span><span class="o">/</span><span class="n">biology</span><span class="o">-</span><span class="n">qualifiers</span><span class="o">/&gt;</span> <span class="o">.</span>
+<span class="linenos"> 3</span><span class="nd">@prefix</span> <span class="n">semsim</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">bime</span><span class="o">.</span><span class="n">uw</span><span class="o">.</span><span class="n">edu</span><span class="o">/</span><span class="n">semsim</span><span class="o">/&gt;</span> <span class="o">.</span>
+<span class="linenos"> 4</span><span class="nd">@prefix</span> <span class="n">OMEXlib</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/&gt;</span> <span class="o">.</span>
+<span class="linenos"> 5</span><span class="nd">@prefix</span> <span class="n">local</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">rdf</span><span class="c1">#&gt; .</span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span><span class="n">local</span><span class="p">:</span><span class="n">MediatorParticipant0000</span>
+<span class="linenos"> 8</span>    <span class="n">semsim</span><span class="p">:</span><span class="n">hasPhysicalEntityReference</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">xml</span><span class="c1">#SpeciesC&gt; .</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span><span class="n">local</span><span class="p">:</span><span class="n">ProcessProperty0000</span>
+<span class="linenos">11</span>    <span class="n">bqbiol</span><span class="p">:</span><span class="n">isPropertyOf</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">xml</span><span class="c1">#R1&gt; ;</span>
+<span class="linenos">12</span>    <span class="n">bqbiol</span><span class="p">:</span><span class="n">isVersionOf</span> <span class="o">&lt;</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">identifiers</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">OPB</span><span class="p">:</span><span class="n">OPB_00593</span><span class="o">&gt;</span> <span class="o">.</span>
+<span class="linenos">13</span>
+<span class="linenos">14</span><span class="n">local</span><span class="p">:</span><span class="n">SinkParticipant0000</span>
+<span class="linenos">15</span>    <span class="n">semsim</span><span class="p">:</span><span class="n">hasMultiplier</span> <span class="s2">&quot;1&quot;</span><span class="o">^^</span><span class="n">rdf</span><span class="p">:</span><span class="n">double</span> <span class="p">;</span>
+<span class="linenos">16</span>    <span class="n">semsim</span><span class="p">:</span><span class="n">hasPhysicalEntityReference</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">xml</span><span class="c1">#SpeciesB&gt; .</span>
+<span class="linenos">17</span>
+<span class="linenos">18</span><span class="n">local</span><span class="p">:</span><span class="n">SourceParticipant0000</span>
+<span class="linenos">19</span>    <span class="n">semsim</span><span class="p">:</span><span class="n">hasMultiplier</span> <span class="s2">&quot;1&quot;</span><span class="o">^^</span><span class="n">rdf</span><span class="p">:</span><span class="n">double</span> <span class="p">;</span>
+<span class="linenos">20</span>    <span class="n">semsim</span><span class="p">:</span><span class="n">hasPhysicalEntityReference</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">xml</span><span class="c1">#SpeciesA&gt; .</span>
+<span class="linenos">21</span>
+<span class="linenos">22</span><span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">xml</span><span class="c1">#R1&gt;</span>
+<span class="linenos">23</span>    <span class="n">semsim</span><span class="p">:</span><span class="n">hasMediatorParticipant</span> <span class="n">local</span><span class="p">:</span><span class="n">MediatorParticipant0000</span> <span class="p">;</span>
+<span class="linenos">24</span>    <span class="n">semsim</span><span class="p">:</span><span class="n">hasSinkParticipant</span> <span class="n">local</span><span class="p">:</span><span class="n">SinkParticipant0000</span> <span class="p">;</span>
+<span class="linenos">25</span>    <span class="n">semsim</span><span class="p">:</span><span class="n">hasSourceParticipant</span> <span class="n">local</span><span class="p">:</span><span class="n">SourceParticipant0000</span> <span class="p">;</span>
+<span class="linenos">26</span>    <span class="n">bqbiol</span><span class="p">:</span><span class="n">isVersionOf</span> <span class="o">&lt;</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">identifiers</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">GO</span><span class="o">/</span><span class="n">GO12345</span><span class="o">&gt;</span> <span class="o">.</span>
+<span class="linenos">27</span>
 <span class="linenos">28</span>
-<span class="linenos">29</span>
 </pre></div>
 </div>
 </div>
@@ -1673,28 +1671,27 @@ add more locations.</p>
 </div>
 <div class="literal-block-wrapper docutils container" id="id18">
 <div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id18" title="Permalink to this code">¶</a></div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">sys</span><span class="o">.</span><span class="n">executable</span> <span class="n">C</span><span class="p">:</span>\<span class="n">Miniconda3</span>\<span class="n">envs</span>\<span class="n">py39</span>\<span class="n">python</span><span class="o">.</span><span class="n">exe</span>
-<span class="linenos"> 2</span><span class="nd">@prefix</span> <span class="n">rdf</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">w3</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="mi">1999</span><span class="o">/</span><span class="mi">02</span><span class="o">/</span><span class="mi">22</span><span class="o">-</span><span class="n">rdf</span><span class="o">-</span><span class="n">syntax</span><span class="o">-</span><span class="n">ns</span><span class="c1">#&gt; .</span>
-<span class="linenos"> 3</span><span class="nd">@prefix</span> <span class="n">bqbiol</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">biomodels</span><span class="o">.</span><span class="n">net</span><span class="o">/</span><span class="n">biology</span><span class="o">-</span><span class="n">qualifiers</span><span class="o">/&gt;</span> <span class="o">.</span>
-<span class="linenos"> 4</span><span class="nd">@prefix</span> <span class="n">semsim</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">bime</span><span class="o">.</span><span class="n">uw</span><span class="o">.</span><span class="n">edu</span><span class="o">/</span><span class="n">semsim</span><span class="o">/&gt;</span> <span class="o">.</span>
-<span class="linenos"> 5</span><span class="nd">@prefix</span> <span class="n">OMEXlib</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/&gt;</span> <span class="o">.</span>
-<span class="linenos"> 6</span><span class="nd">@prefix</span> <span class="n">local</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">rdf</span><span class="c1">#&gt; .</span>
-<span class="linenos"> 7</span>
-<span class="linenos"> 8</span><span class="n">local</span><span class="p">:</span><span class="n">MembranePotential</span>
-<span class="linenos"> 9</span>    <span class="n">semsim</span><span class="p">:</span><span class="n">hasSinkParticipant</span> <span class="n">local</span><span class="p">:</span><span class="n">SinkParticipant0000</span> <span class="p">;</span>
-<span class="linenos">10</span>    <span class="n">semsim</span><span class="p">:</span><span class="n">hasSourceParticipant</span> <span class="n">local</span><span class="p">:</span><span class="n">SourceParticipant0000</span> <span class="o">.</span>
-<span class="linenos">11</span>
-<span class="linenos">12</span><span class="n">local</span><span class="p">:</span><span class="n">SinkParticipant0000</span>
-<span class="linenos">13</span>    <span class="n">semsim</span><span class="p">:</span><span class="n">hasPhysicalEntityReference</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">xml</span><span class="c1">#Ca_cyt&gt; .</span>
-<span class="linenos">14</span>
-<span class="linenos">15</span><span class="n">local</span><span class="p">:</span><span class="n">SourceParticipant0000</span>
-<span class="linenos">16</span>    <span class="n">semsim</span><span class="p">:</span><span class="n">hasPhysicalEntityReference</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">xml</span><span class="c1">#Ca_ex&gt; .</span>
-<span class="linenos">17</span>
-<span class="linenos">18</span><span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">xml</span><span class="c1">#NernstPotential&gt;</span>
-<span class="linenos">19</span>    <span class="n">bqbiol</span><span class="p">:</span><span class="n">isPropertyOf</span> <span class="n">local</span><span class="p">:</span><span class="n">MembranePotential</span> <span class="p">;</span>
-<span class="linenos">20</span>    <span class="n">bqbiol</span><span class="p">:</span><span class="n">isVersionOf</span> <span class="o">&lt;</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">identifiers</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">OPB</span><span class="p">:</span><span class="n">OPB_01581</span><span class="o">&gt;</span> <span class="o">.</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="nd">@prefix</span> <span class="n">rdf</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">w3</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="mi">1999</span><span class="o">/</span><span class="mi">02</span><span class="o">/</span><span class="mi">22</span><span class="o">-</span><span class="n">rdf</span><span class="o">-</span><span class="n">syntax</span><span class="o">-</span><span class="n">ns</span><span class="c1">#&gt; .</span>
+<span class="linenos"> 2</span><span class="nd">@prefix</span> <span class="n">bqbiol</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">biomodels</span><span class="o">.</span><span class="n">net</span><span class="o">/</span><span class="n">biology</span><span class="o">-</span><span class="n">qualifiers</span><span class="o">/&gt;</span> <span class="o">.</span>
+<span class="linenos"> 3</span><span class="nd">@prefix</span> <span class="n">semsim</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">bime</span><span class="o">.</span><span class="n">uw</span><span class="o">.</span><span class="n">edu</span><span class="o">/</span><span class="n">semsim</span><span class="o">/&gt;</span> <span class="o">.</span>
+<span class="linenos"> 4</span><span class="nd">@prefix</span> <span class="n">OMEXlib</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/&gt;</span> <span class="o">.</span>
+<span class="linenos"> 5</span><span class="nd">@prefix</span> <span class="n">local</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">rdf</span><span class="c1">#&gt; .</span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span><span class="n">local</span><span class="p">:</span><span class="n">MembranePotential</span>
+<span class="linenos"> 8</span>    <span class="n">semsim</span><span class="p">:</span><span class="n">hasSinkParticipant</span> <span class="n">local</span><span class="p">:</span><span class="n">SinkParticipant0000</span> <span class="p">;</span>
+<span class="linenos"> 9</span>    <span class="n">semsim</span><span class="p">:</span><span class="n">hasSourceParticipant</span> <span class="n">local</span><span class="p">:</span><span class="n">SourceParticipant0000</span> <span class="o">.</span>
+<span class="linenos">10</span>
+<span class="linenos">11</span><span class="n">local</span><span class="p">:</span><span class="n">SinkParticipant0000</span>
+<span class="linenos">12</span>    <span class="n">semsim</span><span class="p">:</span><span class="n">hasPhysicalEntityReference</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">xml</span><span class="c1">#Ca_cyt&gt; .</span>
+<span class="linenos">13</span>
+<span class="linenos">14</span><span class="n">local</span><span class="p">:</span><span class="n">SourceParticipant0000</span>
+<span class="linenos">15</span>    <span class="n">semsim</span><span class="p">:</span><span class="n">hasPhysicalEntityReference</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">xml</span><span class="c1">#Ca_ex&gt; .</span>
+<span class="linenos">16</span>
+<span class="linenos">17</span><span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">xml</span><span class="c1">#NernstPotential&gt;</span>
+<span class="linenos">18</span>    <span class="n">bqbiol</span><span class="p">:</span><span class="n">isPropertyOf</span> <span class="n">local</span><span class="p">:</span><span class="n">MembranePotential</span> <span class="p">;</span>
+<span class="linenos">19</span>    <span class="n">bqbiol</span><span class="p">:</span><span class="n">isVersionOf</span> <span class="o">&lt;</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">identifiers</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">OPB</span><span class="p">:</span><span class="n">OPB_01581</span><span class="o">&gt;</span> <span class="o">.</span>
+<span class="linenos">20</span>
 <span class="linenos">21</span>
-<span class="linenos">22</span>
 </pre></div>
 </div>
 </div>
@@ -2024,33 +2021,32 @@ add more locations.</p>
 </div>
 <div class="literal-block-wrapper docutils container" id="id24">
 <div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id24" title="Permalink to this code">¶</a></div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>sys.executable C:\Miniconda3\envs\py39\python.exe
-<span class="linenos"> 2</span>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-<span class="linenos"> 3</span>&lt;model xmlns=&quot;http://www.cellml.org/cellml/1.1#&quot; xmlns:cmeta=&quot;http://www.cellml.org/metadata/1.0#&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot; xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot; xmlns:bqs=&quot;http://www.cellml.org/bqs/1.0#&quot; xmlns:semsim=&quot;http://bime.uw.edu/semsim/#&quot; xmlns:dc=&quot;http://purl.org/dc/terms/&quot; xmlns:vCard=&quot;http://www.w3.org/2001/vcard-rdf/3.0#&quot; name=&quot;annotation_examples&quot; cmeta:id=&quot;annExamples&quot;&gt;
-<span class="linenos"> 4</span>  &lt;component name=&quot;main&quot; cmeta:id=&quot;component0000&quot;&gt;
-<span class="linenos"> 5</span>    &lt;variable cmeta:id=&quot;main.Volume&quot; initial_value=&quot;100&quot; name=&quot;Volume&quot; units=&quot;dimensionless&quot;/&gt;
-<span class="linenos"> 6</span>    &lt;variable cmeta:id=&quot;main.MembraneVoltage&quot; initial_value=&quot;-80&quot; name=&quot;MembraneVoltage&quot; units=&quot;dimensionless&quot;/&gt;
-<span class="linenos"> 7</span>    &lt;variable cmeta:id=&quot;main.ReactionRate&quot; initial_value=&quot;1&quot; name=&quot;ReactionRate&quot; units=&quot;dimensionless&quot;/&gt;
-<span class="linenos"> 8</span>    &lt;variable cmeta:id=&quot;main.entity1&quot; initial_value=&quot;1&quot; name=&quot;entity1&quot; units=&quot;dimensionless&quot;/&gt;
-<span class="linenos"> 9</span>    &lt;variable cmeta:id=&quot;main.entity2&quot; initial_value=&quot;1&quot; name=&quot;entity2&quot; units=&quot;dimensionless&quot;/&gt;
-<span class="linenos">10</span>    &lt;variable cmeta:id=&quot;main.entity3&quot; initial_value=&quot;1&quot; name=&quot;entity3&quot; units=&quot;dimensionless&quot;/&gt;
-<span class="linenos">11</span>  &lt;/component&gt;
-<span class="linenos">12</span>&lt;/model&gt;
-<span class="linenos">13</span>
-<span class="linenos">14</span>@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
-<span class="linenos">15</span>@prefix bqbiol: &lt;http://biomodels.net/biology-qualifiers/&gt; .
-<span class="linenos">16</span>@prefix OMEXlib: &lt;http://omex-library.org/&gt; .
-<span class="linenos">17</span>@prefix local: &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#&gt; .
-<span class="linenos">18</span>
-<span class="linenos">19</span>local:entity0
-<span class="linenos">20</span>    bqbiol:is &lt;https://identifiers.org/fma:9570&gt; ;
-<span class="linenos">21</span>    bqbiol:isPartOf &lt;https://identifiers.org/fma:18228&gt; .
-<span class="linenos">22</span>
-<span class="linenos">23</span>&lt;http://omex-library.org/NewOmex.omex/NewModel.xml#main.Volume&gt;
-<span class="linenos">24</span>    bqbiol:isPropertyOf local:entity0 ;
-<span class="linenos">25</span>    bqbiol:isVersionOf &lt;https://identifiers.org/opb:OPB_00154&gt; .
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+<span class="linenos"> 2</span>&lt;model xmlns=&quot;http://www.cellml.org/cellml/1.1#&quot; xmlns:cmeta=&quot;http://www.cellml.org/metadata/1.0#&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot; xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot; xmlns:bqs=&quot;http://www.cellml.org/bqs/1.0#&quot; xmlns:semsim=&quot;http://bime.uw.edu/semsim/#&quot; xmlns:dc=&quot;http://purl.org/dc/terms/&quot; xmlns:vCard=&quot;http://www.w3.org/2001/vcard-rdf/3.0#&quot; name=&quot;annotation_examples&quot; cmeta:id=&quot;annExamples&quot;&gt;
+<span class="linenos"> 3</span>  &lt;component name=&quot;main&quot; cmeta:id=&quot;component0000&quot;&gt;
+<span class="linenos"> 4</span>    &lt;variable cmeta:id=&quot;main.Volume&quot; initial_value=&quot;100&quot; name=&quot;Volume&quot; units=&quot;dimensionless&quot;/&gt;
+<span class="linenos"> 5</span>    &lt;variable cmeta:id=&quot;main.MembraneVoltage&quot; initial_value=&quot;-80&quot; name=&quot;MembraneVoltage&quot; units=&quot;dimensionless&quot;/&gt;
+<span class="linenos"> 6</span>    &lt;variable cmeta:id=&quot;main.ReactionRate&quot; initial_value=&quot;1&quot; name=&quot;ReactionRate&quot; units=&quot;dimensionless&quot;/&gt;
+<span class="linenos"> 7</span>    &lt;variable cmeta:id=&quot;main.entity1&quot; initial_value=&quot;1&quot; name=&quot;entity1&quot; units=&quot;dimensionless&quot;/&gt;
+<span class="linenos"> 8</span>    &lt;variable cmeta:id=&quot;main.entity2&quot; initial_value=&quot;1&quot; name=&quot;entity2&quot; units=&quot;dimensionless&quot;/&gt;
+<span class="linenos"> 9</span>    &lt;variable cmeta:id=&quot;main.entity3&quot; initial_value=&quot;1&quot; name=&quot;entity3&quot; units=&quot;dimensionless&quot;/&gt;
+<span class="linenos">10</span>  &lt;/component&gt;
+<span class="linenos">11</span>&lt;/model&gt;
+<span class="linenos">12</span>
+<span class="linenos">13</span>@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+<span class="linenos">14</span>@prefix bqbiol: &lt;http://biomodels.net/biology-qualifiers/&gt; .
+<span class="linenos">15</span>@prefix OMEXlib: &lt;http://omex-library.org/&gt; .
+<span class="linenos">16</span>@prefix local: &lt;http://omex-library.org/NewOmex.omex/NewModel.rdf#&gt; .
+<span class="linenos">17</span>
+<span class="linenos">18</span>local:entity0
+<span class="linenos">19</span>    bqbiol:is &lt;https://identifiers.org/fma:9570&gt; ;
+<span class="linenos">20</span>    bqbiol:isPartOf &lt;https://identifiers.org/fma:18228&gt; .
+<span class="linenos">21</span>
+<span class="linenos">22</span>&lt;http://omex-library.org/NewOmex.omex/NewModel.xml#main.Volume&gt;
+<span class="linenos">23</span>    bqbiol:isPropertyOf local:entity0 ;
+<span class="linenos">24</span>    bqbiol:isVersionOf &lt;https://identifiers.org/opb:OPB_00154&gt; .
+<span class="linenos">25</span>
 <span class="linenos">26</span>
-<span class="linenos">27</span>
 </pre></div>
 </div>
 </div>
@@ -2245,34 +2241,33 @@ add more locations.</p>
 </div>
 <div class="literal-block-wrapper docutils container" id="id30">
 <div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id30" title="Permalink to this code">¶</a></div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">sys</span><span class="o">.</span><span class="n">executable</span> <span class="n">C</span><span class="p">:</span>\<span class="n">Miniconda3</span>\<span class="n">envs</span>\<span class="n">py39</span>\<span class="n">python</span><span class="o">.</span><span class="n">exe</span>
-<span class="linenos"> 2</span><span class="nd">@prefix</span> <span class="n">rdf</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">w3</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="mi">1999</span><span class="o">/</span><span class="mi">02</span><span class="o">/</span><span class="mi">22</span><span class="o">-</span><span class="n">rdf</span><span class="o">-</span><span class="n">syntax</span><span class="o">-</span><span class="n">ns</span><span class="c1">#&gt; .</span>
-<span class="linenos"> 3</span><span class="nd">@prefix</span> <span class="n">bqbiol</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">biomodels</span><span class="o">.</span><span class="n">net</span><span class="o">/</span><span class="n">biology</span><span class="o">-</span><span class="n">qualifiers</span><span class="o">/&gt;</span> <span class="o">.</span>
-<span class="linenos"> 4</span><span class="nd">@prefix</span> <span class="n">semsim</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">bime</span><span class="o">.</span><span class="n">uw</span><span class="o">.</span><span class="n">edu</span><span class="o">/</span><span class="n">semsim</span><span class="o">/&gt;</span> <span class="o">.</span>
-<span class="linenos"> 5</span><span class="nd">@prefix</span> <span class="n">OMEXlib</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/&gt;</span> <span class="o">.</span>
-<span class="linenos"> 6</span><span class="nd">@prefix</span> <span class="n">local</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">rdf</span><span class="c1">#&gt; .</span>
-<span class="linenos"> 7</span>
-<span class="linenos"> 8</span><span class="n">local</span><span class="p">:</span><span class="n">MediatorParticipant0000</span>
-<span class="linenos"> 9</span>    <span class="n">semsim</span><span class="p">:</span><span class="n">hasPhysicalEntityReference</span> <span class="n">local</span><span class="p">:</span><span class="n">entity3</span> <span class="o">.</span>
-<span class="linenos">10</span>
-<span class="linenos">11</span><span class="n">local</span><span class="p">:</span><span class="n">Process</span>
-<span class="linenos">12</span>    <span class="n">semsim</span><span class="p">:</span><span class="n">hasMediatorParticipant</span> <span class="n">local</span><span class="p">:</span><span class="n">MediatorParticipant0000</span> <span class="p">;</span>
-<span class="linenos">13</span>    <span class="n">semsim</span><span class="p">:</span><span class="n">hasSinkParticipant</span> <span class="n">local</span><span class="p">:</span><span class="n">SinkParticipant0000</span> <span class="p">;</span>
-<span class="linenos">14</span>    <span class="n">semsim</span><span class="p">:</span><span class="n">hasSourceParticipant</span> <span class="n">local</span><span class="p">:</span><span class="n">SourceParticipant0000</span> <span class="o">.</span>
-<span class="linenos">15</span>
-<span class="linenos">16</span><span class="n">local</span><span class="p">:</span><span class="n">SinkParticipant0000</span>
-<span class="linenos">17</span>    <span class="n">semsim</span><span class="p">:</span><span class="n">hasMultiplier</span> <span class="s2">&quot;1&quot;</span><span class="o">^^</span><span class="n">rdf</span><span class="p">:</span><span class="n">double</span> <span class="p">;</span>
-<span class="linenos">18</span>    <span class="n">semsim</span><span class="p">:</span><span class="n">hasPhysicalEntityReference</span> <span class="n">local</span><span class="p">:</span><span class="n">entity2</span> <span class="o">.</span>
-<span class="linenos">19</span>
-<span class="linenos">20</span><span class="n">local</span><span class="p">:</span><span class="n">SourceParticipant0000</span>
-<span class="linenos">21</span>    <span class="n">semsim</span><span class="p">:</span><span class="n">hasMultiplier</span> <span class="s2">&quot;1&quot;</span><span class="o">^^</span><span class="n">rdf</span><span class="p">:</span><span class="n">double</span> <span class="p">;</span>
-<span class="linenos">22</span>    <span class="n">semsim</span><span class="p">:</span><span class="n">hasPhysicalEntityReference</span> <span class="n">local</span><span class="p">:</span><span class="n">entity1</span> <span class="o">.</span>
-<span class="linenos">23</span>
-<span class="linenos">24</span><span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">xml</span><span class="c1">#main.ReactionRate&gt;</span>
-<span class="linenos">25</span>    <span class="n">bqbiol</span><span class="p">:</span><span class="n">isPropertyOf</span> <span class="n">local</span><span class="p">:</span><span class="n">Process</span> <span class="p">;</span>
-<span class="linenos">26</span>    <span class="n">bqbiol</span><span class="p">:</span><span class="n">isVersionOf</span> <span class="o">&lt;</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">identifiers</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">opb</span><span class="p">:</span><span class="n">OPB_00592</span><span class="o">&gt;</span> <span class="o">.</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="nd">@prefix</span> <span class="n">rdf</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">w3</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="mi">1999</span><span class="o">/</span><span class="mi">02</span><span class="o">/</span><span class="mi">22</span><span class="o">-</span><span class="n">rdf</span><span class="o">-</span><span class="n">syntax</span><span class="o">-</span><span class="n">ns</span><span class="c1">#&gt; .</span>
+<span class="linenos"> 2</span><span class="nd">@prefix</span> <span class="n">bqbiol</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">biomodels</span><span class="o">.</span><span class="n">net</span><span class="o">/</span><span class="n">biology</span><span class="o">-</span><span class="n">qualifiers</span><span class="o">/&gt;</span> <span class="o">.</span>
+<span class="linenos"> 3</span><span class="nd">@prefix</span> <span class="n">semsim</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">bime</span><span class="o">.</span><span class="n">uw</span><span class="o">.</span><span class="n">edu</span><span class="o">/</span><span class="n">semsim</span><span class="o">/&gt;</span> <span class="o">.</span>
+<span class="linenos"> 4</span><span class="nd">@prefix</span> <span class="n">OMEXlib</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/&gt;</span> <span class="o">.</span>
+<span class="linenos"> 5</span><span class="nd">@prefix</span> <span class="n">local</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">rdf</span><span class="c1">#&gt; .</span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span><span class="n">local</span><span class="p">:</span><span class="n">MediatorParticipant0000</span>
+<span class="linenos"> 8</span>    <span class="n">semsim</span><span class="p">:</span><span class="n">hasPhysicalEntityReference</span> <span class="n">local</span><span class="p">:</span><span class="n">entity3</span> <span class="o">.</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span><span class="n">local</span><span class="p">:</span><span class="n">Process</span>
+<span class="linenos">11</span>    <span class="n">semsim</span><span class="p">:</span><span class="n">hasMediatorParticipant</span> <span class="n">local</span><span class="p">:</span><span class="n">MediatorParticipant0000</span> <span class="p">;</span>
+<span class="linenos">12</span>    <span class="n">semsim</span><span class="p">:</span><span class="n">hasSinkParticipant</span> <span class="n">local</span><span class="p">:</span><span class="n">SinkParticipant0000</span> <span class="p">;</span>
+<span class="linenos">13</span>    <span class="n">semsim</span><span class="p">:</span><span class="n">hasSourceParticipant</span> <span class="n">local</span><span class="p">:</span><span class="n">SourceParticipant0000</span> <span class="o">.</span>
+<span class="linenos">14</span>
+<span class="linenos">15</span><span class="n">local</span><span class="p">:</span><span class="n">SinkParticipant0000</span>
+<span class="linenos">16</span>    <span class="n">semsim</span><span class="p">:</span><span class="n">hasMultiplier</span> <span class="s2">&quot;1&quot;</span><span class="o">^^</span><span class="n">rdf</span><span class="p">:</span><span class="n">double</span> <span class="p">;</span>
+<span class="linenos">17</span>    <span class="n">semsim</span><span class="p">:</span><span class="n">hasPhysicalEntityReference</span> <span class="n">local</span><span class="p">:</span><span class="n">entity2</span> <span class="o">.</span>
+<span class="linenos">18</span>
+<span class="linenos">19</span><span class="n">local</span><span class="p">:</span><span class="n">SourceParticipant0000</span>
+<span class="linenos">20</span>    <span class="n">semsim</span><span class="p">:</span><span class="n">hasMultiplier</span> <span class="s2">&quot;1&quot;</span><span class="o">^^</span><span class="n">rdf</span><span class="p">:</span><span class="n">double</span> <span class="p">;</span>
+<span class="linenos">21</span>    <span class="n">semsim</span><span class="p">:</span><span class="n">hasPhysicalEntityReference</span> <span class="n">local</span><span class="p">:</span><span class="n">entity1</span> <span class="o">.</span>
+<span class="linenos">22</span>
+<span class="linenos">23</span><span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">xml</span><span class="c1">#main.ReactionRate&gt;</span>
+<span class="linenos">24</span>    <span class="n">bqbiol</span><span class="p">:</span><span class="n">isPropertyOf</span> <span class="n">local</span><span class="p">:</span><span class="n">Process</span> <span class="p">;</span>
+<span class="linenos">25</span>    <span class="n">bqbiol</span><span class="p">:</span><span class="n">isVersionOf</span> <span class="o">&lt;</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">identifiers</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">opb</span><span class="p">:</span><span class="n">OPB_00592</span><span class="o">&gt;</span> <span class="o">.</span>
+<span class="linenos">26</span>
 <span class="linenos">27</span>
-<span class="linenos">28</span>
 </pre></div>
 </div>
 </div>
@@ -2526,21 +2521,20 @@ add more locations.</p>
 </div>
 <div class="literal-block-wrapper docutils container" id="id36">
 <div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id36" title="Permalink to this code">¶</a></div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">sys</span><span class="o">.</span><span class="n">executable</span> <span class="n">C</span><span class="p">:</span>\<span class="n">Miniconda3</span>\<span class="n">envs</span>\<span class="n">py39</span>\<span class="n">python</span><span class="o">.</span><span class="n">exe</span>
-<span class="linenos"> 2</span><span class="nd">@prefix</span> <span class="n">rdf</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">w3</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="mi">1999</span><span class="o">/</span><span class="mi">02</span><span class="o">/</span><span class="mi">22</span><span class="o">-</span><span class="n">rdf</span><span class="o">-</span><span class="n">syntax</span><span class="o">-</span><span class="n">ns</span><span class="c1">#&gt; .</span>
-<span class="linenos"> 3</span><span class="nd">@prefix</span> <span class="n">bqbiol</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">biomodels</span><span class="o">.</span><span class="n">net</span><span class="o">/</span><span class="n">biology</span><span class="o">-</span><span class="n">qualifiers</span><span class="o">/&gt;</span> <span class="o">.</span>
-<span class="linenos"> 4</span><span class="nd">@prefix</span> <span class="n">OMEXlib</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/&gt;</span> <span class="o">.</span>
-<span class="linenos"> 5</span><span class="nd">@prefix</span> <span class="n">local</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">rdf</span><span class="c1">#&gt; .</span>
-<span class="linenos"> 6</span>
-<span class="linenos"> 7</span><span class="n">local</span><span class="p">:</span><span class="n">entity0</span>
-<span class="linenos"> 8</span>    <span class="n">bqbiol</span><span class="p">:</span><span class="ow">is</span> <span class="o">&lt;</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">identifiers</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">fma</span><span class="p">:</span><span class="mi">9570</span><span class="o">&gt;</span> <span class="p">;</span>
-<span class="linenos"> 9</span>    <span class="n">bqbiol</span><span class="p">:</span><span class="n">isPartOf</span> <span class="o">&lt;</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">identifiers</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">fma</span><span class="p">:</span><span class="mi">18228</span><span class="o">&gt;</span> <span class="o">.</span>
-<span class="linenos">10</span>
-<span class="linenos">11</span><span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">xml</span><span class="c1">#main.Volume&gt;</span>
-<span class="linenos">12</span>    <span class="n">bqbiol</span><span class="p">:</span><span class="n">isPropertyOf</span> <span class="n">local</span><span class="p">:</span><span class="n">entity0</span> <span class="p">;</span>
-<span class="linenos">13</span>    <span class="n">bqbiol</span><span class="p">:</span><span class="n">isVersionOf</span> <span class="o">&lt;</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">identifiers</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">opb</span><span class="p">:</span><span class="n">OPB_00154</span><span class="o">&gt;</span> <span class="o">.</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="nd">@prefix</span> <span class="n">rdf</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">w3</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="mi">1999</span><span class="o">/</span><span class="mi">02</span><span class="o">/</span><span class="mi">22</span><span class="o">-</span><span class="n">rdf</span><span class="o">-</span><span class="n">syntax</span><span class="o">-</span><span class="n">ns</span><span class="c1">#&gt; .</span>
+<span class="linenos"> 2</span><span class="nd">@prefix</span> <span class="n">bqbiol</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">biomodels</span><span class="o">.</span><span class="n">net</span><span class="o">/</span><span class="n">biology</span><span class="o">-</span><span class="n">qualifiers</span><span class="o">/&gt;</span> <span class="o">.</span>
+<span class="linenos"> 3</span><span class="nd">@prefix</span> <span class="n">OMEXlib</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/&gt;</span> <span class="o">.</span>
+<span class="linenos"> 4</span><span class="nd">@prefix</span> <span class="n">local</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">rdf</span><span class="c1">#&gt; .</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="n">local</span><span class="p">:</span><span class="n">entity0</span>
+<span class="linenos"> 7</span>    <span class="n">bqbiol</span><span class="p">:</span><span class="ow">is</span> <span class="o">&lt;</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">identifiers</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">fma</span><span class="p">:</span><span class="mi">9570</span><span class="o">&gt;</span> <span class="p">;</span>
+<span class="linenos"> 8</span>    <span class="n">bqbiol</span><span class="p">:</span><span class="n">isPartOf</span> <span class="o">&lt;</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">identifiers</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">fma</span><span class="p">:</span><span class="mi">18228</span><span class="o">&gt;</span> <span class="o">.</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span><span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">omex</span><span class="o">-</span><span class="n">library</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">NewOmex</span><span class="o">.</span><span class="n">omex</span><span class="o">/</span><span class="n">NewModel</span><span class="o">.</span><span class="n">xml</span><span class="c1">#main.Volume&gt;</span>
+<span class="linenos">11</span>    <span class="n">bqbiol</span><span class="p">:</span><span class="n">isPropertyOf</span> <span class="n">local</span><span class="p">:</span><span class="n">entity0</span> <span class="p">;</span>
+<span class="linenos">12</span>    <span class="n">bqbiol</span><span class="p">:</span><span class="n">isVersionOf</span> <span class="o">&lt;</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">identifiers</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">opb</span><span class="p">:</span><span class="n">OPB_00154</span><span class="o">&gt;</span> <span class="o">.</span>
+<span class="linenos">13</span>
 <span class="linenos">14</span>
-<span class="linenos">15</span>
 </pre></div>
 </div>
 </div>

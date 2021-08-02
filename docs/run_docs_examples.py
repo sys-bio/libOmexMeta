@@ -78,7 +78,6 @@ path_code = f"""
 import sys
 import os
 sys.path.append('{args.pyomexmeta_site_package_dir}')
-print("sys.executable", sys.executable)
 """
 
 

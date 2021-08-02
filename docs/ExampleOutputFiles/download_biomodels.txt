@@ -1,1 +1,0 @@
-sys.executable C:\Miniconda3\envs\py39\python.exe
