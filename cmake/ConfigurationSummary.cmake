@@ -9,6 +9,7 @@ CMake variables and options
     PLATFORM                           ${PLATFORM}
     LIBOMEXMETA_VERSION                ${LIBOMEXMETA_VERSION}
     CMAKE_CXX_STANDARD                 ${CMAKE_CXX_STANDARD}
+    CMAKE_GENERATOR                    ${CMAKE_GENERATOR}
     CMAKE_POSITION_INDEPENDENT_CODE    ${CMAKE_POSITION_INDEPENDENT_CODE}
     CMAKE_INSTALL_RPATH                ${CMAKE_INSTALL_RPATH}
     CMAKE_CXX_FLAGS                    ${CMAKE_CXX_FLAGS}
