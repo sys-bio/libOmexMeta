@@ -68,18 +68,17 @@ TEST_F(EditorTestsModelLevelAnnotationsFromString, AddDateCreated) {
     Editor editor = rdf.toEditor(
             SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
 
-    editor.addDateCreated("14/01/1991");
+    const std::string& expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+                                  "@prefix dc: <http://purl.org/dc/terms/> .\n"
+                                  "@prefix OMEXlib: <http://omex-library.org/> .\n"
+                                  "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
+                                  "\n"
+                                  "<http://omex-library.org/NewOmex.omex/NewModel.xml#TestModelNotAnnotated>\n"
+                                  "    dc:created \"2021-09-14\"^^dc:W3CDTF .";
+    editor.addDateCreated("2021-09-14");
+    ASSERT_TRUE(RDF::equals(&rdf, expected, "turtle", true));
 
-    std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix dc: <http://purl.org/dc/terms/> .\n"
-                           "@prefix OMEXlib: <http://omex-library.org/> .\n"
-                           "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
-                           "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
-                           "\n"
-                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#TestModelNotAnnotated>\n"
-                           "    dc:created [\n"
-                           "        dc:W3CDTF \"14/01/1991\"\n"
-                           "    ] .";
+
     RDF expected_rdf = RDF::fromString(expected, "turtle");
     std::cout << rdf.toString() << std::endl;
     std::cout << expected_rdf.toString() << std::endl;
@@ -268,10 +267,8 @@ TEST_F(EditorTestsModelLevelAnnotationsFromFile, AddDateCreated){
                                   "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                                   "\n"
                                   "<http://omex-library.org/NewOmex.omex/NewModel.xml#TestModelNotAnnotated>\n"
-                                  "    dc:created [\n"
-                                  "        dc:W3CDTF \"1/2/2012\"\n"
-                                  "    ] .";
-    editor->addDateCreated("1/2/2012");
+                                  "    dc:created \"2021-09-14\"^^dc:W3CDTF .";
+    editor->addDateCreated("2021-09-14");
     ASSERT_TRUE(RDF::equals(&rdf, expected, "turtle", true));
 }
 

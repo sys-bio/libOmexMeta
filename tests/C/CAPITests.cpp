@@ -1241,7 +1241,7 @@ TEST_F(CAPITests, EditoraddDateCreated) {
     RDF *rdf_ptr = RDF_new();
     Editor *editor_ptr = RDF_toEditor(rdf_ptr,
                                       SBMLFactory::getSBML(SBML_NOT_ANNOTATED).c_str(), true, false);
-    Editor_addDateCreated(editor_ptr, "14/01/1991");
+    Editor_addDateCreated(editor_ptr, "2020-11-23");
     const char *expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix dc: <http://purl.org/dc/terms/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
@@ -1249,9 +1249,8 @@ TEST_F(CAPITests, EditoraddDateCreated) {
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#TestModelNotAnnotated>\n"
-                           "    dc:created [\n"
-                           "        dc:W3CDTF \"14/01/1991\"\n"
-                           "    ] .";
+                           "    dc:created \"2020-11-23\"^^dc:W3CDTF\n .";
+
     char *actual = RDF_toString(rdf_ptr, "turtle");
     std::cout << actual << std::endl;
     ASSERT_TRUE(RDF::equals(rdf_ptr, expected, "turtle"));

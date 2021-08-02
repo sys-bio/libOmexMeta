@@ -572,7 +572,7 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
 
     def test_editor_add_date_created(self):
         editor_ptr = self.pyom.rdf_to_editor(self.rdf, TestStrings.xml.encode(), True, False)
-        self.pyom.editor_add_date_created(editor_ptr, "14/01/1001".encode())
+        self.pyom.editor_add_date_created(editor_ptr, "2021-19-01".encode())
         actual = self.pyom.get_and_free_c_str(
             self.pyom.rdf_to_string(self.rdf, "turtle".encode())
         )
@@ -583,10 +583,7 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#model0000>
-    dc:created [
-        dc:W3CDTF "14/01/1001"
-    ] .
-
+    dc:created "2021-19-01"^^dc:W3CDTF  .
 """
         self.assertTrue(self.pyom.rdf_equals_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode(), True))
         self.pyom.editor_delete(editor_ptr)

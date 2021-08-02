@@ -356,15 +356,14 @@ namespace omexmeta {
     }
 
     Editor &Editor::addDateCreated(const std::string &date) {
-        LibrdfNode anon = LibrdfNode::fromBlank("");
-        Triple triple1(uriHandler_, LibrdfNode::fromUriString(getModelLevelAnnotationUri()).get(),
-                       PredicateFactory("dc", "created")->get(),
-                       anon.get());
-        Triple triple2(uriHandler_, anon.get(),
-                       PredicateFactory("dc", "W3CDTF")->get(),
-                       LibrdfNode::fromLiteral(date).get());
+        //        LibrdfNode anon = LibrdfNode::fromBlank("");
+        auto ptr = PredicateFactory("dc", "W3CDTF");
+        std::string w3 = ptr->str();
+        Triple triple1(
+                uriHandler_, LibrdfNode::fromUriString(getModelLevelAnnotationUri()),
+                PredicateFactory("dc", "created"),
+                LibrdfNode::fromLiteral(date, w3));
         model_.addStatement(triple1);
-        model_.addStatement(triple2);
         addNamespace(Predicate::namespaceMap()["dc"], "dc");
         return *this;
     }
@@ -463,7 +462,7 @@ namespace omexmeta {
         return uriHandler_;
     }
 
-    std::string Editor::stripAnnotations(const std::string& annotationElementName) {
+    std::string Editor::stripAnnotations(const std::string &annotationElementName) {
         return omexMetaXmlPtr_->removeElement(annotationElementName);
     }
 
