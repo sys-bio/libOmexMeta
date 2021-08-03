@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import ctypes as ct
 import os
+import sys
 from contextlib import contextmanager
 from sys import executable as _python_interpretor
 from typing import List
@@ -46,6 +47,7 @@ def propagate_omexmeta_error(func):
 
     """
     if callable(func):
+
         @wraps(func)
         def raise_error_if_necessary(*args, **kwargs):
             failed = func(*args, **kwargs)
@@ -59,6 +61,7 @@ def propagate_omexmeta_error(func):
                     _pyom.clear_last_error()
                     raise OmexMetaException(err)
             return failed
+
         return raise_error_if_necessary
     else:
         value = func
@@ -66,12 +69,12 @@ def propagate_omexmeta_error(func):
             err = _pyom.get_last_error()
             _pyom.clear_last_error()
             raise OmexMetaException(err)
-        if isinstance(func, int):
-            if func < 0:
-                err = _pyom.get_last_error()
-                _pyom.clear_last_error()
-                raise OmexMetaException(err)
-        return func
+    if isinstance(func, int):
+        if func < 0:
+            err = _pyom.get_last_error()
+            _pyom.clear_last_error()
+            raise OmexMetaException(err)
+    return func
 
 
 class RDF:
@@ -1353,7 +1356,7 @@ class Editor:
         propagate_omexmeta_error(self._obj)
         return self
 
-    def strip_annotations(self, annotationElementName:str = "annotation") -> str:
+    def strip_annotations(self, annotationElementName: str = "annotation") -> str:
         xml = _pyom.get_and_free_c_str(_pyom.editor_strip_annotations(self._obj, annotationElementName.encode()))
         propagate_omexmeta_error(self._obj)
         return xml
@@ -2263,6 +2266,7 @@ class EnergyDiff(_PropertyBearer):
     elsewhere in the RDF metadata.
 
     """
+
     def __init__(self, energy_diff_ptr: ct.c_int64):
         """Constructor for :class:`EnergyDiff`.
 

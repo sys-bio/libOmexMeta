@@ -578,8 +578,6 @@ TEST_F(EditorTests, TestAddPersonalInformation) {
     ASSERT_TRUE(RDF::equals(&rdf, expected));
 }
 
-
-
 TEST_F(EditorTests, StripAnnotationElements) {
     std::string expected = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
                            "<sbml xmlns=\"http://www.sbml.org/sbml/level3/version1/core\" level=\"3\" version=\"1\">\n"
@@ -644,10 +642,31 @@ TEST_F(EditorTests, StripAnnotationElements) {
                            "    </model>\n"
                            "</sbml>\n";
     RDF rdf;
-    std::cout << SBMLFactory::getSBML(SBML_Semantic_Extraction_Model) << std::endl;
-    Editor editor = rdf.toEditor(SBMLFactory::getSBML(SBML_Semantic_Extraction_Model), false, false);
+    std::cout << SBMLFactory::getSBML(SBML_SEMANTIC_EXTRACTION_MODEL) << std::endl;
+    Editor editor = rdf.toEditor(SBMLFactory::getSBML(SBML_SEMANTIC_EXTRACTION_MODEL), false, false);
     std::string stripped = editor.stripAnnotations();
     std::cout << stripped << std::endl;
     ASSERT_STREQ(expected.c_str(), stripped.c_str());
 }
+
+TEST_F(EditorTests, CheckGetXmlWithValidSBML) {
+    RDF rdf;
+    std::cout << SBMLFactory::getSBML(SBML_SEMANTIC_EXTRACTION_MODEL) << std::endl;
+    Editor editor = rdf.toEditor(SBMLFactory::getSBML(SBML_SEMANTIC_EXTRACTION_MODEL), false, true);
+    std::cout << editor.getXml() << std::endl;
+}
+
+TEST_F(EditorTests, CheckGetXmlWithInvalidSBML) {
+    RDF rdf;
+    Editor editor = rdf.toEditor(SBMLFactory::getSBML(SBML_INVALID_METAIDS), false, true);
+    ASSERT_NO_THROW(editor.getXml() );
+}
+
+
+
+
+
+
+
+
 

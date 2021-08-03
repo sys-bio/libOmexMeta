@@ -293,7 +293,8 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
         editor_ptr = self.pyom.rdf_to_editor(self.rdf, TestStrings.xml.encode(), True, False)
         ptr = self.pyom.editor_get_metaid(editor_ptr, 0)
         actual = self.pyom.get_and_free_c_str(ptr)
-        expected = "OmexMetaId0000"
+        expected = "model0000"
+        self.assertEqual(expected, actual)
         self.pyom.editor_delete(editor_ptr)
 
     def test_editor_get_num_metaids(self):
@@ -366,6 +367,13 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
     </sbml>
 """
         self.assertEqual(expected, actual)
+        self.pyom.editor_delete(editor_ptr)
+
+    def test_editor_get_xml_when_invalid_sbml_metaids(self):
+        editor_ptr = self.pyom.rdf_to_editor(self.rdf, TestStrings.sbml_invalid_metaids.encode(), False, True)
+        ptr = self.pyom.editor_get_xml(editor_ptr)
+        actual = self.pyom.get_and_free_c_str(ptr)
+        self.assertEqual(actual.strip(), TestStrings.sbml_invalid_metaids.strip())
         self.pyom.editor_delete(editor_ptr)
 
     def test_editor_get_archive_uri(self):
