@@ -125,6 +125,7 @@ setup(
     url='https://github.com/sys-bio/libomexmeta',
     keywords=['annotation', 'rdf'],
     install_requires=open("requirements.txt").read().split("\n"),
+    test_requires=open("test-requirements.txt").read().split("\n"),
     packages=['pyomexmeta'],
     package_dir={'pyomexmeta': 'site-packages/pyomexmeta'},
     package_data={'pyomexmeta': [
