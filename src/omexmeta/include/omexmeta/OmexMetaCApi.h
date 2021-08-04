@@ -411,6 +411,20 @@ namespace omexmeta {
 
     OMEXMETA_CAPI_EXPORT int PersonalInformation_setMetaid(PersonalInformation *information, const char *metaid);
 
+    OMEXMETA_CAPI_EXPORT int StringVector_getSize(std::vector<std::string>* vec);
+
+    OMEXMETA_CAPI_EXPORT char* StringVector_getElementAtIdx(std::vector<std::string>* vec, int idx);
+
+    OMEXMETA_CAPI_EXPORT void StringVector_delete(std::vector<std::string> *strVec);
+
+    OMEXMETA_CAPI_EXPORT int ResultsMap_getSize(ResultsMap* resultsMap);
+
+    OMEXMETA_CAPI_EXPORT std::vector<std::string>* ResultsMap_getStringVectorAt(ResultsMap* resultsMap, const char* key);
+
+    OMEXMETA_CAPI_EXPORT std::vector<std::string>* ResultsMap_getKeys(ResultsMap* resultsMap);
+
+    OMEXMETA_CAPI_EXPORT void ResultsMap_delete(ResultsMap * resultsMap);
+
 
 #ifdef __cplusplus
     }

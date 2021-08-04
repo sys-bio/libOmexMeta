@@ -656,8 +656,10 @@ class RDF:
         propagate_omexmeta_error(string_ptr)
         return _pyom.get_and_free_c_str(string_ptr)
 
-    def query(self, query_str: str, results_syntax: str) -> str:
+    def query_results_as_string(self, query_str: str, results_syntax: str) -> str:
         """Query the :class:`RDF` using sparql.
+
+        Returns the results as a string in the specified format.
 
         Args:
             query_str: (str) A SPAQRL query
@@ -669,7 +671,10 @@ class RDF:
         
         Examples:
             >>> rdf = RDF.from_file("annot.rdf") # read from file on disk
-            >>> rdf.query("SELECT *?x ?y ?z WHERE { ?x ?y ?z }") # selects everything
+            >>> rdf.query_results_as_string("SELECT *?x ?y ?z WHERE { ?x ?y ?z }") # selects everything
+
+        See Also:
+            query_results_as_dict
 
         """
         query_results_ptr = _pyom.rdf_query_results_as_str(
@@ -678,6 +683,74 @@ class RDF:
         results_crlf = _pyom.get_and_free_c_str(query_results_ptr)
         results_lf = _pyom.crlf_to_lr(results_crlf)
         return results_lf
+
+    def query_results_as_dict(self, query_str: str) -> str:
+        """Query the :class:`RDF` using sparql
+
+        Returns the results as a dict[variable_name] = list(results)
+
+        Args:
+            query_str: (str) A SPAQRL query
+
+        Returns: dict
+
+        Examples:
+            >>> rdf = RDF.from_file("annot.rdf") # read from file on disk
+            >>> rdf.query_results_as_dict("SELECT *?x ?y ?z WHERE { ?x ?y ?z }") # selects everything
+
+        See Also:
+            query_results_as_str
+
+        """
+        # Do the query, get the pointer to the map obj
+        results_map_ptr = _pyom.rdf_query_results_as_map(self._obj, query_str.encode())
+        propagate_omexmeta_error(results_map_ptr)
+
+        # how many elements in the map?
+        map_size = _pyom.results_map_get_size(results_map_ptr)
+        propagate_omexmeta_error(map_size)
+
+        # get the keys in the map
+        map_keys = _pyom.results_map_get_keys(results_map_ptr)
+        propagate_omexmeta_error(map_keys)
+
+        results_dict = dict()
+
+        # iterate over the number of elements in the map
+        for i in range(map_size):
+            # get the string value of key i
+            key = _pyom.string_vector_get_element_at_idx(map_keys, i)
+            propagate_omexmeta_error(key)
+            key = _pyom.get_and_free_c_str(key)
+
+            # assign new key in our results dict
+            results_dict[key] = []
+
+            # get the value of the string vector that is mapped to by key
+            string_vector_at_key = _pyom.results_map_get_string_vector_at(results_map_ptr, key.encode())
+            propagate_omexmeta_error(string_vector_at_key)
+
+            # get the size of the string vector
+            string_vector_size = _pyom.string_vector_get_size(string_vector_at_key)
+            propagate_omexmeta_error(string_vector_size)
+
+            # iterate over the string vector and pop the results into the results dict
+            for i in range(string_vector_size):
+                # collect the value of the element at position i as string
+                val = _pyom.string_vector_get_element_at_idx(string_vector_at_key, i)
+                propagate_omexmeta_error(val)
+                val = _pyom.get_and_free_c_str(val)
+                results_dict[key].append(val)
+
+            # clean up heap memory
+            _pyom.string_vector_delete(string_vector_at_key)
+        _pyom.string_vector_delete(map_keys)
+        _pyom.results_map_delete(results_map_ptr)
+        return results_dict
+
+
+
+
 
     def to_editor(self, xml: str, generate_new_metaids: bool = False, sbml_semantic_extraction: bool = True) -> Editor:
         """Create an Editor object which is the interface for creating and removing annotations

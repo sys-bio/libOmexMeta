@@ -164,13 +164,12 @@ namespace omexmeta {
      * @brief run a sparql query on rdf_ptr. Return the results as a ResultsMap*.
      * @details Caller is responsible for freeing memory associated with returned map ptr
      */
-    ResultsMap* RDF_queryResultsAsMap(RDF *rdf_ptr, const char *query_str) {
+    ResultsMap *RDF_queryResultsAsMap(RDF *rdf_ptr, const char *query_str) {
         try {
             ResultsMap resultsMap = rdf_ptr->queryResultsAsMap(query_str);
-            auto* rOut = new ResultsMap{};
+            auto *rOut = new ResultsMap{};
             rOut->insert(resultsMap.begin(), resultsMap.end());
             return rOut;
-
         } catch (std::exception &error) {
             setLastError(error.what());
             return nullptr;
@@ -181,7 +180,7 @@ namespace omexmeta {
      * @brief RDF_queryResultsAsMap allocates a ResultsMap to the heap.
      * This method deletes that memory
      */
-    void deleteResultsMap(ResultsMap* map){
+    void deleteResultsMap(ResultsMap *map) {
         delete map;
     }
 
@@ -632,7 +631,7 @@ namespace omexmeta {
         }
     }
 
-    char *Editor_stripAnnotations(Editor *editor_ptr, const char* annotationElementName) {
+    char *Editor_stripAnnotations(Editor *editor_ptr, const char *annotationElementName) {
         try {
             std::string str = editor_ptr->stripAnnotations(annotationElementName);
             char *cstr = (char *) malloc((str.size() + 1) * sizeof(char *));
@@ -1485,5 +1484,85 @@ namespace omexmeta {
         }
     }
 
+
+    // auxillary types
+
+    int StringVector_getSize(std::vector<std::string> *vec) {
+        try {
+            return (int) vec->size();
+        } catch (std::exception &e) {
+            setLastError(e.what());
+            return -1;
+        }
+    }
+
+    char *StringVector_getElementAtIdx(std::vector<std::string> *vec, int idx) {
+        try {
+            std::string s = vec->operator[](idx);
+            char *cstr = (char *) malloc((s.size() + 1) * sizeof(char));
+            std::strcpy(cstr, s.c_str());
+            return cstr;
+        } catch (std::exception &e) {
+            setLastError(e.what());
+            return nullptr;
+        }
+    }
+
+    void StringVector_delete(std::vector<std::string> *strVec) {
+        try {
+            if (strVec){
+                delete strVec;
+                strVec = nullptr;
+            }
+        } catch (std::exception &e) {
+            setLastError(e.what());
+        }
+    }
+
+    int ResultsMap_getSize(ResultsMap *resultsMap) {
+        try {
+            return resultsMap->size();
+        } catch (std::exception &e) {
+            setLastError(e.what());
+            return -1;
+        }
+    }
+
+    std::vector<std::string> *ResultsMap_getStringVectorAt(ResultsMap *resultsMap, const char *key) {
+        try {
+            std::vector<std::string> strVec = (*resultsMap).at(key);
+            auto out = new std::vector<std::string>(strVec.begin(), strVec.end());
+            return out;
+        } catch (std::exception &error) {
+            setLastError(error.what());
+            return nullptr;
+        }
+    }
+
+    std::vector<std::string> *ResultsMap_getKeys(ResultsMap *resultsMap) {
+        try {
+            auto out = new std::vector<std::string>(resultsMap->size());
+            int i = 0;
+            for (auto [k, v] : *resultsMap) {
+                (*out)[i] = k;
+                i++;
+            }
+            return out;
+        } catch (std::exception &error) {
+            setLastError(error.what());
+            return nullptr;
+        }
+    }
+
+    void ResultsMap_delete(ResultsMap * resultsMap) {
+        try {
+            if (resultsMap){
+                delete resultsMap;
+                resultsMap = nullptr;
+            }
+        } catch (std::exception &e) {
+            setLastError(e.what());
+        }
+    }
 
 }// namespace omexmeta

@@ -47,6 +47,8 @@ namespace omexmeta {
 
         // add metaids if we want to
         std::pair<std::string, std::vector<std::string>> xml_and_metaids = omexMetaXmlPtr_->addMetaIds();
+
+        // todo this xml_ should be replaced with omexMetaXml(Ptr)
         xml_ = xml_and_metaids.first;
         metaids_ = xml_and_metaids.second;
 

@@ -160,6 +160,18 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
 """
         self.assertEqual(expected, actual)
 
+    def test_rdf_query_results_as_map(self):
+        self.pyom.rdf_add_from_string(self.rdf, TestStrings.singular_annotation2.encode(),
+                                          "rdfxml".encode(), "test_rdf_to_string.rdf".encode())
+        query = """
+        SELECT ?x ?y ?z 
+        WHERE {
+            ?x ?y ?z
+        }
+        """
+        actual = self.pyom.rdf_query_results_as_map(self.rdf, query.encode())
+        print(actual)
+
     def test_rdf_get_repository(self):
         actual = self.pyom.get_and_free_c_str(
             self.pyom.rdf_get_repository_uri(self.rdf)
@@ -1433,6 +1445,40 @@ local:SourceParticipant0000
         self.assertEqual(expected, actual)
         self.pyom.personal_information_delete(information)
         self.pyom.editor_delete(editor_ptr)
+
+
+    def test_results_map_get_size(self):
+        # note this test has strong dependency on query_results_as_map
+        self.pyom.rdf_add_from_string(self.rdf, TestStrings.singular_annotation2.encode(),
+                                          "rdfxml".encode(), "test_rdf_to_string.rdf".encode())
+        query = """
+        SELECT ?x ?y ?z 
+        WHERE {
+            ?x ?y ?z
+        }
+        """
+        results_map_ptr = self.pyom.rdf_query_results_as_map(self.rdf, query.encode())
+        size = self.pyom.results_map_get_size(results_map_ptr)
+        self.assertEqual(3, size)
+
+    def test_string_vector_funcs(self):
+        # note this test has strong dependency on query_results_as_map
+        self.pyom.rdf_add_from_string(self.rdf, TestStrings.singular_annotation2.encode(),
+                                          "rdfxml".encode(), "test_rdf_to_string.rdf".encode())
+        query = """
+        SELECT ?x ?y ?z 
+        WHERE {
+            ?x ?y ?z
+        }
+        """
+        results_map_ptr = self.pyom.rdf_query_results_as_map(self.rdf, query.encode())
+        keys_vector_ptr = self.pyom.results_map_get_keys(results_map_ptr)
+        char_star = self.pyom.string_vector_get_element_at_idx(keys_vector_ptr, 0)
+        result = self.pyom.get_and_free_c_str(char_star)
+        self.assertEqual('x', result)
+        self.pyom.results_map_delete(results_map_ptr)
+        self.pyom.string_vector_delete(keys_vector_ptr)
+
 
 
 

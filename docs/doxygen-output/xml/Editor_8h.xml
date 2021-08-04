@@ -1063,7 +1063,7 @@
 <codeline lineno="410"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::unordered_map&lt;std::string,<sp/>std::string&gt;<sp/>&amp;namespaces_;</highlight></codeline>
 <codeline lineno="411"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>generate_new_metaids_;</highlight></codeline>
 <codeline lineno="412"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>sbml_semantic_extraction_;</highlight></codeline>
-<codeline lineno="413"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>metaid_base_<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;#OmexMetaId&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="413"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>metaid_base_<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;#OmexMetaId&quot;</highlight><highlight class="normal">;<sp/></highlight><highlight class="comment">//<sp/>maybe<sp/>unused?</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="414"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>OmexMetaXmlType<sp/>type_;</highlight></codeline>
 <codeline lineno="415"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>OmexMetaXmlPtr<sp/>omexMetaXmlPtr_;</highlight></codeline>
 <codeline lineno="416"><highlight class="normal"></highlight></codeline>

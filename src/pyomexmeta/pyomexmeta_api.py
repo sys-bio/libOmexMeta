@@ -270,7 +270,7 @@ class PyOmexMetaAPI:
 
     # Note yet supported - how to get std::unordered_map into a Python dict? Problem for later
     # ResultsMap RDF_queryResultsAsMap(RDF *rdf_ptr, const char *query_str, const char *results_format);
-    # rdf_query_results_as_map = utils.load_func("RDF_queryResultsAsMap", [ct.c_int64, ct.c_char_p], ct.c_int64)
+    rdf_query_results_as_map = utils.load_func("RDF_queryResultsAsMap", [ct.c_int64, ct.c_char_p], ct.c_int64)
 
     # int RDF_setRepositoryUri(RDF *rdf_ptr, std::string repository_uri);
     rdf_set_repository_uri = utils.load_func("RDF_setRepositoryUri", [ct.c_int64, ct.c_char_p], ct.c_int64)
@@ -698,3 +698,33 @@ class PyOmexMetaAPI:
 
     # int PersonalInformation_delete(PersonalInformation* information);
     personal_information_delete = utils.load_func("PersonalInformation_delete", [ct.c_int64], ct.c_int)
+
+    #################################################
+    #   Auxillary functions
+    #
+
+    # int StringVector_getSize(std::vector<std::string>* vec);
+    string_vector_get_size = utils.load_func("StringVector_getSize", [ct.c_int64], ct.c_int64)
+
+    # char* StringVector_getElementAtIdx(std::vector<std::string>* vec, int idx);
+    string_vector_get_element_at_idx = utils.load_func("StringVector_getElementAtIdx", [ct.c_int64, ct.c_int64], ct.c_int64)
+
+    # void StringVector_delete(std::vector<std::string> *strVec);
+    string_vector_delete = utils.load_func("StringVector_delete", [ct.c_int64], ct.c_void_p)
+
+    # int ResultsMap_getSize(ResultsMap* resultsMap);
+    results_map_get_size = utils.load_func("ResultsMap_getSize", [ct.c_int64], ct.c_int64)
+
+    # std::vector<std::string>* ResultsMap_getStringVectorAt(ResultsMap* resultsMap, const char* key);
+    results_map_get_string_vector_at = utils.load_func("ResultsMap_getStringVectorAt", [ct.c_int64, ct.c_char_p], ct.c_int64)
+
+    # std::vector<std::string>* ResultsMap_getKeys(ResultsMap* resultsMap);
+    results_map_get_keys = utils.load_func("ResultsMap_getKeys", [ct.c_int64], ct.c_int64)
+
+    # void ResultsMap_delete(ResultsMap * resultsMap);
+    results_map_delete = utils.load_func("ResultsMap_delete", [ct.c_int64], ct.c_void_p)
+
+
+
+
+
