@@ -1,75 +1,35 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
   <title>Comparing Redland and its C++ Wrapper &mdash; libomexmeta 1.2.10 documentation</title>
-  
-
-  
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
-
-  
-  
-
-  
-  
-
-  
-
-  
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
         <script src="../../_static/tabs.js"></script>
-    
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
-
-    
+    <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="The “Uncopyable object” problem" href="../uncopyable_object_problem.html" />
     <link rel="prev" title="Redland Wrapper" href="redland_wrapper_index.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
-
-          
             <a href="../../index.html" class="icon icon-home"> libomexmeta
-          
-
-          
           </a>
-
-          
-            
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -77,18 +37,8 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
         </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Main">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../background.html">Background to Semantic Annotations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Install/install.html">Installation</a></li>
@@ -123,77 +73,37 @@
 </li>
 </ul>
 
-            
-          
         </div>
-        
       </div>
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+      <nav class="wy-nav-top" aria-label="Top" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../index.html">libomexmeta</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
           
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+<div role="navigation" aria-label="Breadcrumbs">
   <ul class="wy-breadcrumbs">
-    
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-        
           <li><a href="../developers_index.html">Developers Documentation</a> &raquo;</li>
-        
           <li><a href="redland_wrapper_index.html">Redland Wrapper</a> &raquo;</li>
-        
       <li>Comparing Redland and its C++ Wrapper</li>
-    
-    
       <li class="wy-breadcrumbs-aside">
-        
-          
             <a href="../../_sources/Developers/RedlandWrapper/creating_a_rdf_graph_with_a_statement.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
+             
   <div class="section" id="comparing-redland-and-its-c-wrapper">
-<h1>Comparing Redland and its C++ Wrapper<a class="headerlink" href="#comparing-redland-and-its-c-wrapper" title="Permalink to this headline">¶</a></h1>
+<h1>Comparing Redland and its C++ Wrapper<a class="headerlink" href="#comparing-redland-and-its-c-wrapper" title="Permalink to this headline"></a></h1>
 <p>The Redland Wrapper is a C++ layer around the underlying C libraries
 that libOmexMeta depends on. Its not perfect, not is it a comprehensive
 Redland Library wrapper, but for our intents and purposed it works.</p>
@@ -201,56 +111,56 @@ Redland Library wrapper, but for our intents and purposed it works.</p>
 Redland API and the Redland Wrapper.</p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">The Redland Library: librdf</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">The Redland Wrapper</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id1">
-<div class="code-block-caption"><span class="caption-text">Create a triple store, an RDF model and add a triple to the model, using the librdf redland API.</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
-<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="cp">#include</span> <span class="cpf">&quot;librdf.h&quot;</span><span class="cp"></span>
-<span class="linenos"> 2</span>
-<span class="linenos"> 3</span>
-<span class="linenos"> 4</span><span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
-<span class="linenos"> 5</span>    <span class="n">librdf_world</span> <span class="o">*</span><span class="n">world</span> <span class="o">=</span> <span class="n">librdf_new_world</span><span class="p">();</span>
-<span class="linenos"> 6</span>    <span class="n">librdf_storage</span> <span class="o">*</span><span class="n">storage</span> <span class="o">=</span> <span class="n">librdf_new_storage</span><span class="p">(</span><span class="n">world</span><span class="p">,</span> <span class="s">&quot;memory&quot;</span><span class="p">,</span> <span class="s">&quot;SemsimMemoryStore&quot;</span><span class="p">,</span> <span class="n">nullptr</span><span class="p">);</span>
-<span class="linenos"> 7</span>    <span class="n">librdf_model</span> <span class="o">*</span><span class="n">model</span> <span class="o">=</span> <span class="n">librdf_new_model</span><span class="p">(</span><span class="n">world</span><span class="p">,</span> <span class="n">storage</span><span class="p">,</span> <span class="n">nullptr</span><span class="p">);</span>
-<span class="linenos"> 8</span>
-<span class="linenos"> 9</span>    <span class="n">librdf_statement</span> <span class="o">*</span><span class="n">statement</span> <span class="o">=</span> <span class="n">librdf_new_statement_from_nodes</span><span class="p">(</span>
-<span class="linenos">10</span>            <span class="n">world</span><span class="p">,</span>
-<span class="linenos">11</span>            <span class="n">librdf_new_node_from_uri_string</span><span class="p">(</span>
-<span class="linenos">12</span>                    <span class="n">world</span><span class="p">,</span> <span class="p">(</span><span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="o">*</span><span class="p">)</span> <span class="s">&quot;https://subject.com&quot;</span><span class="p">),</span>
-<span class="linenos">13</span>            <span class="n">librdf_new_node_from_uri_string</span><span class="p">(</span>
-<span class="linenos">14</span>                    <span class="n">world</span><span class="p">,</span>
-<span class="linenos">15</span>                    <span class="p">(</span><span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="o">*</span><span class="p">)</span> <span class="s">&quot;https://predicate.com&quot;</span><span class="p">),</span>
-<span class="linenos">16</span>            <span class="n">librdf_new_node_from_uri_string</span><span class="p">(</span>
-<span class="linenos">17</span>                    <span class="n">world</span><span class="p">,</span>
-<span class="linenos">18</span>                    <span class="p">(</span><span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="o">*</span><span class="p">)</span> <span class="s">&quot;https://resource.com&quot;</span><span class="p">)</span>
-<span class="linenos">19</span>    <span class="p">);</span>
-<span class="linenos">20</span>
-<span class="linenos">21</span>    <span class="n">librdf_model_add_statement</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">statement</span><span class="p">);</span>
-<span class="linenos">22</span>    <span class="n">librdf_free_statement</span><span class="p">(</span><span class="n">statement</span><span class="p">);</span>
-<span class="linenos">23</span>    <span class="n">librdf_free_storage</span><span class="p">(</span><span class="n">storage</span><span class="p">);</span>
-<span class="linenos">24</span>    <span class="n">librdf_free_model</span><span class="p">(</span><span class="n">model</span><span class="p">);</span>
-<span class="linenos">25</span>    <span class="n">librdf_free_world</span><span class="p">(</span><span class="n">world</span><span class="p">);</span>
-<span class="linenos">26</span>    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="linenos">27</span><span class="p">}</span>
+<div class="code-block-caption"><span class="caption-text">Create a triple store, an RDF model and add a triple to the model, using the librdf redland API.</span><a class="headerlink" href="#id1" title="Permalink to this code"></a></div>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;librdf.h&quot;</span><span class="cp"></span>
+
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+    <span class="n">librdf_world</span> <span class="o">*</span><span class="n">world</span> <span class="o">=</span> <span class="n">librdf_new_world</span><span class="p">();</span>
+    <span class="n">librdf_storage</span> <span class="o">*</span><span class="n">storage</span> <span class="o">=</span> <span class="n">librdf_new_storage</span><span class="p">(</span><span class="n">world</span><span class="p">,</span> <span class="s">&quot;memory&quot;</span><span class="p">,</span> <span class="s">&quot;SemsimMemoryStore&quot;</span><span class="p">,</span> <span class="n">nullptr</span><span class="p">);</span>
+    <span class="n">librdf_model</span> <span class="o">*</span><span class="n">model</span> <span class="o">=</span> <span class="n">librdf_new_model</span><span class="p">(</span><span class="n">world</span><span class="p">,</span> <span class="n">storage</span><span class="p">,</span> <span class="n">nullptr</span><span class="p">);</span>
+
+    <span class="n">librdf_statement</span> <span class="o">*</span><span class="n">statement</span> <span class="o">=</span> <span class="n">librdf_new_statement_from_nodes</span><span class="p">(</span>
+            <span class="n">world</span><span class="p">,</span>
+            <span class="n">librdf_new_node_from_uri_string</span><span class="p">(</span>
+                    <span class="n">world</span><span class="p">,</span> <span class="p">(</span><span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="o">*</span><span class="p">)</span> <span class="s">&quot;https://subject.com&quot;</span><span class="p">),</span>
+            <span class="n">librdf_new_node_from_uri_string</span><span class="p">(</span>
+                    <span class="n">world</span><span class="p">,</span>
+                    <span class="p">(</span><span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="o">*</span><span class="p">)</span> <span class="s">&quot;https://predicate.com&quot;</span><span class="p">),</span>
+            <span class="n">librdf_new_node_from_uri_string</span><span class="p">(</span>
+                    <span class="n">world</span><span class="p">,</span>
+                    <span class="p">(</span><span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="o">*</span><span class="p">)</span> <span class="s">&quot;https://resource.com&quot;</span><span class="p">)</span>
+    <span class="p">);</span>
+
+    <span class="n">librdf_model_add_statement</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">statement</span><span class="p">);</span>
+    <span class="n">librdf_free_statement</span><span class="p">(</span><span class="n">statement</span><span class="p">);</span>
+    <span class="n">librdf_free_storage</span><span class="p">(</span><span class="n">storage</span><span class="p">);</span>
+    <span class="n">librdf_free_model</span><span class="p">(</span><span class="n">model</span><span class="p">);</span>
+    <span class="n">librdf_free_world</span><span class="p">(</span><span class="n">world</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </div>
 </div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id2">
-<div class="code-block-caption"><span class="caption-text">Create a triple store, an RDF model and add a triple to the model, using the Redland Wrapper.</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
-<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="cp">#include</span> <span class="cpf">&quot;redland/RedlandAPI.h&quot;</span><span class="cp"></span>
-<span class="linenos"> 2</span>
-<span class="linenos"> 3</span>
-<span class="linenos"> 4</span><span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
-<span class="linenos"> 5</span>    <span class="n">LibrdfStorage</span> <span class="n">storage</span><span class="p">;</span>
-<span class="linenos"> 6</span>    <span class="n">LibrdfModel</span> <span class="n">model</span><span class="p">(</span><span class="n">storage</span><span class="p">.</span><span class="n">get</span><span class="p">());</span>
-<span class="linenos"> 7</span>    <span class="n">LibrdfStatement</span> <span class="n">statement</span> <span class="o">=</span> <span class="n">LibrdfStatement</span><span class="o">::</span><span class="n">fromRawNodePtrs</span><span class="p">(</span>
-<span class="linenos"> 8</span>            <span class="n">LibrdfNode</span><span class="o">::</span><span class="n">fromUriString</span><span class="p">(</span><span class="s">&quot;https//subject.com&quot;</span><span class="p">).</span><span class="n">get</span><span class="p">(),</span>
-<span class="linenos"> 9</span>            <span class="n">LibrdfNode</span><span class="o">::</span><span class="n">fromUriString</span><span class="p">(</span><span class="s">&quot;https//predicate.com&quot;</span><span class="p">).</span><span class="n">get</span><span class="p">(),</span>
-<span class="linenos">10</span>            <span class="n">LibrdfNode</span><span class="o">::</span><span class="n">fromUriString</span><span class="p">(</span><span class="s">&quot;https//resource.com&quot;</span><span class="p">).</span><span class="n">get</span><span class="p">()</span>
-<span class="linenos">11</span>    <span class="p">);</span>
-<span class="linenos">12</span>    <span class="n">model</span><span class="p">.</span><span class="n">addStatement</span><span class="p">(</span><span class="n">statement</span><span class="p">);</span>
-<span class="linenos">13</span>    <span class="n">statement</span><span class="p">.</span><span class="n">freeStatement</span><span class="p">();</span>
-<span class="linenos">14</span>    <span class="n">model</span><span class="p">.</span><span class="n">freeModel</span><span class="p">();</span>
-<span class="linenos">15</span>    <span class="n">storage</span><span class="p">.</span><span class="n">freeStorage</span><span class="p">();</span>
-<span class="linenos">16</span>    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="linenos">17</span><span class="p">}</span>
+<div class="code-block-caption"><span class="caption-text">Create a triple store, an RDF model and add a triple to the model, using the Redland Wrapper.</span><a class="headerlink" href="#id2" title="Permalink to this code"></a></div>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;redland/RedlandAPI.h&quot;</span><span class="cp"></span>
+
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+    <span class="n">LibrdfStorage</span> <span class="n">storage</span><span class="p">;</span>
+    <span class="n">LibrdfModel</span> <span class="n">model</span><span class="p">(</span><span class="n">storage</span><span class="p">.</span><span class="n">get</span><span class="p">());</span>
+    <span class="n">LibrdfStatement</span> <span class="n">statement</span> <span class="o">=</span> <span class="n">LibrdfStatement</span><span class="o">::</span><span class="n">fromRawNodePtrs</span><span class="p">(</span>
+            <span class="n">LibrdfNode</span><span class="o">::</span><span class="n">fromUriString</span><span class="p">(</span><span class="s">&quot;https//subject.com&quot;</span><span class="p">).</span><span class="n">get</span><span class="p">(),</span>
+            <span class="n">LibrdfNode</span><span class="o">::</span><span class="n">fromUriString</span><span class="p">(</span><span class="s">&quot;https//predicate.com&quot;</span><span class="p">).</span><span class="n">get</span><span class="p">(),</span>
+            <span class="n">LibrdfNode</span><span class="o">::</span><span class="n">fromUriString</span><span class="p">(</span><span class="s">&quot;https//resource.com&quot;</span><span class="p">).</span><span class="n">get</span><span class="p">()</span>
+    <span class="p">);</span>
+    <span class="n">model</span><span class="p">.</span><span class="n">addStatement</span><span class="p">(</span><span class="n">statement</span><span class="p">);</span>
+    <span class="n">statement</span><span class="p">.</span><span class="n">freeStatement</span><span class="p">();</span>
+    <span class="n">model</span><span class="p">.</span><span class="n">freeModel</span><span class="p">();</span>
+    <span class="n">storage</span><span class="p">.</span><span class="n">freeStorage</span><span class="p">();</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </div>
@@ -259,50 +169,33 @@ Redland API and the Redland Wrapper.</p>
 
 
            </div>
-           
           </div>
           <footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="../uncopyable_object_problem.html" class="btn btn-neutral float-right" title="The “Uncopyable object” problem" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="redland_wrapper_index.html" class="btn btn-neutral float-left" title="Redland Wrapper" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../uncopyable_object_problem.html" class="btn btn-neutral float-right" title="The “Uncopyable object” problem" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &#169; Copyright 2020, Ciaran Welsh.
-
-    </p>
+    <p>&#169; Copyright 2020, Ciaran Welsh.</p>
   </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

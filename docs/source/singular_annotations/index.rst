@@ -87,36 +87,30 @@ Simple example of creating a single annotation
     .. tab:: python
 
         .. literalinclude:: create_single_annotation_python.py
-            :linenos:
             :language: python
             :caption: Create a single annotation in Python
 
         .. literalinclude:: ../../ExampleOutputFiles/create_single_annotation_python.txt
-            :linenos:
             :caption: Output
 
     .. tab:: C++
 
         .. literalinclude:: create_single_annotation_cpp.CPP
-            :linenos:
             :language: C++
             :caption: Create a single annotation in C++
 
         .. literalinclude:: ../../ExampleOutputFiles/CreateSingleAnnotationCpp.txt
-            :linenos:
             :caption: Output
 
     .. tab:: C
 
         .. literalinclude:: create_single_annotation_c.CPP
-            :linenos:
             :language: C
             :caption: Create a single annotation in C
 
         Output:
 
         .. literalinclude:: ../../ExampleOutputFiles/CreateSingleAnnotationC.txt
-            :linenos:
             :caption: Output
 
 
@@ -137,34 +131,28 @@ create metaids
     .. tab:: python
 
         .. literalinclude:: create_single_annotation_with_metaids_python.py
-            :linenos:
             :caption: Create a single annotation in Python and create metaids
 
         .. literalinclude:: ../../ExampleOutputFiles/create_single_annotation_with_metaids_python.txt
-            :linenos:
             :caption: Output
 
 
     .. tab:: C++
 
         .. literalinclude:: create_single_annotation_with_metaids_cpp.cpp
-            :linenos:
             :language: C++
             :caption: Create a single annotation in C++ and create metaids
 
         .. literalinclude:: ../../ExampleOutputFiles/CreateSingleAnnotationWithMetaidsCpp.txt
-            :linenos:
             :caption: Output
 
     .. tab:: C
 
         .. literalinclude:: create_single_annotation_with_metaids_c.cpp
-            :linenos:
             :language: C
             :caption: Create a single annotation in C and create metaids
 
         .. literalinclude:: ../../ExampleOutputFiles/CreateSingleAnnotationWithMetaidsC.txt
-            :linenos:
             :caption: Output
 
 Creating and Serializing a Single Annotation without adding to the model
@@ -181,36 +169,30 @@ RDF graph.
     .. tab:: python
 
         .. literalinclude:: create_single_annotation_no_commit_python.py
-            :linenos:
             :language: python
             :caption: Create a single annotation in Python and serialize to turtle without commiting the triples to the current RDF graph
 
         .. literalinclude:: ../../ExampleOutputFiles/create_single_annotation_no_commit_python.txt
-            :linenos:
             :caption: Output
 
     .. tab:: C++
 
         .. literalinclude:: create_single_annotation_no_commit_cpp.CPP
-            :linenos:
             :language: C++
             :caption: Create a single annotation in C++ and serialize to turtle without commiting the triples to the current RDF graph
 
 
         .. literalinclude:: ../../ExampleOutputFiles/CreateSingleAnnotationNoCommitCpp.txt
-            :linenos:
             :caption: Output
 
     .. tab:: C
 
         .. literalinclude:: create_single_annotation_no_commit_c.cpp
-            :linenos:
             :language: C
             :caption: Create a single annotation in C and serialize to turtle without commiting the triples to the current RDF graph
 
 
         .. literalinclude:: ../../ExampleOutputFiles/CreateSingleAnnotationNoCommitC.txt
-            :linenos:
             :caption: Output
 
 Subjects, Predicates and Resources
@@ -250,7 +232,6 @@ exists and is the metaid for the `Species` element with the name `"A"`
     .. tab: Python
 
         .. code-block:: Python
-            :linenos:
             :caption: Set the subject portion of the RDF triple in Python.
 
             rdf = RDF()
@@ -260,7 +241,6 @@ exists and is the metaid for the `Species` element with the name `"A"`
                     singular_annotation.about('#OmexMetaId0002')
 
         .. code-block:: C++
-            :linenos:
             :caption: Set the subject portion of the RDF triple in C++.
 
             RDF rdf;
@@ -269,7 +249,6 @@ exists and is the metaid for the `Species` element with the name `"A"`
             singular_annotation.about("species0000")
 
         .. code-block:: C
-            :linenos:
             :caption: Set the subject portion of the RDF triple in C.
 
             // create an empty RDF object
@@ -292,7 +271,6 @@ because the metaid `#OmexMetaId0002` was not found in your model.
     .. tab:: Python
 
         .. code-block:: Python
-            :linenos:
             :caption: Raise error whilst setting the subject portion of the RDF triple in Python.
 
             rdf = RDF()
@@ -304,7 +282,6 @@ because the metaid `#OmexMetaId0002` was not found in your model.
     .. tab:: C++
 
         .. code-block:: C++
-            :linenos:
             :caption: Raise error whilst setting the subject portion of the RDF triple in C++.
 
             RDF rdf;
@@ -315,7 +292,6 @@ because the metaid `#OmexMetaId0002` was not found in your model.
     .. tab:: C
 
         .. code-block:: C
-            :linenos:
             :caption: Raise error whilst setting the subject portion of the RDF triple in C.
 
             // create an empty RDF object
@@ -372,7 +348,6 @@ terms for the prefix you are using.
     .. tab:: Python
 
         .. code-block:: Python
-            :linenos:
             :caption: Setting the Predicate portion of a singular annotation in Python
 
             rdf = RDF()
@@ -393,7 +368,6 @@ terms for the prefix you are using.
 
 
         .. code-block:: C++
-            :linenos:
             :caption: Setting the Predicate portion of a singular annotation in C++
 
             RDF rdf;
@@ -409,7 +383,6 @@ terms for the prefix you are using.
             dc_singular_annotation.setPredicate("dc", "date")
 
         .. code-block:: C
-            :linenos:
             :caption:  Setting the Predicate portion of a singular annotation in C
 
             // create an empty RDF object
@@ -443,34 +416,28 @@ this is a different method call - see below.
     .. tab:: python
 
         .. literalinclude:: create_single_annotation_predicate_from_uri_python.py
-            :linenos:
             :language: python
             :caption: Create a single annotation in Python using an arbitrary uri
 
         .. literalinclude:: ../../ExampleOutputFiles/create_single_annotation_predicate_from_uri_python.txt
-            :linenos:
             :caption: Output
 
     .. tab:: C++
 
         .. literalinclude:: create_single_annotation_predicate_from_uri_cpp.cpp
-            :linenos:
             :language: C++
             :caption: Create a single annotation in C++ using an arbitrary uri
 
         .. literalinclude:: ../../ExampleOutputFiles/CreateSingleAnnotationPredicateFromUriCpp.txt
-            :linenos:
             :caption: Output
 
     .. tab:: C
 
         .. literalinclude:: create_single_annotation_predicate_from_uri_c.cpp
-            :linenos:
             :language: C
             :caption: Create a single annotation in C using an arbitrary uri
 
         .. literalinclude:: ../../ExampleOutputFiles/CreateSingleAnnotationPredicateFromUriC.txt
-            :linenos:
             :caption: Output
 
 Resources
@@ -486,34 +453,28 @@ that demonstrate the various usages of Resource.
     .. tab:: Python
 
         .. literalinclude:: create_single_annotation_resource_python.py
-            :linenos:
             :language: python
             :caption: Demonstration of options for the resource node in Python
 
         .. literalinclude:: ../../ExampleOutputFiles/create_single_annotation_resource_python.txt
-            :linenos:
             :caption: Output
 
     .. tab:: C++
 
         .. literalinclude:: create_single_annotation_resource_cpp.cpp
-            :linenos:
             :language: c++
             :caption: Demonstration of options for the resource node in C++
 
         .. literalinclude:: ../../ExampleOutputFiles/CreateSingleAnnotationResourceCpp.txt
-            :linenos:
             :caption: Output
 
     .. tab:: C
 
         .. literalinclude:: create_single_annotation_resource_c.cpp
-            :linenos:
             :language: C
             :caption: Demonstration of options for the resource node in C
 
         .. literalinclude:: ../../ExampleOutputFiles/CreateSingleAnnotationResourceC.txt
-            :linenos:
             :caption: Output
 
 

@@ -1,74 +1,34 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
   <title>RDF &mdash; libomexmeta 1.2.10 documentation</title>
-  
-
-  
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
-
-  
-  
-
-  
-  
-
-  
-
-  
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
-    
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
-
-    
+    <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Editor" href="Editor.html" />
     <link rel="prev" title="Pyomexmeta API Reference" href="index.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
-
-          
             <a href="../../index.html" class="icon icon-home"> libomexmeta
-          
-
-          
           </a>
-
-          
-            
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -76,18 +36,8 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
         </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Main">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../background.html">Background to Semantic Annotations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Install/install.html">Installation</a></li>
@@ -121,95 +71,55 @@
 <li class="toctree-l1"><a class="reference internal" href="../../Developers/developers_index.html">Developers Documentation</a></li>
 </ul>
 
-            
-          
         </div>
-        
       </div>
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+      <nav class="wy-nav-top" aria-label="Top" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../index.html">libomexmeta</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
           
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+<div role="navigation" aria-label="Breadcrumbs">
   <ul class="wy-breadcrumbs">
-    
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-        
           <li><a href="../api_reference_index.html">API Reference</a> &raquo;</li>
-        
           <li><a href="index.html">Pyomexmeta API Reference</a> &raquo;</li>
-        
       <li>RDF</li>
-    
-    
       <li class="wy-breadcrumbs-aside">
-        
-          
             <a href="../../_sources/APIReference/Python/RDF.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
+             
   <div class="section" id="rdf">
-<h1>RDF<a class="headerlink" href="#rdf" title="Permalink to this headline">¶</a></h1>
+<h1>RDF<a class="headerlink" href="#rdf" title="Permalink to this headline"></a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="pyomexmeta.RDF">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">pyomexmeta.</span></span><span class="sig-name descname"><span class="pre">RDF</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">storage_type</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'memory'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">storage_name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'libOmexMetaStore'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">storage_options</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_options</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rdf_ptr</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">ctypes.c_longlong</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyomexmeta.RDF" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">pyomexmeta.</span></span><span class="sig-name descname"><span class="pre">RDF</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">storage_type</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'memory'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">storage_name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'libOmexMetaStore'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">storage_options</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_options</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rdf_ptr</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">ctypes.c_longlong</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyomexmeta.RDF" title="Permalink to this definition"></a></dt>
 <dd><dl class="py method">
 <dt class="sig sig-object py" id="pyomexmeta.RDF.__del__">
-<span class="sig-name descname"><span class="pre">__del__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#pyomexmeta.RDF.__del__" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">__del__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#pyomexmeta.RDF.__del__" title="Permalink to this definition"></a></dt>
 <dd><p>deletes the <a class="reference internal" href="#pyomexmeta.RDF" title="pyomexmeta.RDF"><code class="xref py py-class docutils literal notranslate"><span class="pre">RDF</span></code></a> instance</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pyomexmeta.RDF.__eq__">
-<span class="sig-name descname"><span class="pre">__eq__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#pyomexmeta.RDF" title="pyomexmeta.pyomexmeta.RDF"><span class="pre">pyomexmeta.pyomexmeta.RDF</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyomexmeta.RDF.__eq__" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">__eq__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#pyomexmeta.RDF" title="pyomexmeta.pyomexmeta.RDF"><span class="pre">pyomexmeta.pyomexmeta.RDF</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyomexmeta.RDF.__eq__" title="Permalink to this definition"></a></dt>
 <dd><p>Equality operator for <a class="reference internal" href="#pyomexmeta.RDF" title="pyomexmeta.RDF"><code class="xref py py-class docutils literal notranslate"><span class="pre">RDF</span></code></a></p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pyomexmeta.RDF.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">storage_type</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'memory'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">storage_name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'libOmexMetaStore'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">storage_options</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_options</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rdf_ptr</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">ctypes.c_longlong</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyomexmeta.RDF.__init__" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">storage_type</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'memory'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">storage_name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'libOmexMetaStore'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">storage_options</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_options</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rdf_ptr</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">ctypes.c_longlong</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyomexmeta.RDF.__init__" title="Permalink to this definition"></a></dt>
 <dd><p>Create an <a class="reference internal" href="#pyomexmeta.RDF" title="pyomexmeta.RDF"><code class="xref py py-class docutils literal notranslate"><span class="pre">RDF</span></code></a> empty graph.</p>
 <p>This is a central object in libOmexMeta and pyomexmeta from which
 all annotations are created, stored, read, written and queried. Arguments to <a class="reference internal" href="#pyomexmeta.RDF" title="pyomexmeta.RDF"><code class="xref py py-class docutils literal notranslate"><span class="pre">RDF</span></code></a> are passed on
@@ -234,31 +144,31 @@ of an <a class="reference internal" href="#pyomexmeta.RDF" title="pyomexmeta.RDF
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pyomexmeta.RDF.__len__">
-<span class="sig-name descname"><span class="pre">__len__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">int</span><a class="headerlink" href="#pyomexmeta.RDF.__len__" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">__len__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">int</span><a class="headerlink" href="#pyomexmeta.RDF.__len__" title="Permalink to this definition"></a></dt>
 <dd><p>Returns the number of individual Triples stored in the rdf model</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pyomexmeta.RDF.__ne__">
-<span class="sig-name descname"><span class="pre">__ne__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#pyomexmeta.RDF" title="pyomexmeta.pyomexmeta.RDF"><span class="pre">pyomexmeta.pyomexmeta.RDF</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyomexmeta.RDF.__ne__" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">__ne__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#pyomexmeta.RDF" title="pyomexmeta.pyomexmeta.RDF"><span class="pre">pyomexmeta.pyomexmeta.RDF</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyomexmeta.RDF.__ne__" title="Permalink to this definition"></a></dt>
 <dd><p>Inequality operator for <a class="reference internal" href="#pyomexmeta.RDF" title="pyomexmeta.RDF"><code class="xref py py-class docutils literal notranslate"><span class="pre">RDF</span></code></a></p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pyomexmeta.RDF.__str__">
-<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">str</span><a class="headerlink" href="#pyomexmeta.RDF.__str__" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">str</span><a class="headerlink" href="#pyomexmeta.RDF.__str__" title="Permalink to this definition"></a></dt>
 <dd><p>Defaults to rdfxml-abbrev syntax</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="pyomexmeta.RDF.__weakref__">
-<span class="sig-name descname"><span class="pre">__weakref__</span></span><a class="headerlink" href="#pyomexmeta.RDF.__weakref__" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">__weakref__</span></span><a class="headerlink" href="#pyomexmeta.RDF.__weakref__" title="Permalink to this definition"></a></dt>
 <dd><p>list of weak references to the object (if defined)</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pyomexmeta.RDF.add_from_file">
-<span class="sig-name descname"><span class="pre">add_from_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">syntax</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#pyomexmeta.RDF.add_from_file" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">add_from_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">syntax</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#pyomexmeta.RDF.add_from_file" title="Permalink to this definition"></a></dt>
 <dd><p>Add to this existing <a class="reference internal" href="#pyomexmeta.RDF" title="pyomexmeta.RDF"><code class="xref py py-class docutils literal notranslate"><span class="pre">RDF</span></code></a> class from RDF serialized as <cite>syntax</cite>
 in <cite>filename</cite></p>
 <dl class="field-list simple">
@@ -285,7 +195,7 @@ in <cite>filename</cite></p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pyomexmeta.RDF.add_from_string">
-<span class="sig-name descname"><span class="pre">add_from_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rdf_string</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">syntax</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'guess'</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#pyomexmeta.RDF.add_from_string" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">add_from_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rdf_string</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">syntax</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'guess'</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#pyomexmeta.RDF.add_from_string" title="Permalink to this definition"></a></dt>
 <dd><p>Add annotations to the existing <a class="reference internal" href="#pyomexmeta.RDF" title="pyomexmeta.RDF"><code class="xref py py-class docutils literal notranslate"><span class="pre">RDF</span></code></a> graph (self) from <cite>rdf_string</cite></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -306,7 +216,7 @@ Other options are rdfxml, ntriples, turtle, nquads, guess.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pyomexmeta.RDF.add_from_uri">
-<span class="sig-name descname"><span class="pre">add_from_uri</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">uri_string</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">syntax</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'guess'</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#pyomexmeta.RDF.add_from_uri" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">add_from_uri</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">uri_string</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">syntax</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'guess'</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#pyomexmeta.RDF.add_from_uri" title="Permalink to this definition"></a></dt>
 <dd><p>Add RDF from a uri to an existing <a class="reference internal" href="#pyomexmeta.RDF" title="pyomexmeta.RDF"><code class="xref py py-class docutils literal notranslate"><span class="pre">RDF</span></code></a> graph</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -321,13 +231,13 @@ Other options are rdfxml, ntriples, turtle, nquads, guess.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pyomexmeta.RDF.delete">
-<span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#pyomexmeta.RDF.delete" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#pyomexmeta.RDF.delete" title="Permalink to this definition"></a></dt>
 <dd><p>destructor. Delete the dynamically allocated rdf object</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pyomexmeta.RDF.draw">
-<span class="sig-name descname"><span class="pre">draw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyomexmeta.RDF.draw" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">draw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyomexmeta.RDF.draw" title="Permalink to this definition"></a></dt>
 <dd><p>render an graph of RDF and save to <cite>filename</cite></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -343,7 +253,7 @@ Other options are rdfxml, ntriples, turtle, nquads, guess.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pyomexmeta.RDF.equals_rdf_vs_rdf">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">equals_rdf_vs_rdf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">first_rdf</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#pyomexmeta.RDF" title="pyomexmeta.pyomexmeta.RDF"><span class="pre">pyomexmeta.pyomexmeta.RDF</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">second_rdf</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#pyomexmeta.RDF" title="pyomexmeta.pyomexmeta.RDF"><span class="pre">pyomexmeta.pyomexmeta.RDF</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">syntax</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'turtle'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">bool</span><a class="headerlink" href="#pyomexmeta.RDF.equals_rdf_vs_rdf" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">equals_rdf_vs_rdf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">first_rdf</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#pyomexmeta.RDF" title="pyomexmeta.pyomexmeta.RDF"><span class="pre">pyomexmeta.pyomexmeta.RDF</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">second_rdf</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#pyomexmeta.RDF" title="pyomexmeta.pyomexmeta.RDF"><span class="pre">pyomexmeta.pyomexmeta.RDF</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">syntax</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'turtle'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">bool</span><a class="headerlink" href="#pyomexmeta.RDF.equals_rdf_vs_rdf" title="Permalink to this definition"></a></dt>
 <dd><p>Equality operator for comparing <a class="reference internal" href="#pyomexmeta.RDF" title="pyomexmeta.RDF"><code class="xref py py-class docutils literal notranslate"><span class="pre">RDF</span></code></a> objects.</p>
 <p>This is the “default” equality operator used by <a class="reference internal" href="#pyomexmeta.RDF.__eq__" title="pyomexmeta.RDF.__eq__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">RDF.__eq__()</span></code></a>. <cite>first_rdf</cite>
 and <cite>second_rdf</cite> are considered equal if all triples contained in each are identical.
@@ -371,7 +281,7 @@ they are usually automatically assigned random labels when reading from an rdf g
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pyomexmeta.RDF.equals_rdf_vs_string">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">equals_rdf_vs_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rdf</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#pyomexmeta.RDF" title="pyomexmeta.pyomexmeta.RDF"><span class="pre">pyomexmeta.pyomexmeta.RDF</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">string</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">syntax</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'turtle'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">bool</span><a class="headerlink" href="#pyomexmeta.RDF.equals_rdf_vs_string" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">equals_rdf_vs_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rdf</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#pyomexmeta.RDF" title="pyomexmeta.pyomexmeta.RDF"><span class="pre">pyomexmeta.pyomexmeta.RDF</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">string</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">syntax</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'turtle'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">bool</span><a class="headerlink" href="#pyomexmeta.RDF.equals_rdf_vs_string" title="Permalink to this definition"></a></dt>
 <dd><p>Equality operator comparing an RDF graph (left operand) to a serialized RDF graph encoded in <cite>syntax</cite></p>
 <p>This method is the same as <a class="reference internal" href="#pyomexmeta.RDF.equals_rdf_vs_rdf" title="pyomexmeta.RDF.equals_rdf_vs_rdf"><code class="xref py py-meth docutils literal notranslate"><span class="pre">equals_rdf_vs_rdf()</span></code></a> excapt that the second
 argument <cite>string</cite> is not an instance of <a class="reference internal" href="#pyomexmeta.RDF" title="pyomexmeta.RDF"><code class="xref py py-class docutils literal notranslate"><span class="pre">RDF</span></code></a> but a str.</p>
@@ -396,7 +306,7 @@ left and right operands to console when verbose is True</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pyomexmeta.RDF.equals_string_vs_string">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">equals_string_vs_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">first_string</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">second_string</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">first_syntax</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'turtle'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">second_syntax</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'turtle'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">bool</span><a class="headerlink" href="#pyomexmeta.RDF.equals_string_vs_string" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">equals_string_vs_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">first_string</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">second_string</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">first_syntax</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'turtle'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">second_syntax</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'turtle'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">bool</span><a class="headerlink" href="#pyomexmeta.RDF.equals_string_vs_string" title="Permalink to this definition"></a></dt>
 <dd><p>Equality operator comparing two rdf graphs both of which are serialized to strings.</p>
 <p>This method is the same as <a class="reference internal" href="#pyomexmeta.RDF.equals_rdf_vs_rdf" title="pyomexmeta.RDF.equals_rdf_vs_rdf"><code class="xref py py-meth docutils literal notranslate"><span class="pre">equals_rdf_vs_rdf()</span></code></a> except that both
 left and right operands are strings, encoded in <cite>first_syntax</cite> and <cite>second_syntax</cite>
@@ -424,7 +334,7 @@ respectively.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pyomexmeta.RDF.from_file">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">from_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">syntax</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'guess'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">storage_type</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'hashes'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">storage_name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'pyomexmeta_storage'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">storage_options</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_options</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#pyomexmeta.RDF" title="pyomexmeta.pyomexmeta.RDF"><span class="pre">pyomexmeta.pyomexmeta.RDF</span></a><a class="headerlink" href="#pyomexmeta.RDF.from_file" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">from_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">syntax</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'guess'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">storage_type</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'hashes'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">storage_name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'pyomexmeta_storage'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">storage_options</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_options</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#pyomexmeta.RDF" title="pyomexmeta.pyomexmeta.RDF"><span class="pre">pyomexmeta.pyomexmeta.RDF</span></a><a class="headerlink" href="#pyomexmeta.RDF.from_file" title="Permalink to this definition"></a></dt>
 <dd><p>Create an <a class="reference internal" href="#pyomexmeta.RDF" title="pyomexmeta.RDF"><code class="xref py py-class docutils literal notranslate"><span class="pre">RDF</span></code></a> graph from a file on disk.</p>
 <p>This is a static method and is therefore called without an instance of <a class="reference internal" href="#pyomexmeta.RDF" title="pyomexmeta.RDF"><code class="xref py py-class docutils literal notranslate"><span class="pre">RDF</span></code></a> (see example)</p>
 <dl class="field-list simple">
@@ -452,7 +362,7 @@ respectively.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pyomexmeta.RDF.from_string">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">from_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rdf_string</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">syntax</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'guess'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">storage_type</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'hashes'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">storage_name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'pyomexmeta_storage'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">storage_options</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_options</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#pyomexmeta.RDF" title="pyomexmeta.pyomexmeta.RDF"><span class="pre">pyomexmeta.pyomexmeta.RDF</span></a><a class="headerlink" href="#pyomexmeta.RDF.from_string" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">from_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rdf_string</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">syntax</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'guess'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">storage_type</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'hashes'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">storage_name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'pyomexmeta_storage'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">storage_options</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_options</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#pyomexmeta.RDF" title="pyomexmeta.pyomexmeta.RDF"><span class="pre">pyomexmeta.pyomexmeta.RDF</span></a><a class="headerlink" href="#pyomexmeta.RDF.from_string" title="Permalink to this definition"></a></dt>
 <dd><p>Read RDF from a string and create an <a class="reference internal" href="#pyomexmeta.RDF" title="pyomexmeta.RDF"><code class="xref py py-class docutils literal notranslate"><span class="pre">RDF</span></code></a> object with it.</p>
 <p>This is a static method, i.e. it should be used without an instantiated instance of <a class="reference internal" href="#pyomexmeta.RDF" title="pyomexmeta.RDF"><code class="xref py py-class docutils literal notranslate"><span class="pre">RDF</span></code></a>.</p>
 <dl class="field-list simple">
@@ -486,7 +396,7 @@ run your program with deliberately the wrong <cite>syntax</cite> argument</p></l
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pyomexmeta.RDF.from_uri">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">from_uri</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">uri_string</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">syntax</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'guess'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">storage_type</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'hashes'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">storage_name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'pyomexmeta_storage'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">storage_options</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_options</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#pyomexmeta.RDF" title="pyomexmeta.pyomexmeta.RDF"><span class="pre">pyomexmeta.pyomexmeta.RDF</span></a><a class="headerlink" href="#pyomexmeta.RDF.from_uri" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">from_uri</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">uri_string</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">syntax</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'guess'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">storage_type</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'hashes'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">storage_name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'pyomexmeta_storage'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">storage_options</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_options</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#pyomexmeta.RDF" title="pyomexmeta.pyomexmeta.RDF"><span class="pre">pyomexmeta.pyomexmeta.RDF</span></a><a class="headerlink" href="#pyomexmeta.RDF.from_uri" title="Permalink to this definition"></a></dt>
 <dd><p>Create an <a class="reference internal" href="#pyomexmeta.RDF" title="pyomexmeta.RDF"><code class="xref py py-class docutils literal notranslate"><span class="pre">RDF</span></code></a> object from content in a URI.</p>
 <p>This is a static method i.e. called without an instance of <a class="reference internal" href="#pyomexmeta.RDF" title="pyomexmeta.RDF"><code class="xref py py-class docutils literal notranslate"><span class="pre">RDF</span></code></a>.</p>
 <dl class="field-list simple">
@@ -510,20 +420,20 @@ run your program with deliberately the wrong <cite>syntax</cite> argument</p></l
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pyomexmeta.RDF.get_archive_uri">
-<span class="sig-name descname"><span class="pre">get_archive_uri</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">str</span><a class="headerlink" href="#pyomexmeta.RDF.get_archive_uri" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">get_archive_uri</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">str</span><a class="headerlink" href="#pyomexmeta.RDF.get_archive_uri" title="Permalink to this definition"></a></dt>
 <dd><p>Returns the string used for archive (i.e. omex) uri</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pyomexmeta.RDF.get_local_uri">
-<span class="sig-name descname"><span class="pre">get_local_uri</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">str</span><a class="headerlink" href="#pyomexmeta.RDF.get_local_uri" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">get_local_uri</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">str</span><a class="headerlink" href="#pyomexmeta.RDF.get_local_uri" title="Permalink to this definition"></a></dt>
 <dd><p>Returns the string used for local uri.</p>
 <p>This is set indirectly through the model_uri</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pyomexmeta.RDF.get_model_level_annotation_uri">
-<span class="sig-name descname"><span class="pre">get_model_level_annotation_uri</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">str</span><a class="headerlink" href="#pyomexmeta.RDF.get_model_level_annotation_uri" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">get_model_level_annotation_uri</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">str</span><a class="headerlink" href="#pyomexmeta.RDF.get_model_level_annotation_uri" title="Permalink to this definition"></a></dt>
 <dd><p>Returns the uri that is used for model level annotations as a string</p>
 <p>This string is the “model_uri” concatonated with the metaid for the “model” element.</p>
 <p>Returns: (str) the uri</p>
@@ -544,7 +454,7 @@ run your program with deliberately the wrong <cite>syntax</cite> argument</p></l
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pyomexmeta.RDF.get_model_metaid">
-<span class="sig-name descname"><span class="pre">get_model_metaid</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">str</span><a class="headerlink" href="#pyomexmeta.RDF.get_model_metaid" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">get_model_metaid</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">str</span><a class="headerlink" href="#pyomexmeta.RDF.get_model_metaid" title="Permalink to this definition"></a></dt>
 <dd><p>return the current string being used for the model elements metaid.</p>
 <p>This defaults to the string “NewModel” but is replaced with the metaid for the
 first “model” element it finds when an XML is opened in the <a class="reference internal" href="Editor.html#pyomexmeta.Editor" title="pyomexmeta.Editor"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Editor()</span></code></a>.</p>
@@ -571,20 +481,20 @@ first “model” element it finds when an XML is opened in the <a class="refere
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pyomexmeta.RDF.get_model_uri">
-<span class="sig-name descname"><span class="pre">get_model_uri</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">str</span><a class="headerlink" href="#pyomexmeta.RDF.get_model_uri" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">get_model_uri</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">str</span><a class="headerlink" href="#pyomexmeta.RDF.get_model_uri" title="Permalink to this definition"></a></dt>
 <dd><p>Returns the string used for model uri.</p>
 <p>This string also gets used for local uri</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pyomexmeta.RDF.get_repository_uri">
-<span class="sig-name descname"><span class="pre">get_repository_uri</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">str</span><a class="headerlink" href="#pyomexmeta.RDF.get_repository_uri" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">get_repository_uri</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">str</span><a class="headerlink" href="#pyomexmeta.RDF.get_repository_uri" title="Permalink to this definition"></a></dt>
 <dd><p>Returns the string used for repository uri</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pyomexmeta.RDF.query">
-<span class="sig-name descname"><span class="pre">query</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query_str</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">results_syntax</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">str</span><a class="headerlink" href="#pyomexmeta.RDF.query" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">query</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query_str</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">results_syntax</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">str</span><a class="headerlink" href="#pyomexmeta.RDF.query" title="Permalink to this definition"></a></dt>
 <dd><p>Query the <a class="reference internal" href="#pyomexmeta.RDF" title="pyomexmeta.RDF"><code class="xref py py-class docutils literal notranslate"><span class="pre">RDF</span></code></a> using sparql.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -606,7 +516,7 @@ If incorrect string given, options are presented to user.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pyomexmeta.RDF.set_archive_uri">
-<span class="sig-name descname"><span class="pre">set_archive_uri</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">archive_url</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#pyomexmeta.RDF.set_archive_uri" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">set_archive_uri</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">archive_url</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#pyomexmeta.RDF.set_archive_uri" title="Permalink to this definition"></a></dt>
 <dd><p>Set the “archive” portion of model and local uri’s.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -629,7 +539,7 @@ If incorrect string given, options are presented to user.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pyomexmeta.RDF.set_model_metaid">
-<span class="sig-name descname"><span class="pre">set_model_metaid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_metaid</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#pyomexmeta.RDF.set_model_metaid" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">set_model_metaid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_metaid</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#pyomexmeta.RDF.set_model_metaid" title="Permalink to this definition"></a></dt>
 <dd><p>Set the string to use for the model level annotation uri.</p>
 <p>Model level annotations should be placed on the <code class="docutils literal notranslate"><span class="pre">model</span></code> element that has a metaid.
 This method provides a way of changing which <code class="docutils literal notranslate"><span class="pre">model</span></code> element is annotated, in case
@@ -659,7 +569,7 @@ the Editor class.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pyomexmeta.RDF.set_model_uri">
-<span class="sig-name descname"><span class="pre">set_model_uri</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_uri</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#pyomexmeta.RDF.set_model_uri" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">set_model_uri</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_uri</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#pyomexmeta.RDF.set_model_uri" title="Permalink to this definition"></a></dt>
 <dd><p>Sets the string used for model filename.</p>
 <p>This string is also used for the local portion of the local uri.</p>
 <dl class="field-list simple">
@@ -683,7 +593,7 @@ the Editor class.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pyomexmeta.RDF.set_repository_uri">
-<span class="sig-name descname"><span class="pre">set_repository_uri</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">repository_uri</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#pyomexmeta.RDF.set_repository_uri" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">set_repository_uri</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">repository_uri</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#pyomexmeta.RDF.set_repository_uri" title="Permalink to this definition"></a></dt>
 <dd><p>Set the respository uri.</p>
 <p>This is used to construct the local and model uri’s.</p>
 <dl class="field-list simple">
@@ -707,7 +617,7 @@ respository uri (<a class="reference external" href="http://omex-library.org/">h
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pyomexmeta.RDF.to_editor">
-<span class="sig-name descname"><span class="pre">to_editor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xml</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">generate_new_metaids</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sbml_semantic_extraction</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="Editor.html#pyomexmeta.Editor" title="pyomexmeta.pyomexmeta.Editor"><span class="pre">pyomexmeta.pyomexmeta.Editor</span></a><a class="headerlink" href="#pyomexmeta.RDF.to_editor" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">to_editor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xml</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">generate_new_metaids</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sbml_semantic_extraction</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="Editor.html#pyomexmeta.Editor" title="pyomexmeta.pyomexmeta.Editor"><span class="pre">pyomexmeta.pyomexmeta.Editor</span></a><a class="headerlink" href="#pyomexmeta.RDF.to_editor" title="Permalink to this definition"></a></dt>
 <dd><p>Create an Editor object which is the interface for creating and removing annotations
 associated with a given xml.</p>
 <dl class="field-list simple">
@@ -735,7 +645,7 @@ extract semantic information from the sbml. Does nothing if xml is not sbml.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pyomexmeta.RDF.to_file">
-<span class="sig-name descname"><span class="pre">to_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">syntax</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#pyomexmeta.RDF.to_file" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">to_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">syntax</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#pyomexmeta.RDF.to_file" title="Permalink to this definition"></a></dt>
 <dd><p>Serialize the annotations contained in this <a class="reference internal" href="#pyomexmeta.RDF" title="pyomexmeta.RDF"><code class="xref py py-meth docutils literal notranslate"><span class="pre">RDF()</span></code></a> graph to a file on disk</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -750,7 +660,7 @@ extract semantic information from the sbml. Does nothing if xml is not sbml.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pyomexmeta.RDF.to_string">
-<span class="sig-name descname"><span class="pre">to_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">syntax</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'turtle'</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">str</span><a class="headerlink" href="#pyomexmeta.RDF.to_string" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">to_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">syntax</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'turtle'</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">str</span><a class="headerlink" href="#pyomexmeta.RDF.to_string" title="Permalink to this definition"></a></dt>
 <dd><p>Serialize this :class”:<cite>RDF</cite> graph using <cite>syntax</cite> syntax.</p>
 <p>This method is used by <a class="reference internal" href="#pyomexmeta.RDF.__str__" title="pyomexmeta.RDF.__str__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">RDF.__str__()</span></code></a> for printing an RDF graph
 as default “turtle” syntax</p>
@@ -784,50 +694,33 @@ json-triples, json, nquads, html</p>
 
 
            </div>
-           
           </div>
           <footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="Editor.html" class="btn btn-neutral float-right" title="Editor" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="index.html" class="btn btn-neutral float-left" title="Pyomexmeta API Reference" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Editor.html" class="btn btn-neutral float-right" title="Editor" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &#169; Copyright 2020, Ciaran Welsh.
-
-    </p>
+    <p>&#169; Copyright 2020, Ciaran Welsh.</p>
   </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>
