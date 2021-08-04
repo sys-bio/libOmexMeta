@@ -144,8 +144,11 @@ if (${BUILD_DOCS_EXAMPLES})
     add_doc_example(WritingToFileCpp source/writing_rdf/writing_to_file_cpp.cpp)
 
     # querying docs
-    add_doc_example(QueryingRdfGraphC source/querying_rdf/querying_rdf_c.cpp)
-    add_doc_example(QueryingRdfGraphCpp source/querying_rdf/querying_rdf_cpp.cpp)
+    add_doc_example(QueryingRdfGraphResultsAsStringC source/querying_rdf/querying_rdf_results_as_string_c.cpp)
+    add_doc_example(QueryingRdfGraphResultsAsStringCpp source/querying_rdf/querying_rdf_results_as_string_cpp.cpp)
+
+    add_doc_example(QueryingRdfGraphResultsAsMapC source/querying_rdf/querying_rdf_results_as_map_c.cpp)
+    add_doc_example(QueryingRdfGraphResultsAsMapCpp source/querying_rdf/querying_rdf_results_as_map_cpp.cpp)
 
     add_doc_example(AnnotatingABiologicalComplexCpp source/annotating_models/annotating_a_biological_complex_cpp.cpp)
     add_doc_example(AnnotatingABiologicalComplexC source/annotating_models/annotating_a_biological_complex_c.cpp)

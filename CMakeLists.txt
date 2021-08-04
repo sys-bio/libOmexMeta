@@ -15,8 +15,17 @@ configure_file(VERSION.txt.in VERSION.txt)
 configure_file(VERSION.txt.in "${CMAKE_CURRENT_SOURCE_DIR}/src/pyomexmeta/VERSION.txt")
 
 
+set(AUX_FILES
+        "${CMAKE_CURRENT_SOURCE_DIR}/requirements.txt"
+        "${CMAKE_CURRENT_SOURCE_DIR}/test-requirements.txt"
+        "${CMAKE_CURRENT_SOURCE_DIR}/LICENCE.txt"
+        "${CMAKE_CURRENT_SOURCE_DIR}/banner.txt"
+        "${CMAKE_CURRENT_SOURCE_DIR}/environment.yml")
+file(COPY ${AUX_FILES} DESTINATION "${CMAKE_BINARY_DIR}")
+
 install(FILES
         requirements.txt
+        test-requirements.txt
         LICENCE.txt
         banner.txt
         environment.yml

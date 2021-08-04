@@ -1,0 +1,3 @@
+<class 'dict'>
+x ['https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000004', 'https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000022']
+y ['http://biomodels.net/biology-qualifiers/is', 'http://biomodels.net/biology-qualifiers/is']

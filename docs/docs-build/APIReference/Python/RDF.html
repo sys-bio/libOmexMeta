@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>RDF &mdash; libomexmeta 1.2.10 documentation</title>
+  <title>RDF &mdash; libomexmeta 1.2.11 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
@@ -493,9 +493,32 @@ first “model” element it finds when an XML is opened in the <a class="refere
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="pyomexmeta.RDF.query">
-<span class="sig-name descname"><span class="pre">query</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query_str</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">results_syntax</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">str</span><a class="headerlink" href="#pyomexmeta.RDF.query" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="pyomexmeta.RDF.query_results_as_dict">
+<span class="sig-name descname"><span class="pre">query_results_as_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query_str</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">dict</span><a class="headerlink" href="#pyomexmeta.RDF.query_results_as_dict" title="Permalink to this definition"></a></dt>
+<dd><p>Query the <a class="reference internal" href="#pyomexmeta.RDF" title="pyomexmeta.RDF"><code class="xref py py-class docutils literal notranslate"><span class="pre">RDF</span></code></a> using sparql</p>
+<p>Returns the results as a dict[variable_name] = list(results)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>query_str</strong> – (str) A SPAQRL query</p>
+</dd>
+</dl>
+<p>Returns: dict</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rdf</span> <span class="o">=</span> <span class="n">RDF</span><span class="o">.</span><span class="n">from_file</span><span class="p">(</span><span class="s2">&quot;annot.rdf&quot;</span><span class="p">)</span> <span class="c1"># read from file on disk</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rdf</span><span class="o">.</span><span class="n">query_results_as_dict</span><span class="p">(</span><span class="s2">&quot;SELECT *?x ?y ?z WHERE { ?x ?y ?z }&quot;</span><span class="p">)</span> <span class="c1"># selects everything</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>query_results_as_str</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyomexmeta.RDF.query_results_as_string">
+<span class="sig-name descname"><span class="pre">query_results_as_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query_str</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">results_syntax</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">str</span><a class="headerlink" href="#pyomexmeta.RDF.query_results_as_string" title="Permalink to this definition"></a></dt>
 <dd><p>Query the <a class="reference internal" href="#pyomexmeta.RDF" title="pyomexmeta.RDF"><code class="xref py py-class docutils literal notranslate"><span class="pre">RDF</span></code></a> using sparql.</p>
+<p>Returns the results as a string in the specified format.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -509,8 +532,12 @@ If incorrect string given, options are presented to user.</p></li>
 <p>Returns: string. Results</p>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rdf</span> <span class="o">=</span> <span class="n">RDF</span><span class="o">.</span><span class="n">from_file</span><span class="p">(</span><span class="s2">&quot;annot.rdf&quot;</span><span class="p">)</span> <span class="c1"># read from file on disk</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">rdf</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;SELECT *?x ?y ?z WHERE { ?x ?y ?z }&quot;</span><span class="p">)</span> <span class="c1"># selects everything</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rdf</span><span class="o">.</span><span class="n">query_results_as_string</span><span class="p">(</span><span class="s2">&quot;SELECT *?x ?y ?z WHERE { ?x ?y ?z }&quot;</span><span class="p">)</span> <span class="c1"># selects everything</span>
 </pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>query_results_as_dict</p>
 </div>
 </dd></dl>
 

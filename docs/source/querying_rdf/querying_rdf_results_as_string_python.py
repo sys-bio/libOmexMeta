@@ -31,6 +31,6 @@ results_formats = [
 
 for i in results_formats:
     print("Sparql results format: {}".format(i))
-    print(rdf.query(query_string, results_syntax=i))
+    print(rdf.query_results_as_string(query_string, results_syntax=i))
     print("\n\n")
 

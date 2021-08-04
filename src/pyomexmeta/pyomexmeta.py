@@ -684,7 +684,7 @@ class RDF:
         results_lf = _pyom.crlf_to_lr(results_crlf)
         return results_lf
 
-    def query_results_as_dict(self, query_str: str) -> str:
+    def query_results_as_dict(self, query_str: str) -> dict:
         """Query the :class:`RDF` using sparql
 
         Returns the results as a dict[variable_name] = list(results)
