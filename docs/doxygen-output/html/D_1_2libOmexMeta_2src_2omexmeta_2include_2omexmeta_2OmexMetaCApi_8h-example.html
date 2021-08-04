@@ -444,6 +444,20 @@ $(function() {
 <div class="line"> </div>
 <div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">int</span> PersonalInformation_setMetaid(PersonalInformation *information, <span class="keyword">const</span> <span class="keywordtype">char</span> *metaid);</div>
 <div class="line"> </div>
+<div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">int</span> StringVector_getSize(std::vector&lt;std::string&gt;* vec);</div>
+<div class="line"> </div>
+<div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">char</span>* StringVector_getElementAtIdx(std::vector&lt;std::string&gt;* vec, <span class="keywordtype">int</span> idx);</div>
+<div class="line"> </div>
+<div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">void</span> StringVector_delete(std::vector&lt;std::string&gt; *strVec);</div>
+<div class="line"> </div>
+<div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">int</span> ResultsMap_getSize(ResultsMap* resultsMap);</div>
+<div class="line"> </div>
+<div class="line">    OMEXMETA_CAPI_EXPORT std::vector&lt;std::string&gt;* ResultsMap_getStringVectorAt(ResultsMap* resultsMap, <span class="keyword">const</span> <span class="keywordtype">char</span>* key);</div>
+<div class="line"> </div>
+<div class="line">    OMEXMETA_CAPI_EXPORT std::vector&lt;std::string&gt;* ResultsMap_getKeys(ResultsMap* resultsMap);</div>
+<div class="line"> </div>
+<div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">void</span> ResultsMap_delete(ResultsMap * resultsMap);</div>
+<div class="line"> </div>
 <div class="line"> </div>
 <div class="line"><span class="preprocessor">#ifdef __cplusplus</span></div>
 <div class="line">    }</div>

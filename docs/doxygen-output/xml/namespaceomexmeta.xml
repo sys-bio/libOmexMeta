@@ -3347,6 +3347,133 @@
         </inbodydescription>
         <location file="src/omexmeta/OmexMetaCApi.cpp" line="1477" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1477" bodyend="1485" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="412" declcolumn="30"/>
       </memberdef>
+      <memberdef kind="function" id="namespaceomexmeta_1a10a36b097ad7e133269ece6a1fe2b0de" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>OMEXMETA_CAPI_EXPORT int omexmeta::StringVector_getSize</definition>
+        <argsstring>(std::vector&lt; std::string &gt; *vec)</argsstring>
+        <name>StringVector_getSize</name>
+        <param>
+          <type>std::vector&lt; std::string &gt; *</type>
+          <declname>vec</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1490" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1490" bodyend="1497" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="414" declcolumn="30"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceomexmeta_1a2ff997607413cab7257039ca10887182" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char *</type>
+        <definition>OMEXMETA_CAPI_EXPORT char * omexmeta::StringVector_getElementAtIdx</definition>
+        <argsstring>(std::vector&lt; std::string &gt; *vec, int idx)</argsstring>
+        <name>StringVector_getElementAtIdx</name>
+        <param>
+          <type>std::vector&lt; std::string &gt; *</type>
+          <declname>vec</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>idx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1499" column="10" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1499" bodyend="1509" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="416" declcolumn="31"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceomexmeta_1af11ad4f47707daf26c937684c880e659" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>OMEXMETA_CAPI_EXPORT void omexmeta::StringVector_delete</definition>
+        <argsstring>(std::vector&lt; std::string &gt; *strVec)</argsstring>
+        <name>StringVector_delete</name>
+        <param>
+          <type>std::vector&lt; std::string &gt; *</type>
+          <declname>strVec</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1511" column="10" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1511" bodyend="1520" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="418" declcolumn="31"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceomexmeta_1a0645ed4cfecd66686af807d5b82e3250" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>OMEXMETA_CAPI_EXPORT int omexmeta::ResultsMap_getSize</definition>
+        <argsstring>(ResultsMap *resultsMap)</argsstring>
+        <name>ResultsMap_getSize</name>
+        <param>
+          <type>ResultsMap *</type>
+          <declname>resultsMap</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1522" column="9" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1522" bodyend="1529" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="420" declcolumn="30"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceomexmeta_1a453301b5f8df44094c7f81d7ce126669" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; std::string &gt; *</type>
+        <definition>OMEXMETA_CAPI_EXPORT std::vector&lt; std::string &gt; * omexmeta::ResultsMap_getStringVectorAt</definition>
+        <argsstring>(ResultsMap *resultsMap, const char *key)</argsstring>
+        <name>ResultsMap_getStringVectorAt</name>
+        <param>
+          <type>ResultsMap *</type>
+          <declname>resultsMap</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1531" column="17" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1531" bodyend="1540" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="422" declcolumn="38"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceomexmeta_1ace3f4bb9c5c547a5e237a7ad58a744ee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; std::string &gt; *</type>
+        <definition>OMEXMETA_CAPI_EXPORT std::vector&lt; std::string &gt; * omexmeta::ResultsMap_getKeys</definition>
+        <argsstring>(ResultsMap *resultsMap)</argsstring>
+        <name>ResultsMap_getKeys</name>
+        <param>
+          <type>ResultsMap *</type>
+          <declname>resultsMap</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1542" column="17" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1542" bodyend="1555" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="424" declcolumn="38"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceomexmeta_1a6434b2cffea803818b02bf9a7584b263" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>OMEXMETA_CAPI_EXPORT void omexmeta::ResultsMap_delete</definition>
+        <argsstring>(ResultsMap *resultsMap)</argsstring>
+        <name>ResultsMap_delete</name>
+        <param>
+          <type>ResultsMap *</type>
+          <declname>resultsMap</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/OmexMetaCApi.cpp" line="1557" column="10" bodyfile="src/omexmeta/OmexMetaCApi.cpp" bodystart="1557" bodyend="1566" declfile="src/omexmeta/include/omexmeta/OmexMetaCApi.h" declline="426" declcolumn="31"/>
+      </memberdef>
       <memberdef kind="function" id="namespaceomexmeta_1a17e4b403c1f6627264259b7d300f5cb1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void omexmeta::removeElementRecursion</definition>

@@ -381,6 +381,20 @@ RDF$\ast$ rdf\+\_\+ptr = RDF\+\_\+from\+String(string\+\_\+annotations, \char`\"
 \DoxyCodeLine{}
 \DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{int} PersonalInformation\_setMetaid(PersonalInformation *information, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *metaid);}
 \DoxyCodeLine{}
+\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{int} StringVector\_getSize(std::vector<std::string>* vec);}
+\DoxyCodeLine{}
+\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{char}* StringVector\_getElementAtIdx(std::vector<std::string>* vec, \textcolor{keywordtype}{int} idx);}
+\DoxyCodeLine{}
+\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{void} StringVector\_delete(std::vector<std::string> *strVec);}
+\DoxyCodeLine{}
+\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{int} ResultsMap\_getSize(ResultsMap* resultsMap);}
+\DoxyCodeLine{}
+\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT std::vector<std::string>* ResultsMap\_getStringVectorAt(ResultsMap* resultsMap, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* key);}
+\DoxyCodeLine{}
+\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT std::vector<std::string>* ResultsMap\_getKeys(ResultsMap* resultsMap);}
+\DoxyCodeLine{}
+\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{void} ResultsMap\_delete(ResultsMap * resultsMap);}
+\DoxyCodeLine{}
 \DoxyCodeLine{}
 \DoxyCodeLine{\textcolor{preprocessor}{\#ifdef \_\_cplusplus}}
 \DoxyCodeLine{    \}}

@@ -1545,6 +1545,13 @@
     <member refid="namespaceomexmeta_1a2c506a7c5bc41b06e8163f09e1dcc661" kind="function"><name>PersonalInformation_addFoaf</name></member>
     <member refid="namespaceomexmeta_1a96087cb8a2fffd948b296d795a7f5f1f" kind="function"><name>PersonalInformation_getMetaid</name></member>
     <member refid="namespaceomexmeta_1a2636ff0b1d5f71c616f93a9f0caab74e" kind="function"><name>PersonalInformation_setMetaid</name></member>
+    <member refid="namespaceomexmeta_1a10a36b097ad7e133269ece6a1fe2b0de" kind="function"><name>StringVector_getSize</name></member>
+    <member refid="namespaceomexmeta_1a2ff997607413cab7257039ca10887182" kind="function"><name>StringVector_getElementAtIdx</name></member>
+    <member refid="namespaceomexmeta_1af11ad4f47707daf26c937684c880e659" kind="function"><name>StringVector_delete</name></member>
+    <member refid="namespaceomexmeta_1a0645ed4cfecd66686af807d5b82e3250" kind="function"><name>ResultsMap_getSize</name></member>
+    <member refid="namespaceomexmeta_1a453301b5f8df44094c7f81d7ce126669" kind="function"><name>ResultsMap_getStringVectorAt</name></member>
+    <member refid="namespaceomexmeta_1ace3f4bb9c5c547a5e237a7ad58a744ee" kind="function"><name>ResultsMap_getKeys</name></member>
+    <member refid="namespaceomexmeta_1a6434b2cffea803818b02bf9a7584b263" kind="function"><name>ResultsMap_delete</name></member>
     <member refid="namespaceomexmeta_1a17e4b403c1f6627264259b7d300f5cb1" kind="function"><name>removeElementRecursion</name></member>
     <member refid="namespaceomexmeta_1a0a8d50daa10e421d0722520cdef0ab9a" kind="function"><name>PredicateFactory</name></member>
     <member refid="namespaceomexmeta_1a902ae2b86ac75376d9d826aecbd99b43" kind="function"><name>RDF_getBaseUri</name></member>

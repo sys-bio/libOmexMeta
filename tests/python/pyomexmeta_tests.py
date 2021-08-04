@@ -198,7 +198,7 @@ class TestRDF(unittest.TestCase):
         expected = "http://omex-library.org/NewOmex.omex/NewModel.rdf#"
         self.assertEqual(expected, actual)
 
-    def test_query(self):
+    def test_query_results_as_str(self):
         rdf = RDF.from_string(self.rdf_str, "rdfxml")
         q = """SELECT ?x ?y ?z 
         WHERE {?x ?y ?z}
@@ -212,8 +212,92 @@ http://omex-library.org/NewOmex.omex/NewModel.rdf#sink_0,http://www.bhi.washingt
 http://omex-library.org/NewOmex.omex/NewModel.rdf#source_0,http://www.bhi.washington.edu/semsim#hasPhysicalEntityReference,http://omex-library.org/NewOmex.omex/NewModel.rdf#species_metaid_0
 """
         self.maxDiff = None
-        actual = rdf.query(q, "csv")
+        actual = rdf.query_results_as_string(q, "csv")
         self.assertEqual(expected, actual)
+
+    def test_query_results_as_dict(self):
+        expected = {'x': ['http://omex-library.org/NewOmex.omex/NewModel.xml#sp_1',
+                          'http://omex-library.org/NewOmex.omex/NewModel.xml#sp_2',
+                          'http://omex-library.org/NewOmex.omex/NewModel.xml#sp_3',
+                          'http://omex-library.org/NewOmex.omex/NewModel.xml#sp_4',
+                          'http://omex-library.org/NewOmex.omex/NewModel.xml#sp_5',
+                          'http://omex-library.org/NewOmex.omex/NewModel.rdf#ProcessProperty0000',
+                          'http://omex-library.org/NewOmex.omex/NewModel.rdf#ProcessProperty0000',
+                          'http://omex-library.org/NewOmex.omex/NewModel.xml#react1',
+                          'http://omex-library.org/NewOmex.omex/NewModel.rdf#SourceParticipant0000',
+                          'http://omex-library.org/NewOmex.omex/NewModel.rdf#SourceParticipant0000',
+                          'http://omex-library.org/NewOmex.omex/NewModel.xml#react1',
+                          'http://omex-library.org/NewOmex.omex/NewModel.rdf#SinkParticipant0000',
+                          'http://omex-library.org/NewOmex.omex/NewModel.rdf#SinkParticipant0000',
+                          'http://omex-library.org/NewOmex.omex/NewModel.rdf#ProcessProperty0001',
+                          'http://omex-library.org/NewOmex.omex/NewModel.rdf#ProcessProperty0001',
+                          'http://omex-library.org/NewOmex.omex/NewModel.xml#react2',
+                          'http://omex-library.org/NewOmex.omex/NewModel.rdf#SourceParticipant0001',
+                          'http://omex-library.org/NewOmex.omex/NewModel.rdf#SourceParticipant0001',
+                          'http://omex-library.org/NewOmex.omex/NewModel.xml#react2',
+                          'http://omex-library.org/NewOmex.omex/NewModel.rdf#SourceParticipant0002',
+                          'http://omex-library.org/NewOmex.omex/NewModel.rdf#SourceParticipant0002',
+                          'http://omex-library.org/NewOmex.omex/NewModel.xml#react2',
+                          'http://omex-library.org/NewOmex.omex/NewModel.rdf#SinkParticipant0001',
+                          'http://omex-library.org/NewOmex.omex/NewModel.rdf#SinkParticipant0001',
+                          'http://omex-library.org/NewOmex.omex/NewModel.xml#react2',
+                          'http://omex-library.org/NewOmex.omex/NewModel.rdf#MediatorParticipant0000',
+                          'file:///http:.///omex-library.org/NewOmex.omex/NewModel.xml#DescriptionAnnotationWithBag',
+                          'file:///http:.///omex-library.org/NewOmex.omex/NewModel.xml#DescriptionAnnotationWithBag'],
+                    'y': ['http://biomodels.net/biology-qualifiers/isPartOf',
+                          'http://biomodels.net/biology-qualifiers/isPartOf',
+                          'http://biomodels.net/biology-qualifiers/isPartOf',
+                          'http://biomodels.net/biology-qualifiers/isPartOf',
+                          'http://biomodels.net/biology-qualifiers/isPartOf',
+                          'http://biomodels.net/biology-qualifiers/isPropertyOf',
+                          'http://biomodels.net/biology-qualifiers/isVersionOf',
+                          'http://bime.uw.edu/semsim/hasSourceParticipant',
+                          'http://bime.uw.edu/semsim/hasPhysicalEntityReference',
+                          'http://bime.uw.edu/semsim/hasMultiplier', 'http://bime.uw.edu/semsim/hasSinkParticipant',
+                          'http://bime.uw.edu/semsim/hasPhysicalEntityReference',
+                          'http://bime.uw.edu/semsim/hasMultiplier',
+                          'http://biomodels.net/biology-qualifiers/isPropertyOf',
+                          'http://biomodels.net/biology-qualifiers/isVersionOf',
+                          'http://bime.uw.edu/semsim/hasSourceParticipant',
+                          'http://bime.uw.edu/semsim/hasPhysicalEntityReference',
+                          'http://bime.uw.edu/semsim/hasMultiplier', 'http://bime.uw.edu/semsim/hasSourceParticipant',
+                          'http://bime.uw.edu/semsim/hasPhysicalEntityReference',
+                          'http://bime.uw.edu/semsim/hasMultiplier', 'http://bime.uw.edu/semsim/hasSinkParticipant',
+                          'http://bime.uw.edu/semsim/hasPhysicalEntityReference',
+                          'http://bime.uw.edu/semsim/hasMultiplier', 'http://bime.uw.edu/semsim/hasMediatorParticipant',
+                          'http://bime.uw.edu/semsim/hasPhysicalEntityReference',
+                          'http://biomodels.net/biology-qualifiers/is', 'http://biomodels.net/biology-qualifiers/is'],
+                    'z': ['http://omex-library.org/NewOmex.omex/NewModel.xml#cytosol',
+                          'http://omex-library.org/NewOmex.omex/NewModel.xml#cytosol',
+                          'http://omex-library.org/NewOmex.omex/NewModel.xml#cytosol',
+                          'http://omex-library.org/NewOmex.omex/NewModel.xml#extraCell',
+                          'http://omex-library.org/NewOmex.omex/NewModel.xml#cytosol',
+                          'http://omex-library.org/NewOmex.omex/NewModel.xml#react1',
+                          'https://identifiers.org/opb:OPB_00592',
+                          'http://omex-library.org/NewOmex.omex/NewModel.rdf#SourceParticipant0000',
+                          'http://omex-library.org/NewOmex.omex/NewModel.xml#sp_2', '1',
+                          'http://omex-library.org/NewOmex.omex/NewModel.rdf#SinkParticipant0000',
+                          'http://omex-library.org/NewOmex.omex/NewModel.xml#sp_1', '1',
+                          'http://omex-library.org/NewOmex.omex/NewModel.xml#react2',
+                          'https://identifiers.org/opb:OPB_00592',
+                          'http://omex-library.org/NewOmex.omex/NewModel.rdf#SourceParticipant0001',
+                          'http://omex-library.org/NewOmex.omex/NewModel.xml#sp_3', '1',
+                          'http://omex-library.org/NewOmex.omex/NewModel.rdf#SourceParticipant0002',
+                          'http://omex-library.org/NewOmex.omex/NewModel.xml#sp_1', '1',
+                          'http://omex-library.org/NewOmex.omex/NewModel.rdf#SinkParticipant0001',
+                          'http://omex-library.org/NewOmex.omex/NewModel.xml#sp_4', '1',
+                          'http://omex-library.org/NewOmex.omex/NewModel.rdf#MediatorParticipant0000',
+                          'http://omex-library.org/NewOmex.omex/NewModel.xml#sp_5',
+                          'http://identifiers.org/uniprot/P00742', 'http://identifiers.org/uniprot/P00743']}
+
+        rdf = RDF.from_string(TestStrings.sbml_with_annotations, "rdfxml")
+        query_str = """
+        SELECT ?x ?y ?z
+        WHERE {
+            ?x ?y ?z
+        }"""
+        results = rdf.query_results_as_dict(query_str)
+        self.assertEqual(expected, results)
 
     def test_use_sqlite_storage(self):
         rdf = RDF("sqlite", self.sqlite_fname, "new='yes'")
@@ -1522,94 +1606,10 @@ class GoldStandardOmexArchiveTests(unittest.TestCase):
         WHERE {
             ?x ?y ?z
         }"""
-        results = rdf.query_results_as_str(query_str, "rdfxml")
+        results = rdf.query_results_as_string(query_str, "rdfxml")
         results_rdf = RDF()
         results_rdf.add_from_string(results)
         self.assertEqual(234, len(results_rdf))
-
-    def test_query_results_as_dict(self):
-        expected = {'x': ['http://omex-library.org/NewOmex.omex/NewModel.xml#sp_1',
-                          'http://omex-library.org/NewOmex.omex/NewModel.xml#sp_2',
-                          'http://omex-library.org/NewOmex.omex/NewModel.xml#sp_3',
-                          'http://omex-library.org/NewOmex.omex/NewModel.xml#sp_4',
-                          'http://omex-library.org/NewOmex.omex/NewModel.xml#sp_5',
-                          'http://omex-library.org/NewOmex.omex/NewModel.rdf#ProcessProperty0000',
-                          'http://omex-library.org/NewOmex.omex/NewModel.rdf#ProcessProperty0000',
-                          'http://omex-library.org/NewOmex.omex/NewModel.xml#react1',
-                          'http://omex-library.org/NewOmex.omex/NewModel.rdf#SourceParticipant0000',
-                          'http://omex-library.org/NewOmex.omex/NewModel.rdf#SourceParticipant0000',
-                          'http://omex-library.org/NewOmex.omex/NewModel.xml#react1',
-                          'http://omex-library.org/NewOmex.omex/NewModel.rdf#SinkParticipant0000',
-                          'http://omex-library.org/NewOmex.omex/NewModel.rdf#SinkParticipant0000',
-                          'http://omex-library.org/NewOmex.omex/NewModel.rdf#ProcessProperty0001',
-                          'http://omex-library.org/NewOmex.omex/NewModel.rdf#ProcessProperty0001',
-                          'http://omex-library.org/NewOmex.omex/NewModel.xml#react2',
-                          'http://omex-library.org/NewOmex.omex/NewModel.rdf#SourceParticipant0001',
-                          'http://omex-library.org/NewOmex.omex/NewModel.rdf#SourceParticipant0001',
-                          'http://omex-library.org/NewOmex.omex/NewModel.xml#react2',
-                          'http://omex-library.org/NewOmex.omex/NewModel.rdf#SourceParticipant0002',
-                          'http://omex-library.org/NewOmex.omex/NewModel.rdf#SourceParticipant0002',
-                          'http://omex-library.org/NewOmex.omex/NewModel.xml#react2',
-                          'http://omex-library.org/NewOmex.omex/NewModel.rdf#SinkParticipant0001',
-                          'http://omex-library.org/NewOmex.omex/NewModel.rdf#SinkParticipant0001',
-                          'http://omex-library.org/NewOmex.omex/NewModel.xml#react2',
-                          'http://omex-library.org/NewOmex.omex/NewModel.rdf#MediatorParticipant0000',
-                          'file:///http:.///omex-library.org/NewOmex.omex/NewModel.xml#DescriptionAnnotationWithBag',
-                          'file:///http:.///omex-library.org/NewOmex.omex/NewModel.xml#DescriptionAnnotationWithBag'],
-                    'y': ['http://biomodels.net/biology-qualifiers/isPartOf',
-                          'http://biomodels.net/biology-qualifiers/isPartOf',
-                          'http://biomodels.net/biology-qualifiers/isPartOf',
-                          'http://biomodels.net/biology-qualifiers/isPartOf',
-                          'http://biomodels.net/biology-qualifiers/isPartOf',
-                          'http://biomodels.net/biology-qualifiers/isPropertyOf',
-                          'http://biomodels.net/biology-qualifiers/isVersionOf',
-                          'http://bime.uw.edu/semsim/hasSourceParticipant',
-                          'http://bime.uw.edu/semsim/hasPhysicalEntityReference',
-                          'http://bime.uw.edu/semsim/hasMultiplier', 'http://bime.uw.edu/semsim/hasSinkParticipant',
-                          'http://bime.uw.edu/semsim/hasPhysicalEntityReference',
-                          'http://bime.uw.edu/semsim/hasMultiplier',
-                          'http://biomodels.net/biology-qualifiers/isPropertyOf',
-                          'http://biomodels.net/biology-qualifiers/isVersionOf',
-                          'http://bime.uw.edu/semsim/hasSourceParticipant',
-                          'http://bime.uw.edu/semsim/hasPhysicalEntityReference',
-                          'http://bime.uw.edu/semsim/hasMultiplier', 'http://bime.uw.edu/semsim/hasSourceParticipant',
-                          'http://bime.uw.edu/semsim/hasPhysicalEntityReference',
-                          'http://bime.uw.edu/semsim/hasMultiplier', 'http://bime.uw.edu/semsim/hasSinkParticipant',
-                          'http://bime.uw.edu/semsim/hasPhysicalEntityReference',
-                          'http://bime.uw.edu/semsim/hasMultiplier', 'http://bime.uw.edu/semsim/hasMediatorParticipant',
-                          'http://bime.uw.edu/semsim/hasPhysicalEntityReference',
-                          'http://biomodels.net/biology-qualifiers/is', 'http://biomodels.net/biology-qualifiers/is'],
-                    'z': ['http://omex-library.org/NewOmex.omex/NewModel.xml#cytosol',
-                          'http://omex-library.org/NewOmex.omex/NewModel.xml#cytosol',
-                          'http://omex-library.org/NewOmex.omex/NewModel.xml#cytosol',
-                          'http://omex-library.org/NewOmex.omex/NewModel.xml#extraCell',
-                          'http://omex-library.org/NewOmex.omex/NewModel.xml#cytosol',
-                          'http://omex-library.org/NewOmex.omex/NewModel.xml#react1',
-                          'https://identifiers.org/opb:OPB_00592',
-                          'http://omex-library.org/NewOmex.omex/NewModel.rdf#SourceParticipant0000',
-                          'http://omex-library.org/NewOmex.omex/NewModel.xml#sp_2', '1',
-                          'http://omex-library.org/NewOmex.omex/NewModel.rdf#SinkParticipant0000',
-                          'http://omex-library.org/NewOmex.omex/NewModel.xml#sp_1', '1',
-                          'http://omex-library.org/NewOmex.omex/NewModel.xml#react2',
-                          'https://identifiers.org/opb:OPB_00592',
-                          'http://omex-library.org/NewOmex.omex/NewModel.rdf#SourceParticipant0001',
-                          'http://omex-library.org/NewOmex.omex/NewModel.xml#sp_3', '1',
-                          'http://omex-library.org/NewOmex.omex/NewModel.rdf#SourceParticipant0002',
-                          'http://omex-library.org/NewOmex.omex/NewModel.xml#sp_1', '1',
-                          'http://omex-library.org/NewOmex.omex/NewModel.rdf#SinkParticipant0001',
-                          'http://omex-library.org/NewOmex.omex/NewModel.xml#sp_4', '1',
-                          'http://omex-library.org/NewOmex.omex/NewModel.rdf#MediatorParticipant0000',
-                          'http://omex-library.org/NewOmex.omex/NewModel.xml#sp_5',
-                          'http://identifiers.org/uniprot/P00742', 'http://identifiers.org/uniprot/P00743']}
-
-        rdf = RDF.from_string(TestStrings.sbml_with_annotations, "rdfxml")
-        query_str = """
-        SELECT ?x ?y ?z
-        WHERE {
-            ?x ?y ?z
-        }"""
-        results = rdf.query_results_as_dict(query_str)
-        self.assertEqual(expected, results)
 
 
 class DrawTests(unittest.TestCase):

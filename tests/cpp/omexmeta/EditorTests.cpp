@@ -662,10 +662,10 @@ TEST_F(EditorTests, CheckGetXmlWithInvalidSBML) {
     ASSERT_NO_THROW(editor.getXml() );
 }
 
-TEST_F(EditorTests, CheckInvalidSbml) {
-    RDF rdf;
-    Editor editor = rdf.toEditor("<sbml></sbml>", false, false);
-}
+//TEST_F(EditorTests, CheckInvalidSbml) {
+//    RDF rdf;
+//    Editor editor = rdf.toEditor("<sbml></sbml>", false, false);
+//}
 
 
 
