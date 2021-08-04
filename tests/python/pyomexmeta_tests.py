@@ -297,7 +297,9 @@ http://omex-library.org/NewOmex.omex/NewModel.rdf#source_0,http://www.bhi.washin
             ?x ?y ?z
         }"""
         results = rdf.query_results_as_dict(query_str)
-        self.assertEqual(expected, results)
+        self.assertEqual(expected['x'], results['x'])
+        self.assertEqual(expected['y'], results['y'])
+        self.assertEqual(expected['z'], results['z'])
 
     def test_use_sqlite_storage(self):
         rdf = RDF("sqlite", self.sqlite_fname, "new='yes'")

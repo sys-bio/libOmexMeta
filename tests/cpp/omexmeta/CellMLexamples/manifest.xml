@@ -3,6 +3,6 @@
   <content xmlns="" location="." format="https://identifiers.org/combine.specifications/omex" />
   <content xmlns="" location="./manifest.xml" format="https://identifiers.org/combine.specifications/omex-manifest" />
   <content location="./model/examples.cellml" format="http://identifiers.org/combine.specifications/cellml" />
-  <content location="./model/examples.rdf" format="http://identifiers.org/combine.specifications/omex-metadata" />
+  <content location="./model/examples.rdf" format="http://identifiers.org/combine.specifications/omex-metadata.version-1_2" />
 </omexManifest>
 
