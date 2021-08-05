@@ -64,7 +64,7 @@ namespace omexmeta {
 
         PersonalInformation &addCreator(const std::string& value);
 
-//        PersonalInformation &addCurator(const std::string &value);
+//        PersonalInformation &addContributor(const std::string &value);
 
         PersonalInformation &addName(const std::string &value);
 

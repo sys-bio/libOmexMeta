@@ -32,6 +32,20 @@ CMake variables and options
     BUILD_TESTS                        ${BUILD_TESTS}
     N                                  ${N}
 
+Python Variables
+-----------------
+
+    Python_FOUND                       ${Python_FOUND}
+    Python_Interpreter_FOUND           ${Python_Interpreter_FOUND}
+    Python_INCLUDE_DIRS                ${Python_INCLUDE_DIRS}
+    Python_LIBRARIES                   ${Python_LIBRARIES}
+    Python_EXECUTABLE                  ${Python_EXECUTABLE}
+    Python_INTERPRETER_ID              ${Python_INTERPRETER_ID}
+    Python_STDLIB                      ${Python_STDLIB}
+    Python_STDARCH                     ${Python_STDARCH}
+    Python_SITELIB                     ${Python_SITELIB}
+    Python_SITEARCH                    ${Python_SITEARCH}
+
 VCPKG config
 ------------
     VCPKG_ROOT                          ${VCPKG_ROOT}

@@ -1,1 +1,1 @@
-<http://rdfa.info/test-suite/test-cases/xhtml1/rdfa1.0/0235.xml> <https://dublincore.org/specifications/dublin-core/dcmi-terms/title> "rdfagraph" .
+<http://rdfa.info/test-suite/test-cases/xhtml1/rdfa1.0/0235.xml> <http://purl.org/dc/terms/title> "rdfagraph" .

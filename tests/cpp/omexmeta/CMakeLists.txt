@@ -41,6 +41,7 @@ set(
 #
 
 add_test_executable(EditorTests OmexMetaTests EditorTests.cpp)
+add_test_executable(EditorTestsModelLevelAnnotations OmexMetaTests EditorTestsModelLevelAnnotations.cpp)
 add_test_executable(ElementExtractorTests OmexMetaTests ElementExtractorTests.cpp)
 add_test_executable(EnergyDiffTests OmexMetaTests EnergyDiffTests.cpp)
 add_test_executable(MarkupIdentifierTests OmexMetaTests MarkupIdentifierTests.cpp)
@@ -61,6 +62,7 @@ add_test_executable(UrlHandlerTests OmexMetaTests UrlHandlerTests.cpp )
 add_test_executable(XmlAssistantTests OmexMetaTests OmexMetaXmlTests.cpp)
 add_test_executable(VCardTranslatorTests OmexMetaTests VCardTranslatorTests.cpp )
 add_test_executable(PurgeRDFBagTests OmexMetaTests PurgeRDFBagTests.cpp MockRDF.h)
+add_test_executable(checkBiomodels OmexMetaTests checkBiomodels.cpp)
 
 
 

@@ -1,77 +1,35 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-  <title>Querying RDF &mdash; libomexmeta 1.2.8 documentation</title>
-  
-
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/segment.min.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/menu.min.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/sphinx_tabs/tabs.css" type="text/css" />
-
-  
-  
-
-  
-  
-
-  
-
-  
+  <title>Querying RDF &mdash; libomexmeta 1.2.11 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
-        <script src="../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.js"></script>
-        <script src="../_static/sphinx_tabs/tabs.js"></script>
-    
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-
-    
+        <script src="../_static/tabs.js"></script>
+    <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Building Diagrams" href="../diagrams/diagrams_index.html" />
     <link rel="prev" title="Stripping Annotations" href="../stripping_annotations/index.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
-
-          
             <a href="../index.html" class="icon icon-home"> libomexmeta
-          
-
-          
           </a>
-
-          
-            
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -79,27 +37,23 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
         </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Main">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../background.html">Background to Semantic Annotations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Install/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Install/install.html#build-from-source">Build from Source</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reading_rdf/reading_rdf.html">Reading RDF</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../writing_rdf/writing_rdf.html">Serializing RDF Graphs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../singular_annotations/index.html">Singular Annotations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../composite_annotations/index.html">Composite Annotations: SBML Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../composite_annotations/index.html#composite-annotations-cellml-examples">Composite Annotations: CellML Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../stripping_annotations/index.html">Stripping Annotations</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Querying RDF</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Querying RDF</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#results-as-a-map-dict">Results as a map/dict</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#results-as-a-string">Results as a String</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../diagrams/diagrams_index.html">Building Diagrams</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../annotating_models/annotating_models_index.html">Annotating Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../download_biomodels/download_biomodels.html">Downloading Biomodels</a></li>
@@ -107,131 +61,149 @@
 <li class="toctree-l1"><a class="reference internal" href="../Developers/developers_index.html">Developers Documentation</a></li>
 </ul>
 
-            
-          
         </div>
-        
       </div>
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+      <nav class="wy-nav-top" aria-label="Top" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">libomexmeta</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
           
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+<div role="navigation" aria-label="Breadcrumbs">
   <ul class="wy-breadcrumbs">
-    
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-        
       <li>Querying RDF</li>
-    
-    
       <li class="wy-breadcrumbs-aside">
-        
-          
             <a href="../_sources/querying_rdf/querying_rdf.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
+             
   <div class="section" id="querying-rdf">
-<h1>Querying RDF<a class="headerlink" href="#querying-rdf" title="Permalink to this headline">¶</a></h1>
+<h1>Querying RDF<a class="headerlink" href="#querying-rdf" title="Permalink to this headline"></a></h1>
 <p>Use <a class="reference external" href="https://www.w3.org/TR/rdf-sparql-query/">sparql</a>.</p>
+<div class="section" id="results-as-a-map-dict">
+<h2>Results as a map/dict<a class="headerlink" href="#results-as-a-map-dict" title="Permalink to this headline"></a></h2>
 <div class="sphinx-tabs docutils container">
-<div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-0-0 docutils container">
-<div class="docutils container">
-<p>Python</p>
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">Python</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">C++</button><button aria-controls="panel-0-0-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-2" name="0-2" role="tab" tabindex="-1">C</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">Demonstrate creating a sparql query in Python</span><a class="headerlink" href="#id1" title="Permalink to this code"></a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">pyomexmeta</span> <span class="kn">import</span> <span class="n">RDF</span><span class="p">,</span> <span class="n">eUriType</span>
+
+<span class="c1"># get the link to teusink2000</span>
+<span class="n">teusink_biomod_link</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml&quot;</span>
+
+<span class="c1"># download model xml, scan for rdf, create rdf graph and store in sqlite database</span>
+<span class="n">rdf</span> <span class="o">=</span> <span class="n">RDF</span><span class="o">.</span><span class="n">from_uri</span><span class="p">(</span><span class="n">teusink_biomod_link</span><span class="p">,</span> <span class="n">syntax</span><span class="o">=</span><span class="s2">&quot;rdfxml&quot;</span><span class="p">,</span>
+                   <span class="n">storage_type</span><span class="o">=</span><span class="s2">&quot;sqlite&quot;</span><span class="p">,</span> <span class="n">storage_name</span><span class="o">=</span><span class="s2">&quot;TeusinkAnnotations2000&quot;</span><span class="p">,</span>
+                   <span class="n">storage_options</span><span class="o">=</span><span class="s2">&quot;new=&#39;yes&#39;&quot;</span><span class="p">)</span>
+
+<span class="c1"># do a search for all annotations with glucode as resource: CHEBI:17234</span>
+<span class="n">query_string</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">SELECT ?x ?y</span>
+<span class="s2">WHERE {</span>
+<span class="s2">    ?x ?y &lt;http://identifiers.org/obo.chebi/CHEBI:17234&gt;</span>
+<span class="s2">}</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="n">query_results</span> <span class="o">=</span> <span class="n">rdf</span><span class="o">.</span><span class="n">query_results_as_dict</span><span class="p">(</span><span class="n">query_string</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">query_results</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">query_results</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+
+
+</pre></div>
 </div>
 </div>
-<div class="item sphinx-data-tab-0-1 docutils container">
-<div class="docutils container">
-<p>C++</p>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id2" title="Permalink to this code"></a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;dict&#39;&gt;
+x [&#39;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000004&#39;, &#39;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000022&#39;]
+y [&#39;http://biomodels.net/biology-qualifiers/is&#39;, &#39;http://biomodels.net/biology-qualifiers/is&#39;]
+</pre></div>
 </div>
 </div>
-<div class="item sphinx-data-tab-0-2 docutils container">
-<div class="docutils container">
-<p>C</p>
+</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">Demonstrate creating a sparql query in C++</span><a class="headerlink" href="#id3" title="Permalink to this code"></a></div>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;omexmeta/OmexMeta.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;vector&quot;</span><span class="cp"></span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="nn">omexmeta</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">//get the link to teusink2000</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">teusink_biomod_link</span> <span class="o">=</span> <span class="s">&quot;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml&quot;</span><span class="p">;</span>
+
+    <span class="c1">// download model xml, scan for rdf, create rdf graph and store in sqlite database</span>
+    <span class="n">RDF</span> <span class="n">rdf</span> <span class="o">=</span> <span class="n">RDF</span><span class="o">::</span><span class="n">fromUri</span><span class="p">(</span><span class="n">teusink_biomod_link</span><span class="p">,</span> <span class="s">&quot;rdfxml&quot;</span><span class="p">);</span>
+
+    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">query_string</span> <span class="o">=</span> <span class="s">&quot;SELECT ?x ?y</span><span class="se">\n</span><span class="s">&quot;</span>
+                               <span class="s">&quot;WHERE {</span><span class="se">\n</span><span class="s">&quot;</span>
+                               <span class="s">&quot;    ?x ?y &lt;http://identifiers.org/obo.chebi/CHEBI:17234&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                               <span class="s">&quot;}&quot;</span><span class="p">;</span>
+
+    <span class="c1">// typedef&#39;d std::unordered_map&lt;std::string, std::vector&lt;std::string&gt;&gt;</span>
+    <span class="n">ResultsMap</span> <span class="n">resultsMap</span> <span class="o">=</span> <span class="n">rdf</span><span class="p">.</span><span class="n">queryResultsAsMap</span><span class="p">(</span><span class="n">query_string</span><span class="p">);</span>
+
+<span class="p">}</span>
+</pre></div>
 </div>
 </div>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id4" title="Permalink to this code"></a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-0 active docutils container">
-<div class="literal-block-wrapper docutils container" id="id1">
-<div class="code-block-caption"><span class="caption-text">Demonstrate creating a sparql query in Python</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
-<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+</div>
+</div><div aria-labelledby="tab-0-0-2" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-2" name="0-2" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-text">Demonstrate creating a sparql query in C</span><a class="headerlink" href="#id5" title="Permalink to this code"></a></div>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;omexmeta/OmexMeta.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;omexmeta/OmexMetaCApi.h&quot;</span><span class="cp"></span>
+
+<span class="n">using</span> <span class="n">namespace</span> <span class="n">omexmeta</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">//get the link to teusink2000</span>
+    <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">teusink_biomod_link</span> <span class="o">=</span> <span class="s">&quot;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml&quot;</span><span class="p">;</span>
+
+    <span class="c1">// download model xml, scan for rdf, create rdf graph and store in sqlite database</span>
+    <span class="n">RDF</span><span class="o">*</span> <span class="n">rdf</span> <span class="o">=</span> <span class="n">RDF_fromUri</span><span class="p">(</span><span class="n">teusink_biomod_link</span><span class="p">,</span> <span class="s">&quot;rdfxml&quot;</span><span class="p">);</span>
+
+    <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">query_string</span> <span class="o">=</span> <span class="s">&quot;SELECT ?x ?y</span><span class="se">\n</span><span class="s">&quot;</span>
+                               <span class="s">&quot;WHERE {</span><span class="se">\n</span><span class="s">&quot;</span>
+                               <span class="s">&quot;    ?x ?y &lt;http://identifiers.org/obo.chebi/CHEBI:17234&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                               <span class="s">&quot;}&quot;</span><span class="p">;</span>
+    <span class="c1">// typedef&#39;d std::unordered_map&lt;std::string, std::vector&lt;std::string&gt;&gt;</span>
+    <span class="n">ResultsMap</span><span class="o">*</span> <span class="n">resultsMap</span> <span class="o">=</span> <span class="n">RDF_queryResultsAsMap</span><span class="p">(</span><span class="n">rdf</span><span class="p">,</span> <span class="n">query_string</span><span class="p">);</span>
+
+    <span class="n">RDF_delete</span><span class="p">(</span><span class="n">rdf</span><span class="p">);</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id6">
+<div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id6" title="Permalink to this code"></a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div></div>
+</div>
+<div class="section" id="results-as-a-string">
+<h2>Results as a String<a class="headerlink" href="#results-as-a-string" title="Permalink to this headline"></a></h2>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-1-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-1-1-0" name="1-0" role="tab" tabindex="0">Python</button><button aria-controls="panel-1-1-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-1" name="1-1" role="tab" tabindex="-1">C++</button><button aria-controls="panel-1-1-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-2" name="1-2" role="tab" tabindex="-1">C</button></div><div aria-labelledby="tab-1-1-0" class="sphinx-tabs-panel" id="panel-1-1-0" name="1-0" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id7">
+<div class="code-block-caption"><span class="caption-text">Demonstrate creating a sparql query in Python</span><a class="headerlink" href="#id7" title="Permalink to this code"></a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">from</span> <span class="nn">pyomexmeta</span> <span class="kn">import</span> <span class="n">RDF</span><span class="p">,</span> <span class="n">eUriType</span>
 
 <span class="c1"># get the link to teusink2000</span>
@@ -264,200 +236,15 @@
 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">results_formats</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sparql results format: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">rdf</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">query_string</span><span class="p">,</span> <span class="n">results_syntax</span><span class="o">=</span><span class="n">i</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">rdf</span><span class="o">.</span><span class="n">query_results_as_string</span><span class="p">(</span><span class="n">query_string</span><span class="p">,</span> <span class="n">results_syntax</span><span class="o">=</span><span class="n">i</span><span class="p">))</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">)</span>
 
 </pre></div>
-</td></tr></table></div>
 </div>
-<div class="literal-block-wrapper docutils container" id="id2">
-<div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
-<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>  1
-  2
-  3
-  4
-  5
-  6
-  7
-  8
-  9
- 10
- 11
- 12
- 13
- 14
- 15
- 16
- 17
- 18
- 19
- 20
- 21
- 22
- 23
- 24
- 25
- 26
- 27
- 28
- 29
- 30
- 31
- 32
- 33
- 34
- 35
- 36
- 37
- 38
- 39
- 40
- 41
- 42
- 43
- 44
- 45
- 46
- 47
- 48
- 49
- 50
- 51
- 52
- 53
- 54
- 55
- 56
- 57
- 58
- 59
- 60
- 61
- 62
- 63
- 64
- 65
- 66
- 67
- 68
- 69
- 70
- 71
- 72
- 73
- 74
- 75
- 76
- 77
- 78
- 79
- 80
- 81
- 82
- 83
- 84
- 85
- 86
- 87
- 88
- 89
- 90
- 91
- 92
- 93
- 94
- 95
- 96
- 97
- 98
- 99
-100
-101
-102
-103
-104
-105
-106
-107
-108
-109
-110
-111
-112
-113
-114
-115
-116
-117
-118
-119
-120
-121
-122
-123
-124
-125
-126
-127
-128
-129
-130
-131
-132
-133
-134
-135
-136
-137
-138
-139
-140
-141
-142
-143
-144
-145
-146
-147
-148
-149
-150
-151
-152
-153
-154
-155
-156
-157
-158
-159
-160
-161
-162
-163
-164
-165
-166
-167
-168
-169
-170
-171
-172
-173
-174
-175
-176
-177
-178
-179
-180
-181
-182
-183
-184
-185
-186</pre></div></td><td class="code"><div class="highlight"><pre><span></span>Sparql results format: xml
+</div>
+<div class="literal-block-wrapper docutils container" id="id8">
+<div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id8" title="Permalink to this code"></a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Sparql results format: xml
 &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
 &lt;sparql xmlns=&quot;http://www.w3.org/2005/sparql-results#&quot;&gt;
   &lt;head&gt;
@@ -644,49 +431,13 @@ Sparql results format: rdfxml
 
 
 </pre></div>
-</td></tr></table></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-1 docutils container">
-<div class="literal-block-wrapper docutils container" id="id3">
-<div class="code-block-caption"><span class="caption-text">Demonstrate creating a sparql query in C++</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
-<div class="highlight-C++ notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;omexmeta/OmexMeta.h&quot;</span><span class="cp"></span>
+</div><div aria-labelledby="tab-1-1-1" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-1" name="1-1" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id9">
+<div class="code-block-caption"><span class="caption-text">Demonstrate creating a sparql query in C++</span><a class="headerlink" href="#id9" title="Permalink to this code"></a></div>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;omexmeta/OmexMeta.h&quot;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&quot;vector&quot;</span><span class="cp"></span>
-<span class="k">using</span> <span class="k">namespace</span> <span class="n">omexmeta</span><span class="p">;</span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="nn">omexmeta</span><span class="p">;</span>
 
 <span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="c1">//get the link to teusink2000</span>
@@ -720,408 +471,370 @@ Sparql results format: rdfxml
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
-</td></tr></table></div>
 </div>
-<div class="literal-block-wrapper docutils container" id="id4">
-<div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id4" title="Permalink to this code">¶</a></div>
-<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>  1
-  2
-  3
-  4
-  5
-  6
-  7
-  8
-  9
- 10
- 11
- 12
- 13
- 14
- 15
- 16
- 17
- 18
- 19
- 20
- 21
- 22
- 23
- 24
- 25
- 26
- 27
- 28
- 29
- 30
- 31
- 32
- 33
- 34
- 35
- 36
- 37
- 38
- 39
- 40
- 41
- 42
- 43
- 44
- 45
- 46
- 47
- 48
- 49
- 50
- 51
- 52
- 53
- 54
- 55
- 56
- 57
- 58
- 59
- 60
- 61
- 62
- 63
- 64
- 65
- 66
- 67
- 68
- 69
- 70
- 71
- 72
- 73
- 74
- 75
- 76
- 77
- 78
- 79
- 80
- 81
- 82
- 83
- 84
- 85
- 86
- 87
- 88
- 89
- 90
- 91
- 92
- 93
- 94
- 95
- 96
- 97
- 98
- 99
-100
-101
-102
-103
-104
-105
-106
-107
-108
-109
-110
-111
-112
-113
-114
-115
-116
-117
-118
-119
-120
-121
-122
-123
-124
-125
-126
-127
-128
-129
-130
-131
-132
-133
-134
-135
-136
-137
-138
-139
-140
-141
-142
-143
-144
-145
-146
-147
-148
-149
-150
-151
-152
-153
-154
-155
-156
-157
-158
-159
-160
-161
-162
-163
-164
-165
-166
-167
-168
-169
-170
-171
-172
-173
-174
-175
-176
-177</pre></div></td><td class="code"><div class="highlight"><pre><span></span>Sparql results format: xml
+</div>
+<div class="literal-block-wrapper docutils container" id="id10">
+<div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id10" title="Permalink to this code"></a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Sparql results format: xml
+
 &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+
 &lt;sparql xmlns=&quot;http://www.w3.org/2005/sparql-results#&quot;&gt;
+
   &lt;head&gt;
+
     &lt;variable name=&quot;x&quot;/&gt;
+
     &lt;variable name=&quot;y&quot;/&gt;
+
   &lt;/head&gt;
+
   &lt;results&gt;
+
     &lt;result&gt;
+
       &lt;binding name=&quot;x&quot;&gt;&lt;uri&gt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000004&lt;/uri&gt;&lt;/binding&gt;
+
       &lt;binding name=&quot;y&quot;&gt;&lt;uri&gt;http://biomodels.net/biology-qualifiers/is&lt;/uri&gt;&lt;/binding&gt;
+
     &lt;/result&gt;
+
     &lt;result&gt;
+
       &lt;binding name=&quot;x&quot;&gt;&lt;uri&gt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000022&lt;/uri&gt;&lt;/binding&gt;
+
       &lt;binding name=&quot;y&quot;&gt;&lt;uri&gt;http://biomodels.net/biology-qualifiers/is&lt;/uri&gt;&lt;/binding&gt;
+
     &lt;/result&gt;
+
   &lt;/results&gt;
+
 &lt;/sparql&gt;
 
 
 
+
+
+
+
 Sparql results format: json
+
 {
+
   &quot;head&quot;: {
+
     &quot;vars&quot;: [ &quot;x&quot;, &quot;y&quot; ]
+
   },
+
   &quot;results&quot;: {
+
     &quot;ordered&quot; : false,
+
     &quot;distinct&quot; : false,
+
     &quot;bindings&quot; : [
+
       {
+
         &quot;x&quot; : { &quot;type&quot;: &quot;uri&quot;, &quot;value&quot;: &quot;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000004&quot; },
+
         &quot;y&quot; : { &quot;type&quot;: &quot;uri&quot;, &quot;value&quot;: &quot;http://biomodels.net/biology-qualifiers/is&quot; }
+
       },
+
       {
+
         &quot;x&quot; : { &quot;type&quot;: &quot;uri&quot;, &quot;value&quot;: &quot;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000022&quot; },
+
         &quot;y&quot; : { &quot;type&quot;: &quot;uri&quot;, &quot;value&quot;: &quot;http://biomodels.net/biology-qualifiers/is&quot; }
+
       }
+
     ]
+
   }
+
 }
 
 
 
+
+
+
+
 Sparql results format: table
+
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 |
+
 ===========================================================================================================================================================================
+
 | uri&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000004&gt; | uri&lt;http://biomodels.net/biology-qualifiers/is&gt; |
+
 | uri&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000022&gt; | uri&lt;http://biomodels.net/biology-qualifiers/is&gt; |
+
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
 
 
 
 Sparql results format: csv
+
 x,y
+
 https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000004,http://biomodels.net/biology-qualifiers/is
+
 https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000022,http://biomodels.net/biology-qualifiers/is
 
 
 
+
+
+
+
 Sparql results format: mkr
+
 result is relation with format = csv;
+
 begin relation result;
+
 x,y;
+
 https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000004,http://biomodels.net/biology-qualifiers/is;
+
 https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000022,http://biomodels.net/biology-qualifiers/is;
+
 end relation result;
 
 
 
+
+
+
+
 Sparql results format: tsv
+
 ?x	?y
+
 &lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000004&gt;	&lt;http://biomodels.net/biology-qualifiers/is&gt;
+
 &lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000022&gt;	&lt;http://biomodels.net/biology-qualifiers/is&gt;
 
 
 
+
+
+
+
 Sparql results format: html
+
 &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+
 &lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.1//EN&quot;
+
         &quot;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&quot;&gt;
+
 &lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+
 &lt;head&gt;
+
   &lt;title&gt;SPARQL Query Results&lt;/title&gt;
+
 &lt;/head&gt;
+
 &lt;body&gt;
+
   &lt;table id=&quot;results&quot; border=&quot;1&quot;&gt;
+
     &lt;tr&gt;
+
       &lt;th&gt;?x&lt;/th&gt;
+
       &lt;th&gt;?y&lt;/th&gt;
+
     &lt;/tr&gt;
+
     &lt;tr class=&quot;result&quot;&gt;
+
       &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000004&quot;&gt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000004&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
+
       &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://biomodels.net/biology-qualifiers/is&quot;&gt;http://biomodels.net/biology-qualifiers/is&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
+
     &lt;/tr&gt;
+
     &lt;tr class=&quot;result&quot;&gt;
+
       &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000022&quot;&gt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000022&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
+
       &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://biomodels.net/biology-qualifiers/is&quot;&gt;http://biomodels.net/biology-qualifiers/is&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
+
     &lt;/tr&gt;
+
   &lt;/table&gt;
+
   &lt;p&gt;Total number of rows: &lt;span class=&quot;count&quot;&gt;2&lt;/span&gt;.&lt;/p&gt;
+
 &lt;/body&gt;
+
 &lt;/html&gt;
 
 
 
+
+
+
+
 Sparql results format: turtle
+
 @prefix xsd:     &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+
 @prefix rs:      &lt;http://www.w3.org/2001/sw/DataAccess/tests/result-set#&gt; .
+
 @prefix rdf:     &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
 
+
+
 []    rdf:type      rs:ResultSet ;
+
       rs:resultVariable  &quot;x&quot; ;
+
       rs:resultVariable  &quot;y&quot; ;
+
       rs:solution   [ rs:binding    [ rs:variable   &quot;x&quot; ;
+
                                       rs:value      &lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000004&gt;
+
                                     ] ; 
+
                       rs:binding    [ rs:variable   &quot;y&quot; ;
+
                                       rs:value      &lt;http://biomodels.net/biology-qualifiers/is&gt;
+
                                     ] 
+
       ] ;
+
       rs:solution   [ rs:binding    [ rs:variable   &quot;x&quot; ;
+
                                       rs:value      &lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000022&gt;
+
                                     ] ; 
+
                       rs:binding    [ rs:variable   &quot;y&quot; ;
+
                                       rs:value      &lt;http://biomodels.net/biology-qualifiers/is&gt;
+
                                     ] 
+
       ] .
 
 
 
+
+
+
+
 Sparql results format: rdfxml
+
 &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+
 &lt;rdf:RDF xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;
+
    xmlns:rs=&quot;http://www.w3.org/2001/sw/DataAccess/tests/result-set#&quot;
+
    xml:base=&quot;file://query_results&quot;&gt;
+
   &lt;rs:ResultSet&gt;
+
     &lt;rs:resultVariable&gt;x&lt;/rs:resultVariable&gt;
+
     &lt;rs:resultVariable&gt;y&lt;/rs:resultVariable&gt;
+
     &lt;rs:solution&gt;
+
       &lt;rdf:Description&gt;
+
         &lt;rs:binding&gt;
+
           &lt;rdf:Description&gt;
+
             &lt;rs:value rdf:resource=&quot;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000004&quot;/&gt;
+
             &lt;rs:variable&gt;x&lt;/rs:variable&gt;
+
           &lt;/rdf:Description&gt;
+
         &lt;/rs:binding&gt;
+
         &lt;rs:binding&gt;
+
           &lt;rdf:Description&gt;
+
             &lt;rs:value rdf:resource=&quot;http://biomodels.net/biology-qualifiers/is&quot;/&gt;
+
             &lt;rs:variable&gt;y&lt;/rs:variable&gt;
+
           &lt;/rdf:Description&gt;
+
         &lt;/rs:binding&gt;
+
       &lt;/rdf:Description&gt;
+
     &lt;/rs:solution&gt;
+
     &lt;rs:solution&gt;
+
       &lt;rdf:Description&gt;
+
         &lt;rs:binding&gt;
+
           &lt;rdf:Description&gt;
+
             &lt;rs:value rdf:resource=&quot;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000022&quot;/&gt;
+
             &lt;rs:variable&gt;x&lt;/rs:variable&gt;
+
           &lt;/rdf:Description&gt;
+
         &lt;/rs:binding&gt;
+
         &lt;rs:binding&gt;
+
           &lt;rdf:Description&gt;
+
             &lt;rs:value rdf:resource=&quot;http://biomodels.net/biology-qualifiers/is&quot;/&gt;
+
             &lt;rs:variable&gt;y&lt;/rs:variable&gt;
+
           &lt;/rdf:Description&gt;
+
         &lt;/rs:binding&gt;
+
       &lt;/rdf:Description&gt;
+
     &lt;/rs:solution&gt;
+
   &lt;/rs:ResultSet&gt;
+
 &lt;/rdf:RDF&gt;
 
 
 
+
+
+
+
 </pre></div>
-</td></tr></table></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-2 docutils container">
-<div class="literal-block-wrapper docutils container" id="id5">
-<div class="code-block-caption"><span class="caption-text">Demonstrate creating a sparql query in C</span><a class="headerlink" href="#id5" title="Permalink to this code">¶</a></div>
-<div class="highlight-C notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;omexmeta/OmexMeta.h&quot;</span><span class="cp"></span>
+</div><div aria-labelledby="tab-1-1-2" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-2" name="1-2" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id11">
+<div class="code-block-caption"><span class="caption-text">Demonstrate creating a sparql query in C</span><a class="headerlink" href="#id11" title="Permalink to this code"></a></div>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;omexmeta/OmexMeta.h&quot;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&quot;omexmeta/OmexMetaCApi.h&quot;</span><span class="cp"></span>
 
 <span class="n">using</span> <span class="n">namespace</span> <span class="n">omexmeta</span><span class="p">;</span>
@@ -1160,398 +873,382 @@ Sparql results format: rdfxml
 
 <span class="p">}</span>
 </pre></div>
-</td></tr></table></div>
 </div>
-<div class="literal-block-wrapper docutils container" id="id6">
-<div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id6" title="Permalink to this code">¶</a></div>
-<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>  1
-  2
-  3
-  4
-  5
-  6
-  7
-  8
-  9
- 10
- 11
- 12
- 13
- 14
- 15
- 16
- 17
- 18
- 19
- 20
- 21
- 22
- 23
- 24
- 25
- 26
- 27
- 28
- 29
- 30
- 31
- 32
- 33
- 34
- 35
- 36
- 37
- 38
- 39
- 40
- 41
- 42
- 43
- 44
- 45
- 46
- 47
- 48
- 49
- 50
- 51
- 52
- 53
- 54
- 55
- 56
- 57
- 58
- 59
- 60
- 61
- 62
- 63
- 64
- 65
- 66
- 67
- 68
- 69
- 70
- 71
- 72
- 73
- 74
- 75
- 76
- 77
- 78
- 79
- 80
- 81
- 82
- 83
- 84
- 85
- 86
- 87
- 88
- 89
- 90
- 91
- 92
- 93
- 94
- 95
- 96
- 97
- 98
- 99
-100
-101
-102
-103
-104
-105
-106
-107
-108
-109
-110
-111
-112
-113
-114
-115
-116
-117
-118
-119
-120
-121
-122
-123
-124
-125
-126
-127
-128
-129
-130
-131
-132
-133
-134
-135
-136
-137
-138
-139
-140
-141
-142
-143
-144
-145
-146
-147
-148
-149
-150
-151
-152
-153
-154
-155
-156
-157
-158
-159
-160
-161
-162
-163
-164
-165
-166
-167
-168</pre></div></td><td class="code"><div class="highlight"><pre><span></span>Sparql results format: xml
+</div>
+<div class="literal-block-wrapper docutils container" id="id12">
+<div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id12" title="Permalink to this code"></a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Sparql results format: xml
+
 &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+
 &lt;sparql xmlns=&quot;http://www.w3.org/2005/sparql-results#&quot;&gt;
+
   &lt;head&gt;
+
     &lt;variable name=&quot;x&quot;/&gt;
+
     &lt;variable name=&quot;y&quot;/&gt;
+
   &lt;/head&gt;
+
   &lt;results&gt;
+
     &lt;result&gt;
+
       &lt;binding name=&quot;x&quot;&gt;&lt;uri&gt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000004&lt;/uri&gt;&lt;/binding&gt;
+
       &lt;binding name=&quot;y&quot;&gt;&lt;uri&gt;http://biomodels.net/biology-qualifiers/is&lt;/uri&gt;&lt;/binding&gt;
+
     &lt;/result&gt;
+
     &lt;result&gt;
+
       &lt;binding name=&quot;x&quot;&gt;&lt;uri&gt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000022&lt;/uri&gt;&lt;/binding&gt;
+
       &lt;binding name=&quot;y&quot;&gt;&lt;uri&gt;http://biomodels.net/biology-qualifiers/is&lt;/uri&gt;&lt;/binding&gt;
+
     &lt;/result&gt;
+
   &lt;/results&gt;
+
 &lt;/sparql&gt;
 
 
+
+
+
 Sparql results format: json
+
 {
+
   &quot;head&quot;: {
+
     &quot;vars&quot;: [ &quot;x&quot;, &quot;y&quot; ]
+
   },
+
   &quot;results&quot;: {
+
     &quot;ordered&quot; : false,
+
     &quot;distinct&quot; : false,
+
     &quot;bindings&quot; : [
+
       {
+
         &quot;x&quot; : { &quot;type&quot;: &quot;uri&quot;, &quot;value&quot;: &quot;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000004&quot; },
+
         &quot;y&quot; : { &quot;type&quot;: &quot;uri&quot;, &quot;value&quot;: &quot;http://biomodels.net/biology-qualifiers/is&quot; }
+
       },
+
       {
+
         &quot;x&quot; : { &quot;type&quot;: &quot;uri&quot;, &quot;value&quot;: &quot;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000022&quot; },
+
         &quot;y&quot; : { &quot;type&quot;: &quot;uri&quot;, &quot;value&quot;: &quot;http://biomodels.net/biology-qualifiers/is&quot; }
+
       }
+
     ]
+
   }
+
 }
 
 
+
+
+
 Sparql results format: table
+
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 |
+
 ===========================================================================================================================================================================
+
 | uri&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000004&gt; | uri&lt;http://biomodels.net/biology-qualifiers/is&gt; |
+
 | uri&lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000022&gt; | uri&lt;http://biomodels.net/biology-qualifiers/is&gt; |
+
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
 
 
 Sparql results format: csv
+
 x,y
+
 https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000004,http://biomodels.net/biology-qualifiers/is
+
 https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000022,http://biomodels.net/biology-qualifiers/is
 
 
+
+
+
 Sparql results format: mkr
+
 result is relation with format = csv;
+
 begin relation result;
+
 x,y;
+
 https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000004,http://biomodels.net/biology-qualifiers/is;
+
 https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000022,http://biomodels.net/biology-qualifiers/is;
+
 end relation result;
 
 
+
+
+
 Sparql results format: tsv
+
 ?x	?y
+
 &lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000004&gt;	&lt;http://biomodels.net/biology-qualifiers/is&gt;
+
 &lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000022&gt;	&lt;http://biomodels.net/biology-qualifiers/is&gt;
 
 
+
+
+
 Sparql results format: html
+
 &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+
 &lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.1//EN&quot;
+
         &quot;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&quot;&gt;
+
 &lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+
 &lt;head&gt;
+
   &lt;title&gt;SPARQL Query Results&lt;/title&gt;
+
 &lt;/head&gt;
+
 &lt;body&gt;
+
   &lt;table id=&quot;results&quot; border=&quot;1&quot;&gt;
+
     &lt;tr&gt;
+
       &lt;th&gt;?x&lt;/th&gt;
+
       &lt;th&gt;?y&lt;/th&gt;
+
     &lt;/tr&gt;
+
     &lt;tr class=&quot;result&quot;&gt;
+
       &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000004&quot;&gt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000004&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
+
       &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://biomodels.net/biology-qualifiers/is&quot;&gt;http://biomodels.net/biology-qualifiers/is&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
+
     &lt;/tr&gt;
+
     &lt;tr class=&quot;result&quot;&gt;
+
       &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000022&quot;&gt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000022&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
+
       &lt;td&gt;&lt;span class=&quot;uri&quot;&gt;&lt;a href=&quot;http://biomodels.net/biology-qualifiers/is&quot;&gt;http://biomodels.net/biology-qualifiers/is&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
+
     &lt;/tr&gt;
+
   &lt;/table&gt;
+
   &lt;p&gt;Total number of rows: &lt;span class=&quot;count&quot;&gt;2&lt;/span&gt;.&lt;/p&gt;
+
 &lt;/body&gt;
+
 &lt;/html&gt;
 
 
+
+
+
 Sparql results format: turtle
+
 @prefix xsd:     &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+
 @prefix rs:      &lt;http://www.w3.org/2001/sw/DataAccess/tests/result-set#&gt; .
+
 @prefix rdf:     &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
 
+
+
 []    rdf:type      rs:ResultSet ;
+
       rs:resultVariable  &quot;x&quot; ;
+
       rs:resultVariable  &quot;y&quot; ;
+
       rs:solution   [ rs:binding    [ rs:variable   &quot;x&quot; ;
+
                                       rs:value      &lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000004&gt;
+
                                     ] ; 
+
                       rs:binding    [ rs:variable   &quot;y&quot; ;
+
                                       rs:value      &lt;http://biomodels.net/biology-qualifiers/is&gt;
+
                                     ] 
+
       ] ;
+
       rs:solution   [ rs:binding    [ rs:variable   &quot;x&quot; ;
+
                                       rs:value      &lt;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000022&gt;
+
                                     ] ; 
+
                       rs:binding    [ rs:variable   &quot;y&quot; ;
+
                                       rs:value      &lt;http://biomodels.net/biology-qualifiers/is&gt;
+
                                     ] 
+
       ] .
 
 
+
+
+
 Sparql results format: rdfxml
+
 &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+
 &lt;rdf:RDF xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;
+
    xmlns:rs=&quot;http://www.w3.org/2001/sw/DataAccess/tests/result-set#&quot;
+
    xml:base=&quot;file://query_results&quot;&gt;
+
   &lt;rs:ResultSet&gt;
+
     &lt;rs:resultVariable&gt;x&lt;/rs:resultVariable&gt;
+
     &lt;rs:resultVariable&gt;y&lt;/rs:resultVariable&gt;
+
     &lt;rs:solution&gt;
+
       &lt;rdf:Description&gt;
+
         &lt;rs:binding&gt;
+
           &lt;rdf:Description&gt;
+
             &lt;rs:value rdf:resource=&quot;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000004&quot;/&gt;
+
             &lt;rs:variable&gt;x&lt;/rs:variable&gt;
+
           &lt;/rdf:Description&gt;
+
         &lt;/rs:binding&gt;
+
         &lt;rs:binding&gt;
+
           &lt;rdf:Description&gt;
+
             &lt;rs:value rdf:resource=&quot;http://biomodels.net/biology-qualifiers/is&quot;/&gt;
+
             &lt;rs:variable&gt;y&lt;/rs:variable&gt;
+
           &lt;/rdf:Description&gt;
+
         &lt;/rs:binding&gt;
+
       &lt;/rdf:Description&gt;
+
     &lt;/rs:solution&gt;
+
     &lt;rs:solution&gt;
+
       &lt;rdf:Description&gt;
+
         &lt;rs:binding&gt;
+
           &lt;rdf:Description&gt;
+
             &lt;rs:value rdf:resource=&quot;https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000022&quot;/&gt;
+
             &lt;rs:variable&gt;x&lt;/rs:variable&gt;
+
           &lt;/rdf:Description&gt;
+
         &lt;/rs:binding&gt;
+
         &lt;rs:binding&gt;
+
           &lt;rdf:Description&gt;
+
             &lt;rs:value rdf:resource=&quot;http://biomodels.net/biology-qualifiers/is&quot;/&gt;
+
             &lt;rs:variable&gt;y&lt;/rs:variable&gt;
+
           &lt;/rdf:Description&gt;
+
         &lt;/rs:binding&gt;
+
       &lt;/rdf:Description&gt;
+
     &lt;/rs:solution&gt;
+
   &lt;/rs:ResultSet&gt;
+
 &lt;/rdf:RDF&gt;
 
 
+
+
+
 </pre></div>
-</td></tr></table></div>
 </div>
 </div>
+</div></div>
 </div>
 </div>
 
 
            </div>
-           
           </div>
           <footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="../diagrams/diagrams_index.html" class="btn btn-neutral float-right" title="Building Diagrams" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="../stripping_annotations/index.html" class="btn btn-neutral float-left" title="Stripping Annotations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../diagrams/diagrams_index.html" class="btn btn-neutral float-right" title="Building Diagrams" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &#169; Copyright 2020, Ciaran Welsh.
-
-    </p>
+    <p>&#169; Copyright 2020, Ciaran Welsh.</p>
   </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

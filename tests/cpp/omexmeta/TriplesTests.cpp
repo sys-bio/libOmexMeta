@@ -27,7 +27,7 @@ public:
 
     //todo subject could pass the world to the node
     TriplesTests() {
-        model = LibrdfModel(storage.get());
+        model = LibrdfModel(storage);
         subject =  LibrdfNode::fromUriString("subby");
         resource = LibrdfNode::fromUriString(("space/id"));
         predicate = BiomodelsBiologyQualifier("is");

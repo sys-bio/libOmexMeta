@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="12cm" height="4cm" viewBox="0 0 1200 400"
-     xmlns:dc="https://dublincore.org/specifications/dublin-core/dcmi-terms/"
+     xmlns:dc="http://purl.org/dc/terms/"
      xmlns="http://www.w3.org/2000/svg" version="1.2" baseProfile="tiny">
     <desc property="dc:description">A yellow rectangle with sharp corners.</desc>
     <!-- Show outline of canvas using 'rect' element -->

@@ -999,10 +999,10 @@ TEST_F(CAPITests, RDFsetModelMetaid) {
     RDF *rdf_ptr = RDF_new();
     RDF_setModelMetaid(rdf_ptr, "ModelMetaid");
     const char *expected = "http://omex-library.org/NewOmex.omex/NewModel.xml#ModelMetaid";
-    char* metaid = RDF_getModelMetaid(rdf_ptr);
+    char *metaid = RDF_getModelMetaid(rdf_ptr);
     ASSERT_STREQ("ModelMetaid", metaid);
     free_c_char_star(metaid);
-    char* actual = RDF_getModelLevelAnnotationUri(rdf_ptr);
+    char *actual = RDF_getModelLevelAnnotationUri(rdf_ptr);
     ASSERT_STREQ(expected, actual);
     free_c_char_star(actual);
     RDF_delete(rdf_ptr);
@@ -1136,7 +1136,7 @@ TEST_F(CAPITests, EditoraddCreator) {
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#TestModelNotAnnotated>\n"
-                           "    <https://dublincore.org/specifications/dublin-core/dcmi-terms/creator> <https://orcid.org/1234-1234-1234-1234> .\n"
+                           "    <http://purl.org/dc/terms/creator> <https://orcid.org/1234-1234-1234-1234> .\n"
                            "\n"
                            "";
     char *actual = RDF_toString(rdf_ptr, "turtle");
@@ -1147,18 +1147,18 @@ TEST_F(CAPITests, EditoraddCreator) {
     RDF_delete(rdf_ptr);
 }
 
-TEST_F(CAPITests, EditoraddCurator) {
+TEST_F(CAPITests, EditoraddContributor) {
     RDF *rdf_ptr = RDF_new();
     Editor *editor_ptr = RDF_toEditor(rdf_ptr,
                                       SBMLFactory::getSBML(SBML_NOT_ANNOTATED).c_str(), true, false);
-    Editor_addCurator(editor_ptr, "1234-1234-1234-1234");
+    Editor_addContributor(editor_ptr, "1234-1234-1234-1234");
     const char *expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.rdf#>\n"
-                           "    <https://dublincore.org/specifications/dublin-core/dcmi-terms/creator> <https://orcid.org/1234-1234-1234-1234> .\n"
+                           "    <http://purl.org/dc/terms/contributor> <https://orcid.org/1234-1234-1234-1234> .\n"
                            "\n"
                            "";
     char *actual = RDF_toString(rdf_ptr, "turtle");
@@ -1226,7 +1226,7 @@ TEST_F(CAPITests, EditoraddDescription) {
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#TestModelNotAnnotated>\n"
-                           "    <https://dublincore.org/specifications/dublin-core/dcmi-terms/description> \"A model\" .\n"
+                           "    <http://purl.org/dc/terms/description> \"A model\" .\n"
                            "\n"
                            "";
     char *actual = RDF_toString(rdf_ptr, "turtle");
@@ -1241,17 +1241,16 @@ TEST_F(CAPITests, EditoraddDateCreated) {
     RDF *rdf_ptr = RDF_new();
     Editor *editor_ptr = RDF_toEditor(rdf_ptr,
                                       SBMLFactory::getSBML(SBML_NOT_ANNOTATED).c_str(), true, false);
-    Editor_addDateCreated(editor_ptr, "14/01/1991");
+    Editor_addDateCreated(editor_ptr, "2020-11-23");
     const char *expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n"
+                           "@prefix dc: <http://purl.org/dc/terms/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#TestModelNotAnnotated>\n"
-                           "    dc:created [\n"
-                           "        dc:W3CDTF \"14/01/1991\"\n"
-                           "    ] .";
+                           "    dc:created \"2020-11-23\"^^dc:W3CDTF\n .";
+
     char *actual = RDF_toString(rdf_ptr, "turtle");
     std::cout << actual << std::endl;
     ASSERT_TRUE(RDF::equals(rdf_ptr, expected, "turtle"));
@@ -1283,6 +1282,18 @@ TEST_F(CAPITests, EditoraddParentModel) {
     RDF_delete(rdf_ptr);
 }
 
+TEST_F(CAPITests, EditorGetXml) {
+    ASSERT_NO_THROW(
+            RDF *rdf_ptr = RDF_new();
+            Editor *editor_ptr = RDF_toEditor(rdf_ptr,
+                                              SBMLFactory::getSBML(SBML_INVALID_METAIDS).c_str(), true, true);
+            char *xml = Editor_getXml(editor_ptr);
+            Editor_delete(editor_ptr);
+            free_c_char_star(xml);
+            RDF_delete(rdf_ptr);
+            );
+}
+
 
 TEST_F(CAPITests, PersonalInformationaddCreator) {
     RDF *rdf_ptr = RDF_new();
@@ -1293,7 +1304,7 @@ TEST_F(CAPITests, PersonalInformationaddCreator) {
     Editor_addPersonalInformation(editor_ptr, information);
     char *actual = RDF_toString(rdf_ptr, "turtle");
     const char *expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n"
+                           "@prefix dc: <http://purl.org/dc/terms/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
@@ -1340,7 +1351,7 @@ TEST_F(CAPITests, PersonalInformationaddName) {
     char *actual = RDF_toString(rdf_ptr, "turtle");
     const char *expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n"
-                           "@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n"
+                           "@prefix dc: <http://purl.org/dc/terms/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
@@ -1370,7 +1381,7 @@ TEST_F(CAPITests, PersonalInformationaddMbox) {
     char *actual = RDF_toString(rdf_ptr, "turtle");
     const char *expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n"
-                           "@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n"
+                           "@prefix dc: <http://purl.org/dc/terms/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
@@ -1400,7 +1411,7 @@ TEST_F(CAPITests, PersonalInformationaddAccountName) {
     char *actual = RDF_toString(rdf_ptr, "turtle");
     const char *expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n"
-                           "@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n"
+                           "@prefix dc: <http://purl.org/dc/terms/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
@@ -1429,7 +1440,7 @@ TEST_F(CAPITests, PersonalInformationaddAccountServiceHomepage) {
     char *actual = RDF_toString(rdf_ptr, "turtle");
     const char *expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n"
-                           "@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n"
+                           "@prefix dc: <http://purl.org/dc/terms/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
@@ -1459,7 +1470,7 @@ TEST_F(CAPITests, PersonalInformationaddFoafUri) {
     char *actual = RDF_toString(rdf_ptr, "turtle");
     const char *expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n"
-                           "@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n"
+                           "@prefix dc: <http://purl.org/dc/terms/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
@@ -1489,7 +1500,7 @@ TEST_F(CAPITests, PersonalInformationaddFoafLiteral) {
     char *actual = RDF_toString(rdf_ptr, "turtle");
     const char *expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n"
-                           "@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n"
+                           "@prefix dc: <http://purl.org/dc/terms/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
@@ -1517,7 +1528,7 @@ TEST_F(CAPITests, PersonalInformationgetMetaid) {
     Editor_addPersonalInformation(editor_ptr, information);
     editor_ptr->addPersonalInformation(information);
     const char *expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n"
+                           "@prefix dc: <http://purl.org/dc/terms/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
@@ -1536,7 +1547,7 @@ TEST_F(CAPITests, PersonalInformationgetMetaid) {
 
 TEST_F(CAPITests, RDFToEditorTestWithSemanticExtraction) {
     RDF *rdf_ptr = RDF_new();
-    Editor *editor_ptr = RDF_toEditor(rdf_ptr, SBMLFactory::getSBML(SBML_Semantic_Extraction_Model).c_str(), true, true);
+    Editor *editor_ptr = RDF_toEditor(rdf_ptr, SBMLFactory::getSBML(SBML_SEMANTIC_EXTRACTION_MODEL).c_str(), true, true);
 
     char *actual = RDF_toString(rdf_ptr, "turtle");
     const char *expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
@@ -1609,7 +1620,7 @@ TEST_F(CAPITests, RDFToEditorTestWithSemanticExtraction) {
 
 TEST_F(CAPITests, RDFToEditorTestWithoutSemanticExtraction) {
     RDF *rdf_ptr = RDF_new();
-    Editor *editor_ptr = RDF_toEditor(rdf_ptr, SBMLFactory::getSBML(SBML_Semantic_Extraction_Model).c_str(), true, false);
+    Editor *editor_ptr = RDF_toEditor(rdf_ptr, SBMLFactory::getSBML(SBML_SEMANTIC_EXTRACTION_MODEL).c_str(), true, false);
 
     char *actual = RDF_toString(rdf_ptr, "turtle");
     const char *expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
@@ -1627,7 +1638,7 @@ TEST_F(CAPITests, RDFToEditorTestWithoutSemanticExtraction) {
 
 TEST_F(CAPITests, EditorStripAnnotations) {
     RDF *rdf_ptr = RDF_new();
-    Editor *editor_ptr = RDF_toEditor(rdf_ptr, SBMLFactory::getSBML(SBML_Semantic_Extraction_Model).c_str(), false, false);
+    Editor *editor_ptr = RDF_toEditor(rdf_ptr, SBMLFactory::getSBML(SBML_SEMANTIC_EXTRACTION_MODEL).c_str(), false, false);
     char *actual = Editor_stripAnnotations(editor_ptr);
     const char *expected = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
                            "<sbml xmlns=\"http://www.sbml.org/sbml/level3/version1/core\" level=\"3\" version=\"1\">\n"

@@ -247,7 +247,7 @@ class OmexMetaSpec1_1:
             .add_taxon("taxon/9895")\
             .add_pubmed("pubmed/12334")\
             .add_description("My supercool model")\
-            .add_date_created("18-09-2020")\
+            .add_date_created("2020-09-18")\
             .add_parent_model("pubmed/123456")
 
         fname = create_combine_archive(sbml, "ModelLevelAnnotations", str(rdf))

@@ -322,7 +322,7 @@ namespace omexmeta {
          * @brief add the "curator" model level annotation
          * @param an orcid_id as string
          */
-        Editor &addCurator(std::string orcid_id);
+        Editor &addContributor(std::string orcid_id);
 
         /**
          * @brief add the "taxon id" model level annotation
@@ -410,7 +410,7 @@ namespace omexmeta {
         std::unordered_map<std::string, std::string> &namespaces_;
         bool generate_new_metaids_;
         bool sbml_semantic_extraction_;
-        std::string metaid_base_ = "#OmexMetaId";
+        std::string metaid_base_ = "#OmexMetaId"; // maybe unused?
         OmexMetaXmlType type_;
         OmexMetaXmlPtr omexMetaXmlPtr_;
 

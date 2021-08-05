@@ -20,7 +20,7 @@ public:
     UriHandler uriHandler;
 
     PhysicalPropertyTests() {
-        model = LibrdfModel(storage.get());
+        model = LibrdfModel(storage);
     }
 
     ~PhysicalPropertyTests() override {

@@ -34,7 +34,7 @@ unsigned int {\bfseries flags}
 
 
 \doxysubsection{Detailed Description}
-\mbox{\hyperlink{structraptor__syntax__description}{raptor\+\_\+syntax\+\_\+description}}\+: @names\+: array of syntax names -\/ the first one (required) is the public name, the rest are aliases. The array is N\+U\+LL terminated. @names\+\_\+count\+: size of @names array @label\+: long descriptive label for syntax @mime\+\_\+types\+: Array of (M\+I\+ME type, Q) values associated with the syntax (or N\+U\+LL). If present the array is N\+U\+LL terminated. @mime\+\_\+types\+\_\+count\+: size of @mime\+\_\+types array @uri\+\_\+strings\+: array of U\+R\+Is identifying the syntax (or N\+U\+LL). The first one if present is the main U\+RI, the rest are aliases. The array is N\+U\+LL terminated. @uri\+\_\+strings\+\_\+count\+: size of @uri\+\_\+strings array @flags\+: See \#raptor\+\_\+syntax\+\_\+bitflags for the bits
+\mbox{\hyperlink{structraptor__syntax__description}{raptor\+\_\+syntax\+\_\+description}}\+: @names\+: array of syntax names -\/ the first one (required) is the public name, the rest are aliases. The array is NULL terminated. @names\+\_\+count\+: size of @names array @label\+: long descriptive label for syntax @mime\+\_\+types\+: Array of (MIME type, Q) values associated with the syntax (or NULL). If present the array is NULL terminated. @mime\+\_\+types\+\_\+count\+: size of @mime\+\_\+types array @uri\+\_\+strings\+: array of URIs identifying the syntax (or NULL). The first one if present is the main URI, the rest are aliases. The array is NULL terminated. @uri\+\_\+strings\+\_\+count\+: size of @uri\+\_\+strings array @flags\+: See \#raptor\+\_\+syntax\+\_\+bitflags for the bits
 
 Description of a syntax or file format. 
 

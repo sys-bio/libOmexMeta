@@ -331,7 +331,7 @@ namespace omexmeta {
         char *s = (char *) xmlGetProp(node, (const xmlChar *) property.c_str());
         if (s == nullptr) {
             std::ostringstream os;
-            os << "xmlNode* with element tag \"" << (const char *) node->name << "\" does not have a property";
+            os << "xmlNode* with element tag \"" << (const char *) node->name << "\" does not have a property ";
             os << "by the name of \"" << property << "\"";
             throw std::logic_error(os.str());
         }

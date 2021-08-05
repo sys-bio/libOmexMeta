@@ -43,7 +43,7 @@ TEST_F(ElementExtractorTests, TestReactionExtraction){
 }
 
 TEST_F(ElementExtractorTests, TestElementNamesAreAccessibleAfterExtraction){
-    ElementExtractor elementExtractor(SBMLFactory::getSBML(SBML_Semantic_Extraction_Model), "species");
+    ElementExtractor elementExtractor(SBMLFactory::getSBML(SBML_SEMANTIC_EXTRACTION_MODEL), "species");
     auto elements_ = elementExtractor.getElements();
     std::vector<std::string> v;
     v.reserve(elements_.size());

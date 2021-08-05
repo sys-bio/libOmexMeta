@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="namespacedbg_1_1detail" kind="namespace" language="C++">
     <compoundname>dbg::detail</compoundname>
-    <innerclass refid="structdbg_1_1detail_1_1has__ostream__operator" prot="public">dbg::detail::has_ostream_operator</innerclass>
     <innerclass refid="structdbg_1_1detail_1_1is__container" prot="public">dbg::detail::is_container</innerclass>
+    <innerclass refid="structdbg_1_1detail_1_1has__ostream__operator" prot="public">dbg::detail::has_ostream_operator</innerclass>
       <sectiondef kind="typedef">
       <memberdef kind="typedef" id="dbg_8h_1acfad41bd0b116575799b79d85fc5c883" prot="public" static="no">
         <templateparamlist>

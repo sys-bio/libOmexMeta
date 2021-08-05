@@ -1,12 +1,12 @@
 var searchData=
 [
-  ['namespaceknown_537',['namespaceKnown',['../classomexmeta_1_1Predicate.html#a8381c8b0c7bbaa27de29608cbff08bf5',1,'omexmeta::Predicate']]],
-  ['namespacemap_538',['namespaceMap',['../classomexmeta_1_1Predicate.html#a1291e3cd9727871f568e864e0f5af3f0',1,'omexmeta::Predicate']]],
-  ['newenergydiff_539',['newEnergyDiff',['../classomexmeta_1_1Editor.html#a4faf7d0c71afca8ded828ac7bdb857f5',1,'omexmeta::Editor']]],
-  ['newpersonalinformation_540',['newPersonalInformation',['../classomexmeta_1_1Editor.html#a1943079ddbc4a4c6d896f51f360a11df',1,'omexmeta::Editor']]],
-  ['newphysicalentity_541',['newPhysicalEntity',['../classomexmeta_1_1Editor.html#a245b2105c175892d1fddaf693fa9d636',1,'omexmeta::Editor']]],
-  ['newphysicalprocess_542',['newPhysicalProcess',['../classomexmeta_1_1Editor.html#a2815d918736ee17d07306c5cf07c8ebf',1,'omexmeta::Editor']]],
-  ['newphysicalproperty_543',['newPhysicalProperty',['../classomexmeta_1_1Editor.html#aeae47fb60d955f506de2f16a54c0679a',1,'omexmeta::Editor']]],
-  ['newphysicalpropertyptr_544',['newPhysicalPropertyPtr',['../classomexmeta_1_1Editor.html#ab36fc15581a0aa0af434af60d4f910ac',1,'omexmeta::Editor']]],
-  ['newsingularannotation_545',['newSingularAnnotation',['../classomexmeta_1_1Editor.html#a50674b2591d2fed572954ac8490ee21c',1,'omexmeta::Editor::newSingularAnnotation(std::string metaid) const'],['../classomexmeta_1_1Editor.html#a6142da2b89068e9638410c3c903e3b64',1,'omexmeta::Editor::newSingularAnnotation() const']]]
+  ['namespaceknown_542',['namespaceKnown',['../classomexmeta_1_1Predicate.html#a8381c8b0c7bbaa27de29608cbff08bf5',1,'omexmeta::Predicate']]],
+  ['namespacemap_543',['namespaceMap',['../classomexmeta_1_1Predicate.html#a1291e3cd9727871f568e864e0f5af3f0',1,'omexmeta::Predicate']]],
+  ['newenergydiff_544',['newEnergyDiff',['../classomexmeta_1_1Editor.html#a4faf7d0c71afca8ded828ac7bdb857f5',1,'omexmeta::Editor']]],
+  ['newpersonalinformation_545',['newPersonalInformation',['../classomexmeta_1_1Editor.html#a1943079ddbc4a4c6d896f51f360a11df',1,'omexmeta::Editor']]],
+  ['newphysicalentity_546',['newPhysicalEntity',['../classomexmeta_1_1Editor.html#a245b2105c175892d1fddaf693fa9d636',1,'omexmeta::Editor']]],
+  ['newphysicalprocess_547',['newPhysicalProcess',['../classomexmeta_1_1Editor.html#a2815d918736ee17d07306c5cf07c8ebf',1,'omexmeta::Editor']]],
+  ['newphysicalproperty_548',['newPhysicalProperty',['../classomexmeta_1_1Editor.html#aeae47fb60d955f506de2f16a54c0679a',1,'omexmeta::Editor']]],
+  ['newphysicalpropertyptr_549',['newPhysicalPropertyPtr',['../classomexmeta_1_1Editor.html#ab36fc15581a0aa0af434af60d4f910ac',1,'omexmeta::Editor']]],
+  ['newsingularannotation_550',['newSingularAnnotation',['../classomexmeta_1_1Editor.html#a50674b2591d2fed572954ac8490ee21c',1,'omexmeta::Editor::newSingularAnnotation(std::string metaid) const'],['../classomexmeta_1_1Editor.html#a6142da2b89068e9638410c3c903e3b64',1,'omexmeta::Editor::newSingularAnnotation() const']]]
 ];

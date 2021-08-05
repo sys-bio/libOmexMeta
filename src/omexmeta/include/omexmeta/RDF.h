@@ -184,7 +184,15 @@ namespace omexmeta {
          */
         Editor toEditor(const std::string &xml, bool generate_new_metaids = false, bool sbml_semantic_extraction = true) override;
 
-        Editor *toEditorPtr(const std::string &xml, bool generate_new_metaids = false, bool sbml_semantic_extraction = true) override;
+        /**
+         * @brief instantiate an Editor object and return a new pointer to it. Memory
+         * returned is owned by the caller and needs deleting.
+         * @param xml the xml you want to open for editing. This can be any type of xml document, but SBML and CellML are most common.
+         * @param generate_new_metaids When true, will add metaids onto a copy of the xml source code for annotation. Default = false.
+         * @param OmexMetaXmlType an indicator enum specifying whether the xml is sbml, cellml or unknown. Default is "OMEXMETA_TYPE_NOTSET"
+         * @details
+         */
+         Editor *toEditorPtr(const std::string &xml, bool generate_new_metaids = false, bool sbml_semantic_extraction = true) override;
 
         librdf_model *getModel() const override;
 

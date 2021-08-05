@@ -51,7 +51,7 @@ bool {\bfseries operator!=} (const \mbox{\hyperlink{classomexmeta_1_1PhysicalPro
 const std\+::string \& {\bfseries get\+Property\+Metaid\+Base} () const override
 \item 
 \mbox{\Hypertarget{classomexmeta_1_1PhysicalProcess_a5a36f6efe4cfec19a68e4f16444ea049}\label{classomexmeta_1_1PhysicalProcess_a5a36f6efe4cfec19a68e4f16444ea049}} 
-\mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} \& {\bfseries is\+Version\+Of} (const std\+::string \&is\+\_\+version\+\_\+of, e\+Uri\+Type type=N\+O\+NE)
+\mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} \& {\bfseries is\+Version\+Of} (const std\+::string \&is\+\_\+version\+\_\+of, e\+Uri\+Type type=NONE)
 \item 
 \mbox{\Hypertarget{classomexmeta_1_1PhysicalProcess_a31fbd32cd2ccdd5d45417c963836bcf5}\label{classomexmeta_1_1PhysicalProcess_a31fbd32cd2ccdd5d45417c963836bcf5}} 
 \mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} \& {\bfseries has\+Property} (const \mbox{\hyperlink{classomexmeta_1_1PhysicalProperty}{Physical\+Property}} \&property) override
@@ -114,7 +114,7 @@ constructor for the builder interface of \mbox{\hyperlink{classomexmeta_1_1Physi
 
 
 \begin{DoxyParams}{Parameters}
-{\em model} & the currently active \mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}} model. \\
+{\em model} & the currently active \mbox{\hyperlink{classomexmeta_1_1RDF}{RDF}} model. \\
 \hline
 {\em model\+\_\+uri} & the local uri in current use. \\
 \hline
@@ -128,7 +128,7 @@ constructor for the builder interface of \mbox{\hyperlink{classomexmeta_1_1Physi
 \doxysubsubsection{\texorpdfstring{about()}{about()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} \& omexmeta\+::\+Physical\+Process\+::about (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{about }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
 
-Since we can\textquotesingle{}t have default arguments on a virutal member function we instead have an overload where the absent e\+Uri\+Type parameter is assumed to be the default value of N\+O\+NE. Note, it may be prudent to figure out which of L\+O\+C\+AL or M\+O\+D\+EL uri would be a better default. 
+Since we can\textquotesingle{}t have default arguments on a virutal member function we instead have an overload where the absent e\+Uri\+Type parameter is assumed to be the default value of NONE. Note, it may be prudent to figure out which of LOCAL or MODEL uri would be a better default. 
 
 Reimplemented from \mbox{\hyperlink{classomexmeta_1_1PropertyBearer_a374759ec870893444272ff0489be538f}{omexmeta\+::\+Property\+Bearer}}.
 
@@ -144,10 +144,10 @@ set the subject (rdf\+:about) portion of the \mbox{\hyperlink{classomexmeta_1_1P
 
 
 \begin{DoxyParams}{Parameters}
-{\em about} & the string to be used as the Librdf\+Node portion of the is\+Version\+Of \mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}}. \mbox{\hyperlink{classThis}{This}} should be an existing metaid on the model you are annotating. Will error when metaid does not exist.  \mbox{\hyperlink{classThis}{This}} method will set the Librdf\+Node subject\+\_\+ attribute of the \mbox{\hyperlink{classomexmeta_1_1PhysicalProperty}{Physical\+Property}} associated with the \mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}}. \\
+{\em about} & the string to be used as the Librdf\+Node portion of the is\+Version\+Of \mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}}. \mbox{\hyperlink{classThis}{This}} should be an existing metaid on the model you are annotating. Will error when metaid does not exist.\\
 \hline
 \end{DoxyParams}
-
+\mbox{\hyperlink{classThis}{This}} method will set the Librdf\+Node subject\+\_\+ attribute of the \mbox{\hyperlink{classomexmeta_1_1PhysicalProperty}{Physical\+Property}} associated with the \mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}}. 
 
 Reimplemented from \mbox{\hyperlink{classomexmeta_1_1PropertyBearer}{omexmeta\+::\+Property\+Bearer}}.
 

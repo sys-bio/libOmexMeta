@@ -2,8 +2,8 @@ var searchData=
 [
   ['about_0',['about',['../classomexmeta_1_1EnergyDiff.html#a16d55b4c4094dad5ac7b770f3913ca15',1,'omexmeta::EnergyDiff::about(const std::string &amp;about, eUriType type) override'],['../classomexmeta_1_1EnergyDiff.html#a6da098157ab9cc7ae07cc063be91b50b',1,'omexmeta::EnergyDiff::about(const std::string &amp;about) override'],['../classomexmeta_1_1PhysicalEntity.html#adae8f23418feee0833e8d63458175f19',1,'omexmeta::PhysicalEntity::about(const std::string &amp;about, eUriType type) override'],['../classomexmeta_1_1PhysicalEntity.html#a6edbf68a1473211edc3dcc9c7a15d03c',1,'omexmeta::PhysicalEntity::about(const std::string &amp;about) override'],['../classomexmeta_1_1PhysicalProcess.html#a6c4fa05087330d859f813a94543b9fbd',1,'omexmeta::PhysicalProcess::about(const std::string &amp;about, eUriType type) override'],['../classomexmeta_1_1PhysicalProcess.html#a5d4e730b52c01ceea8868fb6e2372ef5',1,'omexmeta::PhysicalProcess::about(const std::string &amp;about) override'],['../classomexmeta_1_1PropertyBearer.html#a374759ec870893444272ff0489be538f',1,'omexmeta::PropertyBearer::about()']]],
   ['addcompositeannotation_1',['addCompositeAnnotation',['../classomexmeta_1_1Editor.html#a81e9e3e81a86ac079f81239a47f18092',1,'omexmeta::Editor']]],
-  ['addcreator_2',['addCreator',['../classomexmeta_1_1Editor.html#a1926b789086e29102e33808169a5af0c',1,'omexmeta::Editor']]],
-  ['addcurator_3',['addCurator',['../classomexmeta_1_1Editor.html#abc8dd83a176d73f9211386ad08bb35b3',1,'omexmeta::Editor']]],
+  ['addcontributor_2',['addContributor',['../classomexmeta_1_1Editor.html#a87d3b7e4ab717c18653acf92a2c2c9d4',1,'omexmeta::Editor']]],
+  ['addcreator_3',['addCreator',['../classomexmeta_1_1Editor.html#a1926b789086e29102e33808169a5af0c',1,'omexmeta::Editor']]],
   ['adddatecreated_4',['addDateCreated',['../classomexmeta_1_1Editor.html#ace652a3364ba755330179e2aeb630761',1,'omexmeta::Editor']]],
   ['adddescription_5',['addDescription',['../classomexmeta_1_1Editor.html#a58db6f81ad362189bed21780be5f3611',1,'omexmeta::Editor']]],
   ['addenergydiff_6',['addEnergyDiff',['../classomexmeta_1_1Editor.html#a0e7eb192448ba81b1ca7f91b15785030',1,'omexmeta::Editor']]],

@@ -1,77 +1,35 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-  <title>Stripping Annotations &mdash; libomexmeta 1.2.8 documentation</title>
-  
-
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/segment.min.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/menu.min.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/sphinx_tabs/tabs.css" type="text/css" />
-
-  
-  
-
-  
-  
-
-  
-
-  
+  <title>Stripping Annotations &mdash; libomexmeta 1.2.11 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
-        <script src="../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.js"></script>
-        <script src="../_static/sphinx_tabs/tabs.js"></script>
-    
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-
-    
+        <script src="../_static/tabs.js"></script>
+    <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Querying RDF" href="../querying_rdf/querying_rdf.html" />
     <link rel="prev" title="Composite Annotations: SBML Examples" href="../composite_annotations/index.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
-
-          
             <a href="../index.html" class="icon icon-home"> libomexmeta
-          
-
-          
           </a>
-
-          
-            
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -79,20 +37,12 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
         </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Main">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../background.html">Background to Semantic Annotations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Install/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Install/install.html#build-from-source">Build from Source</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reading_rdf/reading_rdf.html">Reading RDF</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../writing_rdf/writing_rdf.html">Serializing RDF Graphs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../singular_annotations/index.html">Singular Annotations</a></li>
@@ -107,181 +57,40 @@
 <li class="toctree-l1"><a class="reference internal" href="../Developers/developers_index.html">Developers Documentation</a></li>
 </ul>
 
-            
-          
         </div>
-        
       </div>
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+      <nav class="wy-nav-top" aria-label="Top" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">libomexmeta</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
           
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+<div role="navigation" aria-label="Breadcrumbs">
   <ul class="wy-breadcrumbs">
-    
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-        
       <li>Stripping Annotations</li>
-    
-    
       <li class="wy-breadcrumbs-aside">
-        
-          
             <a href="../_sources/stripping_annotations/index.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
+             
   <div class="section" id="stripping-annotations">
-<h1>Stripping Annotations<a class="headerlink" href="#stripping-annotations" title="Permalink to this headline">¶</a></h1>
+<h1>Stripping Annotations<a class="headerlink" href="#stripping-annotations" title="Permalink to this headline"></a></h1>
 <p>Here are some examples of how to remove annotations from an xml document</p>
 <div class="sphinx-tabs docutils container">
-<div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-0-0 docutils container">
-<div class="docutils container">
-<p>python</p>
-</div>
-</div>
-<div class="item sphinx-data-tab-0-1 docutils container">
-<div class="docutils container">
-<p>C++</p>
-</div>
-</div>
-<div class="item sphinx-data-tab-0-2 docutils container">
-<div class="docutils container">
-<p>C</p>
-</div>
-</div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-0 active docutils container">
-<div class="literal-block-wrapper docutils container" id="id1">
-<div class="code-block-caption"><span class="caption-text">Remove annotation elements from an sbml document in Python</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
-<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57
-58
-59
-60
-61
-62
-63
-64
-65
-66
-67
-68
-69
-70
-71
-72
-73
-74
-75
-76
-77
-78
-79
-80
-81
-82
-83
-84
-85
-86</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyomexmeta</span> <span class="kn">import</span> <span class="n">RDF</span><span class="p">,</span> <span class="n">Editor</span>
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">python</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">C++</button><button aria-controls="panel-0-0-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-2" name="0-2" role="tab" tabindex="-1">C</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">Remove annotation elements from an sbml document in Python</span><a class="headerlink" href="#id1" title="Permalink to this code"></a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyomexmeta</span> <span class="kn">import</span> <span class="n">RDF</span><span class="p">,</span> <span class="n">Editor</span>
 
 <span class="n">sbml</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
 <span class="s2">&lt;sbml xmlns=&quot;http://www.sbml.org/sbml/level3/version1/core&quot; level=&quot;3&quot; version=&quot;1&quot;&gt;</span>
@@ -368,73 +177,11 @@
 <span class="nb">print</span><span class="p">(</span><span class="n">editor</span><span class="o">.</span><span class="n">strip_annotations</span><span class="p">())</span>
 
 </pre></div>
-</td></tr></table></div>
+</div>
 </div>
 <div class="literal-block-wrapper docutils container" id="id2">
-<div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
-<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57
-58
-59
-60
-61
-62
-63</pre></div></td><td class="code"><div class="highlight"><pre><span></span>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+<div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id2" title="Permalink to this code"></a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;sbml xmlns=&quot;http://www.sbml.org/sbml/level3/version1/core&quot; level=&quot;3&quot; version=&quot;1&quot;&gt;
     &lt;model metaid=&quot;ToyModel&quot; id=&quot;ToyModel&quot;&gt;
         &lt;listOfCompartments&gt;
@@ -498,107 +245,14 @@
 &lt;/sbml&gt;
 
 </pre></div>
-</td></tr></table></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-1 docutils container">
-<div class="literal-block-wrapper docutils container" id="id3">
-<div class="code-block-caption"><span class="caption-text">Remove annotation elements from an sbml document in C++</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
-<div class="highlight-C++ notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57
-58
-59
-60
-61
-62
-63
-64
-65
-66
-67
-68
-69
-70
-71
-72
-73
-74
-75
-76
-77
-78
-79
-80
-81
-82
-83
-84
-85
-86
-87
-88
-89
-90
-91
-92</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;omexmeta/OmexMeta.h&quot;</span><span class="cp"></span>
+</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">Remove annotation elements from an sbml document in C++</span><a class="headerlink" href="#id3" title="Permalink to this code"></a></div>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;omexmeta/OmexMeta.h&quot;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
 
-<span class="k">using</span> <span class="k">namespace</span> <span class="n">omexmeta</span><span class="p">;</span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="nn">omexmeta</span><span class="p">;</span>
 
 <span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
     <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">sbml</span> <span class="o">=</span> <span class="s">&quot;&lt;?xml version=</span><span class="se">\&quot;</span><span class="s">1.0</span><span class="se">\&quot;</span><span class="s"> encoding=</span><span class="se">\&quot;</span><span class="s">UTF-8</span><span class="se">\&quot;</span><span class="s">?&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
@@ -688,234 +342,142 @@
 
 <span class="p">}</span>
 </pre></div>
-</td></tr></table></div>
+</div>
 </div>
 <div class="literal-block-wrapper docutils container" id="id4">
-<div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id4" title="Permalink to this code">¶</a></div>
-<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57
-58
-59
-60
-61
-62
-63</pre></div></td><td class="code"><div class="highlight"><pre><span></span>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+<div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id4" title="Permalink to this code"></a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+
 &lt;sbml xmlns=&quot;http://www.sbml.org/sbml/level3/version1/core&quot; level=&quot;3&quot; version=&quot;1&quot;&gt;
+
     &lt;model metaid=&quot;ToyModel&quot; id=&quot;ToyModel&quot;&gt;
+
         &lt;listOfCompartments&gt;
+
             &lt;compartment id=&quot;cytosol&quot; metaid=&quot;comp1&quot; spatialDimensions=&quot;3&quot; size=&quot;1&quot; constant=&quot;true&quot;/&gt;
+
             &lt;compartment id=&quot;extraCell&quot; metaid=&quot;comp2&quot; spatialDimensions=&quot;3&quot; size=&quot;10&quot; constant=&quot;true&quot;/&gt;
+
         &lt;/listOfCompartments&gt;
+
         &lt;listOfSpecies&gt;
+
             &lt;species id=&quot;A&quot; metaid=&quot;sp_1&quot; compartment=&quot;cytosol&quot; initialConcentration=&quot;10&quot; hasOnlySubstanceUnits=&quot;false&quot; boundaryCondition=&quot;false&quot; constant=&quot;false&quot;&gt;
+
                 
+
             &lt;/species&gt;
+
             &lt;species id=&quot;B&quot; metaid=&quot;sp_2&quot; compartment=&quot;cytosol&quot; initialConcentration=&quot;0&quot; hasOnlySubstanceUnits=&quot;false&quot; boundaryCondition=&quot;false&quot; constant=&quot;false&quot;/&gt;
+
             &lt;species id=&quot;Ca&quot; metaid=&quot;sp_3&quot; compartment=&quot;cytosol&quot; initialConcentration=&quot;2&quot; hasOnlySubstanceUnits=&quot;false&quot; boundaryCondition=&quot;false&quot; constant=&quot;false&quot;/&gt;
+
             &lt;species id=&quot;PlasmaCa&quot; metaid=&quot;sp_4&quot; compartment=&quot;extraCell&quot; initialConcentration=&quot;3&quot; hasOnlySubstanceUnits=&quot;false&quot; boundaryCondition=&quot;false&quot; constant=&quot;false&quot;/&gt;
+
             &lt;species id=&quot;Enzyme&quot; metaid=&quot;sp_5&quot; compartment=&quot;cytosol&quot; initialConcentration=&quot;2&quot; hasOnlySubstanceUnits=&quot;false&quot; boundaryCondition=&quot;false&quot; constant=&quot;false&quot;/&gt;
+
         &lt;/listOfSpecies&gt;
+
         &lt;listOfParameters&gt;
+
             &lt;parameter id=&quot;k1&quot; value=&quot;0.1&quot; constant=&quot;true&quot;/&gt;
+
             &lt;parameter id=&quot;k2&quot; value=&quot;0.1&quot; constant=&quot;true&quot;/&gt;
+
         &lt;/listOfParameters&gt;
+
         &lt;listOfReactions&gt;
+
             &lt;reaction id=&quot;r1&quot; metaid=&quot;react1&quot; reversible=&quot;false&quot; fast=&quot;false&quot;&gt;
+
                 &lt;listOfReactants&gt;
+
                     &lt;speciesReference species=&quot;B&quot; stoichiometry=&quot;1&quot; constant=&quot;true&quot;/&gt;
+
                 &lt;/listOfReactants&gt;
+
                 &lt;listOfProducts&gt;
+
                     &lt;speciesReference species=&quot;A&quot; stoichiometry=&quot;2&quot; constant=&quot;true&quot;/&gt;
+
                 &lt;/listOfProducts&gt;
+
                 &lt;kineticLaw&gt;
+
                     &lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;
+
                         &lt;apply&gt;
+
                             &lt;times/&gt;
+
                             &lt;ci&gt;k2&lt;/ci&gt;
+
                             &lt;ci&gt;B&lt;/ci&gt;
+
                         &lt;/apply&gt;
+
                     &lt;/math&gt;
+
                 &lt;/kineticLaw&gt;
+
             &lt;/reaction&gt;
+
             &lt;reaction id=&quot;r2&quot; metaid=&quot;react2&quot; reversible=&quot;false&quot; fast=&quot;false&quot;&gt;
+
                 &lt;listOfReactants&gt;
+
                     &lt;speciesReference species=&quot;Ca&quot; stoichiometry=&quot;1&quot; constant=&quot;true&quot;/&gt;
+
                     &lt;speciesReference species=&quot;A&quot; stoichiometry=&quot;1&quot; constant=&quot;true&quot;/&gt;
+
                 &lt;/listOfReactants&gt;
+
                 &lt;listOfProducts&gt;
+
                     &lt;speciesReference species=&quot;PlasmaCa&quot; stoichiometry=&quot;1&quot; constant=&quot;true&quot;/&gt;
+
                 &lt;/listOfProducts&gt;
+
                 &lt;listOfModifiers&gt;
+
                     &lt;modifierSpeciesReference species=&quot;Enzyme&quot;/&gt;
+
                 &lt;/listOfModifiers&gt;
+
                 &lt;kineticLaw&gt;
+
                     &lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;
+
                         &lt;apply&gt;
+
                             &lt;times/&gt;
+
                             &lt;ci&gt;k2&lt;/ci&gt;
+
                             &lt;ci&gt;Ca&lt;/ci&gt;
+
                         &lt;/apply&gt;
+
                     &lt;/math&gt;
+
                 &lt;/kineticLaw&gt;
+
             &lt;/reaction&gt;
+
         &lt;/listOfReactions&gt;
+
     &lt;/model&gt;
+
 &lt;/sbml&gt;
 
+
+
 </pre></div>
-</td></tr></table></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-2 docutils container">
-<div class="literal-block-wrapper docutils container" id="id5">
-<div class="code-block-caption"><span class="caption-text">Remove annotation elements from an sbml document in C</span><a class="headerlink" href="#id5" title="Permalink to this code">¶</a></div>
-<div class="highlight-C notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57
-58
-59
-60
-61
-62
-63
-64
-65
-66
-67
-68
-69
-70
-71
-72
-73
-74
-75
-76
-77
-78
-79
-80
-81
-82
-83
-84
-85
-86
-87
-88
-89
-90
-91
-92</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;omexmeta/OmexMetaCApi.h&quot;</span><span class="cp"></span>
+</div><div aria-labelledby="tab-0-0-2" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-2" name="0-2" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-text">Remove annotation elements from an sbml document in C</span><a class="headerlink" href="#id5" title="Permalink to this code"></a></div>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;omexmeta/OmexMetaCApi.h&quot;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
 
 <span class="n">using</span> <span class="n">namespace</span> <span class="n">omexmeta</span><span class="p">;</span>
@@ -1008,188 +570,171 @@
     <span class="n">free</span><span class="p">(</span><span class="n">stripped</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
-</td></tr></table></div>
+</div>
 </div>
 <div class="literal-block-wrapper docutils container" id="id6">
-<div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id6" title="Permalink to this code">¶</a></div>
-<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57
-58
-59
-60
-61
-62
-63</pre></div></td><td class="code"><div class="highlight"><pre><span></span>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+<div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id6" title="Permalink to this code"></a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+
 &lt;sbml xmlns=&quot;http://www.sbml.org/sbml/level3/version1/core&quot; level=&quot;3&quot; version=&quot;1&quot;&gt;
+
     &lt;model metaid=&quot;ToyModel&quot; id=&quot;ToyModel&quot;&gt;
+
         &lt;listOfCompartments&gt;
+
             &lt;compartment id=&quot;cytosol&quot; metaid=&quot;comp1&quot; spatialDimensions=&quot;3&quot; size=&quot;1&quot; constant=&quot;true&quot;/&gt;
+
             &lt;compartment id=&quot;extraCell&quot; metaid=&quot;comp2&quot; spatialDimensions=&quot;3&quot; size=&quot;10&quot; constant=&quot;true&quot;/&gt;
+
         &lt;/listOfCompartments&gt;
+
         &lt;listOfSpecies&gt;
+
             &lt;species id=&quot;A&quot; metaid=&quot;sp_1&quot; compartment=&quot;cytosol&quot; initialConcentration=&quot;10&quot; hasOnlySubstanceUnits=&quot;false&quot; boundaryCondition=&quot;false&quot; constant=&quot;false&quot;&gt;
+
                 
+
             &lt;/species&gt;
+
             &lt;species id=&quot;B&quot; metaid=&quot;sp_2&quot; compartment=&quot;cytosol&quot; initialConcentration=&quot;0&quot; hasOnlySubstanceUnits=&quot;false&quot; boundaryCondition=&quot;false&quot; constant=&quot;false&quot;/&gt;
+
             &lt;species id=&quot;Ca&quot; metaid=&quot;sp_3&quot; compartment=&quot;cytosol&quot; initialConcentration=&quot;2&quot; hasOnlySubstanceUnits=&quot;false&quot; boundaryCondition=&quot;false&quot; constant=&quot;false&quot;/&gt;
+
             &lt;species id=&quot;PlasmaCa&quot; metaid=&quot;sp_4&quot; compartment=&quot;extraCell&quot; initialConcentration=&quot;3&quot; hasOnlySubstanceUnits=&quot;false&quot; boundaryCondition=&quot;false&quot; constant=&quot;false&quot;/&gt;
+
             &lt;species id=&quot;Enzyme&quot; metaid=&quot;sp_5&quot; compartment=&quot;cytosol&quot; initialConcentration=&quot;2&quot; hasOnlySubstanceUnits=&quot;false&quot; boundaryCondition=&quot;false&quot; constant=&quot;false&quot;/&gt;
+
         &lt;/listOfSpecies&gt;
+
         &lt;listOfParameters&gt;
+
             &lt;parameter id=&quot;k1&quot; value=&quot;0.1&quot; constant=&quot;true&quot;/&gt;
+
             &lt;parameter id=&quot;k2&quot; value=&quot;0.1&quot; constant=&quot;true&quot;/&gt;
+
         &lt;/listOfParameters&gt;
+
         &lt;listOfReactions&gt;
+
             &lt;reaction id=&quot;r1&quot; metaid=&quot;react1&quot; reversible=&quot;false&quot; fast=&quot;false&quot;&gt;
+
                 &lt;listOfReactants&gt;
+
                     &lt;speciesReference species=&quot;B&quot; stoichiometry=&quot;1&quot; constant=&quot;true&quot;/&gt;
+
                 &lt;/listOfReactants&gt;
+
                 &lt;listOfProducts&gt;
+
                     &lt;speciesReference species=&quot;A&quot; stoichiometry=&quot;2&quot; constant=&quot;true&quot;/&gt;
+
                 &lt;/listOfProducts&gt;
+
                 &lt;kineticLaw&gt;
+
                     &lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;
+
                         &lt;apply&gt;
+
                             &lt;times/&gt;
+
                             &lt;ci&gt;k2&lt;/ci&gt;
+
                             &lt;ci&gt;B&lt;/ci&gt;
+
                         &lt;/apply&gt;
+
                     &lt;/math&gt;
+
                 &lt;/kineticLaw&gt;
+
             &lt;/reaction&gt;
+
             &lt;reaction id=&quot;r2&quot; metaid=&quot;react2&quot; reversible=&quot;false&quot; fast=&quot;false&quot;&gt;
+
                 &lt;listOfReactants&gt;
+
                     &lt;speciesReference species=&quot;Ca&quot; stoichiometry=&quot;1&quot; constant=&quot;true&quot;/&gt;
+
                     &lt;speciesReference species=&quot;A&quot; stoichiometry=&quot;1&quot; constant=&quot;true&quot;/&gt;
+
                 &lt;/listOfReactants&gt;
+
                 &lt;listOfProducts&gt;
+
                     &lt;speciesReference species=&quot;PlasmaCa&quot; stoichiometry=&quot;1&quot; constant=&quot;true&quot;/&gt;
+
                 &lt;/listOfProducts&gt;
+
                 &lt;listOfModifiers&gt;
+
                     &lt;modifierSpeciesReference species=&quot;Enzyme&quot;/&gt;
+
                 &lt;/listOfModifiers&gt;
+
                 &lt;kineticLaw&gt;
+
                     &lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;
+
                         &lt;apply&gt;
+
                             &lt;times/&gt;
+
                             &lt;ci&gt;k2&lt;/ci&gt;
+
                             &lt;ci&gt;Ca&lt;/ci&gt;
+
                         &lt;/apply&gt;
+
                     &lt;/math&gt;
+
                 &lt;/kineticLaw&gt;
+
             &lt;/reaction&gt;
+
         &lt;/listOfReactions&gt;
+
     &lt;/model&gt;
+
 &lt;/sbml&gt;
 
+
+
 </pre></div>
-</td></tr></table></div>
 </div>
 </div>
-</div>
+</div></div>
 </div>
 
 
            </div>
-           
           </div>
           <footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="../querying_rdf/querying_rdf.html" class="btn btn-neutral float-right" title="Querying RDF" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="../composite_annotations/index.html" class="btn btn-neutral float-left" title="Composite Annotations: SBML Examples" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../querying_rdf/querying_rdf.html" class="btn btn-neutral float-right" title="Querying RDF" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &#169; Copyright 2020, Ciaran Welsh.
-
-    </p>
+    <p>&#169; Copyright 2020, Ciaran Welsh.</p>
   </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

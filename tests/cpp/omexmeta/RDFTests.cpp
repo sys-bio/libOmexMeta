@@ -327,7 +327,7 @@ TEST_F(RDFTests, TestSerializeCellMlAnnotationNoTrailingHashes) {
     editor.addCreator("0000-0003-4667-9779");
     editor.addTaxon("9895");
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n"
+                           "@prefix dc: <http://purl.org/dc/terms/> .\n"
                            "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
                            "@prefix NCBI_Taxon: <https://identifiers.org/taxonomy:> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"

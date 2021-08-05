@@ -40,13 +40,13 @@ int {\bfseries usage}
 
 
 \doxysubsection{Detailed Description}
-\mbox{\hyperlink{structrasqal__data__graph}{rasqal\+\_\+data\+\_\+graph}}\+: @world\+: rasqal\+\_\+world object @uri\+: source U\+RI @name\+\_\+uri\+: name of graph for R\+A\+S\+Q\+A\+L\+\_\+\+D\+A\+T\+A\+\_\+\+G\+R\+A\+P\+H\+\_\+\+N\+A\+M\+ED @flags\+: R\+A\+S\+Q\+A\+L\+\_\+\+D\+A\+T\+A\+\_\+\+G\+R\+A\+P\+H\+\_\+\+N\+A\+M\+ED or R\+A\+S\+Q\+A\+L\+\_\+\+D\+A\+T\+A\+\_\+\+G\+R\+A\+P\+H\+\_\+\+B\+A\+C\+K\+G\+R\+O\+U\+ND @format\+\_\+type\+: M\+I\+ME Type of data format at @uri (or N\+U\+LL) @format\+\_\+name\+: Raptor parser Name of data format at @uri (or N\+U\+LL) @format\+\_\+uri\+: U\+RI of data format at @uri (or N\+U\+LL) @iostr\+: Raptor iostream for content, overriding @uri if present (or N\+U\+LL) @base\+\_\+uri\+: base U\+RI for reading from iostream @usage\+: usage count of this object
+\mbox{\hyperlink{structrasqal__data__graph}{rasqal\+\_\+data\+\_\+graph}}\+: @world\+: rasqal\+\_\+world object @uri\+: source URI @name\+\_\+uri\+: name of graph for RASQAL\+\_\+\+DATA\+\_\+\+GRAPH\+\_\+\+NAMED @flags\+: RASQAL\+\_\+\+DATA\+\_\+\+GRAPH\+\_\+\+NAMED or RASQAL\+\_\+\+DATA\+\_\+\+GRAPH\+\_\+\+BACKGROUND @format\+\_\+type\+: MIME Type of data format at @uri (or NULL) @format\+\_\+name\+: Raptor parser Name of data format at @uri (or NULL) @format\+\_\+uri\+: URI of data format at @uri (or NULL) @iostr\+: Raptor iostream for content, overriding @uri if present (or NULL) @base\+\_\+uri\+: base URI for reading from iostream @usage\+: usage count of this object
 
-A source of R\+DF data for querying.
+A source of RDF data for querying.
 
-If @iostr is present, the graph can be constructed by parsing the iostream and using @base\+\_\+uri as a base uri. Otherwise the graph can be constructed from the graph at U\+RI @uri.
+If @iostr is present, the graph can be constructed by parsing the iostream and using @base\+\_\+uri as a base uri. Otherwise the graph can be constructed from the graph at URI @uri.
 
-In either case the @name\+\_\+uri is the graph name as long as @flags is R\+A\+S\+Q\+A\+L\+\_\+\+D\+A\+T\+A\+\_\+\+G\+R\+A\+P\+H\+\_\+\+N\+A\+M\+ED 
+In either case the @name\+\_\+uri is the graph name as long as @flags is RASQAL\+\_\+\+DATA\+\_\+\+GRAPH\+\_\+\+NAMED 
 
 The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 

@@ -28,6 +28,7 @@ Programming Language :: C++
 Programming Language :: Python
 Programming Language :: Python :: 3.7
 Programming Language :: Python :: 3.8
+Programming Language :: Python :: 3.9
 Programming Language :: Python :: 3 :: Only
 Programming Language :: Python :: Implementation :: CPython
 Topic :: Software Development
@@ -124,6 +125,7 @@ setup(
     url='https://github.com/sys-bio/libomexmeta',
     keywords=['annotation', 'rdf'],
     install_requires=open("requirements.txt").read().split("\n"),
+    tests_require=open("test-requirements.txt").read().split("\n"),
     packages=['pyomexmeta'],
     package_dir={'pyomexmeta': 'site-packages/pyomexmeta'},
     package_data={'pyomexmeta': [

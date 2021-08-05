@@ -47,6 +47,8 @@ namespace omexmeta {
 
         // add metaids if we want to
         std::pair<std::string, std::vector<std::string>> xml_and_metaids = omexMetaXmlPtr_->addMetaIds();
+
+        // todo this xml_ should be replaced with omexMetaXml(Ptr)
         xml_ = xml_and_metaids.first;
         metaids_ = xml_and_metaids.second;
 
@@ -342,13 +344,13 @@ namespace omexmeta {
         return *this;
     }
 
-    Editor &Editor::addCurator(std::string orcid_id) {
+    Editor &Editor::addContributor(std::string orcid_id) {
         std::string orcid_namespace = "https://orcid.org/";
         if (orcid_id.rfind(orcid_namespace, 0) != 0) {
             orcid_id = orcid_namespace + orcid_id;
         }
         Triple triple(uriHandler_, LibrdfNode::fromUriString(getLocalUri()).get(),
-                      PredicateFactory("dc", "creator")->get(),
+                      PredicateFactory("dc", "contributor")->get(),
                       LibrdfNode::fromUriString(orcid_id).get());
         model_.addStatement(triple);
         addNamespace(Predicate::namespaceMap()["dc"], "dc");
@@ -356,15 +358,14 @@ namespace omexmeta {
     }
 
     Editor &Editor::addDateCreated(const std::string &date) {
-        LibrdfNode anon = LibrdfNode::fromBlank("");
-        Triple triple1(uriHandler_, LibrdfNode::fromUriString(getModelLevelAnnotationUri()).get(),
-                       PredicateFactory("dc", "created")->get(),
-                       anon.get());
-        Triple triple2(uriHandler_, anon.get(),
-                       PredicateFactory("dc", "W3CDTF")->get(),
-                       LibrdfNode::fromLiteral(date).get());
+        //        LibrdfNode anon = LibrdfNode::fromBlank("");
+        auto ptr = PredicateFactory("dc", "W3CDTF");
+        std::string w3 = ptr->str();
+        Triple triple1(
+                uriHandler_, LibrdfNode::fromUriString(getModelLevelAnnotationUri()),
+                PredicateFactory("dc", "created"),
+                LibrdfNode::fromLiteral(date, w3));
         model_.addStatement(triple1);
-        model_.addStatement(triple2);
         addNamespace(Predicate::namespaceMap()["dc"], "dc");
         return *this;
     }
@@ -463,7 +464,7 @@ namespace omexmeta {
         return uriHandler_;
     }
 
-    std::string Editor::stripAnnotations(const std::string& annotationElementName) {
+    std::string Editor::stripAnnotations(const std::string &annotationElementName) {
         return omexMetaXmlPtr_->removeElement(annotationElementName);
     }
 

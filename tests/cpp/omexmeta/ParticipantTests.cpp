@@ -21,7 +21,7 @@ public:
     std::vector<std::string> exclusions;
 
     ParticipantTests() {
-        model = LibrdfModel(storage.get());
+        model = LibrdfModel(storage);
     };
 
     ~ParticipantTests() override {
@@ -206,7 +206,7 @@ public:
     UriHandler uriHandler;
     std::vector<std::string> exclusions;
     ParticipantTestsToTriplesTwice() {
-        model = LibrdfModel(storage.get());
+        model = LibrdfModel(storage);
     }
 
     ~ParticipantTestsToTriplesTwice() {

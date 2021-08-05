@@ -9,7 +9,9 @@ _TESTS_DIR = os.path.dirname(_PYTHON_TESTS_DIR)
 _PROJECT_ROOT = os.path.dirname(_TESTS_DIR)
 _SRC_DIR = os.path.join(_PROJECT_ROOT, "src")
 
-sys.path.append(_SRC_DIR)
+print(_SRC_DIR)
+print(_PYTHON_TESTS_DIR)
+sys.path += [_SRC_DIR, _PYTHON_TESTS_DIR]
 
 
 from pyomexmeta import PyOmexMetaAPI, eUriType, eXmlType
@@ -158,6 +160,18 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
 """
         self.assertEqual(expected, actual)
 
+    def test_rdf_query_results_as_map(self):
+        self.pyom.rdf_add_from_string(self.rdf, TestStrings.singular_annotation2.encode(),
+                                          "rdfxml".encode(), "test_rdf_to_string.rdf".encode())
+        query = """
+        SELECT ?x ?y ?z 
+        WHERE {
+            ?x ?y ?z
+        }
+        """
+        actual = self.pyom.rdf_query_results_as_map(self.rdf, query.encode())
+        print(actual)
+
     def test_rdf_get_repository(self):
         actual = self.pyom.get_and_free_c_str(
             self.pyom.rdf_get_repository_uri(self.rdf)
@@ -291,7 +305,8 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
         editor_ptr = self.pyom.rdf_to_editor(self.rdf, TestStrings.xml.encode(), True, False)
         ptr = self.pyom.editor_get_metaid(editor_ptr, 0)
         actual = self.pyom.get_and_free_c_str(ptr)
-        expected = "OmexMetaId0000"
+        expected = "model0000"
+        self.assertEqual(expected, actual)
         self.pyom.editor_delete(editor_ptr)
 
     def test_editor_get_num_metaids(self):
@@ -364,6 +379,13 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
     </sbml>
 """
         self.assertEqual(expected, actual)
+        self.pyom.editor_delete(editor_ptr)
+
+    def test_editor_get_xml_when_invalid_sbml_metaids(self):
+        editor_ptr = self.pyom.rdf_to_editor(self.rdf, TestStrings.sbml_invalid_metaids.encode(), False, True)
+        ptr = self.pyom.editor_get_xml(editor_ptr)
+        actual = self.pyom.get_and_free_c_str(ptr)
+        self.assertEqual(actual.strip(), TestStrings.sbml_invalid_metaids.strip())
         self.pyom.editor_delete(editor_ptr)
 
     def test_editor_get_archive_uri(self):
@@ -481,7 +503,7 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
         )
         print(actual)
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
+@prefix dc: <http://purl.org/dc/terms/> .
 @prefix OMEXlib: <http://omex-library.org/> .
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
@@ -492,20 +514,20 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
         self.assertTrue(self.pyom.rdf_equals_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode(), True))
         self.pyom.editor_delete(editor_ptr)
 
-    def test_editor_add_curator(self):
+    def test_editor_add_contributor(self):
         editor_ptr = self.pyom.rdf_to_editor(self.rdf, TestStrings.xml.encode(), True, False)
-        self.pyom.editor_add_curator(editor_ptr, "1234-1234-1234-1234".encode())
+        self.pyom.editor_add_contributor(editor_ptr, "1234-1234-1234-1234".encode())
         actual = self.pyom.get_and_free_c_str(
             self.pyom.rdf_to_string(self.rdf, "turtle".encode())
         )
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
+@prefix dc: <http://purl.org/dc/terms/> .
 @prefix OMEXlib: <http://omex-library.org/> .
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.rdf#>
-    dc:creator <https://orcid.org/1234-1234-1234-1234> .
+    dc:contributor <https://orcid.org/1234-1234-1234-1234> .
 
 """
         self.assertTrue(self.pyom.rdf_equals_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode(), True))
@@ -558,7 +580,7 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
             self.pyom.rdf_to_string(self.rdf, "turtle".encode())
         )
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
+@prefix dc: <http://purl.org/dc/terms/> .
 @prefix OMEXlib: <http://omex-library.org/> .
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
@@ -572,21 +594,18 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.ne
 
     def test_editor_add_date_created(self):
         editor_ptr = self.pyom.rdf_to_editor(self.rdf, TestStrings.xml.encode(), True, False)
-        self.pyom.editor_add_date_created(editor_ptr, "14/01/1001".encode())
+        self.pyom.editor_add_date_created(editor_ptr, "2021-19-01".encode())
         actual = self.pyom.get_and_free_c_str(
             self.pyom.rdf_to_string(self.rdf, "turtle".encode())
         )
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
+@prefix dc: <http://purl.org/dc/terms/> .
 @prefix OMEXlib: <http://omex-library.org/> .
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 
 <http://omex-library.org/NewOmex.omex/NewModel.xml#model0000>
-    dc:created [
-        dc:W3CDTF "14/01/1001"
-    ] .
-
+    dc:created "2021-19-01"^^dc:W3CDTF  .
 """
         self.assertTrue(self.pyom.rdf_equals_rdf_vs_string(self.rdf, expected.encode(), "turtle".encode(), True))
         self.pyom.editor_delete(editor_ptr)
@@ -1219,7 +1238,7 @@ local:SourceParticipant0000
             self.pyom.rdf_to_string(self.rdf, "turtle".encode())
         )
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
+@prefix dc: <http://purl.org/dc/terms/> .
 @prefix OMEXlib: <http://omex-library.org/> .
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
@@ -1244,7 +1263,7 @@ local:SourceParticipant0000
             self.pyom.rdf_to_string(self.rdf, "turtle".encode())
         )
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
+@prefix dc: <http://purl.org/dc/terms/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix OMEXlib: <http://omex-library.org/> .
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
@@ -1270,7 +1289,7 @@ local:SourceParticipant0000
             self.pyom.rdf_to_string(self.rdf, "turtle".encode())
         )
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
+@prefix dc: <http://purl.org/dc/terms/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix OMEXlib: <http://omex-library.org/> .
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
@@ -1293,7 +1312,7 @@ local:SourceParticipant0000
         self.pyom.personal_information_add_account_name(information, "1234-1234-1234-1234".encode())
         self.pyom.editor_add_personal_information(editor_ptr, information)
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
+@prefix dc: <http://purl.org/dc/terms/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix OMEXlib: <http://omex-library.org/> .
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
@@ -1320,7 +1339,7 @@ local:SourceParticipant0000
         self.pyom.editor_add_personal_information(editor_ptr, information)
 
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
+@prefix dc: <http://purl.org/dc/terms/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix OMEXlib: <http://omex-library.org/> .
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
@@ -1346,7 +1365,7 @@ local:SourceParticipant0000
             self.pyom.rdf_to_string(self.rdf, "turtle".encode())
         )
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
+@prefix dc: <http://purl.org/dc/terms/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix OMEXlib: <http://omex-library.org/> .
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
@@ -1372,7 +1391,7 @@ local:SourceParticipant0000
             self.pyom.rdf_to_string(self.rdf, "turtle".encode())
         )
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
+@prefix dc: <http://purl.org/dc/terms/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix OMEXlib: <http://omex-library.org/> .
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
@@ -1398,7 +1417,7 @@ local:SourceParticipant0000
             self.pyom.rdf_to_string(self.rdf, "turtle".encode())
         )
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
+@prefix dc: <http://purl.org/dc/terms/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix OMEXlib: <http://omex-library.org/> .
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
@@ -1426,6 +1445,40 @@ local:SourceParticipant0000
         self.assertEqual(expected, actual)
         self.pyom.personal_information_delete(information)
         self.pyom.editor_delete(editor_ptr)
+
+
+    def test_results_map_get_size(self):
+        # note this test has strong dependency on query_results_as_map
+        self.pyom.rdf_add_from_string(self.rdf, TestStrings.singular_annotation2.encode(),
+                                          "rdfxml".encode(), "test_rdf_to_string.rdf".encode())
+        query = """
+        SELECT ?x ?y ?z 
+        WHERE {
+            ?x ?y ?z
+        }
+        """
+        results_map_ptr = self.pyom.rdf_query_results_as_map(self.rdf, query.encode())
+        size = self.pyom.results_map_get_size(results_map_ptr)
+        self.assertEqual(3, size)
+
+    def test_string_vector_funcs(self):
+        # note this test has strong dependency on query_results_as_map
+        self.pyom.rdf_add_from_string(self.rdf, TestStrings.singular_annotation2.encode(),
+                                          "rdfxml".encode(), "test_rdf_to_string.rdf".encode())
+        query = """
+        SELECT ?x ?y ?z 
+        WHERE {
+            ?x ?y ?z
+        }
+        """
+        results_map_ptr = self.pyom.rdf_query_results_as_map(self.rdf, query.encode())
+        keys_vector_ptr = self.pyom.results_map_get_keys(results_map_ptr)
+        char_star = self.pyom.string_vector_get_element_at_idx(keys_vector_ptr, 0)
+        result = self.pyom.get_and_free_c_str(char_star)
+        self.assertIsInstance(result, str) # might be different on different systems so isinstance is okay
+        self.pyom.results_map_delete(results_map_ptr)
+        self.pyom.string_vector_delete(keys_vector_ptr)
+
 
 
 

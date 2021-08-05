@@ -259,7 +259,7 @@ namespace omexmeta {
      * @class Subclass of Predicate specifically for predicates from the
      * DCTerm set of predicates. All
      * DCTerm predicates have the namespace
-     * `https://dublincore.org/specifications/dublin-core/dcmi-terms/`
+     * `http://purl.org/dc/terms/`
      *
      * @example
      * @code
@@ -267,7 +267,7 @@ namespace omexmeta {
      * std::cout << description.str() << std::endl;
      * @endcode
      * will output
-     *   "https://dublincore.org/specifications/dublin-core/dcmi-terms/Description"
+     *   "http://purl.org/dc/terms/Description"
      * to console.
      */
     class DCTerm : public Predicate {

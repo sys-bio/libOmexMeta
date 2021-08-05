@@ -9,32 +9,26 @@ Here are some examples of how to remove annotations from an xml document
     .. tab:: python
 
         .. literalinclude:: stripping_annotations_python.py
-            :linenos:
             :caption: Remove annotation elements from an sbml document in Python
 
         .. literalinclude:: ../../ExampleOutputFiles/stripping_annotations_python.txt
-            :linenos:
             :caption: Output
 
 
     .. tab:: C++
 
         .. literalinclude:: stripping_annotations_cpp.cpp
-            :linenos:
             :language: C++
             :caption: Remove annotation elements from an sbml document in C++
 
         .. literalinclude:: ../../ExampleOutputFiles/StrippingAnnotationsCpp.txt
-            :linenos:
             :caption: Output
 
     .. tab:: C
 
         .. literalinclude:: stripping_annotations_c.cpp
-            :linenos:
             :language: C
             :caption: Remove annotation elements from an sbml document in C
 
         .. literalinclude:: ../../ExampleOutputFiles/StrippingAnnotationsCpp.txt
-            :linenos:
             :caption: Output
