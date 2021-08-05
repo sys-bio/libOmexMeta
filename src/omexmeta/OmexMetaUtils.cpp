@@ -2,7 +2,6 @@
 // Created by Ciaran on 4/13/2020.
 //
 #include "omexmeta/OmexMetaUtils.h"
-#include "omexmeta/logger.h"
 #include <fstream>
 
 namespace omexmeta {

@@ -136,6 +136,20 @@ include(GoogleTest)
 #   Set some variables
 #
 
+# check user has set CMAKE_BUILD_TYPE
+
+# Set a default build type if none was specified
+set(default_build_type "Release")
+
+if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
+  message(STATUS "Setting build type to '${default_build_type}' as none was specified.")
+  set(CMAKE_BUILD_TYPE "${default_build_type}" CACHE
+      STRING "Choose the type of build." FORCE)
+  # Set the possible values of build type for cmake-gui
+  set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS
+    "Debug" "Release" "MinSizeRel" "RelWithDebInfo")
+endif()
+
 # global settings
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -150,7 +164,13 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 # location of pyomexmeta development package.
 set(PYOMEXMETA_DIR "${CMAKE_SOURCE_DIR}/src/pyomexmeta")
 
-set(THIRD_PARTY_DIR "${CMAKE_CURRENT_SOURCE_DIR}/third_party")
+set(THIRD_PARTY_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/third_party")
+set(THIRD_PARTY_BINARY_DIR "${CMAKE_CURRENT_BINARY_DIR}/third_party")
+
+# splog is header only, so we make a target for it ourselves
+set(SPDLOG_SOURCE_DIR "${THIRD_PARTY_SOURCE_DIR}/spdlog")
+set(SPDLOG_INCLUDE_DIR "${SPDLOG_SOURCE_DIR}/include")
+
 
 # location of googletesting framework
 set(GOOGLETEST_SOURCE_DIR ${CMAKE_SOURCE_DIR}/third_party/googletest)

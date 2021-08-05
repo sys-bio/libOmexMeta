@@ -452,7 +452,9 @@ target_link_libraries(
         LibXml2
         ${YAJL_STATIC_LIBRARY}
         ${PCRE_STATIC_LIBRARY}
+        spdlog
 )
+
 
 add_dependencies(${target}-static LibXml2 LibXslt)
 
@@ -502,6 +504,7 @@ target_include_directories(
         $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/src/omexmeta>
         $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/src/omexmeta/C>
         $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/src/redland>
+        $<BUILD_INTERFACE:${SPDLOG_INCLUDE_DIR}>
         $<INSTALL_INTERFACE:${CMAKE_INSTALL_PREFIX}/include>
         #        # dependency includes
         #        $<BUILD_INTERFACE:${LIBXML2_INCLUDE_DIR}>

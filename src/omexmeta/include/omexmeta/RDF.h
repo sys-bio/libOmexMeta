@@ -22,7 +22,6 @@
 #include "omexmeta/SBMLSemanticExtraction.h"
 #include "omexmeta/UriHandler.h"
 #include "omexmeta/VCardTranslator.h"
-#include "omexmeta/logger.h"
 
 
 using namespace redland;

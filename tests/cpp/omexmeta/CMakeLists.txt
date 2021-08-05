@@ -63,6 +63,7 @@ add_test_executable(XmlAssistantTests OmexMetaTests OmexMetaXmlTests.cpp)
 add_test_executable(VCardTranslatorTests OmexMetaTests VCardTranslatorTests.cpp )
 add_test_executable(PurgeRDFBagTests OmexMetaTests PurgeRDFBagTests.cpp MockRDF.h)
 add_test_executable(checkBiomodels OmexMetaTests checkBiomodels.cpp)
+add_test_executable(LoggingTests OmexMetaTests LoggingTests.cpp)
 
 
 

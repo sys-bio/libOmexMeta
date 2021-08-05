@@ -12,6 +12,7 @@
 
 #include "omexmeta/Editor.h"
 #include "omexmeta/EnergyDiff.h"
+#include "omexmeta/Logger.h"
 #include "omexmeta/PersonalInformation.h"
 #include "omexmeta/PhysicalEntity.h"
 #include "omexmeta/PhysicalProcess.h"
