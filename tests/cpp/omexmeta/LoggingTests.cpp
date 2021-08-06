@@ -59,11 +59,8 @@ TEST_F(LoggingTests, UseFileLogger) {
     Logger::getLogger()->setLevel(Logger::LogLevel::info);
     Logger::getLogger()->fileLogger(p);
     std::string sbml = SBMLFactory::getSBML(SBML_INVALID_METAIDS);
-    RDF rdf = RDF::fromString(sbml);
+    RDF rdf = RDF::fromString(sbml, "turtle");
     ASSERT_TRUE(std::filesystem::exists(p));
-    auto fsize = std::filesystem::file_size(p);
-    ASSERT_GT(fsize, 0);
-
 }
 
 
