@@ -28,6 +28,7 @@ RDF$\ast$ rdf\+\_\+ptr = RDF\+\_\+from\+String(string\+\_\+annotations, \char`\"
 \DoxyCodeLine{\textcolor{preprocessor}{\#include "{}omexmeta/PhysicalEntity.h"{}}}
 \DoxyCodeLine{\textcolor{preprocessor}{\#include "{}omexmeta/PhysicalProcess.h"{}}}
 \DoxyCodeLine{\textcolor{preprocessor}{\#include "{}omexmeta/RDF.h"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include "{}omexmeta/Logger.h"{}}}
 \DoxyCodeLine{\textcolor{preprocessor}{\#include "{}omexmeta\_capi\_export.h"{}}}
 \DoxyCodeLine{\textcolor{preprocessor}{\#include <cstring>}}
 \DoxyCodeLine{}
@@ -394,6 +395,36 @@ RDF$\ast$ rdf\+\_\+ptr = RDF\+\_\+from\+String(string\+\_\+annotations, \char`\"
 \DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT std::vector<std::string>* ResultsMap\_getKeys(ResultsMap* resultsMap);}
 \DoxyCodeLine{}
 \DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{void} ResultsMap\_delete(ResultsMap * resultsMap);}
+\DoxyCodeLine{}
+\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT Logger *\mbox{\hyperlink{namespaceomexmeta_a401a97ce4b2a6c22f92b774091289ef8}{Logger\_getLogger}}();}
+\DoxyCodeLine{}
+\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{void} Logger\_setFormatter(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* format);}
+\DoxyCodeLine{}
+\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{void} Logger\_setLevel(Logger::LogLevel level);}
+\DoxyCodeLine{}
+\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT Logger::LogLevel Logger\_getLevel();}
+\DoxyCodeLine{}
+\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{void} Logger\_enableBacktrace(\textcolor{keywordtype}{int} num);}
+\DoxyCodeLine{}
+\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{void} Logger\_disableBacktrace();}
+\DoxyCodeLine{}
+\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{void} Logger\_dumpBacktrace();}
+\DoxyCodeLine{}
+\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{void} Logger\_consoleLogger();}
+\DoxyCodeLine{}
+\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{void} Logger\_fileLogger(\textcolor{keyword}{const} \textcolor{keywordtype}{char}*filename);}
+\DoxyCodeLine{}
+\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{void} Logger\_info(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* message);}
+\DoxyCodeLine{}
+\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{void} Logger\_trace(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* message);}
+\DoxyCodeLine{}
+\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{void} Logger\_debug(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* message);}
+\DoxyCodeLine{}
+\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{void} Logger\_warn(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* message);}
+\DoxyCodeLine{}
+\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{void} Logger\_error(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* message);}
+\DoxyCodeLine{}
+\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{void} Logger\_critical(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* message);}
 \DoxyCodeLine{}
 \DoxyCodeLine{}
 \DoxyCodeLine{\textcolor{preprocessor}{\#ifdef \_\_cplusplus}}

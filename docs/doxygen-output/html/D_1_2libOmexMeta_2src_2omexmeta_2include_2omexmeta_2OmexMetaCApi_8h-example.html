@@ -91,6 +91,7 @@ $(function() {
 <div class="line"><span class="preprocessor">#include &quot;omexmeta/PhysicalEntity.h&quot;</span></div>
 <div class="line"><span class="preprocessor">#include &quot;omexmeta/PhysicalProcess.h&quot;</span></div>
 <div class="line"><span class="preprocessor">#include &quot;omexmeta/RDF.h&quot;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;omexmeta/Logger.h&quot;</span></div>
 <div class="line"><span class="preprocessor">#include &quot;omexmeta_capi_export.h&quot;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;cstring&gt;</span></div>
 <div class="line"> </div>
@@ -458,6 +459,36 @@ $(function() {
 <div class="line"> </div>
 <div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">void</span> ResultsMap_delete(ResultsMap * resultsMap);</div>
 <div class="line"> </div>
+<div class="line">    OMEXMETA_CAPI_EXPORT Logger *<a name="a13"></a><a class="code" href="namespaceomexmeta.html#a401a97ce4b2a6c22f92b774091289ef8">Logger_getLogger</a>();</div>
+<div class="line"> </div>
+<div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">void</span> Logger_setFormatter(<span class="keyword">const</span> <span class="keywordtype">char</span>* format);</div>
+<div class="line"> </div>
+<div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">void</span> Logger_setLevel(Logger::LogLevel level);</div>
+<div class="line"> </div>
+<div class="line">    OMEXMETA_CAPI_EXPORT Logger::LogLevel Logger_getLevel();</div>
+<div class="line"> </div>
+<div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">void</span> Logger_enableBacktrace(<span class="keywordtype">int</span> num);</div>
+<div class="line"> </div>
+<div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">void</span> Logger_disableBacktrace();</div>
+<div class="line"> </div>
+<div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">void</span> Logger_dumpBacktrace();</div>
+<div class="line"> </div>
+<div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">void</span> Logger_consoleLogger();</div>
+<div class="line"> </div>
+<div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">void</span> Logger_fileLogger(<span class="keyword">const</span> <span class="keywordtype">char</span>*filename);</div>
+<div class="line"> </div>
+<div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">void</span> Logger_info(<span class="keyword">const</span> <span class="keywordtype">char</span>* message);</div>
+<div class="line"> </div>
+<div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">void</span> Logger_trace(<span class="keyword">const</span> <span class="keywordtype">char</span>* message);</div>
+<div class="line"> </div>
+<div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">void</span> Logger_debug(<span class="keyword">const</span> <span class="keywordtype">char</span>* message);</div>
+<div class="line"> </div>
+<div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">void</span> Logger_warn(<span class="keyword">const</span> <span class="keywordtype">char</span>* message);</div>
+<div class="line"> </div>
+<div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">void</span> Logger_error(<span class="keyword">const</span> <span class="keywordtype">char</span>* message);</div>
+<div class="line"> </div>
+<div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">void</span> Logger_critical(<span class="keyword">const</span> <span class="keywordtype">char</span>* message);</div>
+<div class="line"> </div>
 <div class="line"> </div>
 <div class="line"><span class="preprocessor">#ifdef __cplusplus</span></div>
 <div class="line">    }</div>
@@ -473,6 +504,7 @@ $(function() {
 <div class="ttc" id="anamespaceomexmeta_html_a2f3a19ccb17e0be38e706861fa141fcc"><div class="ttname"><a href="namespaceomexmeta.html#a2f3a19ccb17e0be38e706861fa141fcc">omexmeta::RDF_new</a></div><div class="ttdeci">RDF * RDF_new(const char *storage_type, const char *storage_name, const char *storage_options, const char *model_options)</div><div class="ttdef"><b>Definition:</b> OmexMetaCApi.cpp:46</div></div>
 <div class="ttc" id="anamespaceomexmeta_html_a30d98a9eb2bc11c67f7ca13a68aa1a73"><div class="ttname"><a href="namespaceomexmeta.html#a30d98a9eb2bc11c67f7ca13a68aa1a73">omexmeta::Editor_newSingularAnnotation</a></div><div class="ttdeci">SingularAnnotation * Editor_newSingularAnnotation(Editor *editor_ptr)</div><div class="ttdef"><b>Definition:</b> OmexMetaCApi.cpp:349</div></div>
 <div class="ttc" id="anamespaceomexmeta_html_a386a15d5d186e00467ffdbb15dc9b2e3"><div class="ttname"><a href="namespaceomexmeta.html#a386a15d5d186e00467ffdbb15dc9b2e3">omexmeta::PhysicalProperty_getAbout</a></div><div class="ttdeci">char * PhysicalProperty_getAbout(PhysicalProperty *property)</div><div class="ttdef"><b>Definition:</b> OmexMetaCApi.cpp:867</div></div>
+<div class="ttc" id="anamespaceomexmeta_html_a401a97ce4b2a6c22f92b774091289ef8"><div class="ttname"><a href="namespaceomexmeta.html#a401a97ce4b2a6c22f92b774091289ef8">omexmeta::Logger_getLogger</a></div><div class="ttdeci">Logger * Logger_getLogger()</div><div class="ttdef"><b>Definition:</b> OmexMetaCApi.cpp:1572</div></div>
 <div class="ttc" id="anamespaceomexmeta_html_a86245ea959cf5a3e8f389941cca41f1a"><div class="ttname"><a href="namespaceomexmeta.html#a86245ea959cf5a3e8f389941cca41f1a">omexmeta::SingularAnnotation_delete</a></div><div class="ttdeci">int SingularAnnotation_delete(SingularAnnotation *singularAnnotation)</div><div class="ttdef"><b>Definition:</b> OmexMetaCApi.cpp:716</div></div>
 <div class="ttc" id="anamespaceomexmeta_html_a8f35bfdeddd4366704c681fac1b8112e"><div class="ttname"><a href="namespaceomexmeta.html#a8f35bfdeddd4366704c681fac1b8112e">omexmeta::PhysicalProcess_delete</a></div><div class="ttdeci">int PhysicalProcess_delete(PhysicalProcess *physicalProcess)</div><div class="ttdef"><b>Definition:</b> OmexMetaCApi.cpp:1092</div></div>
 <div class="ttc" id="anamespaceomexmeta_html_aac58f146c00ed4c492efebb1e239c90b"><div class="ttname"><a href="namespaceomexmeta.html#aac58f146c00ed4c492efebb1e239c90b">omexmeta::deleteResultsMap</a></div><div class="ttdeci">void deleteResultsMap(ResultsMap *map)</div><div class="ttdoc">RDF_queryResultsAsMap allocates a ResultsMap to the heap. This method deletes that memory.</div><div class="ttdef"><b>Definition:</b> OmexMetaCApi.cpp:183</div></div>

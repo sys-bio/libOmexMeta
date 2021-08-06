@@ -2594,7 +2594,7 @@ class Logger:
             num (int): How many logging messages to show on dumping the log stack trace
 
         """
-        return _pyom.logger_enable_backtrace()
+        return _pyom.logger_enable_backtrace(num)
 
     @staticmethod
     def disable_backtrace(self) -> None:
@@ -2603,14 +2603,14 @@ class Logger:
         Experimental feature
 
         """
-        _pyom.logger_disable_backtrace()
+        return _pyom.logger_disable_backtrace()
 
     @staticmethod
     def console_logger() -> None:
         """Switch to a console logger
 
         Turns off file_logger and activates the console logger"""
-        _pyom.logger_console_logger()
+        return _pyom.logger_console_logger()
 
     @staticmethod
     def file_logger(filepath: str) -> None:
@@ -2620,7 +2620,7 @@ class Logger:
             filepath: valid path to where you would like to store logging messages
 
         Turns off console logger and activate file_logger"""
-        return _pyom.logger_file_logger(filepath)
+        return _pyom.logger_file_logger(filepath.encode())
 
     @staticmethod
     def info(message: str) -> None:

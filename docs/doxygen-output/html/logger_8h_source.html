@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>libomexmeta: src/omexmeta/include/omexmeta/logger.h Source File</title>
+<title>libomexmeta: src/omexmeta/include/omexmeta/Logger.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -68,71 +68,115 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="headertitle">
-<div class="title">logger.h</div>  </div>
+<div class="title">Logger.h</div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// Created by Ciaran on 12/09/2020.</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// Created by Ciaran on 05/08/2021.</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">//</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#ifndef EVOGYM_LOGGER_H</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#define EVOGYM_LOGGER_H</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#ifndef LIBOMEXMETA_LOGGER_H</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#define LIBOMEXMETA_LOGGER_H</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
-<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="structNone.html">   10</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structNone.html">None</a> { };</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> First,<span class="keyword">typename</span> Second&gt;</div>
-<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="structPair.html">   13</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structPair.html">Pair</a> {</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;  First first;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;  Second second;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;};</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> List&gt;</div>
-<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="structLogData.html">   19</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structLogData.html">LogData</a> {</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;  List list;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;};</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> Begin,<span class="keyword">typename</span> Value&gt;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<a class="code" href="structLogData.html">LogData&lt;Pair&lt;Begin,const Value &amp;&gt;</a>&gt;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  operator&lt;&lt;(<a class="code" href="structLogData.html">LogData&lt;Begin&gt;</a> begin,<span class="keyword">const</span> Value &amp;value)</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;{</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  <span class="keywordflow">return</span> {{begin.list,value}};</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;}</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> Begin,<span class="keywordtype">size_t</span> n&gt;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<a class="code" href="structLogData.html">LogData&lt;Pair&lt;Begin,const char *&gt;</a>&gt;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  operator&lt;&lt;(<a class="code" href="structLogData.html">LogData&lt;Begin&gt;</a> begin,<span class="keyword">const</span> <span class="keywordtype">char</span> (&amp;value)[n])</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;{</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  <span class="keywordflow">return</span> {{begin.list,value}};</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;}</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> printList(std::ostream &amp;os,<a class="code" href="structNone.html">None</a>)</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;{</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;}</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;spdlog/spdlog.h&quot;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;filesystem&gt;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;raptor2.h&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceomexmeta.html">omexmeta</a> {</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#define OMEX_INFO(msg) SPDLOG_INFO(msg)</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#define OMEX_TRACE(msg) SPDLOG_TRACE(msg)</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#define OMEX_DEBUG(msg) SPDLOG_DEBUG(msg)</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#define OMEX_WARN(msg) SPDLOG_WARN(msg)</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#define OMEX_ERROR(msg) SPDLOG_ERROR(msg)</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#define OMEX_CRITICAL(msg) SPDLOG_CRITICAL(msg)</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="classomexmeta_1_1Logger.html">   29</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classomexmeta_1_1Logger.html">Logger</a> {</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="keyword">using</span> LoggerPtr = std::shared_ptr&lt;spdlog::logger&gt;;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keyword">using</span> LogLevel = spdlog::level::level_enum;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="comment">// This is how clients can access the single instance</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keyword">static</span> <a class="code" href="classomexmeta_1_1Logger.html">Logger</a> *getLogger();</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classomexmeta_1_1Logger.html#a134dd390a0ffd511e7272a3ff604ea5e">setFormatter</a>(<span class="keyword">const</span> std::string &amp;format);</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> Begin,<span class="keyword">typename</span> Last&gt;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keywordtype">void</span> printList(std::ostream &amp;os,<span class="keyword">const</span> <a class="code" href="structPair.html">Pair&lt;Begin,Last&gt;</a> &amp;data)</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;{</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  printList(os,data.first);</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  os &lt;&lt; data.second;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;}</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> List&gt;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keywordtype">void</span> log(<span class="keyword">const</span> <span class="keywordtype">char</span> *file,<span class="keywordtype">int</span> line,<span class="keyword">const</span> <a class="code" href="structLogData.html">LogData&lt;List&gt;</a> &amp;data)</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;{</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  std::cout &lt;&lt; file &lt;&lt; <span class="stringliteral">&quot;:&quot;</span> &lt;&lt; line &lt;&lt; <span class="stringliteral">&quot;:&quot;</span>;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  printList(std::cout,data.list);</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  std::cout &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;}</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="preprocessor">#define LOG(x) (log(__FILE__,__LINE__,LogData&lt;None&gt;() &lt;&lt; x))</span></div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="preprocessor">#endif</span><span class="comment">//EVOGYM_LOGGER_H</span></div>
-<div class="ttc" id="astructLogData_html"><div class="ttname"><a href="structLogData.html">LogData</a></div><div class="ttdef"><b>Definition:</b> logger.h:19</div></div>
-<div class="ttc" id="astructNone_html"><div class="ttname"><a href="structNone.html">None</a></div><div class="ttdef"><b>Definition:</b> logger.h:10</div></div>
-<div class="ttc" id="astructPair_html"><div class="ttname"><a href="structPair.html">Pair</a></div><div class="ttdef"><b>Definition:</b> logger.h:13</div></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classomexmeta_1_1Logger.html#a8aea25829e62c8f4c6f03fc48d50dd41">setLevel</a>(LogLevel level);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        LogLevel <a class="code" href="classomexmeta_1_1Logger.html#a597998f70839cc4e940bdc3d88b67409">getLevel</a>();</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classomexmeta_1_1Logger.html#adff73e1d612beabc4816cde05387454c">enableBacktrace</a>(<span class="keywordtype">int</span> num);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classomexmeta_1_1Logger.html#ab9f86a85a769a36a22f6e02dad5c78fa">disableBacktrace</a>();</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classomexmeta_1_1Logger.html#a10e34a8915c7520e9332d9c1889f7521">consoleLogger</a>();</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classomexmeta_1_1Logger.html#af999f93aa9e820a40c87ed34797fc1ce">fileLogger</a>(<span class="keyword">const</span> std::filesystem::path &amp;filename);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classomexmeta_1_1Logger.html#a56f5508d87ac4f700b4a7641cb7b88a0">dumpBacktrace</a>();</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classomexmeta_1_1Logger.html#ab49ff109d59a626fbcec1c05389fe6a2">info</a>(<span class="keyword">const</span> std::string &amp;message);</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classomexmeta_1_1Logger.html#a052bdd430682c2c91490bc2763b918fc">trace</a>(<span class="keyword">const</span> std::string &amp;message);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classomexmeta_1_1Logger.html#a8e5db234df44e3fc3a60bfcbf3e77f4b">debug</a>(<span class="keyword">const</span> std::string &amp;message);</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classomexmeta_1_1Logger.html#aa35b6607acc0873cd955f518b67c81dd">warn</a>(<span class="keyword">const</span> std::string &amp;message);</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classomexmeta_1_1Logger.html#aea5f0b2cf462c59f3a682a4447dcabb8">error</a>(<span class="keyword">const</span> std::string &amp;message);</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classomexmeta_1_1Logger.html#ae7ff56f93077d9f17626f9c8141650e8">critical</a>(<span class="keyword">const</span> std::string &amp;message);</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
+<div class="line"><a name="l00126"></a><span class="lineno"><a class="line" href="classomexmeta_1_1Logger.html#a93dcc13c2fc6049c66d7f5ce8246cd5e">  126</a></span>&#160;        LoggerPtr <a class="code" href="classomexmeta_1_1Logger.html#a93dcc13c2fc6049c66d7f5ce8246cd5e">logger</a>;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160; </div>
+<div class="line"><a name="l00131"></a><span class="lineno"><a class="line" href="classomexmeta_1_1Logger.html#a96e095f68f0b4f9bb98f12290a3d96fb">  131</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="classomexmeta_1_1Logger.html#a96e095f68f0b4f9bb98f12290a3d96fb">isFileLogger</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160; </div>
+<div class="line"><a name="l00136"></a><span class="lineno"><a class="line" href="classomexmeta_1_1Logger.html#affa234a781b835b051e9495679bcede9">  136</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="classomexmeta_1_1Logger.html#affa234a781b835b051e9495679bcede9">isConsoleLogger</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160; </div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160; </div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;        <a class="code" href="classomexmeta_1_1Logger.html">Logger</a>();</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160; </div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        <span class="keyword">static</span> <a class="code" href="classomexmeta_1_1Logger.html">Logger</a> *inst_;<span class="comment">// The one, single instance</span></div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160; </div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;        std::filesystem::path filepath_;</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160; </div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        <span class="keywordtype">int</span> backtraceNum = 32;</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160; </div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        std::string formatterPattern = <span class="stringliteral">&quot;[%H:%M:%S %z] %^ %l %g:%# %v %$&quot;</span>;</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160; </div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;        LogLevel level_ = LogLevel::warn;</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160; </div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        <span class="keywordtype">bool</span> shouldBacktrace_ = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160; </div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160; </div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    };</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160; </div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160; </div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;}<span class="comment">// namespace omexmeta</span></div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160; </div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;<span class="preprocessor">#endif</span><span class="comment">//LIBOMEXMETA_LOGGER_H</span></div>
+<div class="ttc" id="aclassomexmeta_1_1Logger_html"><div class="ttname"><a href="classomexmeta_1_1Logger.html">omexmeta::Logger</a></div><div class="ttdoc">Logging class for libOmexMeta. Implemented as a singleton.</div><div class="ttdef"><b>Definition:</b> Logger.h:29</div></div>
+<div class="ttc" id="aclassomexmeta_1_1Logger_html_a052bdd430682c2c91490bc2763b918fc"><div class="ttname"><a href="classomexmeta_1_1Logger.html#a052bdd430682c2c91490bc2763b918fc">omexmeta::Logger::trace</a></div><div class="ttdeci">void trace(const std::string &amp;message)</div><div class="ttdoc">log a trace message to the currently active logger</div><div class="ttdef"><b>Definition:</b> Logger.cpp:115</div></div>
+<div class="ttc" id="aclassomexmeta_1_1Logger_html_a10e34a8915c7520e9332d9c1889f7521"><div class="ttname"><a href="classomexmeta_1_1Logger.html#a10e34a8915c7520e9332d9c1889f7521">omexmeta::Logger::consoleLogger</a></div><div class="ttdeci">void consoleLogger()</div><div class="ttdoc">create and switch to a console logger</div><div class="ttdef"><b>Definition:</b> Logger.cpp:29</div></div>
+<div class="ttc" id="aclassomexmeta_1_1Logger_html_a134dd390a0ffd511e7272a3ff604ea5e"><div class="ttname"><a href="classomexmeta_1_1Logger.html#a134dd390a0ffd511e7272a3ff604ea5e">omexmeta::Logger::setFormatter</a></div><div class="ttdeci">void setFormatter(const std::string &amp;format)</div><div class="ttdoc">formatter strings use the {fmt} library. See documentation here: https://fmt.dev/latest/index....</div><div class="ttdef"><b>Definition:</b> Logger.cpp:84</div></div>
+<div class="ttc" id="aclassomexmeta_1_1Logger_html_a56f5508d87ac4f700b4a7641cb7b88a0"><div class="ttname"><a href="classomexmeta_1_1Logger.html#a56f5508d87ac4f700b4a7641cb7b88a0">omexmeta::Logger::dumpBacktrace</a></div><div class="ttdeci">void dumpBacktrace()</div><div class="ttdoc">dump backtrace messages when called</div><div class="ttdef"><b>Definition:</b> Logger.cpp:108</div></div>
+<div class="ttc" id="aclassomexmeta_1_1Logger_html_a597998f70839cc4e940bdc3d88b67409"><div class="ttname"><a href="classomexmeta_1_1Logger.html#a597998f70839cc4e940bdc3d88b67409">omexmeta::Logger::getLevel</a></div><div class="ttdeci">LogLevel getLevel()</div><div class="ttdoc">returns the current logging level</div><div class="ttdef"><b>Definition:</b> Logger.cpp:94</div></div>
+<div class="ttc" id="aclassomexmeta_1_1Logger_html_a8aea25829e62c8f4c6f03fc48d50dd41"><div class="ttname"><a href="classomexmeta_1_1Logger.html#a8aea25829e62c8f4c6f03fc48d50dd41">omexmeta::Logger::setLevel</a></div><div class="ttdeci">void setLevel(LogLevel level)</div><div class="ttdoc">set the current logging level</div><div class="ttdef"><b>Definition:</b> Logger.cpp:89</div></div>
+<div class="ttc" id="aclassomexmeta_1_1Logger_html_a8e5db234df44e3fc3a60bfcbf3e77f4b"><div class="ttname"><a href="classomexmeta_1_1Logger.html#a8e5db234df44e3fc3a60bfcbf3e77f4b">omexmeta::Logger::debug</a></div><div class="ttdeci">void debug(const std::string &amp;message)</div><div class="ttdoc">log a debug message to the currently active logger</div><div class="ttdef"><b>Definition:</b> Logger.cpp:119</div></div>
+<div class="ttc" id="aclassomexmeta_1_1Logger_html_a93dcc13c2fc6049c66d7f5ce8246cd5e"><div class="ttname"><a href="classomexmeta_1_1Logger.html#a93dcc13c2fc6049c66d7f5ce8246cd5e">omexmeta::Logger::logger</a></div><div class="ttdeci">LoggerPtr logger</div><div class="ttdoc">reference to the currently active logger</div><div class="ttdef"><b>Definition:</b> Logger.h:126</div></div>
+<div class="ttc" id="aclassomexmeta_1_1Logger_html_a96e095f68f0b4f9bb98f12290a3d96fb"><div class="ttname"><a href="classomexmeta_1_1Logger.html#a96e095f68f0b4f9bb98f12290a3d96fb">omexmeta::Logger::isFileLogger</a></div><div class="ttdeci">bool isFileLogger</div><div class="ttdoc">indicator, true when the file logger is active</div><div class="ttdef"><b>Definition:</b> Logger.h:131</div></div>
+<div class="ttc" id="aclassomexmeta_1_1Logger_html_aa35b6607acc0873cd955f518b67c81dd"><div class="ttname"><a href="classomexmeta_1_1Logger.html#aa35b6607acc0873cd955f518b67c81dd">omexmeta::Logger::warn</a></div><div class="ttdeci">void warn(const std::string &amp;message)</div><div class="ttdoc">log a warning message to the currently active logger</div><div class="ttdef"><b>Definition:</b> Logger.cpp:123</div></div>
+<div class="ttc" id="aclassomexmeta_1_1Logger_html_ab49ff109d59a626fbcec1c05389fe6a2"><div class="ttname"><a href="classomexmeta_1_1Logger.html#ab49ff109d59a626fbcec1c05389fe6a2">omexmeta::Logger::info</a></div><div class="ttdeci">void info(const std::string &amp;message)</div><div class="ttdoc">log a info message to the currently active logger</div><div class="ttdef"><b>Definition:</b> Logger.cpp:111</div></div>
+<div class="ttc" id="aclassomexmeta_1_1Logger_html_ab9f86a85a769a36a22f6e02dad5c78fa"><div class="ttname"><a href="classomexmeta_1_1Logger.html#ab9f86a85a769a36a22f6e02dad5c78fa">omexmeta::Logger::disableBacktrace</a></div><div class="ttdeci">void disableBacktrace()</div><div class="ttdoc">disable the backtrace feature</div><div class="ttdef"><b>Definition:</b> Logger.cpp:104</div></div>
+<div class="ttc" id="aclassomexmeta_1_1Logger_html_adff73e1d612beabc4816cde05387454c"><div class="ttname"><a href="classomexmeta_1_1Logger.html#adff73e1d612beabc4816cde05387454c">omexmeta::Logger::enableBacktrace</a></div><div class="ttdeci">void enableBacktrace(int num)</div><div class="ttdoc">enable the backtrace logging feature - display the last</div><div class="ttdef"><b>Definition:</b> Logger.cpp:98</div></div>
+<div class="ttc" id="aclassomexmeta_1_1Logger_html_ae7ff56f93077d9f17626f9c8141650e8"><div class="ttname"><a href="classomexmeta_1_1Logger.html#ae7ff56f93077d9f17626f9c8141650e8">omexmeta::Logger::critical</a></div><div class="ttdeci">void critical(const std::string &amp;message)</div><div class="ttdoc">log a critical message to the currently active logger</div><div class="ttdef"><b>Definition:</b> Logger.cpp:131</div></div>
+<div class="ttc" id="aclassomexmeta_1_1Logger_html_aea5f0b2cf462c59f3a682a4447dcabb8"><div class="ttname"><a href="classomexmeta_1_1Logger.html#aea5f0b2cf462c59f3a682a4447dcabb8">omexmeta::Logger::error</a></div><div class="ttdeci">void error(const std::string &amp;message)</div><div class="ttdoc">log a error message to the currently active logger</div><div class="ttdef"><b>Definition:</b> Logger.cpp:127</div></div>
+<div class="ttc" id="aclassomexmeta_1_1Logger_html_af999f93aa9e820a40c87ed34797fc1ce"><div class="ttname"><a href="classomexmeta_1_1Logger.html#af999f93aa9e820a40c87ed34797fc1ce">omexmeta::Logger::fileLogger</a></div><div class="ttdeci">void fileLogger(const std::filesystem::path &amp;filename)</div><div class="ttdoc">create and switch to a file logger</div><div class="ttdef"><b>Definition:</b> Logger.cpp:52</div></div>
+<div class="ttc" id="aclassomexmeta_1_1Logger_html_affa234a781b835b051e9495679bcede9"><div class="ttname"><a href="classomexmeta_1_1Logger.html#affa234a781b835b051e9495679bcede9">omexmeta::Logger::isConsoleLogger</a></div><div class="ttdeci">bool isConsoleLogger</div><div class="ttdoc">indicator, true when the console logger is active</div><div class="ttdef"><b>Definition:</b> Logger.h:136</div></div>
+<div class="ttc" id="anamespaceomexmeta_html"><div class="ttname"><a href="namespaceomexmeta.html">omexmeta</a></div><div class="ttdef"><b>Definition:</b> Editor.cpp:9</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

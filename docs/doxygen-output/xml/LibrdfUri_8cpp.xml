@@ -9,6 +9,9 @@
       <node id="9">
         <label>stdarg.h</label>
       </node>
+      <node id="32">
+        <label>functional</label>
+      </node>
       <node id="11">
         <label>rasqal.h</label>
         <link refid="rasqal_8h_source"/>
@@ -177,6 +180,8 @@
         <childnode refid="29" relation="include">
         </childnode>
         <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
         </childnode>
       </node>
       <node id="29">

@@ -8,6 +8,9 @@
       <node id="10">
         <label>stdarg.h</label>
       </node>
+      <node id="33">
+        <label>functional</label>
+      </node>
       <node id="12">
         <label>rasqal.h</label>
         <link refid="rasqal_8h_source"/>
@@ -71,7 +74,7 @@
       <node id="20">
         <label>rdf_concepts.h</label>
       </node>
-      <node id="33">
+      <node id="34">
         <label>sstream</label>
       </node>
       <node id="15">
@@ -95,7 +98,7 @@
         </childnode>
         <childnode refid="30" relation="include">
         </childnode>
-        <childnode refid="33" relation="include">
+        <childnode refid="34" relation="include">
         </childnode>
       </node>
       <node id="8">
@@ -195,6 +198,8 @@
         <childnode refid="30" relation="include">
         </childnode>
         <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
         </childnode>
       </node>
       <node id="30">

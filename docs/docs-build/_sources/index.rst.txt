@@ -17,6 +17,7 @@ libOmexMeta documentation!
    stripping_annotations/index.rst
    querying_rdf/querying_rdf.rst
    diagrams/diagrams_index.rst
+   errors_and_logging/errors_and_logging.rst
    annotating_models/annotating_models_index.rst
    download_biomodels/download_biomodels.rst
    APIReference/api_reference_index.rst

@@ -157,6 +157,18 @@ if (${BUILD_DOCS_EXAMPLES})
     add_doc_example(StrippingAnnotationsC source/stripping_annotations/stripping_annotations_c.cpp)
     add_doc_example(StrippingAnnotationsCpp source/stripping_annotations/stripping_annotations_cpp.cpp)
 
+    # logging examples
+    add_doc_example(Logging1C source/errors_and_logging/logging1_c.cpp)
+    add_doc_example(Logging1Cpp source/errors_and_logging/logging1_cpp.cpp)
+    add_doc_example(Logging2C source/errors_and_logging/logging2_c.cpp)
+    add_doc_example(Logging2Cpp source/errors_and_logging/logging2_cpp.cpp)
+    add_doc_example(Logging3C source/errors_and_logging/logging3_c.cpp)
+    add_doc_example(Logging3Cpp source/errors_and_logging/logging3_cpp.cpp)
+    add_doc_example(Logging4C source/errors_and_logging/logging4_c.cpp)
+    add_doc_example(Logging4Cpp source/errors_and_logging/logging4_cpp.cpp)
+    add_doc_example(Logging5C source/errors_and_logging/logging5_c.cpp)
+    add_doc_example(Logging5Cpp source/errors_and_logging/logging5_cpp.cpp)
+
     message(STATUS "EXAMPLE_EXECUTABLES_TARGETS ${EXAMPLE_EXECUTABLES_TARGETS}")
 
     # Builds all the c/c++ examples used in the docs.

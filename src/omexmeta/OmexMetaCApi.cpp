@@ -1574,6 +1574,7 @@ namespace omexmeta {
             return Logger::getLogger();
         } catch (std::exception &e) {
             setLastError(e.what());
+            return nullptr;
         }
     }
 

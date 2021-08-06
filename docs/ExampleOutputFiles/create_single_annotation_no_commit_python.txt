@@ -1,1 +1,5 @@
-<pyomexmeta.pyomexmeta.SingularAnnotation object at 0x0000025303F3DD00>
+[11:23:58 +01:00]  warning :  XML parser warning: Unsupported version '1.1' 
+[11:23:58 +01:00]  warning :  XML parser warning: Unsupported version '1.1' 
+[11:23:58 +01:00]  warning :  XML parser warning: Unsupported version '1.1' 
+[11:23:58 +01:00]  warning :  XML parser warning: Unsupported version '1.1' 
+<pyomexmeta.pyomexmeta.SingularAnnotation object at 0x000001EAF268DD00>

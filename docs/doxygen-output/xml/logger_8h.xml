@@ -1,203 +1,160 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
-  <compounddef id="logger_8h" kind="file" language="C++">
-    <compoundname>logger.h</compoundname>
-    <includes local="no">iostream</includes>
-    <includedby refid="MarkupIdentifier_8cpp" local="yes">src/omexmeta/MarkupIdentifier.cpp</includedby>
-    <includedby refid="OmexMetaUtils_8cpp" local="yes">src/omexmeta/OmexMetaUtils.cpp</includedby>
+  <compounddef id="Logger_8h" kind="file" language="C++">
+    <compoundname>Logger.h</compoundname>
+    <includes local="yes">spdlog/spdlog.h</includes>
+    <includes local="no">filesystem</includes>
+    <includes local="no">string</includes>
+    <includes refid="raptor2_8h" local="yes">raptor2.h</includes>
+    <includedby refid="Logger_8cpp" local="yes">src/omexmeta/Logger.cpp</includedby>
+    <includedby refid="OmexMeta_8h" local="yes">src/omexmeta/include/omexmeta/OmexMeta.h</includedby>
+    <includedby refid="OmexMetaCApi_8h" local="yes">src/omexmeta/include/omexmeta/OmexMetaCApi.h</includedby>
     <includedby refid="RDF_8h" local="yes">src/omexmeta/include/omexmeta/RDF.h</includedby>
     <incdepgraph>
-      <node id="2">
-        <label>iostream</label>
+      <node id="7">
+        <label>stdarg.h</label>
+      </node>
+      <node id="3">
+        <label>filesystem</label>
+      </node>
+      <node id="4">
+        <label>string</label>
       </node>
       <node id="1">
-        <label>src/omexmeta/include/omexmeta/logger.h</label>
-        <link refid="logger_8h"/>
+        <label>src/omexmeta/include/omexmeta/Logger.h</label>
+        <link refid="Logger_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>spdlog/spdlog.h</label>
+      </node>
+      <node id="8">
+        <label>redland_export.h</label>
+      </node>
+      <node id="5">
+        <label>raptor2.h</label>
+        <link refid="raptor2_8h_source"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>stdio.h</label>
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="2">
+      <node id="4">
         <label>src/omexmeta/include/omexmeta/RDF.h</label>
         <link refid="RDF_8h_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/omexmeta/include/omexmeta/Logger.h</label>
+        <link refid="Logger_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
         <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
       </node>
-      <node id="3">
+      <node id="2">
         <label>src/omexmeta/include/omexmeta/OmexMeta.h</label>
         <link refid="OmexMeta_8h_source"/>
       </node>
-      <node id="1">
-        <label>src/omexmeta/include/omexmeta/logger.h</label>
-        <link refid="logger_8h"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-      </node>
-      <node id="4">
+      <node id="3">
         <label>src/omexmeta/include/omexmeta/OmexMetaCApi.h</label>
         <link refid="OmexMetaCApi_8h_source"/>
       </node>
     </invincdepgraph>
-    <innerclass refid="structNone" prot="public">None</innerclass>
-    <innerclass refid="structPair" prot="public">Pair</innerclass>
-    <innerclass refid="structLogData" prot="public">LogData</innerclass>
+    <innerclass refid="classomexmeta_1_1Logger" prot="public">omexmeta::Logger</innerclass>
+    <innernamespace refid="namespaceomexmeta">omexmeta</innernamespace>
       <sectiondef kind="define">
-      <memberdef kind="define" id="logger_8h_1af855c94dc540e943632089ce7496faac" prot="public" static="no">
-        <name>LOG</name>
-        <param><defname>x</defname></param>
-        <initializer>(log(__FILE__,__LINE__,<ref refid="structLogData" kindref="compound">LogData</ref>&lt;<ref refid="structNone" kindref="compound">None</ref>&gt;() &lt;&lt; x))</initializer>
+      <memberdef kind="define" id="Logger_8h_1a14095d6307757d11ce09fedf0d3b9458" prot="public" static="no">
+        <name>OMEX_INFO</name>
+        <param><defname>msg</defname></param>
+        <initializer>SPDLOG_INFO(msg)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
+<para>wrapper macros around spdlog </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/logger.h" line="57" column="9" bodyfile="src/omexmeta/include/omexmeta/logger.h" bodystart="57" bodyend="-1"/>
+        <location file="src/omexmeta/include/omexmeta/Logger.h" line="18" column="9" bodyfile="src/omexmeta/include/omexmeta/Logger.h" bodystart="18" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="func">
-      <memberdef kind="function" id="logger_8h_1ae781be7f7da37f2d200d3795b203dab1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <templateparamlist>
-          <param>
-            <type>typename Begin</type>
-          </param>
-          <param>
-            <type>typename Value</type>
-          </param>
-        </templateparamlist>
-        <type><ref refid="structLogData" kindref="compound">LogData</ref>&lt; <ref refid="structPair" kindref="compound">Pair</ref>&lt; Begin, const Value &amp; &gt; &gt;</type>
-        <definition>LogData&lt;Pair&lt;Begin,const Value &amp;&gt; &gt; operator&lt;&lt;</definition>
-        <argsstring>(LogData&lt; Begin &gt; begin, const Value &amp;value)</argsstring>
-        <name>operator&lt;&lt;</name>
-        <param>
-          <type><ref refid="structLogData" kindref="compound">LogData</ref>&lt; Begin &gt;</type>
-          <declname>begin</declname>
-        </param>
-        <param>
-          <type>const Value &amp;</type>
-          <declname>value</declname>
-        </param>
+      <memberdef kind="define" id="Logger_8h_1adca53c34f10d3b39eb8c91cb7ff5ac6b" prot="public" static="no">
+        <name>OMEX_TRACE</name>
+        <param><defname>msg</defname></param>
+        <initializer>SPDLOG_TRACE(msg)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/logger.h" line="1" column="0" bodyfile="src/omexmeta/include/omexmeta/logger.h" bodystart="25" bodyend="28"/>
+        <location file="src/omexmeta/include/omexmeta/Logger.h" line="19" column="9" bodyfile="src/omexmeta/include/omexmeta/Logger.h" bodystart="19" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="function" id="logger_8h_1a2cf87bd0339ae36c35d95e4ec708f36d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <templateparamlist>
-          <param>
-            <type>typename Begin</type>
-          </param>
-          <param>
-            <type>size_t</type>
-            <declname>n</declname>
-            <defname>n</defname>
-          </param>
-        </templateparamlist>
-        <type><ref refid="structLogData" kindref="compound">LogData</ref>&lt; <ref refid="structPair" kindref="compound">Pair</ref>&lt; Begin, const char * &gt; &gt;</type>
-        <definition>LogData&lt;Pair&lt;Begin,const char *&gt; &gt; operator&lt;&lt;</definition>
-        <argsstring>(LogData&lt; Begin &gt; begin, const char(&amp;value)[n])</argsstring>
-        <name>operator&lt;&lt;</name>
-        <param>
-          <type><ref refid="structLogData" kindref="compound">LogData</ref>&lt; Begin &gt;</type>
-          <declname>begin</declname>
-        </param>
-        <param>
-          <type>const char(&amp;)</type>
-          <declname>value</declname>
-          <array>[n]</array>
-        </param>
+      <memberdef kind="define" id="Logger_8h_1a25fec9537907be09f8771f94b3a3ed41" prot="public" static="no">
+        <name>OMEX_DEBUG</name>
+        <param><defname>msg</defname></param>
+        <initializer>SPDLOG_DEBUG(msg)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/logger.h" line="1" column="0" bodyfile="src/omexmeta/include/omexmeta/logger.h" bodystart="32" bodyend="35"/>
+        <location file="src/omexmeta/include/omexmeta/Logger.h" line="20" column="9" bodyfile="src/omexmeta/include/omexmeta/Logger.h" bodystart="20" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="function" id="logger_8h_1a78941df6fd543ee5d88f96625f0047a4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>void</type>
-        <definition>void printList</definition>
-        <argsstring>(std::ostream &amp;os, None)</argsstring>
-        <name>printList</name>
-        <param>
-          <type>std::ostream &amp;</type>
-          <declname>os</declname>
-        </param>
-        <param>
-          <type><ref refid="structNone" kindref="compound">None</ref></type>
-        </param>
+      <memberdef kind="define" id="Logger_8h_1a3db9a12b42ab734d262407e6c958e9b2" prot="public" static="no">
+        <name>OMEX_WARN</name>
+        <param><defname>msg</defname></param>
+        <initializer>SPDLOG_WARN(msg)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/logger.h" line="37" column="13" bodyfile="src/omexmeta/include/omexmeta/logger.h" bodystart="37" bodyend="39"/>
+        <location file="src/omexmeta/include/omexmeta/Logger.h" line="21" column="9" bodyfile="src/omexmeta/include/omexmeta/Logger.h" bodystart="21" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="function" id="logger_8h_1aa99f584b7df937bea8439a998575b096" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <templateparamlist>
-          <param>
-            <type>typename Begin</type>
-          </param>
-          <param>
-            <type>typename Last</type>
-          </param>
-        </templateparamlist>
-        <type>void</type>
-        <definition>void printList</definition>
-        <argsstring>(std::ostream &amp;os, const Pair&lt; Begin, Last &gt; &amp;data)</argsstring>
-        <name>printList</name>
-        <param>
-          <type>std::ostream &amp;</type>
-          <declname>os</declname>
-        </param>
-        <param>
-          <type>const <ref refid="structPair" kindref="compound">Pair</ref>&lt; Begin, Last &gt; &amp;</type>
-          <declname>data</declname>
-        </param>
+      <memberdef kind="define" id="Logger_8h_1a9dad07775af5ca98ec7e7e3bfbcc7621" prot="public" static="no">
+        <name>OMEX_ERROR</name>
+        <param><defname>msg</defname></param>
+        <initializer>SPDLOG_ERROR(msg)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/logger.h" line="43" column="6" bodyfile="src/omexmeta/include/omexmeta/logger.h" bodystart="43" bodyend="47"/>
+        <location file="src/omexmeta/include/omexmeta/Logger.h" line="22" column="9" bodyfile="src/omexmeta/include/omexmeta/Logger.h" bodystart="22" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="function" id="logger_8h_1a5c40ab41439724fa2e51529f78fae5b1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <templateparamlist>
-          <param>
-            <type>typename List</type>
-          </param>
-        </templateparamlist>
-        <type>void</type>
-        <definition>void log</definition>
-        <argsstring>(const char *file, int line, const LogData&lt; List &gt; &amp;data)</argsstring>
-        <name>log</name>
-        <param>
-          <type>const char *</type>
-          <declname>file</declname>
-        </param>
-        <param>
-          <type>int</type>
-          <declname>line</declname>
-        </param>
-        <param>
-          <type>const <ref refid="structLogData" kindref="compound">LogData</ref>&lt; List &gt; &amp;</type>
-          <declname>data</declname>
-        </param>
+      <memberdef kind="define" id="Logger_8h_1a8fd29435987becaa6a706d58091c85ae" prot="public" static="no">
+        <name>OMEX_CRITICAL</name>
+        <param><defname>msg</defname></param>
+        <initializer>SPDLOG_CRITICAL(msg)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/logger.h" line="50" column="6" bodyfile="src/omexmeta/include/omexmeta/logger.h" bodystart="50" bodyend="55"/>
+        <location file="src/omexmeta/include/omexmeta/Logger.h" line="23" column="9" bodyfile="src/omexmeta/include/omexmeta/Logger.h" bodystart="23" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -206,65 +163,93 @@
     </detaileddescription>
     <programlisting>
 <codeline lineno="1"><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Created<sp/>by<sp/>Ciaran<sp/>on<sp/>12/09/2020.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Created<sp/>by<sp/>Ciaran<sp/>on<sp/>05/08/2021.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="4"><highlight class="normal"></highlight></codeline>
-<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>EVOGYM_LOGGER_H</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>EVOGYM_LOGGER_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>LIBOMEXMETA_LOGGER_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LIBOMEXMETA_LOGGER_H</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="7"><highlight class="normal"></highlight></codeline>
-<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;iostream&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="9"><highlight class="normal"></highlight></codeline>
-<codeline lineno="10" refid="structNone" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structNone" kindref="compound">None</ref><sp/>{<sp/>};</highlight></codeline>
-<codeline lineno="11"><highlight class="normal"></highlight></codeline>
-<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>First,</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Second&gt;</highlight></codeline>
-<codeline lineno="13" refid="structPair" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structPair" kindref="compound">Pair</ref><sp/>{</highlight></codeline>
-<codeline lineno="14"><highlight class="normal"><sp/><sp/>First<sp/>first;</highlight></codeline>
-<codeline lineno="15"><highlight class="normal"><sp/><sp/>Second<sp/>second;</highlight></codeline>
-<codeline lineno="16"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="17"><highlight class="normal"></highlight></codeline>
-<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>List&gt;</highlight></codeline>
-<codeline lineno="19" refid="structLogData" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structLogData" kindref="compound">LogData</ref><sp/>{</highlight></codeline>
-<codeline lineno="20"><highlight class="normal"><sp/><sp/>List<sp/>list;</highlight></codeline>
-<codeline lineno="21"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="22"><highlight class="normal"></highlight></codeline>
-<codeline lineno="23"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Begin,</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Value&gt;</highlight></codeline>
-<codeline lineno="24"><highlight class="normal"><ref refid="structLogData" kindref="compound">LogData&lt;Pair&lt;Begin,const Value &amp;&gt;</ref>&gt;</highlight></codeline>
-<codeline lineno="25"><highlight class="normal"><sp/><sp/>operator&lt;&lt;(<ref refid="structLogData" kindref="compound">LogData&lt;Begin&gt;</ref><sp/>begin,</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Value<sp/>&amp;value)</highlight></codeline>
-<codeline lineno="26"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="27"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>{{begin.list,value}};</highlight></codeline>
-<codeline lineno="28"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="29"><highlight class="normal"></highlight></codeline>
-<codeline lineno="30"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Begin,</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>n&gt;</highlight></codeline>
-<codeline lineno="31"><highlight class="normal"><ref refid="structLogData" kindref="compound">LogData&lt;Pair&lt;Begin,const char *&gt;</ref>&gt;</highlight></codeline>
-<codeline lineno="32"><highlight class="normal"><sp/><sp/>operator&lt;&lt;(<ref refid="structLogData" kindref="compound">LogData&lt;Begin&gt;</ref><sp/>begin,</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>(&amp;value)[n])</highlight></codeline>
-<codeline lineno="33"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="34"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>{{begin.list,value}};</highlight></codeline>
-<codeline lineno="35"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="36"><highlight class="normal"></highlight></codeline>
-<codeline lineno="37"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>printList(std::ostream<sp/>&amp;os,<ref refid="structNone" kindref="compound">None</ref>)</highlight></codeline>
-<codeline lineno="38"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="39"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;spdlog/spdlog.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;filesystem&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;raptor2.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceomexmeta" kindref="compound">omexmeta</ref><sp/>{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>OMEX_INFO(msg)<sp/>SPDLOG_INFO(msg)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>OMEX_TRACE(msg)<sp/>SPDLOG_TRACE(msg)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>OMEX_DEBUG(msg)<sp/>SPDLOG_DEBUG(msg)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>OMEX_WARN(msg)<sp/>SPDLOG_WARN(msg)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>OMEX_ERROR(msg)<sp/>SPDLOG_ERROR(msg)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>OMEX_CRITICAL(msg)<sp/>SPDLOG_CRITICAL(msg)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29" refid="classomexmeta_1_1Logger" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classomexmeta_1_1Logger" kindref="compound">Logger</ref><sp/>{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>LoggerPtr<sp/>=<sp/>std::shared_ptr&lt;spdlog::logger&gt;;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>LogLevel<sp/>=<sp/>spdlog::level::level_enum;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>This<sp/>is<sp/>how<sp/>clients<sp/>can<sp/>access<sp/>the<sp/>single<sp/>instance</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1Logger" kindref="compound">Logger</ref><sp/>*getLogger();</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1Logger_1a134dd390a0ffd511e7272a3ff604ea5e" kindref="member">setFormatter</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;format);</highlight></codeline>
 <codeline lineno="41"><highlight class="normal"></highlight></codeline>
-<codeline lineno="42"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Begin,</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Last&gt;</highlight></codeline>
-<codeline lineno="43"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>printList(std::ostream<sp/>&amp;os,</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structPair" kindref="compound">Pair&lt;Begin,Last&gt;</ref><sp/>&amp;data)</highlight></codeline>
-<codeline lineno="44"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="45"><highlight class="normal"><sp/><sp/>printList(os,data.first);</highlight></codeline>
-<codeline lineno="46"><highlight class="normal"><sp/><sp/>os<sp/>&lt;&lt;<sp/>data.second;</highlight></codeline>
-<codeline lineno="47"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="48"><highlight class="normal"></highlight></codeline>
-<codeline lineno="49"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>List&gt;</highlight></codeline>
-<codeline lineno="50"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>log(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*file,</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>line,</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structLogData" kindref="compound">LogData&lt;List&gt;</ref><sp/>&amp;data)</highlight></codeline>
-<codeline lineno="51"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="52"><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>file<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;:&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>line<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;:&quot;</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="53"><highlight class="normal"><sp/><sp/>printList(std::cout,data.list);</highlight></codeline>
-<codeline lineno="54"><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="55"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="56"><highlight class="normal"></highlight></codeline>
-<codeline lineno="57"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LOG(x)<sp/>(log(__FILE__,__LINE__,LogData&lt;None&gt;()<sp/>&lt;&lt;<sp/>x))</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="58"><highlight class="normal"></highlight></codeline>
-<codeline lineno="59"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="comment">//EVOGYM_LOGGER_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1Logger_1a8aea25829e62c8f4c6f03fc48d50dd41" kindref="member">setLevel</ref>(LogLevel<sp/>level);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LogLevel<sp/><ref refid="classomexmeta_1_1Logger_1a597998f70839cc4e940bdc3d88b67409" kindref="member">getLevel</ref>();</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1Logger_1adff73e1d612beabc4816cde05387454c" kindref="member">enableBacktrace</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>num);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1Logger_1ab9f86a85a769a36a22f6e02dad5c78fa" kindref="member">disableBacktrace</ref>();</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1Logger_1a10e34a8915c7520e9332d9c1889f7521" kindref="member">consoleLogger</ref>();</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1Logger_1af999f93aa9e820a40c87ed34797fc1ce" kindref="member">fileLogger</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::filesystem::path<sp/>&amp;filename);</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1Logger_1a56f5508d87ac4f700b4a7641cb7b88a0" kindref="member">dumpBacktrace</ref>();</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1Logger_1ab49ff109d59a626fbcec1c05389fe6a2" kindref="member">info</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;message);</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1Logger_1a052bdd430682c2c91490bc2763b918fc" kindref="member">trace</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;message);</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1Logger_1a8e5db234df44e3fc3a60bfcbf3e77f4b" kindref="member">debug</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;message);</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1Logger_1aa35b6607acc0873cd955f518b67c81dd" kindref="member">warn</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;message);</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1Logger_1aea5f0b2cf462c59f3a682a4447dcabb8" kindref="member">error</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;message);</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1Logger_1ae7ff56f93077d9f17626f9c8141650e8" kindref="member">critical</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;message);</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126" refid="classomexmeta_1_1Logger_1a93dcc13c2fc6049c66d7f5ce8246cd5e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LoggerPtr<sp/><ref refid="classomexmeta_1_1Logger_1a93dcc13c2fc6049c66d7f5ce8246cd5e" kindref="member">logger</ref>;</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="131" refid="classomexmeta_1_1Logger_1a96e095f68f0b4f9bb98f12290a3d96fb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1Logger_1a96e095f68f0b4f9bb98f12290a3d96fb" kindref="member">isFileLogger</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight></codeline>
+<codeline lineno="136" refid="classomexmeta_1_1Logger_1affa234a781b835b051e9495679bcede9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1Logger_1affa234a781b835b051e9495679bcede9" kindref="member">isConsoleLogger</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classomexmeta_1_1Logger" kindref="compound">Logger</ref>();</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1Logger" kindref="compound">Logger</ref><sp/>*inst_;</highlight><highlight class="comment">//<sp/>The<sp/>one,<sp/>single<sp/>instance</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::filesystem::path<sp/>filepath_;</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>backtraceNum<sp/>=<sp/>32;</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>formatterPattern<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;[%H:%M:%S<sp/>%z]<sp/>%^<sp/>%l<sp/>%g:%#<sp/>%v<sp/>%$&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LogLevel<sp/>level_<sp/>=<sp/>LogLevel::warn;</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>shouldBacktrace_<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight></codeline>
+<codeline lineno="180"><highlight class="normal">}</highlight><highlight class="comment">//<sp/>namespace<sp/>omexmeta</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="181"><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="comment">//LIBOMEXMETA_LOGGER_H</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="src/omexmeta/include/omexmeta/logger.h"/>
+    <location file="src/omexmeta/include/omexmeta/Logger.h"/>
   </compounddef>
 </doxygen>

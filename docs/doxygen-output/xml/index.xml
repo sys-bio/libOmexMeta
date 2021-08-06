@@ -490,12 +490,42 @@
   <compound refid="classredland_1_1LibrdfWorld" kind="class"><name>redland::LibrdfWorld</name>
     <member refid="classredland_1_1LibrdfWorld_1ac075f25d0a6c12a2285169593d52414b" kind="variable"><name>world_</name></member>
     <member refid="classredland_1_1LibrdfWorld_1aa8dd8487d9a3eb21d9a3bf3b401642fc" kind="function"><name>LibrdfWorld</name></member>
+    <member refid="classredland_1_1LibrdfWorld_1a2a77c772befbbb3160b0faa38d5a34a0" kind="function"><name>setLogHandler</name></member>
+    <member refid="classredland_1_1LibrdfWorld_1ab35bdf87d8d973a67f4770d806b1ba68" kind="function"><name>setRaptorLogHandler</name></member>
+    <member refid="classredland_1_1LibrdfWorld_1ac1b9ebeeaa82ec0ed77ca6e2ec913d22" kind="function"><name>setRasqalLogHandler</name></member>
     <member refid="classredland_1_1LibrdfWorld_1aa4a670af0f22a0f9671933c2701636f1" kind="function"><name>getWorld</name></member>
     <member refid="classredland_1_1LibrdfWorld_1a53091a6bf84dc9c31171d1421b97fb42" kind="function"><name>getRaptor</name></member>
+    <member refid="classredland_1_1LibrdfWorld_1a1acacf2798fe67470970db4c2a1bc177" kind="function"><name>getRasqal</name></member>
     <member refid="classredland_1_1LibrdfWorld_1a7cd379f33151b5e0d72663860a71647b" kind="function"><name>free</name></member>
   </compound>
-  <compound refid="structLogData" kind="struct"><name>LogData</name>
-    <member refid="structLogData_1added55423a3b24a6ef757e8f749795ea" kind="variable"><name>list</name></member>
+  <compound refid="classomexmeta_1_1Logger" kind="class"><name>omexmeta::Logger</name>
+    <member refid="classomexmeta_1_1Logger_1ad32818f7b4fd7aac41cdbe390a93560c" kind="typedef"><name>LoggerPtr</name></member>
+    <member refid="classomexmeta_1_1Logger_1a2b2be48282c5fed6f2527e03518290a5" kind="typedef"><name>LogLevel</name></member>
+    <member refid="classomexmeta_1_1Logger_1a93dcc13c2fc6049c66d7f5ce8246cd5e" kind="variable"><name>logger</name></member>
+    <member refid="classomexmeta_1_1Logger_1a96e095f68f0b4f9bb98f12290a3d96fb" kind="variable"><name>isFileLogger</name></member>
+    <member refid="classomexmeta_1_1Logger_1affa234a781b835b051e9495679bcede9" kind="variable"><name>isConsoleLogger</name></member>
+    <member refid="classomexmeta_1_1Logger_1a833d9e8b8d32ddf5fbdbbb355a30edd2" kind="variable"><name>inst_</name></member>
+    <member refid="classomexmeta_1_1Logger_1a3ff1260369f909d0d9d7570b2ffce2ff" kind="variable"><name>filepath_</name></member>
+    <member refid="classomexmeta_1_1Logger_1aae2c76a908b59a1564907852c0a76aaa" kind="variable"><name>backtraceNum</name></member>
+    <member refid="classomexmeta_1_1Logger_1af6ed361d9490ea96ed5acd332094f0ac" kind="variable"><name>formatterPattern</name></member>
+    <member refid="classomexmeta_1_1Logger_1a2aafb972d112f6cb7b65ec03cda89886" kind="variable"><name>level_</name></member>
+    <member refid="classomexmeta_1_1Logger_1aa59535ea90f305c7ff2b2561609ea29d" kind="variable"><name>shouldBacktrace_</name></member>
+    <member refid="classomexmeta_1_1Logger_1aba2c1a3abce94299011441a4a22a252b" kind="function"><name>getLogger</name></member>
+    <member refid="classomexmeta_1_1Logger_1a134dd390a0ffd511e7272a3ff604ea5e" kind="function"><name>setFormatter</name></member>
+    <member refid="classomexmeta_1_1Logger_1a8aea25829e62c8f4c6f03fc48d50dd41" kind="function"><name>setLevel</name></member>
+    <member refid="classomexmeta_1_1Logger_1a597998f70839cc4e940bdc3d88b67409" kind="function"><name>getLevel</name></member>
+    <member refid="classomexmeta_1_1Logger_1adff73e1d612beabc4816cde05387454c" kind="function"><name>enableBacktrace</name></member>
+    <member refid="classomexmeta_1_1Logger_1ab9f86a85a769a36a22f6e02dad5c78fa" kind="function"><name>disableBacktrace</name></member>
+    <member refid="classomexmeta_1_1Logger_1a10e34a8915c7520e9332d9c1889f7521" kind="function"><name>consoleLogger</name></member>
+    <member refid="classomexmeta_1_1Logger_1af999f93aa9e820a40c87ed34797fc1ce" kind="function"><name>fileLogger</name></member>
+    <member refid="classomexmeta_1_1Logger_1a56f5508d87ac4f700b4a7641cb7b88a0" kind="function"><name>dumpBacktrace</name></member>
+    <member refid="classomexmeta_1_1Logger_1ab49ff109d59a626fbcec1c05389fe6a2" kind="function"><name>info</name></member>
+    <member refid="classomexmeta_1_1Logger_1a052bdd430682c2c91490bc2763b918fc" kind="function"><name>trace</name></member>
+    <member refid="classomexmeta_1_1Logger_1a8e5db234df44e3fc3a60bfcbf3e77f4b" kind="function"><name>debug</name></member>
+    <member refid="classomexmeta_1_1Logger_1aa35b6607acc0873cd955f518b67c81dd" kind="function"><name>warn</name></member>
+    <member refid="classomexmeta_1_1Logger_1aea5f0b2cf462c59f3a682a4447dcabb8" kind="function"><name>error</name></member>
+    <member refid="classomexmeta_1_1Logger_1ae7ff56f93077d9f17626f9c8141650e8" kind="function"><name>critical</name></member>
+    <member refid="classomexmeta_1_1Logger_1a47644826c7413d390d471f23033edfc0" kind="function"><name>Logger</name></member>
   </compound>
   <compound refid="classomexmeta_1_1MarkupIdentifier" kind="class"><name>omexmeta::MarkupIdentifier</name>
     <member refid="classomexmeta_1_1MarkupIdentifier_1aee48438435455b27c7e709e5b4ecf57e" kind="variable"><name>doc_</name></member>
@@ -524,8 +554,6 @@
     <member refid="classomexmeta_1_1MetaID_1a9a3c9b479d522e7630275d85582edd26" kind="function"><name>generate</name></member>
     <member refid="classomexmeta_1_1MetaID_1a343f4b48c9673f8943e03057370f01e4" kind="function"><name>maxNumber</name></member>
     <member refid="classomexmeta_1_1MetaID_1ae4fe83a3512f64065e8e2997bc710be6" kind="function"><name>countDigits</name></member>
-  </compound>
-  <compound refid="structNone" kind="struct"><name>None</name>
   </compound>
   <compound refid="structdbg_1_1detail__detector_1_1nonesuch" kind="struct"><name>dbg::detail_detector::nonesuch</name>
     <member refid="structdbg_1_1detail__detector_1_1nonesuch_1af18fc7da3a412a23ac293cba85bf322b" kind="function"><name>nonesuch</name></member>
@@ -610,10 +638,6 @@
     <member refid="classOptions_1a70ee261bcbdb118b5e3b23606888cb71" kind="variable"><name>removeRDFBag_</name></member>
     <member refid="classOptions_1a9103fe7c299390bb2e072d54279be51a" kind="variable"><name>translateVCard_</name></member>
     <member refid="classOptions_1a37e99102a22a33f1ddd51e30f674b9c5" kind="function"><name>Options</name></member>
-  </compound>
-  <compound refid="structPair" kind="struct"><name>Pair</name>
-    <member refid="structPair_1acccddd6bdff96957a1e0714e539ef256" kind="variable"><name>first</name></member>
-    <member refid="structPair_1a86b9ae89026109ed31635f6c938b5b57" kind="variable"><name>second</name></member>
   </compound>
   <compound refid="classomexmeta_1_1Participant" kind="class"><name>omexmeta::Participant</name>
     <member refid="classomexmeta_1_1Participant_1a978c915388e0105434ac5da3172e2ff9" kind="variable"><name>model_</name></member>
@@ -1175,6 +1199,7 @@
     <member refid="classomexmeta_1_1RDF_1a2b7d4e2ddeaa44c26d4d82478b789a5e" kind="function"><name>classifyXmlTypeFromFile</name></member>
     <member refid="classomexmeta_1_1RDF_1ade6ca329272d5de27496183a81bbec8a" kind="function"><name>extractSemanticInformationFromSBML</name></member>
     <member refid="classomexmeta_1_1RDF_1add8f3d957f24a26785f29b85d50f4399" kind="function"><name>freeRDF</name></member>
+    <member refid="classomexmeta_1_1RDF_1a5dbc21ee385932368917630201d1df76" kind="function"><name>setLogHandlers</name></member>
   </compound>
   <compound refid="classRedlandLibrdfException" kind="class"><name>RedlandLibrdfException</name>
     <member refid="classRedlandLibrdfException_1ac541ead5c20548813d7dea73c28c7fab" kind="function"><name>Exception</name></member>
@@ -1366,7 +1391,7 @@
     <member refid="dbg_8h_1a19adefcfcaddecb9f32e810ebcae4856" kind="typedef"><name>detect_size_t</name></member>
     <member refid="dbg_8h_1a2c6a2bc0c8581b3b0d285d1d2971e44d" kind="typedef"><name>ostream_operator_t</name></member>
   </compound>
-  <compound refid="namespacedbg_1_1detail_1_1_0d28" kind="namespace"><name>dbg::detail::@28</name>
+  <compound refid="namespacedbg_1_1detail_1_1_0d29" kind="namespace"><name>dbg::detail::@29</name>
   </compound>
   <compound refid="namespacedbg_1_1detail__detector" kind="namespace"><name>dbg::detail_detector</name>
     <member refid="dbg_8h_1a1dbadccf461338e71c55ea392d4ed47c" kind="typedef"><name>void_t</name></member>
@@ -1552,8 +1577,25 @@
     <member refid="namespaceomexmeta_1a453301b5f8df44094c7f81d7ce126669" kind="function"><name>ResultsMap_getStringVectorAt</name></member>
     <member refid="namespaceomexmeta_1ace3f4bb9c5c547a5e237a7ad58a744ee" kind="function"><name>ResultsMap_getKeys</name></member>
     <member refid="namespaceomexmeta_1a6434b2cffea803818b02bf9a7584b263" kind="function"><name>ResultsMap_delete</name></member>
+    <member refid="namespaceomexmeta_1a401a97ce4b2a6c22f92b774091289ef8" kind="function"><name>Logger_getLogger</name></member>
+    <member refid="namespaceomexmeta_1a00b49a350dca49a197c8b96920c6336b" kind="function"><name>Logger_setFormatter</name></member>
+    <member refid="namespaceomexmeta_1aa53a5e35c8e35aa716999e2bee6674aa" kind="function"><name>Logger_setLevel</name></member>
+    <member refid="namespaceomexmeta_1a5edf8f35484c24b1593f6b8f112d856f" kind="function"><name>Logger_getLevel</name></member>
+    <member refid="namespaceomexmeta_1aac3d164e61ae7cd1925a591f54abf515" kind="function"><name>Logger_enableBacktrace</name></member>
+    <member refid="namespaceomexmeta_1a8799d08a3e0e07b1866b72c95565bb1a" kind="function"><name>Logger_disableBacktrace</name></member>
+    <member refid="namespaceomexmeta_1a75fc5039ad0e686ff6211daeb2131eb9" kind="function"><name>Logger_dumpBacktrace</name></member>
+    <member refid="namespaceomexmeta_1a3e5e22a8c34ba9014bfaa635900d751a" kind="function"><name>Logger_consoleLogger</name></member>
+    <member refid="namespaceomexmeta_1ad67a74ecb6408eb3f72f8be1c0e7d448" kind="function"><name>Logger_fileLogger</name></member>
+    <member refid="namespaceomexmeta_1a867513601843c5e1ab364f65a22bfb9d" kind="function"><name>Logger_info</name></member>
+    <member refid="namespaceomexmeta_1a01b3ea59b98096bbb46a60c75ecc0306" kind="function"><name>Logger_trace</name></member>
+    <member refid="namespaceomexmeta_1a2c00a547f41821c5794c4e3d2f911bc5" kind="function"><name>Logger_debug</name></member>
+    <member refid="namespaceomexmeta_1abffb02d727c2ea3060e42c4140cb903b" kind="function"><name>Logger_warn</name></member>
+    <member refid="namespaceomexmeta_1a305282ca72c7f4af6d1fea665bdee5fe" kind="function"><name>Logger_error</name></member>
+    <member refid="namespaceomexmeta_1a09fc0cbf9bf4b34308c9ca2cb19e4ce3" kind="function"><name>Logger_critical</name></member>
     <member refid="namespaceomexmeta_1a17e4b403c1f6627264259b7d300f5cb1" kind="function"><name>removeElementRecursion</name></member>
     <member refid="namespaceomexmeta_1a0a8d50daa10e421d0722520cdef0ab9a" kind="function"><name>PredicateFactory</name></member>
+    <member refid="namespaceomexmeta_1a752a1e76521d86bb0b03cd429264c627" kind="function"><name>librdfLogHandler</name></member>
+    <member refid="namespaceomexmeta_1a569ba944911d2823bb40a36e55ba02b4" kind="function"><name>raptorLogHandler</name></member>
     <member refid="namespaceomexmeta_1a902ae2b86ac75376d9d826aecbd99b43" kind="function"><name>RDF_getBaseUri</name></member>
     <member refid="namespaceomexmeta_1ac1d5cf2bf56180edb2f88a9282715873" kind="function"><name>RDF_setBaseUri</name></member>
     <member refid="namespaceomexmeta_1a81d062026034e37ec5f03426e17e9a27" kind="function"><name>PhysicalProperty_getPropertyMetaidBase</name></member>
@@ -1573,7 +1615,7 @@
   </compound>
   <compound refid="CMakeLists_8txt" kind="file"><name>CMakeLists.txt</name>
     <member refid="CMakeLists_8txt_1ac6e62319442999cf52a6433a996aa8d2" kind="function"><name>set</name></member>
-    <member refid="CMakeLists_8txt_1ab3501bae4f2614b0bf421130347b9931" kind="function"><name>SET</name></member>
+    <member refid="CMakeLists_8txt_1a6e9cde50febdc572e32384add7f03a8b" kind="function"><name>SET</name></member>
   </compound>
   <compound refid="CurlGet_8cpp" kind="file"><name>CurlGet.cpp</name>
   </compound>
@@ -1633,13 +1675,13 @@
   </compound>
   <compound refid="IRDF_8h" kind="file"><name>IRDF.h</name>
   </compound>
-  <compound refid="logger_8h" kind="file"><name>logger.h</name>
-    <member refid="logger_8h_1af855c94dc540e943632089ce7496faac" kind="define"><name>LOG</name></member>
-    <member refid="logger_8h_1ae781be7f7da37f2d200d3795b203dab1" kind="function"><name>operator&lt;&lt;</name></member>
-    <member refid="logger_8h_1a2cf87bd0339ae36c35d95e4ec708f36d" kind="function"><name>operator&lt;&lt;</name></member>
-    <member refid="logger_8h_1a78941df6fd543ee5d88f96625f0047a4" kind="function"><name>printList</name></member>
-    <member refid="logger_8h_1aa99f584b7df937bea8439a998575b096" kind="function"><name>printList</name></member>
-    <member refid="logger_8h_1a5c40ab41439724fa2e51529f78fae5b1" kind="function"><name>log</name></member>
+  <compound refid="Logger_8h" kind="file"><name>Logger.h</name>
+    <member refid="Logger_8h_1a14095d6307757d11ce09fedf0d3b9458" kind="define"><name>OMEX_INFO</name></member>
+    <member refid="Logger_8h_1adca53c34f10d3b39eb8c91cb7ff5ac6b" kind="define"><name>OMEX_TRACE</name></member>
+    <member refid="Logger_8h_1a25fec9537907be09f8771f94b3a3ed41" kind="define"><name>OMEX_DEBUG</name></member>
+    <member refid="Logger_8h_1a3db9a12b42ab734d262407e6c958e9b2" kind="define"><name>OMEX_WARN</name></member>
+    <member refid="Logger_8h_1a9dad07775af5ca98ec7e7e3bfbcc7621" kind="define"><name>OMEX_ERROR</name></member>
+    <member refid="Logger_8h_1a8fd29435987becaa6a706d58091c85ae" kind="define"><name>OMEX_CRITICAL</name></member>
   </compound>
   <compound refid="MarkupIdentifier_8h" kind="file"><name>MarkupIdentifier.h</name>
   </compound>
@@ -1686,6 +1728,8 @@
   <compound refid="UriHandler_8h" kind="file"><name>UriHandler.h</name>
   </compound>
   <compound refid="VCardTranslator_8h" kind="file"><name>VCardTranslator.h</name>
+  </compound>
+  <compound refid="Logger_8cpp" kind="file"><name>Logger.cpp</name>
   </compound>
   <compound refid="MarkupIdentifier_8cpp" kind="file"><name>MarkupIdentifier.cpp</name>
   </compound>

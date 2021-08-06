@@ -7,6 +7,7 @@
     <innerfile refid="Editor_8cpp">Editor.cpp</innerfile>
     <innerfile refid="ElementExtractor_8cpp">ElementExtractor.cpp</innerfile>
     <innerfile refid="EnergyDiff_8cpp">EnergyDiff.cpp</innerfile>
+    <innerfile refid="Logger_8cpp">Logger.cpp</innerfile>
     <innerfile refid="MarkupIdentifier_8cpp">MarkupIdentifier.cpp</innerfile>
     <innerfile refid="MetaID_8cpp">MetaID.cpp</innerfile>
     <innerfile refid="OmexMetaCApi_8cpp">OmexMetaCApi.cpp</innerfile>

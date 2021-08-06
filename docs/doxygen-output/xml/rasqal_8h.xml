@@ -8576,7 +8576,7 @@
         <detaileddescription>
 <para>rasqal_feature: @RASQAL_FEATURE_NO_NET: Deny network requests. @RASQAL_FEATURE_RAND_SEED: Set rand() / rand_r() seed @RASQAL_FEATURE_LAST: Internal.</para>
 <para>Query features.</para>
-<para><ref refid="structNone" kindref="compound">None</ref> currently defined. </para>
+<para>None currently defined. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>

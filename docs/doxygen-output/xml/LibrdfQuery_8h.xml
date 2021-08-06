@@ -13,6 +13,9 @@
       <node id="5">
         <label>stdarg.h</label>
       </node>
+      <node id="29">
+        <label>functional</label>
+      </node>
       <node id="1">
         <label>src/redland/RedlandWrapper/src/include/redland/LibrdfQuery.h</label>
         <link refid="LibrdfQuery_8h"/>
@@ -160,6 +163,8 @@
         <childnode refid="25" relation="include">
         </childnode>
         <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
         </childnode>
       </node>
       <node id="25">

@@ -1,0 +1,22 @@
+[11:24:09 +01:00]  error : 1 syntax error at '<' 
+[11:24:09 +01:00]  error : 1 syntax error at '<' 
+ [11-24-09] - 3160 - 21140 - console - error : 1 syntax error at '<' 
+ [11-24-09] - 3160 - 21140 - console - trace : trace message 
+ [11-24-09] - 3160 - 21140 - console - info : info message 
+ [11-24-09] - 3160 - 21140 - console - debug : debug message 
+ [11-24-09] - 3160 - 21140 - console - warning : warn message 
+ [11-24-09] - 3160 - 21140 - console - error : error message 
+ [11-24-09] - 3160 - 21140 - console - critical : critical message 
+first
+end first
+second
+end second
+third
+end third
+fourth
+end fourth
+fifth
+check logger_file: D:\libOmexMeta\cmake-build-release\docs\log.log
+end fifth
+sixth
+end sixth

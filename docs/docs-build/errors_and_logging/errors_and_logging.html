@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Errors and Logging &mdash; libomexmeta 1.2.11 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/tabs.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Annotating Models" href="../annotating_models/annotating_models_index.html" />
+    <link rel="prev" title="Building Diagrams" href="../diagrams/diagrams_index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> libomexmeta
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div>
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Main">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../background.html">Background to Semantic Annotations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Install/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Install/install.html#build-from-source">Build from Source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reading_rdf/reading_rdf.html">Reading RDF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../writing_rdf/writing_rdf.html">Serializing RDF Graphs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../singular_annotations/index.html">Singular Annotations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../composite_annotations/index.html">Composite Annotations: SBML Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../composite_annotations/index.html#composite-annotations-cellml-examples">Composite Annotations: CellML Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stripping_annotations/index.html">Stripping Annotations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../querying_rdf/querying_rdf.html">Querying RDF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../diagrams/diagrams_index.html">Building Diagrams</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Errors and Logging</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#logging-levels">Logging Levels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#custom-formatting">Custom Formatting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#switching-to-the-file-logger">Switching to the file logger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-the-logger">Using the logger</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../annotating_models/annotating_models_index.html">Annotating Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../download_biomodels/download_biomodels.html">Downloading Biomodels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../APIReference/api_reference_index.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Developers/developers_index.html">Developers Documentation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" aria-label="Top" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">libomexmeta</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+<div role="navigation" aria-label="Breadcrumbs">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Errors and Logging</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/errors_and_logging/errors_and_logging.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="errors-and-logging">
+<h1>Errors and Logging<a class="headerlink" href="#errors-and-logging" title="Permalink to this headline"></a></h1>
+<p>By default, <code class="docutils literal notranslate"><span class="pre">libOmexMeta</span></code> and its dependencies <code class="docutils literal notranslate"><span class="pre">librdf</span></code>, <code class="docutils literal notranslate"><span class="pre">raptor</span></code> and <code class="docutils literal notranslate"><span class="pre">sparql</span></code>
+log information, errors and warnings to console. In the following, an error is produced
+because the <code class="docutils literal notranslate"><span class="pre">rdfxml</span></code> string is being treated as <code class="docutils literal notranslate"><span class="pre">turtle</span></code> syntax.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">Python</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">C++</button><button aria-controls="panel-0-0-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-2" name="0-2" role="tab" tabindex="-1">C</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">Information, warnings and errors are logged to console by libOmexMeta and its dependencies</span><a class="headerlink" href="#id1" title="Permalink to this code"></a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Information, warnings and errors are logged to console by default</span>
+<span class="kn">from</span> <span class="nn">pyomexmeta</span> <span class="kn">import</span> <span class="n">RDF</span>
+
+<span class="n">cellml</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;&lt;?xml version=</span><span class="se">\&quot;</span><span class="s1">1.1</span><span class="se">\&quot;</span><span class="s1"> encoding=</span><span class="se">\&quot;</span><span class="s1">UTF-8</span><span class="se">\&quot;</span><span class="s1">?&gt;</span>
+<span class="s1">            &lt;model xmlns=</span><span class="se">\&quot;</span><span class="s1">http://www.cellml.org/cellml/1.1#</span><span class="se">\&quot;</span><span class="s1"> xmlns:cmeta=</span><span class="se">\&quot;</span><span class="s1">http://www.cellml.org/metadata/1.0#</span><span class="se">\&quot;</span><span class="s1"> xmlns:xlink=</span><span class="se">\&quot;</span><span class="s1">http://www.w3.org/1999/xlink</span><span class="se">\&quot;</span><span class="s1"> xmlns:rdf=</span><span class="se">\&quot;</span><span class="s1">http://www.w3.org/1999/02/22-rdf-syntax-ns#</span><span class="se">\&quot;</span><span class="s1"> xmlns:bqs=</span><span class="se">\&quot;</span><span class="s1">http://www.cellml.org/bqs/1.0#</span><span class="se">\&quot;</span><span class="s1"> xmlns:semsim=</span><span class="se">\&quot;</span><span class="s1">http://bime.uw.edu/semsim/#</span><span class="se">\&quot;</span><span class="s1"> xmlns:dc=</span><span class="se">\&quot;</span><span class="s1">http://purl.org/dc/terms/</span><span class="se">\&quot;</span><span class="s1"> xmlns:vCard=</span><span class="se">\&quot;</span><span class="s1">http://www.w3.org/2001/vcard-rdf/3.0#</span><span class="se">\&quot;</span><span class="s1"> name=</span><span class="se">\&quot;</span><span class="s1">annotation_examples</span><span class="se">\&quot;</span><span class="s1"> cmeta:id=</span><span class="se">\&quot;</span><span class="s1">annExamples</span><span class="se">\&quot;</span><span class="s1">&gt;</span>
+<span class="s1">              &lt;component name=</span><span class="se">\&quot;</span><span class="s1">main</span><span class="se">\&quot;</span><span class="s1">&gt;</span>
+<span class="s1">                &lt;variable cmeta:id=</span><span class="se">\&quot;</span><span class="s1">main.Volume</span><span class="se">\&quot;</span><span class="s1"> initial_value=</span><span class="se">\&quot;</span><span class="s1">100</span><span class="se">\&quot;</span><span class="s1"> name=</span><span class="se">\&quot;</span><span class="s1">Volume</span><span class="se">\&quot;</span><span class="s1"> units=</span><span class="se">\&quot;</span><span class="s1">dimensionless</span><span class="se">\&quot;</span><span class="s1"> /&gt;</span>
+<span class="s1">                &lt;variable cmeta:id=</span><span class="se">\&quot;</span><span class="s1">main.MembraneVoltage</span><span class="se">\&quot;</span><span class="s1"> initial_value=</span><span class="se">\&quot;</span><span class="s1">-80</span><span class="se">\&quot;</span><span class="s1"> name=</span><span class="se">\&quot;</span><span class="s1">MembraneVoltage</span><span class="se">\&quot;</span><span class="s1"> units=</span><span class="se">\&quot;</span><span class="s1">dimensionless</span><span class="se">\&quot;</span><span class="s1"> /&gt;</span>
+<span class="s1">                &lt;variable cmeta:id=</span><span class="se">\&quot;</span><span class="s1">main.ReactionRate</span><span class="se">\&quot;</span><span class="s1"> initial_value=</span><span class="se">\&quot;</span><span class="s1">1</span><span class="se">\&quot;</span><span class="s1"> name=</span><span class="se">\&quot;</span><span class="s1">ReactionRate</span><span class="se">\&quot;</span><span class="s1"> units=</span><span class="se">\&quot;</span><span class="s1">dimensionless</span><span class="se">\&quot;</span><span class="s1"> /&gt;</span>
+<span class="s1">              &lt;/component&gt;</span>
+<span class="s1">            &lt;/model&gt;&#39;&#39;&#39;</span>
+
+<span class="c1"># oops - did a whoops. Parsing rdfxml as turtle</span>
+<span class="n">rdf</span> <span class="o">=</span> <span class="n">RDF</span><span class="o">.</span><span class="n">from_string</span><span class="p">(</span><span class="n">cellml</span><span class="p">,</span> <span class="n">syntax</span><span class="o">=</span><span class="s2">&quot;turtle&quot;</span><span class="p">)</span>  <span class="c1"># See Python console for logging message</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id2" title="Permalink to this code"></a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">11</span><span class="p">:</span><span class="mi">23</span><span class="p">:</span><span class="mi">56</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">error</span> <span class="p">:</span> <span class="mi">1</span> <span class="n">syntax</span> <span class="n">error</span> <span class="n">at</span> <span class="s1">&#39;&lt;&#39;</span> 
+</pre></div>
+</div>
+</div>
+</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">Information, warnings and errors are logged to console by libOmexMeta and its dependencies</span><a class="headerlink" href="#id3" title="Permalink to this code"></a></div>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// Information, warnings and errors are logged to console by default</span>
+<span class="cp">#include</span> <span class="cpf">&quot;omexmeta/OmexMeta.h&quot;</span><span class="cp"></span>
+
+<span class="k">using</span> <span class="k">namespace</span> <span class="nn">omexmeta</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">cellml</span> <span class="o">=</span> <span class="s">&quot;&lt;?xml version=</span><span class="se">\&quot;</span><span class="s">1.1</span><span class="se">\&quot;</span><span class="s"> encoding=</span><span class="se">\&quot;</span><span class="s">UTF-8</span><span class="se">\&quot;</span><span class="s">?&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                         <span class="s">&quot;  &lt;model xmlns=</span><span class="se">\&quot;</span><span class="s">http://www.cellml.org/cellml/1.1#</span><span class="se">\&quot;</span><span class="s"> xmlns:cmeta=</span><span class="se">\&quot;</span><span class="s">http://www.cellml.org/metadata/1.0#</span><span class="se">\&quot;</span><span class="s"> xmlns:xlink=</span><span class="se">\&quot;</span><span class="s">http://www.w3.org/1999/xlink</span><span class="se">\&quot;</span><span class="s"> xmlns:rdf=</span><span class="se">\&quot;</span><span class="s">http://www.w3.org/1999/02/22-rdf-syntax-ns#</span><span class="se">\&quot;</span><span class="s"> xmlns:bqs=</span><span class="se">\&quot;</span><span class="s">http://www.cellml.org/bqs/1.0#</span><span class="se">\&quot;</span><span class="s"> xmlns:semsim=</span><span class="se">\&quot;</span><span class="s">http://bime.uw.edu/semsim/#</span><span class="se">\&quot;</span><span class="s"> xmlns:dc=</span><span class="se">\&quot;</span><span class="s">http://purl.org/dc/terms/</span><span class="se">\&quot;</span><span class="s"> xmlns:vCard=</span><span class="se">\&quot;</span><span class="s">http://www.w3.org/2001/vcard-rdf/3.0#</span><span class="se">\&quot;</span><span class="s"> name=</span><span class="se">\&quot;</span><span class="s">annotation_examples</span><span class="se">\&quot;</span><span class="s"> cmeta:id=</span><span class="se">\&quot;</span><span class="s">annExamples</span><span class="se">\&quot;</span><span class="s">&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                         <span class="s">&quot;    &lt;component name=</span><span class="se">\&quot;</span><span class="s">main</span><span class="se">\&quot;</span><span class="s">&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                         <span class="s">&quot;      &lt;variable cmeta:id=</span><span class="se">\&quot;</span><span class="s">main.Volume</span><span class="se">\&quot;</span><span class="s"> initial_value=</span><span class="se">\&quot;</span><span class="s">100</span><span class="se">\&quot;</span><span class="s"> name=</span><span class="se">\&quot;</span><span class="s">Volume</span><span class="se">\&quot;</span><span class="s"> units=</span><span class="se">\&quot;</span><span class="s">dimensionless</span><span class="se">\&quot;</span><span class="s"> /&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                         <span class="s">&quot;      &lt;variable cmeta:id=</span><span class="se">\&quot;</span><span class="s">main.MembraneVoltage</span><span class="se">\&quot;</span><span class="s"> initial_value=</span><span class="se">\&quot;</span><span class="s">-80</span><span class="se">\&quot;</span><span class="s"> name=</span><span class="se">\&quot;</span><span class="s">MembraneVoltage</span><span class="se">\&quot;</span><span class="s"> units=</span><span class="se">\&quot;</span><span class="s">dimensionless</span><span class="se">\&quot;</span><span class="s"> /&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                         <span class="s">&quot;      &lt;variable cmeta:id=</span><span class="se">\&quot;</span><span class="s">main.ReactionRate</span><span class="se">\&quot;</span><span class="s"> initial_value=</span><span class="se">\&quot;</span><span class="s">1</span><span class="se">\&quot;</span><span class="s"> name=</span><span class="se">\&quot;</span><span class="s">ReactionRate</span><span class="se">\&quot;</span><span class="s"> units=</span><span class="se">\&quot;</span><span class="s">dimensionless</span><span class="se">\&quot;</span><span class="s"> /&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                         <span class="s">&quot;    &lt;/component&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                         <span class="s">&quot;  &lt;/model&gt;&quot;</span><span class="p">;</span>
+
+
+    <span class="c1">// oops - did a whoops. Parsing rdfxml as turtle</span>
+    <span class="n">RDF</span> <span class="n">rdf1</span> <span class="o">=</span> <span class="n">RDF</span><span class="o">::</span><span class="n">fromString</span><span class="p">(</span><span class="n">cellml</span><span class="p">,</span> <span class="s">&quot;turtle&quot;</span><span class="p">);</span> <span class="c1">// See console</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id4" title="Permalink to this code"></a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">11</span><span class="p">:</span><span class="mi">24</span><span class="p">:</span><span class="mi">08</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">error</span> <span class="p">:</span> <span class="mi">1</span> <span class="n">syntax</span> <span class="n">error</span> <span class="n">at</span> <span class="s1">&#39;&lt;&#39;</span> 
+
+</pre></div>
+</div>
+</div>
+</div><div aria-labelledby="tab-0-0-2" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-2" name="0-2" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-text">Information, warnings and errors are logged to console by libOmexMeta and its dependencies</span><a class="headerlink" href="#id5" title="Permalink to this code"></a></div>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="c1">// Information, warnings and errors are logged to console by default</span>
+<span class="cp">#include</span> <span class="cpf">&quot;omexmeta/OmexMetaCApi.h&quot;</span><span class="cp"></span>
+
+<span class="n">using</span> <span class="n">namespace</span> <span class="n">omexmeta</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+    <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">cellml</span> <span class="o">=</span> <span class="s">&quot;&lt;?xml version=</span><span class="se">\&quot;</span><span class="s">1.1</span><span class="se">\&quot;</span><span class="s"> encoding=</span><span class="se">\&quot;</span><span class="s">UTF-8</span><span class="se">\&quot;</span><span class="s">?&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                         <span class="s">&quot;            &lt;model xmlns=</span><span class="se">\&quot;</span><span class="s">http://www.cellml.org/cellml/1.1#</span><span class="se">\&quot;</span><span class="s"> xmlns:cmeta=</span><span class="se">\&quot;</span><span class="s">http://www.cellml.org/metadata/1.0#</span><span class="se">\&quot;</span><span class="s"> xmlns:xlink=</span><span class="se">\&quot;</span><span class="s">http://www.w3.org/1999/xlink</span><span class="se">\&quot;</span><span class="s"> xmlns:rdf=</span><span class="se">\&quot;</span><span class="s">http://www.w3.org/1999/02/22-rdf-syntax-ns#</span><span class="se">\&quot;</span><span class="s"> xmlns:bqs=</span><span class="se">\&quot;</span><span class="s">http://www.cellml.org/bqs/1.0#</span><span class="se">\&quot;</span><span class="s"> xmlns:semsim=</span><span class="se">\&quot;</span><span class="s">http://bime.uw.edu/semsim/#</span><span class="se">\&quot;</span><span class="s"> xmlns:dc=</span><span class="se">\&quot;</span><span class="s">http://purl.org/dc/terms/</span><span class="se">\&quot;</span><span class="s"> xmlns:vCard=</span><span class="se">\&quot;</span><span class="s">http://www.w3.org/2001/vcard-rdf/3.0#</span><span class="se">\&quot;</span><span class="s"> name=</span><span class="se">\&quot;</span><span class="s">annotation_examples</span><span class="se">\&quot;</span><span class="s"> cmeta:id=</span><span class="se">\&quot;</span><span class="s">annExamples</span><span class="se">\&quot;</span><span class="s">&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                         <span class="s">&quot;              &lt;component name=</span><span class="se">\&quot;</span><span class="s">main</span><span class="se">\&quot;</span><span class="s">&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                         <span class="s">&quot;                &lt;variable cmeta:id=</span><span class="se">\&quot;</span><span class="s">main.Volume</span><span class="se">\&quot;</span><span class="s"> initial_value=</span><span class="se">\&quot;</span><span class="s">100</span><span class="se">\&quot;</span><span class="s"> name=</span><span class="se">\&quot;</span><span class="s">Volume</span><span class="se">\&quot;</span><span class="s"> units=</span><span class="se">\&quot;</span><span class="s">dimensionless</span><span class="se">\&quot;</span><span class="s"> /&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                         <span class="s">&quot;                &lt;variable cmeta:id=</span><span class="se">\&quot;</span><span class="s">main.MembraneVoltage</span><span class="se">\&quot;</span><span class="s"> initial_value=</span><span class="se">\&quot;</span><span class="s">-80</span><span class="se">\&quot;</span><span class="s"> name=</span><span class="se">\&quot;</span><span class="s">MembraneVoltage</span><span class="se">\&quot;</span><span class="s"> units=</span><span class="se">\&quot;</span><span class="s">dimensionless</span><span class="se">\&quot;</span><span class="s"> /&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                         <span class="s">&quot;                &lt;variable cmeta:id=</span><span class="se">\&quot;</span><span class="s">main.ReactionRate</span><span class="se">\&quot;</span><span class="s"> initial_value=</span><span class="se">\&quot;</span><span class="s">1</span><span class="se">\&quot;</span><span class="s"> name=</span><span class="se">\&quot;</span><span class="s">ReactionRate</span><span class="se">\&quot;</span><span class="s"> units=</span><span class="se">\&quot;</span><span class="s">dimensionless</span><span class="se">\&quot;</span><span class="s"> /&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                         <span class="s">&quot;              &lt;/component&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                         <span class="s">&quot;            &lt;/model&gt;&quot;</span><span class="p">;</span>
+
+
+    <span class="c1">// oops - did a whoops. Parsing rdfxml as turtle</span>
+    <span class="n">RDF</span><span class="o">*</span> <span class="n">rdf1</span> <span class="o">=</span> <span class="n">RDF_fromString</span><span class="p">(</span><span class="n">cellml</span><span class="p">,</span> <span class="s">&quot;turtle&quot;</span><span class="p">);</span> <span class="c1">// See console</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id6">
+<div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id6" title="Permalink to this code"></a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">11</span><span class="p">:</span><span class="mi">24</span><span class="p">:</span><span class="mi">07</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">error</span> <span class="p">:</span> <span class="mi">1</span> <span class="n">syntax</span> <span class="n">error</span> <span class="n">at</span> <span class="s1">&#39;&lt;&#39;</span> 
+
+</pre></div>
+</div>
+</div>
+</div></div>
+<div class="section" id="logging-levels">
+<h2>Logging Levels<a class="headerlink" href="#logging-levels" title="Permalink to this headline"></a></h2>
+<p>The default logging level is <code class="docutils literal notranslate"><span class="pre">warn</span></code> which will cause libOmexMeta to display all
+logging messages with a precedence level equal to or greater than <code class="docutils literal notranslate"><span class="pre">warn</span></code>. The logging
+levels and their precedence levels are:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">trace</span></code>     = 0</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">debug</span></code>     = 1</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">info</span></code>      = 2</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">warn</span></code>      = 3</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">err</span></code>       = 4</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">critical</span></code>  = 5</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">off</span></code>       = 6</p></li>
+</ul>
+</div></blockquote>
+<p>Users can choose their preferred logging level.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-1-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-1-1-0" name="1-0" role="tab" tabindex="0">Python</button><button aria-controls="panel-1-1-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-1" name="1-1" role="tab" tabindex="-1">C++</button><button aria-controls="panel-1-1-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-2" name="1-2" role="tab" tabindex="-1">C</button></div><div aria-labelledby="tab-1-1-0" class="sphinx-tabs-panel" id="panel-1-1-0" name="1-0" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id7">
+<div class="code-block-caption"><span class="caption-text">How to change the logging level python</span><a class="headerlink" href="#id7" title="Permalink to this code"></a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Switching logging levels</span>
+<span class="kn">from</span> <span class="nn">pyomexmeta</span> <span class="kn">import</span> <span class="n">RDF</span><span class="p">,</span> <span class="n">Logger</span><span class="p">,</span> <span class="n">eLogLevel</span>
+
+<span class="n">cellml</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;&lt;?xml version=</span><span class="se">\&quot;</span><span class="s1">1.1</span><span class="se">\&quot;</span><span class="s1"> encoding=</span><span class="se">\&quot;</span><span class="s1">UTF-8</span><span class="se">\&quot;</span><span class="s1">?&gt;</span>
+<span class="s1">            &lt;model xmlns=</span><span class="se">\&quot;</span><span class="s1">http://www.cellml.org/cellml/1.1#</span><span class="se">\&quot;</span><span class="s1"> xmlns:cmeta=</span><span class="se">\&quot;</span><span class="s1">http://www.cellml.org/metadata/1.0#</span><span class="se">\&quot;</span><span class="s1"> xmlns:xlink=</span><span class="se">\&quot;</span><span class="s1">http://www.w3.org/1999/xlink</span><span class="se">\&quot;</span><span class="s1"> xmlns:rdf=</span><span class="se">\&quot;</span><span class="s1">http://www.w3.org/1999/02/22-rdf-syntax-ns#</span><span class="se">\&quot;</span><span class="s1"> xmlns:bqs=</span><span class="se">\&quot;</span><span class="s1">http://www.cellml.org/bqs/1.0#</span><span class="se">\&quot;</span><span class="s1"> xmlns:semsim=</span><span class="se">\&quot;</span><span class="s1">http://bime.uw.edu/semsim/#</span><span class="se">\&quot;</span><span class="s1"> xmlns:dc=</span><span class="se">\&quot;</span><span class="s1">http://purl.org/dc/terms/</span><span class="se">\&quot;</span><span class="s1"> xmlns:vCard=</span><span class="se">\&quot;</span><span class="s1">http://www.w3.org/2001/vcard-rdf/3.0#</span><span class="se">\&quot;</span><span class="s1"> name=</span><span class="se">\&quot;</span><span class="s1">annotation_examples</span><span class="se">\&quot;</span><span class="s1"> cmeta:id=</span><span class="se">\&quot;</span><span class="s1">annExamples</span><span class="se">\&quot;</span><span class="s1">&gt;</span>
+<span class="s1">              &lt;component name=</span><span class="se">\&quot;</span><span class="s1">main</span><span class="se">\&quot;</span><span class="s1">&gt;</span>
+<span class="s1">                &lt;variable cmeta:id=</span><span class="se">\&quot;</span><span class="s1">main.Volume</span><span class="se">\&quot;</span><span class="s1"> initial_value=</span><span class="se">\&quot;</span><span class="s1">100</span><span class="se">\&quot;</span><span class="s1"> name=</span><span class="se">\&quot;</span><span class="s1">Volume</span><span class="se">\&quot;</span><span class="s1"> units=</span><span class="se">\&quot;</span><span class="s1">dimensionless</span><span class="se">\&quot;</span><span class="s1"> /&gt;</span>
+<span class="s1">                &lt;variable cmeta:id=</span><span class="se">\&quot;</span><span class="s1">main.MembraneVoltage</span><span class="se">\&quot;</span><span class="s1"> initial_value=</span><span class="se">\&quot;</span><span class="s1">-80</span><span class="se">\&quot;</span><span class="s1"> name=</span><span class="se">\&quot;</span><span class="s1">MembraneVoltage</span><span class="se">\&quot;</span><span class="s1"> units=</span><span class="se">\&quot;</span><span class="s1">dimensionless</span><span class="se">\&quot;</span><span class="s1"> /&gt;</span>
+<span class="s1">                &lt;variable cmeta:id=</span><span class="se">\&quot;</span><span class="s1">main.ReactionRate</span><span class="se">\&quot;</span><span class="s1"> initial_value=</span><span class="se">\&quot;</span><span class="s1">1</span><span class="se">\&quot;</span><span class="s1"> name=</span><span class="se">\&quot;</span><span class="s1">ReactionRate</span><span class="se">\&quot;</span><span class="s1"> units=</span><span class="se">\&quot;</span><span class="s1">dimensionless</span><span class="se">\&quot;</span><span class="s1"> /&gt;</span>
+<span class="s1">              &lt;/component&gt;</span>
+<span class="s1">            &lt;/model&gt;&#39;&#39;&#39;</span>
+
+<span class="c1"># changing the logging level to critical is one way to hide error messages or messages with lower precedence</span>
+<span class="n">Logger</span><span class="o">.</span><span class="n">set_level</span><span class="p">(</span><span class="n">eLogLevel</span><span class="o">.</span><span class="n">critical</span><span class="p">)</span>
+<span class="n">rdf</span> <span class="o">=</span> <span class="n">RDF</span><span class="o">.</span><span class="n">from_string</span><span class="p">(</span><span class="n">cellml</span><span class="p">,</span> <span class="n">syntax</span><span class="o">=</span><span class="s2">&quot;turtle&quot;</span><span class="p">)</span>  <span class="c1"># See console - nothing is emitted</span>
+
+<span class="c1"># turning the logger off is another</span>
+<span class="n">Logger</span><span class="o">.</span><span class="n">set_level</span><span class="p">(</span><span class="n">eLogLevel</span><span class="o">.</span><span class="n">off</span><span class="p">)</span>
+<span class="n">rdf</span> <span class="o">=</span> <span class="n">RDF</span><span class="o">.</span><span class="n">from_string</span><span class="p">(</span><span class="n">cellml</span><span class="p">,</span> <span class="n">syntax</span><span class="o">=</span><span class="s2">&quot;turtle&quot;</span><span class="p">)</span>  <span class="c1"># See console - nothing is emitted</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id8">
+<div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id8" title="Permalink to this code"></a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div><div aria-labelledby="tab-1-1-1" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-1" name="1-1" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id9">
+<div class="code-block-caption"><span class="caption-text">How to change the logging level C++</span><a class="headerlink" href="#id9" title="Permalink to this code"></a></div>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// Switching logging levels</span>
+<span class="cp">#include</span> <span class="cpf">&quot;omexmeta/OmexMeta.h&quot;</span><span class="cp"></span>
+
+<span class="k">using</span> <span class="k">namespace</span> <span class="nn">omexmeta</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">cellml</span> <span class="o">=</span> <span class="s">&quot;&lt;?xml version=</span><span class="se">\&quot;</span><span class="s">1.1</span><span class="se">\&quot;</span><span class="s"> encoding=</span><span class="se">\&quot;</span><span class="s">UTF-8</span><span class="se">\&quot;</span><span class="s">?&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                         <span class="s">&quot;  &lt;model xmlns=</span><span class="se">\&quot;</span><span class="s">http://www.cellml.org/cellml/1.1#</span><span class="se">\&quot;</span><span class="s"> xmlns:cmeta=</span><span class="se">\&quot;</span><span class="s">http://www.cellml.org/metadata/1.0#</span><span class="se">\&quot;</span><span class="s"> xmlns:xlink=</span><span class="se">\&quot;</span><span class="s">http://www.w3.org/1999/xlink</span><span class="se">\&quot;</span><span class="s"> xmlns:rdf=</span><span class="se">\&quot;</span><span class="s">http://www.w3.org/1999/02/22-rdf-syntax-ns#</span><span class="se">\&quot;</span><span class="s"> xmlns:bqs=</span><span class="se">\&quot;</span><span class="s">http://www.cellml.org/bqs/1.0#</span><span class="se">\&quot;</span><span class="s"> xmlns:semsim=</span><span class="se">\&quot;</span><span class="s">http://bime.uw.edu/semsim/#</span><span class="se">\&quot;</span><span class="s"> xmlns:dc=</span><span class="se">\&quot;</span><span class="s">http://purl.org/dc/terms/</span><span class="se">\&quot;</span><span class="s"> xmlns:vCard=</span><span class="se">\&quot;</span><span class="s">http://www.w3.org/2001/vcard-rdf/3.0#</span><span class="se">\&quot;</span><span class="s"> name=</span><span class="se">\&quot;</span><span class="s">annotation_examples</span><span class="se">\&quot;</span><span class="s"> cmeta:id=</span><span class="se">\&quot;</span><span class="s">annExamples</span><span class="se">\&quot;</span><span class="s">&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                         <span class="s">&quot;    &lt;component name=</span><span class="se">\&quot;</span><span class="s">main</span><span class="se">\&quot;</span><span class="s">&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                         <span class="s">&quot;      &lt;variable cmeta:id=</span><span class="se">\&quot;</span><span class="s">main.Volume</span><span class="se">\&quot;</span><span class="s"> initial_value=</span><span class="se">\&quot;</span><span class="s">100</span><span class="se">\&quot;</span><span class="s"> name=</span><span class="se">\&quot;</span><span class="s">Volume</span><span class="se">\&quot;</span><span class="s"> units=</span><span class="se">\&quot;</span><span class="s">dimensionless</span><span class="se">\&quot;</span><span class="s"> /&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                         <span class="s">&quot;      &lt;variable cmeta:id=</span><span class="se">\&quot;</span><span class="s">main.MembraneVoltage</span><span class="se">\&quot;</span><span class="s"> initial_value=</span><span class="se">\&quot;</span><span class="s">-80</span><span class="se">\&quot;</span><span class="s"> name=</span><span class="se">\&quot;</span><span class="s">MembraneVoltage</span><span class="se">\&quot;</span><span class="s"> units=</span><span class="se">\&quot;</span><span class="s">dimensionless</span><span class="se">\&quot;</span><span class="s"> /&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                         <span class="s">&quot;      &lt;variable cmeta:id=</span><span class="se">\&quot;</span><span class="s">main.ReactionRate</span><span class="se">\&quot;</span><span class="s"> initial_value=</span><span class="se">\&quot;</span><span class="s">1</span><span class="se">\&quot;</span><span class="s"> name=</span><span class="se">\&quot;</span><span class="s">ReactionRate</span><span class="se">\&quot;</span><span class="s"> units=</span><span class="se">\&quot;</span><span class="s">dimensionless</span><span class="se">\&quot;</span><span class="s"> /&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                         <span class="s">&quot;    &lt;/component&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                         <span class="s">&quot;  &lt;/model&gt;&quot;</span><span class="p">;</span>
+
+
+    <span class="c1">// changing the logging level to critical is one way to hide error messages or messages with lower precedence</span>
+    <span class="n">Logger</span><span class="o">::</span><span class="n">getLogger</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">setLevel</span><span class="p">(</span><span class="n">Logger</span><span class="o">::</span><span class="n">LogLevel</span><span class="o">::</span><span class="n">critical</span><span class="p">);</span>
+    <span class="n">RDF</span> <span class="n">rdf1</span> <span class="o">=</span> <span class="n">RDF</span><span class="o">::</span><span class="n">fromString</span><span class="p">(</span><span class="n">cellml</span><span class="p">,</span> <span class="s">&quot;turtle&quot;</span><span class="p">);</span> <span class="c1">// See console - nothing is emitted</span>
+
+    <span class="c1">// turning the logger off is another</span>
+    <span class="n">Logger</span><span class="o">::</span><span class="n">getLogger</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">setLevel</span><span class="p">(</span><span class="n">Logger</span><span class="o">::</span><span class="n">LogLevel</span><span class="o">::</span><span class="n">off</span><span class="p">);</span>
+    <span class="n">RDF</span> <span class="n">rdf2</span> <span class="o">=</span> <span class="n">RDF</span><span class="o">::</span><span class="n">fromString</span><span class="p">(</span><span class="n">cellml</span><span class="p">,</span> <span class="s">&quot;turtle&quot;</span><span class="p">);</span> <span class="c1">// See console - nothing is emitted</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id10">
+<div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id10" title="Permalink to this code"></a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div><div aria-labelledby="tab-1-1-2" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-2" name="1-2" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id11">
+<div class="code-block-caption"><span class="caption-text">How to change the logging level C</span><a class="headerlink" href="#id11" title="Permalink to this code"></a></div>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="c1">// Switching logging levels</span>
+<span class="cp">#include</span> <span class="cpf">&quot;omexmeta/OmexMetaCApi.h&quot;</span><span class="cp"></span>
+
+<span class="n">using</span> <span class="n">namespace</span> <span class="n">omexmeta</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+    <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">cellml</span> <span class="o">=</span> <span class="s">&quot;&lt;?xml version=</span><span class="se">\&quot;</span><span class="s">1.1</span><span class="se">\&quot;</span><span class="s"> encoding=</span><span class="se">\&quot;</span><span class="s">UTF-8</span><span class="se">\&quot;</span><span class="s">?&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                         <span class="s">&quot;            &lt;model xmlns=</span><span class="se">\&quot;</span><span class="s">http://www.cellml.org/cellml/1.1#</span><span class="se">\&quot;</span><span class="s"> xmlns:cmeta=</span><span class="se">\&quot;</span><span class="s">http://www.cellml.org/metadata/1.0#</span><span class="se">\&quot;</span><span class="s"> xmlns:xlink=</span><span class="se">\&quot;</span><span class="s">http://www.w3.org/1999/xlink</span><span class="se">\&quot;</span><span class="s"> xmlns:rdf=</span><span class="se">\&quot;</span><span class="s">http://www.w3.org/1999/02/22-rdf-syntax-ns#</span><span class="se">\&quot;</span><span class="s"> xmlns:bqs=</span><span class="se">\&quot;</span><span class="s">http://www.cellml.org/bqs/1.0#</span><span class="se">\&quot;</span><span class="s"> xmlns:semsim=</span><span class="se">\&quot;</span><span class="s">http://bime.uw.edu/semsim/#</span><span class="se">\&quot;</span><span class="s"> xmlns:dc=</span><span class="se">\&quot;</span><span class="s">http://purl.org/dc/terms/</span><span class="se">\&quot;</span><span class="s"> xmlns:vCard=</span><span class="se">\&quot;</span><span class="s">http://www.w3.org/2001/vcard-rdf/3.0#</span><span class="se">\&quot;</span><span class="s"> name=</span><span class="se">\&quot;</span><span class="s">annotation_examples</span><span class="se">\&quot;</span><span class="s"> cmeta:id=</span><span class="se">\&quot;</span><span class="s">annExamples</span><span class="se">\&quot;</span><span class="s">&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                         <span class="s">&quot;              &lt;component name=</span><span class="se">\&quot;</span><span class="s">main</span><span class="se">\&quot;</span><span class="s">&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                         <span class="s">&quot;                &lt;variable cmeta:id=</span><span class="se">\&quot;</span><span class="s">main.Volume</span><span class="se">\&quot;</span><span class="s"> initial_value=</span><span class="se">\&quot;</span><span class="s">100</span><span class="se">\&quot;</span><span class="s"> name=</span><span class="se">\&quot;</span><span class="s">Volume</span><span class="se">\&quot;</span><span class="s"> units=</span><span class="se">\&quot;</span><span class="s">dimensionless</span><span class="se">\&quot;</span><span class="s"> /&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                         <span class="s">&quot;                &lt;variable cmeta:id=</span><span class="se">\&quot;</span><span class="s">main.MembraneVoltage</span><span class="se">\&quot;</span><span class="s"> initial_value=</span><span class="se">\&quot;</span><span class="s">-80</span><span class="se">\&quot;</span><span class="s"> name=</span><span class="se">\&quot;</span><span class="s">MembraneVoltage</span><span class="se">\&quot;</span><span class="s"> units=</span><span class="se">\&quot;</span><span class="s">dimensionless</span><span class="se">\&quot;</span><span class="s"> /&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                         <span class="s">&quot;                &lt;variable cmeta:id=</span><span class="se">\&quot;</span><span class="s">main.ReactionRate</span><span class="se">\&quot;</span><span class="s"> initial_value=</span><span class="se">\&quot;</span><span class="s">1</span><span class="se">\&quot;</span><span class="s"> name=</span><span class="se">\&quot;</span><span class="s">ReactionRate</span><span class="se">\&quot;</span><span class="s"> units=</span><span class="se">\&quot;</span><span class="s">dimensionless</span><span class="se">\&quot;</span><span class="s"> /&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                         <span class="s">&quot;              &lt;/component&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                         <span class="s">&quot;            &lt;/model&gt;&quot;</span><span class="p">;</span>
+
+    
+    <span class="c1">// changing the logging level to critical is one way to hide error messages or messages with lower precedence</span>
+    <span class="n">Logger_setLevel</span><span class="p">(</span><span class="n">Logger</span><span class="o">::</span><span class="n">LogLevel</span><span class="o">::</span><span class="n">critical</span><span class="p">);</span>
+    <span class="n">RDF</span><span class="o">*</span> <span class="n">rdf1</span> <span class="o">=</span> <span class="n">RDF_fromString</span><span class="p">(</span><span class="n">cellml</span><span class="p">,</span> <span class="s">&quot;turtle&quot;</span><span class="p">);</span> <span class="c1">// See Python console - nothing is emitted</span>
+
+    <span class="c1">// turning the logger off is another</span>
+    <span class="n">Logger_setLevel</span><span class="p">(</span><span class="n">Logger</span><span class="o">::</span><span class="n">LogLevel</span><span class="o">::</span><span class="n">off</span><span class="p">);</span>
+    <span class="n">RDF</span><span class="o">*</span> <span class="n">rdf2</span> <span class="o">=</span> <span class="n">RDF_fromString</span><span class="p">(</span><span class="n">cellml</span><span class="p">,</span> <span class="s">&quot;turtle&quot;</span><span class="p">);</span> <span class="c1">// See Python console - nothing is emitted</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id12">
+<div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id12" title="Permalink to this code"></a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div></div>
+</div>
+<div class="section" id="custom-formatting">
+<h2>Custom Formatting<a class="headerlink" href="#custom-formatting" title="Permalink to this headline"></a></h2>
+<p>Users can choose how the logging messages are formatted. Logging in libOmexMeta is handled by a dependency
+library called <a class="reference external" href="https://github.com/gabime/spdlog">spdlog</a>. Users should see
+<a class="reference external" href="https://github.com/gabime/spdlog/wiki/3.-Custom-formatting#pattern-flags">their documentation</a>
+for a list of valid formatting symbols and their purpose.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-2-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-2-2-0" name="2-0" role="tab" tabindex="0">Python</button><button aria-controls="panel-2-2-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-2-2-1" name="2-1" role="tab" tabindex="-1">C++</button><button aria-controls="panel-2-2-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-2-2-2" name="2-2" role="tab" tabindex="-1">C</button></div><div aria-labelledby="tab-2-2-0" class="sphinx-tabs-panel" id="panel-2-2-0" name="2-0" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id13">
+<div class="code-block-caption"><span class="caption-text">Custom formatting for the logger</span><a class="headerlink" href="#id13" title="Permalink to this code"></a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># custom logging formatter</span>
+<span class="kn">from</span> <span class="nn">pyomexmeta</span> <span class="kn">import</span> <span class="n">RDF</span><span class="p">,</span> <span class="n">Logger</span><span class="p">,</span> <span class="n">eLogLevel</span>
+
+<span class="n">cellml</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;&lt;?xml version=</span><span class="se">\&quot;</span><span class="s1">1.1</span><span class="se">\&quot;</span><span class="s1"> encoding=</span><span class="se">\&quot;</span><span class="s1">UTF-8</span><span class="se">\&quot;</span><span class="s1">?&gt;</span>
+<span class="s1">            &lt;model xmlns=</span><span class="se">\&quot;</span><span class="s1">http://www.cellml.org/cellml/1.1#</span><span class="se">\&quot;</span><span class="s1"> xmlns:cmeta=</span><span class="se">\&quot;</span><span class="s1">http://www.cellml.org/metadata/1.0#</span><span class="se">\&quot;</span><span class="s1"> xmlns:xlink=</span><span class="se">\&quot;</span><span class="s1">http://www.w3.org/1999/xlink</span><span class="se">\&quot;</span><span class="s1"> xmlns:rdf=</span><span class="se">\&quot;</span><span class="s1">http://www.w3.org/1999/02/22-rdf-syntax-ns#</span><span class="se">\&quot;</span><span class="s1"> xmlns:bqs=</span><span class="se">\&quot;</span><span class="s1">http://www.cellml.org/bqs/1.0#</span><span class="se">\&quot;</span><span class="s1"> xmlns:semsim=</span><span class="se">\&quot;</span><span class="s1">http://bime.uw.edu/semsim/#</span><span class="se">\&quot;</span><span class="s1"> xmlns:dc=</span><span class="se">\&quot;</span><span class="s1">http://purl.org/dc/terms/</span><span class="se">\&quot;</span><span class="s1"> xmlns:vCard=</span><span class="se">\&quot;</span><span class="s1">http://www.w3.org/2001/vcard-rdf/3.0#</span><span class="se">\&quot;</span><span class="s1"> name=</span><span class="se">\&quot;</span><span class="s1">annotation_examples</span><span class="se">\&quot;</span><span class="s1"> cmeta:id=</span><span class="se">\&quot;</span><span class="s1">annExamples</span><span class="se">\&quot;</span><span class="s1">&gt;</span>
+<span class="s1">              &lt;component name=</span><span class="se">\&quot;</span><span class="s1">main</span><span class="se">\&quot;</span><span class="s1">&gt;</span>
+<span class="s1">                &lt;variable cmeta:id=</span><span class="se">\&quot;</span><span class="s1">main.Volume</span><span class="se">\&quot;</span><span class="s1"> initial_value=</span><span class="se">\&quot;</span><span class="s1">100</span><span class="se">\&quot;</span><span class="s1"> name=</span><span class="se">\&quot;</span><span class="s1">Volume</span><span class="se">\&quot;</span><span class="s1"> units=</span><span class="se">\&quot;</span><span class="s1">dimensionless</span><span class="se">\&quot;</span><span class="s1"> /&gt;</span>
+<span class="s1">                &lt;variable cmeta:id=</span><span class="se">\&quot;</span><span class="s1">main.MembraneVoltage</span><span class="se">\&quot;</span><span class="s1"> initial_value=</span><span class="se">\&quot;</span><span class="s1">-80</span><span class="se">\&quot;</span><span class="s1"> name=</span><span class="se">\&quot;</span><span class="s1">MembraneVoltage</span><span class="se">\&quot;</span><span class="s1"> units=</span><span class="se">\&quot;</span><span class="s1">dimensionless</span><span class="se">\&quot;</span><span class="s1"> /&gt;</span>
+<span class="s1">                &lt;variable cmeta:id=</span><span class="se">\&quot;</span><span class="s1">main.ReactionRate</span><span class="se">\&quot;</span><span class="s1"> initial_value=</span><span class="se">\&quot;</span><span class="s1">1</span><span class="se">\&quot;</span><span class="s1"> name=</span><span class="se">\&quot;</span><span class="s1">ReactionRate</span><span class="se">\&quot;</span><span class="s1"> units=</span><span class="se">\&quot;</span><span class="s1">dimensionless</span><span class="se">\&quot;</span><span class="s1"> /&gt;</span>
+<span class="s1">              &lt;/component&gt;</span>
+<span class="s1">            &lt;/model&gt;&#39;&#39;&#39;</span>
+
+
+<span class="c1"># users can customize the formatting of the logger</span>
+<span class="c1"># See https://github.com/gabime/spdlog/wiki/3.-Custom-formatting#pattern-flags</span>
+<span class="c1"># for more information on the supported symbols and their meanings</span>
+<span class="n">Logger</span><span class="o">.</span><span class="n">set_formatter</span><span class="p">(</span><span class="s2">&quot;%^ [%H-%M-%S] - %t - %P - %n - %l : %v %$&quot;</span><span class="p">)</span>
+<span class="n">rdf</span> <span class="o">=</span> <span class="n">RDF</span><span class="o">.</span><span class="n">from_string</span><span class="p">(</span><span class="n">cellml</span><span class="p">,</span> <span class="n">syntax</span><span class="o">=</span><span class="s2">&quot;rdfxml&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id14">
+<div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id14" title="Permalink to this code"></a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="p">[</span><span class="mi">11</span><span class="o">-</span><span class="mi">23</span><span class="o">-</span><span class="mi">56</span><span class="p">]</span> <span class="o">-</span> <span class="mi">14832</span> <span class="o">-</span> <span class="mi">16724</span> <span class="o">-</span> <span class="n">console</span> <span class="o">-</span> <span class="n">warning</span> <span class="p">:</span>  <span class="n">XML</span> <span class="n">parser</span> <span class="n">warning</span><span class="p">:</span> <span class="n">Unsupported</span> <span class="n">version</span> <span class="s1">&#39;1.1&#39;</span> 
+</pre></div>
+</div>
+</div>
+</div><div aria-labelledby="tab-2-2-1" class="sphinx-tabs-panel" hidden="true" id="panel-2-2-1" name="2-1" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id15">
+<div class="code-block-caption"><span class="caption-text">Custom formatting for the logger</span><a class="headerlink" href="#id15" title="Permalink to this code"></a></div>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// custom logging formatter</span>
+<span class="cp">#include</span> <span class="cpf">&quot;omexmeta/OmexMeta.h&quot;</span><span class="cp"></span>
+
+<span class="k">using</span> <span class="k">namespace</span> <span class="nn">omexmeta</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">cellml</span> <span class="o">=</span> <span class="s">&quot;&lt;?xml version=</span><span class="se">\&quot;</span><span class="s">1.1</span><span class="se">\&quot;</span><span class="s"> encoding=</span><span class="se">\&quot;</span><span class="s">UTF-8</span><span class="se">\&quot;</span><span class="s">?&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                         <span class="s">&quot;  &lt;model xmlns=</span><span class="se">\&quot;</span><span class="s">http://www.cellml.org/cellml/1.1#</span><span class="se">\&quot;</span><span class="s"> xmlns:cmeta=</span><span class="se">\&quot;</span><span class="s">http://www.cellml.org/metadata/1.0#</span><span class="se">\&quot;</span><span class="s"> xmlns:xlink=</span><span class="se">\&quot;</span><span class="s">http://www.w3.org/1999/xlink</span><span class="se">\&quot;</span><span class="s"> xmlns:rdf=</span><span class="se">\&quot;</span><span class="s">http://www.w3.org/1999/02/22-rdf-syntax-ns#</span><span class="se">\&quot;</span><span class="s"> xmlns:bqs=</span><span class="se">\&quot;</span><span class="s">http://www.cellml.org/bqs/1.0#</span><span class="se">\&quot;</span><span class="s"> xmlns:semsim=</span><span class="se">\&quot;</span><span class="s">http://bime.uw.edu/semsim/#</span><span class="se">\&quot;</span><span class="s"> xmlns:dc=</span><span class="se">\&quot;</span><span class="s">http://purl.org/dc/terms/</span><span class="se">\&quot;</span><span class="s"> xmlns:vCard=</span><span class="se">\&quot;</span><span class="s">http://www.w3.org/2001/vcard-rdf/3.0#</span><span class="se">\&quot;</span><span class="s"> name=</span><span class="se">\&quot;</span><span class="s">annotation_examples</span><span class="se">\&quot;</span><span class="s"> cmeta:id=</span><span class="se">\&quot;</span><span class="s">annExamples</span><span class="se">\&quot;</span><span class="s">&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                         <span class="s">&quot;    &lt;component name=</span><span class="se">\&quot;</span><span class="s">main</span><span class="se">\&quot;</span><span class="s">&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                         <span class="s">&quot;      &lt;variable cmeta:id=</span><span class="se">\&quot;</span><span class="s">main.Volume</span><span class="se">\&quot;</span><span class="s"> initial_value=</span><span class="se">\&quot;</span><span class="s">100</span><span class="se">\&quot;</span><span class="s"> name=</span><span class="se">\&quot;</span><span class="s">Volume</span><span class="se">\&quot;</span><span class="s"> units=</span><span class="se">\&quot;</span><span class="s">dimensionless</span><span class="se">\&quot;</span><span class="s"> /&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                         <span class="s">&quot;      &lt;variable cmeta:id=</span><span class="se">\&quot;</span><span class="s">main.MembraneVoltage</span><span class="se">\&quot;</span><span class="s"> initial_value=</span><span class="se">\&quot;</span><span class="s">-80</span><span class="se">\&quot;</span><span class="s"> name=</span><span class="se">\&quot;</span><span class="s">MembraneVoltage</span><span class="se">\&quot;</span><span class="s"> units=</span><span class="se">\&quot;</span><span class="s">dimensionless</span><span class="se">\&quot;</span><span class="s"> /&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                         <span class="s">&quot;      &lt;variable cmeta:id=</span><span class="se">\&quot;</span><span class="s">main.ReactionRate</span><span class="se">\&quot;</span><span class="s"> initial_value=</span><span class="se">\&quot;</span><span class="s">1</span><span class="se">\&quot;</span><span class="s"> name=</span><span class="se">\&quot;</span><span class="s">ReactionRate</span><span class="se">\&quot;</span><span class="s"> units=</span><span class="se">\&quot;</span><span class="s">dimensionless</span><span class="se">\&quot;</span><span class="s"> /&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                         <span class="s">&quot;    &lt;/component&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                         <span class="s">&quot;  &lt;/model&gt;&quot;</span><span class="p">;</span>
+
+    <span class="c1">// users can customize the formatting of the logger;</span>
+    <span class="c1">// See https://github.com/gabime/spdlog/wiki/3.-Custom-formatting//pattern-flags;</span>
+    <span class="c1">// for more information on the supported symbols and their meanings;</span>
+    <span class="n">Logger</span><span class="o">::</span><span class="n">getLogger</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">setFormatter</span><span class="p">(</span><span class="s">&quot;%^ [%H-%M-%S] - %t - %P - %n - %l : %v %$&quot;</span><span class="p">);</span>
+    <span class="n">RDF</span> <span class="n">rdf</span> <span class="o">=</span> <span class="n">RDF</span><span class="o">::</span><span class="n">fromString</span><span class="p">(</span><span class="n">cellml</span><span class="p">,</span> <span class="s">&quot;turtle&quot;</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id16">
+<div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id16" title="Permalink to this code"></a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="p">[</span><span class="mi">11</span><span class="o">-</span><span class="mi">24</span><span class="o">-</span><span class="mi">08</span><span class="p">]</span> <span class="o">-</span> <span class="mi">22796</span> <span class="o">-</span> <span class="mi">21400</span> <span class="o">-</span> <span class="n">console</span> <span class="o">-</span> <span class="n">error</span> <span class="p">:</span> <span class="mi">1</span> <span class="n">syntax</span> <span class="n">error</span> <span class="n">at</span> <span class="s1">&#39;&lt;&#39;</span> 
+
+</pre></div>
+</div>
+</div>
+</div><div aria-labelledby="tab-2-2-2" class="sphinx-tabs-panel" hidden="true" id="panel-2-2-2" name="2-2" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id17">
+<div class="code-block-caption"><span class="caption-text">Custom formatting for the logger</span><a class="headerlink" href="#id17" title="Permalink to this code"></a></div>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="c1">// custom logging formatter</span>
+<span class="cp">#include</span> <span class="cpf">&quot;omexmeta/OmexMetaCApi.h&quot;</span><span class="cp"></span>
+
+<span class="n">using</span> <span class="n">namespace</span> <span class="n">omexmeta</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+    <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">cellml</span> <span class="o">=</span> <span class="s">&quot;&lt;?xml version=</span><span class="se">\&quot;</span><span class="s">1.1</span><span class="se">\&quot;</span><span class="s"> encoding=</span><span class="se">\&quot;</span><span class="s">UTF-8</span><span class="se">\&quot;</span><span class="s">?&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                         <span class="s">&quot;            &lt;model xmlns=</span><span class="se">\&quot;</span><span class="s">http://www.cellml.org/cellml/1.1#</span><span class="se">\&quot;</span><span class="s"> xmlns:cmeta=</span><span class="se">\&quot;</span><span class="s">http://www.cellml.org/metadata/1.0#</span><span class="se">\&quot;</span><span class="s"> xmlns:xlink=</span><span class="se">\&quot;</span><span class="s">http://www.w3.org/1999/xlink</span><span class="se">\&quot;</span><span class="s"> xmlns:rdf=</span><span class="se">\&quot;</span><span class="s">http://www.w3.org/1999/02/22-rdf-syntax-ns#</span><span class="se">\&quot;</span><span class="s"> xmlns:bqs=</span><span class="se">\&quot;</span><span class="s">http://www.cellml.org/bqs/1.0#</span><span class="se">\&quot;</span><span class="s"> xmlns:semsim=</span><span class="se">\&quot;</span><span class="s">http://bime.uw.edu/semsim/#</span><span class="se">\&quot;</span><span class="s"> xmlns:dc=</span><span class="se">\&quot;</span><span class="s">http://purl.org/dc/terms/</span><span class="se">\&quot;</span><span class="s"> xmlns:vCard=</span><span class="se">\&quot;</span><span class="s">http://www.w3.org/2001/vcard-rdf/3.0#</span><span class="se">\&quot;</span><span class="s"> name=</span><span class="se">\&quot;</span><span class="s">annotation_examples</span><span class="se">\&quot;</span><span class="s"> cmeta:id=</span><span class="se">\&quot;</span><span class="s">annExamples</span><span class="se">\&quot;</span><span class="s">&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                         <span class="s">&quot;              &lt;component name=</span><span class="se">\&quot;</span><span class="s">main</span><span class="se">\&quot;</span><span class="s">&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                         <span class="s">&quot;                &lt;variable cmeta:id=</span><span class="se">\&quot;</span><span class="s">main.Volume</span><span class="se">\&quot;</span><span class="s"> initial_value=</span><span class="se">\&quot;</span><span class="s">100</span><span class="se">\&quot;</span><span class="s"> name=</span><span class="se">\&quot;</span><span class="s">Volume</span><span class="se">\&quot;</span><span class="s"> units=</span><span class="se">\&quot;</span><span class="s">dimensionless</span><span class="se">\&quot;</span><span class="s"> /&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                         <span class="s">&quot;                &lt;variable cmeta:id=</span><span class="se">\&quot;</span><span class="s">main.MembraneVoltage</span><span class="se">\&quot;</span><span class="s"> initial_value=</span><span class="se">\&quot;</span><span class="s">-80</span><span class="se">\&quot;</span><span class="s"> name=</span><span class="se">\&quot;</span><span class="s">MembraneVoltage</span><span class="se">\&quot;</span><span class="s"> units=</span><span class="se">\&quot;</span><span class="s">dimensionless</span><span class="se">\&quot;</span><span class="s"> /&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                         <span class="s">&quot;                &lt;variable cmeta:id=</span><span class="se">\&quot;</span><span class="s">main.ReactionRate</span><span class="se">\&quot;</span><span class="s"> initial_value=</span><span class="se">\&quot;</span><span class="s">1</span><span class="se">\&quot;</span><span class="s"> name=</span><span class="se">\&quot;</span><span class="s">ReactionRate</span><span class="se">\&quot;</span><span class="s"> units=</span><span class="se">\&quot;</span><span class="s">dimensionless</span><span class="se">\&quot;</span><span class="s"> /&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                         <span class="s">&quot;              &lt;/component&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                         <span class="s">&quot;            &lt;/model&gt;&quot;</span><span class="p">;</span>
+
+    <span class="c1">// users can customize the formatting of the logger;</span>
+    <span class="c1">// See https://github.com/gabime/spdlog/wiki/3.-Custom-formatting//pattern-flags;</span>
+    <span class="c1">// for more information on the supported symbols and their meanings;</span>
+    <span class="n">Logger_setFormatter</span><span class="p">(</span><span class="s">&quot;%^ [%H-%M-%S] - %t - %P - %n - %l : %v %$&quot;</span><span class="p">);</span>
+    <span class="n">RDF</span><span class="o">*</span> <span class="n">rdf</span> <span class="o">=</span> <span class="n">RDF_fromString</span><span class="p">(</span><span class="n">cellml</span><span class="p">,</span> <span class="s">&quot;turtle&quot;</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id18">
+<div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id18" title="Permalink to this code"></a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="p">[</span><span class="mi">11</span><span class="o">-</span><span class="mi">24</span><span class="o">-</span><span class="mi">08</span><span class="p">]</span> <span class="o">-</span> <span class="mi">11380</span> <span class="o">-</span> <span class="mi">15424</span> <span class="o">-</span> <span class="n">console</span> <span class="o">-</span> <span class="n">error</span> <span class="p">:</span> <span class="mi">1</span> <span class="n">syntax</span> <span class="n">error</span> <span class="n">at</span> <span class="s1">&#39;&lt;&#39;</span> 
+
+</pre></div>
+</div>
+</div>
+</div></div>
+</div>
+<div class="section" id="switching-to-the-file-logger">
+<h2>Switching to the file logger<a class="headerlink" href="#switching-to-the-file-logger" title="Permalink to this headline"></a></h2>
+<p>Users can optionally redirect logging messages to a file of their choosing. Activating the file logger
+automatically deactivates the console logger, and reactivating the console logger disables the file logger.
+Properties such as current logging level and formatting strings are preserved when
+switching between the file and console loggers.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-3-3-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-3-3-0" name="3-0" role="tab" tabindex="0">Python</button><button aria-controls="panel-3-3-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-3-3-1" name="3-1" role="tab" tabindex="-1">C++</button><button aria-controls="panel-3-3-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-3-3-2" name="3-2" role="tab" tabindex="-1">C</button></div><div aria-labelledby="tab-3-3-0" class="sphinx-tabs-panel" id="panel-3-3-0" name="3-0" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id19">
+<div class="code-block-caption"><span class="caption-text">Switching between file and console logging</span><a class="headerlink" href="#id19" title="Permalink to this code"></a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># switching to the file logger</span>
+<span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">join</span><span class="p">,</span> <span class="n">exists</span><span class="p">,</span> <span class="n">dirname</span><span class="p">,</span> <span class="n">abspath</span>
+<span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">remove</span>
+<span class="kn">from</span> <span class="nn">pyomexmeta</span> <span class="kn">import</span> <span class="n">RDF</span><span class="p">,</span> <span class="n">Logger</span>
+
+<span class="n">cellml</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;&lt;?xml version=</span><span class="se">\&quot;</span><span class="s1">1.1</span><span class="se">\&quot;</span><span class="s1"> encoding=</span><span class="se">\&quot;</span><span class="s1">UTF-8</span><span class="se">\&quot;</span><span class="s1">?&gt;</span>
+<span class="s1">            &lt;model xmlns=</span><span class="se">\&quot;</span><span class="s1">http://www.cellml.org/cellml/1.1#</span><span class="se">\&quot;</span><span class="s1"> xmlns:cmeta=</span><span class="se">\&quot;</span><span class="s1">http://www.cellml.org/metadata/1.0#</span><span class="se">\&quot;</span><span class="s1"> xmlns:xlink=</span><span class="se">\&quot;</span><span class="s1">http://www.w3.org/1999/xlink</span><span class="se">\&quot;</span><span class="s1"> xmlns:rdf=</span><span class="se">\&quot;</span><span class="s1">http://www.w3.org/1999/02/22-rdf-syntax-ns#</span><span class="se">\&quot;</span><span class="s1"> xmlns:bqs=</span><span class="se">\&quot;</span><span class="s1">http://www.cellml.org/bqs/1.0#</span><span class="se">\&quot;</span><span class="s1"> xmlns:semsim=</span><span class="se">\&quot;</span><span class="s1">http://bime.uw.edu/semsim/#</span><span class="se">\&quot;</span><span class="s1"> xmlns:dc=</span><span class="se">\&quot;</span><span class="s1">http://purl.org/dc/terms/</span><span class="se">\&quot;</span><span class="s1"> xmlns:vCard=</span><span class="se">\&quot;</span><span class="s1">http://www.w3.org/2001/vcard-rdf/3.0#</span><span class="se">\&quot;</span><span class="s1"> name=</span><span class="se">\&quot;</span><span class="s1">annotation_examples</span><span class="se">\&quot;</span><span class="s1"> cmeta:id=</span><span class="se">\&quot;</span><span class="s1">annExamples</span><span class="se">\&quot;</span><span class="s1">&gt;</span>
+<span class="s1">              &lt;component name=</span><span class="se">\&quot;</span><span class="s1">main</span><span class="se">\&quot;</span><span class="s1">&gt;</span>
+<span class="s1">                &lt;variable cmeta:id=</span><span class="se">\&quot;</span><span class="s1">main.Volume</span><span class="se">\&quot;</span><span class="s1"> initial_value=</span><span class="se">\&quot;</span><span class="s1">100</span><span class="se">\&quot;</span><span class="s1"> name=</span><span class="se">\&quot;</span><span class="s1">Volume</span><span class="se">\&quot;</span><span class="s1"> units=</span><span class="se">\&quot;</span><span class="s1">dimensionless</span><span class="se">\&quot;</span><span class="s1"> /&gt;</span>
+<span class="s1">                &lt;variable cmeta:id=</span><span class="se">\&quot;</span><span class="s1">main.MembraneVoltage</span><span class="se">\&quot;</span><span class="s1"> initial_value=</span><span class="se">\&quot;</span><span class="s1">-80</span><span class="se">\&quot;</span><span class="s1"> name=</span><span class="se">\&quot;</span><span class="s1">MembraneVoltage</span><span class="se">\&quot;</span><span class="s1"> units=</span><span class="se">\&quot;</span><span class="s1">dimensionless</span><span class="se">\&quot;</span><span class="s1"> /&gt;</span>
+<span class="s1">                &lt;variable cmeta:id=</span><span class="se">\&quot;</span><span class="s1">main.ReactionRate</span><span class="se">\&quot;</span><span class="s1"> initial_value=</span><span class="se">\&quot;</span><span class="s1">1</span><span class="se">\&quot;</span><span class="s1"> name=</span><span class="se">\&quot;</span><span class="s1">ReactionRate</span><span class="se">\&quot;</span><span class="s1"> units=</span><span class="se">\&quot;</span><span class="s1">dimensionless</span><span class="se">\&quot;</span><span class="s1"> /&gt;</span>
+<span class="s1">              &lt;/component&gt;</span>
+<span class="s1">            &lt;/model&gt;&#39;&#39;&#39;</span>
+
+<span class="n">logger_file</span> <span class="o">=</span> <span class="n">join</span><span class="p">(</span><span class="n">abspath</span><span class="p">(</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)),</span> <span class="s2">&quot;log.log&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;check logger_file: &quot;</span> <span class="p">,</span> <span class="n">logger_file</span><span class="p">)</span>
+
+<span class="c1"># if already exists, remove</span>
+<span class="k">if</span> <span class="n">exists</span><span class="p">(</span><span class="n">logger_file</span><span class="p">):</span>
+    <span class="n">remove</span><span class="p">(</span><span class="n">logger_file</span><span class="p">)</span>
+<span class="k">assert</span> <span class="ow">not</span> <span class="n">exists</span><span class="p">(</span><span class="n">logger_file</span><span class="p">)</span>
+
+<span class="c1"># activate the file logger</span>
+<span class="n">Logger</span><span class="o">.</span><span class="n">file_logger</span><span class="p">(</span><span class="n">logger_file</span><span class="p">)</span>
+<span class="n">rdf</span> <span class="o">=</span> <span class="n">RDF</span><span class="o">.</span><span class="n">from_string</span><span class="p">(</span><span class="n">cellml</span><span class="p">,</span> <span class="n">syntax</span><span class="o">=</span><span class="s2">&quot;turtle&quot;</span><span class="p">)</span> <span class="c1"># nothing is emitted to console</span>
+<span class="c1"># now check logger_file</span>
+
+
+<span class="c1"># now activate the console logger again</span>
+<span class="n">Logger</span><span class="o">.</span><span class="n">console_logger</span><span class="p">()</span>
+<span class="n">rdf</span> <span class="o">=</span> <span class="n">RDF</span><span class="o">.</span><span class="n">from_string</span><span class="p">(</span><span class="n">cellml</span><span class="p">,</span> <span class="n">syntax</span><span class="o">=</span><span class="s2">&quot;turtle&quot;</span><span class="p">)</span> <span class="c1"># and our log message is back</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id20">
+<div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id20" title="Permalink to this code"></a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">11</span><span class="p">:</span><span class="mi">23</span><span class="p">:</span><span class="mi">57</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">error</span> <span class="p">:</span> <span class="mi">1</span> <span class="n">syntax</span> <span class="n">error</span> <span class="n">at</span> <span class="s1">&#39;&lt;&#39;</span> 
+<span class="n">check</span> <span class="n">logger_file</span><span class="p">:</span>  <span class="n">D</span><span class="p">:</span>\<span class="n">libOmexMeta</span>\<span class="n">docs</span>\<span class="n">log</span><span class="o">.</span><span class="n">log</span>
+</pre></div>
+</div>
+</div>
+</div><div aria-labelledby="tab-3-3-1" class="sphinx-tabs-panel" hidden="true" id="panel-3-3-1" name="3-1" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id21">
+<div class="code-block-caption"><span class="caption-text">Switching between file and console logging</span><a class="headerlink" href="#id21" title="Permalink to this code"></a></div>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// switching to the file logger</span>
+<span class="cp">#include</span> <span class="cpf">&quot;omexmeta/OmexMeta.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;filesystem&gt;</span><span class="cp"></span>
+
+<span class="k">using</span> <span class="k">namespace</span> <span class="nn">omexmeta</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">cellml</span> <span class="o">=</span> <span class="s">&quot;&lt;?xml version=</span><span class="se">\&quot;</span><span class="s">1.1</span><span class="se">\&quot;</span><span class="s"> encoding=</span><span class="se">\&quot;</span><span class="s">UTF-8</span><span class="se">\&quot;</span><span class="s">?&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                         <span class="s">&quot;  &lt;model xmlns=</span><span class="se">\&quot;</span><span class="s">http://www.cellml.org/cellml/1.1#</span><span class="se">\&quot;</span><span class="s"> xmlns:cmeta=</span><span class="se">\&quot;</span><span class="s">http://www.cellml.org/metadata/1.0#</span><span class="se">\&quot;</span><span class="s"> xmlns:xlink=</span><span class="se">\&quot;</span><span class="s">http://www.w3.org/1999/xlink</span><span class="se">\&quot;</span><span class="s"> xmlns:rdf=</span><span class="se">\&quot;</span><span class="s">http://www.w3.org/1999/02/22-rdf-syntax-ns#</span><span class="se">\&quot;</span><span class="s"> xmlns:bqs=</span><span class="se">\&quot;</span><span class="s">http://www.cellml.org/bqs/1.0#</span><span class="se">\&quot;</span><span class="s"> xmlns:semsim=</span><span class="se">\&quot;</span><span class="s">http://bime.uw.edu/semsim/#</span><span class="se">\&quot;</span><span class="s"> xmlns:dc=</span><span class="se">\&quot;</span><span class="s">http://purl.org/dc/terms/</span><span class="se">\&quot;</span><span class="s"> xmlns:vCard=</span><span class="se">\&quot;</span><span class="s">http://www.w3.org/2001/vcard-rdf/3.0#</span><span class="se">\&quot;</span><span class="s"> name=</span><span class="se">\&quot;</span><span class="s">annotation_examples</span><span class="se">\&quot;</span><span class="s"> cmeta:id=</span><span class="se">\&quot;</span><span class="s">annExamples</span><span class="se">\&quot;</span><span class="s">&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                         <span class="s">&quot;    &lt;component name=</span><span class="se">\&quot;</span><span class="s">main</span><span class="se">\&quot;</span><span class="s">&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                         <span class="s">&quot;      &lt;variable cmeta:id=</span><span class="se">\&quot;</span><span class="s">main.Volume</span><span class="se">\&quot;</span><span class="s"> initial_value=</span><span class="se">\&quot;</span><span class="s">100</span><span class="se">\&quot;</span><span class="s"> name=</span><span class="se">\&quot;</span><span class="s">Volume</span><span class="se">\&quot;</span><span class="s"> units=</span><span class="se">\&quot;</span><span class="s">dimensionless</span><span class="se">\&quot;</span><span class="s"> /&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                         <span class="s">&quot;      &lt;variable cmeta:id=</span><span class="se">\&quot;</span><span class="s">main.MembraneVoltage</span><span class="se">\&quot;</span><span class="s"> initial_value=</span><span class="se">\&quot;</span><span class="s">-80</span><span class="se">\&quot;</span><span class="s"> name=</span><span class="se">\&quot;</span><span class="s">MembraneVoltage</span><span class="se">\&quot;</span><span class="s"> units=</span><span class="se">\&quot;</span><span class="s">dimensionless</span><span class="se">\&quot;</span><span class="s"> /&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                         <span class="s">&quot;      &lt;variable cmeta:id=</span><span class="se">\&quot;</span><span class="s">main.ReactionRate</span><span class="se">\&quot;</span><span class="s"> initial_value=</span><span class="se">\&quot;</span><span class="s">1</span><span class="se">\&quot;</span><span class="s"> name=</span><span class="se">\&quot;</span><span class="s">ReactionRate</span><span class="se">\&quot;</span><span class="s"> units=</span><span class="se">\&quot;</span><span class="s">dimensionless</span><span class="se">\&quot;</span><span class="s"> /&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                         <span class="s">&quot;    &lt;/component&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                         <span class="s">&quot;  &lt;/model&gt;&quot;</span><span class="p">;</span>
+
+    <span class="c1">// Users can opt to switch to a file logger instead;</span>
+    <span class="c1">// Formatters are remembered from the previous logger;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">filesystem</span><span class="o">::</span><span class="n">path</span> <span class="n">fname</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">filesystem</span><span class="o">::</span><span class="n">current_path</span><span class="p">()</span> <span class="o">/</span> <span class="s">&quot;log.log&quot;</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;check logger filename: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">fname</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">filesystem</span><span class="o">::</span><span class="n">exists</span><span class="p">(</span><span class="n">fname</span><span class="p">))</span> <span class="p">{</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">filesystem</span><span class="o">::</span><span class="n">remove</span><span class="p">(</span><span class="n">fname</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="n">Logger</span><span class="o">::</span><span class="n">getLogger</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">fileLogger</span><span class="p">(</span><span class="n">fname</span><span class="p">);</span>
+    <span class="n">RDF</span> <span class="n">rdf</span> <span class="o">=</span> <span class="n">RDF</span><span class="o">::</span><span class="n">fromString</span><span class="p">(</span><span class="n">cellml</span><span class="p">,</span> <span class="s">&quot;turtle&quot;</span><span class="p">);</span>
+    <span class="c1">// now check Logger::getLogger()::file;</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id22">
+<div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id22" title="Permalink to this code"></a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">check</span> <span class="n">logger</span> <span class="n">filename</span><span class="p">:</span> <span class="s2">&quot;D:</span><span class="se">\\</span><span class="s2">libOmexMeta</span><span class="se">\\</span><span class="s2">cmake-build-release</span><span class="se">\\</span><span class="s2">docs</span><span class="se">\\</span><span class="s2">log.log&quot;</span>
+
+</pre></div>
+</div>
+</div>
+</div><div aria-labelledby="tab-3-3-2" class="sphinx-tabs-panel" hidden="true" id="panel-3-3-2" name="3-2" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id23">
+<div class="code-block-caption"><span class="caption-text">Switching between file and console logging</span><a class="headerlink" href="#id23" title="Permalink to this code"></a></div>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="c1">// switching to the file logger</span>
+<span class="cp">#include</span> <span class="cpf">&quot;omexmeta/OmexMetaCApi.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;filesystem&gt;</span><span class="cp"></span>
+
+<span class="n">using</span> <span class="n">namespace</span> <span class="n">omexmeta</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+    <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">cellml</span> <span class="o">=</span> <span class="s">&quot;&lt;?xml version=</span><span class="se">\&quot;</span><span class="s">1.1</span><span class="se">\&quot;</span><span class="s"> encoding=</span><span class="se">\&quot;</span><span class="s">UTF-8</span><span class="se">\&quot;</span><span class="s">?&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                         <span class="s">&quot;            &lt;model xmlns=</span><span class="se">\&quot;</span><span class="s">http://www.cellml.org/cellml/1.1#</span><span class="se">\&quot;</span><span class="s"> xmlns:cmeta=</span><span class="se">\&quot;</span><span class="s">http://www.cellml.org/metadata/1.0#</span><span class="se">\&quot;</span><span class="s"> xmlns:xlink=</span><span class="se">\&quot;</span><span class="s">http://www.w3.org/1999/xlink</span><span class="se">\&quot;</span><span class="s"> xmlns:rdf=</span><span class="se">\&quot;</span><span class="s">http://www.w3.org/1999/02/22-rdf-syntax-ns#</span><span class="se">\&quot;</span><span class="s"> xmlns:bqs=</span><span class="se">\&quot;</span><span class="s">http://www.cellml.org/bqs/1.0#</span><span class="se">\&quot;</span><span class="s"> xmlns:semsim=</span><span class="se">\&quot;</span><span class="s">http://bime.uw.edu/semsim/#</span><span class="se">\&quot;</span><span class="s"> xmlns:dc=</span><span class="se">\&quot;</span><span class="s">http://purl.org/dc/terms/</span><span class="se">\&quot;</span><span class="s"> xmlns:vCard=</span><span class="se">\&quot;</span><span class="s">http://www.w3.org/2001/vcard-rdf/3.0#</span><span class="se">\&quot;</span><span class="s"> name=</span><span class="se">\&quot;</span><span class="s">annotation_examples</span><span class="se">\&quot;</span><span class="s"> cmeta:id=</span><span class="se">\&quot;</span><span class="s">annExamples</span><span class="se">\&quot;</span><span class="s">&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                         <span class="s">&quot;              &lt;component name=</span><span class="se">\&quot;</span><span class="s">main</span><span class="se">\&quot;</span><span class="s">&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                         <span class="s">&quot;                &lt;variable cmeta:id=</span><span class="se">\&quot;</span><span class="s">main.Volume</span><span class="se">\&quot;</span><span class="s"> initial_value=</span><span class="se">\&quot;</span><span class="s">100</span><span class="se">\&quot;</span><span class="s"> name=</span><span class="se">\&quot;</span><span class="s">Volume</span><span class="se">\&quot;</span><span class="s"> units=</span><span class="se">\&quot;</span><span class="s">dimensionless</span><span class="se">\&quot;</span><span class="s"> /&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                         <span class="s">&quot;                &lt;variable cmeta:id=</span><span class="se">\&quot;</span><span class="s">main.MembraneVoltage</span><span class="se">\&quot;</span><span class="s"> initial_value=</span><span class="se">\&quot;</span><span class="s">-80</span><span class="se">\&quot;</span><span class="s"> name=</span><span class="se">\&quot;</span><span class="s">MembraneVoltage</span><span class="se">\&quot;</span><span class="s"> units=</span><span class="se">\&quot;</span><span class="s">dimensionless</span><span class="se">\&quot;</span><span class="s"> /&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                         <span class="s">&quot;                &lt;variable cmeta:id=</span><span class="se">\&quot;</span><span class="s">main.ReactionRate</span><span class="se">\&quot;</span><span class="s"> initial_value=</span><span class="se">\&quot;</span><span class="s">1</span><span class="se">\&quot;</span><span class="s"> name=</span><span class="se">\&quot;</span><span class="s">ReactionRate</span><span class="se">\&quot;</span><span class="s"> units=</span><span class="se">\&quot;</span><span class="s">dimensionless</span><span class="se">\&quot;</span><span class="s"> /&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                         <span class="s">&quot;              &lt;/component&gt;</span><span class="se">\n</span><span class="s">&quot;</span>
+                         <span class="s">&quot;            &lt;/model&gt;&quot;</span><span class="p">;</span>
+
+
+    <span class="c1">// Users can opt to switch to a file logger instead;</span>
+    <span class="c1">// Formatters are remembered from the previous logger;</span>
+    <span class="c1">// (cheat and use c++ to get a valid filepath and simplify the example)</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">filesystem</span><span class="o">::</span><span class="n">path</span> <span class="n">fname</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">filesystem</span><span class="o">::</span><span class="n">current_path</span><span class="p">()</span> <span class="o">/</span> <span class="s">&quot;log.log&quot;</span><span class="p">;</span>
+    <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">logger_file</span> <span class="o">=</span> <span class="n">fname</span><span class="p">.</span><span class="n">string</span><span class="p">().</span><span class="n">c_str</span><span class="p">();</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;check logger_file: %s</span><span class="se">\n</span><span class="s">&quot;</span> <span class="p">,</span> <span class="n">logger_file</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">filesystem</span><span class="o">::</span><span class="n">exists</span><span class="p">(</span><span class="n">fname</span><span class="p">))</span> <span class="p">{</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">filesystem</span><span class="o">::</span><span class="n">remove</span><span class="p">(</span><span class="n">logger_file</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="n">Logger_fileLogger</span><span class="p">(</span><span class="n">logger_file</span><span class="p">);</span>
+    <span class="n">RDF</span><span class="o">*</span> <span class="n">rdf</span> <span class="o">=</span> <span class="n">RDF_fromString</span><span class="p">(</span><span class="n">cellml</span><span class="p">,</span> <span class="s">&quot;turtle&quot;</span><span class="p">);</span>
+    <span class="c1">// now check logger_file;</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id24">
+<div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id24" title="Permalink to this code"></a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">11</span><span class="p">:</span><span class="mi">24</span><span class="p">:</span><span class="mi">09</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">error</span> <span class="p">:</span> <span class="mi">1</span> <span class="n">syntax</span> <span class="n">error</span> <span class="n">at</span> <span class="s1">&#39;&lt;&#39;</span> 
+
+<span class="n">check</span> <span class="n">logger_file</span><span class="p">:</span> <span class="n">D</span><span class="p">:</span>\<span class="n">libOmexMeta</span>\<span class="n">cmake</span><span class="o">-</span><span class="n">build</span><span class="o">-</span><span class="n">release</span>\<span class="n">docs</span>\<span class="n">log</span><span class="o">.</span><span class="n">log</span>
+
+</pre></div>
+</div>
+</div>
+</div></div>
+</div>
+<div class="section" id="using-the-logger">
+<h2>Using the logger<a class="headerlink" href="#using-the-logger" title="Permalink to this headline"></a></h2>
+<p>The logger is also available for use in your own programs.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-4-4-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-4-4-0" name="4-0" role="tab" tabindex="0">Python</button><button aria-controls="panel-4-4-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-4-4-1" name="4-1" role="tab" tabindex="-1">C++</button><button aria-controls="panel-4-4-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-4-4-2" name="4-2" role="tab" tabindex="-1">C</button></div><div aria-labelledby="tab-4-4-0" class="sphinx-tabs-panel" id="panel-4-4-0" name="4-0" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id25">
+<div class="code-block-caption"><span class="caption-text">Using the logger</span><a class="headerlink" href="#id25" title="Permalink to this code"></a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># using the logger</span>
+<span class="kn">from</span> <span class="nn">pyomexmeta</span> <span class="kn">import</span> <span class="n">RDF</span><span class="p">,</span> <span class="n">Logger</span><span class="p">,</span> <span class="n">eLogLevel</span>
+
+<span class="n">Logger</span><span class="o">.</span><span class="n">set_level</span><span class="p">(</span><span class="n">eLogLevel</span><span class="o">.</span><span class="n">trace</span><span class="p">)</span>  <span class="c1"># switch to trace log level</span>
+<span class="n">Logger</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="s2">&quot;trace message&quot;</span><span class="p">)</span>
+<span class="n">Logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;info message&quot;</span><span class="p">)</span>
+<span class="n">Logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;debug message&quot;</span><span class="p">)</span>
+<span class="n">Logger</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;warn message&quot;</span><span class="p">)</span>
+<span class="n">Logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;error message&quot;</span><span class="p">)</span>
+<span class="n">Logger</span><span class="o">.</span><span class="n">critical</span><span class="p">(</span><span class="s2">&quot;critical message&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id26">
+<div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id26" title="Permalink to this code"></a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">11</span><span class="p">:</span><span class="mi">23</span><span class="p">:</span><span class="mi">57</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">trace</span> <span class="p">:</span> <span class="n">trace</span> <span class="n">message</span> 
+<span class="p">[</span><span class="mi">11</span><span class="p">:</span><span class="mi">23</span><span class="p">:</span><span class="mi">57</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">info</span> <span class="p">:</span> <span class="n">info</span> <span class="n">message</span> 
+<span class="p">[</span><span class="mi">11</span><span class="p">:</span><span class="mi">23</span><span class="p">:</span><span class="mi">57</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">debug</span> <span class="p">:</span> <span class="n">debug</span> <span class="n">message</span> 
+<span class="p">[</span><span class="mi">11</span><span class="p">:</span><span class="mi">23</span><span class="p">:</span><span class="mi">57</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">warning</span> <span class="p">:</span> <span class="n">warn</span> <span class="n">message</span> 
+<span class="p">[</span><span class="mi">11</span><span class="p">:</span><span class="mi">23</span><span class="p">:</span><span class="mi">57</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">error</span> <span class="p">:</span> <span class="n">error</span> <span class="n">message</span> 
+<span class="p">[</span><span class="mi">11</span><span class="p">:</span><span class="mi">23</span><span class="p">:</span><span class="mi">57</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">critical</span> <span class="p">:</span> <span class="n">critical</span> <span class="n">message</span> 
+</pre></div>
+</div>
+</div>
+</div><div aria-labelledby="tab-4-4-1" class="sphinx-tabs-panel" hidden="true" id="panel-4-4-1" name="4-1" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id27">
+<div class="code-block-caption"><span class="caption-text">Using the logger</span><a class="headerlink" href="#id27" title="Permalink to this code"></a></div>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;omexmeta/OmexMeta.h&quot;</span><span class="cp"></span>
+
+<span class="k">using</span> <span class="k">namespace</span> <span class="nn">omexmeta</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+
+    <span class="n">Logger</span><span class="o">::</span><span class="n">getLogger</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">setLevel</span><span class="p">(</span><span class="n">Logger</span><span class="o">::</span><span class="n">LogLevel</span><span class="o">::</span><span class="n">trace</span><span class="p">);</span> <span class="c1">// switch to trace log level;</span>
+    <span class="n">Logger</span><span class="o">::</span><span class="n">getLogger</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">consoleLogger</span><span class="p">();</span> <span class="c1">// switch back to console logger;</span>
+    <span class="c1">// you can also use the logger yourself, if needed;</span>
+    <span class="n">Logger</span><span class="o">::</span><span class="n">getLogger</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">trace</span><span class="p">(</span><span class="s">&quot;trace message&quot;</span><span class="p">);</span>
+    <span class="n">Logger</span><span class="o">::</span><span class="n">getLogger</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;info message&quot;</span><span class="p">);</span>
+    <span class="n">Logger</span><span class="o">::</span><span class="n">getLogger</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;debug message&quot;</span><span class="p">);</span>
+    <span class="n">Logger</span><span class="o">::</span><span class="n">getLogger</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">warn</span><span class="p">(</span><span class="s">&quot;warn message&quot;</span><span class="p">);</span>
+    <span class="n">Logger</span><span class="o">::</span><span class="n">getLogger</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">error</span><span class="p">(</span><span class="s">&quot;error message&quot;</span><span class="p">);</span>
+    <span class="n">Logger</span><span class="o">::</span><span class="n">getLogger</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">critical</span><span class="p">(</span><span class="s">&quot;critical message&quot;</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id28">
+<div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id28" title="Permalink to this code"></a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">11</span><span class="p">:</span><span class="mi">24</span><span class="p">:</span><span class="mi">09</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">trace</span> <span class="p">:</span> <span class="n">trace</span> <span class="n">message</span> 
+
+<span class="p">[</span><span class="mi">11</span><span class="p">:</span><span class="mi">24</span><span class="p">:</span><span class="mi">09</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">info</span> <span class="p">:</span> <span class="n">info</span> <span class="n">message</span> 
+
+<span class="p">[</span><span class="mi">11</span><span class="p">:</span><span class="mi">24</span><span class="p">:</span><span class="mi">09</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">debug</span> <span class="p">:</span> <span class="n">debug</span> <span class="n">message</span> 
+
+<span class="p">[</span><span class="mi">11</span><span class="p">:</span><span class="mi">24</span><span class="p">:</span><span class="mi">09</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">warning</span> <span class="p">:</span> <span class="n">warn</span> <span class="n">message</span> 
+
+<span class="p">[</span><span class="mi">11</span><span class="p">:</span><span class="mi">24</span><span class="p">:</span><span class="mi">09</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">error</span> <span class="p">:</span> <span class="n">error</span> <span class="n">message</span> 
+
+<span class="p">[</span><span class="mi">11</span><span class="p">:</span><span class="mi">24</span><span class="p">:</span><span class="mi">09</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">critical</span> <span class="p">:</span> <span class="n">critical</span> <span class="n">message</span> 
+
+</pre></div>
+</div>
+</div>
+</div><div aria-labelledby="tab-4-4-2" class="sphinx-tabs-panel" hidden="true" id="panel-4-4-2" name="4-2" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id29">
+<div class="code-block-caption"><span class="caption-text">Using the logger</span><a class="headerlink" href="#id29" title="Permalink to this code"></a></div>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="c1">// using the logger</span>
+<span class="cp">#include</span> <span class="cpf">&quot;omexmeta/OmexMetaCApi.h&quot;</span><span class="cp"></span>
+
+<span class="n">using</span> <span class="n">namespace</span> <span class="n">omexmeta</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+
+    <span class="n">Logger_setLevel</span><span class="p">(</span><span class="n">Logger</span><span class="o">::</span><span class="n">LogLevel</span><span class="o">::</span><span class="n">trace</span><span class="p">);</span> <span class="c1">// switch to trace log level;</span>
+    <span class="n">Logger_consoleLogger</span><span class="p">();</span> <span class="c1">// switch back to console logger;</span>
+    <span class="c1">// you can also use the logger yourself, if needed;</span>
+    <span class="n">Logger_trace</span><span class="p">(</span><span class="s">&quot;trace message&quot;</span><span class="p">);</span>
+    <span class="n">Logger_info</span><span class="p">(</span><span class="s">&quot;info message&quot;</span><span class="p">);</span>
+    <span class="n">Logger_debug</span><span class="p">(</span><span class="s">&quot;debug message&quot;</span><span class="p">);</span>
+    <span class="n">Logger_warn</span><span class="p">(</span><span class="s">&quot;warn message&quot;</span><span class="p">);</span>
+    <span class="n">Logger_error</span><span class="p">(</span><span class="s">&quot;error message&quot;</span><span class="p">);</span>
+    <span class="n">Logger_critical</span><span class="p">(</span><span class="s">&quot;critical message&quot;</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id30">
+<div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id30" title="Permalink to this code"></a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">11</span><span class="p">:</span><span class="mi">24</span><span class="p">:</span><span class="mi">09</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">trace</span> <span class="p">:</span> <span class="n">trace</span> <span class="n">message</span> 
+
+<span class="p">[</span><span class="mi">11</span><span class="p">:</span><span class="mi">24</span><span class="p">:</span><span class="mi">09</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">info</span> <span class="p">:</span> <span class="n">info</span> <span class="n">message</span> 
+
+<span class="p">[</span><span class="mi">11</span><span class="p">:</span><span class="mi">24</span><span class="p">:</span><span class="mi">09</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">debug</span> <span class="p">:</span> <span class="n">debug</span> <span class="n">message</span> 
+
+<span class="p">[</span><span class="mi">11</span><span class="p">:</span><span class="mi">24</span><span class="p">:</span><span class="mi">09</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">warning</span> <span class="p">:</span> <span class="n">warn</span> <span class="n">message</span> 
+
+<span class="p">[</span><span class="mi">11</span><span class="p">:</span><span class="mi">24</span><span class="p">:</span><span class="mi">09</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">error</span> <span class="p">:</span> <span class="n">error</span> <span class="n">message</span> 
+
+<span class="p">[</span><span class="mi">11</span><span class="p">:</span><span class="mi">24</span><span class="p">:</span><span class="mi">09</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">critical</span> <span class="p">:</span> <span class="n">critical</span> <span class="n">message</span> 
+
+</pre></div>
+</div>
+</div>
+</div></div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../diagrams/diagrams_index.html" class="btn btn-neutral float-left" title="Building Diagrams" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../annotating_models/annotating_models_index.html" class="btn btn-neutral float-right" title="Annotating Models" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Ciaran Welsh.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

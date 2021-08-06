@@ -50,6 +50,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../stripping_annotations/index.html">Stripping Annotations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../querying_rdf/querying_rdf.html">Querying RDF</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../diagrams/diagrams_index.html">Building Diagrams</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../errors_and_logging/errors_and_logging.html">Errors and Logging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../annotating_models/annotating_models_index.html">Annotating Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../download_biomodels/download_biomodels.html">Downloading Biomodels</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../api_reference_index.html">API Reference</a><ul class="current">
@@ -639,6 +640,12 @@ Uses LibrdfParser::fromFile under the hood </p>
 <span id="_CPPv3N8omexmeta3RDF7freeRDFEv"></span><span id="_CPPv2N8omexmeta3RDF7freeRDFEv"></span><span id="omexmeta::RDF::freeRDF"></span><span class="target" id="classomexmeta_1_1RDF_1add8f3d957f24a26785f29b85d50f4399"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">freeRDF</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta3RDF7freeRDFEv" title="Permalink to this definition"></a><br /></dt>
 <dd><p>release memory consumed by <a class="reference internal" href="#classomexmeta_1_1RDF"><span class="std std-ref">RDF</span></a>. </p>
 <p>Memory consumed by <a class="reference internal" href="#classomexmeta_1_1RDF"><span class="std std-ref">RDF</span></a> is destructed using RAII so users normally do not need this function. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8omexmeta3RDF14setLogHandlersEv">
+<span id="_CPPv3N8omexmeta3RDF14setLogHandlersEv"></span><span id="_CPPv2N8omexmeta3RDF14setLogHandlersEv"></span><span id="omexmeta::RDF::setLogHandlers"></span><span class="target" id="classomexmeta_1_1RDF_1a5dbc21ee385932368917630201d1df76"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setLogHandlers</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta3RDF14setLogHandlersEv" title="Permalink to this definition"></a><br /></dt>
+<dd><p>set custom handler functions for librdf, raptor and rasqal </p>
 </dd></dl>
 
 </div>

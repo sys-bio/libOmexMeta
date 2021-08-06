@@ -27,6 +27,8 @@ class \mbox{\hyperlink{classomexmeta_1_1AnnotationBuilderException}{Annotation\+
 \item 
 class \mbox{\hyperlink{classomexmeta_1_1IRDF}{IRDF}}
 \begin{DoxyCompactList}\small\item\em public interface for \mbox{\hyperlink{classomexmeta_1_1RDF}{RDF}} types. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classomexmeta_1_1Logger}{Logger}}
+\begin{DoxyCompactList}\small\item\em Logging class for lib\+Omex\+Meta. Implemented as a singleton. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classomexmeta_1_1MarkupIdentifier}{Markup\+Identifier}}
 \begin{DoxyCompactList}\small\item\em determines whether input language is sbml, cellml or unknown \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classomexmeta_1_1MetaID}{Meta\+ID}}
@@ -591,10 +593,60 @@ std\+::vector$<$ std\+::string $>$ $\ast$ {\bfseries Results\+Map\+\_\+get\+Keys
 \mbox{\Hypertarget{namespaceomexmeta_a6434b2cffea803818b02bf9a7584b263}\label{namespaceomexmeta_a6434b2cffea803818b02bf9a7584b263}} 
 void {\bfseries Results\+Map\+\_\+delete} (Results\+Map $\ast$results\+Map)
 \item 
+\mbox{\hyperlink{classomexmeta_1_1Logger}{Logger}} $\ast$ \mbox{\hyperlink{namespaceomexmeta_a401a97ce4b2a6c22f92b774091289ef8}{Logger\+\_\+get\+Logger}} ()
+\item 
+\mbox{\Hypertarget{namespaceomexmeta_a00b49a350dca49a197c8b96920c6336b}\label{namespaceomexmeta_a00b49a350dca49a197c8b96920c6336b}} 
+void {\bfseries Logger\+\_\+set\+Formatter} (const char $\ast$format)
+\item 
+\mbox{\Hypertarget{namespaceomexmeta_aa53a5e35c8e35aa716999e2bee6674aa}\label{namespaceomexmeta_aa53a5e35c8e35aa716999e2bee6674aa}} 
+void {\bfseries Logger\+\_\+set\+Level} (Logger\+::\+Log\+Level level)
+\item 
+\mbox{\Hypertarget{namespaceomexmeta_a5edf8f35484c24b1593f6b8f112d856f}\label{namespaceomexmeta_a5edf8f35484c24b1593f6b8f112d856f}} 
+Logger\+::\+Log\+Level {\bfseries Logger\+\_\+get\+Level} ()
+\item 
+\mbox{\Hypertarget{namespaceomexmeta_aac3d164e61ae7cd1925a591f54abf515}\label{namespaceomexmeta_aac3d164e61ae7cd1925a591f54abf515}} 
+void {\bfseries Logger\+\_\+enable\+Backtrace} (int num)
+\item 
+\mbox{\Hypertarget{namespaceomexmeta_a8799d08a3e0e07b1866b72c95565bb1a}\label{namespaceomexmeta_a8799d08a3e0e07b1866b72c95565bb1a}} 
+void {\bfseries Logger\+\_\+disable\+Backtrace} ()
+\item 
+\mbox{\Hypertarget{namespaceomexmeta_a75fc5039ad0e686ff6211daeb2131eb9}\label{namespaceomexmeta_a75fc5039ad0e686ff6211daeb2131eb9}} 
+void {\bfseries Logger\+\_\+dump\+Backtrace} ()
+\item 
+\mbox{\Hypertarget{namespaceomexmeta_a3e5e22a8c34ba9014bfaa635900d751a}\label{namespaceomexmeta_a3e5e22a8c34ba9014bfaa635900d751a}} 
+void {\bfseries Logger\+\_\+console\+Logger} ()
+\item 
+\mbox{\Hypertarget{namespaceomexmeta_ad67a74ecb6408eb3f72f8be1c0e7d448}\label{namespaceomexmeta_ad67a74ecb6408eb3f72f8be1c0e7d448}} 
+void {\bfseries Logger\+\_\+file\+Logger} (const char $\ast$filename)
+\item 
+\mbox{\Hypertarget{namespaceomexmeta_a867513601843c5e1ab364f65a22bfb9d}\label{namespaceomexmeta_a867513601843c5e1ab364f65a22bfb9d}} 
+void {\bfseries Logger\+\_\+info} (const char $\ast$message)
+\item 
+\mbox{\Hypertarget{namespaceomexmeta_a01b3ea59b98096bbb46a60c75ecc0306}\label{namespaceomexmeta_a01b3ea59b98096bbb46a60c75ecc0306}} 
+void {\bfseries Logger\+\_\+trace} (const char $\ast$message)
+\item 
+\mbox{\Hypertarget{namespaceomexmeta_a2c00a547f41821c5794c4e3d2f911bc5}\label{namespaceomexmeta_a2c00a547f41821c5794c4e3d2f911bc5}} 
+void {\bfseries Logger\+\_\+debug} (const char $\ast$message)
+\item 
+\mbox{\Hypertarget{namespaceomexmeta_abffb02d727c2ea3060e42c4140cb903b}\label{namespaceomexmeta_abffb02d727c2ea3060e42c4140cb903b}} 
+void {\bfseries Logger\+\_\+warn} (const char $\ast$message)
+\item 
+\mbox{\Hypertarget{namespaceomexmeta_a305282ca72c7f4af6d1fea665bdee5fe}\label{namespaceomexmeta_a305282ca72c7f4af6d1fea665bdee5fe}} 
+void {\bfseries Logger\+\_\+error} (const char $\ast$message)
+\item 
+\mbox{\Hypertarget{namespaceomexmeta_a09fc0cbf9bf4b34308c9ca2cb19e4ce3}\label{namespaceomexmeta_a09fc0cbf9bf4b34308c9ca2cb19e4ce3}} 
+void {\bfseries Logger\+\_\+critical} (const char $\ast$message)
+\item 
 \mbox{\Hypertarget{namespaceomexmeta_a17e4b403c1f6627264259b7d300f5cb1}\label{namespaceomexmeta_a17e4b403c1f6627264259b7d300f5cb1}} 
 void {\bfseries remove\+Element\+Recursion} (xml\+Node\+Ptr a\+\_\+node, const std\+::string \&element\+Name)
 \item 
 Predicate\+Ptr \mbox{\hyperlink{namespaceomexmeta_a0a8d50daa10e421d0722520cdef0ab9a}{Predicate\+Factory}} (std\+::string namespace\+\_\+, const std\+::string \&term)
+\item 
+\mbox{\Hypertarget{namespaceomexmeta_a752a1e76521d86bb0b03cd429264c627}\label{namespaceomexmeta_a752a1e76521d86bb0b03cd429264c627}} 
+int {\bfseries librdf\+Log\+Handler} (void $\ast$user\+\_\+data, librdf\+\_\+log\+\_\+message $\ast$message)
+\item 
+\mbox{\Hypertarget{namespaceomexmeta_a569ba944911d2823bb40a36e55ba02b4}\label{namespaceomexmeta_a569ba944911d2823bb40a36e55ba02b4}} 
+void {\bfseries raptor\+Log\+Handler} (void $\ast$user\+\_\+data, raptor\+\_\+log\+\_\+message $\ast$message)
 \item 
 \mbox{\Hypertarget{namespaceomexmeta_a902ae2b86ac75376d9d826aecbd99b43}\label{namespaceomexmeta_a902ae2b86ac75376d9d826aecbd99b43}} 
 OMEXMETA\+\_\+\+CAPI\+\_\+\+EXPORT char $\ast$ {\bfseries RDF\+\_\+get\+Base\+Uri} (\mbox{\hyperlink{classomexmeta_1_1RDF}{RDF}} $\ast$rdf\+\_\+ptr)
@@ -716,6 +768,15 @@ Denotes the type of composite annotation in use.
 \begin{DoxyVerb}@brief deletes energy differential including all
 \end{DoxyVerb}
  nodes associated with it. \begin{Desc}
+\item[Examples]\par
+\mbox{\hyperlink{D_1_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example}{D\+:/lib\+Omex\+Meta/src/omexmeta/include/omexmeta/\+Omex\+Meta\+CApi.\+h}}.\end{Desc}
+\mbox{\Hypertarget{namespaceomexmeta_a401a97ce4b2a6c22f92b774091289ef8}\label{namespaceomexmeta_a401a97ce4b2a6c22f92b774091289ef8}} 
+\index{omexmeta@{omexmeta}!Logger\_getLogger@{Logger\_getLogger}}
+\index{Logger\_getLogger@{Logger\_getLogger}!omexmeta@{omexmeta}}
+\doxysubsubsection{\texorpdfstring{Logger\_getLogger()}{Logger\_getLogger()}}
+{\footnotesize\ttfamily OMEXMETA\+\_\+\+CAPI\+\_\+\+EXPORT \mbox{\hyperlink{classomexmeta_1_1Logger}{Logger}} $\ast$ omexmeta\+::\+Logger\+\_\+get\+Logger (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\hyperlink{classomexmeta_1_1Logger}{Logger}} \begin{Desc}
 \item[Examples]\par
 \mbox{\hyperlink{D_1_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example}{D\+:/lib\+Omex\+Meta/src/omexmeta/include/omexmeta/\+Omex\+Meta\+CApi.\+h}}.\end{Desc}
 \mbox{\Hypertarget{namespaceomexmeta_a0b43aced94ae55c938cc788111586fc8}\label{namespaceomexmeta_a0b43aced94ae55c938cc788111586fc8}} 

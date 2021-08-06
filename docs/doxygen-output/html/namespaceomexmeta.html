@@ -105,6 +105,9 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1IRDF.html">IRDF</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">public interface for <a class="el" href="classomexmeta_1_1RDF.html">RDF</a> types.  <a href="classomexmeta_1_1IRDF.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1Logger.html">Logger</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logging class for libOmexMeta. Implemented as a singleton.  <a href="classomexmeta_1_1Logger.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1MarkupIdentifier.html">MarkupIdentifier</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">determines whether input language is sbml, cellml or unknown  <a href="classomexmeta_1_1MarkupIdentifier.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -675,11 +678,61 @@ std::vector&lt; std::string &gt; *&#160;</td><td class="memItemRight" valign="bo
 <tr class="memitem:a6434b2cffea803818b02bf9a7584b263"><td class="memItemLeft" align="right" valign="top"><a id="a6434b2cffea803818b02bf9a7584b263"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>ResultsMap_delete</b> (ResultsMap *resultsMap)</td></tr>
 <tr class="separator:a6434b2cffea803818b02bf9a7584b263"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a401a97ce4b2a6c22f92b774091289ef8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classomexmeta_1_1Logger.html">Logger</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceomexmeta.html#a401a97ce4b2a6c22f92b774091289ef8">Logger_getLogger</a> ()</td></tr>
+<tr class="separator:a401a97ce4b2a6c22f92b774091289ef8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00b49a350dca49a197c8b96920c6336b"><td class="memItemLeft" align="right" valign="top"><a id="a00b49a350dca49a197c8b96920c6336b"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>Logger_setFormatter</b> (const char *format)</td></tr>
+<tr class="separator:a00b49a350dca49a197c8b96920c6336b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa53a5e35c8e35aa716999e2bee6674aa"><td class="memItemLeft" align="right" valign="top"><a id="aa53a5e35c8e35aa716999e2bee6674aa"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>Logger_setLevel</b> (Logger::LogLevel level)</td></tr>
+<tr class="separator:aa53a5e35c8e35aa716999e2bee6674aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5edf8f35484c24b1593f6b8f112d856f"><td class="memItemLeft" align="right" valign="top"><a id="a5edf8f35484c24b1593f6b8f112d856f"></a>
+Logger::LogLevel&#160;</td><td class="memItemRight" valign="bottom"><b>Logger_getLevel</b> ()</td></tr>
+<tr class="separator:a5edf8f35484c24b1593f6b8f112d856f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac3d164e61ae7cd1925a591f54abf515"><td class="memItemLeft" align="right" valign="top"><a id="aac3d164e61ae7cd1925a591f54abf515"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>Logger_enableBacktrace</b> (int num)</td></tr>
+<tr class="separator:aac3d164e61ae7cd1925a591f54abf515"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8799d08a3e0e07b1866b72c95565bb1a"><td class="memItemLeft" align="right" valign="top"><a id="a8799d08a3e0e07b1866b72c95565bb1a"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>Logger_disableBacktrace</b> ()</td></tr>
+<tr class="separator:a8799d08a3e0e07b1866b72c95565bb1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75fc5039ad0e686ff6211daeb2131eb9"><td class="memItemLeft" align="right" valign="top"><a id="a75fc5039ad0e686ff6211daeb2131eb9"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>Logger_dumpBacktrace</b> ()</td></tr>
+<tr class="separator:a75fc5039ad0e686ff6211daeb2131eb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e5e22a8c34ba9014bfaa635900d751a"><td class="memItemLeft" align="right" valign="top"><a id="a3e5e22a8c34ba9014bfaa635900d751a"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>Logger_consoleLogger</b> ()</td></tr>
+<tr class="separator:a3e5e22a8c34ba9014bfaa635900d751a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad67a74ecb6408eb3f72f8be1c0e7d448"><td class="memItemLeft" align="right" valign="top"><a id="ad67a74ecb6408eb3f72f8be1c0e7d448"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>Logger_fileLogger</b> (const char *filename)</td></tr>
+<tr class="separator:ad67a74ecb6408eb3f72f8be1c0e7d448"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a867513601843c5e1ab364f65a22bfb9d"><td class="memItemLeft" align="right" valign="top"><a id="a867513601843c5e1ab364f65a22bfb9d"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>Logger_info</b> (const char *message)</td></tr>
+<tr class="separator:a867513601843c5e1ab364f65a22bfb9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01b3ea59b98096bbb46a60c75ecc0306"><td class="memItemLeft" align="right" valign="top"><a id="a01b3ea59b98096bbb46a60c75ecc0306"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>Logger_trace</b> (const char *message)</td></tr>
+<tr class="separator:a01b3ea59b98096bbb46a60c75ecc0306"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c00a547f41821c5794c4e3d2f911bc5"><td class="memItemLeft" align="right" valign="top"><a id="a2c00a547f41821c5794c4e3d2f911bc5"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>Logger_debug</b> (const char *message)</td></tr>
+<tr class="separator:a2c00a547f41821c5794c4e3d2f911bc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abffb02d727c2ea3060e42c4140cb903b"><td class="memItemLeft" align="right" valign="top"><a id="abffb02d727c2ea3060e42c4140cb903b"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>Logger_warn</b> (const char *message)</td></tr>
+<tr class="separator:abffb02d727c2ea3060e42c4140cb903b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a305282ca72c7f4af6d1fea665bdee5fe"><td class="memItemLeft" align="right" valign="top"><a id="a305282ca72c7f4af6d1fea665bdee5fe"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>Logger_error</b> (const char *message)</td></tr>
+<tr class="separator:a305282ca72c7f4af6d1fea665bdee5fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09fc0cbf9bf4b34308c9ca2cb19e4ce3"><td class="memItemLeft" align="right" valign="top"><a id="a09fc0cbf9bf4b34308c9ca2cb19e4ce3"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>Logger_critical</b> (const char *message)</td></tr>
+<tr class="separator:a09fc0cbf9bf4b34308c9ca2cb19e4ce3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a17e4b403c1f6627264259b7d300f5cb1"><td class="memItemLeft" align="right" valign="top"><a id="a17e4b403c1f6627264259b7d300f5cb1"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>removeElementRecursion</b> (xmlNodePtr a_node, const std::string &amp;elementName)</td></tr>
 <tr class="separator:a17e4b403c1f6627264259b7d300f5cb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0a8d50daa10e421d0722520cdef0ab9a"><td class="memItemLeft" align="right" valign="top">PredicatePtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceomexmeta.html#a0a8d50daa10e421d0722520cdef0ab9a">PredicateFactory</a> (std::string namespace_, const std::string &amp;term)</td></tr>
 <tr class="separator:a0a8d50daa10e421d0722520cdef0ab9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a752a1e76521d86bb0b03cd429264c627"><td class="memItemLeft" align="right" valign="top"><a id="a752a1e76521d86bb0b03cd429264c627"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>librdfLogHandler</b> (void *user_data, librdf_log_message *message)</td></tr>
+<tr class="separator:a752a1e76521d86bb0b03cd429264c627"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a569ba944911d2823bb40a36e55ba02b4"><td class="memItemLeft" align="right" valign="top"><a id="a569ba944911d2823bb40a36e55ba02b4"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>raptorLogHandler</b> (void *user_data, raptor_log_message *message)</td></tr>
+<tr class="separator:a569ba944911d2823bb40a36e55ba02b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a902ae2b86ac75376d9d826aecbd99b43"><td class="memItemLeft" align="right" valign="top"><a id="a902ae2b86ac75376d9d826aecbd99b43"></a>
 OMEXMETA_CAPI_EXPORT char *&#160;</td><td class="memItemRight" valign="bottom"><b>RDF_getBaseUri</b> (<a class="el" href="classomexmeta_1_1RDF.html">RDF</a> *rdf_ptr)</td></tr>
 <tr class="separator:a902ae2b86ac75376d9d826aecbd99b43"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -851,6 +904,26 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>LAST_ERROR</b>
 <pre class="fragment">@brief deletes energy differential including all
 </pre><p> nodes associated with it. </p>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="D_1_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example.html#a11">D:/libOmexMeta/src/omexmeta/include/omexmeta/OmexMetaCApi.h</a>.</dd>
+</dl>
+
+</div>
+</div>
+<a id="a401a97ce4b2a6c22f92b774091289ef8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a401a97ce4b2a6c22f92b774091289ef8">&#9670;&nbsp;</a></span>Logger_getLogger()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">OMEXMETA_CAPI_EXPORT <a class="el" href="classomexmeta_1_1Logger.html">Logger</a> * omexmeta::Logger_getLogger </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p><a class="el" href="classomexmeta_1_1Logger.html" title="Logging class for libOmexMeta. Implemented as a singleton.">Logger</a> </p>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="D_1_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example.html#a13">D:/libOmexMeta/src/omexmeta/include/omexmeta/OmexMetaCApi.h</a>.</dd>
 </dl>
 
 </div>
