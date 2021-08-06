@@ -425,6 +425,36 @@ namespace omexmeta {
 
     OMEXMETA_CAPI_EXPORT void ResultsMap_delete(ResultsMap * resultsMap);
 
+    OMEXMETA_CAPI_EXPORT Logger *Logger_getLogger();
+
+    OMEXMETA_CAPI_EXPORT void Logger_setFormatter(const char* format);
+
+    OMEXMETA_CAPI_EXPORT void Logger_setLevel(Logger::LogLevel level);
+
+    OMEXMETA_CAPI_EXPORT Logger::LogLevel Logger_getLevel();
+
+    OMEXMETA_CAPI_EXPORT void Logger_enableBacktrace(int num);
+
+    OMEXMETA_CAPI_EXPORT void Logger_disableBacktrace();
+
+    OMEXMETA_CAPI_EXPORT void Logger_dumpBacktrace();
+
+    OMEXMETA_CAPI_EXPORT void Logger_consoleLogger();
+
+    OMEXMETA_CAPI_EXPORT void Logger_fileLogger(const char*filename);
+
+    OMEXMETA_CAPI_EXPORT void Logger_info(const char* message);
+
+    OMEXMETA_CAPI_EXPORT void Logger_trace(const char* message);
+
+    OMEXMETA_CAPI_EXPORT void Logger_debug(const char* message);
+
+    OMEXMETA_CAPI_EXPORT void Logger_warn(const char* message);
+
+    OMEXMETA_CAPI_EXPORT void Logger_error(const char* message);
+
+    OMEXMETA_CAPI_EXPORT void Logger_critical(const char* message);
+
 
 #ifdef __cplusplus
     }

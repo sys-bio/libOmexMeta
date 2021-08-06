@@ -4,16 +4,115 @@
 
 #include "omexmeta/RDF.h"
 
-#include "omexmeta/PurgeRDFBag.h"
 #include "omexmeta/Options.h"
+#include "omexmeta/PurgeRDFBag.h"
 
 namespace omexmeta {
+
+
+    int librdfLogHandler(void *user_data, librdf_log_message *message) {
+        // make sure logger has been called so we set default logger to
+        // the ones we've built if this is the first time we've called
+        // getLogger.
+        Logger::getLogger();
+
+        std::ostringstream log;
+        if (message->locator){
+            log << message->locator->file;
+            log << ": ";
+            log << message->locator->line;
+        }
+        log << message->message;
+        switch (message->level) {
+            case LIBRDF_LOG_INFO: {
+                Logger::getLogger()->info(log.str());
+                break;
+            }
+            case LIBRDF_LOG_DEBUG: {
+                Logger::getLogger()->debug(log.str());
+                break;
+            }
+            case LIBRDF_LOG_WARN: {
+                Logger::getLogger()->warn(log.str());
+                break;
+            }
+            case LIBRDF_LOG_ERROR: {
+                Logger::getLogger()->error(log.str());
+                break;
+            }
+            case LIBRDF_LOG_FATAL: {
+                Logger::getLogger()->critical(log.str());
+                break;
+            }
+            case LIBRDF_LOG_NONE: {
+                break;
+            }
+        }
+        return 0;
+    }
+
+    void raptorLogHandler(void *user_data, raptor_log_message *message) {
+        // make sure logger has been called so we set default logger to
+        // the ones we've built if this is the first time we've called
+        // getLogger.
+        Logger::getLogger();
+
+        std::ostringstream log;
+        if (message->locator){
+            if (message->locator->file){
+                log << message->locator->file;
+                log << ":";
+            }
+            if(message->locator->line) {
+                log << message->locator->line;
+            }
+        }
+        log << " " << message->text;
+
+        switch (message->level) {
+            case RAPTOR_LOG_LEVEL_INFO: {
+                Logger::getLogger()->info(log.str());
+                break;
+            }
+            case RAPTOR_LOG_LEVEL_TRACE: {
+                Logger::getLogger()->trace(log.str());
+                break;
+            }
+            case RAPTOR_LOG_LEVEL_DEBUG: {
+                Logger::getLogger()->debug(log.str());
+                break;
+            }
+            case RAPTOR_LOG_LEVEL_WARN: {
+                Logger::getLogger()->warn(log.str());
+                break;
+            }
+            case RAPTOR_LOG_LEVEL_ERROR: {
+                Logger::getLogger()->error(log.str());
+                break;
+            }
+            case RAPTOR_LOG_LEVEL_FATAL: {
+                Logger::getLogger()->critical(log.str());
+                break;
+            }
+            case RAPTOR_LOG_LEVEL_NONE: {
+                break;
+            }
+        }
+    }
 
     RDF::RDF(const std::string &storage_type, const std::string &storage_name,
              const char *storage_options, const char *model_options) {
         storage_ = LibrdfStorage(storage_type, storage_name, storage_options);
         // model_ now owns storage_
         model_ = LibrdfModel(storage_, model_options);
+
+        setLogHandlers();
+    }
+
+    void RDF::setLogHandlers() {
+        LibrdfWorld::setLogHandler(Logger::getLogger(), librdfLogHandler);
+        LibrdfWorld::setRaptorLogHandler(Logger::getLogger(), raptorLogHandler);
+        LibrdfWorld::setRasqalLogHandler(Logger::getLogger(), raptorLogHandler);
     }
 
     void RDF::freeRDF() {
@@ -55,7 +154,7 @@ namespace omexmeta {
         LibrdfParser parser(syntax);
         LibrdfUri u(rdf.getModelUri());
         parser.parseString(str, rdf.model_, u);
-        u.freeUri(); // shouldnt be neeeded
+        u.freeUri();// shouldnt be neeeded
 
         // update the list of "seen" namespaces
         rdf.seen_namespaces_ = parser.getSeenNamespaces(std::vector<std::string>());
@@ -81,13 +180,13 @@ namespace omexmeta {
         return rdf;
     }
 
-    void RDF::purgeRDFBag(){
+    void RDF::purgeRDFBag() {
         // remove rdf bag constructs
         PurgeRDFBag purger(this);
         purger.purge();
     }
 
-    void RDF::translateVcard(){
+    void RDF::translateVcard() {
         // remove rdf bag constructs
         VCardTranslator translator(this);
         translator.translate();
@@ -176,7 +275,6 @@ namespace omexmeta {
 
         if (Options::removeRDFBag_)
             purgeRDFBag();
-
     }
 
     RDF RDF::fromFile(const std::string &filename, const std::string &syntax) {
@@ -220,7 +318,6 @@ namespace omexmeta {
 
         if (Options::removeRDFBag_)
             purgeRDFBag();
-
     }
 
     /**
@@ -393,7 +490,7 @@ namespace omexmeta {
         return uriHandler_.getModelMetaid();
     }
 
-    void RDF::setModelMetaid(const std::string& modelMetaid) {
+    void RDF::setModelMetaid(const std::string &modelMetaid) {
         uriHandler_.setModelMetaid(modelMetaid);
     }
 

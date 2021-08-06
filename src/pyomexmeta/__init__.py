@@ -8,9 +8,10 @@ from .pyomexmeta import (
     Editor,
     PhysicalEntity,
     SingularAnnotation,
-    OmexMetaException
+    OmexMetaException,
+    Logger
 )
-from .pyomexmeta_api import PyOmexMetaAPI, get_version, eUriType, eXmlType
+from .pyomexmeta_api import PyOmexMetaAPI, get_version, eUriType, eXmlType, eLogLevel
 
 __version__ = get_version()
 

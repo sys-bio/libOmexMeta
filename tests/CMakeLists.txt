@@ -55,7 +55,7 @@ endif ()
 
 # set dependencies only to make sure they get run first
 add_custom_target(run-ctest
-        COMMAND ${CMAKE_CTEST_COMMAND} --verbose --extra-verbose --progress -C ${CMAKE_BUILD_TYPE} ${CMAKE_BINARY_DIR}
+        COMMAND ${CMAKE_CTEST_COMMAND} --verbose --extra-verbose --progress -C "${CMAKE_BUILD_TYPE}" "${CMAKE_BINARY_DIR}"
         DEPENDS redland-wrapper-tests ${OmexMetaTests} OmexMetaCAPITests
         VERBATIM
         )

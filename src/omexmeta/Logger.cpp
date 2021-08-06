@@ -8,6 +8,7 @@
 
 namespace omexmeta {
 
+
     Logger::Logger() {
         consoleLogger();
         setFormatter(formatterPattern);
@@ -49,6 +50,14 @@ namespace omexmeta {
     }
 
     void Logger::fileLogger(const std::filesystem::path &filename) {
+        filepath_ = filename;
+        if (std::filesystem::exists(filename)){
+            try {
+                std::filesystem::remove(filename);
+            } catch (std::exception& e){
+                OMEX_WARN(e.what());
+            }
+        }
         isConsoleLogger = false;
         isFileLogger = true;
 
@@ -73,6 +82,7 @@ namespace omexmeta {
     }
 
     void Logger::setFormatter(const std::string &format) {
+        formatterPattern = format;
         logger->set_pattern(format);
     }
 
@@ -95,7 +105,9 @@ namespace omexmeta {
         shouldBacktrace_ = false;
         logger->disable_backtrace();
     }
-
+    void Logger::dumpBacktrace() {
+        return logger->dump_backtrace();
+    }
     void Logger::info(const std::string &message) {
         logger->info(message);
     }
@@ -119,5 +131,6 @@ namespace omexmeta {
     void Logger::critical(const std::string &message) {
         logger->critical(message);
     }
+
 
 }// namespace omexmeta

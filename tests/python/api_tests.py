@@ -14,7 +14,7 @@ print(_PYTHON_TESTS_DIR)
 sys.path += [_SRC_DIR, _PYTHON_TESTS_DIR]
 
 
-from pyomexmeta import PyOmexMetaAPI, eUriType, eXmlType
+from pyomexmeta import PyOmexMetaAPI, eUriType, eXmlType, eLogLevel
 from test_strings import TestStrings
 
 
@@ -1479,6 +1479,51 @@ local:SourceParticipant0000
         self.pyom.results_map_delete(results_map_ptr)
         self.pyom.string_vector_delete(keys_vector_ptr)
 
+    def test_logger_get_logger(self):
+        self.assertIsInstance(self.pyom.logger_get_logger(), int)
+
+    def test_logger_set_formatter(self):
+        # not actually a test but run manually to see it working
+        self.pyom.logger_set_formatter('%H:%M:%S %z : %v'.encode())
+        self.pyom.logger_critical("critically logging this message".encode())
+
+    def test_logger_set_level(self):
+        # not actually a test but run manually to see it working
+        self.pyom.logger_set_level(eLogLevel.info)
+        self.pyom.logger_info("information".encode())
+
+    def test_logger_get_level(self):
+        self.assertEqual(eLogLevel.warn, self.pyom.logger_get_level())
+
+    def test_logger_file_logger(self):
+        from os.path import join, dirname, exists, isfile, isdir, abspath
+        fname = join(abspath(dirname(__file__)), "log.log")
+        if exists(fname):
+            os.remove(fname)
+        self.pyom.logger_file_logger(fname.encode())
+        self.assertTrue(exists(fname))
+        try:
+            os.remove(fname)
+        except PermissionError as e:
+            self.pyom.logger_critical(str(e).encode())
+
+    def test_logger_info(self):
+        self.pyom.logger_info("logger_info".encode())
+
+    def test_logger_trace(self):
+        self.pyom.logger_trace("logger_trace".encode())
+
+    def test_logger_debug(self):
+        self.pyom.logger_debug("logger_debug".encode())
+
+    def test_logger_warn(self):
+        self.pyom.logger_warn("logger_warn".encode())
+
+    def test_logger_error(self):
+        self.pyom.logger_error("logger_error".encode())
+
+    def test_logger_critical(self):
+        self.pyom.logger_critical("logger_critical".encode())
 
 
 

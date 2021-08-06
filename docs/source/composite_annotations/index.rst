@@ -1,10 +1,6 @@
 Composite Annotations: SBML Examples
 ====================================
 
-.. todo::
-
-    Talk about properties.
-
 
 Annotations on a Physical Entity
 -----------------------------------------------

@@ -8,6 +8,7 @@
 #include "spdlog/spdlog.h"
 #include <filesystem>
 #include <string>
+#include "raptor2.h"
 
 
 namespace omexmeta {
@@ -20,6 +21,7 @@ namespace omexmeta {
 #define OMEX_WARN(msg) SPDLOG_WARN(msg)
 #define OMEX_ERROR(msg) SPDLOG_ERROR(msg)
 #define OMEX_CRITICAL(msg) SPDLOG_CRITICAL(msg)
+
 
     /**
      * @brief Logging class for libOmexMeta. Implemented as a singleton
@@ -76,6 +78,10 @@ namespace omexmeta {
          */
         void fileLogger(const std::filesystem::path &filename);
 
+        /**
+         * @brief dump backtrace messages when called
+         */
+        void dumpBacktrace();
 
         /**
          * @brief log a info message to the currently
@@ -155,7 +161,7 @@ namespace omexmeta {
         /**
          * @brief store the current formatter pattern
          */
-        std::string formatterPattern = "[%H:%M:%S %z][%l][ %g:%#] %^ %v %$";
+        std::string formatterPattern = "[%H:%M:%S %z] %^ %l %g:%# %v %$";
 
         /**
           * @brief default logging level
@@ -166,6 +172,8 @@ namespace omexmeta {
           * @brief indicator variable for backtracing
           */
         bool shouldBacktrace_ = false;
+
+
     };
 
 

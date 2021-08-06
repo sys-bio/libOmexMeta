@@ -14,7 +14,18 @@ using namespace omexmeta;
 
 class LoggingTests : public ::testing::Test {
 public:
+    std::filesystem::path p = std::filesystem::current_path() / "log.log";
     LoggingTests() = default;
+
+    ~LoggingTests() override{
+        if (std::filesystem::exists(p)){
+            try {
+                std::filesystem::remove(p);
+            } catch (std::exception& e){
+                OMEX_INFO(e.what());
+            }
+        }
+    }
 };
 
 TEST_F(LoggingTests, DefaultLevel){
@@ -44,88 +55,16 @@ TEST_F(LoggingTests, SwitchToFileLogger){
     ASSERT_TRUE(std::filesystem::exists(fname));
 }
 
-TEST_F(LoggingTests, L) {
-
-    // create color multi threaded logger
-    auto console = spdlog::stdout_color_mt("console");
-    auto err_logger = spdlog::stderr_color_mt("stderr");
-    spdlog::get("console")->info("loggers can be retrieved from a global registry using the spdlog::get(logger_name)");
-
-
-    spdlog::info("Welcome to spdlog!");
-    spdlog::error("Some error message with arg: {}", 1);
-
-    spdlog::warn("Easy padding in numbers like {:08d}", 12);
-    spdlog::critical("Support for int: {0:d};  hex: {0:x};  oct: {0:o}; bin: {0:b}", 42);
-    spdlog::info("Support for floats {:03.2f}", 1.23456);
-    spdlog::info("Positional args are {1} {0}..", "too", "supported");
-    spdlog::info("{:<30}", "left aligned");
-
-    spdlog::set_level(spdlog::level::debug);// Set global log level to debug
-    spdlog::debug("This message should be displayed..");
-
-    // change log pattern
-    spdlog::set_pattern("[%H:%M:%S %z] [%n] [%^---%L---%$] [thread %t] %v");
-
-    // Compile time log levels
-    // define SPDLOG_ACTIVE_LEVEL to desired level
-    SPDLOG_TRACE("Some trace message with param {}", 42);
-    SPDLOG_DEBUG("Some debug message");
-
-
+TEST_F(LoggingTests, UseFileLogger) {
+    Logger::getLogger()->setLevel(Logger::LogLevel::info);
+    Logger::getLogger()->fileLogger(p);
     std::string sbml = SBMLFactory::getSBML(SBML_INVALID_METAIDS);
-
     RDF rdf = RDF::fromString(sbml);
+    ASSERT_TRUE(std::filesystem::exists(p));
+    auto fsize = std::filesystem::file_size(p);
+    ASSERT_GT(fsize, 0);
 
-    //    std::cout << rdf.toString("turtle") << std::endl;
 }
-
-
-
-
-TEST_F(LoggingTests, T) {
-
-    /**
-     * Firstly I want a logger that works from
-     * inside libOmexMeta and or redland wrapper.
-     *
-     * Need a console and a file logger, and a way to switch between them
-     *
-     */
-
-    auto logger = Logger::getLogger();
-    logger->setLevel(spdlog::level::info);
-
-    Logger::getLogger()->critical("Warn me up scotty");
-
-//    spdlog::info("Logging some info");
-//
-//    std::filesystem::path log = std::filesystem::current_path() / "logger.log";
-//    std::cout << "log: " << log << std::endl;
-//    auto logger = spdlog::basic_logger_mt("basic_logger", log.string());
-//
-//    spdlog::info("Logging some info to file");
-//
-//    logger->info("logging some infor to file: 24234");
-
-//    spdlog::log(spdlog::level::info, "logger ksadnf;kajsdnf");
-//    .info("logging to file 2");
-
-//    Logger::setLogger("console", LEVEL);
-//    Logger::setLogger("file", "filename", LEVEL);
-//
-//    Logger::useConsoleLogger(true);
-//    Logger::useFileLogger(true)
-
-//    std::string sbml = SBMLFactory::getSBML(SBML_INVALID_METAIDS);
-//
-//    RDF rdf = RDF::fromString(sbml);
-}
-
-
-
-
-
 
 
 

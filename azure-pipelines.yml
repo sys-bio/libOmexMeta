@@ -409,14 +409,13 @@ stages:
               cd D:\a\1\s\build\site-packages\pyomexmeta
               ls
 
+              cd $(BUILD_DIRECTORY)
               ctest -C Release --verbose --extra-verbose --output-on-failure
             displayName: Build With Python
             # publish python packages in azure:
             #   https://docs.microsoft.com/en-us/azure/devops/pipelines/artifacts/pypi?view=azure-devops&tabs=yaml
 
           - powershell: |
-
-
               $ENV:PATH="$ENV:PATH;$(PythonScriptsDir)"
               $Env:LD_LIBRARY_PATH = "$(PythonLibDir)"
               echo "Where.exe conda: "

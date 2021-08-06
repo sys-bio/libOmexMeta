@@ -1510,7 +1510,7 @@ namespace omexmeta {
 
     void StringVector_delete(std::vector<std::string> *strVec) {
         try {
-            if (strVec){
+            if (strVec) {
                 delete strVec;
                 strVec = nullptr;
             }
@@ -1554,12 +1554,136 @@ namespace omexmeta {
         }
     }
 
-    void ResultsMap_delete(ResultsMap * resultsMap) {
+    void ResultsMap_delete(ResultsMap *resultsMap) {
         try {
-            if (resultsMap){
+            if (resultsMap) {
                 delete resultsMap;
                 resultsMap = nullptr;
             }
+        } catch (std::exception &e) {
+            setLastError(e.what());
+        }
+    }
+
+    /**
+     * Logger
+     */
+
+    Logger *Logger_getLogger() {
+        try {
+            return Logger::getLogger();
+        } catch (std::exception &e) {
+            setLastError(e.what());
+        }
+    }
+
+    void Logger_setFormatter(const char *format) {
+        try {
+            Logger::getLogger()->setFormatter(format);
+        } catch (std::exception &e) {
+            setLastError(e.what());
+        }
+    }
+
+    void Logger_setLevel(Logger::LogLevel level) {
+        try {
+            Logger::getLogger()->setLevel(level);
+        } catch (std::exception &e) {
+            setLastError(e.what());
+        }
+    }
+
+    Logger::LogLevel Logger_getLevel() {
+        try {
+            return Logger::getLogger()->getLevel();
+        } catch (std::exception &e) {
+            setLastError(e.what());
+        }
+    }
+
+    void Logger_enableBacktrace(int num) {
+        try {
+            Logger::getLogger()->enableBacktrace(num);
+        } catch (std::exception &e) {
+            setLastError(e.what());
+        }
+    }
+
+    void Logger_disableBacktrace() {
+        try {
+            Logger::getLogger()->disableBacktrace();
+        } catch (std::exception &e) {
+            setLastError(e.what());
+        }
+    }
+
+    void Logger_dumpBacktrace() {
+        try {
+            Logger::getLogger()->dumpBacktrace();
+        } catch (std::exception &e) {
+            setLastError(e.what());
+        }
+    }
+
+    void Logger_consoleLogger() {
+        try {
+            Logger::getLogger()->consoleLogger();
+        } catch (std::exception &e) {
+            setLastError(e.what());
+        }
+    }
+
+    void Logger_fileLogger(const char *filename) {
+        try {
+            Logger::getLogger()->fileLogger(filename);
+        } catch (std::exception &e) {
+            setLastError(e.what());
+        }
+    }
+
+    void Logger_info(const char *message) {
+        try {
+            Logger::getLogger()->info(message);
+        } catch (std::exception &e) {
+            setLastError(e.what());
+        }
+    }
+
+    void Logger_trace(const char *message) {
+        try {
+            Logger::getLogger()->trace(message);
+        } catch (std::exception &e) {
+            setLastError(e.what());
+        }
+    }
+
+    void Logger_debug(const char *message) {
+        try {
+            Logger::getLogger()->debug(message);
+        } catch (std::exception &e) {
+            setLastError(e.what());
+        }
+    }
+
+    void Logger_warn(const char *message) {
+        try {
+            Logger::getLogger()->warn(message);
+        } catch (std::exception &e) {
+            setLastError(e.what());
+        }
+    }
+
+    void Logger_error(const char *message) {
+        try {
+            Logger::getLogger()->error(message);
+        } catch (std::exception &e) {
+            setLastError(e.what());
+        }
+    }
+
+    void Logger_critical(const char *message) {
+        try {
+            Logger::getLogger()->critical(message);
         } catch (std::exception &e) {
             setLastError(e.what());
         }

@@ -10,13 +10,13 @@ from functools import wraps
 
 try:
     # for use from outside the package, as a python package
-    from .pyomexmeta_api import PyOmexMetaAPI, eUriType, eXmlType, OmexMetaException
+    from .pyomexmeta_api import PyOmexMetaAPI, eUriType, eXmlType, eLogLevel, OmexMetaException
 except ImportError:
     try:  # for internal use
-        from pyomexmeta_api import PyOmexMetaAPI, eUriType, eXmlType, OmexMetaException
+        from pyomexmeta_api import PyOmexMetaAPI, eUriType, eXmlType, eLogLevel, OmexMetaException
     except ImportError:
         # for internal use
-        from . import pyomexmeta_api, eUriType, eXmlType, OmexMetaException
+        from . import pyomexmeta_api, eUriType, eXmlType, eLogLevel, OmexMetaException
 
 _pyom = PyOmexMetaAPI()
 
@@ -747,10 +747,6 @@ class RDF:
         _pyom.string_vector_delete(map_keys)
         _pyom.results_map_delete(results_map_ptr)
         return results_dict
-
-
-
-
 
     def to_editor(self, xml: str, generate_new_metaids: bool = False, sbml_semantic_extraction: bool = True) -> Editor:
         """Create an Editor object which is the interface for creating and removing annotations
@@ -2539,3 +2535,119 @@ class PersonalInformation:
     def delete(self):
         """Clean up resources associated with this object"""
         return _pyom.personal_information_delete(self._obj)
+
+
+class Logger:
+
+    def __init__(self):
+        pass
+
+    @staticmethod
+    def get_logger() -> int:
+        """returns memory address of logger instance"""
+        return _pyom.logger_get_logger()
+
+    @staticmethod
+    def set_formatter(format: str) -> None:
+        """Format string for the logger
+
+        See `here <https://github.com/gabime/spdlog/wiki/3.-Custom-formatting#pattern-flags>`_ for valid formatting codes
+
+        """
+        return _pyom.logger_set_formatter(format.encode())
+
+    @staticmethod
+    def set_level(level: eLogLevel) -> None:
+        """Set the current log level.
+
+        Valid logging levels are:
+          - eLogLevel.trace = 0
+          - eLogLevel.debug = 1
+          - eLogLevel.info = 2
+          - eLogLevel.warn = 3
+          - eLogLevel.err = 4
+          - eLogLevel.critical = 5
+          - eLogLevel.off = 6
+
+        Only messages with a priority equal to
+        or greater than the current log level
+        will be shown.
+
+        """
+        return _pyom.logger_set_level(level)
+
+    @staticmethod
+    def get_level() -> int:
+        """Returns the value of the current log level"""
+        return _pyom.logger_get_level()
+
+    @staticmethod
+    def enable_backtrace(num: int) -> None:
+        """Turn on backtrace feature, for traceback
+        in the underlying c/c++ libraries.
+
+        Experimental feature. Backtracing
+        will show the last num logging messages when dumped with
+        dump_backtrace (i.e. after error).
+
+        Args:
+            num (int): How many logging messages to show on dumping the log stack trace
+
+        """
+        return _pyom.logger_enable_backtrace()
+
+    @staticmethod
+    def disable_backtrace(self) -> None:
+        """Turn off backtrace feature
+
+        Experimental feature
+
+        """
+        _pyom.logger_disable_backtrace()
+
+    @staticmethod
+    def console_logger() -> None:
+        """Switch to a console logger
+
+        Turns off file_logger and activates the console logger"""
+        _pyom.logger_console_logger()
+
+    @staticmethod
+    def file_logger(filepath: str) -> None:
+        """Switch to a file logger
+
+        Args:
+            filepath: valid path to where you would like to store logging messages
+
+        Turns off console logger and activate file_logger"""
+        return _pyom.logger_file_logger(filepath)
+
+    @staticmethod
+    def info(message: str) -> None:
+        """Log an info message"""
+        return _pyom.logger_info(message.encode())
+
+    @staticmethod
+    def trace(message: str) -> None:
+        """Log an trace message"""
+        return _pyom.logger_trace(message.encode())
+
+    @staticmethod
+    def debug(message: str) -> None:
+        """Log an debug message"""
+        return _pyom.logger_debug(message.encode())
+
+    @staticmethod
+    def warn(message: str) -> None:
+        """Log a warning message"""
+        return _pyom.logger_warn(message.encode())
+
+    @staticmethod
+    def error(message: str) -> None:
+        """Log a error message"""
+        return _pyom.logger_error(message.encode())
+
+    @staticmethod
+    def critical(message: str) -> None:
+        """Log a critical message"""
+        return _pyom.logger_critical(message.encode())

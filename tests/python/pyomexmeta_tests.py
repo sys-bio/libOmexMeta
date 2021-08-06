@@ -1578,5 +1578,19 @@ class DrawTests(unittest.TestCase):
         self.assertTrue(os.path.isfile(self.output_filename))
 
 
+class LoggerTests(unittest.TestCase):
+
+    def setUp(self) -> None:
+        pass
+
+    def tearDown(self) -> None:
+        pass
+
+    def test_set_logging_level(self):
+        Logger().set_level(eLogLevel.critical)
+        rdf = RDF.from_string(TestStrings.sbml_invalid_metaids)
+
+        print(rdf)
+
 if __name__ == "__main__":
     unittest.main()

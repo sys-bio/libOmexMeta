@@ -22,11 +22,19 @@
 #include "omexmeta/SBMLSemanticExtraction.h"
 #include "omexmeta/UriHandler.h"
 #include "omexmeta/VCardTranslator.h"
+#include "omexmeta/Logger.h"
 
 
 using namespace redland;
 
 namespace omexmeta {
+
+
+    int librdfLogHandler(void* user_data, librdf_log_message * message);
+
+    // typedef void (*raptor_log_handler)(void *user_data, raptor_log_message *message);
+    void raptorLogHandler(void* user_data, raptor_log_message * message);
+
 
     typedef std::unordered_map<std::string, std::string> NamespaceMap;
 
@@ -391,6 +399,12 @@ namespace omexmeta {
          * so users normally do not need this function.
          */
         void freeRDF();
+
+        /**
+         * @brief set custom handler functions
+         * for librdf, raptor and rasqal
+         */
+        void setLogHandlers();
 
         LibrdfStorage storage_;
         LibrdfModel model_;
