@@ -26,6 +26,12 @@ SET(WRAPPER_SOURCE_DIR ${WRAPPER_DIR}/src)
 # directory of the wrapper tests
 SET(WRAPPER_TEST_DIR ${WRAPPER_DIR}/test)
 
+if (${CMAKE_BUILD_TYPE} STREQUAL "Debug")
+    set(RASQAL_DEBUGGING OFF CACHE BOOL "Turn on debugging for rasqal library. Only effective in debug mode")
+    set(RAPTOR_DEBUGGING OFF CACHE BOOL "Turn on debugging for raptor library. Only effective in debug mode")
+    set(LIBRDF_DEBUGGING OFF CACHE BOOL "Turn on debugging for librdf library. Only effective in debug mode")
+endif ()
+
 # set directory for librdf storage/cache. only used when not specified by user
 #  which it is in the context of libomexmeta. I'm not sure about this.
 set(PKGDATADIR $ENV{HOME}/.librdf_package_data_dir)

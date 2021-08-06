@@ -65,14 +65,21 @@ TEST_F(QueryTests, TestgetResultsAsMap) {
 }
 
 TEST_F(QueryTests, BindingNotUsed) {
+    std::cout << __FILE__<<":"<<__LINE__<<std::endl;
     std::string queryString = "SELECT ?x ?y ?z \n"
                               "WHERE {\n"
                               "  ?x <http://biomodels.net/model-qualifiers/isDescribedBy> ?z \n"
+//                              "  ?x ?y ?z \n"
                               "}\n";
+    std::cout << __FILE__<<":"<<__LINE__<<std::endl;
     omexmeta::Query query(rdf.getModel(), queryString);
+    std::cout << __FILE__<<":"<<__LINE__<<std::endl;
     omexmeta::ResultsMap resultsMap = query.resultsAsMap();
+    std::cout << __FILE__<<":"<<__LINE__<<std::endl;
     std::string expected = "http://biomodels.net/model-qualifiers/isDescribedBy";
+    std::cout << __FILE__<<":"<<__LINE__<<std::endl;
     std::string actual = resultsMap["y"][0];
+    std::cout << __FILE__<<":"<<__LINE__<<std::endl;
     ASSERT_STREQ("", actual.c_str());
     query.freeQuery();
 }

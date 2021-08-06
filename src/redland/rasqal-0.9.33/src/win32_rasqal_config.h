@@ -192,7 +192,8 @@ int rasqal_gettimeofday(struct timeval *tv, struct timezone *tz);
 #define RASQAL_DIGEST_INTERNAL 1
 
 #ifdef _DEBUG
-#define RASQAL_DEBUG 1
+// uncomment to get rasqal debugging messages. These are long and not that useful to libomexmeta
+//#define RASQAL_DEBUG 1
 #endif
 
 #ifdef __cplusplus

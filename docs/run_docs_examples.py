@@ -9,7 +9,7 @@ args = parser.parse_args()
 
 print("\n\n================================================")
 print("Generating libOmexMeta documentation examples ")
-print("================================================")
+print("====================================================")
 print("Documentation examples are run every time the docs are built. ")
 print("The doc examples are run from the install folder so you must ")
 print("ensure you have just build the install cmake target before ")

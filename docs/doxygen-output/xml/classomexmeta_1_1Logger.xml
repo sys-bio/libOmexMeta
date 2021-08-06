@@ -202,7 +202,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Logger.h" line="40" column="14" bodyfile="src/omexmeta/Logger.cpp" bodystart="84" bodyend="87"/>
+        <location file="src/omexmeta/include/omexmeta/Logger.h" line="40" column="14" bodyfile="src/omexmeta/Logger.cpp" bodystart="92" bodyend="95"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Logger_1a8aea25829e62c8f4c6f03fc48d50dd41" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -230,7 +230,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Logger.h" line="53" column="14" bodyfile="src/omexmeta/Logger.cpp" bodystart="89" bodyend="92"/>
+        <location file="src/omexmeta/include/omexmeta/Logger.h" line="53" column="14" bodyfile="src/omexmeta/Logger.cpp" bodystart="97" bodyend="100"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Logger_1a597998f70839cc4e940bdc3d88b67409" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>LogLevel</type>
@@ -244,7 +244,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Logger.h" line="58" column="18" bodyfile="src/omexmeta/Logger.cpp" bodystart="94" bodyend="96"/>
+        <location file="src/omexmeta/include/omexmeta/Logger.h" line="58" column="18" bodyfile="src/omexmeta/Logger.cpp" bodystart="102" bodyend="104"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Logger_1adff73e1d612beabc4816cde05387454c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -272,7 +272,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Logger.h" line="64" column="14" bodyfile="src/omexmeta/Logger.cpp" bodystart="98" bodyend="102"/>
+        <location file="src/omexmeta/include/omexmeta/Logger.h" line="64" column="14" bodyfile="src/omexmeta/Logger.cpp" bodystart="106" bodyend="110"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Logger_1ab9f86a85a769a36a22f6e02dad5c78fa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -286,7 +286,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Logger.h" line="69" column="14" bodyfile="src/omexmeta/Logger.cpp" bodystart="104" bodyend="107"/>
+        <location file="src/omexmeta/include/omexmeta/Logger.h" line="69" column="14" bodyfile="src/omexmeta/Logger.cpp" bodystart="112" bodyend="115"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Logger_1a10e34a8915c7520e9332d9c1889f7521" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -300,7 +300,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Logger.h" line="74" column="14" bodyfile="src/omexmeta/Logger.cpp" bodystart="29" bodyend="50"/>
+        <location file="src/omexmeta/include/omexmeta/Logger.h" line="74" column="14" bodyfile="src/omexmeta/Logger.cpp" bodystart="29" bodyend="54"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Logger_1af999f93aa9e820a40c87ed34797fc1ce" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -318,7 +318,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Logger.h" line="79" column="14" bodyfile="src/omexmeta/Logger.cpp" bodystart="52" bodyend="82"/>
+        <location file="src/omexmeta/include/omexmeta/Logger.h" line="79" column="14" bodyfile="src/omexmeta/Logger.cpp" bodystart="56" bodyend="90"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Logger_1a56f5508d87ac4f700b4a7641cb7b88a0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -332,7 +332,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Logger.h" line="84" column="14" bodyfile="src/omexmeta/Logger.cpp" bodystart="108" bodyend="110"/>
+        <location file="src/omexmeta/include/omexmeta/Logger.h" line="84" column="14" bodyfile="src/omexmeta/Logger.cpp" bodystart="116" bodyend="118"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Logger_1ab49ff109d59a626fbcec1c05389fe6a2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -350,7 +350,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Logger.h" line="90" column="14" bodyfile="src/omexmeta/Logger.cpp" bodystart="111" bodyend="113"/>
+        <location file="src/omexmeta/include/omexmeta/Logger.h" line="90" column="14" bodyfile="src/omexmeta/Logger.cpp" bodystart="119" bodyend="121"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Logger_1a052bdd430682c2c91490bc2763b918fc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -368,7 +368,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Logger.h" line="96" column="14" bodyfile="src/omexmeta/Logger.cpp" bodystart="115" bodyend="117"/>
+        <location file="src/omexmeta/include/omexmeta/Logger.h" line="96" column="14" bodyfile="src/omexmeta/Logger.cpp" bodystart="123" bodyend="125"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Logger_1a8e5db234df44e3fc3a60bfcbf3e77f4b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -386,7 +386,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Logger.h" line="102" column="14" bodyfile="src/omexmeta/Logger.cpp" bodystart="119" bodyend="121"/>
+        <location file="src/omexmeta/include/omexmeta/Logger.h" line="102" column="14" bodyfile="src/omexmeta/Logger.cpp" bodystart="127" bodyend="129"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Logger_1aa35b6607acc0873cd955f518b67c81dd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -404,7 +404,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Logger.h" line="108" column="14" bodyfile="src/omexmeta/Logger.cpp" bodystart="123" bodyend="125"/>
+        <location file="src/omexmeta/include/omexmeta/Logger.h" line="108" column="14" bodyfile="src/omexmeta/Logger.cpp" bodystart="131" bodyend="133"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Logger_1aea5f0b2cf462c59f3a682a4447dcabb8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -422,7 +422,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Logger.h" line="114" column="14" bodyfile="src/omexmeta/Logger.cpp" bodystart="127" bodyend="129"/>
+        <location file="src/omexmeta/include/omexmeta/Logger.h" line="114" column="14" bodyfile="src/omexmeta/Logger.cpp" bodystart="135" bodyend="137"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Logger_1ae7ff56f93077d9f17626f9c8141650e8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -440,7 +440,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Logger.h" line="120" column="14" bodyfile="src/omexmeta/Logger.cpp" bodystart="131" bodyend="133"/>
+        <location file="src/omexmeta/include/omexmeta/Logger.h" line="120" column="14" bodyfile="src/omexmeta/Logger.cpp" bodystart="139" bodyend="141"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">

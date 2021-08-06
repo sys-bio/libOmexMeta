@@ -27,6 +27,10 @@ namespace omexmeta {
     }
 
     void Logger::consoleLogger() {
+        // if we already have a console logger, just return
+        if (isConsoleLogger){
+            return;
+        }
         isConsoleLogger = true;
         isFileLogger = false;
         LoggerPtr console = spdlog::stdout_color_mt("console");
@@ -50,6 +54,12 @@ namespace omexmeta {
     }
 
     void Logger::fileLogger(const std::filesystem::path &filename) {
+        if (isFileLogger){
+            return;
+        }
+        isConsoleLogger = false;
+        isFileLogger = true;
+
         filepath_ = filename;
         if (std::filesystem::exists(filename)){
             try {
@@ -58,8 +68,6 @@ namespace omexmeta {
                 OMEX_WARN(e.what());
             }
         }
-        isConsoleLogger = false;
-        isFileLogger = true;
 
         filepath_ = filename;
         LoggerPtr fileLogger = spdlog::basic_logger_mt("fileLogger", filepath_.string());

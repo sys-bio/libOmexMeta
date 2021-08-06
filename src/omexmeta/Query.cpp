@@ -3,7 +3,7 @@
 //
 
 #include "omexmeta/Query.h"
-
+#include "omexmeta/Logger.h"
 
 // todo: Is laqrs a valid query language?
 
@@ -11,15 +11,21 @@ namespace omexmeta {
 
     Query::Query(librdf_model *model, std::string query)
         : model_(model), query_(std::move(query)) {
+        std::cout << __FILE__ << ":" << __LINE__ << std::endl;
+
         q_ = librdf_new_query(
                 LibrdfWorld::getWorld(), (const char *) "sparql",
                 nullptr, (const unsigned char *) query_.c_str(),
                 nullptr);
+        std::cout << __FILE__ << ":" << __LINE__ << std::endl;
         if (!q_) {
+            std::cout << __FILE__ << ":" << __LINE__ << std::endl;
             std::ostringstream qerr;
             throw NullPointerException("NullPointerException: Query::runQuery(): q_");
         }
+        std::cout << __FILE__ << ":" << __LINE__ << std::endl;
         runQuery();
+        std::cout << __FILE__ << ":" << __LINE__ << std::endl;
     }
 
     //    Query::~Query() {
@@ -75,15 +81,24 @@ namespace omexmeta {
     }
 
     void Query::runQuery() {
+
+        Logger::getLogger()->setLevel(Logger::LogLevel::trace);
         // When we runQuery twice, we have memory leak if we do
         //  not free previous query results.
+        std::cout << __FILE__ << ":" << __LINE__ << std::endl;
         if (query_results_ != nullptr) {
+            std::cout << __FILE__ << ":" << __LINE__ << std::endl;
             librdf_free_query_results(query_results_);
+            std::cout << __FILE__ << ":" << __LINE__ << std::endl;
             query_results_ = nullptr;
+            std::cout << __FILE__ << ":" << __LINE__ << std::endl;
         }
+        std::cout << __FILE__ << ":" << __LINE__ << std::endl;
 
         query_results_ = librdf_query_execute(q_, model_);
+        std::cout << __FILE__ << ":" << __LINE__ << std::endl;
         if (!query_results_) {
+            std::cout << __FILE__ << ":" << __LINE__ << std::endl;
             throw NullPointerException("NullPointerException: Query::runQuery(): query_results_");
         }
     }
@@ -114,9 +129,9 @@ namespace omexmeta {
     }
 
     std::string Query::getBindingValueByName(const std::string &name) {
-        librdf_node* n = librdf_query_results_get_binding_value_by_name(
+        librdf_node *n = librdf_query_results_get_binding_value_by_name(
                 query_results_, (const char *) name.c_str());
-        if (n){
+        if (n) {
             LibrdfNode node(n);
             std::string s = node.str();
             return s;
