@@ -3,7 +3,7 @@
 //
 
 #include "redland/LibrdfModel.h"
-#include <omexmeta/Query.h>
+#include <include/redland/Query.h>
 #include <omexmeta/RDF.h>
 #include <omexmeta/VCardTranslator.h>
 

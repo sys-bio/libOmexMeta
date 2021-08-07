@@ -12,7 +12,52 @@ set(REDLAND_WRAPPER_TEST_SOURCES
         LibrdfSerializerTests.cpp
         LibrdfQueryTests.cpp
         LibrdfQueryResultsTests.cpp
+        QueryTests.cpp
         )
+
+
+
+# Adds a new executable cmake target to cmake.
+# Links roadrunner-static and gtest.
+# Parameters:
+#   - TEST_TARGET: name of the test target binary
+#   - OUT_VARIABLE: list variable to append BINARY. Creates the list if not exist.
+#   - All further arguments are added to the binary as sources.
+macro(add_redland_test_executable TEST_TARGET OUT_VARIABLE)
+    add_executable(${TEST_TARGET} ${ARGN})
+
+    target_include_directories(
+            ${TEST_TARGET} PRIVATE
+            "${ThisDirectory}"
+    )
+
+    target_link_libraries(${TEST_TARGET} PUBLIC
+            redland-combined-static gtest gtest_main gmock gmock_main
+            )
+
+    add_dependencies(${TEST_TARGET} redland-combined-static gtest gtest_main gmock gmock_main)
+    set_target_properties(${TEST_TARGET} PROPERTIES LINKER_LANGUAGE CXX)
+
+    # Add to ctest.
+    # add_test(NAME ${BINARY} COMMAND "$<TARGET_FILE:${BINARY}>")
+    gtest_discover_tests(
+            ${TEST_TARGET}
+            TEST_LIST redland-combined-tests
+            DISCOVERY_TIMEOUT 500
+    )
+
+    set_tests_properties(${redland-combined-tests} PROPERTIES TIMEOUT 500)
+
+#    set(test_targets "${test_targets}" "${testid}")
+#    if ("${${OUT_VARIABLE}}" STREQUAL "")
+#        set(${OUT_VARIABLE} "${TEST_LIST}" PARENT_SCOPE)
+#    else ()
+#        set(${OUT_VARIABLE} "${${OUT_VARIABLE}}" "${TEST_LIST}" PARENT_SCOPE)
+#    endif ()
+
+endmacro()
+
+
 
 # add test executable
 add_executable(${target} ${REDLAND_WRAPPER_TEST_SOURCES})
@@ -48,6 +93,10 @@ target_link_libraries(${target} PUBLIC
 if (WIN32)
     target_link_options(${target} PRIVATE "/NODEFAULTLIB:library")
 endif ()
+
+
+add_redland_test_executable(redland_wrapper_RefCountedTests RedlandTestTargets RefCountedTests.cpp)
+
 
 
 

@@ -8,9 +8,9 @@
 #include "redland/LibrdfQuery.h"
 #include "redland/librdf.h"
 
+#include "include/redland/Query.h"
 #include "omexmeta/CurlGet.h"
 #include "omexmeta/MetaID.h"
-#include "omexmeta/Query.h"
 
 #include "libxml/tree.h"
 

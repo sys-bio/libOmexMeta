@@ -5,11 +5,11 @@
 #ifndef LIBOMEXMETA_PHYSICALENTITY_H
 #define LIBOMEXMETA_PHYSICALENTITY_H
 
+#include "include/redland/Query.h"
 #include "omexmeta/MetaID.h"
 #include "omexmeta/OmexMetaUtils.h"
 #include "omexmeta/PhysicalProperty.h"
 #include "omexmeta/PropertyBearer.h"
-#include "omexmeta/Query.h"
 #include "omexmeta/Triple.h"
 #include "omexmeta_export.h"
 #include "redland/RedlandAPI.h"

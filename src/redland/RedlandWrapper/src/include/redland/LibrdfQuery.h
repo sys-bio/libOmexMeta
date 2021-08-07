@@ -40,7 +40,9 @@ namespace redland {
         int getUsage();
 
         librdf_query *getWithoutIncrement() const;
+
         bool operator==(const LibrdfQuery &rhs) const;
+
         bool operator!=(const LibrdfQuery &rhs) const;
 
     private:

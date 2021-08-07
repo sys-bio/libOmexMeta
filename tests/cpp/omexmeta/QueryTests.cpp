@@ -5,7 +5,7 @@
 
 #include "AnnotationSamples.h"
 #include "SBMLFactory.h"
-#include "omexmeta/Query.h"
+#include "include/redland/Query.h"
 #include "omexmeta/RDF.h"
 #include "omexmeta/Triples.h"
 #include <gtest/gtest.h>

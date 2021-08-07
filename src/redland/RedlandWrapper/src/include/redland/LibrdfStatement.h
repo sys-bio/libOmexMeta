@@ -16,6 +16,7 @@ namespace redland {
 
     class LibrdfStatement {
     public:
+
         virtual ~LibrdfStatement();
 
         LibrdfStatement(librdf_node *subject, librdf_node *predicate, librdf_node *resource);
