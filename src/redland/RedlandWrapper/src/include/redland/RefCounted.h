@@ -12,13 +12,14 @@
 namespace redland {
 
     namespace _for_tests{
-        typedef struct {
+        typedef struct ref_counted_type_t {
             int usage = 0;
         } ref_counted_type;
 
         ref_counted_type * makeRefCountedType(){
             ref_counted_type * obj = new ref_counted_type();
             obj->usage++;
+            return obj;
         }
 
         void free_ref_counted_type(ref_counted_type* refCountedType){
@@ -62,6 +63,7 @@ namespace redland {
         }
 
         RefCounted(const RefCounted &other) {
+            checkForNull();
             if (obj_) {
                 freeFunc_(obj_);
                 obj_ = nullptr;
@@ -105,6 +107,10 @@ namespace redland {
             if (!obj_) {
                 throw RedlandNullPointerException(
                         "RedlandNullPointerException: checkForNull(): obj_ is null");
+            }
+            if (!freeFunc_){
+                throw RedlandNullPointerException(
+                        "RedlandNullPointerException: checkForNull(): freeFunc_ is null");
             }
         }
 
