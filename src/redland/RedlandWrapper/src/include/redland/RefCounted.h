@@ -11,27 +11,30 @@
 
 namespace redland {
 
-    namespace _for_tests{
+    namespace _for_tests {
         typedef struct ref_counted_type_t {
             int usage = 0;
         } ref_counted_type;
 
-        ref_counted_type * makeRefCountedType(){
-            ref_counted_type * obj = new ref_counted_type();
+        ref_counted_type *makeRefCountedType() {
+            ref_counted_type *obj = new ref_counted_type();
             obj->usage++;
             return obj;
         }
 
-        void free_ref_counted_type(ref_counted_type* refCountedType){
-            if (refCountedType->usage == 0){
-                return;
-            }
-            refCountedType->usage--;
-            if (refCountedType->usage == 0){
-                delete refCountedType;
+        void free_ref_counted_type(ref_counted_type *refCountedType) {
+            if (refCountedType) {
+                if (refCountedType->usage == 0) {
+                    return;
+                }
+                refCountedType->usage--;
+                if (refCountedType->usage == 0) {
+                    delete refCountedType;
+                    refCountedType = nullptr;
+                }
             }
         }
-    }
+    }// namespace _for_tests
 
     using world_free_func = std::function<void(librdf_world *)>;
     using uri_free_func = std::function<void(librdf_uri *)>;
@@ -43,7 +46,7 @@ namespace redland {
     using query_results_free_func = std::function<void(librdf_query_results *)>;
     using node_free_func = std::function<void(librdf_node *)>;
     using model_free_func = std::function<void(librdf_model *)>;
-    using ref_counted_type_free_func = std::function<void(_for_tests::ref_counted_type*)>;
+    using ref_counted_type_free_func = std::function<void(_for_tests::ref_counted_type *)>;
 
     template<typename ObjType, typename FreeFuncType>
     class RefCounted {
@@ -62,8 +65,7 @@ namespace redland {
             freeFunc_(obj_);
         }
 
-        RefCounted(const RefCounted &other) {
-            checkForNull();
+        RefCounted(const RefCounted &other) : freeFunc_(other.freeFunc_) {
             if (obj_) {
                 freeFunc_(obj_);
                 obj_ = nullptr;
@@ -71,7 +73,7 @@ namespace redland {
             obj_ = other.get();// automatically increments the reference count
         }
 
-        RefCounted(RefCounted &&other) noexcept {
+        RefCounted(RefCounted &&other) noexcept : freeFunc_(other.freeFunc_) {
             if (obj_) {
                 freeFunc_(obj_);
                 obj_ = nullptr;
@@ -82,6 +84,12 @@ namespace redland {
 
         RefCounted &operator=(const RefCounted &other) {
             if (*this != other) {
+                // this is a weird one since we're treating the method that free's memory
+                // as a member variable. It means that we want to free an existing obj_ with a
+                // uninitialized freeFunc_. So we copy it across first.
+                if (!freeFunc_)
+                    freeFunc_ = other.freeFunc_;
+                // now we can deal with obj.
                 if (obj_) {
                     freeFunc_(obj_);
                     obj_ = nullptr;
@@ -91,9 +99,15 @@ namespace redland {
             return *this;
         }
 
-        RefCounted &operator=(RefCounted &&other) noexcept{
+        RefCounted &operator=(RefCounted &&other) noexcept {
             if (*this != other) {
                 if (obj_) {
+                    // this is a weird one since we're treating the method that free's memory
+                    // as a member variable. It means that we want to free an existing obj_ with a
+                    // uninitialized freeFunc_. So we copy it across first.
+                    if (!freeFunc_)
+                        freeFunc_ = other.freeFunc_;
+                    // now we can deal with obj.
                     freeFunc_(obj_);
                     obj_ = nullptr;
                 }
@@ -108,7 +122,7 @@ namespace redland {
                 throw RedlandNullPointerException(
                         "RedlandNullPointerException: checkForNull(): obj_ is null");
             }
-            if (!freeFunc_){
+            if (!freeFunc_) {
                 throw RedlandNullPointerException(
                         "RedlandNullPointerException: checkForNull(): freeFunc_ is null");
             }
@@ -141,34 +155,6 @@ namespace redland {
             return obj_;
         }
 
-//        void freeFunc_(obj_){
-//            return free()
-//            std::visit([&](){
-//                return std::get<
-//                if (auto f = std::get_if<ref_counted_type_free_func>(&freeFunc_)){
-//                    return (*f)(obj_);
-//                } else if (auto f = std::get_if<world_free_func>(&freeFunc_)){
-//                    return (*f)(obj_);
-//                } else if (auto f = std::get_if<uri_free_func>(&freeFunc_)){
-//                    return (*f)(obj_);
-//                } else if (auto f = std::get_if<storage_free_func>(&freeFunc_)){
-//                    return (*f)(obj_);
-//                } else if (auto f = std::get_if<serializer_free_func>(&freeFunc_)){
-//                    return (*f)(obj_);
-//                } else if (auto f = std::get_if<parser_free_func>(&freeFunc_)){
-//                    return (*f)(obj_);
-//                } else if (auto f = std::get_if<query_free_func>(&freeFunc_)){
-//                    return (*f)(obj_);
-//                } else if (auto f = std::get_if<query_results_free_func>(&freeFunc_)){
-//                    return (*f)(obj_);
-//                } else if (auto f = std::get_if<node_free_func>(&freeFunc_)){
-//                    return (*f)(obj_);
-//                } else if (auto f = std::get_if<model_free_func>(&freeFunc_)){
-//                    return (*f)(obj_);
-//                }
-//            }, freeFunc_);
-//        }
-
         bool operator==(const RefCounted &rhs) const {
             return obj_ == rhs.obj_ &&
                    typeid(freeFunc_) == typeid(rhs.freeFunc_);
@@ -179,7 +165,7 @@ namespace redland {
         }
 
     private:
-        ObjType *obj_;
+        ObjType *obj_ = nullptr;
 
         FreeFuncType freeFunc_;
     };
