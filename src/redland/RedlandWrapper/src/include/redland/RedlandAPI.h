@@ -17,6 +17,7 @@
 #include "LibrdfUri.h"
 #include "LibrdfWorld.h"
 #include "RaptorIOStream.h"
+#include "RefCounted.h"
 
 
 #endif//LIBOMEXMETA_REDLANDAPI_H

@@ -5,9 +5,9 @@
 
 #include "MockRDF.h"
 #include "SBMLFactory.h"
+#include "include/redland/Query.h"
 #include "omexmeta/Options.h"
 #include "omexmeta/PurgeRDFBag.h"
-#include "omexmeta/Query.h"
 #include "omexmeta/RDF.h"
 #include "gtest/gtest.h"
 

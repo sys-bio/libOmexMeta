@@ -5,8 +5,8 @@
 #ifndef LIBOMEXMETA_QUERY_H
 #define LIBOMEXMETA_QUERY_H
 
-#include "omexmeta/Error.h"
-#include "omexmeta/OmexMetaUtils.h"
+//#include "omexmeta/include/omexmeta/Error.h"
+//#include "omexmeta/include/omexmeta/OmexMetaUtils.h"
 #include "redland/RedlandAPI.h"
 
 #include "redland/librdf.h"
@@ -42,10 +42,110 @@ namespace omexmeta {
      */
     class Query {
 
-        librdf_model *model_ = nullptr;// will be cleaned up by RDF class
-        librdf_query_results *query_results_ = nullptr;
-        librdf_query *q_ = nullptr;
-        std::string query_;
+
+    public:
+        /**
+        * @brief constructor for Query object
+         */
+        Query(LibrdfModel &model, std::string query);
+
+        /**
+         * @brief destructor
+         */
+         ~Query();
+
+        /**
+         *
+         * @brief copy constructor for Query object
+         * @details deleted
+         */
+        Query(const Query &query);
+
+        /**
+         * @brief move constructor for Query object
+         */
+        Query(Query &&query) noexcept;
+
+        /**
+         *
+         * @brief copy assignment constructor for Query object
+         * @details deleted
+         *
+         * @class copy assignment constructor is deleted because it makes using
+         * the underlying librdf_query and librdf_query_results pointers
+         * safer from a memory management perspective.
+         */
+        Query &operator=(const Query &query);
+
+        /**
+        *
+         * @brief move assignment constructor for Query object
+         *
+         */
+        Query &operator=(Query &&query) noexcept;
+
+        /**
+         * @brief free resources associated with a query object.
+         * @details it is the callers responsibility to ensure
+         * resources used by Query are released after use.
+         */
+        void freeQuery();
+
+        /**
+         * @breif returns the results as a librdf_stream* object
+         *
+         * developers. Consider removing.
+         */
+        [[maybe_unused]] librdf_stream *resultsAsLibRdfStream();
+
+        /**
+         * @brief returns query results in a map where keys are
+         * the variable names used in query and values are vectors
+         * of values for results.
+         *
+         * @details This is the only supported mechanism for ascertaining
+         * query results programatically, without needing to read/write to/from
+         * file. This method uses an iterator from librdf. When it gets to the end
+         * of the iterator, the iterator is "used up". Therefore at the end of
+         * collecting the results as a map, the original query is re-run, so that
+         * the presently instantiated Query object is not rendered useless.
+         *
+         * If the query looks like this:
+         * @code
+         * std::string query_string =   "SELECT ?x ?y ?z
+         *                              "WHERE {"
+         *                              "   ?x ?y ?z"
+         *                              "}";
+         * Query query(query_string);
+         * @endcode
+         * The column names will be x, y and z and the results
+         * will be string representations of all subjects (?x),
+         * predicates (?y) and resources (?z) in a vector of size `n`,
+         * where n is the number of query results.
+         */
+        ResultsMap resultsAsMap();
+
+        /**
+         * @brief collect the result of the query as a string
+         * @param output_format one of 9 strings used to choose how you
+         * want the results to be presented.
+         * Options are xml, json, table, csv, mkr, tsv, html, turtle and rdfxml.
+         */
+        [[nodiscard]] std::string resultsAsStr(const std::string &output_format, std::string baseuri = "query_results") const;
+
+        /**
+         * @brief Run a query.
+         * @details Users do not need to manually execute a query using this method.
+         * It is used automatically in the constructor for Query and again in Query::resultsAsMap.
+         */
+        void runQuery();
+
+        /**
+         * @brief Output query results to cout
+         */
+        void printQueryResults();
+
+    private:
 
         std::vector<std::string> valid_output_formats_ = {
                 "xml",
@@ -57,7 +157,7 @@ namespace omexmeta {
                 "html",
                 "turtle",
                 "rdfxml",
-        };
+                };
 
         int next();
 
@@ -134,114 +234,11 @@ namespace omexmeta {
          **/
         int getBindingsCount();
 
-    public:
-        /**
-        * @brief constructor for Query object
-         */
-        Query(librdf_model *model, std::string query);
+        librdf_model *model_ = nullptr;// will be cleaned up by RDF class
+        librdf_query_results *query_results_ = nullptr;
+        librdf_query *q_ = nullptr;
+        std::string query_;
 
-        /**
-        *
-         * @brief copy constructor for Query object
-         * @details deleted
-         *
-         * @class copy constructor is deleted because it makes using
-         * the underlying librdf_query and librdf_query_results pointers
-         * safer from a memory management perspective.
-         */
-        Query(const Query &query) = delete;
-
-        /**
-         * @brief move constructor for Query object
-         */
-        Query(Query &&query) noexcept;
-
-        /**
-         *
-         * @brief copy assignment constructor for Query object
-         * @details deleted
-         *
-         * @class copy assignment constructor is deleted because it makes using
-         * the underlying librdf_query and librdf_query_results pointers
-         * safer from a memory management perspective.
-         */
-        Query &operator=(const Query &query) = delete;
-
-        /**
-        *
-         * @brief move assignment constructor for Query object
-         *
-         */
-        Query &operator=(Query &&query) noexcept;
-
-        /**
-         * @brief free resources associated with a query object.
-         * @details it is the callers responsibility to ensure
-         * resources used by Query are released after use.
-         */
-        void freeQuery();
-
-        /**
-         * @breif returns the results as a librdf_stream* object
-         *
-         * developers. Consider removing.
-         */
-        [[maybe_unused]] librdf_stream *resultsAsLibRdfStream();
-
-        /**
-         * @brief returns query results in a map where keys are
-         * the variable names used in query and values are vectors
-         * of values for results.
-         *
-         * @details This is the only supported mechanism for ascertaining
-         * query results programatically, without needing to read/write to/from
-         * file. This method uses an iterator from librdf. When it gets to the end
-         * of the iterator, the iterator is "used up". Therefore at the end of
-         * collecting the results as a map, the original query is re-run, so that
-         * the presently instantiated Query object is not rendered useless.
-         *
-         * If the query looks like this:
-         * @code
-         * std::string query_string =   "SELECT ?x ?y ?z
-         *                              "WHERE {"
-         *                              "   ?x ?y ?z"
-         *                              "}";
-         * Query query(query_string);
-         * @endcode
-         * The column names will be x, y and z and the results
-         * will be string representations of all subjects (?x),
-         * predicates (?y) and resources (?z) in a vector of size `n`,
-         * where n is the number of query results.
-         */
-        ResultsMap resultsAsMap();
-
-        /**
-         * @brief collect the result of the query as a string
-         * @param output_format one of 9 strings used to choose how you
-         * want the results to be presented.
-         * Options are xml, json, table, csv, mkr, tsv, html, turtle and rdfxml.
-         */
-        [[nodiscard]] std::string resultsAsStr(const std::string &output_format, std::string baseuri = "query_results") const;
-
-        /**
-         * @brief Run a query.
-         * @details Users do not need to manually execute a query using this method.
-         * It is used automatically in the constructor for Query and again in Query::resultsAsMap.
-         */
-        void runQuery();
-
-        /**
-         * @brief Output query results to cout
-         */
-        void printQueryResults();
-
-        /**
-         * todo test implementing these commented out functions.
-         *  They were commented out before for circular dependency issues
-         *  but might be able do the same thing but inside the RDF object?
-         */
-        //        Triples resultsAsTriples();
-        //        RDF resultsAsRDF();
     };
 }// namespace omexmeta
 

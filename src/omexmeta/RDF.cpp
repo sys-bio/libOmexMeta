@@ -17,7 +17,7 @@ namespace omexmeta {
         Logger::getLogger();
 
         std::ostringstream log;
-        if (message->locator){
+        if (message->locator) {
             log << message->locator->file;
             log << ": ";
             log << message->locator->line;
@@ -58,12 +58,12 @@ namespace omexmeta {
         Logger::getLogger();
 
         std::ostringstream log;
-        if (message->locator){
-            if (message->locator->file){
+        if (message->locator) {
+            if (message->locator->file) {
                 log << message->locator->file;
                 log << ":";
             }
-            if(message->locator->line) {
+            if (message->locator->line) {
                 log << message->locator->line;
             }
         }
@@ -360,17 +360,20 @@ namespace omexmeta {
     }
 
     std::string RDF::queryResultsAsString(const std::string &query_str, const std::string &results_syntax) const {
-        Query query(getModel(), query_str);
-        std::string results = query.resultsAsStr(results_syntax);
-        query.freeQuery();
-        return results;
+        // create query object
+        LibrdfQuery query(query_str);
+        query.
+        //        Query query(getModel(), query_str);
+        //        std::string results = query.resultsAsStr(results_syntax);
+        //        query.freeQuery();
+        //        return results;
     }
 
     ResultsMap RDF::queryResultsAsMap(const std::string &query_str) const {
-        Query query(getModel(), query_str);
-        ResultsMap results = query.resultsAsMap();
-        query.freeQuery();
-        return results;
+        //        Query query(getModel(), query_str);
+        //        ResultsMap results = query.resultsAsMap();
+        //        query.freeQuery();
+        //        return results;
     }
 
     void RDF::toFile(const std::string &filename, const std::string &syntax, const char *mime_type, const char *type_uri) {

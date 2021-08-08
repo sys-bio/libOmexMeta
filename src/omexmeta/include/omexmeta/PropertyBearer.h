@@ -5,11 +5,11 @@
 #ifndef LIBOMEXMETA_PropertyBearer_H
 #define LIBOMEXMETA_PropertyBearer_H
 
+#include "include/redland/Query.h"
 #include "omexmeta/AnnotationType.h"
 #include "omexmeta/Error.h"
 #include "omexmeta/MetaID.h"
 #include "omexmeta/PhysicalProperty.h"
-#include "omexmeta/Query.h"
 #include "omexmeta/Triple.h"
 #include "omexmeta/Triples.h"
 #include "redland/RedlandAPI.h"
