@@ -81,7 +81,7 @@ stages:
               sudo add-apt-repository ppa:ubuntu-toolchain-r/test
               sudo apt-get update
               sudo apt-get install -y gcc-10 g++-10 graphviz
-              update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-10
+              update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-10 100
               export CC=/usr/bin/gcc-10
               export CXX=/usr/bin/g++-10
               export C=/usr/bin/gcc-10
