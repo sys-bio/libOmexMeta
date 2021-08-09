@@ -65,23 +65,22 @@ namespace redland {
         return node;
     }
 
-    void LibrdfStatement::setSubject(librdf_node *node) {
-        librdf_statement_set_subject(obj_, node);
+    void LibrdfStatement::setSubject(const LibrdfNode& node) {
+        // valgrind validated - we need to increment the ref counter ourselves
+        // which is handled by the .get() method
+        librdf_statement_set_subject(obj_, node.get());
     }
 
-    void LibrdfStatement::setResource(librdf_node *node) {
-        librdf_statement_set_object(obj_, node);
+    void LibrdfStatement::setResource(const LibrdfNode& node) {
+        // valgrind validated - we need to increment the ref counter ourselves
+        // which is handled by the .get() method
+        librdf_statement_set_object(obj_, node.get());
     }
 
-    void LibrdfStatement::setPredicate(librdf_node *node) {
-        librdf_statement_set_predicate(obj_, node);
-    }
-
-    std::string LibrdfStatement::getPredicateNamespaceStr() const {
-        if (!getPredicateNode().getWithoutIncrement())
-            throw RedlandNullPointerException(
-                    "RedlandNullPointerException: LibrdfStatement::getPredicateAsRawNode(): predicate_ is nullptr");
-        return getPredicateNode().getNamespace();
+    void LibrdfStatement::setPredicate(const LibrdfNode& node) {
+        // valgrind validated - we need to increment the ref counter ourselves
+        // which is handled by the .get() method
+        librdf_statement_set_predicate(obj_, node.get());
     }
 
     bool LibrdfStatement::isComplete() {

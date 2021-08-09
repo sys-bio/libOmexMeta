@@ -99,16 +99,32 @@ namespace redland {
          */
         void checkForNull() override;
 
+        /**
+         * @brief set the subject of this LibrdfStatement
+         * to node.
+         * @details reference count of node is incremented
+         */
+        void setSubject(const LibrdfNode& node);
 
-        void setSubject(librdf_node *node);
+        /**
+         * @brief set the resource of this LibrdfStatement
+         * to node.
+         * @details reference count of node is incremented
+         */
+        void setResource(const LibrdfNode& node);
 
-        void setResource(librdf_node *node);
+        /**
+         * @brief set the predicate of this LibrdfStatement
+         * to node.
+         * @details reference count of node is incremented
+         */
+        void setPredicate(const LibrdfNode& node);
 
-        void setPredicate(librdf_node *node);
-
+        /**
+         * @brief returns true when all of subject, predicate and resource
+         * nodes are not empty.
+         */
         bool isComplete();
-
-        [[maybe_unused]] [[nodiscard]] std::string getPredicateNamespaceStr() const;
 
     };
 }// namespace redland

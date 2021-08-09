@@ -148,7 +148,7 @@ TEST_F(LibrdfStatementTests, TestToStatementSubject) {
 TEST_F(LibrdfStatementTests, TestPartial1) {
     // default construct a statement
     LibrdfStatement statement;
-    statement.setSubject(subject.get());
+    statement.setSubject(subject);
     std::string actual = statement.getSubjectNode().str();
     std::string expected = "subject";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
