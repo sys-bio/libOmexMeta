@@ -62,7 +62,7 @@ add_custom_target(run-ctest
 
 
 install(
-        TARGETS ${OmexMetaTests} redland-wrapper-tests OmexMetaCAPITests
+        TARGETS ${OmexMetaTests} ${RedlandTests} OmexMetaCAPITests
         RUNTIME DESTINATION bin
         COMPONENT Tests
 )

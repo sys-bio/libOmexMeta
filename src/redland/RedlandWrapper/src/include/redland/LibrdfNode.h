@@ -5,7 +5,7 @@
 #ifndef LIBOMEXMETA_LIBRDFNODE_H
 #define LIBOMEXMETA_LIBRDFNODE_H
 
-//
+#include "RefCounted.h"
 #include "LibrdfException.h"
 #include "LibrdfUri.h"
 #include "LibrdfWorld.h"
@@ -15,15 +15,6 @@
 #include <sstream>
 
 
-/*
- * todo
- *  This objcet is a bit of a mess at the moment.
- *  Its currently not really being used as an
- *  object, but as a static librdf_node* generator.
- *  Probably the best thing to do is remove all
- *  methods except the librdf_node* generators
- *  which are actually used in the rest of the code.
- */
 /*
  *valid literals
  * "UNKNOWN",
@@ -46,9 +37,26 @@
  */
 namespace redland {
 
-    class LibrdfNode {
+    /**
+     * @brief std::function signature of librdf_free_node
+     */
+    using node_free_func = std::function<void(librdf_node *)>;
+
+    /**
+     * @brief instantiation of superclass
+     */
+     using RefCounted_librdf_node = RefCounted<librdf_node, node_free_func>;
+
+
+     /**
+      * @brief C++ wrapper around librdf_node that uses RAII for memory management
+      */
+    class LibrdfNode : public RefCounted_librdf_node {
 
     public:
+        /**
+         * @brief use superclass constructors and rule of 5
+         */
         LibrdfNode() = default;
 
         ~LibrdfNode();

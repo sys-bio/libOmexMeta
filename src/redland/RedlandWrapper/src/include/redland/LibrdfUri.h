@@ -8,33 +8,40 @@
 
 #include "LibrdfException.h"
 #include "librdf.h"
-#include <memory>
+#include "redland/RefCounted.h"
 
 
 namespace redland {
 
-    class LibrdfUri {
+    /**
+     * @brief std::function signature of  librdf_free_uri
+     */
+    using uri_free_func = std::function<void(librdf_uri *)>;
+
+    /**
+     * Instantiation of templated superclass
+     */
+    using RefCounted_librdf_uri = RefCounted<librdf_uri, uri_free_func>;
+
+    /**
+     * @brief C++ wrapper around librdf_uri using RAII
+     */
+    class LibrdfUri : public RefCounted_librdf_uri {
 
     public:
+        /**
+         * @brief use constructors from superclass
+         */
+        using RefCounted_librdf_uri::RefCounted_librdf_uri;
+
         LibrdfUri() = default;
 
-        ~LibrdfUri();
-
-        LibrdfUri(const LibrdfUri &librdfUri);
-
-        LibrdfUri(LibrdfUri &&librdfUri) noexcept;
-
-        LibrdfUri &operator=(const LibrdfUri &librdfUri);
-
-        LibrdfUri &operator=(LibrdfUri &&librdfUri) noexcept;
-
-        /*
-         * @brief create a LibrdfUri object from a raw librdf_uri* pointer
-         * @param uri pointer to a librdf_uri object. Created with librdf_new_* methods from librdf
-         *
-         * @details caller is responsible for freeing the uri. See LibrdfUri::freeUri().
+        /**
+         * @brief instantiate a LibrdfUri from a librdf_uri pointer. The
+         * pointer is stolen from librdf_uri and thereafter managed correctly
+         * by LibrdfUri via RAII.
          */
-        static LibrdfUri fromRawPtr(librdf_uri *uri);
+        LibrdfUri(librdf_uri* uri)  : RefCounted_librdf_uri(uri, librdf_free_uri){}
 
         /*
          * @brief create a LibrdfUri object from a filename string
@@ -90,7 +97,7 @@ namespace redland {
          * will take care of freeing memory associated with
          * librdf_uri object.
          */
-        [[nodiscard]] librdf_uri *get() const;
+//        [[nodiscard]] librdf_uri *get() const;
 
         /**
          * @brief get the underlying librdf_uri*
@@ -100,11 +107,11 @@ namespace redland {
          * with regards to the librdf reference counting system
          * @see LibrdfUri::get()
          */
-        [[nodiscard]] librdf_uri *getWithoutIncrement() const;
+//        [[nodiscard]] librdf_uri *getWithoutIncrement() const;
 
         [[nodiscard]] bool isEmpty() const;
 
-        void freeUri();
+//        void freeUri();
 
 
         /*
@@ -123,22 +130,22 @@ namespace redland {
          */
         [[nodiscard]] std::string toFilenameString() const;
 
-        int getUsage();
+//        int getUsage() const  override;
+//
+//        /**
+//         * @brief adds 1 to the usage count
+//         * for underlying reference counter
+//         * in librdf_uri*
+//         */
+//        void incrementUsage() const override;
 
-        /**
-         * @brief adds 1 to the usage count
-         * for underlying reference counter
-         * in librdf_uri*
-         */
-        void incrementUsage() const;
-
-    private:
-        librdf_uri *uri_ = nullptr;
-
-        /*
-         * Hidden to make creating with raw ptr more explicit.
-         */
-        explicit LibrdfUri(librdf_uri *uri);
+//    private:
+////        librdf_uri *uri_ = nullptr;
+//
+//        /*
+//         * Hidden to make creating with raw ptr more explicit.
+//         */
+//        explicit LibrdfUri(librdf_uri *uri);
     };
 }// namespace redland
 

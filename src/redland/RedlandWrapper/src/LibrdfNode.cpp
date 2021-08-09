@@ -243,7 +243,7 @@ namespace redland {
 
 
     LibrdfUri LibrdfNode::getLiteralDatatype() {
-        LibrdfUri uri = LibrdfUri::fromRawPtr(librdf_node_get_literal_value_datatype_uri(node_));
+        LibrdfUri uri = LibrdfUri(librdf_node_get_literal_value_datatype_uri(node_));
         uri.incrementUsage();
         return uri;
     }
@@ -260,7 +260,7 @@ namespace redland {
     }
 
     LibrdfUri LibrdfNode::getUri() {
-        LibrdfUri uri = LibrdfUri::fromRawPtr(librdf_node_get_uri(node_));
+        LibrdfUri uri = LibrdfUri(librdf_node_get_uri(node_));
         uri.incrementUsage();
         return uri;
     }

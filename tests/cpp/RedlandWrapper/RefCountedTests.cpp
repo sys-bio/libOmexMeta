@@ -2,34 +2,61 @@
 // Created by Ciaran on 06/08/2021.
 //
 
-#include "gtest/gtest.h"
-#include "redland/RedlandAPI.h"
 #include "librdf.h"
+#include "raptor2.h"
+#include "rasqal.h"
+#include "redland/RedlandAPI.h"
+#include "gtest/gtest.h"
 #include <functional>
 
 using namespace redland;
-using namespace redland::_for_tests;
+
+
+typedef struct ref_counted_type_t {
+    int usage = 0;
+} ref_counted_type;
+
+ref_counted_type *makeRefCountedType() {
+    auto *obj = new ref_counted_type();
+    obj->usage++;
+    return obj;
+}
+
+void free_ref_counted_type(ref_counted_type *refCountedType) {
+    if (refCountedType) {
+        if (refCountedType->usage == 0) {
+            return;
+        }
+        refCountedType->usage--;
+        if (refCountedType->usage == 0) {
+            delete refCountedType;
+            refCountedType = nullptr;
+        }
+    }
+}
+
+using ref_counted_type_free_func = std::function<void(ref_counted_type *)>;
+
 
 class RefCountedTests : public ::testing::Test {
 
 public:
-
     RefCountedTests() = default;
 };
 
 /**
- * Run some of these tests with valgrind
+ * Run these tests with valgrind for comprehensive testing
  */
 
-TEST_F(RefCountedTests, CheckNoMemoryLeakWithTestType){
-    ref_counted_type * refCountedType = makeRefCountedType();
+TEST_F(RefCountedTests, CheckNoMemoryLeakWithTestType) {
+    ref_counted_type *refCountedType = makeRefCountedType();
     RefCounted<ref_counted_type, ref_counted_type_free_func> refCounted(refCountedType, free_ref_counted_type);
 }
 
-TEST_F(RefCountedTests, CheckIncrementWithGetWithTestType){
-    ref_counted_type * refCountedType = makeRefCountedType();
+TEST_F(RefCountedTests, CheckIncrementWithGetWithTestType) {
+    ref_counted_type *refCountedType = makeRefCountedType();
     RefCounted<ref_counted_type, ref_counted_type_free_func> refCounted(refCountedType, free_ref_counted_type);
-    ref_counted_type * refCountedType2 = refCounted.get();
+    ref_counted_type *refCountedType2 = refCounted.get();
     ASSERT_EQ(refCountedType, refCountedType2);
     ASSERT_EQ(2, refCountedType->usage);
     // need to call free manually on the second, since it is not managed ny RefCounted
@@ -37,9 +64,9 @@ TEST_F(RefCountedTests, CheckIncrementWithGetWithTestType){
     ASSERT_EQ(1, refCountedType->usage);
 }
 
-TEST_F(RefCountedTests, CheckCopyCtorWithTestType){
+TEST_F(RefCountedTests, CheckCopyCtorWithTestType) {
     // allocates new ptr
-    ref_counted_type * refCountedType = makeRefCountedType();
+    ref_counted_type *refCountedType = makeRefCountedType();
     // takes ownership of the ref_counted_type
     RefCounted<ref_counted_type, ref_counted_type_free_func> refCounted(refCountedType, free_ref_counted_type);
     // copies and increments the ref count - injecting into redland types
@@ -48,9 +75,9 @@ TEST_F(RefCountedTests, CheckCopyCtorWithTestType){
     ASSERT_EQ(2, refCountedType->usage);
 }
 
-TEST_F(RefCountedTests, CheckMoveCtorWithTestType){
+TEST_F(RefCountedTests, CheckMoveCtorWithTestType) {
     // allocates new ptr
-    ref_counted_type * refCountedType = makeRefCountedType();
+    ref_counted_type *refCountedType = makeRefCountedType();
     // takes ownership of the ref_counted_type
     RefCounted<ref_counted_type, ref_counted_type_free_func> refCounted(refCountedType, free_ref_counted_type);
     RefCounted<ref_counted_type, ref_counted_type_free_func> refCountedMv(std::move(refCounted));
@@ -58,9 +85,9 @@ TEST_F(RefCountedTests, CheckMoveCtorWithTestType){
 }
 
 
-TEST_F(RefCountedTests, CheckCopyAssignCtorWithTestType){
+TEST_F(RefCountedTests, CheckCopyAssignCtorWithTestType) {
     // allocates new ptr
-    ref_counted_type * refCountedType = makeRefCountedType();
+    ref_counted_type *refCountedType = makeRefCountedType();
     // takes ownership of the ref_counted_type
     RefCounted<ref_counted_type, ref_counted_type_free_func> refCounted(refCountedType, free_ref_counted_type);
     // copies and increments the ref count - injecting into redland types
@@ -70,10 +97,9 @@ TEST_F(RefCountedTests, CheckCopyAssignCtorWithTestType){
 }
 
 
-
-TEST_F(RefCountedTests, CheckMoveAssignCtorWithTestType){
+TEST_F(RefCountedTests, CheckMoveAssignCtorWithTestType) {
     // allocates new ptr
-    ref_counted_type * refCountedType = makeRefCountedType();
+    ref_counted_type *refCountedType = makeRefCountedType();
     // takes ownership of the ref_counted_type
     RefCounted<ref_counted_type, ref_counted_type_free_func> refCounted(refCountedType, free_ref_counted_type);
     // copies and increments the ref count - injecting into redland types
@@ -81,6 +107,16 @@ TEST_F(RefCountedTests, CheckMoveAssignCtorWithTestType){
     ASSERT_EQ(1, refCountedType->usage);
 }
 
+
+TEST_F(RefCountedTests, FromDefaultCtr){
+    ref_counted_type *refCountedType = makeRefCountedType();
+
+    RefCounted<ref_counted_type, ref_counted_type_free_func > refCounted;
+    refCounted.setObj(refCountedType);
+    refCounted.setFreeFunc(free_ref_counted_type);
+    ASSERT_EQ(1, refCounted.getUsage());
+
+}
 
 
 //TEST_F(LibrdfNodeTests, TestMoveAssignmentOperator) {
@@ -144,20 +180,3 @@ TEST_F(RefCountedTests, CheckMoveAssignCtorWithTestType){
 //    ASSERT_EQ(2, refCounted.getUsage());
 //}
 //
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

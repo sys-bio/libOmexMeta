@@ -56,14 +56,14 @@ namespace redland {
     void LibrdfSerializer::setNamespace(const std::string &ns, const std::string &prefix) const {
         LibrdfUri u(ns);
         librdf_serializer_set_namespace(serializer_, u.get(), prefix.c_str());
-        u.freeUri();
+        u.freeObj();
     }
 
     void LibrdfSerializer::setFeature(const std::string &ns, const std::string &prefix) const {
         LibrdfUri u(ns);
         LibrdfNode node = LibrdfNode::fromLiteral(prefix);
         librdf_serializer_set_feature(serializer_, u.get(), node.get());
-        u.freeUri();
+        u.freeObj();
         node.freeNode();
     }
 
@@ -77,7 +77,7 @@ namespace redland {
         librdf_serializer_serialize_model_to_iostream(
                 serializer_, u.get(), model.get(), ios
         );
-        u.freeUri();
+        u.freeObj();
         const char *s = (const char *) buffer_to_hold_string;
         std::string output(s);
         free(buffer_to_hold_string);
@@ -133,7 +133,7 @@ namespace redland {
                     "std::logic_error: LibrdfSerializer::setOption. Failed to set serializer option: " + option);
         }
         node.freeNode();
-        feature_uri.freeUri();
+        feature_uri.freeObj();
     }
 
     void LibrdfSerializer::setOptions() const {

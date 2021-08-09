@@ -60,42 +60,44 @@ endmacro()
 
 
 # add test executable
-add_executable(${target} ${REDLAND_WRAPPER_TEST_SOURCES})
+#add_executable(${target} ${REDLAND_WRAPPER_TEST_SOURCES})
+#
+## indicate were using static version of redland
+#target_compile_definitions(${target} PRIVATE REDLAND_STATIC_DEFINE)
+#
+## tell cmake about the test so we can run with $ctest or $ make test
+#gtest_discover_tests(${target})
+#
+## set the RPATH for both install and docs-build builds
+#set_target_properties(${target} PROPERTIES INSTALL_RPATH ${RPATH})
+#set_target_properties(${target} PROPERTIES BUILD_RPATH ${RPATH})
+#
+## setup dependencies
+#add_dependencies(${target} redland-combined-static gtest gtest_main)
+#
+## includes
+#target_include_directories(${target} PRIVATE
+#        "${CMAKE_CURRENT_SOURCE_DIR}"
+#        "${GOOGLETEST_SOURCE}/googletest/include"
+#        ${INCLUDE_DIRECTORIES}
+#        )
+#
+#
+## links
+#target_link_libraries(${target} PUBLIC
+#        gtest gtest_main
+#        redland-combined-static
+#        )
+#
+#
+#if (WIN32)
+#    target_link_options(${target} PRIVATE "/NODEFAULTLIB:library")
+#endif ()
 
-# indicate were using static version of redland
-target_compile_definitions(${target} PRIVATE REDLAND_STATIC_DEFINE)
 
-# tell cmake about the test so we can run with $ctest or $ make test
-gtest_discover_tests(${target})
-
-# set the RPATH for both install and docs-build builds
-set_target_properties(${target} PROPERTIES INSTALL_RPATH ${RPATH})
-set_target_properties(${target} PROPERTIES BUILD_RPATH ${RPATH})
-
-# setup dependencies
-add_dependencies(${target} redland-combined-static gtest gtest_main)
-
-# includes
-target_include_directories(${target} PRIVATE
-        "${CMAKE_CURRENT_SOURCE_DIR}"
-        "${GOOGLETEST_SOURCE}/googletest/include"
-        ${INCLUDE_DIRECTORIES}
-        )
-
-
-# links
-target_link_libraries(${target} PUBLIC
-        gtest gtest_main
-        redland-combined-static
-        )
-
-
-if (WIN32)
-    target_link_options(${target} PRIVATE "/NODEFAULTLIB:library")
-endif ()
-
-
-add_redland_test_executable(redland_wrapper_RefCountedTests RedlandTestTargets RefCountedTests.cpp)
+add_redland_test_executable(redland_wrapper_RefCountedTests RedlandTests RefCountedTests.cpp)
+add_redland_test_executable(redland_wrapper_LibrdfUriTests RedlandTests LibrdfUriTests.cpp)
+add_redland_test_executable(redland_wrapper_LibrdfNodeTests RedlandTests LibrdfNodeTests.cpp)
 
 
 
