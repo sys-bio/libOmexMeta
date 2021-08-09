@@ -49,40 +49,56 @@ namespace redland {
          */
         LibrdfStatement();
 
+        /**
+         * @brief equality operator.
+         * @detials equal if the three nodes contained by this statement are equal
+         */
         bool operator==(const LibrdfStatement &rhs) const;
 
+        /**
+         * @brief inequality operator. Inverse of equality operator
+         */
         bool operator!=(const LibrdfStatement &rhs) const;
 
+        /**
+         * @brief returns true if first equals second.
+         * @details All three of subject, predicate and resource nodes need to be equal
+         * before LibrdfStatement::equals returns true.
+         */
         static bool equals(librdf_statement *first, librdf_statement *second);
 
-
+        /**
+         * @brief construct a LibrdfStatement from LibrdfNode objects.
+         * @details The memory associated with the constructed librdf_statement* is managed by RAII
+         * while the LibrdfNode types handled themselves, also by RAII. The reference count of
+         * the LibrdfNode types is incremented by 1 on instantiation
+         */
         LibrdfStatement(const LibrdfNode &subject, const LibrdfNode &predicate, const LibrdfNode &resource);
 
-//        static LibrdfStatement fromRawStatementPtr(librdf_statement *statement);
-//
-//        static LibrdfStatement fromRawNodePtrs(librdf_node *subject, librdf_node *predicate, librdf_node *resource);
-//
-//        void freeStatement();
-
-        [[nodiscard]] librdf_node *getSubjectAsRawNode() const;
-
-        [[nodiscard]] librdf_node *getPredicateAsRawNode() const;
-
-        [[nodiscard]] librdf_node *getResourceAsRawNode() const;
-
+        /**
+         * @brief get the subject of this statement as a LibrdfNode.
+         * @details Ref count is incremented by 1
+         */
         [[nodiscard]] LibrdfNode getSubjectNode() const;
 
+        /**
+         * @brief get the predicate of this statement as a LibrdfNode.
+         * @details Ref count is incremented by 1
+         */
         [[nodiscard]] LibrdfNode getPredicateNode() const;
 
+        /**
+         * @brief get the resource of this statement as a LibrdfNode.
+         * @details Ref count is incremented by 1
+         */
         [[nodiscard]] LibrdfNode getResourceNode() const;
 
-//        [[nodiscard]] std::string getSubjectStr() const;
-//
-//        [[nodiscard]] std::string getPredicateStr() const;
-//
-//        [[nodiscard]] std::string getResourceStr() const;
-
+        /**
+         * @brief throws an error if any of the subject, predicate, resource or librdf_statement are
+         * nullptr.
+         */
         void checkForNull() override;
+
 
         void setSubject(librdf_node *node);
 
