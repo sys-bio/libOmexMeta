@@ -177,7 +177,7 @@ namespace redland {
 
         /**
          * @brief get a pointer to the ObjType stored by this RefCounted. The usage
-         * count is incremented by one so that memory is properly handled.
+         * count is incremented by one so that memory is properly handled via shared ownership.
          * @details using RefCounted::get vs RefCounted::getWithoutIncrement in the correct place
          * is critical for proper memory mangement. Using RefCounted::get in an R-value statement
          * will increment the ref counter but not decrement it, causing a memory leak - todo check if this is right

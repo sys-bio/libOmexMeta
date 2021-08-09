@@ -72,19 +72,19 @@ namespace redland {
 
     LibrdfNode LibrdfStatement::getSubjectNode() const {
         LibrdfNode node(librdf_statement_get_subject(statement_));
-        node.incrementUsageCount();
+        node.incrementUsage(); // todo this should be handled automatically by LibrdfNode ctr
         return node;
     }
 
     LibrdfNode LibrdfStatement::getPredicateNode() const {
         LibrdfNode node = LibrdfNode(librdf_statement_get_predicate(statement_));
-        node.incrementUsageCount();
+        node.incrementUsage();
         return node;
     }
 
     LibrdfNode LibrdfStatement::getResourceNode() const {
         LibrdfNode node = LibrdfNode(librdf_statement_get_object(statement_));
-        node.incrementUsageCount();
+        node.incrementUsage();
         return node;
     }
 

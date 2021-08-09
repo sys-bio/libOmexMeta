@@ -12,61 +12,13 @@
 
 namespace redland {
 
-    LibrdfNode::~LibrdfNode() {
-        if (node_) {
-            freeNode();
-        }
-    }
-
-    LibrdfNode::LibrdfNode(const LibrdfNode &node) {
-        if (node_) {
-            librdf_free_node(node_);
-            node_ = nullptr;
-        }
-        node_ = node.get();// does the necessary reference increment for us
-    }
-
-    LibrdfNode &LibrdfNode::operator=(const LibrdfNode &node) {
-        if (*this != node) {
-            if (node_) {
-                librdf_free_node(node_);
-                node_ = nullptr;
-            }
-            node_ = node.get();// increment done for us
-        }
-        return *this;
-    }
-
-    LibrdfNode::LibrdfNode(LibrdfNode &&node) noexcept {
-        if (node_) {
-            librdf_free_node(node_);
-            node_ = nullptr;
-        }
-        node_ = node.getWithoutIncrement();
-        node.node_ = nullptr;
-    }
-
-
-    LibrdfNode &LibrdfNode::operator=(LibrdfNode &&node) noexcept {
-        if (this != &node) {
-            if (node_) {
-                librdf_free_node(node_);
-                node_ = nullptr;
-            }
-            node_ = node.getWithoutIncrement();
-            node.node_ = nullptr;
-        }
-        return *this;
-    }
-
 
     LibrdfNode::LibrdfNode(librdf_node *node)
-        : node_(node) {}
+        : RefCounted_librdf_node(node, librdf_free_node) {}
 
     LibrdfNode::LibrdfNode(const LibrdfUri &uri)
-        : node_(LibrdfNode::fromUriString(uri.str()).get()){};
-
-
+        : RefCounted_librdf_node(LibrdfNode::fromUriString(uri.str()).get(), librdf_free_node){};
+    
     //todo the content of thos method really belongs somewhere else
     LibrdfNode LibrdfNode::fromUriString(const std::string &uri_string) {
         std::string identifier_dot_org = "https://identifiers.org/";
@@ -229,86 +181,76 @@ namespace redland {
     }
 
     raptor_term_type LibrdfNode::getRaptorTermType() {
-        return node_->type;
+        return obj_->type;
     }
-
-    librdf_node *LibrdfNode::get() const {
-        node_->usage++;
-        return node_;
-    }
-
-    librdf_node *LibrdfNode::getWithoutIncrement() const {
-        return node_;
-    }
-
 
     LibrdfUri LibrdfNode::getLiteralDatatype() {
-        LibrdfUri uri = LibrdfUri(librdf_node_get_literal_value_datatype_uri(node_));
+        LibrdfUri uri = LibrdfUri(librdf_node_get_literal_value_datatype_uri(obj_));
         uri.incrementUsage();
         return uri;
     }
 
     std::string LibrdfNode::getLiteralLanguage() {
-        const char *language = (const char *) node_->value.literal.language;
+        const char *language = (const char *) obj_->value.literal.language;
         if (!language)
             return std::string();
         return std::string(language);
     }
 
     std::string LibrdfNode::getBlankIdentifier() {
-        return std::string((const char *) node_->value.blank.string);
+        return std::string((const char *) obj_->value.blank.string);
     }
 
     LibrdfUri LibrdfNode::getUri() {
-        LibrdfUri uri = LibrdfUri(librdf_node_get_uri(node_));
+        LibrdfUri uri = LibrdfUri(librdf_node_get_uri(obj_));
         uri.incrementUsage();
         return uri;
     }
 
     void LibrdfNode::setUri(const std::string &uri) {
-        if (node_->type != RAPTOR_TERM_TYPE_URI)
+        if (obj_->type != RAPTOR_TERM_TYPE_URI)
             throw RedlandLibrdfException(
                     "RedlandLibrdfException: LibrdfNode::setUri(): trying to set a uri on a non-uri node");
-        if (node_ != nullptr) {
+        if (obj_ != nullptr) {
             freeNode();
-            node_ = nullptr;
+            obj_ = nullptr;
         }
 
         /*
          * So setters exist for librdf_node so we must create a
          * new one with the new uri.
          */
-        node_ = librdf_new_node_from_uri_string(
+        obj_ = librdf_new_node_from_uri_string(
                 LibrdfWorld::getWorld(), (const unsigned char *) uri.c_str());
     }
 
     void LibrdfNode::setLiteralDatatype(const std::string &datatype) {
-        if (node_->type != RAPTOR_TERM_TYPE_LITERAL)
+        if (obj_->type != RAPTOR_TERM_TYPE_LITERAL)
             throw RedlandLibrdfException(
                     "RedlandLibrdfException: LibrdfNode::setLiteralDatatype(): trying to set a literal datatype on a non-literal node");
         std::string literal_datatype_ = validateLiteralDatatype(datatype);
 
         // collect data fields that we wont change before free existing node
         bool language_is_null = false;
-        if (node_->value.literal.language == nullptr) {
+        if (obj_->value.literal.language == nullptr) {
             language_is_null = true;
         }
         unsigned char *language_used = nullptr;
         if (!language_is_null) {
             // use std::string to make a copy
-            std::string language = (const char *) node_->value.literal.language;
+            std::string language = (const char *) obj_->value.literal.language;
             language_used = (unsigned char *) language.c_str();
         }
-        std::string value = (const char *) node_->value.literal.string;
+        std::string value = (const char *) obj_->value.literal.string;
 
         // free existing node
-        if (node_ != nullptr) {
+        if (obj_ != nullptr) {
             freeNode();
-            node_ = nullptr;
+            obj_ = nullptr;
         }
 
         // reset node with node information
-        node_ = librdf_new_node_from_typed_literal(
+        obj_ = librdf_new_node_from_typed_literal(
                 LibrdfWorld::getWorld(),
                 (const unsigned char *) value.c_str(),
                 (const char *) language_used,
@@ -316,40 +258,40 @@ namespace redland {
     }
 
     void LibrdfNode::setBlankIdentifier(const std::string &identifier) {
-        if (node_->type != RAPTOR_TERM_TYPE_BLANK)
+        if (obj_->type != RAPTOR_TERM_TYPE_BLANK)
             throw RedlandLibrdfException(
                     "RedlandLibrdfException: LibrdfNode::setBlankIdentifier(): trying to set a blank identifer on a non-blank node");
-        if (node_ != nullptr) {
+        if (obj_ != nullptr) {
             freeNode();
-            node_ = nullptr;
+            obj_ = nullptr;
         }
-        node_ = librdf_new_node_from_blank_identifier(
+        obj_ = librdf_new_node_from_blank_identifier(
                 LibrdfWorld::getWorld(),
                 (const unsigned char *) identifier.c_str());
     }
 
 
     void LibrdfNode::freeNode() {
-        if (!node_)
+        if (!obj_)
             return;
         unsigned int count = getUsage();
-        librdf_free_node(node_);
+        librdf_free_node(obj_);
         // only set to nullptr if we're sure the pointer
         // is not still in use. librdf_free_node decrements the
         // internal ref counter, but the node may become NULL.
         // If this happens the count is inaccessible for checking.
         // so we do it this way instead.
         if (count - 1 == 0) {
-            node_ = nullptr;
+            obj_ = nullptr;
         }
     }
 
     std::string LibrdfNode::str() const {
-        return LibrdfNode::str(node_);
+        return LibrdfNode::str(obj_);
     }
 
     bool LibrdfNode::operator==(const LibrdfNode &rhs) const {
-        return librdf_node_equals(node_, rhs.getWithoutIncrement());
+        return librdf_node_equals(obj_, rhs.getWithoutIncrement());
     }
 
     bool LibrdfNode::operator!=(const LibrdfNode &rhs) const {
@@ -357,7 +299,7 @@ namespace redland {
     }
 
     LibrdfNode LibrdfNode::copyNode(const LibrdfNode &node) {
-        return LibrdfNode(librdf_new_node_from_node(node.node_));
+        return LibrdfNode(librdf_new_node_from_node(node.obj_));
     }
 
     std::vector<std::string> LibrdfNode::splitStringBy(const std::string &str, char delimiter) {
@@ -400,14 +342,6 @@ namespace redland {
             ns << last_split[0] << "#";
         }
         return ns.str();
-    }
-
-    unsigned int LibrdfNode::getUsage() const {
-        return node_->usage;
-    };
-
-    void LibrdfNode::incrementUsageCount() {
-        node_->usage++;
     }
 
 
