@@ -49,8 +49,7 @@ TEST_F(LibrdfStatementTests, TestMoveAssignment) {
 
 
 TEST_F(LibrdfStatementTests, TestGetPredicateStr) {
-    redland::LibrdfStatement statement1 = LibrdfStatement(subject, predicate,
-                                                          resource);
+    redland::LibrdfStatement statement1 = LibrdfStatement(subject, predicate,resource);
     std::string expected = "predicate";
     std::string actual = statement1.getPredicateNode().str();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
@@ -147,6 +146,7 @@ TEST_F(LibrdfStatementTests, TestToStatementSubject) {
 
 
 TEST_F(LibrdfStatementTests, TestPartial1) {
+    // default construct a statement
     LibrdfStatement statement;
     statement.setSubject(subject.get());
     std::string actual = statement.getSubjectNode().str();
@@ -189,7 +189,7 @@ TEST_F(LibrdfStatementTests, TestGetResourceNode) {
     ASSERT_EQ(3, s.getUsage());
 }
 
-
+//
 TEST_F(LibrdfStatementTests, CopyConstruct) {
     LibrdfNode n1 = LibrdfNode::fromUriString("node1");
     LibrdfNode n2 = LibrdfNode::fromUriString("node2");

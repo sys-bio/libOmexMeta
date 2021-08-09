@@ -98,6 +98,7 @@ endmacro()
 add_redland_test_executable(redland_wrapper_RefCountedTests RedlandTests RefCountedTests.cpp)
 add_redland_test_executable(redland_wrapper_LibrdfUriTests RedlandTests LibrdfUriTests.cpp)
 add_redland_test_executable(redland_wrapper_LibrdfNodeTests RedlandTests LibrdfNodeTests.cpp)
+add_redland_test_executable(redland_wrapper_LibrdfStatementTests RedlandTests LibrdfStatementTests.cpp)
 
 
 

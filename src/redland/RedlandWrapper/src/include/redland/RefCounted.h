@@ -14,14 +14,14 @@
 
 namespace redland {
 
-    using world_free_func = std::function<void(librdf_world *)>;
-    using storage_free_func = std::function<void(librdf_storage *)>;
-    using serializer_free_func = std::function<void(librdf_serializer *)>;
-    using parser_free_func = std::function<void(librdf_parser *)>;
-    using statement_free_func = std::function<void(librdf_statement *)>;
-    using query_free_func = std::function<void(librdf_query *)>;
-    using query_results_free_func = std::function<void(librdf_query_results *)>;
-    using model_free_func = std::function<void(librdf_model *)>;
+//    using world_free_func = std::function<void(librdf_world *)>;
+//    using storage_free_func = std::function<void(librdf_storage *)>;
+//    using serializer_free_func = std::function<void(librdf_serializer *)>;
+//    using parser_free_func = std::function<void(librdf_parser *)>;
+//    using statement_free_func = std::function<void(librdf_statement *)>;
+//    using query_free_func = std::function<void(librdf_query *)>;
+//    using query_results_free_func = std::function<void(librdf_query_results *)>;
+//    using model_free_func = std::function<void(librdf_model *)>;
 
     template<typename ObjType, typename FreeFuncType>
     class RefCounted {
@@ -43,6 +43,7 @@ namespace redland {
         RefCounted(ObjType *objType, std::function<void(ObjType*)> func)
             : obj_(objType), freeFunc_(func) {
             RefCounted::checkForNull();
+            // todo work out whether I need to increment the ref counter here
         }
 
         /**

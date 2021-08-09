@@ -14,20 +14,40 @@
 
 namespace redland {
 
-    class LibrdfStatement {
+    /**
+     * @brief std::function signature of librdf_free_node
+     */
+    using statement_free_func = std::function<void(librdf_statement *)>;
+
+    /**
+     * Instantiation of templated superclass
+     */
+    using RefCounted_librdf_statement = RefCounted<librdf_statement, statement_free_func>;
+
+
+    /**
+     * @brief C++ wrapper around librdf_statement using RAII for memory management
+     */
+    class LibrdfStatement : public RefCounted_librdf_statement {
     public:
 
-        virtual ~LibrdfStatement();
+        /**
+         * @brief use superclass ctr and rule of 5
+         */
+        using RefCounted_librdf_statement::RefCounted_librdf_statement;
 
-        LibrdfStatement(librdf_node *subject, librdf_node *predicate, librdf_node *resource);
+        /**
+         * @brief construct a LibrdfStatement from an existing librdf_statement* pointer.
+         * @brief The reference is stolen, and subsequently managed by LibrdfStatement
+         */
+        explicit LibrdfStatement(librdf_statement *statement);
 
-        LibrdfStatement(const LibrdfStatement &statement) ;
-
-        LibrdfStatement(LibrdfStatement &&statement) noexcept;
-
-        LibrdfStatement &operator=(const LibrdfStatement &statement) ;
-
-        LibrdfStatement &operator=(LibrdfStatement &&statement) noexcept;
+        /**
+         * @brief default construct an instance of librdf_statement*.
+         * @details Memory is owned by LibrdfStatement and automatically
+         * destructed via RAII.
+         */
+        LibrdfStatement();
 
         bool operator==(const LibrdfStatement &rhs) const;
 
@@ -35,35 +55,14 @@ namespace redland {
 
         static bool equals(librdf_statement *first, librdf_statement *second);
 
-        LibrdfStatement() = default;
 
         LibrdfStatement(const LibrdfNode &subject, const LibrdfNode &predicate, const LibrdfNode &resource);
 
-        static LibrdfStatement fromRawStatementPtr(librdf_statement *statement);
-
-        static LibrdfStatement fromRawNodePtrs(librdf_node *subject, librdf_node *predicate, librdf_node *resource);
-
-        void freeStatement();
-
-        /**
-         * @brief returns a librdf_statement pointer and increments the
-         * usage count. The caller is responsible for calling
-         * @see freeUri to decrement the librdf_statement* again.
-         * @note when @see getUsage() is 1 the destructor
-         * will take care of freeing memory associated with
-         * librdf_statement object.
-         */
-        [[nodiscard]] librdf_statement *get() const;
-
-        /**
-         * @brief get the underlying librdf_statement*
-         * @details do not increment the shared pointer reference
-         * counter.
-         * @warning this method assumes you know what you are doing
-         * with regards to the librdf reference counting system
-         * @see LibrdfStatement::get()
-         */
-        [[nodiscard]] librdf_statement *getWithoutIncrement() const;
+//        static LibrdfStatement fromRawStatementPtr(librdf_statement *statement);
+//
+//        static LibrdfStatement fromRawNodePtrs(librdf_node *subject, librdf_node *predicate, librdf_node *resource);
+//
+//        void freeStatement();
 
         [[nodiscard]] librdf_node *getSubjectAsRawNode() const;
 
@@ -83,7 +82,7 @@ namespace redland {
 //
 //        [[nodiscard]] std::string getResourceStr() const;
 
-        void checkForNull();
+        void checkForNull() override;
 
         void setSubject(librdf_node *node);
 
@@ -95,21 +94,6 @@ namespace redland {
 
         [[maybe_unused]] [[nodiscard]] std::string getPredicateNamespaceStr() const;
 
-        [[nodiscard]] int getUsage() const;
-
-        void incrementUsage() const;
-
-    protected:
-        // starts as empty statement
-        librdf_statement *statement_ = librdf_new_statement(LibrdfWorld::getWorld());
-
-        /*
-         * @brief update the contained statement with current
-         * values of subject, predicate and resource.
-         */
-        [[deprecated("Not needed")]] void refreshStatement();
-
-        explicit LibrdfStatement(librdf_statement *statement);
     };
 }// namespace redland
 

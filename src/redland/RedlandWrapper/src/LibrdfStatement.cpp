@@ -8,30 +8,27 @@
 
 namespace redland {
 
-    LibrdfStatement::~LibrdfStatement() {
-        freeStatement();
-    }
+    LibrdfStatement::LibrdfStatement()
+        : RefCounted_librdf_statement(librdf_new_statement(LibrdfWorld::getWorld()), librdf_free_statement){}
+
 
     LibrdfStatement::LibrdfStatement(librdf_statement *statement)
-        : statement_(statement) {
-        checkForNull();
-        statement->usage++; // when constructed from raw ptr we need to increment usage count
-    }
+        : RefCounted_librdf_statement(statement, librdf_free_statement) {}
 
-    LibrdfStatement::LibrdfStatement(librdf_node *subject, librdf_node *predicate, librdf_node *resource)
-        : statement_(librdf_new_statement_from_nodes(
-                  LibrdfWorld::getWorld(), subject, predicate, resource)) {
-        checkForNull();
-    }
+    //    LibrdfStatement::LibrdfStatement(librdf_node *subject, librdf_node *predicate, librdf_node *resource)
+    //        : RefCounted_librdf_statement(librdf_new_statement_from_nodes(
+    //                                              LibrdfWorld::getWorld(), subject, predicate, resource),
+    //                                      librdf_free_statement) {}
 
     LibrdfStatement::LibrdfStatement(const LibrdfNode &subject, const LibrdfNode &predicate, const LibrdfNode &resource)
-        : statement_(librdf_new_statement_from_nodes(
-                  LibrdfWorld::getWorld(), subject.get(), predicate.get(), resource.get())) {
-        checkForNull();
-    }
+        : RefCounted_librdf_statement(
+                  librdf_new_statement_from_nodes(
+                          LibrdfWorld::getWorld(), subject.get(), predicate.get(), resource.get()),
+                  librdf_free_statement) {}
 
 
     void LibrdfStatement::checkForNull() {
+        RefCounted_librdf_statement::checkForNull();
         if (!getSubjectAsRawNode())
             throw RedlandNullPointerException(
                     "RedlandNullPointerException: LibrdfStatement::checkForNull(): subject_ node is null");
@@ -44,60 +41,49 @@ namespace redland {
             throw RedlandNullPointerException(
                     "RedlandNullPointerException: LibrdfStatement::checkForNull(): resource_ node is null");
 
-        if (!statement_)
-            throw RedlandNullPointerException(
-                    "RedlandNullPointerException: LibrdfStatement::checkForNull(): statement_ is null");
     }
 
-    librdf_statement *LibrdfStatement::get() const {
-        incrementUsage();
-        return statement_;
-    }
-
-    librdf_statement *LibrdfStatement::getWithoutIncrement() const {
-        return statement_;
-    }
 
     librdf_node *LibrdfStatement::getSubjectAsRawNode() const {
-        return librdf_statement_get_subject(statement_);
+        return librdf_statement_get_subject(obj_);
     }
 
     librdf_node *LibrdfStatement::getPredicateAsRawNode() const {
-        return librdf_statement_get_predicate(statement_);
+        return librdf_statement_get_predicate(obj_);
     }
 
     librdf_node *LibrdfStatement::getResourceAsRawNode() const {
-        return librdf_statement_get_object(statement_);
+        return librdf_statement_get_object(obj_);
     }
 
     LibrdfNode LibrdfStatement::getSubjectNode() const {
-        LibrdfNode node(librdf_statement_get_subject(statement_));
-        node.incrementUsage(); // todo this should be handled automatically by LibrdfNode ctr
+        LibrdfNode node(librdf_statement_get_subject(obj_));
+        node.incrementUsage();// todo this should be handled automatically by LibrdfNode ctr
         return node;
     }
 
     LibrdfNode LibrdfStatement::getPredicateNode() const {
-        LibrdfNode node = LibrdfNode(librdf_statement_get_predicate(statement_));
+        LibrdfNode node = LibrdfNode(librdf_statement_get_predicate(obj_));
         node.incrementUsage();
         return node;
     }
 
     LibrdfNode LibrdfStatement::getResourceNode() const {
-        LibrdfNode node = LibrdfNode(librdf_statement_get_object(statement_));
+        LibrdfNode node = LibrdfNode(librdf_statement_get_object(obj_));
         node.incrementUsage();
         return node;
     }
 
     void LibrdfStatement::setSubject(librdf_node *node) {
-        librdf_statement_set_subject(statement_, node);
+        librdf_statement_set_subject(obj_, node);
     }
 
     void LibrdfStatement::setResource(librdf_node *node) {
-        librdf_statement_set_object(statement_, node);
+        librdf_statement_set_object(obj_, node);
     }
 
     void LibrdfStatement::setPredicate(librdf_node *node) {
-        librdf_statement_set_predicate(statement_, node);
+        librdf_statement_set_predicate(obj_, node);
     }
 
     //    std::string LibrdfStatement::getResourceStr() const {
@@ -128,77 +114,24 @@ namespace redland {
         return getPredicateNode().getNamespace();
     }
 
-    LibrdfStatement LibrdfStatement::fromRawStatementPtr(librdf_statement *statement) {
-        return LibrdfStatement(statement);
-    }
+//
+//    LibrdfStatement
+//    LibrdfStatement::fromRawNodePtrs(librdf_node *subject, librdf_node *predicate, librdf_node *resource) {
+//        return {subject, predicate, resource};
+//    }
 
-    LibrdfStatement
-    LibrdfStatement::fromRawNodePtrs(librdf_node *subject, librdf_node *predicate, librdf_node *resource) {
-        return {subject, predicate, resource};
-    }
+//    void LibrdfStatement::refreshStatement() {
+//        if (getSubjectAsRawNode() != nullptr &&
+//            getPredicateAsRawNode() != nullptr &&
+//            getResourceAsRawNode() != nullptr) {
+//            obj_ = librdf_new_statement_from_nodes(
+//                    LibrdfWorld::getWorld(), getSubjectAsRawNode(), getPredicateAsRawNode(), getResourceAsRawNode());
+//        }
+//    }
 
-    void LibrdfStatement::refreshStatement() {
-        if (getSubjectAsRawNode() != nullptr &&
-            getPredicateAsRawNode() != nullptr &&
-            getResourceAsRawNode() != nullptr) {
-            statement_ = librdf_new_statement_from_nodes(
-                    LibrdfWorld::getWorld(), getSubjectAsRawNode(), getPredicateAsRawNode(), getResourceAsRawNode());
-        }
-    }
-
-    LibrdfStatement::LibrdfStatement(LibrdfStatement &&statement) noexcept {
-        if (statement_) {
-            librdf_free_statement(statement_);
-            statement_ = nullptr;
-        }
-        statement_ = statement.getWithoutIncrement();
-        statement.statement_ = nullptr;
-    }
-
-    LibrdfStatement &LibrdfStatement::operator=(LibrdfStatement &&statement) noexcept {
-        if (*this != statement) {
-            if (statement_) {
-                librdf_free_statement(statement_);
-                statement_ = nullptr;
-            }
-            statement_ = statement.getWithoutIncrement();
-            statement.statement_ = nullptr;
-        }
-        return *this;
-    }
-
-    LibrdfStatement::LibrdfStatement(const LibrdfStatement &statement) {
-        if (statement_) {
-            librdf_free_statement(statement_);
-            statement_ = nullptr;
-        }
-        statement_ = statement.get();// handles reference count automatically
-    }
-
-    LibrdfStatement &LibrdfStatement::operator=(const LibrdfStatement &statement) {
-        if (*this != statement) {
-            if (statement_) {
-                librdf_free_statement(statement_);
-                statement_ = nullptr;
-            }
-            statement_ = statement.get();// handles reference count automatically
-        }
-        return *this;
-    }
-
-
-    void LibrdfStatement::freeStatement() {
-        if (!statement_)
-            return;
-        int usage = getUsage();
-        librdf_free_statement(statement_);
-        if (usage - 1 == 0) {
-            statement_ = nullptr;
-        }
-    }
 
     bool LibrdfStatement::isComplete() {
-        return librdf_statement_is_complete(statement_);
+        return librdf_statement_is_complete(obj_);
     }
 
     bool LibrdfStatement::equals(librdf_statement *first, librdf_statement *second) {
@@ -243,28 +176,20 @@ namespace redland {
         // we bypass comparing blank nodes.
         if (!librdf_node_is_blank(this_subject) || !librdf_node_is_blank(that_subject)) {
             subjects_equal = librdf_node_equals(this_subject, that_subject);
-            }
+        }
         if (!librdf_node_is_blank(this_resource) || !librdf_node_is_blank(that_resource)) {
             resources_equal = librdf_node_equals(this_resource, that_resource);
-            }
+        }
         bool predicates_equal = librdf_node_equals(this_predicate, that_predicate);
         return subjects_equal && predicates_equal && resources_equal;
     }
 
     bool LibrdfStatement::operator==(const LibrdfStatement &rhs) const {
-        return equals(statement_, rhs.getWithoutIncrement());
+        return equals(obj_, rhs.getWithoutIncrement());
     }
 
     bool LibrdfStatement::operator!=(const LibrdfStatement &rhs) const {
         return !(rhs == *this);
-    }
-
-    int LibrdfStatement::getUsage() const {
-        return statement_->usage;
-    }
-
-    void LibrdfStatement::incrementUsage() const {
-        statement_->usage++;
     }
 
 
