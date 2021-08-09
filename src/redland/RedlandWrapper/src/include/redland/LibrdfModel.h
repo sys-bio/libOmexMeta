@@ -19,40 +19,33 @@
 
 namespace redland {
 
-    class LibrdfModel {
+    /**
+     * @brief std::function signature of librdf_free_model
+     */
+    using model_free_func = std::function<void(librdf_model *)>;
+
+    /**
+     * Instantiation of templated superclass
+     */
+    using RefCounted_librdf_model = RefCounted<librdf_model, model_free_func>;
+
+    /**
+     * @brief RAII abstraction around librdf_model
+     */
+    class LibrdfModel : public RefCounted_librdf_model {
 
     public:
-        ~LibrdfModel();
+        using RefCounted_librdf_model::RefCounted_librdf_model;
 
-        /*
-         *  librdf_model and librdf_storage have a
-         * strictly 1:1 relationship. i.e. a storage cannot
-         * be associated with more than one model.
-         */
-        [[deprecated("Use LibrdfModel(LibrdfStorage storage, const char *options = nullptr);")]]
-        explicit LibrdfModel(librdf_storage *storage, const char *options = nullptr);
+        explicit LibrdfModel(librdf_model *model);
 
         explicit LibrdfModel(LibrdfStorage& storage, const char *options = nullptr);
-
-        LibrdfModel(const LibrdfModel &model) = delete;
-
-        LibrdfModel(LibrdfModel &&model) noexcept;
-
-        LibrdfModel &operator=(const LibrdfModel &model) = delete;
-
-        LibrdfModel &operator=(LibrdfModel &&model) noexcept;
 
         bool operator==(const LibrdfModel &rhs) const;
 
         bool operator!=(const LibrdfModel &rhs) const;
 
-        LibrdfModel() = default;
 
-        explicit LibrdfModel(librdf_model *model);
-
-        [[nodiscard]] librdf_model *get() const;
-
-//        LibrdfQueryResults query(LibrdfQuery query);
         [[nodiscard]] LibrdfQueryResults query(const LibrdfQuery& query) const;
 
         librdf_stream* toStream();
@@ -61,7 +54,7 @@ namespace redland {
 
         void addStatement(librdf_statement *statement) const;
 
-        void freeModel();
+//        void freeModel();
 
         void removeStatement(librdf_statement *statement) const;
 
@@ -86,8 +79,6 @@ namespace redland {
         bool containsStatement(const LibrdfStatement &statement) const;
 
         void addStatement(const LibrdfStatement &statement) const;
-    private:
-        librdf_model *model_ = nullptr;
     };
 }
 

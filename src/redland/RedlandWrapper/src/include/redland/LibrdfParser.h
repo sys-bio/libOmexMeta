@@ -16,9 +16,22 @@
 
 namespace redland {
 
+
+    /**
+     * @brief std::function signature of librdf_free_parser
+     */
+    using parser_free_func = std::function<void(librdf_parser *)>;
+
+    /**
+     * Instantiation of templated superclass
+     */
+    using RefCounted_librdf_parser = RefCounted<librdf_parser, parser_free_func>;
+
+
     class LibrdfParser {
 
     public:
+
         LibrdfParser() = default;
 
         ~LibrdfParser();

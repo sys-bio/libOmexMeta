@@ -7,79 +7,41 @@
 
 namespace redland {
 
-
-    LibrdfModel::~LibrdfModel() {
-        freeModel();
-    }
-
-
-    void LibrdfModel::freeModel() {
-        if (!model_)
-            return;
-        librdf_free_model(model_);
-        model_ = nullptr;
-    }
-
-    LibrdfModel::LibrdfModel(librdf_model *model)
-        : model_(model) {
-    }
-
-    LibrdfModel::LibrdfModel(LibrdfModel &&model) noexcept {
-        if (model.model_ != nullptr) {
-            if (model_ != nullptr)
-                freeModel();
-            model_ = std::move(model.model_);
-            model.model_ = nullptr;
-        }
-    }
-
-    LibrdfModel &LibrdfModel::operator=(LibrdfModel &&model) noexcept {
-        if (this != &model) {
-            if (model.model_ != nullptr) {
-                if (model_ != nullptr)
-                    freeModel();
-                model_ = std::move(model.model_);
-                model.model_ = nullptr;
-            }
-        }
-        return *this;
-    }
-
-
-    /*
-     *
-     *
-     * For developers: passing a raw pointer to librdf_storage* helps prevent memory leaks.
-     */
-    LibrdfModel::LibrdfModel(librdf_storage *storage, const char *options)
-        : model_(librdf_new_model(LibrdfWorld::getWorld(), storage, options)) {}
+    LibrdfModel::LibrdfModel(librdf_model * model)
+            : RefCounted_librdf_model(model, librdf_free_model){}
 
     LibrdfModel::LibrdfModel(LibrdfStorage &storage, const char *options)
-        : model_(librdf_new_model(LibrdfWorld::getWorld(), storage.get(), options)) {}
+        : RefCounted_librdf_model(
+                  librdf_new_model(LibrdfWorld::getWorld(),
+                                   // note that we do not increment the storage usage count
+                                   // since this already happens inside librdf (valgrind validated)
+                                   storage.getWithoutIncrement(),
+                                   options),
+                  librdf_free_model) {}
 
     void LibrdfModel::addStatement(librdf_statement *statement) const {
-        librdf_model_add_statement(model_, statement);
+        librdf_model_add_statement(obj_, statement);
     }
 
     void LibrdfModel::addStatement(const LibrdfStatement &statement) const {
-        librdf_model_add_statement(model_, statement.getWithoutIncrement());
+        librdf_model_add_statement(obj_, statement.getWithoutIncrement());
     }
 
-    librdf_model *LibrdfModel::get() const {
-        return model_;
-    }
+//    librdf_model *LibrdfModel::get() const {
+//        return obj_;
+//    }
 
     LibrdfQueryResults LibrdfModel::query(const LibrdfQuery &query) const {
-        librdf_query_results *results = librdf_query_execute(query.getWithoutIncrement(), model_);
+        librdf_query_results *results = librdf_query_execute(query.getWithoutIncrement(), obj_);
         return LibrdfQueryResults(results);
     }
 
     int LibrdfModel::size() const {
-        return librdf_model_size(model_);
+        return librdf_model_size(obj_);
     }
 
     librdf_stream *LibrdfModel::toStream() {
-        return librdf_model_as_stream(model_);
+        return librdf_model_as_stream(obj_);
     }
 
     /*
@@ -88,7 +50,7 @@ namespace redland {
      * @return void
      */
     void LibrdfModel::removeStatement(const LibrdfStatement &statement) const {
-        librdf_model_remove_statement(model_, statement.getWithoutIncrement());
+        librdf_model_remove_statement(obj_, statement.getWithoutIncrement());
     }
 
     /*
@@ -97,7 +59,7 @@ namespace redland {
      * @return void
      */
     void LibrdfModel::removeStatement(librdf_statement *statement) const {
-        librdf_model_remove_statement(model_, statement);
+        librdf_model_remove_statement(obj_, statement);
     }
 
 
@@ -113,7 +75,7 @@ namespace redland {
         // statements in that are in this. Then this == that.
         bool all_this_in_rhs = true;
         bool all_rhs_in_this = true;
-        librdf_stream *this_stream = librdf_model_as_stream(model_);
+        librdf_stream *this_stream = librdf_model_as_stream(obj_);
         if (!this_stream) {
             std::cerr << "LibrdfModel::operator== Cannot create stream from model" << std::endl;
         } else {
@@ -134,7 +96,7 @@ namespace redland {
             }
         }
         librdf_free_stream(this_stream);
-        librdf_stream *rhs_stream = librdf_model_as_stream(rhs.model_);
+        librdf_stream *rhs_stream = librdf_model_as_stream(rhs.obj_);
         if (!rhs_stream) {
             std::cerr << "LibrdfModel::operator== Cannot create stream from model" << std::endl;
         } else {
@@ -163,36 +125,36 @@ namespace redland {
     }
 
     librdf_storage *LibrdfModel::getStorage() const {
-        return librdf_model_get_storage(model_);
+        return librdf_model_get_storage(obj_);
     }
 
     int LibrdfModel::commitTransaction() const {
-        return librdf_model_transaction_commit(model_);
+        return librdf_model_transaction_commit(obj_);
     }
 
     int LibrdfModel::startTransaction() const {
-        return librdf_model_transaction_start(model_);
+        return librdf_model_transaction_start(obj_);
     }
 
     void *LibrdfModel::getTransactionHandle() const {
-        return librdf_model_transaction_get_handle(model_);
+        return librdf_model_transaction_get_handle(obj_);
     }
 
     int LibrdfModel::startTransactionWithHandle(void *handle) const {
-        return librdf_model_transaction_start_with_handle(model_, handle);
+        return librdf_model_transaction_start_with_handle(obj_, handle);
     }
 
     int LibrdfModel::getTransactionRollback() const {
-        return librdf_model_transaction_rollback(model_);
+        return librdf_model_transaction_rollback(obj_);
     }
 
     int LibrdfModel::supportsContexts() const {
-        return librdf_model_supports_contexts(model_);
+        return librdf_model_supports_contexts(obj_);
     }
 
     bool LibrdfModel::containsStatement(librdf_statement *statement) const {
         bool contains_statement = false;
-        librdf_stream *stream = librdf_model_as_stream(model_);
+        librdf_stream *stream = librdf_model_as_stream(obj_);
         if (!stream) {
             throw std::logic_error("LibrdfModel::containsStatement stream is nullptr");
         }

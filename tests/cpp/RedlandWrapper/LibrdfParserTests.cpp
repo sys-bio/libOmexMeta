@@ -139,7 +139,7 @@ TEST_F(LibrdfParserTests, TestRelativeBaseUriResolvesCorrectly) {
     // note: docs do not say anything about having to free the stream and address sanitizer
     // is happy without the free.
     librdf_stream *stream = librdf_model_as_stream(model.get());
-    LibrdfStatement stmt = LibrdfStatement::fromRawStatementPtr(librdf_stream_get_object(stream));
+    LibrdfStatement stmt = LibrdfStatement(librdf_stream_get_object(stream));
     auto s = LibrdfNode(stmt.getSubjectNode());
     std::string actual = s.str();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
