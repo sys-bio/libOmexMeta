@@ -22,7 +22,7 @@ namespace redland {
     /**
      * Instantiation of templated superclass
      */
-    using RefCounted_librdf_storage = RefCounted<librdf_storage, storage_free_func>;
+    using RefCounted_librdf_storage = RefCountedRedlandType<librdf_storage, storage_free_func>;
 
 
     class LibrdfStorage : public RefCounted_librdf_storage {
@@ -32,9 +32,7 @@ namespace redland {
 
         explicit LibrdfStorage(const std::string &storage_name, const std::string &name, const char *options = nullptr);
 
-        LibrdfStorage ();
-
-        int addStatement(librdf_statement *statement);
+        LibrdfStorage();
 
         int addStatement(const LibrdfStatement &statement);
 

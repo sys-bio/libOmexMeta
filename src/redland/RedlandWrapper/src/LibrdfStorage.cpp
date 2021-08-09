@@ -33,10 +33,6 @@ namespace redland {
         freeFunc_ = librdf_free_storage;
     }
 
-    int LibrdfStorage::addStatement(librdf_statement *statement) {
-        return librdf_storage_add_statement(obj_, statement);
-    }
-
     int LibrdfStorage::addStatement(const LibrdfStatement &statement) {
         return librdf_storage_add_statement(obj_, statement.getWithoutIncrement());
     }

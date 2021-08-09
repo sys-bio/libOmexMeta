@@ -1,6 +1,7 @@
 //
 // Created by Ciaran on 5/17/2020.
 //
+
 #include "iostream"
 #include "redland/LibrdfModel.h"
 #include "redland/LibrdfStorage.h"
@@ -14,25 +15,18 @@ using namespace redland;
 class LibrdfStorageTests : public ::testing::Test {
 
 public:
-    librdf_world *world = nullptr;
-    librdf_statement *statement = nullptr;
+    LibrdfStatement statement;
+    LibrdfNode subject = LibrdfNode::fromUriString("http://www.dajobe.org/");
+    LibrdfNode predicate = LibrdfNode::fromUriString("http://purl.org/dc/elements/1.1/creator");
+    LibrdfNode resource = LibrdfNode::fromUriString("http://biscuits.org");
 
     LibrdfStorageTests() {
-        world = LibrdfWorld::getWorld();
-        statement = librdf_new_statement_from_nodes(
-                world,
-                librdf_new_node_from_uri_string(world, (const unsigned char *) "http://www.dajobe.org/"),
-
-                librdf_new_node_from_uri_string(world,
-                                                (const unsigned char *) "http://purl.org/dc/elements/1.1/creator"),
-                librdf_new_node_from_literal(world, (const unsigned char *) "Dave Beckett", NULL, 0));
+        statement.setSubject(subject);
+        statement.setPredicate(predicate);
+        statement.setResource(resource);
     }
 
-    ~LibrdfStorageTests() override {
-        librdf_free_statement(statement);
-        //        librdf_free_world(world);
-    }
-
+    ~LibrdfStorageTests() override = default;
 };
 
 
@@ -85,7 +79,6 @@ TEST_F(LibrdfStorageTests, TestMemoryStorage) {
     bool actual = std::filesystem::exists(fname);
     ASSERT_TRUE(actual);
 }
-
 
 
 TEST_F(LibrdfStorageTests, TesthashesMemory) {

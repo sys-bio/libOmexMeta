@@ -27,7 +27,7 @@ namespace redland {
     /**
      * Instantiation of templated superclass
      */
-    using RefCounted_librdf_model = RefCounted<librdf_model, model_free_func>;
+    using RefCounted_librdf_model = RefCountedRedlandType<librdf_model, model_free_func>;
 
     /**
      * @brief RAII abstraction around librdf_model
@@ -41,26 +41,21 @@ namespace redland {
 
         explicit LibrdfModel(LibrdfStorage& storage, const char *options = nullptr);
 
-        bool operator==(const LibrdfModel &rhs) const;
+        bool operator==(LibrdfModel &rhs) ;
 
-        bool operator!=(const LibrdfModel &rhs) const;
-
+        bool operator!=( LibrdfModel &rhs) ;
 
         [[nodiscard]] LibrdfQueryResults query(const LibrdfQuery& query) const;
 
-        librdf_stream* toStream();
+        LibrdfStream toStream();
 
         int size() const;
 
-        void addStatement(librdf_statement *statement) const;
-
-//        void freeModel();
-
-        void removeStatement(librdf_statement *statement) const;
+        void addStatement(const LibrdfStatement& statement) const;
 
         void removeStatement(const LibrdfStatement &statement) const;
 
-        librdf_storage* getStorage() const;
+        LibrdfStorage getStorage() const;
 
         int commitTransaction() const;
 
@@ -74,11 +69,7 @@ namespace redland {
 
         int supportsContexts() const;
 
-        bool containsStatement(librdf_statement* statement) const;
-
-        bool containsStatement(const LibrdfStatement &statement) const;
-
-        void addStatement(const LibrdfStatement &statement) const;
+        bool containsStatement( LibrdfStatement &statement) ;
     };
 }
 

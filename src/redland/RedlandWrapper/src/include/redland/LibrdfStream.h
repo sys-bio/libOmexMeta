@@ -1,33 +1,44 @@
 //
-// Created by Ciaran on 5/20/2020.
+// Created by Ciaran on 09/08/2021.
 //
 
 #ifndef LIBOMEXMETA_LIBRDFSTREAM_H
 #define LIBOMEXMETA_LIBRDFSTREAM_H
 
-
 #include "librdf.h"
-#include <memory>
-
-#include "LibrdfWorld.h"
+#include "redland/LibrdfException.h"
+#include "redland/LibrdfStatement.h"
+#include "redland/RefCountedRedlandType.h"
+#include <functional>
 
 namespace redland {
 
-    class LibrdfStream {
-        struct deleter {
-            void operator()(librdf_stream *stream);
-        };
+    /**
+     * @brief std::function signature of librdf_free_node
+     */
+    using stream_free_func = std::function<void(librdf_stream *)>;
 
-        std::unique_ptr<librdf_stream, deleter> stream_;
+    /**
+     * Instantiation of templated superclass
+     */
+    using Redland_librdf_stream = RedlandType<librdf_stream, stream_free_func>;
+
+    class LibrdfStream : public Redland_librdf_stream {
+
     public:
-        LibrdfStream();
+        using Redland_librdf_stream::Redland_librdf_stream;
 
-        explicit LibrdfStream(librdf_stream *stream);
+        explicit LibrdfStream(librdf_stream* stream);
 
-        [[nodiscard]] librdf_stream *get() const;
-
+        /**
+         * @brief get the current librdf_statement* as a LibrdfStatement
+         * @details The returned LibrdfStatement has its internal
+         * reference counter incremented by 1 and is therefore
+         * managed via RAII.
+         */
+        LibrdfStatement getStatement();
     };
-}
 
+}// namespace redland
 
-#endif //LIBOMEXMETA_LIBRDFSTREAM_H
+#endif//LIBOMEXMETA_LIBRDFSTREAM_H

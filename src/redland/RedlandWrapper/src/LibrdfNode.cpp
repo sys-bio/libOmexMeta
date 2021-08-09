@@ -343,6 +343,15 @@ namespace redland {
         }
         return ns.str();
     }
+    bool LibrdfNode::isBlank() {
+        return librdf_node_is_blank(obj_);
+    }
+    bool LibrdfNode::isUri() {
+        return librdf_node_is_resource(obj_);
+    }
+    bool LibrdfNode::isLiteral() {
+        return librdf_node_is_literal(obj_);
+    }
 
 
 }// namespace redland

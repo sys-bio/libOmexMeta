@@ -3,7 +3,7 @@
 //
 
 #include "redland/LibrdfModel.h"
-
+#include "redland/LibrdfStream.h"
 
 namespace redland {
 
@@ -19,17 +19,10 @@ namespace redland {
                                    options),
                   librdf_free_model) {}
 
-    void LibrdfModel::addStatement(librdf_statement *statement) const {
-        librdf_model_add_statement(obj_, statement);
-    }
-
-    void LibrdfModel::addStatement(const LibrdfStatement &statement) const {
+    void LibrdfModel::addStatement(const LibrdfStatement& statement) const {
+        // librdf takes care of ref counting in this instance
         librdf_model_add_statement(obj_, statement.getWithoutIncrement());
     }
-
-//    librdf_model *LibrdfModel::get() const {
-//        return obj_;
-//    }
 
     LibrdfQueryResults LibrdfModel::query(const LibrdfQuery &query) const {
         librdf_query_results *results = librdf_query_execute(query.getWithoutIncrement(), obj_);
@@ -40,8 +33,8 @@ namespace redland {
         return librdf_model_size(obj_);
     }
 
-    librdf_stream *LibrdfModel::toStream() {
-        return librdf_model_as_stream(obj_);
+    LibrdfStream LibrdfModel::toStream() {
+        return LibrdfStream(librdf_model_as_stream(obj_));
     }
 
     /*
@@ -53,17 +46,7 @@ namespace redland {
         librdf_model_remove_statement(obj_, statement.getWithoutIncrement());
     }
 
-    /*
-     * @breif remove statement from the model
-     * @param statement a librdf_statement* to remove from the model
-     * @return void
-     */
-    void LibrdfModel::removeStatement(librdf_statement *statement) const {
-        librdf_model_remove_statement(obj_, statement);
-    }
-
-
-    bool LibrdfModel::operator==(const LibrdfModel &rhs) const {
+    bool LibrdfModel::operator==( LibrdfModel &rhs)  {
         // we first try comparing size. If they are not equal, then the models are not equal
         if (size() != rhs.size())
             return false;
@@ -81,8 +64,8 @@ namespace redland {
         } else {
             int count = 0;
             while (!librdf_stream_end(this_stream)) {
-                librdf_statement *statement = librdf_stream_get_object(this_stream);
-                if (!statement) {
+                LibrdfStatement statement = LibrdfStatement(librdf_stream_get_object(this_stream));
+                if (!statement.getWithoutIncrement()) {
                     std::cerr << "LibrdfModel::operator==  librdf_stream_next returned null" << std::endl;
                 }
                 // check statement is in other model
@@ -102,8 +85,8 @@ namespace redland {
         } else {
             int count = 0;
             while (!librdf_stream_end(rhs_stream)) {
-                librdf_statement *statement = librdf_stream_get_object(rhs_stream);
-                if (!statement) {
+                LibrdfStatement statement(librdf_stream_get_object(rhs_stream));
+                if (!statement.getWithoutIncrement()) {
                     std::cerr << "LibrdfModel::operator==  librdf_stream_next returned null" << std::endl;
                 }
                 // check statement is in other model
@@ -120,12 +103,12 @@ namespace redland {
         return all_this_in_rhs && all_rhs_in_this;
     }
 
-    bool LibrdfModel::operator!=(const LibrdfModel &rhs) const {
+    bool LibrdfModel::operator!=(LibrdfModel &rhs)  {
         return !(rhs == *this);
     }
 
-    librdf_storage *LibrdfModel::getStorage() const {
-        return librdf_model_get_storage(obj_);
+    LibrdfStorage LibrdfModel::getStorage() const {
+        return LibrdfStorage(librdf_model_get_storage(obj_));
     }
 
     int LibrdfModel::commitTransaction() const {
@@ -152,7 +135,7 @@ namespace redland {
         return librdf_model_supports_contexts(obj_);
     }
 
-    bool LibrdfModel::containsStatement(librdf_statement *statement) const {
+    bool LibrdfModel::containsStatement( LibrdfStatement &statement)  {
         bool contains_statement = false;
         librdf_stream *stream = librdf_model_as_stream(obj_);
         if (!stream) {
@@ -163,12 +146,12 @@ namespace redland {
         while (!librdf_stream_end(stream)) {
             // this is a non-owning pointer that apparently doesn't add to the ref count.
             // so don't free it.
-            librdf_statement *proposal_statement = librdf_stream_get_object(stream);
-            if (!proposal_statement) {
+            LibrdfStatement proposal_statement(librdf_stream_get_object(stream));
+            if (!proposal_statement.getWithoutIncrement()) {
                 throw std::logic_error("LibrdfModel::containsStatement proposal statement is nullptr");
             }
 
-            if (LibrdfStatement::equals(statement, proposal_statement)) {
+            if (LibrdfStatement::equals(&statement, &proposal_statement)) {
                 contains_statement = true;
                 break;
             }
@@ -178,8 +161,8 @@ namespace redland {
         return contains_statement;
     }
 
-    bool LibrdfModel::containsStatement(const LibrdfStatement &statement) const {
-        return containsStatement(statement.getWithoutIncrement());
-    }
+//    bool LibrdfModel::containsStatement( LibrdfStatement &statement)  {
+//        return containsStatement(statement);
+//    }
 
 }// namespace redland

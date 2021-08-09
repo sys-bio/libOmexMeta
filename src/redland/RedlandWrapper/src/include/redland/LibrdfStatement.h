@@ -22,7 +22,7 @@ namespace redland {
     /**
      * Instantiation of templated superclass
      */
-    using RefCounted_librdf_statement = RefCounted<librdf_statement, statement_free_func>;
+    using RefCounted_librdf_statement = RefCountedRedlandType<librdf_statement, statement_free_func>;
 
 
     /**
@@ -53,19 +53,19 @@ namespace redland {
          * @brief equality operator.
          * @detials equal if the three nodes contained by this statement are equal
          */
-        bool operator==(const LibrdfStatement &rhs) const;
+        bool operator==(LibrdfStatement &rhs) ;
 
         /**
          * @brief inequality operator. Inverse of equality operator
          */
-        bool operator!=(const LibrdfStatement &rhs) const;
+        bool operator!=( LibrdfStatement &rhs);
 
         /**
          * @brief returns true if first equals second.
          * @details All three of subject, predicate and resource nodes need to be equal
          * before LibrdfStatement::equals returns true.
          */
-        static bool equals(librdf_statement *first, librdf_statement *second);
+        static bool equals(LibrdfStatement* first, LibrdfStatement* second);
 
         /**
          * @brief construct a LibrdfStatement from LibrdfNode objects.

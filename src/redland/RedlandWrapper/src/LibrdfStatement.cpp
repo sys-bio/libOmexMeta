@@ -12,11 +12,11 @@ namespace redland {
         : RefCounted_librdf_statement(librdf_new_statement(LibrdfWorld::getWorld()), librdf_free_statement) {}
 
 
-    bool LibrdfStatement::operator==(const LibrdfStatement &rhs) const {
-        return equals(obj_, rhs.getWithoutIncrement());
+    bool LibrdfStatement::operator==( LibrdfStatement &rhs)  {
+        return equals(this, &rhs);
     }
 
-    bool LibrdfStatement::operator!=(const LibrdfStatement &rhs) const {
+    bool LibrdfStatement::operator!=( LibrdfStatement &rhs) {
         return !(rhs == *this);
     }
 
@@ -87,55 +87,56 @@ namespace redland {
         return librdf_statement_is_complete(obj_);
     }
 
-    bool LibrdfStatement::equals(librdf_statement *first, librdf_statement *second) {
+    bool LibrdfStatement::equals(LibrdfStatement* first, LibrdfStatement* second) {
         // note: The reason we do not use librdf_statement_equals
         // is because librdf_statement_equals does not get equality
         // correct when comparing blank nodes. We therefore roll our own equality
         // operator.
         // in the case of nullptr's, we just return false
-        if (!first) {
+        if (first->isNull()) {
             return false;
         }
-        if (!second) {
+        if (second->isNull()) {
             return false;
         }
-        librdf_node *this_subject = librdf_statement_get_subject(first);
-        if (!this_subject) {
+        LibrdfNode this_subject = first->getSubjectNode();
+        if (this_subject.isNull()) {
             return false;
         }
-        librdf_node *this_predicate = librdf_statement_get_predicate(first);
-        if (!this_predicate) {
+        LibrdfNode this_predicate = first->getPredicateNode();
+        if (this_predicate.isNull()) {
             return false;
         }
-        librdf_node *this_resource = librdf_statement_get_object(first);
-        if (!this_resource) {
+        LibrdfNode this_resource = first->getResourceNode();
+        if (this_resource.isNull()) {
             return false;
         }
 
-        librdf_node *that_subject = librdf_statement_get_subject(second);
-        if (!that_subject) {
+        LibrdfNode that_subject = second->getSubjectNode();
+        if (that_subject.isNull()) {
             return false;
         }
-        librdf_node *that_predicate = librdf_statement_get_predicate(second);
-        if (!that_predicate) {
+        LibrdfNode that_predicate = second->getPredicateNode();
+        if (that_predicate.isNull()) {
             return false;
         }
-        librdf_node *that_resource = librdf_statement_get_object(second);
-        if (!that_resource) {
+        LibrdfNode that_resource = second->getResourceNode();
+        if (that_resource.isNull()) {
             return false;
         }
         bool subjects_equal = true;
         bool resources_equal = true;
-        // we bypass comparing blank nodes.
-        if (!librdf_node_is_blank(this_subject) || !librdf_node_is_blank(that_subject)) {
-            subjects_equal = librdf_node_equals(this_subject, that_subject);
+        // we bypass comparing blank nodes->
+        if (!this_subject.isBlank() || !that_subject.isBlank()) {
+            subjects_equal = this_subject == that_subject;
         }
-        if (!librdf_node_is_blank(this_resource) || !librdf_node_is_blank(that_resource)) {
-            resources_equal = librdf_node_equals(this_resource, that_resource);
+        if (this_resource.isBlank() || !that_resource.isBlank()) {
+            resources_equal = this_resource == that_resource;
         }
-        bool predicates_equal = librdf_node_equals(this_predicate, that_predicate);
+        bool predicates_equal = this_predicate == that_predicate; // cannot be blank
         return subjects_equal && predicates_equal && resources_equal;
     }
+
 
 
 }// namespace redland

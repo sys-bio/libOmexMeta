@@ -25,31 +25,17 @@ namespace redland {
     /**
      * Instantiation of templated superclass
      */
-    using RefCounted_librdf_parser = RefCounted<librdf_parser, parser_free_func>;
+    using RedlandType_librdf_parser = RedlandType<librdf_parser, parser_free_func>;
 
 
-    class LibrdfParser {
+    class LibrdfParser : public RedlandType_librdf_parser {
 
     public:
-
-        LibrdfParser() = default;
-
-        ~LibrdfParser();
-
-        LibrdfParser(const LibrdfParser &parser) = delete;
-
-        LibrdfParser(LibrdfParser &&parser) noexcept;
-
-        LibrdfParser &operator=(const LibrdfParser &parser) = delete;
-
-        LibrdfParser &operator=(LibrdfParser &&parser) noexcept;
 
         explicit LibrdfParser(librdf_parser *parser);
 
         explicit LibrdfParser(std::string format, std::string mime_type = std::string(),
                               const std::string &type_uri = std::string());
-
-        [[nodiscard]] librdf_parser *get() const;
 
         [[nodiscard]] int numNamespacesSeen() const;
 
@@ -64,13 +50,6 @@ namespace redland {
         void parseString(const std::string &rdf_string, const LibrdfModel &model, const LibrdfUri &base_uri) const;
 
         void parseString(const std::string &rdf_string, const LibrdfModel &model, const std::string &base_uri) const;
-
-        /*
-         * @brief parse a file into rdf graph. Use local_uri as base uri.
-         * @param filename_uri location of filename on disk
-         * @param model the current LibrdfModel
-         */
-        void parseFile(const std::string &filename_uri, const LibrdfModel &model, const std::string &local_uri) const;
 
         /*
          * @brief parse a file into rdf graph. Use filename as base url
@@ -109,8 +88,6 @@ namespace redland {
         [[nodiscard]] std::vector<std::string> getSeenNamespaces(std::vector<std::string> namespaces) const;
 
     private:
-        librdf_parser *parser_ = nullptr;
-
         void validateParserName() const;
 
         std::string format_ = std::string();

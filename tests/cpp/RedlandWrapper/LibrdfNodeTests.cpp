@@ -396,3 +396,18 @@ TEST_F(LibrdfNodeTests, MoveAssignment) {
     LibrdfNode node2 = std::move(node1);
     ASSERT_EQ(1, node2.getUsage());
 }
+
+TEST_F(LibrdfNodeTests, isBlank) {
+    LibrdfNode node1 = LibrdfNode::fromBlank("BlankId");
+    ASSERT_TRUE(node1.isBlank());
+}
+
+TEST_F(LibrdfNodeTests, isUri) {
+    LibrdfNode node1 = LibrdfNode::fromUriString("https://uri.com");
+    ASSERT_TRUE(node1.isUri());
+}
+
+TEST_F(LibrdfNodeTests, isLiteral) {
+    LibrdfNode node1 = LibrdfNode::fromLiteral("LiteralNode");
+    ASSERT_TRUE(node1.isLiteral());
+}

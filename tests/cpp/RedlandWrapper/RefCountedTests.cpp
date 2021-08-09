@@ -50,12 +50,12 @@ public:
 
 TEST_F(RefCountedTests, CheckNoMemoryLeakWithTestType) {
     ref_counted_type *refCountedType = makeRefCountedType();
-    RefCounted<ref_counted_type, ref_counted_type_free_func> refCounted(refCountedType, free_ref_counted_type);
+    RefCountedRedlandType<ref_counted_type, ref_counted_type_free_func> refCounted(refCountedType, free_ref_counted_type);
 }
 
 TEST_F(RefCountedTests, CheckIncrementWithGetWithTestType) {
     ref_counted_type *refCountedType = makeRefCountedType();
-    RefCounted<ref_counted_type, ref_counted_type_free_func> refCounted(refCountedType, free_ref_counted_type);
+    RefCountedRedlandType<ref_counted_type, ref_counted_type_free_func> refCounted(refCountedType, free_ref_counted_type);
     ref_counted_type *refCountedType2 = refCounted.get();
     ASSERT_EQ(refCountedType, refCountedType2);
     ASSERT_EQ(2, refCountedType->usage);
@@ -68,19 +68,20 @@ TEST_F(RefCountedTests, CheckCopyCtorWithTestType) {
     // allocates new ptr
     ref_counted_type *refCountedType = makeRefCountedType();
     // takes ownership of the ref_counted_type
-    RefCounted<ref_counted_type, ref_counted_type_free_func> refCounted(refCountedType, free_ref_counted_type);
+    RefCountedRedlandType<ref_counted_type, ref_counted_type_free_func> refCounted(refCountedType, free_ref_counted_type);
     // copies and increments the ref count - injecting into redland types
-    RefCounted<ref_counted_type, ref_counted_type_free_func> refCountedCpy(refCounted);
+    RefCountedRedlandType<ref_counted_type, ref_counted_type_free_func> refCountedCpy(refCounted);
     ASSERT_EQ(refCounted, refCountedCpy);
     ASSERT_EQ(2, refCountedType->usage);
+    int u = 0;
 }
 
 TEST_F(RefCountedTests, CheckMoveCtorWithTestType) {
     // allocates new ptr
     ref_counted_type *refCountedType = makeRefCountedType();
     // takes ownership of the ref_counted_type
-    RefCounted<ref_counted_type, ref_counted_type_free_func> refCounted(refCountedType, free_ref_counted_type);
-    RefCounted<ref_counted_type, ref_counted_type_free_func> refCountedMv(std::move(refCounted));
+    RefCountedRedlandType<ref_counted_type, ref_counted_type_free_func> refCounted(refCountedType, free_ref_counted_type);
+    RefCountedRedlandType<ref_counted_type, ref_counted_type_free_func> refCountedMv(std::move(refCounted));
     ASSERT_EQ(1, refCountedType->usage);
 }
 
@@ -89,9 +90,9 @@ TEST_F(RefCountedTests, CheckCopyAssignCtorWithTestType) {
     // allocates new ptr
     ref_counted_type *refCountedType = makeRefCountedType();
     // takes ownership of the ref_counted_type
-    RefCounted<ref_counted_type, ref_counted_type_free_func> refCounted(refCountedType, free_ref_counted_type);
+    RefCountedRedlandType<ref_counted_type, ref_counted_type_free_func> refCounted(refCountedType, free_ref_counted_type);
     // copies and increments the ref count - injecting into redland types
-    RefCounted<ref_counted_type, ref_counted_type_free_func> refCountedCpy = refCounted;
+    RefCountedRedlandType<ref_counted_type, ref_counted_type_free_func> refCountedCpy = refCounted;
     ASSERT_EQ(refCounted, refCountedCpy);
     ASSERT_EQ(2, refCountedType->usage);
 }
@@ -101,9 +102,9 @@ TEST_F(RefCountedTests, CheckMoveAssignCtorWithTestType) {
     // allocates new ptr
     ref_counted_type *refCountedType = makeRefCountedType();
     // takes ownership of the ref_counted_type
-    RefCounted<ref_counted_type, ref_counted_type_free_func> refCounted(refCountedType, free_ref_counted_type);
+    RefCountedRedlandType<ref_counted_type, ref_counted_type_free_func> refCounted(refCountedType, free_ref_counted_type);
     // copies and increments the ref count - injecting into redland types
-    RefCounted<ref_counted_type, ref_counted_type_free_func> refCountedMv = std::move(refCounted);
+    RefCountedRedlandType<ref_counted_type, ref_counted_type_free_func> refCountedMv = std::move(refCounted);
     ASSERT_EQ(1, refCountedType->usage);
 }
 
@@ -111,7 +112,7 @@ TEST_F(RefCountedTests, CheckMoveAssignCtorWithTestType) {
 TEST_F(RefCountedTests, FromDefaultCtr){
     ref_counted_type *refCountedType = makeRefCountedType();
 
-    RefCounted<ref_counted_type, ref_counted_type_free_func > refCounted;
+    RefCountedRedlandType<ref_counted_type, ref_counted_type_free_func > refCounted;
     refCounted.setObj(refCountedType);
     refCounted.setFreeFunc(free_ref_counted_type);
     ASSERT_EQ(1, refCounted.getUsage());

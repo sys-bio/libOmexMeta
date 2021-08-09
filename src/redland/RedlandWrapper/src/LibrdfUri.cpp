@@ -21,7 +21,7 @@ namespace redland {
 //    }
 
     LibrdfUri::LibrdfUri(const std::string &uri)
-        : RefCounted<librdf_uri, uri_free_func>(
+        : RefCountedRedlandType<librdf_uri, uri_free_func>(
                   librdf_new_uri(LibrdfWorld::getWorld(), (const unsigned char *) uri.c_str()),
                   librdf_free_uri) {}
 

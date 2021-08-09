@@ -8,7 +8,7 @@
 
 #include "LibrdfException.h"
 #include "librdf.h"
-#include "redland/RefCounted.h"
+#include "redland/RefCountedRedlandType.h"
 
 
 namespace redland {
@@ -21,7 +21,7 @@ namespace redland {
     /**
      * Instantiation of templated superclass
      */
-    using RefCounted_librdf_uri = RefCounted<librdf_uri, uri_free_func>;
+    using RefCounted_librdf_uri = RefCountedRedlandType<librdf_uri, uri_free_func>;
 
     /**
      * @brief C++ wrapper around librdf_uri using RAII
@@ -41,7 +41,7 @@ namespace redland {
          * pointer is stolen from librdf_uri and thereafter managed correctly
          * by LibrdfUri via RAII.
          */
-        LibrdfUri(librdf_uri* uri)  : RefCounted_librdf_uri(uri, librdf_free_uri){}
+        explicit LibrdfUri(librdf_uri* uri)  : RefCounted_librdf_uri(uri, librdf_free_uri){}
 
         /*
          * @brief create a LibrdfUri object from a filename string

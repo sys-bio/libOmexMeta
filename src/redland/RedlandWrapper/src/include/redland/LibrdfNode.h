@@ -8,7 +8,7 @@
 #include "LibrdfException.h"
 #include "LibrdfUri.h"
 #include "LibrdfWorld.h"
-#include "RefCounted.h"
+#include "RefCountedRedlandType.h"
 #include "librdf.h"
 #include "raptor2.h"
 #include <memory>
@@ -45,7 +45,7 @@ namespace redland {
     /**
      * @brief instantiation of superclass
      */
-    using RefCounted_librdf_node = RefCounted<librdf_node, node_free_func>;
+    using RefCounted_librdf_node = RefCountedRedlandType<librdf_node, node_free_func>;
 
 
     /**
@@ -121,6 +121,21 @@ namespace redland {
         std::string getNamespace() const;
 
         static std::vector<std::string> splitStringBy(const std::string &str, char delimiter);
+
+        /**
+         * @brief indicator for whether this is a blank node
+         */
+         bool isBlank();
+
+        /**
+         * @brief indicator for whether this is a uri node
+         */
+         bool isUri();
+
+        /**
+         * @brief indicator for whether this is a literal node
+         */
+         bool isLiteral();
 
     };
 }// namespace redland
