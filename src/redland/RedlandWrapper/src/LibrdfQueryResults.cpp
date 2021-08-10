@@ -161,16 +161,6 @@ namespace redland {
         return librdf_query_results_is_graph(obj_);
     }
 
-    int LibrdfQueryResults::size() {
-        int num = 0;
-        bool done = false;
-        while (!done){
-            num++;
-            done = next();
-        }
-        return num;
-    }
-
     std::vector<std::string> LibrdfQueryResults::getBindingsNames() {
         std::vector<std::string> v(getBindingsCount());
         for (int i=0; i<getBindingsCount(); i++){

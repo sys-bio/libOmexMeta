@@ -57,7 +57,7 @@ namespace redland {
 
         bool operator!=(const LibrdfQuery &rhs) const;
 
-        LibrdfQueryResults& execute();
+        LibrdfQueryResults execute();
 
     private:
         /**

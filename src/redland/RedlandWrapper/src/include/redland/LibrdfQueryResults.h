@@ -53,15 +53,6 @@ namespace redland {
         int count();
 
         /**
-         * @brief compute the size of this stream.
-         * @details The size of a stream cannot be predetermined
-         * so the only way to get this number is to count as we traverse the stream.
-         * Since it is not possible to go backwards in a stream, this method consumes
-         * the current LibrdfQueryResults, necessitating the query be repeated by the caller.
-         */
-        int size();
-
-        /**
          * @brief Move to the next result
          */
         int next();

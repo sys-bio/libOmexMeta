@@ -33,14 +33,13 @@ namespace redland {
                 nullptr);
     }
 
-    LibrdfQueryResults& LibrdfQuery::execute() {
-        if (!queryResults_.isNull()) {
-            freeFunc_(obj_);
-            obj_ = nullptr;
-        }
+    LibrdfQueryResults LibrdfQuery::execute() {
+//        if (!queryResults_.isNull()) {
+//            freeFunc_(obj_);
+//            obj_ = nullptr;
+//        }
 
-        queryResults_ = LibrdfQueryResults(librdf_query_execute(obj_, model_.getWithoutIncrement()));
-        return queryResults_;
+        return LibrdfQueryResults(librdf_query_execute(obj_, model_.getWithoutIncrement()));
     }
 
 
