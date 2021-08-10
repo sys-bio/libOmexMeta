@@ -15,6 +15,7 @@
 #include <unordered_map>
 #include <utility>
 
+#include "include/redland/Logger.h"
 #include "omexmeta/Editor.h"
 #include "omexmeta/IRDF.h"
 #include "omexmeta/MarkupIdentifier.h"
@@ -22,7 +23,6 @@
 #include "omexmeta/SBMLSemanticExtraction.h"
 #include "omexmeta/UriHandler.h"
 #include "omexmeta/VCardTranslator.h"
-#include "omexmeta/Logger.h"
 
 
 using namespace redland;

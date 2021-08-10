@@ -37,6 +37,18 @@ namespace redland {
          * managed via RAII.
          */
         LibrdfStatement getStatement();
+
+        /**
+         * @brief true when stream has ended
+         */
+        bool end();
+
+        /**
+         * @brief move current statement to the next statement
+         */
+        bool next();
+
+
     };
 
 }// namespace redland

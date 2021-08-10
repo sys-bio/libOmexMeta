@@ -30,7 +30,6 @@ namespace redland {
      */
     class LibrdfStatement : public RefCounted_librdf_statement {
     public:
-
         /**
          * @brief use superclass ctr and rule of 5
          */
@@ -53,19 +52,19 @@ namespace redland {
          * @brief equality operator.
          * @detials equal if the three nodes contained by this statement are equal
          */
-        bool operator==(LibrdfStatement &rhs) ;
+        bool operator==(const LibrdfStatement &rhs) const;
 
         /**
          * @brief inequality operator. Inverse of equality operator
          */
-        bool operator!=( LibrdfStatement &rhs);
+        bool operator!=(const LibrdfStatement &rhs) const;
 
         /**
          * @brief returns true if first equals second.
          * @details All three of subject, predicate and resource nodes need to be equal
          * before LibrdfStatement::equals returns true.
          */
-        static bool equals(LibrdfStatement* first, LibrdfStatement* second);
+        static bool equals(const LibrdfStatement &first, const LibrdfStatement &second);
 
         /**
          * @brief construct a LibrdfStatement from LibrdfNode objects.
@@ -104,28 +103,27 @@ namespace redland {
          * to node.
          * @details reference count of node is incremented
          */
-        void setSubject(const LibrdfNode& node);
+        void setSubject(const LibrdfNode &node);
 
         /**
          * @brief set the resource of this LibrdfStatement
          * to node.
          * @details reference count of node is incremented
          */
-        void setResource(const LibrdfNode& node);
+        void setResource(const LibrdfNode &node);
 
         /**
          * @brief set the predicate of this LibrdfStatement
          * to node.
          * @details reference count of node is incremented
          */
-        void setPredicate(const LibrdfNode& node);
+        void setPredicate(const LibrdfNode &node);
 
         /**
          * @brief returns true when all of subject, predicate and resource
          * nodes are not empty.
          */
         bool isComplete();
-
     };
 }// namespace redland
 

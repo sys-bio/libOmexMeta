@@ -133,7 +133,7 @@ namespace omexmeta {
 //        return librdf_query_results_get_boolean(query_results_);
 //    }
 //
-//    librdf_stream *Query::resultsAsLibRdfStream() {
+//    librdf_stream *Query::toStream() {
 //        return librdf_query_results_as_stream(query_results_);
 //    }
 //
@@ -142,7 +142,7 @@ namespace omexmeta {
 //    //        return rdf;
 //    //    }
 //
-//    int Query::getCount() {
+//    int Query::size() {
 //        return librdf_query_results_get_count(query_results_);
 //    }
 //
@@ -190,7 +190,7 @@ namespace omexmeta {
 //        return librdf_query_results_next(query_results_);
 //    }
 //
-//    ResultsMap Query::resultsAsMap() {
+//    ResultsMap Query::map() {
 //        ResultsMap map;
 //        // configure a data structure for storing the results
 //        // binding name is x, y, z of sparql query for example.
@@ -225,7 +225,7 @@ namespace omexmeta {
 //    }
 //
 //    void Query::printQueryResults() {
-//        auto results = resultsAsMap();
+//        auto results = map();
 //        for (auto [name, list] : results) {
 //            std::cout << name << std::endl;
 //            for (auto x : list) {

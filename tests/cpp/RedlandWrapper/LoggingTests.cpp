@@ -2,10 +2,10 @@
 // Created by Ciaran on 05/08/2021.
 //
 
-#include "SBMLFactory.h"
+#include "cpp/omexmeta/SBMLFactory.h"
 #include "omexmeta/OmexMeta.h"
-#include "spdlog/sinks/stdout_color_sinks.h"
 #include "spdlog/sinks/basic_file_sink.h"
+#include "spdlog/sinks/stdout_color_sinks.h"
 #include "spdlog/spdlog.h"
 #include "gtest/gtest.h"
 
@@ -22,7 +22,7 @@ public:
             try {
                 std::filesystem::remove(p);
             } catch (std::exception& e){
-                OMEX_INFO(e.what());
+                REDLAND_INFO(e.what());
             }
         }
     }
@@ -40,18 +40,18 @@ TEST_F(LoggingTests, UseConsoleLoggerOutOfTheBox){
     // be using the spdlog defaults.
     Logger::getLogger();
     // should not output to console
-    OMEX_INFO("Not displayed to console");
+    REDLAND_INFO("Not displayed to console");
     // should output to console
-    OMEX_WARN("Displayed to console");
+    REDLAND_WARN("Displayed to console");
 }
 
 TEST_F(LoggingTests, SwitchToFileLogger){
     std::filesystem::path fname = std::filesystem::current_path() / "log.log";
     Logger::getLogger()->fileLogger(fname);
     // should not output to console
-    OMEX_INFO("Not displayed to console");
+    REDLAND_INFO("Not displayed to console");
     // should output to console
-    OMEX_WARN("Displayed to console");
+    REDLAND_WARN("Displayed to console");
     ASSERT_TRUE(std::filesystem::exists(fname));
 }
 

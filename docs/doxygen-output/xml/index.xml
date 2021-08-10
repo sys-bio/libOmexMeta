@@ -914,8 +914,8 @@
     <member refid="classomexmeta_1_1Query_1afd53f231969232188218cae148aa6482" kind="function"><name>operator=</name></member>
     <member refid="classomexmeta_1_1Query_1a818772558b490e25b2ee1bc2417e1282" kind="function"><name>operator=</name></member>
     <member refid="classomexmeta_1_1Query_1a0b9e4ef7fb6c3d0e79a51ed327639ac0" kind="function"><name>freeQuery</name></member>
-    <member refid="classomexmeta_1_1Query_1a0dda4502056d712d351f7057329c7688" kind="function"><name>resultsAsLibRdfStream</name></member>
-    <member refid="classomexmeta_1_1Query_1ab50cc5f76dcf7f863f9fa9d0bf755071" kind="function"><name>resultsAsMap</name></member>
+    <member refid="classomexmeta_1_1Query_1a0dda4502056d712d351f7057329c7688" kind="function"><name>toStream</name></member>
+    <member refid="classomexmeta_1_1Query_1ab50cc5f76dcf7f863f9fa9d0bf755071" kind="function"><name>map</name></member>
     <member refid="classomexmeta_1_1Query_1a7109dd08bd808bf5a20becb164622ed6" kind="function"><name>toString</name></member>
     <member refid="classomexmeta_1_1Query_1a879a4db0413abc8f4a3470877ebf5193" kind="function"><name>runQuery</name></member>
     <member refid="classomexmeta_1_1Query_1a9f9639927203dc97e93bfca5508b6d01" kind="function"><name>printQueryResults</name></member>
@@ -928,7 +928,7 @@
     <member refid="classomexmeta_1_1Query_1a0e31011a576bb0598e92fe3676216899" kind="function"><name>isBindings</name></member>
     <member refid="classomexmeta_1_1Query_1aaebf27f2a2819419a68f04b3c5d24a10" kind="function"><name>isBoolean</name></member>
     <member refid="classomexmeta_1_1Query_1a5f062c8171a472529282e08f2f132813" kind="function"><name>getBoolean</name></member>
-    <member refid="classomexmeta_1_1Query_1aa5cdad3617be3e7b5df125762f29f0ba" kind="function"><name>getCount</name></member>
+    <member refid="classomexmeta_1_1Query_1aa5cdad3617be3e7b5df125762f29f0ba" kind="function"><name>size</name></member>
     <member refid="classomexmeta_1_1Query_1aaccc1e1973b46fb8d4c7fa8b5da9c05e" kind="function"><name>getBindingsName</name></member>
   </compound>
   <compound refid="structraptor__locator" kind="struct"><name>raptor_locator</name>
@@ -1676,12 +1676,12 @@
   <compound refid="IRDF_8h" kind="file"><name>IRDF.h</name>
   </compound>
   <compound refid="Logger_8h" kind="file"><name>Logger.h</name>
-    <member refid="Logger_8h_1a14095d6307757d11ce09fedf0d3b9458" kind="define"><name>OMEX_INFO</name></member>
-    <member refid="Logger_8h_1adca53c34f10d3b39eb8c91cb7ff5ac6b" kind="define"><name>OMEX_TRACE</name></member>
-    <member refid="Logger_8h_1a25fec9537907be09f8771f94b3a3ed41" kind="define"><name>OMEX_DEBUG</name></member>
-    <member refid="Logger_8h_1a3db9a12b42ab734d262407e6c958e9b2" kind="define"><name>OMEX_WARN</name></member>
-    <member refid="Logger_8h_1a9dad07775af5ca98ec7e7e3bfbcc7621" kind="define"><name>OMEX_ERROR</name></member>
-    <member refid="Logger_8h_1a8fd29435987becaa6a706d58091c85ae" kind="define"><name>OMEX_CRITICAL</name></member>
+    <member refid="Logger_8h_1a14095d6307757d11ce09fedf0d3b9458" kind="define"><name>REDLAND_INFO</name></member>
+    <member refid="Logger_8h_1adca53c34f10d3b39eb8c91cb7ff5ac6b" kind="define"><name>REDLAND_TRACE</name></member>
+    <member refid="Logger_8h_1a25fec9537907be09f8771f94b3a3ed41" kind="define"><name>REDLAND_DEBUG</name></member>
+    <member refid="Logger_8h_1a3db9a12b42ab734d262407e6c958e9b2" kind="define"><name>REDLAND_WARN</name></member>
+    <member refid="Logger_8h_1a9dad07775af5ca98ec7e7e3bfbcc7621" kind="define"><name>REDLAND_ERROR</name></member>
+    <member refid="Logger_8h_1a8fd29435987becaa6a706d58091c85ae" kind="define"><name>REDLAND_CRITICAL</name></member>
   </compound>
   <compound refid="MarkupIdentifier_8h" kind="file"><name>MarkupIdentifier.h</name>
   </compound>

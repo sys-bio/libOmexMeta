@@ -555,7 +555,7 @@
 <codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>q<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;SELECT<sp/>?subject<sp/>?predicate<sp/>?object\n&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;WHERE<sp/>{?subject<sp/>?predicate<sp/>?object}&quot;</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Query<sp/>query(model,<sp/>q);</highlight></codeline>
-<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ResultsMap<sp/>results_map<sp/>=<sp/>query.resultsAsMap();</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ResultsMap<sp/>results_map<sp/>=<sp/>query.map();</highlight></codeline>
 <codeline lineno="67"><highlight class="normal"></highlight></codeline>
 <codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>query.freeQuery();</highlight></codeline>
 <codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;std::string&gt;<sp/>subjects<sp/>=<sp/>results_map[</highlight><highlight class="stringliteral">&quot;subject&quot;</highlight><highlight class="normal">];</highlight></codeline>

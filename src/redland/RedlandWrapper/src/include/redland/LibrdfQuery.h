@@ -51,27 +51,25 @@ namespace redland {
     public:
         explicit LibrdfQuery(librdf_query *query, LibrdfModel& model);
 
-        explicit LibrdfQuery(const std::string &query, LibrdfModel& model);
+        explicit LibrdfQuery(std::string query, LibrdfModel& model);
 
         bool operator==(const LibrdfQuery &rhs) const;
 
         bool operator!=(const LibrdfQuery &rhs) const;
 
-        LibrdfQueryResults execute();
-
-        void runQuery();
-
-        ResultsMap resultsAsMap() ;
-
-        std::string resultsAsStr(const std::string &output_format, std::string baseuri) const;
-        
-
-        void printQueryResults();
+        LibrdfQueryResults& execute();
 
     private:
+        /**
+         * @brief construct a new query
+         */
+        librdf_query* newQuery();
+
         LibrdfQueryResults queryResults_;
         LibrdfModel& model_;
         std::string query_;
+
+
     };
 }// namespace redland
 

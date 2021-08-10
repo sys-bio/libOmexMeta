@@ -218,7 +218,7 @@ namespace redland {
         /**
          * @brief indicator variable. True if obj_ is nullptr
          */
-        bool isNull(){
+        bool isNull() const {
             return obj_ == nullptr;
         }
 

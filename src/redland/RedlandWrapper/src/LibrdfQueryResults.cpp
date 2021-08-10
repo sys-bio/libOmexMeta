@@ -1,5 +1,6 @@
 #include "redland/LibrdfQueryResults.h"
 #include "redland/LibrdfNode.h"
+#include "redland/Logger.h"
 
 namespace redland {
 
@@ -8,6 +9,30 @@ namespace redland {
 
     std::string LibrdfQueryResults::str(std::string format) {
         return std::string();
+    }
+    bool LibrdfQueryResults::isFinished() {
+        int failed = librdf_query_results_finished(obj_);
+        if (failed){
+            std::cout << failed << std::endl;
+        }
+        return failed;
+    }
+
+    std::vector<LibrdfNode> LibrdfQueryResults::getBindings() {
+        const char** names = NULL;
+        int num = getBindingsCount();
+        std::vector<LibrdfNode> v(num);
+        std::vector<librdf_node*> vp(num);
+        int failed = librdf_query_results_get_bindings(obj_, NULL, vp.data());
+        for (int i=0; i<num; i++){
+            v[i] = LibrdfNode(vp[i]);
+        }
+        if (failed){
+            REDLAND_WARN("Failed to get bindings");
+            throw std::logic_error("Failed to get bindings");
+        }
+
+        return v;
     }
 
     bool LibrdfQueryResults::isBoolean() {
@@ -22,11 +47,11 @@ namespace redland {
         return librdf_query_results_get_boolean(obj_);
     }
 
-    librdf_stream *LibrdfQueryResults::resultsAsLibRdfStream() {
-        return librdf_query_results_as_stream(obj_);
+    LibrdfStream LibrdfQueryResults::toStream() {
+        return LibrdfStream(librdf_query_results_as_stream(obj_));
     }
 
-    int LibrdfQueryResults::getCount() {
+    int LibrdfQueryResults::count() {
         return librdf_query_results_get_count(obj_);
     }
 
@@ -40,6 +65,7 @@ namespace redland {
         }
         return {};
     }
+
 
     int LibrdfQueryResults::getBindingsCount() {
         return librdf_query_results_get_bindings_count(obj_);
@@ -87,7 +113,15 @@ namespace redland {
         return librdf_query_results_get_binding_name(obj_, index);
     }
 
-    ResultsMap LibrdfQueryResults::resultsAsMap() {
+    ResultsMap LibrdfQueryResults::map() {
+        if (isFinished()) {
+            std::string err = "Cannot make map from a spent LibrdfQueryResult - it has "
+                              "already been consumed by creating a map. Create a new LibrdfQueryResults "
+                              "by repeating the query.";
+            REDLAND_WARN(err);
+            spdlog::dump_backtrace();
+            throw std::logic_error(err);
+        }
         ResultsMap map;
         // configure a data structure for storing the results
         // binding name is x, y, z of sparql query for example.
@@ -107,26 +141,43 @@ namespace redland {
                 done = true;
             }
         }
-//        // we rerun the query to overwrite the serializer_
-//        // variable with a fresh object (since once you've
-//        // hit the end you can't seem to go back).
-//        // todo look more into this.
-//        runQuery();
         return map;
     }
 
-
-    //    void LibrdfQueryResults::printQueryResults() {
-    //        auto results = resultsAsMap();
-    //        for (auto [name, list] : results) {
-    //            std::cout << name << std::endl;
-    //            for (auto x : list) {
-    //                std::cout << "\t" << x << std::endl;
-    //            }
-    //        }
-    //    }
+    void LibrdfQueryResults::printQueryResults() {
+        for (auto [name, list] : map()) {
+            std::cout << name << std::endl;
+            for (auto x : list) {
+                std::cout << "\t" << x << std::endl;
+            }
+        }
+    }
 
     std::vector<std::string> LibrdfQueryResults::getValidOutputFormats() const {
         return valid_output_formats_;
     }
+
+    bool LibrdfQueryResults::isGraph() {
+        return librdf_query_results_is_graph(obj_);
+    }
+
+    int LibrdfQueryResults::size() {
+        int num = 0;
+        bool done = false;
+        while (!done){
+            num++;
+            done = next();
+        }
+        return num;
+    }
+
+    std::vector<std::string> LibrdfQueryResults::getBindingsNames() {
+        std::vector<std::string> v(getBindingsCount());
+        for (int i=0; i<getBindingsCount(); i++){
+            v[i] = getBindingsName(i);
+        }
+        return v;
+    }
+
+
 };// namespace redland

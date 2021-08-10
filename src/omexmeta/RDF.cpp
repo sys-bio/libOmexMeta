@@ -10,96 +10,6 @@
 namespace omexmeta {
 
 
-    int librdfLogHandler(void *user_data, librdf_log_message *message) {
-        // make sure logger has been called so we set default logger to
-        // the ones we've built if this is the first time we've called
-        // getLogger.
-        Logger::getLogger();
-
-        std::ostringstream log;
-        if (message->locator) {
-            log << message->locator->file;
-            log << ": ";
-            log << message->locator->line;
-        }
-        log << message->message;
-        switch (message->level) {
-            case LIBRDF_LOG_INFO: {
-                Logger::getLogger()->info(log.str());
-                break;
-            }
-            case LIBRDF_LOG_DEBUG: {
-                Logger::getLogger()->debug(log.str());
-                break;
-            }
-            case LIBRDF_LOG_WARN: {
-                Logger::getLogger()->warn(log.str());
-                break;
-            }
-            case LIBRDF_LOG_ERROR: {
-                Logger::getLogger()->error(log.str());
-                break;
-            }
-            case LIBRDF_LOG_FATAL: {
-                Logger::getLogger()->critical(log.str());
-                break;
-            }
-            case LIBRDF_LOG_NONE: {
-                break;
-            }
-        }
-        return 0;
-    }
-
-    void raptorLogHandler(void *user_data, raptor_log_message *message) {
-        // make sure logger has been called so we set default logger to
-        // the ones we've built if this is the first time we've called
-        // getLogger.
-        Logger::getLogger();
-
-        std::ostringstream log;
-        if (message->locator) {
-            if (message->locator->file) {
-                log << message->locator->file;
-                log << ":";
-            }
-            if (message->locator->line) {
-                log << message->locator->line;
-            }
-        }
-        log << " " << message->text;
-
-        switch (message->level) {
-            case RAPTOR_LOG_LEVEL_INFO: {
-                Logger::getLogger()->info(log.str());
-                break;
-            }
-            case RAPTOR_LOG_LEVEL_TRACE: {
-                Logger::getLogger()->trace(log.str());
-                break;
-            }
-            case RAPTOR_LOG_LEVEL_DEBUG: {
-                Logger::getLogger()->debug(log.str());
-                break;
-            }
-            case RAPTOR_LOG_LEVEL_WARN: {
-                Logger::getLogger()->warn(log.str());
-                break;
-            }
-            case RAPTOR_LOG_LEVEL_ERROR: {
-                Logger::getLogger()->error(log.str());
-                break;
-            }
-            case RAPTOR_LOG_LEVEL_FATAL: {
-                Logger::getLogger()->critical(log.str());
-                break;
-            }
-            case RAPTOR_LOG_LEVEL_NONE: {
-                break;
-            }
-        }
-    }
-
     RDF::RDF(const std::string &storage_type, const std::string &storage_name,
              const char *storage_options, const char *model_options) {
         storage_ = LibrdfStorage(storage_type, storage_name, storage_options);
@@ -371,7 +281,7 @@ namespace omexmeta {
 
     ResultsMap RDF::queryResultsAsMap(const std::string &query_str) const {
         //        Query query(getModel(), query_str);
-        //        ResultsMap results = query.resultsAsMap();
+        //        ResultsMap results = query.map();
         //        query.freeQuery();
         //        return results;
     }

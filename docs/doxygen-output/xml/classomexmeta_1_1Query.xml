@@ -150,9 +150,9 @@
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Query_1a0dda4502056d712d351f7057329c7688" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>librdf_stream *</type>
-        <definition>librdf_stream * omexmeta::Query::resultsAsLibRdfStream</definition>
+        <definition>librdf_stream * omexmeta::Query::toStream</definition>
         <argsstring>()</argsstring>
-        <name>resultsAsLibRdfStream</name>
+        <name>toStream</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -165,9 +165,9 @@
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Query_1ab50cc5f76dcf7f863f9fa9d0bf755071" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>ResultsMap</type>
-        <definition>ResultsMap omexmeta::Query::resultsAsMap</definition>
+        <definition>ResultsMap omexmeta::Query::map</definition>
         <argsstring>()</argsstring>
-        <name>resultsAsMap</name>
+        <name>map</name>
         <briefdescription>
 <para>returns query results in a map where keys are the variable names used in query and values are vectors of values for results. </para>
         </briefdescription>
@@ -226,7 +226,7 @@
 <para>Run a query. </para>
         </briefdescription>
         <detaileddescription>
-<para>Users do not need to manually execute a query using this method. It is used automatically in the constructor for <ref refid="classomexmeta_1_1Query" kindref="compound">Query</ref> and again in <ref refid="classomexmeta_1_1Query_1ab50cc5f76dcf7f863f9fa9d0bf755071" kindref="member">Query::resultsAsMap</ref>. </para>
+<para>Users do not need to manually execute a query using this method. It is used automatically in the constructor for <ref refid="classomexmeta_1_1Query" kindref="compound">Query</ref> and again in <ref refid="classomexmeta_1_1Query_1ab50cc5f76dcf7f863f9fa9d0bf755071" kindref="member">Query::map</ref>. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -392,9 +392,9 @@
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Query_1aa5cdad3617be3e7b5df125762f29f0ba" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
-        <definition>int omexmeta::Query::getCount</definition>
+        <definition>int omexmeta::Query::size</definition>
         <argsstring>()</argsstring>
-        <name>getCount</name>
+        <name>size</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -438,7 +438,7 @@
       <member refid="classomexmeta_1_1Query_1aaccc1e1973b46fb8d4c7fa8b5da9c05e" prot="private" virt="non-virtual"><scope>omexmeta::Query</scope><name>getBindingsName</name></member>
       <member refid="classomexmeta_1_1Query_1a31f2c3d3ea8fa0b5766d2ca35d2609fd" prot="private" virt="non-virtual"><scope>omexmeta::Query</scope><name>getBindingValueByName</name></member>
       <member refid="classomexmeta_1_1Query_1a5f062c8171a472529282e08f2f132813" prot="private" virt="non-virtual"><scope>omexmeta::Query</scope><name>getBoolean</name></member>
-      <member refid="classomexmeta_1_1Query_1aa5cdad3617be3e7b5df125762f29f0ba" prot="private" virt="non-virtual"><scope>omexmeta::Query</scope><name>getCount</name></member>
+      <member refid="classomexmeta_1_1Query_1aa5cdad3617be3e7b5df125762f29f0ba" prot="private" virt="non-virtual"><scope>omexmeta::Query</scope><name>size</name></member>
       <member refid="classomexmeta_1_1Query_1a0e31011a576bb0598e92fe3676216899" prot="private" virt="non-virtual"><scope>omexmeta::Query</scope><name>isBindings</name></member>
       <member refid="classomexmeta_1_1Query_1aaebf27f2a2819419a68f04b3c5d24a10" prot="private" virt="non-virtual"><scope>omexmeta::Query</scope><name>isBoolean</name></member>
       <member refid="classomexmeta_1_1Query_1a11312167f0820409616931d54a2b7bc5" prot="private" virt="non-virtual"><scope>omexmeta::Query</scope><name>model_</name></member>
@@ -452,8 +452,8 @@
       <member refid="classomexmeta_1_1Query_1a6162664ef9a36b453a3b96e913356996" prot="public" virt="non-virtual"><scope>omexmeta::Query</scope><name>Query</name></member>
       <member refid="classomexmeta_1_1Query_1aa27e0b22999457c71ab690cf1650e26a" prot="private" virt="non-virtual"><scope>omexmeta::Query</scope><name>query_</name></member>
       <member refid="classomexmeta_1_1Query_1a9481d440660afa98b6ac3dff58cbd4dd" prot="private" virt="non-virtual"><scope>omexmeta::Query</scope><name>query_results_</name></member>
-      <member refid="classomexmeta_1_1Query_1a0dda4502056d712d351f7057329c7688" prot="public" virt="non-virtual"><scope>omexmeta::Query</scope><name>resultsAsLibRdfStream</name></member>
-      <member refid="classomexmeta_1_1Query_1ab50cc5f76dcf7f863f9fa9d0bf755071" prot="public" virt="non-virtual"><scope>omexmeta::Query</scope><name>resultsAsMap</name></member>
+      <member refid="classomexmeta_1_1Query_1a0dda4502056d712d351f7057329c7688" prot="public" virt="non-virtual"><scope>omexmeta::Query</scope><name>toStream</name></member>
+      <member refid="classomexmeta_1_1Query_1ab50cc5f76dcf7f863f9fa9d0bf755071" prot="public" virt="non-virtual"><scope>omexmeta::Query</scope><name>map</name></member>
       <member refid="classomexmeta_1_1Query_1a7109dd08bd808bf5a20becb164622ed6" prot="public" virt="non-virtual"><scope>omexmeta::Query</scope><name>toString</name></member>
       <member refid="classomexmeta_1_1Query_1a879a4db0413abc8f4a3470877ebf5193" prot="public" virt="non-virtual"><scope>omexmeta::Query</scope><name>runQuery</name></member>
       <member refid="classomexmeta_1_1Query_1a8e000eb2cc7be4a81bc9a99d0f77c23d" prot="private" virt="non-virtual"><scope>omexmeta::Query</scope><name>valid_output_formats_</name></member>

@@ -11,16 +11,16 @@
 #include "raptor2.h"
 
 
-namespace omexmeta {
+namespace redland {
 /**
  * wrapper macros around spdlog
  */
-#define OMEX_INFO(msg) SPDLOG_INFO(msg)
-#define OMEX_TRACE(msg) SPDLOG_TRACE(msg)
-#define OMEX_DEBUG(msg) SPDLOG_DEBUG(msg)
-#define OMEX_WARN(msg) SPDLOG_WARN(msg)
-#define OMEX_ERROR(msg) SPDLOG_ERROR(msg)
-#define OMEX_CRITICAL(msg) SPDLOG_CRITICAL(msg)
+#define REDLAND_INFO(msg) SPDLOG_INFO(msg)
+#define REDLAND_TRACE(msg) SPDLOG_TRACE(msg)
+#define REDLAND_DEBUG(msg) SPDLOG_DEBUG(msg)
+#define REDLAND_WARN(msg) SPDLOG_WARN(msg)
+#define REDLAND_ERROR(msg) SPDLOG_ERROR(msg)
+#define REDLAND_CRITICAL(msg) SPDLOG_CRITICAL(msg)
 
 
     /**

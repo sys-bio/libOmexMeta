@@ -44,13 +44,18 @@ namespace redland {
 
         explicit LibrdfModel(LibrdfStorage& storage, const char *options = nullptr);
 
-        bool operator==(LibrdfModel &rhs) ;
+        /**
+         * @brief equality operator.
+         * @details iterates over this stream and looks for containment in rhs stream, and then does the same in reverse.
+         * @details Maximum complexity: O(n^2). Minimum complexity O(1), when lhs and rhs are different sizes.
+         */
+        bool operator==(const LibrdfModel &rhs) const ;
 
-        bool operator!=( LibrdfModel &rhs) ;
+        bool operator!=(const LibrdfModel &rhs) const ;
 
         [[nodiscard]] LibrdfQueryResults query(const LibrdfQuery& query) const;
 
-        LibrdfStream toStream();
+        LibrdfStream toStream() const;
 
         int size() const;
 
@@ -72,7 +77,7 @@ namespace redland {
 
         int supportsContexts() const;
 
-        bool containsStatement( LibrdfStatement &statement) ;
+        bool containsStatement( LibrdfStatement &statement) const ;
     };
 }
 

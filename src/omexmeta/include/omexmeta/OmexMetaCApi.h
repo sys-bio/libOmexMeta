@@ -5,6 +5,7 @@
 #ifndef LIBOMEXMETA_OMEXMETACAPI_H
 #define LIBOMEXMETA_OMEXMETACAPI_H
 
+#include "include/redland/Logger.h"
 #include "omexmeta/Editor.h"
 #include "omexmeta/EnergyDiff.h"
 #include "omexmeta/OmexMetaUtils.h"
@@ -12,7 +13,6 @@
 #include "omexmeta/PhysicalEntity.h"
 #include "omexmeta/PhysicalProcess.h"
 #include "omexmeta/RDF.h"
-#include "omexmeta/Logger.h"
 #include "omexmeta_capi_export.h"
 #include <cstring>
 

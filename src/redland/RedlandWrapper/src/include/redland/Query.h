@@ -136,7 +136,7 @@ namespace omexmeta {
         /**
          * @brief Run a query.
          * @details Users do not need to manually execute a query using this method.
-         * It is used automatically in the constructor for Query and again in Query::resultsAsMap.
+         * It is used automatically in the constructor for Query and again in Query::map.
          */
         void runQuery();
 

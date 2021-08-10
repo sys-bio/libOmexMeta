@@ -9,6 +9,7 @@
 #include <librdf.h>
 #include <redland/LibrdfModel.h>
 #include <redland/LibrdfParser.h>
+#include <redland/LibrdfSerializer.h>
 #include <redland/LibrdfStorage.h>
 
 using namespace redland;
@@ -35,85 +36,250 @@ public:
                         "  </rdf:Description>\n"
                         "</rdf:RDF>\n";
 
+    std::string turtleResultsString = "@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .\n"
+                                      "@prefix rs:      <http://www.w3.org/2001/sw/DataAccess/tests/result-set#> .\n"
+                                      "@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+                                      "\n"
+                                      "[]    rdf:type      rs:ResultSet ;\n"
+                                      "      rs:resultVariable  \"x\" ;\n"
+                                      "      rs:resultVariable  \"y\" ;\n"
+                                      "      rs:resultVariable  \"z\" ;\n"
+                                      "      rs:solution   [ rs:binding    [ rs:variable   \"x\" ;\n"
+                                      "                                      rs:value      <http://www.w3.org/TR/rdf-syntax-grammar>\n"
+                                      "                                    ] ; \n"
+                                      "                      rs:binding    [ rs:variable   \"y\" ;\n"
+                                      "                                      rs:value      <http://purl.org/dc/elements/1.1/title>\n"
+                                      "                                    ] ; \n"
+                                      "                      rs:binding    [ rs:variable   \"z\" ;\n"
+                                      "                                      rs:value      \"RDF1.1 XML Syntax\"\n"
+                                      "                                    ] \n"
+                                      "      ] ;\n"
+                                      "      rs:solution   [ rs:binding    [ rs:variable   \"x\" ;\n"
+                                      "                                      rs:value      _:r1r25180r1\n"
+                                      "                                    ] ; \n"
+                                      "                      rs:binding    [ rs:variable   \"y\" ;\n"
+                                      "                                      rs:value      <http://example.org/stuff/1.0/fullName>\n"
+                                      "                                    ] ; \n"
+                                      "                      rs:binding    [ rs:variable   \"z\" ;\n"
+                                      "                                      rs:value      \"Dave Beckett\"\n"
+                                      "                                    ] \n"
+                                      "      ] ;\n"
+                                      "      rs:solution   [ rs:binding    [ rs:variable   \"x\" ;\n"
+                                      "                                      rs:value      _:r1r25180r1\n"
+                                      "                                    ] ; \n"
+                                      "                      rs:binding    [ rs:variable   \"y\" ;\n"
+                                      "                                      rs:value      <http://example.org/stuff/1.0/homePage>\n"
+                                      "                                    ] ; \n"
+                                      "                      rs:binding    [ rs:variable   \"z\" ;\n"
+                                      "                                      rs:value      <http://purl.org/net/dajobe/>\n"
+                                      "                                    ] \n"
+                                      "      ] ;\n"
+                                      "      rs:solution   [ rs:binding    [ rs:variable   \"x\" ;\n"
+                                      "                                      rs:value      <http://www.w3.org/TR/rdf-syntax-grammar>\n"
+                                      "                                    ] ; \n"
+                                      "                      rs:binding    [ rs:variable   \"y\" ;\n"
+                                      "                                      rs:value      <http://example.org/stuff/1.0/editor>\n"
+                                      "                                    ] ; \n"
+                                      "                      rs:binding    [ rs:variable   \"z\" ;\n"
+                                      "                                      rs:value      _:r1r25180r1\n"
+                                      "                                    ] \n"
+                                      "      ] .";
+
     std::string q = "SELECT ?x ?y ?z \n"
                     "WHERE {\n"
                     "  ?x ?y ?z \n"
                     "}\n";
 
-    LibrdfStorage storage;
+    /**
+     * @brief stores the expected results in a model
+     */
+    LibrdfStorage *expectedStorage = nullptr;
+    LibrdfModel *expectedModel = nullptr;
 
-    LibrdfQueryTests() = default;
+    /**
+     * @brief storage and model for actually making the query from the input string
+     */
+    LibrdfStorage *storage = nullptr;
+    LibrdfModel *model = nullptr;
+
+    /**
+      * @brief after we query, we have a string which can be parsed back into an rdf model
+      * for programatic comparison with expected. We need another set of model and storage for this
+      */
+    LibrdfStorage *actualStorage = nullptr;
+    LibrdfModel *actualModel = nullptr;
+
+
+    LibrdfQueryTests() {
+        // storage and model for creating the query
+        storage = new LibrdfStorage;
+        model = new LibrdfModel(*storage);
+        LibrdfParser parser("rdfxml");
+        parser.parseString(input, *model, "https://rdf-graph.org");
+
+
+        // expected results
+        expectedStorage = new LibrdfStorage();
+        expectedModel = new LibrdfModel(*expectedStorage);
+        LibrdfParser expectedResultsParser("turtle");
+        expectedResultsParser.parseString(turtleResultsString, *expectedModel, "https://expected-results.org");
+
+
+        // for acctual results
+        actualStorage = new LibrdfStorage;
+        actualModel = new LibrdfModel(*actualStorage);
+    };
+
+    ~LibrdfQueryTests() override {
+        if (expectedStorage) {
+            delete expectedStorage;
+            expectedStorage = nullptr;
+        }
+
+        if (expectedModel) {
+            delete expectedModel;
+            expectedModel = nullptr;
+        }
+
+        if (model) {
+            delete model;
+            model = nullptr;
+        }
+
+        if (storage) {
+            delete storage;
+            storage = nullptr;
+        }
+
+        if (actualModel) {
+            delete actualModel;
+            actualModel = nullptr;
+        }
+
+        if (actualStorage) {
+            delete actualStorage;
+            actualStorage = nullptr;
+        }
+    }
 };
 
 
 TEST_F(LibrdfQueryTests, CheckQueryExecute) {
-    LibrdfModel model(storage);
-    LibrdfParser parser("rdfxml");
-    parser.parseString(input, model, "base");
 
-    LibrdfQuery query(q, model);
-    LibrdfQueryResults queryResults = query.execute();
-
-    std::string actual = queryResults.toString("csv");
-    std::cout << actual << std::endl;
-    std::string expected = "x,y,z\n"
-                           "http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.net/model-qualifiers/isDescribedBy,https://identifiers.org/pubmed/12991237\n";
-//    ASSERT_STREQ(expected.c_str(), actual.c_str());
+    // create a query on the model
+    LibrdfQuery query(q, *model);
+    // get the results as a turtle string
+    auto queryResults = query.execute();
+    std::cout << queryResults.toString("turtle") << std::endl;
+    // note :  count the number of query results seen so far in the results.
+    // It'll be 0 if toString has not been called.
+    ASSERT_EQ(4, queryResults.count());
 }
-//
-//TEST_F(LibrdfQueryTests, TestRunQueryTwice) {
-//    LibrdfQuery query(rdf.getModel(), q);// runs the first time automatically
-//    query.runQuery();                        // now run again
-//    std::string actual = query.resultsAsStr("csv");
-//    std::cout << actual << std::endl;
-//    std::string expected = "x,y,z\n"
-//                           "http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.net/model-qualifiers/isDescribedBy,https://identifiers.org/pubmed/12991237\n";
-//    ASSERT_STREQ(expected.c_str(), actual.c_str());
-//    query.freeQuery();
-//}
-//
-//TEST_F(LibrdfQueryTests, TestgetResultsAsMap) {
-//    LibrdfQuery query(rdf.getModel(), q);
-//    ResultsMap resultsMap = query.resultsAsMap();
-//    std::string expected = "http://biomodels.net/model-qualifiers/isDescribedBy";
-//    std::string actual = resultsMap["y"][0];
-//    ASSERT_STREQ(expected.c_str(), actual.c_str());
-//    query.freeQuery();
-//}
-//
-//TEST_F(LibrdfQueryTests, BindingNotUsed) {
-//    std::cout << __FILE__<<":"<<__LINE__<<std::endl;
-//    std::string queryString = "SELECT ?x ?y ?z \n"
-//                              "WHERE {\n"
-//                              "  ?x <http://biomodels.net/model-qualifiers/isDescribedBy> ?z \n"
-////                              "  ?x ?y ?z \n"
-//                              "}\n";
-//    std::cout << __FILE__<<":"<<__LINE__<<std::endl;
-//    LibrdfQuery query(rdf.getModel(), queryString);
-//    std::cout << __FILE__<<":"<<__LINE__<<std::endl;
-//    ResultsMap resultsMap = query.resultsAsMap();
-//    std::cout << __FILE__<<":"<<__LINE__<<std::endl;
-//    std::string expected = "http://biomodels.net/model-qualifiers/isDescribedBy";
-//    std::cout << __FILE__<<":"<<__LINE__<<std::endl;
-//    std::string actual = resultsMap["y"][0];
-//    std::cout << __FILE__<<":"<<__LINE__<<std::endl;
-//    ASSERT_STREQ("", actual.c_str());
-//    query.freeQuery();
-//}
-//
-//TEST_F(LibrdfQueryTests, TestgetResultsAsMapTwice) {
-//    LibrdfQuery query(rdf.getModel(), q);
-//    ResultsMap resultsMap = query.resultsAsMap();
-//    ResultsMap resultsMap2 = query.resultsAsMap();
-//    std::string expected = "http://biomodels.net/model-qualifiers/isDescribedBy";
-//    std::string actual = resultsMap["y"][0];
-//    ASSERT_STREQ(expected.c_str(), actual.c_str());
-//    query.freeQuery();
-//}
 
-//TEST_F(LibrdfQueryTests, TestResultsAsStream) {
-//    LibrdfQuery query(rdf.getModel(), q);
-//    librdf_stream *stream = query.resultsAsLibRdfStream();
-//    ASSERT_TRUE(stream);// aka not null
-//    librdf_free_stream(stream);
-//}
+TEST_F(LibrdfQueryTests, CheckQueryResultsBindingsCount) {
+
+    // create a query on the model
+    LibrdfQuery query(q, *model);
+    // get the results as a turtle string
+    auto queryResults = query.execute();
+    ASSERT_EQ(3, queryResults.getBindingsCount());
+}
+
+
+TEST_F(LibrdfQueryTests, IsBinding) {
+    LibrdfQuery query(q, *model);
+    auto results = query.execute();
+    ASSERT_TRUE(results.isBindings());
+}
+
+TEST_F(LibrdfQueryTests, IsGraph) {
+    LibrdfQuery query(q, *model);
+    auto results = query.execute();
+    ASSERT_FALSE(results.isGraph());
+}
+
+TEST_F(LibrdfQueryTests, IsBoolean) {
+    LibrdfQuery query(q, *model);
+    auto results = query.execute();
+    ASSERT_FALSE(results.isBoolean());
+}
+
+TEST_F(LibrdfQueryTests, IsFinished) {
+    LibrdfQuery query(q, *model);
+    auto results = query.execute();
+    ASSERT_FALSE(results.isFinished());
+}
+
+TEST_F(LibrdfQueryTests, size) {
+    LibrdfQuery query(q, *model);
+    auto results = query.execute();
+    ASSERT_EQ(5, results.size());
+}
+TEST_F(LibrdfQueryTests, isNull) {
+    LibrdfQuery query(q, *model);
+    auto results = query.execute();
+    ASSERT_FALSE(results.isNull());
+}
+
+
+TEST_F(LibrdfQueryTests, getBindingsName) {
+    LibrdfQuery query(q, *model);
+    auto results = query.execute();
+    std::string name = results.getBindingsName(0);
+    ASSERT_STREQ("x", name.c_str());
+}
+
+TEST_F(LibrdfQueryTests, getBindingsNames) {
+    LibrdfQuery query(q, *model);
+    auto results = query.execute();
+    std::vector<std::string> names = results.getBindingsNames();
+    std::vector<std::string> expected({"x", "y", "z"});
+    ASSERT_EQ(expected, names);
+}
+
+TEST_F(LibrdfQueryTests, TestRunQueryTwice) {
+    LibrdfQuery query(q, *model);
+    auto results1 = query.execute();
+    auto results2 = query.execute();
+    ASSERT_EQ(5, results1.size());
+    ASSERT_EQ(5, results2.size());
+}
+
+TEST_F(LibrdfQueryTests, getBindingValueByName) {
+    LibrdfQuery query(q, *model);
+    auto results = query.execute();
+    std::vector<std::string> bindingNames = results.getBindingsNames();
+    std::vector<std::string> bindingValues;
+    for (const auto &name : bindingNames) {
+        std::string value = results.getBindingValueByName(name);
+        bindingValues.push_back(value);
+    }
+    std::vector<std::string> expectedBindingValues(
+            {"http://www.w3.org/TR/rdf-syntax-grammar",
+             "http://purl.org/dc/elements/1.1/title",
+             "RDF1.1 XML Syntax"});
+    ASSERT_EQ(expectedBindingValues, bindingValues);
+}
+
+TEST_F(LibrdfQueryTests, TestgetResultsAsMap) {
+    LibrdfQuery query(q, *model);
+    auto results = query.execute();
+    ResultsMap resultsMap = results.map();
+    std::string expected = "http://purl.org/dc/elements/1.1/title";
+    std::string actual = resultsMap["y"][0];
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+TEST_F(LibrdfQueryTests, BindingNotUsed) {
+    std::string s = "SELECT ?x ?y ?z \n"
+                    "WHERE {\n"
+                    "  ?x ?y <http://purl.org/net/dajobe/> \n"
+                    "}\n";
+    LibrdfQuery query(q, *model);
+    auto results = query.execute();
+    ResultsMap resultsMap = results.map();
+    std::string expected = "http://purl.org/dc/elements/1.1/title";
+    std::string actual = resultsMap["y"][0];
+    ASSERT_STREQ("", actual.c_str());
+}
+

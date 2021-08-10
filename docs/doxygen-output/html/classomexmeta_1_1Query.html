@@ -100,9 +100,9 @@ $(function() {
 <tr class="memitem:a0b9e4ef7fb6c3d0e79a51ed327639ac0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1Query.html#a0b9e4ef7fb6c3d0e79a51ed327639ac0">freeQuery</a> ()</td></tr>
 <tr class="memdesc:a0b9e4ef7fb6c3d0e79a51ed327639ac0"><td class="mdescLeft">&#160;</td><td class="mdescRight">free resources associated with a query object.  <a href="classomexmeta_1_1Query.html#a0b9e4ef7fb6c3d0e79a51ed327639ac0">More...</a><br /></td></tr>
 <tr class="separator:a0b9e4ef7fb6c3d0e79a51ed327639ac0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0dda4502056d712d351f7057329c7688"><td class="memItemLeft" align="right" valign="top">librdf_stream *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1Query.html#a0dda4502056d712d351f7057329c7688">resultsAsLibRdfStream</a> ()</td></tr>
+<tr class="memitem:a0dda4502056d712d351f7057329c7688"><td class="memItemLeft" align="right" valign="top">librdf_stream *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1Query.html#a0dda4502056d712d351f7057329c7688">toStream</a> ()</td></tr>
 <tr class="separator:a0dda4502056d712d351f7057329c7688"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab50cc5f76dcf7f863f9fa9d0bf755071"><td class="memItemLeft" align="right" valign="top">ResultsMap&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1Query.html#ab50cc5f76dcf7f863f9fa9d0bf755071">resultsAsMap</a> ()</td></tr>
+<tr class="memitem:ab50cc5f76dcf7f863f9fa9d0bf755071"><td class="memItemLeft" align="right" valign="top">ResultsMap&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1Query.html#ab50cc5f76dcf7f863f9fa9d0bf755071">map</a> ()</td></tr>
 <tr class="memdesc:ab50cc5f76dcf7f863f9fa9d0bf755071"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns query results in a map where keys are the variable names used in query and values are vectors of values for results.  <a href="classomexmeta_1_1Query.html#ab50cc5f76dcf7f863f9fa9d0bf755071">More...</a><br /></td></tr>
 <tr class="separator:ab50cc5f76dcf7f863f9fa9d0bf755071"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7109dd08bd808bf5a20becb164622ed6"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1Query.html#a7109dd08bd808bf5a20becb164622ed6">toString</a> (const std::string &amp;output_format, std::string baseuri=&quot;query_results&quot;) const</td></tr>
@@ -138,13 +138,13 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </div>
 </div>
 <a id="a0dda4502056d712d351f7057329c7688"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0dda4502056d712d351f7057329c7688">&#9670;&nbsp;</a></span>resultsAsLibRdfStream()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a0dda4502056d712d351f7057329c7688">&#9670;&nbsp;</a></span>toStream()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">librdf_stream * omexmeta::Query::resultsAsLibRdfStream </td>
+          <td class="memname">librdf_stream * omexmeta::Query::toStream </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -157,13 +157,13 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </div>
 </div>
 <a id="ab50cc5f76dcf7f863f9fa9d0bf755071"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab50cc5f76dcf7f863f9fa9d0bf755071">&#9670;&nbsp;</a></span>resultsAsMap()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ab50cc5f76dcf7f863f9fa9d0bf755071">&#9670;&nbsp;</a></span>map()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">ResultsMap omexmeta::Query::resultsAsMap </td>
+          <td class="memname">ResultsMap omexmeta::Query::map </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -234,7 +234,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </div><div class="memdoc">
 
 <p>Run a query. </p>
-<p>Users do not need to manually execute a query using this method. It is used automatically in the constructor for <a class="el" href="classomexmeta_1_1Query.html">Query</a> and again in <a class="el" href="classomexmeta_1_1Query.html#ab50cc5f76dcf7f863f9fa9d0bf755071" title="returns query results in a map where keys are the variable names used in query and values are vectors...">Query::resultsAsMap</a>. </p>
+<p>Users do not need to manually execute a query using this method. It is used automatically in the constructor for <a class="el" href="classomexmeta_1_1Query.html">Query</a> and again in <a class="el" href="classomexmeta_1_1Query.html#ab50cc5f76dcf7f863f9fa9d0bf755071" title="returns query results in a map where keys are the variable names used in query and values are vectors...">Query::map</a>. </p>
 
 </div>
 </div>

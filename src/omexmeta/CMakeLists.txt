@@ -19,7 +19,7 @@ SET(OMEXMETA_PUBLIC_HEADERS
         "${OMEXMETA_INCLUDE_DIR}/omexmeta/PhysicalProcess.h"
         "${OMEXMETA_INCLUDE_DIR}/omexmeta/PersonalInformation.h"
         "${OMEXMETA_INCLUDE_DIR}/omexmeta/OmexMeta.h"
-        "${OMEXMETA_INCLUDE_DIR}/omexmeta/Logger.h"
+#        "${OMEXMETA_INCLUDE_DIR}/omexmeta/Logger.h"
         "${CMAKE_CURRENT_BINARY_DIR}/omexmeta_export.h"
         )
 
@@ -70,7 +70,7 @@ set(OMEXMETA_SOURCES
         "UriHandler.cpp"
         "VCardTranslator.cpp"
         "PurgeRDFBag.cpp"
-        "Logger.cpp"
+#        "Logger.cpp"
         )
 
 
