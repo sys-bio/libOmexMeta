@@ -186,9 +186,9 @@
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1Query_1a7109dd08bd808bf5a20becb164622ed6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
-        <definition>std::string omexmeta::Query::resultsAsStr</definition>
+        <definition>std::string omexmeta::Query::toString</definition>
         <argsstring>(const std::string &amp;output_format, std::string baseuri=&quot;query_results&quot;) const</argsstring>
-        <name>resultsAsStr</name>
+        <name>toString</name>
         <param>
           <type>const std::string &amp;</type>
           <declname>output_format</declname>
@@ -454,7 +454,7 @@
       <member refid="classomexmeta_1_1Query_1a9481d440660afa98b6ac3dff58cbd4dd" prot="private" virt="non-virtual"><scope>omexmeta::Query</scope><name>query_results_</name></member>
       <member refid="classomexmeta_1_1Query_1a0dda4502056d712d351f7057329c7688" prot="public" virt="non-virtual"><scope>omexmeta::Query</scope><name>resultsAsLibRdfStream</name></member>
       <member refid="classomexmeta_1_1Query_1ab50cc5f76dcf7f863f9fa9d0bf755071" prot="public" virt="non-virtual"><scope>omexmeta::Query</scope><name>resultsAsMap</name></member>
-      <member refid="classomexmeta_1_1Query_1a7109dd08bd808bf5a20becb164622ed6" prot="public" virt="non-virtual"><scope>omexmeta::Query</scope><name>resultsAsStr</name></member>
+      <member refid="classomexmeta_1_1Query_1a7109dd08bd808bf5a20becb164622ed6" prot="public" virt="non-virtual"><scope>omexmeta::Query</scope><name>toString</name></member>
       <member refid="classomexmeta_1_1Query_1a879a4db0413abc8f4a3470877ebf5193" prot="public" virt="non-virtual"><scope>omexmeta::Query</scope><name>runQuery</name></member>
       <member refid="classomexmeta_1_1Query_1a8e000eb2cc7be4a81bc9a99d0f77c23d" prot="private" virt="non-virtual"><scope>omexmeta::Query</scope><name>valid_output_formats_</name></member>
     </listofallmembers>

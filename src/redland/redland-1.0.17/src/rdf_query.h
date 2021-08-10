@@ -34,6 +34,18 @@
 extern "C" {
 #endif
 
+
+/** A query object */
+struct librdf_query_s {
+    librdf_world *world;
+    int usage;
+    void *context;
+    struct librdf_query_factory_s *factory;
+
+    /* list of all the results for this query */
+    librdf_query_results *results;
+};
+
 /* class methods */
 REDLAND_EXPORT
 void librdf_query_register_factory(librdf_world *world, const char *name, const unsigned char *uri_string,

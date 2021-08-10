@@ -22,6 +22,7 @@ namespace redland {
     void LibrdfModel::addStatement(const LibrdfStatement& statement) const {
         // librdf takes care of ref counting in this instance
         librdf_model_add_statement(obj_, statement.getWithoutIncrement());
+
     }
 
     LibrdfQueryResults LibrdfModel::query(const LibrdfQuery &query) const {

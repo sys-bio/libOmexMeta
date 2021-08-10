@@ -916,7 +916,7 @@
     <member refid="classomexmeta_1_1Query_1a0b9e4ef7fb6c3d0e79a51ed327639ac0" kind="function"><name>freeQuery</name></member>
     <member refid="classomexmeta_1_1Query_1a0dda4502056d712d351f7057329c7688" kind="function"><name>resultsAsLibRdfStream</name></member>
     <member refid="classomexmeta_1_1Query_1ab50cc5f76dcf7f863f9fa9d0bf755071" kind="function"><name>resultsAsMap</name></member>
-    <member refid="classomexmeta_1_1Query_1a7109dd08bd808bf5a20becb164622ed6" kind="function"><name>resultsAsStr</name></member>
+    <member refid="classomexmeta_1_1Query_1a7109dd08bd808bf5a20becb164622ed6" kind="function"><name>toString</name></member>
     <member refid="classomexmeta_1_1Query_1a879a4db0413abc8f4a3470877ebf5193" kind="function"><name>runQuery</name></member>
     <member refid="classomexmeta_1_1Query_1a9f9639927203dc97e93bfca5508b6d01" kind="function"><name>printQueryResults</name></member>
     <member refid="classomexmeta_1_1Query_1a11312167f0820409616931d54a2b7bc5" kind="variable"><name>model_</name></member>

@@ -10,46 +10,73 @@
 #include <memory>
 
 #include "LibrdfWorld.h"
+#include "redland/RedlandType.h"
 
 namespace redland {
 
-    class LibrdfQueryResults {
+    using ResultsMap = std::unordered_map<std::string, std::vector<std::string>>;
+
+    /**
+     * @brief std::function signature of librdf_free_parser
+     */
+    using query_results_free_func = std::function<void(librdf_query_results *)>;
+
+    /**
+     * Instantiation of templated superclass
+     */
+    using RedlandType_query_results = RedlandType<librdf_query_results, query_results_free_func>;
+
+    class LibrdfModel;
+
+    class LibrdfQueryResults : public RedlandType_query_results {
 
     public:
-        LibrdfQueryResults() = default;
-
-        ~LibrdfQueryResults();
+        using RedlandType_query_results::RedlandType_query_results;
 
         explicit LibrdfQueryResults(librdf_query_results *queryResults);
 
-        /**
-         * Copy constructor
-         */
-        LibrdfQueryResults(const LibrdfQueryResults &queryResults) = delete;
-
-        /**
-         * move constructor
-         */
-        LibrdfQueryResults(LibrdfQueryResults &&queryResults) noexcept;
-
-        /**
-         * Copy assignment constructor
-         */
-        LibrdfQueryResults &operator=(const LibrdfQueryResults &queryResults) = delete;
-
-        /**
-         * move assignment constructor
-         */
-        LibrdfQueryResults &operator=(LibrdfQueryResults &&queryResults) noexcept;
-
-        [[nodiscard]] librdf_query_results *get() const;
-
         std::string str(std::string format);
 
-        void freeQueryResults();
+        bool isBoolean();
+
+        bool isBindings();
+
+        int getBoolean();
+
+        librdf_stream *resultsAsLibRdfStream();
+
+        int getCount();
+
+        std::string getBindingValueByName(const std::string &name);
+
+        int getBindingsCount();
+
+        static std::string stringReplace(std::string str, const std::string &string_to_replace, const std::string &replacement);
+
+        std::string toString(const std::string &output_format) const;
+
+        int next();
+
+        ResultsMap resultsAsMap();
+
+        std::string getBindingsName(int index);
+
+        void printQueryResults();
+
+        std::vector<std::string> getValidOutputFormats() const;
 
     private:
-        librdf_query_results *query_results_ = nullptr;
+        std::vector<std::string> valid_output_formats_ = {
+                "xml",
+                "json",
+                "table",
+                "csv",
+                "mkr",
+                "tsv",
+                "html",
+                "turtle",
+                "rdfxml",
+        };
     };
 }// namespace redland
 

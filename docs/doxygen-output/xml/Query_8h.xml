@@ -819,7 +819,7 @@
 <codeline lineno="190"><highlight class="normal"></highlight></codeline>
 <codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ResultsMap<sp/>resultsAsMap();</highlight></codeline>
 <codeline lineno="217"><highlight class="normal"></highlight></codeline>
-<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/>std::string<sp/>resultsAsStr(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;output_format,<sp/>std::string<sp/>baseuri<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;query_results&quot;</highlight><highlight class="normal">)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/>std::string<sp/>toString(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;output_format,<sp/>std::string<sp/>baseuri<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;query_results&quot;</highlight><highlight class="normal">)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="225"><highlight class="normal"></highlight></codeline>
 <codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>runQuery();</highlight></codeline>
 <codeline lineno="232"><highlight class="normal"></highlight></codeline>

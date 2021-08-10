@@ -41,28 +41,6 @@ namespace redland {
 
         [[nodiscard]] std::string getNamespacesSeenUri(int index) const;
 
-        /*
-         *
-         * For developers. This method should be deprecated
-         * and replaced with the other signature for this function. It is
-         * better because the user does not need to remember to free the Uri used.
-         */
-        void parseString(const std::string &rdf_string, const LibrdfModel &model, const LibrdfUri &base_uri) const;
-
-        void parseString(const std::string &rdf_string, const LibrdfModel &model, const std::string &base_uri) const;
-
-        /*
-         * @brief parse a file into rdf graph. Use filename as base url
-         * @param filename_uri location of filename on disk
-         * @param model the current LibrdfModel
-         * @param local_uri the uri to use for base.
-         * @details This version of parse file is preferred as it will take
-         * the local uri from RDF object and use it for the base.
-         */
-        void parseFile(const std::string &filename_uri, const LibrdfModel &model) const;
-
-        void parseUri(const std::string &uri_string, const LibrdfModel &model) const;
-
         [[nodiscard]] std::string getNamespacesSeenPrefix(int index) const;
 
         [[nodiscard]] std::string getName() const;
@@ -87,8 +65,52 @@ namespace redland {
 
         [[nodiscard]] std::vector<std::string> getSeenNamespaces(std::vector<std::string> namespaces) const;
 
+
+        /*
+         *
+         * For developers. This method should be deprecated
+         * and replaced with the other signature for this function. It is
+         * better because the user does not need to remember to free the Uri used.
+         */
+        void parseString(const std::string &rdf_string, const LibrdfModel &model, const LibrdfUri &base_uri) const;
+
+        void parseString(const std::string &rdf_string, const LibrdfModel &model, const std::string &base_uri) const;
+
+        /**
+         * @brief parse a file into rdf graph. Use filename as base url
+         * @param filename_uri location of filename on disk
+         * @param model the current LibrdfModel
+         * @param local_uri the uri to use for base.
+         * @details This version of parse file is preferred as it will take
+         * the local uri from RDF object and use it for the base.
+         */
+        void parseFile(const std::string &filename_uri, const LibrdfModel &model) const;
+
+        void parseUri(const std::string &uri_string, const LibrdfModel &model) const;
+
+        /**
+         * @brief parse rdf graph from a uri and return a LibrdfStream
+         */
+        LibrdfStream parseUriAsStream(const std::string& uri);
+
+        /**
+         * @brief parse rdf graph from a uri directly into the LibrdfModel
+         */
+        int parseUriIntoModel(const std::string& uri);
+
+        LibrdfStream parseFileAsStream(const std::string& fname);
+
+        int parseFileIntoModel(const std::string& fname);
+
+        int parserStringIntoModel(const std::string& s);
+
+        LibrdfStream parseStringAsStream(const std::string& s);
+
+
     private:
         void validateParserName() const;
+
+//        LibrdfModel& model_;
 
         std::string format_ = std::string();
         std::string mime_type_ = std::string();

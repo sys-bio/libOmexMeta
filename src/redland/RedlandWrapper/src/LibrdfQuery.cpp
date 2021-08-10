@@ -1,93 +1,110 @@
 #include "redland/LibrdfQuery.h"
+#include "redland/LibrdfQueryResults.h"
+#include <redland/LibrdfException.h>
+#include <redland/LibrdfModel.h>
 
 namespace redland {
 
-    LibrdfQuery::~LibrdfQuery() {
-        if (!query_)
-            return;
-        int usage = getUsage();
-        librdf_free_query(query_);
-        if ((usage - 1) == 0) {
-            query_ = nullptr;
-        }
-    }
-
-    LibrdfQuery::LibrdfQuery(const LibrdfQuery &query) {
-        if (query_) {
-            librdf_free_query(query_);
-            query_ = nullptr;
-        }
-        query_ = query.get();// automatically increments the reference count
-    };
-
-    LibrdfQuery::LibrdfQuery(LibrdfQuery &query) noexcept {
-        if (query_) {
-            librdf_free_query(query_);
-            query_ = nullptr;
-        }
-        query_ = query.get();
-        query.query_ = nullptr;
-    };
-
-    LibrdfQuery &LibrdfQuery::operator=(const LibrdfQuery &query) {
-        // note: equality operators only test for equality between
-        // the query pointers because librdf does not support equality operators
-        // for queries
-        if (query_) {
-            librdf_free_query(query_);
-            query_ = nullptr;
-        }
-        query_ = query.get(); // increments the internal ref counter for us
-        return *this;
-    }
-
-    LibrdfQuery &LibrdfQuery::operator=(LibrdfQuery &&query) noexcept {
-        if (*this != query) {
-            if (query_) {
-                librdf_free_query(query_);
-                query_ = nullptr;
-            }
-            query_ = query.getWithoutIncrement();
-            query.query_ = nullptr;
-        }
-        return *this;
-    }
-
     bool LibrdfQuery::operator==(const LibrdfQuery &rhs) const {
-        return query_ == rhs.query_;
+        return obj_ == rhs.obj_;
     }
 
     bool LibrdfQuery::operator!=(const LibrdfQuery &rhs) const {
         return !(rhs == *this);
     };
 
-    int LibrdfQuery::getUsage() {
-        return query_->usage;
+    LibrdfQuery::LibrdfQuery(librdf_query *query, LibrdfModel& model)
+        : RedlandType_librdf_query(query, librdf_free_query), model_(model) {}
+
+    LibrdfQuery::LibrdfQuery(const std::string &query, LibrdfModel &model)
+        : RedlandType_librdf_query(
+                  librdf_new_query(
+                          LibrdfWorld::getWorld(),
+                          "sparql",
+                          nullptr,
+                          (const unsigned char *) query.c_str(),
+                          nullptr),
+                  librdf_free_query),
+          query_(query), model_(model) {}
+
+    LibrdfQueryResults LibrdfQuery::execute(){
+        return LibrdfQueryResults(librdf_query_execute(obj_, model_.getWithoutIncrement()));
     }
 
-    LibrdfQuery::LibrdfQuery(librdf_query *query) : query_(query) {}
-
-    LibrdfQuery::LibrdfQuery(const std::string &query, const std::string &name, const unsigned char *uri,
-                             const char *base_uri) {
-        librdf_uri *uri_ = nullptr;
-        if (!uri)
-            uri_ = librdf_new_uri(LibrdfWorld::getWorld(), uri);
-
-        librdf_uri *base_uri_ = nullptr;
-        if (!base_uri)
-            base_uri_ = librdf_new_uri(LibrdfWorld::getWorld(), uri);
-        query_ = librdf_new_query(
-                LibrdfWorld::getWorld(), name.c_str(), uri_, (const unsigned char *) query.c_str(), base_uri_);
-    }
 
 
-    librdf_query *LibrdfQuery::get() const {
-        query_->usage++;
-        return query_;
-    }
-
-    librdf_query *LibrdfQuery::getWithoutIncrement() const {
-        return query_;
-    }
+    //
+    //    ResultsMap LibrdfQuery::resultsAsMap() {
+    //        ResultsMap map;
+    //        // configure a data structure for storing the results
+    //        // binding name is x, y, z of sparql query for example.
+    //        for (int i = 0; i < queryResults_.getBindingsCount(); i++) {
+    //            std::string binding_name = queryResults_.getBindingsName(i);
+    //            map[binding_name] = std::vector<std::string>();
+    //        }
+    //
+    //        // iterate over bindings until no more left
+    //        bool done = false;
+    //        while (!done) {
+    //            for (auto &key : map) {
+    //                map[key.first].push_back(queryResults_.getBindingValueByName(key.first));
+    //            }
+    //            int failed = queryResults_.next();
+    //            if (failed) {
+    //                done = true;
+    //            }
+    //        }
+    //
+    //        // we rerun the query to overwrite the serializer_
+    //        // variable with a fresh object (since once you've
+    //        // hit the end you can't seem to go back).
+    //        // todo look more into this.
+    //        runQuery();
+    //        return map;
+    //    }
+    //
+    //    void LibrdfQuery::runQuery() {
+    //        // When we runQuery twice, we have memory leak if we do
+    //        //  not free previous query results.
+    ////        if (queryResults_.isNull() ) {
+    ////            librdf_free_query_results(queryResults_.get());
+    ////            queryResults_ = nullptr;
+    ////        }
+    //
+    //        queryResults_ = LibrdfQueryResults(librdf_query_execute(q_, model_));
+    //        if (queryResults_.isNull()) {
+    //            throw NullPointerException("NullPointerException: LibrdfQuery::runQuery(): queryResults_");
+    //        }
+    //    }
+    //
+    //        ResultsMap resultsAsMap() ;{
+    //            ResultsMap map;
+    //            // configure a data structure for storing the results
+    //            // binding name is x, y, z of sparql query for example.
+    //            for (int i = 0; i < getBindingsCount(); i++) {
+    //                std::string binding_name = getBindingsName(i);
+    //                map[binding_name] = std::vector<std::string>();
+    //            }
+    //
+    //            // iterate over bindings until no more left
+    //            bool done = false;
+    //            while (!done) {
+    //                for (auto &key : map) {
+    //                    map[key.first].push_back(getBindingValueByName(key.first));
+    //                }
+    //                int failed = next();
+    //                if (failed) {
+    //                    done = true;
+    //                }
+    //            }
+    //
+    //            // we rerun the query to overwrite the serializer_
+    //            // variable with a fresh object (since once you've
+    //            // hit the end you can't seem to go back).
+    //            // todo look more into this.
+    //            runQuery();
+    //            return map;
+    //        }
+    //
 
 }// namespace redland

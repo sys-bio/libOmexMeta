@@ -10,43 +10,68 @@
 #include <memory>
 
 #include "LibrdfWorld.h"
+#include "RefCountedRedlandType.h"
+#include "redland/LibrdfQueryResults.h"
+#include "redland/LibrdfModel.h"
 
 namespace redland {
 
-    class LibrdfQuery {
+    class LibrdfModel;
+
+    /**
+     * @brief std::function signature of librdf_free_parser
+     */
+    using query_free_func = std::function<void(librdf_query *)>;
+
+    /**
+     * Instantiation of templated superclass
+     */
+    using RedlandType_librdf_query = RefCountedRedlandType<librdf_query, query_free_func>;
+
+    using ResultsMap = std::unordered_map<std::string, std::vector<std::string>>;
+
+    /**
+     * @brief interface for querying an rdf graph
+     * @class This class is basically a wrapper around both librdf_query and
+     * librdf_query_results. Query is not used by users directly but
+     * accessed indurectly without the users knowledge via the RDF::query method.
+     * Query results can be returned in 1 of 9 formats:
+     *  - xml
+     *  - json
+     *  - table
+     *  - csv
+     *  - mrk
+     *  - tsv
+     *  - html
+     *  - turtle
+     *  - rdfxml
+     */
+    class LibrdfQuery : public RedlandType_librdf_query {
 
     public:
-        LibrdfQuery() = default;
+        explicit LibrdfQuery(librdf_query *query, LibrdfModel& model);
 
-        ~LibrdfQuery();
-
-        LibrdfQuery(const LibrdfQuery &query);
-
-        LibrdfQuery(LibrdfQuery &query) noexcept;
-
-        LibrdfQuery &operator=(const LibrdfQuery &query);
-
-        LibrdfQuery &operator=(LibrdfQuery &&query) noexcept;
-
-        explicit LibrdfQuery(librdf_query *query);
-
-        explicit LibrdfQuery(const std::string &query,
-                             const std::string &name = "sparql",
-                             const unsigned char *uri = nullptr,
-                             const char *base_uri = nullptr);
-
-        [[nodiscard]] librdf_query *get() const;
-
-        int getUsage();
-
-        librdf_query *getWithoutIncrement() const;
+        explicit LibrdfQuery(const std::string &query, LibrdfModel& model);
 
         bool operator==(const LibrdfQuery &rhs) const;
 
         bool operator!=(const LibrdfQuery &rhs) const;
 
+        LibrdfQueryResults execute();
+
+        void runQuery();
+
+        ResultsMap resultsAsMap() ;
+
+        std::string resultsAsStr(const std::string &output_format, std::string baseuri) const;
+        
+
+        void printQueryResults();
+
     private:
-        librdf_query *query_ = nullptr;
+        LibrdfQueryResults queryResults_;
+        LibrdfModel& model_;
+        std::string query_;
     };
 }// namespace redland
 

@@ -29,6 +29,9 @@ namespace redland {
      */
     using RefCounted_librdf_model = RefCountedRedlandType<librdf_model, model_free_func>;
 
+    class LibrdfQuery;
+    class LibrdfQueryResults;
+
     /**
      * @brief RAII abstraction around librdf_model
      */
