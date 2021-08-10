@@ -1,15 +1,14 @@
 //
 // Created by Ciaran on 05/08/2021.
 //
-
 #include "cpp/omexmeta/SBMLFactory.h"
-#include "omexmeta/OmexMeta.h"
 #include "spdlog/sinks/basic_file_sink.h"
 #include "spdlog/sinks/stdout_color_sinks.h"
 #include "spdlog/spdlog.h"
 #include "gtest/gtest.h"
+#include "redland/Logger.h"
 
-using namespace omexmeta;
+using namespace redland;
 
 
 class LoggingTests : public ::testing::Test {
