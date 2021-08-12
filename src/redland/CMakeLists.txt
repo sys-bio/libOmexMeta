@@ -383,7 +383,6 @@ set(WRAPPER_SOURCES
         ${WRAPPER_SOURCE_DIR}/LibrdfStorage.cpp
         ${WRAPPER_SOURCE_DIR}/LibrdfUri.cpp
         ${WRAPPER_SOURCE_DIR}/LibrdfWorld.cpp
-        ${WRAPPER_SOURCE_DIR}/Query.cpp
         ${WRAPPER_SOURCE_DIR}/LibrdfStream.cpp
         ${WRAPPER_SOURCE_DIR}/Logger.cpp
 
@@ -399,7 +398,6 @@ set(WRAPPER_SOURCES
         ${WRAPPER_INCLUDE_DIR}/redland/LibrdfStorage.h
         ${WRAPPER_INCLUDE_DIR}/redland/LibrdfUri.h
         ${WRAPPER_INCLUDE_DIR}/redland/LibrdfException.h
-        ${WRAPPER_INCLUDE_DIR}/redland/Query.h
         ${WRAPPER_INCLUDE_DIR}/redland/RefCountedRedlandType.h
         ${WRAPPER_INCLUDE_DIR}/redland/RedlandType.h
         ${WRAPPER_INCLUDE_DIR}/redland/LibrdfStream.h

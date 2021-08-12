@@ -49,9 +49,9 @@ namespace redland {
     class LibrdfQuery : public RedlandType_librdf_query {
 
     public:
-        explicit LibrdfQuery(librdf_query *query, LibrdfModel& model);
+        explicit LibrdfQuery(librdf_query *query, const LibrdfModel& model);
 
-        explicit LibrdfQuery(std::string query, LibrdfModel& model);
+        explicit LibrdfQuery(std::string query, const LibrdfModel& model);
 
         bool operator==(const LibrdfQuery &rhs) const;
 

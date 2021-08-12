@@ -32,42 +32,46 @@ namespace omexmeta {
         triples_.push_back(std::move(triple));
     }
 
-    void Triples::emplace_back(UriHandler& uriHandler, librdf_node *subject, librdf_node *predicate, librdf_node *resource) {
+//    void Triples::emplace_back(UriHandler& uriHandler, librdf_node *subject, librdf_node *predicate, librdf_node *resource) {
+//        Triple triple(uriHandler, subject, predicate, resource);
+//        moveBack(triple);
+//    }
+
+    void Triples::emplace_back(UriHandler& uriHandler, LibrdfNode subject, const PredicatePtr &predicatePtr, const LibrdfNode &resource) {
+        Triple triple(uriHandler, subject, predicatePtr->getNode(), resource);
+        moveBack(triple);
+    }
+
+    void Triples::emplace_back(UriHandler& uriHandler, const LibrdfNode& subject, const LibrdfNode& predicate, const LibrdfNode &resource) {
         Triple triple(uriHandler, subject, predicate, resource);
         moveBack(triple);
     }
 
-    void Triples::emplace_back(UriHandler& uriHandler, LibrdfNode subject, const PredicatePtr &predicatePtr, const LibrdfNode &resource) {
-        Triple triple(uriHandler, subject, predicatePtr, resource);
-        moveBack(triple);
-    }
-
     void Triples::emplace_back(UriHandler& uriHandler, LibrdfNode subject, const Predicate &predicate, const LibrdfNode &resource) {
-        Triple triple(uriHandler, subject.get(), predicate.get(), resource.get());
+        LibrdfNode p = LibrdfNode::fromUriString(predicate.getNamespace());
+        Triple triple(uriHandler, subject, p, resource);
         moveBack(triple);
     }
 
-    void Triples::emplace_back(UriHandler& uriHandler, LibrdfNode subject, BiomodelsBiologyQualifier predicate, const LibrdfNode &resource) {
-        Triple triple(uriHandler, subject, std::make_shared<BiomodelsBiologyQualifier>(std::move(predicate)),
-                      resource);
-        moveBack(triple);
-    }
-
-    void Triples::emplace_back(UriHandler& uriHandler, LibrdfNode subject, BiomodelsModelQualifier predicate, const LibrdfNode &resource) {
-        Triple triple(uriHandler, subject, std::make_shared<BiomodelsModelQualifier>(std::move(predicate)),
-                      resource);
-        moveBack(triple);
-    }
-
-    void Triples::emplace_back(UriHandler& uriHandler, LibrdfNode subject, DCTerm predicate, const LibrdfNode &resource) {
-        Triple triple(uriHandler, subject, std::make_shared<DCTerm>(std::move(predicate)), resource);
-        moveBack(triple);
-    }
-
-    void Triples::emplace_back(UriHandler& uriHandler, LibrdfNode subject, SemSim predicate, const LibrdfNode &resource) {
-        Triple triple(uriHandler, subject, std::make_shared<SemSim>(std::move(predicate)), resource);
-        moveBack(triple);
-    }
+//    void Triples::emplace_back(UriHandler& uriHandler, LibrdfNode subject, BiomodelsBiologyQualifier predicate, const LibrdfNode &resource) {
+//        Triple triple(uriHandler, subject, std::make_shared<BiomodelsBiologyQualifier>(std::move(predicate)).get(), resource);
+//        moveBack(triple);
+//    }
+//
+//    void Triples::emplace_back(UriHandler& uriHandler, LibrdfNode subject, BiomodelsModelQualifier predicate, const LibrdfNode &resource) {
+//        Triple triple(uriHandler, subject, std::make_shared<BiomodelsModelQualifier>(std::move(predicate))->get(), resource);
+//        moveBack(triple);
+//    }
+//
+//    void Triples::emplace_back(UriHandler& uriHandler, LibrdfNode subject, DCTerm predicate, const LibrdfNode &resource) {
+//        Triple triple(uriHandler, subject, std::make_shared<DCTerm>(std::move(predicate))->get(), resource);
+//        moveBack(triple);
+//    }
+//
+//    void Triples::emplace_back(UriHandler& uriHandler, LibrdfNode subject, SemSim predicate, const LibrdfNode &resource) {
+//        Triple triple(uriHandler, subject, std::make_shared<SemSim>(std::move(predicate))->get(), resource);
+//        moveBack(triple);
+//    }
 
     std::vector<std::string> Triples::getSubjectsStr() {
         std::vector<std::string> vec;
@@ -117,28 +121,26 @@ namespace omexmeta {
         librdf_serializer *serializer = librdf_new_serializer(world, format.c_str(), nullptr, nullptr);
         for (auto &it : triples_) {
             // ensure we have three nodes and a statement
-            if (!it.getSubjectAsRawNode()) {
+            if (it.getSubjectNode().isNull()) {
                 throw RedlandNullPointerException("RedlandNullPointerException: Triples::str: subject is null");
             }
-            if (!it.getPredicateAsRawNode()) {
+            if (it.getPredicateNode().isNull()) {
                 throw RedlandNullPointerException("RedlandNullPointerException: Triples::str: predicate is null");
             }
-            if (!it.getResourceAsRawNode()) {
+            if (it.getResourceNode().isNull()) {
                 throw RedlandNullPointerException("RedlandNullPointerException: Triples::str: resource is null");
             }
             if (!it.getStatement()) {
                 throw RedlandNullPointerException("RedlandNullPointerException: Triples::str: statement is null");
             }
             librdf_model_add_statement(model, it.getStatement());
-            Predicate::addSeenNamespaceToSerializer(world, serializer, it.getPredicateAsRawNode());
+            Predicate::addSeenNamespaceToSerializer(world, serializer, it.getPredicateNode().obj_);
         }
 
         // turn off base uri
         LibrdfUri write_base_uri_uri = LibrdfUri("http://feature.librdf.org/raptor-writeBaseURI");
         LibrdfNode write_base_uri_node = LibrdfNode::fromLiteral("0");
         librdf_serializer_set_feature(serializer, write_base_uri_uri.get(), write_base_uri_node.get());
-        write_base_uri_uri.freeUri();
-        write_base_uri_node.freeNode();
 
         std::vector<std::string> nsvec = OmexMetaUtils::configurePrefixStrings("http://omex-library.org/",
                                                                                std::move(omex_name),

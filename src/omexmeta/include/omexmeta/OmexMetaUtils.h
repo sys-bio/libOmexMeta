@@ -8,7 +8,6 @@
 #include "redland/LibrdfQuery.h"
 #include "redland/librdf.h"
 
-#include "include/redland/Query.h"
 #include "omexmeta/CurlGet.h"
 #include "omexmeta/MetaID.h"
 
@@ -66,7 +65,7 @@ namespace omexmeta {
          * @brief exclusions. Mostly needed internally for dealing with metaids that already exist.
          */
         static std::string generateUniqueMetaid(
-                librdf_model *model, const std::string &metaid_base,
+                LibrdfModel& model, const std::string &metaid_base,
                 const std::vector<std::string> &exclusions);
 
         /**

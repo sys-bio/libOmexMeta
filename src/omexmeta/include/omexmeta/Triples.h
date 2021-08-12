@@ -77,6 +77,7 @@ namespace omexmeta {
          */
         void emplace_back(UriHandler& uriHandler, LibrdfNode subject, const PredicatePtr &predicatePtr, const LibrdfNode &resource);
 
+        void emplace_back(UriHandler& uriHandler, const LibrdfNode& subject, const LibrdfNode& predicate, const LibrdfNode &resource);
 
         /**
          * @brief construct a Triple object from the necessary components and move it to the back of Triples
@@ -85,44 +86,44 @@ namespace omexmeta {
          */
         void emplace_back(UriHandler& uriHandler, LibrdfNode subject, const Predicate &predicate, const LibrdfNode &resource);
 
-
-        /**
-         * @brief construct a Triple object from the necessary components and move it to the back of Triples
-         * @details this method is heavily overloaded and has several signatures
-         * all of which result in the construction and emplacement of a Triple at the back of Triples.
-         */
-        void emplace_back(UriHandler& uriHandler, LibrdfNode subject, BiomodelsBiologyQualifier predicate, const LibrdfNode &resource);
-
-
-        /**
-         * @brief construct a Triple object from the necessary components and move it to the back of Triples
-         * @details this method is heavily overloaded and has several signatures
-         * all of which result in the construction and emplacement of a Triple at the back of Triples.
-         */
-        void emplace_back(UriHandler& uriHandler, LibrdfNode subject, BiomodelsModelQualifier predicate, const LibrdfNode &resource);
-
-
-        /**
-         * @brief construct a Triple object from the necessary components and move it to the back of Triples
-         * @details this method is heavily overloaded and has several signatures
-         * all of which result in the construction and emplacement of a Triple at the back of Triples.
-         */
-        void emplace_back(UriHandler& uriHandler, LibrdfNode subject, DCTerm predicate, const LibrdfNode &resource);
-
-
-        /**
-         * @brief construct a Triple object from the necessary components and move it to the back of Triples
-         * @details this method is heavily overloaded and has several signatures
-         * all of which result in the construction and emplacement of a Triple at the back of Triples.
-         */
-        void emplace_back(UriHandler& uriHandler, LibrdfNode subject, SemSim predicate, const LibrdfNode &resource);
-
-        /**
-         * @brief construct a Triple object from the necessary components and move it to the back of Triples
-         * @details this method is heavily overloaded and has several signatures
-         * all of which result in the construction and emplacement of a Triple at the back of Triples.
-         */
-        void emplace_back(UriHandler& uriHandler, librdf_node *subject, librdf_node *predicate, librdf_node *resource);
+//
+//        /**
+//         * @brief construct a Triple object from the necessary components and move it to the back of Triples
+//         * @details this method is heavily overloaded and has several signatures
+//         * all of which result in the construction and emplacement of a Triple at the back of Triples.
+//         */
+//        void emplace_back(UriHandler& uriHandler, LibrdfNode subject, BiomodelsBiologyQualifier predicate, const LibrdfNode &resource);
+//
+//
+//        /**
+//         * @brief construct a Triple object from the necessary components and move it to the back of Triples
+//         * @details this method is heavily overloaded and has several signatures
+//         * all of which result in the construction and emplacement of a Triple at the back of Triples.
+//         */
+//        void emplace_back(UriHandler& uriHandler, LibrdfNode subject, BiomodelsModelQualifier predicate, const LibrdfNode &resource);
+//
+//
+//        /**
+//         * @brief construct a Triple object from the necessary components and move it to the back of Triples
+//         * @details this method is heavily overloaded and has several signatures
+//         * all of which result in the construction and emplacement of a Triple at the back of Triples.
+//         */
+//        void emplace_back(UriHandler& uriHandler, LibrdfNode subject, DCTerm predicate, const LibrdfNode &resource);
+//
+//
+//        /**
+//         * @brief construct a Triple object from the necessary components and move it to the back of Triples
+//         * @details this method is heavily overloaded and has several signatures
+//         * all of which result in the construction and emplacement of a Triple at the back of Triples.
+//         */
+//        void emplace_back(UriHandler& uriHandler, LibrdfNode subject, SemSim predicate, const LibrdfNode &resource);
+//
+//        /**
+//         * @brief construct a Triple object from the necessary components and move it to the back of Triples
+//         * @details this method is heavily overloaded and has several signatures
+//         * all of which result in the construction and emplacement of a Triple at the back of Triples.
+//         */
+//        void emplace_back(UriHandler& uriHandler, librdf_node *subject, librdf_node *predicate, librdf_node *resource);
 
         /**
          * @brief get all subjects as strings

@@ -3,6 +3,7 @@
 //
 
 #include "omexmeta/OmexMetaXml.h"
+#include "omexmeta/Error.h"
 #include <libxml/parser.h>
 #include <libxml/xmlwriter.h>
 

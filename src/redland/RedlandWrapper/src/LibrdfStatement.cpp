@@ -4,7 +4,7 @@
 
 #include "redland/LibrdfStatement.h"
 #include "redland/LibrdfWorld.h"
-
+#include "redland/Logger.h"
 
 namespace redland {
 
@@ -70,6 +70,14 @@ namespace redland {
     void LibrdfStatement::setPredicate(const LibrdfNode &node) {
         // valgrind validated - we need to increment the ref counter ourselves
         // which is handled by the .get() method
+        if (node.isNull()){
+            REDLAND_ERROR("LibrdfNode node contains null librdf_node*");
+            spdlog::dump_backtrace();
+        }
+        if (isNull()){
+            REDLAND_ERROR("LibrdfStatement node contains null librdf_node*");
+            spdlog::dump_backtrace();
+        }
         librdf_statement_set_predicate(obj_, node.get());
     }
 

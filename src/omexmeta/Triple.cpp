@@ -36,13 +36,10 @@ namespace omexmeta {
         return *this;
     }
 
-    Triple::Triple(UriHandler &uriHandler, const LibrdfNode &subject, const PredicatePtr &predicate_ptr, const LibrdfNode &resource)
-        : uriHandler_(uriHandler), LibrdfStatement(subject.get(), predicate_ptr->get(), resource.get()) {}
+//    Triple::Triple(UriHandler &uriHandler, const LibrdfNode &subject, const PredicatePtr &predicate_ptr, const LibrdfNode &resource)
+//        : uriHandler_(uriHandler), LibrdfStatement(subject, *predicate_ptr, resource) {}
 
     Triple::Triple(UriHandler &uriHandler, const LibrdfNode &subject, const LibrdfNode &predicate, const LibrdfNode &resource)
-        : uriHandler_(uriHandler), LibrdfStatement(subject.get(), predicate.get(), resource.get()) {}
-
-    Triple::Triple(UriHandler &uriHandler, librdf_node *subject, librdf_node *predicate, librdf_node *resource)
         : uriHandler_(uriHandler), LibrdfStatement(subject, predicate, resource) {}
 
     Triple::Triple(UriHandler &uriHandler, librdf_statement *statement)
@@ -51,16 +48,16 @@ namespace omexmeta {
     std::string Triple::str(const std::string &format, const std::string &base, std::string omex_name,
                             std::string model_name) const {
         // ensure we have three nodes and a statement
-        if (!getSubjectAsRawNode()) {
+        if (getSubjectNode().isNull()) {
             throw RedlandNullPointerException("RedlandNullPointerException: Triple::str: subject is null");
         }
-        if (!getPredicateAsRawNode()) {
+        if (getPredicateNode().isNull()) {
             throw RedlandNullPointerException("RedlandNullPointerException: Triple::str: predicate is null");
         }
-        if (!getResourceAsRawNode()) {
+        if (getResourceNode().isNull()) {
             throw RedlandNullPointerException("RedlandNullPointerException: Triple::str: resource is null");
         }
-        if (!statement_) {
+        if (isNull()) {
             throw RedlandNullPointerException("RedlandNullPointerException: Triple::str: statement is null");
         }
 
@@ -68,18 +65,16 @@ namespace omexmeta {
         librdf_storage *storage = librdf_new_storage(world, "memory", "SemsimMemoryStore", nullptr);
         librdf_model *model = librdf_new_model(world, storage, nullptr);
 
-        librdf_model_add_statement(model, statement_);
+        librdf_model_add_statement(model, obj_);
         librdf_serializer *serializer = librdf_new_serializer(world, format.c_str(), nullptr, nullptr);
 
         // turn off base uri
         LibrdfUri write_base_uri_uri = LibrdfUri("http://feature.librdf.org/raptor-writeBaseURI");
         LibrdfNode write_base_uri_node = LibrdfNode::fromLiteral("0");
-        librdf_serializer_set_feature(serializer, write_base_uri_uri.get(), write_base_uri_node.get());
-        write_base_uri_uri.freeUri();
-        write_base_uri_node.freeNode();
+        librdf_serializer_set_feature(serializer, write_base_uri_uri.getWithoutIncrement(), write_base_uri_node.get());
 
         // deal with namespaces
-        Predicate::addSeenNamespaceToSerializer(world, serializer, getPredicateAsRawNode());
+        Predicate::addSeenNamespaceToSerializer(world, serializer, getPredicateNode().getWithoutIncrement());
 
         std::vector<std::string> nsvec = OmexMetaUtils::configurePrefixStrings(
                 "http://omex-library.org/", std::move(omex_name), std::move(model_name));
@@ -116,8 +111,8 @@ namespace omexmeta {
     }
 
     Triple &Triple::about(std::string omex_name, const std::string &model_name, std::string metaid) {
-        if (getSubjectAsRawNode() != nullptr)
-            getSubjectNode().freeNode();
+        if (!getSubjectNode().isNull())
+            getSubjectNode().freeObj();
         if (omex_name.rfind("http", 0) != 0) {
             throw std::invalid_argument("std::invalid_argument Triple::about: metaid does not "
                                         "begin with \"http\" which suggests that it is not properly "
@@ -134,8 +129,7 @@ namespace omexmeta {
             metaid.erase(metaid.begin());
 
         setSubject(LibrdfNode::fromUriString(
-                           omex_name + model_name + "#" + metaid)
-                           .get());
+                           omex_name + model_name + "#" + metaid));
         return *this;
     }
 
@@ -160,25 +154,22 @@ namespace omexmeta {
             metaid = model_uri + "#" + metaid;
         }
 
-        setSubject(LibrdfNode::fromUriString(metaid).get());
+        setSubject(LibrdfNode::fromUriString(metaid));
 
         return *this;
     }
 
     Triple &Triple::about(std::string metaid, eUriType uri_type) {
         metaid = UriHandler::uriModifier<Triple>(*this, metaid, uri_type);
-        setSubject(LibrdfNode::fromUriString(metaid).get());
+        setSubject(LibrdfNode::fromUriString(metaid));
         return *this;
     }
 
     Triple &Triple::setPredicate(const std::string &namespace_, const std::string &term) {
-        if (getPredicateAsRawNode() != nullptr)
-            getPredicateNode().freeNode();
-        //            LibrdfNode::freeNode(getPredicateNode());
         // ive implemented the logic here rather then using LibrdfStatement::setPredicate
         //  because I want them both to be called setPredicate.
-        librdf_node *node = PredicateFactory(namespace_, term)->get();
-        librdf_statement_set_predicate(statement_, node);
+        LibrdfNode node = PredicateFactory(namespace_, term)->getNode();
+        LibrdfStatement::setPredicate(node);
         return *this;
     }
 
@@ -189,12 +180,12 @@ namespace omexmeta {
 
     Triple &
     Triple::setPredicate(const std::string &uri) {
-        if (getPredicateAsRawNode() != nullptr)
+        if (!getPredicateNode().isNull())
             getPredicateNode().freeNode();
         //            LibrdfNode::freeNode(getPredicateNode());
         LibrdfNode node = LibrdfNode::fromUriString(uri);
         // we pass ownership of node to the statement.
-        librdf_statement_set_predicate(statement_, node.get());
+        librdf_statement_set_predicate(obj_, node.getWithoutIncrement());
         return *this;
     }
 
@@ -205,26 +196,26 @@ namespace omexmeta {
 
     Triple &Triple::setResourceLiteral(const std::string &literal) {
         // if getResourceNode() node alredy exists, free before resetting
-        if (getResourceAsRawNode() != nullptr)
-            getResourceNode().freeNode();
+//        if (!getResourceNode().isNull())
+//            getResourceNode().freeNode();
         //            LibrdfNode::freeNode(getResourceNode());
-        setResource(LibrdfNode::fromLiteral(literal).get());
+        setResource(LibrdfNode::fromLiteral(literal));
         return *this;
     }
 
     Triple &Triple::setResourceUri(const std::string &identifiers_uri) {
-        if (getResourceAsRawNode() != nullptr)
-            getResourceNode().freeNode();
+//        if (!getResourceNode().isNull())
+//            getResourceNode().freeNode();
         //            LibrdfNode::freeNode(getResourceNode());
-        setResource(LibrdfNode::fromUriString(identifiers_uri).get());
+        setResource(LibrdfNode::fromUriString(identifiers_uri));
         return *this;
     }
 
     Triple &Triple::setResourceBlank(const std::string &blank_id) {
-        if (getResourceAsRawNode() != nullptr)
+        if (!getResourceNode().isNull() )
             getResourceNode().freeNode();
         //            LibrdfNode::freeNode(getResourceNode());
-        setResource(LibrdfNode::fromBlank(blank_id).get());
+        setResource(LibrdfNode::fromBlank(blank_id));
         return *this;
     }
     Triple &Triple::resourceLiteral(const std::string &literal) {
@@ -240,10 +231,10 @@ namespace omexmeta {
     }
 
     Triple &Triple::setResourceWithModelUri(const std::string &metaid) {
-        if (getResourceAsRawNode() != nullptr) {
+        if (!getResourceNode().isNull()) {
             getResourceNode().freeNode();
         }
-        setResource(LibrdfNode::fromUriString(OmexMetaUtils::concatMetaIdAndUri(metaid, getModelUri())).get());
+        setResource(LibrdfNode::fromUriString(OmexMetaUtils::concatMetaIdAndUri(metaid, getModelUri())));
         return *this;
     }
 
@@ -252,19 +243,19 @@ namespace omexmeta {
     }
 
     std::string Triple::getAbout() const {
-        return LibrdfNode::str(getSubjectAsRawNode());
+        return getSubjectNode().str();
     }
 
     bool Triple::isEmpty() {
-        return !getSubjectAsRawNode() && !getPredicateAsRawNode() && !getResourceAsRawNode();
+        return getSubjectNode().isNull() && getPredicateNode().isNull() && getResourceNode().isNull();
     }
 
     librdf_statement *Triple::getStatement() const {
-        return statement_;
+        return obj_;
     }
 
     void Triple::freeTriple() {
-        freeStatement();
+        freeFunc_(obj_);
     }
 
     const std::string &Triple::getLocalUri() const {

@@ -5,7 +5,6 @@
 #ifndef LIBOMEXMETA_PHYSICALENTITY_H
 #define LIBOMEXMETA_PHYSICALENTITY_H
 
-#include "include/redland/Query.h"
 #include "omexmeta/MetaID.h"
 #include "omexmeta/OmexMetaUtils.h"
 #include "omexmeta/PhysicalProperty.h"
@@ -51,7 +50,7 @@ namespace omexmeta {
          * builder interface. The @param is_part_of parameter is actually a std::vector of
          * LibrdfNode objects. It can be as long as needed.
          */
-        PhysicalEntity(librdf_model *model, UriHandler& uriHandler, PhysicalProperty physicalProperty,
+        PhysicalEntity(LibrdfModel& model, UriHandler& uriHandler, PhysicalProperty physicalProperty,
                        std::string is, std::vector<std::string> is_part_of);
 
         ~PhysicalEntity() = default;
@@ -75,7 +74,7 @@ namespace omexmeta {
          * with only the model to allow for a better way of collecting necessary information
          * from the user.
          */
-        OMEXMETA_DEPRECATED explicit PhysicalEntity(librdf_model *model);
+        OMEXMETA_DEPRECATED explicit PhysicalEntity(LibrdfModel& model);
 
 
         /**
@@ -90,7 +89,7 @@ namespace omexmeta {
          * from the user. The PhysicalEntity also needs access to the model_uri, which we pass
          * here.
          */
-        explicit PhysicalEntity(librdf_model *model, UriHandler& uriHandler);
+        explicit PhysicalEntity(LibrdfModel& model, UriHandler& uriHandler);
 
 
         /**

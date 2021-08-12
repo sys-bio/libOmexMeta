@@ -15,11 +15,11 @@ namespace redland {
         return !(rhs == *this);
     };
 
-    LibrdfQuery::LibrdfQuery(librdf_query *query, LibrdfModel &model)
-        : RedlandType_librdf_query(query, librdf_free_query), model_(model) {}
+    LibrdfQuery::LibrdfQuery(librdf_query *query, const LibrdfModel& model)
+        : RedlandType_librdf_query(query, librdf_free_query), model_(const_cast<LibrdfModel &>(model)) {}
 
-    LibrdfQuery::LibrdfQuery(std::string query, LibrdfModel &model)
-        : query_(std::move(query)), model_(model) {
+    LibrdfQuery::LibrdfQuery(std::string query, const LibrdfModel& model)
+        : query_(std::move(query)), model_(const_cast<LibrdfModel &>(model)) {
         obj_ = newQuery();
         freeFunc_ = librdf_free_query;
     }

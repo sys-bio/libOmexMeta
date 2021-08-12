@@ -33,17 +33,14 @@ public:
         predicate = BiomodelsBiologyQualifier("is");
     }
 
-    ~TriplesTests() override {
-        storage.freeStorage();
-        model.freeModel();
-    }
+    ~TriplesTests() override {}
 };
 
 /*
  * We can create an empty vector and *move* a triple into it.
  */
 TEST_F(TriplesTests, TestCreateMoveAfterInstantiation) {
-    Triple triple1 = Triple(uriHandler, subject.get(), predicate.get(), resource.get());
+    Triple triple1 = Triple(uriHandler, subject, predicate.getNode(), resource);
     Triples triples;
     triples.moveBack(triple1);
     ASSERT_EQ(1, triples.size());
@@ -53,7 +50,7 @@ TEST_F(TriplesTests, TestCreateMoveAfterInstantiation) {
  * We can also move the triple into it on instantiation.
  */
 TEST_F(TriplesTests, TestCreateMoveOnInstantiation) {
-    Triple triple1 = Triple(uriHandler, subject.get(), predicate.get(), resource.get());
+    Triple triple1 = Triple(uriHandler, subject, predicate.getNode(), resource);
     Triples triples(triple1);
     ASSERT_EQ(1, triples.size());
 }
@@ -121,13 +118,13 @@ TEST(TriplesTestsNoFixture, TestPop) {
     UriHandler uriHandler;
     Triples triples;
     triples.emplace_back(uriHandler,
-                         LibrdfNode::fromUriString("subject1").get(),
-                         SemSim("hasSinkParticipant").get(),
-                         LibrdfNode::fromLiteral("literal node1").get());
+                         LibrdfNode::fromUriString("subject1"),
+                         SemSim("hasSinkParticipant").getNode(),
+                         LibrdfNode::fromLiteral("literal node1"));
     triples.emplace_back(uriHandler,
-                         LibrdfNode::fromUriString("subject2").get(),
-                         SemSim("hasSourceParticipant").get(),
-                         LibrdfNode::fromLiteral("literal node2").get());
+                         LibrdfNode::fromUriString("subject2"),
+                         SemSim("hasSourceParticipant").getNode(),
+                         LibrdfNode::fromLiteral("literal node2"));
     // make sure we have 2 triples
     ASSERT_EQ(2, triples.size());
 
@@ -155,12 +152,12 @@ TEST(TriplesTestsNoFixture, TestPreallocate) {
     Triples triples(2);
     ASSERT_EQ(2, triples.capacity());
 
-    triples.emplace_back(uriHandler,LibrdfNode::fromUriString("subject1").get(),
-                         SemSim("hasSinkParticipant").get(),
-                         LibrdfNode::fromLiteral("literal node1").get());
-    triples.emplace_back(uriHandler,LibrdfNode::fromUriString("subject2").get(),
-                         SemSim("hasSourceParticipant").get(),
-                         LibrdfNode::fromLiteral("literal node2").get());
+    triples.emplace_back(uriHandler,LibrdfNode::fromUriString("subject1"),
+                         SemSim("hasSinkParticipant").getNode(),
+                         LibrdfNode::fromLiteral("literal node1"));
+    triples.emplace_back(uriHandler,LibrdfNode::fromUriString("subject2"),
+                         SemSim("hasSourceParticipant").getNode(),
+                         LibrdfNode::fromLiteral("literal node2"));
     // make sure we have 2 triples
     ASSERT_EQ(2, triples.size());
 
@@ -170,14 +167,14 @@ TEST(TriplesTestsNoFixture, TestStr) {
     UriHandler uriHandler;
     Triples triples;
     triples.emplace_back(uriHandler,
-            LibrdfNode::fromUriString("http://subject1.com/subject1").get(),
-            LibrdfNode::fromUriString("http://predicate1.com/predicate1").get(),
-            LibrdfNode::fromUriString("http://resource1.com/resource1").get()
+            LibrdfNode::fromUriString("http://subject1.com/subject1"),
+            LibrdfNode::fromUriString("http://predicate1.com/predicate1"),
+            LibrdfNode::fromUriString("http://resource1.com/resource1")
     );
     triples.emplace_back(uriHandler,
-            LibrdfNode::fromUriString("http://subject2.com/subject2").get(),
-            LibrdfNode::fromUriString("http://predicate2.com/predicate2").get(),
-            LibrdfNode::fromUriString("http://resource2.com/resource2").get()
+            LibrdfNode::fromUriString("http://subject2.com/subject2"),
+            LibrdfNode::fromUriString("http://predicate2.com/predicate2"),
+            LibrdfNode::fromUriString("http://resource2.com/resource2")
     );
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
@@ -200,15 +197,15 @@ TEST(TriplesTestsNoFixture, TestTwoIdenticalTripesObjectsCanBeFreed) {
     UriHandler uriHandler;
     Triples triples1;
     triples1.emplace_back(uriHandler,
-            LibrdfNode::fromUriString("http://subject1.com/subject1").get(),
-            LibrdfNode::fromUriString("http://predicate1.com/predicate1").get(),
-            LibrdfNode::fromUriString("http://resource1.com/resource1").get()
+            LibrdfNode::fromUriString("http://subject1.com/subject1"),
+            LibrdfNode::fromUriString("http://predicate1.com/predicate1"),
+            LibrdfNode::fromUriString("http://resource1.com/resource1")
     );
     Triples triples2;
     triples2.emplace_back(uriHandler,
-            LibrdfNode::fromUriString("http://subject1.com/subject1").get(),
-            LibrdfNode::fromUriString("http://predicate1.com/predicate1").get(),
-            LibrdfNode::fromUriString("http://resource1.com/resource1").get()
+            LibrdfNode::fromUriString("http://subject1.com/subject1"),
+            LibrdfNode::fromUriString("http://predicate1.com/predicate1"),
+            LibrdfNode::fromUriString("http://resource1.com/resource1")
     );
     ASSERT_EQ(triples1, triples2);
 
@@ -221,14 +218,14 @@ TEST(TriplesTestsNoFixture, TestIteration) {
     UriHandler uriHandler;
     Triples triples;
     triples.emplace_back(uriHandler,
-            LibrdfNode::fromUriString("http://subject1.com/subject1").get(),
-            LibrdfNode::fromUriString("http://predicate1.com/predicate1").get(),
-            LibrdfNode::fromUriString("http://resource1.com/resource1").get()
+            LibrdfNode::fromUriString("http://subject1.com/subject1"),
+            LibrdfNode::fromUriString("http://predicate1.com/predicate1"),
+            LibrdfNode::fromUriString("http://resource1.com/resource1")
     );
     triples.emplace_back(uriHandler,
-            LibrdfNode::fromUriString("http://subject2.com/subject2").get(),
-            LibrdfNode::fromUriString("http://predicate2.com/predicate2").get(),
-            LibrdfNode::fromUriString("http://resource2.com/resource2").get()
+            LibrdfNode::fromUriString("http://subject2.com/subject2"),
+            LibrdfNode::fromUriString("http://predicate2.com/predicate2"),
+            LibrdfNode::fromUriString("http://resource2.com/resource2")
     );
     std::ostringstream os;
     for (int i = 0; i < triples.size(); i++) {
@@ -244,25 +241,25 @@ TEST(TriplesTestsNoFixture, TestEquality) {
     UriHandler uriHandler;
     Triples triples1;
     triples1.emplace_back(uriHandler,
-            LibrdfNode::fromUriString("http://subject1.com/subject1").get(),
-            LibrdfNode::fromUriString("http://predicate1.com/predicate1").get(),
-            LibrdfNode::fromUriString("http://resource1.com/resource1").get()
+            LibrdfNode::fromUriString("http://subject1.com/subject1"),
+            LibrdfNode::fromUriString("http://predicate1.com/predicate1"),
+            LibrdfNode::fromUriString("http://resource1.com/resource1")
     );
     triples1.emplace_back(uriHandler,
-            LibrdfNode::fromUriString("http://subject2.com/subject2").get(),
-            LibrdfNode::fromUriString("http://predicate2.com/predicate2").get(),
-            LibrdfNode::fromUriString("http://resource2.com/resource2").get()
+            LibrdfNode::fromUriString("http://subject2.com/subject2"),
+            LibrdfNode::fromUriString("http://predicate2.com/predicate2"),
+            LibrdfNode::fromUriString("http://resource2.com/resource2")
     );
     Triples triples2;
     triples2.emplace_back(uriHandler,
-            LibrdfNode::fromUriString("http://subject1.com/subject1").get(),
-            LibrdfNode::fromUriString("http://predicate1.com/predicate1").get(),
-            LibrdfNode::fromUriString("http://resource1.com/resource1").get()
+            LibrdfNode::fromUriString("http://subject1.com/subject1"),
+            LibrdfNode::fromUriString("http://predicate1.com/predicate1"),
+            LibrdfNode::fromUriString("http://resource1.com/resource1")
     );
     triples2.emplace_back(uriHandler,
-            LibrdfNode::fromUriString("http://subject2.com/subject2").get(),
-            LibrdfNode::fromUriString("http://predicate2.com/predicate2").get(),
-            LibrdfNode::fromUriString("http://resource2.com/resource2").get()
+            LibrdfNode::fromUriString("http://subject2.com/subject2"),
+            LibrdfNode::fromUriString("http://predicate2.com/predicate2"),
+            LibrdfNode::fromUriString("http://resource2.com/resource2")
     );
     ASSERT_EQ(triples1, triples2);
 
@@ -274,40 +271,40 @@ TEST(TriplesTestsNoFixture, TestEquality) {
 //    // replicate energy differential without actually using energy differential
 //    Triples triples1(6);
 //    triples1.emplace_back(uriHandler,
-//            LibrdfNode::fromUriString("./NewModel.sbml#parameter_metaid_0").get(),
-//            LibrdfNode::fromUriString("isPropertyOf").get(),
-//            LibrdfNode::fromUriString("./NewModel.sbml#force_0").get()
+//            LibrdfNode::fromUriString("./NewModel.sbml#parameter_metaid_0"),
+//            LibrdfNode::fromUriString("isPropertyOf"),
+//            LibrdfNode::fromUriString("./NewModel.sbml#force_0")
 //    );
 //
 //    triples1.emplace_back(uriHandler,
-//            LibrdfNode::fromUriString("./NewModel.sbml#parameter_metaid_0").get(),
-//            LibrdfNode::fromUriString("isVersionOf").get(),
-//            LibrdfNode::fromUriString("https://identifiers.org/opb/OPB_01058").get()
+//            LibrdfNode::fromUriString("./NewModel.sbml#parameter_metaid_0"),
+//            LibrdfNode::fromUriString("isVersionOf"),
+//            LibrdfNode::fromUriString("https://identifiers.org/opb/OPB_01058")
 //    );
 //
 //    triples1.emplace_back(uriHandler,
-//            LibrdfNode::fromUriString("./NewModel.sbml#force_0").get(),
-//            LibrdfNode::fromUriString("hasSourceParticipant").get(),
-//            LibrdfNode::fromUriString("./NewModel.sbml#source_0").get()
+//            LibrdfNode::fromUriString("./NewModel.sbml#force_0"),
+//            LibrdfNode::fromUriString("hasSourceParticipant"),
+//            LibrdfNode::fromUriString("./NewModel.sbml#source_0")
 //    );
 //
 //
 //    triples1.emplace_back(uriHandler,
-//            LibrdfNode::fromUriString("./NewModel.sbml#force_0").get(),
-//            LibrdfNode::fromUriString("hasSinkParticipant").get(),
-//            LibrdfNode::fromUriString("./NewModel.sbml#sink_0").get()
+//            LibrdfNode::fromUriString("./NewModel.sbml#force_0"),
+//            LibrdfNode::fromUriString("hasSinkParticipant"),
+//            LibrdfNode::fromUriString("./NewModel.sbml#sink_0")
 //    );
 //
 //    triples1.emplace_back(uriHandler,
-//            LibrdfNode::fromUriString("./NewModel.sbml#source_0").get(),
-//            LibrdfNode::fromUriString("hasPhysicalEntityReference").get(),
-//            LibrdfNode::fromUriString("./NewModel.sbml#species_metaid_0").get()
+//            LibrdfNode::fromUriString("./NewModel.sbml#source_0"),
+//            LibrdfNode::fromUriString("hasPhysicalEntityReference"),
+//            LibrdfNode::fromUriString("./NewModel.sbml#species_metaid_0")
 //    );
 //
 //    triples1.emplace_back(uriHandler,
-//            LibrdfNode::fromUriString("./NewModel.sbml#sink_0").get(),
-//            LibrdfNode::fromUriString("hasPhysicalEntityReference").get(),
-//            LibrdfNode::fromUriString("./NewModel.sbml#species_metaid_1").get()
+//            LibrdfNode::fromUriString("./NewModel.sbml#sink_0"),
+//            LibrdfNode::fromUriString("hasPhysicalEntityReference"),
+//            LibrdfNode::fromUriString("./NewModel.sbml#species_metaid_1")
 //    );
 //
 //    Triple& triple1 = triples1[0];
@@ -369,36 +366,36 @@ TEST(TestTriplesTwice, TestMakeSameTriplesTwice) {
     UriHandler uriHandler;
     Triples triples1(3);
     triples1.emplace_back(uriHandler,
-            LibrdfNode::fromUriString("http://subject1.com/subject1").get(),
-            LibrdfNode::fromUriString("http://predicate1.com/predicate1").get(),
-            LibrdfNode::fromUriString("http://resource1.com/resource1").get()
+            LibrdfNode::fromUriString("http://subject1.com/subject1"),
+            LibrdfNode::fromUriString("http://predicate1.com/predicate1"),
+            LibrdfNode::fromUriString("http://resource1.com/resource1")
     );
     triples1.emplace_back(uriHandler,
-            LibrdfNode::fromUriString("http://subject2.com/subject2").get(),
-            LibrdfNode::fromUriString("http://predicate2.com/predicate2").get(),
-            LibrdfNode::fromUriString("http://resource2.com/resource2").get()
+            LibrdfNode::fromUriString("http://subject2.com/subject2"),
+            LibrdfNode::fromUriString("http://predicate2.com/predicate2"),
+            LibrdfNode::fromUriString("http://resource2.com/resource2")
     );
     triples1.emplace_back(uriHandler,
-            LibrdfNode::fromUriString("http://subject2.com/subject2").get(),
-            LibrdfNode::fromUriString("http://predicate2.com/predicate2").get(),
-            LibrdfNode::fromUriString("http://resource2.com/resource2").get()
+            LibrdfNode::fromUriString("http://subject2.com/subject2"),
+            LibrdfNode::fromUriString("http://predicate2.com/predicate2"),
+            LibrdfNode::fromUriString("http://resource2.com/resource2")
     );
     std::cout << "creating triples 2 " << std::endl;
     Triples triples2(3);
     triples2.emplace_back(uriHandler,
-            LibrdfNode::fromUriString("http://subject1.com/subject1").get(),
-            LibrdfNode::fromUriString("http://predicate1.com/predicate1").get(),
-            LibrdfNode::fromUriString("http://resource1.com/resource1").get()
+            LibrdfNode::fromUriString("http://subject1.com/subject1"),
+            LibrdfNode::fromUriString("http://predicate1.com/predicate1"),
+            LibrdfNode::fromUriString("http://resource1.com/resource1")
     );
     triples2.emplace_back(uriHandler,
-            LibrdfNode::fromUriString("http://subject2.com/subject2").get(),
-            LibrdfNode::fromUriString("http://predicate2.com/predicate2").get(),
-            LibrdfNode::fromUriString("http://resource2.com/resource2").get()
+            LibrdfNode::fromUriString("http://subject2.com/subject2"),
+            LibrdfNode::fromUriString("http://predicate2.com/predicate2"),
+            LibrdfNode::fromUriString("http://resource2.com/resource2")
     );
     triples2.emplace_back(uriHandler,
-            LibrdfNode::fromUriString("http://subject2.com/subject2").get(),
-            LibrdfNode::fromUriString("http://predicate2.com/predicate2").get(),
-            LibrdfNode::fromUriString("http://resource2.com/resource2").get()
+            LibrdfNode::fromUriString("http://subject2.com/subject2"),
+            LibrdfNode::fromUriString("http://predicate2.com/predicate2"),
+            LibrdfNode::fromUriString("http://resource2.com/resource2")
     );
 
 

@@ -5,7 +5,6 @@
 #ifndef LIBOMEXMETA_PropertyBearer_H
 #define LIBOMEXMETA_PropertyBearer_H
 
-#include "include/redland/Query.h"
 #include "omexmeta/AnnotationType.h"
 #include "omexmeta/Error.h"
 #include "omexmeta/MetaID.h"
@@ -63,7 +62,7 @@ namespace omexmeta {
          *
          * Shouldn't be needed by users directly.
          */
-        PropertyBearer(librdf_model *model, UriHandler& uriHandler);
+        PropertyBearer(LibrdfModel& model, UriHandler& uriHandler);
 
         /**
          * @brief constructor for PropertyBearer object.
@@ -72,7 +71,7 @@ namespace omexmeta {
          * @param propertyResource The PhysicalProperty assocaited with a composite annotation
          * @param type An AnnotationType to distinguish composite annotations.
          */
-        PropertyBearer(librdf_model *model, UriHandler& uriHandler,
+        PropertyBearer(LibrdfModel& model, UriHandler& uriHandler,
                        PhysicalProperty propertyResource, AnnotationType type);
 
         [[nodiscard]] const std::string &getModelUri() const;
@@ -109,7 +108,7 @@ namespace omexmeta {
 
         OMEXMETA_DEPRECATED void setType(AnnotationType type);
 
-        [[nodiscard]] librdf_model *getModel() const;
+        [[nodiscard]] LibrdfModel& getModel() const;
 
         virtual PropertyBearer &hasProperty(const PhysicalProperty &property);
 
@@ -139,7 +138,7 @@ namespace omexmeta {
 
         [[nodiscard]] std::string generateMetaId(const std::string &id_base);
 
-        librdf_model *model_ = nullptr;// should be cleaned up by the LibrdfModel inside RDF.
+        LibrdfModel& model_;// should be cleaned up by the LibrdfModel inside RDF.
         PhysicalProperty physical_property_;
         AnnotationType type_ = AnnotationType::UNKNOWN;
 

@@ -21,13 +21,5 @@
 #include "RaptorIOStream.h"
 #include "Logger.h"
 
-/**
- * @brief Call to getLogger is mainly to initialize the logging system, which
- * doesn't actually hook into the redland libraries until its called for the first time.
- * The logger is a singleton, and therefore persists throughout the lifetime of the
- * program.
- */
-redland::Logger* logger = redland::Logger::getLogger();
-
 
 #endif//LIBOMEXMETA_REDLANDAPI_H

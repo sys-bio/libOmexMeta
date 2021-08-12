@@ -19,9 +19,9 @@ namespace omexmeta {
         node_ = std::move(LibrdfNode::fromUriString(uri_));
     }
 
-    Predicate::Predicate(librdf_node *node)
+    Predicate::Predicate(LibrdfNode& node)
         : node_(node) {
-        if (!node)
+        if (node.isNull())
             throw RedlandNullPointerException(
                     "RedlandNullPointerException: Predicate::Predicate(librdf_node* node): node is null");
         // some logic for processing the uri in a node to automatically produce the fields we want.
@@ -140,11 +140,7 @@ namespace omexmeta {
         }
     }
 
-    librdf_node *Predicate::get() const {
-        return node_.get();
-    }
-
-    void Predicate::setNode(librdf_node *node) {
+    void Predicate::setNode(LibrdfNode& node) {
         node_ = LibrdfNode(node);
     }
 

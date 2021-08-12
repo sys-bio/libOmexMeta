@@ -2,13 +2,14 @@
 // Created by Ciaran on 05/08/2021.
 //
 
-#ifndef LIBOMEXMETA_LOGGER_H
-#define LIBOMEXMETA_LOGGER_H
+#ifndef LIBOMEXMETA_LOGGER2_H
+#define LIBOMEXMETA_LOGGER2_H
 
+#include "raptor2.h"
+#include "librdf.h"
 #include "spdlog/spdlog.h"
 #include <filesystem>
 #include <string>
-#include "raptor2.h"
 
 
 namespace redland {
@@ -172,11 +173,9 @@ namespace redland {
           * @brief indicator variable for backtracing
           */
         bool shouldBacktrace_ = false;
-
-
     };
 
 
-}// namespace omexmeta
+}// namespace redland
 
 #endif//LIBOMEXMETA_LOGGER_H

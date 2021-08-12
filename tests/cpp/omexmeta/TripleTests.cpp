@@ -33,7 +33,7 @@ public:
 };
 
 TEST_F(TripleTests, TestInstantiation1) {
-    Triple triple(uriHandler, subject.get(), predicate.get(), resource.get());
+    Triple triple(uriHandler, subject, predicate.getNode(), resource);
     // could fail with valgrind
 }
 
@@ -47,37 +47,35 @@ TEST(TripleTestsNoFixture, TestInstantiationEmptyForBuilder) {
 
 TEST_F(TripleTests, TestInstantiation2) {
     Triple triple(uriHandler, subject,
-                  std::make_shared<Predicate>(predicate),
+                  std::make_shared<Predicate>(predicate)->getNode(),
                   resource);
     ASSERT_TRUE(true);// if we get this far the test has passed
 }
 
 TEST_F(TripleTests, TestSubjectStringUsingLibrdf) {
-    Triple triple(uriHandler, subject.get(), predicate.get(), resource.get());
+    Triple triple(uriHandler, subject, predicate.getNode(), resource);
     std::string &expected = subject_str;
-    librdf_node *node = triple.getSubjectAsRawNode();
-    librdf_uri *uri = librdf_node_get_uri(node);
-    const char *actual = (const char *) librdf_uri_as_string(uri);
-    ASSERT_STREQ(expected.c_str(), actual);
-    librdf_free_node(node);
+    LibrdfNode node = triple.getSubjectNode();
+    LibrdfUri uri = node.getUri();
+    ASSERT_STREQ(expected.c_str(), uri.str().c_str());
 }
 
 
 TEST_F(TripleTests, TestSubjectStrUsingWrapper) {
-    Triple triple(uriHandler, subject.get(), predicate.get(), resource.get());
+    Triple triple(uriHandler, subject, predicate.getNode(), resource);
     std::string &expected = subject_str;
     ASSERT_STREQ(expected.c_str(), triple.getSubjectNode().str().c_str());
 }
 
 TEST_F(TripleTests, TestPredicate) {
-    Triple triple(uriHandler, subject.get(), predicate.get(), resource.get());
+    Triple triple(uriHandler, subject, predicate.getNode(), resource);
     std::string expected = predicate_str;
     ASSERT_STREQ(expected.c_str(), triple.getPredicateNode().str().c_str());
 }
 
 
 TEST_F(TripleTests, TestResource) {
-    Triple triple(uriHandler, subject.get(), predicate.get(), resource.get());
+    Triple triple(uriHandler, subject, predicate.getNode(), resource);
     ASSERT_STREQ(triple.getResourceNode().str().c_str(), "https://identifiers.org/uniprot/P0DP23");
 }
 
@@ -85,14 +83,14 @@ TEST(TripleTestsNoFixture, TestEquality) {
     UriHandler uriHandler;
     Triple triple1(
             uriHandler,
-            LibrdfNode::fromUriString("subject").get(),
-            LibrdfNode::fromUriString("predicate").get(),
-            LibrdfNode::fromUriString("resource").get());
+            LibrdfNode::fromUriString("subject"),
+            LibrdfNode::fromUriString("predicate"),
+            LibrdfNode::fromUriString("resource"));
     Triple triple2(
             uriHandler,
-            LibrdfNode::fromUriString("subject").get(),
-            LibrdfNode::fromUriString("predicate").get(),
-            LibrdfNode::fromUriString("resource").get());
+            LibrdfNode::fromUriString("subject"),
+            LibrdfNode::fromUriString("predicate"),
+            LibrdfNode::fromUriString("resource"));
     ASSERT_EQ(triple1, triple2);
 }
 
@@ -100,20 +98,20 @@ TEST(TripleTestsNoFixture, TestInequality) {
     UriHandler uriHandler;
     Triple triple1(
             uriHandler,
-            LibrdfNode::fromUriString("subject1").get(),
-            LibrdfNode::fromUriString("predicate1").get(),
-            LibrdfNode::fromUriString("resource1").get());
+            LibrdfNode::fromUriString("subject1"),
+            LibrdfNode::fromUriString("predicate1"),
+            LibrdfNode::fromUriString("resource1"));
     Triple triple2(
             uriHandler,
-            LibrdfNode::fromUriString("subject2").get(),
-            LibrdfNode::fromUriString("predicate2").get(),
-            LibrdfNode::fromUriString("resource2").get());
+            LibrdfNode::fromUriString("subject2"),
+            LibrdfNode::fromUriString("predicate2"),
+            LibrdfNode::fromUriString("resource2"));
     ASSERT_NE(triple1, triple2);
 }
 
 TEST_F(TripleTests, TestStatementResource) {
-    Triple triple(uriHandler, subject.get(), predicate.get(), resource.get());
-    librdf_statement *statement = triple.get();
+    Triple triple(uriHandler, subject, predicate.getNode(), resource);
+    librdf_statement *statement = triple.getStatement();
     librdf_node *n = librdf_statement_get_object(statement);
     librdf_uri *uri = librdf_node_get_uri(n);
     unsigned char *s = librdf_uri_as_string(uri);
@@ -190,7 +188,7 @@ TEST(TripleTestsNoFixture, TestResourceBlank) {
 
 TEST_F(TripleTests, TestStatementSubject) {
     UriHandler uriHandler;
-    Triple triple(uriHandler, subject.get(), predicate.get(), resource.get());
+    Triple triple(uriHandler, subject, predicate.getNode(), resource);
     std::string expected = "./NewModel#metaid_0";
     ASSERT_STREQ(expected.c_str(), triple.getSubjectNode().str().c_str());
 }
@@ -296,7 +294,7 @@ public:
  * original triple
  */
 TEST_F(TripleTestsVector, TestTripleVecMove) {
-    Triple triple(uriHandler, subject.get(), predicate.get(), resource.get());
+    Triple triple(uriHandler, subject, predicate.getNode(), resource);
     std::vector<Triple> vec;
     vec.push_back(std::move(triple));
     std::string actual = vec[0].getResourceNode().str();
@@ -304,7 +302,7 @@ TEST_F(TripleTestsVector, TestTripleVecMove) {
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 //TEST_F(TripleTestsVector, t) {
-//    Triple triple(uriHandler, subject.get(), predicate.getNode(), resource.get());
+//    Triple triple(uriHandler, subject, predicate.getNode(), resource);
 //    std::vector<Triple> vec;
 //    vec.push_back(std::move(triple));
 //    ASSERT_EQ(1, vec.size());
@@ -331,14 +329,14 @@ TEST(TestTripleTwice, WithRawNodes) {
     UriHandler uriHandler;
     Triple triple1(
             uriHandler,
-            LibrdfNode::fromUriString("subject").get(),
-            LibrdfNode::fromUriString("predicate").get(),
-            LibrdfNode::fromUriString("resource").get());
+            LibrdfNode::fromUriString("subject"),
+            LibrdfNode::fromUriString("predicate"),
+            LibrdfNode::fromUriString("resource"));
     Triple triple2(
             uriHandler,
-            LibrdfNode::fromUriString("subject").get(),
-            LibrdfNode::fromUriString("predicate").get(),
-            LibrdfNode::fromUriString("resource").get());
+            LibrdfNode::fromUriString("subject"),
+            LibrdfNode::fromUriString("predicate"),
+            LibrdfNode::fromUriString("resource"));
 }
 
 /*
@@ -348,14 +346,14 @@ TEST(TestTripleTwice, WithSubjectPredAndRes) {
     UriHandler uriHandler;
     Triple triple1(
             uriHandler,
-            LibrdfNode::fromUriString("subject").get(),
-            Predicate("uniprot", "PD1234", "uni").get(),
-            LibrdfNode::fromUriString("resource").get());
+            LibrdfNode::fromUriString("subject"),
+            Predicate("uniprot", "PD1234", "uni").getNode(),
+            LibrdfNode::fromUriString("resource"));
     Triple triple2(
             uriHandler,
-            LibrdfNode::fromUriString("subject").get(),
-            Predicate("uniprot", "PD1234", "uni").get(),
-            LibrdfNode::fromUriString("resource").get());
+            LibrdfNode::fromUriString("subject"),
+            Predicate("uniprot", "PD1234", "uni").getNode(),
+            LibrdfNode::fromUriString("resource"));
 }
 
 /*
@@ -365,14 +363,14 @@ TEST(TestTripleTwice, WithSubjectBiomodelModelQualifierAndRes) {
     UriHandler uriHandler;
     Triple triple1(
             uriHandler,
-            LibrdfNode::fromUriString("subject").get(),
-            BiomodelsBiologyQualifier("is").get(),
-            LibrdfNode::fromUriString("resource").get());
+            LibrdfNode::fromUriString("subject"),
+            BiomodelsBiologyQualifier("is").getNode(),
+            LibrdfNode::fromUriString("resource"));
     Triple triple2(
             uriHandler,
-            LibrdfNode::fromUriString("subject").get(),
-            Predicate("uniprot", "PD1234", "uni").get(),
-            LibrdfNode::fromUriString("resource").get());
+            LibrdfNode::fromUriString("subject"),
+            Predicate("uniprot", "PD1234", "uni").getNode(),
+            LibrdfNode::fromUriString("resource"));
 }
 
 
@@ -380,13 +378,13 @@ TEST(TestTripleTwice, WithRawNodesWithMovingTheFirst) {
     UriHandler uriHandler;
     Triple triple1(
             uriHandler,
-            LibrdfNode::fromUriString("subject").get(),
-            LibrdfNode::fromUriString("predicate").get(),
-            LibrdfNode::fromUriString("resource").get());
+            LibrdfNode::fromUriString("subject"),
+            LibrdfNode::fromUriString("predicate"),
+            LibrdfNode::fromUriString("resource"));
     Triple triple2 = std::move(triple1);
     Triple triple3(
             uriHandler,
-            LibrdfNode::fromUriString("subject").get(),
-            LibrdfNode::fromUriString("predicate").get(),
-            LibrdfNode::fromUriString("resource").get());
+            LibrdfNode::fromUriString("subject"),
+            LibrdfNode::fromUriString("predicate"),
+            LibrdfNode::fromUriString("resource"));
 }

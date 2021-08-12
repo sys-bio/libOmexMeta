@@ -89,13 +89,6 @@ namespace omexmeta {
         static bool namespaceKnown(const std::string &ns);
 
         /**
-         * @brief getter for the node contained by the Predicate object
-         * @return the librdf_node* pointer for the redland libraries under the hood
-         *
-         */
-        [[nodiscard]] librdf_node *get() const;
-
-        /**
          * @brief stores the valid terms that are allowed in a particular predicate subclass
          * @return a vector of strings
          *
@@ -157,7 +150,7 @@ namespace omexmeta {
          * this Predicate with node
          * @param node the new librdf_node pointer to use in the Predicate
          */
-        void setNode(librdf_node *node);
+        void setNode(LibrdfNode& node);
 
         LibrdfNode getNode();
 
@@ -175,7 +168,7 @@ namespace omexmeta {
 
         LibrdfNode node_;
 
-        explicit Predicate(librdf_node *node);
+        explicit Predicate(LibrdfNode& node);
     };
 
     /**

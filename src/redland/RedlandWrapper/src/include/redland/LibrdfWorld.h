@@ -28,6 +28,10 @@
 
 namespace redland {
 
+    int librdfLogHandler(void *user_data, librdf_log_message *message);
+
+    void raptorLogHandler(void *user_data, raptor_log_message *message);
+
 
     /*
      * @brief C++ wrapper around librdf_world.
@@ -68,6 +72,8 @@ namespace redland {
         static rasqal_world *getRasqal();
 
         static void free(librdf_world *world);
+
+        static void initLoggers();
 
     };
 

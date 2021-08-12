@@ -30,11 +30,11 @@ using namespace redland;
 namespace omexmeta {
 
 
-    int librdfLogHandler(void* user_data, librdf_log_message * message);
-
-    // typedef void (*raptor_log_handler)(void *user_data, raptor_log_message *message);
-    void raptorLogHandler(void* user_data, raptor_log_message * message);
-
+//    int librdfLogHandler(void* user_data, librdf_log_message * message);
+//
+//    // typedef void (*raptor_log_handler)(void *user_data, raptor_log_message *message);
+//    void raptorLogHandler(void* user_data, raptor_log_message * message);
+//
 
     typedef std::unordered_map<std::string, std::string> NamespaceMap;
 
@@ -63,13 +63,13 @@ namespace omexmeta {
          * http://librdf.org/docs/api/index.html for more details.
          */
         explicit RDF(const std::string &storage_type = "memory",
-                     const std::string &storage_name = "SemsimStore",
+                     const std::string &storage_name = "OmexMetaStore",
                      const char *storage_options = nullptr, const char *model_options = nullptr);
 
         /**
          * @brief destructor for RDF
          */
-        ~RDF();
+        ~RDF() = default;
 
         /**
          * @brief copy constructor for RDF class
@@ -82,8 +82,7 @@ namespace omexmeta {
         /**
          * @brief move constructor for RDF class
          */
-        RDF(RDF &&rdf)
-        noexcept;
+        RDF(RDF &&rdf)noexcept;
 
         /**
          * @brief copy assignment constructor for RDF ojects
@@ -201,9 +200,9 @@ namespace omexmeta {
          */
          Editor *toEditorPtr(const std::string &xml, bool generate_new_metaids = false, bool sbml_semantic_extraction = true) override;
 
-        librdf_model *getModel() const override;
+        LibrdfModel getModel() const override;
 
-        librdf_storage *getStorage() const override;
+        LibrdfStorage getStorage() const override;
 
         int commitTransaction() const override;
 

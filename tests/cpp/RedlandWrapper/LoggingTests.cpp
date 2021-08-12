@@ -2,11 +2,12 @@
 // Created by Ciaran on 05/08/2021.
 //
 #include "cpp/omexmeta/SBMLFactory.h"
+#include "redland/Logger.h"
 #include "spdlog/sinks/basic_file_sink.h"
 #include "spdlog/sinks/stdout_color_sinks.h"
 #include "spdlog/spdlog.h"
 #include "gtest/gtest.h"
-#include "redland/Logger.h"
+#include <redland/LibrdfParser.h>
 
 using namespace redland;
 
@@ -55,10 +56,13 @@ TEST_F(LoggingTests, SwitchToFileLogger){
 }
 
 TEST_F(LoggingTests, UseFileLogger) {
+    LibrdfStorage storage;
+    LibrdfModel model(storage);
     Logger::getLogger()->setLevel(Logger::LogLevel::info);
     Logger::getLogger()->fileLogger(p);
     std::string sbml = SBMLFactory::getSBML(SBML_INVALID_METAIDS);
-    RDF rdf = RDF::fromString(sbml, "turtle");
+    redland::LibrdfParser parser("turtle");
+    parser.parseString(sbml, model, "Nothing");
     ASSERT_TRUE(std::filesystem::exists(p));
 }
 

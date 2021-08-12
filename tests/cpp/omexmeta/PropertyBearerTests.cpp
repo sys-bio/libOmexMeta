@@ -27,17 +27,15 @@ public:
         model = LibrdfModel(storage);
     };
     ~PhysicalPropertyBearerTests() override {
-        model.freeModel();
-        storage.freeStorage();
     };
 };
 
 
 TEST_F(PhysicalPropertyBearerTests, TestSubjectStr) {
     LibrdfNode subject = LibrdfNode::fromUriString("metaid004");
-    PhysicalProperty resource = PhysicalProperty(model.get(), uriHandler).about("metaid004").isVersionOf("OPB:OPB_12345");
+    PhysicalProperty resource = PhysicalProperty(model, uriHandler).about("metaid004").isVersionOf("OPB:OPB_12345");
     PropertyBearer propertyBearer(
-            model.get(),
+            model,
             uriHandler,
             resource,
             PHYSICAL_ENTITY);
@@ -49,9 +47,9 @@ TEST_F(PhysicalPropertyBearerTests, TestSubjectStr) {
 
 TEST_F(PhysicalPropertyBearerTests, TestSubjectNodeToStr) {
     LibrdfNode subject = LibrdfNode::fromUriString("metaid004");
-    PhysicalProperty resource = PhysicalProperty(model.get(), uriHandler).about("metaid004").isVersionOf("OPB:OPB_12345");
+    PhysicalProperty resource = PhysicalProperty(model, uriHandler).about("metaid004").isVersionOf("OPB:OPB_12345");
     PropertyBearer propertyBearer(
-            model.get(),
+            model,
             uriHandler,
             resource,
             PHYSICAL_ENTITY);

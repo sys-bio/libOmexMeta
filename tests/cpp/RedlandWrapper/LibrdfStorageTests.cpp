@@ -72,7 +72,7 @@ TEST_F(LibrdfStorageTests, TestSQLiteStorage) {
 
 TEST_F(LibrdfStorageTests, TestMemoryStorage) {
     std::filesystem::path fname = std::filesystem::current_path() += "StorageName.db";
-    LibrdfStorage storage = LibrdfStorage("memory", fname, "new='yes'");
+    LibrdfStorage storage("memory", fname.string(), "new='yes'");
     LibrdfModel model(storage);
     model.addStatement(statement);
     ASSERT_EQ(1, model.size());
@@ -91,7 +91,7 @@ TEST_F(LibrdfStorageTests, TesthashesMemory) {
 
 TEST_F(LibrdfStorageTests, TestfileMemory) {
     std::filesystem::path fname = std::filesystem::current_path() += "StorageName.db";
-    LibrdfStorage storage = LibrdfStorage("file", fname);
+    LibrdfStorage storage("file", fname.string());
     LibrdfModel model(storage);
     model.addStatement(statement);
     ASSERT_EQ(1, model.size());

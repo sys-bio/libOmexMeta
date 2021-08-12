@@ -91,7 +91,7 @@ namespace omexmeta {
                     LibrdfNode::fromBlank(blank),
                     LibrdfNode::fromUriString(rdf_li),
                     LibrdfNode::fromBlank(blank2));
-            librdf_model_remove_statement(rdf_->getModel(), t1.getStatement());
+            rdf_->getModel().removeStatement(t1);
 
             // remove other triples with form
             //      r1r8368r6; http://xmlns.com/foaf/0.1/mbox; nikoloski@mpimp-golm.mpg.de
@@ -101,7 +101,7 @@ namespace omexmeta {
                     LibrdfNode::fromBlank(blank2),
                     LibrdfNode::fromUriString(p),
                     LibrdfNode::fromLiteral(r, "", ""));
-            librdf_model_remove_statement(rdf_->getModel(), t2.getStatement());
+            rdf_->getModel().removeStatement(t2);
 
             // And remove the bag
             Triple t4(
@@ -109,35 +109,35 @@ namespace omexmeta {
                     LibrdfNode::fromBlank(blank),
                     LibrdfNode::fromUriString(rdf_type),
                     LibrdfNode::fromUriString(rdf_bag));
-            librdf_model_remove_statement(rdf_->getModel(), t4.getStatement());
+            rdf_->getModel().removeStatement(t4);
 
             Triple t5(
                     rdf_->getUriHandler(),
                     LibrdfNode::fromUriString(subject1),
                     LibrdfNode::fromUriString(creatorType1),
                     LibrdfNode::fromBlank(blank));
-            librdf_model_remove_statement(rdf_->getModel(), t5.getStatement());
+            rdf_->getModel().removeStatement(t5);
 
             Triple t5b(
                     rdf_->getUriHandler(),
                     LibrdfNode::fromUriString(subject1),
                     LibrdfNode::fromUriString(creatorType2),
                     LibrdfNode::fromBlank(blank));
-            librdf_model_remove_statement(rdf_->getModel(), t5b.getStatement());
+            rdf_->getModel().removeStatement(t5b);
 
             Triple t6(
                     rdf_->getUriHandler(),
                     LibrdfNode::fromUriString(subject1),
                     LibrdfNode::fromUriString(creatorType1),
                     LibrdfNode::fromBlank(blank2));
-            librdf_model_add_statement(rdf_->getModel(), t6.getStatement());
+            rdf_->getModel().addStatement(t6);
 
             Triple t7(
                     rdf_->getUriHandler(),
                     LibrdfNode::fromBlank(blank2),
                     LibrdfNode::fromUriString(p),
                     LibrdfNode::fromLiteral(r, "", ""));
-            librdf_model_add_statement(rdf_->getModel(), t7.getStatement());
+            rdf_->getModel().addStatement(t7);
         }
     }
 
@@ -169,14 +169,15 @@ namespace omexmeta {
                         "   FILTER (?p2 != rdf:type) \n"// http://www.w3.org/1999/02/22-rdf-syntax-ns#_1; not rdf:type
                         "}\n";
 
-        Query query(rdf_->getModel(), q);
-        auto results = query.resultsAsMap();
+        LibrdfQuery query(q, rdf_->getModel());
+        LibrdfQueryResults queryResults = query.execute();
+        auto results = queryResults.map();
 
-//        if (results["s1"].size() <= 1) {
-//            // return when we only have 1 or 0 search results
-//            // to prevent "cross reactivity" with PurgeRDFBag::purgeListBagEntries
-////            return;
-//        }
+        //        if (results["s1"].size() <= 1) {
+        //            // return when we only have 1 or 0 search results
+        //            // to prevent "cross reactivity" with PurgeRDFBag::purgeListBagEntries
+        ////            return;
+        //        }
 
         for (int i = 0; i < results["s1"].size(); i++) {
             const std::string &s1 = results["s1"][i];
@@ -186,32 +187,33 @@ namespace omexmeta {
             const std::string &uriResource = results["uriResource"][i];
 
             // useful for debugging:
-//            std::cout << s1 << "; " << p << "; " << b << "; " << p2 << "; " << uriResource << std::endl;
+            //            std::cout << s1 << "; " << p << "; " << b << "; " << p2 << "; " << uriResource << std::endl;
             Triple t1(
                     rdf_->getUriHandler(),
                     LibrdfNode::fromUriString(s1),
                     LibrdfNode::fromUriString(p),
                     LibrdfNode::fromBlank(b));
-            librdf_model_remove_statement(rdf_->getModel(), t1.getWithoutIncrement());
+            rdf_->getModel().removeStatement(t1);
+
             Triple t2(
                     rdf_->getUriHandler(),
                     LibrdfNode::fromBlank(b),
                     LibrdfNode::fromUriString("http://www.w3.org/1999/02/22-rdf-syntax-ns#type"),
                     LibrdfNode::fromUriString("http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag"));
-            librdf_model_remove_statement(rdf_->getModel(), t2.getWithoutIncrement());
+            rdf_->getModel().removeStatement(t2);
 
             Triple t3(
                     rdf_->getUriHandler(),
                     LibrdfNode::fromBlank(b),
                     LibrdfNode::fromUriString(p2),
                     LibrdfNode::fromUriString(uriResource));
-            librdf_model_remove_statement(rdf_->getModel(), t3.getWithoutIncrement());
+            rdf_->getModel().removeStatement(t3);
             Triple t4(
                     rdf_->getUriHandler(),
                     LibrdfNode::fromUriString(s1),
                     LibrdfNode::fromUriString(p),
                     LibrdfNode::fromUriString(uriResource));
-            librdf_model_add_statement(rdf_->getModel(), t4.getWithoutIncrement());
+            rdf_->getModel().addStatement(t4);
         }
     }
 
@@ -244,8 +246,9 @@ namespace omexmeta {
                         "   FILTER isUri(?r)\n"
                         "}\n";
 
-        Query query(rdf_->getModel(), q);
-        auto results = query.resultsAsMap();
+        LibrdfQuery query(q, rdf_->getModel());
+        LibrdfQueryResults queryResults = query.execute();
+        auto results = queryResults.map();
 
         //        if (results["s1"].size() <= 1) {
         //            // return when we only have 1 or 0 search results
@@ -267,25 +270,28 @@ namespace omexmeta {
 
             Triple t1(rdf_->getUriHandler(),
                       LibrdfNode::fromBlank(b1), LibrdfNode::fromUriString(rdf_li), LibrdfNode::fromBlank(b2));
-            librdf_model_remove_statement(rdf_->getModel(), t1.getWithoutIncrement());
+            rdf_->getModel().removeStatement(t1);
+
             Triple t2(
                     rdf_->getUriHandler(),
                     LibrdfNode::fromBlank(b1),
                     LibrdfNode::fromUriString("http://www.w3.org/1999/02/22-rdf-syntax-ns#type"),
                     LibrdfNode::fromUriString("http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag"));
-            librdf_model_remove_statement(rdf_->getModel(), t2.getWithoutIncrement());
+            rdf_->getModel().removeStatement(t2);
+
             Triple t3(
                     rdf_->getUriHandler(),
                     LibrdfNode::fromBlank(b2),
                     LibrdfNode::fromUriString(p2),
                     LibrdfNode::fromUriString(r));
-            librdf_model_remove_statement(rdf_->getModel(), t3.getWithoutIncrement());
+            rdf_->getModel().removeStatement(t3);
+
             Triple t4(
                     rdf_->getUriHandler(),
                     LibrdfNode::fromBlank(b1),
                     LibrdfNode::fromUriString(p2),
                     LibrdfNode::fromUriString(r));
-            librdf_model_add_statement(rdf_->getModel(), t4.getWithoutIncrement());
+            rdf_->getModel().addStatement(t4);
         }
     }
 

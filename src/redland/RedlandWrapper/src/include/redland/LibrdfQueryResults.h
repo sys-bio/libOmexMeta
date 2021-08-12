@@ -135,6 +135,9 @@ namespace redland {
 
     private:
 
+        ResultsMap map_;
+        bool mapExecuted = false;
+
         std::vector<std::string> valid_output_formats_ = {
                 "xml",
                 "json",

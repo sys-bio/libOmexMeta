@@ -48,8 +48,8 @@ namespace omexmeta {
         virtual void toFile(const std::string &filename, const std::string &syntax = "turtle", const char *mime_type = nullptr, const char *type_uri = nullptr) = 0;
         virtual Editor toEditor(const std::string &xml, bool generate_new_metaids = false, bool sbml_semantic_extraction = true) = 0;
         virtual Editor *toEditorPtr(const std::string &xml, bool generate_new_metaids = false, bool sbml_semantic_extraction = true) = 0;
-        virtual librdf_model *getModel() const = 0;
-        virtual librdf_storage *getStorage() const = 0;
+        virtual LibrdfModel getModel() const = 0;
+        virtual LibrdfStorage getStorage() const = 0;
         virtual int commitTransaction() const = 0;
         virtual int startTransaction() const = 0;
         virtual void *getTransactionHandle() const = 0;

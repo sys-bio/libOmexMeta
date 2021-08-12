@@ -114,34 +114,29 @@ namespace redland {
     }
 
     ResultsMap LibrdfQueryResults::map() {
-        if (isFinished()) {
-            std::string err = "Cannot make map from a spent LibrdfQueryResult - it has "
-                              "already been consumed by creating a map. Create a new LibrdfQueryResults "
-                              "by repeating the query.";
-            REDLAND_WARN(err);
-            spdlog::dump_backtrace();
-            throw std::logic_error(err);
-        }
-        ResultsMap map;
-        // configure a data structure for storing the results
-        // binding name is x, y, z of sparql query for example.
-        for (int i = 0; i < getBindingsCount(); i++) {
-            std::string binding_name = getBindingsName(i);
-            map[binding_name] = std::vector<std::string>();
-        }
+        if (!mapExecuted) {
+            // only ever do this once
+            mapExecuted = true;
+            // configure a data structure for storing the results
+            // binding name is x, y, z of sparql query for example.
+            for (int i = 0; i < getBindingsCount(); i++) {
+                std::string binding_name = getBindingsName(i);
+                map_[binding_name] = std::vector<std::string>();
+            }
 
-        // iterate over bindings until no more left
-        bool done = false;
-        while (!done) {
-            for (auto &key : map) {
-                map[key.first].push_back(getBindingValueByName(key.first));
-            }
-            int failed = next();
-            if (failed) {
-                done = true;
+            // iterate over bindings until no more left
+            bool done = false;
+            while (!done) {
+                for (auto &key : map_) {
+                    map_[key.first].push_back(getBindingValueByName(key.first));
+                }
+                int failed = next();
+                if (failed) {
+                    done = true;
+                }
             }
         }
-        return map;
+        return map_;
     }
 
     void LibrdfQueryResults::printQueryResults() {

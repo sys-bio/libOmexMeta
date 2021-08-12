@@ -23,15 +23,12 @@ public:
         model = LibrdfModel(storage);
     }
 
-    ~PhysicalPropertyTests() override {
-        model.freeModel();
-        storage.freeStorage();
-    }
+    ~PhysicalPropertyTests() override {}
 };
 
 
 TEST_F(PhysicalPropertyTests, TestPhysicalProperty) {
-    PhysicalProperty physicalProperty(model.get(), uriHandler);
+    PhysicalProperty physicalProperty(model, uriHandler);
     physicalProperty.about("species0000", MODEL_URI)
             .isVersionOf("opb/OPB_12345")
             .isPropertyOf("entity0", MODEL_URI);
@@ -42,7 +39,7 @@ TEST_F(PhysicalPropertyTests, TestPhysicalProperty) {
     ASSERT_STREQ("opb/OPB_12345", physicalProperty.getIsVersionOfValue().c_str());
 }
 TEST_F(PhysicalPropertyTests, TestPhysicalPropertyAutoGenerateAbout) {
-    PhysicalProperty physicalProperty(model.get(), uriHandler);
+    PhysicalProperty physicalProperty(model, uriHandler);
     physicalProperty
             .isVersionOf("opb/OPB_12345")
             .isPropertyOf("entity0", MODEL_URI);
@@ -55,16 +52,16 @@ TEST_F(PhysicalPropertyTests, TestPhysicalPropertyAutoGenerateAbout) {
     ASSERT_STREQ("opb/OPB_12345", physicalProperty.getIsVersionOfValue().c_str());
 }
 TEST_F(PhysicalPropertyTests, TestEquality) {
-    PhysicalProperty physicalProperty1(model.get(), uriHandler);
-    PhysicalProperty physicalProperty2(model.get(), uriHandler);
+    PhysicalProperty physicalProperty1(model, uriHandler);
+    PhysicalProperty physicalProperty2(model, uriHandler);
     physicalProperty1.about("sub", MODEL_URI).isVersionOf("OPB/OPB_1234");
     physicalProperty2.about("sub", MODEL_URI).isVersionOf("OPB/OPB_1234");
     ASSERT_EQ(physicalProperty1, physicalProperty2);
 }
 
 TEST_F(PhysicalPropertyTests, TestInequality) {
-    PhysicalProperty physicalProperty1(model.get(), uriHandler);
-    PhysicalProperty physicalProperty2(model.get(), uriHandler);
+    PhysicalProperty physicalProperty1(model, uriHandler);
+    PhysicalProperty physicalProperty2(model, uriHandler);
     physicalProperty1.about("sub1", MODEL_URI).isVersionOf("OPB/OPB_1234");
     physicalProperty2.about("sub2", MODEL_URI).isVersionOf("OPB/OPB_1234");
     ASSERT_NE(physicalProperty1, physicalProperty2);
@@ -72,7 +69,7 @@ TEST_F(PhysicalPropertyTests, TestInequality) {
 
 
 TEST_F(PhysicalPropertyTests, OptionalProperty) {
-    PhysicalProperty physicalProperty(model.get(), uriHandler);
+    PhysicalProperty physicalProperty(model, uriHandler);
     physicalProperty.about("property_metaid_0", LOCAL_URI);
     Triples triples = physicalProperty.toTriples();
     ASSERT_EQ(1, triples.size());

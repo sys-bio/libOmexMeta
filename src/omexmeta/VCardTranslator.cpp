@@ -2,8 +2,7 @@
 // Created by Ciaran on 20/04/2021.
 //
 
-#include "redland/LibrdfModel.h"
-#include <include/redland/Query.h>
+#include "redland/RedlandAPI.h"
 #include <omexmeta/RDF.h>
 #include <omexmeta/VCardTranslator.h>
 
@@ -32,9 +31,9 @@ namespace omexmeta {
                         "?resourceBlank ?vCardPred ?literal\n"
                         "}\n";
 
-        Query query(rdf_->getModel(), q);
-        auto results = query.resultsAsMap();
-
+        LibrdfQuery query(q, rdf_->getModel());
+        LibrdfQueryResults queryResults = query.execute();
+        auto results = queryResults.map();
 
         for (int i = 0; i < results["subjectBlank"].size(); i++) {
             std::string &subjectBlank = results["subjectBlank"][i];
@@ -56,8 +55,8 @@ namespace omexmeta {
                     LibrdfNode::fromUriString(vCardPred),
                     LibrdfNode::fromLiteral(literal, "", ""));
 
-            librdf_model_remove_statement(rdf_->getModel(), nTrip1.getWithoutIncrement());
-            librdf_model_remove_statement(rdf_->getModel(), nTrip2.getWithoutIncrement());
+            rdf_->getModel().removeStatement(nTrip1);
+            rdf_->getModel().removeStatement(nTrip2);
 
             // now add the information that we took out, back into the model
             Triple nTrip3(
@@ -65,7 +64,7 @@ namespace omexmeta {
                     LibrdfNode::fromBlank(subjectBlank),
                     LibrdfNode::fromUriString(vCardPred),
                     LibrdfNode::fromLiteral(literal, "", ""));
-            librdf_model_add_statement(rdf_->getModel(), nTrip3.getWithoutIncrement());
+            rdf_->getModel().addStatement(nTrip3);
         }
     }
 
@@ -76,8 +75,9 @@ namespace omexmeta {
                         vcardUri + "> ?resourceLiteral \n"
                                    "}\n";
 
-        Query query(rdf_->getModel(), q);
-        auto results = query.resultsAsMap();
+        LibrdfQuery query(q, rdf_->getModel());
+        LibrdfQueryResults queryResults = query.execute();
+        auto results = queryResults.map();
 
         for (int i = 0; i < results["subjectBlank"].size(); i++) {
             std::string &subjectBlank = results["subjectBlank"][i];
@@ -88,13 +88,13 @@ namespace omexmeta {
                     LibrdfNode::fromBlank(subjectBlank),
                     LibrdfNode::fromUriString(vcardUri),
                     LibrdfNode::fromLiteral(resourceLiteral, "", ""));
-            librdf_model_remove_statement(rdf_->getModel(), old.getWithoutIncrement());
+            rdf_->getModel().removeStatement(old);
             Triple new_(
                     rdf_->getUriHandler(),
                     LibrdfNode::fromBlank(subjectBlank),
                     Foaf(foafReplacement).getNode(),
                     LibrdfNode::fromLiteral(resourceLiteral, "", ""));
-            librdf_model_add_statement(rdf_->getModel(), new_.getWithoutIncrement());
+            rdf_->getModel().addStatement(new_);
         }
     }
 
@@ -117,8 +117,9 @@ namespace omexmeta {
                         "?resourceBlank <http://www.w3.org/2001/vcard-rdf/3.0#Orgname> ?literal\n"
                         "}\n";
 
-        Query query(rdf_->getModel(), q);
-        auto results = query.resultsAsMap();
+        LibrdfQuery query(q, rdf_->getModel());
+        LibrdfQueryResults queryResults = query.execute();
+        auto results = queryResults.map();
 
         for (int i = 0; i < results["subjectBlank"].size(); i++) {
             std::string &subjectBlank = results["subjectBlank"][i];
@@ -131,21 +132,21 @@ namespace omexmeta {
                     LibrdfNode::fromBlank(subjectBlank),
                     LibrdfNode::fromUriString("http://www.w3.org/2001/vcard-rdf/3.0#ORG"),
                     LibrdfNode::fromBlank(resourceBlank));
-            librdf_model_remove_statement(rdf_->getModel(), old1.getWithoutIncrement());
+            rdf_->getModel().removeStatement(old1);
 
             Triple old2(
                     rdf_->getUriHandler(),
                     LibrdfNode::fromBlank(resourceBlank),
                     LibrdfNode::fromUriString("http://www.w3.org/2001/vcard-rdf/3.0#Orgname"),
                     LibrdfNode::fromLiteral(literal, "", ""));
-            librdf_model_remove_statement(rdf_->getModel(), old2.getWithoutIncrement());
+            rdf_->getModel().removeStatement(old2);
 
             Triple new_(
                     rdf_->getUriHandler(),
                     LibrdfNode::fromBlank(subjectBlank),
                     Foaf("Organization").getNode(),
                     LibrdfNode::fromLiteral(literal, "", ""));
-            librdf_model_add_statement(rdf_->getModel(), new_.getWithoutIncrement());
+            rdf_->getModel().addStatement(new_);
         }
     }
 
