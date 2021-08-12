@@ -5,7 +5,7 @@
 #include "librdf.h"
 #include "raptor2.h"
 #include "redland/LibrdfWorld.h"
-
+#include "redland/Logger.h"
 /*
  * developer notes. Do not try to implement a deep copy/clone
  * method for librdf objects. There is a mechanism that exists, presumably for
@@ -16,15 +16,17 @@
 
 namespace redland {
 
-//    LibrdfUri LibrdfUri::fromRawPtr(librdf_uri *uri) {
-//        return LibrdfUri(uri);
-//    }
-
     LibrdfUri::LibrdfUri(const std::string &uri)
         : RefCountedRedlandType<librdf_uri, uri_free_func>(
                   librdf_new_uri(LibrdfWorld::getWorld(), (const unsigned char *) uri.c_str()),
-                  librdf_free_uri) {}
+                  librdf_free_uri) {
+        REDLAND_DEBUG("Instantiated a LibrdfUri instance");
+    }
 
+    LibrdfUri::LibrdfUri(librdf_uri *uri)
+        : RefCounted_librdf_uri(uri, librdf_free_uri) {
+        REDLAND_DEBUG("Instantiated a LibrdfUri instance");
+    }
     std::string LibrdfUri::str() const {
         if (!obj_)
             throw RedlandNullPointerException("RedlandNullPointerException: LibrdfUri::str(): uri is null");
@@ -42,24 +44,24 @@ namespace redland {
         return str().empty();
     }
 
-//    void LibrdfUri::freeUri() {
-//        if (!obj_)
-//            return;
-//        // need to collect the usage count before
-//        // the call to librdf_free_uri, or the
-//        // count will have gone
-//        int usageCount = getUsage();
-//        librdf_free_uri(obj_);
-//
-//        // set to null if uri was freed and not decremented
-//        if (usageCount - 1 == 0) {
-//            obj_ = nullptr;
-//        }
-//    }
+    //    void LibrdfUri::freeUri() {
+    //        if (!obj_)
+    //            return;
+    //        // need to collect the usage count before
+    //        // the call to librdf_free_uri, or the
+    //        // count will have gone
+    //        int usageCount = getUsage();
+    //        librdf_free_uri(obj_);
+    //
+    //        // set to null if uri was freed and not decremented
+    //        if (usageCount - 1 == 0) {
+    //            obj_ = nullptr;
+    //        }
+    //    }
 
     LibrdfUri LibrdfUri::fromFilename(const std::string &filename) {
         librdf_uri *uri = librdf_new_uri_from_filename(LibrdfWorld::getWorld(), filename.c_str());
-        return {uri, librdf_free_uri}; // brace initializer, automatically calls the constructor
+        return {uri, librdf_free_uri};// brace initializer, automatically calls the constructor
     }
 
     LibrdfUri LibrdfUri::concatonate(librdf_uri *old_name, const std::string &local_name) {
@@ -97,14 +99,6 @@ namespace redland {
     bool LibrdfUri::operator!=(const LibrdfUri &rhs) const {
         return !(rhs == *this);
     }
-
-//    int LibrdfUri::getUsage() const {
-//        return librdf_uri_get_usage(obj_);
-//    }
-//
-//    void LibrdfUri::incrementUsage() const {
-//        librdf_uri_increment_usage(obj_);
-//    }
 
 
 }// namespace redland

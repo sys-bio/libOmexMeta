@@ -86,9 +86,9 @@ namespace redland {
 
         static LibrdfNode newEmptyNode();
 
-        raptor_term_type getRaptorTermType() const ;
+        raptor_term_type getRaptorTermType() const;
 
-        std::string str() const ;
+        std::string str() const;
 
         LibrdfUri getLiteralDatatype();
 
@@ -123,18 +123,17 @@ namespace redland {
         /**
          * @brief indicator for whether this is a blank node
          */
-         bool isBlank();
+        bool isBlank();
 
         /**
          * @brief indicator for whether this is a uri node
          */
-         bool isUri();
+        bool isUri();
 
         /**
          * @brief indicator for whether this is a literal node
          */
-         bool isLiteral();
-
+        bool isLiteral();
     };
 }// namespace redland
 

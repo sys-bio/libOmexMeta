@@ -185,8 +185,28 @@ TEST_F(LibrdfStatementTests, TestGetResourceNode) {
     LibrdfNode s = statement.getResourceNode();
     ASSERT_EQ(3, s.getUsage());
 }
+TEST_F(LibrdfStatementTests, setSubjectNode) {
+    LibrdfStatement statement;
+    LibrdfNode subjectNode = LibrdfNode::fromUriString("https://subject.com");
+    statement.setSubject(subjectNode);
+    ASSERT_STREQ("https://subject.com", statement.getSubjectNode().str().c_str() );
+}
 
-//
+TEST_F(LibrdfStatementTests, setPredicateNode) {
+    LibrdfStatement statement;
+    LibrdfNode predicateNode = LibrdfNode::fromUriString("https://predicate.com");
+    statement.setPredicate(predicateNode);
+    ASSERT_STREQ("https://predicate.com", statement.getPredicateNode().str().c_str() );
+}
+
+TEST_F(LibrdfStatementTests, setResourceNode) {
+    LibrdfStatement statement;
+    LibrdfNode resourceNode = LibrdfNode::fromUriString("https://resource.com");
+    statement.setResource(resourceNode);
+    ASSERT_STREQ("https://resource.com", statement.getResourceNode().str().c_str() );
+}
+
+
 TEST_F(LibrdfStatementTests, CopyConstruct) {
     LibrdfNode n1 = LibrdfNode::fromUriString("node1");
     LibrdfNode n2 = LibrdfNode::fromUriString("node2");

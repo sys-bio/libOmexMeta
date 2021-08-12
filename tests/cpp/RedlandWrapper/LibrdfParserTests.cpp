@@ -99,7 +99,7 @@ TEST_F(LibrdfParserTests, TestParseFromAFile) {
     }
 
     LibrdfParser parser("rdfxml");
-    parser.parseFile(fname, model);
+    parser.parseFile(fname, model, "baseUri");
 
     int actual = model.size();
     int expected = 1;

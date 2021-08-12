@@ -167,23 +167,6 @@ namespace omexmeta {
          */
         TripleVector::iterator end();
 
-        /**
-         * @brief Serialize the Triples object to @param format
-         * @param format the format to serialize
-         * @param base argument for RDF graph. This is hidden so basically irrelevant.
-         * @param omex_name the omex portion of the current local uri. Default is NewOmex.omex
-         * @param model_name the omex portion of the current local uri. Default is NewModel.xml
-         * @details See RDF::str for more details regarding arguments. This method
-         * is only for checking to see what Triples object looks like when serialized. The
-         * annotations are not added to the main RDF graph. This is analogous to
-         * Triple::str.
-         */
-        std::string str(
-                const std::string &format = "turtle",
-                std::string base = (std::filesystem::current_path() /= "annotations.rdf").string(),
-                std::string omex_name = "NewOmex.omex/", std::string model_name = "NewModel.xml#"
-                );
-
         void freeTriples();
 
         /**

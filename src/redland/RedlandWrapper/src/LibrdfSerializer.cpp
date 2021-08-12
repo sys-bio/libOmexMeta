@@ -1,9 +1,12 @@
 #include "redland/LibrdfSerializer.h"
+#include "redland/Logger.h"
 
 
 namespace redland {
-    LibrdfSerializer::LibrdfSerializer(librdf_serializer *serializer) 
-        : RedlandType_librdf_serializer(serializer, librdf_free_serializer) {}
+    LibrdfSerializer::LibrdfSerializer(librdf_serializer *serializer)
+        : RedlandType_librdf_serializer(serializer, librdf_free_serializer) {
+        REDLAND_DEBUG("Instantiated a LibrdfSerializer instance");
+    }
 
 
     LibrdfSerializer::LibrdfSerializer(const char *format, const char *mime_type, const char *type_uri) {
@@ -13,15 +16,14 @@ namespace redland {
         if (type_uri)
             type_uri_ = librdf_new_uri(LibrdfWorld::getWorld(), (const unsigned char *) type_uri);
         obj_ = librdf_new_serializer(LibrdfWorld::getWorld(),
-                                            format, mime_type, type_uri_
-        );
+                                     format, mime_type, type_uri_);
         setOptions();
+        REDLAND_DEBUG("Instantiated a LibrdfSerializer instance");
     }
 
     void LibrdfSerializer::setNamespace(const std::string &ns, const std::string &prefix) const {
         LibrdfUri u(ns);
-        librdf_serializer_set_namespace(obj_, u.get(), prefix.c_str());
-        u.freeObj();
+        librdf_serializer_set_namespace(obj_, u.getWithoutIncrement(), prefix.c_str());
     }
 
     void LibrdfSerializer::setFeature(const std::string &ns, const std::string &prefix) const {
@@ -38,8 +40,7 @@ namespace redland {
             throw RedlandNullPointerException("Writer::toString(): raptor_iostream");
         LibrdfUri u(uri);
         librdf_serializer_serialize_model_to_iostream(
-                obj_, u.getWithoutIncrement(), model.getWithoutIncrement(), ios
-        );
+                obj_, u.getWithoutIncrement(), model.getWithoutIncrement(), ios);
         const char *s = (const char *) buffer_to_hold_string;
         std::string output(s);
         free(buffer_to_hold_string);
@@ -58,9 +59,9 @@ namespace redland {
                 "nquads",
                 "html",
                 // unsupported by libOmexMeta
-//                "rdfxml-xmp",
-//                "rss-1.0",
-//                "atom",
+                //                "rdfxml-xmp",
+                //                "rss-1.0",
+                //                "atom",
         };
         if (std::find(v.begin(), v.end(), name) != v.end()) {
             // string accepted return
@@ -102,5 +103,4 @@ namespace redland {
 
     int toIOStream(const LibrdfUri &uri, const LibrdfModel *model, const RaptorIOStream &stream);
 
-}
-
+}// namespace redland

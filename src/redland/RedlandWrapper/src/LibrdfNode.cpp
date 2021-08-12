@@ -3,7 +3,7 @@
 //
 
 #include "redland/LibrdfNode.h"
-
+#include "redland/Logger.h"
 
 /*
  * todo put name of exception in all error messages.
@@ -14,11 +14,15 @@ namespace redland {
 
 
     LibrdfNode::LibrdfNode(librdf_node *node)
-        : RefCounted_librdf_node(node, librdf_free_node) {}
+        : RefCounted_librdf_node(node, librdf_free_node) {
+        REDLAND_DEBUG("Instantiated a LibrdfNode instance");
+    }
 
     LibrdfNode::LibrdfNode(const LibrdfUri &uri)
-        : RefCounted_librdf_node(LibrdfNode::fromUriString(uri.str()).get(), librdf_free_node){};
-    
+        : RefCounted_librdf_node(LibrdfNode::fromUriString(uri.str()).get(), librdf_free_node) {
+        REDLAND_DEBUG("Instantiated a LibrdfNode instance");
+    };
+
     //todo the content of thos method really belongs somewhere else
     LibrdfNode LibrdfNode::fromUriString(const std::string &uri_string) {
         std::string identifier_dot_org = "https://identifiers.org/";
@@ -88,6 +92,8 @@ namespace redland {
             uri_string_ = uri_string;
         }
 
+//        LibrdfUri uri(uri_string);
+//        librdf_node* n = librdf_new_node_from_uri(LibrdfWorld::getWorld(), uri.getWithoutIncrement());
         librdf_node *n = librdf_new_node_from_uri_string(
                 LibrdfWorld::getWorld(), (const unsigned char *) uri_string_.c_str());
         return LibrdfNode(n);
@@ -95,7 +101,7 @@ namespace redland {
 
     LibrdfNode LibrdfNode::fromRelativeUri(const std::string &uri_string, const std::string &base_uri) {
         LibrdfUri uri(base_uri);
-        librdf_uri *u = librdf_new_uri_relative_to_base(uri.get(), (const unsigned char *) uri_string.c_str());
+        librdf_uri *u  = librdf_new_uri_relative_to_base(uri.get(), (const unsigned char *) uri_string.c_str());
         librdf_node *n = librdf_new_node_from_uri(LibrdfWorld::getWorld(), u);
         return LibrdfNode(n);
     }
@@ -145,7 +151,8 @@ namespace redland {
                 xml_language_,
                 literal_datatype_uri_);
         librdf_free_uri(literal_datatype_uri_);
-        return LibrdfNode(n);
+        LibrdfNode node(n);
+        return node;
     }
 
     LibrdfNode LibrdfNode::newEmptyNode() {
@@ -185,7 +192,7 @@ namespace redland {
     }
 
     LibrdfUri LibrdfNode::getLiteralDatatype() {
-        LibrdfUri uri = LibrdfUri(librdf_node_get_literal_value_datatype_uri(obj_));
+        LibrdfUri uri(librdf_node_get_literal_value_datatype_uri(obj_));
         uri.incrementUsage();
         return uri;
     }

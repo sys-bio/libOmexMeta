@@ -1,14 +1,18 @@
 #include "redland/LibrdfStorage.h"
-
+#include "redland/Logger.h"
 
 namespace redland {
     LibrdfStorage::LibrdfStorage()
         : RefCounted_librdf_storage(
                   librdf_new_storage(LibrdfWorld::getWorld(), "memory", "libOmexMetaStore", nullptr),
-                  librdf_free_storage) {}
+                  librdf_free_storage) {
+        REDLAND_DEBUG("Instantiated a LibrdfStorage instance");
+    }
 
     LibrdfStorage::LibrdfStorage(librdf_storage *storage)
-        : RefCounted_librdf_storage(storage, librdf_free_storage) {}
+        : RefCounted_librdf_storage(storage, librdf_free_storage) {
+        REDLAND_DEBUG("Instantiated a LibrdfStorage instance");
+    }
 
     LibrdfStorage::LibrdfStorage(const std::string &storage_name, const std::string &name, const char *options) {
         if (std::find(valid_stores_.begin(), valid_stores_.end(), storage_name) == valid_stores_.end()) {
@@ -31,6 +35,7 @@ namespace redland {
         }
         obj_ = storage;
         freeFunc_ = librdf_free_storage;
+        REDLAND_DEBUG("Instantiated a LibrdfStorage instance");
     }
 
     int LibrdfStorage::addStatement(const LibrdfStatement &statement) {

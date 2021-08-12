@@ -115,6 +115,7 @@ namespace redland {
 
             // initialize loggers
             initLoggers();
+            REDLAND_DEBUG("Instantiated LibrdfWorld object");
         }
         return world_;
     }

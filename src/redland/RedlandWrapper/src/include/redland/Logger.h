@@ -5,6 +5,17 @@
 #ifndef LIBOMEXMETA_LOGGER2_H
 #define LIBOMEXMETA_LOGGER2_H
 
+/**
+ * @brief Enable logging macros to use trace and higher.
+ * @details We must still use spdlog::set_level to switch
+ * logging levels. Must be included before spdlog.
+ * @see https://github.com/gabime/spdlog/issues/1318
+ *
+ */
+#ifndef SPDLOG_ACTIVE_LEVEL
+#   define SPDLOG_ACTIVE_LEVEL SPDLOG_LEVEL_TRACE
+#endif
+
 #include "raptor2.h"
 #include "librdf.h"
 #include "spdlog/spdlog.h"
@@ -16,13 +27,13 @@ namespace redland {
 /**
  * wrapper macros around spdlog
  */
+
 #define REDLAND_INFO(msg) SPDLOG_INFO(msg)
 #define REDLAND_TRACE(msg) SPDLOG_TRACE(msg)
 #define REDLAND_DEBUG(msg) SPDLOG_DEBUG(msg)
 #define REDLAND_WARN(msg) SPDLOG_WARN(msg)
 #define REDLAND_ERROR(msg) SPDLOG_ERROR(msg)
 #define REDLAND_CRITICAL(msg) SPDLOG_CRITICAL(msg)
-
 
     /**
      * @brief Logging class for libOmexMeta. Implemented as a singleton
@@ -175,6 +186,14 @@ namespace redland {
         bool shouldBacktrace_ = false;
     };
 
+
+// quickly set logging levels
+#define LOGGER_SET_INFO() Logger::getLogger()->setLevel(Logger::LogLevel::info);
+#define LOGGER_SET_TRACE() Logger::getLogger()->setLevel(Logger::LogLevel::trace);
+#define LOGGER_SET_DEBUG() Logger::getLogger()->setLevel(Logger::LogLevel::debug);
+#define LOGGER_SET_WARN() Logger::getLogger()->setLevel(Logger::LogLevel::warn);
+#define LOGGER_SET_ERROR() Logger::getLogger()->setLevel(Logger::LogLevel::error);
+#define LOGGER_SET_CRITICAL() Logger::getLogger()->setLevel(Logger::LogLevel::critical);
 
 }// namespace redland
 

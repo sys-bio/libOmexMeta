@@ -17,12 +17,12 @@ namespace omexmeta {
         model_ = LibrdfModel(storage_, model_options);
 
         // initialises the logger ;-)
-        REDLAND_INFO("Created an empty RDF graph");
+        REDLAND_DEBUG("Created an empty RDF graph");
     }
 
 
     RDF::RDF(RDF &&rdf) noexcept {
-        REDLAND_INFO("Moved an RDF graph");
+        REDLAND_DEBUG("Moved an RDF graph");
         namespaces_ = std::move(rdf.namespaces_);
         seen_namespaces_ = std::move(rdf.seen_namespaces_);
         storage_ = std::move(rdf.storage_);
@@ -31,7 +31,7 @@ namespace omexmeta {
 
     RDF &RDF::operator=(RDF &&rdf) noexcept {
         if (this != &rdf) {
-            REDLAND_INFO("Move assigned an RDF graph");
+            REDLAND_DEBUG("Move assigned an RDF graph");
             namespaces_ = std::move(rdf.namespaces_);
             seen_namespaces_ = std::move(rdf.seen_namespaces_);
             storage_ = std::move(rdf.storage_);
@@ -177,7 +177,9 @@ namespace omexmeta {
     RDF RDF::fromFile(const std::string &filename, const std::string &syntax) {
         RDF rdf;
         LibrdfParser parser(syntax);
-        parser.parseFile(filename, rdf.model_);
+        parser.parseFile(filename, rdf.model_, rdf.getModelUri());
+
+        std::cout << "ttle:" << rdf.toString("turtle") << std::endl;
         rdf.classifyXmlTypeFromFile(filename, syntax);
         // update the list of "seen" namespaces
         rdf.seen_namespaces_ = parser.getSeenNamespaces(rdf.seen_namespaces_);
@@ -199,7 +201,7 @@ namespace omexmeta {
 
     void RDF::addFromFile(const std::string &filename, const std::string &syntax) {
         LibrdfParser parser(syntax);
-        parser.parseFile(filename, model_);
+        parser.parseFile(filename, model_, getModelUri());
         classifyXmlTypeFromFile(filename, syntax);
         // update the list of "seen" namespaces
         seen_namespaces_ = parser.getSeenNamespaces(seen_namespaces_);

@@ -80,11 +80,11 @@ namespace redland {
          * @brief parse a file into rdf graph. Use filename as base url
          * @param filename_uri location of filename on disk
          * @param model the current LibrdfModel
-         * @param local_uri the uri to use for base.
+         * @param baseUriString the uri to use for base.
          * @details This version of parse file is preferred as it will take
          * the local uri from RDF object and use it for the base.
          */
-        void parseFile(const std::string &filename_uri, const LibrdfModel &model) const;
+        void parseFile(const std::string &filename_uri, const LibrdfModel &model, const std::string& baseUriString) const;
 
         void parseUri(const std::string &uri_string, const LibrdfModel &model) const;
 

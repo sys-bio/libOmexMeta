@@ -253,6 +253,8 @@ TEST_F(CAPITests, TestSingularAnnotationSetPredicate) {
 }
 
 TEST_F(CAPITests, TestSingularAnnotationSetPredicateUri) {
+//    LOGGER_SET_DEBUG();
+//    REDLAND_DEBUG("Starting test TestSingularAnnotationSetPredicateUri");
     RDF *rdf_ptr = RDF_new();
 
     Editor *editor_ptr = RDF_toEditor(rdf_ptr,
@@ -268,6 +270,7 @@ TEST_F(CAPITests, TestSingularAnnotationSetPredicateUri) {
     SingularAnnotation_delete(singularAnnotation);
     free_c_char_star(actual);
     RDF_delete(rdf_ptr);
+    LOGGER_SET_WARN();
 }
 
 TEST_F(CAPITests, TestSingularAnnotationFull) {
@@ -282,7 +285,7 @@ TEST_F(CAPITests, TestSingularAnnotationFull) {
     SingularAnnotation_setResourceLiteral(singularAnnotation, "Cheese");
     Editor_addSingleAnnotation(editor_ptr, singularAnnotation);
 
-    char *actual = SingularAnnotation_str(singularAnnotation, "turtle");
+    char *actual = RDF_toString(rdf_ptr,  "turtle");
     printf("%s", actual);
     const char *expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
@@ -923,14 +926,6 @@ TEST_F(CAPITests, TestRDFTwice1) {
     RDF *rdf_ptr1 = RDF_new();
     RDF *rdf_ptr2 = RDF_new();
     ASSERT_NE(rdf_ptr1, rdf_ptr2);
-    RDF_delete(rdf_ptr1);
-    RDF_delete(rdf_ptr2);
-}
-
-TEST_F(CAPITests, TestRDFTwice2) {
-    RDF *rdf_ptr1 = RDF_new();
-    RDF *rdf_ptr2 = RDF_new();
-    ASSERT_NE(rdf_ptr1->getModel(), rdf_ptr2->getModel());
     RDF_delete(rdf_ptr1);
     RDF_delete(rdf_ptr2);
 }

@@ -274,7 +274,7 @@ TEST_F(RDFTests, TestReadSBMLModelWithBagFromFile) {
     f.close();
 
     RDF actualRdf = RDF::fromFile(fname.string(), "rdfxml");
-    ASSERT_TRUE(RDF::equals(&actualRdf, &expectedRdf, "turtle"));
+    ASSERT_TRUE(RDF::equals(&actualRdf, &expectedRdf, "turtle", true));
 
     // clean up file
     remove(fname);

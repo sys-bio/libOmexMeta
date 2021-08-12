@@ -44,6 +44,8 @@ namespace omexmeta {
 
     void Triples::emplace_back(UriHandler& uriHandler, const LibrdfNode& subject, const LibrdfNode& predicate, const LibrdfNode &resource) {
         Triple triple(uriHandler, subject, predicate, resource);
+        // creating a triple, a wrapper around a shared poitner. So we increment the usage count
+        triple.getStatement().incrementUsage();
         moveBack(triple);
     }
 
@@ -107,71 +109,6 @@ namespace omexmeta {
 
     TripleVector::iterator Triples::end() {
         return triples_.end();
-    }
-
-    std::string
-    Triples::str(const std::string &format, std::string base, std::string omex_name, std::string model_name) {
-        base = OmexMetaUtils::prepareBaseUri(base);
-        // Here we create temporary set of tools for serializing a simple
-        // triple.
-        librdf_world *world = librdf_new_world();
-        librdf_storage *storage = librdf_new_storage(world, "memory", "SemsimMemoryStore", nullptr);
-        librdf_model *model = librdf_new_model(world, storage, nullptr);
-
-        librdf_serializer *serializer = librdf_new_serializer(world, format.c_str(), nullptr, nullptr);
-        for (auto &it : triples_) {
-            // ensure we have three nodes and a statement
-            if (it.getSubjectNode().isNull()) {
-                throw RedlandNullPointerException("RedlandNullPointerException: Triples::str: subject is null");
-            }
-            if (it.getPredicateNode().isNull()) {
-                throw RedlandNullPointerException("RedlandNullPointerException: Triples::str: predicate is null");
-            }
-            if (it.getResourceNode().isNull()) {
-                throw RedlandNullPointerException("RedlandNullPointerException: Triples::str: resource is null");
-            }
-            if (!it.getStatement()) {
-                throw RedlandNullPointerException("RedlandNullPointerException: Triples::str: statement is null");
-            }
-            librdf_model_add_statement(model, it.getStatement());
-            Predicate::addSeenNamespaceToSerializer(world, serializer, it.getPredicateNode().obj_);
-        }
-
-        // turn off base uri
-        LibrdfUri write_base_uri_uri = LibrdfUri("http://feature.librdf.org/raptor-writeBaseURI");
-        LibrdfNode write_base_uri_node = LibrdfNode::fromLiteral("0");
-        librdf_serializer_set_feature(serializer, write_base_uri_uri.get(), write_base_uri_node.get());
-
-        std::vector<std::string> nsvec = OmexMetaUtils::configurePrefixStrings("http://omex-library.org/",
-                                                                               std::move(omex_name),
-                                                                               std::move(model_name));
-
-        // make uri's for the namespaces
-        librdf_uri *OMEXlib = librdf_new_uri(LibrdfWorld::getWorld(), (const unsigned char *) nsvec[0].c_str());
-        librdf_uri *myomex = librdf_new_uri(LibrdfWorld::getWorld(), (const unsigned char *) nsvec[1].c_str());
-        librdf_uri *local = librdf_new_uri(LibrdfWorld::getWorld(), (const unsigned char *) nsvec[2].c_str());
-        librdf_serializer_set_namespace(serializer, OMEXlib, "OMEXlib");
-        librdf_serializer_set_namespace(serializer, myomex, "myOMEX");
-        librdf_serializer_set_namespace(serializer, local, "local");
-
-        // free the uri's now that we're done with them.
-        librdf_free_uri(OMEXlib);
-        librdf_free_uri(myomex);
-        librdf_free_uri(local);
-
-        librdf_uri *base_uri = librdf_new_uri(world, (const unsigned char *) OmexMetaUtils::prepareBaseUri(base).c_str());
-        // do the serializing
-        unsigned char *string = librdf_serializer_serialize_model_to_string(serializer, base_uri, model);
-        std::string str = (const char *) string;
-
-        // free up resources
-        free(string);
-        librdf_free_serializer(serializer);
-        librdf_free_uri(base_uri);
-        librdf_free_model(model);
-        librdf_free_storage(storage);
-        librdf_free_world(world);
-        return str;
     }
 
     Triple Triples::pop() {

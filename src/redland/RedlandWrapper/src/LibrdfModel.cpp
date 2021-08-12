@@ -4,11 +4,14 @@
 
 #include "redland/LibrdfModel.h"
 #include "redland/LibrdfStream.h"
+#include "redland/Logger.h"
 
 namespace redland {
 
     LibrdfModel::LibrdfModel(librdf_model *model)
-        : RefCounted_librdf_model(model, librdf_free_model) {}
+        : RefCounted_librdf_model(model, librdf_free_model) {
+        REDLAND_DEBUG("Instantiated a LibrdfModel instance");
+    }
 
     LibrdfModel::LibrdfModel(LibrdfStorage &storage, const char *options)
         : RefCounted_librdf_model(
@@ -17,7 +20,9 @@ namespace redland {
                                    // since this already happens inside librdf (valgrind validated)
                                    storage.getWithoutIncrement(),
                                    options),
-                  librdf_free_model) {}
+                  librdf_free_model) {
+        REDLAND_DEBUG("Instantiated a LibrdfModel instance");
+    }
 
     void LibrdfModel::addStatement(const LibrdfStatement &statement) const {
         // librdf takes care of ref counting in this instance

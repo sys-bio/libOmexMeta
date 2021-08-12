@@ -53,12 +53,12 @@ namespace omexmeta {
 
         Triple &operator=(const Triple &triple);
 
-//        Triple(UriHandler &uriHandler, const LibrdfNode &subject, const PredicatePtr &predicate_ptr, const LibrdfNode &resource);
+        //        Triple(UriHandler &uriHandler, const LibrdfNode &subject, const PredicatePtr &predicate_ptr, const LibrdfNode &resource);
 
         Triple(UriHandler &uriHandler, const LibrdfNode &subject, const LibrdfNode &predicate, const LibrdfNode &resource);
 
-//        [[deprecated("Use the following signature:\n\nTriple(UriHandler &uriHandler, const LibrdfNode &subject, const PredicatePtr &predicate_ptr, const LibrdfNode &resource);")]]
-//        Triple(UriHandler &uriHandler, librdf_node *subject, librdf_node *predicate, librdf_node *resource);
+        //        [[deprecated("Use the following signature:\n\nTriple(UriHandler &uriHandler, const LibrdfNode &subject, const PredicatePtr &predicate_ptr, const LibrdfNode &resource);")]]
+        //        Triple(UriHandler &uriHandler, librdf_node *subject, librdf_node *predicate, librdf_node *resource);
 
         const std::string &getLocalUri() const;
 
@@ -66,18 +66,6 @@ namespace omexmeta {
          * @brief set the model_uri_ attribute for this triple
          */
         void setModelUri(const std::string &model_uri);
-
-        /**
-         * @brief serialize the triple using a @format serializer.
-         *
-         * Creates an isolated serializer that does not get added
-         * to the users annotations. This method is for visualizing
-         * a triple only.
-         */
-        [[deprecated("Use main RDF class to serialize triple objects")]] std::string str(const std::string &format = "turtle",
-                                                                                         const std::string &base = (std::filesystem::current_path() /= "annotations.rdf").string(),
-                                                                                         std::string omex_name = "NewOmex.omex/",
-                                                                                         std::string model_name = "NewModel.xml") const;
 
         void freeTriple();
 
@@ -89,7 +77,7 @@ namespace omexmeta {
 
         std::string getAbout() const;
 
-        librdf_statement *getStatement() const;
+        LibrdfStatement getStatement() const;
 
         Triple &setPredicate(const std::string &namespace_, const std::string &term);
 
@@ -106,11 +94,11 @@ namespace omexmeta {
 
         bool isEmpty();
 
-        Triple &setPredicate(const std::string &uri);
+        //        Triple &setPredicate(const std::string &uri);
 
         Triple &predicate(const std::string &uri);
 
-//        void freeTripleAndUris();
+        //        void freeTripleAndUris();
 
         const std::string &getModelUri() const;
 

@@ -117,3 +117,4 @@ add_redland_test_executable(redland_wrapper_Logger RedlandTests LoggingTests.cpp
 
 
 
+

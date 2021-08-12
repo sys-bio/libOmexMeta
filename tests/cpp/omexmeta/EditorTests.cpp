@@ -483,7 +483,7 @@ TEST_F(EditorTests, TestSingularAnnotationBuilderAlternativeInterface) {
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#species0000>\n"
                            "    bqbiol:is \"resource\" .\n\n";
-    std::string actual = singularAnnotation.str("turtle");
+    std::string actual = rdf.toString("turtle");
     std::cout << actual << std::endl;
     ASSERT_TRUE(RDF::equals(&rdf, expected));
 }
@@ -629,10 +629,12 @@ TEST_F(EditorTests, StripAnnotationElements) {
 }
 
 TEST_F(EditorTests, CheckGetXmlWithValidSBML) {
+    Logger::getLogger()->setLevel(Logger::LogLevel::debug);
     RDF rdf;
     std::cout << SBMLFactory::getSBML(SBML_SEMANTIC_EXTRACTION_MODEL) << std::endl;
     Editor editor = rdf.toEditor(SBMLFactory::getSBML(SBML_SEMANTIC_EXTRACTION_MODEL), false, true);
-    std::cout << editor.getXml() << std::endl;
+    ASSERT_FALSE( editor.getXml().empty());
+    Logger::getLogger()->setLevel(Logger::LogLevel::warn);
 }
 
 TEST_F(EditorTests, CheckGetXmlWithInvalidSBML) {

@@ -9,7 +9,9 @@
 namespace redland {
 
     LibrdfStream::LibrdfStream(librdf_stream *stream)
-        : Redland_librdf_stream(stream, librdf_free_stream){}
+        : Redland_librdf_stream(stream, librdf_free_stream){
+        REDLAND_DEBUG("Instantiated a LibrdfStream instance");
+    }
 
     LibrdfStatement LibrdfStream::getStatement(){
         LibrdfStatement s(librdf_stream_get_object(obj_));

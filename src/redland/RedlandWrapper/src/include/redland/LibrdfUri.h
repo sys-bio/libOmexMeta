@@ -41,8 +41,7 @@ namespace redland {
          * pointer is stolen from librdf_uri and thereafter managed correctly
          * by LibrdfUri via RAII.
          */
-        explicit LibrdfUri(librdf_uri* uri)  : RefCounted_librdf_uri(uri, librdf_free_uri){}
-
+        explicit LibrdfUri(librdf_uri* uri);
         /*
          * @brief create a LibrdfUri object from a filename string
          * @param filename string representing path on system.

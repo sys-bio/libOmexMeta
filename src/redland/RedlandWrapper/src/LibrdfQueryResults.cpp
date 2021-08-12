@@ -5,29 +5,31 @@
 namespace redland {
 
     LibrdfQueryResults::LibrdfQueryResults(librdf_query_results *query_results)
-        : RedlandType_query_results(query_results, librdf_free_query_results) {}
+        : RedlandType_query_results(query_results, librdf_free_query_results) {
+        REDLAND_DEBUG("Instantiated a LibrdfQueryResults instance");
+    }
 
     std::string LibrdfQueryResults::str(std::string format) {
         return std::string();
     }
     bool LibrdfQueryResults::isFinished() {
         int failed = librdf_query_results_finished(obj_);
-        if (failed){
+        if (failed) {
             std::cout << failed << std::endl;
         }
         return failed;
     }
 
     std::vector<LibrdfNode> LibrdfQueryResults::getBindings() {
-        const char** names = NULL;
+        const char **names = NULL;
         int num = getBindingsCount();
         std::vector<LibrdfNode> v(num);
-        std::vector<librdf_node*> vp(num);
+        std::vector<librdf_node *> vp(num);
         int failed = librdf_query_results_get_bindings(obj_, NULL, vp.data());
-        for (int i=0; i<num; i++){
+        for (int i = 0; i < num; i++) {
             v[i] = LibrdfNode(vp[i]);
         }
-        if (failed){
+        if (failed) {
             REDLAND_WARN("Failed to get bindings");
             throw std::logic_error("Failed to get bindings");
         }
@@ -158,7 +160,7 @@ namespace redland {
 
     std::vector<std::string> LibrdfQueryResults::getBindingsNames() {
         std::vector<std::string> v(getBindingsCount());
-        for (int i=0; i<getBindingsCount(); i++){
+        for (int i = 0; i < getBindingsCount(); i++) {
             v[i] = getBindingsName(i);
         }
         return v;

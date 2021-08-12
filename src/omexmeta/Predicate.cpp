@@ -19,7 +19,7 @@ namespace omexmeta {
         node_ = std::move(LibrdfNode::fromUriString(uri_));
     }
 
-    Predicate::Predicate(LibrdfNode& node)
+    Predicate::Predicate(LibrdfNode node)
         : node_(node) {
         if (node.isNull())
             throw RedlandNullPointerException(
@@ -96,21 +96,21 @@ namespace omexmeta {
 
     std::unordered_map<std::string, std::string> Predicate::namespaceMap() {
         return std::unordered_map<std::string, std::string>{
-                {"foaf",                            "http://xmlns.com/foaf/0.1/"},
-                {"dc",                              "http://purl.org/dc/terms/"},
-                {"orcid",                           "https://orcid.org/"},
-                {"bqmodel",                         "http://biomodels.net/model-qualifiers/"},
-                {"bqbiol",                          "http://biomodels.net/biology-qualifiers/"},
-                {"pubmed",                          "https://identifiers.org/pubmed:"},
-                {"NCBI_Taxon",                      "https://identifiers.org/taxonomy:"},
-                {"biomod",                          "https://identifiers.org/biomodels.db:"},
-                {"chebi",                           "https://identifiers.org/CHEBI:"},
-                {"uniprot",                         "https://identifiers.org/uniprot:"},
-                {"semsim",                          "http://bime.uw.edu/semsim/"},
-                {"opb",                             "https://identifiers.org/opb:"},
-                {"fma",                             "https://identifiers.org/fma:"},
-                {"OMEXlib",                         "http://OMEXlibrary.org/"},
-                {"cmeta",                           "http://www.cellml.org/metadata/1.0#"},
+                {"foaf", "http://xmlns.com/foaf/0.1/"},
+                {"dc", "http://purl.org/dc/terms/"},
+                {"orcid", "https://orcid.org/"},
+                {"bqmodel", "http://biomodels.net/model-qualifiers/"},
+                {"bqbiol", "http://biomodels.net/biology-qualifiers/"},
+                {"pubmed", "https://identifiers.org/pubmed:"},
+                {"NCBI_Taxon", "https://identifiers.org/taxonomy:"},
+                {"biomod", "https://identifiers.org/biomodels.db:"},
+                {"chebi", "https://identifiers.org/CHEBI:"},
+                {"uniprot", "https://identifiers.org/uniprot:"},
+                {"semsim", "http://bime.uw.edu/semsim/"},
+                {"opb", "https://identifiers.org/opb:"},
+                {"fma", "https://identifiers.org/fma:"},
+                {"OMEXlib", "http://OMEXlibrary.org/"},
+                {"cmeta", "http://www.cellml.org/metadata/1.0#"},
 
         };
     }
@@ -140,11 +140,11 @@ namespace omexmeta {
         }
     }
 
-    void Predicate::setNode(LibrdfNode& node) {
+    void Predicate::setNode(LibrdfNode &node) {
         node_ = LibrdfNode(node);
     }
 
-    LibrdfNode Predicate::getNode(){
+    LibrdfNode Predicate::getNode() {
         return node_;
     }
 
@@ -153,41 +153,21 @@ namespace omexmeta {
         node_.freeNode();
     }
 
-    void Predicate::addSeenNamespaceToSerializer(librdf_world *world,
-                                                 librdf_serializer *serializer, librdf_node *predicate) {
-        // null checks
-        if (!world)
-            throw RedlandNullPointerException(
-                    "RedlandNullPointerException: Predicate::addSeenNamespaceToSerializer: world is null");
-        if (!serializer)
-            throw RedlandNullPointerException(
-                    "RedlandNullPointerException: Predicate::addSeenNamespaceToSerializer: serializer is null");
-        if (!predicate)
-            throw RedlandNullPointerException(
-                    "RedlandNullPointerException: Predicate::addSeenNamespaceToSerializer: predicate is null");
-
+    void Predicate::addSeenNamespaceToSerializer(LibrdfSerializer serializer, LibrdfNode predicate) {
         // grab the uri inside predicate node
-        librdf_uri *pred_uri = librdf_node_get_uri(predicate);
-        if (!pred_uri)
-            throw RedlandNullPointerException(
-                    "RedlandNullPointerException: Predicate::addSeenNamespaceToSerializer: uri is null. Maybe your predicate node isn't really a predicate node");
+        LibrdfUri pred_uri = predicate.getUri();
 
         // retrieve the namespace that we want to check
-        unsigned char *s = librdf_uri_as_string(pred_uri);
-        std::string pred_string((const char *) s);
+        std::string pred_string = pred_uri.str();
         std::string pred_namespace = OmexMetaUtils::getNamespaceFromUri(pred_string);
 
-        // get the namespacs to check against
+        // get the namespaces to check against
         NamespaceMap ns_map = Predicate::namespaceMap();
 
         // if their namespace matches one we know, add it to the model
-        for (auto &i : ns_map) {
-            const std::string &ns = i.second;
-            const std::string &prefix = i.first;
+        for (auto& [ns, prefix] : ns_map) {
             if (pred_namespace == ns) {
-                librdf_uri *u = librdf_new_uri(world, (const unsigned char *) ns.c_str());
-                librdf_serializer_set_namespace(serializer, u, prefix.c_str());
-                librdf_free_uri(u);
+                serializer.setNamespace(ns, prefix);
             }
         }
     }

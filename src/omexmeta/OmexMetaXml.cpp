@@ -16,12 +16,12 @@ namespace omexmeta {
           generate_new_metaids_(generate_new_metaids) {
     }
 
-//    OmexMetaXml::~OmexMetaXml() {
-//        if (doc) {
-//            xmlFreeDoc(doc);
-//            doc = nullptr;
-//        }
-//    }
+    OmexMetaXml::~OmexMetaXml() {
+        if (doc) {
+            xmlFreeDoc(doc);
+            doc = nullptr;
+        }
+    }
 
     std::vector<std::string> OmexMetaXml::getValidElements() const {
         return std::vector<std::string>({"Any"});

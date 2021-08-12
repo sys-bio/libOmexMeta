@@ -753,7 +753,7 @@ namespace omexmeta {
     SingularAnnotation *SingularAnnotation_setPredicateFromUri(
             SingularAnnotation *singular_annotation, const char *uri) {
         try {
-            singular_annotation->setPredicate(uri);
+            singular_annotation->predicate(uri);
             return singular_annotation;
         } catch (std::exception &error) {
             setLastError(error.what());
@@ -827,7 +827,8 @@ namespace omexmeta {
 
     char *SingularAnnotation_getPredicate(SingularAnnotation *singular_annotation) {
         try {
-            std::string predicate_str = singular_annotation->getPredicateNode().str();
+            LibrdfNode predicateNode = singular_annotation->getPredicateNode();
+            std::string predicate_str = predicateNode.str();
             char *cstr = (char *) malloc((predicate_str.size() + 1) * sizeof(char));
             strcpy(cstr, predicate_str.c_str());
             return cstr;
@@ -849,17 +850,17 @@ namespace omexmeta {
         }
     }
 
-    char *SingularAnnotation_str(SingularAnnotation *singular_annotation, const char *format) {
-        try {
-            std::string str = singular_annotation->str(format);
-            char *cstr = (char *) malloc((str.size() + 1) * sizeof(char));
-            strcpy(cstr, str.c_str());
-            return cstr;
-        } catch (std::exception &error) {
-            setLastError(error.what());
-            return nullptr;
-        }
-    }
+//    char *SingularAnnotation_str(SingularAnnotation *singular_annotation, const char *format) {
+//        try {
+//            std::string str = singular_annotation->str(format);
+//            char *cstr = (char *) malloc((str.size() + 1) * sizeof(char));
+//            strcpy(cstr, str.c_str());
+//            return cstr;
+//        } catch (std::exception &error) {
+//            setLastError(error.what());
+//            return nullptr;
+//        }
+//    }
 
     /*********************************************************************
  * PhysicalProperty class methods

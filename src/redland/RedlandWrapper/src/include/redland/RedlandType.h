@@ -43,6 +43,9 @@ namespace redland {
          */
         RedlandType(ObjType *objType, std::function<void(ObjType*)> func)
             : obj_(objType), freeFunc_(func) {
+            // do not call this from the constructor of the superclass type
+            // since in some situations, like creating a LibrdfStatement / Triple
+            // for a builder interface, requires that the nodes are initially empty.
             RedlandType::checkForNull();
         }
 
