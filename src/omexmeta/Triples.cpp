@@ -45,7 +45,6 @@ namespace omexmeta {
     void Triples::emplace_back(UriHandler& uriHandler, const LibrdfNode& subject, const LibrdfNode& predicate, const LibrdfNode &resource) {
         Triple triple(uriHandler, subject, predicate, resource);
         // creating a triple, a wrapper around a shared poitner. So we increment the usage count
-        triple.getStatement().incrementUsage();
         moveBack(triple);
     }
 

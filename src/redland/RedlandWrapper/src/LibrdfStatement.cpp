@@ -22,7 +22,8 @@ namespace redland {
         : RefCounted_librdf_statement(
                   librdf_new_statement_from_nodes(
                           LibrdfWorld::getWorld(), subject.get(), predicate.get(), resource.get()),
-                  librdf_free_statement) {}
+                  librdf_free_statement) {
+    }
 
 
     void LibrdfStatement::checkForNull() {

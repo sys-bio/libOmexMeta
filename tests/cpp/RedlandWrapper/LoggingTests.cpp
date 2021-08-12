@@ -59,6 +59,7 @@ TEST_F(LoggingTests, UseFileLogger) {
     LibrdfStorage storage;
     LibrdfModel model(storage);
     Logger::getLogger()->setLevel(Logger::LogLevel::info);
+    std::cout<< p << std::endl;
     Logger::getLogger()->fileLogger(p);
     std::string sbml = SBMLFactory::getSBML(SBML_INVALID_METAIDS);
     redland::LibrdfParser parser("turtle");

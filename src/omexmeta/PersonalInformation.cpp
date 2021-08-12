@@ -10,12 +10,10 @@ namespace omexmeta {
     PersonalInformation::PersonalInformation(LibrdfModel& model, UriHandler &uriHandler)
         : model_(model), uriHandler_(uriHandler) {
         metaid_ = generateMetaId();
-        createSubject();
+        PersonalInformation::createSubject();
     }
 
-    PersonalInformation::~PersonalInformation() {
-        freeTriples();
-    }
+    PersonalInformation::~PersonalInformation() {}
 
     /**
      * @brief move constructor
@@ -165,8 +163,9 @@ namespace omexmeta {
         }
         LibrdfNode n = LibrdfNode::fromUriString(uriHandler_.getModelLevelAnnotationUri());
         PredicatePtr creatorPtr = std::make_shared<DCTerm>("creator");
+        LibrdfNode creatorNode = creatorPtr->getNode();
         LibrdfNode r = LibrdfNode::fromUriString(metaid_);
-        Triple triple(uriHandler_, n, (*creatorPtr).getNode(), r);
+        Triple triple(uriHandler_, n,creatorNode, r);
         namespaces_.push_back(Predicate::namespaceMap()["orcid"]);
         triples_.moveBack(triple);
     }

@@ -330,25 +330,24 @@ namespace omexmeta {
     OmexMetaXmlPtr
     OmexMetaXmlFactory::generate(const std::string &xml, OmexMetaXmlType type, bool generate_new_metaids,
                                  const std::string& metaid_base, int metaid_num_digits) {
-        OmexMetaXml* ptr = nullptr;
+        std::unique_ptr<OmexMetaXml> ptr;
         switch (type) {
             case OMEXMETA_TYPE_SBML: {
-                ptr = new OmexMetaSBML(xml, metaid_base, metaid_num_digits, generate_new_metaids);
+                ptr = std::make_unique<OmexMetaSBML>(xml, metaid_base, metaid_num_digits, generate_new_metaids);
                 break;
             }
             case OMEXMETA_TYPE_CELLML: {
-                ptr = new OmexMetaCellML(xml, metaid_base, metaid_num_digits, generate_new_metaids);
+                ptr = std::make_unique<OmexMetaCellML>(xml, metaid_base, metaid_num_digits, generate_new_metaids);
                 break;
             }
             case OMEXMETA_TYPE_UNKNOWN: {
-                ptr = new OmexMetaXml(xml, metaid_base, metaid_num_digits, generate_new_metaids);
+                ptr = std::make_unique<OmexMetaXml>(xml, metaid_base, metaid_num_digits, generate_new_metaids);
                 break;
             }
             default:
                 throw std::invalid_argument("Not a correct type");
         }
-        std::unique_ptr<OmexMetaXml> uptr(ptr);
-        return std::move(uptr);
+        return std::move(ptr);
     }
 
 }// namespace omexmeta

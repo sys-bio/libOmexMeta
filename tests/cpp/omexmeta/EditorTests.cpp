@@ -621,10 +621,8 @@ TEST_F(EditorTests, StripAnnotationElements) {
                            "    </model>\n"
                            "</sbml>\n";
     RDF rdf;
-    std::cout << SBMLFactory::getSBML(SBML_SEMANTIC_EXTRACTION_MODEL) << std::endl;
     Editor editor = rdf.toEditor(SBMLFactory::getSBML(SBML_SEMANTIC_EXTRACTION_MODEL), false, false);
     std::string stripped = editor.stripAnnotations();
-    std::cout << stripped << std::endl;
     ASSERT_STREQ(expected.c_str(), stripped.c_str());
 }
 

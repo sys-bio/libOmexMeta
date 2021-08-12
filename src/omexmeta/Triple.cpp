@@ -165,7 +165,7 @@ namespace omexmeta {
 
     LibrdfStatement Triple::getStatement() const {
         LibrdfStatement stmt(obj_);
-//        stmt.incrementUsage();
+        stmt.incrementUsage();
         return stmt ;
     }
 

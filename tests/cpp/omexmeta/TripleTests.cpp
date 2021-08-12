@@ -113,11 +113,9 @@ TEST(TripleTestsNoFixture, TestInequality) {
 TEST_F(TripleTests, TestStatementResource) {
     Triple triple(uriHandler, subject, predicate.getNode(), resource);
     LibrdfStatement statement = triple.getStatement();
-    librdf_node *n = librdf_statement_get_object(statement.getWithoutIncrement());
-    librdf_uri *uri = librdf_node_get_uri(n);
-    unsigned char *s = librdf_uri_as_string(uri);
+    LibrdfNode n = statement.getResourceNode();
     std::string expected = "https://identifiers.org/uniprot/P0DP23";
-    ASSERT_STREQ(expected.c_str(), (const char *) s);
+    ASSERT_STREQ(expected.c_str(), n.str().c_str());
 }
 
 
