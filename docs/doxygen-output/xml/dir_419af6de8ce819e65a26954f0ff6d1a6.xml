@@ -15,10 +15,13 @@
     <innerfile refid="LibrdfStream_8h">LibrdfStream.h</innerfile>
     <innerfile refid="LibrdfUri_8h">LibrdfUri.h</innerfile>
     <innerfile refid="LibrdfWorld_8h">LibrdfWorld.h</innerfile>
+    <innerfile refid="Logger_8h">Logger.h</innerfile>
     <innerfile refid="raptor2_8h">raptor2.h</innerfile>
     <innerfile refid="RaptorIOStream_8h">RaptorIOStream.h</innerfile>
     <innerfile refid="rasqal_8h">rasqal.h</innerfile>
     <innerfile refid="RedlandAPI_8h">RedlandAPI.h</innerfile>
+    <innerfile refid="RedlandType_8h">RedlandType.h</innerfile>
+    <innerfile refid="RefCountedRedlandType_8h">RefCountedRedlandType.h</innerfile>
     <briefdescription>
     </briefdescription>
     <detaileddescription>

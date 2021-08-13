@@ -9,16 +9,13 @@
 
 namespace omexmeta {
 
-    std::string LAST_ERROR;
+    std::string LAST_ERROR = "No errors";
 
     void setLastError(const char *err) {
         LAST_ERROR = err;
     }
 
     char *getLastError() {
-        if (LAST_ERROR.empty()) {
-            return nullptr;
-        }
         char *cstr = (char *) malloc((LAST_ERROR.size() + 1) * sizeof(char *));
         strcpy(cstr, LAST_ERROR.c_str());
         return cstr;
@@ -39,9 +36,28 @@ namespace omexmeta {
         }
     }
 
+    /**
+     * @brief when a function fails and it returns char*, do not return nullptr
+     * as it will crash python. Instead copy the error string into dynamic memory
+     * and return that.
+     * @details the caller is responsible for freeing the memory associated with the
+     * returned string.
+     */
+    char *funcThatReturnsCharStarFailed(const char *errorMsg) {
+        setLastError(errorMsg);
+        char *cstr = (char *) malloc((strlen(errorMsg) + 1) * sizeof(char *));
+        strcpy(cstr, errorMsg);
+        return cstr;
+    }
+
     /*************************************************************
      *  RDF methods
      */
+
+    int *functionThatReturnsNullptr(){
+        return nullptr;
+    };
+
 
     RDF *RDF_new(const char *storage_type, const char *storage_name,
                  const char *storage_options, const char *model_options) {
@@ -89,7 +105,8 @@ namespace omexmeta {
             return rdf;
         } catch (std::exception &error) {
             setLastError(error.what());
-            return nullptr;
+            RDF *rdf = RDF_new();
+            return rdf;
         }
     }
 
@@ -111,7 +128,8 @@ namespace omexmeta {
             return rdf;
         } catch (std::exception &error) {
             setLastError(error.what());
-            return nullptr;
+            RDF *rdf = RDF_new();
+            return rdf;
         }
     }
 
@@ -133,8 +151,7 @@ namespace omexmeta {
             strcpy(cstr, s.c_str());
             return cstr;
         } catch (std::exception &error) {
-            setLastError(error.what());
-            return nullptr;
+            return funcThatReturnsCharStarFailed(error.what());
         }
     }
 
@@ -155,8 +172,7 @@ namespace omexmeta {
             strcpy(s, results.c_str());
             return s;
         } catch (std::exception &error) {
-            setLastError(error.what());
-            return nullptr;
+            return funcThatReturnsCharStarFailed(error.what());
         }
     }
 
@@ -172,7 +188,8 @@ namespace omexmeta {
             return rOut;
         } catch (std::exception &error) {
             setLastError(error.what());
-            return nullptr;
+            ResultsMap* r = new ResultsMap{};
+            return r;
         }
     }
 
@@ -240,8 +257,7 @@ namespace omexmeta {
             strcpy(cstr, str.c_str());
             return cstr;
         } catch (std::exception &error) {
-            setLastError(error.what());
-            return nullptr;
+            return funcThatReturnsCharStarFailed(error.what());
         }
     }
 
@@ -252,8 +268,7 @@ namespace omexmeta {
             strcpy(cstr, str.c_str());
             return cstr;
         } catch (std::exception &error) {
-            setLastError(error.what());
-            return nullptr;
+            return funcThatReturnsCharStarFailed(error.what());
         }
     }
 
@@ -264,8 +279,7 @@ namespace omexmeta {
             strcpy(cstr, str.c_str());
             return cstr;
         } catch (std::exception &error) {
-            setLastError(error.what());
-            return nullptr;
+            return funcThatReturnsCharStarFailed(error.what());
         }
     }
 
@@ -276,8 +290,7 @@ namespace omexmeta {
             strcpy(cstr, str.c_str());
             return cstr;
         } catch (std::exception &error) {
-            setLastError(error.what());
-            return nullptr;
+            return funcThatReturnsCharStarFailed(error.what());
         }
     }
 
@@ -288,8 +301,7 @@ namespace omexmeta {
             strcpy(cstr, str.c_str());
             return cstr;
         } catch (std::exception &error) {
-            setLastError(error.what());
-            return nullptr;
+            return funcThatReturnsCharStarFailed(error.what());
         }
     }
 
@@ -300,8 +312,7 @@ namespace omexmeta {
             strcpy(cstr, str.c_str());
             return cstr;
         } catch (std::exception &error) {
-            setLastError(error.what());
-            return nullptr;
+            return funcThatReturnsCharStarFailed(error.what());
         }
     }
 
@@ -540,8 +551,7 @@ namespace omexmeta {
             strcpy(cstr, str.c_str());
             return cstr;
         } catch (std::exception &error) {
-            setLastError(error.what());
-            return nullptr;
+            return funcThatReturnsCharStarFailed(error.what());
         }
     }
 
@@ -566,8 +576,7 @@ namespace omexmeta {
             strcpy(cstr, str.c_str());
             return cstr;
         } catch (std::exception &error) {
-            setLastError(error.what());
-            return nullptr;
+            return funcThatReturnsCharStarFailed(error.what());
         }
     }
 
@@ -590,8 +599,7 @@ namespace omexmeta {
             strcpy(cstr, str.c_str());
             return cstr;
         } catch (std::exception &error) {
-            setLastError(error.what());
-            return nullptr;
+            return funcThatReturnsCharStarFailed(error.what());
         }
     }
 
@@ -602,8 +610,7 @@ namespace omexmeta {
             strcpy(cstr, str.c_str());
             return cstr;
         } catch (std::exception &error) {
-            setLastError(error.what());
-            return nullptr;
+            return funcThatReturnsCharStarFailed(error.what());
         }
     }
 
@@ -614,8 +621,7 @@ namespace omexmeta {
             strcpy(cstr, str.c_str());
             return cstr;
         } catch (std::exception &error) {
-            setLastError(error.what());
-            return nullptr;
+            return funcThatReturnsCharStarFailed(error.what());
         }
     }
 
@@ -626,8 +632,7 @@ namespace omexmeta {
             strcpy(cstr, str.c_str());
             return cstr;
         } catch (std::exception &error) {
-            setLastError(error.what());
-            return nullptr;
+            return funcThatReturnsCharStarFailed(error.what());
         }
     }
 
@@ -638,8 +643,7 @@ namespace omexmeta {
             strcpy(cstr, str.c_str());
             return cstr;
         } catch (std::exception &error) {
-            setLastError(error.what());
-            return nullptr;
+            return funcThatReturnsCharStarFailed(error.what());
         }
     }
 
@@ -820,8 +824,7 @@ namespace omexmeta {
             strcpy(cstr, about.c_str());
             return cstr;
         } catch (std::exception &error) {
-            setLastError(error.what());
-            return nullptr;
+            return funcThatReturnsCharStarFailed(error.what());
         }
     }
 
@@ -833,8 +836,7 @@ namespace omexmeta {
             strcpy(cstr, predicate_str.c_str());
             return cstr;
         } catch (std::exception &error) {
-            setLastError(error.what());
-            return nullptr;
+            return funcThatReturnsCharStarFailed(error.what());
         }
     }
 
@@ -845,22 +847,21 @@ namespace omexmeta {
             strcpy(cstr, resource.c_str());
             return cstr;
         } catch (std::exception &error) {
-            setLastError(error.what());
-            return nullptr;
+            return funcThatReturnsCharStarFailed(error.what());
         }
     }
 
-//    char *SingularAnnotation_str(SingularAnnotation *singular_annotation, const char *format) {
-//        try {
-//            std::string str = singular_annotation->str(format);
-//            char *cstr = (char *) malloc((str.size() + 1) * sizeof(char));
-//            strcpy(cstr, str.c_str());
-//            return cstr;
-//        } catch (std::exception &error) {
-//            setLastError(error.what());
-//            return nullptr;
-//        }
-//    }
+    //    char *SingularAnnotation_str(SingularAnnotation *singular_annotation, const char *format) {
+    //        try {
+    //            std::string str = singular_annotation->str(format);
+    //            char *cstr = (char *) malloc((str.size() + 1) * sizeof(char));
+    //            strcpy(cstr, str.c_str());
+    //            return cstr;
+    //        } catch (std::exception &error) {
+    //            setLastError(error.what());
+    //            return nullptr;
+    //        }
+    //    }
 
     /*********************************************************************
  * PhysicalProperty class methods
@@ -872,8 +873,7 @@ namespace omexmeta {
             strcpy(cstr, str.c_str());
             return cstr;
         } catch (std::exception &error) {
-            setLastError(error.what());
-            return nullptr;
+            return funcThatReturnsCharStarFailed(error.what());
         }
     }
 
@@ -894,8 +894,7 @@ namespace omexmeta {
             strcpy(cstr, str.c_str());
             return cstr;
         } catch (std::exception &error) {
-            setLastError(error.what());
-            return nullptr;
+            return funcThatReturnsCharStarFailed(error.what());
         }
     }
 
@@ -987,8 +986,7 @@ namespace omexmeta {
             strcpy(cstr, about.c_str());
             return cstr;
         } catch (std::exception &error) {
-            setLastError(error.what());
-            return nullptr;
+            return funcThatReturnsCharStarFailed(error.what());
         }
     }
 
@@ -999,8 +997,7 @@ namespace omexmeta {
             strcpy(cstr, identity.c_str());
             return cstr;
         } catch (std::exception &error) {
-            setLastError(error.what());
-            return nullptr;
+            return funcThatReturnsCharStarFailed(error.what());
         }
     }
 
@@ -1020,8 +1017,7 @@ namespace omexmeta {
             strcpy(cstr, location.c_str());
             return cstr;
         } catch (std::exception &error) {
-            setLastError(error.what());
-            return nullptr;
+            return funcThatReturnsCharStarFailed(error.what());
         }
     }
 
@@ -1176,8 +1172,7 @@ namespace omexmeta {
             strcpy(cstr, about.c_str());
             return cstr;
         } catch (std::exception &error) {
-            setLastError(error.what());
-            return nullptr;
+            return funcThatReturnsCharStarFailed(error.what());
         }
     }
 
@@ -1330,8 +1325,7 @@ namespace omexmeta {
             strcpy(cstr, about.c_str());
             return cstr;
         } catch (std::exception &error) {
-            setLastError(error.what());
-            return nullptr;
+            return funcThatReturnsCharStarFailed(error.what());
         }
     }
 
@@ -1362,8 +1356,7 @@ namespace omexmeta {
             strcpy(cstr, about.c_str());
             return cstr;
         } catch (std::exception &error) {
-            setLastError(error.what());
-            return nullptr;
+            return funcThatReturnsCharStarFailed(error.what());
         }
     }
 
@@ -1470,8 +1463,7 @@ namespace omexmeta {
             strcpy(cstr, about.c_str());
             return cstr;
         } catch (std::exception &error) {
-            setLastError(error.what());
-            return nullptr;
+            return funcThatReturnsCharStarFailed(error.what());
         }
     }
 
@@ -1597,7 +1589,7 @@ namespace omexmeta {
 
     int Logger_getLevel() {
         try {
-            return (int)Logger::getLogger()->getLevel();
+            return (int) Logger::getLogger()->getLevel();
         } catch (std::exception &e) {
             setLastError(e.what());
             return -1;

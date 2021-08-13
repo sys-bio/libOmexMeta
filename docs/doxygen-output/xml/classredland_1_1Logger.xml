@@ -1,0 +1,498 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classredland_1_1Logger" kind="class" language="C++" prot="public">
+    <compoundname>redland::Logger</compoundname>
+    <includes refid="Logger_8h" local="no">Logger.h</includes>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classredland_1_1Logger_1a9e76412d869c3ff4497ce38ef7e3342d" prot="public" static="no">
+        <type>std::shared_ptr&lt; spdlog::logger &gt;</type>
+        <definition>using redland::Logger::LoggerPtr =  std::shared_ptr&lt;spdlog::logger&gt;</definition>
+        <argsstring></argsstring>
+        <name>LoggerPtr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/Logger.h" line="43" column="9" bodyfile="src/redland/RedlandWrapper/src/include/redland/Logger.h" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classredland_1_1Logger_1a0c9a776efbf57c060ef7f6a2f41455c4" prot="public" static="no">
+        <type>spdlog::level::level_enum</type>
+        <definition>using redland::Logger::LogLevel =  spdlog::level::level_enum</definition>
+        <argsstring></argsstring>
+        <name>LogLevel</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/Logger.h" line="44" column="9" bodyfile="src/redland/RedlandWrapper/src/include/redland/Logger.h" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classredland_1_1Logger_1a9bc7671c63a3d7c3953a4d65d8570936" prot="public" static="no" mutable="no">
+        <type>LoggerPtr</type>
+        <definition>LoggerPtr redland::Logger::logger</definition>
+        <argsstring></argsstring>
+        <name>logger</name>
+        <briefdescription>
+<para>reference to the currently active logger </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/Logger.h" line="138" column="19" bodyfile="src/redland/RedlandWrapper/src/include/redland/Logger.h" bodystart="138" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classredland_1_1Logger_1acfe5e473ffe0cb34b45ab69ab7675358" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool redland::Logger::isFileLogger</definition>
+        <argsstring></argsstring>
+        <name>isFileLogger</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+<para>indicator, true when the file logger is active </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/Logger.h" line="143" column="14" bodyfile="src/redland/RedlandWrapper/src/include/redland/Logger.h" bodystart="143" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classredland_1_1Logger_1a83c2fde7dc2b6547053d690e63c0f73d" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool redland::Logger::isConsoleLogger</definition>
+        <argsstring></argsstring>
+        <name>isConsoleLogger</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+<para>indicator, true when the console logger is active </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/Logger.h" line="148" column="14" bodyfile="src/redland/RedlandWrapper/src/include/redland/Logger.h" bodystart="148" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="classredland_1_1Logger_1a49b37ed1aca98271c91e60774ec68c2d" prot="private" static="yes" mutable="no">
+        <type><ref refid="classredland_1_1Logger" kindref="compound">Logger</ref> *</type>
+        <definition>Logger * redland::Logger::inst_</definition>
+        <argsstring></argsstring>
+        <name>inst_</name>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The one single instance of <ref refid="classredland_1_1Logger" kindref="compound">Logger</ref> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/Logger.h" line="160" column="23" bodyfile="src/redland/RedlandWrapper/src/include/redland/Logger.h" bodystart="160" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classredland_1_1Logger_1a75b8207b5289478fb52cb59933184f33" prot="private" static="no" mutable="no">
+        <type>std::filesystem::path</type>
+        <definition>std::filesystem::path redland::Logger::filepath_</definition>
+        <argsstring></argsstring>
+        <name>filepath_</name>
+        <briefdescription>
+<para>the filepath to be used for when fileLogger is active </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/Logger.h" line="166" column="31" bodyfile="src/redland/RedlandWrapper/src/include/redland/Logger.h" bodystart="166" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classredland_1_1Logger_1a45b353c2b889f2407e60b9a4b2851712" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int redland::Logger::backtraceNum</definition>
+        <argsstring></argsstring>
+        <name>backtraceNum</name>
+        <initializer>= 32</initializer>
+        <briefdescription>
+<para>store how many message to store during backtrace feature </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/Logger.h" line="171" column="13" bodyfile="src/redland/RedlandWrapper/src/include/redland/Logger.h" bodystart="171" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classredland_1_1Logger_1ad9c881a08834cf4e8f45ec9f59cbf141" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string redland::Logger::formatterPattern</definition>
+        <argsstring></argsstring>
+        <name>formatterPattern</name>
+        <initializer>= &quot;[%H:%M:%S %z] %^ %l %g:%# %v %$&quot;</initializer>
+        <briefdescription>
+<para>store the current formatter pattern </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/Logger.h" line="176" column="21" bodyfile="src/redland/RedlandWrapper/src/include/redland/Logger.h" bodystart="176" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classredland_1_1Logger_1ad5c9edd10e0235d22b883ef378a8d7a8" prot="private" static="no" mutable="no">
+        <type>LogLevel</type>
+        <definition>LogLevel redland::Logger::level_</definition>
+        <argsstring></argsstring>
+        <name>level_</name>
+        <initializer>= LogLevel::warn</initializer>
+        <briefdescription>
+<para>default logging level </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/Logger.h" line="181" column="18" bodyfile="src/redland/RedlandWrapper/src/include/redland/Logger.h" bodystart="181" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classredland_1_1Logger_1af47c7ee65088b85f238a1db26c40f48f" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool redland::Logger::shouldBacktrace_</definition>
+        <argsstring></argsstring>
+        <name>shouldBacktrace_</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+<para>indicator variable for backtracing </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/Logger.h" line="186" column="14" bodyfile="src/redland/RedlandWrapper/src/include/redland/Logger.h" bodystart="186" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classredland_1_1Logger_1a371ea8132ab82e1c783b74bd6bcf38c5" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classredland_1_1Logger" kindref="compound">Logger</ref> *</type>
+        <definition>Logger * redland::Logger::getLogger</definition>
+        <argsstring>()</argsstring>
+        <name>getLogger</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/Logger.h" line="46" column="23" bodyfile="src/redland/RedlandWrapper/src/Logger.cpp" bodystart="27" bodyend="32"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classredland_1_1Logger_1ac358531893ec79d169ec449aae2cc5c0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void redland::Logger::setFormatter</definition>
+        <argsstring>(const std::string &amp;format)</argsstring>
+        <name>setFormatter</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>format</declname>
+        </param>
+        <briefdescription>
+<para>formatter strings use the {fmt} library. See documentation here: <ulink url="https://fmt.dev/latest/index.html">https://fmt.dev/latest/index.html</ulink> </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/Logger.h" line="52" column="14" bodyfile="src/redland/RedlandWrapper/src/Logger.cpp" bodystart="97" bodyend="100"/>
+      </memberdef>
+      <memberdef kind="function" id="classredland_1_1Logger_1a7ae9f6e2d9c6d143192dd7253acea479" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void redland::Logger::setLevel</definition>
+        <argsstring>(LogLevel level)</argsstring>
+        <name>setLevel</name>
+        <param>
+          <type>LogLevel</type>
+          <declname>level</declname>
+        </param>
+        <briefdescription>
+<para>set the current logging level </para>
+        </briefdescription>
+        <detaileddescription>
+<para>possible values of level:<itemizedlist>
+<listitem><para>spdlog::level::critical;</para>
+</listitem><listitem><para>spdlog::level::err;</para>
+</listitem><listitem><para>spdlog::level::warn;</para>
+</listitem><listitem><para>spdlog::level::debug;</para>
+</listitem><listitem><para>spdlog::level::info;</para>
+</listitem><listitem><para>spdlog::level::trace;</para>
+</listitem><listitem><para>spdlog::level::off; </para>
+</listitem></itemizedlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/Logger.h" line="65" column="14" bodyfile="src/redland/RedlandWrapper/src/Logger.cpp" bodystart="102" bodyend="105"/>
+      </memberdef>
+      <memberdef kind="function" id="classredland_1_1Logger_1a267cc8563aa19f296edfd859331a53a7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>LogLevel</type>
+        <definition>Logger::LogLevel redland::Logger::getLevel</definition>
+        <argsstring>()</argsstring>
+        <name>getLevel</name>
+        <briefdescription>
+<para>returns the current logging level </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/Logger.h" line="70" column="18" bodyfile="src/redland/RedlandWrapper/src/Logger.cpp" bodystart="107" bodyend="109"/>
+      </memberdef>
+      <memberdef kind="function" id="classredland_1_1Logger_1a48844ea4f9eecbb5c450b35a96cbdda4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void redland::Logger::enableBacktrace</definition>
+        <argsstring>(int num)</argsstring>
+        <name>enableBacktrace</name>
+        <param>
+          <type>int</type>
+          <declname>num</declname>
+        </param>
+        <briefdescription>
+<para>enable the backtrace logging feature - display the last </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>num</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>messages when spdlog::dump_backtrace is called. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/Logger.h" line="76" column="14" bodyfile="src/redland/RedlandWrapper/src/Logger.cpp" bodystart="111" bodyend="115"/>
+      </memberdef>
+      <memberdef kind="function" id="classredland_1_1Logger_1a61b92676954488db03b3c3ebfbd11fe0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void redland::Logger::disableBacktrace</definition>
+        <argsstring>()</argsstring>
+        <name>disableBacktrace</name>
+        <briefdescription>
+<para>disable the backtrace feature </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/Logger.h" line="81" column="14" bodyfile="src/redland/RedlandWrapper/src/Logger.cpp" bodystart="117" bodyend="120"/>
+      </memberdef>
+      <memberdef kind="function" id="classredland_1_1Logger_1a63c1f161280c140b69b3db08389a1137" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void redland::Logger::consoleLogger</definition>
+        <argsstring>()</argsstring>
+        <name>consoleLogger</name>
+        <briefdescription>
+<para>create and switch to a console logger </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/Logger.h" line="86" column="14" bodyfile="src/redland/RedlandWrapper/src/Logger.cpp" bodystart="34" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="function" id="classredland_1_1Logger_1a39e56c0690a855138fff179e68171bc3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void redland::Logger::fileLogger</definition>
+        <argsstring>(const std::filesystem::path &amp;filename)</argsstring>
+        <name>fileLogger</name>
+        <param>
+          <type>const std::filesystem::path &amp;</type>
+          <declname>filename</declname>
+        </param>
+        <briefdescription>
+<para>create and switch to a file logger </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/Logger.h" line="91" column="14" bodyfile="src/redland/RedlandWrapper/src/Logger.cpp" bodystart="61" bodyend="95"/>
+      </memberdef>
+      <memberdef kind="function" id="classredland_1_1Logger_1ac0d3043e20448acf27088756943e6487" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void redland::Logger::dumpBacktrace</definition>
+        <argsstring>()</argsstring>
+        <name>dumpBacktrace</name>
+        <briefdescription>
+<para>dump backtrace messages when called </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/Logger.h" line="96" column="14" bodyfile="src/redland/RedlandWrapper/src/Logger.cpp" bodystart="121" bodyend="123"/>
+      </memberdef>
+      <memberdef kind="function" id="classredland_1_1Logger_1af235df43b65913acfa616d98a299fe72" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void redland::Logger::info</definition>
+        <argsstring>(const std::string &amp;message)</argsstring>
+        <name>info</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+<para>log a info message to the currently active logger </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/Logger.h" line="102" column="14" bodyfile="src/redland/RedlandWrapper/src/Logger.cpp" bodystart="124" bodyend="126"/>
+      </memberdef>
+      <memberdef kind="function" id="classredland_1_1Logger_1ae1be7a182e59b7aeb14f584d6d5114b6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void redland::Logger::trace</definition>
+        <argsstring>(const std::string &amp;message)</argsstring>
+        <name>trace</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+<para>log a trace message to the currently active logger </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/Logger.h" line="108" column="14" bodyfile="src/redland/RedlandWrapper/src/Logger.cpp" bodystart="128" bodyend="130"/>
+      </memberdef>
+      <memberdef kind="function" id="classredland_1_1Logger_1a8e48332423e589a5e11c8e6ecdd16bf1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void redland::Logger::debug</definition>
+        <argsstring>(const std::string &amp;message)</argsstring>
+        <name>debug</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+<para>log a debug message to the currently active logger </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/Logger.h" line="114" column="14" bodyfile="src/redland/RedlandWrapper/src/Logger.cpp" bodystart="132" bodyend="134"/>
+      </memberdef>
+      <memberdef kind="function" id="classredland_1_1Logger_1a244494ce1d28d0b5e3c27de7e462f8e2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void redland::Logger::warn</definition>
+        <argsstring>(const std::string &amp;message)</argsstring>
+        <name>warn</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+<para>log a warning message to the currently active logger </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/Logger.h" line="120" column="14" bodyfile="src/redland/RedlandWrapper/src/Logger.cpp" bodystart="136" bodyend="138"/>
+      </memberdef>
+      <memberdef kind="function" id="classredland_1_1Logger_1a7736a74d653953cb3248f20706c0b9f1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void redland::Logger::error</definition>
+        <argsstring>(const std::string &amp;message)</argsstring>
+        <name>error</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+<para>log a error message to the currently active logger </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/Logger.h" line="126" column="14" bodyfile="src/redland/RedlandWrapper/src/Logger.cpp" bodystart="140" bodyend="142"/>
+      </memberdef>
+      <memberdef kind="function" id="classredland_1_1Logger_1a6d50761ac27eb3411396cdd18a9c05a9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void redland::Logger::critical</definition>
+        <argsstring>(const std::string &amp;message)</argsstring>
+        <name>critical</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+<para>log a critical message to the currently active logger </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/Logger.h" line="132" column="14" bodyfile="src/redland/RedlandWrapper/src/Logger.cpp" bodystart="144" bodyend="146"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classredland_1_1Logger_1a0e046d7572c3756ed188fda9b7914bb4" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>redland::Logger::Logger</definition>
+        <argsstring>()</argsstring>
+        <name>Logger</name>
+        <briefdescription>
+<para>constructor is private </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/Logger.h" line="155" column="9" bodyfile="src/redland/RedlandWrapper/src/Logger.cpp" bodystart="16" bodyend="22"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Logging class for libOmexMeta. Implemented as a singleton. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/redland/RedlandWrapper/src/include/redland/Logger.h" line="41" column="5" bodyfile="src/redland/RedlandWrapper/src/include/redland/Logger.h" bodystart="41" bodyend="187"/>
+    <listofallmembers>
+      <member refid="classredland_1_1Logger_1a45b353c2b889f2407e60b9a4b2851712" prot="private" virt="non-virtual"><scope>redland::Logger</scope><name>backtraceNum</name></member>
+      <member refid="classredland_1_1Logger_1a63c1f161280c140b69b3db08389a1137" prot="public" virt="non-virtual"><scope>redland::Logger</scope><name>consoleLogger</name></member>
+      <member refid="classredland_1_1Logger_1a6d50761ac27eb3411396cdd18a9c05a9" prot="public" virt="non-virtual"><scope>redland::Logger</scope><name>critical</name></member>
+      <member refid="classredland_1_1Logger_1a8e48332423e589a5e11c8e6ecdd16bf1" prot="public" virt="non-virtual"><scope>redland::Logger</scope><name>debug</name></member>
+      <member refid="classredland_1_1Logger_1a61b92676954488db03b3c3ebfbd11fe0" prot="public" virt="non-virtual"><scope>redland::Logger</scope><name>disableBacktrace</name></member>
+      <member refid="classredland_1_1Logger_1ac0d3043e20448acf27088756943e6487" prot="public" virt="non-virtual"><scope>redland::Logger</scope><name>dumpBacktrace</name></member>
+      <member refid="classredland_1_1Logger_1a48844ea4f9eecbb5c450b35a96cbdda4" prot="public" virt="non-virtual"><scope>redland::Logger</scope><name>enableBacktrace</name></member>
+      <member refid="classredland_1_1Logger_1a7736a74d653953cb3248f20706c0b9f1" prot="public" virt="non-virtual"><scope>redland::Logger</scope><name>error</name></member>
+      <member refid="classredland_1_1Logger_1a39e56c0690a855138fff179e68171bc3" prot="public" virt="non-virtual"><scope>redland::Logger</scope><name>fileLogger</name></member>
+      <member refid="classredland_1_1Logger_1a75b8207b5289478fb52cb59933184f33" prot="private" virt="non-virtual"><scope>redland::Logger</scope><name>filepath_</name></member>
+      <member refid="classredland_1_1Logger_1ad9c881a08834cf4e8f45ec9f59cbf141" prot="private" virt="non-virtual"><scope>redland::Logger</scope><name>formatterPattern</name></member>
+      <member refid="classredland_1_1Logger_1a267cc8563aa19f296edfd859331a53a7" prot="public" virt="non-virtual"><scope>redland::Logger</scope><name>getLevel</name></member>
+      <member refid="classredland_1_1Logger_1a371ea8132ab82e1c783b74bd6bcf38c5" prot="public" virt="non-virtual"><scope>redland::Logger</scope><name>getLogger</name></member>
+      <member refid="classredland_1_1Logger_1af235df43b65913acfa616d98a299fe72" prot="public" virt="non-virtual"><scope>redland::Logger</scope><name>info</name></member>
+      <member refid="classredland_1_1Logger_1a49b37ed1aca98271c91e60774ec68c2d" prot="private" virt="non-virtual"><scope>redland::Logger</scope><name>inst_</name></member>
+      <member refid="classredland_1_1Logger_1a83c2fde7dc2b6547053d690e63c0f73d" prot="public" virt="non-virtual"><scope>redland::Logger</scope><name>isConsoleLogger</name></member>
+      <member refid="classredland_1_1Logger_1acfe5e473ffe0cb34b45ab69ab7675358" prot="public" virt="non-virtual"><scope>redland::Logger</scope><name>isFileLogger</name></member>
+      <member refid="classredland_1_1Logger_1ad5c9edd10e0235d22b883ef378a8d7a8" prot="private" virt="non-virtual"><scope>redland::Logger</scope><name>level_</name></member>
+      <member refid="classredland_1_1Logger_1a9bc7671c63a3d7c3953a4d65d8570936" prot="public" virt="non-virtual"><scope>redland::Logger</scope><name>logger</name></member>
+      <member refid="classredland_1_1Logger_1a0e046d7572c3756ed188fda9b7914bb4" prot="private" virt="non-virtual"><scope>redland::Logger</scope><name>Logger</name></member>
+      <member refid="classredland_1_1Logger_1a9e76412d869c3ff4497ce38ef7e3342d" prot="public" virt="non-virtual"><scope>redland::Logger</scope><name>LoggerPtr</name></member>
+      <member refid="classredland_1_1Logger_1a0c9a776efbf57c060ef7f6a2f41455c4" prot="public" virt="non-virtual"><scope>redland::Logger</scope><name>LogLevel</name></member>
+      <member refid="classredland_1_1Logger_1ac358531893ec79d169ec449aae2cc5c0" prot="public" virt="non-virtual"><scope>redland::Logger</scope><name>setFormatter</name></member>
+      <member refid="classredland_1_1Logger_1a7ae9f6e2d9c6d143192dd7253acea479" prot="public" virt="non-virtual"><scope>redland::Logger</scope><name>setLevel</name></member>
+      <member refid="classredland_1_1Logger_1af47c7ee65088b85f238a1db26c40f48f" prot="private" virt="non-virtual"><scope>redland::Logger</scope><name>shouldBacktrace_</name></member>
+      <member refid="classredland_1_1Logger_1ae1be7a182e59b7aeb14f584d6d5114b6" prot="public" virt="non-virtual"><scope>redland::Logger</scope><name>trace</name></member>
+      <member refid="classredland_1_1Logger_1a244494ce1d28d0b5e3c27de7e462f8e2" prot="public" virt="non-virtual"><scope>redland::Logger</scope><name>warn</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

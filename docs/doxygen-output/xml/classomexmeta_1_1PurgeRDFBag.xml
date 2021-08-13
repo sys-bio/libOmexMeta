@@ -127,7 +127,7 @@ Since this class is designed to be used by the rdf*, the private member variable
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PurgeRDFBag.h" line="27" column="14" bodyfile="src/omexmeta/PurgeRDFBag.cpp" bodystart="34" bodyend="38"/>
+        <location file="src/omexmeta/include/omexmeta/PurgeRDFBag.h" line="27" column="14" bodyfile="src/omexmeta/PurgeRDFBag.cpp" bodystart="25" bodyend="29"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PurgeRDFBag_1adf413be32ae861c7439acf89b59aedd7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -142,7 +142,7 @@ Since this class is designed to be used by the rdf*, the private member variable
         <inbodydescription>
 <para>Note, we might be able to do another query that says &quot;if the query matches&quot; do something with it.</para>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PurgeRDFBag.h" line="36" column="14" bodyfile="src/omexmeta/PurgeRDFBag.cpp" bodystart="40" bodyend="142"/>
+        <location file="src/omexmeta/include/omexmeta/PurgeRDFBag.h" line="36" column="14" bodyfile="src/omexmeta/PurgeRDFBag.cpp" bodystart="31" bodyend="136"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PurgeRDFBag_1ac368f06fcfd66622f1ff6d3e17c05363" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -162,7 +162,7 @@ Since this class is designed to be used by the rdf*, the private member variable
 <para>One &quot;cheat&quot; way around this is to only apply changes when this sparql query locates more than one &quot;row&quot; (if you think of the keys in ResultMap as columns and the values as cells).</para>
 <para><ref refid="classThis" kindref="compound">This</ref> is not guarenteed to work for every use case, but we&apos;ll see</para>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PurgeRDFBag.h" line="44" column="14" bodyfile="src/omexmeta/PurgeRDFBag.cpp" bodystart="144" bodyend="216"/>
+        <location file="src/omexmeta/include/omexmeta/PurgeRDFBag.h" line="44" column="14" bodyfile="src/omexmeta/PurgeRDFBag.cpp" bodystart="138" bodyend="214"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PurgeRDFBag_1a6bfab9190b6f548756c71c5dd3c5807f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -178,7 +178,7 @@ Since this class is designed to be used by the rdf*, the private member variable
 <para>One &quot;cheat&quot; way around this is to only apply changes when this sparql query locates more than one &quot;row&quot; (if you think of the keys in ResultMap as columns and the values as cells).</para>
 <para><ref refid="classThis" kindref="compound">This</ref> is not guarenteed to work for every use case, but we&apos;ll see</para>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PurgeRDFBag.h" line="46" column="14" bodyfile="src/omexmeta/PurgeRDFBag.cpp" bodystart="218" bodyend="290"/>
+        <location file="src/omexmeta/include/omexmeta/PurgeRDFBag.h" line="46" column="14" bodyfile="src/omexmeta/PurgeRDFBag.cpp" bodystart="216" bodyend="294"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -193,7 +193,7 @@ Since this class is designed to be used by the rdf*, the private member variable
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PurgeRDFBag.h" line="25" column="28" bodyfile="src/omexmeta/PurgeRDFBag.cpp" bodystart="13" bodyend="32"/>
+        <location file="src/omexmeta/include/omexmeta/PurgeRDFBag.h" line="25" column="28" bodyfile="src/omexmeta/PurgeRDFBag.cpp" bodystart="13" bodyend="23"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

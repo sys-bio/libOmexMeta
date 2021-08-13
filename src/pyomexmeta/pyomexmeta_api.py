@@ -227,6 +227,7 @@ class PyOmexMetaAPI:
     #################################################################
     # RDF methods
     #
+    function_that_returns_null = utils.load_func("functionThatReturnsNullptr", [], ct.c_int64)
 
     # RDF *RDF_new(const char *storage_type = "memory", const char *storage_name = "semsim_store",
     #              const char *storage_options = nullptr, const char *model_options = nullptr);

@@ -58,6 +58,16 @@ class TestAPI(unittest.TestCase):
         self.assertEqual(expected, actual)
         self.pyom.rdf_delete(rdf)
 
+    def test_rdf_from_string_wrong_syntax(self):
+        # the annotation is rdfxml not turtle
+        rdf = self.pyom.rdf_from_string(
+            TestStrings.singular_annotation2.encode(), 'turtle'.encode(), "test_rdf_from_string.rdf".encode(),
+            "memory".encode(), "libOmexMetaStore".encode(), None, None
+        )
+        # this does not cause error but fails to read the annotation
+        # returning instead an empty rdf graph.
+        self.assertNotEqual(rdf, 0)
+
     def test_rdf_add_from_string(self):
         self.pyom.rdf_add_from_string(self.rdf, TestStrings.singular_annotation2.encode(), 'rdfxml'.encode(),
                                           "test_rdf_from_string.rdf".encode())

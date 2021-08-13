@@ -74,13 +74,13 @@
         </inbodydescription>
         <location file="src/omexmeta/include/omexmeta/EnergyDiff.h" line="38" column="9"/>
       </memberdef>
-      <memberdef kind="function" id="classomexmeta_1_1EnergyDiff_1a757c334d0fbdd17bac674cbd085889c1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classomexmeta_1_1EnergyDiff_1a981fdfc07cf7b3fbe7e2c72d594bbb12" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>omexmeta::EnergyDiff::EnergyDiff</definition>
-        <argsstring>(librdf_model *model, UriHandler &amp;uriHandler, PhysicalProperty physicalProperty, Sources sources, Sinks sinks)</argsstring>
+        <argsstring>(LibrdfModel &amp;model, UriHandler &amp;uriHandler, PhysicalProperty physicalProperty, Sources sources, Sinks sinks)</argsstring>
         <name>EnergyDiff</name>
         <param>
-          <type>librdf_model *</type>
+          <type><ref refid="classredland_1_1LibrdfModel" kindref="compound">LibrdfModel</ref> &amp;</type>
           <declname>model</declname>
         </param>
         <param>
@@ -123,13 +123,13 @@
         </inbodydescription>
         <location file="src/omexmeta/include/omexmeta/EnergyDiff.h" line="55" column="14" bodyfile="src/omexmeta/EnergyDiff.cpp" bodystart="101" bodyend="109"/>
       </memberdef>
-      <memberdef kind="function" id="classomexmeta_1_1EnergyDiff_1aef560b63f36f3f5b4dd02e7d491b2981" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classomexmeta_1_1EnergyDiff_1afc97656796d5412c430bc6cec644bed6" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
         <type></type>
         <definition>omexmeta::EnergyDiff::EnergyDiff</definition>
-        <argsstring>(librdf_model *model, UriHandler &amp;uriHandler)</argsstring>
+        <argsstring>(LibrdfModel &amp;model, UriHandler &amp;uriHandler)</argsstring>
         <name>EnergyDiff</name>
         <param>
-          <type>librdf_model *</type>
+          <type><ref refid="classredland_1_1LibrdfModel" kindref="compound">LibrdfModel</ref> &amp;</type>
           <declname>model</declname>
         </param>
         <param>
@@ -708,13 +708,23 @@ See <ref refid="classomexmeta_1_1SinkParticipant" kindref="compound">SinkPartici
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="3">
+      <node id="6">
         <label>omexmeta::PhysicalProperty</label>
         <link refid="classomexmeta_1_1PhysicalProperty"/>
       </node>
-      <node id="4">
+      <node id="7">
         <label>omexmeta::UriHandler</label>
         <link refid="classomexmeta_1_1UriHandler"/>
+      </node>
+      <node id="4">
+        <label>RefCounted_librdf_model</label>
+        <link refid="classredland_1_1RefCountedRedlandType"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>redland::RedlandType&lt; ObjType, FreeFuncType &gt;</label>
+        <link refid="classredland_1_1RedlandType"/>
       </node>
       <node id="1">
         <label>omexmeta::EnergyDiff</label>
@@ -726,10 +736,19 @@ See <ref refid="classomexmeta_1_1SinkParticipant" kindref="compound">SinkPartici
         <label>omexmeta::PropertyBearer</label>
         <link refid="classomexmeta_1_1PropertyBearer"/>
         <childnode refid="3" relation="usage">
+          <edgelabel>model_</edgelabel>
+        </childnode>
+        <childnode refid="6" relation="usage">
           <edgelabel>physical_property_</edgelabel>
         </childnode>
-        <childnode refid="4" relation="usage">
+        <childnode refid="7" relation="usage">
           <edgelabel>uriHandler_</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>redland::LibrdfModel</label>
+        <link refid="classredland_1_1LibrdfModel"/>
+        <childnode refid="4" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>
@@ -743,14 +762,14 @@ See <ref refid="classomexmeta_1_1SinkParticipant" kindref="compound">SinkPartici
       <member refid="classomexmeta_1_1EnergyDiff_1a89b71ee99e45544f84ce7995db575f0a" prot="public" virt="non-virtual"><scope>omexmeta::EnergyDiff</scope><name>addSource</name></member>
       <member refid="classomexmeta_1_1EnergyDiff_1a251676c05ab006aa282520e0e9464c4e" prot="public" virt="non-virtual"><scope>omexmeta::EnergyDiff</scope><name>createMetaId</name></member>
       <member refid="classomexmeta_1_1EnergyDiff_1ae40b225f1950a46e51f98a02f56a8f78" prot="public" virt="non-virtual"><scope>omexmeta::EnergyDiff</scope><name>EnergyDiff</name></member>
-      <member refid="classomexmeta_1_1EnergyDiff_1a757c334d0fbdd17bac674cbd085889c1" prot="public" virt="non-virtual"><scope>omexmeta::EnergyDiff</scope><name>EnergyDiff</name></member>
-      <member refid="classomexmeta_1_1EnergyDiff_1aef560b63f36f3f5b4dd02e7d491b2981" prot="public" virt="non-virtual"><scope>omexmeta::EnergyDiff</scope><name>EnergyDiff</name></member>
+      <member refid="classomexmeta_1_1EnergyDiff_1a981fdfc07cf7b3fbe7e2c72d594bbb12" prot="public" virt="non-virtual"><scope>omexmeta::EnergyDiff</scope><name>EnergyDiff</name></member>
+      <member refid="classomexmeta_1_1EnergyDiff_1afc97656796d5412c430bc6cec644bed6" prot="public" virt="non-virtual"><scope>omexmeta::EnergyDiff</scope><name>EnergyDiff</name></member>
       <member refid="classomexmeta_1_1EnergyDiff_1a04547f43809e57847265b911f6868018" prot="public" virt="non-virtual"><scope>omexmeta::EnergyDiff</scope><name>free</name></member>
       <member refid="classomexmeta_1_1PropertyBearer_1a78328bba4ba48b3bfdcfebd8256d6add" prot="protected" virt="non-virtual"><scope>omexmeta::EnergyDiff</scope><name>generateMetaId</name></member>
       <member refid="classomexmeta_1_1PropertyBearer_1a5171a92883795c1ba3981443ecd21864" prot="public" virt="non-virtual"><scope>omexmeta::EnergyDiff</scope><name>getAbout</name></member>
       <member refid="classomexmeta_1_1PropertyBearer_1ad53dffe87d395860708c4bcfc8a76478" prot="public" virt="non-virtual"><scope>omexmeta::EnergyDiff</scope><name>getAboutUriType</name></member>
       <member refid="classomexmeta_1_1PropertyBearer_1a45b07ccfc203b51dfc08c45dbd37480d" prot="public" virt="non-virtual"><scope>omexmeta::EnergyDiff</scope><name>getLocalUri</name></member>
-      <member refid="classomexmeta_1_1PropertyBearer_1a97a2c8ec00a740a607512db4b351467a" prot="public" virt="non-virtual"><scope>omexmeta::EnergyDiff</scope><name>getModel</name></member>
+      <member refid="classomexmeta_1_1PropertyBearer_1a7d73b7511a12c8050262de668e26f4a8" prot="public" virt="non-virtual"><scope>omexmeta::EnergyDiff</scope><name>getModel</name></member>
       <member refid="classomexmeta_1_1PropertyBearer_1a6df2db1bb03c9b62da60263869f57ce6" prot="public" virt="non-virtual"><scope>omexmeta::EnergyDiff</scope><name>getModelUri</name></member>
       <member refid="classomexmeta_1_1PropertyBearer_1ad5385daa0deb6a484d16a190d46fa0e7" prot="protected" virt="non-virtual"><scope>omexmeta::EnergyDiff</scope><name>getNewMetaidExclusionList</name></member>
       <member refid="classomexmeta_1_1EnergyDiff_1afbc21847dde7dfe371f01c009e522f95" prot="public" virt="non-virtual"><scope>omexmeta::EnergyDiff</scope><name>getNumSinks</name></member>
@@ -767,7 +786,7 @@ See <ref refid="classomexmeta_1_1SinkParticipant" kindref="compound">SinkPartici
       <member refid="classomexmeta_1_1EnergyDiff_1ae5077644798fd94176a8ec67be9e808f" prot="public" virt="virtual"><scope>omexmeta::EnergyDiff</scope><name>hasProperty</name></member>
       <member refid="classomexmeta_1_1EnergyDiff_1a93f81d7b9419c1eb3a42ef8286686911" prot="public" virt="non-virtual"><scope>omexmeta::EnergyDiff</scope><name>isPropertyOf</name></member>
       <member refid="classomexmeta_1_1EnergyDiff_1a01637dda292ce8ca2bab22f20c874c5d" prot="public" virt="non-virtual"><scope>omexmeta::EnergyDiff</scope><name>isVersionOf</name></member>
-      <member refid="classomexmeta_1_1PropertyBearer_1a2a2bcd9e87986713cff5877e39a9f994" prot="protected" virt="non-virtual"><scope>omexmeta::EnergyDiff</scope><name>model_</name></member>
+      <member refid="classomexmeta_1_1PropertyBearer_1a230f7985fea69dd3cbeb4d589f73ff4e" prot="protected" virt="non-virtual"><scope>omexmeta::EnergyDiff</scope><name>model_</name></member>
       <member refid="classomexmeta_1_1PropertyBearer_1a1ee416fecb12d19937f5bc9b6d43c7b1" prot="protected" virt="non-virtual"><scope>omexmeta::EnergyDiff</scope><name>new_metaid_exclusion_list_</name></member>
       <member refid="classomexmeta_1_1EnergyDiff_1a0d5f37b499b9204fe425af2ceb26832d" prot="public" virt="non-virtual"><scope>omexmeta::EnergyDiff</scope><name>operator!=</name></member>
       <member refid="classomexmeta_1_1PropertyBearer_1a8e065b7ca6fc51c2eb4f4d63e1203fe2" prot="public" virt="non-virtual" ambiguityscope="omexmeta::PropertyBearer::"><scope>omexmeta::EnergyDiff</scope><name>operator!=</name></member>
@@ -780,8 +799,8 @@ See <ref refid="classomexmeta_1_1SinkParticipant" kindref="compound">SinkPartici
       <member refid="classomexmeta_1_1PropertyBearer_1a8ae678b4a1cc528b20ff969b7d728bd6" prot="public" virt="non-virtual"><scope>omexmeta::EnergyDiff</scope><name>PropertyBearer</name></member>
       <member refid="classomexmeta_1_1PropertyBearer_1aba09b3a7c564ff208507dc0d533639ff" prot="public" virt="non-virtual"><scope>omexmeta::EnergyDiff</scope><name>PropertyBearer</name></member>
       <member refid="classomexmeta_1_1PropertyBearer_1a130c3075575d8da0113ad6320a8f0794" prot="public" virt="non-virtual"><scope>omexmeta::EnergyDiff</scope><name>PropertyBearer</name></member>
-      <member refid="classomexmeta_1_1PropertyBearer_1af6a967a6e8950c3fe550ee6cc4bb9e6e" prot="public" virt="non-virtual"><scope>omexmeta::EnergyDiff</scope><name>PropertyBearer</name></member>
-      <member refid="classomexmeta_1_1PropertyBearer_1a55a9c4b8c46c2f14cd805e94a7b6f141" prot="public" virt="non-virtual"><scope>omexmeta::EnergyDiff</scope><name>PropertyBearer</name></member>
+      <member refid="classomexmeta_1_1PropertyBearer_1a660b03e0a511fad961682b9d5105bff3" prot="public" virt="non-virtual"><scope>omexmeta::EnergyDiff</scope><name>PropertyBearer</name></member>
+      <member refid="classomexmeta_1_1PropertyBearer_1ac6c56fcbb9cd396319c546cb472b7d01" prot="public" virt="non-virtual"><scope>omexmeta::EnergyDiff</scope><name>PropertyBearer</name></member>
       <member refid="classomexmeta_1_1EnergyDiff_1a059f531d872cf7c54ee264c7bef01681" prot="public" virt="non-virtual"><scope>omexmeta::EnergyDiff</scope><name>propertyIsVersionOf</name></member>
       <member refid="classomexmeta_1_1PropertyBearer_1a50f4abd4a7a5f699343fe824612b12fb" prot="public" virt="non-virtual"><scope>omexmeta::EnergyDiff</scope><name>setAboutUriType</name></member>
       <member refid="classomexmeta_1_1EnergyDiff_1af24cd391d9b15de82f1fa435275ca533" prot="public" virt="non-virtual"><scope>omexmeta::EnergyDiff</scope><name>setPhysicalProperty</name></member>

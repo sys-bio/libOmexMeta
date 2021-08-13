@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['urihandler_421',['UriHandler',['../classomexmeta_1_1UriHandler.html',1,'omexmeta']]]
+  ['valueexception_454',['ValueException',['../classomexmeta_1_1ValueException.html',1,'omexmeta']]],
+  ['vcardtranslator_455',['VCardTranslator',['../classomexmeta_1_1VCardTranslator.html',1,'omexmeta']]]
 ];

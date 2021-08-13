@@ -100,13 +100,13 @@
         </inbodydescription>
         <location file="src/omexmeta/include/omexmeta/PhysicalProcess.h" line="34" column="9"/>
       </memberdef>
-      <memberdef kind="function" id="classomexmeta_1_1PhysicalProcess_1afc6b8fa69c15e213e2527f01cca4ae23" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classomexmeta_1_1PhysicalProcess_1a7366b29ca47b442d8650b48e88ef4c32" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>omexmeta::PhysicalProcess::PhysicalProcess</definition>
-        <argsstring>(librdf_model *model, UriHandler &amp;uriHandler, const PhysicalProperty &amp;physicalProperty, Sources sources, Sinks sinks, Mediators mediators)</argsstring>
+        <argsstring>(LibrdfModel &amp;model, UriHandler &amp;uriHandler, const PhysicalProperty &amp;physicalProperty, Sources sources, Sinks sinks, Mediators mediators)</argsstring>
         <name>PhysicalProcess</name>
         <param>
-          <type>librdf_model *</type>
+          <type><ref refid="classredland_1_1LibrdfModel" kindref="compound">LibrdfModel</ref> &amp;</type>
           <declname>model</declname>
         </param>
         <param>
@@ -195,13 +195,13 @@
         </inbodydescription>
         <location file="src/omexmeta/include/omexmeta/PhysicalProcess.h" line="58" column="14" bodyfile="src/omexmeta/PhysicalProcess.cpp" bodystart="71" bodyend="81"/>
       </memberdef>
-      <memberdef kind="function" id="classomexmeta_1_1PhysicalProcess_1a4012f37ba6f9d9ade1c1064280897c05" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classomexmeta_1_1PhysicalProcess_1a84784ee46b8e8252d74d48029adb2723" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
         <type></type>
         <definition>omexmeta::PhysicalProcess::PhysicalProcess</definition>
-        <argsstring>(librdf_model *model, UriHandler &amp;uriHandler)</argsstring>
+        <argsstring>(LibrdfModel &amp;model, UriHandler &amp;uriHandler)</argsstring>
         <name>PhysicalProcess</name>
         <param>
-          <type>librdf_model *</type>
+          <type><ref refid="classredland_1_1LibrdfModel" kindref="compound">LibrdfModel</ref> &amp;</type>
           <declname>model</declname>
         </param>
         <param>
@@ -676,11 +676,11 @@ When used, the ownership of nodes in <ref refid="classomexmeta_1_1PhysicalProces
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="3">
+      <node id="6">
         <label>omexmeta::PhysicalProperty</label>
         <link refid="classomexmeta_1_1PhysicalProperty"/>
       </node>
-      <node id="4">
+      <node id="7">
         <label>omexmeta::UriHandler</label>
         <link refid="classomexmeta_1_1UriHandler"/>
       </node>
@@ -690,14 +690,33 @@ When used, the ownership of nodes in <ref refid="classomexmeta_1_1PhysicalProces
         <childnode refid="2" relation="public-inheritance">
         </childnode>
       </node>
+      <node id="4">
+        <label>RefCounted_librdf_model</label>
+        <link refid="classredland_1_1RefCountedRedlandType"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>redland::RedlandType&lt; ObjType, FreeFuncType &gt;</label>
+        <link refid="classredland_1_1RedlandType"/>
+      </node>
       <node id="2">
         <label>omexmeta::PropertyBearer</label>
         <link refid="classomexmeta_1_1PropertyBearer"/>
         <childnode refid="3" relation="usage">
+          <edgelabel>model_</edgelabel>
+        </childnode>
+        <childnode refid="6" relation="usage">
           <edgelabel>physical_property_</edgelabel>
         </childnode>
-        <childnode refid="4" relation="usage">
+        <childnode refid="7" relation="usage">
           <edgelabel>uriHandler_</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>redland::LibrdfModel</label>
+        <link refid="classredland_1_1LibrdfModel"/>
+        <childnode refid="4" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>
@@ -716,7 +735,7 @@ When used, the ownership of nodes in <ref refid="classomexmeta_1_1PhysicalProces
       <member refid="classomexmeta_1_1PropertyBearer_1ad53dffe87d395860708c4bcfc8a76478" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>getAboutUriType</name></member>
       <member refid="classomexmeta_1_1PropertyBearer_1a45b07ccfc203b51dfc08c45dbd37480d" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>getLocalUri</name></member>
       <member refid="classomexmeta_1_1PhysicalProcess_1a349b76ad1831d2510904510583f0d7f2" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>getMediators</name></member>
-      <member refid="classomexmeta_1_1PropertyBearer_1a97a2c8ec00a740a607512db4b351467a" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>getModel</name></member>
+      <member refid="classomexmeta_1_1PropertyBearer_1a7d73b7511a12c8050262de668e26f4a8" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>getModel</name></member>
       <member refid="classomexmeta_1_1PropertyBearer_1a6df2db1bb03c9b62da60263869f57ce6" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>getModelUri</name></member>
       <member refid="classomexmeta_1_1PropertyBearer_1ad5385daa0deb6a484d16a190d46fa0e7" prot="protected" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>getNewMetaidExclusionList</name></member>
       <member refid="classomexmeta_1_1PhysicalProcess_1a717a352ce3bb956201174002f904cd26" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>getNumMediators</name></member>
@@ -735,7 +754,7 @@ When used, the ownership of nodes in <ref refid="classomexmeta_1_1PhysicalProces
       <member refid="classomexmeta_1_1PhysicalProcess_1a53e690a73469f891d5b6c3ab92fe31ff" prot="private" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>is_version_of_</name></member>
       <member refid="classomexmeta_1_1PhysicalProcess_1a5a36f6efe4cfec19a68e4f16444ea049" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>isVersionOf</name></member>
       <member refid="classomexmeta_1_1PhysicalProcess_1a127844f0eb3350b2d2335ccd26438b7d" prot="private" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>mediators_</name></member>
-      <member refid="classomexmeta_1_1PropertyBearer_1a2a2bcd9e87986713cff5877e39a9f994" prot="protected" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>model_</name></member>
+      <member refid="classomexmeta_1_1PropertyBearer_1a230f7985fea69dd3cbeb4d589f73ff4e" prot="protected" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>model_</name></member>
       <member refid="classomexmeta_1_1PropertyBearer_1a1ee416fecb12d19937f5bc9b6d43c7b1" prot="protected" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>new_metaid_exclusion_list_</name></member>
       <member refid="classomexmeta_1_1PhysicalProcess_1af8298394b713807ec51c2b5f60afd00e" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>operator!=</name></member>
       <member refid="classomexmeta_1_1PropertyBearer_1a8e065b7ca6fc51c2eb4f4d63e1203fe2" prot="public" virt="non-virtual" ambiguityscope="omexmeta::PropertyBearer::"><scope>omexmeta::PhysicalProcess</scope><name>operator!=</name></member>
@@ -745,14 +764,14 @@ When used, the ownership of nodes in <ref refid="classomexmeta_1_1PhysicalProces
       <member refid="classomexmeta_1_1PropertyBearer_1a354440c37a048f6d85e1b8613735a0b7" prot="public" virt="non-virtual" ambiguityscope="omexmeta::PropertyBearer::"><scope>omexmeta::PhysicalProcess</scope><name>operator==</name></member>
       <member refid="classomexmeta_1_1PropertyBearer_1abdaa4997f02b9ef36cda61037399eb86" prot="protected" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>physical_property_</name></member>
       <member refid="classomexmeta_1_1PhysicalProcess_1acf4c42d10d6dbdd3aa4285bed7bd823b" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>PhysicalProcess</name></member>
-      <member refid="classomexmeta_1_1PhysicalProcess_1afc6b8fa69c15e213e2527f01cca4ae23" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>PhysicalProcess</name></member>
-      <member refid="classomexmeta_1_1PhysicalProcess_1a4012f37ba6f9d9ade1c1064280897c05" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>PhysicalProcess</name></member>
+      <member refid="classomexmeta_1_1PhysicalProcess_1a7366b29ca47b442d8650b48e88ef4c32" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>PhysicalProcess</name></member>
+      <member refid="classomexmeta_1_1PhysicalProcess_1a84784ee46b8e8252d74d48029adb2723" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>PhysicalProcess</name></member>
       <member refid="classomexmeta_1_1PhysicalProcess_1a2646c7350a226acde1a81a35aa92b71b" prot="private" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>property_metaid_base_</name></member>
       <member refid="classomexmeta_1_1PropertyBearer_1a8ae678b4a1cc528b20ff969b7d728bd6" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>PropertyBearer</name></member>
       <member refid="classomexmeta_1_1PropertyBearer_1aba09b3a7c564ff208507dc0d533639ff" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>PropertyBearer</name></member>
       <member refid="classomexmeta_1_1PropertyBearer_1a130c3075575d8da0113ad6320a8f0794" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>PropertyBearer</name></member>
-      <member refid="classomexmeta_1_1PropertyBearer_1af6a967a6e8950c3fe550ee6cc4bb9e6e" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>PropertyBearer</name></member>
-      <member refid="classomexmeta_1_1PropertyBearer_1a55a9c4b8c46c2f14cd805e94a7b6f141" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>PropertyBearer</name></member>
+      <member refid="classomexmeta_1_1PropertyBearer_1a660b03e0a511fad961682b9d5105bff3" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>PropertyBearer</name></member>
+      <member refid="classomexmeta_1_1PropertyBearer_1ac6c56fcbb9cd396319c546cb472b7d01" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>PropertyBearer</name></member>
       <member refid="classomexmeta_1_1PropertyBearer_1a50f4abd4a7a5f699343fe824612b12fb" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>setAboutUriType</name></member>
       <member refid="classomexmeta_1_1PropertyBearer_1a54b3df74898019158a849b9f0a9112ad" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>setPhysicalProperty</name></member>
       <member refid="classomexmeta_1_1PropertyBearer_1aa2de7a52a6737252ebf1d4d8820f8035" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalProcess</scope><name>setType</name></member>

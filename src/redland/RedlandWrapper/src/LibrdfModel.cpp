@@ -29,9 +29,9 @@ namespace redland {
         librdf_model_add_statement(obj_, statement.getWithoutIncrement());
     }
 
-    LibrdfQueryResults LibrdfModel::query(const LibrdfQuery &query) const {
-        librdf_query_results *results = librdf_query_execute(query.getWithoutIncrement(), obj_);
-        return LibrdfQueryResults(results);
+    LibrdfQueryResults LibrdfModel::query(const std::string &query) const {
+        LibrdfQuery q(query, *this);
+        return q.execute();
     }
 
     int LibrdfModel::size() const {

@@ -84,6 +84,19 @@ $(function() {
 <div class="line"><span class="preprocessor">#ifndef LIBOMEXMETA_OMEXMETACAPI_H</span></div>
 <div class="line"><span class="preprocessor">#define LIBOMEXMETA_OMEXMETACAPI_H</span></div>
 <div class="line"> </div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#define GENERAL_ERROR -1</span></div>
+<div class="line"><span class="preprocessor">#define RDF_ERROR -2</span></div>
+<div class="line"><span class="preprocessor">#define EDITOR_ERROR -3</span></div>
+<div class="line"><span class="preprocessor">#define QUERY_ERROR -4</span></div>
+<div class="line"><span class="preprocessor">#define SINGULAR_ANNOTATION_ERROR -5</span></div>
+<div class="line"><span class="preprocessor">#define PERSONAL_INFORMATION_ERROR -6</span></div>
+<div class="line"><span class="preprocessor">#define PHYSICAL_ENTITY_ERROR -7</span></div>
+<div class="line"><span class="preprocessor">#define PHYSICAL_PROCESS_ERROR -8</span></div>
+<div class="line"><span class="preprocessor">#define ENERGY_DIFF_ERROR -9</span></div>
+<div class="line"><span class="preprocessor">#define PHYSICAL_PROPERTY_ERROR -10</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &quot;include/redland/Logger.h&quot;</span></div>
 <div class="line"><span class="preprocessor">#include &quot;omexmeta/Editor.h&quot;</span></div>
 <div class="line"><span class="preprocessor">#include &quot;omexmeta/EnergyDiff.h&quot;</span></div>
 <div class="line"><span class="preprocessor">#include &quot;omexmeta/OmexMetaUtils.h&quot;</span></div>
@@ -91,7 +104,6 @@ $(function() {
 <div class="line"><span class="preprocessor">#include &quot;omexmeta/PhysicalEntity.h&quot;</span></div>
 <div class="line"><span class="preprocessor">#include &quot;omexmeta/PhysicalProcess.h&quot;</span></div>
 <div class="line"><span class="preprocessor">#include &quot;omexmeta/RDF.h&quot;</span></div>
-<div class="line"><span class="preprocessor">#include &quot;omexmeta/Logger.h&quot;</span></div>
 <div class="line"><span class="preprocessor">#include &quot;omexmeta_capi_export.h&quot;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;cstring&gt;</span></div>
 <div class="line"> </div>
@@ -128,6 +140,8 @@ $(function() {
 <div class="line">                                             <span class="keyword">const</span> <span class="keywordtype">char</span> *storage_type = <span class="stringliteral">&quot;memory&quot;</span>, <span class="keyword">const</span> <span class="keywordtype">char</span> *storage_name = <span class="stringliteral">&quot;semsim_store&quot;</span>,</div>
 <div class="line">                                             <span class="keyword">const</span> <span class="keywordtype">char</span> *storage_options = <span class="keyword">nullptr</span>, <span class="keyword">const</span> <span class="keywordtype">char</span> *model_options = <span class="keyword">nullptr</span>);</div>
 <div class="line"> </div>
+<div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">int</span> *<a name="a1"></a><a class="code" href="namespaceomexmeta.html#ade8cf4e6ce9dba23d7cfb28ab742613e">functionThatReturnsNullptr</a>();</div>
+<div class="line"> </div>
 <div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">int</span> RDF_addFromString(RDF *rdf_ptr, <span class="keyword">const</span> <span class="keywordtype">char</span> *str, <span class="keyword">const</span> <span class="keywordtype">char</span> *format);</div>
 <div class="line"> </div>
 <div class="line">    OMEXMETA_CAPI_EXPORT RDF *RDF_fromUri(<span class="keyword">const</span> <span class="keywordtype">char</span> *uri_string, <span class="keyword">const</span> <span class="keywordtype">char</span> *format,</div>
@@ -144,9 +158,9 @@ $(function() {
 <div class="line"> </div>
 <div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">char</span> *RDF_queryResultsAsString(RDF *rdf_ptr, <span class="keyword">const</span> <span class="keywordtype">char</span> *query_str, <span class="keyword">const</span> <span class="keywordtype">char</span> *results_format);</div>
 <div class="line"> </div>
-<div class="line">    OMEXMETA_CAPI_EXPORT ResultsMap *<a name="a1"></a><a class="code" href="namespaceomexmeta.html#a03fca9cddea3f90911a1eb3a1eda5e22">RDF_queryResultsAsMap</a>(RDF *rdf_ptr, <span class="keyword">const</span> <span class="keywordtype">char</span> *query_str);</div>
+<div class="line">    OMEXMETA_CAPI_EXPORT ResultsMap *<a name="a2"></a><a class="code" href="namespaceomexmeta.html#a03fca9cddea3f90911a1eb3a1eda5e22">RDF_queryResultsAsMap</a>(RDF *rdf_ptr, <span class="keyword">const</span> <span class="keywordtype">char</span> *query_str);</div>
 <div class="line"> </div>
-<div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">void</span> <a name="a2"></a><a class="code" href="namespaceomexmeta.html#aac58f146c00ed4c492efebb1e239c90b">deleteResultsMap</a>(ResultsMap *map);</div>
+<div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">void</span> <a name="a3"></a><a class="code" href="namespaceomexmeta.html#aac58f146c00ed4c492efebb1e239c90b">deleteResultsMap</a>(ResultsMap *map);</div>
 <div class="line"> </div>
 <div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">int</span> RDF_size(RDF *rdf_ptr);</div>
 <div class="line"> </div>
@@ -180,13 +194,13 @@ $(function() {
 <div class="line">    RDF_toEditor(RDF *rdf_ptr, <span class="keyword">const</span> <span class="keywordtype">char</span> *xml, <span class="keywordtype">bool</span> generate_new_metaids, <span class="keywordtype">bool</span> sbml_semantic_extraction);</div>
 <div class="line"> </div>
 <div class="line"> </div>
-<div class="line">    OMEXMETA_CAPI_EXPORT PhysicalEntity *<a name="a3"></a><a class="code" href="namespaceomexmeta.html#a11a77dd69a30da66d2e7bbddaa15c15c">Editor_newPhysicalEntity</a>(Editor *editor_ptr);</div>
+<div class="line">    OMEXMETA_CAPI_EXPORT PhysicalEntity *<a name="a4"></a><a class="code" href="namespaceomexmeta.html#a11a77dd69a30da66d2e7bbddaa15c15c">Editor_newPhysicalEntity</a>(Editor *editor_ptr);</div>
 <div class="line"> </div>
 <div class="line">    OMEXMETA_CAPI_EXPORT PersonalInformation *Editor_newPersonalInformation(Editor *editor_ptr);</div>
 <div class="line"> </div>
 <div class="line">    OMEXMETA_CAPI_EXPORT EnergyDiff *Editor_newEnergyDiff(Editor *editor_ptr);</div>
 <div class="line"> </div>
-<div class="line">    OMEXMETA_CAPI_EXPORT SingularAnnotation *<a name="a4"></a><a class="code" href="namespaceomexmeta.html#a30d98a9eb2bc11c67f7ca13a68aa1a73">Editor_newSingularAnnotation</a>(Editor *editor_ptr);</div>
+<div class="line">    OMEXMETA_CAPI_EXPORT SingularAnnotation *<a name="a5"></a><a class="code" href="namespaceomexmeta.html#a30d98a9eb2bc11c67f7ca13a68aa1a73">Editor_newSingularAnnotation</a>(Editor *editor_ptr);</div>
 <div class="line"> </div>
 <div class="line">    OMEXMETA_CAPI_EXPORT PhysicalProperty *Editor_newPhysicalProperty(Editor *editor_ptr);</div>
 <div class="line"> </div>
@@ -221,7 +235,7 @@ $(function() {
 <div class="line"> </div>
 <div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">char</span> *Editor_getMetaId(Editor *editor_ptr, <span class="keywordtype">int</span> index);</div>
 <div class="line"> </div>
-<div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">char</span> *<a name="a5"></a><a class="code" href="namespaceomexmeta.html#a27067bfb4290fcb7251845281520767f">Editor_getXml</a>(Editor *editor_ptr);</div>
+<div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">char</span> *<a name="a6"></a><a class="code" href="namespaceomexmeta.html#a27067bfb4290fcb7251845281520767f">Editor_getXml</a>(Editor *editor_ptr);</div>
 <div class="line"> </div>
 <div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">int</span> Editor_getNumMetaIds(Editor *editor_ptr);</div>
 <div class="line"> </div>
@@ -252,7 +266,7 @@ $(function() {
 <div class="line">    OMEXMETA_CAPI_EXPORT Editor *Editor_addParentModel(Editor *editor_ptr, <span class="keyword">const</span> <span class="keywordtype">char</span> *biomod_id);</div>
 <div class="line"> </div>
 <div class="line"> </div>
-<div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">int</span> <a name="a6"></a><a class="code" href="namespaceomexmeta.html#a86245ea959cf5a3e8f389941cca41f1a">SingularAnnotation_delete</a>(SingularAnnotation *singularAnnotation);</div>
+<div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">int</span> <a name="a7"></a><a class="code" href="namespaceomexmeta.html#a86245ea959cf5a3e8f389941cca41f1a">SingularAnnotation_delete</a>(SingularAnnotation *singularAnnotation);</div>
 <div class="line"> </div>
 <div class="line">    OMEXMETA_CAPI_EXPORT SingularAnnotation *</div>
 <div class="line">    SingularAnnotation_about(SingularAnnotation *singular_annotation, <span class="keyword">const</span> <span class="keywordtype">char</span> *about);</div>
@@ -289,15 +303,15 @@ $(function() {
 <div class="line"> </div>
 <div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">char</span> *SingularAnnotation_getAbout(SingularAnnotation *singular_annotation);</div>
 <div class="line"> </div>
-<div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">char</span> *</div>
-<div class="line">    SingularAnnotation_str(SingularAnnotation *singular_annotation, <span class="keyword">const</span> <span class="keywordtype">char</span> *format);</div>
+<div class="line"><span class="comment">//    OMEXMETA_CAPI_EXPORT char *</span></div>
+<div class="line"><span class="comment">//    SingularAnnotation_str(SingularAnnotation *singular_annotation, const char *format);</span></div>
 <div class="line"> </div>
 <div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">char</span> *SingularAnnotation_getPredicate(SingularAnnotation *singular_annotation);</div>
 <div class="line"> </div>
 <div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">char</span> *SingularAnnotation_getResource(SingularAnnotation *singular_annotation);</div>
 <div class="line"> </div>
 <div class="line"> </div>
-<div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">char</span> *<a name="a7"></a><a class="code" href="namespaceomexmeta.html#a386a15d5d186e00467ffdbb15dc9b2e3">PhysicalProperty_getAbout</a>(PhysicalProperty *property);</div>
+<div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">char</span> *<a name="a8"></a><a class="code" href="namespaceomexmeta.html#a386a15d5d186e00467ffdbb15dc9b2e3">PhysicalProperty_getAbout</a>(PhysicalProperty *property);</div>
 <div class="line"> </div>
 <div class="line">    OMEXMETA_CAPI_EXPORT PhysicalProperty *PhysicalProperty_about(PhysicalProperty *property, <span class="keyword">const</span> <span class="keywordtype">char</span> *about, eUriType type = eUriType::NONE);</div>
 <div class="line"> </div>
@@ -314,7 +328,7 @@ $(function() {
 <div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">int</span> PhysicalProperty_delete(PhysicalProperty *property);</div>
 <div class="line"> </div>
 <div class="line"> </div>
-<div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">int</span> <a name="a8"></a><a class="code" href="namespaceomexmeta.html#afbe0ad46666e43033c32182a23fba6d7">PhysicalEntity_delete</a>(PhysicalEntity *physical_entity_ptr);</div>
+<div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">int</span> <a name="a9"></a><a class="code" href="namespaceomexmeta.html#afbe0ad46666e43033c32182a23fba6d7">PhysicalEntity_delete</a>(PhysicalEntity *physical_entity_ptr);</div>
 <div class="line"> </div>
 <div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">int</span> PhysicalEntity_freeAll(PhysicalEntity *physical_entity_ptr);</div>
 <div class="line"> </div>
@@ -344,7 +358,7 @@ $(function() {
 <div class="line">    OMEXMETA_CAPI_EXPORT PhysicalEntity *PhysicalEntity_about(PhysicalEntity *physical_entity_ptr, <span class="keyword">const</span> <span class="keywordtype">char</span> *about, eUriType type = eUriType::NONE);</div>
 <div class="line"> </div>
 <div class="line"> </div>
-<div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">int</span> <a name="a9"></a><a class="code" href="namespaceomexmeta.html#a8f35bfdeddd4366704c681fac1b8112e">PhysicalProcess_delete</a>(PhysicalProcess *physicalProcess);</div>
+<div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">int</span> <a name="a10"></a><a class="code" href="namespaceomexmeta.html#a8f35bfdeddd4366704c681fac1b8112e">PhysicalProcess_delete</a>(PhysicalProcess *physicalProcess);</div>
 <div class="line"> </div>
 <div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">int</span> PhysicalProcess_freeAll(PhysicalProcess *physicalProcess);</div>
 <div class="line"> </div>
@@ -377,9 +391,9 @@ $(function() {
 <div class="line"> </div>
 <div class="line"> </div>
 <div class="line"> </div>
-<div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">int</span> <a name="a10"></a><a class="code" href="namespaceomexmeta.html#ade152f2f88f1394cfd5341d504384532">EnergyDiff_delete</a>(EnergyDiff *physicalForce);</div>
+<div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">int</span> <a name="a11"></a><a class="code" href="namespaceomexmeta.html#ade152f2f88f1394cfd5341d504384532">EnergyDiff_delete</a>(EnergyDiff *physicalForce);</div>
 <div class="line"> </div>
-<div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">int</span> <a name="a11"></a><a class="code" href="namespaceomexmeta.html#ac4ee432e12f736c29692417b0302f5f0">EnergyDiff_freeAll</a>(EnergyDiff *energy_diff_ptr);</div>
+<div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">int</span> <a name="a12"></a><a class="code" href="namespaceomexmeta.html#ac4ee432e12f736c29692417b0302f5f0">EnergyDiff_freeAll</a>(EnergyDiff *energy_diff_ptr);</div>
 <div class="line"> </div>
 <div class="line">    OMEXMETA_CAPI_EXPORT EnergyDiff *EnergyDiff_addSource(</div>
 <div class="line">            EnergyDiff *energy_diff_ptr,</div>
@@ -410,7 +424,7 @@ $(function() {
 <div class="line"> </div>
 <div class="line"> </div>
 <div class="line"> </div>
-<div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">int</span> <a name="a12"></a><a class="code" href="namespaceomexmeta.html#a0b43aced94ae55c938cc788111586fc8">PersonalInformation_delete</a>(PersonalInformation *information);</div>
+<div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">int</span> <a name="a13"></a><a class="code" href="namespaceomexmeta.html#a0b43aced94ae55c938cc788111586fc8">PersonalInformation_delete</a>(PersonalInformation *information);</div>
 <div class="line"> </div>
 <div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">char</span> *PersonalInformation_getLocalUri(PersonalInformation *information);</div>
 <div class="line"> </div>
@@ -459,13 +473,13 @@ $(function() {
 <div class="line"> </div>
 <div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">void</span> ResultsMap_delete(ResultsMap * resultsMap);</div>
 <div class="line"> </div>
-<div class="line">    OMEXMETA_CAPI_EXPORT Logger *<a name="a13"></a><a class="code" href="namespaceomexmeta.html#a401a97ce4b2a6c22f92b774091289ef8">Logger_getLogger</a>();</div>
+<div class="line">    OMEXMETA_CAPI_EXPORT Logger *<a name="a14"></a><a class="code" href="namespaceomexmeta.html#a401a97ce4b2a6c22f92b774091289ef8">Logger_getLogger</a>();</div>
 <div class="line"> </div>
 <div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">void</span> Logger_setFormatter(<span class="keyword">const</span> <span class="keywordtype">char</span>* format);</div>
 <div class="line"> </div>
 <div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">void</span> Logger_setLevel(Logger::LogLevel level);</div>
 <div class="line"> </div>
-<div class="line">    OMEXMETA_CAPI_EXPORT Logger::LogLevel Logger_getLevel();</div>
+<div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">int</span> Logger_getLevel();</div>
 <div class="line"> </div>
 <div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">void</span> Logger_enableBacktrace(<span class="keywordtype">int</span> num);</div>
 <div class="line"> </div>
@@ -497,19 +511,20 @@ $(function() {
 <div class="line"> </div>
 <div class="line"><span class="preprocessor">#endif</span><span class="comment">//LIBOMEXMETA_OMEXMETACAPI_H</span></div>
 <div class="ttc" id="anamespaceomexmeta_html"><div class="ttname"><a href="namespaceomexmeta.html">omexmeta</a></div><div class="ttdef"><b>Definition:</b> Editor.cpp:9</div></div>
-<div class="ttc" id="anamespaceomexmeta_html_a03fca9cddea3f90911a1eb3a1eda5e22"><div class="ttname"><a href="namespaceomexmeta.html#a03fca9cddea3f90911a1eb3a1eda5e22">omexmeta::RDF_queryResultsAsMap</a></div><div class="ttdeci">ResultsMap * RDF_queryResultsAsMap(RDF *rdf_ptr, const char *query_str)</div><div class="ttdoc">run a sparql query on rdf_ptr. Return the results as a ResultsMap*.</div><div class="ttdef"><b>Definition:</b> OmexMetaCApi.cpp:167</div></div>
-<div class="ttc" id="anamespaceomexmeta_html_a0b43aced94ae55c938cc788111586fc8"><div class="ttname"><a href="namespaceomexmeta.html#a0b43aced94ae55c938cc788111586fc8">omexmeta::PersonalInformation_delete</a></div><div class="ttdeci">int PersonalInformation_delete(PersonalInformation *information)</div><div class="ttdef"><b>Definition:</b> OmexMetaCApi.cpp:1347</div></div>
-<div class="ttc" id="anamespaceomexmeta_html_a11a77dd69a30da66d2e7bbddaa15c15c"><div class="ttname"><a href="namespaceomexmeta.html#a11a77dd69a30da66d2e7bbddaa15c15c">omexmeta::Editor_newPhysicalEntity</a></div><div class="ttdeci">PhysicalEntity * Editor_newPhysicalEntity(Editor *editor_ptr)</div><div class="ttdef"><b>Definition:</b> OmexMetaCApi.cpp:368</div></div>
-<div class="ttc" id="anamespaceomexmeta_html_a27067bfb4290fcb7251845281520767f"><div class="ttname"><a href="namespaceomexmeta.html#a27067bfb4290fcb7251845281520767f">omexmeta::Editor_getXml</a></div><div class="ttdeci">char * Editor_getXml(Editor *editor_ptr)</div><div class="ttdef"><b>Definition:</b> OmexMetaCApi.cpp:562</div></div>
-<div class="ttc" id="anamespaceomexmeta_html_a2f3a19ccb17e0be38e706861fa141fcc"><div class="ttname"><a href="namespaceomexmeta.html#a2f3a19ccb17e0be38e706861fa141fcc">omexmeta::RDF_new</a></div><div class="ttdeci">RDF * RDF_new(const char *storage_type, const char *storage_name, const char *storage_options, const char *model_options)</div><div class="ttdef"><b>Definition:</b> OmexMetaCApi.cpp:46</div></div>
-<div class="ttc" id="anamespaceomexmeta_html_a30d98a9eb2bc11c67f7ca13a68aa1a73"><div class="ttname"><a href="namespaceomexmeta.html#a30d98a9eb2bc11c67f7ca13a68aa1a73">omexmeta::Editor_newSingularAnnotation</a></div><div class="ttdeci">SingularAnnotation * Editor_newSingularAnnotation(Editor *editor_ptr)</div><div class="ttdef"><b>Definition:</b> OmexMetaCApi.cpp:349</div></div>
-<div class="ttc" id="anamespaceomexmeta_html_a386a15d5d186e00467ffdbb15dc9b2e3"><div class="ttname"><a href="namespaceomexmeta.html#a386a15d5d186e00467ffdbb15dc9b2e3">omexmeta::PhysicalProperty_getAbout</a></div><div class="ttdeci">char * PhysicalProperty_getAbout(PhysicalProperty *property)</div><div class="ttdef"><b>Definition:</b> OmexMetaCApi.cpp:867</div></div>
-<div class="ttc" id="anamespaceomexmeta_html_a401a97ce4b2a6c22f92b774091289ef8"><div class="ttname"><a href="namespaceomexmeta.html#a401a97ce4b2a6c22f92b774091289ef8">omexmeta::Logger_getLogger</a></div><div class="ttdeci">Logger * Logger_getLogger()</div><div class="ttdef"><b>Definition:</b> OmexMetaCApi.cpp:1572</div></div>
-<div class="ttc" id="anamespaceomexmeta_html_a86245ea959cf5a3e8f389941cca41f1a"><div class="ttname"><a href="namespaceomexmeta.html#a86245ea959cf5a3e8f389941cca41f1a">omexmeta::SingularAnnotation_delete</a></div><div class="ttdeci">int SingularAnnotation_delete(SingularAnnotation *singularAnnotation)</div><div class="ttdef"><b>Definition:</b> OmexMetaCApi.cpp:716</div></div>
-<div class="ttc" id="anamespaceomexmeta_html_a8f35bfdeddd4366704c681fac1b8112e"><div class="ttname"><a href="namespaceomexmeta.html#a8f35bfdeddd4366704c681fac1b8112e">omexmeta::PhysicalProcess_delete</a></div><div class="ttdeci">int PhysicalProcess_delete(PhysicalProcess *physicalProcess)</div><div class="ttdef"><b>Definition:</b> OmexMetaCApi.cpp:1092</div></div>
-<div class="ttc" id="anamespaceomexmeta_html_aac58f146c00ed4c492efebb1e239c90b"><div class="ttname"><a href="namespaceomexmeta.html#aac58f146c00ed4c492efebb1e239c90b">omexmeta::deleteResultsMap</a></div><div class="ttdeci">void deleteResultsMap(ResultsMap *map)</div><div class="ttdoc">RDF_queryResultsAsMap allocates a ResultsMap to the heap. This method deletes that memory.</div><div class="ttdef"><b>Definition:</b> OmexMetaCApi.cpp:183</div></div>
+<div class="ttc" id="anamespaceomexmeta_html_a03fca9cddea3f90911a1eb3a1eda5e22"><div class="ttname"><a href="namespaceomexmeta.html#a03fca9cddea3f90911a1eb3a1eda5e22">omexmeta::RDF_queryResultsAsMap</a></div><div class="ttdeci">ResultsMap * RDF_queryResultsAsMap(RDF *rdf_ptr, const char *query_str)</div><div class="ttdoc">run a sparql query on rdf_ptr. Return the results as a ResultsMap*.</div><div class="ttdef"><b>Definition:</b> OmexMetaCApi.cpp:183</div></div>
+<div class="ttc" id="anamespaceomexmeta_html_a0b43aced94ae55c938cc788111586fc8"><div class="ttname"><a href="namespaceomexmeta.html#a0b43aced94ae55c938cc788111586fc8">omexmeta::PersonalInformation_delete</a></div><div class="ttdeci">int PersonalInformation_delete(PersonalInformation *information)</div><div class="ttdef"><b>Definition:</b> OmexMetaCApi.cpp:1342</div></div>
+<div class="ttc" id="anamespaceomexmeta_html_a11a77dd69a30da66d2e7bbddaa15c15c"><div class="ttname"><a href="namespaceomexmeta.html#a11a77dd69a30da66d2e7bbddaa15c15c">omexmeta::Editor_newPhysicalEntity</a></div><div class="ttdeci">PhysicalEntity * Editor_newPhysicalEntity(Editor *editor_ptr)</div><div class="ttdef"><b>Definition:</b> OmexMetaCApi.cpp:379</div></div>
+<div class="ttc" id="anamespaceomexmeta_html_a27067bfb4290fcb7251845281520767f"><div class="ttname"><a href="namespaceomexmeta.html#a27067bfb4290fcb7251845281520767f">omexmeta::Editor_getXml</a></div><div class="ttdeci">char * Editor_getXml(Editor *editor_ptr)</div><div class="ttdef"><b>Definition:</b> OmexMetaCApi.cpp:572</div></div>
+<div class="ttc" id="anamespaceomexmeta_html_a2f3a19ccb17e0be38e706861fa141fcc"><div class="ttname"><a href="namespaceomexmeta.html#a2f3a19ccb17e0be38e706861fa141fcc">omexmeta::RDF_new</a></div><div class="ttdeci">RDF * RDF_new(const char *storage_type, const char *storage_name, const char *storage_options, const char *model_options)</div><div class="ttdef"><b>Definition:</b> OmexMetaCApi.cpp:62</div></div>
+<div class="ttc" id="anamespaceomexmeta_html_a30d98a9eb2bc11c67f7ca13a68aa1a73"><div class="ttname"><a href="namespaceomexmeta.html#a30d98a9eb2bc11c67f7ca13a68aa1a73">omexmeta::Editor_newSingularAnnotation</a></div><div class="ttdeci">SingularAnnotation * Editor_newSingularAnnotation(Editor *editor_ptr)</div><div class="ttdef"><b>Definition:</b> OmexMetaCApi.cpp:360</div></div>
+<div class="ttc" id="anamespaceomexmeta_html_a386a15d5d186e00467ffdbb15dc9b2e3"><div class="ttname"><a href="namespaceomexmeta.html#a386a15d5d186e00467ffdbb15dc9b2e3">omexmeta::PhysicalProperty_getAbout</a></div><div class="ttdeci">char * PhysicalProperty_getAbout(PhysicalProperty *property)</div><div class="ttdef"><b>Definition:</b> OmexMetaCApi.cpp:869</div></div>
+<div class="ttc" id="anamespaceomexmeta_html_a401a97ce4b2a6c22f92b774091289ef8"><div class="ttname"><a href="namespaceomexmeta.html#a401a97ce4b2a6c22f92b774091289ef8">omexmeta::Logger_getLogger</a></div><div class="ttdeci">Logger * Logger_getLogger()</div><div class="ttdef"><b>Definition:</b> OmexMetaCApi.cpp:1565</div></div>
+<div class="ttc" id="anamespaceomexmeta_html_a86245ea959cf5a3e8f389941cca41f1a"><div class="ttname"><a href="namespaceomexmeta.html#a86245ea959cf5a3e8f389941cca41f1a">omexmeta::SingularAnnotation_delete</a></div><div class="ttdeci">int SingularAnnotation_delete(SingularAnnotation *singularAnnotation)</div><div class="ttdef"><b>Definition:</b> OmexMetaCApi.cpp:720</div></div>
+<div class="ttc" id="anamespaceomexmeta_html_a8f35bfdeddd4366704c681fac1b8112e"><div class="ttname"><a href="namespaceomexmeta.html#a8f35bfdeddd4366704c681fac1b8112e">omexmeta::PhysicalProcess_delete</a></div><div class="ttdeci">int PhysicalProcess_delete(PhysicalProcess *physicalProcess)</div><div class="ttdef"><b>Definition:</b> OmexMetaCApi.cpp:1089</div></div>
+<div class="ttc" id="anamespaceomexmeta_html_aac58f146c00ed4c492efebb1e239c90b"><div class="ttname"><a href="namespaceomexmeta.html#aac58f146c00ed4c492efebb1e239c90b">omexmeta::deleteResultsMap</a></div><div class="ttdeci">void deleteResultsMap(ResultsMap *map)</div><div class="ttdoc">RDF_queryResultsAsMap allocates a ResultsMap to the heap. This method deletes that memory.</div><div class="ttdef"><b>Definition:</b> OmexMetaCApi.cpp:200</div></div>
 <div class="ttc" id="anamespaceomexmeta_html_ac4ee432e12f736c29692417b0302f5f0"><div class="ttname"><a href="namespaceomexmeta.html#ac4ee432e12f736c29692417b0302f5f0">omexmeta::EnergyDiff_freeAll</a></div><div class="ttdeci">OMEXMETA_CAPI_EXPORT int EnergyDiff_freeAll(EnergyDiff *energy_diff_ptr)</div></div>
-<div class="ttc" id="anamespaceomexmeta_html_ade152f2f88f1394cfd5341d504384532"><div class="ttname"><a href="namespaceomexmeta.html#ade152f2f88f1394cfd5341d504384532">omexmeta::EnergyDiff_delete</a></div><div class="ttdeci">int EnergyDiff_delete(EnergyDiff *physicalForce)</div><div class="ttdef"><b>Definition:</b> OmexMetaCApi.cpp:1230</div></div>
+<div class="ttc" id="anamespaceomexmeta_html_ade152f2f88f1394cfd5341d504384532"><div class="ttname"><a href="namespaceomexmeta.html#ade152f2f88f1394cfd5341d504384532">omexmeta::EnergyDiff_delete</a></div><div class="ttdeci">int EnergyDiff_delete(EnergyDiff *physicalForce)</div><div class="ttdef"><b>Definition:</b> OmexMetaCApi.cpp:1226</div></div>
+<div class="ttc" id="anamespaceomexmeta_html_ade8cf4e6ce9dba23d7cfb28ab742613e"><div class="ttname"><a href="namespaceomexmeta.html#ade8cf4e6ce9dba23d7cfb28ab742613e">omexmeta::functionThatReturnsNullptr</a></div><div class="ttdeci">int * functionThatReturnsNullptr()</div><div class="ttdef"><b>Definition:</b> OmexMetaCApi.cpp:57</div></div>
 <div class="ttc" id="anamespaceomexmeta_html_afbe0ad46666e43033c32182a23fba6d7"><div class="ttname"><a href="namespaceomexmeta.html#afbe0ad46666e43033c32182a23fba6d7">omexmeta::PhysicalEntity_delete</a></div><div class="ttdeci">int PhysicalEntity_delete(PhysicalEntity *physical_entity_ptr)</div><div class="ttdef"><b>Definition:</b> OmexMetaCApi.cpp:950</div></div>
 </div><!-- fragment --> </div><!-- contents -->
 <!-- start footer part -->

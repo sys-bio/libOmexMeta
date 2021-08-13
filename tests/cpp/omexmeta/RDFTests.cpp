@@ -82,6 +82,23 @@ TEST_F(RDFTests, TestFromStringSingularAnnotation) {
     ASSERT_EQ(expected, actual);
 }
 
+TEST_F(RDFTests, TestFromStringButWrongSyntax) {
+    // singular_annotation1 is rdfxml, but we sprcify turtle
+    // We let librdf issue a warning, rather than throw
+    ASSERT_NO_THROW(
+    RDF rdf = RDF::fromString(samples.singular_annotation1, "turtle");
+    );
+}
+
+TEST_F(RDFTests, TestFromStringTwice) {
+    // singular_annotation1 is rdfxml, but we sprcify turtle
+    // We let librdf issue a warning, rather than throw
+    RDF rdf1 = RDF::fromString(samples.singular_annotation1, "turtle");
+    RDF rdf2 = RDF::fromString(samples.singular_annotation1, "turtle");
+    ASSERT_EQ(0, rdf2.size());
+
+}
+
 TEST_F(RDFTests, TestFromStringSingularAnnotationSqlite) {
     //    "hashes", "test", "hash-type='bdb',dir='.'")
     //    librdf_new_storage()

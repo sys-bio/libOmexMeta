@@ -53,7 +53,7 @@ namespace redland {
 
         bool operator!=(const LibrdfModel &rhs) const ;
 
-        [[nodiscard]] LibrdfQueryResults query(const LibrdfQuery& query) const;
+        [[nodiscard]] LibrdfQueryResults query(const std::string& query) const;
 
         LibrdfStream toStream() const;
 

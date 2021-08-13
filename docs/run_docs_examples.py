@@ -41,9 +41,6 @@ PYTHON_FILES = glob.glob(os.path.join(DOCS_DIRECTORY, "*/*/*.py"))
 
 # We do not want to include test binaries when we search for example binaries to run
 EXCLUSION_LIST = [
-    "OmexMetaCAPITests",
-    "OmexMetaTests",
-    "redland-wrapper-tests",
 ]
 
 if sys.platform == "win32":

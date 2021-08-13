@@ -163,28 +163,13 @@ public:
     }
 };
 
-
-TEST_F(LibrdfQueryTests, CheckQueryExecute) {
-
-    // create a query on the model
-    LibrdfQuery query(q, *model);
-    // get the results as a turtle string
-    auto queryResults = query.execute();
-    std::cout << queryResults.toString("turtle") << std::endl;
-    // note :  count the number of query results seen so far in the results.
-    // It'll be 0 if toString has not been called.
-    ASSERT_EQ(4, queryResults.count());
-}
-
 TEST_F(LibrdfQueryTests, CheckQueryResultsBindingsCount) {
-
     // create a query on the model
     LibrdfQuery query(q, *model);
     // get the results as a turtle string
     auto queryResults = query.execute();
     ASSERT_EQ(3, queryResults.getBindingsCount());
 }
-
 
 TEST_F(LibrdfQueryTests, IsBinding) {
     LibrdfQuery query(q, *model);
@@ -232,13 +217,13 @@ TEST_F(LibrdfQueryTests, getBindingsNames) {
     ASSERT_EQ(expected, names);
 }
 
-//TEST_F(LibrdfQueryTests, TestRunQueryTwice) {
-//    LibrdfQuery query(q, *model);
-//    auto results1 = query.execute();
-//    auto results2 = query.execute();
-//    ASSERT_EQ(4, results1.size());
-//    ASSERT_EQ(4, results2.size());
-//}
+TEST_F(LibrdfQueryTests, TestRunQueryTwice) {
+    LibrdfQuery query(q, *model);
+    auto results1 = query.execute();
+    auto results2 = query.execute();
+    auto m = results1.map();
+    auto m2 = results2.map();
+}
 
 TEST_F(LibrdfQueryTests, getBindingValueByName) {
     LibrdfQuery query(q, *model);

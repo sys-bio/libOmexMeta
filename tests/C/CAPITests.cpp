@@ -63,6 +63,14 @@ TEST_F(CAPITests, RDF_fromString) {
     RDF_delete(rdf_ptr);
 }
 
+TEST_F(CAPITests, RDF_fromStringButWrongSyntax) {
+    // we need rdfxml but we give turtle
+    ASSERT_NO_THROW(
+        RDF *rdf_ptr = RDF_fromString(samples.composite_annotation_pf.c_str(), "turtle", "RDF_fromStringTest.rdf");
+        RDF_delete(rdf_ptr);
+    );
+}
+
 TEST_F(CAPITests, RDF_toFile) {
     RDF *rdf_ptr = RDF_fromString(samples.composite_annotation_pf.c_str(), "rdfxml", "RDF_fromStringTest.rdf");
     RDF_toFile(rdf_ptr, "turtle", fname.c_str());

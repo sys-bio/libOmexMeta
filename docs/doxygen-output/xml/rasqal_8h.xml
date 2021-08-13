@@ -5,6 +5,8 @@
     <includes local="yes">redland_export.h</includes>
     <includes refid="raptor2_8h" local="yes">raptor2.h</includes>
     <includedby refid="librdf_8h" local="yes">src/redland/RedlandWrapper/src/include/redland/librdf.h</includedby>
+    <includedby refid="RedlandType_8h" local="yes">src/redland/RedlandWrapper/src/include/redland/RedlandType.h</includedby>
+    <includedby refid="RefCountedRedlandType_8h" local="yes">src/redland/RedlandWrapper/src/include/redland/RefCountedRedlandType.h</includedby>
     <incdepgraph>
       <node id="5">
         <label>stdarg.h</label>
@@ -35,20 +37,22 @@
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="36">
+      <node id="31">
         <label>src/redland/RedlandWrapper/src/include/redland/LibrdfQueryResults.h</label>
         <link refid="LibrdfQueryResults_8h_source"/>
-        <childnode refid="26" relation="include">
+        <childnode refid="25" relation="include">
         </childnode>
-        <childnode refid="29" relation="include">
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
         </childnode>
       </node>
-      <node id="40">
+      <node id="39">
         <label>src/redland/RedlandWrapper/src/include/redland/RaptorIOStream.h</label>
         <link refid="RaptorIOStream_8h_source"/>
-        <childnode refid="31" relation="include">
+        <childnode refid="32" relation="include">
         </childnode>
-        <childnode refid="29" relation="include">
+        <childnode refid="28" relation="include">
         </childnode>
       </node>
       <node id="22">
@@ -65,14 +69,16 @@
         <childnode refid="21" relation="include">
         </childnode>
       </node>
-      <node id="35">
+      <node id="30">
         <label>src/redland/RedlandWrapper/src/include/redland/LibrdfQuery.h</label>
         <link refid="LibrdfQuery_8h_source"/>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="26" relation="include">
+        <childnode refid="25" relation="include">
         </childnode>
-        <childnode refid="29" relation="include">
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
         </childnode>
       </node>
       <node id="1">
@@ -80,15 +86,9 @@
         <link refid="rasqal_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
-      </node>
-      <node id="24">
-        <label>src/omexmeta/include/omexmeta/Query.h</label>
-        <link refid="Query_8h_source"/>
-        <childnode refid="11" relation="include">
+        <childnode refid="40" relation="include">
         </childnode>
-        <childnode refid="15" relation="include">
-        </childnode>
-        <childnode refid="21" relation="include">
+        <childnode refid="41" relation="include">
         </childnode>
       </node>
       <node id="6">
@@ -107,24 +107,28 @@
         <childnode refid="6" relation="include">
         </childnode>
       </node>
-      <node id="37">
+      <node id="36">
         <label>src/redland/RedlandWrapper/src/include/redland/LibrdfStream.h</label>
         <link refid="LibrdfStream_8h_source"/>
-        <childnode refid="26" relation="include">
-        </childnode>
-        <childnode refid="29" relation="include">
-        </childnode>
-      </node>
-      <node id="26">
-        <label>src/redland/RedlandWrapper/src/include/redland/LibrdfModel.h</label>
-        <link refid="LibrdfModel_8h_source"/>
-        <childnode refid="27" relation="include">
-        </childnode>
-        <childnode refid="28" relation="include">
+        <childnode refid="25" relation="include">
         </childnode>
         <childnode refid="31" relation="include">
         </childnode>
-        <childnode refid="29" relation="include">
+        <childnode refid="28" relation="include">
+        </childnode>
+      </node>
+      <node id="25">
+        <label>src/redland/RedlandWrapper/src/include/redland/LibrdfModel.h</label>
+        <link refid="LibrdfModel_8h_source"/>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
         </childnode>
       </node>
       <node id="18">
@@ -147,14 +151,16 @@
         <childnode refid="22" relation="include">
         </childnode>
       </node>
-      <node id="33">
+      <node id="34">
         <label>src/redland/RedlandWrapper/src/include/redland/LibrdfStatement.h</label>
         <link refid="LibrdfStatement_8h_source"/>
         <childnode refid="18" relation="include">
         </childnode>
-        <childnode refid="26" relation="include">
+        <childnode refid="25" relation="include">
         </childnode>
-        <childnode refid="34" relation="include">
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
         </childnode>
       </node>
       <node id="15">
@@ -165,6 +171,18 @@
         <childnode refid="7" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="42">
+        <label>src/redland/RedlandWrapper/src/include/redland/Logger.h</label>
+        <link refid="Logger_8h_source"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
         </childnode>
       </node>
       <node id="11">
@@ -188,11 +206,9 @@
         </childnode>
         <childnode refid="17" relation="include">
         </childnode>
-        <childnode refid="24" relation="include">
-        </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="25" relation="include">
+        <childnode refid="24" relation="include">
         </childnode>
       </node>
       <node id="4">
@@ -235,18 +251,18 @@
         <childnode refid="22" relation="include">
         </childnode>
       </node>
-      <node id="34">
+      <node id="35">
         <label>src/redland/RedlandWrapper/src/include/redland/LibrdfStorage.h</label>
         <link refid="LibrdfStorage_8h_source"/>
-        <childnode refid="26" relation="include">
+        <childnode refid="25" relation="include">
         </childnode>
-        <childnode refid="29" relation="include">
+        <childnode refid="28" relation="include">
         </childnode>
       </node>
-      <node id="31">
+      <node id="32">
         <label>src/redland/RedlandWrapper/src/include/redland/LibrdfSerializer.h</label>
         <link refid="LibrdfSerializer_8h_source"/>
-        <childnode refid="29" relation="include">
+        <childnode refid="28" relation="include">
         </childnode>
       </node>
       <node id="23">
@@ -275,7 +291,7 @@
         <childnode refid="9" relation="include">
         </childnode>
       </node>
-      <node id="30">
+      <node id="29">
         <label>src/omexmeta/include/omexmeta/MetaID.h</label>
         <link refid="MetaID_8h_source"/>
         <childnode refid="11" relation="include">
@@ -299,21 +315,33 @@
         <childnode refid="21" relation="include">
         </childnode>
       </node>
-      <node id="32">
+      <node id="40">
+        <label>src/redland/RedlandWrapper/src/include/redland/RedlandType.h</label>
+        <link refid="RedlandType_8h_source"/>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+      </node>
+      <node id="33">
         <label>src/redland/RedlandWrapper/src/include/redland/LibrdfNode.h</label>
         <link refid="LibrdfNode_8h_source"/>
         <childnode refid="18" relation="include">
         </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
         <childnode refid="28" relation="include">
         </childnode>
-        <childnode refid="31" relation="include">
-        </childnode>
-        <childnode refid="33" relation="include">
-        </childnode>
-        <childnode refid="29" relation="include">
-        </childnode>
       </node>
-      <node id="29">
+      <node id="28">
         <label>src/redland/RedlandWrapper/src/include/redland/RedlandAPI.h</label>
         <link refid="RedlandAPI_8h_source"/>
         <childnode refid="3" relation="include">
@@ -322,7 +350,7 @@
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="30" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
         <childnode refid="19" relation="include">
         </childnode>
@@ -333,8 +361,6 @@
         <childnode refid="20" relation="include">
         </childnode>
         <childnode refid="21" relation="include">
-        </childnode>
-        <childnode refid="24" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
@@ -363,7 +389,7 @@
         <childnode refid="8" relation="include">
         </childnode>
       </node>
-      <node id="25">
+      <node id="24">
         <label>src/omexmeta/include/omexmeta/UriHandler.h</label>
         <link refid="UriHandler_8h_source"/>
         <childnode refid="3" relation="include">
@@ -377,16 +403,30 @@
         <childnode refid="18" relation="include">
         </childnode>
       </node>
-      <node id="27">
+      <node id="26">
         <label>src/omexmeta/include/omexmeta/VCardTranslator.h</label>
         <link refid="VCardTranslator_8h_source"/>
         <childnode refid="6" relation="include">
         </childnode>
       </node>
-      <node id="28">
+      <node id="41">
+        <label>src/redland/RedlandWrapper/src/include/redland/RefCountedRedlandType.h</label>
+        <link refid="RefCountedRedlandType_8h_source"/>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+      </node>
+      <node id="27">
         <label>src/redland/RedlandWrapper/src/include/redland/LibrdfParser.h</label>
         <link refid="LibrdfParser_8h_source"/>
-        <childnode refid="29" relation="include">
+        <childnode refid="28" relation="include">
         </childnode>
       </node>
       <node id="8">
@@ -417,16 +457,16 @@
         <label>src/omexmeta/include/omexmeta/PurgeRDFBag.h</label>
         <link refid="PurgeRDFBag_8h_source"/>
       </node>
-      <node id="38">
+      <node id="37">
         <label>src/redland/RedlandWrapper/src/include/redland/LibrdfUri.h</label>
         <link refid="LibrdfUri_8h_source"/>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
         <childnode refid="32" relation="include">
         </childnode>
         <childnode refid="28" relation="include">
-        </childnode>
-        <childnode refid="31" relation="include">
-        </childnode>
-        <childnode refid="29" relation="include">
         </childnode>
       </node>
       <node id="2">
@@ -442,59 +482,65 @@
         </childnode>
         <childnode refid="17" relation="include">
         </childnode>
-        <childnode refid="24" relation="include">
-        </childnode>
         <childnode refid="18" relation="include">
         </childnode>
-        <childnode refid="26" relation="include">
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
         </childnode>
         <childnode refid="32" relation="include">
         </childnode>
-        <childnode refid="28" relation="include">
+        <childnode refid="34" relation="include">
         </childnode>
         <childnode refid="35" relation="include">
         </childnode>
         <childnode refid="36" relation="include">
-        </childnode>
-        <childnode refid="31" relation="include">
-        </childnode>
-        <childnode refid="33" relation="include">
-        </childnode>
-        <childnode refid="34" relation="include">
         </childnode>
         <childnode refid="37" relation="include">
         </childnode>
         <childnode refid="38" relation="include">
         </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
         <childnode refid="39" relation="include">
         </childnode>
         <childnode refid="40" relation="include">
         </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
       </node>
-      <node id="39">
+      <node id="38">
         <label>src/redland/RedlandWrapper/src/include/redland/LibrdfWorld.h</label>
         <link refid="LibrdfWorld_8h_source"/>
         <childnode refid="17" relation="include">
         </childnode>
-        <childnode refid="26" relation="include">
+        <childnode refid="25" relation="include">
         </childnode>
-        <childnode refid="32" relation="include">
+        <childnode refid="33" relation="include">
         </childnode>
-        <childnode refid="28" relation="include">
+        <childnode refid="27" relation="include">
         </childnode>
-        <childnode refid="35" relation="include">
-        </childnode>
-        <childnode refid="36" relation="include">
+        <childnode refid="30" relation="include">
         </childnode>
         <childnode refid="31" relation="include">
         </childnode>
-        <childnode refid="34" relation="include">
+        <childnode refid="32" relation="include">
         </childnode>
-        <childnode refid="37" relation="include">
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
         </childnode>
         <childnode refid="40" relation="include">
         </childnode>
-        <childnode refid="29" relation="include">
+        <childnode refid="41" relation="include">
         </childnode>
       </node>
     </invincdepgraph>
@@ -2552,7 +2598,7 @@
           <declname>world</declname>
         </param>
         <param>
-          <type>raptor_uri *</type>
+          <type><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref> *</type>
           <declname>uri</declname>
         </param>
         <param>
@@ -2597,7 +2643,7 @@
           <declname>name</declname>
         </param>
         <param>
-          <type>raptor_uri **</type>
+          <type><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref> **</type>
           <declname>uri</declname>
         </param>
         <param>
@@ -2638,7 +2684,7 @@
           <declname>world</declname>
         </param>
         <param>
-          <type>raptor_uri *</type>
+          <type><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref> *</type>
           <declname>uri</declname>
         </param>
         <briefdescription>
@@ -3206,7 +3252,7 @@
           <declname>query</declname>
         </param>
         <param>
-          <type>raptor_uri *</type>
+          <type><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref> *</type>
           <declname>graph_uri</declname>
         </param>
         <briefdescription>
@@ -3740,11 +3786,11 @@
           <declname>query</declname>
         </param>
         <param>
-          <type>raptor_uri *</type>
+          <type><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref> *</type>
           <declname>format_uri</declname>
         </param>
         <param>
-          <type>raptor_uri *</type>
+          <type><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref> *</type>
           <declname>base_uri</declname>
         </param>
         <briefdescription>
@@ -4254,7 +4300,7 @@
           <declname>query_string</declname>
         </param>
         <param>
-          <type>raptor_uri *</type>
+          <type><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref> *</type>
           <declname>base_uri</declname>
         </param>
         <briefdescription>
@@ -4481,7 +4527,7 @@
           <declname>type</declname>
         </param>
         <param>
-          <type>raptor_uri *</type>
+          <type><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref> *</type>
           <declname>base_uri</declname>
         </param>
         <param>
@@ -4907,11 +4953,11 @@
           <declname>mime_type</declname>
         </param>
         <param>
-          <type>raptor_uri *</type>
+          <type><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref> *</type>
           <declname>format_uri</declname>
         </param>
         <param>
-          <type>raptor_uri *</type>
+          <type><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref> *</type>
           <declname>base_uri</declname>
         </param>
         <briefdescription>
@@ -4944,11 +4990,11 @@
           <declname>mime_type</declname>
         </param>
         <param>
-          <type>raptor_uri *</type>
+          <type><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref> *</type>
           <declname>format_uri</declname>
         </param>
         <param>
-          <type>raptor_uri *</type>
+          <type><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref> *</type>
           <declname>base_uri</declname>
         </param>
         <briefdescription>
@@ -4990,7 +5036,7 @@
           <declname>name</declname>
         </param>
         <param>
-          <type>raptor_uri *</type>
+          <type><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref> *</type>
           <declname>uri</declname>
         </param>
         <param>
@@ -5023,7 +5069,7 @@
           <declname>name</declname>
         </param>
         <param>
-          <type>raptor_uri *</type>
+          <type><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref> *</type>
           <declname>uri</declname>
         </param>
         <param>
@@ -5060,7 +5106,7 @@
           <declname>mime_type</declname>
         </param>
         <param>
-          <type>raptor_uri *</type>
+          <type><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref> *</type>
           <declname>format_uri</declname>
         </param>
         <briefdescription>
@@ -5081,7 +5127,7 @@
           <declname>world</declname>
         </param>
         <param>
-          <type>raptor_uri *</type>
+          <type><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref> *</type>
           <declname>uri</declname>
         </param>
         <param>
@@ -5143,7 +5189,7 @@
           <declname>results</declname>
         </param>
         <param>
-          <type>raptor_uri *</type>
+          <type><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref> *</type>
           <declname>base_uri</declname>
         </param>
         <briefdescription>
@@ -5176,7 +5222,7 @@
           <declname>results</declname>
         </param>
         <param>
-          <type>raptor_uri *</type>
+          <type><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref> *</type>
           <declname>base_uri</declname>
         </param>
         <briefdescription>
@@ -5255,11 +5301,11 @@
           <declname>world</declname>
         </param>
         <param>
-          <type>raptor_uri *</type>
+          <type><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref> *</type>
           <declname>uri</declname>
         </param>
         <param>
-          <type>raptor_uri *</type>
+          <type><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref> *</type>
           <declname>name_uri</declname>
         </param>
         <param>
@@ -5275,7 +5321,7 @@
           <declname>format_name</declname>
         </param>
         <param>
-          <type>raptor_uri *</type>
+          <type><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref> *</type>
           <declname>format_uri</declname>
         </param>
         <briefdescription>
@@ -5300,11 +5346,11 @@
           <declname>iostr</declname>
         </param>
         <param>
-          <type>raptor_uri *</type>
+          <type><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref> *</type>
           <declname>base_uri</declname>
         </param>
         <param>
-          <type>raptor_uri *</type>
+          <type><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref> *</type>
           <declname>name_uri</declname>
         </param>
         <param>
@@ -5320,7 +5366,7 @@
           <declname>format_name</declname>
         </param>
         <param>
-          <type>raptor_uri *</type>
+          <type><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref> *</type>
           <declname>format_uri</declname>
         </param>
         <briefdescription>
@@ -5591,7 +5637,7 @@
           <declname>world</declname>
         </param>
         <param>
-          <type>raptor_uri *</type>
+          <type><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref> *</type>
           <declname>name</declname>
         </param>
         <param>
@@ -5657,7 +5703,7 @@
           <declname>world</declname>
         </param>
         <param>
-          <type>raptor_uri *</type>
+          <type><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref> *</type>
           <declname>name</declname>
         </param>
         <param>
@@ -6008,7 +6054,7 @@
           <declname>eval_context</declname>
         </param>
         <param>
-          <type>raptor_uri *</type>
+          <type><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref> *</type>
           <declname>base_uri</declname>
         </param>
         <briefdescription>
@@ -6192,7 +6238,7 @@
           <declname>world</declname>
         </param>
         <param>
-          <type>raptor_uri *</type>
+          <type><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref> *</type>
           <declname>uri</declname>
         </param>
         <briefdescription>
@@ -6246,7 +6292,7 @@
           <declname>language</declname>
         </param>
         <param>
-          <type>raptor_uri *</type>
+          <type><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref> *</type>
           <declname>datatype</declname>
         </param>
         <param>
@@ -6594,7 +6640,7 @@
         <location file="src/redland/RedlandWrapper/src/include/redland/rasqal.h" line="1695" column="16" declfile="src/redland/RedlandWrapper/src/include/redland/rasqal.h" declline="1695" declcolumn="16"/>
       </memberdef>
       <memberdef kind="function" id="rasqal_8h_1a444b61bb1ee36b319ac5bb8e721d2a4a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>REDLAND_EXPORT raptor_uri *</type>
+        <type>REDLAND_EXPORT <ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref> *</type>
         <definition>REDLAND_EXPORT raptor_uri* rasqal_literal_datatype</definition>
         <argsstring>(rasqal_literal *l)</argsstring>
         <name>rasqal_literal_datatype</name>
@@ -6780,7 +6826,7 @@
           <declname>prefix</declname>
         </param>
         <param>
-          <type>raptor_uri *</type>
+          <type><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref> *</type>
           <declname>uri</declname>
         </param>
         <briefdescription>
@@ -8321,7 +8367,7 @@
           <declname>world</declname>
         </param>
         <param>
-          <type>raptor_uri *</type>
+          <type><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref> *</type>
           <declname>service_uri</declname>
         </param>
         <param>
@@ -8998,7 +9044,7 @@
 <codeline lineno="259" refid="structrasqal__prefix" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
 <codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/>rasqal_world<sp/>*world;</highlight></codeline>
 <codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*prefix;</highlight></codeline>
-<codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/>raptor_uri<sp/>*uri;</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref><sp/>*uri;</highlight></codeline>
 <codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>declared;</highlight></codeline>
 <codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>depth;</highlight></codeline>
 <codeline lineno="265"><highlight class="normal">}<sp/><ref refid="structrasqal__prefix" kindref="compound">rasqal_prefix</ref>;</highlight></codeline>
@@ -9035,14 +9081,14 @@
 <codeline lineno="334"><highlight class="normal"></highlight></codeline>
 <codeline lineno="357" refid="structrasqal__data__graph" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
 <codeline lineno="358"><highlight class="normal"><sp/><sp/><sp/><sp/>rasqal_world<sp/>*world;</highlight></codeline>
-<codeline lineno="359"><highlight class="normal"><sp/><sp/><sp/><sp/>raptor_uri<sp/>*uri;</highlight></codeline>
-<codeline lineno="360"><highlight class="normal"><sp/><sp/><sp/><sp/>raptor_uri<sp/>*name_uri;</highlight></codeline>
+<codeline lineno="359"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref><sp/>*uri;</highlight></codeline>
+<codeline lineno="360"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref><sp/>*name_uri;</highlight></codeline>
 <codeline lineno="361"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>flags;</highlight></codeline>
 <codeline lineno="362"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*format_type;</highlight></codeline>
 <codeline lineno="363"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*format_name;</highlight></codeline>
-<codeline lineno="364"><highlight class="normal"><sp/><sp/><sp/><sp/>raptor_uri<sp/>*format_uri;</highlight></codeline>
+<codeline lineno="364"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref><sp/>*format_uri;</highlight></codeline>
 <codeline lineno="365"><highlight class="normal"><sp/><sp/><sp/><sp/>raptor_iostream<sp/>*iostr;</highlight></codeline>
-<codeline lineno="366"><highlight class="normal"><sp/><sp/><sp/><sp/>raptor_uri<sp/>*base_uri;</highlight></codeline>
+<codeline lineno="366"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref><sp/>*base_uri;</highlight></codeline>
 <codeline lineno="367"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>usage;</highlight></codeline>
 <codeline lineno="368"><highlight class="normal">}<sp/><ref refid="structrasqal__data__graph" kindref="compound">rasqal_data_graph</ref>;</highlight></codeline>
 <codeline lineno="369"><highlight class="normal"></highlight></codeline>
@@ -9129,7 +9175,7 @@
 <codeline lineno="565"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>double<sp/>and<sp/>float<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="566"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>floating;</highlight></codeline>
 <codeline lineno="567"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>uri<sp/>(can<sp/>be<sp/>temporarily<sp/>NULL<sp/>if<sp/>a<sp/>qname,<sp/>see<sp/>flags<sp/>below)<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="568"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>raptor_uri<sp/>*uri;</highlight></codeline>
+<codeline lineno="568"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref><sp/>*uri;</highlight></codeline>
 <codeline lineno="569"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>variable<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="570"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structrasqal__variable" kindref="compound">rasqal_variable</ref><sp/>*variable;</highlight></codeline>
 <codeline lineno="571"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>decimal<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
@@ -9142,7 +9188,7 @@
 <codeline lineno="578"><highlight class="normal"></highlight></codeline>
 <codeline lineno="579"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>for<sp/>string<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="580"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*language;</highlight></codeline>
-<codeline lineno="581"><highlight class="normal"><sp/><sp/><sp/><sp/>raptor_uri<sp/>*datatype;</highlight></codeline>
+<codeline lineno="581"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref><sp/>*datatype;</highlight></codeline>
 <codeline lineno="582"><highlight class="normal"></highlight></codeline>
 <codeline lineno="583"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>various<sp/>flags<sp/>for<sp/>literal<sp/>types:</highlight></codeline>
 <codeline lineno="584"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/>pattern<sp/><sp/>regex<sp/>flags</highlight></codeline>
@@ -9276,7 +9322,7 @@
 <codeline lineno="839"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structrasqal__literal__s" kindref="compound">rasqal_literal</ref><sp/>*literal;</highlight></codeline>
 <codeline lineno="840"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*value;</highlight></codeline>
 <codeline lineno="841"><highlight class="normal"></highlight></codeline>
-<codeline lineno="842"><highlight class="normal"><sp/><sp/><sp/><sp/>raptor_uri<sp/>*name;</highlight></codeline>
+<codeline lineno="842"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref><sp/>*name;</highlight></codeline>
 <codeline lineno="843"><highlight class="normal"><sp/><sp/><sp/><sp/>raptor_sequence<sp/>*args;</highlight></codeline>
 <codeline lineno="844"><highlight class="normal"></highlight></codeline>
 <codeline lineno="845"><highlight class="normal"><sp/><sp/><sp/><sp/>raptor_sequence<sp/>*params;</highlight></codeline>
@@ -9366,9 +9412,9 @@
 <codeline lineno="1041" refid="structrasqal__update__operation" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
 <codeline lineno="1042"><highlight class="normal"><sp/><sp/><sp/><sp/>rasqal_update_type<sp/>type;</highlight></codeline>
 <codeline lineno="1043"><highlight class="normal"></highlight></codeline>
-<codeline lineno="1044"><highlight class="normal"><sp/><sp/><sp/><sp/>raptor_uri<sp/>*graph_uri;</highlight></codeline>
+<codeline lineno="1044"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref><sp/>*graph_uri;</highlight></codeline>
 <codeline lineno="1045"><highlight class="normal"></highlight></codeline>
-<codeline lineno="1046"><highlight class="normal"><sp/><sp/><sp/><sp/>raptor_uri<sp/>*document_uri;</highlight></codeline>
+<codeline lineno="1046"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref><sp/>*document_uri;</highlight></codeline>
 <codeline lineno="1047"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1048"><highlight class="normal"><sp/><sp/><sp/><sp/>raptor_sequence<sp/>*insert_templates;</highlight></codeline>
 <codeline lineno="1049"><highlight class="normal"></highlight></codeline>
@@ -9436,18 +9482,18 @@
 <codeline lineno="1140"><highlight class="normal">rasqal_world_get_query_results_format_description(rasqal_world<sp/>*world,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>counter);</highlight></codeline>
 <codeline lineno="1141"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1142"><highlight class="normal">REDLAND_EXPORT</highlight></codeline>
-<codeline lineno="1143"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*rasqal_world_guess_query_results_format_name(rasqal_world<sp/>*world,<sp/>raptor_uri<sp/>*uri,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*mime_type,</highlight></codeline>
+<codeline lineno="1143"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*rasqal_world_guess_query_results_format_name(rasqal_world<sp/>*world,<sp/><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref><sp/>*uri,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*mime_type,</highlight></codeline>
 <codeline lineno="1144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*buffer,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>len,</highlight></codeline>
 <codeline lineno="1145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*identifier);</highlight></codeline>
 <codeline lineno="1146"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1147"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Features<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1148"><highlight class="normal">REDLAND_EXPORT</highlight></codeline>
-<codeline lineno="1149"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>rasqal_features_enumerate(rasqal_world<sp/>*world,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>rasqal_feature<sp/>feature,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>**name,<sp/>raptor_uri<sp/>**uri,</highlight></codeline>
+<codeline lineno="1149"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>rasqal_features_enumerate(rasqal_world<sp/>*world,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>rasqal_feature<sp/>feature,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>**name,<sp/><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref><sp/>**uri,</highlight></codeline>
 <codeline lineno="1150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>**label);</highlight></codeline>
 <codeline lineno="1151"><highlight class="normal">REDLAND_EXPORT</highlight></codeline>
 <codeline lineno="1152"><highlight class="normal"></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>rasqal_get_feature_count(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="1153"><highlight class="normal">REDLAND_EXPORT</highlight></codeline>
-<codeline lineno="1154"><highlight class="normal">rasqal_feature<sp/>rasqal_feature_from_uri(rasqal_world<sp/>*world,<sp/>raptor_uri<sp/>*uri);</highlight></codeline>
+<codeline lineno="1154"><highlight class="normal">rasqal_feature<sp/>rasqal_feature_from_uri(rasqal_world<sp/>*world,<sp/><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref><sp/>*uri);</highlight></codeline>
 <codeline lineno="1155"><highlight class="normal">REDLAND_EXPORT</highlight></codeline>
 <codeline lineno="1156"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>rasqal_feature_value_type(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>rasqal_feature<sp/>feature);</highlight></codeline>
 <codeline lineno="1157"><highlight class="normal"></highlight></codeline>
@@ -9522,7 +9568,7 @@
 <codeline lineno="1226"><highlight class="normal">REDLAND_EXPORT</highlight></codeline>
 <codeline lineno="1227"><highlight class="normal"><ref refid="structrasqal__data__graph" kindref="compound">rasqal_data_graph</ref><sp/>*rasqal_query_get_data_graph(rasqal_query<sp/>*query,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>idx);</highlight></codeline>
 <codeline lineno="1228"><highlight class="normal">REDLAND_EXPORT</highlight></codeline>
-<codeline lineno="1229"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>rasqal_query_dataset_contains_named_graph(rasqal_query<sp/>*query,<sp/>raptor_uri<sp/>*graph_uri);</highlight></codeline>
+<codeline lineno="1229"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>rasqal_query_dataset_contains_named_graph(rasqal_query<sp/>*query,<sp/><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref><sp/>*graph_uri);</highlight></codeline>
 <codeline lineno="1230"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1231"><highlight class="normal">REDLAND_EXPORT</highlight></codeline>
 <codeline lineno="1232"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>rasqal_query_add_variable(rasqal_query<sp/>*query,<sp/><ref refid="structrasqal__variable" kindref="compound">rasqal_variable</ref><sp/>*var);</highlight></codeline>
@@ -9576,7 +9622,7 @@
 <codeline lineno="1280"><highlight class="normal">REDLAND_EXPORT</highlight></codeline>
 <codeline lineno="1281"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>rasqal_query_graph_pattern_visit2(rasqal_query<sp/>*query,<sp/>rasqal_graph_pattern_visit_fn<sp/>visit_fn,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*data);</highlight></codeline>
 <codeline lineno="1282"><highlight class="normal">REDLAND_EXPORT</highlight></codeline>
-<codeline lineno="1283"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>rasqal_query_write(raptor_iostream<sp/>*iostr,<sp/>rasqal_query<sp/>*query,<sp/>raptor_uri<sp/>*format_uri,<sp/>raptor_uri<sp/>*base_uri);</highlight></codeline>
+<codeline lineno="1283"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>rasqal_query_write(raptor_iostream<sp/>*iostr,<sp/>rasqal_query<sp/>*query,<sp/><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref><sp/>*format_uri,<sp/><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref><sp/>*base_uri);</highlight></codeline>
 <codeline lineno="1284"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1285"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>update<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1286"><highlight class="normal">REDLAND_EXPORT</highlight></codeline>
@@ -9640,7 +9686,7 @@
 <codeline lineno="1344"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1345"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Query<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1346"><highlight class="normal">REDLAND_EXPORT</highlight></codeline>
-<codeline lineno="1347"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>rasqal_query_prepare(rasqal_query<sp/>*query,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*query_string,<sp/>raptor_uri<sp/>*base_uri);</highlight></codeline>
+<codeline lineno="1347"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>rasqal_query_prepare(rasqal_query<sp/>*query,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*query_string,<sp/><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref><sp/>*base_uri);</highlight></codeline>
 <codeline lineno="1348"><highlight class="normal">REDLAND_EXPORT</highlight></codeline>
 <codeline lineno="1349"><highlight class="normal">rasqal_query_results<sp/>*rasqal_query_execute(rasqal_query<sp/>*query);</highlight></codeline>
 <codeline lineno="1350"><highlight class="normal"></highlight></codeline>
@@ -9669,7 +9715,7 @@
 <codeline lineno="1373"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rasqal_variables_table<sp/>*vars_table);</highlight></codeline>
 <codeline lineno="1374"><highlight class="normal">REDLAND_EXPORT</highlight></codeline>
 <codeline lineno="1375"><highlight class="normal">rasqal_query_results<sp/>*</highlight></codeline>
-<codeline lineno="1376"><highlight class="normal">rasqal_new_query_results_from_string(rasqal_world<sp/>*world,<sp/>rasqal_query_results_type<sp/>type,<sp/>raptor_uri<sp/>*base_uri,</highlight></codeline>
+<codeline lineno="1376"><highlight class="normal">rasqal_new_query_results_from_string(rasqal_world<sp/>*world,<sp/>rasqal_query_results_type<sp/>type,<sp/><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref><sp/>*base_uri,</highlight></codeline>
 <codeline lineno="1377"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>string_len);</highlight></codeline>
 <codeline lineno="1378"><highlight class="normal">REDLAND_EXPORT</highlight></codeline>
 <codeline lineno="1379"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>rasqal_free_query_results(rasqal_query_results<sp/>*query_results);</highlight></codeline>
@@ -9727,10 +9773,10 @@
 <codeline lineno="1431"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1432"><highlight class="normal">REDLAND_EXPORT</highlight></codeline>
 <codeline lineno="1433"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>rasqal_query_results_write(raptor_iostream<sp/>*iostr,<sp/>rasqal_query_results<sp/>*results,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*name,</highlight></codeline>
-<codeline lineno="1434"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*mime_type,<sp/>raptor_uri<sp/>*format_uri,<sp/>raptor_uri<sp/>*base_uri);</highlight></codeline>
+<codeline lineno="1434"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*mime_type,<sp/><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref><sp/>*format_uri,<sp/><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref><sp/>*base_uri);</highlight></codeline>
 <codeline lineno="1435"><highlight class="normal">REDLAND_EXPORT</highlight></codeline>
 <codeline lineno="1436"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>rasqal_query_results_read(raptor_iostream<sp/>*iostr,<sp/>rasqal_query_results<sp/>*results,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*name,</highlight></codeline>
-<codeline lineno="1437"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*mime_type,<sp/>raptor_uri<sp/>*format_uri,<sp/>raptor_uri<sp/>*base_uri);</highlight></codeline>
+<codeline lineno="1437"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*mime_type,<sp/><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref><sp/>*format_uri,<sp/><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref><sp/>*base_uri);</highlight></codeline>
 <codeline lineno="1438"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1439"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>One<sp/>more<sp/>time<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1440"><highlight class="normal">REDLAND_EXPORT</highlight></codeline>
@@ -9744,29 +9790,29 @@
 <codeline lineno="1455"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1456"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1457"><highlight class="normal">REDLAND_EXPORT</highlight></codeline>
-<codeline lineno="1458"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>rasqal_query_results_formats_check2(rasqal_world<sp/>*world,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*name,<sp/>raptor_uri<sp/>*uri,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*mime_type,</highlight></codeline>
+<codeline lineno="1458"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>rasqal_query_results_formats_check2(rasqal_world<sp/>*world,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*name,<sp/><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref><sp/>*uri,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*mime_type,</highlight></codeline>
 <codeline lineno="1459"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>flags);</highlight></codeline>
 <codeline lineno="1460"><highlight class="normal">REDLAND_EXPORT<sp/>REDLAND_DEPRECATED</highlight></codeline>
-<codeline lineno="1461"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>rasqal_query_results_formats_check(rasqal_world<sp/>*world,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*name,<sp/>raptor_uri<sp/>*uri,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*mime_type,</highlight></codeline>
+<codeline lineno="1461"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>rasqal_query_results_formats_check(rasqal_world<sp/>*world,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*name,<sp/><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref><sp/>*uri,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*mime_type,</highlight></codeline>
 <codeline lineno="1462"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>flags);</highlight></codeline>
 <codeline lineno="1463"><highlight class="normal">REDLAND_EXPORT</highlight></codeline>
 <codeline lineno="1464"><highlight class="normal">rasqal_query_results_formatter<sp/>*</highlight></codeline>
 <codeline lineno="1465"><highlight class="normal">rasqal_new_query_results_formatter(rasqal_world<sp/>*world,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*name,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*mime_type,</highlight></codeline>
-<codeline lineno="1466"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>raptor_uri<sp/>*format_uri);</highlight></codeline>
+<codeline lineno="1466"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref><sp/>*format_uri);</highlight></codeline>
 <codeline lineno="1467"><highlight class="normal">REDLAND_EXPORT</highlight></codeline>
 <codeline lineno="1468"><highlight class="normal">rasqal_query_results_formatter<sp/>*</highlight></codeline>
-<codeline lineno="1469"><highlight class="normal">rasqal_new_query_results_formatter_for_content(rasqal_world<sp/>*world,<sp/>raptor_uri<sp/>*uri,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*mime_type,</highlight></codeline>
+<codeline lineno="1469"><highlight class="normal">rasqal_new_query_results_formatter_for_content(rasqal_world<sp/>*world,<sp/><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref><sp/>*uri,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*mime_type,</highlight></codeline>
 <codeline lineno="1470"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*buffer,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>len,</highlight></codeline>
 <codeline lineno="1471"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*identifier);</highlight></codeline>
 <codeline lineno="1472"><highlight class="normal">REDLAND_EXPORT</highlight></codeline>
 <codeline lineno="1473"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>rasqal_free_query_results_formatter(rasqal_query_results_formatter<sp/>*formatter);</highlight></codeline>
 <codeline lineno="1474"><highlight class="normal">REDLAND_EXPORT</highlight></codeline>
 <codeline lineno="1475"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>rasqal_query_results_formatter_write(raptor_iostream<sp/>*iostr,<sp/>rasqal_query_results_formatter<sp/>*formatter,</highlight></codeline>
-<codeline lineno="1476"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rasqal_query_results<sp/>*results,<sp/>raptor_uri<sp/>*base_uri);</highlight></codeline>
+<codeline lineno="1476"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rasqal_query_results<sp/>*results,<sp/><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref><sp/>*base_uri);</highlight></codeline>
 <codeline lineno="1477"><highlight class="normal">REDLAND_EXPORT</highlight></codeline>
 <codeline lineno="1478"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>rasqal_query_results_formatter_read(rasqal_world<sp/>*world,<sp/>raptor_iostream<sp/>*iostr,</highlight></codeline>
 <codeline lineno="1479"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rasqal_query_results_formatter<sp/>*formatter,<sp/>rasqal_query_results<sp/>*results,</highlight></codeline>
-<codeline lineno="1480"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>raptor_uri<sp/>*base_uri);</highlight></codeline>
+<codeline lineno="1480"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref><sp/>*base_uri);</highlight></codeline>
 <codeline lineno="1481"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1482"><highlight class="normal">REDLAND_EXPORT</highlight></codeline>
 <codeline lineno="1483"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>rasqal_query_iostream_write_escaped_counted_string(rasqal_query<sp/>*query,<sp/>raptor_iostream<sp/>*iostr,</highlight></codeline>
@@ -9779,13 +9825,13 @@
 <codeline lineno="1490"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Data<sp/>graph<sp/>class<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1491"><highlight class="normal">REDLAND_EXPORT</highlight></codeline>
 <codeline lineno="1492"><highlight class="normal"><ref refid="structrasqal__data__graph" kindref="compound">rasqal_data_graph</ref><sp/>*</highlight></codeline>
-<codeline lineno="1493"><highlight class="normal">rasqal_new_data_graph_from_uri(rasqal_world<sp/>*world,<sp/>raptor_uri<sp/>*uri,<sp/>raptor_uri<sp/>*name_uri,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>flags,</highlight></codeline>
-<codeline lineno="1494"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*format_type,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*format_name,<sp/>raptor_uri<sp/>*format_uri);</highlight></codeline>
+<codeline lineno="1493"><highlight class="normal">rasqal_new_data_graph_from_uri(rasqal_world<sp/>*world,<sp/><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref><sp/>*uri,<sp/><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref><sp/>*name_uri,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>flags,</highlight></codeline>
+<codeline lineno="1494"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*format_type,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*format_name,<sp/><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref><sp/>*format_uri);</highlight></codeline>
 <codeline lineno="1495"><highlight class="normal">REDLAND_EXPORT</highlight></codeline>
 <codeline lineno="1496"><highlight class="normal"><ref refid="structrasqal__data__graph" kindref="compound">rasqal_data_graph</ref><sp/>*</highlight></codeline>
-<codeline lineno="1497"><highlight class="normal">rasqal_new_data_graph_from_iostream(rasqal_world<sp/>*world,<sp/>raptor_iostream<sp/>*iostr,<sp/>raptor_uri<sp/>*base_uri,</highlight></codeline>
-<codeline lineno="1498"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>raptor_uri<sp/>*name_uri,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>flags,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*format_type,</highlight></codeline>
-<codeline lineno="1499"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*format_name,<sp/>raptor_uri<sp/>*format_uri);</highlight></codeline>
+<codeline lineno="1497"><highlight class="normal">rasqal_new_data_graph_from_iostream(rasqal_world<sp/>*world,<sp/>raptor_iostream<sp/>*iostr,<sp/><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref><sp/>*base_uri,</highlight></codeline>
+<codeline lineno="1498"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref><sp/>*name_uri,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>flags,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*format_type,</highlight></codeline>
+<codeline lineno="1499"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*format_name,<sp/><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref><sp/>*format_uri);</highlight></codeline>
 <codeline lineno="1500"><highlight class="normal">REDLAND_EXPORT</highlight></codeline>
 <codeline lineno="1501"><highlight class="normal"><ref refid="structrasqal__data__graph" kindref="compound">rasqal_data_graph</ref><sp/>*rasqal_new_data_graph_from_data_graph(<ref refid="structrasqal__data__graph" kindref="compound">rasqal_data_graph</ref><sp/>*dg);</highlight></codeline>
 <codeline lineno="1502"><highlight class="normal">REDLAND_EXPORT</highlight></codeline>
@@ -9808,7 +9854,7 @@
 <codeline lineno="1535"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1548" refid="structrasqal__evaluation__context" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
 <codeline lineno="1549"><highlight class="normal"><sp/><sp/><sp/><sp/>rasqal_world<sp/>*world;</highlight></codeline>
-<codeline lineno="1550"><highlight class="normal"><sp/><sp/><sp/><sp/>raptor_uri<sp/>*base_uri;</highlight></codeline>
+<codeline lineno="1550"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref><sp/>*base_uri;</highlight></codeline>
 <codeline lineno="1551"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structraptor__locator" kindref="compound">raptor_locator</ref><sp/>*locator;</highlight></codeline>
 <codeline lineno="1552"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>flags;</highlight></codeline>
 <codeline lineno="1553"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>seed;</highlight></codeline>
@@ -9839,13 +9885,13 @@
 <codeline lineno="1578"><highlight class="normal"><ref refid="structrasqal__expression__s" kindref="compound">rasqal_expression</ref><sp/>*rasqal_new_literal_expression(rasqal_world<sp/>*world,<sp/><ref refid="structrasqal__literal__s" kindref="compound">rasqal_literal</ref><sp/>*literal);</highlight></codeline>
 <codeline lineno="1579"><highlight class="normal">REDLAND_EXPORT</highlight></codeline>
 <codeline lineno="1580"><highlight class="normal"><ref refid="structrasqal__expression__s" kindref="compound">rasqal_expression</ref><sp/>*</highlight></codeline>
-<codeline lineno="1581"><highlight class="normal">rasqal_new_function_expression(rasqal_world<sp/>*world,<sp/>raptor_uri<sp/>*name,<sp/>raptor_sequence<sp/>*args,<sp/>raptor_sequence<sp/>*params,</highlight></codeline>
+<codeline lineno="1581"><highlight class="normal">rasqal_new_function_expression(rasqal_world<sp/>*world,<sp/><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref><sp/>*name,<sp/>raptor_sequence<sp/>*args,<sp/>raptor_sequence<sp/>*params,</highlight></codeline>
 <codeline lineno="1582"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>flags);</highlight></codeline>
 <codeline lineno="1583"><highlight class="normal">REDLAND_EXPORT</highlight></codeline>
 <codeline lineno="1584"><highlight class="normal"><ref refid="structrasqal__expression__s" kindref="compound">rasqal_expression</ref><sp/>*rasqal_new_aggregate_function_expression(rasqal_world<sp/>*world,<sp/>rasqal_op<sp/>op,<sp/><ref refid="structrasqal__expression__s" kindref="compound">rasqal_expression</ref><sp/>*arg1,</highlight></codeline>
 <codeline lineno="1585"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>raptor_sequence<sp/>*params,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>flags);</highlight></codeline>
 <codeline lineno="1586"><highlight class="normal">REDLAND_EXPORT</highlight></codeline>
-<codeline lineno="1587"><highlight class="normal"><ref refid="structrasqal__expression__s" kindref="compound">rasqal_expression</ref><sp/>*rasqal_new_cast_expression(rasqal_world<sp/>*world,<sp/>raptor_uri<sp/>*name,<sp/><ref refid="structrasqal__expression__s" kindref="compound">rasqal_expression</ref><sp/>*value);</highlight></codeline>
+<codeline lineno="1587"><highlight class="normal"><ref refid="structrasqal__expression__s" kindref="compound">rasqal_expression</ref><sp/>*rasqal_new_cast_expression(rasqal_world<sp/>*world,<sp/><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref><sp/>*name,<sp/><ref refid="structrasqal__expression__s" kindref="compound">rasqal_expression</ref><sp/>*value);</highlight></codeline>
 <codeline lineno="1588"><highlight class="normal">REDLAND_EXPORT</highlight></codeline>
 <codeline lineno="1589"><highlight class="normal"><ref refid="structrasqal__expression__s" kindref="compound">rasqal_expression</ref><sp/>*rasqal_new_expr_seq_expression(rasqal_world<sp/>*world,<sp/>rasqal_op<sp/>op,<sp/>raptor_sequence<sp/>*args);</highlight></codeline>
 <codeline lineno="1590"><highlight class="normal">REDLAND_EXPORT</highlight></codeline>
@@ -9883,7 +9929,7 @@
 <codeline lineno="1632"><highlight class="normal">REDLAND_EXPORT</highlight></codeline>
 <codeline lineno="1633"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>rasqal_free_evaluation_context(<ref refid="structrasqal__evaluation__context" kindref="compound">rasqal_evaluation_context</ref><sp/>*eval_context);</highlight></codeline>
 <codeline lineno="1634"><highlight class="normal">REDLAND_EXPORT</highlight></codeline>
-<codeline lineno="1635"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>rasqal_evaluation_context_set_base_uri(<ref refid="structrasqal__evaluation__context" kindref="compound">rasqal_evaluation_context</ref><sp/>*eval_context,<sp/>raptor_uri<sp/>*base_uri);</highlight></codeline>
+<codeline lineno="1635"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>rasqal_evaluation_context_set_base_uri(<ref refid="structrasqal__evaluation__context" kindref="compound">rasqal_evaluation_context</ref><sp/>*eval_context,<sp/><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref><sp/>*base_uri);</highlight></codeline>
 <codeline lineno="1636"><highlight class="normal">REDLAND_EXPORT</highlight></codeline>
 <codeline lineno="1637"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>rasqal_evaluation_context_set_rand_seed(<ref refid="structrasqal__evaluation__context" kindref="compound">rasqal_evaluation_context</ref><sp/>*eval_context,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>seed);</highlight></codeline>
 <codeline lineno="1638"><highlight class="normal"></highlight></codeline>
@@ -9902,12 +9948,12 @@
 <codeline lineno="1651"><highlight class="normal">REDLAND_EXPORT<sp/>REDLAND_DEPRECATED</highlight></codeline>
 <codeline lineno="1652"><highlight class="normal"><ref refid="structrasqal__literal__s" kindref="compound">rasqal_literal</ref><sp/>*rasqal_new_float_literal(rasqal_world<sp/>*world,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>f);</highlight></codeline>
 <codeline lineno="1653"><highlight class="normal">REDLAND_EXPORT</highlight></codeline>
-<codeline lineno="1654"><highlight class="normal"><ref refid="structrasqal__literal__s" kindref="compound">rasqal_literal</ref><sp/>*rasqal_new_uri_literal(rasqal_world<sp/>*world,<sp/>raptor_uri<sp/>*uri);</highlight></codeline>
+<codeline lineno="1654"><highlight class="normal"><ref refid="structrasqal__literal__s" kindref="compound">rasqal_literal</ref><sp/>*rasqal_new_uri_literal(rasqal_world<sp/>*world,<sp/><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref><sp/>*uri);</highlight></codeline>
 <codeline lineno="1655"><highlight class="normal">REDLAND_EXPORT</highlight></codeline>
 <codeline lineno="1656"><highlight class="normal"><ref refid="structrasqal__literal__s" kindref="compound">rasqal_literal</ref><sp/>*rasqal_new_pattern_literal(rasqal_world<sp/>*world,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*pattern,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*flags);</highlight></codeline>
 <codeline lineno="1657"><highlight class="normal">REDLAND_EXPORT</highlight></codeline>
 <codeline lineno="1658"><highlight class="normal"><ref refid="structrasqal__literal__s" kindref="compound">rasqal_literal</ref><sp/>*</highlight></codeline>
-<codeline lineno="1659"><highlight class="normal">rasqal_new_string_literal(rasqal_world<sp/>*world,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*language,<sp/>raptor_uri<sp/>*datatype,</highlight></codeline>
+<codeline lineno="1659"><highlight class="normal">rasqal_new_string_literal(rasqal_world<sp/>*world,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*language,<sp/><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref><sp/>*datatype,</highlight></codeline>
 <codeline lineno="1660"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*datatype_qname);</highlight></codeline>
 <codeline lineno="1661"><highlight class="normal">REDLAND_EXPORT</highlight></codeline>
 <codeline lineno="1662"><highlight class="normal"><ref refid="structrasqal__literal__s" kindref="compound">rasqal_literal</ref><sp/>*rasqal_new_simple_literal(rasqal_world<sp/>*world,<sp/>rasqal_literal_type<sp/>type,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">);</highlight></codeline>
@@ -9945,7 +9991,7 @@
 <codeline lineno="1694"><highlight class="normal">REDLAND_EXPORT</highlight></codeline>
 <codeline lineno="1695"><highlight class="normal"><ref refid="structrasqal__literal__s" kindref="compound">rasqal_literal</ref><sp/>*rasqal_literal_as_node(<ref refid="structrasqal__literal__s" kindref="compound">rasqal_literal</ref><sp/>*l);</highlight></codeline>
 <codeline lineno="1696"><highlight class="normal">REDLAND_EXPORT</highlight></codeline>
-<codeline lineno="1697"><highlight class="normal">raptor_uri<sp/>*rasqal_literal_datatype(<ref refid="structrasqal__literal__s" kindref="compound">rasqal_literal</ref><sp/>*l);</highlight></codeline>
+<codeline lineno="1697"><highlight class="normal"><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref><sp/>*rasqal_literal_datatype(<ref refid="structrasqal__literal__s" kindref="compound">rasqal_literal</ref><sp/>*l);</highlight></codeline>
 <codeline lineno="1698"><highlight class="normal">REDLAND_EXPORT</highlight></codeline>
 <codeline lineno="1699"><highlight class="normal"><ref refid="structrasqal__literal__s" kindref="compound">rasqal_literal</ref><sp/>*rasqal_literal_value(<ref refid="structrasqal__literal__s" kindref="compound">rasqal_literal</ref><sp/>*l);</highlight></codeline>
 <codeline lineno="1700"><highlight class="normal"></highlight></codeline>
@@ -9966,7 +10012,7 @@
 <codeline lineno="1715"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1716"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1717"><highlight class="normal">REDLAND_EXPORT</highlight></codeline>
-<codeline lineno="1718"><highlight class="normal"><ref refid="structrasqal__prefix" kindref="compound">rasqal_prefix</ref><sp/>*rasqal_new_prefix(rasqal_world<sp/>*world,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*prefix,<sp/>raptor_uri<sp/>*uri);</highlight></codeline>
+<codeline lineno="1718"><highlight class="normal"><ref refid="structrasqal__prefix" kindref="compound">rasqal_prefix</ref><sp/>*rasqal_new_prefix(rasqal_world<sp/>*world,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*prefix,<sp/><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref><sp/>*uri);</highlight></codeline>
 <codeline lineno="1719"><highlight class="normal">REDLAND_EXPORT</highlight></codeline>
 <codeline lineno="1720"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>rasqal_free_prefix(<ref refid="structrasqal__prefix" kindref="compound">rasqal_prefix</ref><sp/>*p);</highlight></codeline>
 <codeline lineno="1721"><highlight class="normal">REDLAND_EXPORT</highlight></codeline>
@@ -10147,7 +10193,7 @@
 <codeline lineno="1901"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">rasqal_service_s<sp/>rasqal_service;</highlight></codeline>
 <codeline lineno="1902"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1903"><highlight class="normal">REDLAND_EXPORT</highlight></codeline>
-<codeline lineno="1904"><highlight class="normal">rasqal_service<sp/>*rasqal_new_service(rasqal_world<sp/>*world,<sp/>raptor_uri<sp/>*service_uri,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*query_string,</highlight></codeline>
+<codeline lineno="1904"><highlight class="normal">rasqal_service<sp/>*rasqal_new_service(rasqal_world<sp/>*world,<sp/><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref><sp/>*service_uri,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*query_string,</highlight></codeline>
 <codeline lineno="1905"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>raptor_sequence<sp/>*data_graphs);</highlight></codeline>
 <codeline lineno="1906"><highlight class="normal">REDLAND_EXPORT</highlight></codeline>
 <codeline lineno="1907"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>rasqal_free_service(rasqal_service<sp/>*svc);</highlight></codeline>

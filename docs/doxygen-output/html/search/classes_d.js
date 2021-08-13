@@ -1,4 +1,32 @@
 var searchData=
 [
-  ['query_384',['Query',['../classomexmeta_1_1Query.html',1,'omexmeta']]]
+  ['raptor_5flocator_414',['raptor_locator',['../structraptor__locator.html',1,'']]],
+  ['raptor_5fstatement_415',['raptor_statement',['../structraptor__statement.html',1,'']]],
+  ['raptor_5fsyntax_5fdescription_416',['raptor_syntax_description',['../structraptor__syntax__description.html',1,'']]],
+  ['raptor_5fterm_417',['raptor_term',['../structraptor__term.html',1,'']]],
+  ['raptor_5fterm_5fblank_5fvalue_418',['raptor_term_blank_value',['../structraptor__term__blank__value.html',1,'']]],
+  ['raptor_5fterm_5fliteral_5fvalue_419',['raptor_term_literal_value',['../structraptor__term__literal__value.html',1,'']]],
+  ['raptor_5fterm_5fvalue_420',['raptor_term_value',['../unionraptor__term__value.html',1,'']]],
+  ['raptor_5ftype_5fq_421',['raptor_type_q',['../structraptor__type__q.html',1,'']]],
+  ['raptor_5furi_5fs_422',['raptor_uri_s',['../structraptor__uri__s.html',1,'']]],
+  ['raptoriostream_423',['RaptorIOStream',['../classredland_1_1RaptorIOStream.html',1,'redland']]],
+  ['rasqal_5fdata_5fgraph_424',['rasqal_data_graph',['../structrasqal__data__graph.html',1,'']]],
+  ['rasqal_5fevaluation_5fcontext_425',['rasqal_evaluation_context',['../structrasqal__evaluation__context.html',1,'']]],
+  ['rasqal_5fexpression_5fs_426',['rasqal_expression_s',['../structrasqal__expression__s.html',1,'']]],
+  ['rasqal_5fliteral_5fs_427',['rasqal_literal_s',['../structrasqal__literal__s.html',1,'']]],
+  ['rasqal_5fprefix_428',['rasqal_prefix',['../structrasqal__prefix.html',1,'']]],
+  ['rasqal_5ftriple_429',['rasqal_triple',['../structrasqal__triple.html',1,'']]],
+  ['rasqal_5ftriple_5fmeta_430',['rasqal_triple_meta',['../structrasqal__triple__meta.html',1,'']]],
+  ['rasqal_5ftriples_5fmatch_5fs_431',['rasqal_triples_match_s',['../structrasqal__triples__match__s.html',1,'']]],
+  ['rasqal_5ftriples_5fsource_5ffactory_432',['rasqal_triples_source_factory',['../structrasqal__triples__source__factory.html',1,'']]],
+  ['rasqal_5ftriples_5fsource_5fs_433',['rasqal_triples_source_s',['../structrasqal__triples__source__s.html',1,'']]],
+  ['rasqal_5fupdate_5foperation_434',['rasqal_update_operation',['../structrasqal__update__operation.html',1,'']]],
+  ['rasqal_5fvariable_435',['rasqal_variable',['../structrasqal__variable.html',1,'']]],
+  ['rasqal_5fxsd_5fdate_436',['rasqal_xsd_date',['../structrasqal__xsd__date.html',1,'']]],
+  ['rasqal_5fxsd_5fdatetime_437',['rasqal_xsd_datetime',['../structrasqal__xsd__datetime.html',1,'']]],
+  ['rdf_438',['RDF',['../classomexmeta_1_1RDF.html',1,'omexmeta']]],
+  ['redlandlibrdfexception_439',['RedlandLibrdfException',['../classRedlandLibrdfException.html',1,'']]],
+  ['redlandnullpointerexception_440',['RedlandNullPointerException',['../classRedlandNullPointerException.html',1,'']]],
+  ['redlandtype_441',['RedlandType',['../classredland_1_1RedlandType.html',1,'redland']]],
+  ['refcountedredlandtype_442',['RefCountedRedlandType',['../classredland_1_1RefCountedRedlandType.html',1,'redland']]]
 ];

@@ -2,26 +2,239 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="Logger_8h" kind="file" language="C++">
     <compoundname>Logger.h</compoundname>
+    <includes refid="raptor2_8h" local="yes">raptor2.h</includes>
+    <includes refid="librdf_8h" local="yes">librdf.h</includes>
     <includes local="yes">spdlog/spdlog.h</includes>
     <includes local="no">filesystem</includes>
     <includes local="no">string</includes>
-    <includes refid="raptor2_8h" local="yes">raptor2.h</includes>
-    <includedby refid="Logger_8cpp" local="yes">src/omexmeta/Logger.cpp</includedby>
     <includedby refid="OmexMeta_8h" local="yes">src/omexmeta/include/omexmeta/OmexMeta.h</includedby>
     <includedby refid="OmexMetaCApi_8h" local="yes">src/omexmeta/include/omexmeta/OmexMetaCApi.h</includedby>
     <includedby refid="RDF_8h" local="yes">src/omexmeta/include/omexmeta/RDF.h</includedby>
+    <includedby refid="LibrdfModel_8cpp" local="yes">src/redland/RedlandWrapper/src/LibrdfModel.cpp</includedby>
+    <includedby refid="LibrdfNode_8cpp" local="yes">src/redland/RedlandWrapper/src/LibrdfNode.cpp</includedby>
+    <includedby refid="LibrdfParser_8cpp" local="yes">src/redland/RedlandWrapper/src/LibrdfParser.cpp</includedby>
+    <includedby refid="LibrdfQuery_8cpp" local="yes">src/redland/RedlandWrapper/src/LibrdfQuery.cpp</includedby>
+    <includedby refid="LibrdfQueryResults_8cpp" local="yes">src/redland/RedlandWrapper/src/LibrdfQueryResults.cpp</includedby>
+    <includedby refid="LibrdfSerializer_8cpp" local="yes">src/redland/RedlandWrapper/src/LibrdfSerializer.cpp</includedby>
+    <includedby refid="LibrdfStatement_8cpp" local="yes">src/redland/RedlandWrapper/src/LibrdfStatement.cpp</includedby>
+    <includedby refid="LibrdfStorage_8cpp" local="yes">src/redland/RedlandWrapper/src/LibrdfStorage.cpp</includedby>
+    <includedby refid="LibrdfStream_8cpp" local="yes">src/redland/RedlandWrapper/src/LibrdfStream.cpp</includedby>
+    <includedby refid="LibrdfUri_8cpp" local="yes">src/redland/RedlandWrapper/src/LibrdfUri.cpp</includedby>
+    <includedby refid="LibrdfWorld_8cpp" local="yes">src/redland/RedlandWrapper/src/LibrdfWorld.cpp</includedby>
+    <includedby refid="Logger_8cpp" local="yes">src/redland/RedlandWrapper/src/Logger.cpp</includedby>
+    <includedby refid="RedlandAPI_8h" local="yes">src/redland/RedlandWrapper/src/include/redland/RedlandAPI.h</includedby>
     <incdepgraph>
-      <node id="7">
+      <node id="4">
         <label>stdarg.h</label>
       </node>
-      <node id="3">
+      <node id="7">
+        <label>rasqal.h</label>
+        <link refid="rasqal_8h_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="26">
         <label>filesystem</label>
       </node>
-      <node id="4">
+      <node id="11">
+        <label>rdf_init.h</label>
+      </node>
+      <node id="22">
+        <label>rdf_stream.h</label>
+      </node>
+      <node id="14">
+        <label>rdf_node.h</label>
+      </node>
+      <node id="18">
+        <label>rdf_storage.h</label>
+      </node>
+      <node id="23">
+        <label>rdf_query.h</label>
+      </node>
+      <node id="27">
         <label>string</label>
       </node>
       <node id="1">
-        <label>src/omexmeta/include/omexmeta/Logger.h</label>
+        <label>src/redland/RedlandWrapper/src/include/redland/Logger.h</label>
+        <link refid="Logger_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>rdf_iterator.h</label>
+      </node>
+      <node id="20">
+        <label>rdf_raptor.h</label>
+      </node>
+      <node id="19">
+        <label>rdf_parser.h</label>
+      </node>
+      <node id="25">
+        <label>spdlog/spdlog.h</label>
+      </node>
+      <node id="5">
+        <label>redland_export.h</label>
+      </node>
+      <node id="17">
+        <label>rdf_model.h</label>
+      </node>
+      <node id="15">
+        <label>rdf_concepts.h</label>
+      </node>
+      <node id="10">
+        <label>rdf_hash.h</label>
+      </node>
+      <node id="13">
+        <label>rdf_uri.h</label>
+      </node>
+      <node id="2">
+        <label>raptor2.h</label>
+        <link refid="raptor2_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>rdf_log.h</label>
+      </node>
+      <node id="16">
+        <label>rdf_statement.h</label>
+      </node>
+      <node id="21">
+        <label>rdf_serializer.h</label>
+      </node>
+      <node id="24">
+        <label>rdf_utf8.h</label>
+      </node>
+      <node id="3">
+        <label>stdio.h</label>
+      </node>
+      <node id="6">
+        <label>librdf.h</label>
+        <link refid="librdf_8h_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>rdf_digest.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="23">
+        <label>src/omexmeta/include/omexmeta/Triples.h</label>
+        <link refid="Triples_8h_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>src/omexmeta/include/omexmeta/RDF.h</label>
+        <link refid="RDF_8h_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>src/omexmeta/include/omexmeta/SBMLSemanticExtraction.h</label>
+        <link refid="SBMLSemanticExtraction_8h_source"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>src/omexmeta/include/omexmeta/Triple.h</label>
+        <link refid="Triple_8h_source"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>src/omexmeta/include/omexmeta/PhysicalEntity.h</label>
+        <link refid="PhysicalEntity_8h_source"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/redland/RedlandWrapper/src/include/redland/Logger.h</label>
         <link refid="Logger_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
@@ -32,58 +245,232 @@
         <childnode refid="5" relation="include">
         </childnode>
       </node>
-      <node id="2">
-        <label>spdlog/spdlog.h</label>
-      </node>
-      <node id="8">
-        <label>redland_export.h</label>
-      </node>
-      <node id="5">
-        <label>raptor2.h</label>
-        <link refid="raptor2_8h_source"/>
+      <node id="12">
+        <label>src/omexmeta/include/omexmeta/OmexMetaUtils.h</label>
+        <link refid="OmexMetaUtils_8h_source"/>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="7" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
-        <childnode refid="8" relation="include">
+        <childnode refid="10" relation="include">
         </childnode>
-      </node>
-      <node id="6">
-        <label>stdio.h</label>
-      </node>
-    </incdepgraph>
-    <invincdepgraph>
-      <node id="4">
-        <label>src/omexmeta/include/omexmeta/RDF.h</label>
-        <link refid="RDF_8h_source"/>
-        <childnode refid="2" relation="include">
+        <childnode refid="14" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
-      </node>
-      <node id="1">
-        <label>src/omexmeta/include/omexmeta/Logger.h</label>
-        <link refid="Logger_8h"/>
-        <childnode refid="2" relation="include">
+        <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="3" relation="include">
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>src/omexmeta/include/omexmeta/IRDF.h</label>
+        <link refid="IRDF_8h_source"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>src/omexmeta/include/omexmeta/EnergyDiff.h</label>
+        <link refid="EnergyDiff_8h_source"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="22">
+        <label>src/omexmeta/include/omexmeta/PropertyBearer.h</label>
+        <link refid="PropertyBearer_8h_source"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>src/omexmeta/include/omexmeta/Predicate.h</label>
+        <link refid="Predicate_8h_source"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+      </node>
+      <node id="24">
+        <label>src/omexmeta/include/omexmeta/PersonalInformation.h</label>
+        <link refid="PersonalInformation_8h_source"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
         </childnode>
       </node>
       <node id="2">
         <label>src/omexmeta/include/omexmeta/OmexMeta.h</label>
         <link refid="OmexMeta_8h_source"/>
       </node>
+      <node id="6">
+        <label>src/omexmeta/include/omexmeta/Editor.h</label>
+        <link refid="Editor_8h_source"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>src/omexmeta/include/omexmeta/MetaID.h</label>
+        <link refid="MetaID_8h_source"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>src/omexmeta/include/omexmeta/PhysicalProperty.h</label>
+        <link refid="PhysicalProperty_8h_source"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>src/redland/RedlandWrapper/src/include/redland/RedlandAPI.h</label>
+        <link refid="RedlandAPI_8h_source"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>src/omexmeta/include/omexmeta/ElementExtractor.h</label>
+        <link refid="ElementExtractor_8h_source"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>src/omexmeta/include/omexmeta/MarkupIdentifier.h</label>
+        <link refid="MarkupIdentifier_8h_source"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>src/omexmeta/include/omexmeta/OmexMetaXml.h</label>
+        <link refid="OmexMetaXml_8h_source"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="25">
+        <label>src/omexmeta/include/omexmeta/UriHandler.h</label>
+        <link refid="UriHandler_8h_source"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+      </node>
       <node id="3">
         <label>src/omexmeta/include/omexmeta/OmexMetaCApi.h</label>
         <link refid="OmexMetaCApi_8h_source"/>
       </node>
+      <node id="20">
+        <label>src/omexmeta/include/omexmeta/Participant.h</label>
+        <link refid="Participant_8h_source"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>src/omexmeta/include/omexmeta/PhysicalProcess.h</label>
+        <link refid="PhysicalProcess_8h_source"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>src/omexmeta/include/omexmeta/PurgeRDFBag.h</label>
+        <link refid="PurgeRDFBag_8h_source"/>
+      </node>
     </invincdepgraph>
-    <innerclass refid="classomexmeta_1_1Logger" prot="public">omexmeta::Logger</innerclass>
-    <innernamespace refid="namespaceomexmeta">omexmeta</innernamespace>
+    <innerclass refid="classredland_1_1Logger" prot="public">redland::Logger</innerclass>
+    <innernamespace refid="namespaceredland">redland</innernamespace>
       <sectiondef kind="define">
-      <memberdef kind="define" id="Logger_8h_1a14095d6307757d11ce09fedf0d3b9458" prot="public" static="no">
+      <memberdef kind="define" id="Logger_8h_1ae4fda6f71f35120e2ff48157fca961b5" prot="public" static="no">
+        <name>SPDLOG_ACTIVE_LEVEL</name>
+        <initializer>SPDLOG_LEVEL_TRACE</initializer>
+        <briefdescription>
+<para>Enable logging macros to use trace and higher. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>We must still use spdlog::set_level to switch logging levels. Must be included before spdlog. <simplesect kind="see"><para><ulink url="https://github.com/gabime/spdlog/issues/1318">https://github.com/gabime/spdlog/issues/1318</ulink> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/Logger.h" line="16" column="12" bodyfile="src/redland/RedlandWrapper/src/include/redland/Logger.h" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="Logger_8h_1a678d16ffe7ead205bd4c6460a013d344" prot="public" static="no">
         <name>REDLAND_INFO</name>
         <param><defname>msg</defname></param>
         <initializer>SPDLOG_INFO(msg)</initializer>
@@ -94,9 +481,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Logger.h" line="18" column="9" bodyfile="src/omexmeta/include/omexmeta/Logger.h" bodystart="18" bodyend="-1"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/Logger.h" line="31" column="9" bodyfile="src/redland/RedlandWrapper/src/include/redland/Logger.h" bodystart="31" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="Logger_8h_1adca53c34f10d3b39eb8c91cb7ff5ac6b" prot="public" static="no">
+      <memberdef kind="define" id="Logger_8h_1a6a3e26f55f58403d1acc65731655b1e8" prot="public" static="no">
         <name>REDLAND_TRACE</name>
         <param><defname>msg</defname></param>
         <initializer>SPDLOG_TRACE(msg)</initializer>
@@ -106,9 +493,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Logger.h" line="19" column="9" bodyfile="src/omexmeta/include/omexmeta/Logger.h" bodystart="19" bodyend="-1"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/Logger.h" line="32" column="9" bodyfile="src/redland/RedlandWrapper/src/include/redland/Logger.h" bodystart="32" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="Logger_8h_1a25fec9537907be09f8771f94b3a3ed41" prot="public" static="no">
+      <memberdef kind="define" id="Logger_8h_1a1d5fc73764d1e3c851f24e2a39b0026c" prot="public" static="no">
         <name>REDLAND_DEBUG</name>
         <param><defname>msg</defname></param>
         <initializer>SPDLOG_DEBUG(msg)</initializer>
@@ -118,9 +505,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Logger.h" line="20" column="9" bodyfile="src/omexmeta/include/omexmeta/Logger.h" bodystart="20" bodyend="-1"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/Logger.h" line="33" column="9" bodyfile="src/redland/RedlandWrapper/src/include/redland/Logger.h" bodystart="33" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="Logger_8h_1a3db9a12b42ab734d262407e6c958e9b2" prot="public" static="no">
+      <memberdef kind="define" id="Logger_8h_1ac2104a57f2ff60157fc2adb3480e1686" prot="public" static="no">
         <name>REDLAND_WARN</name>
         <param><defname>msg</defname></param>
         <initializer>SPDLOG_WARN(msg)</initializer>
@@ -130,9 +517,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Logger.h" line="21" column="9" bodyfile="src/omexmeta/include/omexmeta/Logger.h" bodystart="21" bodyend="-1"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/Logger.h" line="34" column="9" bodyfile="src/redland/RedlandWrapper/src/include/redland/Logger.h" bodystart="34" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="Logger_8h_1a9dad07775af5ca98ec7e7e3bfbcc7621" prot="public" static="no">
+      <memberdef kind="define" id="Logger_8h_1a82fed712bcb63b48731da904efe8a761" prot="public" static="no">
         <name>REDLAND_ERROR</name>
         <param><defname>msg</defname></param>
         <initializer>SPDLOG_ERROR(msg)</initializer>
@@ -142,9 +529,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Logger.h" line="22" column="9" bodyfile="src/omexmeta/include/omexmeta/Logger.h" bodystart="22" bodyend="-1"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/Logger.h" line="35" column="9" bodyfile="src/redland/RedlandWrapper/src/include/redland/Logger.h" bodystart="35" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="define" id="Logger_8h_1a8fd29435987becaa6a706d58091c85ae" prot="public" static="no">
+      <memberdef kind="define" id="Logger_8h_1ae5e7e65e69e11dc3fe386efd00c28ae5" prot="public" static="no">
         <name>REDLAND_CRITICAL</name>
         <param><defname>msg</defname></param>
         <initializer>SPDLOG_CRITICAL(msg)</initializer>
@@ -154,7 +541,79 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Logger.h" line="23" column="9" bodyfile="src/omexmeta/include/omexmeta/Logger.h" bodystart="23" bodyend="-1"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/Logger.h" line="36" column="9" bodyfile="src/redland/RedlandWrapper/src/include/redland/Logger.h" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="Logger_8h_1aa00b2650c4d4547dd2009cd4606ffaec" prot="public" static="no">
+        <name>LOGGER_SET_INFO</name>
+        <param></param>
+        <initializer>Logger::getLogger()-&gt;setLevel(Logger::LogLevel::info);</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/Logger.h" line="191" column="9" bodyfile="src/redland/RedlandWrapper/src/include/redland/Logger.h" bodystart="191" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="Logger_8h_1ad92381534e72883f729338fa33a34518" prot="public" static="no">
+        <name>LOGGER_SET_TRACE</name>
+        <param></param>
+        <initializer>Logger::getLogger()-&gt;setLevel(Logger::LogLevel::trace);</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/Logger.h" line="192" column="9" bodyfile="src/redland/RedlandWrapper/src/include/redland/Logger.h" bodystart="192" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="Logger_8h_1a2c11ceae760b7bde1d438b5e6d1e94e8" prot="public" static="no">
+        <name>LOGGER_SET_DEBUG</name>
+        <param></param>
+        <initializer>Logger::getLogger()-&gt;setLevel(Logger::LogLevel::debug);</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/Logger.h" line="193" column="9" bodyfile="src/redland/RedlandWrapper/src/include/redland/Logger.h" bodystart="193" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="Logger_8h_1a98b6b060aca6ac30aa457420058c01da" prot="public" static="no">
+        <name>LOGGER_SET_WARN</name>
+        <param></param>
+        <initializer>Logger::getLogger()-&gt;setLevel(Logger::LogLevel::warn);</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/Logger.h" line="194" column="9" bodyfile="src/redland/RedlandWrapper/src/include/redland/Logger.h" bodystart="194" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="Logger_8h_1af57d4b35a1aa509b65825ad68ec4f457" prot="public" static="no">
+        <name>LOGGER_SET_ERROR</name>
+        <param></param>
+        <initializer>Logger::getLogger()-&gt;setLevel(Logger::LogLevel::error);</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/Logger.h" line="195" column="9" bodyfile="src/redland/RedlandWrapper/src/include/redland/Logger.h" bodystart="195" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="Logger_8h_1a333ce988b2658345d414adabd74ae60e" prot="public" static="no">
+        <name>LOGGER_SET_CRITICAL</name>
+        <param></param>
+        <initializer>Logger::getLogger()-&gt;setLevel(Logger::LogLevel::critical);</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/Logger.h" line="196" column="9" bodyfile="src/redland/RedlandWrapper/src/include/redland/Logger.h" bodystart="196" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -166,90 +625,100 @@
 <codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Created<sp/>by<sp/>Ciaran<sp/>on<sp/>05/08/2021.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="4"><highlight class="normal"></highlight></codeline>
-<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>LIBOMEXMETA_LOGGER_H</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LIBOMEXMETA_LOGGER_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>LIBOMEXMETA_LOGGER2_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LIBOMEXMETA_LOGGER2_H</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="7"><highlight class="normal"></highlight></codeline>
-<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;spdlog/spdlog.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;filesystem&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;raptor2.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="12"><highlight class="normal"></highlight></codeline>
-<codeline lineno="13"><highlight class="normal"></highlight></codeline>
-<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceomexmeta" kindref="compound">omexmeta</ref><sp/>{</highlight></codeline>
-<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REDLAND_INFO(msg)<sp/>SPDLOG_INFO(msg)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REDLAND_TRACE(msg)<sp/>SPDLOG_TRACE(msg)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REDLAND_DEBUG(msg)<sp/>SPDLOG_DEBUG(msg)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REDLAND_WARN(msg)<sp/>SPDLOG_WARN(msg)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REDLAND_ERROR(msg)<sp/>SPDLOG_ERROR(msg)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REDLAND_CRITICAL(msg)<sp/>SPDLOG_CRITICAL(msg)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>SPDLOG_ACTIVE_LEVEL</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/>define<sp/>SPDLOG_ACTIVE_LEVEL<sp/>SPDLOG_LEVEL_TRACE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;raptor2.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;librdf.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;spdlog/spdlog.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;filesystem&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="24"><highlight class="normal"></highlight></codeline>
 <codeline lineno="25"><highlight class="normal"></highlight></codeline>
-<codeline lineno="29" refid="classomexmeta_1_1Logger" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classomexmeta_1_1Logger" kindref="compound">Logger</ref><sp/>{</highlight></codeline>
-<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>LoggerPtr<sp/>=<sp/>std::shared_ptr&lt;spdlog::logger&gt;;</highlight></codeline>
-<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>LogLevel<sp/>=<sp/>spdlog::level::level_enum;</highlight></codeline>
-<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>This<sp/>is<sp/>how<sp/>clients<sp/>can<sp/>access<sp/>the<sp/>single<sp/>instance</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1Logger" kindref="compound">Logger</ref><sp/>*getLogger();</highlight></codeline>
-<codeline lineno="35"><highlight class="normal"></highlight></codeline>
-<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1Logger_1a134dd390a0ffd511e7272a3ff604ea5e" kindref="member">setFormatter</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;format);</highlight></codeline>
-<codeline lineno="41"><highlight class="normal"></highlight></codeline>
-<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1Logger_1a8aea25829e62c8f4c6f03fc48d50dd41" kindref="member">setLevel</ref>(LogLevel<sp/>level);</highlight></codeline>
-<codeline lineno="54"><highlight class="normal"></highlight></codeline>
-<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LogLevel<sp/><ref refid="classomexmeta_1_1Logger_1a597998f70839cc4e940bdc3d88b67409" kindref="member">getLevel</ref>();</highlight></codeline>
-<codeline lineno="59"><highlight class="normal"></highlight></codeline>
-<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1Logger_1adff73e1d612beabc4816cde05387454c" kindref="member">enableBacktrace</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>num);</highlight></codeline>
-<codeline lineno="65"><highlight class="normal"></highlight></codeline>
-<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1Logger_1ab9f86a85a769a36a22f6e02dad5c78fa" kindref="member">disableBacktrace</ref>();</highlight></codeline>
-<codeline lineno="70"><highlight class="normal"></highlight></codeline>
-<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1Logger_1a10e34a8915c7520e9332d9c1889f7521" kindref="member">consoleLogger</ref>();</highlight></codeline>
-<codeline lineno="75"><highlight class="normal"></highlight></codeline>
-<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1Logger_1af999f93aa9e820a40c87ed34797fc1ce" kindref="member">fileLogger</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::filesystem::path<sp/>&amp;filename);</highlight></codeline>
-<codeline lineno="80"><highlight class="normal"></highlight></codeline>
-<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1Logger_1a56f5508d87ac4f700b4a7641cb7b88a0" kindref="member">dumpBacktrace</ref>();</highlight></codeline>
-<codeline lineno="85"><highlight class="normal"></highlight></codeline>
-<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1Logger_1ab49ff109d59a626fbcec1c05389fe6a2" kindref="member">info</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;message);</highlight></codeline>
-<codeline lineno="91"><highlight class="normal"></highlight></codeline>
-<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1Logger_1a052bdd430682c2c91490bc2763b918fc" kindref="member">trace</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;message);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">redland<sp/>{</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REDLAND_INFO(msg)<sp/>SPDLOG_INFO(msg)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REDLAND_TRACE(msg)<sp/>SPDLOG_TRACE(msg)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REDLAND_DEBUG(msg)<sp/>SPDLOG_DEBUG(msg)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REDLAND_WARN(msg)<sp/>SPDLOG_WARN(msg)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REDLAND_ERROR(msg)<sp/>SPDLOG_ERROR(msg)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REDLAND_CRITICAL(msg)<sp/>SPDLOG_CRITICAL(msg)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41" refid="classredland_1_1Logger" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classredland_1_1Logger" kindref="compound">Logger</ref><sp/>{</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>LoggerPtr<sp/>=<sp/>std::shared_ptr&lt;spdlog::logger&gt;;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>LogLevel<sp/>=<sp/>spdlog::level::level_enum;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>This<sp/>is<sp/>how<sp/>clients<sp/>can<sp/>access<sp/>the<sp/>single<sp/>instance</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classredland_1_1Logger" kindref="compound">Logger</ref><sp/>*getLogger();</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classredland_1_1Logger_1ac358531893ec79d169ec449aae2cc5c0" kindref="member">setFormatter</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;format);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classredland_1_1Logger_1a7ae9f6e2d9c6d143192dd7253acea479" kindref="member">setLevel</ref>(LogLevel<sp/>level);</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LogLevel<sp/><ref refid="classredland_1_1Logger_1a267cc8563aa19f296edfd859331a53a7" kindref="member">getLevel</ref>();</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classredland_1_1Logger_1a48844ea4f9eecbb5c450b35a96cbdda4" kindref="member">enableBacktrace</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>num);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classredland_1_1Logger_1a61b92676954488db03b3c3ebfbd11fe0" kindref="member">disableBacktrace</ref>();</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classredland_1_1Logger_1a63c1f161280c140b69b3db08389a1137" kindref="member">consoleLogger</ref>();</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classredland_1_1Logger_1a39e56c0690a855138fff179e68171bc3" kindref="member">fileLogger</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::filesystem::path<sp/>&amp;filename);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classredland_1_1Logger_1ac0d3043e20448acf27088756943e6487" kindref="member">dumpBacktrace</ref>();</highlight></codeline>
 <codeline lineno="97"><highlight class="normal"></highlight></codeline>
-<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1Logger_1a8e5db234df44e3fc3a60bfcbf3e77f4b" kindref="member">debug</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;message);</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classredland_1_1Logger_1af235df43b65913acfa616d98a299fe72" kindref="member">info</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;message);</highlight></codeline>
 <codeline lineno="103"><highlight class="normal"></highlight></codeline>
-<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1Logger_1aa35b6607acc0873cd955f518b67c81dd" kindref="member">warn</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;message);</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classredland_1_1Logger_1ae1be7a182e59b7aeb14f584d6d5114b6" kindref="member">trace</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;message);</highlight></codeline>
 <codeline lineno="109"><highlight class="normal"></highlight></codeline>
-<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1Logger_1aea5f0b2cf462c59f3a682a4447dcabb8" kindref="member">error</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;message);</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classredland_1_1Logger_1a8e48332423e589a5e11c8e6ecdd16bf1" kindref="member">debug</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;message);</highlight></codeline>
 <codeline lineno="115"><highlight class="normal"></highlight></codeline>
-<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1Logger_1ae7ff56f93077d9f17626f9c8141650e8" kindref="member">critical</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;message);</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classredland_1_1Logger_1a244494ce1d28d0b5e3c27de7e462f8e2" kindref="member">warn</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;message);</highlight></codeline>
 <codeline lineno="121"><highlight class="normal"></highlight></codeline>
-<codeline lineno="122"><highlight class="normal"></highlight></codeline>
-<codeline lineno="126" refid="classomexmeta_1_1Logger_1a93dcc13c2fc6049c66d7f5ce8246cd5e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LoggerPtr<sp/><ref refid="classomexmeta_1_1Logger_1a93dcc13c2fc6049c66d7f5ce8246cd5e" kindref="member">logger</ref>;</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classredland_1_1Logger_1a7736a74d653953cb3248f20706c0b9f1" kindref="member">error</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;message);</highlight></codeline>
 <codeline lineno="127"><highlight class="normal"></highlight></codeline>
-<codeline lineno="131" refid="classomexmeta_1_1Logger_1a96e095f68f0b4f9bb98f12290a3d96fb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1Logger_1a96e095f68f0b4f9bb98f12290a3d96fb" kindref="member">isFileLogger</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="132"><highlight class="normal"></highlight></codeline>
-<codeline lineno="136" refid="classomexmeta_1_1Logger_1affa234a781b835b051e9495679bcede9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1Logger_1affa234a781b835b051e9495679bcede9" kindref="member">isConsoleLogger</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="137"><highlight class="normal"></highlight></codeline>
-<codeline lineno="138"><highlight class="normal"></highlight></codeline>
-<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classomexmeta_1_1Logger" kindref="compound">Logger</ref>();</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classredland_1_1Logger_1a6d50761ac27eb3411396cdd18a9c05a9" kindref="member">critical</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;message);</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight></codeline>
+<codeline lineno="138" refid="classredland_1_1Logger_1a9bc7671c63a3d7c3953a4d65d8570936" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LoggerPtr<sp/><ref refid="classredland_1_1Logger_1a9bc7671c63a3d7c3953a4d65d8570936" kindref="member">logger</ref>;</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight></codeline>
+<codeline lineno="143" refid="classredland_1_1Logger_1acfe5e473ffe0cb34b45ab69ab7675358" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classredland_1_1Logger_1acfe5e473ffe0cb34b45ab69ab7675358" kindref="member">isFileLogger</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="144"><highlight class="normal"></highlight></codeline>
-<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classomexmeta_1_1Logger" kindref="compound">Logger</ref><sp/>*inst_;</highlight><highlight class="comment">//<sp/>The<sp/>one,<sp/>single<sp/>instance</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="148" refid="classredland_1_1Logger_1a83c2fde7dc2b6547053d690e63c0f73d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classredland_1_1Logger_1a83c2fde7dc2b6547053d690e63c0f73d" kindref="member">isConsoleLogger</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="149"><highlight class="normal"></highlight></codeline>
-<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::filesystem::path<sp/>filepath_;</highlight></codeline>
-<codeline lineno="155"><highlight class="normal"></highlight></codeline>
-<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>backtraceNum<sp/>=<sp/>32;</highlight></codeline>
-<codeline lineno="160"><highlight class="normal"></highlight></codeline>
-<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>formatterPattern<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;[%H:%M:%S<sp/>%z]<sp/>%^<sp/>%l<sp/>%g:%#<sp/>%v<sp/>%$&quot;</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="165"><highlight class="normal"></highlight></codeline>
-<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LogLevel<sp/>level_<sp/>=<sp/>LogLevel::warn;</highlight></codeline>
-<codeline lineno="170"><highlight class="normal"></highlight></codeline>
-<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>shouldBacktrace_<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="175"><highlight class="normal"></highlight></codeline>
-<codeline lineno="176"><highlight class="normal"></highlight></codeline>
-<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
-<codeline lineno="178"><highlight class="normal"></highlight></codeline>
-<codeline lineno="179"><highlight class="normal"></highlight></codeline>
-<codeline lineno="180"><highlight class="normal">}</highlight><highlight class="comment">//<sp/>namespace<sp/>omexmeta</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="181"><highlight class="normal"></highlight></codeline>
-<codeline lineno="182"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="comment">//LIBOMEXMETA_LOGGER_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classredland_1_1Logger" kindref="compound">Logger</ref>();</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classredland_1_1Logger" kindref="compound">Logger</ref><sp/>*inst_;</highlight><highlight class="comment">//<sp/>The<sp/>one,<sp/>single<sp/>instance</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::filesystem::path<sp/>filepath_;</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>backtraceNum<sp/>=<sp/>32;</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>formatterPattern<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;[%H:%M:%S<sp/>%z]<sp/>%^<sp/>%l<sp/>%g:%#<sp/>%v<sp/>%$&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"></highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LogLevel<sp/>level_<sp/>=<sp/>LogLevel::warn;</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"></highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>shouldBacktrace_<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"></highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight></codeline>
+<codeline lineno="190"><highlight class="normal"></highlight><highlight class="comment">//<sp/>quickly<sp/>set<sp/>logging<sp/>levels</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="191"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LOGGER_SET_INFO()<sp/>Logger::getLogger()-&gt;setLevel(Logger::LogLevel::info);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="192"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LOGGER_SET_TRACE()<sp/>Logger::getLogger()-&gt;setLevel(Logger::LogLevel::trace);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="193"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LOGGER_SET_DEBUG()<sp/>Logger::getLogger()-&gt;setLevel(Logger::LogLevel::debug);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="194"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LOGGER_SET_WARN()<sp/>Logger::getLogger()-&gt;setLevel(Logger::LogLevel::warn);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="195"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LOGGER_SET_ERROR()<sp/>Logger::getLogger()-&gt;setLevel(Logger::LogLevel::error);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="196"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LOGGER_SET_CRITICAL()<sp/>Logger::getLogger()-&gt;setLevel(Logger::LogLevel::critical);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="197"><highlight class="normal"></highlight></codeline>
+<codeline lineno="198"><highlight class="normal">}</highlight><highlight class="comment">//<sp/>namespace<sp/>redland</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="199"><highlight class="normal"></highlight></codeline>
+<codeline lineno="200"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="comment">//LIBOMEXMETA_LOGGER_H</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="src/omexmeta/include/omexmeta/Logger.h"/>
+    <location file="src/redland/RedlandWrapper/src/include/redland/Logger.h"/>
   </compounddef>
 </doxygen>

@@ -30,6 +30,8 @@ namespace redland {
 
     using ResultsMap = std::unordered_map<std::string, std::vector<std::string>>;
 
+    class LibrdfQueryResults;
+
     /**
      * @brief interface for querying an rdf graph
      * @class This class is basically a wrapper around both librdf_query and
@@ -49,9 +51,9 @@ namespace redland {
     class LibrdfQuery : public RedlandType_librdf_query {
 
     public:
-        explicit LibrdfQuery(librdf_query *query, const LibrdfModel& model);
+//        explicit LibrdfQuery(librdf_query *query, const LibrdfModel& model);
 
-        explicit LibrdfQuery(std::string query, const LibrdfModel& model);
+        explicit LibrdfQuery(const std::string& query, const LibrdfModel& model);
 
         bool operator==(const LibrdfQuery &rhs) const;
 
@@ -59,15 +61,19 @@ namespace redland {
 
         LibrdfQueryResults execute();
 
+        LibrdfModel &getModel() const;
+
     private:
         /**
          * @brief construct a new query
          */
         librdf_query* newQuery();
 
-        LibrdfQueryResults queryResults_;
+    private:
         LibrdfModel& model_;
         std::string query_;
+
+
 
 
     };

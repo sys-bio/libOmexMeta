@@ -1,17 +1,25 @@
 #include "redland/LibrdfQueryResults.h"
+#include "redland/LibrdfQuery.h"
 #include "redland/LibrdfNode.h"
 #include "redland/Logger.h"
 
 namespace redland {
 
-    LibrdfQueryResults::LibrdfQueryResults(librdf_query_results *query_results)
-        : RedlandType_query_results(query_results, librdf_free_query_results) {
+    LibrdfQueryResults::LibrdfQueryResults(librdf_query_results *query_results, LibrdfQuery* query)
+        : RedlandType_query_results(query_results, librdf_free_query_results), query_(query) {
         REDLAND_DEBUG("Instantiated a LibrdfQueryResults instance");
     }
 
-    std::string LibrdfQueryResults::str(std::string format) {
-        return std::string();
+    void LibrdfQueryResults::regenerateQueryResults(){
+        if (obj_){
+            librdf_free_query_results(obj_);
+            obj_ = nullptr;
+        }
+        obj_ =  librdf_query_execute(query_->obj_, query_->getModel().getWithoutIncrement());
+
     }
+
+
     bool LibrdfQueryResults::isFinished() {
         int failed = librdf_query_results_finished(obj_);
         if (failed) {
@@ -33,7 +41,7 @@ namespace redland {
             REDLAND_WARN("Failed to get bindings");
             throw std::logic_error("Failed to get bindings");
         }
-
+        regenerateQueryResults();
         return v;
     }
 
@@ -50,11 +58,9 @@ namespace redland {
     }
 
     LibrdfStream LibrdfQueryResults::toStream() {
-        return LibrdfStream(librdf_query_results_as_stream(obj_));
-    }
-
-    int LibrdfQueryResults::count() {
-        return librdf_query_results_get_count(obj_);
+        librdf_stream* s = librdf_query_results_as_stream(obj_);
+        regenerateQueryResults();
+        return LibrdfStream(s);
     }
 
     std::string LibrdfQueryResults::getBindingValueByName(const std::string &name) {
@@ -83,7 +89,7 @@ namespace redland {
         return str;
     }
 
-    std::string LibrdfQueryResults::toString(const std::string &output_format) const {
+    std::string LibrdfQueryResults::toString(const std::string &output_format) {
         if (std::find(valid_output_formats_.begin(), valid_output_formats_.end(), output_format) ==
             valid_output_formats_.end()) {
             std::ostringstream err;
@@ -103,6 +109,7 @@ namespace redland {
         // the above string using \r\n for line endings. Convert to \n like any sane program should.
         res = stringReplace(res, "\r\n", "\n");
         free(s);
+        regenerateQueryResults();
         return res;
     }
 
@@ -138,6 +145,7 @@ namespace redland {
                 }
             }
         }
+        regenerateQueryResults();
         return map_;
     }
 

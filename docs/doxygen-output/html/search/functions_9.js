@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['librdfqueryresults_560',['LibrdfQueryResults',['../classredland_1_1LibrdfQueryResults.html#a965fe04027cb2ab0392e687e891f6c44',1,'redland::LibrdfQueryResults::LibrdfQueryResults(const LibrdfQueryResults &amp;queryResults)=delete'],['../classredland_1_1LibrdfQueryResults.html#a2210255d8dd871b72279915712a612cd',1,'redland::LibrdfQueryResults::LibrdfQueryResults(LibrdfQueryResults &amp;&amp;queryResults) noexcept']]],
-  ['logger_5fgetlogger_561',['Logger_getLogger',['../namespaceomexmeta.html#a401a97ce4b2a6c22f92b774091289ef8',1,'omexmeta']]]
+  ['librdfnode_611',['LibrdfNode',['../classredland_1_1LibrdfNode.html#a0f6b28fba74ab6ff25de32c725d499e9',1,'redland::LibrdfNode']]],
+  ['librdfstatement_612',['LibrdfStatement',['../classredland_1_1LibrdfStatement.html#a4cbbbf99d094cea4569324a8c67789fb',1,'redland::LibrdfStatement::LibrdfStatement(librdf_statement *statement)'],['../classredland_1_1LibrdfStatement.html#a65d896e0bf026ff027ad8488bddf6384',1,'redland::LibrdfStatement::LibrdfStatement()'],['../classredland_1_1LibrdfStatement.html#ae7f7e27b7a502070195103268407243a',1,'redland::LibrdfStatement::LibrdfStatement(const LibrdfNode &amp;subject, const LibrdfNode &amp;predicate, const LibrdfNode &amp;resource)']]],
+  ['librdfuri_613',['LibrdfUri',['../classredland_1_1LibrdfUri.html#a4992fcae8de6b2814b6c9061f8f3d5b8',1,'redland::LibrdfUri']]],
+  ['logger_5fgetlogger_614',['Logger_getLogger',['../namespaceomexmeta.html#a401a97ce4b2a6c22f92b774091289ef8',1,'omexmeta']]]
 ];

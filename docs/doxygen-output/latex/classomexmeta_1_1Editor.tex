@@ -12,7 +12,7 @@ Add or change annotations in xml.
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classomexmeta_1_1Editor_a38d00e9a39b423cbae5058f9af49da3a}{Editor}} (std\+::string xml\+\_\+or\+\_\+file, bool create\+\_\+ids, const \mbox{\hyperlink{classredland_1_1LibrdfModel}{Librdf\+Model}} \&model, Namespace\+Map \&ns\+\_\+map, \mbox{\hyperlink{classomexmeta_1_1UriHandler}{Uri\+Handler}} \&uri\+Handler, bool generate\+\_\+new\+\_\+metaids=false, bool sbml\+\_\+semantic\+\_\+extraction=true)
+\mbox{\hyperlink{classomexmeta_1_1Editor_ac3f42bf53669cc903521ca05c47016df}{Editor}} (std\+::string xml\+\_\+or\+\_\+file, bool create\+\_\+ids, \mbox{\hyperlink{classredland_1_1LibrdfModel}{Librdf\+Model}} \&model, Namespace\+Map \&ns\+\_\+map, \mbox{\hyperlink{classomexmeta_1_1UriHandler}{Uri\+Handler}} \&uri\+Handler, bool generate\+\_\+new\+\_\+metaids=false, bool sbml\+\_\+semantic\+\_\+extraction=true)
 \begin{DoxyCompactList}\small\item\em constructor for \mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}}. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classomexmeta_1_1Editor_aa11380bb7e2ca7859937c3f5907b6240}{$\sim$\+Editor}} ()=default
 \item 
@@ -21,7 +21,7 @@ int {\bfseries size} () const
 \item 
 const Namespace\+Map \& \mbox{\hyperlink{classomexmeta_1_1Editor_a514443fe99a6e52154d1fe4f7ec94618}{get\+Namespaces}} () const
 \begin{DoxyCompactList}\small\item\em returns a hashmap of namespaces to prefixes. \end{DoxyCompactList}\item 
-librdf\+\_\+model $\ast$ \mbox{\hyperlink{classomexmeta_1_1Editor_a4b2610fb802eb306349d69ae6fde60c0}{get\+Model}} () const
+\mbox{\hyperlink{classredland_1_1LibrdfModel}{Librdf\+Model}} \& \mbox{\hyperlink{classomexmeta_1_1Editor_abfc5a972954cde4ec2112cc0e00a7ed3}{get\+Model}} () const
 \begin{DoxyCompactList}\small\item\em return the underlying librdf\+\_\+model$\ast$ pointer \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classomexmeta_1_1Editor_a83836e19bb1de9c7df69d36e8b61b2b2}\label{classomexmeta_1_1Editor_a83836e19bb1de9c7df69d36e8b61b2b2}} 
 void \mbox{\hyperlink{classomexmeta_1_1Editor_a83836e19bb1de9c7df69d36e8b61b2b2}{set\+Namespaces}} (const Namespace\+Map \&namespaces)
@@ -145,11 +145,11 @@ std\+::string \mbox{\hyperlink{classomexmeta_1_1Editor_a6f201bae38c324800d0d55e7
 Add or change annotations in xml. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{classomexmeta_1_1Editor_a38d00e9a39b423cbae5058f9af49da3a}\label{classomexmeta_1_1Editor_a38d00e9a39b423cbae5058f9af49da3a}} 
+\mbox{\Hypertarget{classomexmeta_1_1Editor_ac3f42bf53669cc903521ca05c47016df}\label{classomexmeta_1_1Editor_ac3f42bf53669cc903521ca05c47016df}} 
 \index{omexmeta::Editor@{omexmeta::Editor}!Editor@{Editor}}
 \index{Editor@{Editor}!omexmeta::Editor@{omexmeta::Editor}}
 \doxysubsubsection{\texorpdfstring{Editor()}{Editor()}}
-{\footnotesize\ttfamily omexmeta\+::\+Editor\+::\+Editor (\begin{DoxyParamCaption}\item[{std\+::string}]{xml\+\_\+or\+\_\+file,  }\item[{bool}]{create\+\_\+ids,  }\item[{const \mbox{\hyperlink{classredland_1_1LibrdfModel}{Librdf\+Model}} \&}]{model,  }\item[{Namespace\+Map \&}]{ns\+\_\+map,  }\item[{\mbox{\hyperlink{classomexmeta_1_1UriHandler}{Uri\+Handler}} \&}]{uri\+Handler,  }\item[{bool}]{generate\+\_\+new\+\_\+metaids = {\ttfamily false},  }\item[{bool}]{sbml\+\_\+semantic\+\_\+extraction = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+{\footnotesize\ttfamily omexmeta\+::\+Editor\+::\+Editor (\begin{DoxyParamCaption}\item[{std\+::string}]{xml\+\_\+or\+\_\+file,  }\item[{bool}]{create\+\_\+ids,  }\item[{\mbox{\hyperlink{classredland_1_1LibrdfModel}{Librdf\+Model}} \&}]{model,  }\item[{Namespace\+Map \&}]{ns\+\_\+map,  }\item[{\mbox{\hyperlink{classomexmeta_1_1UriHandler}{Uri\+Handler}} \&}]{uri\+Handler,  }\item[{bool}]{generate\+\_\+new\+\_\+metaids = {\ttfamily false},  }\item[{bool}]{sbml\+\_\+semantic\+\_\+extraction = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
 
 
 
@@ -447,11 +447,11 @@ returns a list of metaids both that existed previously and that was added during
 \begin{DoxyReturn}{Returns}
 vector of metaids used in the xml 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classomexmeta_1_1Editor_a4b2610fb802eb306349d69ae6fde60c0}\label{classomexmeta_1_1Editor_a4b2610fb802eb306349d69ae6fde60c0}} 
+\mbox{\Hypertarget{classomexmeta_1_1Editor_abfc5a972954cde4ec2112cc0e00a7ed3}\label{classomexmeta_1_1Editor_abfc5a972954cde4ec2112cc0e00a7ed3}} 
 \index{omexmeta::Editor@{omexmeta::Editor}!getModel@{getModel}}
 \index{getModel@{getModel}!omexmeta::Editor@{omexmeta::Editor}}
 \doxysubsubsection{\texorpdfstring{getModel()}{getModel()}}
-{\footnotesize\ttfamily librdf\+\_\+model $\ast$ omexmeta\+::\+Editor\+::get\+Model (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+{\footnotesize\ttfamily \mbox{\hyperlink{classredland_1_1LibrdfModel}{Librdf\+Model}} \& omexmeta\+::\+Editor\+::get\+Model (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
 
 

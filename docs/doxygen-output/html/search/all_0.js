@@ -20,7 +20,7 @@ var searchData=
   ['addphysicalprocess_17',['addPhysicalProcess',['../classomexmeta_1_1Editor.html#ae4a608ecbe64f05c1b64efbeeb1fdeb1',1,'omexmeta::Editor']]],
   ['addphysicalproperty_18',['addPhysicalProperty',['../classomexmeta_1_1Editor.html#a4600654719f3f66935ea96a4567a9086',1,'omexmeta::Editor']]],
   ['addpubmed_19',['addPubmed',['../classomexmeta_1_1Editor.html#a9eeaa4cfeeb9bae8b5d5f7705e170de4',1,'omexmeta::Editor']]],
-  ['addseennamespacetoserializer_20',['addSeenNamespaceToSerializer',['../classomexmeta_1_1Predicate.html#a4cda551beb4e1354ac56d692f0eb78cd',1,'omexmeta::Predicate']]],
+  ['addseennamespacetoserializer_20',['addSeenNamespaceToSerializer',['../classomexmeta_1_1Predicate.html#ac872644a6609cc8c11459237b3b781a6',1,'omexmeta::Predicate']]],
   ['addsingleannotation_21',['addSingleAnnotation',['../classomexmeta_1_1Editor.html#a434304cc0ca8aa802cd236d34aaa1763',1,'omexmeta::Editor::addSingleAnnotation(LibrdfNode subject, const PredicatePtr &amp;predicate_ptr, const LibrdfNode &amp;resource)'],['../classomexmeta_1_1Editor.html#ae46835f3f35425d8087b80d08666aaa4',1,'omexmeta::Editor::addSingleAnnotation(SingularAnnotation &amp;singularAnnotation)']]],
   ['addsingleannotationnovalidation_22',['addSingleAnnotationNoValidation',['../classomexmeta_1_1Editor.html#a8fb3a19e8f64aeff2ac9b78c483843de',1,'omexmeta::Editor']]],
   ['addsink_23',['addSink',['../classomexmeta_1_1EnergyDiff.html#a4525a9f6eb11712f775f5dc62e64a9e7',1,'omexmeta::EnergyDiff::addSink()'],['../classomexmeta_1_1PhysicalProcess.html#aa55335a92b7558262f512f836fae8c4f',1,'omexmeta::PhysicalProcess::addSink()']]],

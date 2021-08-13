@@ -141,6 +141,38 @@ TEST_F(LibrdfParserTests, TestRelativeBaseUriResolvesCorrectly) {
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
+TEST_F(LibrdfParserTests, TestParserString) {
+    std::string input = "<?xml version=\"1.0\"?>\n"
+                        "<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
+                        "     xmlns:dc=\"http://purl.org/dc/elements/1.1/\"\n"
+                        "     xml:base=\"https://www.dajobe.org/net/this/is/the/base\">\n"
+                        "  <rdf:Description rdf:about=\"#dajobe\">\n"
+                        "    <dc:title>Dave Beckett's Home Page</dc:title>\n"
+                        "    <dc:creator>Dave Beckett</dc:creator>\n"
+                        "    <dc:description>The generic home page of Dave Beckett.</dc:description>\n"
+                        "  </rdf:Description> \n"
+                        "</rdf:RDF>";
+    std::filesystem::path storage_fname = std::filesystem::current_path() /= "LibrdfParserTests_TestBaseUri.db";
+    LibrdfStorage storage;
+    LibrdfModel model(storage);
+    {
+        LibrdfParser parser("turtle");
+        parser.parseString(input, model, "LibrdfParserTests_TestBaseUri");
+    }
+    {
+        LibrdfParser parser("turtle");
+        parser.parseString(input, model, "LibrdfParserTests_TestBaseUri");
+    }
+
+
+//
+//    LibrdfStream stream = model.toStream();
+//    LibrdfStatement statement =  stream.getStatement();
+//    LibrdfNode node = statement.getSubjectNode();
+//    std::string actual = node.str();
+//    std::cout << actual << std::endl;
+}
+
 
 TEST_F(LibrdfParserTests, TestFeatures) {
     LibrdfStorage storage;

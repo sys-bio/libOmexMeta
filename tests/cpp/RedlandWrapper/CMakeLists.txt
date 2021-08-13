@@ -1,4 +1,3 @@
-set(target redland-wrapper-tests)
 
 # set varibale to hold wrapper sources.
 set(REDLAND_WRAPPER_TEST_SOURCES

@@ -1,0 +1,450 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classredland_1_1RedlandType" kind="class" language="C++" prot="public">
+    <compoundname>redland::RedlandType</compoundname>
+    <derivedcompoundref refid="classredland_1_1LibrdfParser" prot="public" virt="non-virtual">redland::LibrdfParser</derivedcompoundref>
+    <derivedcompoundref refid="classredland_1_1LibrdfQueryResults" prot="public" virt="non-virtual">redland::LibrdfQueryResults</derivedcompoundref>
+    <derivedcompoundref refid="classredland_1_1LibrdfSerializer" prot="public" virt="non-virtual">redland::LibrdfSerializer</derivedcompoundref>
+    <derivedcompoundref refid="classredland_1_1LibrdfStream" prot="public" virt="non-virtual">redland::LibrdfStream</derivedcompoundref>
+    <derivedcompoundref refid="classredland_1_1RefCountedRedlandType" prot="public" virt="non-virtual">redland::RefCountedRedlandType&lt; ObjType, FreeFuncType &gt;</derivedcompoundref>
+    <templateparamlist>
+      <param>
+        <type>typename ObjType</type>
+      </param>
+      <param>
+        <type>typename FreeFuncType</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classredland_1_1RedlandType_1ac9d0c3d245e2394c137ee0ab266784ed" prot="public" static="no" mutable="no">
+        <type>ObjType *</type>
+        <definition>ObjType* redland::RedlandType&lt; ObjType, FreeFuncType &gt;::obj_</definition>
+        <argsstring></argsstring>
+        <name>obj_</name>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+<para>Pointer to the heap allocated object that is managed by this <ref refid="classredland_1_1RedlandType" kindref="compound">RedlandType</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>the type pointed to by this <ref refid="classredland_1_1RedlandType" kindref="compound">RedlandType</ref> must have public access to a &quot;usage&quot; count, which is the current reference count. Used for redland types. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/RedlandType.h" line="234" column="17" bodyfile="src/redland/RedlandWrapper/src/include/redland/RedlandType.h" bodystart="234" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classredland_1_1RedlandType_1afd3a894521540cf05dfa56a3a59b25b9" prot="public" static="no" mutable="no">
+        <type>FreeFuncType</type>
+        <definition>FreeFuncType redland::RedlandType&lt; ObjType, FreeFuncType &gt;::freeFunc_</definition>
+        <argsstring></argsstring>
+        <name>freeFunc_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/RedlandType.h" line="246" column="22" bodyfile="src/redland/RedlandWrapper/src/include/redland/RedlandType.h" bodystart="246" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classredland_1_1RedlandType_1a3c3a57c6b73d9bea7e0a9cdb9a725006" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>redland::RedlandType&lt; ObjType, FreeFuncType &gt;::RedlandType</definition>
+        <argsstring>()=default</argsstring>
+        <name>RedlandType</name>
+        <briefdescription>
+<para>default constructor. Users would need to populate obj_ and freeFunc_ manually if default constructor is used. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classredland_1_1RedlandType_1ac3255173f68c11e2ebeb0d991fec24e7" kindref="member">RedlandType::setFreeFunc</ref> </para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="classredland_1_1RedlandType_1a403c5018a01ee1dc94e4caa33bef91e7" kindref="member">RedlandType::setObj</ref> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/RedlandType.h" line="37" column="9"/>
+      </memberdef>
+      <memberdef kind="function" id="classredland_1_1RedlandType_1ab7e0f16ed9acd6ba9c65b8e9259301e9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>redland::RedlandType&lt; ObjType, FreeFuncType &gt;::RedlandType</definition>
+        <argsstring>(ObjType *objType, std::function&lt; void(ObjType *)&gt; func)</argsstring>
+        <name>RedlandType</name>
+        <param>
+          <type>ObjType *</type>
+          <declname>objType</declname>
+        </param>
+        <param>
+          <type>std::function&lt; void(ObjType *)&gt;</type>
+          <declname>func</declname>
+        </param>
+        <briefdescription>
+<para>generic constructor for ref counted types </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>objType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>instance of ObjType*, this is the object being ref counted </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>func</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the function that free&apos;s the ref counted type </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/RedlandType.h" line="44" column="9" bodyfile="src/redland/RedlandWrapper/src/include/redland/RedlandType.h" bodystart="44" bodyend="50"/>
+      </memberdef>
+      <memberdef kind="function" id="classredland_1_1RedlandType_1a028dab285bfd81fa4efca9206b0cd498" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual redland::RedlandType&lt; ObjType, FreeFuncType &gt;::~RedlandType</definition>
+        <argsstring>()</argsstring>
+        <name>~RedlandType</name>
+        <briefdescription>
+<para>destructor calls the free function specified by the user. <ref refid="classThis" kindref="compound">This</ref> allows multiple redland types to use the same logic for the rule of 5. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/RedlandType.h" line="57" column="17" bodyfile="src/redland/RedlandWrapper/src/include/redland/RedlandType.h" bodystart="57" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="function" id="classredland_1_1RedlandType_1a86304e5a3e82aae8ea4aae868b4fa7e4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void redland::RedlandType&lt; ObjType, FreeFuncType &gt;::checkForNull</definition>
+        <argsstring>()</argsstring>
+        <name>checkForNull</name>
+        <reimplementedby refid="classredland_1_1LibrdfStatement_1a4935cf54fa2f367678319f1f2d837005">checkForNull</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>@breif throws an error if the internal members of RefCounter are nullptr </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/RedlandType.h" line="64" column="22" bodyfile="src/redland/RedlandWrapper/src/include/redland/RedlandType.h" bodystart="64" bodyend="73"/>
+      </memberdef>
+      <memberdef kind="function" id="classredland_1_1RedlandType_1a812fc8fefc5df2081b8a1a384b9e1827" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void redland::RedlandType&lt; ObjType, FreeFuncType &gt;::freeObj</definition>
+        <argsstring>()</argsstring>
+        <name>freeObj</name>
+        <reimplementedby refid="classredland_1_1RefCountedRedlandType_1a5e09c936eada4386171e23bc599f334f">freeObj</reimplementedby>
+        <briefdescription>
+<para>use the user supplied freeFunc to delete memory pointed to by obj_ </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/RedlandType.h" line="78" column="22" bodyfile="src/redland/RedlandWrapper/src/include/redland/RedlandType.h" bodystart="78" bodyend="82"/>
+      </memberdef>
+      <memberdef kind="function" id="classredland_1_1RedlandType_1a4faf8772c3328a5427c8e0b02a92f288" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>ObjType *</type>
+        <definition>virtual ObjType* redland::RedlandType&lt; ObjType, FreeFuncType &gt;::get</definition>
+        <argsstring>() const</argsstring>
+        <name>get</name>
+        <reimplementedby refid="classredland_1_1RefCountedRedlandType_1aad3189482972131c1d253e7759fee33e">get</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/RedlandType.h" line="86" column="25" bodyfile="src/redland/RedlandWrapper/src/include/redland/RedlandType.h" bodystart="86" bodyend="88"/>
+      </memberdef>
+      <memberdef kind="function" id="classredland_1_1RedlandType_1a89f2c7b5d8133d7b22c54263ea2dcb3b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>redland::RedlandType&lt; ObjType, FreeFuncType &gt;::RedlandType</definition>
+        <argsstring>(const RedlandType &amp;other)</argsstring>
+        <name>RedlandType</name>
+        <param>
+          <type>const <ref refid="classredland_1_1RedlandType" kindref="compound">RedlandType</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>copy constructor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>takes a copy of freeFunc from other. If this <ref refid="classredland_1_1RedlandType" kindref="compound">RedlandType</ref> has a obj_ then it is deleted with the freeFunc. Then the address of the obj_ from other is stored in this-&gt;obj_ and the internal reference counter is incremented by 1. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/RedlandType.h" line="97" column="9" bodyfile="src/redland/RedlandWrapper/src/include/redland/RedlandType.h" bodystart="97" bodyend="103"/>
+      </memberdef>
+      <memberdef kind="function" id="classredland_1_1RedlandType_1a7884dd6bc66d9880090bb53f14683f1f" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>redland::RedlandType&lt; ObjType, FreeFuncType &gt;::RedlandType</definition>
+        <argsstring>(RedlandType &amp;&amp;other) noexcept</argsstring>
+        <name>RedlandType</name>
+        <param>
+          <type><ref refid="classredland_1_1RedlandType" kindref="compound">RedlandType</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>move constructor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>takes a copy of freeFunc from other. If this <ref refid="classredland_1_1RedlandType" kindref="compound">RedlandType</ref> has a obj_ then it is deleted with the freeFunc. Then the address of the obj_ from other is stored in this-&gt;obj_ but the internal reference counter is not incremented by 1. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/RedlandType.h" line="112" column="9" bodyfile="src/redland/RedlandWrapper/src/include/redland/RedlandType.h" bodystart="112" bodyend="119"/>
+      </memberdef>
+      <memberdef kind="function" id="classredland_1_1RedlandType_1a5dd5fd7edeb2b6c17e8c92eb7ba01cac" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classredland_1_1RedlandType" kindref="compound">RedlandType</ref> &amp;</type>
+        <definition>RedlandType&amp; redland::RedlandType&lt; ObjType, FreeFuncType &gt;::operator=</definition>
+        <argsstring>(const RedlandType &amp;other)</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="classredland_1_1RedlandType" kindref="compound">RedlandType</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>copy assignment constructor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>takes a copy of freeFunc from other if we do not already have one. If this <ref refid="classredland_1_1RedlandType" kindref="compound">RedlandType</ref> has a obj_ then it is deleted with the freeFunc. Then the address of the obj_ from other is stored in this-&gt;obj_ and the internal reference counter is incremented by 1. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/RedlandType.h" line="128" column="21" bodyfile="src/redland/RedlandWrapper/src/include/redland/RedlandType.h" bodystart="128" bodyend="142"/>
+      </memberdef>
+      <memberdef kind="function" id="classredland_1_1RedlandType_1a22e381182a5642883ad578db40368f13" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classredland_1_1RedlandType" kindref="compound">RedlandType</ref> &amp;</type>
+        <definition>RedlandType&amp; redland::RedlandType&lt; ObjType, FreeFuncType &gt;::operator=</definition>
+        <argsstring>(RedlandType &amp;&amp;other) noexcept</argsstring>
+        <name>operator=</name>
+        <param>
+          <type><ref refid="classredland_1_1RedlandType" kindref="compound">RedlandType</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>move assignment constructor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>takes a copy of freeFunc from other if we do not already have one. If this <ref refid="classredland_1_1RedlandType" kindref="compound">RedlandType</ref> has a obj_ then it is deleted with the freeFunc. Then the address of the obj_ from other is stored in this-&gt;obj_ and the internal reference counter is not incremented by 1. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/RedlandType.h" line="151" column="21" bodyfile="src/redland/RedlandWrapper/src/include/redland/RedlandType.h" bodystart="151" bodyend="166"/>
+      </memberdef>
+      <memberdef kind="function" id="classredland_1_1RedlandType_1a9fc5b1ce564f4c2497855cd965df1cfd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool redland::RedlandType&lt; ObjType, FreeFuncType &gt;::operator==</definition>
+        <argsstring>(const RedlandType &amp;rhs) const</argsstring>
+        <name>operator==</name>
+        <param>
+          <type>const <ref refid="classredland_1_1RedlandType" kindref="compound">RedlandType</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+<para>equality operator. <ref refid="classThis" kindref="compound">This</ref> <ref refid="classredland_1_1RedlandType" kindref="compound">RedlandType</ref> is equal to rhs if their obj_ is the same (i.e. the address of the object pointed to by obj_ is equal) and if the signature of their freeFunc is the same. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/RedlandType.h" line="173" column="14" bodyfile="src/redland/RedlandWrapper/src/include/redland/RedlandType.h" bodystart="173" bodyend="176"/>
+      </memberdef>
+      <memberdef kind="function" id="classredland_1_1RedlandType_1a4b0707a7465ffb5952bae3651f8c6d41" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool redland::RedlandType&lt; ObjType, FreeFuncType &gt;::operator!=</definition>
+        <argsstring>(const RedlandType &amp;rhs) const</argsstring>
+        <name>operator!=</name>
+        <param>
+          <type>const <ref refid="classredland_1_1RedlandType" kindref="compound">RedlandType</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+<para>inequality operator. Inverse of <ref refid="classredland_1_1RedlandType_1a9fc5b1ce564f4c2497855cd965df1cfd" kindref="member">RedlandType::operator==</ref> </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/RedlandType.h" line="181" column="14" bodyfile="src/redland/RedlandWrapper/src/include/redland/RedlandType.h" bodystart="181" bodyend="183"/>
+      </memberdef>
+      <memberdef kind="function" id="classredland_1_1RedlandType_1ac3255173f68c11e2ebeb0d991fec24e7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void redland::RedlandType&lt; ObjType, FreeFuncType &gt;::setFreeFunc</definition>
+        <argsstring>(FreeFuncType freeFunc)</argsstring>
+        <name>setFreeFunc</name>
+        <param>
+          <type>FreeFuncType</type>
+          <declname>freeFunc</declname>
+        </param>
+        <briefdescription>
+<para>Set or replace the free function associated with this <ref refid="classredland_1_1RedlandType" kindref="compound">RedlandType</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/RedlandType.h" line="189" column="14" bodyfile="src/redland/RedlandWrapper/src/include/redland/RedlandType.h" bodystart="189" bodyend="191"/>
+      </memberdef>
+      <memberdef kind="function" id="classredland_1_1RedlandType_1a403c5018a01ee1dc94e4caa33bef91e7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void redland::RedlandType&lt; ObjType, FreeFuncType &gt;::setObj</definition>
+        <argsstring>(ObjType *objType)</argsstring>
+        <name>setObj</name>
+        <param>
+          <type>ObjType *</type>
+          <declname>objType</declname>
+        </param>
+        <briefdescription>
+<para>Set or replace the object stored in this <ref refid="classredland_1_1RedlandType" kindref="compound">RedlandType</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>if obj_ is not nullptr, the current memory is released since this <ref refid="classredland_1_1RedlandType" kindref="compound">RedlandType</ref> only manages a single instance of ObjType*. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/RedlandType.h" line="199" column="14" bodyfile="src/redland/RedlandWrapper/src/include/redland/RedlandType.h" bodystart="199" bodyend="205"/>
+      </memberdef>
+      <memberdef kind="function" id="classredland_1_1RedlandType_1aee7e39b6197cf77b19f873e3c2cea495" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void redland::RedlandType&lt; ObjType, FreeFuncType &gt;::release</definition>
+        <argsstring>()</argsstring>
+        <name>release</name>
+        <briefdescription>
+<para>Free the memory pointed to by obj_ with freeFunc but do not destroy this object. If. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>if the ref counter of obj_ is not 0, the object will not be freed, but the usage count will be decremented by 1. The remaining ref counts would be the responsibility of the caller. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/RedlandType.h" line="214" column="14" bodyfile="src/redland/RedlandWrapper/src/include/redland/RedlandType.h" bodystart="214" bodyend="219"/>
+      </memberdef>
+      <memberdef kind="function" id="classredland_1_1RedlandType_1ac6594279280345bd8a03c1a7e950d3e0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool redland::RedlandType&lt; ObjType, FreeFuncType &gt;::isNull</definition>
+        <argsstring>() const</argsstring>
+        <name>isNull</name>
+        <briefdescription>
+<para>indicator variable. True if obj_ is nullptr </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/RedlandType.h" line="224" column="14" bodyfile="src/redland/RedlandWrapper/src/include/redland/RedlandType.h" bodystart="224" bodyend="226"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3">
+        <label>redland::LibrdfQueryResults&lt; librdf_query_results, query_results_free_func &gt;</label>
+        <link refid="classredland_1_1LibrdfQueryResults"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>redland::LibrdfUri&lt; librdf_uri, uri_free_func &gt;</label>
+        <link refid="classredland_1_1LibrdfUri"/>
+        <childnode refid="6" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>redland::LibrdfStatement&lt; librdf_statement, statement_free_func &gt;</label>
+        <link refid="classredland_1_1LibrdfStatement"/>
+        <childnode refid="6" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>redland::LibrdfStream&lt; librdf_stream, stream_free_func &gt;</label>
+        <link refid="classredland_1_1LibrdfStream"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>redland::LibrdfModel&lt; librdf_model, model_free_func &gt;</label>
+        <link refid="classredland_1_1LibrdfModel"/>
+        <childnode refid="6" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>redland::RedlandType&lt; ObjType, FreeFuncType &gt;</label>
+        <link refid="classredland_1_1RedlandType"/>
+      </node>
+      <node id="9">
+        <label>redland::LibrdfQuery&lt; librdf_query, query_free_func &gt;</label>
+        <link refid="classredland_1_1LibrdfQuery"/>
+        <childnode refid="6" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>redland::LibrdfParser&lt; librdf_parser, parser_free_func &gt;</label>
+        <link refid="classredland_1_1LibrdfParser"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>redland::RefCountedRedlandType&lt; ObjType, FreeFuncType &gt;</label>
+        <link refid="classredland_1_1RefCountedRedlandType"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>omexmeta::Triple</label>
+        <link refid="classomexmeta_1_1Triple"/>
+        <childnode refid="10" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>redland::LibrdfNode&lt; librdf_node, node_free_func &gt;</label>
+        <link refid="classredland_1_1LibrdfNode"/>
+        <childnode refid="6" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>redland::LibrdfStorage&lt; librdf_storage, storage_free_func &gt;</label>
+        <link refid="classredland_1_1LibrdfStorage"/>
+        <childnode refid="6" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>redland::LibrdfSerializer&lt; librdf_serializer, serializer_free_func &gt;</label>
+        <link refid="classredland_1_1LibrdfSerializer"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="src/redland/RedlandWrapper/src/include/redland/RedlandType.h" line="28" column="5" bodyfile="src/redland/RedlandWrapper/src/include/redland/RedlandType.h" bodystart="28" bodyend="247"/>
+    <listofallmembers>
+      <member refid="classredland_1_1RedlandType_1a86304e5a3e82aae8ea4aae868b4fa7e4" prot="public" virt="virtual"><scope>redland::RedlandType</scope><name>checkForNull</name></member>
+      <member refid="classredland_1_1RedlandType_1afd3a894521540cf05dfa56a3a59b25b9" prot="public" virt="non-virtual"><scope>redland::RedlandType</scope><name>freeFunc_</name></member>
+      <member refid="classredland_1_1RedlandType_1a812fc8fefc5df2081b8a1a384b9e1827" prot="public" virt="virtual"><scope>redland::RedlandType</scope><name>freeObj</name></member>
+      <member refid="classredland_1_1RedlandType_1a4faf8772c3328a5427c8e0b02a92f288" prot="public" virt="virtual"><scope>redland::RedlandType</scope><name>get</name></member>
+      <member refid="classredland_1_1RedlandType_1ac6594279280345bd8a03c1a7e950d3e0" prot="public" virt="non-virtual"><scope>redland::RedlandType</scope><name>isNull</name></member>
+      <member refid="classredland_1_1RedlandType_1ac9d0c3d245e2394c137ee0ab266784ed" prot="public" virt="non-virtual"><scope>redland::RedlandType</scope><name>obj_</name></member>
+      <member refid="classredland_1_1RedlandType_1a4b0707a7465ffb5952bae3651f8c6d41" prot="public" virt="non-virtual"><scope>redland::RedlandType</scope><name>operator!=</name></member>
+      <member refid="classredland_1_1RedlandType_1a5dd5fd7edeb2b6c17e8c92eb7ba01cac" prot="public" virt="non-virtual"><scope>redland::RedlandType</scope><name>operator=</name></member>
+      <member refid="classredland_1_1RedlandType_1a22e381182a5642883ad578db40368f13" prot="public" virt="non-virtual"><scope>redland::RedlandType</scope><name>operator=</name></member>
+      <member refid="classredland_1_1RedlandType_1a9fc5b1ce564f4c2497855cd965df1cfd" prot="public" virt="non-virtual"><scope>redland::RedlandType</scope><name>operator==</name></member>
+      <member refid="classredland_1_1RedlandType_1a3c3a57c6b73d9bea7e0a9cdb9a725006" prot="public" virt="non-virtual"><scope>redland::RedlandType</scope><name>RedlandType</name></member>
+      <member refid="classredland_1_1RedlandType_1ab7e0f16ed9acd6ba9c65b8e9259301e9" prot="public" virt="non-virtual"><scope>redland::RedlandType</scope><name>RedlandType</name></member>
+      <member refid="classredland_1_1RedlandType_1a89f2c7b5d8133d7b22c54263ea2dcb3b" prot="public" virt="non-virtual"><scope>redland::RedlandType</scope><name>RedlandType</name></member>
+      <member refid="classredland_1_1RedlandType_1a7884dd6bc66d9880090bb53f14683f1f" prot="public" virt="non-virtual"><scope>redland::RedlandType</scope><name>RedlandType</name></member>
+      <member refid="classredland_1_1RedlandType_1aee7e39b6197cf77b19f873e3c2cea495" prot="public" virt="non-virtual"><scope>redland::RedlandType</scope><name>release</name></member>
+      <member refid="classredland_1_1RedlandType_1ac3255173f68c11e2ebeb0d991fec24e7" prot="public" virt="non-virtual"><scope>redland::RedlandType</scope><name>setFreeFunc</name></member>
+      <member refid="classredland_1_1RedlandType_1a403c5018a01ee1dc94e4caa33bef91e7" prot="public" virt="non-virtual"><scope>redland::RedlandType</scope><name>setObj</name></member>
+      <member refid="classredland_1_1RedlandType_1a028dab285bfd81fa4efca9206b0cd498" prot="public" virt="virtual"><scope>redland::RedlandType</scope><name>~RedlandType</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

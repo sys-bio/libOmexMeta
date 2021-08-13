@@ -5,6 +5,18 @@
 #ifndef LIBOMEXMETA_OMEXMETACAPI_H
 #define LIBOMEXMETA_OMEXMETACAPI_H
 
+
+#define GENERAL_ERROR -1
+#define RDF_ERROR -2
+#define EDITOR_ERROR -3
+#define QUERY_ERROR -4
+#define SINGULAR_ANNOTATION_ERROR -5
+#define PERSONAL_INFORMATION_ERROR -6
+#define PHYSICAL_ENTITY_ERROR -7
+#define PHYSICAL_PROCESS_ERROR -8
+#define ENERGY_DIFF_ERROR -9
+#define PHYSICAL_PROPERTY_ERROR -10
+
 #include "include/redland/Logger.h"
 #include "omexmeta/Editor.h"
 #include "omexmeta/EnergyDiff.h"
@@ -63,6 +75,8 @@ namespace omexmeta {
     OMEXMETA_CAPI_EXPORT RDF *RDF_fromString(const char *str, const char *format,
                                              const char *storage_type = "memory", const char *storage_name = "semsim_store",
                                              const char *storage_options = nullptr, const char *model_options = nullptr);
+
+    OMEXMETA_CAPI_EXPORT int *functionThatReturnsNullptr();
 
     OMEXMETA_CAPI_EXPORT int RDF_addFromString(RDF *rdf_ptr, const char *str, const char *format);
 

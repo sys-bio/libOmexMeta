@@ -9,17 +9,20 @@ Inheritance diagram for omexmeta\+::RDF\+:\begin{figure}[H]
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classomexmeta_1_1RDF_aecb90e51830082f78ff055c045f4b439}{RDF}} (const std\+::string \&storage\+\_\+type=\char`\"{}memory\char`\"{}, const std\+::string \&storage\+\_\+name=\char`\"{}Semsim\+Store\char`\"{}, const char $\ast$storage\+\_\+options=nullptr, const char $\ast$model\+\_\+options=nullptr)
+\mbox{\hyperlink{classomexmeta_1_1RDF_aea1783a66fd8bf3393acf9a48f9366ce}{RDF}} (const std\+::string \&storage\+\_\+type=\char`\"{}memory\char`\"{}, const std\+::string \&storage\+\_\+name=\char`\"{}Omex\+Meta\+Store\char`\"{}, const char $\ast$storage\+\_\+options=nullptr, const char $\ast$model\+\_\+options=nullptr)
 \begin{DoxyCompactList}\small\item\em constructor for \mbox{\hyperlink{classomexmeta_1_1RDF}{RDF}} class \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classomexmeta_1_1RDF_a87b1eb7fe49f4928e61c399edf49e09c}\label{classomexmeta_1_1RDF_a87b1eb7fe49f4928e61c399edf49e09c}} 
-\mbox{\hyperlink{classomexmeta_1_1RDF_a87b1eb7fe49f4928e61c399edf49e09c}{$\sim$\+RDF}} ()
+\mbox{\Hypertarget{classomexmeta_1_1RDF_a8c6b384164d81e402bda9d124c20153e}\label{classomexmeta_1_1RDF_a8c6b384164d81e402bda9d124c20153e}} 
+\mbox{\hyperlink{classomexmeta_1_1RDF_a8c6b384164d81e402bda9d124c20153e}{$\sim$\+RDF}} ()=default
 \begin{DoxyCompactList}\small\item\em destructor for \mbox{\hyperlink{classomexmeta_1_1RDF}{RDF}} \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classomexmeta_1_1RDF_ad95c4a8588988efe399c7f984e304990}{RDF}} (const \mbox{\hyperlink{classomexmeta_1_1RDF}{RDF}} \&rdf)=delete
 \begin{DoxyCompactList}\small\item\em copy constructor for \mbox{\hyperlink{classomexmeta_1_1RDF}{RDF}} class \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classomexmeta_1_1RDF_a6490b2ea0d10e3026bea587a305b7fb9}\label{classomexmeta_1_1RDF_a6490b2ea0d10e3026bea587a305b7fb9}} 
+\mbox{\hyperlink{classomexmeta_1_1RDF_a6490b2ea0d10e3026bea587a305b7fb9}{RDF}} (\mbox{\hyperlink{classomexmeta_1_1RDF}{RDF}} \&\&rdf) noexcept
+\begin{DoxyCompactList}\small\item\em move constructor for \mbox{\hyperlink{classomexmeta_1_1RDF}{RDF}} class \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classomexmeta_1_1RDF}{RDF}} \& \mbox{\hyperlink{classomexmeta_1_1RDF_a9d1b20d798969d3c1dac412c621247b9}{operator=}} (const \mbox{\hyperlink{classomexmeta_1_1RDF}{RDF}} \&rdf)=delete
 \begin{DoxyCompactList}\small\item\em copy assignment constructor for \mbox{\hyperlink{classomexmeta_1_1RDF}{RDF}} ojects \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classomexmeta_1_1RDF_ae3739bda3be0986547c31559381f3df4}\label{classomexmeta_1_1RDF_ae3739bda3be0986547c31559381f3df4}} 
-\mbox{\hyperlink{classomexmeta_1_1RDF}{RDF}} \& \mbox{\hyperlink{classomexmeta_1_1RDF_ae3739bda3be0986547c31559381f3df4}{operator=}} (\mbox{\hyperlink{classomexmeta_1_1RDF}{RDF}} \&\&rdf) \mbox{\hyperlink{classomexmeta_1_1RDF_a654ae548e17aa6b098531f24c116dde1}{noexcept}}
+\mbox{\hyperlink{classomexmeta_1_1RDF}{RDF}} \& \mbox{\hyperlink{classomexmeta_1_1RDF_ae3739bda3be0986547c31559381f3df4}{operator=}} (\mbox{\hyperlink{classomexmeta_1_1RDF}{RDF}} \&\&rdf) noexcept
 \begin{DoxyCompactList}\small\item\em move assignment operator for \mbox{\hyperlink{classomexmeta_1_1RDF}{RDF}} \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classomexmeta_1_1RDF_a1ebd37b6dbce97660ed48031686d7f30}\label{classomexmeta_1_1RDF_a1ebd37b6dbce97660ed48031686d7f30}} 
 int \mbox{\hyperlink{classomexmeta_1_1RDF_a1ebd37b6dbce97660ed48031686d7f30}{size}} () const override
@@ -41,11 +44,11 @@ void \mbox{\hyperlink{classomexmeta_1_1RDF_a3ca48d8b9790b4ccd091204c4d9a0c05}{to
 \begin{DoxyCompactList}\small\item\em instantiate an \mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} object. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} $\ast$ \mbox{\hyperlink{classomexmeta_1_1RDF_a072496a750958bd7c59471bb5229f0bb}{to\+Editor\+Ptr}} (const std\+::string \&xml, bool generate\+\_\+new\+\_\+metaids=false, bool sbml\+\_\+semantic\+\_\+extraction=true) override
 \begin{DoxyCompactList}\small\item\em instantiate an \mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} object and return a new pointer to it. Memory returned is owned by the caller and needs deleting. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classomexmeta_1_1RDF_a081395bf83bcbbbf7b1ca5df10642b5e}\label{classomexmeta_1_1RDF_a081395bf83bcbbbf7b1ca5df10642b5e}} 
-librdf\+\_\+model $\ast$ {\bfseries get\+Model} () const override
+\mbox{\Hypertarget{classomexmeta_1_1RDF_ac9a8bab617b61115f8c4500b45d52f62}\label{classomexmeta_1_1RDF_ac9a8bab617b61115f8c4500b45d52f62}} 
+\mbox{\hyperlink{classredland_1_1LibrdfModel}{Librdf\+Model}} {\bfseries get\+Model} () const override
 \item 
-\mbox{\Hypertarget{classomexmeta_1_1RDF_aa143aa353145b64fd6e715ae83fe40af}\label{classomexmeta_1_1RDF_aa143aa353145b64fd6e715ae83fe40af}} 
-librdf\+\_\+storage $\ast$ {\bfseries get\+Storage} () const override
+\mbox{\Hypertarget{classomexmeta_1_1RDF_a11792378c78d2c703ba69692eaa64ce9}\label{classomexmeta_1_1RDF_a11792378c78d2c703ba69692eaa64ce9}} 
+\mbox{\hyperlink{classredland_1_1LibrdfStorage}{Librdf\+Storage}} {\bfseries get\+Storage} () const override
 \item 
 \mbox{\Hypertarget{classomexmeta_1_1RDF_ab833a4b13d27b5c7e3667dcfe2937e98}\label{classomexmeta_1_1RDF_ab833a4b13d27b5c7e3667dcfe2937e98}} 
 int {\bfseries commit\+Transaction} () const override
@@ -142,9 +145,6 @@ static bool \mbox{\hyperlink{classomexmeta_1_1RDF_a1ec9f1e100bd55b556065856f1def
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classomexmeta_1_1RDF_a654ae548e17aa6b098531f24c116dde1}\label{classomexmeta_1_1RDF_a654ae548e17aa6b098531f24c116dde1}} 
-\mbox{\hyperlink{classomexmeta_1_1RDF_a654ae548e17aa6b098531f24c116dde1}{noexcept}}
-\begin{DoxyCompactList}\small\item\em move constructor for \mbox{\hyperlink{classomexmeta_1_1RDF}{RDF}} class \end{DoxyCompactList}\item 
 Namespace\+Map \mbox{\hyperlink{classomexmeta_1_1RDF_a1979d7d70a4c20f2e63f00c7fa668b1f}{namespaces\+\_\+}}
 \item 
 std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{classomexmeta_1_1RDF_a82bc53feb93e1243970400fd104174da}{seen\+\_\+namespaces\+\_\+}}
@@ -154,11 +154,11 @@ const std\+::string \mbox{\hyperlink{classomexmeta_1_1RDF_a59014bbb45a43dbfa7604
 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{classomexmeta_1_1RDF_aecb90e51830082f78ff055c045f4b439}\label{classomexmeta_1_1RDF_aecb90e51830082f78ff055c045f4b439}} 
+\mbox{\Hypertarget{classomexmeta_1_1RDF_aea1783a66fd8bf3393acf9a48f9366ce}\label{classomexmeta_1_1RDF_aea1783a66fd8bf3393acf9a48f9366ce}} 
 \index{omexmeta::RDF@{omexmeta::RDF}!RDF@{RDF}}
 \index{RDF@{RDF}!omexmeta::RDF@{omexmeta::RDF}}
 \doxysubsubsection{\texorpdfstring{RDF()}{RDF()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily omexmeta\+::\+RDF\+::\+RDF (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{storage\+\_\+type = {\ttfamily \char`\"{}memory\char`\"{}},  }\item[{const std\+::string \&}]{storage\+\_\+name = {\ttfamily \char`\"{}SemsimStore\char`\"{}},  }\item[{const char $\ast$}]{storage\+\_\+options = {\ttfamily nullptr},  }\item[{const char $\ast$}]{model\+\_\+options = {\ttfamily nullptr} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+{\footnotesize\ttfamily omexmeta\+::\+RDF\+::\+RDF (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{storage\+\_\+type = {\ttfamily \char`\"{}memory\char`\"{}},  }\item[{const std\+::string \&}]{storage\+\_\+name = {\ttfamily \char`\"{}OmexMetaStore\char`\"{}},  }\item[{const char $\ast$}]{storage\+\_\+options = {\ttfamily nullptr},  }\item[{const char $\ast$}]{model\+\_\+options = {\ttfamily nullptr} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
 
 
 

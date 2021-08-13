@@ -12,6 +12,7 @@
     <includedby refid="LibrdfStatement_8cpp" local="yes">src/redland/RedlandWrapper/src/LibrdfStatement.cpp</includedby>
     <includedby refid="LibrdfUri_8cpp" local="yes">src/redland/RedlandWrapper/src/LibrdfUri.cpp</includedby>
     <includedby refid="LibrdfWorld_8cpp" local="yes">src/redland/RedlandWrapper/src/LibrdfWorld.cpp</includedby>
+    <includedby refid="Logger_8cpp" local="no">src/redland/RedlandWrapper/src/Logger.cpp</includedby>
     <includedby refid="LibrdfModel_8h" local="yes">src/redland/RedlandWrapper/src/include/redland/LibrdfModel.h</includedby>
     <includedby refid="LibrdfNode_8h" local="yes">src/redland/RedlandWrapper/src/include/redland/LibrdfNode.h</includedby>
     <includedby refid="LibrdfParser_8h" local="yes">src/redland/RedlandWrapper/src/include/redland/LibrdfParser.h</includedby>
@@ -19,9 +20,10 @@
     <includedby refid="LibrdfQueryResults_8h" local="yes">src/redland/RedlandWrapper/src/include/redland/LibrdfQueryResults.h</includedby>
     <includedby refid="LibrdfSerializer_8h" local="yes">src/redland/RedlandWrapper/src/include/redland/LibrdfSerializer.h</includedby>
     <includedby refid="LibrdfStorage_8h" local="yes">src/redland/RedlandWrapper/src/include/redland/LibrdfStorage.h</includedby>
-    <includedby refid="LibrdfStream_8h" local="yes">src/redland/RedlandWrapper/src/include/redland/LibrdfStream.h</includedby>
     <includedby refid="RaptorIOStream_8h" local="yes">src/redland/RedlandWrapper/src/include/redland/RaptorIOStream.h</includedby>
     <includedby refid="RedlandAPI_8h" local="yes">src/redland/RedlandWrapper/src/include/redland/RedlandAPI.h</includedby>
+    <includedby refid="RedlandType_8h" local="yes">src/redland/RedlandWrapper/src/include/redland/RedlandType.h</includedby>
+    <includedby refid="RefCountedRedlandType_8h" local="yes">src/redland/RedlandWrapper/src/include/redland/RefCountedRedlandType.h</includedby>
     <incdepgraph>
       <node id="5">
         <label>stdarg.h</label>
@@ -175,18 +177,20 @@
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="35">
+      <node id="30">
         <label>src/redland/RedlandWrapper/src/include/redland/LibrdfQueryResults.h</label>
         <link refid="LibrdfQueryResults_8h_source"/>
         <childnode refid="19" relation="include">
         </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
         <childnode refid="22" relation="include">
         </childnode>
       </node>
-      <node id="37">
+      <node id="36">
         <label>src/redland/RedlandWrapper/src/include/redland/RaptorIOStream.h</label>
         <link refid="RaptorIOStream_8h_source"/>
-        <childnode refid="30" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
@@ -205,24 +209,16 @@
         <childnode refid="16" relation="include">
         </childnode>
       </node>
-      <node id="34">
+      <node id="29">
         <label>src/redland/RedlandWrapper/src/include/redland/LibrdfQuery.h</label>
         <link refid="LibrdfQuery_8h_source"/>
         <childnode refid="24" relation="include">
         </childnode>
         <childnode refid="19" relation="include">
         </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
         <childnode refid="22" relation="include">
-        </childnode>
-      </node>
-      <node id="28">
-        <label>src/omexmeta/include/omexmeta/Query.h</label>
-        <link refid="Query_8h_source"/>
-        <childnode refid="24" relation="include">
-        </childnode>
-        <childnode refid="14" relation="include">
-        </childnode>
-        <childnode refid="16" relation="include">
         </childnode>
       </node>
       <node id="6">
@@ -241,10 +237,12 @@
         <childnode refid="6" relation="include">
         </childnode>
       </node>
-      <node id="36">
+      <node id="35">
         <label>src/redland/RedlandWrapper/src/include/redland/LibrdfStream.h</label>
         <link refid="LibrdfStream_8h_source"/>
         <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
@@ -256,7 +254,9 @@
         </childnode>
         <childnode refid="21" relation="include">
         </childnode>
-        <childnode refid="30" relation="include">
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
@@ -281,14 +281,16 @@
         <childnode refid="17" relation="include">
         </childnode>
       </node>
-      <node id="32">
+      <node id="33">
         <label>src/redland/RedlandWrapper/src/include/redland/LibrdfStatement.h</label>
         <link refid="LibrdfStatement_8h_source"/>
         <childnode refid="10" relation="include">
         </childnode>
         <childnode refid="19" relation="include">
         </childnode>
-        <childnode refid="33" relation="include">
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
         </childnode>
       </node>
       <node id="14">
@@ -322,11 +324,9 @@
         </childnode>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="28" relation="include">
-        </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="29" relation="include">
+        <childnode refid="28" relation="include">
         </childnode>
       </node>
       <node id="4">
@@ -369,7 +369,7 @@
         <childnode refid="17" relation="include">
         </childnode>
       </node>
-      <node id="33">
+      <node id="34">
         <label>src/redland/RedlandWrapper/src/include/redland/LibrdfStorage.h</label>
         <link refid="LibrdfStorage_8h_source"/>
         <childnode refid="19" relation="include">
@@ -377,7 +377,7 @@
         <childnode refid="22" relation="include">
         </childnode>
       </node>
-      <node id="30">
+      <node id="31">
         <label>src/redland/RedlandWrapper/src/include/redland/LibrdfSerializer.h</label>
         <link refid="LibrdfSerializer_8h_source"/>
         <childnode refid="22" relation="include">
@@ -433,16 +433,28 @@
         <childnode refid="16" relation="include">
         </childnode>
       </node>
-      <node id="31">
+      <node id="37">
+        <label>src/redland/RedlandWrapper/src/include/redland/RedlandType.h</label>
+        <link refid="RedlandType_8h_source"/>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+      </node>
+      <node id="32">
         <label>src/redland/RedlandWrapper/src/include/redland/LibrdfNode.h</label>
         <link refid="LibrdfNode_8h_source"/>
         <childnode refid="10" relation="include">
         </childnode>
         <childnode refid="21" relation="include">
         </childnode>
-        <childnode refid="30" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
-        <childnode refid="32" relation="include">
+        <childnode refid="33" relation="include">
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
@@ -467,8 +479,6 @@
         <childnode refid="15" relation="include">
         </childnode>
         <childnode refid="16" relation="include">
-        </childnode>
-        <childnode refid="28" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
@@ -497,7 +507,7 @@
         <childnode refid="8" relation="include">
         </childnode>
       </node>
-      <node id="29">
+      <node id="28">
         <label>src/omexmeta/include/omexmeta/UriHandler.h</label>
         <link refid="UriHandler_8h_source"/>
         <childnode refid="3" relation="include">
@@ -515,6 +525,20 @@
         <label>src/omexmeta/include/omexmeta/VCardTranslator.h</label>
         <link refid="VCardTranslator_8h_source"/>
         <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="38">
+        <label>src/redland/RedlandWrapper/src/include/redland/RefCountedRedlandType.h</label>
+        <link refid="RefCountedRedlandType_8h_source"/>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
         </childnode>
       </node>
       <node id="21">
@@ -551,6 +575,18 @@
         <label>src/omexmeta/include/omexmeta/PurgeRDFBag.h</label>
         <link refid="PurgeRDFBag_8h_source"/>
       </node>
+      <node id="39">
+        <label>src/redland/RedlandWrapper/src/include/redland/LibrdfUri.h</label>
+        <link refid="LibrdfUri_8h_source"/>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+      </node>
       <node id="1">
         <label>src/redland/RedlandWrapper/src/include/redland/LibrdfWorld.h</label>
         <link refid="LibrdfWorld_8h"/>
@@ -558,23 +594,25 @@
         </childnode>
         <childnode refid="19" relation="include">
         </childnode>
-        <childnode refid="31" relation="include">
+        <childnode refid="32" relation="include">
         </childnode>
         <childnode refid="21" relation="include">
         </childnode>
-        <childnode refid="34" relation="include">
-        </childnode>
-        <childnode refid="35" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
         <childnode refid="30" relation="include">
         </childnode>
-        <childnode refid="33" relation="include">
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
         </childnode>
         <childnode refid="36" relation="include">
         </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
         <childnode refid="37" relation="include">
         </childnode>
-        <childnode refid="22" relation="include">
+        <childnode refid="38" relation="include">
         </childnode>
       </node>
     </invincdepgraph>
@@ -616,53 +654,59 @@
 <codeline lineno="28"><highlight class="normal"></highlight></codeline>
 <codeline lineno="29"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">redland<sp/>{</highlight></codeline>
 <codeline lineno="30"><highlight class="normal"></highlight></codeline>
-<codeline lineno="31"><highlight class="normal"></highlight></codeline>
-<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
-<codeline lineno="33"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>C++<sp/>wrapper<sp/>around<sp/>librdf_world.</highlight></codeline>
-<codeline lineno="34"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
-<codeline lineno="35"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>World<sp/>is<sp/>a<sp/>singleton</highlight></codeline>
-<codeline lineno="36"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>class.<sp/>Other<sp/>classes<sp/>can<sp/>use<sp/>the<sp/>World</highlight></codeline>
-<codeline lineno="37"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>by<sp/>call<sp/>to<sp/>World::getWorld().<sp/>To<sp/>implement</highlight></codeline>
-<codeline lineno="38"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>the<sp/>singleton,<sp/>librdf_world*<sp/>is<sp/>allocated<sp/>statically</highlight></codeline>
-<codeline lineno="39"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>and<sp/>therefore<sp/>does<sp/>not<sp/>need<sp/>to<sp/>be<sp/>destructed<sp/>in<sp/>the</highlight></codeline>
-<codeline lineno="40"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>way<sp/>that<sp/>the<sp/>other<sp/>wrapper<sp/>classes<sp/>need<sp/>to<sp/>be</highlight></codeline>
-<codeline lineno="41"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>(i.e.<sp/>stack<sp/>not<sp/>heap)</highlight></codeline>
-<codeline lineno="42"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="43" refid="classredland_1_1LibrdfWorld" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classredland_1_1LibrdfWorld" kindref="compound">LibrdfWorld</ref><sp/>{</highlight></codeline>
-<codeline lineno="44"><highlight class="normal"></highlight></codeline>
-<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>librdf_world<sp/>*world_;</highlight></codeline>
-<codeline lineno="46"><highlight class="normal"></highlight></codeline>
-<codeline lineno="47"><highlight class="normal"></highlight></codeline>
-<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
-<codeline lineno="49"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>Private<sp/>constructor<sp/>prevents<sp/>instancing</highlight></codeline>
-<codeline lineno="50"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classredland_1_1LibrdfWorld" kindref="compound">LibrdfWorld</ref>();</highlight></codeline>
-<codeline lineno="52"><highlight class="normal"></highlight></codeline>
-<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">deleter<sp/>{</highlight></codeline>
-<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>operator()(librdf_world<sp/>*world);</highlight></codeline>
-<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>librdfLogHandler(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*user_data,<sp/>librdf_log_message<sp/>*message);</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>raptorLogHandler(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*user_data,<sp/>raptor_log_message<sp/>*message);</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="37"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>C++<sp/>wrapper<sp/>around<sp/>librdf_world.</highlight></codeline>
+<codeline lineno="38"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="39"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>World<sp/>is<sp/>a<sp/>singleton</highlight></codeline>
+<codeline lineno="40"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>class.<sp/>Other<sp/>classes<sp/>can<sp/>use<sp/>the<sp/>World</highlight></codeline>
+<codeline lineno="41"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>by<sp/>call<sp/>to<sp/>World::getWorld().<sp/>To<sp/>implement</highlight></codeline>
+<codeline lineno="42"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>the<sp/>singleton,<sp/>librdf_world*<sp/>is<sp/>allocated<sp/>statically</highlight></codeline>
+<codeline lineno="43"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>and<sp/>therefore<sp/>does<sp/>not<sp/>need<sp/>to<sp/>be<sp/>destructed<sp/>in<sp/>the</highlight></codeline>
+<codeline lineno="44"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>way<sp/>that<sp/>the<sp/>other<sp/>wrapper<sp/>classes<sp/>need<sp/>to<sp/>be</highlight></codeline>
+<codeline lineno="45"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>(i.e.<sp/>stack<sp/>not<sp/>heap)</highlight></codeline>
+<codeline lineno="46"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47" refid="classredland_1_1LibrdfWorld" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classredland_1_1LibrdfWorld" kindref="compound">LibrdfWorld</ref><sp/>{</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>librdf_world<sp/>*world_;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="53"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>Private<sp/>constructor<sp/>prevents<sp/>instancing</highlight></codeline>
+<codeline lineno="54"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classredland_1_1LibrdfWorld" kindref="compound">LibrdfWorld</ref>();</highlight></codeline>
 <codeline lineno="56"><highlight class="normal"></highlight></codeline>
-<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>setLogHandler(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>userData,<sp/>librdf_log_func<sp/>logging_func);</highlight></codeline>
-<codeline lineno="59"><highlight class="normal"></highlight></codeline>
-<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>setRaptorLogHandler(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>userData,<sp/>raptor_log_handler<sp/>logging_func);</highlight></codeline>
-<codeline lineno="61"><highlight class="normal"></highlight></codeline>
-<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>setRasqalLogHandler(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>userData,<sp/>raptor_log_handler<sp/>logging_func);</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">deleter<sp/>{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>operator()(librdf_world<sp/>*world);</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>setLogHandler(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>userData,<sp/>librdf_log_func<sp/>logging_func);</highlight></codeline>
 <codeline lineno="63"><highlight class="normal"></highlight></codeline>
-<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>librdf_world<sp/>*getWorld();</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>setRaptorLogHandler(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>userData,<sp/>raptor_log_handler<sp/>logging_func);</highlight></codeline>
 <codeline lineno="65"><highlight class="normal"></highlight></codeline>
-<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>raptor_world<sp/>*getRaptor();</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>setRasqalLogHandler(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>userData,<sp/>raptor_log_handler<sp/>logging_func);</highlight></codeline>
 <codeline lineno="67"><highlight class="normal"></highlight></codeline>
-<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>rasqal_world<sp/>*getRasqal();</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>librdf_world<sp/>*getWorld();</highlight></codeline>
 <codeline lineno="69"><highlight class="normal"></highlight></codeline>
-<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>free(librdf_world<sp/>*world);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>raptor_world<sp/>*getRaptor();</highlight></codeline>
 <codeline lineno="71"><highlight class="normal"></highlight></codeline>
-<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>rasqal_world<sp/>*getRasqal();</highlight></codeline>
 <codeline lineno="73"><highlight class="normal"></highlight></codeline>
-<codeline lineno="74"><highlight class="normal"></highlight></codeline>
-<codeline lineno="75"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="76"><highlight class="normal"></highlight></codeline>
-<codeline lineno="77"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="comment">//LIBOMEXMETA_LIBRDFWORLD_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>free(librdf_world<sp/>*world);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>initLoggers();</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="comment">//LIBOMEXMETA_LIBRDFWORLD_H</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfWorld.h"/>
   </compounddef>

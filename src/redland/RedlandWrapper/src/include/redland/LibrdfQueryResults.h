@@ -9,9 +9,10 @@
 #include "librdf.h"
 #include <memory>
 
-#include "LibrdfWorld.h"
-#include "redland/RedlandType.h"
+#include "redland/LibrdfQuery.h"
+#include "redland/LibrdfWorld.h"
 #include "redland/LibrdfStream.h"
+#include "redland/RedlandType.h"
 
 namespace redland {
 
@@ -28,13 +29,17 @@ namespace redland {
     using RedlandType_query_results = RedlandType<librdf_query_results, query_results_free_func>;
 
     class LibrdfModel;
+    class LibrdfQuery;
+
 
     class LibrdfQueryResults : public RedlandType_query_results {
 
     public:
         using RedlandType_query_results::RedlandType_query_results;
 
-        explicit LibrdfQueryResults(librdf_query_results *queryResults);
+        explicit LibrdfQueryResults(librdf_query_results *queryResults, LibrdfQuery* query);
+
+        void regenerateQueryResults();
 
         /**
          * @brief get the query results as a LibrdfStream
@@ -43,14 +48,6 @@ namespace redland {
          * and LibrdfQueryResult::isGraph() evaluates to false.
          */
         LibrdfStream toStream();
-
-        /**
-         * @brief Get number of bindings found so far.
-         * @details this will initially be 0 and increase with the number of
-         * of LibrdfQueryResults observed through use of next. Since this is a stream
-         * it is not possible to know ahead of time how many items are in the stream.
-         */
-        int count();
 
         /**
          * @brief Move to the next result
@@ -110,7 +107,7 @@ namespace redland {
 
         static std::string stringReplace(std::string str, const std::string &string_to_replace, const std::string &replacement);
 
-        std::string toString(const std::string &output_format) const;
+        std::string toString(const std::string &output_format);
 
 
         /**
@@ -134,7 +131,7 @@ namespace redland {
         ResultsMap map();
 
     private:
-
+        LibrdfQuery* query_;
         ResultsMap map_;
         bool mapExecuted = false;
 

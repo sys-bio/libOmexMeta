@@ -11,15 +11,6 @@ namespace omexmeta {
         : rdf_(rdf) {}
 
     std::string PurgeRDFBag::rdfBagQueryString() {
-        //        return "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n"
-        //               "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n"
-        //               "SELECT  ?s ?rdf_li ?y ?p ?r ?x ?j     \n"
-        //               "WHERE {\n"
-        //               "   ?x ?j ?s . \n"
-        //               "   ?s rdf:type rdf:Bag .\n"
-        //               "   ?s ?rdf_li ?y .\n"
-        //               "   ?y ?p ?r\n"
-        //               "}\n";
         // note: "a" is short for rdf:type
         return "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n"
                "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n"
@@ -38,6 +29,9 @@ namespace omexmeta {
     }
 
     void omexmeta::PurgeRDFBag::purgePattern1() {
+        if (rdf_->getModel().size() == 0){
+            return;
+        }
 
         /**
          * Note, we might be able to do another query that says
@@ -142,7 +136,9 @@ namespace omexmeta {
     }
 
     void omexmeta::PurgeRDFBag::purgePattern2() {
-
+        if (rdf_->getModel().size() == 0){
+            return;
+        }
         /**
          * This query is not as specific as I would like it to be because
          * there is some "cross-reactivity" with triples that use rdf:_1, rdf:_2, ...
@@ -218,7 +214,9 @@ namespace omexmeta {
     }
 
     void omexmeta::PurgeRDFBag::purgePattern3() {
-
+        if (rdf_->getModel().size() == 0){
+            return;
+        }
         /**
          * This query is not as specific as I would like it to be because
          * there is some "cross-reactivity" with triples that use rdf:_1, rdf:_2, ...

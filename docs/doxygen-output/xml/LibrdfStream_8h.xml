@@ -3,15 +3,20 @@
   <compounddef id="LibrdfStream_8h" kind="file" language="C++">
     <compoundname>LibrdfStream.h</compoundname>
     <includes refid="librdf_8h" local="yes">librdf.h</includes>
-    <includes local="no">memory</includes>
-    <includes refid="LibrdfWorld_8h" local="yes">LibrdfWorld.h</includes>
+    <includes refid="LibrdfException_8h" local="yes">redland/LibrdfException.h</includes>
+    <includes refid="LibrdfStatement_8h" local="yes">redland/LibrdfStatement.h</includes>
+    <includes refid="RefCountedRedlandType_8h" local="yes">redland/RefCountedRedlandType.h</includes>
+    <includes local="no">functional</includes>
+    <includedby refid="LibrdfModel_8cpp" local="yes">src/redland/RedlandWrapper/src/LibrdfModel.cpp</includedby>
+    <includedby refid="LibrdfStream_8cpp" local="yes">src/redland/RedlandWrapper/src/LibrdfStream.cpp</includedby>
     <includedby refid="LibrdfModel_8h" local="yes">src/redland/RedlandWrapper/src/include/redland/LibrdfModel.h</includedby>
+    <includedby refid="LibrdfQueryResults_8h" local="yes">src/redland/RedlandWrapper/src/include/redland/LibrdfQueryResults.h</includedby>
     <includedby refid="RedlandAPI_8h" local="yes">src/redland/RedlandWrapper/src/include/redland/RedlandAPI.h</includedby>
     <incdepgraph>
       <node id="5">
         <label>stdarg.h</label>
       </node>
-      <node id="29">
+      <node id="36">
         <label>functional</label>
       </node>
       <node id="7">
@@ -25,6 +30,9 @@
       <node id="11">
         <label>rdf_init.h</label>
       </node>
+      <node id="37">
+        <label>variant</label>
+      </node>
       <node id="1">
         <label>src/redland/RedlandWrapper/src/include/redland/LibrdfStream.h</label>
         <link refid="LibrdfStream_8h"/>
@@ -32,7 +40,11 @@
         </childnode>
         <childnode refid="25" relation="include">
         </childnode>
-        <childnode refid="26" relation="include">
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
         </childnode>
       </node>
       <node id="22">
@@ -40,6 +52,20 @@
       </node>
       <node id="14">
         <label>rdf_node.h</label>
+      </node>
+      <node id="28">
+        <label>redland/LibrdfStatement.h</label>
+        <link refid="LibrdfStatement_8h_source"/>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
       </node>
       <node id="18">
         <label>rdf_storage.h</label>
@@ -50,8 +76,11 @@
       <node id="12">
         <label>rdf_iterator.h</label>
       </node>
-      <node id="28">
+      <node id="35">
         <label>regex</label>
+      </node>
+      <node id="26">
+        <label>exception</label>
       </node>
       <node id="20">
         <label>rdf_raptor.h</label>
@@ -59,20 +88,72 @@
       <node id="19">
         <label>rdf_parser.h</label>
       </node>
+      <node id="25">
+        <label>redland/LibrdfException.h</label>
+        <link refid="LibrdfException_8h_source"/>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+      </node>
       <node id="6">
         <label>redland_export.h</label>
       </node>
       <node id="17">
         <label>rdf_model.h</label>
       </node>
+      <node id="38">
+        <label>rdf_uri_internal.h</label>
+      </node>
       <node id="15">
         <label>rdf_concepts.h</label>
+      </node>
+      <node id="39">
+        <label>sstream</label>
+      </node>
+      <node id="32">
+        <label>RedlandType.h</label>
+        <link refid="RedlandType_8h_source"/>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
       </node>
       <node id="10">
         <label>rdf_hash.h</label>
       </node>
       <node id="13">
         <label>rdf_uri.h</label>
+      </node>
+      <node id="29">
+        <label>LibrdfNode.h</label>
+        <link refid="LibrdfNode_8h_source"/>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
       </node>
       <node id="3">
         <label>raptor2.h</label>
@@ -86,6 +167,27 @@
       </node>
       <node id="27">
         <label>iostream</label>
+      </node>
+      <node id="40">
+        <label>unordered_map</label>
+      </node>
+      <node id="31">
+        <label>redland/RefCountedRedlandType.h</label>
+        <link refid="RefCountedRedlandType_8h_source"/>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
       </node>
       <node id="8">
         <label>rdf_log.h</label>
@@ -101,6 +203,16 @@
       </node>
       <node id="4">
         <label>stdio.h</label>
+      </node>
+      <node id="30">
+        <label>LibrdfUri.h</label>
+        <link refid="LibrdfUri_8h_source"/>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
       </node>
       <node id="2">
         <label>librdf.h</label>
@@ -151,25 +263,35 @@
       <node id="9">
         <label>rdf_digest.h</label>
       </node>
-      <node id="26">
-        <label>LibrdfWorld.h</label>
+      <node id="33">
+        <label>redland/LibrdfWorld.h</label>
         <link refid="LibrdfWorld_8h_source"/>
         <childnode refid="2" relation="include">
         </childnode>
         <childnode refid="27" relation="include">
         </childnode>
-        <childnode refid="25" relation="include">
+        <childnode refid="34" relation="include">
         </childnode>
-        <childnode refid="28" relation="include">
+        <childnode refid="35" relation="include">
         </childnode>
-        <childnode refid="29" relation="include">
+        <childnode refid="36" relation="include">
         </childnode>
       </node>
-      <node id="25">
+      <node id="34">
         <label>memory</label>
       </node>
     </incdepgraph>
     <invincdepgraph>
+      <node id="30">
+        <label>src/redland/RedlandWrapper/src/include/redland/LibrdfQueryResults.h</label>
+        <link refid="LibrdfQueryResults_8h_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
       <node id="26">
         <label>src/omexmeta/include/omexmeta/Triples.h</label>
         <link refid="Triples_8h_source"/>
@@ -184,14 +306,16 @@
         <childnode refid="25" relation="include">
         </childnode>
       </node>
-      <node id="28">
-        <label>src/omexmeta/include/omexmeta/Query.h</label>
-        <link refid="Query_8h_source"/>
+      <node id="29">
+        <label>src/redland/RedlandWrapper/src/include/redland/LibrdfQuery.h</label>
+        <link refid="LibrdfQuery_8h_source"/>
         <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
+        <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="25" relation="include">
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
         </childnode>
       </node>
       <node id="4">
@@ -215,6 +339,8 @@
         <link refid="LibrdfStream_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
         <childnode refid="8" relation="include">
         </childnode>
       </node>
@@ -225,7 +351,9 @@
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="30" relation="include">
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
@@ -281,11 +409,9 @@
         </childnode>
         <childnode refid="21" relation="include">
         </childnode>
-        <childnode refid="28" relation="include">
-        </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="29" relation="include">
+        <childnode refid="28" relation="include">
         </childnode>
       </node>
       <node id="10">
@@ -328,7 +454,7 @@
         <childnode refid="26" relation="include">
         </childnode>
       </node>
-      <node id="30">
+      <node id="31">
         <label>src/redland/RedlandWrapper/src/include/redland/LibrdfSerializer.h</label>
         <link refid="LibrdfSerializer_8h_source"/>
         <childnode refid="8" relation="include">
@@ -405,8 +531,6 @@
         </childnode>
         <childnode refid="25" relation="include">
         </childnode>
-        <childnode refid="28" relation="include">
-        </childnode>
         <childnode refid="4" relation="include">
         </childnode>
         <childnode refid="26" relation="include">
@@ -434,7 +558,7 @@
         <childnode refid="6" relation="include">
         </childnode>
       </node>
-      <node id="29">
+      <node id="28">
         <label>src/omexmeta/include/omexmeta/UriHandler.h</label>
         <link refid="UriHandler_8h_source"/>
         <childnode refid="9" relation="include">
@@ -490,7 +614,6 @@
       </node>
     </invincdepgraph>
     <innerclass refid="classredland_1_1LibrdfStream" prot="public">redland::LibrdfStream</innerclass>
-    <innerclass refid="structredland_1_1LibrdfStream_1_1deleter" prot="private">redland::LibrdfStream::deleter</innerclass>
     <innernamespace refid="namespaceredland">redland</innernamespace>
     <briefdescription>
     </briefdescription>
@@ -498,38 +621,43 @@
     </detaileddescription>
     <programlisting>
 <codeline lineno="1"><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Created<sp/>by<sp/>Ciaran<sp/>on<sp/>5/20/2020.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Created<sp/>by<sp/>Ciaran<sp/>on<sp/>09/08/2021.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="4"><highlight class="normal"></highlight></codeline>
 <codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>LIBOMEXMETA_LIBRDFSTREAM_H</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LIBOMEXMETA_LIBRDFSTREAM_H</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="7"><highlight class="normal"></highlight></codeline>
-<codeline lineno="8"><highlight class="normal"></highlight></codeline>
-<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;librdf.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="11"><highlight class="normal"></highlight></codeline>
-<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;LibrdfWorld.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;librdf.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;redland/LibrdfException.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;redland/LibrdfStatement.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;redland/RefCountedRedlandType.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;functional&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="13"><highlight class="normal"></highlight></codeline>
 <codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">redland<sp/>{</highlight></codeline>
 <codeline lineno="15"><highlight class="normal"></highlight></codeline>
-<codeline lineno="16" refid="classredland_1_1LibrdfStream" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classredland_1_1LibrdfStream" kindref="compound">LibrdfStream</ref><sp/>{</highlight></codeline>
-<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">deleter<sp/>{</highlight></codeline>
-<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>operator()(librdf_stream<sp/>*stream);</highlight></codeline>
-<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>stream_free_func<sp/>=<sp/>std::function&lt;void(librdf_stream<sp/>*)&gt;;</highlight></codeline>
 <codeline lineno="20"><highlight class="normal"></highlight></codeline>
-<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::unique_ptr&lt;librdf_stream,<sp/>deleter&gt;<sp/>stream_;</highlight></codeline>
-<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classredland_1_1LibrdfStream" kindref="compound">LibrdfStream</ref>();</highlight></codeline>
-<codeline lineno="24"><highlight class="normal"></highlight></codeline>
-<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classredland_1_1LibrdfStream" kindref="compound">LibrdfStream</ref>(librdf_stream<sp/>*stream);</highlight></codeline>
-<codeline lineno="26"><highlight class="normal"></highlight></codeline>
-<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/>librdf_stream<sp/>*get()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="28"><highlight class="normal"></highlight></codeline>
-<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
-<codeline lineno="30"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>Redland_librdf_stream<sp/>=<sp/>RedlandType&lt;librdf_stream,<sp/>stream_free_func&gt;;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26" refid="classredland_1_1LibrdfStream" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classredland_1_1LibrdfStream" kindref="compound">LibrdfStream</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classredland_1_1RedlandType" kindref="compound">Redland_librdf_stream</ref><sp/>{</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>Redland_librdf_stream::Redland_librdf_stream;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classredland_1_1LibrdfStream" kindref="compound">LibrdfStream</ref>(librdf_stream*<sp/>stream);</highlight></codeline>
 <codeline lineno="32"><highlight class="normal"></highlight></codeline>
-<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//LIBOMEXMETA_LIBRDFSTREAM_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classredland_1_1LibrdfStatement" kindref="compound">LibrdfStatement</ref><sp/><ref refid="classredland_1_1LibrdfStream_1a2b766ae59bc0ae607a5116f2a7597348" kindref="member">getStatement</ref>();</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classredland_1_1LibrdfStream_1a68cb397d3d4cd583c6368bb5e917da06" kindref="member">end</ref>();</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classredland_1_1LibrdfStream_1a84acb963afdcb2f40426e16aab2dba7c" kindref="member">next</ref>();</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal">}</highlight><highlight class="comment">//<sp/>namespace<sp/>redland</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="comment">//LIBOMEXMETA_LIBRDFSTREAM_H</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfStream.h"/>
   </compounddef>

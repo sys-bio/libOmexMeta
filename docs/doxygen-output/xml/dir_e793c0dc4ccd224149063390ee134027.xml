@@ -11,8 +11,10 @@
     <innerfile refid="LibrdfSerializer_8cpp">LibrdfSerializer.cpp</innerfile>
     <innerfile refid="LibrdfStatement_8cpp">LibrdfStatement.cpp</innerfile>
     <innerfile refid="LibrdfStorage_8cpp">LibrdfStorage.cpp</innerfile>
+    <innerfile refid="LibrdfStream_8cpp">LibrdfStream.cpp</innerfile>
     <innerfile refid="LibrdfUri_8cpp">LibrdfUri.cpp</innerfile>
     <innerfile refid="LibrdfWorld_8cpp">LibrdfWorld.cpp</innerfile>
+    <innerfile refid="Logger_8cpp">Logger.cpp</innerfile>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
