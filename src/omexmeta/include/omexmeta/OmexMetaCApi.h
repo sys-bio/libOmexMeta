@@ -432,7 +432,7 @@ namespace omexmeta {
 
     OMEXMETA_CAPI_EXPORT void Logger_setLevel(Logger::LogLevel level);
 
-    OMEXMETA_CAPI_EXPORT Logger::LogLevel Logger_getLevel();
+    OMEXMETA_CAPI_EXPORT int Logger_getLevel();
 
     OMEXMETA_CAPI_EXPORT void Logger_enableBacktrace(int num);
 

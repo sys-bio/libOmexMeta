@@ -116,40 +116,6 @@ TEST_F(TriplesTests, TestEmplaceBack6) {
 }
 
 
-TEST(TriplesTestsNoFixture, TestPop) {
-    UriHandler uriHandler;
-    Triples triples;
-    triples.emplace_back(uriHandler,
-                         LibrdfNode::fromUriString("subject1"),
-                         SemSim("hasSinkParticipant").getNode(),
-                         LibrdfNode::fromLiteral("literal node1"));
-    triples.emplace_back(uriHandler,
-                         LibrdfNode::fromUriString("subject2"),
-                         SemSim("hasSourceParticipant").getNode(),
-                         LibrdfNode::fromLiteral("literal node2"));
-    // make sure we have 2 triples
-    ASSERT_EQ(2, triples.size());
-
-    // get by move
-    Triple triple = triples.pop();
-
-    // make sure we still have 1 Triple objects in Triples
-    ASSERT_EQ(1, triples.size());
-
-    // do checks for raptors internal reference counter
-    ASSERT_EQ(1, triples[0].getStatement().getUsage());
-
-//    Triple t = triples[0];
-//    LibrdfNode n = t.getSubjectNode();
-//    std::string s = n.str();
-
-    // make sure we have the right triple left
-//    ASSERT_STREQ("subject1", triples[0].getSubjectNode().str().c_str());
-//    ASSERT_STREQ("subject2", triple.getSubjectNode().str().c_str());
-
-
-}
-
 TEST(TriplesTestsNoFixture, TestPreallocate) {
     UriHandler uriHandler;
     Triples triples(2);

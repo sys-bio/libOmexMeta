@@ -130,49 +130,45 @@ install(
 # shared library
 #
 
-# shared library is hard to build on windows and not needed right now.
+add_library(${target} SHARED "${OMEXMETA_HEADERS}" "${OMEXMETA_SOURCES}")
+
+set_target_properties(${target} PROPERTIES SOVERSION ${LIBOMEXMETA_VERSION})
+
+target_link_libraries(${target} PUBLIC $<TARGET_PROPERTY:${target}-static,LINK_LIBRARIES>)
+target_include_directories(${target} PUBLIC $<TARGET_PROPERTY:${target}-static,INCLUDE_DIRECTORIES>)
+add_dependencies(${target} redland-combined-static)
+
+if (WIN32)
+    # mac already does this and linux has so name
+    set_target_properties(${target} PROPERTIES OUTPUT_NAME ${target}-${LIBOMEXMETA_VERSION})
+endif ()
+
+generate_export_header(${target} BASE_NAME OMEXMETA)
+
+# Static target needs special preprocessor define
+# to prevent symbol import/export keywords being added
+target_compile_definitions(
+        ${target} PUBLIC
+        OmexMeta_EXPORTS # indicate that we are building this library to get correct export symbols
+)
 
 
-#
-#add_library(${target} SHARED "${OMEXMETA_HEADERS}" "${OMEXMETA_SOURCES}")
-#
-#set_target_properties(${target} PROPERTIES SOVERSION ${LIBOMEXMETA_VERSION})
-#
-#target_link_libraries(${target} PUBLIC $<TARGET_PROPERTY:${target}-static,LINK_LIBRARIES>)
-#target_include_directories(${target} PUBLIC $<TARGET_PROPERTY:${target}-static,INCLUDE_DIRECTORIES>)
-#add_dependencies(${target} redland-combined-static)
-#
-#if (WIN32)
-#    # mac already does this and linux has so name
-#    set_target_properties(${target} PROPERTIES OUTPUT_NAME ${target}-${LIBOMEXMETA_VERSION})
-#endif ()
-#
-#generate_export_header(${target} BASE_NAME OMEXMETA)
-#
-## Static target needs special preprocessor define
-## to prevent symbol import/export keywords being added
-#target_compile_definitions(
-#        ${target} PUBLIC
-#        OmexMeta_EXPORTS # indicate that we are building this library to get correct export symbols
-#)
-#
-#
-#install(TARGETS ${target}
-#        EXPORT ${target}
-#        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
-#        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-#        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
-#        PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/omexmeta
-#        )
-#
-## install the export info
-#install(
-#        EXPORT ${target}
-#        DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/omexmeta
-#        NAMESPACE OmexMeta::
-#        FILE ${target}.cmake
-#)
-#
+install(TARGETS ${target}
+        EXPORT ${target}
+        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+        PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/omexmeta
+        )
+
+# install the export info
+install(
+        EXPORT ${target}
+        DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/omexmeta
+        NAMESPACE OmexMeta::
+        FILE ${target}.cmake
+)
+
 
 ##########################################
 # C API library

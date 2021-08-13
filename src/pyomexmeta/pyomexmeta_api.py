@@ -742,6 +742,11 @@ class PyOmexMetaAPI:
     # void ResultsMap_delete(ResultsMap * resultsMap);
     results_map_delete = utils.load_func("ResultsMap_delete", [ct.c_int64], ct.c_void_p)
 
+    # Logger API
+    # Note - you'll need to initialise the logger by calling logger_get_logger once at the start
+    # of the program, if you are using the raw pyomexmeta api directly. If using the front facing
+    # pyomexmeta api then the initialization is handled in the constructor for RDF.
+
     # Logger *Logger_getLogger()
     logger_get_logger = utils.load_func("Logger_getLogger", [], ct.c_void_p)
 
@@ -752,7 +757,7 @@ class PyOmexMetaAPI:
     logger_set_level = utils.load_func("Logger_setLevel", [ct.c_int64], ct.c_void_p)
 
     # Logger::LogLevel Logger_getLevel()
-    logger_get_level = utils.load_func("Logger_getLevel", [ct.c_char_p], ct.c_void_p)
+    logger_get_level = utils.load_func("Logger_getLevel", [], ct.c_int64)
 
     # void Logger_enableBacktrace(int num)
     logger_enable_backtrace = utils.load_func("Logger_enableBacktrace", [ct.c_int64], ct.c_void_p)

@@ -30,6 +30,7 @@ class TestAPI(unittest.TestCase):
             None, None
         )
 
+
     def tearDown(self) -> None:
         """calls the RDF delete function after each test"""
         self.pyom.rdf_delete(self.rdf)

@@ -1595,11 +1595,12 @@ namespace omexmeta {
         }
     }
 
-    Logger::LogLevel Logger_getLevel() {
+    int Logger_getLevel() {
         try {
-            return Logger::getLogger()->getLevel();
+            return (int)Logger::getLogger()->getLevel();
         } catch (std::exception &e) {
             setLastError(e.what());
+            return -1;
         }
     }
 

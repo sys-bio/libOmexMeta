@@ -12,12 +12,12 @@
 using namespace redland;
 
 
-class LoggingTests : public ::testing::Test {
+class LoggerTests : public ::testing::Test {
 public:
     std::filesystem::path p = std::filesystem::current_path() / "log.log";
-    LoggingTests() = default;
+    LoggerTests() = default;
 
-    ~LoggingTests() override{
+    ~LoggerTests() override{
         if (std::filesystem::exists(p)){
             try {
                 std::filesystem::remove(p);
@@ -28,13 +28,13 @@ public:
     }
 };
 
-TEST_F(LoggingTests, DefaultLevel){
+TEST_F(LoggerTests, DefaultLevel){
     auto actual = Logger::getLogger()->getLevel();
     auto expected = Logger::LogLevel::warn;
     ASSERT_EQ(expected, actual);
 }
 
-TEST_F(LoggingTests, UseConsoleLoggerOutOfTheBox){
+TEST_F(LoggerTests, UseConsoleLoggerOutOfTheBox){
     // needs to be called at least once, otherwise we'll
     // not have init the omexmeta logger, and we'll just
     // be using the spdlog defaults.
@@ -45,7 +45,7 @@ TEST_F(LoggingTests, UseConsoleLoggerOutOfTheBox){
     REDLAND_WARN("Displayed to console");
 }
 
-TEST_F(LoggingTests, SwitchToFileLogger){
+TEST_F(LoggerTests, SwitchToFileLogger){
     std::filesystem::path fname = std::filesystem::current_path() / "log.log";
     Logger::getLogger()->fileLogger(fname);
     // should not output to console
@@ -55,7 +55,7 @@ TEST_F(LoggingTests, SwitchToFileLogger){
     ASSERT_TRUE(std::filesystem::exists(fname));
 }
 
-TEST_F(LoggingTests, UseFileLogger) {
+TEST_F(LoggerTests, UseFileLogger) {
     LibrdfStorage storage;
     LibrdfModel model(storage);
     Logger::getLogger()->setLevel(Logger::LogLevel::info);

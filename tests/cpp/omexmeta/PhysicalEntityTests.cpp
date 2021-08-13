@@ -417,24 +417,24 @@ TEST_F(PhysicalEntityMemory, TestPhysicalEntityAdds4TriplesToModel) {
     ASSERT_EQ(4, rdf.size());
 }
 
-TEST_F(PhysicalEntityMemory, TestUnpackTriplesAndAccountForStatements) {
-    Triples triples = physicalEntity.toTriples();
-
-    // unpack triples
-    Triple triple4 = triples.pop();
-    Triple triple3 = triples.pop();
-    Triple triple2 = triples.pop();
-    Triple triple1 = triples.pop();
-
-    // make sure we've emptied the triples object
-    ASSERT_EQ(0, triples.size());
-
-    // check that all statements have 1 usage
-    ASSERT_EQ(1, triple1.getStatement().getUsage());
-    ASSERT_EQ(1, triple2.getStatement().getUsage());
-    ASSERT_EQ(1, triple3.getStatement().getUsage());
-    ASSERT_EQ(1, triple4.getStatement().getUsage());
-}
+//TEST_F(PhysicalEntityMemory, TestUnpackTriplesAndAccountForStatements) {
+//    Triples triples = physicalEntity.toTriples();
+//
+//    // unpack triples
+//    Triple triple4 = triples.pop();
+//    Triple triple3 = triples.pop();
+//    Triple triple2 = triples.pop();
+//    Triple triple1 = triples.pop();
+//
+//    // make sure we've emptied the triples object
+//    ASSERT_EQ(0, triples.size());
+//
+//    // check that all statements have 1 usage
+//    ASSERT_EQ(1, triple1.getStatement().getUsage());
+//    ASSERT_EQ(1, triple2.getStatement().getUsage());
+//    ASSERT_EQ(1, triple3.getStatement().getUsage());
+//    ASSERT_EQ(1, triple4.getStatement().getUsage());
+//}
 
 TEST_F(PhysicalEntityMemory, TestUnpackTriplesAndAccountForTermsAndUris) {
 
