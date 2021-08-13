@@ -29,9 +29,9 @@ namespace omexmeta {
     }
 
     void omexmeta::PurgeRDFBag::purgePattern1() {
-        if (rdf_->getModel().size() == 0){
-            return;
-        }
+//        if (rdf_->getModel().size() == 0){
+//            return;
+//        }
 
         /**
          * Note, we might be able to do another query that says
@@ -136,9 +136,9 @@ namespace omexmeta {
     }
 
     void omexmeta::PurgeRDFBag::purgePattern2() {
-        if (rdf_->getModel().size() == 0){
-            return;
-        }
+//        if (rdf_->getModel().size() == 0){
+//            return;
+//        }
         /**
          * This query is not as specific as I would like it to be because
          * there is some "cross-reactivity" with triples that use rdf:_1, rdf:_2, ...
@@ -214,9 +214,9 @@ namespace omexmeta {
     }
 
     void omexmeta::PurgeRDFBag::purgePattern3() {
-        if (rdf_->getModel().size() == 0){
-            return;
-        }
+//        if (rdf_->getModel().size() == 0){
+//            return;
+//        }
         /**
          * This query is not as specific as I would like it to be because
          * there is some "cross-reactivity" with triples that use rdf:_1, rdf:_2, ...

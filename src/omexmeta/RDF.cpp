@@ -75,7 +75,6 @@ namespace omexmeta {
 
         if (Options::removeRDFBag_)
             rdf.purgeRDFBag();
-
         return rdf;
     }
 

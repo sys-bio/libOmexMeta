@@ -30,9 +30,9 @@ namespace omexmeta {
                         "?subjectBlank <http://www.w3.org/2001/vcard-rdf/3.0#N> ?resourceBlank .\n"
                         "?resourceBlank ?vCardPred ?literal\n"
                         "}\n";
-        if (rdf_->getModel().size() == 0){
-            return;
-        }
+//        if (rdf_->getModel().size() == 0){
+//            return;
+//        }
 
         LibrdfQuery query(q, rdf_->getModel());
         LibrdfQueryResults queryResults = query.execute();
@@ -77,9 +77,9 @@ namespace omexmeta {
                         "?subjectBlank <" +
                         vcardUri + "> ?resourceLiteral \n"
                                    "}\n";
-        if (rdf_->getModel().size() == 0){
-            return;
-        }
+//        if (rdf_->getModel().size() == 0){
+//            return;
+//        }
 
         LibrdfQuery query(q, rdf_->getModel());
         LibrdfQueryResults queryResults = query.execute();
@@ -122,9 +122,9 @@ namespace omexmeta {
                         "?subjectBlank <http://www.w3.org/2001/vcard-rdf/3.0#ORG> ?resourceBlank .\n"
                         "?resourceBlank <http://www.w3.org/2001/vcard-rdf/3.0#Orgname> ?literal\n"
                         "}\n";
-        if (rdf_->getModel().size() == 0){
-            return;
-        }
+//        if (rdf_->getModel().size() == 0){
+//            return;
+//        }
 
         LibrdfQuery query(q, rdf_->getModel());
         LibrdfQueryResults queryResults = query.execute();

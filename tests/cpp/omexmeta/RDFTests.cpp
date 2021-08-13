@@ -83,11 +83,12 @@ TEST_F(RDFTests, TestFromStringSingularAnnotation) {
 }
 
 TEST_F(RDFTests, TestFromStringButWrongSyntax) {
+    LOGGER_SET_DEBUG()
     // singular_annotation1 is rdfxml, but we sprcify turtle
     // We let librdf issue a warning, rather than throw
-    ASSERT_NO_THROW(
     RDF rdf = RDF::fromString(samples.singular_annotation1, "turtle");
-    );
+//    ASSERT_NO_THROW(
+//    );
 }
 
 TEST_F(RDFTests, TestFromStringTwice) {
