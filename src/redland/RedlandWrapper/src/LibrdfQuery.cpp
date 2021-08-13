@@ -38,8 +38,11 @@ namespace redland {
 
     LibrdfQueryResults LibrdfQuery::execute() {
         librdf_query_results* q = librdf_query_execute(obj_, model_.getWithoutIncrement());
-        return LibrdfQueryResults(q, this);
+        LibrdfQueryResults qr(q, this);
+        // return by value uses copy constructor
+        return qr;
     }
+
     LibrdfModel &LibrdfQuery::getModel() const {
         return model_;
     }

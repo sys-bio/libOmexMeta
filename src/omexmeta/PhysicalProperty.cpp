@@ -62,7 +62,6 @@ namespace omexmeta {
 
     Triples PhysicalProperty::toTriples() {
         // in sbml the metaid for property needs to be generated
-        std::cout << "model_.size(): " <<model_.size() << std::endl;
         if (OmexMetaUtils::isStringEmpty<PhysicalProperty>(*this, about_value_)) {
             std::string new_about = OmexMetaUtils::generateUniqueMetaid(
                     model_, property_metaid_base_, new_metaid_exclusion_list_);

@@ -72,9 +72,9 @@ namespace omexmeta {
 
         if (Options::translateVCard_)
             rdf.translateVcard();
-//
-//        if (Options::removeRDFBag_)
-//            rdf.purgeRDFBag();
+
+        if (Options::removeRDFBag_)
+            rdf.purgeRDFBag();
         return rdf;
     }
 
@@ -284,7 +284,7 @@ namespace omexmeta {
     }
 
     LibrdfModel RDF::getModel() const {
-        model_.incrementUsage();
+//        model_.incrementUsage(); // not sure if needed
         return model_;
     }
 

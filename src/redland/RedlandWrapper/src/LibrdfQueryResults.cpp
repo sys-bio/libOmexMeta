@@ -13,9 +13,10 @@ namespace redland {
     void LibrdfQueryResults::regenerateQueryResults() {
         if (obj_) {
             librdf_free_query_results(obj_);
-            obj_ = librdf_query_execute(query_->obj_, query_->getModel().getWithoutIncrement());
-            REDLAND_DEBUG("Regenerated a LibrdfQueryResults instance");
+            obj_ = nullptr;
         }
+        obj_ = librdf_query_execute(query_->obj_, query_->getModel().getWithoutIncrement());
+        REDLAND_DEBUG("Regenerated a LibrdfQueryResults instance");
     }
 
 
