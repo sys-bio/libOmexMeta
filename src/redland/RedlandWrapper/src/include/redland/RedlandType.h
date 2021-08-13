@@ -5,8 +5,11 @@
 #ifndef LIBOMEXMETA_REDLAND_TYPE_H
 #define LIBOMEXMETA_REDLAND_TYPE_H
 
+#include <sstream>
+
 #include "redland/LibrdfWorld.h"
 #include "redland/LibrdfException.h"
+#include "redland/Logger.h"
 #include "raptor2.h"
 #include "rasqal.h"
 #include "librdf.h"
@@ -55,6 +58,9 @@ namespace redland {
          * the rule of 5.
          */
         virtual ~RedlandType() {
+            std::ostringstream err;
+            err << "Destructing a " << typeid(*this).name() << std::endl;
+            REDLAND_DEBUG(err.str());
             RedlandType::freeObj();
         }
 

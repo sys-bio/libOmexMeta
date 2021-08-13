@@ -1,22 +1,21 @@
 #include "redland/LibrdfQueryResults.h"
-#include "redland/LibrdfQuery.h"
 #include "redland/LibrdfNode.h"
+#include "redland/LibrdfQuery.h"
 #include "redland/Logger.h"
 
 namespace redland {
 
-    LibrdfQueryResults::LibrdfQueryResults(librdf_query_results *query_results, LibrdfQuery* query)
+    LibrdfQueryResults::LibrdfQueryResults(librdf_query_results *query_results, LibrdfQuery *query)
         : RedlandType_query_results(query_results, librdf_free_query_results), query_(query) {
         REDLAND_DEBUG("Instantiated a LibrdfQueryResults instance");
     }
 
-    void LibrdfQueryResults::regenerateQueryResults(){
-        if (obj_){
+    void LibrdfQueryResults::regenerateQueryResults() {
+        if (obj_) {
             librdf_free_query_results(obj_);
-            obj_ = nullptr;
+            obj_ = librdf_query_execute(query_->obj_, query_->getModel().getWithoutIncrement());
+            REDLAND_DEBUG("Regenerated a LibrdfQueryResults instance");
         }
-        obj_ =  librdf_query_execute(query_->obj_, query_->getModel().getWithoutIncrement());
-
     }
 
 
@@ -58,7 +57,7 @@ namespace redland {
     }
 
     LibrdfStream LibrdfQueryResults::toStream() {
-        librdf_stream* s = librdf_query_results_as_stream(obj_);
+        librdf_stream *s = librdf_query_results_as_stream(obj_);
         regenerateQueryResults();
         return LibrdfStream(s);
     }
