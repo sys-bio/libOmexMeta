@@ -1,8 +1,5 @@
 var searchData=
 [
-  ['_7eeditor_353',['~Editor',['../classomexmeta_1_1Editor.html#aa11380bb7e2ca7859937c3f5907b6240',1,'omexmeta::Editor']]],
-  ['_7eexception_354',['~Exception',['../classomexmeta_1_1Exception.html#aaa08b2467c40a3e28586c0da5da45736',1,'omexmeta::Exception::~Exception()'],['../classException.html#ab834fdbc275748cf287b994503521ada',1,'Exception::~Exception()']]],
-  ['_7erdf_355',['~RDF',['../classomexmeta_1_1RDF.html#a8c6b384164d81e402bda9d124c20153e',1,'omexmeta::RDF']]],
-  ['_7eredlandtype_356',['~RedlandType',['../classredland_1_1RedlandType.html#a028dab285bfd81fa4efca9206b0cd498',1,'redland::RedlandType']]],
-  ['_7etriple_357',['~Triple',['../classomexmeta_1_1Triple.html#a9bbe27351665a72507570bd1da6b209c',1,'omexmeta::Triple']]]
+  ['warn_352',['warn',['../classredland_1_1Logger.html#a244494ce1d28d0b5e3c27de7e462f8e2',1,'redland::Logger']]],
+  ['what_353',['what',['../classomexmeta_1_1Exception.html#af9c3f258e4715dd2102f5c2db5fbe260',1,'omexmeta::Exception::what()'],['../classException.html#ae7ba8334eb35e001b4b0c6df9339c0dc',1,'Exception::what()']]]
 ];

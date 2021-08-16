@@ -1,109 +1,51 @@
 \hypertarget{classomexmeta_1_1Query}{}\doxysection{omexmeta\+::Query Class Reference}
 \label{classomexmeta_1_1Query}\index{omexmeta::Query@{omexmeta::Query}}
-\doxysubsection*{\+: variable name}
-\label{_amgrp7ca1d8b10bb02d408ac42bd6ecaaf12b}%
-librdf\+\_\+query\+\_\+results\+\_\+get\+\_\+binding\+\_\+value\+\_\+by\+\_\+name\+: @query\+\_\+results\+: \#librdf\+\_\+query\+\_\+results query results
 
-Get one binding value for a given name in the current result.
 
-Return value\+: a new \#librdf\+\_\+node binding value or NULL on failure \begin{DoxyCompactItemize}
+make a Sparql  
+
+
+
+
+{\ttfamily \#include $<$Query.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classomexmeta_1_1Query_a405a2bcace57e7b9a78b42ff0bb04a27}\label{classomexmeta_1_1Query_a405a2bcace57e7b9a78b42ff0bb04a27}} 
-\mbox{\hyperlink{classomexmeta_1_1Query_a405a2bcace57e7b9a78b42ff0bb04a27}{Query}} (librdf\+\_\+model $\ast$model, std\+::string query)
-\begin{DoxyCompactList}\small\item\em constructor for \mbox{\hyperlink{classomexmeta_1_1Query}{Query}} object \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classomexmeta_1_1Query_a3f9ff18a0ed6a389104ca76d41119739}\label{classomexmeta_1_1Query_a3f9ff18a0ed6a389104ca76d41119739}} 
-{\bfseries Query} (const \mbox{\hyperlink{classomexmeta_1_1Query}{Query}} \&query)=delete
+\mbox{\Hypertarget{classomexmeta_1_1Query_a2c4f294aee354b2832c4aa2521849c00}\label{classomexmeta_1_1Query_a2c4f294aee354b2832c4aa2521849c00}} 
+{\bfseries Query} (const std\+::string \&query, \mbox{\hyperlink{classredland_1_1LibrdfModel}{Librdf\+Model}} \&model)
 \item 
-\mbox{\Hypertarget{classomexmeta_1_1Query_a6162664ef9a36b453a3b96e913356996}\label{classomexmeta_1_1Query_a6162664ef9a36b453a3b96e913356996}} 
-\mbox{\hyperlink{classomexmeta_1_1Query_a6162664ef9a36b453a3b96e913356996}{Query}} (\mbox{\hyperlink{classomexmeta_1_1Query}{Query}} \&\&query) noexcept
-\begin{DoxyCompactList}\small\item\em move constructor for \mbox{\hyperlink{classomexmeta_1_1Query}{Query}} object \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classomexmeta_1_1Query_afd53f231969232188218cae148aa6482}\label{classomexmeta_1_1Query_afd53f231969232188218cae148aa6482}} 
-\mbox{\hyperlink{classomexmeta_1_1Query}{Query}} \& {\bfseries operator=} (const \mbox{\hyperlink{classomexmeta_1_1Query}{Query}} \&query)=delete
-\item 
-\mbox{\Hypertarget{classomexmeta_1_1Query_a818772558b490e25b2ee1bc2417e1282}\label{classomexmeta_1_1Query_a818772558b490e25b2ee1bc2417e1282}} 
-\mbox{\hyperlink{classomexmeta_1_1Query}{Query}} \& \mbox{\hyperlink{classomexmeta_1_1Query_a818772558b490e25b2ee1bc2417e1282}{operator=}} (\mbox{\hyperlink{classomexmeta_1_1Query}{Query}} \&\&query) noexcept
-\begin{DoxyCompactList}\small\item\em move assignment constructor for \mbox{\hyperlink{classomexmeta_1_1Query}{Query}} object \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classomexmeta_1_1Query_a0b9e4ef7fb6c3d0e79a51ed327639ac0}{free\+Query}} ()
-\begin{DoxyCompactList}\small\item\em free resources associated with a query object. \end{DoxyCompactList}\item 
-librdf\+\_\+stream $\ast$ \mbox{\hyperlink{classomexmeta_1_1Query_a0dda4502056d712d351f7057329c7688}{results\+As\+Lib\+Rdf\+Stream}} ()
-\item 
-Results\+Map \mbox{\hyperlink{classomexmeta_1_1Query_ab50cc5f76dcf7f863f9fa9d0bf755071}{results\+As\+Map}} ()
-\begin{DoxyCompactList}\small\item\em returns query results in a map where keys are the variable names used in query and values are vectors of values for results. \end{DoxyCompactList}\item 
-std\+::string \mbox{\hyperlink{classomexmeta_1_1Query_a7109dd08bd808bf5a20becb164622ed6}{results\+As\+Str}} (const std\+::string \&output\+\_\+format, std\+::string baseuri=\char`\"{}query\+\_\+results\char`\"{}) const
-\begin{DoxyCompactList}\small\item\em collect the result of the query as a string \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classomexmeta_1_1Query_a879a4db0413abc8f4a3470877ebf5193}{run\+Query}} ()
-\begin{DoxyCompactList}\small\item\em Run a query. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classomexmeta_1_1Query_a9f9639927203dc97e93bfca5508b6d01}\label{classomexmeta_1_1Query_a9f9639927203dc97e93bfca5508b6d01}} 
-void \mbox{\hyperlink{classomexmeta_1_1Query_a9f9639927203dc97e93bfca5508b6d01}{print\+Query\+Results}} ()
-\begin{DoxyCompactList}\small\item\em Output query results to cout. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\mbox{\Hypertarget{classomexmeta_1_1Query_a80b878ddc423adc0f8cbc99dfa3c81b0}\label{classomexmeta_1_1Query_a80b878ddc423adc0f8cbc99dfa3c81b0}} 
+Results\+Map \mbox{\hyperlink{classomexmeta_1_1Query_a80b878ddc423adc0f8cbc99dfa3c81b0}{as\+Map}} ()
+\begin{DoxyCompactList}\small\item\em return query results as a Results\+Map, where sparql variables are bound as keys in a map and values are vectors containing nodes associated with the ith position in the query results. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classomexmeta_1_1Query_afa2f5c1c2f26660442d61f5def6ebeca}{as\+String}} (const std\+::string \&format)
+\begin{DoxyCompactList}\small\item\em return query results as a string in the format of your choosing. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{classomexmeta_1_1Query_a0b9e4ef7fb6c3d0e79a51ed327639ac0}\label{classomexmeta_1_1Query_a0b9e4ef7fb6c3d0e79a51ed327639ac0}} 
-\index{omexmeta::Query@{omexmeta::Query}!freeQuery@{freeQuery}}
-\index{freeQuery@{freeQuery}!omexmeta::Query@{omexmeta::Query}}
-\doxysubsubsection{\texorpdfstring{freeQuery()}{freeQuery()}}
-{\footnotesize\ttfamily void omexmeta\+::\+Query\+::free\+Query (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-
-
-free resources associated with a query object. 
-
-it is the callers responsibility to ensure resources used by \mbox{\hyperlink{classomexmeta_1_1Query}{Query}} are released after use. \mbox{\Hypertarget{classomexmeta_1_1Query_a0dda4502056d712d351f7057329c7688}\label{classomexmeta_1_1Query_a0dda4502056d712d351f7057329c7688}} 
-\index{omexmeta::Query@{omexmeta::Query}!resultsAsLibRdfStream@{resultsAsLibRdfStream}}
-\index{resultsAsLibRdfStream@{resultsAsLibRdfStream}!omexmeta::Query@{omexmeta::Query}}
-\doxysubsubsection{\texorpdfstring{resultsAsLibRdfStream()}{resultsAsLibRdfStream()}}
-{\footnotesize\ttfamily librdf\+\_\+stream $\ast$ omexmeta\+::\+Query\+::results\+As\+Lib\+Rdf\+Stream (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-@breif returns the results as a librdf\+\_\+stream$\ast$ object
-
-developers. Consider removing. \mbox{\Hypertarget{classomexmeta_1_1Query_ab50cc5f76dcf7f863f9fa9d0bf755071}\label{classomexmeta_1_1Query_ab50cc5f76dcf7f863f9fa9d0bf755071}} 
-\index{omexmeta::Query@{omexmeta::Query}!resultsAsMap@{resultsAsMap}}
-\index{resultsAsMap@{resultsAsMap}!omexmeta::Query@{omexmeta::Query}}
-\doxysubsubsection{\texorpdfstring{resultsAsMap()}{resultsAsMap()}}
-{\footnotesize\ttfamily Results\+Map omexmeta\+::\+Query\+::results\+As\+Map (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-
-
-returns query results in a map where keys are the variable names used in query and values are vectors of values for results. 
-
-\mbox{\hyperlink{classThis}{This}} is the only supported mechanism for ascertaining query results programatically, without needing to read/write to/from file. \mbox{\hyperlink{classThis}{This}} method uses an iterator from librdf. When it gets to the end of the iterator, the iterator is \char`\"{}used up\char`\"{}. Therefore at the end of collecting the results as a map, the original query is re-\/run, so that the presently instantiated \mbox{\hyperlink{classomexmeta_1_1Query}{Query}} object is not rendered useless.
-
-If the query looks like this\+: 
-\begin{DoxyCode}{0}
-\DoxyCodeLine{std::string query\_string =   \textcolor{stringliteral}{"{}SELECT ?x ?y ?z}}
-\DoxyCodeLine{\textcolor{stringliteral}{                             "{}}WHERE \{\textcolor{stringliteral}{"{}}}
-\DoxyCodeLine{\textcolor{stringliteral}{                             "{}}   ?x ?y ?z\textcolor{stringliteral}{"{}}}
-\DoxyCodeLine{\textcolor{stringliteral}{                             "{}}\}\textcolor{stringliteral}{"{};}}
-\DoxyCodeLine{\textcolor{stringliteral}{Query query(query\_string);}}
-
-\end{DoxyCode}
- The column names will be x, y and z and the results will be string representations of all subjects (?x), predicates (?y) and resources (?z) in a vector of size {\ttfamily n}, where n is the number of query results. \mbox{\Hypertarget{classomexmeta_1_1Query_a7109dd08bd808bf5a20becb164622ed6}\label{classomexmeta_1_1Query_a7109dd08bd808bf5a20becb164622ed6}} 
-\index{omexmeta::Query@{omexmeta::Query}!resultsAsStr@{resultsAsStr}}
-\index{resultsAsStr@{resultsAsStr}!omexmeta::Query@{omexmeta::Query}}
-\doxysubsubsection{\texorpdfstring{resultsAsStr()}{resultsAsStr()}}
-{\footnotesize\ttfamily std\+::string omexmeta\+::\+Query\+::results\+As\+Str (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{output\+\_\+format,  }\item[{std\+::string}]{baseuri = {\ttfamily \char`\"{}query\+\_\+results\char`\"{}} }\end{DoxyParamCaption}) const}
-
-
-
-collect the result of the query as a string 
+\doxysubsection{Detailed Description}
+make a Sparql 
 
 
 \begin{DoxyParams}{Parameters}
-{\em output\+\_\+format} & one of 9 strings used to choose how you want the results to be presented. \mbox{\hyperlink{classOptions}{Options}} are xml, json, table, csv, mkr, tsv, html, turtle and rdfxml. \\
+{\em query} & on the rdf graph represented by \\
+\hline
+{\em model.} & \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{classomexmeta_1_1Query_a879a4db0413abc8f4a3470877ebf5193}\label{classomexmeta_1_1Query_a879a4db0413abc8f4a3470877ebf5193}} 
-\index{omexmeta::Query@{omexmeta::Query}!runQuery@{runQuery}}
-\index{runQuery@{runQuery}!omexmeta::Query@{omexmeta::Query}}
-\doxysubsubsection{\texorpdfstring{runQuery()}{runQuery()}}
-{\footnotesize\ttfamily void omexmeta\+::\+Query\+::run\+Query (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classomexmeta_1_1Query_afa2f5c1c2f26660442d61f5def6ebeca}\label{classomexmeta_1_1Query_afa2f5c1c2f26660442d61f5def6ebeca}} 
+\index{omexmeta::Query@{omexmeta::Query}!asString@{asString}}
+\index{asString@{asString}!omexmeta::Query@{omexmeta::Query}}
+\doxysubsubsection{\texorpdfstring{asString()}{asString()}}
+{\footnotesize\ttfamily std\+::string omexmeta\+::\+Query\+::as\+String (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{format }\end{DoxyParamCaption})}
 
 
 
-Run a query. 
+return query results as a string in the format of your choosing. 
 
-Users do not need to manually execute a query using this method. It is used automatically in the constructor for \mbox{\hyperlink{classomexmeta_1_1Query}{Query}} and again in \mbox{\hyperlink{classomexmeta_1_1Query_ab50cc5f76dcf7f863f9fa9d0bf755071}{Query\+::results\+As\+Map}}. 
+valid formats are \char`\"{}xml\char`\"{}, \char`\"{}json\char`\"{}, \char`\"{}table\char`\"{}, \char`\"{}csv\char`\"{}, \char`\"{}mkr\char`\"{}, \char`\"{}tsv\char`\"{}, \char`\"{}html\char`\"{},\char`\"{}turtle\char`\"{}, \char`\"{}rdfxml\char`\"{}, 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

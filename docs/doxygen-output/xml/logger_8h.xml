@@ -174,12 +174,12 @@
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="27">
+      <node id="28">
         <label>src/redland/RedlandWrapper/src/include/redland/LibrdfQueryResults.h</label>
         <link refid="LibrdfQueryResults_8h_source"/>
-        <childnode refid="28" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
-        <childnode refid="31" relation="include">
+        <childnode refid="32" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
@@ -198,17 +198,21 @@
         <childnode refid="22" relation="include">
         </childnode>
       </node>
-      <node id="31">
+      <node id="32">
         <label>src/redland/RedlandWrapper/src/include/redland/LibrdfQuery.h</label>
         <link refid="LibrdfQuery_8h_source"/>
         <childnode refid="12" relation="include">
         </childnode>
-        <childnode refid="28" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
-        <childnode refid="27" relation="include">
+        <childnode refid="28" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
+      </node>
+      <node id="26">
+        <label>src/omexmeta/include/omexmeta/Query.h</label>
+        <link refid="Query_8h_source"/>
       </node>
       <node id="4">
         <label>src/omexmeta/include/omexmeta/RDF.h</label>
@@ -226,26 +230,26 @@
         <childnode refid="4" relation="include">
         </childnode>
       </node>
-      <node id="37">
+      <node id="38">
         <label>src/redland/RedlandWrapper/src/include/redland/LibrdfStream.h</label>
         <link refid="LibrdfStream_8h_source"/>
-        <childnode refid="28" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
-        <childnode refid="27" relation="include">
+        <childnode refid="28" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
       </node>
-      <node id="28">
+      <node id="29">
         <label>src/redland/RedlandWrapper/src/include/redland/LibrdfModel.h</label>
         <link refid="LibrdfModel_8h_source"/>
-        <childnode refid="29" relation="include">
-        </childnode>
         <childnode refid="30" relation="include">
         </childnode>
         <childnode refid="31" relation="include">
         </childnode>
         <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
@@ -270,16 +274,16 @@
         <childnode refid="23" relation="include">
         </childnode>
       </node>
-      <node id="35">
+      <node id="36">
         <label>src/redland/RedlandWrapper/src/include/redland/LibrdfStatement.h</label>
         <link refid="LibrdfStatement_8h_source"/>
         <childnode refid="19" relation="include">
         </childnode>
-        <childnode refid="28" relation="include">
-        </childnode>
-        <childnode refid="36" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
         <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
         </childnode>
       </node>
       <node id="16">
@@ -303,7 +307,7 @@
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="26" relation="include">
+        <childnode refid="27" relation="include">
         </childnode>
       </node>
       <node id="12">
@@ -372,15 +376,15 @@
         <childnode refid="23" relation="include">
         </childnode>
       </node>
-      <node id="36">
+      <node id="37">
         <label>src/redland/RedlandWrapper/src/include/redland/LibrdfStorage.h</label>
         <link refid="LibrdfStorage_8h_source"/>
-        <childnode refid="28" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
       </node>
-      <node id="32">
+      <node id="33">
         <label>src/redland/RedlandWrapper/src/include/redland/LibrdfSerializer.h</label>
         <link refid="LibrdfSerializer_8h_source"/>
         <childnode refid="5" relation="include">
@@ -436,28 +440,28 @@
         <childnode refid="22" relation="include">
         </childnode>
       </node>
-      <node id="26">
+      <node id="27">
         <label>src/redland/RedlandWrapper/src/include/redland/RedlandType.h</label>
         <link refid="RedlandType_8h_source"/>
-        <childnode refid="27" relation="include">
-        </childnode>
-        <childnode refid="32" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
+        <childnode refid="28" relation="include">
         </childnode>
         <childnode refid="33" relation="include">
         </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
       </node>
-      <node id="34">
+      <node id="35">
         <label>src/redland/RedlandWrapper/src/include/redland/LibrdfNode.h</label>
         <link refid="LibrdfNode_8h_source"/>
         <childnode refid="19" relation="include">
         </childnode>
-        <childnode refid="30" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
-        <childnode refid="32" relation="include">
+        <childnode refid="33" relation="include">
         </childnode>
-        <childnode refid="35" relation="include">
+        <childnode refid="36" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
@@ -482,6 +486,8 @@
         <childnode refid="21" relation="include">
         </childnode>
         <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
@@ -524,27 +530,27 @@
         <childnode refid="19" relation="include">
         </childnode>
       </node>
-      <node id="29">
+      <node id="30">
         <label>src/omexmeta/include/omexmeta/VCardTranslator.h</label>
         <link refid="VCardTranslator_8h_source"/>
         <childnode refid="4" relation="include">
         </childnode>
       </node>
-      <node id="33">
+      <node id="34">
         <label>src/redland/RedlandWrapper/src/include/redland/RefCountedRedlandType.h</label>
         <link refid="RefCountedRedlandType_8h_source"/>
-        <childnode refid="34" relation="include">
+        <childnode refid="35" relation="include">
         </childnode>
-        <childnode refid="31" relation="include">
-        </childnode>
-        <childnode refid="37" relation="include">
+        <childnode refid="32" relation="include">
         </childnode>
         <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
       </node>
-      <node id="30">
+      <node id="31">
         <label>src/redland/RedlandWrapper/src/include/redland/LibrdfParser.h</label>
         <link refid="LibrdfParser_8h_source"/>
         <childnode refid="5" relation="include">
@@ -578,14 +584,14 @@
         <label>src/omexmeta/include/omexmeta/PurgeRDFBag.h</label>
         <link refid="PurgeRDFBag_8h_source"/>
       </node>
-      <node id="38">
+      <node id="39">
         <label>src/redland/RedlandWrapper/src/include/redland/LibrdfUri.h</label>
         <link refid="LibrdfUri_8h_source"/>
-        <childnode refid="34" relation="include">
+        <childnode refid="35" relation="include">
         </childnode>
-        <childnode refid="30" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
-        <childnode refid="32" relation="include">
+        <childnode refid="33" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
@@ -733,7 +739,7 @@
       <memberdef kind="define" id="Logger_8h_1af57d4b35a1aa509b65825ad68ec4f457" prot="public" static="no">
         <name>LOGGER_SET_ERROR</name>
         <param></param>
-        <initializer>Logger::getLogger()-&gt;setLevel(Logger::LogLevel::error);</initializer>
+        <initializer>Logger::getLogger()-&gt;setLevel(Logger::LogLevel::err);</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -851,12 +857,12 @@
 <codeline lineno="192"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LOGGER_SET_TRACE()<sp/>Logger::getLogger()-&gt;setLevel(Logger::LogLevel::trace);</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="193"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LOGGER_SET_DEBUG()<sp/>Logger::getLogger()-&gt;setLevel(Logger::LogLevel::debug);</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="194"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LOGGER_SET_WARN()<sp/>Logger::getLogger()-&gt;setLevel(Logger::LogLevel::warn);</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="195"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LOGGER_SET_ERROR()<sp/>Logger::getLogger()-&gt;setLevel(Logger::LogLevel::error);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="195"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LOGGER_SET_ERROR()<sp/>Logger::getLogger()-&gt;setLevel(Logger::LogLevel::err);</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="196"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LOGGER_SET_CRITICAL()<sp/>Logger::getLogger()-&gt;setLevel(Logger::LogLevel::critical);</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="197"><highlight class="normal"></highlight></codeline>
 <codeline lineno="198"><highlight class="normal">}</highlight><highlight class="comment">//<sp/>namespace<sp/>redland</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="199"><highlight class="normal"></highlight></codeline>
-<codeline lineno="200"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="comment">//LIBOMEXMETA_LOGGER_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="200"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="comment">//LIBOMEXMETA_LOGGER2_H</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="src/redland/RedlandWrapper/src/include/redland/Logger.h"/>
   </compounddef>

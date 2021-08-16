@@ -4,11 +4,11 @@
     <compoundname>redland::LibrdfParser</compoundname>
     <basecompoundref refid="classredland_1_1RedlandType" prot="public" virt="non-virtual">redland::RedlandType&lt; librdf_parser, parser_free_func &gt;</basecompoundref>
       <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="classredland_1_1LibrdfParser_1a421682cecd26a1ebef97fdee07df0856" prot="private" static="no" mutable="no">
+      <memberdef kind="variable" id="classredland_1_1LibrdfParser_1a25924169fb6117be5e62a537f0f23362" prot="private" static="no" mutable="no">
         <type>std::string</type>
-        <definition>std::string redland::LibrdfParser::format_</definition>
+        <definition>std::string redland::LibrdfParser::syntax_</definition>
         <argsstring></argsstring>
-        <name>format_</name>
+        <name>syntax_</name>
         <initializer>= std::string()</initializer>
         <briefdescription>
         </briefdescription>
@@ -594,7 +594,6 @@
     <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfParser.h" line="31" column="5" bodyfile="src/redland/RedlandWrapper/src/include/redland/LibrdfParser.h" bodystart="31" bodyend="118"/>
     <listofallmembers>
       <member refid="classredland_1_1RedlandType_1a86304e5a3e82aae8ea4aae868b4fa7e4" prot="public" virt="virtual"><scope>redland::LibrdfParser</scope><name>checkForNull</name></member>
-      <member refid="classredland_1_1LibrdfParser_1a421682cecd26a1ebef97fdee07df0856" prot="private" virt="non-virtual"><scope>redland::LibrdfParser</scope><name>format_</name></member>
       <member refid="classredland_1_1RedlandType_1afd3a894521540cf05dfa56a3a59b25b9" prot="public" virt="non-virtual"><scope>redland::LibrdfParser</scope><name>freeFunc_</name></member>
       <member refid="classredland_1_1RedlandType_1a812fc8fefc5df2081b8a1a384b9e1827" prot="public" virt="virtual"><scope>redland::LibrdfParser</scope><name>freeObj</name></member>
       <member refid="classredland_1_1RedlandType_1a4faf8772c3328a5427c8e0b02a92f288" prot="public" virt="virtual"><scope>redland::LibrdfParser</scope><name>get</name></member>
@@ -638,6 +637,7 @@
       <member refid="classredland_1_1LibrdfParser_1a79fcda1e0c2cccfa8a070a1aea196ebd" prot="public" virt="non-virtual"><scope>redland::LibrdfParser</scope><name>setOptions</name></member>
       <member refid="classredland_1_1LibrdfParser_1a81d772e0be266b00bf840fd9dbeab8d1" prot="public" virt="non-virtual"><scope>redland::LibrdfParser</scope><name>setTypeUri</name></member>
       <member refid="classredland_1_1LibrdfParser_1a76ecf31cd9fb96ba4e10a35f383e47fc" prot="public" virt="non-virtual"><scope>redland::LibrdfParser</scope><name>setTypeUri</name></member>
+      <member refid="classredland_1_1LibrdfParser_1a25924169fb6117be5e62a537f0f23362" prot="private" virt="non-virtual"><scope>redland::LibrdfParser</scope><name>syntax_</name></member>
       <member refid="classredland_1_1LibrdfParser_1af976fc5cb1a7b021ab8cd2f345651728" prot="private" virt="non-virtual"><scope>redland::LibrdfParser</scope><name>type_uri_</name></member>
       <member refid="classredland_1_1LibrdfParser_1ab26e32f1bb8f4e68830dab00b0446855" prot="private" virt="non-virtual"><scope>redland::LibrdfParser</scope><name>validateParserName</name></member>
       <member refid="classredland_1_1RedlandType_1a028dab285bfd81fa4efca9206b0cd498" prot="public" virt="virtual"><scope>redland::LibrdfParser</scope><name>~RedlandType</name></member>

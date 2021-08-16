@@ -104,9 +104,9 @@ $(function() {
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keyword">public</span>:</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="keyword">using</span> RedlandType_query_results::RedlandType_query_results;</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="keyword">explicit</span> <a class="code" href="classredland_1_1LibrdfQueryResults.html">LibrdfQueryResults</a>(librdf_query_results *queryResults, <a class="code" href="classredland_1_1LibrdfQuery.html">LibrdfQuery</a>* query);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="keyword">explicit</span> <a class="code" href="classredland_1_1LibrdfQueryResults.html">LibrdfQueryResults</a>(librdf_query_results *queryResults);</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="keywordtype">void</span> regenerateQueryResults();</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment">//        void regenerateQueryResults();</span></div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <a class="code" href="classredland_1_1LibrdfStream.html">LibrdfStream</a> <a class="code" href="classredland_1_1LibrdfQueryResults.html#abac7546d8487c786b39046878d27d0b7">toStream</a>();</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
@@ -116,80 +116,65 @@ $(function() {
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        std::vector&lt;LibrdfNode&gt; getBindings();</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="comment">//        LibrdfNode getBindingValue();</span></div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="comment">//</span></div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="comment">//        std::string getBindingName();</span></div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="comment">//</span></div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="comment">//        LibrdfNode getBindingValueByName();</span></div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="comment">//</span></div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="comment">//        std::string toString();</span></div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        std::string str(std::string format);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="classredland_1_1LibrdfQueryResults.html#a056a92a8cd926072718e4553ed9a39b9">isBoolean</a>();</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="classredland_1_1LibrdfQueryResults.html#a7a175af6ea28920887c4b2dc4645feb0">isBindings</a>();</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="classredland_1_1LibrdfQueryResults.html#a056a92a8cd926072718e4553ed9a39b9">isBoolean</a>();</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="classredland_1_1LibrdfQueryResults.html#a7a175af6ea28920887c4b2dc4645feb0">isBindings</a>();</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="keywordtype">int</span> getBoolean();</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="classredland_1_1LibrdfQueryResults.html#a60e7f4a030655ee3ff0801ce28e3e4e8">isGraph</a>();</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        std::string getBindingValueByName(<span class="keyword">const</span> std::string &amp;name);</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <span class="keywordtype">int</span> getBoolean();</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="classredland_1_1LibrdfQueryResults.html#a60e7f4a030655ee3ff0801ce28e3e4e8">isGraph</a>();</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <span class="keywordtype">int</span> <a class="code" href="classredland_1_1LibrdfQueryResults.html#a1fe7caabdd6e0a2303dd336c9a9b6fb4">getBindingsCount</a>();</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        std::string getBindingValueByName(<span class="keyword">const</span> std::string &amp;name);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        <span class="keyword">static</span> std::string stringReplace(std::string str, <span class="keyword">const</span> std::string &amp;string_to_replace, <span class="keyword">const</span> std::string &amp;replacement);</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        <span class="keywordtype">int</span> <a class="code" href="classredland_1_1LibrdfQueryResults.html#a1fe7caabdd6e0a2303dd336c9a9b6fb4">getBindingsCount</a>();</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        <span class="keyword">static</span> std::string stringReplace(std::string str, <span class="keyword">const</span> std::string &amp;string_to_replace, <span class="keyword">const</span> std::string &amp;replacement);</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        std::string toString(<span class="keyword">const</span> std::string &amp;output_format);</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        std::string toString(<span class="keyword">const</span> std::string &amp;output_format);</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        std::string <a class="code" href="classredland_1_1LibrdfQueryResults.html#ad5f4123f843438e687ef5b8f99816de4">getBindingsName</a>(<span class="keywordtype">int</span> index);</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;         std::vector&lt;std::string&gt; <a class="code" href="classredland_1_1LibrdfQueryResults.html#adf2873cbdc7263b3dd16df61c8ae1c99">getBindingsNames</a>();</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        <span class="keywordtype">void</span> printQueryResults();</div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        std::string <a class="code" href="classredland_1_1LibrdfQueryResults.html#ad5f4123f843438e687ef5b8f99816de4">getBindingsName</a>(<span class="keywordtype">int</span> index);</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;         std::vector&lt;std::string&gt; <a class="code" href="classredland_1_1LibrdfQueryResults.html#adf2873cbdc7263b3dd16df61c8ae1c99">getBindingsNames</a>();</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        std::vector&lt;std::string&gt; getValidOutputFormats() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        ResultsMap <a class="code" href="classredland_1_1LibrdfQueryResults.html#ac80249e27c57b11309311862c1cee452">map</a>();</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        ResultsMap map_;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        <span class="keywordtype">bool</span> mapExecuted = <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        <span class="keywordtype">void</span> printQueryResults();</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160; </div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        std::vector&lt;std::string&gt; getValidOutputFormats() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160; </div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        ResultsMap <a class="code" href="classredland_1_1LibrdfQueryResults.html#ac80249e27c57b11309311862c1cee452">map</a>();</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160; </div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        <a class="code" href="classredland_1_1LibrdfQuery.html">LibrdfQuery</a>* query_;</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        ResultsMap map_;</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        <span class="keywordtype">bool</span> mapExecuted = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160; </div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        std::vector&lt;std::string&gt; valid_output_formats_ = {</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;                <span class="stringliteral">&quot;xml&quot;</span>,</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;                <span class="stringliteral">&quot;json&quot;</span>,</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;                <span class="stringliteral">&quot;table&quot;</span>,</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;                <span class="stringliteral">&quot;csv&quot;</span>,</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;                <span class="stringliteral">&quot;mkr&quot;</span>,</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;                <span class="stringliteral">&quot;tsv&quot;</span>,</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;                <span class="stringliteral">&quot;html&quot;</span>,</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;                <span class="stringliteral">&quot;turtle&quot;</span>,</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;                <span class="stringliteral">&quot;rdfxml&quot;</span>,</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        };</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160; </div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        librdf_query_results* begin = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    };</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;}<span class="comment">// namespace redland</span></div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160; </div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;<span class="preprocessor">#endif</span><span class="comment">//LIBOMEXMETA_LIBRDFQuery_results_H</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        std::vector&lt;std::string&gt; valid_output_formats_ = {</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;                <span class="stringliteral">&quot;xml&quot;</span>,</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;                <span class="stringliteral">&quot;json&quot;</span>,</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;                <span class="stringliteral">&quot;table&quot;</span>,</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;                <span class="stringliteral">&quot;csv&quot;</span>,</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;                <span class="stringliteral">&quot;mkr&quot;</span>,</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;                <span class="stringliteral">&quot;tsv&quot;</span>,</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;                <span class="stringliteral">&quot;html&quot;</span>,</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;                <span class="stringliteral">&quot;turtle&quot;</span>,</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;                <span class="stringliteral">&quot;rdfxml&quot;</span>,</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        };</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160; </div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    };</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;}<span class="comment">// namespace redland</span></div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160; </div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;<span class="preprocessor">#endif</span><span class="comment">//LIBOMEXMETA_LIBRDFQuery_results_H</span></div>
 <div class="ttc" id="aclassredland_1_1LibrdfQueryResults_html"><div class="ttname"><a href="classredland_1_1LibrdfQueryResults.html">redland::LibrdfQueryResults</a></div><div class="ttdef"><b>Definition:</b> LibrdfQueryResults.h:35</div></div>
-<div class="ttc" id="aclassredland_1_1LibrdfQueryResults_html_a056a92a8cd926072718e4553ed9a39b9"><div class="ttname"><a href="classredland_1_1LibrdfQueryResults.html#a056a92a8cd926072718e4553ed9a39b9">redland::LibrdfQueryResults::isBoolean</a></div><div class="ttdeci">bool isBoolean()</div><div class="ttdoc">true when this LibrdfQueryResults is variable boolean format</div><div class="ttdef"><b>Definition:</b> LibrdfQueryResults.cpp:48</div></div>
-<div class="ttc" id="aclassredland_1_1LibrdfQueryResults_html_a1fe7caabdd6e0a2303dd336c9a9b6fb4"><div class="ttname"><a href="classredland_1_1LibrdfQueryResults.html#a1fe7caabdd6e0a2303dd336c9a9b6fb4">redland::LibrdfQueryResults::getBindingsCount</a></div><div class="ttdeci">int getBindingsCount()</div><div class="ttdoc">returns the number of bindings in the sparql query.</div><div class="ttdef"><b>Definition:</b> LibrdfQueryResults.cpp:78</div></div>
-<div class="ttc" id="aclassredland_1_1LibrdfQueryResults_html_a2fc367d8efdeaaa4ebf9e5e710d0440e"><div class="ttname"><a href="classredland_1_1LibrdfQueryResults.html#a2fc367d8efdeaaa4ebf9e5e710d0440e">redland::LibrdfQueryResults::next</a></div><div class="ttdeci">int next()</div><div class="ttdoc">Move to the next result.</div><div class="ttdef"><b>Definition:</b> LibrdfQueryResults.cpp:117</div></div>
+<div class="ttc" id="aclassredland_1_1LibrdfQueryResults_html_a056a92a8cd926072718e4553ed9a39b9"><div class="ttname"><a href="classredland_1_1LibrdfQueryResults.html#a056a92a8cd926072718e4553ed9a39b9">redland::LibrdfQueryResults::isBoolean</a></div><div class="ttdeci">bool isBoolean()</div><div class="ttdoc">true when this LibrdfQueryResults is variable boolean format</div><div class="ttdef"><b>Definition:</b> LibrdfQueryResults.cpp:49</div></div>
+<div class="ttc" id="aclassredland_1_1LibrdfQueryResults_html_a1fe7caabdd6e0a2303dd336c9a9b6fb4"><div class="ttname"><a href="classredland_1_1LibrdfQueryResults.html#a1fe7caabdd6e0a2303dd336c9a9b6fb4">redland::LibrdfQueryResults::getBindingsCount</a></div><div class="ttdeci">int getBindingsCount()</div><div class="ttdoc">returns the number of bindings in the sparql query.</div><div class="ttdef"><b>Definition:</b> LibrdfQueryResults.cpp:79</div></div>
+<div class="ttc" id="aclassredland_1_1LibrdfQueryResults_html_a2fc367d8efdeaaa4ebf9e5e710d0440e"><div class="ttname"><a href="classredland_1_1LibrdfQueryResults.html#a2fc367d8efdeaaa4ebf9e5e710d0440e">redland::LibrdfQueryResults::next</a></div><div class="ttdeci">int next()</div><div class="ttdoc">Move to the next result.</div><div class="ttdef"><b>Definition:</b> LibrdfQueryResults.cpp:118</div></div>
 <div class="ttc" id="aclassredland_1_1LibrdfQueryResults_html_a60e7f4a030655ee3ff0801ce28e3e4e8"><div class="ttname"><a href="classredland_1_1LibrdfQueryResults.html#a60e7f4a030655ee3ff0801ce28e3e4e8">redland::LibrdfQueryResults::isGraph</a></div><div class="ttdeci">bool isGraph()</div><div class="ttdoc">true when this LibrdfQueryResults is RDF graph format</div><div class="ttdef"><b>Definition:</b> LibrdfQueryResults.cpp:165</div></div>
-<div class="ttc" id="aclassredland_1_1LibrdfQueryResults_html_a7a175af6ea28920887c4b2dc4645feb0"><div class="ttname"><a href="classredland_1_1LibrdfQueryResults.html#a7a175af6ea28920887c4b2dc4645feb0">redland::LibrdfQueryResults::isBindings</a></div><div class="ttdeci">bool isBindings()</div><div class="ttdoc">true when this LibrdfQueryResults is variable bindings format</div><div class="ttdef"><b>Definition:</b> LibrdfQueryResults.cpp:52</div></div>
-<div class="ttc" id="aclassredland_1_1LibrdfQueryResults_html_abac7546d8487c786b39046878d27d0b7"><div class="ttname"><a href="classredland_1_1LibrdfQueryResults.html#abac7546d8487c786b39046878d27d0b7">redland::LibrdfQueryResults::toStream</a></div><div class="ttdeci">LibrdfStream toStream()</div><div class="ttdoc">get the query results as a LibrdfStream</div><div class="ttdef"><b>Definition:</b> LibrdfQueryResults.cpp:60</div></div>
-<div class="ttc" id="aclassredland_1_1LibrdfQueryResults_html_ac80249e27c57b11309311862c1cee452"><div class="ttname"><a href="classredland_1_1LibrdfQueryResults.html#ac80249e27c57b11309311862c1cee452">redland::LibrdfQueryResults::map</a></div><div class="ttdeci">ResultsMap map()</div><div class="ttdoc">create a map from the query results.</div><div class="ttdef"><b>Definition:</b> LibrdfQueryResults.cpp:125</div></div>
-<div class="ttc" id="aclassredland_1_1LibrdfQueryResults_html_ad5f4123f843438e687ef5b8f99816de4"><div class="ttname"><a href="classredland_1_1LibrdfQueryResults.html#ad5f4123f843438e687ef5b8f99816de4">redland::LibrdfQueryResults::getBindingsName</a></div><div class="ttdeci">std::string getBindingsName(int index)</div><div class="ttdoc">get the value of the bindings at</div><div class="ttdef"><b>Definition:</b> LibrdfQueryResults.cpp:121</div></div>
+<div class="ttc" id="aclassredland_1_1LibrdfQueryResults_html_a7a175af6ea28920887c4b2dc4645feb0"><div class="ttname"><a href="classredland_1_1LibrdfQueryResults.html#a7a175af6ea28920887c4b2dc4645feb0">redland::LibrdfQueryResults::isBindings</a></div><div class="ttdeci">bool isBindings()</div><div class="ttdoc">true when this LibrdfQueryResults is variable bindings format</div><div class="ttdef"><b>Definition:</b> LibrdfQueryResults.cpp:53</div></div>
+<div class="ttc" id="aclassredland_1_1LibrdfQueryResults_html_abac7546d8487c786b39046878d27d0b7"><div class="ttname"><a href="classredland_1_1LibrdfQueryResults.html#abac7546d8487c786b39046878d27d0b7">redland::LibrdfQueryResults::toStream</a></div><div class="ttdeci">LibrdfStream toStream()</div><div class="ttdoc">get the query results as a LibrdfStream</div><div class="ttdef"><b>Definition:</b> LibrdfQueryResults.cpp:61</div></div>
+<div class="ttc" id="aclassredland_1_1LibrdfQueryResults_html_ac80249e27c57b11309311862c1cee452"><div class="ttname"><a href="classredland_1_1LibrdfQueryResults.html#ac80249e27c57b11309311862c1cee452">redland::LibrdfQueryResults::map</a></div><div class="ttdeci">ResultsMap map()</div><div class="ttdoc">create a map from the query results.</div><div class="ttdef"><b>Definition:</b> LibrdfQueryResults.cpp:126</div></div>
+<div class="ttc" id="aclassredland_1_1LibrdfQueryResults_html_ad5f4123f843438e687ef5b8f99816de4"><div class="ttname"><a href="classredland_1_1LibrdfQueryResults.html#ad5f4123f843438e687ef5b8f99816de4">redland::LibrdfQueryResults::getBindingsName</a></div><div class="ttdeci">std::string getBindingsName(int index)</div><div class="ttdoc">get the value of the bindings at</div><div class="ttdef"><b>Definition:</b> LibrdfQueryResults.cpp:122</div></div>
 <div class="ttc" id="aclassredland_1_1LibrdfQueryResults_html_ad6ab0b2bd53491ce650f9c740f04c2ec"><div class="ttname"><a href="classredland_1_1LibrdfQueryResults.html#ad6ab0b2bd53491ce650f9c740f04c2ec">redland::LibrdfQueryResults::isFinished</a></div><div class="ttdeci">bool isFinished()</div><div class="ttdoc">true when binding results are exausted</div><div class="ttdef"><b>Definition:</b> LibrdfQueryResults.cpp:23</div></div>
 <div class="ttc" id="aclassredland_1_1LibrdfQueryResults_html_adf2873cbdc7263b3dd16df61c8ae1c99"><div class="ttname"><a href="classredland_1_1LibrdfQueryResults.html#adf2873cbdc7263b3dd16df61c8ae1c99">redland::LibrdfQueryResults::getBindingsNames</a></div><div class="ttdeci">std::vector&lt; std::string &gt; getBindingsNames()</div><div class="ttdoc">get all bindings names as a vector of strings</div><div class="ttdef"><b>Definition:</b> LibrdfQueryResults.cpp:169</div></div>
-<div class="ttc" id="aclassredland_1_1LibrdfQuery_html"><div class="ttname"><a href="classredland_1_1LibrdfQuery.html">redland::LibrdfQuery</a></div><div class="ttdef"><b>Definition:</b> LibrdfQuery.h:51</div></div>
 <div class="ttc" id="aclassredland_1_1LibrdfStream_html"><div class="ttname"><a href="classredland_1_1LibrdfStream.html">redland::LibrdfStream</a></div><div class="ttdef"><b>Definition:</b> LibrdfStream.h:26</div></div>
 <div class="ttc" id="aclassredland_1_1RedlandType_html"><div class="ttname"><a href="classredland_1_1RedlandType.html">redland::RedlandType</a></div><div class="ttdef"><b>Definition:</b> RedlandType.h:31</div></div>
 </div><!-- fragment --></div><!-- contents -->

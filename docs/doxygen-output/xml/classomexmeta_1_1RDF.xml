@@ -163,7 +163,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/RDF.h" line="65" column="18" bodyfile="src/omexmeta/RDF.cpp" bodystart="13" bodyend="22"/>
+        <location file="src/omexmeta/include/omexmeta/RDF.h" line="65" column="18" bodyfile="src/omexmeta/RDF.cpp" bodystart="14" bodyend="23"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1RDF_1a8c6b384164d81e402bda9d124c20153e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -214,7 +214,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/RDF.h" line="85" column="9" bodyfile="src/omexmeta/RDF.cpp" bodystart="25" bodyend="31"/>
+        <location file="src/omexmeta/include/omexmeta/RDF.h" line="85" column="9" bodyfile="src/omexmeta/RDF.cpp" bodystart="26" bodyend="32"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1RDF_1a9d1b20d798969d3c1dac412c621247b9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref> &amp;</type>
@@ -251,7 +251,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/RDF.h" line="97" column="13" bodyfile="src/omexmeta/RDF.cpp" bodystart="33" bodyend="42"/>
+        <location file="src/omexmeta/include/omexmeta/RDF.h" line="97" column="13" bodyfile="src/omexmeta/RDF.cpp" bodystart="34" bodyend="43"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1RDF_1a1ebd37b6dbce97660ed48031686d7f30" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>int</type>
@@ -266,7 +266,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/RDF.h" line="103" column="13" bodyfile="src/omexmeta/RDF.cpp" bodystart="44" bodyend="46"/>
+        <location file="src/omexmeta/include/omexmeta/RDF.h" line="103" column="13" bodyfile="src/omexmeta/RDF.cpp" bodystart="45" bodyend="47"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1RDF_1a6d8ab2edd8f798006ee77a4202bf462e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>bool</type>
@@ -284,7 +284,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/RDF.h" line="109" column="14" bodyfile="src/omexmeta/RDF.cpp" bodystart="48" bodyend="50"/>
+        <location file="src/omexmeta/include/omexmeta/RDF.h" line="109" column="14" bodyfile="src/omexmeta/RDF.cpp" bodystart="49" bodyend="51"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1RDF_1ad403d7c62ef1cf902fcb8b65c5ad641f" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -308,7 +308,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/RDF.h" line="123" column="14" bodyfile="src/omexmeta/RDF.cpp" bodystart="93" bodyend="118"/>
+        <location file="src/omexmeta/include/omexmeta/RDF.h" line="123" column="14" bodyfile="src/omexmeta/RDF.cpp" bodystart="94" bodyend="119"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1RDF_1a602c7ca8ca94b151dd97b8a513cef0a4" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -333,7 +333,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/RDF.h" line="142" column="14" bodyfile="src/omexmeta/RDF.cpp" bodystart="158" bodyend="175"/>
+        <location file="src/omexmeta/include/omexmeta/RDF.h" line="142" column="14" bodyfile="src/omexmeta/RDF.cpp" bodystart="159" bodyend="176"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1RDF_1af62debd6edc14e6ff06c28d7726cfef4" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -376,7 +376,7 @@ Uses LibrdfParser::fromFile under the hood </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/RDF.h" line="160" column="14" bodyfile="src/omexmeta/RDF.cpp" bodystart="202" bodyend="220"/>
+        <location file="src/omexmeta/include/omexmeta/RDF.h" line="160" column="14" bodyfile="src/omexmeta/RDF.cpp" bodystart="203" bodyend="221"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1RDF_1a1fa12a4283c03d068f03ae33c5114c54" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>std::string</type>
@@ -416,7 +416,7 @@ Uses LibrdfParser::fromFile under the hood </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/RDF.h" line="168" column="21" bodyfile="src/omexmeta/RDF.cpp" bodystart="248" bodyend="259"/>
+        <location file="src/omexmeta/include/omexmeta/RDF.h" line="168" column="21" bodyfile="src/omexmeta/RDF.cpp" bodystart="249" bodyend="260"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1RDF_1a3ca48d8b9790b4ccd091204c4d9a0c05" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -484,7 +484,7 @@ Uses LibrdfParser::fromFile under the hood </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/RDF.h" line="181" column="14" bodyfile="src/omexmeta/RDF.cpp" bodystart="274" bodyend="284"/>
+        <location file="src/omexmeta/include/omexmeta/RDF.h" line="181" column="14" bodyfile="src/omexmeta/RDF.cpp" bodystart="275" bodyend="285"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1RDF_1a99bf8d2fd11cc200501ead29f4a8656f" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type><ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref></type>
@@ -539,7 +539,7 @@ Uses LibrdfParser::fromFile under the hood </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/RDF.h" line="191" column="16" bodyfile="src/omexmeta/RDF.cpp" bodystart="291" bodyend="293"/>
+        <location file="src/omexmeta/include/omexmeta/RDF.h" line="191" column="16" bodyfile="src/omexmeta/RDF.cpp" bodystart="292" bodyend="294"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1RDF_1a072496a750958bd7c59471bb5229f0bb" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type><ref refid="classomexmeta_1_1Editor" kindref="compound">Editor</ref> *</type>
@@ -594,7 +594,7 @@ Uses LibrdfParser::fromFile under the hood </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/RDF.h" line="201" column="17" bodyfile="src/omexmeta/RDF.cpp" bodystart="295" bodyend="298"/>
+        <location file="src/omexmeta/include/omexmeta/RDF.h" line="201" column="17" bodyfile="src/omexmeta/RDF.cpp" bodystart="296" bodyend="299"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1RDF_1ac9a8bab617b61115f8c4500b45d52f62" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="classredland_1_1LibrdfModel" kindref="compound">LibrdfModel</ref></type>
@@ -608,7 +608,7 @@ Uses LibrdfParser::fromFile under the hood </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/RDF.h" line="203" column="21" bodyfile="src/omexmeta/RDF.cpp" bodystart="286" bodyend="289"/>
+        <location file="src/omexmeta/include/omexmeta/RDF.h" line="203" column="21" bodyfile="src/omexmeta/RDF.cpp" bodystart="287" bodyend="290"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1RDF_1a11792378c78d2c703ba69692eaa64ce9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="classredland_1_1LibrdfStorage" kindref="compound">LibrdfStorage</ref></type>
@@ -622,7 +622,7 @@ Uses LibrdfParser::fromFile under the hood </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/RDF.h" line="205" column="23" bodyfile="src/omexmeta/RDF.cpp" bodystart="300" bodyend="302"/>
+        <location file="src/omexmeta/include/omexmeta/RDF.h" line="205" column="23" bodyfile="src/omexmeta/RDF.cpp" bodystart="301" bodyend="303"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1RDF_1ab833a4b13d27b5c7e3667dcfe2937e98" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>int</type>
@@ -636,7 +636,7 @@ Uses LibrdfParser::fromFile under the hood </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/RDF.h" line="207" column="13" bodyfile="src/omexmeta/RDF.cpp" bodystart="304" bodyend="306"/>
+        <location file="src/omexmeta/include/omexmeta/RDF.h" line="207" column="13" bodyfile="src/omexmeta/RDF.cpp" bodystart="305" bodyend="307"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1RDF_1a6a9df7e508c0a516e793614e12771759" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>int</type>
@@ -650,7 +650,7 @@ Uses LibrdfParser::fromFile under the hood </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/RDF.h" line="209" column="13" bodyfile="src/omexmeta/RDF.cpp" bodystart="308" bodyend="310"/>
+        <location file="src/omexmeta/include/omexmeta/RDF.h" line="209" column="13" bodyfile="src/omexmeta/RDF.cpp" bodystart="309" bodyend="311"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1RDF_1a752cdbce8114f3bb9b39734c263ac98b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void *</type>
@@ -664,7 +664,7 @@ Uses LibrdfParser::fromFile under the hood </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/RDF.h" line="211" column="14" bodyfile="src/omexmeta/RDF.cpp" bodystart="312" bodyend="314"/>
+        <location file="src/omexmeta/include/omexmeta/RDF.h" line="211" column="14" bodyfile="src/omexmeta/RDF.cpp" bodystart="313" bodyend="315"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1RDF_1a8962e4cfd044a0a76fc09f35d125c40a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>int</type>
@@ -682,7 +682,7 @@ Uses LibrdfParser::fromFile under the hood </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/RDF.h" line="213" column="13" bodyfile="src/omexmeta/RDF.cpp" bodystart="316" bodyend="318"/>
+        <location file="src/omexmeta/include/omexmeta/RDF.h" line="213" column="13" bodyfile="src/omexmeta/RDF.cpp" bodystart="317" bodyend="319"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1RDF_1a3fd8f1647bbe570d1f4efdffe378d624" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>int</type>
@@ -696,14 +696,14 @@ Uses LibrdfParser::fromFile under the hood </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/RDF.h" line="215" column="13" bodyfile="src/omexmeta/RDF.cpp" bodystart="320" bodyend="322"/>
+        <location file="src/omexmeta/include/omexmeta/RDF.h" line="215" column="13" bodyfile="src/omexmeta/RDF.cpp" bodystart="321" bodyend="323"/>
       </memberdef>
-      <memberdef kind="function" id="classomexmeta_1_1RDF_1a6b6244dac65b1cdfab6f450646c857b6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="classomexmeta_1_1RDF_1a2d8400380bc4361fb8ffaf5e90c8c7fd" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>std::string</type>
         <definition>std::string omexmeta::RDF::queryResultsAsString</definition>
-        <argsstring>(const std::string &amp;query_str, const std::string &amp;results_syntax) const override</argsstring>
+        <argsstring>(const std::string &amp;query_str, const std::string &amp;results_syntax) override</argsstring>
         <name>queryResultsAsString</name>
-        <reimplements refid="classomexmeta_1_1IRDF_1adb6598e962e1f7fb8f5acb05a31d9364">queryResultsAsString</reimplements>
+        <reimplements refid="classomexmeta_1_1IRDF_1a4e527f3cda44ecb05b58ec6d3ceae056">queryResultsAsString</reimplements>
         <param>
           <type>const std::string &amp;</type>
           <declname>query_str</declname>
@@ -718,14 +718,14 @@ Uses LibrdfParser::fromFile under the hood </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/RDF.h" line="219" column="21" bodyfile="src/omexmeta/RDF.cpp" bodystart="261" bodyend="266"/>
+        <location file="src/omexmeta/include/omexmeta/RDF.h" line="219" column="21" bodyfile="src/omexmeta/RDF.cpp" bodystart="262" bodyend="267"/>
       </memberdef>
-      <memberdef kind="function" id="classomexmeta_1_1RDF_1a44015b8feae5e1b8f816501f44530732" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="classomexmeta_1_1RDF_1af529c3765fa9bccbc532c01243da557e" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>ResultsMap</type>
         <definition>ResultsMap omexmeta::RDF::queryResultsAsMap</definition>
-        <argsstring>(const std::string &amp;query_str) const override</argsstring>
+        <argsstring>(const std::string &amp;query_str) override</argsstring>
         <name>queryResultsAsMap</name>
-        <reimplements refid="classomexmeta_1_1IRDF_1a37c014e34fa398b5818db14fedbec8d3">queryResultsAsMap</reimplements>
+        <reimplements refid="classomexmeta_1_1IRDF_1a8409c10ab5a8f3208127f162bb2436d1">queryResultsAsMap</reimplements>
         <param>
           <type>const std::string &amp;</type>
           <declname>query_str</declname>
@@ -736,7 +736,7 @@ Uses LibrdfParser::fromFile under the hood </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/RDF.h" line="221" column="20" bodyfile="src/omexmeta/RDF.cpp" bodystart="268" bodyend="272"/>
+        <location file="src/omexmeta/include/omexmeta/RDF.h" line="221" column="20" bodyfile="src/omexmeta/RDF.cpp" bodystart="269" bodyend="273"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1RDF_1a867deb1681500712e942b61e4e1460c6" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>std::unordered_map&lt; std::string, std::string &gt;</type>
@@ -765,7 +765,7 @@ Uses LibrdfParser::fromFile under the hood </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/RDF.h" line="231" column="9" bodyfile="src/omexmeta/RDF.cpp" bodystart="230" bodyend="246"/>
+        <location file="src/omexmeta/include/omexmeta/RDF.h" line="231" column="9" bodyfile="src/omexmeta/RDF.cpp" bodystart="231" bodyend="247"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1RDF_1a501c173fc1b60932391f5f7a3ff8212e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>OmexMetaXmlType</type>
@@ -781,7 +781,7 @@ Uses LibrdfParser::fromFile under the hood </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/RDF.h" line="240" column="25" bodyfile="src/omexmeta/RDF.cpp" bodystart="404" bodyend="406"/>
+        <location file="src/omexmeta/include/omexmeta/RDF.h" line="240" column="25" bodyfile="src/omexmeta/RDF.cpp" bodystart="405" bodyend="407"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1RDF_1add69d33d544dc31789b2ff0a71182a84" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -798,7 +798,7 @@ Uses LibrdfParser::fromFile under the hood </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/RDF.h" line="241" column="14" bodyfile="src/omexmeta/RDF.cpp" bodystart="463" bodyend="465"/>
+        <location file="src/omexmeta/include/omexmeta/RDF.h" line="241" column="14" bodyfile="src/omexmeta/RDF.cpp" bodystart="464" bodyend="466"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1RDF_1ac652b39964477c8ea69e5218f2203013" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -815,7 +815,7 @@ Uses LibrdfParser::fromFile under the hood </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/RDF.h" line="242" column="14" bodyfile="src/omexmeta/RDF.cpp" bodystart="466" bodyend="468"/>
+        <location file="src/omexmeta/include/omexmeta/RDF.h" line="242" column="14" bodyfile="src/omexmeta/RDF.cpp" bodystart="467" bodyend="469"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1RDF_1a72705a830be2b6d6ed40d2cb65136335" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -835,7 +835,7 @@ Uses LibrdfParser::fromFile under the hood </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/RDF.h" line="249" column="14" bodyfile="src/omexmeta/RDF.cpp" bodystart="408" bodyend="410"/>
+        <location file="src/omexmeta/include/omexmeta/RDF.h" line="249" column="14" bodyfile="src/omexmeta/RDF.cpp" bodystart="409" bodyend="411"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1RDF_1ae4ba9a6a862c4acce2f6757a99b4c4c2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>const std::string &amp;</type>
@@ -850,7 +850,7 @@ Uses LibrdfParser::fromFile under the hood </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/RDF.h" line="255" column="27" bodyfile="src/omexmeta/RDF.cpp" bodystart="364" bodyend="366"/>
+        <location file="src/omexmeta/include/omexmeta/RDF.h" line="255" column="27" bodyfile="src/omexmeta/RDF.cpp" bodystart="365" bodyend="367"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1RDF_1a9f35a52ca041be0f036197989cdca3e7" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -879,7 +879,7 @@ Uses LibrdfParser::fromFile under the hood </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/RDF.h" line="262" column="14" bodyfile="src/omexmeta/RDF.cpp" bodystart="368" bodyend="370"/>
+        <location file="src/omexmeta/include/omexmeta/RDF.h" line="262" column="14" bodyfile="src/omexmeta/RDF.cpp" bodystart="369" bodyend="371"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1RDF_1a6cba8783aa84a3df928825ce44555733" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>const std::string &amp;</type>
@@ -895,7 +895,7 @@ Uses LibrdfParser::fromFile under the hood </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/RDF.h" line="268" column="27" bodyfile="src/omexmeta/RDF.cpp" bodystart="372" bodyend="374"/>
+        <location file="src/omexmeta/include/omexmeta/RDF.h" line="268" column="27" bodyfile="src/omexmeta/RDF.cpp" bodystart="373" bodyend="375"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1RDF_1aabb921ecd37e3e9fc0e29066b658bf59" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -924,7 +924,7 @@ default to <ulink url="http://omex-library.org/NewOmex.omex/">http://omex-librar
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/RDF.h" line="275" column="14" bodyfile="src/omexmeta/RDF.cpp" bodystart="376" bodyend="378"/>
+        <location file="src/omexmeta/include/omexmeta/RDF.h" line="275" column="14" bodyfile="src/omexmeta/RDF.cpp" bodystart="377" bodyend="379"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1RDF_1a0529edb78dde0798541cdc9761e2a0e7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>const std::string &amp;</type>
@@ -940,7 +940,7 @@ default to <ulink url="http://omex-library.org/NewOmex.omex/">http://omex-librar
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/RDF.h" line="281" column="27" bodyfile="src/omexmeta/RDF.cpp" bodystart="380" bodyend="382"/>
+        <location file="src/omexmeta/include/omexmeta/RDF.h" line="281" column="27" bodyfile="src/omexmeta/RDF.cpp" bodystart="381" bodyend="383"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1RDF_1a0c6ec28bb9cd9730224331ed69d41cad" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -969,7 +969,7 @@ defaults to <ulink url="http://omex-library.org/NewOmex.omex/NewModel.xml">http:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/RDF.h" line="288" column="14" bodyfile="src/omexmeta/RDF.cpp" bodystart="384" bodyend="386"/>
+        <location file="src/omexmeta/include/omexmeta/RDF.h" line="288" column="14" bodyfile="src/omexmeta/RDF.cpp" bodystart="385" bodyend="387"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1RDF_1a2f1d018479ca77e429760f7bd517f597" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>const std::string &amp;</type>
@@ -984,7 +984,7 @@ defaults to <ulink url="http://omex-library.org/NewOmex.omex/NewModel.xml">http:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/RDF.h" line="294" column="27" bodyfile="src/omexmeta/RDF.cpp" bodystart="388" bodyend="390"/>
+        <location file="src/omexmeta/include/omexmeta/RDF.h" line="294" column="27" bodyfile="src/omexmeta/RDF.cpp" bodystart="389" bodyend="391"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1RDF_1a653aeeb8b6ed38c98277a3f9c900bd93" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -1003,7 +1003,7 @@ defaults to <ulink url="http://omex-library.org/NewOmex.omex/NewModel.xml">http:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/RDF.h" line="300" column="14" bodyfile="src/omexmeta/RDF.cpp" bodystart="392" bodyend="394"/>
+        <location file="src/omexmeta/include/omexmeta/RDF.h" line="300" column="14" bodyfile="src/omexmeta/RDF.cpp" bodystart="393" bodyend="395"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1RDF_1ae7e24ae8c944722562a545e69520264b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>std::string</type>
@@ -1019,7 +1019,7 @@ defaults to <ulink url="http://omex-library.org/NewOmex.omex/NewModel.xml">http:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/RDF.h" line="306" column="21" bodyfile="src/omexmeta/RDF.cpp" bodystart="396" bodyend="398"/>
+        <location file="src/omexmeta/include/omexmeta/RDF.h" line="306" column="21" bodyfile="src/omexmeta/RDF.cpp" bodystart="397" bodyend="399"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1RDF_1a7399a80108553b138bf168a76f8a4adf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>const std::string &amp;</type>
@@ -1035,7 +1035,7 @@ defaults to <ulink url="http://omex-library.org/NewOmex.omex/NewModel.xml">http:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/RDF.h" line="311" column="27" bodyfile="src/omexmeta/RDF.cpp" bodystart="400" bodyend="402"/>
+        <location file="src/omexmeta/include/omexmeta/RDF.h" line="311" column="27" bodyfile="src/omexmeta/RDF.cpp" bodystart="401" bodyend="403"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1RDF_1ab6b74c206a0b9cbce946f9d7bd8d1f56" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -1054,7 +1054,7 @@ defaults to <ulink url="http://omex-library.org/NewOmex.omex/NewModel.xml">http:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/RDF.h" line="316" column="14" bodyfile="src/omexmeta/RDF.cpp" bodystart="470" bodyend="476"/>
+        <location file="src/omexmeta/include/omexmeta/RDF.h" line="316" column="14" bodyfile="src/omexmeta/RDF.cpp" bodystart="471" bodyend="477"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1RDF_1aa8f640de046b3c1bd43de0fe5aba0958" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -1073,7 +1073,7 @@ defaults to <ulink url="http://omex-library.org/NewOmex.omex/NewModel.xml">http:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/RDF.h" line="321" column="14" bodyfile="src/omexmeta/RDF.cpp" bodystart="478" bodyend="484"/>
+        <location file="src/omexmeta/include/omexmeta/RDF.h" line="321" column="14" bodyfile="src/omexmeta/RDF.cpp" bodystart="479" bodyend="485"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1RDF_1a9565b7c0ad81abed2243c0a76f1ebea3" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type><ref refid="classomexmeta_1_1UriHandler" kindref="compound">UriHandler</ref> &amp;</type>
@@ -1087,7 +1087,7 @@ defaults to <ulink url="http://omex-library.org/NewOmex.omex/NewModel.xml">http:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/RDF.h" line="348" column="20" bodyfile="src/omexmeta/RDF.cpp" bodystart="558" bodyend="560"/>
+        <location file="src/omexmeta/include/omexmeta/RDF.h" line="348" column="20" bodyfile="src/omexmeta/RDF.cpp" bodystart="559" bodyend="561"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1RDF_1ac8c1f50b7fd693518b41d3000a357fa4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -1101,7 +1101,7 @@ defaults to <ulink url="http://omex-library.org/NewOmex.omex/NewModel.xml">http:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/RDF.h" line="353" column="14" bodyfile="src/omexmeta/RDF.cpp" bodystart="81" bodyend="85"/>
+        <location file="src/omexmeta/include/omexmeta/RDF.h" line="353" column="14" bodyfile="src/omexmeta/RDF.cpp" bodystart="82" bodyend="86"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1RDF_1aea054c0e60e0aade66d52998b3559eec" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -1115,7 +1115,7 @@ defaults to <ulink url="http://omex-library.org/NewOmex.omex/NewModel.xml">http:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/RDF.h" line="358" column="14" bodyfile="src/omexmeta/RDF.cpp" bodystart="87" bodyend="91"/>
+        <location file="src/omexmeta/include/omexmeta/RDF.h" line="358" column="14" bodyfile="src/omexmeta/RDF.cpp" bodystart="88" bodyend="92"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -1158,7 +1158,7 @@ defaults to <ulink url="http://omex-library.org/NewOmex.omex/NewModel.xml">http:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/RDF.h" line="117" column="20" bodyfile="src/omexmeta/RDF.cpp" bodystart="52" bodyend="79"/>
+        <location file="src/omexmeta/include/omexmeta/RDF.h" line="117" column="20" bodyfile="src/omexmeta/RDF.cpp" bodystart="53" bodyend="80"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1RDF_1a18f57a8d85f89ff7b0575540ab280a2f" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref></type>
@@ -1201,7 +1201,7 @@ downloads uri from the internet and creates an <ref refid="classomexmeta_1_1RDF"
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/RDF.h" line="134" column="20" bodyfile="src/omexmeta/RDF.cpp" bodystart="129" bodyend="150"/>
+        <location file="src/omexmeta/include/omexmeta/RDF.h" line="134" column="20" bodyfile="src/omexmeta/RDF.cpp" bodystart="130" bodyend="151"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1RDF_1a87ab63ef63126945d345d463e0a14f5e" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref></type>
@@ -1243,7 +1243,7 @@ Uses LibrdfParser::fromFile under the hood </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/RDF.h" line="151" column="20" bodyfile="src/omexmeta/RDF.cpp" bodystart="177" bodyend="200"/>
+        <location file="src/omexmeta/include/omexmeta/RDF.h" line="151" column="20" bodyfile="src/omexmeta/RDF.cpp" bodystart="178" bodyend="201"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1RDF_1ae01ed260e02eda2141ffe1288f78c177" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::ostringstream</type>
@@ -1256,7 +1256,7 @@ Uses LibrdfParser::fromFile under the hood </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/RDF.h" line="217" column="35" bodyfile="src/omexmeta/RDF.cpp" bodystart="324" bodyend="362"/>
+        <location file="src/omexmeta/include/omexmeta/RDF.h" line="217" column="35" bodyfile="src/omexmeta/RDF.cpp" bodystart="325" bodyend="363"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1RDF_1a436984961a0a9881824e031b855b7413" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -1306,7 +1306,7 @@ Uses LibrdfParser::fromFile under the hood </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/RDF.h" line="326" column="21" bodyfile="src/omexmeta/RDF.cpp" bodystart="498" bodyend="509"/>
+        <location file="src/omexmeta/include/omexmeta/RDF.h" line="326" column="21" bodyfile="src/omexmeta/RDF.cpp" bodystart="499" bodyend="510"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1RDF_1a43fa92ba852b2181e0b437c812abac7d" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -1356,7 +1356,7 @@ Uses LibrdfParser::fromFile under the hood </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/RDF.h" line="331" column="21" bodyfile="src/omexmeta/RDF.cpp" bodystart="511" bodyend="525"/>
+        <location file="src/omexmeta/include/omexmeta/RDF.h" line="331" column="21" bodyfile="src/omexmeta/RDF.cpp" bodystart="512" bodyend="526"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1RDF_1a91068cb9e9f5f5b3295de96dbf9d243b" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -1406,7 +1406,7 @@ Uses LibrdfParser::fromFile under the hood </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/RDF.h" line="336" column="21" bodyfile="src/omexmeta/RDF.cpp" bodystart="527" bodyend="541"/>
+        <location file="src/omexmeta/include/omexmeta/RDF.h" line="336" column="21" bodyfile="src/omexmeta/RDF.cpp" bodystart="528" bodyend="542"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1RDF_1a60d25001511fbde99b4ca802d8e7621c" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -1456,7 +1456,7 @@ Uses LibrdfParser::fromFile under the hood </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/RDF.h" line="341" column="21" bodyfile="src/omexmeta/RDF.cpp" bodystart="487" bodyend="497"/>
+        <location file="src/omexmeta/include/omexmeta/RDF.h" line="341" column="21" bodyfile="src/omexmeta/RDF.cpp" bodystart="488" bodyend="498"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1RDF_1a1ec9f1e100bd55b556065856f1def174" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -1511,7 +1511,7 @@ Uses LibrdfParser::fromFile under the hood </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/RDF.h" line="346" column="21" bodyfile="src/omexmeta/RDF.cpp" bodystart="543" bodyend="555"/>
+        <location file="src/omexmeta/include/omexmeta/RDF.h" line="346" column="21" bodyfile="src/omexmeta/RDF.cpp" bodystart="544" bodyend="556"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -1535,7 +1535,7 @@ Uses LibrdfParser::fromFile under the hood </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/RDF.h" line="382" column="14" bodyfile="src/omexmeta/RDF.cpp" bodystart="412" bodyend="433"/>
+        <location file="src/omexmeta/include/omexmeta/RDF.h" line="382" column="14" bodyfile="src/omexmeta/RDF.cpp" bodystart="413" bodyend="434"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1RDF_1a2b7d4e2ddeaa44c26d4d82478b789a5e" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -1557,7 +1557,7 @@ Uses LibrdfParser::fromFile under the hood </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/RDF.h" line="387" column="14" bodyfile="src/omexmeta/RDF.cpp" bodystart="435" bodyend="444"/>
+        <location file="src/omexmeta/include/omexmeta/RDF.h" line="387" column="14" bodyfile="src/omexmeta/RDF.cpp" bodystart="436" bodyend="445"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1RDF_1ade6ca329272d5de27496183a81bbec8a" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -1575,7 +1575,7 @@ Uses LibrdfParser::fromFile under the hood </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/RDF.h" line="393" column="14" bodyfile="src/omexmeta/RDF.cpp" bodystart="446" bodyend="462"/>
+        <location file="src/omexmeta/include/omexmeta/RDF.h" line="393" column="14" bodyfile="src/omexmeta/RDF.cpp" bodystart="447" bodyend="463"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1RDF_1add8f3d957f24a26785f29b85d50f4399" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -1678,8 +1678,8 @@ Uses LibrdfParser::fromFile under the hood </para>
       <member refid="classomexmeta_1_1RDF_1add69d33d544dc31789b2ff0a71182a84" prot="public" virt="non-virtual"><scope>omexmeta::RDF</scope><name>operator==</name></member>
       <member refid="classomexmeta_1_1RDF_1a867deb1681500712e942b61e4e1460c6" prot="public" virt="virtual"><scope>omexmeta::RDF</scope><name>propagateNamespacesFromParser</name></member>
       <member refid="classomexmeta_1_1RDF_1ac8c1f50b7fd693518b41d3000a357fa4" prot="public" virt="non-virtual"><scope>omexmeta::RDF</scope><name>purgeRDFBag</name></member>
-      <member refid="classomexmeta_1_1RDF_1a44015b8feae5e1b8f816501f44530732" prot="public" virt="virtual"><scope>omexmeta::RDF</scope><name>queryResultsAsMap</name></member>
-      <member refid="classomexmeta_1_1RDF_1a6b6244dac65b1cdfab6f450646c857b6" prot="public" virt="virtual"><scope>omexmeta::RDF</scope><name>queryResultsAsString</name></member>
+      <member refid="classomexmeta_1_1RDF_1af529c3765fa9bccbc532c01243da557e" prot="public" virt="virtual"><scope>omexmeta::RDF</scope><name>queryResultsAsMap</name></member>
+      <member refid="classomexmeta_1_1RDF_1a2d8400380bc4361fb8ffaf5e90c8c7fd" prot="public" virt="virtual"><scope>omexmeta::RDF</scope><name>queryResultsAsString</name></member>
       <member refid="classomexmeta_1_1RDF_1aea1783a66fd8bf3393acf9a48f9366ce" prot="public" virt="non-virtual"><scope>omexmeta::RDF</scope><name>RDF</name></member>
       <member refid="classomexmeta_1_1RDF_1ad95c4a8588988efe399c7f984e304990" prot="public" virt="non-virtual"><scope>omexmeta::RDF</scope><name>RDF</name></member>
       <member refid="classomexmeta_1_1RDF_1a6490b2ea0d10e3026bea587a305b7fb9" prot="public" virt="non-virtual"><scope>omexmeta::RDF</scope><name>RDF</name></member>

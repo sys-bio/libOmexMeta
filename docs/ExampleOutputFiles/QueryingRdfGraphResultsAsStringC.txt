@@ -125,8 +125,7 @@ Sparql results format: turtle
 Sparql results format: rdfxml
 <?xml version="1.0" encoding="utf-8"?>
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:rs="http://www.w3.org/2001/sw/DataAccess/tests/result-set#"
-   xml:base="file://query_results">
+   xmlns:rs="http://www.w3.org/2001/sw/DataAccess/tests/result-set#">
   <rs:ResultSet>
     <rs:resultVariable>x</rs:resultVariable>
     <rs:resultVariable>y</rs:resultVariable>

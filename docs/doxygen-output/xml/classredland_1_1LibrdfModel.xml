@@ -82,10 +82,10 @@
         </inbodydescription>
         <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfModel.h" line="54" column="14" bodyfile="src/redland/RedlandWrapper/src/LibrdfModel.cpp" bodystart="114" bodyend="116"/>
       </memberdef>
-      <memberdef kind="function" id="classredland_1_1LibrdfModel_1a11c6b14a59c807ade6964ad23d7ed45e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classredland_1_1LibrdfModel_1aa0f179ee62cb512f5b894bce06227611" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classredland_1_1LibrdfQueryResults" kindref="compound">LibrdfQueryResults</ref></type>
         <definition>LibrdfQueryResults redland::LibrdfModel::query</definition>
-        <argsstring>(const std::string &amp;query) const</argsstring>
+        <argsstring>(const std::string &amp;query)</argsstring>
         <name>query</name>
         <param>
           <type>const std::string &amp;</type>
@@ -340,7 +340,7 @@
       <member refid="classredland_1_1RedlandType_1a22e381182a5642883ad578db40368f13" prot="public" virt="non-virtual" ambiguityscope="redland::RedlandType::"><scope>redland::LibrdfModel</scope><name>operator=</name></member>
       <member refid="classredland_1_1LibrdfModel_1a1a8a3f9aad0520d6788aa2816ffb318e" prot="public" virt="non-virtual"><scope>redland::LibrdfModel</scope><name>operator==</name></member>
       <member refid="classredland_1_1RedlandType_1a9fc5b1ce564f4c2497855cd965df1cfd" prot="public" virt="non-virtual" ambiguityscope="redland::RefCountedRedlandType::"><scope>redland::LibrdfModel</scope><name>operator==</name></member>
-      <member refid="classredland_1_1LibrdfModel_1a11c6b14a59c807ade6964ad23d7ed45e" prot="public" virt="non-virtual"><scope>redland::LibrdfModel</scope><name>query</name></member>
+      <member refid="classredland_1_1LibrdfModel_1aa0f179ee62cb512f5b894bce06227611" prot="public" virt="non-virtual"><scope>redland::LibrdfModel</scope><name>query</name></member>
       <member refid="classredland_1_1RefCountedRedlandType_1a3c3a57c6b73d9bea7e0a9cdb9a725006" prot="public" virt="non-virtual"><scope>redland::LibrdfModel</scope><name>RedlandType</name></member>
       <member refid="classredland_1_1RefCountedRedlandType_1ab7e0f16ed9acd6ba9c65b8e9259301e9" prot="public" virt="non-virtual"><scope>redland::LibrdfModel</scope><name>RedlandType</name></member>
       <member refid="classredland_1_1RefCountedRedlandType_1a89f2c7b5d8133d7b22c54263ea2dcb3b" prot="public" virt="non-virtual"><scope>redland::LibrdfModel</scope><name>RedlandType</name></member>

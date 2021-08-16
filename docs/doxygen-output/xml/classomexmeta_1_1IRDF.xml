@@ -527,12 +527,12 @@
         </inbodydescription>
         <location file="src/omexmeta/include/omexmeta/IRDF.h" line="57" column="21"/>
       </memberdef>
-      <memberdef kind="function" id="classomexmeta_1_1IRDF_1adb6598e962e1f7fb8f5acb05a31d9364" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classomexmeta_1_1IRDF_1a4e527f3cda44ecb05b58ec6d3ceae056" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>std::string</type>
         <definition>virtual std::string omexmeta::IRDF::queryResultsAsString</definition>
-        <argsstring>(const std::string &amp;query_str, const std::string &amp;results_syntax) const =0</argsstring>
+        <argsstring>(const std::string &amp;query_str, const std::string &amp;results_syntax)=0</argsstring>
         <name>queryResultsAsString</name>
-        <reimplementedby refid="classomexmeta_1_1RDF_1a6b6244dac65b1cdfab6f450646c857b6">queryResultsAsString</reimplementedby>
+        <reimplementedby refid="classomexmeta_1_1RDF_1a2d8400380bc4361fb8ffaf5e90c8c7fd">queryResultsAsString</reimplementedby>
         <param>
           <type>const std::string &amp;</type>
           <declname>query_str</declname>
@@ -549,12 +549,12 @@
         </inbodydescription>
         <location file="src/omexmeta/include/omexmeta/IRDF.h" line="58" column="29"/>
       </memberdef>
-      <memberdef kind="function" id="classomexmeta_1_1IRDF_1a37c014e34fa398b5818db14fedbec8d3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classomexmeta_1_1IRDF_1a8409c10ab5a8f3208127f162bb2436d1" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>ResultsMap</type>
         <definition>virtual ResultsMap omexmeta::IRDF::queryResultsAsMap</definition>
-        <argsstring>(const std::string &amp;query_str) const =0</argsstring>
+        <argsstring>(const std::string &amp;query_str)=0</argsstring>
         <name>queryResultsAsMap</name>
-        <reimplementedby refid="classomexmeta_1_1RDF_1a44015b8feae5e1b8f816501f44530732">queryResultsAsMap</reimplementedby>
+        <reimplementedby refid="classomexmeta_1_1RDF_1af529c3765fa9bccbc532c01243da557e">queryResultsAsMap</reimplementedby>
         <param>
           <type>const std::string &amp;</type>
           <declname>query_str</declname>
@@ -658,8 +658,8 @@
       <member refid="classomexmeta_1_1IRDF_1af30397ff81b27bdaede2c9491b7558ee" prot="public" virt="pure-virtual"><scope>omexmeta::IRDF</scope><name>getUriHandler</name></member>
       <member refid="classomexmeta_1_1IRDF_1a2086b9e03996090d9ae0d47980d21362" prot="public" virt="pure-virtual"><scope>omexmeta::IRDF</scope><name>getXmlType</name></member>
       <member refid="classomexmeta_1_1IRDF_1ae686e65ae3cff9025c80abfb5c7643b2" prot="public" virt="pure-virtual"><scope>omexmeta::IRDF</scope><name>propagateNamespacesFromParser</name></member>
-      <member refid="classomexmeta_1_1IRDF_1a37c014e34fa398b5818db14fedbec8d3" prot="public" virt="pure-virtual"><scope>omexmeta::IRDF</scope><name>queryResultsAsMap</name></member>
-      <member refid="classomexmeta_1_1IRDF_1adb6598e962e1f7fb8f5acb05a31d9364" prot="public" virt="pure-virtual"><scope>omexmeta::IRDF</scope><name>queryResultsAsString</name></member>
+      <member refid="classomexmeta_1_1IRDF_1a8409c10ab5a8f3208127f162bb2436d1" prot="public" virt="pure-virtual"><scope>omexmeta::IRDF</scope><name>queryResultsAsMap</name></member>
+      <member refid="classomexmeta_1_1IRDF_1a4e527f3cda44ecb05b58ec6d3ceae056" prot="public" virt="pure-virtual"><scope>omexmeta::IRDF</scope><name>queryResultsAsString</name></member>
       <member refid="classomexmeta_1_1IRDF_1a2a441ed8298f7d743dc4ba5aa83b8eef" prot="public" virt="pure-virtual"><scope>omexmeta::IRDF</scope><name>setArchiveUri</name></member>
       <member refid="classomexmeta_1_1IRDF_1acb06886f7cfb72a4d685e55ef4e21b50" prot="public" virt="pure-virtual"><scope>omexmeta::IRDF</scope><name>setModelMetaid</name></member>
       <member refid="classomexmeta_1_1IRDF_1a3740c0f6591c94dd7ff6cca94382a43a" prot="public" virt="pure-virtual"><scope>omexmeta::IRDF</scope><name>setModelUri</name></member>

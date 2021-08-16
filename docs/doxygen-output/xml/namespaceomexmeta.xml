@@ -37,6 +37,7 @@
     <innerclass refid="classomexmeta_1_1Foaf" prot="public">omexmeta::Foaf</innerclass>
     <innerclass refid="classomexmeta_1_1PropertyBearer" prot="public">omexmeta::PropertyBearer</innerclass>
     <innerclass refid="classomexmeta_1_1PurgeRDFBag" prot="public">omexmeta::PurgeRDFBag</innerclass>
+    <innerclass refid="classomexmeta_1_1Query" prot="public">omexmeta::Query</innerclass>
     <innerclass refid="classomexmeta_1_1RDF" prot="public">omexmeta::RDF</innerclass>
     <innerclass refid="classomexmeta_1_1SBMLSemanticExtraction" prot="public">omexmeta::SBMLSemanticExtraction</innerclass>
     <innerclass refid="classomexmeta_1_1Triple" prot="public">omexmeta::Triple</innerclass>

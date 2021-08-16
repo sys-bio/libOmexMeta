@@ -21,6 +21,7 @@
     <innerfile refid="Predicate_8cpp">Predicate.cpp</innerfile>
     <innerfile refid="PropertyBearer_8cpp">PropertyBearer.cpp</innerfile>
     <innerfile refid="PurgeRDFBag_8cpp">PurgeRDFBag.cpp</innerfile>
+    <innerfile refid="Query_8cpp">Query.cpp</innerfile>
     <innerfile refid="RDF_8cpp">RDF.cpp</innerfile>
     <innerfile refid="SBMLSemanticExtraction_8cpp">SBMLSemanticExtraction.cpp</innerfile>
     <innerfile refid="Triple_8cpp">Triple.cpp</innerfile>

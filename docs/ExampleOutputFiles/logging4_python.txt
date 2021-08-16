@@ -1,2 +1,2 @@
-[11:23:57 +01:00]  error : 1 syntax error at '<' 
+[16:48:33 +01:00]  error : syntax error at '<' 
 check logger_file:  D:\libOmexMeta\docs\log.log

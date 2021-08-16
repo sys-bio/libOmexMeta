@@ -303,12 +303,12 @@
 <codeline lineno="15"><highlight class="normal"></highlight></codeline>
 <codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classredland_1_1LibrdfNode_1a0f6b28fba74ab6ff25de32c725d499e9" kindref="member">LibrdfNode::LibrdfNode</ref>(<ref refid="structraptor__term" kindref="compound">librdf_node</ref><sp/>*node)</highlight></codeline>
 <codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>RefCounted_librdf_node(node,<sp/>librdf_free_node)<sp/>{</highlight></codeline>
-<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>REDLAND_DEBUG(</highlight><highlight class="stringliteral">&quot;Instantiated<sp/>a<sp/>LibrdfNode<sp/>instance&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>REDLAND_DEBUG(&quot;Instantiated<sp/>a<sp/>LibrdfNode<sp/>instance&quot;);</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="20"><highlight class="normal"></highlight></codeline>
 <codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>LibrdfNode::LibrdfNode(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>LibrdfUri<sp/>&amp;uri)</highlight></codeline>
 <codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>RefCounted_librdf_node(LibrdfNode::fromUriString(uri.str()).get(),<sp/>librdf_free_node)<sp/>{</highlight></codeline>
-<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>REDLAND_DEBUG(</highlight><highlight class="stringliteral">&quot;Instantiated<sp/>a<sp/>LibrdfNode<sp/>instance&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>REDLAND_DEBUG(&quot;Instantiated<sp/>a<sp/>LibrdfNode<sp/>instance&quot;);</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
 <codeline lineno="25"><highlight class="normal"></highlight></codeline>
 <codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//todo<sp/>the<sp/>content<sp/>of<sp/>thos<sp/>method<sp/>really<sp/>belongs<sp/>somewhere<sp/>else</highlight><highlight class="normal"></highlight></codeline>

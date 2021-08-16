@@ -357,7 +357,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/LibrdfWorld.cpp" line="13" column="9" bodyfile="src/redland/RedlandWrapper/src/LibrdfWorld.cpp" bodystart="13" bodyend="52" declfile="src/redland/RedlandWrapper/src/include/redland/LibrdfWorld.h" declline="31" declcolumn="9"/>
+        <location file="src/redland/RedlandWrapper/src/LibrdfWorld.cpp" line="13" column="9" bodyfile="src/redland/RedlandWrapper/src/LibrdfWorld.cpp" bodystart="13" bodyend="58" declfile="src/redland/RedlandWrapper/src/include/redland/LibrdfWorld.h" declline="31" declcolumn="9"/>
       </memberdef>
       <memberdef kind="function" id="LibrdfWorld_8cpp_1a02104b680dc8d25eb02cc6d2c3fd8e2c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -378,7 +378,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/LibrdfWorld.cpp" line="54" column="10" bodyfile="src/redland/RedlandWrapper/src/LibrdfWorld.cpp" bodystart="54" bodyend="101" declfile="src/redland/RedlandWrapper/src/include/redland/LibrdfWorld.h" declline="33" declcolumn="10"/>
+        <location file="src/redland/RedlandWrapper/src/LibrdfWorld.cpp" line="60" column="10" bodyfile="src/redland/RedlandWrapper/src/LibrdfWorld.cpp" bodystart="60" bodyend="107" declfile="src/redland/RedlandWrapper/src/include/redland/LibrdfWorld.h" declline="33" declcolumn="10"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

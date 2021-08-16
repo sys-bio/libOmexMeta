@@ -409,6 +409,10 @@
         <childnode refid="22" relation="include">
         </childnode>
       </node>
+      <node id="26">
+        <label>src/omexmeta/include/omexmeta/Query.h</label>
+        <link refid="Query_8h_source"/>
+      </node>
       <node id="6">
         <label>src/omexmeta/include/omexmeta/RDF.h</label>
         <link refid="RDF_8h_source"/>
@@ -592,6 +596,8 @@
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
         <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="23" relation="include">
@@ -769,7 +775,7 @@
 <codeline lineno="112"><highlight class="normal"></highlight></codeline>
 <codeline lineno="113"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LibrdfModel&amp;<sp/>model_;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="114"><highlight class="normal"></highlight></codeline>
-<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>format_<sp/>=<sp/>std::string();</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>syntax_<sp/>=<sp/>std::string();</highlight></codeline>
 <codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>mime_type_<sp/>=<sp/>std::string();</highlight></codeline>
 <codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structraptor__uri__s" kindref="compound">librdf_uri</ref><sp/>*type_uri_<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
