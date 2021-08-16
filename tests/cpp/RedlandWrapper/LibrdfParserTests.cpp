@@ -15,11 +15,9 @@ using namespace redland;
 class LibrdfParserTests : public ::testing::Test {
 
 public:
-
-//    AnnotationSamples samples;
+    //    AnnotationSamples samples;
 
     LibrdfParserTests() = default;
-
 };
 
 TEST_F(LibrdfParserTests, TestInstantiateParser) {
@@ -110,7 +108,6 @@ TEST_F(LibrdfParserTests, TestParseFromAFile) {
     if (failed) {
         throw std::logic_error("didn't remove file");
     }
-
 }
 
 
@@ -135,7 +132,7 @@ TEST_F(LibrdfParserTests, TestRelativeBaseUriResolvesCorrectly) {
     std::string expected = "https://www.dajobe.org/net/this/is/the/base#dajobe";
 
     LibrdfStream stream = model.toStream();
-    LibrdfStatement statement =  stream.getStatement();
+    LibrdfStatement statement = stream.getStatement();
     LibrdfNode node = statement.getSubjectNode();
     std::string actual = node.str();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
@@ -165,12 +162,12 @@ TEST_F(LibrdfParserTests, TestParserString) {
     }
 
 
-//
-//    LibrdfStream stream = model.toStream();
-//    LibrdfStatement statement =  stream.getStatement();
-//    LibrdfNode node = statement.getSubjectNode();
-//    std::string actual = node.str();
-//    std::cout << actual << std::endl;
+    //
+    //    LibrdfStream stream = model.toStream();
+    //    LibrdfStatement statement =  stream.getStatement();
+    //    LibrdfNode node = statement.getSubjectNode();
+    //    std::string actual = node.str();
+    //    std::cout << actual << std::endl;
 }
 
 
@@ -222,18 +219,27 @@ TEST_F(LibrdfParserTests, TestFeatures) {
 }
 
 
+TEST_F(LibrdfParserTests, CheckTweiceFirstFailThenParseAgain) {
+    std::string singular_annotation1 = "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
+                                       "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
+                                       "   xmlns:OMEXlib=\"http://omex-library.org/\"\n"
+                                       "   xmlns:myOMEX=\"http://omex-library.org/NewModel.omex/\"\n"
+                                       "   xmlns:local=\"http://omex-library.org/NewModel.rdf\"\n"
+                                       "   xml:base=\"file://./NewModel.rdf\">\n"
+                                       "    <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_1\">\n"
+                                       "        <bqbiol:is rdf:resource=\"https://identifiers.org/uniprot/P0DP23\"/>\n"
+                                       "    </rdf:Description>\n"
+                                       "</rdf:RDF>\n";
+    // singular_annotation1 is rdfxml, but we sprcify turtle
+    // We let librdf issue a warning, rather than throw
+    LibrdfStorage storage;
+    LibrdfModel model(storage);
+    LibrdfParser parser("turtle");
+    parser.parseString(singular_annotation1, model, "bbbase");
+
+    LibrdfParser parser2("rdfxml");
+    parser2.parseString(singular_annotation1, model, "bbbase");
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+    ASSERT_EQ(1, model.size());
+}

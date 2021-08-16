@@ -284,7 +284,7 @@ namespace omexmeta {
     }
 
     LibrdfModel RDF::getModel() const {
-        model_.incrementUsage();
+        // do not increment usage here, causes memory leaks
         return model_;
     }
 
