@@ -20,23 +20,23 @@
       <node id="63">
         <label>sys/stat.h</label>
       </node>
-      <node id="43">
+      <node id="46">
         <label>redland/LibrdfQueryResults.h</label>
         <link refid="LibrdfQueryResults_8h_source"/>
         <childnode refid="10" relation="include">
         </childnode>
         <childnode refid="33" relation="include">
         </childnode>
-        <childnode refid="42" relation="include">
+        <childnode refid="45" relation="include">
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
-        <childnode refid="44" relation="include">
+        <childnode refid="47" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
       </node>
-      <node id="52">
+      <node id="55">
         <label>RaptorIOStream.h</label>
         <link refid="RaptorIOStream_8h_source"/>
         <childnode refid="9" relation="include">
@@ -63,7 +63,7 @@
         </childnode>
         <childnode refid="64" relation="include">
         </childnode>
-        <childnode refid="56" relation="include">
+        <childnode refid="40" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
@@ -74,7 +74,7 @@
       <node id="35">
         <label>functional</label>
       </node>
-      <node id="42">
+      <node id="45">
         <label>LibrdfQuery.h</label>
         <link refid="LibrdfQuery_8h_source"/>
         <childnode refid="10" relation="include">
@@ -83,11 +83,11 @@
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
-        <childnode refid="40" relation="include">
-        </childnode>
         <childnode refid="43" relation="include">
         </childnode>
-        <childnode refid="41" relation="include">
+        <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
         </childnode>
       </node>
       <node id="15">
@@ -98,7 +98,7 @@
         <childnode refid="11" relation="include">
         </childnode>
       </node>
-      <node id="56">
+      <node id="40">
         <label>filesystem</label>
       </node>
       <node id="62">
@@ -115,22 +115,22 @@
         <childnode refid="6" relation="include">
         </childnode>
       </node>
-      <node id="38">
+      <node id="41">
         <label>variant</label>
       </node>
-      <node id="53">
+      <node id="56">
         <label>stdlib.h</label>
       </node>
-      <node id="44">
+      <node id="47">
         <label>redland/LibrdfStream.h</label>
         <link refid="LibrdfStream_8h_source"/>
         <childnode refid="10" relation="include">
         </childnode>
         <childnode refid="36" relation="include">
         </childnode>
-        <childnode refid="45" relation="include">
+        <childnode refid="48" relation="include">
         </childnode>
-        <childnode refid="40" relation="include">
+        <childnode refid="43" relation="include">
         </childnode>
         <childnode refid="35" relation="include">
         </childnode>
@@ -138,18 +138,18 @@
       <node id="30">
         <label>rdf_stream.h</label>
       </node>
-      <node id="41">
+      <node id="44">
         <label>LibrdfModel.h</label>
         <link refid="LibrdfModel_8h_source"/>
-        <childnode refid="42" relation="include">
-        </childnode>
-        <childnode refid="43" relation="include">
-        </childnode>
         <childnode refid="45" relation="include">
         </childnode>
-        <childnode refid="49" relation="include">
+        <childnode refid="46" relation="include">
         </childnode>
-        <childnode refid="44" relation="include">
+        <childnode refid="48" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
@@ -169,9 +169,9 @@
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="46" relation="include">
+        <childnode refid="49" relation="include">
         </childnode>
-        <childnode refid="45" relation="include">
+        <childnode refid="48" relation="include">
         </childnode>
         <childnode refid="68" relation="include">
         </childnode>
@@ -196,10 +196,10 @@
       <node id="22">
         <label>rdf_node.h</label>
       </node>
-      <node id="45">
+      <node id="48">
         <label>redland/LibrdfStatement.h</label>
         <link refid="LibrdfStatement_8h_source"/>
-        <childnode refid="46" relation="include">
+        <childnode refid="49" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
@@ -207,7 +207,7 @@
         </childnode>
         <childnode refid="33" relation="include">
         </childnode>
-        <childnode refid="48" relation="include">
+        <childnode refid="51" relation="include">
         </childnode>
       </node>
       <node id="26">
@@ -246,16 +246,16 @@
       <node id="3">
         <label>string</label>
       </node>
-      <node id="54">
-        <label>Logger.h</label>
+      <node id="38">
+        <label>redland/Logger.h</label>
         <link refid="Logger_8h_source"/>
         <childnode refid="11" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="55" relation="include">
+        <childnode refid="39" relation="include">
         </childnode>
-        <childnode refid="56" relation="include">
+        <childnode refid="40" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
@@ -263,7 +263,7 @@
       <node id="57">
         <label>omexmeta/OmexMetaUtils.h</label>
         <link refid="OmexMetaUtils_8h_source"/>
-        <childnode refid="42" relation="include">
+        <childnode refid="45" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
@@ -275,7 +275,7 @@
         </childnode>
         <childnode refid="62" relation="include">
         </childnode>
-        <childnode refid="56" relation="include">
+        <childnode refid="40" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
@@ -348,7 +348,7 @@
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="48" relation="include">
+        <childnode refid="51" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
@@ -363,16 +363,16 @@
         <childnode refid="6" relation="include">
         </childnode>
       </node>
-      <node id="55">
+      <node id="39">
         <label>spdlog/spdlog.h</label>
       </node>
       <node id="14">
         <label>redland_export.h</label>
       </node>
-      <node id="49">
+      <node id="52">
         <label>LibrdfStorage.h</label>
         <link refid="LibrdfStorage_8h_source"/>
-        <childnode refid="45" relation="include">
+        <childnode refid="48" relation="include">
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
@@ -398,29 +398,29 @@
         <childnode refid="60" relation="include">
         </childnode>
       </node>
-      <node id="39">
+      <node id="42">
         <label>rdf_uri_internal.h</label>
       </node>
-      <node id="51">
+      <node id="54">
         <label>LibrdfSerializer.h</label>
         <link refid="LibrdfSerializer_8h_source"/>
         <childnode refid="10" relation="include">
         </childnode>
         <childnode refid="33" relation="include">
         </childnode>
-        <childnode refid="41" relation="include">
+        <childnode refid="44" relation="include">
         </childnode>
-        <childnode refid="46" relation="include">
+        <childnode refid="49" relation="include">
         </childnode>
-        <childnode refid="47" relation="include">
+        <childnode refid="50" relation="include">
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
-        <childnode refid="52" relation="include">
+        <childnode refid="55" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
-        <childnode refid="53" relation="include">
+        <childnode refid="56" relation="include">
         </childnode>
       </node>
       <node id="74">
@@ -475,9 +475,13 @@
       <node id="8">
         <label>RedlandType.h</label>
         <link refid="RedlandType_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
         <childnode refid="9" relation="include">
         </childnode>
         <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
@@ -485,9 +489,9 @@
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="38" relation="include">
+        <childnode refid="41" relation="include">
         </childnode>
-        <childnode refid="39" relation="include">
+        <childnode refid="42" relation="include">
         </childnode>
       </node>
       <node id="18">
@@ -496,16 +500,16 @@
       <node id="21">
         <label>rdf_uri.h</label>
       </node>
-      <node id="46">
+      <node id="49">
         <label>LibrdfNode.h</label>
         <link refid="LibrdfNode_8h_source"/>
         <childnode refid="36" relation="include">
         </childnode>
-        <childnode refid="47" relation="include">
+        <childnode refid="50" relation="include">
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
-        <childnode refid="40" relation="include">
+        <childnode refid="43" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
@@ -521,31 +525,31 @@
         <link refid="RedlandAPI_8h_source"/>
         <childnode refid="8" relation="include">
         </childnode>
-        <childnode refid="40" relation="include">
-        </childnode>
-        <childnode refid="41" relation="include">
-        </childnode>
-        <childnode refid="46" relation="include">
-        </childnode>
-        <childnode refid="50" relation="include">
-        </childnode>
-        <childnode refid="42" relation="include">
-        </childnode>
         <childnode refid="43" relation="include">
-        </childnode>
-        <childnode refid="51" relation="include">
-        </childnode>
-        <childnode refid="49" relation="include">
         </childnode>
         <childnode refid="44" relation="include">
         </childnode>
-        <childnode refid="47" relation="include">
+        <childnode refid="49" relation="include">
         </childnode>
-        <childnode refid="9" relation="include">
+        <childnode refid="53" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="54" relation="include">
         </childnode>
         <childnode refid="52" relation="include">
         </childnode>
-        <childnode refid="54" relation="include">
+        <childnode refid="47" relation="include">
+        </childnode>
+        <childnode refid="50" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="55" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
         </childnode>
       </node>
       <node id="11">
@@ -561,7 +565,7 @@
       <node id="6">
         <label>iostream</label>
       </node>
-      <node id="48">
+      <node id="51">
         <label>unordered_map</label>
       </node>
       <node id="70">
@@ -579,7 +583,7 @@
       <node id="61">
         <label>libxml/tree.h</label>
       </node>
-      <node id="40">
+      <node id="43">
         <label>RefCountedRedlandType.h</label>
         <link refid="RefCountedRedlandType_8h_source"/>
         <childnode refid="8" relation="include">
@@ -590,11 +594,11 @@
         </childnode>
         <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="39" relation="include">
+        <childnode refid="42" relation="include">
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
-        <childnode refid="38" relation="include">
+        <childnode refid="41" relation="include">
         </childnode>
       </node>
       <node id="16">
@@ -606,18 +610,18 @@
       <node id="29">
         <label>rdf_serializer.h</label>
       </node>
-      <node id="50">
+      <node id="53">
         <label>LibrdfParser.h</label>
         <link refid="LibrdfParser_8h_source"/>
         <childnode refid="10" relation="include">
         </childnode>
         <childnode refid="33" relation="include">
         </childnode>
-        <childnode refid="41" relation="include">
+        <childnode refid="44" relation="include">
         </childnode>
-        <childnode refid="46" relation="include">
+        <childnode refid="49" relation="include">
         </childnode>
-        <childnode refid="47" relation="include">
+        <childnode refid="50" relation="include">
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
@@ -634,14 +638,14 @@
       <node id="71">
         <label>cstring</label>
       </node>
-      <node id="47">
+      <node id="50">
         <label>LibrdfUri.h</label>
         <link refid="LibrdfUri_8h_source"/>
         <childnode refid="36" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="40" relation="include">
+        <childnode refid="43" relation="include">
         </childnode>
       </node>
       <node id="10">

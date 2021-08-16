@@ -218,11 +218,18 @@ TEST_F(LibrdfQueryTests, getBindingsNames) {
 }
 
 TEST_F(LibrdfQueryTests, TestRunQueryTwice) {
-    LibrdfQuery query(q, *model);
-    auto results1 = query.execute();
-    auto results2 = query.execute();
-    auto m = results1.map();
-    auto m2 = results2.map();
+    LibrdfQuery query1(q, *model);
+    model->incrementUsage();
+    LibrdfQuery query2(q, *model);
+    model->incrementUsage();
+//    {
+//        auto results1 = query.execute();
+//    }
+//    {
+//        auto results2 = query.execute();
+//    }
+//    auto m = results1.map();
+//    auto m2 = results2.map();
 }
 
 TEST_F(LibrdfQueryTests, getBindingValueByName) {

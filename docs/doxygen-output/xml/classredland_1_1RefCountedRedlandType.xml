@@ -240,7 +240,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/include/redland/RefCountedRedlandType.h" line="31" column="9" bodyfile="src/redland/RedlandWrapper/src/include/redland/RedlandType.h" bodystart="44" bodyend="50"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/RefCountedRedlandType.h" line="31" column="9" bodyfile="src/redland/RedlandWrapper/src/include/redland/RedlandType.h" bodystart="47" bodyend="53"/>
       </memberdef>
       <memberdef kind="function" id="classredland_1_1RefCountedRedlandType_1a89f2c7b5d8133d7b22c54263ea2dcb3b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -259,7 +259,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/include/redland/RefCountedRedlandType.h" line="31" column="9" bodyfile="src/redland/RedlandWrapper/src/include/redland/RedlandType.h" bodystart="97" bodyend="103"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/RefCountedRedlandType.h" line="31" column="9" bodyfile="src/redland/RedlandWrapper/src/include/redland/RedlandType.h" bodystart="103" bodyend="109"/>
       </memberdef>
       <memberdef kind="function" id="classredland_1_1RefCountedRedlandType_1a7884dd6bc66d9880090bb53f14683f1f" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type></type>
@@ -278,7 +278,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/include/redland/RefCountedRedlandType.h" line="31" column="9" bodyfile="src/redland/RedlandWrapper/src/include/redland/RedlandType.h" bodystart="112" bodyend="119"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/RefCountedRedlandType.h" line="31" column="9" bodyfile="src/redland/RedlandWrapper/src/include/redland/RedlandType.h" bodystart="118" bodyend="125"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

@@ -310,6 +310,8 @@
         </childnode>
         <childnode refid="27" relation="include">
         </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
       </node>
       <node id="10">
         <label>src/omexmeta/include/omexmeta/OmexMetaUtils.h</label>

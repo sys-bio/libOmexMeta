@@ -350,6 +350,7 @@ public:
  * Only calls purgePattern1
  */
 TEST_F(PurgeRDFBagTests, Biomd385Input1Pattern1) {
+    LOGGER_SET_DEBUG();
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
                            "@prefix bqmodel: <http://biomodels.net/model-qualifiers/> .\n"
                            "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
@@ -379,6 +380,7 @@ TEST_F(PurgeRDFBagTests, Biomd385Input1Pattern1) {
     std::cout << rdf.toString("turtle") << std::endl;
     std::cout << rdf.toString("ntriples") << std::endl;
     checkPattern1(biomd385_input1, "turtle", expected, "turtle");
+    LOGGER_SET_WARN();
 }
 
 /**

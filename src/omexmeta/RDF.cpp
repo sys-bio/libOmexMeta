@@ -284,7 +284,7 @@ namespace omexmeta {
     }
 
     LibrdfModel RDF::getModel() const {
-//        model_.incrementUsage(); // not sure if needed
+        model_.incrementUsage();
         return model_;
     }
 

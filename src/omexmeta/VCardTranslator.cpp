@@ -17,11 +17,11 @@ namespace omexmeta {
         // first we need to remove all the N constructs
         purgeNConstructs();
 
-//        // then we do an appropriate translation from vCard predicate to foaf prediate
-//        translateFamilyName();
-//        translateGivenName();
-//        translateOrganization();
-//        translateEmail();
+        // then we do an appropriate translation from vCard predicate to foaf prediate
+        translateFamilyName();
+        translateGivenName();
+        translateOrganization();
+        translateEmail();
     }
 
     void VCardTranslator::purgeNConstructs() {
