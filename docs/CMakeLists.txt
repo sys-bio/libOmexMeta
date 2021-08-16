@@ -191,7 +191,7 @@ if (${BUILD_DOCS_EXAMPLES})
     # later we'll set the build docs target to depend on this
     # This depends on the *install* folder. todo change such that we use the build folder instead
     add_custom_target(RunDocExamplesAndGenerateOutput
-            COMMAND Python::Interpreter ${DOC_EXAMPLE_RUNNER} --install-folder ${CMAKE_INSTALL_PREFIX} --pyomexmeta-site-package-dir ${CMAKE_BINARY_DIR}/site-packages --output-location "${CMAKE_CURRENT_SOURCE_DIR}/ExampleOutputFiles"
+            COMMAND Python::Interpreter "${DOC_EXAMPLE_RUNNER}" --build-root "${CMAKE_BINARY_DIR}" --pyomexmeta-site-package-dir "${CMAKE_BINARY_DIR}/site-packages" --output-location "${CMAKE_CURRENT_SOURCE_DIR}/ExampleOutputFiles"
             DEPENDS AllDocExamples
                 )
 

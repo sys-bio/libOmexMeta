@@ -1,2 +1,2 @@
-[16:48:38 +01:00]  error : 1 syntax error at '<' 
+[17:29:03 +01:00]  error : 1 syntax error at '<' 
 check logger_file: D:\libOmexMeta\cmake-build-release\docs\log.log

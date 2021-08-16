@@ -187,6 +187,10 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/lib)
 # export all on windows. Ignored on other.
 set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS TRUE)
 
+# local site packages directories
+set(OMEXMETA_INSTALL_SITE_PACKAGES_DIR "${CMAKE_INSTALL_PREFIX}/site-packages")
+set(OMEXMETA_BUILD_SITE_PACKAGES_DIR "${CMAKE_INSTALL_PREFIX}/site-packages")
+
 # In non-windows builds and only when libOmexMeta is being built
 #   as a top level project, we set the default CMAKE_INSTALL_PREFIX
 #   to /opt/libOmexMeta. This is cached variable and will only
@@ -219,7 +223,6 @@ set(CMAKE_VISIBILITY_INLINES_HIDDEN YES)
 ####################################################################
 # User options
 #
-
 
 include(CMakeDependentOption)
 
