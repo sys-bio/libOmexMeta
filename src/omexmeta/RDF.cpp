@@ -74,8 +74,8 @@ namespace omexmeta {
         if (Options::translateVCard_)
             rdf.translateVcard();
 
-        if (Options::removeRDFBag_)
-            rdf.purgeRDFBag();
+//        if (Options::removeRDFBag_)
+//            rdf.purgeRDFBag();
         return rdf;
     }
 

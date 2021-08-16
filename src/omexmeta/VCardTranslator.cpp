@@ -18,10 +18,10 @@ namespace omexmeta {
         purgeNConstructs();
 
         // then we do an appropriate translation from vCard predicate to foaf prediate
-        translateFamilyName();
-        translateGivenName();
-        translateOrganization();
-        translateEmail();
+//        translateFamilyName();
+//        translateGivenName();
+//        translateOrganization();
+//        translateEmail();
     }
 
     void VCardTranslator::purgeNConstructs() {
@@ -30,46 +30,40 @@ namespace omexmeta {
                         "?subjectBlank <http://www.w3.org/2001/vcard-rdf/3.0#N> ?resourceBlank .\n"
                         "?resourceBlank ?vCardPred ?literal\n"
                         "}\n";
-//        if (rdf_->getModel().size() == 0){
-//            return;
+
+        auto results = rdf_->queryResultsAsMap(q);
+
+//        for (int i = 0; i < results["subjectBlank"].size(); i++) {
+//            std::string &subjectBlank = results["subjectBlank"][i];
+//            std::string &resourceBlank = results["resourceBlank"][i];
+//            std::string &vCardPred = results["vCardPred"][i];
+//            std::string &literal = results["literal"][i];
+//
+//            // first make up the old N triple so we can remove them from the model
+//            UriHandler &uriHandler = rdf_->getUriHandler();
+//            Triple nTrip1(
+//                    uriHandler,
+//                    LibrdfNode::fromBlank(subjectBlank),
+//                    LibrdfNode::fromUriString("http://www.w3.org/2001/vcard-rdf/3.0#N"),
+//                    LibrdfNode::fromBlank(resourceBlank));
+//
+//            Triple nTrip2(
+//                    uriHandler,
+//                    LibrdfNode::fromBlank(resourceBlank),
+//                    LibrdfNode::fromUriString(vCardPred),
+//                    LibrdfNode::fromLiteral(literal, "", ""));
+//
+//            rdf_->getModel().removeStatement(nTrip1);
+//            rdf_->getModel().removeStatement(nTrip2);
+//
+//            // now add the information that we took out, back into the model
+//            Triple nTrip3(
+//                    uriHandler,
+//                    LibrdfNode::fromBlank(subjectBlank),
+//                    LibrdfNode::fromUriString(vCardPred),
+//                    LibrdfNode::fromLiteral(literal, "", ""));
+//            rdf_->getModel().addStatement(nTrip3);
 //        }
-
-//        const LibrdfModel& model = rdf_->getModel();
-        LibrdfQuery query(q, rdf_->getModel());
-        LibrdfQueryResults queryResults = query.execute();
-        auto results = queryResults.map();
-
-        for (int i = 0; i < results["subjectBlank"].size(); i++) {
-            std::string &subjectBlank = results["subjectBlank"][i];
-            std::string &resourceBlank = results["resourceBlank"][i];
-            std::string &vCardPred = results["vCardPred"][i];
-            std::string &literal = results["literal"][i];
-
-            // first make up the old N triple so we can remove them from the model
-            UriHandler &uriHandler = rdf_->getUriHandler();
-            Triple nTrip1(
-                    uriHandler,
-                    LibrdfNode::fromBlank(subjectBlank),
-                    LibrdfNode::fromUriString("http://www.w3.org/2001/vcard-rdf/3.0#N"),
-                    LibrdfNode::fromBlank(resourceBlank));
-
-            Triple nTrip2(
-                    uriHandler,
-                    LibrdfNode::fromBlank(resourceBlank),
-                    LibrdfNode::fromUriString(vCardPred),
-                    LibrdfNode::fromLiteral(literal, "", ""));
-
-            rdf_->getModel().removeStatement(nTrip1);
-            rdf_->getModel().removeStatement(nTrip2);
-
-            // now add the information that we took out, back into the model
-            Triple nTrip3(
-                    uriHandler,
-                    LibrdfNode::fromBlank(subjectBlank),
-                    LibrdfNode::fromUriString(vCardPred),
-                    LibrdfNode::fromLiteral(literal, "", ""));
-            rdf_->getModel().addStatement(nTrip3);
-        }
     }
 
     void VCardTranslator::convertVCardToFoaf(const std::string &vcardUri, const std::string &foafReplacement) {
@@ -81,10 +75,7 @@ namespace omexmeta {
 //        if (rdf_->getModel().size() == 0){
 //            return;
 //        }
-
-        LibrdfQuery query(q, rdf_->getModel());
-        LibrdfQueryResults queryResults = query.execute();
-        auto results = queryResults.map();
+        auto results = rdf_->queryResultsAsMap(q);
 
         for (int i = 0; i < results["subjectBlank"].size(); i++) {
             std::string &subjectBlank = results["subjectBlank"][i];
@@ -123,13 +114,8 @@ namespace omexmeta {
                         "?subjectBlank <http://www.w3.org/2001/vcard-rdf/3.0#ORG> ?resourceBlank .\n"
                         "?resourceBlank <http://www.w3.org/2001/vcard-rdf/3.0#Orgname> ?literal\n"
                         "}\n";
-//        if (rdf_->getModel().size() == 0){
-//            return;
-//        }
 
-        LibrdfQuery query(q, rdf_->getModel());
-        LibrdfQueryResults queryResults = query.execute();
-        auto results = queryResults.map();
+        auto results = rdf_->queryResultsAsMap(q);
 
         for (int i = 0; i < results["subjectBlank"].size(); i++) {
             std::string &subjectBlank = results["subjectBlank"][i];

@@ -474,8 +474,6 @@ raptor_parser_parse_chunk(raptor_parser *rdf_parser,
                           const unsigned char *buffer, size_t len, int is_end) {
     if (rdf_parser->sb)
         raptor_stringbuffer_append_counted_string(rdf_parser->sb, buffer, len, 1);
-printf("rdf_parser : %d\n", rdf_parser);
-printf("buffer : %d\n", buffer);
     return rdf_parser->factory->chunk(rdf_parser, buffer, len, is_end);
 }
 

@@ -29,10 +29,6 @@ namespace omexmeta {
     }
 
     void omexmeta::PurgeRDFBag::purgePattern1() {
-//        if (rdf_->getModel().size() == 0){
-//            return;
-//        }
-
         /**
          * Note, we might be able to do another query that says
          * "if the query matches" do something with it.
@@ -136,9 +132,6 @@ namespace omexmeta {
     }
 
     void omexmeta::PurgeRDFBag::purgePattern2() {
-//        if (rdf_->getModel().size() == 0){
-//            return;
-//        }
         /**
          * This query is not as specific as I would like it to be because
          * there is some "cross-reactivity" with triples that use rdf:_1, rdf:_2, ...
@@ -164,16 +157,7 @@ namespace omexmeta {
                         "   FILTER isBlank(?b)\n"
                         "   FILTER (?p2 != rdf:type) \n"// http://www.w3.org/1999/02/22-rdf-syntax-ns#_1; not rdf:type
                         "}\n";
-
-        LibrdfQuery query(q, rdf_->getModel());
-        LibrdfQueryResults queryResults = query.execute();
-        auto results = queryResults.map();
-
-        //        if (results["s1"].size() <= 1) {
-        //            // return when we only have 1 or 0 search results
-        //            // to prevent "cross reactivity" with PurgeRDFBag::purgeListBagEntries
-        ////            return;
-        //        }
+        auto results = rdf_->queryResultsAsMap(q);
 
         for (int i = 0; i < results["s1"].size(); i++) {
             const std::string &s1 = results["s1"][i];
@@ -214,9 +198,6 @@ namespace omexmeta {
     }
 
     void omexmeta::PurgeRDFBag::purgePattern3() {
-//        if (rdf_->getModel().size() == 0){
-//            return;
-//        }
         /**
          * This query is not as specific as I would like it to be because
          * there is some "cross-reactivity" with triples that use rdf:_1, rdf:_2, ...
@@ -243,16 +224,7 @@ namespace omexmeta {
                         "   FILTER isBlank(?b2)\n"
                         "   FILTER isUri(?r)\n"
                         "}\n";
-
-        LibrdfQuery query(q, rdf_->getModel());
-        LibrdfQueryResults queryResults = query.execute();
-        auto results = queryResults.map();
-
-        //        if (results["s1"].size() <= 1) {
-        //            // return when we only have 1 or 0 search results
-        //            // to prevent "cross reactivity" with PurgeRDFBag::purgeListBagEntries
-        //            return;
-        //        }
+        auto results = rdf_->queryResultsAsMap(q);
 
         for (int i = 0; i < results["s1"].size(); i++) {
             const std::string &s1 = results["s1"][i];
