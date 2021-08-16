@@ -15,12 +15,12 @@ namespace redland {
 
     LibrdfNode::LibrdfNode(librdf_node *node)
         : RefCounted_librdf_node(node, librdf_free_node) {
-        REDLAND_DEBUG("Instantiated a LibrdfNode instance");
+//        REDLAND_DEBUG("Instantiated a LibrdfNode instance");
     }
 
     LibrdfNode::LibrdfNode(const LibrdfUri &uri)
         : RefCounted_librdf_node(LibrdfNode::fromUriString(uri.str()).get(), librdf_free_node) {
-        REDLAND_DEBUG("Instantiated a LibrdfNode instance");
+//        REDLAND_DEBUG("Instantiated a LibrdfNode instance");
     };
 
     //todo the content of thos method really belongs somewhere else

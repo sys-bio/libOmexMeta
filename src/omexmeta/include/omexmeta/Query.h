@@ -17,7 +17,7 @@ namespace omexmeta {
      */
     class Query {
     public:
-        Query(const std::string& query, const LibrdfModel& model);
+        Query(const std::string& query,  LibrdfModel& model);
 
         /**
          * @brief return query results as a ResultsMap, where sparql

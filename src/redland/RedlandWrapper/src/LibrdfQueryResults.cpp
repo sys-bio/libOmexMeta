@@ -5,8 +5,8 @@
 
 namespace redland {
 
-    LibrdfQueryResults::LibrdfQueryResults(librdf_query_results *query_results, LibrdfQuery *query)
-        : RedlandType_query_results(query_results, librdf_free_query_results), query_(query) {
+    LibrdfQueryResults::LibrdfQueryResults(librdf_query_results *query_results)
+        : RedlandType_query_results(query_results, librdf_free_query_results) {
         REDLAND_DEBUG("Instantiated a LibrdfQueryResults instance");
     }
 
@@ -146,7 +146,6 @@ namespace redland {
                 }
             }
         }
-//        regenerateQueryResults();
         return map_;
     }
 

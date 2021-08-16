@@ -37,7 +37,7 @@ namespace redland {
     public:
         using RedlandType_query_results::RedlandType_query_results;
 
-        explicit LibrdfQueryResults(librdf_query_results *queryResults, LibrdfQuery* query);
+        explicit LibrdfQueryResults(librdf_query_results *queryResults);
 
 //        void regenerateQueryResults();
 
@@ -118,7 +118,6 @@ namespace redland {
         ResultsMap map();
 
     private:
-        LibrdfQuery* query_;
         ResultsMap map_;
         bool mapExecuted = false;
 
@@ -134,7 +133,6 @@ namespace redland {
                 "rdfxml",
         };
 
-        librdf_query_results* begin = nullptr;
     };
 }// namespace redland
 

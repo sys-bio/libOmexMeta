@@ -216,9 +216,9 @@ namespace omexmeta {
 
         static std::ostringstream listOptions();
 
-        std::string queryResultsAsString(const std::string &query_str, const std::string &results_syntax) const override;
+        std::string queryResultsAsString(const std::string &query_str, const std::string &results_syntax) override;
 
-        ResultsMap queryResultsAsMap(const std::string &query_str) const override;
+        ResultsMap queryResultsAsMap(const std::string &query_str) override;
 
         /**
          * @brief compared namespaces seen with namespaces

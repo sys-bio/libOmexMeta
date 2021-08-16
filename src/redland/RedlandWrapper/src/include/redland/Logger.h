@@ -192,7 +192,7 @@ namespace redland {
 #define LOGGER_SET_TRACE() Logger::getLogger()->setLevel(Logger::LogLevel::trace);
 #define LOGGER_SET_DEBUG() Logger::getLogger()->setLevel(Logger::LogLevel::debug);
 #define LOGGER_SET_WARN() Logger::getLogger()->setLevel(Logger::LogLevel::warn);
-#define LOGGER_SET_ERROR() Logger::getLogger()->setLevel(Logger::LogLevel::error);
+#define LOGGER_SET_ERROR() Logger::getLogger()->setLevel(Logger::LogLevel::err);
 #define LOGGER_SET_CRITICAL() Logger::getLogger()->setLevel(Logger::LogLevel::critical);
 
 }// namespace redland

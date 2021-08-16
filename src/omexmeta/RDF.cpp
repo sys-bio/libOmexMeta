@@ -54,7 +54,7 @@ namespace omexmeta {
         RDF rdf;
         LibrdfParser parser(syntax);
         LibrdfUri u(rdf.getModelUri());
-        parser.parseString(str, rdf.model_, u);
+        parser.parseString(str, rdf.getModel(), u);
 
         // update the list of "seen" namespaces
         rdf.seen_namespaces_ = parser.getSeenNamespaces(std::vector<std::string>());
@@ -74,8 +74,8 @@ namespace omexmeta {
         if (Options::translateVCard_)
             rdf.translateVcard();
 
-//        if (Options::removeRDFBag_)
-//            rdf.purgeRDFBag();
+        if (Options::removeRDFBag_)
+            rdf.purgeRDFBag();
         return rdf;
     }
 
@@ -259,14 +259,16 @@ namespace omexmeta {
         return serializer.toString("base", model_);
     }
 
-    std::string RDF::queryResultsAsString(const std::string &query_str, const std::string &results_syntax) const {
+    std::string RDF::queryResultsAsString(const std::string &query_str, const std::string &results_syntax) {
         // create query object
-        Query query(query_str, getModel());
+        LibrdfModel model = getModel();
+        Query query(query_str, model);
         return query.asString(results_syntax);
     }
 
-    ResultsMap RDF::queryResultsAsMap(const std::string &query_str) const {
-        Query query(query_str, getModel());
+    ResultsMap RDF::queryResultsAsMap(const std::string &query_str)  {
+        LibrdfModel model = getModel();
+        Query query(query_str, model);
         return query.asMap();
     }
 

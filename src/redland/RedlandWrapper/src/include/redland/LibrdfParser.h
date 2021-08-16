@@ -112,7 +112,7 @@ namespace redland {
 
 //        LibrdfModel& model_;
 
-        std::string format_ = std::string();
+        std::string syntax_ = std::string();
         std::string mime_type_ = std::string();
         librdf_uri *type_uri_ = nullptr;
     };

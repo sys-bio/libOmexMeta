@@ -270,15 +270,3 @@ TEST_F(LibrdfQueryTests, BindingNotUsed) {
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
-TEST_F(LibrdfQueryTests, UseRegenerate) {
-    std::string s = "SELECT ?x ?y ?z \n"
-                    "WHERE {\n"
-                    "  ?x ?y <http://purl.org/net/dajobe/> \n"
-                    "}\n";
-    LibrdfQuery query(q, *model);
-    LibrdfQueryResults res = query.execute();
-    auto m = res.map();
-    res.regenerateQueryResults();
-
-}
-

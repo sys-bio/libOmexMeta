@@ -11,8 +11,8 @@ namespace redland {
         REDLAND_DEBUG("Instantiated a LibrdfParser instance");
     }
 
-    LibrdfParser::LibrdfParser(std::string format, std::string mime_type, const std::string &type_uri)
-        : format_(std::move(format)), mime_type_(std::move(mime_type)) {
+    LibrdfParser::LibrdfParser(std::string syntax, std::string mime_type, const std::string &type_uri)
+        : syntax_(std::move(syntax)), mime_type_(std::move(mime_type)) {
         freeFunc_ = librdf_free_parser;
         setTypeUri(type_uri);
         validateParserName();
@@ -26,8 +26,8 @@ namespace redland {
             obj_ = nullptr;
         }
         const char *name_used = nullptr;
-        if (!format_.empty())
-            name_used = format_.c_str();
+        if (!syntax_.empty())
+            name_used = syntax_.c_str();
 
         const char *mime_type_used = nullptr;
         if (!mime_type_.empty())
@@ -89,11 +89,11 @@ namespace redland {
     //        return *this;
     //    }
     std::string LibrdfParser::getName() const {
-        return format_;
+        return syntax_;
     }
 
     void LibrdfParser::setName(const char *name) {
-        format_ = name;
+        syntax_ = name;
         validateParserName();
         obj_ = makeParser();
     }

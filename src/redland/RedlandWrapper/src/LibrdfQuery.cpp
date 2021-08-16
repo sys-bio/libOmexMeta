@@ -3,8 +3,8 @@
 #include <redland/LibrdfException.h>
 #include <redland/LibrdfModel.h>
 
-#include <utility>
 #include "redland/Logger.h"
+#include <utility>
 
 namespace redland {
 
@@ -16,13 +16,13 @@ namespace redland {
         return !(rhs == *this);
     };
 
-//    LibrdfQuery::LibrdfQuery(librdf_query *query, const LibrdfModel &model)
-//        : RedlandType_librdf_query(query, librdf_free_query), model_(const_cast<LibrdfModel &>(model)) {
-//        REDLAND_DEBUG("Instantiated a LibrdfQuery instance");
-//    }
+    //    LibrdfQuery::LibrdfQuery(librdf_query *query, const LibrdfModel &model)
+    //        : RedlandType_librdf_query(query, librdf_free_query), model_(const_cast<LibrdfModel &>(model)) {
+    //        REDLAND_DEBUG("Instantiated a LibrdfQuery instance");
+    //    }
 
-    LibrdfQuery::LibrdfQuery(const std::string& query, const LibrdfModel &model)
-        : query_(query), model_(const_cast<LibrdfModel &>(model)) {
+    LibrdfQuery::LibrdfQuery(const std::string &query, LibrdfModel &model)
+        : query_(query), model_(model) {
         obj_ = newQuery();
         freeFunc_ = librdf_free_query;
     }
@@ -37,8 +37,8 @@ namespace redland {
     }
 
     LibrdfQueryResults LibrdfQuery::execute() {
-        librdf_query_results* q = librdf_query_execute(obj_, model_.getWithoutIncrement());
-        LibrdfQueryResults qr(q, this);
+        librdf_query_results *q = librdf_query_execute(obj_, model_.getWithoutIncrement());
+        LibrdfQueryResults qr(q);
         // return by value uses copy constructor
         return qr;
     }

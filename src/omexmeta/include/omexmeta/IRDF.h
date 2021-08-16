@@ -55,8 +55,8 @@ namespace omexmeta {
         virtual void *getTransactionHandle() const = 0;
         virtual int startTransactionWithHandle(void *handle) const = 0;
         virtual int getTransactionRollback() const = 0;
-        virtual std::string queryResultsAsString(const std::string &query_str, const std::string &results_syntax) const = 0;
-        virtual ResultsMap queryResultsAsMap(const std::string &query_str) const = 0;
+        virtual std::string queryResultsAsString(const std::string &query_str, const std::string &results_syntax)  = 0;
+        virtual ResultsMap queryResultsAsMap(const std::string &query_str) = 0;
         virtual void addTriple(const Triple &triple) = 0;
         virtual void addTriples(Triples &triples) = 0;
         virtual UriHandler &getUriHandler() = 0;

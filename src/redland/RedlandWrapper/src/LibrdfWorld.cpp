@@ -16,8 +16,14 @@ namespace redland {
         // getLogger.
         Logger::getLogger();
 
+        int facility = librdf_log_message_facility(message);
         std::ostringstream log;
-        if (message->locator) {
+        if (facility == LIBRDF_FROM_PARSER) {
+            /* valid for certain facilities such as LIBRDF_FROM_PARSER */
+            // can't be sure which others, as undocumented.
+            // See rdf_log.h L119.
+            // Do not check message->locator for null as unit value
+            // bug is horrendous to find.
             log << message->locator->file;
             log << ": ";
             log << message->locator->line;

@@ -7,7 +7,7 @@
 
 namespace omexmeta {
 
-    Query::Query(const std::string& query, const LibrdfModel& model)
+    Query::Query(const std::string& query, LibrdfModel& model)
         : query_(LibrdfQuery(query, model)), model_(model){
         results_ = query_.execute();
     }
