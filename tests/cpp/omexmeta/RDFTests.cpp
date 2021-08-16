@@ -367,7 +367,7 @@ TEST_F(RDFTests, TestSerializeCellMlAnnotationNoTrailingHashes) {
 }
 
 TEST_F(RDFTests, TestBagConversion) {
-    LOGGER_SET_DEBUG();
+//    LOGGER_SET_DEBUG();
     std::string input = "<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
                         "                 xmlns:bqmodel=\"http://biomodels.net/model-qualifiers/\"\n"
                         "                 xmlns:vCard=\"http://www.w3.org/2001/vcard-rdf/3.0#\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"\n"

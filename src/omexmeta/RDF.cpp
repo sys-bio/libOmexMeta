@@ -3,6 +3,7 @@
 //
 
 #include "omexmeta/RDF.h"
+#include "omexmeta/Query.h"
 #include "omexmeta/Options.h"
 #include "omexmeta/PurgeRDFBag.h"
 #include "redland/RedlandAPI.h"
@@ -260,15 +261,13 @@ namespace omexmeta {
 
     std::string RDF::queryResultsAsString(const std::string &query_str, const std::string &results_syntax) const {
         // create query object
-        LibrdfQuery query(query_str, getModel());
-        LibrdfQueryResults results = query.execute();
-        return results.toString(results_syntax);
+        Query query(query_str, getModel());
+        return query.asString(results_syntax);
     }
 
     ResultsMap RDF::queryResultsAsMap(const std::string &query_str) const {
-        LibrdfQuery query(query_str, getModel());
-        LibrdfQueryResults results = query.execute();
-        return results.map();
+        Query query(query_str, getModel());
+        return query.asMap();
     }
 
     void RDF::toFile(const std::string &filename, const std::string &syntax, const char *mime_type, const char *type_uri) {

@@ -39,7 +39,7 @@ namespace redland {
 
         explicit LibrdfQueryResults(librdf_query_results *queryResults, LibrdfQuery* query);
 
-        void regenerateQueryResults();
+//        void regenerateQueryResults();
 
         /**
          * @brief get the query results as a LibrdfStream
@@ -61,16 +61,6 @@ namespace redland {
 
         std::vector<LibrdfNode> getBindings();
 
-//        LibrdfNode getBindingValue();
-//
-//        std::string getBindingName();
-//
-//        LibrdfNode getBindingValueByName();
-//
-//        std::string toString();
-
-        std::string str(std::string format);
-
         /**
          * @brief true when this LibrdfQueryResults is variable boolean format
          */
@@ -86,10 +76,7 @@ namespace redland {
         /**
          * @brief true when this LibrdfQueryResults is RDF graph format
          */
-
         bool isGraph();
-
-
 
 
         std::string getBindingValueByName(const std::string &name);

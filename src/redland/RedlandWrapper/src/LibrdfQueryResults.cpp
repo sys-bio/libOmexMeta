@@ -10,14 +10,14 @@ namespace redland {
         REDLAND_DEBUG("Instantiated a LibrdfQueryResults instance");
     }
 
-    void LibrdfQueryResults::regenerateQueryResults() {
-        if (obj_) {
-            librdf_free_query_results(obj_);
-            obj_ = nullptr;
-        }
-        obj_ = librdf_query_execute(query_->obj_, query_->getModel().getWithoutIncrement());
-        REDLAND_DEBUG("Regenerated a LibrdfQueryResults instance");
-    }
+//    void LibrdfQueryResults::regenerateQueryResults() {
+//        if (obj_) {
+//            librdf_free_query_results(obj_);
+//            obj_ = nullptr;
+//        }
+//        obj_ = librdf_query_execute(query_->obj_, query_->getModel().getWithoutIncrement());
+//        REDLAND_DEBUG("Regenerated a LibrdfQueryResults instance");
+//    }
 
 
     bool LibrdfQueryResults::isFinished() {
@@ -25,6 +25,7 @@ namespace redland {
         if (failed) {
             std::cout << failed << std::endl;
         }
+
         return failed;
     }
 
@@ -41,7 +42,7 @@ namespace redland {
             REDLAND_WARN("Failed to get bindings");
             throw std::logic_error("Failed to get bindings");
         }
-        regenerateQueryResults();
+//        regenerateQueryResults();
         return v;
     }
 
@@ -59,7 +60,7 @@ namespace redland {
 
     LibrdfStream LibrdfQueryResults::toStream() {
         librdf_stream *s = librdf_query_results_as_stream(obj_);
-        regenerateQueryResults();
+//        regenerateQueryResults();
         return LibrdfStream(s);
     }
 
@@ -109,7 +110,7 @@ namespace redland {
         // the above string using \r\n for line endings. Convert to \n like any sane program should.
         res = stringReplace(res, "\r\n", "\n");
         free(s);
-        regenerateQueryResults();
+//        regenerateQueryResults();
         return res;
     }
 
@@ -145,7 +146,7 @@ namespace redland {
                 }
             }
         }
-        regenerateQueryResults();
+//        regenerateQueryResults();
         return map_;
     }
 

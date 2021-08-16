@@ -197,4 +197,4 @@ namespace redland {
 
 }// namespace redland
 
-#endif//LIBOMEXMETA_LOGGER_H
+#endif//LIBOMEXMETA_LOGGER2_H
