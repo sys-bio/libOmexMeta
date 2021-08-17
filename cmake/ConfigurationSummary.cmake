@@ -31,6 +31,9 @@ CMake variables and options
     BUILD_DOCS                         ${BUILD_DOCS}
     BUILD_TESTS                        ${BUILD_TESTS}
     N                                  ${N}
+    BUILD_TREE_SITE_PACKAGES
+    BUILD_TREE_SITE_PACKAGES
+
 
 Python Variables
 -----------------
@@ -45,6 +48,7 @@ Python Variables
     Python_STDARCH                     ${Python_STDARCH}
     Python_SITELIB                     ${Python_SITELIB}
     Python_SITEARCH                    ${Python_SITEARCH}
+
 
 VCPKG config
 ------------

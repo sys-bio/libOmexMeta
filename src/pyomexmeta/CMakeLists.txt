@@ -2,8 +2,6 @@
 #   We create a build tree python package and an
 #   install tree python package for pyomexmeta
 #
-# build tree site-packages dir
-set(BUILD_TREE_SITE_PACKAGES ${CMAKE_BINARY_DIR}/site-packages)
 
 # configure the python __init.py
 set(PYTHON_INIT_CONFIG_FILE "${CMAKE_CURRENT_SOURCE_DIR}/__init__.py")

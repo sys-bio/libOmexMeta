@@ -511,7 +511,7 @@ stages:
               $(PipExecutable) install python-libcombine pytest wheel ipython breathe sphinx-tabs requests tellurium python-libcombine graphviz
 
               yum install -y graphviz
-              cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX=$(INSTALL_DIRECTORY) -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(PythonRoot)  ..
+              cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX=$(INSTALL_DIRECTORY) -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(PythonRoot) -DBUILD_DOCS=ON -DBUILD_DOCS_EXAMPLES=ON ..
               cmake --build . --target install --config Release -j 12
               ctest --verbose --extra-verbose --output-on-failure
               cmake --build . --target RunDocExamplesAndGenerateOutput

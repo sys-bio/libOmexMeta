@@ -188,8 +188,8 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/lib)
 set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS TRUE)
 
 # local site packages directories
-set(OMEXMETA_INSTALL_SITE_PACKAGES_DIR "${CMAKE_INSTALL_PREFIX}/site-packages")
-set(OMEXMETA_BUILD_SITE_PACKAGES_DIR "${CMAKE_INSTALL_PREFIX}/site-packages")
+set(INSTALL_TREE_SITE_PACKAGES "${CMAKE_INSTALL_PREFIX}/site-packages")
+set(BUILD_TREE_SITE_PACKAGES "${CMAKE_BINARY_DIR}/site-packages")
 
 # In non-windows builds and only when libOmexMeta is being built
 #   as a top level project, we set the default CMAKE_INSTALL_PREFIX
