@@ -398,7 +398,7 @@ stages:
                 mkdir $(BUILD_DIRECTORY)
               }
               cd $(BUILD_DIRECTORY)
-              cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX=$(INSTALL_DIRECTORY) -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(PythonRoot)  -DBUILD_DOCS=ON -BUILD_DOCS_EXAMPLES=ON ..
+              cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX=$(INSTALL_DIRECTORY) -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(PythonRoot)  -DBUILD_DOCS=ON -DBUILD_DOCS_EXAMPLES=ON ..
               cmake --build . --target install --config Release -j 12
 
               echo "cd D:\a\1\s\build\"
@@ -415,8 +415,8 @@ stages:
 
               cd $(BUILD_DIRECTORY)
               ctest -C Release --verbose --extra-verbose --output-on-failure
-              cmake --build . --target RunDocExamplesAndGenerateOutput
-              cmake --build . --target install --config Release -j 12
+              cmake --build . --config Release --target RunDocExamplesAndGenerateOutput
+              cmake --build . --config Release --target install --config Release -j 12
 
             displayName: Build With Python
             # publish python packages in azure:
