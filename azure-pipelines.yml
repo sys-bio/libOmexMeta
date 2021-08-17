@@ -102,6 +102,7 @@ stages:
               cd $(BUILD_DIRECTORY)
               cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)" -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(PythonRoot) ..
               cmake --build $(BUILD_DIRECTORY) --target run-ctest --config Release
+              cmake --build . --target RunDocExamplesAndGenerateOutput --config Release -j 12
               cmake --build . --target install --config Release -j 12
             displayName: Run Tests With Python
           - script: |
@@ -114,6 +115,7 @@ stages:
               echo "wheel is: $wheel"
               $(PipExecutable) install $wheel
               $(PythonExecutable) -c "import pyomexmeta;pyomexmeta.run_tests()"
+
             displayName: Build and install pip wheel then run tests from within Python
 #          - script: |
 #              git clone https://github.com/doxygen/doxygen.git '$(DOXYGEN_DIRECTORY)'
@@ -230,7 +232,9 @@ stages:
               cd $(BUILD_DIRECTORY)
               cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)" -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(PythonRoot)  ..
               cmake --build . --target run-ctest --config Release
+              cmake --build . --target RunDocExamplesAndGenerateOutput --config Release -j 12
               cmake --build . --target install --config Release -j 12
+
             displayName: Run Tests With Python
           - script: |
               eval "$(conda shell.bash hook)"
@@ -394,7 +398,7 @@ stages:
                 mkdir $(BUILD_DIRECTORY)
               }
               cd $(BUILD_DIRECTORY)
-              cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX=$(INSTALL_DIRECTORY) -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(PythonRoot)  ..
+              cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX=$(INSTALL_DIRECTORY) -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(PythonRoot)  -DBUILD_DOCS=ON -BUILD_DOCS_EXAMPLES=ON ..
               cmake --build . --target install --config Release -j 12
 
               echo "cd D:\a\1\s\build\"
@@ -411,6 +415,9 @@ stages:
 
               cd $(BUILD_DIRECTORY)
               ctest -C Release --verbose --extra-verbose --output-on-failure
+              cmake --build . --target RunDocExamplesAndGenerateOutput
+              cmake --build . --target install --config Release -j 12
+
             displayName: Build With Python
             # publish python packages in azure:
             #   https://docs.microsoft.com/en-us/azure/devops/pipelines/artifacts/pypi?view=azure-devops&tabs=yaml
@@ -507,6 +514,7 @@ stages:
               cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX=$(INSTALL_DIRECTORY) -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(PythonRoot)  ..
               cmake --build . --target install --config Release -j 12
               ctest --verbose --extra-verbose --output-on-failure
+              cmake --build . --target RunDocExamplesAndGenerateOutput
 
             displayName: Build With Python
 

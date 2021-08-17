@@ -1,0 +1,99 @@
+Running main() from ..\third_party\googletest\googletest\src\gtest_main.cc
+[==========] Running 45 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 45 tests from LibrdfNodeTests
+[ RUN      ] LibrdfNodeTests.TestCreate
+[       OK ] LibrdfNodeTests.TestCreate (2 ms)
+[ RUN      ] LibrdfNodeTests.CheckFromRawPtr
+[       OK ] LibrdfNodeTests.CheckFromRawPtr (0 ms)
+[ RUN      ] LibrdfNodeTests.CheckFromRawPtrCpyAssignment
+[       OK ] LibrdfNodeTests.CheckFromRawPtrCpyAssignment (0 ms)
+[ RUN      ] LibrdfNodeTests.CheckCanCreateEmptyNode
+[       OK ] LibrdfNodeTests.CheckCanCreateEmptyNode (0 ms)
+[ RUN      ] LibrdfNodeTests.UriNodeUrnMiriam
+[       OK ] LibrdfNodeTests.UriNodeUrnMiriam (0 ms)
+[ RUN      ] LibrdfNodeTests.TestUnderlyingNodeHasUri
+[       OK ] LibrdfNodeTests.TestUnderlyingNodeHasUri (0 ms)
+[ RUN      ] LibrdfNodeTests.TestMoveConstructor
+[       OK ] LibrdfNodeTests.TestMoveConstructor (0 ms)
+[ RUN      ] LibrdfNodeTests.TestMoveAssignmentOperator
+[       OK ] LibrdfNodeTests.TestMoveAssignmentOperator (0 ms)
+[ RUN      ] LibrdfNodeTests.TestLiteral1
+[       OK ] LibrdfNodeTests.TestLiteral1 (0 ms)
+[ RUN      ] LibrdfNodeTests.TestTypedLiteral1
+[       OK ] LibrdfNodeTests.TestTypedLiteral1 (0 ms)
+[ RUN      ] LibrdfNodeTests.TestTypedLiteral2
+[       OK ] LibrdfNodeTests.TestTypedLiteral2 (0 ms)
+[ RUN      ] LibrdfNodeTests.TestTypedLiteral3
+[       OK ] LibrdfNodeTests.TestTypedLiteral3 (0 ms)
+[ RUN      ] LibrdfNodeTests.TestBlank
+[       OK ] LibrdfNodeTests.TestBlank (0 ms)
+[ RUN      ] LibrdfNodeTests.TestNodeUri
+[       OK ] LibrdfNodeTests.TestNodeUri (0 ms)
+[ RUN      ] LibrdfNodeTests.TestNodeUriStringTwice
+[       OK ] LibrdfNodeTests.TestNodeUriStringTwice (0 ms)
+[ RUN      ] LibrdfNodeTests.TestUseNodesToMakeARawLibrdfStatementObj
+[       OK ] LibrdfNodeTests.TestUseNodesToMakeARawLibrdfStatementObj (0 ms)
+[ RUN      ] LibrdfNodeTests.TestUseNodesToMakeAWrapperLibrdfStatementObj
+[       OK ] LibrdfNodeTests.TestUseNodesToMakeAWrapperLibrdfStatementObj (0 ms)
+[ RUN      ] LibrdfNodeTests.TestgetUri
+[       OK ] LibrdfNodeTests.TestgetUri (0 ms)
+[ RUN      ] LibrdfNodeTests.TestSetUri
+[       OK ] LibrdfNodeTests.TestSetUri (0 ms)
+[ RUN      ] LibrdfNodeTests.TestgetLiteralDatatype
+[       OK ] LibrdfNodeTests.TestgetLiteralDatatype (0 ms)
+[ RUN      ] LibrdfNodeTests.TestValidateLiteralDatatype
+[       OK ] LibrdfNodeTests.TestValidateLiteralDatatype (0 ms)
+[ RUN      ] LibrdfNodeTests.TestValidateLiteralDatatype2
+[       OK ] LibrdfNodeTests.TestValidateLiteralDatatype2 (0 ms)
+[ RUN      ] LibrdfNodeTests.TestsetLiteralDatatypeDoesntChangeValue
+[       OK ] LibrdfNodeTests.TestsetLiteralDatatypeDoesntChangeValue (0 ms)
+[ RUN      ] LibrdfNodeTests.TestSetBlank
+[       OK ] LibrdfNodeTests.TestSetBlank (0 ms)
+[ RUN      ] LibrdfNodeTests.TestSetBlankValueNotChanged
+[       OK ] LibrdfNodeTests.TestSetBlankValueNotChanged (0 ms)
+[ RUN      ] LibrdfNodeTests.TestSetUri2
+[       OK ] LibrdfNodeTests.TestSetUri2 (0 ms)
+[ RUN      ] LibrdfNodeTests.TestEquality
+[       OK ] LibrdfNodeTests.TestEquality (0 ms)
+[ RUN      ] LibrdfNodeTests.TestEqualityBlank
+[       OK ] LibrdfNodeTests.TestEqualityBlank (0 ms)
+[ RUN      ] LibrdfNodeTests.TestInequality
+[       OK ] LibrdfNodeTests.TestInequality (0 ms)
+[ RUN      ] LibrdfNodeTests.TestCopyNodeUri
+[       OK ] LibrdfNodeTests.TestCopyNodeUri (0 ms)
+[ RUN      ] LibrdfNodeTests.TestCopyNodeUriNoWrapper
+[       OK ] LibrdfNodeTests.TestCopyNodeUriNoWrapper (0 ms)
+[ RUN      ] LibrdfNodeTests.TestCopyNodeLiteral
+[       OK ] LibrdfNodeTests.TestCopyNodeLiteral (0 ms)
+[ RUN      ] LibrdfNodeTests.TestTwoNodesUriCountDifferentContentUsingRaptor
+[       OK ] LibrdfNodeTests.TestTwoNodesUriCountDifferentContentUsingRaptor (0 ms)
+[ RUN      ] LibrdfNodeTests.TestTwoNodesUriCountSameContentUsingRaptor
+[       OK ] LibrdfNodeTests.TestTwoNodesUriCountSameContentUsingRaptor (0 ms)
+[ RUN      ] LibrdfNodeTests.GetNamespace1
+[       OK ] LibrdfNodeTests.GetNamespace1 (0 ms)
+[ RUN      ] LibrdfNodeTests.GetNamespace2
+[       OK ] LibrdfNodeTests.GetNamespace2 (0 ms)
+[ RUN      ] LibrdfNodeTests.TestRefCounterOneNode
+[       OK ] LibrdfNodeTests.TestRefCounterOneNode (0 ms)
+[ RUN      ] LibrdfNodeTests.TestRefCounterOneNodesUri
+[       OK ] LibrdfNodeTests.TestRefCounterOneNodesUri (0 ms)
+[ RUN      ] LibrdfNodeTests.CopyConstruct
+[       OK ] LibrdfNodeTests.CopyConstruct (1 ms)
+[ RUN      ] LibrdfNodeTests.CopyAssignment
+[       OK ] LibrdfNodeTests.CopyAssignment (0 ms)
+[ RUN      ] LibrdfNodeTests.MoveConstruct
+[       OK ] LibrdfNodeTests.MoveConstruct (0 ms)
+[ RUN      ] LibrdfNodeTests.MoveAssignment
+[       OK ] LibrdfNodeTests.MoveAssignment (0 ms)
+[ RUN      ] LibrdfNodeTests.isBlank
+[       OK ] LibrdfNodeTests.isBlank (0 ms)
+[ RUN      ] LibrdfNodeTests.isUri
+[       OK ] LibrdfNodeTests.isUri (0 ms)
+[ RUN      ] LibrdfNodeTests.isLiteral
+[       OK ] LibrdfNodeTests.isLiteral (0 ms)
+[----------] 45 tests from LibrdfNodeTests (4 ms total)
+
+[----------] Global test environment tear-down
+[==========] 45 tests from 1 test suite ran. (4 ms total)
+[  PASSED  ] 45 tests.

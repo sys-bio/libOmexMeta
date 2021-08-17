@@ -1,0 +1,776 @@
+Running main() from ..\third_party\googletest\googletest\src\gtest_main.cc
+[==========] Running 28 tests from 3 test suites.
+[----------] Global test environment set-up.
+[----------] 25 tests from RDFTests
+[ RUN      ] RDFTests.TestCreateEmptyRDF
+[       OK ] RDFTests.TestCreateEmptyRDF (2 ms)
+[ RUN      ] RDFTests.TestListOptions
+option, name, label, domain, value type, uri
+0,scanForRDF,RDF/XML parser scans for rdf:RDF in XML content,3,0,http://feature.librdf.org/raptor-scanForRDF
+1,allowNonNsAttributes,RDF/XML parser allows bare 'name' rather than namespaced 'rdf:name',3,0,http://feature.librdf.org/raptor-allowNonNsAttributes
+2,allowOtherParsetypes,RDF/XML parser allows user-defined rdf:parseType values,3,0,http://feature.librdf.org/raptor-allowOtherParsetypes
+3,allowBagID,RDF/XML parser allows rdf:bagID,3,0,http://feature.librdf.org/raptor-allowBagID
+4,allowRDFtypeRDFlist,RDF/XML parser generates the collection rdf:type rdf:List triple,3,0,http://feature.librdf.org/raptor-allowRDFtypeRDFlist
+5,normalizeLanguage,RDF/XML parser normalizes xml:lang values to lowercase,3,0,http://feature.librdf.org/raptor-normalizeLanguage
+6,nonNFCfatal,RDF/XML parser makes non-NFC literals a fatal error,3,0,http://feature.librdf.org/raptor-nonNFCfatal
+7,warnOtherParseTypes,RDF/XML parser warns about unknown rdf:parseType values,3,0,http://feature.librdf.org/raptor-warnOtherParseTypes
+8,checkRdfID,RDF/XML parser checks rdf:ID values for duplicates,3,0,http://feature.librdf.org/raptor-checkRdfID
+9,relativeURIs,Serializers write relative URIs wherever possible.,6,0,http://feature.librdf.org/raptor-relativeURIs
+13,xmlVersion,Serializers and XML Writer use as XML version to write.,6,1,http://feature.librdf.org/raptor-xmlVersion
+14,xmlDeclaration,Serializers and XML Writer write XML declaration.,6,0,http://feature.librdf.org/raptor-xmlDeclaration
+15,noNet,Parsers and SAX2 XML Parser deny internal network requests.,3,0,http://feature.librdf.org/raptor-noNet
+16,resourceBorder,DOT serializer resource border color,6,2,http://feature.librdf.org/raptor-resourceBorder
+17,literalBorder,DOT serializer literal border color,6,2,http://feature.librdf.org/raptor-literalBorder
+18,bnodeBorder,DOT serializer blank node border color,6,2,http://feature.librdf.org/raptor-bnodeBorder
+19,resourceFill,DOT serializer resource fill color,6,2,http://feature.librdf.org/raptor-resourceFill
+20,literalFill,DOT serializer literal fill color,6,2,http://feature.librdf.org/raptor-literalFill
+21,bnodeFill,DOT serializer blank node fill color,6,2,http://feature.librdf.org/raptor-bnodeFill
+22,htmlTagSoup,GRDDL parser uses a lax HTML parser,3,0,http://feature.librdf.org/raptor-htmlTagSoup
+23,microformats,GRDDL parser looks for microformats,3,0,http://feature.librdf.org/raptor-microformats
+24,htmlLink,GRDDL parser looks for <link type="application/rdf+xml">,3,0,http://feature.librdf.org/raptor-htmlLink
+25,wwwTimeout,Parser WWW request retrieval timeout,3,1,http://feature.librdf.org/raptor-wwwTimeout
+26,writeBaseURI,Serializers write a base URI directive @base / xml:base,6,0,http://feature.librdf.org/raptor-writeBaseURI
+27,wwwHttpCacheControl,Parser WWW request HTTP Cache-Control: header value,3,2,http://feature.librdf.org/raptor-wwwHttpCacheControl
+28,wwwHttpUserAgent,Parser WWW request HTTP User-Agent: header value,3,2,http://feature.librdf.org/raptor-wwwHttpUserAgent
+29,jsonCallback,JSON serializer callback function name,6,2,http://feature.librdf.org/raptor-jsonCallback
+30,jsonExtraData,JSON serializer callback data parameter,6,2,http://feature.librdf.org/raptor-jsonExtraData
+31,rssTriples,Atom and RSS serializers write extra RDF triples,6,2,http://feature.librdf.org/raptor-rssTriples
+32,atomEntryUri,Atom serializer writes an atom:entry with this URI (otherwise atom:feed),6,3,http://feature.librdf.org/raptor-atomEntryUri
+33,prefixElements,Atom and RSS serializers write namespace-prefixed elements,6,0,http://feature.librdf.org/raptor-prefixElements
+34,strict,Operate in strict conformance mode (otherwise lax),3,0,http://feature.librdf.org/raptor-strict
+35,wwwCertFilename,SSL client certificate filename,3,2,http://feature.librdf.org/raptor-wwwCertFilename
+36,wwwCertType,SSL client certificate type,3,2,http://feature.librdf.org/raptor-wwwCertType
+37,wwwCertPassphrase,SSL client certificate passphrase,3,2,http://feature.librdf.org/raptor-wwwCertPassphrase
+38,noFile,Parsers and SAX2 deny internal file requests.,3,0,http://feature.librdf.org/raptor-noFile
+39,wwwSslVerifyPeer,SSL verify peer certficate,3,1,http://feature.librdf.org/raptor-wwwSslVerifyPeer
+40,wwwSslVerifyHost,SSL verify host matching,3,1,http://feature.librdf.org/raptor-wwwSslVerifyHost
+
+[       OK ] RDFTests.TestListOptions (0 ms)
+[ RUN      ] RDFTests.TestFromStringSingularAnnotation
+[       OK ] RDFTests.TestFromStringSingularAnnotation (1 ms)
+[ RUN      ] RDFTests.TestFromStringButWrongSyntax
+[17:43:20 +01:00]  error : syntax error at '<' 
+[       OK ] RDFTests.TestFromStringButWrongSyntax (1 ms)
+[ RUN      ] RDFTests.TestFromStringTwice
+[       OK ] RDFTests.TestFromStringTwice (2 ms)
+[ RUN      ] RDFTests.TestFromStringTwiceButWrongSyntax
+[17:43:20 +01:00]  debug ..\src\redland\RedlandWrapper\src\LibrdfStorage.cpp:9 Instantiated a LibrdfStorage instance 
+[17:43:20 +01:00]  debug ..\src\redland\RedlandWrapper\src\LibrdfStorage.cpp:38 Instantiated a LibrdfStorage instance 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_storage_s,class std::function<void __cdecl(struct librdf_storage_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug ..\src\redland\RedlandWrapper\src\LibrdfModel.cpp:24 Instantiated a LibrdfModel instance 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_model_s,class std::function<void __cdecl(struct librdf_model_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug ..\src\omexmeta\RDF.cpp:22 Created an empty RDF graph 
+[17:43:20 +01:00]  debug ..\src\redland\RedlandWrapper\src\LibrdfUri.cpp:23 Instantiated a LibrdfUri instance 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_uri_s,class std::function<void __cdecl(struct raptor_uri_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug ..\src\redland\RedlandWrapper\src\LibrdfUri.cpp:23 Instantiated a LibrdfUri instance 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_uri_s,class std::function<void __cdecl(struct raptor_uri_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug ..\src\redland\RedlandWrapper\src\LibrdfUri.cpp:23 Instantiated a LibrdfUri instance 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_uri_s,class std::function<void __cdecl(struct raptor_uri_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug ..\src\redland\RedlandWrapper\src\LibrdfUri.cpp:23 Instantiated a LibrdfUri instance 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_uri_s,class std::function<void __cdecl(struct raptor_uri_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug ..\src\redland\RedlandWrapper\src\LibrdfUri.cpp:23 Instantiated a LibrdfUri instance 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_uri_s,class std::function<void __cdecl(struct raptor_uri_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug ..\src\redland\RedlandWrapper\src\LibrdfUri.cpp:23 Instantiated a LibrdfUri instance 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_uri_s,class std::function<void __cdecl(struct raptor_uri_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug ..\src\redland\RedlandWrapper\src\LibrdfUri.cpp:23 Instantiated a LibrdfUri instance 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_uri_s,class std::function<void __cdecl(struct raptor_uri_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug ..\src\redland\RedlandWrapper\src\LibrdfUri.cpp:23 Instantiated a LibrdfUri instance 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_uri_s,class std::function<void __cdecl(struct raptor_uri_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug ..\src\redland\RedlandWrapper\src\LibrdfUri.cpp:23 Instantiated a LibrdfUri instance 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_uri_s,class std::function<void __cdecl(struct raptor_uri_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug ..\src\redland\RedlandWrapper\src\LibrdfParser.cpp:20 Instantiated a LibrdfParser instance 
+[17:43:20 +01:00]  debug ..\src\redland\RedlandWrapper\src\LibrdfUri.cpp:23 Instantiated a LibrdfUri instance 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_model_s,class std::function<void __cdecl(struct librdf_model_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug ..\src\redland\RedlandWrapper\src\LibrdfQueryResults.cpp:10 Instantiated a LibrdfQueryResults instance 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_query_results_s,class std::function<void __cdecl(struct librdf_query_results_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug ..\src\redland\RedlandWrapper\src\LibrdfQueryResults.cpp:10 Instantiated a LibrdfQueryResults instance 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_query_results_s,class std::function<void __cdecl(struct librdf_query_results_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_query_results_s,class std::function<void __cdecl(struct librdf_query_results_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_query_s,class std::function<void __cdecl(struct librdf_query_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_model_s,class std::function<void __cdecl(struct librdf_model_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug ..\src\redland\RedlandWrapper\src\LibrdfQueryResults.cpp:10 Instantiated a LibrdfQueryResults instance 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_query_results_s,class std::function<void __cdecl(struct librdf_query_results_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug ..\src\redland\RedlandWrapper\src\LibrdfQueryResults.cpp:10 Instantiated a LibrdfQueryResults instance 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_query_results_s,class std::function<void __cdecl(struct librdf_query_results_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_query_results_s,class std::function<void __cdecl(struct librdf_query_results_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_query_s,class std::function<void __cdecl(struct librdf_query_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_model_s,class std::function<void __cdecl(struct librdf_model_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug ..\src\redland\RedlandWrapper\src\LibrdfQueryResults.cpp:10 Instantiated a LibrdfQueryResults instance 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_query_results_s,class std::function<void __cdecl(struct librdf_query_results_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug ..\src\redland\RedlandWrapper\src\LibrdfQueryResults.cpp:10 Instantiated a LibrdfQueryResults instance 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_query_results_s,class std::function<void __cdecl(struct librdf_query_results_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_query_results_s,class std::function<void __cdecl(struct librdf_query_results_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_query_s,class std::function<void __cdecl(struct librdf_query_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_model_s,class std::function<void __cdecl(struct librdf_model_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug ..\src\redland\RedlandWrapper\src\LibrdfQueryResults.cpp:10 Instantiated a LibrdfQueryResults instance 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_query_results_s,class std::function<void __cdecl(struct librdf_query_results_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug ..\src\redland\RedlandWrapper\src\LibrdfQueryResults.cpp:10 Instantiated a LibrdfQueryResults instance 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_query_results_s,class std::function<void __cdecl(struct librdf_query_results_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_query_results_s,class std::function<void __cdecl(struct librdf_query_results_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_query_s,class std::function<void __cdecl(struct librdf_query_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_model_s,class std::function<void __cdecl(struct librdf_model_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug ..\src\redland\RedlandWrapper\src\LibrdfQueryResults.cpp:10 Instantiated a LibrdfQueryResults instance 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_query_results_s,class std::function<void __cdecl(struct librdf_query_results_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug ..\src\redland\RedlandWrapper\src\LibrdfQueryResults.cpp:10 Instantiated a LibrdfQueryResults instance 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_query_results_s,class std::function<void __cdecl(struct librdf_query_results_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_query_results_s,class std::function<void __cdecl(struct librdf_query_results_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_query_s,class std::function<void __cdecl(struct librdf_query_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_model_s,class std::function<void __cdecl(struct librdf_model_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug ..\src\redland\RedlandWrapper\src\LibrdfQueryResults.cpp:10 Instantiated a LibrdfQueryResults instance 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_query_results_s,class std::function<void __cdecl(struct librdf_query_results_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug ..\src\redland\RedlandWrapper\src\LibrdfQueryResults.cpp:10 Instantiated a LibrdfQueryResults instance 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_query_results_s,class std::function<void __cdecl(struct librdf_query_results_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_query_results_s,class std::function<void __cdecl(struct librdf_query_results_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_query_s,class std::function<void __cdecl(struct librdf_query_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_model_s,class std::function<void __cdecl(struct librdf_model_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug ..\src\redland\RedlandWrapper\src\LibrdfQueryResults.cpp:10 Instantiated a LibrdfQueryResults instance 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_query_results_s,class std::function<void __cdecl(struct librdf_query_results_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug ..\src\redland\RedlandWrapper\src\LibrdfQueryResults.cpp:10 Instantiated a LibrdfQueryResults instance 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_query_results_s,class std::function<void __cdecl(struct librdf_query_results_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_query_results_s,class std::function<void __cdecl(struct librdf_query_results_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_query_s,class std::function<void __cdecl(struct librdf_query_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_model_s,class std::function<void __cdecl(struct librdf_model_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug ..\src\redland\RedlandWrapper\src\LibrdfQueryResults.cpp:10 Instantiated a LibrdfQueryResults instance 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_query_results_s,class std::function<void __cdecl(struct librdf_query_results_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug ..\src\redland\RedlandWrapper\src\LibrdfQueryResults.cpp:10 Instantiated a LibrdfQueryResults instance 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_query_results_s,class std::function<void __cdecl(struct librdf_query_results_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_query_results_s,class std::function<void __cdecl(struct librdf_query_results_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_query_s,class std::function<void __cdecl(struct librdf_query_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_model_s,class std::function<void __cdecl(struct librdf_model_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_uri_s,class std::function<void __cdecl(struct raptor_uri_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_parser_s,class std::function<void __cdecl(struct librdf_parser_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug ..\src\redland\RedlandWrapper\src\LibrdfStorage.cpp:9 Instantiated a LibrdfStorage instance 
+[17:43:20 +01:00]  debug ..\src\redland\RedlandWrapper\src\LibrdfStorage.cpp:38 Instantiated a LibrdfStorage instance 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_storage_s,class std::function<void __cdecl(struct librdf_storage_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug ..\src\redland\RedlandWrapper\src\LibrdfModel.cpp:24 Instantiated a LibrdfModel instance 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_model_s,class std::function<void __cdecl(struct librdf_model_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug ..\src\omexmeta\RDF.cpp:22 Created an empty RDF graph 
+[17:43:20 +01:00]  debug ..\src\redland\RedlandWrapper\src\LibrdfUri.cpp:23 Instantiated a LibrdfUri instance 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_uri_s,class std::function<void __cdecl(struct raptor_uri_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug ..\src\redland\RedlandWrapper\src\LibrdfUri.cpp:23 Instantiated a LibrdfUri instance 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_uri_s,class std::function<void __cdecl(struct raptor_uri_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug ..\src\redland\RedlandWrapper\src\LibrdfUri.cpp:23 Instantiated a LibrdfUri instance 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_uri_s,class std::function<void __cdecl(struct raptor_uri_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug ..\src\redland\RedlandWrapper\src\LibrdfUri.cpp:23 Instantiated a LibrdfUri instance 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_uri_s,class std::function<void __cdecl(struct raptor_uri_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug ..\src\redland\RedlandWrapper\src\LibrdfUri.cpp:23 Instantiated a LibrdfUri instance 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_uri_s,class std::function<void __cdecl(struct raptor_uri_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug ..\src\redland\RedlandWrapper\src\LibrdfUri.cpp:23 Instantiated a LibrdfUri instance 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_uri_s,class std::function<void __cdecl(struct raptor_uri_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug ..\src\redland\RedlandWrapper\src\LibrdfUri.cpp:23 Instantiated a LibrdfUri instance 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_uri_s,class std::function<void __cdecl(struct raptor_uri_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug ..\src\redland\RedlandWrapper\src\LibrdfUri.cpp:23 Instantiated a LibrdfUri instance 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_uri_s,class std::function<void __cdecl(struct raptor_uri_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug ..\src\redland\RedlandWrapper\src\LibrdfUri.cpp:23 Instantiated a LibrdfUri instance 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_uri_s,class std::function<void __cdecl(struct raptor_uri_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug ..\src\redland\RedlandWrapper\src\LibrdfParser.cpp:20 Instantiated a LibrdfParser instance 
+[17:43:20 +01:00]  debug ..\src\redland\RedlandWrapper\src\LibrdfUri.cpp:23 Instantiated a LibrdfUri instance 
+[17:43:20 +01:00]  error : syntax error at '<' 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_model_s,class std::function<void __cdecl(struct librdf_model_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug ..\src\redland\RedlandWrapper\src\LibrdfQueryResults.cpp:10 Instantiated a LibrdfQueryResults instance 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_query_results_s,class std::function<void __cdecl(struct librdf_query_results_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug ..\src\redland\RedlandWrapper\src\LibrdfQueryResults.cpp:10 Instantiated a LibrdfQueryResults instance 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_query_results_s,class std::function<void __cdecl(struct librdf_query_results_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_query_results_s,class std::function<void __cdecl(struct librdf_query_results_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_query_s,class std::function<void __cdecl(struct librdf_query_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_model_s,class std::function<void __cdecl(struct librdf_model_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug ..\src\redland\RedlandWrapper\src\LibrdfQueryResults.cpp:10 Instantiated a LibrdfQueryResults instance 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_query_results_s,class std::function<void __cdecl(struct librdf_query_results_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug ..\src\redland\RedlandWrapper\src\LibrdfQueryResults.cpp:10 Instantiated a LibrdfQueryResults instance 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_query_results_s,class std::function<void __cdecl(struct librdf_query_results_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_query_results_s,class std::function<void __cdecl(struct librdf_query_results_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_query_s,class std::function<void __cdecl(struct librdf_query_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_model_s,class std::function<void __cdecl(struct librdf_model_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug ..\src\redland\RedlandWrapper\src\LibrdfQueryResults.cpp:10 Instantiated a LibrdfQueryResults instance 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_query_results_s,class std::function<void __cdecl(struct librdf_query_results_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug ..\src\redland\RedlandWrapper\src\LibrdfQueryResults.cpp:10 Instantiated a LibrdfQueryResults instance 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_query_results_s,class std::function<void __cdecl(struct librdf_query_results_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_query_results_s,class std::function<void __cdecl(struct librdf_query_results_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_query_s,class std::function<void __cdecl(struct librdf_query_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_model_s,class std::function<void __cdecl(struct librdf_model_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug ..\src\redland\RedlandWrapper\src\LibrdfQueryResults.cpp:10 Instantiated a LibrdfQueryResults instance 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_query_results_s,class std::function<void __cdecl(struct librdf_query_results_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug ..\src\redland\RedlandWrapper\src\LibrdfQueryResults.cpp:10 Instantiated a LibrdfQueryResults instance 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_query_results_s,class std::function<void __cdecl(struct librdf_query_results_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_query_results_s,class std::function<void __cdecl(struct librdf_query_results_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_query_s,class std::function<void __cdecl(struct librdf_query_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_model_s,class std::function<void __cdecl(struct librdf_model_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug ..\src\redland\RedlandWrapper\src\LibrdfQueryResults.cpp:10 Instantiated a LibrdfQueryResults instance 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_query_results_s,class std::function<void __cdecl(struct librdf_query_results_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug ..\src\redland\RedlandWrapper\src\LibrdfQueryResults.cpp:10 Instantiated a LibrdfQueryResults instance 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_query_results_s,class std::function<void __cdecl(struct librdf_query_results_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_query_results_s,class std::function<void __cdecl(struct librdf_query_results_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_query_s,class std::function<void __cdecl(struct librdf_query_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_model_s,class std::function<void __cdecl(struct librdf_model_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug ..\src\redland\RedlandWrapper\src\LibrdfQueryResults.cpp:10 Instantiated a LibrdfQueryResults instance 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_query_results_s,class std::function<void __cdecl(struct librdf_query_results_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug ..\src\redland\RedlandWrapper\src\LibrdfQueryResults.cpp:10 Instantiated a LibrdfQueryResults instance 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_query_results_s,class std::function<void __cdecl(struct librdf_query_results_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_query_results_s,class std::function<void __cdecl(struct librdf_query_results_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_query_s,class std::function<void __cdecl(struct librdf_query_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_model_s,class std::function<void __cdecl(struct librdf_model_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug ..\src\redland\RedlandWrapper\src\LibrdfQueryResults.cpp:10 Instantiated a LibrdfQueryResults instance 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_query_results_s,class std::function<void __cdecl(struct librdf_query_results_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug ..\src\redland\RedlandWrapper\src\LibrdfQueryResults.cpp:10 Instantiated a LibrdfQueryResults instance 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_query_results_s,class std::function<void __cdecl(struct librdf_query_results_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_query_results_s,class std::function<void __cdecl(struct librdf_query_results_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_query_s,class std::function<void __cdecl(struct librdf_query_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_model_s,class std::function<void __cdecl(struct librdf_model_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug ..\src\redland\RedlandWrapper\src\LibrdfQueryResults.cpp:10 Instantiated a LibrdfQueryResults instance 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_query_results_s,class std::function<void __cdecl(struct librdf_query_results_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug ..\src\redland\RedlandWrapper\src\LibrdfQueryResults.cpp:10 Instantiated a LibrdfQueryResults instance 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_query_results_s,class std::function<void __cdecl(struct librdf_query_results_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_query_results_s,class std::function<void __cdecl(struct librdf_query_results_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_query_s,class std::function<void __cdecl(struct librdf_query_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_model_s,class std::function<void __cdecl(struct librdf_model_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_uri_s,class std::function<void __cdecl(struct raptor_uri_s * __ptr64)> >
+ 
+[17:43:20 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct librdf_parser_s,class std::function<void __cdecl(struct librdf_parser_s * __ptr64)> >
+ 
+[       OK ] RDFTests.TestFromStringTwiceButWrongSyntax (1 ms)
+[ RUN      ] RDFTests.TestFromStringSingularAnnotationSqlite
+[       OK ] RDFTests.TestFromStringSingularAnnotationSqlite (16 ms)
+[ RUN      ] RDFTests.TestFromStringTurtleBag
+[       OK ] RDFTests.TestFromStringTurtleBag (2 ms)
+[ RUN      ] RDFTests.Equality
+[       OK ] RDFTests.Equality (2 ms)
+[ RUN      ] RDFTests.Inquality
+[       OK ] RDFTests.Inquality (3 ms)
+[ RUN      ] RDFTests.TestToString
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix OMEXlib: <http://omex-library.org/> .
+@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
+
+<http://www.w3.org/TR/rdf-syntax-grammar>
+    <http://example.org/stuff/1.0/editor> [
+        <http://example.org/stuff/1.0/fullName> "Dave Beckett" ;
+        <http://example.org/stuff/1.0/homePage> <http://purl.org/net/dajobe/>
+    ] ;
+    <http://purl.org/dc/elements/1.1/title> "RDF1.1 XML Syntax" .
+
+
+[       OK ] RDFTests.TestToString (1 ms)
+[ RUN      ] RDFTests.TestAddFromString
+[       OK ] RDFTests.TestAddFromString (1 ms)
+[ RUN      ] RDFTests.TestAddFromStringMultipleTimes
+[       OK ] RDFTests.TestAddFromStringMultipleTimes (2 ms)
+[ RUN      ] RDFTests.TestParseFromFile
+D:\libOmexMeta\cmake-build-release\docs\TestParseFromFile.rdf
+ttle:@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix OMEXlib: <http://omex-library.org/> .
+@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#VLV>
+    <http://biomodels.net/biology-qualifiers/isPropertyOf> <http://omex-library.org/NewOmex.omex/NewModel.xml#entity_0> ;
+    <http://biomodels.net/biology-qualifiers/isVersionOf> <http://identifiers.org/opb/OPB_00154> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#entity_0>
+    <http://biomodels.net/biology-qualifiers/is> <http://identifiers.org/fma/FMA:9670> ;
+    <http://biomodels.net/biology-qualifiers/isPartOf> <http://identifiers.org/fma/FMA:18228> .
+
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
+@prefix OMEXlib: <http://omex-library.org/> .
+@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#VLV>
+    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#entity_0> ;
+    bqbiol:isVersionOf <http://identifiers.org/opb/OPB_00154> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#entity_0>
+    bqbiol:is <http://identifiers.org/fma/FMA:9670> ;
+    bqbiol:isPartOf <http://identifiers.org/fma/FMA:18228> .
+
+
+[       OK ] RDFTests.TestParseFromFile (2 ms)
+[ RUN      ] RDFTests.TestParseFromFileNonStatic
+D:\libOmexMeta\cmake-build-release\docs/TestParseFromFile.rdf
+[       OK ] RDFTests.TestParseFromFileNonStatic (1 ms)
+[ RUN      ] RDFTests.TestWriteToFile
+[       OK ] RDFTests.TestWriteToFile (2 ms)
+[ RUN      ] RDFTests.TestReadFromSBMLWithExtraction
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix bqmodel: <http://biomodels.net/model-qualifiers/> .
+@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix semsim: <http://bime.uw.edu/semsim/> .
+@prefix OMEXlib: <http://omex-library.org/> .
+@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
+
+local:MediatorParticipant0000
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000042> .
+
+local:MediatorParticipant0001
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000046> .
+
+local:MediatorParticipant0002
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000045> .
+
+local:MediatorParticipant0003
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000046> .
+
+local:MediatorParticipant0004
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000041> .
+
+local:MediatorParticipant0005
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000042> .
+
+local:MediatorParticipant0006
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000046> .
+
+local:MediatorParticipant0007
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000045> .
+
+local:MediatorParticipant0008
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000046> .
+
+local:MediatorParticipant0009
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000045> .
+
+local:ProcessProperty0000
+    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000048> ;
+    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .
+
+local:ProcessProperty0001
+    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000049> ;
+    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .
+
+local:ProcessProperty0002
+    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000050> ;
+    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .
+
+local:ProcessProperty0003
+    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000051> ;
+    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .
+
+local:ProcessProperty0004
+    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000052> ;
+    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .
+
+local:ProcessProperty0005
+    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000053> ;
+    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .
+
+local:ProcessProperty0006
+    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000054> ;
+    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .
+
+local:ProcessProperty0007
+    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000055> ;
+    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .
+
+local:ProcessProperty0008
+    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000056> ;
+    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .
+
+local:ProcessProperty0009
+    bqbiol:isPropertyOf <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000057> ;
+    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .
+
+local:SinkParticipant0000
+    semsim:hasMultiplier "1"^^rdf:double ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000043> .
+
+local:SinkParticipant0001
+    semsim:hasMultiplier "1"^^rdf:double ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000040> .
+
+local:SinkParticipant0002
+    semsim:hasMultiplier "1"^^rdf:double ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000045> .
+
+local:SinkParticipant0003
+    semsim:hasMultiplier "1"^^rdf:double ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000040> .
+
+local:SinkParticipant0004
+    semsim:hasMultiplier "1"^^rdf:double ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000046> .
+
+local:SinkParticipant0005
+    semsim:hasMultiplier "1"^^rdf:double ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000040> .
+
+local:SinkParticipant0006
+    semsim:hasMultiplier "1"^^rdf:double ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000044> .
+
+local:SinkParticipant0007
+    semsim:hasMultiplier "1"^^rdf:double ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000040> .
+
+local:SinkParticipant0008
+    semsim:hasMultiplier "1"^^rdf:double ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000047> .
+
+local:SinkParticipant0009
+    semsim:hasMultiplier "1"^^rdf:double ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000040> .
+
+local:SourceParticipant0000
+    semsim:hasMultiplier "1"^^rdf:double ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000036> .
+
+local:SourceParticipant0001
+    semsim:hasMultiplier "1"^^rdf:double ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000043> .
+
+local:SourceParticipant0002
+    semsim:hasMultiplier "1"^^rdf:double ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000037> .
+
+local:SourceParticipant0003
+    semsim:hasMultiplier "1"^^rdf:double ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000045> .
+
+local:SourceParticipant0004
+    semsim:hasMultiplier "1"^^rdf:double ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000043> .
+
+local:SourceParticipant0005
+    semsim:hasMultiplier "1"^^rdf:double ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000044> .
+
+local:SourceParticipant0006
+    semsim:hasMultiplier "1"^^rdf:double ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000046> .
+
+local:SourceParticipant0007
+    semsim:hasMultiplier "1"^^rdf:double ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000038> .
+
+local:SourceParticipant0008
+    semsim:hasMultiplier "1"^^rdf:double ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000044> .
+
+local:SourceParticipant0009
+    semsim:hasMultiplier "1"^^rdf:double ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000039> .
+
+local:SourceParticipant0010
+    semsim:hasMultiplier "1"^^rdf:double ;
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000047> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000002>
+    bqbiol:hasTaxon <http://identifiers.org/taxonomy/10090>, <http://identifiers.org/taxonomy/9606> ;
+    bqbiol:isVersionOf <http://identifiers.org/obo.go/GO:0048863> ;
+    bqmodel:is <http://identifiers.org/biomodels.db/BIOMD0000000204>, <http://identifiers.org/biomodels.db/MODEL7957942740> ;
+    bqmodel:isDescribedBy <http://identifiers.org/pubmed/16978048> ;
+    <http://purl.org/dc/elements/1.1/creator> [
+        <http://xmlns.com/foaf/0.1/Organization> "Keck Graduate Institute, California" ;
+        <http://xmlns.com/foaf/0.1/familyName> "Chickarmane" ;
+        <http://xmlns.com/foaf/0.1/givenName> "Vijay" ;
+        <http://xmlns.com/foaf/0.1/mbox> "vchickar@caltech.edu"
+    ], [
+        <http://xmlns.com/foaf/0.1/Organization> "Lund Strategic Research Centre for Stem Cell Biology and Cell Therapy, Lund University, Sweden." ;
+        <http://xmlns.com/foaf/0.1/familyName> "Peterson" ;
+        <http://xmlns.com/foaf/0.1/givenName> "Carsten" ;
+        <http://xmlns.com/foaf/0.1/mbox> "carsten@thep.lu.se"
+    ], [
+        <http://xmlns.com/foaf/0.1/Organization> "EMBL-EBI" ;
+        <http://xmlns.com/foaf/0.1/familyName> "Chelliah" ;
+        <http://xmlns.com/foaf/0.1/givenName> "Vijayalakshmi" ;
+        <http://xmlns.com/foaf/0.1/mbox> "viji@ebi.ac.uk"
+    ], [
+        <http://xmlns.com/foaf/0.1/Organization> "EMBL-EBI" ;
+        <http://xmlns.com/foaf/0.1/familyName> "Endler" ;
+        <http://xmlns.com/foaf/0.1/givenName> "Lukas" ;
+        <http://xmlns.com/foaf/0.1/mbox> "llukas@ebi.ac.uk"
+    ] ;
+    dc:created [
+        dc:W3CDTF "2008-11-26T13:10:43Z"
+    ] ;
+    dc:modified [
+        dc:W3CDTF "2013-06-05T16:57:58Z"
+    ] .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000035>
+    bqbiol:isVersionOf <http://identifiers.org/obo.go/GO:0005623> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000036>
+    bqbiol:encodes <http://identifiers.org/uniprot/Q01860> ;
+    bqbiol:isVersionOf <http://identifiers.org/ensembl/ENSG00000204531> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000037>
+    bqbiol:encodes <http://identifiers.org/uniprot/Q8N7R0> ;
+    bqbiol:isVersionOf <http://identifiers.org/ensembl/ENSG00000176654> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000038>
+    bqbiol:encodes <http://identifiers.org/uniprot/Q6ZRP7> ;
+    bqbiol:isVersionOf <http://identifiers.org/ensembl/ENSG00000165661> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000041>
+    bqbiol:isVersionOf <http://identifiers.org/uniprot/P04637> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000043>
+    bqbiol:isVersionOf <http://identifiers.org/uniprot/Q01860> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000044>
+    bqbiol:isVersionOf <http://identifiers.org/uniprot/Q6ZRP7> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000045>
+    bqbiol:isVersionOf <http://identifiers.org/uniprot/Q8N7R0> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000046>
+    bqbiol:hasPart <http://identifiers.org/uniprot/Q01860>, <http://identifiers.org/uniprot/Q6ZRP7> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000048>
+    semsim:hasMediatorParticipant local:MediatorParticipant0000, local:MediatorParticipant0001, local:MediatorParticipant0002 ;
+    semsim:hasSinkParticipant local:SinkParticipant0000 ;
+    semsim:hasSourceParticipant local:SourceParticipant0000 ;
+    bqbiol:isVersionOf <http://identifiers.org/obo.go/GO:0010467> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000049>
+    semsim:hasSinkParticipant local:SinkParticipant0001 ;
+    semsim:hasSourceParticipant local:SourceParticipant0001 ;
+    bqbiol:isVersionOf <http://identifiers.org/obo.go/GO:0030163> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000050>
+    semsim:hasMediatorParticipant local:MediatorParticipant0003, local:MediatorParticipant0004 ;
+    semsim:hasSinkParticipant local:SinkParticipant0002 ;
+    semsim:hasSourceParticipant local:SourceParticipant0002 ;
+    bqbiol:isVersionOf <http://identifiers.org/obo.go/GO:0010467> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000051>
+    semsim:hasSinkParticipant local:SinkParticipant0003 ;
+    semsim:hasSourceParticipant local:SourceParticipant0003 ;
+    bqbiol:isVersionOf <http://identifiers.org/obo.go/GO:0030163> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000052>
+    semsim:hasSinkParticipant local:SinkParticipant0004 ;
+    semsim:hasSourceParticipant local:SourceParticipant0004, local:SourceParticipant0005 ;
+    bqbiol:isVersionOf <http://identifiers.org/obo.go/GO:0006461> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000053>
+    semsim:hasSinkParticipant local:SinkParticipant0005 ;
+    semsim:hasSourceParticipant local:SourceParticipant0006 ;
+    bqbiol:isVersionOf <http://identifiers.org/obo.go/GO:0030163> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000054>
+    semsim:hasMediatorParticipant local:MediatorParticipant0005, local:MediatorParticipant0006, local:MediatorParticipant0007 ;
+    semsim:hasSinkParticipant local:SinkParticipant0006 ;
+    semsim:hasSourceParticipant local:SourceParticipant0007 ;
+    bqbiol:isVersionOf <http://identifiers.org/obo.go/GO:0010467> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000055>
+    semsim:hasSinkParticipant local:SinkParticipant0007 ;
+    semsim:hasSourceParticipant local:SourceParticipant0008 ;
+    bqbiol:isVersionOf <http://identifiers.org/obo.go/GO:0030163> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000056>
+    semsim:hasMediatorParticipant local:MediatorParticipant0008, local:MediatorParticipant0009 ;
+    semsim:hasSinkParticipant local:SinkParticipant0008 ;
+    semsim:hasSourceParticipant local:SourceParticipant0009 ;
+    bqbiol:isVersionOf <http://identifiers.org/obo.go/GO:0010467> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_0000057>
+    semsim:hasSinkParticipant local:SinkParticipant0009 ;
+    semsim:hasSourceParticipant local:SourceParticipant0010 ;
+    bqbiol:isVersionOf <http://identifiers.org/obo.go/GO:0030163> .
+
+
+[       OK ] RDFTests.TestReadFromSBMLWithExtraction (82 ms)
+[ RUN      ] RDFTests.TestReadSBMLModelWithBagFromString
+[       OK ] RDFTests.TestReadSBMLModelWithBagFromString (4 ms)
+[ RUN      ] RDFTests.TestReadSBMLModelWithBagFromFile
+ttle:@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix OMEXlib: <http://omex-library.org/> .
+@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#S1>
+    <http://biomodels.net/biology-qualifiers/isVersionOf> [
+        rdf:_1 <http://identifiers.org/obo.chebi/CHEBI:16526> ;
+        a rdf:Bag
+    ] .
+
+
+[       OK ] RDFTests.TestReadSBMLModelWithBagFromFile (6 ms)
+[ RUN      ] RDFTests.TestRepositoryPrefix
+[       OK ] RDFTests.TestRepositoryPrefix (1 ms)
+[ RUN      ] RDFTests.TestLocalPrefix
+[       OK ] RDFTests.TestLocalPrefix (1 ms)
+[ RUN      ] RDFTests.getModelLevelAnnotationUri
+[       OK ] RDFTests.getModelLevelAnnotationUri (0 ms)
+[ RUN      ] RDFTests.setModelMetaid
+[       OK ] RDFTests.setModelMetaid (1 ms)
+[ RUN      ] RDFTests.TestSerializeCellMlAnnotationNoTrailingHashes
+[       OK ] RDFTests.TestSerializeCellMlAnnotationNoTrailingHashes (1 ms)
+[ RUN      ] RDFTests.TestBagConversion
+[       OK ] RDFTests.TestBagConversion (15 ms)
+[----------] 25 tests from RDFTests (150 ms total)
+
+[----------] 1 test from RDFTestsNoFigure
+[ RUN      ] RDFTestsNoFigure.TestRDFCanReadFromTwoStrings
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
+@prefix OMEXlib: <http://omex-library.org/> .
+@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
+
+<http://omex-library.org/NewModel.omex#OmexMetaId0000>
+    bqbiol:is <https://identifiers.org/fma/FMA_66835> .
+
+
+[       OK ] RDFTestsNoFigure.TestRDFCanReadFromTwoStrings (0 ms)
+[----------] 1 test from RDFTestsNoFigure (1 ms total)
+
+[----------] 2 tests from ParserReadTesReadFromFileHasPrefixesTests
+[ RUN      ] ParserReadTesReadFromFileHasPrefixesTests.TestReadFromStringHasPrefixes
+[       OK ] ParserReadTesReadFromFileHasPrefixesTests.TestReadFromStringHasPrefixes (1 ms)
+[ RUN      ] ParserReadTesReadFromFileHasPrefixesTests.TestReadFromFileHasPrefixes
+ttle:@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix OMEXlib: <http://omex-library.org/> .
+@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0000>
+    <http://biomodels.net/biology-qualifiers/is> <https://identifiers.org/uniprot/PD12345> .
+
+
+[       OK ] ParserReadTesReadFromFileHasPrefixesTests.TestReadFromFileHasPrefixes (2 ms)
+[----------] 2 tests from ParserReadTesReadFromFileHasPrefixesTests (3 ms total)
+
+[----------] Global test environment tear-down
+[==========] 28 tests from 3 test suites ran. (154 ms total)
+[  PASSED  ] 28 tests.

@@ -1,0 +1,19 @@
+Running main() from ..\third_party\googletest\googletest\src\gtest_main.cc
+[==========] Running 5 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 5 tests from UriHandlerTests
+[ RUN      ] UriHandlerTests.TestDefaultValues
+[       OK ] UriHandlerTests.TestDefaultValues (0 ms)
+[ RUN      ] UriHandlerTests.SetRepository
+[       OK ] UriHandlerTests.SetRepository (0 ms)
+[ RUN      ] UriHandlerTests.SetArchive
+[       OK ] UriHandlerTests.SetArchive (0 ms)
+[ RUN      ] UriHandlerTests.SetModel
+[       OK ] UriHandlerTests.SetModel (0 ms)
+[ RUN      ] UriHandlerTests.UriModifierTest1
+[       OK ] UriHandlerTests.UriModifierTest1 (0 ms)
+[----------] 5 tests from UriHandlerTests (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 5 tests from 1 test suite ran. (0 ms total)
+[  PASSED  ] 5 tests.

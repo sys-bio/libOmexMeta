@@ -1,0 +1,31 @@
+Running main() from ..\third_party\googletest\googletest\src\gtest_main.cc
+[==========] Running 11 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 11 tests from LibrdfModelTests
+[ RUN      ] LibrdfModelTests.TestNew
+[       OK ] LibrdfModelTests.TestNew (1 ms)
+[ RUN      ] LibrdfModelTests.TestMoveConstructor
+[       OK ] LibrdfModelTests.TestMoveConstructor (0 ms)
+[ RUN      ] LibrdfModelTests.TestMoveAssignment
+[       OK ] LibrdfModelTests.TestMoveAssignment (0 ms)
+[ RUN      ] LibrdfModelTests.TestAddStatement
+[       OK ] LibrdfModelTests.TestAddStatement (1 ms)
+[ RUN      ] LibrdfModelTests.TestRemoveStatement
+[       OK ] LibrdfModelTests.TestRemoveStatement (0 ms)
+[ RUN      ] LibrdfModelTests.TestContext
+[       OK ] LibrdfModelTests.TestContext (0 ms)
+[ RUN      ] LibrdfModelTests.containsPass
+[       OK ] LibrdfModelTests.containsPass (0 ms)
+[ RUN      ] LibrdfModelTests.containsFail
+[       OK ] LibrdfModelTests.containsFail (0 ms)
+[ RUN      ] LibrdfModelTests.Equality1Pass
+[       OK ] LibrdfModelTests.Equality1Pass (0 ms)
+[ RUN      ] LibrdfModelTests.Equality1Blanks
+[       OK ] LibrdfModelTests.Equality1Blanks (1 ms)
+[ RUN      ] LibrdfModelTests.Equality1Fail
+[       OK ] LibrdfModelTests.Equality1Fail (0 ms)
+[----------] 11 tests from LibrdfModelTests (3 ms total)
+
+[----------] Global test environment tear-down
+[==========] 11 tests from 1 test suite ran. (3 ms total)
+[  PASSED  ] 11 tests.

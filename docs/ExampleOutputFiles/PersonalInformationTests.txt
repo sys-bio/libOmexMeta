@@ -1,0 +1,25 @@
+Running main() from ..\third_party\googletest\googletest\src\gtest_main.cc
+[==========] Running 8 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 8 tests from PersonalInformationTests
+[ RUN      ] PersonalInformationTests.TestAddFoaf
+[       OK ] PersonalInformationTests.TestAddFoaf (4 ms)
+[ RUN      ] PersonalInformationTests.TestAddFoafUsingLiteral
+[       OK ] PersonalInformationTests.TestAddFoafUsingLiteral (0 ms)
+[ RUN      ] PersonalInformationTests.TestAddFoafUsingUri
+[       OK ] PersonalInformationTests.TestAddFoafUsingUri (1 ms)
+[ RUN      ] PersonalInformationTests.TestAddName
+[       OK ] PersonalInformationTests.TestAddName (1 ms)
+[ RUN      ] PersonalInformationTests.TestMBox
+[       OK ] PersonalInformationTests.TestMBox (1 ms)
+[ RUN      ] PersonalInformationTests.TestAccountName
+[       OK ] PersonalInformationTests.TestAccountName (1 ms)
+[ RUN      ] PersonalInformationTests.TestaddAccountServiceHomepage
+[       OK ] PersonalInformationTests.TestaddAccountServiceHomepage (1 ms)
+[ RUN      ] PersonalInformationTests.TestMultipleEntries
+[       OK ] PersonalInformationTests.TestMultipleEntries (1 ms)
+[----------] 8 tests from PersonalInformationTests (10 ms total)
+
+[----------] Global test environment tear-down
+[==========] 8 tests from 1 test suite ran. (10 ms total)
+[  PASSED  ] 8 tests.

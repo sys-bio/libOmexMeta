@@ -1,0 +1,202 @@
+Running main() from ..\third_party\googletest\googletest\src\gtest_main.cc
+[==========] Running 16 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 16 tests from OmexMetaXMLTests
+[ RUN      ] OmexMetaXMLTests.TestValidElements
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level3/version2/core" level="3" version="2">
+  <model id="beta_cell_model" metaid="beta_cell_model">
+    <listOfUnitDefinitions>
+      <unitDefinition id="molar">
+        <listOfUnits>
+          <unit kind="mole" exponent="1" scale="1" multiplier="1"/>
+          <unit kind="litre" exponent="-1" scale="1" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+    </listOfUnitDefinitions>
+    <listOfCompartments>
+      <compartment metaid="#cytosol" id="cytosol" size="1" constant="true"/>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species metaid="#glucose" id="glucose" compartment="cytosol" initialConcentration="0" substanceUnits="molar" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+    </listOfSpecies>
+    <listOfReactions>
+      <reaction id="glucose_import" reversible="false">
+        <listOfProducts>
+          <speciesReference species="glucose" constant="false"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <ci> glucose_import_rate </ci>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="glucose_import_rate" value="1"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+    </listOfReactions>
+  </model>
+</sbml>
+
+[       OK ] OmexMetaXMLTests.TestValidElements (0 ms)
+[ RUN      ] OmexMetaXMLTests.TestValidElementsSBML
+[       OK ] OmexMetaXMLTests.TestValidElementsSBML (0 ms)
+[ RUN      ] OmexMetaXMLTests.TestMetaIdsAll
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level3/version2/core" level="3" version="2">
+  <model id="TestModelNotAnnotated" metaid="TestModelNotAnnotated">
+    <listOfUnitDefinitions>
+      <unitDefinition id="molar">
+        <listOfUnits>
+          <unit kind="mole" exponent="1" scale="1" multiplier="1" metaid="unit0000"/>
+          <unit kind="litre" exponent="-1" scale="1" multiplier="1" metaid="unit0001"/>
+        </listOfUnits>
+      </unitDefinition>
+    </listOfUnitDefinitions>
+    <listOfCompartments>
+      <compartment metaid="#cytosol" id="cytosol" size="1" constant="true"/>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species metaid="#Meta00001" id="X" compartment="cytosol" initialConcentration="10" substanceUnits="molar" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="Y" compartment="cytosol" initialConcentration="20" substanceUnits="molar" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" metaid="species0000"/>
+      <species id="Y" compartment="cytosol" initialConcentration="15" substanceUnits="molar" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" metaid="species0001"/>
+    </listOfSpecies>
+    <listOfReactions>
+      <reaction id="X2Y" reversible="false" metaid="reaction0000">
+        <listOfProducts>
+          <speciesReference species="Y" constant="false"/>
+        </listOfProducts>
+        <kineticLaw metaid="kineticLaw0000">
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> x </ci>
+              <ci> kx2y </ci>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="kx2y" value="1"/>
+            <localParameter id="ky2z" value="1"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="y2z" reversible="false" metaid="reaction0001">
+        <listOfProducts>
+          <speciesReference species="Z" constant="false"/>
+        </listOfProducts>
+        <kineticLaw metaid="kineticLaw0001">
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> y </ci>
+              <ci> ky2z </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+    </listOfReactions>
+  </model>
+</sbml>
+
+[       OK ] OmexMetaXMLTests.TestMetaIdsAll (0 ms)
+[ RUN      ] OmexMetaXMLTests.TestMetaIdsSBML
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level3/version2/core" level="3" version="2">
+  <model id="TestModelNotAnnotated" metaid="TestModelNotAnnotated">
+    <listOfUnitDefinitions>
+      <unitDefinition id="molar">
+        <listOfUnits>
+          <unit kind="mole" exponent="1" scale="1" multiplier="1" metaid="unit0000"/>
+          <unit kind="litre" exponent="-1" scale="1" multiplier="1" metaid="unit0001"/>
+        </listOfUnits>
+      </unitDefinition>
+    </listOfUnitDefinitions>
+    <listOfCompartments>
+      <compartment metaid="#cytosol" id="cytosol" size="1" constant="true"/>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species metaid="#Meta00001" id="X" compartment="cytosol" initialConcentration="10" substanceUnits="molar" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="Y" compartment="cytosol" initialConcentration="20" substanceUnits="molar" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" metaid="species0000"/>
+      <species id="Y" compartment="cytosol" initialConcentration="15" substanceUnits="molar" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" metaid="species0001"/>
+    </listOfSpecies>
+    <listOfReactions>
+      <reaction id="X2Y" reversible="false" metaid="reaction0000">
+        <listOfProducts>
+          <speciesReference species="Y" constant="false"/>
+        </listOfProducts>
+        <kineticLaw metaid="kineticLaw0000">
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> x </ci>
+              <ci> kx2y </ci>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="kx2y" value="1"/>
+            <localParameter id="ky2z" value="1"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="y2z" reversible="false" metaid="reaction0001">
+        <listOfProducts>
+          <speciesReference species="Z" constant="false"/>
+        </listOfProducts>
+        <kineticLaw metaid="kineticLaw0001">
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> y </ci>
+              <ci> ky2z </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+    </listOfReactions>
+  </model>
+</sbml>
+
+[       OK ] OmexMetaXMLTests.TestMetaIdsSBML (0 ms)
+[ RUN      ] OmexMetaXMLTests.TestMetaIdsGenerateNewMetaidsFlagFalseSBML
+metaid
+
+[       OK ] OmexMetaXMLTests.TestMetaIdsGenerateNewMetaidsFlagFalseSBML (1 ms)
+[ RUN      ] OmexMetaXMLTests.TestMetaIdsGenerateNewMetaidsFlagFalseMetaid
+7beta_cell_model
+unit0000
+unit0001
+#cytosol
+#glucose
+reaction0000
+kineticLaw0000
+[       OK ] OmexMetaXMLTests.TestMetaIdsGenerateNewMetaidsFlagFalseMetaid (0 ms)
+[ RUN      ] OmexMetaXMLTests.TestMetaIdsGenerateNewMetaidsFlagFalseCellML
+[       OK ] OmexMetaXMLTests.TestMetaIdsGenerateNewMetaidsFlagFalseCellML (0 ms)
+[ RUN      ] OmexMetaXMLTests.TestMetaIdsGenerateNewMetaidsFlagFalseMetaidCellML
+5annExamples
+component0000
+variable0000
+variable0001
+variable0002
+[       OK ] OmexMetaXMLTests.TestMetaIdsGenerateNewMetaidsFlagFalseMetaidCellML (0 ms)
+[ RUN      ] OmexMetaXMLTests.ToStringTest
+[       OK ] OmexMetaXMLTests.ToStringTest (0 ms)
+[ RUN      ] OmexMetaXMLTests.RemoveElement
+[       OK ] OmexMetaXMLTests.RemoveElement (0 ms)
+[ RUN      ] OmexMetaXMLTests.RemoveElementCalledAnnotation
+[       OK ] OmexMetaXMLTests.RemoveElementCalledAnnotation (0 ms)
+[ RUN      ] OmexMetaXMLTests.FindFirstOccuranceOfNodeCalledModelSBML
+[       OK ] OmexMetaXMLTests.FindFirstOccuranceOfNodeCalledModelSBML (0 ms)
+[ RUN      ] OmexMetaXMLTests.FindFirstOccuranceOfNodeCalledSpeciesSBML
+[       OK ] OmexMetaXMLTests.FindFirstOccuranceOfNodeCalledSpeciesSBML (0 ms)
+[ RUN      ] OmexMetaXMLTests.FindFirstOccuranceOfNodeCalledModelCellML
+[       OK ] OmexMetaXMLTests.FindFirstOccuranceOfNodeCalledModelCellML (0 ms)
+[ RUN      ] OmexMetaXMLTests.GetSBMLModelElementMetaid
+[       OK ] OmexMetaXMLTests.GetSBMLModelElementMetaid (0 ms)
+[ RUN      ] OmexMetaXMLTests.GetCellMLModelElementMetaid
+[       OK ] OmexMetaXMLTests.GetCellMLModelElementMetaid (0 ms)
+[----------] 16 tests from OmexMetaXMLTests (1 ms total)
+
+[----------] Global test environment tear-down
+[==========] 16 tests from 1 test suite ran. (1 ms total)
+[  PASSED  ] 16 tests.

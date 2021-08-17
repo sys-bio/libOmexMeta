@@ -3,14 +3,14 @@ Running main() from ..\third_party\googletest\googletest\src\gtest_main.cc
 [----------] Global test environment set-up.
 [----------] 71 tests from CAPITests
 [ RUN      ] CAPITests.RDFSize
-[       OK ] CAPITests.RDFSize (2 ms)
+[       OK ] CAPITests.RDFSize (3 ms)
 [ RUN      ] CAPITests.RDFToString
-[16:48:39 +01:00]  warning :  XML parser warning: Unsupported version '1.1' 
-[       OK ] CAPITests.RDFToString (3 ms)
+[17:43:16 +01:00]  warning :  XML parser warning: Unsupported version '1.1' 
+[       OK ] CAPITests.RDFToString (2 ms)
 [ RUN      ] CAPITests.RDF_fromString
 [       OK ] CAPITests.RDF_fromString (0 ms)
 [ RUN      ] CAPITests.RDF_fromStringButWrongSyntax
-[16:48:39 +01:00]  error : syntax error at '<' 
+[17:43:16 +01:00]  error : syntax error at '<' 
 [       OK ] CAPITests.RDF_fromStringButWrongSyntax (1 ms)
 [ RUN      ] CAPITests.RDF_toFile
 [       OK ] CAPITests.RDF_toFile (1 ms)
@@ -19,7 +19,7 @@ Running main() from ..\third_party\googletest\googletest\src\gtest_main.cc
 [ RUN      ] CAPITests.RDF_addFromStringOutput
 [       OK ] CAPITests.RDF_addFromStringOutput (1 ms)
 [ RUN      ] CAPITests.RDF_addFromUriSqliteStorage
-[       OK ] CAPITests.RDF_addFromUriSqliteStorage (16 ms)
+[       OK ] CAPITests.RDF_addFromUriSqliteStorage (15 ms)
 [ RUN      ] CAPITests.RDF_fromFile
 D:\libOmexMeta\cmake-build-release\docs/TestParseFromFile.rdf
 [       OK ] CAPITests.RDF_fromFile (1 ms)
@@ -35,9 +35,9 @@ TestModelNotAnnotated
 11
 [       OK ] CAPITests.TestGetNumMetaIDs (0 ms)
 [ RUN      ] CAPITests.TestSingularAnnotationSetAbout
-[       OK ] CAPITests.TestSingularAnnotationSetAbout (1 ms)
+[       OK ] CAPITests.TestSingularAnnotationSetAbout (0 ms)
 [ RUN      ] CAPITests.TestSingularAnnotationSetPredicate
-[       OK ] CAPITests.TestSingularAnnotationSetPredicate (0 ms)
+[       OK ] CAPITests.TestSingularAnnotationSetPredicate (1 ms)
 [ RUN      ] CAPITests.TestSingularAnnotationSetPredicateUri
 [       OK ] CAPITests.TestSingularAnnotationSetPredicateUri (0 ms)
 [ RUN      ] CAPITests.TestSingularAnnotationFull
@@ -52,13 +52,13 @@ TestModelNotAnnotated
 [ RUN      ] CAPITests.TestEditorPtrMem
 [       OK ] CAPITests.TestEditorPtrMem (0 ms)
 [ RUN      ] CAPITests.TestSingularAnnotationSetResourceLiteral
-[       OK ] CAPITests.TestSingularAnnotationSetResourceLiteral (1 ms)
+[       OK ] CAPITests.TestSingularAnnotationSetResourceLiteral (0 ms)
 [ RUN      ] CAPITests.TestSingularAnnotationSetResourceUri
-[       OK ] CAPITests.TestSingularAnnotationSetResourceUri (0 ms)
+[       OK ] CAPITests.TestSingularAnnotationSetResourceUri (1 ms)
 [ RUN      ] CAPITests.TestSingularAnnotationSetResourceBlank
 [       OK ] CAPITests.TestSingularAnnotationSetResourceBlank (0 ms)
 [ RUN      ] CAPITests.TestPhysicalEntitySBML1
-[       OK ] CAPITests.TestPhysicalEntitySBML1 (2 ms)
+[       OK ] CAPITests.TestPhysicalEntitySBML1 (1 ms)
 [ RUN      ] CAPITests.TestPhysicalEntitySBML2
 [       OK ] CAPITests.TestPhysicalEntitySBML2 (1 ms)
 [ RUN      ] CAPITests.TestPhysicalEntitySBML3
@@ -76,7 +76,7 @@ TestModelNotAnnotated
 [ RUN      ] CAPITests.TestPhysicalProcessSBML2
 [       OK ] CAPITests.TestPhysicalProcessSBML2 (3 ms)
 [ RUN      ] CAPITests.TestPhysicalProcessCellML1
-[       OK ] CAPITests.TestPhysicalProcessCellML1 (3 ms)
+[       OK ] CAPITests.TestPhysicalProcessCellML1 (2 ms)
 [ RUN      ] CAPITests.TestPhysicalProcessCellML2
 [       OK ] CAPITests.TestPhysicalProcessCellML2 (3 ms)
 [ RUN      ] CAPITests.TestEnergyDiffSBML1
@@ -84,11 +84,11 @@ TestModelNotAnnotated
 [ RUN      ] CAPITests.TestEnergyDiffSBML2
 [       OK ] CAPITests.TestEnergyDiffSBML2 (2 ms)
 [ RUN      ] CAPITests.TestEnergyDiffCellML1
-[       OK ] CAPITests.TestEnergyDiffCellML1 (2 ms)
+[       OK ] CAPITests.TestEnergyDiffCellML1 (1 ms)
 [ RUN      ] CAPITests.TestRDFTwice1
 [       OK ] CAPITests.TestRDFTwice1 (0 ms)
 [ RUN      ] CAPITests.TestRDFTwice3
-[       OK ] CAPITests.TestRDFTwice3 (0 ms)
+[       OK ] CAPITests.TestRDFTwice3 (1 ms)
 [ RUN      ] CAPITests.RDFgetArchiveUri
 http://omex-library.org/NewOmex.omex/
 [       OK ] CAPITests.RDFgetArchiveUri (0 ms)
@@ -111,13 +111,13 @@ http://omex-library.org/NewOmex.omex/NewModel.rdf#
 [       OK ] CAPITests.EditorgetLocalUri (0 ms)
 [ RUN      ] CAPITests.EditorgetModelUri
 http://omex-library.org/NewOmex.omex/NewModel.xml
-[       OK ] CAPITests.EditorgetModelUri (1 ms)
+[       OK ] CAPITests.EditorgetModelUri (0 ms)
 [ RUN      ] CAPITests.EditorgetOmexRepository
 http://omex-library.org/
 [       OK ] CAPITests.EditorgetOmexRepository (0 ms)
 [ RUN      ] CAPITests.EditorsetOmexRepository
 http://newOmexRepo.org/
-[       OK ] CAPITests.EditorsetOmexRepository (0 ms)
+[       OK ] CAPITests.EditorsetOmexRepository (1 ms)
 [ RUN      ] CAPITests.EditorsetArchiveUri
 http://omex-library.org/newArchive.omex/
 [       OK ] CAPITests.EditorsetArchiveUri (0 ms)
@@ -129,10 +129,10 @@ http://omex-library.org/NewOmex.omex/NewModel.xml
 [       OK ] CAPITests.RDFgetModelUriDefault (0 ms)
 [ RUN      ] CAPITests.RDFsetLocalUri
 http://omex-library.org/NewOmex.omex/newModelName.rdf#
-[       OK ] CAPITests.RDFsetLocalUri (1 ms)
+[       OK ] CAPITests.RDFsetLocalUri (0 ms)
 [ RUN      ] CAPITests.EditorGetLocalUri
 http://omex-library.org/NewOmex.omex/NewModel.rdf#
-[       OK ] CAPITests.EditorGetLocalUri (0 ms)
+[       OK ] CAPITests.EditorGetLocalUri (1 ms)
 [ RUN      ] CAPITests.EditoraddCreator
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix dc: <http://purl.org/dc/terms/> .
@@ -143,7 +143,7 @@ http://omex-library.org/NewOmex.omex/NewModel.rdf#
     dc:creator <https://orcid.org/1234-1234-1234-1234> .
 
 
-[       OK ] CAPITests.EditoraddCreator (1 ms)
+[       OK ] CAPITests.EditoraddCreator (0 ms)
 [ RUN      ] CAPITests.EditoraddContributor
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix dc: <http://purl.org/dc/terms/> .
@@ -212,7 +212,7 @@ http://omex-library.org/NewOmex.omex/NewModel.rdf#
     bqmodel:isDerivedFrom biomod:BIOMD000001 .
 
 
-[       OK ] CAPITests.EditoraddParentModel (1 ms)
+[       OK ] CAPITests.EditoraddParentModel (0 ms)
 [ RUN      ] CAPITests.EditorGetXml
 [       OK ] CAPITests.EditorGetXml (1 ms)
 [ RUN      ] CAPITests.PersonalInformationaddCreator
@@ -243,7 +243,7 @@ http://omex-library.org/NewOmex.omex/NewModel.rdf#
     dc:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .
 
 
-[       OK ] CAPITests.PersonalInformationaddName (1 ms)
+[       OK ] CAPITests.PersonalInformationaddName (2 ms)
 [ RUN      ] CAPITests.PersonalInformationaddMbox
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix dc: <http://purl.org/dc/terms/> .
@@ -273,7 +273,7 @@ http://omex-library.org/NewOmex.omex/NewModel.rdf#
     dc:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .
 
 
-[       OK ] CAPITests.PersonalInformationaddAccountName (2 ms)
+[       OK ] CAPITests.PersonalInformationaddAccountName (1 ms)
 [ RUN      ] CAPITests.PersonalInformationaddAccountServiceHomepage
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix dc: <http://purl.org/dc/terms/> .
@@ -318,12 +318,12 @@ http://omex-library.org/NewOmex.omex/NewModel.rdf#
     dc:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .
 
 
-[       OK ] CAPITests.PersonalInformationaddFoafLiteral (2 ms)
+[       OK ] CAPITests.PersonalInformationaddFoafLiteral (1 ms)
 [ RUN      ] CAPITests.PersonalInformationgetMetaid
 http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000
 [       OK ] CAPITests.PersonalInformationgetMetaid (1 ms)
 [ RUN      ] CAPITests.RDFToEditorTestWithSemanticExtraction
-[       OK ] CAPITests.RDFToEditorTestWithSemanticExtraction (13 ms)
+[       OK ] CAPITests.RDFToEditorTestWithSemanticExtraction (18 ms)
 [ RUN      ] CAPITests.RDFToEditorTestWithoutSemanticExtraction
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix OMEXlib: <http://omex-library.org/> .
@@ -393,7 +393,7 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000
         </listOfReactions>
     </model>
 </sbml>
-[       OK ] CAPITests.EditorStripAnnotations (0 ms)
+[       OK ] CAPITests.EditorStripAnnotations (1 ms)
 [----------] 71 tests from CAPITests (91 ms total)
 
 [----------] Global test environment tear-down

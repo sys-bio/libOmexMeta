@@ -1,0 +1,134 @@
+Running main() from ..\third_party\googletest\googletest\src\gtest_main.cc
+[==========] Running 31 tests from 3 test suites.
+[----------] Global test environment set-up.
+[----------] 9 tests from PhysicalEntityTests
+[ RUN      ] PhysicalEntityTests.TestPhysicalEntitySBML1
+[       OK ] PhysicalEntityTests.TestPhysicalEntitySBML1 (3 ms)
+[ RUN      ] PhysicalEntityTests.TestPhysicalEntitySBML2
+[       OK ] PhysicalEntityTests.TestPhysicalEntitySBML2 (1 ms)
+[ RUN      ] PhysicalEntityTests.TestPhysicalEntitySBML3
+[       OK ] PhysicalEntityTests.TestPhysicalEntitySBML3 (1 ms)
+[ RUN      ] PhysicalEntityTests.TestPhysicalEntitySBML4
+[       OK ] PhysicalEntityTests.TestPhysicalEntitySBML4 (1 ms)
+[ RUN      ] PhysicalEntityTests.TestPhysicalEntitySBML5
+[       OK ] PhysicalEntityTests.TestPhysicalEntitySBML5 (2 ms)
+[ RUN      ] PhysicalEntityTests.TestPhysicalEntityCellML1
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
+@prefix OMEXlib: <http://omex-library.org/> .
+@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
+
+local:entity0
+    bqbiol:is <https://identifiers.org/fma:9670> ;
+    bqbiol:isPartOf <https://identifiers.org/fma:18228> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#main.Volume>
+    bqbiol:isPropertyOf local:entity0 ;
+    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00154> .
+
+
+[       OK ] PhysicalEntityTests.TestPhysicalEntityCellML1 (1 ms)
+[ RUN      ] PhysicalEntityTests.TestPhysicalEntityCellML2
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
+@prefix OMEXlib: <http://omex-library.org/> .
+@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
+
+local:entity0
+    bqbiol:is <https://identifiers.org/fma:9670> ;
+    bqbiol:isPartOf <https://identifiers.org/fma:18228> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#main.Volume>
+    bqbiol:isPropertyOf local:entity0 ;
+    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00154> .
+
+
+[       OK ] PhysicalEntityTests.TestPhysicalEntityCellML2 (1 ms)
+[ RUN      ] PhysicalEntityTests.TestPhysicalEntityCellML3
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
+@prefix OMEXlib: <http://omex-library.org/> .
+@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
+
+local:Entity0000
+    bqbiol:is <https://identifiers.org/fma:9670> ;
+    bqbiol:isPartOf <https://identifiers.org/fma:18228> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#main.Volume>
+    bqbiol:isPropertyOf local:Entity0000 ;
+    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00154> .
+
+
+[       OK ] PhysicalEntityTests.TestPhysicalEntityCellML3 (2 ms)
+[ RUN      ] PhysicalEntityTests.TestPhysicalEntitySameTriplesGeneratedEveryTime
+[       OK ] PhysicalEntityTests.TestPhysicalEntitySameTriplesGeneratedEveryTime (2 ms)
+[----------] 9 tests from PhysicalEntityTests (15 ms total)
+
+[----------] 2 tests from PhysicalEntityMemory
+[ RUN      ] PhysicalEntityMemory.TestPhysicalEntityAdds4TriplesToModel
+[       OK ] PhysicalEntityMemory.TestPhysicalEntityAdds4TriplesToModel (1 ms)
+[ RUN      ] PhysicalEntityMemory.TestUnpackTriplesAndAccountForTermsAndUris
+[       OK ] PhysicalEntityMemory.TestUnpackTriplesAndAccountForTermsAndUris (0 ms)
+[----------] 2 tests from PhysicalEntityMemory (1 ms total)
+
+[----------] 20 tests from DeletePhysicalEntity
+[ RUN      ] DeletePhysicalEntity.TestRDFSizeBeforeRemovingAndNoMemoryLeaks
+[       OK ] DeletePhysicalEntity.TestRDFSizeBeforeRemovingAndNoMemoryLeaks (1 ms)
+[ RUN      ] DeletePhysicalEntity.TestRemoveSingleTriple1
+[       OK ] DeletePhysicalEntity.TestRemoveSingleTriple1 (0 ms)
+[ RUN      ] DeletePhysicalEntity.TestRemoveSingleTriple2
+[       OK ] DeletePhysicalEntity.TestRemoveSingleTriple2 (1 ms)
+[ RUN      ] DeletePhysicalEntity.TestRemoveSingleTriple3
+[       OK ] DeletePhysicalEntity.TestRemoveSingleTriple3 (0 ms)
+[ RUN      ] DeletePhysicalEntity.TestRemoveSingleTriple4
+[       OK ] DeletePhysicalEntity.TestRemoveSingleTriple4 (0 ms)
+[ RUN      ] DeletePhysicalEntity.TestRemoveSingleTripleTwoTriples
+[       OK ] DeletePhysicalEntity.TestRemoveSingleTripleTwoTriples (1 ms)
+[ RUN      ] DeletePhysicalEntity.TestRemoveSingleTripleFromTriples
+[       OK ] DeletePhysicalEntity.TestRemoveSingleTripleFromTriples (0 ms)
+[ RUN      ] DeletePhysicalEntity.TestRemoveTwoTripleObjsFromTriplesDifferentContent
+[       OK ] DeletePhysicalEntity.TestRemoveTwoTripleObjsFromTriplesDifferentContent (1 ms)
+[ RUN      ] DeletePhysicalEntity.TestRemoveTwoTripleObjsFromTriplesSameSubject
+[       OK ] DeletePhysicalEntity.TestRemoveTwoTripleObjsFromTriplesSameSubject (0 ms)
+[ RUN      ] DeletePhysicalEntity.TestRemoveTwoTripleObjsFromTriplesSameSubjectAndPredicate
+[       OK ] DeletePhysicalEntity.TestRemoveTwoTripleObjsFromTriplesSameSubjectAndPredicate (0 ms)
+[ RUN      ] DeletePhysicalEntity.TestRemoveTwoTripleObjsFromTriplesSameSubjectAndResource
+[       OK ] DeletePhysicalEntity.TestRemoveTwoTripleObjsFromTriplesSameSubjectAndResource (1 ms)
+[ RUN      ] DeletePhysicalEntity.TestRemoveTwoTripleObjsFromTriplesSamePredicateAndResource
+[       OK ] DeletePhysicalEntity.TestRemoveTwoTripleObjsFromTriplesSamePredicateAndResource (0 ms)
+[ RUN      ] DeletePhysicalEntity.TestRemoveTwoTripleObjsFromTriplesSameEverything
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
+@prefix OMEXlib: <http://omex-library.org/> .
+@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
+
+<cytosol>
+    bqbiol:isPartOf <https://identifiers.org/fma:1234> .
+
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
+@prefix OMEXlib: <http://omex-library.org/> .
+@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
+
+
+[       OK ] DeletePhysicalEntity.TestRemoveTwoTripleObjsFromTriplesSameEverything (1 ms)
+[ RUN      ] DeletePhysicalEntity.TestRemoveTwoTripleObjsFromTriplesWithFreeInMiddle
+[       OK ] DeletePhysicalEntity.TestRemoveTwoTripleObjsFromTriplesWithFreeInMiddle (0 ms)
+[ RUN      ] DeletePhysicalEntity.TestRemoveDoubleTriple1And2Sequential
+[       OK ] DeletePhysicalEntity.TestRemoveDoubleTriple1And2Sequential (1 ms)
+[ RUN      ] DeletePhysicalEntity.TestRemoveDoubleTriple1And2SequentialAndFreeOnlyAtEnd
+[       OK ] DeletePhysicalEntity.TestRemoveDoubleTriple1And2SequentialAndFreeOnlyAtEnd (0 ms)
+[ RUN      ] DeletePhysicalEntity.TestCreateAddAndRemoveTripleFromAPropertyOfPhysicalEntity
+[       OK ] DeletePhysicalEntity.TestCreateAddAndRemoveTripleFromAPropertyOfPhysicalEntity (1 ms)
+[ RUN      ] DeletePhysicalEntity.TestCreateAddAndRemoveTripleFromAPropertyOfPhysicalEntityWithNamespaceHandling
+[       OK ] DeletePhysicalEntity.TestCreateAddAndRemoveTripleFromAPropertyOfPhysicalEntityWithNamespaceHandling (0 ms)
+[ RUN      ] DeletePhysicalEntity.TestAddAndRemovePhysicalEntity
+[       OK ] DeletePhysicalEntity.TestAddAndRemovePhysicalEntity (1 ms)
+[ RUN      ] DeletePhysicalEntity.TestDeleteFirstTriple
+[       OK ] DeletePhysicalEntity.TestDeleteFirstTriple (1 ms)
+[----------] 20 tests from DeletePhysicalEntity (10 ms total)
+
+[----------] Global test environment tear-down
+[==========] 31 tests from 3 test suites ran. (26 ms total)
+[  PASSED  ] 31 tests.

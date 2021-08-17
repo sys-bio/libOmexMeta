@@ -1,0 +1,23 @@
+Running main() from ..\third_party\googletest\googletest\src\gtest_main.cc
+[==========] Running 7 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 7 tests from RefCountedTests
+[ RUN      ] RefCountedTests.CheckNoMemoryLeakWithTestType
+[       OK ] RefCountedTests.CheckNoMemoryLeakWithTestType (0 ms)
+[ RUN      ] RefCountedTests.CheckIncrementWithGetWithTestType
+[       OK ] RefCountedTests.CheckIncrementWithGetWithTestType (0 ms)
+[ RUN      ] RefCountedTests.CheckCopyCtorWithTestType
+[       OK ] RefCountedTests.CheckCopyCtorWithTestType (0 ms)
+[ RUN      ] RefCountedTests.CheckMoveCtorWithTestType
+[       OK ] RefCountedTests.CheckMoveCtorWithTestType (0 ms)
+[ RUN      ] RefCountedTests.CheckCopyAssignCtorWithTestType
+[       OK ] RefCountedTests.CheckCopyAssignCtorWithTestType (0 ms)
+[ RUN      ] RefCountedTests.CheckMoveAssignCtorWithTestType
+[       OK ] RefCountedTests.CheckMoveAssignCtorWithTestType (0 ms)
+[ RUN      ] RefCountedTests.FromDefaultCtr
+[       OK ] RefCountedTests.FromDefaultCtr (0 ms)
+[----------] 7 tests from RefCountedTests (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 7 tests from 1 test suite ran. (0 ms total)
+[  PASSED  ] 7 tests.

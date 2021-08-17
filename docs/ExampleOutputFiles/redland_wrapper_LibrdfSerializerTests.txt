@@ -1,0 +1,39 @@
+Running main() from ..\third_party\googletest\googletest\src\gtest_main.cc
+[==========] Running 10 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 10 tests from LibrdfSerializerTests
+[ RUN      ] LibrdfSerializerTests.TestInstantiateSerializer
+[       OK ] LibrdfSerializerTests.TestInstantiateSerializer (2 ms)
+[ RUN      ] LibrdfSerializerTests.TestInstantiateWrongSerializerName
+[       OK ] LibrdfSerializerTests.TestInstantiateWrongSerializerName (0 ms)
+[ RUN      ] LibrdfSerializerTests.TestMoveConstructor
+[       OK ] LibrdfSerializerTests.TestMoveConstructor (0 ms)
+[ RUN      ] LibrdfSerializerTests.TestMoveAssignment
+[       OK ] LibrdfSerializerTests.TestMoveAssignment (0 ms)
+[ RUN      ] LibrdfSerializerTests.TestToString
+[       OK ] LibrdfSerializerTests.TestToString (0 ms)
+[ RUN      ] LibrdfSerializerTests.SetNamespace
+[       OK ] LibrdfSerializerTests.SetNamespace (0 ms)
+[ RUN      ] LibrdfSerializerTests.TestToStringTurtle
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+<https://subject.com>
+    <https://predicate.com> <https://resource.com> .
+
+
+[       OK ] LibrdfSerializerTests.TestToStringTurtle (0 ms)
+[ RUN      ] LibrdfSerializerTests.TestToStringNTriples
+<https://subject.com> <https://predicate.com> <https://resource.com> .
+
+[       OK ] LibrdfSerializerTests.TestToStringNTriples (0 ms)
+[ RUN      ] LibrdfSerializerTests.TestBaseUri
+<https://subject.com> <https://predicate.com> <https://resource.com> .
+
+[       OK ] LibrdfSerializerTests.TestBaseUri (1 ms)
+[ RUN      ] LibrdfSerializerTests.TestFeatures
+[       OK ] LibrdfSerializerTests.TestFeatures (0 ms)
+[----------] 10 tests from LibrdfSerializerTests (3 ms total)
+
+[----------] Global test environment tear-down
+[==========] 10 tests from 1 test suite ran. (3 ms total)
+[  PASSED  ] 10 tests.
