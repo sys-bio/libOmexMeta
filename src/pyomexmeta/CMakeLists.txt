@@ -18,7 +18,7 @@ set(PYOMEXMETA_PY "${CMAKE_CURRENT_SOURCE_DIR}/pyomexmeta.py")
 configure_file(${PYOMEXMETA_PY} ${BUILD_TREE_SITE_PACKAGES}/pyomexmeta/pyomexmeta.py COPYONLY)
 
 
-install(FILES ${PYTHON_SETUP_FILE} DESTINATION .)
+install(FILES "${PYTHON_SETUP_FILE}" DESTINATION .)
 install(
         FILES
         ${PYTHON_INIT_FILE}

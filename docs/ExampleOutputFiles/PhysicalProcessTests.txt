@@ -30,7 +30,7 @@ local:SourceParticipant0000
     semsim:hasSourceParticipant local:SourceParticipant0000 .
 
 
-[       OK ] PhysicalProcessTests.TestPhysicalProcessSBML1 (6 ms)
+[       OK ] PhysicalProcessTests.TestPhysicalProcessSBML1 (5 ms)
 [ RUN      ] PhysicalProcessTests.TestPhysicalProcessSBML2
 [       OK ] PhysicalProcessTests.TestPhysicalProcessSBML2 (3 ms)
 [ RUN      ] PhysicalProcessTests.TestPhysicalProcessCellML1
@@ -63,11 +63,11 @@ local:SourceParticipant0000
 
 [       OK ] PhysicalProcessTests.TestPhysicalProcessCellML1 (3 ms)
 [ RUN      ] PhysicalProcessTests.TestPhysicalProcessCellML2
-[       OK ] PhysicalProcessTests.TestPhysicalProcessCellML2 (4 ms)
+[       OK ] PhysicalProcessTests.TestPhysicalProcessCellML2 (2 ms)
 [ RUN      ] PhysicalProcessTests.TestRemovePhysicalProcess
 [       OK ] PhysicalProcessTests.TestRemovePhysicalProcess (2 ms)
-[----------] 5 tests from PhysicalProcessTests (18 ms total)
+[----------] 5 tests from PhysicalProcessTests (15 ms total)
 
 [----------] Global test environment tear-down
-[==========] 5 tests from 1 test suite ran. (18 ms total)
+[==========] 5 tests from 1 test suite ran. (15 ms total)
 [  PASSED  ] 5 tests.

@@ -383,8 +383,12 @@ stages:
               echo "$Env:LD_LIBRARY_PATH = $(PythonLibDir)"
               $Env:LD_LIBRARY_PATH = "$(PythonLibDir)"
 
-              echo "$(PipExecutable) install -y ipython breathe sphinx-tabs requests tellurium python-libcombine pytest graphviz pypiwin32 pywin32 wheel"
-              $(PipExecutable) install ipython breathe sphinx-tabs requests tellurium python-libcombine pytest graphviz pypiwin32 pywin32 wheel
+              # echo "$(PipExecutable) install -y ipython breathe sphinx-tabs requests tellurium python-libcombine pytest graphviz pypiwin32 pywin32 wheel"
+              # $(PipExecutable) install ipython breathe sphinx-tabs requests tellurium python-libcombine pytest graphviz pypiwin32 pywin32 wheel
+              echo "cding to source directory:"
+              cd $(SOURCE_DIRECTORY)
+              $(PipExecutable) install -r requirements.txt
+              $(PipExecutable) install -r test-requirements.txt
 
               echo "$(CondaExecutable) env list"
               $(CondaExecutable) env list
@@ -416,7 +420,8 @@ stages:
               cd $(BUILD_DIRECTORY)
               ctest -C Release --verbose --extra-verbose --output-on-failure
               cmake --build . --config Release --target RunDocExamplesAndGenerateOutput
-              cmake --build . --config Release --target install --config Release -j 12
+
+              cmake --build . --config Release --target install-j 12
 
             displayName: Build With Python
             # publish python packages in azure:

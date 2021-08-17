@@ -5,13 +5,13 @@ Running main() from ..\third_party\googletest\googletest\src\gtest_main.cc
 [ RUN      ] ParticipantTests.TestCreateParticipant
 hasSourceParticipant
 http://bime.uw.edu/semsim/hasSourceParticipant
-[       OK ] ParticipantTests.TestCreateParticipant (1 ms)
+[       OK ] ParticipantTests.TestCreateParticipant (2 ms)
 [ RUN      ] ParticipantTests.TestSinkParticipant1
 http://bime.uw.edu/semsim/hasSinkParticipant
 [       OK ] ParticipantTests.TestSinkParticipant1 (0 ms)
 [ RUN      ] ParticipantTests.TestSinkParticipantMakMetaid
 SinkParticipant0000
-[       OK ] ParticipantTests.TestSinkParticipantMakMetaid (1 ms)
+[       OK ] ParticipantTests.TestSinkParticipantMakMetaid (0 ms)
 [ RUN      ] ParticipantTests.TestSinkParticipantGetLocalUri
 http://omex-library.org/NewOmex.omex/NewModel.rdf#
 [       OK ] ParticipantTests.TestSinkParticipantGetLocalUri (0 ms)
@@ -22,9 +22,9 @@ http://omex-library.org/NewOmex.omex/NewModel.rdf#
     <http://bime.uw.edu/semsim/hasSinkParticipant> <http://omex-library.org/NewOmex.omex/NewModel.xml#MetaId0015> .
 
 
-[       OK ] ParticipantTests.TestCreateTripleFromParticipantInfo (0 ms)
+[       OK ] ParticipantTests.TestCreateTripleFromParticipantInfo (1 ms)
 [ RUN      ] ParticipantTests.TestCreateTripleVector
-[       OK ] ParticipantTests.TestCreateTripleVector (1 ms)
+[       OK ] ParticipantTests.TestCreateTripleVector (0 ms)
 [ RUN      ] ParticipantTests.TestToTriples1
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 
@@ -58,11 +58,11 @@ http://omex-library.org/NewOmex.omex/NewModel.rdf#
     <http://bime.uw.edu/semsim/hasMediatorParticipant> <http://omex-library.org/NewOmex.omex/NewModel.rdf#MediatorParticipant0000> .
 
 
-[       OK ] ParticipantTests.TestToTriplesMediator (0 ms)
+[       OK ] ParticipantTests.TestToTriplesMediator (1 ms)
 [ RUN      ] ParticipantTests.TestParticipantVecToTriples
-[       OK ] ParticipantTests.TestParticipantVecToTriples (1 ms)
+[       OK ] ParticipantTests.TestParticipantVecToTriples (0 ms)
 [----------] 10 tests from ParticipantTests (6 ms total)
 
 [----------] Global test environment tear-down
-[==========] 10 tests from 1 test suite ran. (6 ms total)
+[==========] 10 tests from 1 test suite ran. (7 ms total)
 [  PASSED  ] 10 tests.

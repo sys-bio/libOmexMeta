@@ -156,11 +156,11 @@ Running main() from ..\third_party\googletest\googletest\src\gtest_main.cc
   </model>
 </sbml>
 
-[       OK ] OmexMetaXMLTests.TestMetaIdsSBML (0 ms)
+[       OK ] OmexMetaXMLTests.TestMetaIdsSBML (1 ms)
 [ RUN      ] OmexMetaXMLTests.TestMetaIdsGenerateNewMetaidsFlagFalseSBML
 metaid
 
-[       OK ] OmexMetaXMLTests.TestMetaIdsGenerateNewMetaidsFlagFalseSBML (1 ms)
+[       OK ] OmexMetaXMLTests.TestMetaIdsGenerateNewMetaidsFlagFalseSBML (0 ms)
 [ RUN      ] OmexMetaXMLTests.TestMetaIdsGenerateNewMetaidsFlagFalseMetaid
 7beta_cell_model
 unit0000
@@ -188,15 +188,15 @@ variable0002
 [ RUN      ] OmexMetaXMLTests.FindFirstOccuranceOfNodeCalledModelSBML
 [       OK ] OmexMetaXMLTests.FindFirstOccuranceOfNodeCalledModelSBML (0 ms)
 [ RUN      ] OmexMetaXMLTests.FindFirstOccuranceOfNodeCalledSpeciesSBML
-[       OK ] OmexMetaXMLTests.FindFirstOccuranceOfNodeCalledSpeciesSBML (0 ms)
+[       OK ] OmexMetaXMLTests.FindFirstOccuranceOfNodeCalledSpeciesSBML (1 ms)
 [ RUN      ] OmexMetaXMLTests.FindFirstOccuranceOfNodeCalledModelCellML
 [       OK ] OmexMetaXMLTests.FindFirstOccuranceOfNodeCalledModelCellML (0 ms)
 [ RUN      ] OmexMetaXMLTests.GetSBMLModelElementMetaid
 [       OK ] OmexMetaXMLTests.GetSBMLModelElementMetaid (0 ms)
 [ RUN      ] OmexMetaXMLTests.GetCellMLModelElementMetaid
 [       OK ] OmexMetaXMLTests.GetCellMLModelElementMetaid (0 ms)
-[----------] 16 tests from OmexMetaXMLTests (1 ms total)
+[----------] 16 tests from OmexMetaXMLTests (2 ms total)
 
 [----------] Global test environment tear-down
-[==========] 16 tests from 1 test suite ran. (1 ms total)
+[==========] 16 tests from 1 test suite ran. (2 ms total)
 [  PASSED  ] 16 tests.

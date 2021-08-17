@@ -11,7 +11,7 @@ Running main() from ..\third_party\googletest\googletest\src\gtest_main.cc
 [ RUN      ] PhysicalEntityTests.TestPhysicalEntitySBML4
 [       OK ] PhysicalEntityTests.TestPhysicalEntitySBML4 (1 ms)
 [ RUN      ] PhysicalEntityTests.TestPhysicalEntitySBML5
-[       OK ] PhysicalEntityTests.TestPhysicalEntitySBML5 (2 ms)
+[       OK ] PhysicalEntityTests.TestPhysicalEntitySBML5 (1 ms)
 [ RUN      ] PhysicalEntityTests.TestPhysicalEntityCellML1
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
@@ -27,7 +27,7 @@ local:entity0
     bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00154> .
 
 
-[       OK ] PhysicalEntityTests.TestPhysicalEntityCellML1 (1 ms)
+[       OK ] PhysicalEntityTests.TestPhysicalEntityCellML1 (2 ms)
 [ RUN      ] PhysicalEntityTests.TestPhysicalEntityCellML2
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
@@ -59,31 +59,31 @@ local:Entity0000
     bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00154> .
 
 
-[       OK ] PhysicalEntityTests.TestPhysicalEntityCellML3 (2 ms)
+[       OK ] PhysicalEntityTests.TestPhysicalEntityCellML3 (1 ms)
 [ RUN      ] PhysicalEntityTests.TestPhysicalEntitySameTriplesGeneratedEveryTime
-[       OK ] PhysicalEntityTests.TestPhysicalEntitySameTriplesGeneratedEveryTime (2 ms)
+[       OK ] PhysicalEntityTests.TestPhysicalEntitySameTriplesGeneratedEveryTime (3 ms)
 [----------] 9 tests from PhysicalEntityTests (15 ms total)
 
 [----------] 2 tests from PhysicalEntityMemory
 [ RUN      ] PhysicalEntityMemory.TestPhysicalEntityAdds4TriplesToModel
-[       OK ] PhysicalEntityMemory.TestPhysicalEntityAdds4TriplesToModel (1 ms)
+[       OK ] PhysicalEntityMemory.TestPhysicalEntityAdds4TriplesToModel (0 ms)
 [ RUN      ] PhysicalEntityMemory.TestUnpackTriplesAndAccountForTermsAndUris
-[       OK ] PhysicalEntityMemory.TestUnpackTriplesAndAccountForTermsAndUris (0 ms)
+[       OK ] PhysicalEntityMemory.TestUnpackTriplesAndAccountForTermsAndUris (1 ms)
 [----------] 2 tests from PhysicalEntityMemory (1 ms total)
 
 [----------] 20 tests from DeletePhysicalEntity
 [ RUN      ] DeletePhysicalEntity.TestRDFSizeBeforeRemovingAndNoMemoryLeaks
-[       OK ] DeletePhysicalEntity.TestRDFSizeBeforeRemovingAndNoMemoryLeaks (1 ms)
+[       OK ] DeletePhysicalEntity.TestRDFSizeBeforeRemovingAndNoMemoryLeaks (0 ms)
 [ RUN      ] DeletePhysicalEntity.TestRemoveSingleTriple1
-[       OK ] DeletePhysicalEntity.TestRemoveSingleTriple1 (0 ms)
+[       OK ] DeletePhysicalEntity.TestRemoveSingleTriple1 (1 ms)
 [ RUN      ] DeletePhysicalEntity.TestRemoveSingleTriple2
-[       OK ] DeletePhysicalEntity.TestRemoveSingleTriple2 (1 ms)
+[       OK ] DeletePhysicalEntity.TestRemoveSingleTriple2 (0 ms)
 [ RUN      ] DeletePhysicalEntity.TestRemoveSingleTriple3
 [       OK ] DeletePhysicalEntity.TestRemoveSingleTriple3 (0 ms)
 [ RUN      ] DeletePhysicalEntity.TestRemoveSingleTriple4
-[       OK ] DeletePhysicalEntity.TestRemoveSingleTriple4 (0 ms)
+[       OK ] DeletePhysicalEntity.TestRemoveSingleTriple4 (1 ms)
 [ RUN      ] DeletePhysicalEntity.TestRemoveSingleTripleTwoTriples
-[       OK ] DeletePhysicalEntity.TestRemoveSingleTripleTwoTriples (1 ms)
+[       OK ] DeletePhysicalEntity.TestRemoveSingleTripleTwoTriples (0 ms)
 [ RUN      ] DeletePhysicalEntity.TestRemoveSingleTripleFromTriples
 [       OK ] DeletePhysicalEntity.TestRemoveSingleTripleFromTriples (0 ms)
 [ RUN      ] DeletePhysicalEntity.TestRemoveTwoTripleObjsFromTriplesDifferentContent
@@ -127,7 +127,7 @@ local:Entity0000
 [       OK ] DeletePhysicalEntity.TestAddAndRemovePhysicalEntity (1 ms)
 [ RUN      ] DeletePhysicalEntity.TestDeleteFirstTriple
 [       OK ] DeletePhysicalEntity.TestDeleteFirstTriple (1 ms)
-[----------] 20 tests from DeletePhysicalEntity (10 ms total)
+[----------] 20 tests from DeletePhysicalEntity (9 ms total)
 
 [----------] Global test environment tear-down
 [==========] 31 tests from 3 test suites ran. (26 ms total)

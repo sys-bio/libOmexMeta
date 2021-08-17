@@ -11,7 +11,7 @@ Running main() from ..\third_party\googletest\googletest\src\gtest_main.cc
 [ RUN      ] LibrdfParserTests.TestValidParserName
 [       OK ] LibrdfParserTests.TestValidParserName (0 ms)
 [ RUN      ] LibrdfParserTests.TestInvalidParserName
-[       OK ] LibrdfParserTests.TestInvalidParserName (0 ms)
+[       OK ] LibrdfParserTests.TestInvalidParserName (1 ms)
 [ RUN      ] LibrdfParserTests.TestSetName
 [       OK ] LibrdfParserTests.TestSetName (0 ms)
 [ RUN      ] LibrdfParserTests.TestGetMimeType
@@ -23,18 +23,18 @@ D:\libOmexMeta\cmake-build-release\docs/example_rdf.rdf
 [       OK ] LibrdfParserTests.TestParseFromAFile (1 ms)
 [ RUN      ] LibrdfParserTests.TestRelativeBaseUriResolvesCorrectly
 "D:\\libOmexMeta\\cmake-build-release\\docs\\LibrdfParserTests_TestBaseUri.db"
-[       OK ] LibrdfParserTests.TestRelativeBaseUriResolvesCorrectly (21 ms)
+[       OK ] LibrdfParserTests.TestRelativeBaseUriResolvesCorrectly (23 ms)
 [ RUN      ] LibrdfParserTests.TestParserString
-[17:43:21 +01:00]  error : 1 syntax error at '<' 
-[17:43:21 +01:00]  error : 1 syntax error at '<' 
+[13:09:13 +01:00]  error : 1 syntax error at '<' 
+[13:09:13 +01:00]  error : 1 syntax error at '<' 
 [       OK ] LibrdfParserTests.TestParserString (1 ms)
 [ RUN      ] LibrdfParserTests.TestFeatures
 [       OK ] LibrdfParserTests.TestFeatures (0 ms)
 [ RUN      ] LibrdfParserTests.CheckTweiceFirstFailThenParseAgain
-[17:43:21 +01:00]  error : syntax error at '<' 
+[13:09:13 +01:00]  error : syntax error at '<' 
 [       OK ] LibrdfParserTests.CheckTweiceFirstFailThenParseAgain (0 ms)
-[----------] 13 tests from LibrdfParserTests (25 ms total)
+[----------] 13 tests from LibrdfParserTests (28 ms total)
 
 [----------] Global test environment tear-down
-[==========] 13 tests from 1 test suite ran. (25 ms total)
+[==========] 13 tests from 1 test suite ran. (28 ms total)
 [  PASSED  ] 13 tests.

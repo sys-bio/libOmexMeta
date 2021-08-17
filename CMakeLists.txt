@@ -289,7 +289,6 @@ if (${BUILD_PYTHON})
     set(PYTHON_SETUP_CONFIG_FILE ${CMAKE_CURRENT_SOURCE_DIR}/setup.py.in)
     set(PYTHON_SETUP_FILE ${CMAKE_CURRENT_BINARY_DIR}/setup.py)
     configure_file(${PYTHON_SETUP_CONFIG_FILE} ${PYTHON_SETUP_FILE} @ONLY)
-
 endif ()
 
 # we write a file called extra_search_directories for storing locations of places python can search for

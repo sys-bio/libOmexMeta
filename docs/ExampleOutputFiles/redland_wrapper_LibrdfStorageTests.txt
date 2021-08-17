@@ -3,9 +3,9 @@ Running main() from ..\third_party\googletest\googletest\src\gtest_main.cc
 [----------] Global test environment set-up.
 [----------] 9 tests from LibrdfStorageTests
 [ RUN      ] LibrdfStorageTests.TestInstantiateStorage
-[       OK ] LibrdfStorageTests.TestInstantiateStorage (1 ms)
+[       OK ] LibrdfStorageTests.TestInstantiateStorage (2 ms)
 [ RUN      ] LibrdfStorageTests.TestMoveConstructor
-[       OK ] LibrdfStorageTests.TestMoveConstructor (1 ms)
+[       OK ] LibrdfStorageTests.TestMoveConstructor (0 ms)
 [ RUN      ] LibrdfStorageTests.TestMoveAssignment
 [       OK ] LibrdfStorageTests.TestMoveAssignment (0 ms)
 [ RUN      ] LibrdfStorageTests.TestCopyConstructor
@@ -13,16 +13,16 @@ Running main() from ..\third_party\googletest\googletest\src\gtest_main.cc
 [ RUN      ] LibrdfStorageTests.TestCopyAssignment
 [       OK ] LibrdfStorageTests.TestCopyAssignment (0 ms)
 [ RUN      ] LibrdfStorageTests.TestSQLiteStorage
-[       OK ] LibrdfStorageTests.TestSQLiteStorage (12 ms)
+[       OK ] LibrdfStorageTests.TestSQLiteStorage (13 ms)
 [ RUN      ] LibrdfStorageTests.TestMemoryStorage
 [       OK ] LibrdfStorageTests.TestMemoryStorage (0 ms)
 [ RUN      ] LibrdfStorageTests.TesthashesMemory
 [       OK ] LibrdfStorageTests.TesthashesMemory (0 ms)
 [ RUN      ] LibrdfStorageTests.TestfileMemory
-[17:43:21 +01:00]  error :  XML parser error: Document is empty 
-[       OK ] LibrdfStorageTests.TestfileMemory (1 ms)
-[----------] 9 tests from LibrdfStorageTests (15 ms total)
+[13:09:13 +01:00]  error :  XML parser error: Document is empty 
+[       OK ] LibrdfStorageTests.TestfileMemory (2 ms)
+[----------] 9 tests from LibrdfStorageTests (17 ms total)
 
 [----------] Global test environment tear-down
-[==========] 9 tests from 1 test suite ran. (15 ms total)
+[==========] 9 tests from 1 test suite ran. (17 ms total)
 [  PASSED  ] 9 tests.
