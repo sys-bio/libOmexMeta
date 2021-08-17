@@ -19,7 +19,7 @@ docs_root = dirname(docs_source)
 libomexmeta_root = dirname(docs_root)
 libomexmeta_source = join(libomexmeta_root, "src")
 
-sys.path += ["D:/libOmexMeta/cmake-build-release/site-packages"]
+sys.path += ["D:/libOmexMeta/build/site-packages"]
 
 
 # -- Project information -----------------------------------------------------
