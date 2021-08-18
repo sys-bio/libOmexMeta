@@ -219,20 +219,20 @@ set(DOXYFILE_OUT ${CMAKE_BINARY_DIR}/Doxyfile)
 configure_file(${DOXYFILE_IN} ${DOXYFILE_OUT} @ONLY)
 
 # Doxygen won't create this for us
-file(MAKE_DIRECTORY ${DOXYGEN_OUTPUT_DIR})
+file(MAKE_DIRECTORY "${DOXYGEN_OUTPUT_DIR}")
 
 # Only regenerate Doxygen when the Doxyfile or public headers change
 add_custom_command(
-        OUTPUT ${DOXYGEN_INDEX_FILE}
-        DEPENDS ${SEMSIM_HEADERS}
-        COMMAND ${DOXYGEN_EXECUTABLE} ${DOXYFILE_OUT}
-        WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
-        MAIN_DEPENDENCY ${DOXYFILE_OUT} ${DOXYFILE_IN}
+        OUTPUT  "${DOXYGEN_INDEX_FILE}"
+        DEPENDS "${SEMSIM_HEADERS}"
+        COMMAND "${DOXYGEN_EXECUTABLE}" "${DOXYFILE_OUT}"
+        WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
+        MAIN_DEPENDENCY "${DOXYFILE_OUT}" "${DOXYFILE_IN}"
         COMMENT "Generating docs"
         VERBATIM
 )
 
-add_custom_target(libomexmeta-docs-doxygen ALL DEPENDS ${DOXYGEN_INDEX_FILE})
+add_custom_target(libomexmeta-docs-doxygen ALL DEPENDS "${DOXYGEN_INDEX_FILE}")
 
 ############################################################
 #   Sphinx

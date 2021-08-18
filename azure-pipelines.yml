@@ -76,6 +76,11 @@ stages:
             displayName: InstallDependencies
 
           - script: |
+              sudo apt install doxygen
+              doxygen --help
+            displayName: InstallDoxygen
+
+          - script: |
               echo "gcc $(gcc --version)"
               echo "g++ $(g++ --version)"
               sudo add-apt-repository ppa:ubuntu-toolchain-r/test
@@ -100,7 +105,7 @@ stages:
               $(CondaExecutable) activate $(PythonName)
               $(PipExecutable) install auditwheel breathe sphinx-tabs recommonmark beautifulsoup4 requests sphinxcontrib-programoutput tellurium python-libcombine pytest graphviz
               cd $(BUILD_DIRECTORY)
-              cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)" -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(PythonRoot) ..
+              cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)" -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(PythonRoot) -DBUILD_DOCS=ON -DBUILD_DOCS_EXECUTABLE=ON ..
               cmake --build $(BUILD_DIRECTORY) --target run-ctest --config Release
               cmake --build . --target RunDocExamplesAndGenerateOutput --config Release -j 12
               cmake --build . --target install --config Release -j 12
@@ -117,14 +122,7 @@ stages:
               $(PythonExecutable) -c "import pyomexmeta;pyomexmeta.run_tests()"
 
             displayName: Build and install pip wheel then run tests from within Python
-#          - script: |
-#              git clone https://github.com/doxygen/doxygen.git '$(DOXYGEN_DIRECTORY)'
-#              cd doxygen
-#              mkdir build
-#              cd build
-#              cmake -DCMAKE_INSTALL_PREFIX=../install-doxygen
-#
-#            displayName: Build Doxygen
+
           - powershell: gci env:* | sort-object name | Format-Table -AutoSize | Out-File $env:BUILD_ARTIFACTSTAGINGDIRECTORY/environment-variables.txt
 
           - task: CopyFiles@2
@@ -188,6 +186,11 @@ stages:
             displayName: Take ownership of conda installation
 
           - script: |
+              brew install doxygen
+              doxygen --help
+            displayName: InstallDoxygen
+
+          - script: |
               echo "Default directory: $(pwd)"
               echo "Agent.BuildDirectory $(Agent.BuildDirectory)"
               echo "Pipeline.Workspace $(Pipeline.Workspace)"
@@ -230,7 +233,7 @@ stages:
               $(PipExecutable) install ipython
               $(PipExecutable) install breathe sphinx-tabs recommonmark beautifulsoup4 requests sphinxcontrib-programoutput tellurium python-libcombine pytest graphviz
               cd $(BUILD_DIRECTORY)
-              cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)" -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(PythonRoot)  ..
+              cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)" -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(PythonRoot) -DBUILD_DOCS=ON -DBUILD_DOCS_EXAMPLES=ON  ..
               cmake --build . --target run-ctest --config Release
               cmake --build . --target RunDocExamplesAndGenerateOutput --config Release -j 12
               cmake --build . --target install --config Release -j 12
@@ -302,6 +305,12 @@ stages:
           PythonIncludeDir: '$(PythonRoot)\include'
           PipExecutable: '$(PythonScriptsDir)\pip.exe'
           PyWin32Path: '$(PythonLibDir)\site-packages\pywin32_system32' # needs to be added to path for win32api
+          NinjaDownloadUrl: 'https://github.com/ninja-build/ninja/releases/download/v1.10.2/ninja-win.zip'
+          NinjaDirectory: '$(System.DefaultWorkingDirectory)\Ninja'
+          NinjaExecutable: '$(NinjaDirectory)\ninja.exe'
+          DoxygenDownloadUrl: 'https://doxygen.nl/files/doxygen-1.9.1.windows.x64.bin.zip'
+          DoxygenDirectory: '$(System.DefaultWorkingDirectory)\Doxygen'
+          DoxygenExecutable: '$(DoxygenDirectory)\doxygen.exe'
 
         steps:
           - checkout: self
@@ -338,14 +347,67 @@ stages:
               ./bootstrap-vcpkg.sh
               vcpkg integrate install
               vcpkg install curl:x64-windows-static pcre:x64-windows-static openssl:x64-windows-static yajl:x64-windows-static sqlite3:x64-windows-static liblzma:x64-windows-static
-
             displayName: InstallDependencies
+
+          - task: Cache@2
+            inputs:
+              key: 'ninja_cache |"$(Agent.Os)"'
+              path: '"$(NinjaDirectory)"'
+          - powershell: |
+              # create place for Ninja, if not exists already
+              echo "creating a new directory for Ninja, if not already exists. Ninja directory is $(NinjaDirectory)"
+              If (!(test-path $(NinjaDirectory))
+              {
+                New-Item -ItemType Directory -Force -Path $(NinjaDirectory)
+              }
+              ehco "Cding to NinjaDirectory $(NinjaDirectory)"
+              cd $(NinjaDirectory)
+              # download ninja
+              Invoke-WebRequest https://github.com/ninja-build/ninja/releases/download/v1.10.2/ninja-win.zip -OutFile 'ninja.zip'
+              # unzip ninja
+              unzip ninja.zip
+
+              # Ensure ninja exists
+              $ErrorActionPreference = 'Stop'
+              # check for file explicitly (in case a directory with that name exists)
+              if(![System.IO.File]::Exists($(NinjaExecutable))) {
+                  # throwing an exception will abort the job
+                  throw (New-Object System.IO.FileNotFoundException("File not found: $(NinjaExecutable)", "$(NinjaExecutable)"))
+              }
+            displayName: Install Ninja
+
+          - task: Cache@2
+            inputs:
+              key: 'doxygen_cache |"$(Agent.Os)"'
+              path: '"$(DoxygenDirectory)"'
+          - powershell: |
+              # create place for Doxygen, if not exists already
+              echo "creating a new directory for doxygen, if not already exists. Doxygen directory is $(DoxygenDirectory)"
+              If (!(test-path $(DoxygenDirectory))
+              {
+                New-Item -ItemType Directory -Force -Path $(DoxygenDirectory)
+              }
+              ehco "Cding to DoxygenDirectory $(DoxygenDirectory)"
+              cd $(DoxygenDirectory)
+              # download doxygen
+              Invoke-WebRequest https://github.com/doxygen-build/doxygen/releases/download/v1.10.2/doxygen-win.zip -OutFile 'doxygen.zip'
+              # unzip doxygen
+              unzip doxygen.zip
+
+              # Ensure doxygen exists
+              $ErrorActionPreference = 'Stop'
+              # check for file explicitly (in case a directory with that name exists)
+              if(![System.IO.File]::Exists($(DoxygenExecutable))) {
+                  # throwing an exception will abort the job
+                  throw (New-Object System.IO.FileNotFoundException("File not found: $(DoxygenExecutable)", "$(DoxygenExecutable)"))
+              }
+            displayName: Install Doxygen
 
           - script: |
               echo "BUILD_DIRECTORY: $(BUILD_DIRECTORY)"
               mkdir "$(BUILD_DIRECTORY)"
               cd "$(BUILD_DIRECTORY)"
-              cmake -DVCPKG_ROOT="$(VCPKG_INSTALL_PREFIX)" -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)" -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release ..
+              cmake -G "Ninja" -DVCPKG_ROOT="$(VCPKG_INSTALL_PREFIX)" -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)" -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release ..
               cmake --build . --target install --config Release -j 12
             displayName: BuildLibOmexMeta
           - script: |
@@ -356,7 +418,10 @@ stages:
             displayName: RunLibOmexMetaTests
 
           - powershell: |
+              # so we can use ninja
+              $ENV:PATH="$ENV:PATH;$(NinjaDirectory)"
 
+              # Helpful for debugging azure
               echo "cd D:\a\1\s\build\"
               cd D:\a\1\s\build\
               ls
@@ -402,7 +467,7 @@ stages:
                 mkdir $(BUILD_DIRECTORY)
               }
               cd $(BUILD_DIRECTORY)
-              cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX=$(INSTALL_DIRECTORY) -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(PythonRoot)  -DBUILD_DOCS=ON -DBUILD_DOCS_EXAMPLES=ON ..
+              cmake -G "Ninja" -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX=$(INSTALL_DIRECTORY) -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(PythonRoot)  -DBUILD_DOCS=ON -DBUILD_DOCS_EXAMPLES=ON ..
               cmake --build . --target install --config Release -j 12
 
               echo "cd D:\a\1\s\build\"
@@ -420,7 +485,6 @@ stages:
               cd $(BUILD_DIRECTORY)
               ctest -C Release --verbose --extra-verbose --output-on-failure
               cmake --build . --config Release --target RunDocExamplesAndGenerateOutput
-
               cmake --build . --config Release --target install-j 12
 
             displayName: Build With Python
@@ -444,10 +508,8 @@ stages:
               $(PythonExecutable) setup.py bdist_wheel
               $wheel = Get-ChildItem -LiteralPath dist -Recurse -File |% FullName
               echo "Wheel is: $wheel"
-              # echo "running $(PipExecutable) install wheel ipython python-libcombine"
-              # $(PipExecutable) install $wheel ipython python-libcombine
-              # echo "Running $(PythonExecutable) -c import pyomexmeta;pyomexmeta.run_tests()"
-              # $(PythonExecutable) -c "import pyomexmeta;pyomexmeta.run_tests()"
+              echo "Running $(PythonExecutable) -c import pyomexmeta;pyomexmeta.run_tests()"
+              $(PythonExecutable) -c "import pyomexmeta;pyomexmeta.run_tests()"
             displayName: Build and install pip wheel then run tests from within Python
           - task: CopyFiles@2
             inputs:
@@ -515,11 +577,11 @@ stages:
 
               $(PipExecutable) install python-libcombine pytest wheel ipython breathe sphinx-tabs requests tellurium python-libcombine graphviz
 
-              yum install -y graphviz
+              yum install -y graphviz doxygen
               cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX=$(INSTALL_DIRECTORY) -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(PythonRoot) -DBUILD_DOCS=ON -DBUILD_DOCS_EXAMPLES=ON ..
-              cmake --build . --target install --config Release -j 12
               ctest --verbose --extra-verbose --output-on-failure
               cmake --build . --target RunDocExamplesAndGenerateOutput
+              cmake --build . --target install --config Release -j 12
 
             displayName: Build With Python
 
