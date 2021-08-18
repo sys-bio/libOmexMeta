@@ -394,6 +394,12 @@ stages:
               # unzip ninja
               unzip ninja.zip
 
+              echo "pwd"
+              pwd
+
+              echo ls
+              ls
+
               # Ensure ninja exists
               $ErrorActionPreference = 'Stop'
               # check for file explicitly (in case a directory with that name exists)
@@ -455,6 +461,8 @@ stages:
           - script: |
               echo "$env:Path += ;$(NinjaDirectory)"
               $env:Path += ';$(NinjaDirectory)'
+              echo '$env:Path'
+
               echo "BUILD_DIRECTORY: $(BUILD_DIRECTORY)"
               mkdir "$(BUILD_DIRECTORY)"
               cd "$(BUILD_DIRECTORY)"
@@ -575,6 +583,7 @@ stages:
               artifactName: libOmexMeta-x64Windows-$(PythonName)
               Parallel: true
               ParallelCount: 8
+
   # manylinux
   - stage: Manylinux2014
     displayName: libomexmeta-manylinux2014-base
@@ -621,6 +630,14 @@ stages:
               eval "$(conda shell.bash hook)"
               $(CondaExecutable) activate $(PythonName)
 
+              echo "cd $(SOURCE_DIRECTORY)"
+              cd $(SOURCE_DIRECTORY)
+
+              echo "$(PipExecutable) install -r requirements.txt"
+              $(PipExecutable) install -r requirements.txt
+              echo "$(PipExecutable) install -r test-requirements.txt"
+              $(PipExecutable) install -r test-requirements.txt
+
               echo "doxygen --help"
               doxygen --help
 
@@ -629,6 +646,7 @@ stages:
 
               echo "cd $(BUILD_DIRECTORY)"
               cd $(BUILD_DIRECTORY)
+
 
               $(PipExecutable) install python-libcombine pytest wheel ipython breathe sphinx-tabs requests tellurium python-libcombine graphviz
 
