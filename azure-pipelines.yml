@@ -431,8 +431,8 @@ stages:
             displayName: Install Doxygen
 
           - script: |
-              echo "$ENV:PATH=\"$ENV:PATH;$(NinjaDirectory)\""
-              $ENV:PATH="$ENV:PATH;$(NinjaDirectory)"
+              echo "$env:Path += ;$(NinjaDirectory)"
+              $env:Path += ";$(NinjaDirectory)"
               echo "BUILD_DIRECTORY: $(BUILD_DIRECTORY)"
               mkdir "$(BUILD_DIRECTORY)"
               cd "$(BUILD_DIRECTORY)"
@@ -440,7 +440,7 @@ stages:
               cmake --build . --target install --config Release -j 12
             displayName: BuildLibOmexMeta
           - script: |
-              $ENV:PATH="$ENV:PATH;$(NinjaDirectory)"
+              $env:Path += ";$(NinjaDirectory)"
               # https://stackoverflow.com/a/63102942/3059024
               $ENV:PATH="$ENV:PATH;$(PyWin32Path)"
               cd "$(BUILD_DIRECTORY)"
@@ -449,7 +449,7 @@ stages:
 
           - powershell: |
               # so we can use ninja
-              $ENV:PATH="$ENV:PATH;$(NinjaDirectory)"
+              $env:Path += ";$(NinjaDirectory)"
 
               # Helpful for debugging azure
               echo "cd D:\a\1\s\build\"
@@ -573,7 +573,7 @@ stages:
               PythonName: py39
         pool:
           vmImage: 'ubuntu-18.04'
-        container: ciaranwelsh/manylinux2014:latest
+        container: ciaranwelsh/libomexmeta-manylinux2014:latest
         variables:
           VCPKG_INSTALL_PREFIX: '/vcpkg'
           CCACHE_DIR: '$(Pipeline.Workspace)/ccache'
