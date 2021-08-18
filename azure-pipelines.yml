@@ -396,7 +396,7 @@ stages:
               # Ensure ninja exists
               $ErrorActionPreference = 'Stop'
               # check for file explicitly (in case a directory with that name exists)
-              if(![System.IO.File]::Exists($(NinjaExecutable))) {
+              if(![System.IO.File]::Exists("$(NinjaExecutable)")) {
                   # throwing an exception will abort the job
                   throw (New-Object System.IO.FileNotFoundException("File not found: $(NinjaExecutable)", "$(NinjaExecutable)"))
               }
@@ -595,8 +595,8 @@ stages:
               eval "$(conda shell.bash hook)"
               $(CondaExecutable) activate $(PythonName)
 
-              echo "yum install -y graphviz doxygen"
-              yum install -y graphviz doxygen
+              echo "sudo yum install -y graphviz doxygen"
+              sudo yum install -y graphviz doxygen
 
               echo "mkdir $(BUILD_DIRECTORY)"
               mkdir $(BUILD_DIRECTORY)
