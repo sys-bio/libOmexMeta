@@ -386,7 +386,7 @@ stages:
               {
                 New-Item -ItemType Directory -Force -Path $(NinjaDirectory)
               }
-              ehco "Cding to NinjaDirectory $(NinjaDirectory)"
+              echo "Cding to NinjaDirectory $(NinjaDirectory)"
               cd $(NinjaDirectory)
               # download ninja
               Invoke-WebRequest https://github.com/ninja-build/ninja/releases/download/v1.10.2/ninja-win.zip -OutFile 'ninja.zip'
@@ -413,7 +413,7 @@ stages:
               {
                 New-Item -ItemType Directory -Force -Path $(DoxygenDirectory)
               }
-              ehco "Cding to DoxygenDirectory $(DoxygenDirectory)"
+              echo "Cding to DoxygenDirectory $(DoxygenDirectory)"
               cd $(DoxygenDirectory)
               # download doxygen
               Invoke-WebRequest https://github.com/doxygen-build/doxygen/releases/download/v1.10.2/doxygen-win.zip -OutFile 'doxygen.zip'
