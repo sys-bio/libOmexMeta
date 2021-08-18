@@ -8,7 +8,7 @@ pr:
 - develop
 
 stages:
-      # linux
+      # ubuntu
   - stage: BuildUbuntu
     dependsOn: []
     displayName: Build Ubuntu
@@ -122,7 +122,7 @@ stages:
               cd $(BUILD_DIRECTORY)
 
               echo "[running] cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX=\"$(INSTALL_DIRECTORY)\" -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(PythonRoot) -DBUILD_DOCS=ON -DBUILD_DOCS_EXECUTABLE=ON .."
-              cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)" -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(PythonRoot) -DBUILD_DOCS=ON -DBUILD_DOCS_EXECUTABLE=ON ..
+              cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)" -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(PythonRoot) -DBUILD_DOCS=ON -DBUILD_DOCS_EXECUTABLE=ON -DSPHINX_EXECUTABLE=$(which sphinx-build) ..
 
               echo "[running] cmake --build $(BUILD_DIRECTORY) --target run-ctest --config Release"
               cmake --build $(BUILD_DIRECTORY) --target run-ctest --config Release
@@ -160,7 +160,7 @@ stages:
               Parallel: true
               ParallelCount: 8
 
-      # macos
+  # macos
   - stage: MacOS
     dependsOn: []
     displayName: MacOs
@@ -290,6 +290,7 @@ stages:
 
       # windows
 
+  # windows
   - stage: Windows
     dependsOn: []
     displayName: Windows
@@ -416,7 +417,7 @@ stages:
               echo "Cding to DoxygenDirectory $(DoxygenDirectory)"
               cd $(DoxygenDirectory)
               # download doxygen
-              Invoke-WebRequest https://github.com/doxygen-build/doxygen/releases/download/v1.10.2/doxygen-win.zip -OutFile 'doxygen.zip'
+              Invoke-WebRequest "$(DoxygenDownloadUrl)" -OutFile 'doxygen.zip'
               # unzip doxygen
               unzip doxygen.zip
 
