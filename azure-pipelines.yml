@@ -616,13 +616,13 @@ stages:
           - checkout: self
             submodules: recursive
 
-          - script: |
-              doxygen --help
-            displayName: Check Doxygen is Installed
 
           - script: |
               eval "$(conda shell.bash hook)"
               $(CondaExecutable) activate $(PythonName)
+
+              echo "doxygen --help"
+              doxygen --help
 
               echo "mkdir $(BUILD_DIRECTORY)"
               mkdir $(BUILD_DIRECTORY)
