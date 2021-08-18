@@ -430,6 +430,27 @@ stages:
               }
             displayName: Install Doxygen
 
+          - script |:
+
+              echo "cd to $(NinjaDirectory) and ls"
+              cd $(NinjaDirectory)
+              ls
+              echo "$env:Path += ;$(NinjaDirectory)"
+              $env:Path += ";$(NinjaDirectory)"
+
+              echo "cd to $(DoxygenDirectory) and ls"
+              ls
+              echo "$env:Path += ;$(DoxygenDirectory)"
+              $env:Path += ";$(DoxygenDirectory)"
+
+              echo "[running] ninja --help"
+              ninja --help
+
+              echo "[running] doxygen --help"
+              doxygen --help
+
+            displayName: Check Doxygen and Ninja are usable
+
           - script: |
               echo "$env:Path += ;$(NinjaDirectory)"
               $env:Path += ";$(NinjaDirectory)"
@@ -596,11 +617,12 @@ stages:
             submodules: recursive
 
           - script: |
+              doxygen --help
+            displayName: Check Doxygen is Installed
+
+          - script: |
               eval "$(conda shell.bash hook)"
               $(CondaExecutable) activate $(PythonName)
-
-              echo "sudo yum install -y graphviz doxygen"
-              sudo yum install -y graphviz doxygen
 
               echo "mkdir $(BUILD_DIRECTORY)"
               mkdir $(BUILD_DIRECTORY)
