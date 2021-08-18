@@ -258,10 +258,9 @@ stages:
               # $(PipExecutable) install ipython
               # $(PipExecutable) install breathe sphinx-tabs recommonmark beautifulsoup4 requests sphinxcontrib-programoutput tellurium python-libcombine pytest graphviz
               cd $(BUILD_DIRECTORY)
-              cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)" -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(PythonRoot) -DBUILD_DOCS=ON -DBUILD_DOCS_EXAMPLES=ON  ..
-              cmake --build . --target run-ctest --config Release
-              cmake --build . --target RunDocExamplesAndGenerateOutput --config Release -j 12
+              cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)" -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(PythonRoot) -DBUILD_DOCS=ON -DBUILD_DOCS_EXAMPLES=ON  -DSPHINX_EXECUTABLE=$(which sphinx-build) ..
               cmake --build . --target install --config Release -j 12
+              cmake --build . --target run-ctest --config Release
 
             displayName: Run Tests With Python
           - script: |
@@ -493,9 +492,8 @@ stages:
               ls
 
               cd $(BUILD_DIRECTORY)
-              ctest -C Release --verbose --extra-verbose --output-on-failure
-              cmake --build . --config Release --target RunDocExamplesAndGenerateOutput
               cmake --build . --config Release --target install-j 12
+              ctest -C Release --verbose --extra-verbose --output-on-failure
 
             displayName: Build With Python
             # publish python packages in azure:
