@@ -447,6 +447,8 @@ stages:
               echo "installing pywin32 on base python"
               $(MinicondaRoot)/Scripts/pip.exe install pywin32
 
+              $ENV:PATH="$ENV:PATH;$(PyWin32Path)"
+
 
               echo "$(CondaExecutable) create -y --name $(PythonName) python=$(PythonVersion)"
               $(CondaExecutable) create -y --name $(PythonName) python=$(PythonVersion)
@@ -458,11 +460,13 @@ stages:
               $Env:LD_LIBRARY_PATH = "$(PythonLibDir)"
 
               # echo "$(PipExecutable) install -y ipython breathe sphinx-tabs requests tellurium python-libcombine pytest graphviz pypiwin32 pywin32 wheel"
-              # $(PipExecutable) install ipython breathe sphinx-tabs requests tellurium python-libcombine pytest graphviz pypiwin32 pywin32 wheel
+              # $(PipExecutable) install ipython breathe sphinx-tabs requests tellurium python-libcombine pytest graphviz pywin32 wheel
               echo "cding to source directory:"
               cd $(SOURCE_DIRECTORY)
               $(PipExecutable) install -r requirements.txt
               $(PipExecutable) install -r test-requirements.txt
+              $(PipExecutable) install pywin32
+
 
               echo "$(CondaExecutable) env list"
               $(CondaExecutable) env list
@@ -477,7 +481,15 @@ stages:
               }
               cd $(BUILD_DIRECTORY)
               cmake  -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX=$(INSTALL_DIRECTORY) -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(PythonRoot)  -DBUILD_DOCS=ON -DBUILD_DOCS_EXAMPLES=ON ..
-              cmake --build . --target install --config Release -j 12
+              cmake --build . --target install --config Release
+
+              echo "cd to install dir: $(INSTALL_DIRECTORY) and ls"
+              cd $(INSTALL_DIRECTORY)
+              ls
+
+              if (!(test-path setup.py)){
+
+              }
 
               echo "cd D:\a\1\s\build\"
               cd D:\a\1\s\build\
@@ -492,7 +504,6 @@ stages:
               ls
 
               cd $(BUILD_DIRECTORY)
-              cmake --build . --config Release --target install -j 12
               ctest -C Release --verbose --extra-verbose --output-on-failure
 
             displayName: Build With Python
@@ -502,6 +513,7 @@ stages:
           - powershell: |
               $ENV:PATH="$ENV:PATH;$(PythonScriptsDir)"
               $Env:LD_LIBRARY_PATH = "$(PythonLibDir)"
+              $ENV:PATH="$ENV:PATH;$(PyWin32Path)"
               echo "Where.exe conda: "
               where.exe conda
               echo "Where.exe pip: "

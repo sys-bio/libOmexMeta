@@ -6,3 +6,5 @@ ipython
 python-libcombine
 sphinx
 tellurium
+requests
+wheel
