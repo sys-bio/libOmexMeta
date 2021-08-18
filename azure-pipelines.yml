@@ -492,7 +492,7 @@ stages:
               ls
 
               cd $(BUILD_DIRECTORY)
-              cmake --build . --config Release --target install-j 12
+              cmake --build . --config Release --target install -j 12
               ctest -C Release --verbose --extra-verbose --output-on-failure
 
             displayName: Build With Python
