@@ -461,12 +461,12 @@ stages:
           - script: |
               echo "$env:Path += ;$(NinjaDirectory)"
               $env:Path += ';$(NinjaDirectory)'
-              echo '$env:Path'
+              echo $env:Path
 
               echo "BUILD_DIRECTORY: $(BUILD_DIRECTORY)"
               mkdir "$(BUILD_DIRECTORY)"
               cd "$(BUILD_DIRECTORY)"
-              cmake -G "Ninja" -DVCPKG_ROOT="$(VCPKG_INSTALL_PREFIX)" -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)" -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release ..
+              cmake  -DVCPKG_ROOT="$(VCPKG_INSTALL_PREFIX)" -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)" -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DCMAKE_MAKE_PROGRAM=$(NinjaExecutable) ..
               cmake --build . --target install --config Release -j 12
             displayName: BuildLibOmexMeta
           - script: |
@@ -647,10 +647,9 @@ stages:
               echo "cd $(BUILD_DIRECTORY)"
               cd $(BUILD_DIRECTORY)
 
+              #$(PipExecutable) install python-libcombine pytest wheel ipython breathe sphinx-tabs requests tellurium python-libcombine graphviz
 
-              $(PipExecutable) install python-libcombine pytest wheel ipython breathe sphinx-tabs requests tellurium python-libcombine graphviz
-
-              cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX=$(INSTALL_DIRECTORY) -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(PythonRoot) -DBUILD_DOCS=ON -DBUILD_DOCS_EXAMPLES=ON ..
+              cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX=$(INSTALL_DIRECTORY) -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(PythonRoot) -DBUILD_DOCS=ON -DBUILD_DOCS_EXAMPLES=ON -DSPHINX_EXECUTABLE=$(which sphinx-build) ..
               ctest --verbose --extra-verbose --output-on-failure
               cmake --build . --target RunDocExamplesAndGenerateOutput
               cmake --build . --target install --config Release -j 12
