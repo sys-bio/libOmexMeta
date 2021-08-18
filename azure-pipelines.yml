@@ -431,6 +431,8 @@ stages:
             displayName: Install Doxygen
 
           - script: |
+              echo "$ENV:PATH=\"$ENV:PATH;$(NinjaDirectory)\""
+              $ENV:PATH="$ENV:PATH;$(NinjaDirectory)"
               echo "BUILD_DIRECTORY: $(BUILD_DIRECTORY)"
               mkdir "$(BUILD_DIRECTORY)"
               cd "$(BUILD_DIRECTORY)"
@@ -438,6 +440,7 @@ stages:
               cmake --build . --target install --config Release -j 12
             displayName: BuildLibOmexMeta
           - script: |
+              $ENV:PATH="$ENV:PATH;$(NinjaDirectory)"
               # https://stackoverflow.com/a/63102942/3059024
               $ENV:PATH="$ENV:PATH;$(PyWin32Path)"
               cd "$(BUILD_DIRECTORY)"
