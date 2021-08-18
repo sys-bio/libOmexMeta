@@ -332,9 +332,6 @@ stages:
           PythonIncludeDir: '$(PythonRoot)\include'
           PipExecutable: '$(PythonScriptsDir)\pip.exe'
           PyWin32Path: '$(PythonLibDir)\site-packages\pywin32_system32' # needs to be added to path for win32api
-          NinjaDownloadUrl: 'https://github.com/ninja-build/ninja/releases/download/v1.10.2/ninja-win.zip'
-          NinjaDirectory: '$(System.DefaultWorkingDirectory)\Ninja'
-          NinjaExecutable: '$(NinjaDirectory)\ninja.exe'
           DoxygenDownloadUrl: 'https://doxygen.nl/files/doxygen-1.9.1.windows.x64.bin.zip'
           DoxygenDirectory: '$(System.DefaultWorkingDirectory)\Doxygen'
           DoxygenExecutable: '$(DoxygenDirectory)\doxygen.exe'
@@ -378,39 +375,6 @@ stages:
 
           - task: Cache@2
             inputs:
-              key: 'ninja_cache |"$(Agent.Os)"'
-              path: '"$(NinjaDirectory)"'
-          - powershell: |
-              # create place for Ninja, if not exists already
-              echo "creating a new directory for Ninja, if not already exists. Ninja directory is $(NinjaDirectory)"
-              If (!(test-path $(NinjaDirectory)))
-              {
-                New-Item -ItemType Directory -Force -Path $(NinjaDirectory)
-              }
-              echo "Cding to NinjaDirectory $(NinjaDirectory)"
-              cd $(NinjaDirectory)
-              # download ninja
-              Invoke-WebRequest https://github.com/ninja-build/ninja/releases/download/v1.10.2/ninja-win.zip -OutFile 'ninja.zip'
-              # unzip ninja
-              unzip ninja.zip
-
-              echo "pwd"
-              pwd
-
-              echo ls
-              ls
-
-              # Ensure ninja exists
-              $ErrorActionPreference = 'Stop'
-              # check for file explicitly (in case a directory with that name exists)
-              if(![System.IO.File]::Exists("$(NinjaExecutable)")) {
-                  # throwing an exception will abort the job
-                  throw (New-Object System.IO.FileNotFoundException("File not found: $(NinjaExecutable)", "$(NinjaExecutable)"))
-              }
-            displayName: Install Ninja
-
-          - task: Cache@2
-            inputs:
               key: 'doxygen_cache |"$(Agent.Os)"'
               path: '"$(DoxygenDirectory)"'
           - powershell: |
@@ -438,39 +402,27 @@ stages:
 
           - script: |
 
-              echo "cd to $(NinjaDirectory) and ls"
-              cd $(NinjaDirectory)
-              ls
-              echo "$env:Path += ;$(NinjaDirectory)"
-              $env:Path += ';$(NinjaDirectory)'
-
               echo "cd to $(DoxygenDirectory) and ls"
               cd $(DoxygenDirectory)
               ls
               echo "$env:Path += ;$(DoxygenDirectory)"
               $env:Path += ';$(DoxygenDirectory)'
 
-              echo "[running] ninja --help"
-              ninja --help
-
               echo "[running] doxygen --help"
               doxygen --help
 
-            displayName: Check Doxygen and Ninja are usable
+            displayName: Check Doxygen
 
           - script: |
-              echo "$env:Path += ;$(NinjaDirectory)"
-              $env:Path += ';$(NinjaDirectory)'
               echo $env:Path
 
               echo "BUILD_DIRECTORY: $(BUILD_DIRECTORY)"
               mkdir "$(BUILD_DIRECTORY)"
               cd "$(BUILD_DIRECTORY)"
-              cmake  -DVCPKG_ROOT="$(VCPKG_INSTALL_PREFIX)" -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)" -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DCMAKE_MAKE_PROGRAM=$(NinjaExecutable) ..
+              cmake  -DVCPKG_ROOT="$(VCPKG_INSTALL_PREFIX)" -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)" -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release  ..
               cmake --build . --target install --config Release -j 12
             displayName: BuildLibOmexMeta
           - script: |
-              $env:Path += ';$(NinjaDirectory)'
               # https://stackoverflow.com/a/63102942/3059024
               $ENV:PATH="$ENV:PATH;$(PyWin32Path)"
               cd "$(BUILD_DIRECTORY)"
@@ -478,8 +430,6 @@ stages:
             displayName: RunLibOmexMetaTests
 
           - powershell: |
-              # so we can use ninja
-              $env:Path += ';$(NinjaDirectory)'
 
               # Helpful for debugging azure
               echo "cd D:\a\1\s\build\"
@@ -527,7 +477,7 @@ stages:
                 mkdir $(BUILD_DIRECTORY)
               }
               cd $(BUILD_DIRECTORY)
-              cmake -G "Ninja" -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX=$(INSTALL_DIRECTORY) -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(PythonRoot)  -DBUILD_DOCS=ON -DBUILD_DOCS_EXAMPLES=ON ..
+              cmake  -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX=$(INSTALL_DIRECTORY) -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(PythonRoot)  -DBUILD_DOCS=ON -DBUILD_DOCS_EXAMPLES=ON ..
               cmake --build . --target install --config Release -j 12
 
               echo "cd D:\a\1\s\build\"
