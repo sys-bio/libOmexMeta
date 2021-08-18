@@ -436,12 +436,12 @@ stages:
               cd $(NinjaDirectory)
               ls
               echo "$env:Path += ;$(NinjaDirectory)"
-              $env:Path += ";$(NinjaDirectory)"
+              $env:Path += ';$(NinjaDirectory)'
 
               echo "cd to $(DoxygenDirectory) and ls"
               ls
               echo "$env:Path += ;$(DoxygenDirectory)"
-              $env:Path += ";$(DoxygenDirectory)"
+              $env:Path += ';$(DoxygenDirectory)'
 
               echo "[running] ninja --help"
               ninja --help
@@ -453,7 +453,7 @@ stages:
 
           - script: |
               echo "$env:Path += ;$(NinjaDirectory)"
-              $env:Path += ";$(NinjaDirectory)"
+              $env:Path += ';$(NinjaDirectory)'
               echo "BUILD_DIRECTORY: $(BUILD_DIRECTORY)"
               mkdir "$(BUILD_DIRECTORY)"
               cd "$(BUILD_DIRECTORY)"
@@ -461,7 +461,7 @@ stages:
               cmake --build . --target install --config Release -j 12
             displayName: BuildLibOmexMeta
           - script: |
-              $env:Path += ";$(NinjaDirectory)"
+              $env:Path += ';$(NinjaDirectory)'
               # https://stackoverflow.com/a/63102942/3059024
               $ENV:PATH="$ENV:PATH;$(PyWin32Path)"
               cd "$(BUILD_DIRECTORY)"
@@ -470,7 +470,7 @@ stages:
 
           - powershell: |
               # so we can use ninja
-              $env:Path += ";$(NinjaDirectory)"
+              $env:Path += ';$(NinjaDirectory)'
 
               # Helpful for debugging azure
               echo "cd D:\a\1\s\build\"
