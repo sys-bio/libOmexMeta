@@ -423,7 +423,7 @@ stages:
               # Ensure doxygen exists
               $ErrorActionPreference = 'Stop'
               # check for file explicitly (in case a directory with that name exists)
-              if(![System.IO.File]::Exists($(DoxygenExecutable))) {
+              if(![System.IO.File]::Exists("$(DoxygenExecutable)")) {
                   # throwing an exception will abort the job
                   throw (New-Object System.IO.FileNotFoundException("File not found: $(DoxygenExecutable)", "$(DoxygenExecutable)"))
               }

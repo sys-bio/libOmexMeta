@@ -7,7 +7,7 @@ RUN cd vcpkg \
 RUN cd vcpkg ./vcpkg integrate install
 RUN cd vcpkg && ./vcpkg install curl pcre openssl yajl sqlite3 liblzma
 
-RUN yum install -y wget
+RUN yum install -y wget doxygen
 RUN wget https://repo.anaconda.com/miniconda/Miniconda3-py39_4.9.2-Linux-x86_64.sh
 RUN bash Miniconda3-py39_4.9.2-Linux-x86_64.sh -b -p /Miniconda3
 
