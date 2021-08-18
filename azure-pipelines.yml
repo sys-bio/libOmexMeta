@@ -576,7 +576,7 @@ stages:
               Parallel: true
               ParallelCount: 8
   # manylinux
-  - stage: libomexmeta-manylinux2014-base
+  - stage: Manylinux2014
     displayName: libomexmeta-manylinux2014-base
     dependsOn: []
     jobs:
