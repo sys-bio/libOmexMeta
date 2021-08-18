@@ -101,13 +101,36 @@ stages:
             displayName: RunLibOmexMetaTests
           - script: |
               eval "$(conda shell.bash hook)"
+              echo "[running] $(CondaExecutable) create -y --name $(PythonName) python=$(PythonVersion)"
               $(CondaExecutable) create -y --name $(PythonName) python=$(PythonVersion)
+
+              echo "[running] $(CondaExecutable) activate $(PythonName)"
               $(CondaExecutable) activate $(PythonName)
-              $(PipExecutable) install auditwheel breathe sphinx-tabs recommonmark beautifulsoup4 requests sphinxcontrib-programoutput tellurium python-libcombine pytest graphviz
+
+              # echo "[running] $(PipExecutable) install auditwheel breathe sphinx-tabs recommonmark beautifulsoup4 requests sphinxcontrib-programoutput tellurium python-libcombine pytest graphviz"
+              # $(PipExecutable) install auditwheel breathe sphinx-tabs recommonmark beautifulsoup4 requests sphinxcontrib-programoutput tellurium python-libcombine pytest graphviz
+              echo "[running] cd $(SOURCE_DIRECTORY)"
+              cd $(SOURCE_DIRECTORY)
+
+              echo "[running] $(PipExecutable) install -r requirements.txt"
+              $(PipExecutable) install -r requirements.txt
+
+              echo "[running] $(PipExecutable) install -r test-requirements.txt"
+              $(PipExecutable) install -r test-requirements.txt
+
+              echo "[running] cd $(BUILD_DIRECTORY)"
               cd $(BUILD_DIRECTORY)
+
+              echo "[running] cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX=\"$(INSTALL_DIRECTORY)\" -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(PythonRoot) -DBUILD_DOCS=ON -DBUILD_DOCS_EXECUTABLE=ON .."
               cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)" -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(PythonRoot) -DBUILD_DOCS=ON -DBUILD_DOCS_EXECUTABLE=ON ..
+
+              echo "[running] cmake --build $(BUILD_DIRECTORY) --target run-ctest --config Release"
               cmake --build $(BUILD_DIRECTORY) --target run-ctest --config Release
+
+              echo "[running] cmake --build . --target RunDocExamplesAndGenerateOutput --config Release -j 12"
               cmake --build . --target RunDocExamplesAndGenerateOutput --config Release -j 12
+
+              echo "[running] cmake --build . --target install --config Release -j 12"
               cmake --build . --target install --config Release -j 12
             displayName: Run Tests With Python
           - script: |
@@ -230,8 +253,10 @@ stages:
               eval "$(conda shell.bash hook)"
               $(CondaExecutable) create -y --name $(PythonName) python=$(PythonVersion)
               $(CondaExecutable) activate $(PythonName)
-              $(PipExecutable) install ipython
-              $(PipExecutable) install breathe sphinx-tabs recommonmark beautifulsoup4 requests sphinxcontrib-programoutput tellurium python-libcombine pytest graphviz
+              $(PipExecutable) install -r requirements.txt
+              $(PipExecutable) install -r test-requirements.txt
+              # $(PipExecutable) install ipython
+              # $(PipExecutable) install breathe sphinx-tabs recommonmark beautifulsoup4 requests sphinxcontrib-programoutput tellurium python-libcombine pytest graphviz
               cd $(BUILD_DIRECTORY)
               cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)" -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(PythonRoot) -DBUILD_DOCS=ON -DBUILD_DOCS_EXAMPLES=ON  ..
               cmake --build . --target run-ctest --config Release
@@ -264,6 +289,7 @@ stages:
               ParallelCount: 8
 
       # windows
+
   - stage: Windows
     dependsOn: []
     displayName: Windows
@@ -356,7 +382,7 @@ stages:
           - powershell: |
               # create place for Ninja, if not exists already
               echo "creating a new directory for Ninja, if not already exists. Ninja directory is $(NinjaDirectory)"
-              If (!(test-path $(NinjaDirectory))
+              If (!(test-path $(NinjaDirectory)))
               {
                 New-Item -ItemType Directory -Force -Path $(NinjaDirectory)
               }
@@ -383,7 +409,7 @@ stages:
           - powershell: |
               # create place for Doxygen, if not exists already
               echo "creating a new directory for doxygen, if not already exists. Doxygen directory is $(DoxygenDirectory)"
-              If (!(test-path $(DoxygenDirectory))
+              If (!(test-path $(DoxygenDirectory)))
               {
                 New-Item -ItemType Directory -Force -Path $(DoxygenDirectory)
               }
@@ -569,6 +595,9 @@ stages:
               eval "$(conda shell.bash hook)"
               $(CondaExecutable) activate $(PythonName)
 
+              echo "yum install -y graphviz doxygen"
+              yum install -y graphviz doxygen
+
               echo "mkdir $(BUILD_DIRECTORY)"
               mkdir $(BUILD_DIRECTORY)
 
@@ -577,7 +606,6 @@ stages:
 
               $(PipExecutable) install python-libcombine pytest wheel ipython breathe sphinx-tabs requests tellurium python-libcombine graphviz
 
-              yum install -y graphviz doxygen
               cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX=$(INSTALL_DIRECTORY) -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(PythonRoot) -DBUILD_DOCS=ON -DBUILD_DOCS_EXAMPLES=ON ..
               ctest --verbose --extra-verbose --output-on-failure
               cmake --build . --target RunDocExamplesAndGenerateOutput
