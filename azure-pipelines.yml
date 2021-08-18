@@ -439,6 +439,7 @@ stages:
               $env:Path += ';$(NinjaDirectory)'
 
               echo "cd to $(DoxygenDirectory) and ls"
+              cd $(DoxygenDirectory)
               ls
               echo "$env:Path += ;$(DoxygenDirectory)"
               $env:Path += ';$(DoxygenDirectory)'
@@ -574,10 +575,9 @@ stages:
               artifactName: libOmexMeta-x64Windows-$(PythonName)
               Parallel: true
               ParallelCount: 8
-
-
-  - stage: ManyLinux2014
-    displayName: ManyLinux2014
+  # manylinux
+  - stage: libomexmeta-manylinux2014-base
+    displayName: libomexmeta-manylinux2014-base
     dependsOn: []
     jobs:
       - job:
@@ -594,7 +594,7 @@ stages:
               PythonName: py39
         pool:
           vmImage: 'ubuntu-18.04'
-        container: ciaranwelsh/libomexmeta-manylinux2014:latest
+        container: ciaranwelsh/libomexmeta-manylinux2014-base:latest
         variables:
           VCPKG_INSTALL_PREFIX: '/vcpkg'
           CCACHE_DIR: '$(Pipeline.Workspace)/ccache'
@@ -660,6 +660,6 @@ stages:
           - task: PublishBuildArtifacts@1
             inputs:
               pathToPublish: '$(Build.ArtifactStagingDirectory)/libomexmeta-$(PythonName)'
-              artifactName: libOmexMeta-ManyLinux2014-$(PythonName)
+              artifactName: libOmexMeta-libomexmeta-manylinux2014-base-$(PythonName)
               Parallel: true
               ParallelCount: 8
