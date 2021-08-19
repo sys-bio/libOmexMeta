@@ -487,10 +487,6 @@ stages:
               cd $(INSTALL_DIRECTORY)
               ls
 
-              if (!(test-path setup.py)){
-
-              }
-
               echo "cd D:\a\1\s\build\"
               cd D:\a\1\s\build\
               ls

@@ -194,6 +194,12 @@ endif()
 generate_export_header(${target}CAPI BASE_NAME OMEXMETA_CAPI)
 target_compile_definitions(${target}CAPI PUBLIC OmexMeta_CAPI_EXPORTS)
 
+# make sure we copy the OmexMetaCAPI binary to the build tree for pyomexmeta
+add_custom_command(
+        TARGET OmexMetaCAPI POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different $<TARGET_FILE:OmexMetaCAPI> "${BUILD_TREE_SITE_PACKAGES}/pyomexmeta"
+)
+
 install(TARGETS ${target}CAPI
         EXPORT ${target}CAPI
         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
