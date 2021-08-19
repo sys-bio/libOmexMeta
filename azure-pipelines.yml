@@ -480,7 +480,7 @@ stages:
                 mkdir $(BUILD_DIRECTORY)
               }
               cd $(BUILD_DIRECTORY)
-              cmake  -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX=$(INSTALL_DIRECTORY) -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(PythonRoot)  -DBUILD_DOCS=ON -DBUILD_DOCS_EXAMPLES=ON ..
+              cmake  -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX=$(INSTALL_DIRECTORY) -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(PythonRoot)  -DBUILD_DOCS=ON -DBUILD_DOCS_EXAMPLES=ON -DDOXYGEN_EXECUTABLE=$(DoxygenExecutable) ..
               cmake --build . --target install --config Release
 
               echo "cd to install dir: $(INSTALL_DIRECTORY) and ls"
