@@ -106,6 +106,9 @@ stages:
               echo "[running] $(PipExecutable) install -r test-requirements.txt"
               $(PipExecutable) install -r test-requirements.txt
 
+              echo "[running] mkdir -p $(BUILD_DIRECTORY)"
+              mkdir -p $(BUILD_DIRECTORY)
+
               echo "[running] cd $(BUILD_DIRECTORY)"
               cd $(BUILD_DIRECTORY)
 
@@ -237,6 +240,9 @@ stages:
               $(PipExecutable) install -r test-requirements.txt
               # $(PipExecutable) install ipython
               # $(PipExecutable) install breathe sphinx-tabs recommonmark beautifulsoup4 requests sphinxcontrib-programoutput tellurium python-libcombine pytest graphviz
+              echo "[running] mkdir -p $(BUILD_DIRECTORY)"
+              mkdir -p $(BUILD_DIRECTORY)
+              echo "[running] cd $(BUILD_DIRECTORY)"
               cd $(BUILD_DIRECTORY)
               cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX=$(INSTALL_DIRECTORY) -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(PythonRoot) -DBUILD_DOCS=ON -DBUILD_DOCS_EXAMPLES=ON  -DSPHINX_EXECUTABLE=$(which sphinx-build) ..
               cmake --build . --target install --config Release -j 12
@@ -394,21 +400,10 @@ stages:
 
             displayName: Check Doxygen
 
-          - script: |
-              echo $env:Path
-
-              echo "BUILD_DIRECTORY: $(BUILD_DIRECTORY)"
-              mkdir "$(BUILD_DIRECTORY)"
-              cd "$(BUILD_DIRECTORY)"
-              cmake  -DVCPKG_ROOT="$(VCPKG_INSTALL_PREFIX)" -DCMAKE_INSTALL_PREFIX=$(INSTALL_DIRECTORY) -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release  ..
-              cmake --build . --target install --config Release -j 12
-            displayName: BuildLibOmexMeta
-
           - powershell: |
 
-              # Helpful for debugging azure
-              echo "cd D:\a\1\s\build\"
-              cd D:\a\1\s\build\
+              echo "cd $(BUILD_DIRECTORY)"
+              cd $(BUILD_DIRECTORY)
               ls
 
               echo "Where.exe conda: "
@@ -424,7 +419,6 @@ stages:
               $(MinicondaRoot)/Scripts/pip.exe install pywin32
 
               $ENV:PATH="$ENV:PATH;$(PyWin32Path)"
-
 
               echo "$(CondaExecutable) create -y --name $(PythonName) python=$(PythonVersion)"
               $(CondaExecutable) create -y --name $(PythonName) python=$(PythonVersion)
@@ -469,7 +463,7 @@ stages:
               ls
 
               echo "cd $(BUILD_DIRECTORY)\site-packages\pyomexmeta"
-              cd $(BUILD_DIRECTORY)\pyomexmeta
+              cd $(BUILD_DIRECTORY)\site-packages\pyomexmeta
               ls
 
               cd $(BUILD_DIRECTORY)
