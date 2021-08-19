@@ -56,7 +56,6 @@ int main(){
 
     std::string singular_annotation_string = rdf.toString("turtle");
     std::cout << singular_annotation_string<< std::endl;
-    singular_annotation.freeTriple();
 
     return 0;
 }

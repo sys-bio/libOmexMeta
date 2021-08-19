@@ -55,7 +55,6 @@ int main(){
         .resourceLiteral("New predicate demonstration");
 
     editor.addSingleAnnotation(singular_annotation);
-    singular_annotation.freeTriple();
     std::cout << rdf.toString("turtle") << std::endl;
     return 0;
 }

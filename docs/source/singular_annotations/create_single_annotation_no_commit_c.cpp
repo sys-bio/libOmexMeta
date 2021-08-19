@@ -47,7 +47,7 @@ int main(){
     // create editor object
     Editor editor = rdf.toEditor(sbml, true);
 
-    // create out annotation
+    // create our annotation
     SingularAnnotation singular_annotation = editor.newSingularAnnotation();
     singular_annotation
         .about("species0000")
