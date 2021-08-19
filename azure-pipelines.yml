@@ -88,6 +88,9 @@ stages:
           - script: |
               # activate gcc-10 in current shell
               update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-10 100
+              export CC=/usr/bin/gcc-10
+              export CXX=/usr/bin/g++-10
+              export C=/usr/bin/gcc-10
 
               eval "$(conda shell.bash hook)"
               echo "[running] $(CondaExecutable) create -y --name $(PythonName) python=$(PythonVersion)"
@@ -431,8 +434,6 @@ stages:
               echo "$Env:LD_LIBRARY_PATH = $(PythonLibDir)"
               $Env:LD_LIBRARY_PATH = "$(PythonLibDir)"
 
-              # echo "$(PipExecutable) install -y ipython breathe sphinx-tabs requests tellurium python-libcombine pytest graphviz pypiwin32 pywin32 wheel"
-              # $(PipExecutable) install ipython breathe sphinx-tabs requests tellurium python-libcombine pytest graphviz pywin32 wheel
               echo "cding to source directory:"
               cd $(SOURCE_DIRECTORY)
               $(PipExecutable) install -r requirements.txt
@@ -447,14 +448,6 @@ stages:
 
               #echo "python -c import win32api"
               $(PythonExecutable) -c "import win32api"
-
-              If(!(test-path $(BUILD_DIRECTORY))) {
-                mkdir $(BUILD_DIRECTORY)
-              }
-
-              echo "cd to install dir: $(INSTALL_DIRECTORY) and ls"
-              cd $(INSTALL_DIRECTORY)
-              ls
 
               echo "cd $(BUILD_DIRECTORY)"
               cd $(BUILD_DIRECTORY)
@@ -471,6 +464,11 @@ stages:
               cd $(BUILD_DIRECTORY)
               cmake  -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX=$(INSTALL_DIRECTORY) -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(PythonRoot)  -DBUILD_DOCS=ON -DBUILD_DOCS_EXAMPLES=ON -DDOXYGEN_EXECUTABLE=$(DoxygenExecutable) ..
               cmake --build . --target install --config Release
+
+
+              echo "cd to install dir: $(INSTALL_DIRECTORY) and ls"
+              cd $(INSTALL_DIRECTORY)
+              ls
 
             displayName: Build With Python
 
