@@ -378,7 +378,7 @@ stages:
               # download doxygen
               Invoke-WebRequest "$(DoxygenDownloadUrl)" -OutFile 'doxygen.zip'
               # unzip doxygen
-              unzip doxygen.zip
+              unzip -o doxygen.zip
 
               # Ensure doxygen exists
               $ErrorActionPreference = 'Stop'
