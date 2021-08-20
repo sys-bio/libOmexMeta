@@ -37,7 +37,7 @@ namespace omexmeta {
 
         ~EnergyDiff() = default;
 
-        EnergyDiff(librdf_model *model, UriHandler& uriHandler, PhysicalProperty physicalProperty, Sources sources,
+        EnergyDiff(LibrdfModel& model, UriHandler& uriHandler, PhysicalProperty physicalProperty, Sources sources,
                       Sinks sinks);
 
         /**
@@ -64,7 +64,7 @@ namespace omexmeta {
          * object which is filled by
          *
          */
-        explicit EnergyDiff(librdf_model *model, UriHandler& uriHandler);
+        explicit EnergyDiff(LibrdfModel& model, UriHandler& uriHandler);
 
         /**
          * @brief create a metaid for the energy differential annotation

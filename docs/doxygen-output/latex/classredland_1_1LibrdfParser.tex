@@ -1,19 +1,13 @@
 \hypertarget{classredland_1_1LibrdfParser}{}\doxysection{redland\+::Librdf\+Parser Class Reference}
 \label{classredland_1_1LibrdfParser}\index{redland::LibrdfParser@{redland::LibrdfParser}}
+Inheritance diagram for redland\+::Librdf\+Parser\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classredland_1_1LibrdfParser}
+\end{center}
+\end{figure}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
-\item 
-\mbox{\Hypertarget{classredland_1_1LibrdfParser_a884b4e7cb05942390fba7765cfb3aec8}\label{classredland_1_1LibrdfParser_a884b4e7cb05942390fba7765cfb3aec8}} 
-{\bfseries Librdf\+Parser} (const \mbox{\hyperlink{classredland_1_1LibrdfParser}{Librdf\+Parser}} \&parser)=delete
-\item 
-\mbox{\Hypertarget{classredland_1_1LibrdfParser_a8c75ee321bd82076491aa0d63d0664c8}\label{classredland_1_1LibrdfParser_a8c75ee321bd82076491aa0d63d0664c8}} 
-{\bfseries Librdf\+Parser} (\mbox{\hyperlink{classredland_1_1LibrdfParser}{Librdf\+Parser}} \&\&parser) noexcept
-\item 
-\mbox{\Hypertarget{classredland_1_1LibrdfParser_aeee1312383f2e3f72e49076390a2a27b}\label{classredland_1_1LibrdfParser_aeee1312383f2e3f72e49076390a2a27b}} 
-\mbox{\hyperlink{classredland_1_1LibrdfParser}{Librdf\+Parser}} \& {\bfseries operator=} (const \mbox{\hyperlink{classredland_1_1LibrdfParser}{Librdf\+Parser}} \&parser)=delete
-\item 
-\mbox{\Hypertarget{classredland_1_1LibrdfParser_a5a5e09075b43906c9161d453ac63ab8a}\label{classredland_1_1LibrdfParser_a5a5e09075b43906c9161d453ac63ab8a}} 
-\mbox{\hyperlink{classredland_1_1LibrdfParser}{Librdf\+Parser}} \& {\bfseries operator=} (\mbox{\hyperlink{classredland_1_1LibrdfParser}{Librdf\+Parser}} \&\&parser) noexcept
 \item 
 \mbox{\Hypertarget{classredland_1_1LibrdfParser_ac1373b22444c108a2a67dbf24fa4ca92}\label{classredland_1_1LibrdfParser_ac1373b22444c108a2a67dbf24fa4ca92}} 
 {\bfseries Librdf\+Parser} (librdf\+\_\+parser $\ast$parser)
@@ -21,29 +15,11 @@
 \mbox{\Hypertarget{classredland_1_1LibrdfParser_ac594c85ec97a39cad1aa557c98c39eb1}\label{classredland_1_1LibrdfParser_ac594c85ec97a39cad1aa557c98c39eb1}} 
 {\bfseries Librdf\+Parser} (std\+::string format, std\+::string mime\+\_\+type=std\+::string(), const std\+::string \&type\+\_\+uri=std\+::string())
 \item 
-\mbox{\Hypertarget{classredland_1_1LibrdfParser_aadb297b986879ca618d3092fe737d41c}\label{classredland_1_1LibrdfParser_aadb297b986879ca618d3092fe737d41c}} 
-librdf\+\_\+parser $\ast$ {\bfseries get} () const
-\item 
 \mbox{\Hypertarget{classredland_1_1LibrdfParser_a1e2098e2c99ba886ab1521048258600c}\label{classredland_1_1LibrdfParser_a1e2098e2c99ba886ab1521048258600c}} 
 int {\bfseries num\+Namespaces\+Seen} () const
 \item 
 \mbox{\Hypertarget{classredland_1_1LibrdfParser_aed92021f88bccfa26bf78c29797b4208}\label{classredland_1_1LibrdfParser_aed92021f88bccfa26bf78c29797b4208}} 
 std\+::string {\bfseries get\+Namespaces\+Seen\+Uri} (int index) const
-\item 
-\mbox{\Hypertarget{classredland_1_1LibrdfParser_a86739506ba32a9a6da8b69711f1026db}\label{classredland_1_1LibrdfParser_a86739506ba32a9a6da8b69711f1026db}} 
-void {\bfseries parse\+String} (const std\+::string \&rdf\+\_\+string, const \mbox{\hyperlink{classredland_1_1LibrdfModel}{Librdf\+Model}} \&model, const \mbox{\hyperlink{classredland_1_1LibrdfUri}{Librdf\+Uri}} \&base\+\_\+uri) const
-\item 
-\mbox{\Hypertarget{classredland_1_1LibrdfParser_a2a7ac5ac97b4bc5876db02f0b9c7b987}\label{classredland_1_1LibrdfParser_a2a7ac5ac97b4bc5876db02f0b9c7b987}} 
-void {\bfseries parse\+String} (const std\+::string \&rdf\+\_\+string, const \mbox{\hyperlink{classredland_1_1LibrdfModel}{Librdf\+Model}} \&model, const std\+::string \&base\+\_\+uri) const
-\item 
-\mbox{\Hypertarget{classredland_1_1LibrdfParser_a14c24e47699166e3b5bd4141ebd946ff}\label{classredland_1_1LibrdfParser_a14c24e47699166e3b5bd4141ebd946ff}} 
-void {\bfseries parse\+File} (const std\+::string \&filename\+\_\+uri, const \mbox{\hyperlink{classredland_1_1LibrdfModel}{Librdf\+Model}} \&model, const std\+::string \&local\+\_\+uri) const
-\item 
-\mbox{\Hypertarget{classredland_1_1LibrdfParser_a15ffb21bf48e486708eab820719827a6}\label{classredland_1_1LibrdfParser_a15ffb21bf48e486708eab820719827a6}} 
-void {\bfseries parse\+File} (const std\+::string \&filename\+\_\+uri, const \mbox{\hyperlink{classredland_1_1LibrdfModel}{Librdf\+Model}} \&model) const
-\item 
-\mbox{\Hypertarget{classredland_1_1LibrdfParser_a733bf5d33a2d71bd6d7c201e1c952b04}\label{classredland_1_1LibrdfParser_a733bf5d33a2d71bd6d7c201e1c952b04}} 
-void {\bfseries parse\+Uri} (const std\+::string \&uri\+\_\+string, const \mbox{\hyperlink{classredland_1_1LibrdfModel}{Librdf\+Model}} \&model) const
 \item 
 \mbox{\Hypertarget{classredland_1_1LibrdfParser_a89d1335343c9999db8207866de8202c1}\label{classredland_1_1LibrdfParser_a89d1335343c9999db8207866de8202c1}} 
 std\+::string {\bfseries get\+Namespaces\+Seen\+Prefix} (int index) const
@@ -61,10 +37,10 @@ std\+::string {\bfseries get\+Mime\+Type} () const
 void {\bfseries set\+Mime\+Type} (const char $\ast$mime\+Type)
 \item 
 \mbox{\Hypertarget{classredland_1_1LibrdfParser_ae6f233d632e3a515afe7afceabf4e5ef}\label{classredland_1_1LibrdfParser_ae6f233d632e3a515afe7afceabf4e5ef}} 
-librdf\+\_\+uri $\ast$ {\bfseries get\+Type\+Uri} () const
+\mbox{\hyperlink{structraptor__uri__s}{librdf\+\_\+uri}} $\ast$ {\bfseries get\+Type\+Uri} () const
 \item 
 \mbox{\Hypertarget{classredland_1_1LibrdfParser_a81d772e0be266b00bf840fd9dbeab8d1}\label{classredland_1_1LibrdfParser_a81d772e0be266b00bf840fd9dbeab8d1}} 
-void {\bfseries set\+Type\+Uri} (librdf\+\_\+uri $\ast$type\+Uri)
+void {\bfseries set\+Type\+Uri} (\mbox{\hyperlink{structraptor__uri__s}{librdf\+\_\+uri}} $\ast$type\+Uri)
 \item 
 \mbox{\Hypertarget{classredland_1_1LibrdfParser_a76ecf31cd9fb96ba4e10a35f383e47fc}\label{classredland_1_1LibrdfParser_a76ecf31cd9fb96ba4e10a35f383e47fc}} 
 void {\bfseries set\+Type\+Uri} (const std\+::string \&type\+\_\+uri)
@@ -74,6 +50,35 @@ librdf\+\_\+parser $\ast$ {\bfseries make\+Parser} ()
 \item 
 \mbox{\Hypertarget{classredland_1_1LibrdfParser_abca88f90c6d20573961b10800f9b9047}\label{classredland_1_1LibrdfParser_abca88f90c6d20573961b10800f9b9047}} 
 std\+::vector$<$ std\+::string $>$ {\bfseries get\+Seen\+Namespaces} (std\+::vector$<$ std\+::string $>$ namespaces) const
+\item 
+\mbox{\Hypertarget{classredland_1_1LibrdfParser_a86739506ba32a9a6da8b69711f1026db}\label{classredland_1_1LibrdfParser_a86739506ba32a9a6da8b69711f1026db}} 
+void {\bfseries parse\+String} (const std\+::string \&rdf\+\_\+string, const \mbox{\hyperlink{classredland_1_1LibrdfModel}{Librdf\+Model}} \&model, const \mbox{\hyperlink{classredland_1_1LibrdfUri}{Librdf\+Uri}} \&base\+\_\+uri) const
+\item 
+\mbox{\Hypertarget{classredland_1_1LibrdfParser_a2a7ac5ac97b4bc5876db02f0b9c7b987}\label{classredland_1_1LibrdfParser_a2a7ac5ac97b4bc5876db02f0b9c7b987}} 
+void {\bfseries parse\+String} (const std\+::string \&rdf\+\_\+string, const \mbox{\hyperlink{classredland_1_1LibrdfModel}{Librdf\+Model}} \&model, const std\+::string \&base\+\_\+uri) const
+\item 
+void \mbox{\hyperlink{classredland_1_1LibrdfParser_ae1c565208fce2ab5b5b65ecc2483fc37}{parse\+File}} (const std\+::string \&filename\+\_\+uri, const \mbox{\hyperlink{classredland_1_1LibrdfModel}{Librdf\+Model}} \&model, const std\+::string \&base\+Uri\+String) const
+\begin{DoxyCompactList}\small\item\em parse a file into rdf graph. Use filename as base url \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classredland_1_1LibrdfParser_a733bf5d33a2d71bd6d7c201e1c952b04}\label{classredland_1_1LibrdfParser_a733bf5d33a2d71bd6d7c201e1c952b04}} 
+void {\bfseries parse\+Uri} (const std\+::string \&uri\+\_\+string, const \mbox{\hyperlink{classredland_1_1LibrdfModel}{Librdf\+Model}} \&model) const
+\item 
+\mbox{\Hypertarget{classredland_1_1LibrdfParser_a0114a1e31c8808709842f6ae15873536}\label{classredland_1_1LibrdfParser_a0114a1e31c8808709842f6ae15873536}} 
+\mbox{\hyperlink{classredland_1_1LibrdfStream}{Librdf\+Stream}} \mbox{\hyperlink{classredland_1_1LibrdfParser_a0114a1e31c8808709842f6ae15873536}{parse\+Uri\+As\+Stream}} (const std\+::string \&uri)
+\begin{DoxyCompactList}\small\item\em parse rdf graph from a uri and return a \mbox{\hyperlink{classredland_1_1LibrdfStream}{Librdf\+Stream}} \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classredland_1_1LibrdfParser_a3d40aac85bce1926dfe02162b53f82ea}\label{classredland_1_1LibrdfParser_a3d40aac85bce1926dfe02162b53f82ea}} 
+int \mbox{\hyperlink{classredland_1_1LibrdfParser_a3d40aac85bce1926dfe02162b53f82ea}{parse\+Uri\+Into\+Model}} (const std\+::string \&uri)
+\begin{DoxyCompactList}\small\item\em parse rdf graph from a uri directly into the \mbox{\hyperlink{classredland_1_1LibrdfModel}{Librdf\+Model}} \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classredland_1_1LibrdfParser_ad60d2bbdc82ec021696092ae25fef1be}\label{classredland_1_1LibrdfParser_ad60d2bbdc82ec021696092ae25fef1be}} 
+\mbox{\hyperlink{classredland_1_1LibrdfStream}{Librdf\+Stream}} {\bfseries parse\+File\+As\+Stream} (const std\+::string \&fname)
+\item 
+\mbox{\Hypertarget{classredland_1_1LibrdfParser_a4041d757857ecb506384a3df74bc6a53}\label{classredland_1_1LibrdfParser_a4041d757857ecb506384a3df74bc6a53}} 
+int {\bfseries parse\+File\+Into\+Model} (const std\+::string \&fname)
+\item 
+\mbox{\Hypertarget{classredland_1_1LibrdfParser_a080af3b5853937b798a5182e7383ad62}\label{classredland_1_1LibrdfParser_a080af3b5853937b798a5182e7383ad62}} 
+int {\bfseries parser\+String\+Into\+Model} (const std\+::string \&s)
+\item 
+\mbox{\Hypertarget{classredland_1_1LibrdfParser_a5d8e3f215f67b6bfce220536396ce3fb}\label{classredland_1_1LibrdfParser_a5d8e3f215f67b6bfce220536396ce3fb}} 
+\mbox{\hyperlink{classredland_1_1LibrdfStream}{Librdf\+Stream}} {\bfseries parse\+String\+As\+Stream} (const std\+::string \&s)
 \end{DoxyCompactItemize}
 \doxysubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
@@ -84,7 +89,30 @@ static void {\bfseries set\+Option} (librdf\+\_\+parser $\ast$parser, const std\
 \mbox{\Hypertarget{classredland_1_1LibrdfParser_a79fcda1e0c2cccfa8a070a1aea196ebd}\label{classredland_1_1LibrdfParser_a79fcda1e0c2cccfa8a070a1aea196ebd}} 
 static void {\bfseries set\+Options} (librdf\+\_\+parser $\ast$parser)
 \end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classredland_1_1LibrdfParser_ae1c565208fce2ab5b5b65ecc2483fc37}\label{classredland_1_1LibrdfParser_ae1c565208fce2ab5b5b65ecc2483fc37}} 
+\index{redland::LibrdfParser@{redland::LibrdfParser}!parseFile@{parseFile}}
+\index{parseFile@{parseFile}!redland::LibrdfParser@{redland::LibrdfParser}}
+\doxysubsubsection{\texorpdfstring{parseFile()}{parseFile()}}
+{\footnotesize\ttfamily void redland\+::\+Librdf\+Parser\+::parse\+File (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename\+\_\+uri,  }\item[{const \mbox{\hyperlink{classredland_1_1LibrdfModel}{Librdf\+Model}} \&}]{model,  }\item[{const std\+::string \&}]{base\+Uri\+String }\end{DoxyParamCaption}) const}
+
+
+
+parse a file into rdf graph. Use filename as base url 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename\+\_\+uri} & location of filename on disk \\
+\hline
+{\em model} & the current \mbox{\hyperlink{classredland_1_1LibrdfModel}{Librdf\+Model}} \\
+\hline
+{\em base\+Uri\+String} & the uri to use for base.\\
+\hline
+\end{DoxyParams}
+\mbox{\hyperlink{classThis}{This}} version of parse file is preferred as it will take the local uri from RDF object and use it for the base. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

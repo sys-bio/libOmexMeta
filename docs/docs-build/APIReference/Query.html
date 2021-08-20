@@ -251,14 +251,14 @@
 
 <dl class="cpp function">
 <dt id="_CPPv4N8omexmeta5Query21resultsAsLibRdfStreamEv">
-<span id="_CPPv3N8omexmeta5Query21resultsAsLibRdfStreamEv"></span><span id="_CPPv2N8omexmeta5Query21resultsAsLibRdfStreamEv"></span><span id="omexmeta::Query::resultsAsLibRdfStream"></span><span class="target" id="classomexmeta_1_1Query_1a0dda4502056d712d351f7057329c7688"></span>librdf_stream *<code class="sig-name descname">resultsAsLibRdfStream</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta5Query21resultsAsLibRdfStreamEv" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N8omexmeta5Query21resultsAsLibRdfStreamEv"></span><span id="_CPPv2N8omexmeta5Query21resultsAsLibRdfStreamEv"></span><span id="omexmeta::Query::toStream"></span><span class="target" id="classomexmeta_1_1Query_1a0dda4502056d712d351f7057329c7688"></span>librdf_stream *<code class="sig-name descname">toStream</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta5Query21resultsAsLibRdfStreamEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>&#64;breif returns the results as a librdf_stream* object</p>
 <p>developers. Consider removing. </p>
 </dd></dl>
 
 <dl class="cpp function">
 <dt id="_CPPv4N8omexmeta5Query12resultsAsMapEv">
-<span id="_CPPv3N8omexmeta5Query12resultsAsMapEv"></span><span id="_CPPv2N8omexmeta5Query12resultsAsMapEv"></span><span id="omexmeta::Query::resultsAsMap"></span><span class="target" id="classomexmeta_1_1Query_1ab50cc5f76dcf7f863f9fa9d0bf755071"></span>ResultsMap <code class="sig-name descname">resultsAsMap</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta5Query12resultsAsMapEv" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N8omexmeta5Query12resultsAsMapEv"></span><span id="_CPPv2N8omexmeta5Query12resultsAsMapEv"></span><span id="omexmeta::Query::map"></span><span class="target" id="classomexmeta_1_1Query_1ab50cc5f76dcf7f863f9fa9d0bf755071"></span>ResultsMap <code class="sig-name descname">map</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta5Query12resultsAsMapEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>returns query results in a map where keys are the variable names used in query and values are vectors of values for results. </p>
 <p>This is the only supported mechanism for ascertaining query results programatically, without needing to read/write to/from file. This method uses an iterator from librdf. When it gets to the end of the iterator, the iterator is “used up”. Therefore at the end of collecting the results as a map, the original query is re-run, so that the presently instantiated <a class="reference internal" href="#classomexmeta_1_1Query"><span class="std std-ref">Query</span></a> object is not rendered useless.</p>
 <p>If the query looks like this: <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="p">::</span><span class="n">string</span> <span class="n">query_string</span> <span class="o">=</span>   <span class="s2">&quot;SELECT ?x ?y ?z</span>
@@ -273,7 +273,7 @@
 
 <dl class="cpp function">
 <dt id="_CPPv4NK8omexmeta5Query12resultsAsStrERKNSt6stringENSt6stringE">
-<span id="_CPPv3NK8omexmeta5Query12resultsAsStrERKNSt6stringENSt6stringE"></span><span id="_CPPv2NK8omexmeta5Query12resultsAsStrERKNSt6stringENSt6stringE"></span><span id="omexmeta::Query::resultsAsStr__ssCR.ssC"></span><span class="target" id="classomexmeta_1_1Query_1a7109dd08bd808bf5a20becb164622ed6"></span>std::string <code class="sig-name descname">resultsAsStr</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>output_format</em>, std::string <em>baseuri</em> = &quot;query_results&quot;<span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta5Query12resultsAsStrERKNSt6stringENSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3NK8omexmeta5Query12resultsAsStrERKNSt6stringENSt6stringE"></span><span id="_CPPv2NK8omexmeta5Query12resultsAsStrERKNSt6stringENSt6stringE"></span><span id="omexmeta::Query::resultsAsStr__ssCR.ssC"></span><span class="target" id="classomexmeta_1_1Query_1a7109dd08bd808bf5a20becb164622ed6"></span>std::string <code class="sig-name descname">toString</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>output_format</em>, std::string <em>baseuri</em> = &quot;query_results&quot;<span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK8omexmeta5Query12resultsAsStrERKNSt6stringENSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>collect the result of the query as a string </p>
 <p><dl class="simple">
 <dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
@@ -288,7 +288,7 @@
 <dt id="_CPPv4N8omexmeta5Query8runQueryEv">
 <span id="_CPPv3N8omexmeta5Query8runQueryEv"></span><span id="_CPPv2N8omexmeta5Query8runQueryEv"></span><span id="omexmeta::Query::runQuery"></span><span class="target" id="classomexmeta_1_1Query_1a879a4db0413abc8f4a3470877ebf5193"></span>void <code class="sig-name descname">runQuery</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta5Query8runQueryEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Run a query. </p>
-<p>Users do not need to manually execute a query using this method. It is used automatically in the constructor for <a class="reference internal" href="#classomexmeta_1_1Query"><span class="std std-ref">Query</span></a> and again in <a class="reference internal" href="#classomexmeta_1_1Query_1ab50cc5f76dcf7f863f9fa9d0bf755071"><span class="std std-ref">Query::resultsAsMap</span></a>. </p>
+<p>Users do not need to manually execute a query using this method. It is used automatically in the constructor for <a class="reference internal" href="#classomexmeta_1_1Query"><span class="std std-ref">Query</span></a> and again in <a class="reference internal" href="#classomexmeta_1_1Query_1ab50cc5f76dcf7f863f9fa9d0bf755071"><span class="std std-ref">Query::map</span></a>. </p>
 </dd></dl>
 
 <dl class="cpp function">
@@ -331,7 +331,7 @@
 
 <dl class="cpp function">
 <dt id="_CPPv4N8omexmeta5Query8getCountEv">
-<span id="_CPPv3N8omexmeta5Query8getCountEv"></span><span id="_CPPv2N8omexmeta5Query8getCountEv"></span><span id="omexmeta::Query::getCount"></span><span class="target" id="classomexmeta_1_1Query_1aa5cdad3617be3e7b5df125762f29f0ba"></span>int <code class="sig-name descname">getCount</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta5Query8getCountEv" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N8omexmeta5Query8getCountEv"></span><span id="_CPPv2N8omexmeta5Query8getCountEv"></span><span id="omexmeta::Query::size"></span><span class="target" id="classomexmeta_1_1Query_1aa5cdad3617be3e7b5df125762f29f0ba"></span>int <code class="sig-name descname">size</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta5Query8getCountEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>librdf_query_results_get_count: &#64;query_results: #librdf_query_results query results</p>
 <p>Get number of bindings so far.</p>
 <p>Return value: number of bindings found so far </p>

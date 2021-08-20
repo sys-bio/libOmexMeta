@@ -11,15 +11,6 @@ namespace omexmeta {
         : rdf_(rdf) {}
 
     std::string PurgeRDFBag::rdfBagQueryString() {
-        //        return "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n"
-        //               "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n"
-        //               "SELECT  ?s ?rdf_li ?y ?p ?r ?x ?j     \n"
-        //               "WHERE {\n"
-        //               "   ?x ?j ?s . \n"
-        //               "   ?s rdf:type rdf:Bag .\n"
-        //               "   ?s ?rdf_li ?y .\n"
-        //               "   ?y ?p ?r\n"
-        //               "}\n";
         // note: "a" is short for rdf:type
         return "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n"
                "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n"
@@ -38,7 +29,6 @@ namespace omexmeta {
     }
 
     void omexmeta::PurgeRDFBag::purgePattern1() {
-
         /**
          * Note, we might be able to do another query that says
          * "if the query matches" do something with it.
@@ -91,7 +81,7 @@ namespace omexmeta {
                     LibrdfNode::fromBlank(blank),
                     LibrdfNode::fromUriString(rdf_li),
                     LibrdfNode::fromBlank(blank2));
-            librdf_model_remove_statement(rdf_->getModel(), t1.getStatement());
+            rdf_->getModel().removeStatement(t1);
 
             // remove other triples with form
             //      r1r8368r6; http://xmlns.com/foaf/0.1/mbox; nikoloski@mpimp-golm.mpg.de
@@ -101,7 +91,7 @@ namespace omexmeta {
                     LibrdfNode::fromBlank(blank2),
                     LibrdfNode::fromUriString(p),
                     LibrdfNode::fromLiteral(r, "", ""));
-            librdf_model_remove_statement(rdf_->getModel(), t2.getStatement());
+            rdf_->getModel().removeStatement(t2);
 
             // And remove the bag
             Triple t4(
@@ -109,40 +99,39 @@ namespace omexmeta {
                     LibrdfNode::fromBlank(blank),
                     LibrdfNode::fromUriString(rdf_type),
                     LibrdfNode::fromUriString(rdf_bag));
-            librdf_model_remove_statement(rdf_->getModel(), t4.getStatement());
+            rdf_->getModel().removeStatement(t4);
 
             Triple t5(
                     rdf_->getUriHandler(),
                     LibrdfNode::fromUriString(subject1),
                     LibrdfNode::fromUriString(creatorType1),
                     LibrdfNode::fromBlank(blank));
-            librdf_model_remove_statement(rdf_->getModel(), t5.getStatement());
+            rdf_->getModel().removeStatement(t5);
 
             Triple t5b(
                     rdf_->getUriHandler(),
                     LibrdfNode::fromUriString(subject1),
                     LibrdfNode::fromUriString(creatorType2),
                     LibrdfNode::fromBlank(blank));
-            librdf_model_remove_statement(rdf_->getModel(), t5b.getStatement());
+            rdf_->getModel().removeStatement(t5b);
 
             Triple t6(
                     rdf_->getUriHandler(),
                     LibrdfNode::fromUriString(subject1),
                     LibrdfNode::fromUriString(creatorType1),
                     LibrdfNode::fromBlank(blank2));
-            librdf_model_add_statement(rdf_->getModel(), t6.getStatement());
+            rdf_->getModel().addStatement(t6);
 
             Triple t7(
                     rdf_->getUriHandler(),
                     LibrdfNode::fromBlank(blank2),
                     LibrdfNode::fromUriString(p),
                     LibrdfNode::fromLiteral(r, "", ""));
-            librdf_model_add_statement(rdf_->getModel(), t7.getStatement());
+            rdf_->getModel().addStatement(t7);
         }
     }
 
     void omexmeta::PurgeRDFBag::purgePattern2() {
-
         /**
          * This query is not as specific as I would like it to be because
          * there is some "cross-reactivity" with triples that use rdf:_1, rdf:_2, ...
@@ -168,15 +157,7 @@ namespace omexmeta {
                         "   FILTER isBlank(?b)\n"
                         "   FILTER (?p2 != rdf:type) \n"// http://www.w3.org/1999/02/22-rdf-syntax-ns#_1; not rdf:type
                         "}\n";
-
-        Query query(rdf_->getModel(), q);
-        auto results = query.resultsAsMap();
-
-//        if (results["s1"].size() <= 1) {
-//            // return when we only have 1 or 0 search results
-//            // to prevent "cross reactivity" with PurgeRDFBag::purgeListBagEntries
-////            return;
-//        }
+        auto results = rdf_->queryResultsAsMap(q);
 
         for (int i = 0; i < results["s1"].size(); i++) {
             const std::string &s1 = results["s1"][i];
@@ -186,37 +167,37 @@ namespace omexmeta {
             const std::string &uriResource = results["uriResource"][i];
 
             // useful for debugging:
-//            std::cout << s1 << "; " << p << "; " << b << "; " << p2 << "; " << uriResource << std::endl;
+            //            std::cout << s1 << "; " << p << "; " << b << "; " << p2 << "; " << uriResource << std::endl;
             Triple t1(
                     rdf_->getUriHandler(),
                     LibrdfNode::fromUriString(s1),
                     LibrdfNode::fromUriString(p),
                     LibrdfNode::fromBlank(b));
-            librdf_model_remove_statement(rdf_->getModel(), t1.getWithoutIncrement());
+            rdf_->getModel().removeStatement(t1);
+
             Triple t2(
                     rdf_->getUriHandler(),
                     LibrdfNode::fromBlank(b),
                     LibrdfNode::fromUriString("http://www.w3.org/1999/02/22-rdf-syntax-ns#type"),
                     LibrdfNode::fromUriString("http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag"));
-            librdf_model_remove_statement(rdf_->getModel(), t2.getWithoutIncrement());
+            rdf_->getModel().removeStatement(t2);
 
             Triple t3(
                     rdf_->getUriHandler(),
                     LibrdfNode::fromBlank(b),
                     LibrdfNode::fromUriString(p2),
                     LibrdfNode::fromUriString(uriResource));
-            librdf_model_remove_statement(rdf_->getModel(), t3.getWithoutIncrement());
+            rdf_->getModel().removeStatement(t3);
             Triple t4(
                     rdf_->getUriHandler(),
                     LibrdfNode::fromUriString(s1),
                     LibrdfNode::fromUriString(p),
                     LibrdfNode::fromUriString(uriResource));
-            librdf_model_add_statement(rdf_->getModel(), t4.getWithoutIncrement());
+            rdf_->getModel().addStatement(t4);
         }
     }
 
     void omexmeta::PurgeRDFBag::purgePattern3() {
-
         /**
          * This query is not as specific as I would like it to be because
          * there is some "cross-reactivity" with triples that use rdf:_1, rdf:_2, ...
@@ -243,15 +224,7 @@ namespace omexmeta {
                         "   FILTER isBlank(?b2)\n"
                         "   FILTER isUri(?r)\n"
                         "}\n";
-
-        Query query(rdf_->getModel(), q);
-        auto results = query.resultsAsMap();
-
-        //        if (results["s1"].size() <= 1) {
-        //            // return when we only have 1 or 0 search results
-        //            // to prevent "cross reactivity" with PurgeRDFBag::purgeListBagEntries
-        //            return;
-        //        }
+        auto results = rdf_->queryResultsAsMap(q);
 
         for (int i = 0; i < results["s1"].size(); i++) {
             const std::string &s1 = results["s1"][i];
@@ -267,25 +240,28 @@ namespace omexmeta {
 
             Triple t1(rdf_->getUriHandler(),
                       LibrdfNode::fromBlank(b1), LibrdfNode::fromUriString(rdf_li), LibrdfNode::fromBlank(b2));
-            librdf_model_remove_statement(rdf_->getModel(), t1.getWithoutIncrement());
+            rdf_->getModel().removeStatement(t1);
+
             Triple t2(
                     rdf_->getUriHandler(),
                     LibrdfNode::fromBlank(b1),
                     LibrdfNode::fromUriString("http://www.w3.org/1999/02/22-rdf-syntax-ns#type"),
                     LibrdfNode::fromUriString("http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag"));
-            librdf_model_remove_statement(rdf_->getModel(), t2.getWithoutIncrement());
+            rdf_->getModel().removeStatement(t2);
+
             Triple t3(
                     rdf_->getUriHandler(),
                     LibrdfNode::fromBlank(b2),
                     LibrdfNode::fromUriString(p2),
                     LibrdfNode::fromUriString(r));
-            librdf_model_remove_statement(rdf_->getModel(), t3.getWithoutIncrement());
+            rdf_->getModel().removeStatement(t3);
+
             Triple t4(
                     rdf_->getUriHandler(),
                     LibrdfNode::fromBlank(b1),
                     LibrdfNode::fromUriString(p2),
                     LibrdfNode::fromUriString(r));
-            librdf_model_add_statement(rdf_->getModel(), t4.getWithoutIncrement());
+            rdf_->getModel().addStatement(t4);
         }
     }
 

@@ -1,0 +1,86 @@
+Running main() from ..\third_party\googletest\googletest\src\gtest_main.cc
+[==========] Running 37 tests from 2 test suites.
+[----------] Global test environment set-up.
+[----------] 35 tests from PredicateTests
+[ RUN      ] PredicateTests.TestCreateStaticFunctionFromBasePredicate
+[       OK ] PredicateTests.TestCreateStaticFunctionFromBasePredicate (2 ms)
+[ RUN      ] PredicateTests.TestGetNode
+[       OK ] PredicateTests.TestGetNode (0 ms)
+[ RUN      ] PredicateTests.TestGetNodeFromPtr
+[       OK ] PredicateTests.TestGetNodeFromPtr (0 ms)
+[ RUN      ] PredicateTests.TestGetNodebqb
+[       OK ] PredicateTests.TestGetNodebqb (0 ms)
+[ RUN      ] PredicateTests.TestGetNodeFromPtrBqB
+[       OK ] PredicateTests.TestGetNodeFromPtrBqB (0 ms)
+[ RUN      ] PredicateTests.TestGetNodebqqPrefix
+[       OK ] PredicateTests.TestGetNodebqqPrefix (0 ms)
+[ RUN      ] PredicateTests.TestDCTermPrefix
+[       OK ] PredicateTests.TestDCTermPrefix (0 ms)
+[ RUN      ] PredicateTests.TestDCTermUri
+[       OK ] PredicateTests.TestDCTermUri (0 ms)
+[ RUN      ] PredicateTests.TestDCTermGetNamespace
+[       OK ] PredicateTests.TestDCTermGetNamespace (1 ms)
+[ RUN      ] PredicateTests.TestDCTermGetPrefix
+[       OK ] PredicateTests.TestDCTermGetPrefix (0 ms)
+[ RUN      ] PredicateTests.TestBqBiolGetNamespace
+[       OK ] PredicateTests.TestBqBiolGetNamespace (0 ms)
+[ RUN      ] PredicateTests.TestBqBiolGetPrefix
+[       OK ] PredicateTests.TestBqBiolGetPrefix (0 ms)
+[ RUN      ] PredicateTests.TestBqModelGetNamespace
+[       OK ] PredicateTests.TestBqModelGetNamespace (0 ms)
+[ RUN      ] PredicateTests.TestBqModelGetPrefix
+[       OK ] PredicateTests.TestBqModelGetPrefix (0 ms)
+[ RUN      ] PredicateTests.TestBqModelGetPrefixFromPtr
+[       OK ] PredicateTests.TestBqModelGetPrefixFromPtr (0 ms)
+[ RUN      ] PredicateTests.TestBqModelGetPrefixFromPtrToBaseClass
+[       OK ] PredicateTests.TestBqModelGetPrefixFromPtrToBaseClass (0 ms)
+[ RUN      ] PredicateTests.TestBqModelGetPrefixFromPtrToBaseClassvsdf
+[       OK ] PredicateTests.TestBqModelGetPrefixFromPtrToBaseClassvsdf (0 ms)
+[ RUN      ] PredicateTests.TestSemsimPredicatePrefix
+[       OK ] PredicateTests.TestSemsimPredicatePrefix (0 ms)
+[ RUN      ] PredicateTests.TestSemsimPredicateNamespace
+[       OK ] PredicateTests.TestSemsimPredicateNamespace (0 ms)
+[ RUN      ] PredicateTests.TestFromUriNode
+[       OK ] PredicateTests.TestFromUriNode (0 ms)
+[ RUN      ] PredicateTests.TestFromUriNodeNamespace
+[       OK ] PredicateTests.TestFromUriNodeNamespace (0 ms)
+[ RUN      ] PredicateTests.TestFromUriNodeNamespaceWhenPrefixIsKnown
+[       OK ] PredicateTests.TestFromUriNodeNamespaceWhenPrefixIsKnown (0 ms)
+[ RUN      ] PredicateTests.TestNamespaceWhenItEndsWithHash
+[       OK ] PredicateTests.TestNamespaceWhenItEndsWithHash (0 ms)
+[ RUN      ] PredicateTests.TestTermWhenNamespaceEndsWithHash
+[       OK ] PredicateTests.TestTermWhenNamespaceEndsWithHash (1 ms)
+[ RUN      ] PredicateTests.TestFromUriNodeTerm
+[       OK ] PredicateTests.TestFromUriNodeTerm (0 ms)
+[ RUN      ] PredicateTests.TestFromUriNodePrefix
+[       OK ] PredicateTests.TestFromUriNodePrefix (0 ms)
+[ RUN      ] PredicateTests.TestNamespaceKnownWhenNamespaceIsKnown
+[       OK ] PredicateTests.TestNamespaceKnownWhenNamespaceIsKnown (0 ms)
+[ RUN      ] PredicateTests.TestNamespaceKnownWhenNamespaceIsNotKnown
+[       OK ] PredicateTests.TestNamespaceKnownWhenNamespaceIsNotKnown (0 ms)
+[ RUN      ] PredicateTests.TestPredicateFactory
+[       OK ] PredicateTests.TestPredicateFactory (0 ms)
+[ RUN      ] PredicateTests.TestPredicateFactory2
+[       OK ] PredicateTests.TestPredicateFactory2 (0 ms)
+[ RUN      ] PredicateTests.TestPredicateFactory3
+[       OK ] PredicateTests.TestPredicateFactory3 (0 ms)
+[ RUN      ] PredicateTests.TestPredicateFactory4
+[       OK ] PredicateTests.TestPredicateFactory4 (0 ms)
+[ RUN      ] PredicateTests.TestPredicateWithoutSubclass
+[       OK ] PredicateTests.TestPredicateWithoutSubclass (0 ms)
+[ RUN      ] PredicateTests.TestPredicateWithoutSubclass2
+[       OK ] PredicateTests.TestPredicateWithoutSubclass2 (0 ms)
+[ RUN      ] PredicateTests.TestPredicateWithoutSubclass3
+[       OK ] PredicateTests.TestPredicateWithoutSubclass3 (0 ms)
+[----------] 35 tests from PredicateTests (4 ms total)
+
+[----------] 2 tests from PredicateTestsNoFixture
+[ RUN      ] PredicateTestsNoFixture.TestEquality
+[       OK ] PredicateTestsNoFixture.TestEquality (0 ms)
+[ RUN      ] PredicateTestsNoFixture.TestInequality
+[       OK ] PredicateTestsNoFixture.TestInequality (0 ms)
+[----------] 2 tests from PredicateTestsNoFixture (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 37 tests from 2 test suites ran. (4 ms total)
+[  PASSED  ] 37 tests.

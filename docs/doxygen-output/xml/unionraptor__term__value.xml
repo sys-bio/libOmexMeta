@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="unionraptor__term__value" kind="union" language="C++" prot="public">
     <compoundname>raptor_term_value</compoundname>
     <includes refid="raptor2_8h" local="no">raptor2.h</includes>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="unionraptor__term__value_1a21e5ae38e8bc45823ba97b4e2eb184f5" prot="public" static="no" mutable="no">
-        <type>raptor_uri *</type>
+        <type><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref> *</type>
         <definition>raptor_uri* raptor_term_value::uri</definition>
         <argsstring></argsstring>
         <name>uri</name>
@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/include/redland/raptor2.h" line="603" column="16" bodyfile="src/redland/RedlandWrapper/src/include/redland/raptor2.h" bodystart="603" bodyend="-1"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/raptor2.h" line="614" column="16" bodyfile="src/redland/RedlandWrapper/src/include/redland/raptor2.h" bodystart="614" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="unionraptor__term__value_1ae3abc3c1c58fb1e464f3a9aa4096005d" prot="public" static="no" mutable="no">
         <type><ref refid="structraptor__term__literal__value" kindref="compound">raptor_term_literal_value</ref></type>
@@ -28,7 +28,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/include/redland/raptor2.h" line="605" column="31" bodyfile="src/redland/RedlandWrapper/src/include/redland/raptor2.h" bodystart="605" bodyend="-1"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/raptor2.h" line="616" column="31" bodyfile="src/redland/RedlandWrapper/src/include/redland/raptor2.h" bodystart="616" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="unionraptor__term__value_1a6dd718091693ee4f164f88a588bc903f" prot="public" static="no" mutable="no">
         <type><ref refid="structraptor__term__blank__value" kindref="compound">raptor_term_blank_value</ref></type>
@@ -41,7 +41,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/include/redland/raptor2.h" line="607" column="29" bodyfile="src/redland/RedlandWrapper/src/include/redland/raptor2.h" bodystart="607" bodyend="-1"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/raptor2.h" line="618" column="29" bodyfile="src/redland/RedlandWrapper/src/include/redland/raptor2.h" bodystart="618" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -54,10 +54,17 @@
       <node id="2">
         <label>raptor_term_literal_value</label>
         <link refid="structraptor__term__literal__value"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>datatype</edgelabel>
+        </childnode>
       </node>
-      <node id="3">
+      <node id="4">
         <label>raptor_term_blank_value</label>
         <link refid="structraptor__term__blank__value"/>
+      </node>
+      <node id="3">
+        <label>raptor_uri_s</label>
+        <link refid="structraptor__uri__s"/>
       </node>
       <node id="1">
         <label>raptor_term_value</label>
@@ -66,11 +73,14 @@
           <edgelabel>literal</edgelabel>
         </childnode>
         <childnode refid="3" relation="usage">
+          <edgelabel>uri</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
           <edgelabel>blank</edgelabel>
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="src/redland/RedlandWrapper/src/include/redland/raptor2.h" line="602" column="1" bodyfile="src/redland/RedlandWrapper/src/include/redland/raptor2.h" bodystart="602" bodyend="608"/>
+    <location file="src/redland/RedlandWrapper/src/include/redland/raptor2.h" line="613" column="1" bodyfile="src/redland/RedlandWrapper/src/include/redland/raptor2.h" bodystart="613" bodyend="619"/>
     <listofallmembers>
       <member refid="unionraptor__term__value_1a6dd718091693ee4f164f88a588bc903f" prot="public" virt="non-virtual"><scope>raptor_term_value</scope><name>blank</name></member>
       <member refid="unionraptor__term__value_1ae3abc3c1c58fb1e464f3a9aa4096005d" prot="public" virt="non-virtual"><scope>raptor_term_value</scope><name>literal</name></member>

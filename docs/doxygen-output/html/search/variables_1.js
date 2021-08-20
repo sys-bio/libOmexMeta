@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['msg_5f_628',['msg_',['../classomexmeta_1_1Exception.html#a99067aa4ed7e38cf27b986cca3734512',1,'omexmeta::Exception::msg_()'],['../classException.html#a5d59cc46086c61391ed26773ce861780',1,'Exception::msg_()']]]
+  ['isconsolelogger_732',['isConsoleLogger',['../classredland_1_1Logger.html#a83c2fde7dc2b6547053d690e63c0f73d',1,'redland::Logger']]],
+  ['isfilelogger_733',['isFileLogger',['../classredland_1_1Logger.html#acfe5e473ffe0cb34b45ab69ab7675358',1,'redland::Logger']]]
 ];

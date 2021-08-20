@@ -1,0 +1,76 @@
+Running main() from ..\third_party\googletest\googletest\src\gtest_main.cc
+[==========] Running 22 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 22 tests from PurgeRDFBagTests
+[ RUN      ] PurgeRDFBagTests.Biomd385Input1Pattern1
+[       OK ] PurgeRDFBagTests.Biomd385Input1Pattern1 (10 ms)
+[ RUN      ] PurgeRDFBagTests.Biomd385Input1Pattern2
+[       OK ] PurgeRDFBagTests.Biomd385Input1Pattern2 (6 ms)
+[ RUN      ] PurgeRDFBagTests.Biomd385Input1Pattern3
+[       OK ] PurgeRDFBagTests.Biomd385Input1Pattern3 (6 ms)
+[ RUN      ] PurgeRDFBagTests.Biomd385Input2Pattern1
+[       OK ] PurgeRDFBagTests.Biomd385Input2Pattern1 (3 ms)
+[ RUN      ] PurgeRDFBagTests.Biomd385Input2Pattern2
+[       OK ] PurgeRDFBagTests.Biomd385Input2Pattern2 (3 ms)
+[ RUN      ] PurgeRDFBagTests.Biomd385Input2Pattern3
+[       OK ] PurgeRDFBagTests.Biomd385Input2Pattern3 (3 ms)
+[ RUN      ] PurgeRDFBagTests.Biomd385Input3
+[       OK ] PurgeRDFBagTests.Biomd385Input3 (12 ms)
+[ RUN      ] PurgeRDFBagTests.Biomd626Input1Pattern1
+[       OK ] PurgeRDFBagTests.Biomd626Input1Pattern1 (7 ms)
+[ RUN      ] PurgeRDFBagTests.Biomd626Input1Pattern2
+[       OK ] PurgeRDFBagTests.Biomd626Input1Pattern2 (7 ms)
+[ RUN      ] PurgeRDFBagTests.Biomd626Input1Pattern3
+[       OK ] PurgeRDFBagTests.Biomd626Input1Pattern3 (6 ms)
+[ RUN      ] PurgeRDFBagTests.Biomd626Input2Pattern1
+[       OK ] PurgeRDFBagTests.Biomd626Input2Pattern1 (1 ms)
+[ RUN      ] PurgeRDFBagTests.Biomd626Input2Pattern2
+[       OK ] PurgeRDFBagTests.Biomd626Input2Pattern2 (1 ms)
+[ RUN      ] PurgeRDFBagTests.Biomd626Input2Pattern3
+[       OK ] PurgeRDFBagTests.Biomd626Input2Pattern3 (0 ms)
+[ RUN      ] PurgeRDFBagTests.Biomd626Input3Pattern1
+[       OK ] PurgeRDFBagTests.Biomd626Input3Pattern1 (1 ms)
+[ RUN      ] PurgeRDFBagTests.Biomd626Input3Pattern2
+[       OK ] PurgeRDFBagTests.Biomd626Input3Pattern2 (1 ms)
+[ RUN      ] PurgeRDFBagTests.Biomd626Input3Pattern3
+[       OK ] PurgeRDFBagTests.Biomd626Input3Pattern3 (0 ms)
+[ RUN      ] PurgeRDFBagTests.Bimd626Input4Pattern1
+[       OK ] PurgeRDFBagTests.Bimd626Input4Pattern1 (6 ms)
+[ RUN      ] PurgeRDFBagTests.Bimd626Input5Pattern1
+[       OK ] PurgeRDFBagTests.Bimd626Input5Pattern1 (2 ms)
+[ RUN      ] PurgeRDFBagTests.Bimd626Input5Pattern2
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix OMEXlib: <http://omex-library.org/> .
+@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#COPASI0>
+    <http://www.copasi.org/RDF/MiriamTerms#is> [
+        rdf:_1 <http://identifiers.org/biomodels.db/MODEL1303060000> ;
+        a rdf:Bag
+    ], [
+        rdf:_1 <http://identifiers.org/biomodels.db/BIOMD0000000626> ;
+        a rdf:Bag
+    ], [
+        rdf:_1 <http://identifiers.org/eco/ECO:0000362> ;
+        a rdf:Bag
+    ], [
+        rdf:_1 <urn:miriam:reactome:R-SCE-1500620> ;
+        a rdf:Bag
+    ], [
+        rdf:_1 <http://identifiers.org/mamo/MAMO_0000046> ;
+        a rdf:Bag
+    ] .
+
+
+[       OK ] PurgeRDFBagTests.Bimd626Input5Pattern2 (2 ms)
+[ RUN      ] PurgeRDFBagTests.Bimd626Input5Pattern3
+[       OK ] PurgeRDFBagTests.Bimd626Input5Pattern3 (3 ms)
+[ RUN      ] PurgeRDFBagTests.Biomd626Full
+[       OK ] PurgeRDFBagTests.Biomd626Full (404 ms)
+[ RUN      ] PurgeRDFBagTests.Biomd689FullPattern1
+[       OK ] PurgeRDFBagTests.Biomd689FullPattern1 (958 ms)
+[----------] 22 tests from PurgeRDFBagTests (1442 ms total)
+
+[----------] Global test environment tear-down
+[==========] 22 tests from 1 test suite ran. (1443 ms total)
+[  PASSED  ] 22 tests.

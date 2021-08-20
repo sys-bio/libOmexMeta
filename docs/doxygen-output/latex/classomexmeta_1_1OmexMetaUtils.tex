@@ -13,7 +13,7 @@ static void \mbox{\hyperlink{classomexmeta_1_1OmexMetaUtils_a046b603d6308242b70b
 \begin{DoxyCompactList}\small\item\em download a file from \end{DoxyCompactList}\item 
 static std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{classomexmeta_1_1OmexMetaUtils_aac769ce6e901f32820cd7dc3fef989fa}{split\+String\+By}} (const std\+::string \&str, char delimiter)
 \begin{DoxyCompactList}\small\item\em split a string into a vector of strings by \end{DoxyCompactList}\item 
-static std\+::string \mbox{\hyperlink{classomexmeta_1_1OmexMetaUtils_a596094a1ce72a362238682c8a864f616}{generate\+Unique\+Metaid}} (librdf\+\_\+model $\ast$model, const std\+::string \&metaid\+\_\+base, const std\+::vector$<$ std\+::string $>$ \&exclusions)
+static std\+::string \mbox{\hyperlink{classomexmeta_1_1OmexMetaUtils_ad47205ad2bcb06742ce96c5aaca8d493}{generate\+Unique\+Metaid}} (\mbox{\hyperlink{classredland_1_1LibrdfModel}{Librdf\+Model}} \&model, const std\+::string \&metaid\+\_\+base, const std\+::vector$<$ std\+::string $>$ \&exclusions)
 \begin{DoxyCompactList}\small\item\em utility for generating unique metaids given an xml document \end{DoxyCompactList}\item 
 static std\+::string \mbox{\hyperlink{classomexmeta_1_1OmexMetaUtils_a6694715cf3f5dccd33d416ecc84ff375}{prepare\+Base\+Uri}} (std\+::string str, bool absolute\+\_\+path=false)
 \begin{DoxyCompactList}\small\item\em process a string intended to be a base uri. \end{DoxyCompactList}\item 
@@ -30,7 +30,7 @@ static bool \mbox{\hyperlink{classomexmeta_1_1OmexMetaUtils_a4ec81c80bf33d232331
 static bool {\bfseries assert\+Match\+By\+New\+Line} (const std\+::string \&expected\+\_\+string, const std\+::string \&actual\+\_\+string)
 \item 
 static std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{classomexmeta_1_1OmexMetaUtils_a744a0575136f1cc60b76a6560a5595e9}{configure\+Prefix\+Strings}} (std\+::string repository\+\_\+name, std\+::string omex\+\_\+name, std\+::string model\+\_\+name)
-\begin{DoxyCompactList}\small\item\em configures the \char`\"{}\+O\+M\+E\+Xlib\char`\"{}, \char`\"{}my\+O\+M\+E\+X\char`\"{} and \char`\"{}local\char`\"{} prefixes @ param omex\+\_\+name the name of the omex container your model is in \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em configures the \char`\"{}\+OMEXlib\char`\"{}, \char`\"{}my\+OMEX\char`\"{} and \char`\"{}local\char`\"{} prefixes @ param omex\+\_\+name the name of the omex container your model is in \end{DoxyCompactList}\item 
 static std\+::string \mbox{\hyperlink{classomexmeta_1_1OmexMetaUtils_ae645af49ce57dac8bd0e0eba9e39a6c0}{concat\+Meta\+Id\+And\+Uri}} (std\+::string metaid, std\+::string uri)
 \begin{DoxyCompactList}\small\item\em concatonate metaid and uri strings \end{DoxyCompactList}\item 
 static std\+::string \mbox{\hyperlink{classomexmeta_1_1OmexMetaUtils_aca2230ca99338b9dc0fc7d296b0c553b}{string\+Replace}} (std\+::string str, const std\+::string \&string\+\_\+to\+\_\+replace, const std\+::string \&replacement)
@@ -74,10 +74,10 @@ concatonate metaid and uri strings
 \begin{DoxyParams}{Parameters}
 {\em metaid} & string. Like \char`\"{}\#metaid\char`\"{} or \char`\"{}metaid\char`\"{} \\
 \hline
-{\em uri} & string. Like \char`\"{}https\+://omex-\/library/jeff2019.\+omex/mymodel.\+xml\char`\"{} or \char`\"{}https\+://omex-\/library/jeff2019.\+omex/mymodel.\+rdf\char`\"{}  Sometimes a uri has a trailing \char`\"{}\#\char`\"{} and somtimes a metaid has a leading \char`\"{}\#\char`\"{}. \mbox{\hyperlink{classThis}{This}} method concatonates whilst accounting for permutations of \char`\"{}\#\char`\"{} \\
+{\em uri} & string. Like \char`\"{}https\+://omex-\/library/jeff2019.\+omex/mymodel.\+xml\char`\"{} or \char`\"{}https\+://omex-\/library/jeff2019.\+omex/mymodel.\+rdf\char`\"{}\\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{classomexmeta_1_1OmexMetaUtils_a744a0575136f1cc60b76a6560a5595e9}\label{classomexmeta_1_1OmexMetaUtils_a744a0575136f1cc60b76a6560a5595e9}} 
+Sometimes a uri has a trailing \char`\"{}\#\char`\"{} and somtimes a metaid has a leading \char`\"{}\#\char`\"{}. \mbox{\hyperlink{classThis}{This}} method concatonates whilst accounting for permutations of \char`\"{}\#\char`\"{} \mbox{\Hypertarget{classomexmeta_1_1OmexMetaUtils_a744a0575136f1cc60b76a6560a5595e9}\label{classomexmeta_1_1OmexMetaUtils_a744a0575136f1cc60b76a6560a5595e9}} 
 \index{omexmeta::OmexMetaUtils@{omexmeta::OmexMetaUtils}!configurePrefixStrings@{configurePrefixStrings}}
 \index{configurePrefixStrings@{configurePrefixStrings}!omexmeta::OmexMetaUtils@{omexmeta::OmexMetaUtils}}
 \doxysubsubsection{\texorpdfstring{configurePrefixStrings()}{configurePrefixStrings()}}
@@ -85,7 +85,7 @@ concatonate metaid and uri strings
 
 
 
-configures the \char`\"{}\+O\+M\+E\+Xlib\char`\"{}, \char`\"{}my\+O\+M\+E\+X\char`\"{} and \char`\"{}local\char`\"{} prefixes @ param omex\+\_\+name the name of the omex container your model is in 
+configures the \char`\"{}\+OMEXlib\char`\"{}, \char`\"{}my\+OMEX\char`\"{} and \char`\"{}local\char`\"{} prefixes @ param omex\+\_\+name the name of the omex container your model is in 
 
 
 \begin{DoxyParams}{Parameters}
@@ -143,11 +143,11 @@ return true when filename is a file that exists on system
 {\em filename} & \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{classomexmeta_1_1OmexMetaUtils_a596094a1ce72a362238682c8a864f616}\label{classomexmeta_1_1OmexMetaUtils_a596094a1ce72a362238682c8a864f616}} 
+\mbox{\Hypertarget{classomexmeta_1_1OmexMetaUtils_ad47205ad2bcb06742ce96c5aaca8d493}\label{classomexmeta_1_1OmexMetaUtils_ad47205ad2bcb06742ce96c5aaca8d493}} 
 \index{omexmeta::OmexMetaUtils@{omexmeta::OmexMetaUtils}!generateUniqueMetaid@{generateUniqueMetaid}}
 \index{generateUniqueMetaid@{generateUniqueMetaid}!omexmeta::OmexMetaUtils@{omexmeta::OmexMetaUtils}}
 \doxysubsubsection{\texorpdfstring{generateUniqueMetaid()}{generateUniqueMetaid()}}
-{\footnotesize\ttfamily std\+::string omexmeta\+::\+Omex\+Meta\+Utils\+::generate\+Unique\+Metaid (\begin{DoxyParamCaption}\item[{librdf\+\_\+model $\ast$}]{model,  }\item[{const std\+::string \&}]{metaid\+\_\+base,  }\item[{const std\+::vector$<$ std\+::string $>$ \&}]{exclusions }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily std\+::string omexmeta\+::\+Omex\+Meta\+Utils\+::generate\+Unique\+Metaid (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classredland_1_1LibrdfModel}{Librdf\+Model}} \&}]{model,  }\item[{const std\+::string \&}]{metaid\+\_\+base,  }\item[{const std\+::vector$<$ std\+::string $>$ \&}]{exclusions }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
 
@@ -167,7 +167,7 @@ exclusions. Mostly needed internally for dealing with metaids that already exist
 
 takes a uri as std\+::string and returns the string with the last section removed; 
 
-Example\+: www.\+uri.\+com/identifer/\+P\+D12345 will turn into www.\+uri.\+com/identifier/ \mbox{\Hypertarget{classomexmeta_1_1OmexMetaUtils_af663724f2efb0324a64c6a57e8491c13}\label{classomexmeta_1_1OmexMetaUtils_af663724f2efb0324a64c6a57e8491c13}} 
+Example\+: www.\+uri.\+com/identifer/\+PD12345 will turn into www.\+uri.\+com/identifier/ \mbox{\Hypertarget{classomexmeta_1_1OmexMetaUtils_af663724f2efb0324a64c6a57e8491c13}\label{classomexmeta_1_1OmexMetaUtils_af663724f2efb0324a64c6a57e8491c13}} 
 \index{omexmeta::OmexMetaUtils@{omexmeta::OmexMetaUtils}!isFormattedUri@{isFormattedUri}}
 \index{isFormattedUri@{isFormattedUri}!omexmeta::OmexMetaUtils@{omexmeta::OmexMetaUtils}}
 \doxysubsubsection{\texorpdfstring{isFormattedUri()}{isFormattedUri()}}

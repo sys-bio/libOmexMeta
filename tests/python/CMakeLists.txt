@@ -17,14 +17,14 @@ endif ()
 add_test(NAME
         pyomexmeta-api-tests
         COMMAND
-        Python::Interpreter -m pytest ${CMAKE_BINARY_DIR}/site-packages/pyomexmeta/api_tests.py
+        Python::Interpreter -m pytest "${CMAKE_BINARY_DIR}/site-packages/pyomexmeta/api_tests.py"
         WORKING_DIRECTORY
         "${CMAKE_BINARY_DIR}/site-packages/pyomexmeta"
         )
 add_test(NAME
         pyomexmeta-tests
         COMMAND
-        Python::Interpreter -m pytest ${CMAKE_BINARY_DIR}/site-packages/pyomexmeta/pyomexmeta_tests.py
+        Python::Interpreter -m pytest "${CMAKE_BINARY_DIR}/site-packages/pyomexmeta/pyomexmeta_tests.py"
         WORKING_DIRECTORY
         "${CMAKE_BINARY_DIR}/site-packages/pyomexmeta"
         )

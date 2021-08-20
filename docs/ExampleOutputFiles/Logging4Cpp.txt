@@ -1,0 +1,1 @@
+check logger filename: "D:\\libOmexMeta\\cmake-build-release\\docs\\log.log"

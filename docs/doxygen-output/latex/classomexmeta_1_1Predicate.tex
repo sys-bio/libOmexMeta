@@ -15,6 +15,9 @@ Inheritance diagram for omexmeta\+::Predicate\+:\begin{figure}[H]
 \item 
 \mbox{\hyperlink{classomexmeta_1_1Predicate_ad5a91eb29204202d2f18816d09677622}{Predicate}} (const std\+::string \&\mbox{\hyperlink{classomexmeta_1_1Predicate_afc79b0cc43eb11e4bc2fe0b305e551bc}{namespace\+\_\+}}, std\+::string term, std\+::string prefix)
 \begin{DoxyCompactList}\small\item\em construct a \mbox{\hyperlink{classomexmeta_1_1Predicate}{Predicate}} from a namespace, term and prefix portion of a predicate \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classomexmeta_1_1Predicate_a28edc476ba8cd53a51c6a1d60a40f133}\label{classomexmeta_1_1Predicate_a28edc476ba8cd53a51c6a1d60a40f133}} 
+{\bfseries Predicate} (\mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} node)
+\item 
 \mbox{\Hypertarget{classomexmeta_1_1Predicate_a5db1e6150f8cfd7605e82996e2aebb50}\label{classomexmeta_1_1Predicate_a5db1e6150f8cfd7605e82996e2aebb50}} 
 bool {\bfseries operator==} (const \mbox{\hyperlink{classomexmeta_1_1Predicate}{Predicate}} \&rhs) const
 \item 
@@ -23,8 +26,6 @@ bool {\bfseries operator!=} (const \mbox{\hyperlink{classomexmeta_1_1Predicate}{
 \item 
 std\+::string \mbox{\hyperlink{classomexmeta_1_1Predicate_a9d51ebf565f39fb4d6d4f58c1b030edf}{str}} ()
 \begin{DoxyCompactList}\small\item\em get the predicate as a full string \end{DoxyCompactList}\item 
-\mbox{\hyperlink{structraptor__term}{librdf\+\_\+node}} $\ast$ \mbox{\hyperlink{classomexmeta_1_1Predicate_a6edbc1f17d4a5cbf8ad0c1b70b683b4a}{get}} () const
-\begin{DoxyCompactList}\small\item\em getter for the node contained by the \mbox{\hyperlink{classomexmeta_1_1Predicate}{Predicate}} object \end{DoxyCompactList}\item 
 const std\+::vector$<$ std\+::string $>$ \& \mbox{\hyperlink{classomexmeta_1_1Predicate_aee19b8fc8b21f8e5ffd5b64691e1e530}{get\+Valid\+Terms}} () const
 \begin{DoxyCompactList}\small\item\em stores the valid terms that are allowed in a particular predicate subclass \end{DoxyCompactList}\item 
 const std\+::string \& \mbox{\hyperlink{classomexmeta_1_1Predicate_add4ab1cd86f83de3512279bbfdad947c}{get\+Namespace}} () const
@@ -37,7 +38,7 @@ const std\+::string \& \mbox{\hyperlink{classomexmeta_1_1Predicate_a27fa7d62ad9a
 \begin{DoxyCompactList}\small\item\em getter for uri \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classomexmeta_1_1Predicate_a718a37ff90ac0f2d7cc129e8351a2c7b}{free\+Node}} ()
 \begin{DoxyCompactList}\small\item\em release resources associated with this \mbox{\hyperlink{classomexmeta_1_1Predicate}{Predicate}}. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classomexmeta_1_1Predicate_a0bf6030510247a6999d81cada92c1e51}{set\+Node}} (\mbox{\hyperlink{structraptor__term}{librdf\+\_\+node}} $\ast$node)
+void \mbox{\hyperlink{classomexmeta_1_1Predicate_a176c7f9d009100931376ee6a87779e3c}{set\+Node}} (\mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} \&node)
 \begin{DoxyCompactList}\small\item\em replace the current librdf\+\_\+node assicated with this \mbox{\hyperlink{classomexmeta_1_1Predicate}{Predicate}} with node \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classomexmeta_1_1Predicate_ae2adc312e293aabfdbbffbb44018665b}\label{classomexmeta_1_1Predicate_ae2adc312e293aabfdbbffbb44018665b}} 
 \mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} {\bfseries get\+Node} ()
@@ -51,15 +52,9 @@ static void \mbox{\hyperlink{classomexmeta_1_1Predicate_a1e7e59b8a48c9f89eeec73f
 \begin{DoxyCompactList}\small\item\em Static method for checking validity of term against valid\+\_\+terms. \end{DoxyCompactList}\item 
 static bool \mbox{\hyperlink{classomexmeta_1_1Predicate_a8381c8b0c7bbaa27de29608cbff08bf5}{namespace\+Known}} (const std\+::string \&ns)
 \begin{DoxyCompactList}\small\item\em check if we have \char`\"{}know\char`\"{} a namespace. Known namespaces are returned by \mbox{\hyperlink{classomexmeta_1_1Predicate_a1291e3cd9727871f568e864e0f5af3f0}{Predicate\+::namespace\+Map()}}. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classomexmeta_1_1Predicate_a4cda551beb4e1354ac56d692f0eb78cd}\label{classomexmeta_1_1Predicate_a4cda551beb4e1354ac56d692f0eb78cd}} 
-static void \mbox{\hyperlink{classomexmeta_1_1Predicate_a4cda551beb4e1354ac56d692f0eb78cd}{add\+Seen\+Namespace\+To\+Serializer}} (librdf\+\_\+world $\ast$world, librdf\+\_\+serializer $\ast$serializer, \mbox{\hyperlink{structraptor__term}{librdf\+\_\+node}} $\ast$predicate)
+\mbox{\Hypertarget{classomexmeta_1_1Predicate_ac872644a6609cc8c11459237b3b781a6}\label{classomexmeta_1_1Predicate_ac872644a6609cc8c11459237b3b781a6}} 
+static void \mbox{\hyperlink{classomexmeta_1_1Predicate_ac872644a6609cc8c11459237b3b781a6}{add\+Seen\+Namespace\+To\+Serializer}} (\mbox{\hyperlink{classredland_1_1LibrdfSerializer}{Librdf\+Serializer}} serializer, \mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} predicate)
 \begin{DoxyCompactList}\small\item\em utility for checking whether the uri in @parameter predicate has a namespace that we already know. If found, the namespace is added to @parameter serializer \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsection*{Protected Member Functions}
-\begin{DoxyCompactItemize}
-\item 
-\mbox{\Hypertarget{classomexmeta_1_1Predicate_a157c4e95f9869d4f22cd07332ff7621a}\label{classomexmeta_1_1Predicate_a157c4e95f9869d4f22cd07332ff7621a}} 
-{\bfseries Predicate} (\mbox{\hyperlink{structraptor__term}{librdf\+\_\+node}} $\ast$node)
-\end{DoxyCompactItemize}
 \doxysubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -84,7 +79,7 @@ std\+::vector$<$ std\+::string $>$ {\bfseries valid\+\_\+terms\+\_\+} \{\char`\"
 
 
 \doxysubsection{Detailed Description}
-The predicate class creates and stores a U\+RI node. 
+The predicate class creates and stores a URI node. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{classomexmeta_1_1Predicate_ad5a91eb29204202d2f18816d09677622}\label{classomexmeta_1_1Predicate_ad5a91eb29204202d2f18816d09677622}} 
@@ -123,20 +118,7 @@ bqbiol\+:is -\/-\/-\/---$\vert$-- $\vert$ $\vert$ prefix term
 
 release resources associated with this \mbox{\hyperlink{classomexmeta_1_1Predicate}{Predicate}}. 
 
-\mbox{\hyperlink{classomexmeta_1_1Predicate}{Predicate}} objects contain a librdf\+\_\+node pointer which needs to be freed by the caller. If a \mbox{\hyperlink{classomexmeta_1_1Predicate}{Predicate}} is passed to a \mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}} object (which most of the time is it), responsibility for deleting the contained librdf\+\_\+node is transferred to the \mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}} object, which automatically clears up resources. If not, then it is the callers responsibility to call this method when they are done with \mbox{\hyperlink{classomexmeta_1_1Predicate}{Predicate}} instances. \mbox{\Hypertarget{classomexmeta_1_1Predicate_a6edbc1f17d4a5cbf8ad0c1b70b683b4a}\label{classomexmeta_1_1Predicate_a6edbc1f17d4a5cbf8ad0c1b70b683b4a}} 
-\index{omexmeta::Predicate@{omexmeta::Predicate}!get@{get}}
-\index{get@{get}!omexmeta::Predicate@{omexmeta::Predicate}}
-\doxysubsubsection{\texorpdfstring{get()}{get()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{structraptor__term}{librdf\+\_\+node}} $\ast$ omexmeta\+::\+Predicate\+::get (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
-
-
-
-getter for the node contained by the \mbox{\hyperlink{classomexmeta_1_1Predicate}{Predicate}} object 
-
-\begin{DoxyReturn}{Returns}
-the librdf\+\_\+node$\ast$ pointer for the redland libraries under the hood 
-\end{DoxyReturn}
-\mbox{\Hypertarget{classomexmeta_1_1Predicate_add4ab1cd86f83de3512279bbfdad947c}\label{classomexmeta_1_1Predicate_add4ab1cd86f83de3512279bbfdad947c}} 
+\mbox{\hyperlink{classomexmeta_1_1Predicate}{Predicate}} objects contain a librdf\+\_\+node pointer which needs to be freed by the caller. If a \mbox{\hyperlink{classomexmeta_1_1Predicate}{Predicate}} is passed to a \mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}} object (which most of the time is it), responsibility for deleting the contained librdf\+\_\+node is transferred to the \mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}} object, which automatically clears up resources. If not, then it is the callers responsibility to call this method when they are done with \mbox{\hyperlink{classomexmeta_1_1Predicate}{Predicate}} instances. \mbox{\Hypertarget{classomexmeta_1_1Predicate_add4ab1cd86f83de3512279bbfdad947c}\label{classomexmeta_1_1Predicate_add4ab1cd86f83de3512279bbfdad947c}} 
 \index{omexmeta::Predicate@{omexmeta::Predicate}!getNamespace@{getNamespace}}
 \index{getNamespace@{getNamespace}!omexmeta::Predicate@{omexmeta::Predicate}}
 \doxysubsubsection{\texorpdfstring{getNamespace()}{getNamespace()}}
@@ -229,11 +211,11 @@ get a map namespaces and prefixes
 \begin{DoxyReturn}{Returns}
 a unordered\+\_\+map with namespaces as keys and prefixes as values 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classomexmeta_1_1Predicate_a0bf6030510247a6999d81cada92c1e51}\label{classomexmeta_1_1Predicate_a0bf6030510247a6999d81cada92c1e51}} 
+\mbox{\Hypertarget{classomexmeta_1_1Predicate_a176c7f9d009100931376ee6a87779e3c}\label{classomexmeta_1_1Predicate_a176c7f9d009100931376ee6a87779e3c}} 
 \index{omexmeta::Predicate@{omexmeta::Predicate}!setNode@{setNode}}
 \index{setNode@{setNode}!omexmeta::Predicate@{omexmeta::Predicate}}
 \doxysubsubsection{\texorpdfstring{setNode()}{setNode()}}
-{\footnotesize\ttfamily void omexmeta\+::\+Predicate\+::set\+Node (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structraptor__term}{librdf\+\_\+node}} $\ast$}]{node }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void omexmeta\+::\+Predicate\+::set\+Node (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} \&}]{node }\end{DoxyParamCaption})}
 
 
 

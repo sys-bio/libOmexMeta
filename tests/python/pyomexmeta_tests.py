@@ -11,7 +11,7 @@ _TESTS_DIR = os.path.dirname(_PYTHON_TESTS_DIR)
 _PROJECT_ROOT = os.path.dirname(_TESTS_DIR)
 _SRC_DIR = os.path.join(_PROJECT_ROOT, "src")
 
-sys.path.append(_SRC_DIR)
+sys.path += [_PYTHON_TESTS_DIR, _SRC_DIR]
 
 # module not found by IDE, but it does exist and and tests do run
 from pyomexmeta import *
@@ -108,7 +108,7 @@ class TestRDF(unittest.TestCase):
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex> .
 @prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
 <http://omex-library.org/NewOmex.omex/NewModel.xml#>
-<https://dublincore.org/specifications/dublin-core/dcmi-terms/creator> <https://orcid.org/1234-1234-1234-1234> .
+<http://purl.org/dc/terms/creator> <https://orcid.org/1234-1234-1234-1234> .
 """
         rdf = RDF.from_string(rdf_str, "turtle")
         self.assertEqual(1, len(rdf))
@@ -198,7 +198,7 @@ class TestRDF(unittest.TestCase):
         expected = "http://omex-library.org/NewOmex.omex/NewModel.rdf#"
         self.assertEqual(expected, actual)
 
-    def test_query(self):
+    def test_query_results_as_str(self):
         rdf = RDF.from_string(self.rdf_str, "rdfxml")
         q = """SELECT ?x ?y ?z 
         WHERE {?x ?y ?z}
@@ -212,8 +212,21 @@ http://omex-library.org/NewOmex.omex/NewModel.rdf#sink_0,http://www.bhi.washingt
 http://omex-library.org/NewOmex.omex/NewModel.rdf#source_0,http://www.bhi.washington.edu/semsim#hasPhysicalEntityReference,http://omex-library.org/NewOmex.omex/NewModel.rdf#species_metaid_0
 """
         self.maxDiff = None
-        actual = rdf.query(q, "csv")
+        actual = rdf.query_results_as_string(q, "csv")
         self.assertEqual(expected, actual)
+
+    def test_query_results_as_dict(self):
+
+        rdf = RDF.from_string(TestStrings.sbml_with_annotations, "rdfxml")
+        query_str = """
+        SELECT ?x ?y ?z
+        WHERE {
+            ?x ?y ?z
+        }"""
+        results = rdf.query_results_as_dict(query_str)
+        self.assertIsInstance(results, dict)
+        self.assertEqual(3, len(results))
+        self.assertEqual(28, len(results['x']))
 
     def test_use_sqlite_storage(self):
         rdf = RDF("sqlite", self.sqlite_fname, "new='yes'")
@@ -389,7 +402,7 @@ local:SourceParticipant0003
                 .add_name("Joe Smith")
 
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
+@prefix dc: <http://purl.org/dc/terms/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix OMEXlib: <http://omex-library.org/> .
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
@@ -949,6 +962,111 @@ local:SourceParticipant0000
         stripped = editor.strip_annotations()
         self.assertEqual(expected, stripped)
 
+    def test_get_xml_with_broken_xml(self):
+        s = """<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created by libAntimony version v2.11.0 with libSBML version 5.18.0. -->
+<sbml xmlns="http://www.sbml.org/sbml/level3/version1/core" level="3" version="1">
+  <model metaid="SimpleRegulation" id="SimpleRegulation">
+    <listOfCompartments>
+      <compartment id="cell" spatialDimensions="3" size="1" constant="true" metaid="#OmexMetaId0000"/>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species id="A" compartment="cell" initialConcentration="10" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" metaid="#OmexMetaId0001"/>
+      <species id="B" compartment="cell" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" metaid="#OmexMetaId0002"/>
+      <species id="C" compartment="cell" initialConcentration="10" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" metaid="#OmexMetaId0003"/>
+      <species id="D" compartment="cell" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" metaid="#OmexMetaId0004"/>
+    </listOfSpecies>
+    <listOfParameters>
+      <parameter id="S" value="0" constant="true"/>
+      <parameter id="k1" value="0.1" constant="true"/>
+      <parameter id="k2" value="0.1" constant="true"/>
+      <parameter id="k3" value="0.1" constant="true"/>
+      <parameter id="k4" value="0.1" constant="true"/>
+    </listOfParameters>
+    <listOfReactions>
+      <reaction id="R1" reversible="false" fast="false" metaid="#OmexMetaId0005">
+        <listOfReactants>
+          <speciesReference species="A" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="B" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw metaid="#OmexMetaId0006">
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k1 </ci>
+              <ci> A </ci>
+              <ci> S </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="R2" reversible="false" fast="false" metaid="#OmexMetaId0007">
+        <listOfReactants>
+          <speciesReference species="B" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="A" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw metaid="#OmexMetaId0008">
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k2 </ci>
+              <ci> B </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="R3" reversible="false" fast="false" metaid="#OmexMetaId0009">
+        <listOfReactants>
+          <speciesReference species="C" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="D" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference species="B"/>
+        </listOfModifiers>
+        <kineticLaw metaid="#OmexMetaId0010">
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k3 </ci>
+              <ci> C </ci>
+              <ci> B </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="R4" reversible="false" fast="false" metaid="#OmexMetaId0011">
+        <listOfReactants>
+          <speciesReference species="D" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="C" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw metaid="#OmexMetaId0012">
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k4 </ci>
+              <ci> D </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+    </listOfReactions>
+  </model>
+</sbml>"""
+        # fails because of extraction
+        editor = self.rdf.to_editor(s, False, True)
+        try:
+            editor.get_xml()
+        except Exception:
+            self.fail("get_xml() failed with ValueError")
+
 
 class AnnotateAModelTest(unittest.TestCase):
     maxDiff = None
@@ -1275,7 +1393,7 @@ local:SourceParticipant0001
                 .add_account_name("1234-1234-1234-1234") \
                 .add_account_service_homepage("https://github.com/sys-bio/libomexmeta")
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
+@prefix dc: <http://purl.org/dc/terms/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix OMEXlib: <http://omex-library.org/> .
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
@@ -1304,7 +1422,7 @@ local:SourceParticipant0001
                 .add_account_name("1234-1234-1234-1234") \
                 .add_account_service_homepage("https://github.com/sys-bio/libomexmeta")
         expected = """@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
+@prefix dc: <http://purl.org/dc/terms/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix OMEXlib: <http://omex-library.org/> .
 @prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .
@@ -1407,7 +1525,7 @@ class GoldStandardOmexArchiveTests(unittest.TestCase):
     def test_gold_standard5(self):
         self.gold_standard_test(self.gold_standard_url5, self.gold_standard_filename5, 69)
 
-    def test_query(self):
+    def test_query_results_as_str(self):
         self.download_file(self.gold_standard_url1, self.gold_standard_filename1)
         s = self.extract_rdf_from_combine_archive(self.gold_standard_filename1)[0]
         rdf = RDF.from_string(s, "rdfxml")
@@ -1417,7 +1535,7 @@ class GoldStandardOmexArchiveTests(unittest.TestCase):
         WHERE {
             ?x ?y ?z
         }"""
-        results = rdf.query(query_str, "rdfxml")
+        results = rdf.query_results_as_string(query_str, "rdfxml")
         results_rdf = RDF()
         results_rdf.add_from_string(results)
         self.assertEqual(234, len(results_rdf))
@@ -1458,6 +1576,39 @@ class DrawTests(unittest.TestCase):
                     .resource_uri("fma/FMA_66835")
         rdf.draw(self.output_filename, format="jpeg")
         self.assertTrue(os.path.isfile(self.output_filename))
+
+
+class LoggerTests(unittest.TestCase):
+
+    def setUp(self) -> None:
+        pass
+
+    def tearDown(self) -> None:
+        pass
+
+    def test_default_level(self):
+        actual = Logger.get_level()
+        expected = eLogLevel.warn
+        self.assertEqual(actual, expected)
+
+    def test_use_console_logger_out_of_the_box(self):
+        Logger.info("Information is not displayed by default beecause the default level is warn")
+        Logger.warn("Warnings are displayed to console")
+
+    def test_file_logger(self):
+        fname = os.path.join(os.path.abspath(os.path.dirname(__file__)), "log.log")
+        print(fname)
+        Logger.file_logger(fname)
+        Logger.critical("A critical message that you just must see")
+        if os.path.isfile(fname):
+            try:
+                os.remove(fname)
+            except OSError as e:
+                Logger.warn(str(e))
+
+    def test_set_logging_level(self):
+        Logger.set_level(eLogLevel.info)
+        Logger.info("Doing information")
 
 
 if __name__ == "__main__":

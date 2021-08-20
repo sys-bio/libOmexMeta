@@ -1,0 +1,401 @@
+Running main() from ..\third_party\googletest\googletest\src\gtest_main.cc
+[==========] Running 71 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 71 tests from CAPITests
+[ RUN      ] CAPITests.RDFSize
+[       OK ] CAPITests.RDFSize (3 ms)
+[ RUN      ] CAPITests.RDFToString
+[13:09:04 +01:00]  warning :  XML parser warning: Unsupported version '1.1' 
+[       OK ] CAPITests.RDFToString (3 ms)
+[ RUN      ] CAPITests.RDF_fromString
+[       OK ] CAPITests.RDF_fromString (1 ms)
+[ RUN      ] CAPITests.RDF_fromStringButWrongSyntax
+[13:09:04 +01:00]  error : syntax error at '<' 
+[       OK ] CAPITests.RDF_fromStringButWrongSyntax (1 ms)
+[ RUN      ] CAPITests.RDF_toFile
+[       OK ] CAPITests.RDF_toFile (1 ms)
+[ RUN      ] CAPITests.RDF_addFromString
+[       OK ] CAPITests.RDF_addFromString (0 ms)
+[ RUN      ] CAPITests.RDF_addFromStringOutput
+[       OK ] CAPITests.RDF_addFromStringOutput (1 ms)
+[ RUN      ] CAPITests.RDF_addFromUriSqliteStorage
+[       OK ] CAPITests.RDF_addFromUriSqliteStorage (18 ms)
+[ RUN      ] CAPITests.RDF_fromFile
+D:\libOmexMeta\cmake-build-release\docs/TestParseFromFile.rdf
+[       OK ] CAPITests.RDF_fromFile (2 ms)
+[ RUN      ] CAPITests.RDF_addFromFile
+D:\libOmexMeta\cmake-build-release\docs\TestParseFromFile.rdf
+[       OK ] CAPITests.RDF_addFromFile (1 ms)
+[ RUN      ] CAPITests.TestCheckValidMetaid
+[       OK ] CAPITests.TestCheckValidMetaid (1 ms)
+[ RUN      ] CAPITests.TestGetMetaID
+TestModelNotAnnotated
+[       OK ] CAPITests.TestGetMetaID (0 ms)
+[ RUN      ] CAPITests.TestGetNumMetaIDs
+11
+[       OK ] CAPITests.TestGetNumMetaIDs (0 ms)
+[ RUN      ] CAPITests.TestSingularAnnotationSetAbout
+[       OK ] CAPITests.TestSingularAnnotationSetAbout (1 ms)
+[ RUN      ] CAPITests.TestSingularAnnotationSetPredicate
+[       OK ] CAPITests.TestSingularAnnotationSetPredicate (0 ms)
+[ RUN      ] CAPITests.TestSingularAnnotationSetPredicateUri
+[       OK ] CAPITests.TestSingularAnnotationSetPredicateUri (0 ms)
+[ RUN      ] CAPITests.TestSingularAnnotationFull
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix OMEXlib: <http://omex-library.org/> .
+@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#species0000>
+    <http://predicate.com/from/uri> "Cheese" .
+
+[       OK ] CAPITests.TestSingularAnnotationFull (1 ms)
+[ RUN      ] CAPITests.TestEditorPtrMem
+[       OK ] CAPITests.TestEditorPtrMem (0 ms)
+[ RUN      ] CAPITests.TestSingularAnnotationSetResourceLiteral
+[       OK ] CAPITests.TestSingularAnnotationSetResourceLiteral (0 ms)
+[ RUN      ] CAPITests.TestSingularAnnotationSetResourceUri
+[       OK ] CAPITests.TestSingularAnnotationSetResourceUri (1 ms)
+[ RUN      ] CAPITests.TestSingularAnnotationSetResourceBlank
+[       OK ] CAPITests.TestSingularAnnotationSetResourceBlank (0 ms)
+[ RUN      ] CAPITests.TestPhysicalEntitySBML1
+[       OK ] CAPITests.TestPhysicalEntitySBML1 (1 ms)
+[ RUN      ] CAPITests.TestPhysicalEntitySBML2
+[       OK ] CAPITests.TestPhysicalEntitySBML2 (1 ms)
+[ RUN      ] CAPITests.TestPhysicalEntitySBML3
+[       OK ] CAPITests.TestPhysicalEntitySBML3 (1 ms)
+[ RUN      ] CAPITests.TestPhysicalEntityCellML1
+[       OK ] CAPITests.TestPhysicalEntityCellML1 (1 ms)
+[ RUN      ] CAPITests.TestPhysicalEntityCellML2
+[       OK ] CAPITests.TestPhysicalEntityCellML2 (1 ms)
+[ RUN      ] CAPITests.TestPhysicalEntityCellML3
+[       OK ] CAPITests.TestPhysicalEntityCellML3 (1 ms)
+[ RUN      ] CAPITests.TestPhysicalEntityLocations
+[       OK ] CAPITests.TestPhysicalEntityLocations (1 ms)
+[ RUN      ] CAPITests.TestPhysicalProcessSBML1
+[       OK ] CAPITests.TestPhysicalProcessSBML1 (3 ms)
+[ RUN      ] CAPITests.TestPhysicalProcessSBML2
+[       OK ] CAPITests.TestPhysicalProcessSBML2 (3 ms)
+[ RUN      ] CAPITests.TestPhysicalProcessCellML1
+[       OK ] CAPITests.TestPhysicalProcessCellML1 (2 ms)
+[ RUN      ] CAPITests.TestPhysicalProcessCellML2
+[       OK ] CAPITests.TestPhysicalProcessCellML2 (2 ms)
+[ RUN      ] CAPITests.TestEnergyDiffSBML1
+[       OK ] CAPITests.TestEnergyDiffSBML1 (2 ms)
+[ RUN      ] CAPITests.TestEnergyDiffSBML2
+[       OK ] CAPITests.TestEnergyDiffSBML2 (1 ms)
+[ RUN      ] CAPITests.TestEnergyDiffCellML1
+[       OK ] CAPITests.TestEnergyDiffCellML1 (2 ms)
+[ RUN      ] CAPITests.TestRDFTwice1
+[       OK ] CAPITests.TestRDFTwice1 (0 ms)
+[ RUN      ] CAPITests.TestRDFTwice3
+[       OK ] CAPITests.TestRDFTwice3 (0 ms)
+[ RUN      ] CAPITests.RDFgetArchiveUri
+http://omex-library.org/NewOmex.omex/
+[       OK ] CAPITests.RDFgetArchiveUri (0 ms)
+[ RUN      ] CAPITests.RDFgetLocalUri
+http://omex-library.org/NewOmex.omex/NewModel.rdf#
+[       OK ] CAPITests.RDFgetLocalUri (0 ms)
+[ RUN      ] CAPITests.RDFgetModelUri
+http://omex-library.org/NewOmex.omex/NewModel.xml
+[       OK ] CAPITests.RDFgetModelUri (0 ms)
+[ RUN      ] CAPITests.RDFgetOmexRepository
+http://omex-library.org/
+[       OK ] CAPITests.RDFgetOmexRepository (0 ms)
+[ RUN      ] CAPITests.RDFgetModelLevelAnnotationUri
+http://omex-library.org/NewOmex.omex/NewModel.xml#NewModel
+[       OK ] CAPITests.RDFgetModelLevelAnnotationUri (0 ms)
+[ RUN      ] CAPITests.RDFsetModelMetaid
+[       OK ] CAPITests.RDFsetModelMetaid (0 ms)
+[ RUN      ] CAPITests.EditorgetLocalUri
+http://omex-library.org/NewOmex.omex/NewModel.rdf#
+[       OK ] CAPITests.EditorgetLocalUri (0 ms)
+[ RUN      ] CAPITests.EditorgetModelUri
+http://omex-library.org/NewOmex.omex/NewModel.xml
+[       OK ] CAPITests.EditorgetModelUri (0 ms)
+[ RUN      ] CAPITests.EditorgetOmexRepository
+http://omex-library.org/
+[       OK ] CAPITests.EditorgetOmexRepository (1 ms)
+[ RUN      ] CAPITests.EditorsetOmexRepository
+http://newOmexRepo.org/
+[       OK ] CAPITests.EditorsetOmexRepository (0 ms)
+[ RUN      ] CAPITests.EditorsetArchiveUri
+http://omex-library.org/newArchive.omex/
+[       OK ] CAPITests.EditorsetArchiveUri (0 ms)
+[ RUN      ] CAPITests.RDFsetModelUri
+http://omex-library.org/NewOmex.omex/newModelName.xml
+[       OK ] CAPITests.RDFsetModelUri (0 ms)
+[ RUN      ] CAPITests.RDFgetModelUriDefault
+http://omex-library.org/NewOmex.omex/NewModel.xml
+[       OK ] CAPITests.RDFgetModelUriDefault (0 ms)
+[ RUN      ] CAPITests.RDFsetLocalUri
+http://omex-library.org/NewOmex.omex/newModelName.rdf#
+[       OK ] CAPITests.RDFsetLocalUri (0 ms)
+[ RUN      ] CAPITests.EditorGetLocalUri
+http://omex-library.org/NewOmex.omex/NewModel.rdf#
+[       OK ] CAPITests.EditorGetLocalUri (1 ms)
+[ RUN      ] CAPITests.EditoraddCreator
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix OMEXlib: <http://omex-library.org/> .
+@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#TestModelNotAnnotated>
+    dc:creator <https://orcid.org/1234-1234-1234-1234> .
+
+
+[       OK ] CAPITests.EditoraddCreator (0 ms)
+[ RUN      ] CAPITests.EditoraddContributor
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix OMEXlib: <http://omex-library.org/> .
+@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.rdf#>
+    dc:contributor <https://orcid.org/1234-1234-1234-1234> .
+
+
+[       OK ] CAPITests.EditoraddContributor (1 ms)
+[ RUN      ] CAPITests.Editortaxon
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
+@prefix NCBI_Taxon: <https://identifiers.org/taxonomy:> .
+@prefix OMEXlib: <http://omex-library.org/> .
+@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#TestModelNotAnnotated>
+    bqbiol:hasTaxon <https://identifiers.org/taxonomy:9898> .
+
+
+[       OK ] CAPITests.Editortaxon (1 ms)
+[ RUN      ] CAPITests.Editorpubmed
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix bqmodel: <http://biomodels.net/model-qualifiers/> .
+@prefix pubmed: <https://identifiers.org/pubmed:> .
+@prefix OMEXlib: <http://omex-library.org/> .
+@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#TestModelNotAnnotated>
+    bqmodel:isDescribedBy <https://identifiers.org/pubmed:12345678> .
+
+
+[       OK ] CAPITests.Editorpubmed (1 ms)
+[ RUN      ] CAPITests.EditoraddDescription
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix OMEXlib: <http://omex-library.org/> .
+@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#TestModelNotAnnotated>
+    dc:description "A model" .
+
+
+[       OK ] CAPITests.EditoraddDescription (0 ms)
+[ RUN      ] CAPITests.EditoraddDateCreated
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix OMEXlib: <http://omex-library.org/> .
+@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#TestModelNotAnnotated>
+    dc:created "2020-11-23"^^dc:W3CDTF .
+
+
+[       OK ] CAPITests.EditoraddDateCreated (1 ms)
+[ RUN      ] CAPITests.EditoraddParentModel
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix bqmodel: <http://biomodels.net/model-qualifiers/> .
+@prefix biomod: <https://identifiers.org/biomodels.db:> .
+@prefix OMEXlib: <http://omex-library.org/> .
+@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#TestModelNotAnnotated>
+    bqmodel:isDerivedFrom biomod:BIOMD000001 .
+
+
+[       OK ] CAPITests.EditoraddParentModel (1 ms)
+[ RUN      ] CAPITests.EditorGetXml
+[       OK ] CAPITests.EditorGetXml (1 ms)
+[ RUN      ] CAPITests.PersonalInformationaddCreator
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix OMEXlib: <http://omex-library.org/> .
+@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000>
+    dc:creator <https://identifiers.org/orcid/2134-1234-1234-1234> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#TestModelNotAnnotated>
+    dc:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .
+
+
+[       OK ] CAPITests.PersonalInformationaddCreator (1 ms)
+[ RUN      ] CAPITests.PersonalInformationaddName
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix OMEXlib: <http://omex-library.org/> .
+@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000>
+    foaf:name "Ciaran Welsh" .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#TestModelNotAnnotated>
+    dc:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .
+
+
+[       OK ] CAPITests.PersonalInformationaddName (2 ms)
+[ RUN      ] CAPITests.PersonalInformationaddMbox
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix OMEXlib: <http://omex-library.org/> .
+@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000>
+    foaf:mbox "cwelsh2@ue.edu" .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#TestModelNotAnnotated>
+    dc:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .
+
+
+[       OK ] CAPITests.PersonalInformationaddMbox (1 ms)
+[ RUN      ] CAPITests.PersonalInformationaddAccountName
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix OMEXlib: <http://omex-library.org/> .
+@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000>
+    foaf:accountName <https://orcid.org/2134-1234-1234-1234> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#TestModelNotAnnotated>
+    dc:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .
+
+
+[       OK ] CAPITests.PersonalInformationaddAccountName (2 ms)
+[ RUN      ] CAPITests.PersonalInformationaddAccountServiceHomepage
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix OMEXlib: <http://omex-library.org/> .
+@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000>
+    foaf:accountServiceHomepage <https://github.com/sys-bio/libOmexMeta> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#TestModelNotAnnotated>
+    dc:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .
+
+
+[       OK ] CAPITests.PersonalInformationaddAccountServiceHomepage (1 ms)
+[ RUN      ] CAPITests.PersonalInformationaddFoafUri
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix OMEXlib: <http://omex-library.org/> .
+@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000>
+    foaf:accountServiceHomepage "https://github.com/sys-bio/libOmexMeta" .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#TestModelNotAnnotated>
+    dc:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .
+
+
+[       OK ] CAPITests.PersonalInformationaddFoafUri (1 ms)
+[ RUN      ] CAPITests.PersonalInformationaddFoafLiteral
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix OMEXlib: <http://omex-library.org/> .
+@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000>
+    foaf:name "Ciaran Welsh" .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#TestModelNotAnnotated>
+    dc:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .
+
+
+[       OK ] CAPITests.PersonalInformationaddFoafLiteral (2 ms)
+[ RUN      ] CAPITests.PersonalInformationgetMetaid
+http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000
+[       OK ] CAPITests.PersonalInformationgetMetaid (1 ms)
+[ RUN      ] CAPITests.RDFToEditorTestWithSemanticExtraction
+[       OK ] CAPITests.RDFToEditorTestWithSemanticExtraction (10 ms)
+[ RUN      ] CAPITests.RDFToEditorTestWithoutSemanticExtraction
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix OMEXlib: <http://omex-library.org/> .
+@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
+
+[       OK ] CAPITests.RDFToEditorTestWithoutSemanticExtraction (1 ms)
+[ RUN      ] CAPITests.EditorStripAnnotations
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level3/version1/core" level="3" version="1">
+    <model metaid="ToyModel" id="ToyModel">
+        <listOfCompartments>
+            <compartment id="cytosol" metaid="comp1" spatialDimensions="3" size="1" constant="true"/>
+            <compartment id="extraCell" metaid="comp2" spatialDimensions="3" size="10" constant="true"/>
+        </listOfCompartments>
+        <listOfSpecies>
+            <species id="A" metaid="sp_1" compartment="cytosol" initialConcentration="10" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false">
+                
+            </species>
+            <species id="B" metaid="sp_2" compartment="cytosol" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+            <species id="Ca" metaid="sp_3" compartment="cytosol" initialConcentration="2" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+            <species id="PlasmaCa" metaid="sp_4" compartment="extraCell" initialConcentration="3" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+            <species id="Enzyme" metaid="sp_5" compartment="cytosol" initialConcentration="2" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+        </listOfSpecies>
+        <listOfParameters>
+            <parameter id="k1" value="0.1" constant="true"/>
+            <parameter id="k2" value="0.1" constant="true"/>
+        </listOfParameters>
+        <listOfReactions>
+            <reaction id="r1" metaid="react1" reversible="false" fast="false">
+                <listOfReactants>
+                    <speciesReference species="B" stoichiometry="1" constant="true"/>
+                </listOfReactants>
+                <listOfProducts>
+                    <speciesReference species="A" stoichiometry="2" constant="true"/>
+                </listOfProducts>
+                <kineticLaw>
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <apply>
+                            <times/>
+                            <ci>k2</ci>
+                            <ci>B</ci>
+                        </apply>
+                    </math>
+                </kineticLaw>
+            </reaction>
+            <reaction id="r2" metaid="react2" reversible="false" fast="false">
+                <listOfReactants>
+                    <speciesReference species="Ca" stoichiometry="1" constant="true"/>
+                    <speciesReference species="A" stoichiometry="1" constant="true"/>
+                </listOfReactants>
+                <listOfProducts>
+                    <speciesReference species="PlasmaCa" stoichiometry="1" constant="true"/>
+                </listOfProducts>
+                <listOfModifiers>
+                    <modifierSpeciesReference species="Enzyme"/>
+                </listOfModifiers>
+                <kineticLaw>
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <apply>
+                            <times/>
+                            <ci>k2</ci>
+                            <ci>Ca</ci>
+                        </apply>
+                    </math>
+                </kineticLaw>
+            </reaction>
+        </listOfReactions>
+    </model>
+</sbml>
+[       OK ] CAPITests.EditorStripAnnotations (0 ms)
+[----------] 71 tests from CAPITests (87 ms total)
+
+[----------] Global test environment tear-down
+[==========] 71 tests from 1 test suite ran. (87 ms total)
+[  PASSED  ] 71 tests.

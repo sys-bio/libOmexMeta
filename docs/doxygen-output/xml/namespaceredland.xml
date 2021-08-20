@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="namespaceredland" kind="namespace" language="C++">
     <compoundname>redland</compoundname>
     <innerclass refid="classredland_1_1LibrdfModel" prot="public">redland::LibrdfModel</innerclass>
@@ -13,7 +13,305 @@
     <innerclass refid="classredland_1_1LibrdfStream" prot="public">redland::LibrdfStream</innerclass>
     <innerclass refid="classredland_1_1LibrdfUri" prot="public">redland::LibrdfUri</innerclass>
     <innerclass refid="classredland_1_1LibrdfWorld" prot="public">redland::LibrdfWorld</innerclass>
+    <innerclass refid="classredland_1_1Logger" prot="public">redland::Logger</innerclass>
     <innerclass refid="classredland_1_1RaptorIOStream" prot="public">redland::RaptorIOStream</innerclass>
+    <innerclass refid="classredland_1_1RedlandType" prot="public">redland::RedlandType</innerclass>
+    <innerclass refid="classredland_1_1RefCountedRedlandType" prot="public">redland::RefCountedRedlandType</innerclass>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="LibrdfModel_8h_1af405cc2db56aa6e33ee9fa8e756b219d" prot="public" static="no">
+        <type>std::function&lt; void(librdf_model *)&gt;</type>
+        <definition>using redland::model_free_func = typedef std::function&lt;void(librdf_model *)&gt;</definition>
+        <argsstring></argsstring>
+        <name>model_free_func</name>
+        <briefdescription>
+<para>std::function signature of librdf_free_model </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfModel.h" line="25" column="5" bodyfile="src/redland/RedlandWrapper/src/include/redland/LibrdfModel.h" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="LibrdfModel_8h_1a96f9ec2b11d72962a6e9f82c4481a3e4" prot="public" static="no">
+        <type><ref refid="classredland_1_1RefCountedRedlandType" kindref="compound">RefCountedRedlandType</ref>&lt; librdf_model, model_free_func &gt;</type>
+        <definition>using redland::RefCounted_librdf_model = typedef RefCountedRedlandType&lt;librdf_model, model_free_func&gt;</definition>
+        <argsstring></argsstring>
+        <name>RefCounted_librdf_model</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Instantiation of templated superclass </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfModel.h" line="30" column="5" bodyfile="src/redland/RedlandWrapper/src/include/redland/LibrdfModel.h" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="LibrdfNode_8h_1a8c67eecd677fd2804cc2d87ddc85f9f0" prot="public" static="no">
+        <type>std::function&lt; void(<ref refid="structraptor__term" kindref="compound">librdf_node</ref> *)&gt;</type>
+        <definition>using redland::node_free_func = typedef std::function&lt;void(librdf_node *)&gt;</definition>
+        <argsstring></argsstring>
+        <name>node_free_func</name>
+        <briefdescription>
+<para>std::function signature of librdf_free_node </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfNode.h" line="43" column="5" bodyfile="src/redland/RedlandWrapper/src/include/redland/LibrdfNode.h" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="LibrdfNode_8h_1a5fd647412a362f4d219db60f4475da63" prot="public" static="no">
+        <type><ref refid="classredland_1_1RefCountedRedlandType" kindref="compound">RefCountedRedlandType</ref>&lt; <ref refid="structraptor__term" kindref="compound">librdf_node</ref>, node_free_func &gt;</type>
+        <definition>using redland::RefCounted_librdf_node = typedef RefCountedRedlandType&lt;librdf_node, node_free_func&gt;</definition>
+        <argsstring></argsstring>
+        <name>RefCounted_librdf_node</name>
+        <briefdescription>
+<para>instantiation of superclass </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfNode.h" line="48" column="5" bodyfile="src/redland/RedlandWrapper/src/include/redland/LibrdfNode.h" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="LibrdfParser_8h_1a9f9246cf1368710ba4f318afa8685613" prot="public" static="no">
+        <type>std::function&lt; void(librdf_parser *)&gt;</type>
+        <definition>using redland::parser_free_func = typedef std::function&lt;void(librdf_parser *)&gt;</definition>
+        <argsstring></argsstring>
+        <name>parser_free_func</name>
+        <briefdescription>
+<para>std::function signature of librdf_free_parser </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfParser.h" line="23" column="5" bodyfile="src/redland/RedlandWrapper/src/include/redland/LibrdfParser.h" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="LibrdfParser_8h_1a9665c9d2ae0de6a1b711bb050cf05894" prot="public" static="no">
+        <type><ref refid="classredland_1_1RedlandType" kindref="compound">RedlandType</ref>&lt; librdf_parser, parser_free_func &gt;</type>
+        <definition>using redland::RedlandType_librdf_parser = typedef RedlandType&lt;librdf_parser, parser_free_func&gt;</definition>
+        <argsstring></argsstring>
+        <name>RedlandType_librdf_parser</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Instantiation of templated superclass </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfParser.h" line="28" column="5" bodyfile="src/redland/RedlandWrapper/src/include/redland/LibrdfParser.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="LibrdfQuery_8h_1aa6815553d9356c634fbe729bd0ad3215" prot="public" static="no">
+        <type>std::function&lt; void(librdf_query *)&gt;</type>
+        <definition>using redland::query_free_func = typedef std::function&lt;void(librdf_query *)&gt;</definition>
+        <argsstring></argsstring>
+        <name>query_free_func</name>
+        <briefdescription>
+<para>std::function signature of librdf_free_parser </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfQuery.h" line="24" column="5" bodyfile="src/redland/RedlandWrapper/src/include/redland/LibrdfQuery.h" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="LibrdfQuery_8h_1ab8df04d6be7267dd71c864ba98fb8cd2" prot="public" static="no">
+        <type><ref refid="classredland_1_1RefCountedRedlandType" kindref="compound">RefCountedRedlandType</ref>&lt; librdf_query, query_free_func &gt;</type>
+        <definition>using redland::RedlandType_librdf_query = typedef RefCountedRedlandType&lt;librdf_query, query_free_func&gt;</definition>
+        <argsstring></argsstring>
+        <name>RedlandType_librdf_query</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Instantiation of templated superclass </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfQuery.h" line="29" column="5" bodyfile="src/redland/RedlandWrapper/src/include/redland/LibrdfQuery.h" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="LibrdfQuery_8h_1a4f797d04d3ce20960add94c7aef6041c" prot="public" static="no">
+        <type>std::unordered_map&lt; std::string, std::vector&lt; std::string &gt; &gt;</type>
+        <definition>typedef std::unordered_map&lt; std::string, std::vector&lt; std::string &gt; &gt; redland::ResultsMap</definition>
+        <argsstring></argsstring>
+        <name>ResultsMap</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfQuery.h" line="31" column="5" bodyfile="src/redland/RedlandWrapper/src/include/redland/LibrdfQuery.h" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="LibrdfQueryResults_8h_1a5cc21d1f53faff9e04163f650b5266f9" prot="public" static="no">
+        <type>std::function&lt; void(librdf_query_results *)&gt;</type>
+        <definition>using redland::query_results_free_func = typedef std::function&lt;void(librdf_query_results *)&gt;</definition>
+        <argsstring></argsstring>
+        <name>query_results_free_func</name>
+        <briefdescription>
+<para>std::function signature of librdf_free_parser </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfQueryResults.h" line="24" column="5" bodyfile="src/redland/RedlandWrapper/src/include/redland/LibrdfQueryResults.h" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="LibrdfQueryResults_8h_1a908fa42b930a0297661239c8a6151917" prot="public" static="no">
+        <type><ref refid="classredland_1_1RedlandType" kindref="compound">RedlandType</ref>&lt; librdf_query_results, query_results_free_func &gt;</type>
+        <definition>using redland::RedlandType_query_results = typedef RedlandType&lt;librdf_query_results, query_results_free_func&gt;</definition>
+        <argsstring></argsstring>
+        <name>RedlandType_query_results</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Instantiation of templated superclass </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfQueryResults.h" line="29" column="5" bodyfile="src/redland/RedlandWrapper/src/include/redland/LibrdfQueryResults.h" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="LibrdfSerializer_8h_1ad9dac3c1aa3750f598a999ef774ece0a" prot="public" static="no">
+        <type>std::function&lt; void(librdf_serializer *)&gt;</type>
+        <definition>using redland::serializer_free_func = typedef std::function&lt;void(librdf_serializer *)&gt;</definition>
+        <argsstring></argsstring>
+        <name>serializer_free_func</name>
+        <briefdescription>
+<para>std::function signature of librdf_free_parser </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfSerializer.h" line="26" column="5" bodyfile="src/redland/RedlandWrapper/src/include/redland/LibrdfSerializer.h" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="LibrdfSerializer_8h_1aba4b84124665919b3e168f94b4957e0c" prot="public" static="no">
+        <type><ref refid="classredland_1_1RedlandType" kindref="compound">RedlandType</ref>&lt; librdf_serializer, serializer_free_func &gt;</type>
+        <definition>using redland::RedlandType_librdf_serializer = typedef RedlandType&lt;librdf_serializer, serializer_free_func&gt;</definition>
+        <argsstring></argsstring>
+        <name>RedlandType_librdf_serializer</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Instantiation of templated superclass </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfSerializer.h" line="31" column="5" bodyfile="src/redland/RedlandWrapper/src/include/redland/LibrdfSerializer.h" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="LibrdfStatement_8h_1af53e80fc0c4ba8ecf14f313604add8a8" prot="public" static="no">
+        <type>std::function&lt; void(<ref refid="structraptor__statement" kindref="compound">librdf_statement</ref> *)&gt;</type>
+        <definition>using redland::statement_free_func = typedef std::function&lt;void(librdf_statement *)&gt;</definition>
+        <argsstring></argsstring>
+        <name>statement_free_func</name>
+        <briefdescription>
+<para>std::function signature of librdf_free_node </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfStatement.h" line="20" column="5" bodyfile="src/redland/RedlandWrapper/src/include/redland/LibrdfStatement.h" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="LibrdfStatement_8h_1a1ad7a4088bae76331743706132a849b7" prot="public" static="no">
+        <type><ref refid="classredland_1_1RefCountedRedlandType" kindref="compound">RefCountedRedlandType</ref>&lt; <ref refid="structraptor__statement" kindref="compound">librdf_statement</ref>, statement_free_func &gt;</type>
+        <definition>using redland::RefCounted_librdf_statement = typedef RefCountedRedlandType&lt;librdf_statement, statement_free_func&gt;</definition>
+        <argsstring></argsstring>
+        <name>RefCounted_librdf_statement</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Instantiation of templated superclass </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfStatement.h" line="25" column="5" bodyfile="src/redland/RedlandWrapper/src/include/redland/LibrdfStatement.h" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="LibrdfStorage_8h_1a1131b6b5919d13785e92dc87a5975d6e" prot="public" static="no">
+        <type>std::function&lt; void(librdf_storage *)&gt;</type>
+        <definition>using redland::storage_free_func = typedef std::function&lt;void(librdf_storage *)&gt;</definition>
+        <argsstring></argsstring>
+        <name>storage_free_func</name>
+        <briefdescription>
+<para>std::function signature of librdf_free_storage </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfStorage.h" line="20" column="5" bodyfile="src/redland/RedlandWrapper/src/include/redland/LibrdfStorage.h" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="LibrdfStorage_8h_1ac01379db9f3737364f42a4fd22c252b0" prot="public" static="no">
+        <type><ref refid="classredland_1_1RefCountedRedlandType" kindref="compound">RefCountedRedlandType</ref>&lt; librdf_storage, storage_free_func &gt;</type>
+        <definition>using redland::RefCounted_librdf_storage = typedef RefCountedRedlandType&lt;librdf_storage, storage_free_func&gt;</definition>
+        <argsstring></argsstring>
+        <name>RefCounted_librdf_storage</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Instantiation of templated superclass </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfStorage.h" line="25" column="5" bodyfile="src/redland/RedlandWrapper/src/include/redland/LibrdfStorage.h" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="LibrdfStream_8h_1afdacdcd95106b60ca8610da93cab1a44" prot="public" static="no">
+        <type>std::function&lt; void(librdf_stream *)&gt;</type>
+        <definition>using redland::stream_free_func = typedef std::function&lt;void(librdf_stream *)&gt;</definition>
+        <argsstring></argsstring>
+        <name>stream_free_func</name>
+        <briefdescription>
+<para>std::function signature of librdf_free_node </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfStream.h" line="19" column="5" bodyfile="src/redland/RedlandWrapper/src/include/redland/LibrdfStream.h" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="LibrdfStream_8h_1af435e1af07ba9892ec8b43f8a201a07d" prot="public" static="no">
+        <type><ref refid="classredland_1_1RedlandType" kindref="compound">RedlandType</ref>&lt; librdf_stream, stream_free_func &gt;</type>
+        <definition>using redland::Redland_librdf_stream = typedef RedlandType&lt;librdf_stream, stream_free_func&gt;</definition>
+        <argsstring></argsstring>
+        <name>Redland_librdf_stream</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Instantiation of templated superclass </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfStream.h" line="24" column="5" bodyfile="src/redland/RedlandWrapper/src/include/redland/LibrdfStream.h" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="LibrdfUri_8h_1a1992ba5aa55673f90da8a652e62884f4" prot="public" static="no">
+        <type>std::function&lt; void(<ref refid="structraptor__uri__s" kindref="compound">librdf_uri</ref> *)&gt;</type>
+        <definition>using redland::uri_free_func = typedef std::function&lt;void(librdf_uri *)&gt;</definition>
+        <argsstring></argsstring>
+        <name>uri_free_func</name>
+        <briefdescription>
+<para>std::function signature of librdf_free_uri </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfUri.h" line="19" column="5" bodyfile="src/redland/RedlandWrapper/src/include/redland/LibrdfUri.h" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="LibrdfUri_8h_1a999f1ab9c3d8aa423436e859de526cb4" prot="public" static="no">
+        <type><ref refid="classredland_1_1RefCountedRedlandType" kindref="compound">RefCountedRedlandType</ref>&lt; <ref refid="structraptor__uri__s" kindref="compound">librdf_uri</ref>, uri_free_func &gt;</type>
+        <definition>using redland::RefCounted_librdf_uri = typedef RefCountedRedlandType&lt;librdf_uri, uri_free_func&gt;</definition>
+        <argsstring></argsstring>
+        <name>RefCounted_librdf_uri</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Instantiation of templated superclass </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfUri.h" line="24" column="5" bodyfile="src/redland/RedlandWrapper/src/include/redland/LibrdfUri.h" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
       <sectiondef kind="func">
       <memberdef kind="function" id="LibrdfSerializer_8cpp_1ab3d24521870fec5bb77735a3a4a7e4d5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -38,13 +336,55 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/LibrdfSerializer.cpp" line="147" column="9" declfile="src/redland/RedlandWrapper/src/LibrdfSerializer.cpp" declline="147" declcolumn="9"/>
+        <location file="src/redland/RedlandWrapper/src/LibrdfSerializer.cpp" line="104" column="9" declfile="src/redland/RedlandWrapper/src/LibrdfSerializer.cpp" declline="104" declcolumn="9"/>
+      </memberdef>
+      <memberdef kind="function" id="LibrdfWorld_8cpp_1ab790561c5b67f6157f06aaf36010e7ad" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int redland::librdfLogHandler</definition>
+        <argsstring>(void *user_data, librdf_log_message *message)</argsstring>
+        <name>librdfLogHandler</name>
+        <param>
+          <type>void *</type>
+          <declname>user_data</declname>
+        </param>
+        <param>
+          <type>librdf_log_message *</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/LibrdfWorld.cpp" line="13" column="9" bodyfile="src/redland/RedlandWrapper/src/LibrdfWorld.cpp" bodystart="13" bodyend="47" declfile="src/redland/RedlandWrapper/src/include/redland/LibrdfWorld.h" declline="31" declcolumn="9"/>
+      </memberdef>
+      <memberdef kind="function" id="LibrdfWorld_8cpp_1a02104b680dc8d25eb02cc6d2c3fd8e2c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void redland::raptorLogHandler</definition>
+        <argsstring>(void *user_data, raptor_log_message *message)</argsstring>
+        <name>raptorLogHandler</name>
+        <param>
+          <type>void *</type>
+          <declname>user_data</declname>
+        </param>
+        <param>
+          <type>raptor_log_message *</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/LibrdfWorld.cpp" line="49" column="10" bodyfile="src/redland/RedlandWrapper/src/LibrdfWorld.cpp" bodystart="49" bodyend="87" declfile="src/redland/RedlandWrapper/src/include/redland/LibrdfWorld.h" declline="33" declcolumn="10"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="src/redland/RedlandWrapper/src/LibrdfModel.cpp" line="8" column="1"/>
+    <location file="src/redland/RedlandWrapper/src/LibrdfModel.cpp" line="9" column="1"/>
   </compounddef>
 </doxygen>

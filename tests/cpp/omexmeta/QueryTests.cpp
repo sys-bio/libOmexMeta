@@ -1,96 +1,41 @@
 //
-// Created by Ciaran on 4/28/2020.
+// Created by ciaran on 16/08/2021.
 //
-
-
 #include "AnnotationSamples.h"
-#include "SBMLFactory.h"
-#include "omexmeta/Query.h"
-#include "omexmeta/RDF.h"
-#include "omexmeta/Triples.h"
-#include <gtest/gtest.h>
-#include <librdf.h>
+#include "omexmeta/OmexMeta.h"
+#include "redland/RedlandAPI.h"
+#include "gtest/gtest.h"
+
+using namespace omexmeta;
+using namespace redland;
 
 class QueryTests : public ::testing::Test {
-
 public:
     AnnotationSamples samples;
-    omexmeta::RDF rdf;
-
-    std::string q;
-
-    QueryTests() {
-        rdf = omexmeta::RDF::fromString(samples.singular_annotation2);
-
-        q = "SELECT ?x ?y ?z \n"
-            "WHERE {\n"
-            "  ?x ?y ?z \n"
-            "}\n";
-    };
-
-    ~QueryTests() {
-        //        model.freeModel();
-    }
+    std::string query_string = "SELECT ?x ?y ?z \n"
+                               "WHERE {?x ?y ?z }\n";
+    QueryTests() = default;
 };
 
-
-TEST_F(QueryTests, TestStr) {
-    omexmeta::Query query(rdf.getModel(), q);
-    std::string actual = query.resultsAsStr("csv");
-    std::cout << actual << std::endl;
-    std::string expected = "x,y,z\n"
-                           "http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.net/model-qualifiers/isDescribedBy,https://identifiers.org/pubmed/12991237\n";
-    ASSERT_STREQ(expected.c_str(), actual.c_str());
-    query.freeQuery();
+TEST_F(QueryTests, CheckQueryResultsAsMap) {
+    RDF rdf = RDF::fromString(samples.singular_annotation1, "rdfxml");
+    ResultsMap results = rdf.queryResultsAsMap(query_string);
+    ASSERT_EQ(3, results.size());
+    ASSERT_EQ(1, results["x"].size());
+    ASSERT_EQ(1, results["y"].size());
+    ASSERT_EQ(1, results["z"].size());
 }
 
-TEST_F(QueryTests, TestRunQueryTwice) {
-    omexmeta::Query query(rdf.getModel(), q);// runs the first time automatically
-    query.runQuery();                        // now run again
-    std::string actual = query.resultsAsStr("csv");
-    std::cout << actual << std::endl;
-    std::string expected = "x,y,z\n"
-                           "http://omex-library.org/NewOmex.omex/NewModel.xml#modelmeta1,http://biomodels.net/model-qualifiers/isDescribedBy,https://identifiers.org/pubmed/12991237\n";
-    ASSERT_STREQ(expected.c_str(), actual.c_str());
-    query.freeQuery();
+
+TEST_F(QueryTests, CheckQueryResultsAsString) {
+    RDF rdf = RDF::fromString(samples.singular_annotation1, "rdfxml");
+    std::string results = rdf.queryResultsAsString(query_string, "turtle");
+    // don't test string content - this is rasqals responsibility and is assume to work.
+    ASSERT_TRUE(!results.empty());
 }
 
-TEST_F(QueryTests, TestgetResultsAsMap) {
-    omexmeta::Query query(rdf.getModel(), q);
-    omexmeta::ResultsMap resultsMap = query.resultsAsMap();
-    std::string expected = "http://biomodels.net/model-qualifiers/isDescribedBy";
-    std::string actual = resultsMap["y"][0];
-    ASSERT_STREQ(expected.c_str(), actual.c_str());
-    query.freeQuery();
-}
-
-TEST_F(QueryTests, BindingNotUsed) {
-    std::string queryString = "SELECT ?x ?y ?z \n"
-                              "WHERE {\n"
-                              "  ?x <http://biomodels.net/model-qualifiers/isDescribedBy> ?z \n"
-                              "}\n";
-    omexmeta::Query query(rdf.getModel(), queryString);
-    omexmeta::ResultsMap resultsMap = query.resultsAsMap();
-    std::string expected = "http://biomodels.net/model-qualifiers/isDescribedBy";
-    std::string actual = resultsMap["y"][0];
-    ASSERT_STREQ("", actual.c_str());
-    query.freeQuery();
-}
-
-TEST_F(QueryTests, TestgetResultsAsMapTwice) {
-    omexmeta::Query query(rdf.getModel(), q);
-    omexmeta::ResultsMap resultsMap = query.resultsAsMap();
-    omexmeta::ResultsMap resultsMap2 = query.resultsAsMap();
-    std::string expected = "http://biomodels.net/model-qualifiers/isDescribedBy";
-    std::string actual = resultsMap["y"][0];
-    ASSERT_STREQ(expected.c_str(), actual.c_str());
-    query.freeQuery();
-}
-
-TEST_F(QueryTests, TestResultsAsStream) {
-    omexmeta::Query query(rdf.getModel(), q);
-    librdf_stream *stream = query.resultsAsLibRdfStream();
-    ASSERT_TRUE(stream);// aka not null
-    librdf_free_stream(stream);
-    query.freeQuery();
+TEST_F(QueryTests, CheckQueryResultsAsMapTwice) {
+    RDF rdf = RDF::fromString(samples.singular_annotation1, "rdfxml");
+    ResultsMap results1 = rdf.queryResultsAsMap(query_string);
+    ResultsMap results2 = rdf.queryResultsAsMap(query_string);
 }

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="classomexmeta_1_1PurgeRDFBag" kind="class" language="C++" prot="public">
     <compoundname>omexmeta::PurgeRDFBag</compoundname>
       <sectiondef kind="private-attrib">
@@ -106,11 +106,11 @@
 <parametername>rdf*</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>non owning pointer to <ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref> object.  Since this class is designed to be used by the rdf*, the private member variables rdf_ will always live for longer than the lifetime of this class </para>
+<para>non owning pointer to <ref refid="classomexmeta_1_1RDF" kindref="compound">RDF</ref> object.</para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-</para>
+Since this class is designed to be used by the rdf*, the private member variables rdf_ will always live for longer than the lifetime of this class </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -127,7 +127,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PurgeRDFBag.h" line="27" column="14" bodyfile="src/omexmeta/PurgeRDFBag.cpp" bodystart="34" bodyend="38"/>
+        <location file="src/omexmeta/include/omexmeta/PurgeRDFBag.h" line="27" column="14" bodyfile="src/omexmeta/PurgeRDFBag.cpp" bodystart="25" bodyend="29"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PurgeRDFBag_1adf413be32ae861c7439acf89b59aedd7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -142,7 +142,7 @@
         <inbodydescription>
 <para>Note, we might be able to do another query that says &quot;if the query matches&quot; do something with it.</para>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PurgeRDFBag.h" line="36" column="14" bodyfile="src/omexmeta/PurgeRDFBag.cpp" bodystart="40" bodyend="142"/>
+        <location file="src/omexmeta/include/omexmeta/PurgeRDFBag.h" line="36" column="14" bodyfile="src/omexmeta/PurgeRDFBag.cpp" bodystart="31" bodyend="132"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PurgeRDFBag_1ac368f06fcfd66622f1ff6d3e17c05363" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -162,7 +162,7 @@
 <para>One &quot;cheat&quot; way around this is to only apply changes when this sparql query locates more than one &quot;row&quot; (if you think of the keys in ResultMap as columns and the values as cells).</para>
 <para><ref refid="classThis" kindref="compound">This</ref> is not guarenteed to work for every use case, but we&apos;ll see</para>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PurgeRDFBag.h" line="44" column="14" bodyfile="src/omexmeta/PurgeRDFBag.cpp" bodystart="144" bodyend="216"/>
+        <location file="src/omexmeta/include/omexmeta/PurgeRDFBag.h" line="44" column="14" bodyfile="src/omexmeta/PurgeRDFBag.cpp" bodystart="134" bodyend="198"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PurgeRDFBag_1a6bfab9190b6f548756c71c5dd3c5807f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -178,7 +178,7 @@
 <para>One &quot;cheat&quot; way around this is to only apply changes when this sparql query locates more than one &quot;row&quot; (if you think of the keys in ResultMap as columns and the values as cells).</para>
 <para><ref refid="classThis" kindref="compound">This</ref> is not guarenteed to work for every use case, but we&apos;ll see</para>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PurgeRDFBag.h" line="46" column="14" bodyfile="src/omexmeta/PurgeRDFBag.cpp" bodystart="218" bodyend="290"/>
+        <location file="src/omexmeta/include/omexmeta/PurgeRDFBag.h" line="46" column="14" bodyfile="src/omexmeta/PurgeRDFBag.cpp" bodystart="200" bodyend="266"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -193,7 +193,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PurgeRDFBag.h" line="25" column="28" bodyfile="src/omexmeta/PurgeRDFBag.cpp" bodystart="13" bodyend="32"/>
+        <location file="src/omexmeta/include/omexmeta/PurgeRDFBag.h" line="25" column="28" bodyfile="src/omexmeta/PurgeRDFBag.cpp" bodystart="13" bodyend="23"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

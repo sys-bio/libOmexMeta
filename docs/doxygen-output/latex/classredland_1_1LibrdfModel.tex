@@ -1,61 +1,51 @@
 \hypertarget{classredland_1_1LibrdfModel}{}\doxysection{redland\+::Librdf\+Model Class Reference}
 \label{classredland_1_1LibrdfModel}\index{redland::LibrdfModel@{redland::LibrdfModel}}
+
+
+RAII abstraction around librdf\+\_\+model.  
+
+
+
+
+{\ttfamily \#include $<$Librdf\+Model.\+h$>$}
+
+Inheritance diagram for redland\+::Librdf\+Model\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classredland_1_1LibrdfModel}
+\end{center}
+\end{figure}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
-\item 
-\mbox{\Hypertarget{classredland_1_1LibrdfModel_a355e16664fa50a8a3085f4070347106f}\label{classredland_1_1LibrdfModel_a355e16664fa50a8a3085f4070347106f}} 
-{\bfseries Librdf\+Model} (librdf\+\_\+storage $\ast$storage, const char $\ast$options=nullptr)
-\item 
-\mbox{\Hypertarget{classredland_1_1LibrdfModel_a0cf5960adec8df0c240b40ebba573996}\label{classredland_1_1LibrdfModel_a0cf5960adec8df0c240b40ebba573996}} 
-{\bfseries Librdf\+Model} (\mbox{\hyperlink{classredland_1_1LibrdfStorage}{Librdf\+Storage}} \&storage, const char $\ast$options=nullptr)
-\item 
-\mbox{\Hypertarget{classredland_1_1LibrdfModel_a5a35c032585e38b1d41bc18f057128c1}\label{classredland_1_1LibrdfModel_a5a35c032585e38b1d41bc18f057128c1}} 
-{\bfseries Librdf\+Model} (const \mbox{\hyperlink{classredland_1_1LibrdfModel}{Librdf\+Model}} \&model)=delete
-\item 
-\mbox{\Hypertarget{classredland_1_1LibrdfModel_a583e0eaecfe167ccbbeac5d768bcd644}\label{classredland_1_1LibrdfModel_a583e0eaecfe167ccbbeac5d768bcd644}} 
-{\bfseries Librdf\+Model} (\mbox{\hyperlink{classredland_1_1LibrdfModel}{Librdf\+Model}} \&\&model) noexcept
-\item 
-\mbox{\Hypertarget{classredland_1_1LibrdfModel_a7bd07324b31fa8eb8f5f2e51b15044fc}\label{classredland_1_1LibrdfModel_a7bd07324b31fa8eb8f5f2e51b15044fc}} 
-\mbox{\hyperlink{classredland_1_1LibrdfModel}{Librdf\+Model}} \& {\bfseries operator=} (const \mbox{\hyperlink{classredland_1_1LibrdfModel}{Librdf\+Model}} \&model)=delete
-\item 
-\mbox{\Hypertarget{classredland_1_1LibrdfModel_a9007acfb92943e018d20d6985c811033}\label{classredland_1_1LibrdfModel_a9007acfb92943e018d20d6985c811033}} 
-\mbox{\hyperlink{classredland_1_1LibrdfModel}{Librdf\+Model}} \& {\bfseries operator=} (\mbox{\hyperlink{classredland_1_1LibrdfModel}{Librdf\+Model}} \&\&model) noexcept
-\item 
-\mbox{\Hypertarget{classredland_1_1LibrdfModel_a1a8a3f9aad0520d6788aa2816ffb318e}\label{classredland_1_1LibrdfModel_a1a8a3f9aad0520d6788aa2816ffb318e}} 
-bool {\bfseries operator==} (const \mbox{\hyperlink{classredland_1_1LibrdfModel}{Librdf\+Model}} \&rhs) const
-\item 
-\mbox{\Hypertarget{classredland_1_1LibrdfModel_a8cdaab0ea4c70808f015bfb6846b20bb}\label{classredland_1_1LibrdfModel_a8cdaab0ea4c70808f015bfb6846b20bb}} 
-bool {\bfseries operator!=} (const \mbox{\hyperlink{classredland_1_1LibrdfModel}{Librdf\+Model}} \&rhs) const
 \item 
 \mbox{\Hypertarget{classredland_1_1LibrdfModel_a8b7d3063e030ce8613dcd6def7463a5a}\label{classredland_1_1LibrdfModel_a8b7d3063e030ce8613dcd6def7463a5a}} 
 {\bfseries Librdf\+Model} (librdf\+\_\+model $\ast$model)
 \item 
-\mbox{\Hypertarget{classredland_1_1LibrdfModel_ae1b996f1785adfe9b4a1824a73643248}\label{classredland_1_1LibrdfModel_ae1b996f1785adfe9b4a1824a73643248}} 
-librdf\+\_\+model $\ast$ {\bfseries get} () const
+\mbox{\Hypertarget{classredland_1_1LibrdfModel_a0cf5960adec8df0c240b40ebba573996}\label{classredland_1_1LibrdfModel_a0cf5960adec8df0c240b40ebba573996}} 
+{\bfseries Librdf\+Model} (\mbox{\hyperlink{classredland_1_1LibrdfStorage}{Librdf\+Storage}} \&storage, const char $\ast$options=nullptr)
 \item 
-\mbox{\Hypertarget{classredland_1_1LibrdfModel_a9bbced9329b4b9ef915789a37bf857b6}\label{classredland_1_1LibrdfModel_a9bbced9329b4b9ef915789a37bf857b6}} 
-\mbox{\hyperlink{classredland_1_1LibrdfQueryResults}{Librdf\+Query\+Results}} {\bfseries query} (const \mbox{\hyperlink{classredland_1_1LibrdfQuery}{Librdf\+Query}} \&query) const
+bool \mbox{\hyperlink{classredland_1_1LibrdfModel_a1a8a3f9aad0520d6788aa2816ffb318e}{operator==}} (const \mbox{\hyperlink{classredland_1_1LibrdfModel}{Librdf\+Model}} \&rhs) const
+\begin{DoxyCompactList}\small\item\em equality operator. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classredland_1_1LibrdfModel_a8cdaab0ea4c70808f015bfb6846b20bb}\label{classredland_1_1LibrdfModel_a8cdaab0ea4c70808f015bfb6846b20bb}} 
+bool {\bfseries operator!=} (const \mbox{\hyperlink{classredland_1_1LibrdfModel}{Librdf\+Model}} \&rhs) const
 \item 
-\mbox{\Hypertarget{classredland_1_1LibrdfModel_a4d58b2d9729173c1bfd7ece4d62e2b33}\label{classredland_1_1LibrdfModel_a4d58b2d9729173c1bfd7ece4d62e2b33}} 
-librdf\+\_\+stream $\ast$ {\bfseries to\+Stream} ()
+\mbox{\Hypertarget{classredland_1_1LibrdfModel_aa0f179ee62cb512f5b894bce06227611}\label{classredland_1_1LibrdfModel_aa0f179ee62cb512f5b894bce06227611}} 
+\mbox{\hyperlink{classredland_1_1LibrdfQueryResults}{Librdf\+Query\+Results}} {\bfseries query} (const std\+::string \&query)
+\item 
+\mbox{\Hypertarget{classredland_1_1LibrdfModel_ae2cc033c788939cbb38e941094db81db}\label{classredland_1_1LibrdfModel_ae2cc033c788939cbb38e941094db81db}} 
+\mbox{\hyperlink{classredland_1_1LibrdfStream}{Librdf\+Stream}} {\bfseries to\+Stream} () const
 \item 
 \mbox{\Hypertarget{classredland_1_1LibrdfModel_a3067eb5bae1353ab5c86f135c4b401ad}\label{classredland_1_1LibrdfModel_a3067eb5bae1353ab5c86f135c4b401ad}} 
 int {\bfseries size} () const
 \item 
-\mbox{\Hypertarget{classredland_1_1LibrdfModel_a643c3e3d3363f4f06330ede73dc19514}\label{classredland_1_1LibrdfModel_a643c3e3d3363f4f06330ede73dc19514}} 
-void {\bfseries add\+Statement} (\mbox{\hyperlink{structraptor__statement}{librdf\+\_\+statement}} $\ast$statement) const
-\item 
-\mbox{\Hypertarget{classredland_1_1LibrdfModel_ad145b8f46be49434bb8bd0b90a904770}\label{classredland_1_1LibrdfModel_ad145b8f46be49434bb8bd0b90a904770}} 
-void {\bfseries free\+Model} ()
-\item 
-\mbox{\Hypertarget{classredland_1_1LibrdfModel_a807784594a1515e5633ec7d08858dd57}\label{classredland_1_1LibrdfModel_a807784594a1515e5633ec7d08858dd57}} 
-void {\bfseries remove\+Statement} (\mbox{\hyperlink{structraptor__statement}{librdf\+\_\+statement}} $\ast$statement) const
+\mbox{\Hypertarget{classredland_1_1LibrdfModel_a2b565a7d705e24d6163c068a40040087}\label{classredland_1_1LibrdfModel_a2b565a7d705e24d6163c068a40040087}} 
+void {\bfseries add\+Statement} (const \mbox{\hyperlink{classredland_1_1LibrdfStatement}{Librdf\+Statement}} \&statement) const
 \item 
 \mbox{\Hypertarget{classredland_1_1LibrdfModel_a2cd4394b2c4fee69ce557eafd585c243}\label{classredland_1_1LibrdfModel_a2cd4394b2c4fee69ce557eafd585c243}} 
 void {\bfseries remove\+Statement} (const \mbox{\hyperlink{classredland_1_1LibrdfStatement}{Librdf\+Statement}} \&statement) const
 \item 
-\mbox{\Hypertarget{classredland_1_1LibrdfModel_a6c40f1adbd292e5278ee6db5db356b34}\label{classredland_1_1LibrdfModel_a6c40f1adbd292e5278ee6db5db356b34}} 
-librdf\+\_\+storage $\ast$ {\bfseries get\+Storage} () const
+\mbox{\Hypertarget{classredland_1_1LibrdfModel_a8469ea6ab5de22e335acfeffc05ff8fc}\label{classredland_1_1LibrdfModel_a8469ea6ab5de22e335acfeffc05ff8fc}} 
+\mbox{\hyperlink{classredland_1_1LibrdfStorage}{Librdf\+Storage}} {\bfseries get\+Storage} () const
 \item 
 \mbox{\Hypertarget{classredland_1_1LibrdfModel_a21ddc6bf105a14ed3ad2a3bdfaf8c23d}\label{classredland_1_1LibrdfModel_a21ddc6bf105a14ed3ad2a3bdfaf8c23d}} 
 int {\bfseries commit\+Transaction} () const
@@ -75,16 +65,29 @@ int {\bfseries get\+Transaction\+Rollback} () const
 \mbox{\Hypertarget{classredland_1_1LibrdfModel_a64915c9b196d061d1547f9a659177ea9}\label{classredland_1_1LibrdfModel_a64915c9b196d061d1547f9a659177ea9}} 
 int {\bfseries supports\+Contexts} () const
 \item 
-\mbox{\Hypertarget{classredland_1_1LibrdfModel_ad1738d844fc31d5ae2ef581d8bcf4cd4}\label{classredland_1_1LibrdfModel_ad1738d844fc31d5ae2ef581d8bcf4cd4}} 
-bool {\bfseries contains\+Statement} (\mbox{\hyperlink{structraptor__statement}{librdf\+\_\+statement}} $\ast$statement) const
-\item 
-\mbox{\Hypertarget{classredland_1_1LibrdfModel_a495d71020195a86dfe530e0acc98a685}\label{classredland_1_1LibrdfModel_a495d71020195a86dfe530e0acc98a685}} 
-bool {\bfseries contains\+Statement} (const \mbox{\hyperlink{classredland_1_1LibrdfStatement}{Librdf\+Statement}} \&statement) const
-\item 
-\mbox{\Hypertarget{classredland_1_1LibrdfModel_a2b565a7d705e24d6163c068a40040087}\label{classredland_1_1LibrdfModel_a2b565a7d705e24d6163c068a40040087}} 
-void {\bfseries add\+Statement} (const \mbox{\hyperlink{classredland_1_1LibrdfStatement}{Librdf\+Statement}} \&statement) const
+\mbox{\Hypertarget{classredland_1_1LibrdfModel_a39cf6a48e38da9b9e9c6f3a029e8d833}\label{classredland_1_1LibrdfModel_a39cf6a48e38da9b9e9c6f3a029e8d833}} 
+bool {\bfseries contains\+Statement} (\mbox{\hyperlink{classredland_1_1LibrdfStatement}{Librdf\+Statement}} \&statement) const
 \end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
 
+
+\doxysubsection{Detailed Description}
+RAII abstraction around librdf\+\_\+model. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classredland_1_1LibrdfModel_a1a8a3f9aad0520d6788aa2816ffb318e}\label{classredland_1_1LibrdfModel_a1a8a3f9aad0520d6788aa2816ffb318e}} 
+\index{redland::LibrdfModel@{redland::LibrdfModel}!operator==@{operator==}}
+\index{operator==@{operator==}!redland::LibrdfModel@{redland::LibrdfModel}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool redland\+::\+Librdf\+Model\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classredland_1_1LibrdfModel}{Librdf\+Model}} \&}]{rhs }\end{DoxyParamCaption}) const}
+
+
+
+equality operator. 
+
+iterates over this stream and looks for containment in rhs stream, and then does the same in reverse.
+
+Maximum complexity\+: O(n$^\wedge$2). Minimum complexity O(1), when lhs and rhs are different sizes. Note on complexity -\/ this algorithm is quite expensive. First, if not same size, then return false. So the rest is assuming the size of lhs and rhs are equal. iterate over lhs. For each of the n elements element we search through n rhs -\/-\/$>$ n$^\wedge$2 Then we iterate over rhs. For each of the n elements we search through n lhs elements -\/-\/$>$ n$^\wedge$2 So we have O(2n$^\wedge$2), but since we ignore multiplicitive and additive constants, its just O(n$^\wedge$2)
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

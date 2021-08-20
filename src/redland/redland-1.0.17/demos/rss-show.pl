@@ -104,7 +104,7 @@ my(%namespaces)=(
 'Admin'        => 'http://webns.net/mvcb/',
 'Annotate'     => 'http://purl.org/rss/1.0/modules/annotate/',
 # Other modules
-'Dublin Core Terms' => 'https://dublincore.org/specifications/dublin-core/dcmi-terms/',
+'Dublin Core Terms' => 'http://purl.org/dc/terms/',
 'Slash'        => 'http://slashcode.com/rss/1.0/modules/Slash/',
 );
 # Specify order for consistency.  Note: must match keys %namespaces

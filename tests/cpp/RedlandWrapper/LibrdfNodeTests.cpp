@@ -22,6 +22,25 @@ TEST_F(LibrdfNodeTests, TestCreate) {
     ASSERT_STREQ(expected.c_str(), actual.c_str());
 }
 
+TEST_F(LibrdfNodeTests, CheckFromRawPtr) {
+    librdf_node* nPtr = librdf_new_node_from_uri_string(LibrdfWorld::getWorld(), (const unsigned char*)"http://uri.com");
+    LibrdfNode node(nPtr);
+    ASSERT_EQ(node.getUsage(), 1);
+}
+
+TEST_F(LibrdfNodeTests, CheckFromRawPtrCpyAssignment) {
+    LibrdfNode node;
+    librdf_node* nPtr = librdf_new_node_from_uri_string(LibrdfWorld::getWorld(), (const unsigned char*)"http://uri.com");
+    node = LibrdfNode(nPtr);
+    ASSERT_EQ(node.getUsage(), 1);
+}
+
+
+TEST_F(LibrdfNodeTests, CheckCanCreateEmptyNode) {
+    LibrdfNode node;
+    ASSERT_TRUE(node.isNull());
+}
+
 TEST_F(LibrdfNodeTests, UriNodeUrnMiriam) {
     std::string expected = "urn:miriam:reactome:R12345";
     LibrdfNode node = LibrdfNode::fromUriString(expected);
@@ -395,4 +414,19 @@ TEST_F(LibrdfNodeTests, MoveAssignment) {
     ASSERT_EQ(1, node1.getUsage());
     LibrdfNode node2 = std::move(node1);
     ASSERT_EQ(1, node2.getUsage());
+}
+
+TEST_F(LibrdfNodeTests, isBlank) {
+    LibrdfNode node1 = LibrdfNode::fromBlank("BlankId");
+    ASSERT_TRUE(node1.isBlank());
+}
+
+TEST_F(LibrdfNodeTests, isUri) {
+    LibrdfNode node1 = LibrdfNode::fromUriString("https://uri.com");
+    ASSERT_TRUE(node1.isUri());
+}
+
+TEST_F(LibrdfNodeTests, isLiteral) {
+    LibrdfNode node1 = LibrdfNode::fromLiteral("LiteralNode");
+    ASSERT_TRUE(node1.isLiteral());
 }

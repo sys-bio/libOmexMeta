@@ -7,26 +7,14 @@
 
 namespace omexmeta {
 
-    PhysicalEntity::PhysicalEntity(librdf_model *model, UriHandler &uriHandler, PhysicalProperty physicalProperty,
+    PhysicalEntity::PhysicalEntity(LibrdfModel& model, UriHandler &uriHandler, PhysicalProperty physicalProperty,
                                    std::string is, std::vector<std::string> is_part_of)
         : PropertyBearer(model, uriHandler, std::move(physicalProperty), PHYSICAL_ENTITY),
           identity_resource_(std::move(is)), location_resources_(std::move(is_part_of)) {}
 
-    void PhysicalEntity::free() {
-//        if (identity_resource_.getNode() != nullptr) {
-//            identity_resource_.free();
-//            identity_resource_.setNode(nullptr);
-//        }
-//
-//        for (auto &i : location_resources_) {
-//            if (i.getNode() != nullptr) {
-//                i.free();
-//                i.setNode(nullptr);
-//            }
-//        }
-    }
+    void PhysicalEntity::free() {};
 
-    PhysicalEntity::PhysicalEntity(librdf_model *model, UriHandler &uriHandler)
+    PhysicalEntity::PhysicalEntity(LibrdfModel& model, UriHandler &uriHandler)
         : PropertyBearer(model, uriHandler) {}
 
     PhysicalEntity &PhysicalEntity::setPhysicalProperty(PhysicalProperty physicalProperty) {
@@ -116,9 +104,9 @@ namespace omexmeta {
         if (!identity_resource_.empty()) {
             triples.emplace_back(
                     uriHandler_,
-                    LibrdfNode::fromUriString(physical_property_.getIsPropertyOfValue()).get(),
-                    BiomodelsBiologyQualifier("is").get(),
-                    LibrdfNode::fromUriString(identity_resource_).get()
+                    LibrdfNode::fromUriString(physical_property_.getIsPropertyOfValue()),
+                    BiomodelsBiologyQualifier("is").getNode(),
+                    LibrdfNode::fromUriString(identity_resource_)
                     );
         }
 
@@ -128,9 +116,9 @@ namespace omexmeta {
             for (auto &locationResource : location_resources_) {
                 triples.emplace_back(
                         uriHandler_,
-                        LibrdfNode::fromUriString(physical_property_.getIsPropertyOfValue()).get(),
-                        BiomodelsBiologyQualifier("isPartOf").get(),
-                        LibrdfNode::fromUriString(locationResource).get());
+                        LibrdfNode::fromUriString(physical_property_.getIsPropertyOfValue()),
+                        BiomodelsBiologyQualifier("isPartOf").getNode(),
+                        LibrdfNode::fromUriString(locationResource));
             }
         }
         // make it explicit that hasPart resources is optional
@@ -139,9 +127,9 @@ namespace omexmeta {
             for (auto &locationResource : part_resources_) {
                 triples.emplace_back(
                         uriHandler_,
-                        LibrdfNode::fromUriString(physical_property_.getIsPropertyOfValue()).get(),
-                        BiomodelsBiologyQualifier("hasPart").get(),
-                        LibrdfNode::fromUriString(locationResource).get());
+                        LibrdfNode::fromUriString(physical_property_.getIsPropertyOfValue()),
+                        BiomodelsBiologyQualifier("hasPart").getNode(),
+                        LibrdfNode::fromUriString(locationResource));
             }
         }
         return std::move(triples);

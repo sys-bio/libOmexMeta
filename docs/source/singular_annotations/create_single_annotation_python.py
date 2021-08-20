@@ -40,7 +40,7 @@ sbml = """<?xml version="1.1" encoding="UTF-8"?>
 # create an empty RDF object
 rdf = RDF()
 
-editor = rdf.to_editor(sbml, "sbml")
+editor = rdf.to_editor(sbml, True)
 
 print(editor.get_metaids())  # prints out model metaids
 

@@ -15,6 +15,7 @@
 #include <unordered_map>
 #include <utility>
 
+#include "include/redland/Logger.h"
 #include "omexmeta/Editor.h"
 #include "omexmeta/IRDF.h"
 #include "omexmeta/MarkupIdentifier.h"
@@ -22,12 +23,18 @@
 #include "omexmeta/SBMLSemanticExtraction.h"
 #include "omexmeta/UriHandler.h"
 #include "omexmeta/VCardTranslator.h"
-#include "omexmeta/logger.h"
 
 
 using namespace redland;
 
 namespace omexmeta {
+
+
+//    int librdfLogHandler(void* user_data, librdf_log_message * message);
+//
+//    // typedef void (*raptor_log_handler)(void *user_data, raptor_log_message *message);
+//    void raptorLogHandler(void* user_data, raptor_log_message * message);
+//
 
     typedef std::unordered_map<std::string, std::string> NamespaceMap;
 
@@ -56,13 +63,13 @@ namespace omexmeta {
          * http://librdf.org/docs/api/index.html for more details.
          */
         explicit RDF(const std::string &storage_type = "memory",
-                     const std::string &storage_name = "SemsimStore",
+                     const std::string &storage_name = "OmexMetaStore",
                      const char *storage_options = nullptr, const char *model_options = nullptr);
 
         /**
          * @brief destructor for RDF
          */
-        ~RDF();
+        ~RDF() = default;
 
         /**
          * @brief copy constructor for RDF class
@@ -75,8 +82,7 @@ namespace omexmeta {
         /**
          * @brief move constructor for RDF class
          */
-        RDF(RDF &&rdf)
-        noexcept;
+        RDF(RDF &&rdf)noexcept;
 
         /**
          * @brief copy assignment constructor for RDF ojects
@@ -184,11 +190,19 @@ namespace omexmeta {
          */
         Editor toEditor(const std::string &xml, bool generate_new_metaids = false, bool sbml_semantic_extraction = true) override;
 
-        Editor *toEditorPtr(const std::string &xml, bool generate_new_metaids = false, bool sbml_semantic_extraction = true) override;
+        /**
+         * @brief instantiate an Editor object and return a new pointer to it. Memory
+         * returned is owned by the caller and needs deleting.
+         * @param xml the xml you want to open for editing. This can be any type of xml document, but SBML and CellML are most common.
+         * @param generate_new_metaids When true, will add metaids onto a copy of the xml source code for annotation. Default = false.
+         * @param OmexMetaXmlType an indicator enum specifying whether the xml is sbml, cellml or unknown. Default is "OMEXMETA_TYPE_NOTSET"
+         * @details
+         */
+         Editor *toEditorPtr(const std::string &xml, bool generate_new_metaids = false, bool sbml_semantic_extraction = true) override;
 
-        librdf_model *getModel() const override;
+        LibrdfModel getModel() const override;
 
-        librdf_storage *getStorage() const override;
+        LibrdfStorage getStorage() const override;
 
         int commitTransaction() const override;
 
@@ -202,9 +216,9 @@ namespace omexmeta {
 
         static std::ostringstream listOptions();
 
-        std::string queryResultsAsString(const std::string &query_str, const std::string &results_syntax) const override;
+        std::string queryResultsAsString(const std::string &query_str, const std::string &results_syntax) override;
 
-        ResultsMap queryResultsAsMap(const std::string &query_str) const override;
+        ResultsMap queryResultsAsMap(const std::string &query_str) override;
 
         /**
          * @brief compared namespaces seen with namespaces
@@ -384,6 +398,12 @@ namespace omexmeta {
          * so users normally do not need this function.
          */
         void freeRDF();
+
+        /**
+         * @brief set custom handler functions
+         * for librdf, raptor and rasqal
+         */
+        void setLogHandlers();
 
         LibrdfStorage storage_;
         LibrdfModel model_;

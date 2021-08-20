@@ -5,6 +5,19 @@
 #ifndef LIBOMEXMETA_OMEXMETACAPI_H
 #define LIBOMEXMETA_OMEXMETACAPI_H
 
+
+#define GENERAL_ERROR -1
+#define RDF_ERROR -2
+#define EDITOR_ERROR -3
+#define QUERY_ERROR -4
+#define SINGULAR_ANNOTATION_ERROR -5
+#define PERSONAL_INFORMATION_ERROR -6
+#define PHYSICAL_ENTITY_ERROR -7
+#define PHYSICAL_PROCESS_ERROR -8
+#define ENERGY_DIFF_ERROR -9
+#define PHYSICAL_PROPERTY_ERROR -10
+
+#include "include/redland/Logger.h"
 #include "omexmeta/Editor.h"
 #include "omexmeta/EnergyDiff.h"
 #include "omexmeta/OmexMetaUtils.h"
@@ -62,6 +75,8 @@ namespace omexmeta {
     OMEXMETA_CAPI_EXPORT RDF *RDF_fromString(const char *str, const char *format,
                                              const char *storage_type = "memory", const char *storage_name = "semsim_store",
                                              const char *storage_options = nullptr, const char *model_options = nullptr);
+
+    OMEXMETA_CAPI_EXPORT int *functionThatReturnsNullptr();
 
     OMEXMETA_CAPI_EXPORT int RDF_addFromString(RDF *rdf_ptr, const char *str, const char *format);
 
@@ -177,7 +192,7 @@ namespace omexmeta {
 
     OMEXMETA_CAPI_EXPORT Editor *Editor_addCreator(Editor *editor_ptr, const char *orcid_id);
 
-    OMEXMETA_CAPI_EXPORT Editor *Editor_addCurator(Editor *editor_ptr, const char *orcid_id);
+    OMEXMETA_CAPI_EXPORT Editor *Editor_addContributor(Editor *editor_ptr, const char *orcid_id);
 
     OMEXMETA_CAPI_EXPORT Editor *Editor_addTaxon(Editor *editor_ptr, const char *taxon_id);
 
@@ -230,8 +245,8 @@ namespace omexmeta {
 
     OMEXMETA_CAPI_EXPORT char *SingularAnnotation_getAbout(SingularAnnotation *singular_annotation);
 
-    OMEXMETA_CAPI_EXPORT char *
-    SingularAnnotation_str(SingularAnnotation *singular_annotation, const char *format);
+//    OMEXMETA_CAPI_EXPORT char *
+//    SingularAnnotation_str(SingularAnnotation *singular_annotation, const char *format);
 
     OMEXMETA_CAPI_EXPORT char *SingularAnnotation_getPredicate(SingularAnnotation *singular_annotation);
 
@@ -410,6 +425,50 @@ namespace omexmeta {
     OMEXMETA_CAPI_EXPORT char *PersonalInformation_getMetaid(PersonalInformation *information);
 
     OMEXMETA_CAPI_EXPORT int PersonalInformation_setMetaid(PersonalInformation *information, const char *metaid);
+
+    OMEXMETA_CAPI_EXPORT int StringVector_getSize(std::vector<std::string>* vec);
+
+    OMEXMETA_CAPI_EXPORT char* StringVector_getElementAtIdx(std::vector<std::string>* vec, int idx);
+
+    OMEXMETA_CAPI_EXPORT void StringVector_delete(std::vector<std::string> *strVec);
+
+    OMEXMETA_CAPI_EXPORT int ResultsMap_getSize(ResultsMap* resultsMap);
+
+    OMEXMETA_CAPI_EXPORT std::vector<std::string>* ResultsMap_getStringVectorAt(ResultsMap* resultsMap, const char* key);
+
+    OMEXMETA_CAPI_EXPORT std::vector<std::string>* ResultsMap_getKeys(ResultsMap* resultsMap);
+
+    OMEXMETA_CAPI_EXPORT void ResultsMap_delete(ResultsMap * resultsMap);
+
+    OMEXMETA_CAPI_EXPORT Logger *Logger_getLogger();
+
+    OMEXMETA_CAPI_EXPORT void Logger_setFormatter(const char* format);
+
+    OMEXMETA_CAPI_EXPORT void Logger_setLevel(Logger::LogLevel level);
+
+    OMEXMETA_CAPI_EXPORT int Logger_getLevel();
+
+    OMEXMETA_CAPI_EXPORT void Logger_enableBacktrace(int num);
+
+    OMEXMETA_CAPI_EXPORT void Logger_disableBacktrace();
+
+    OMEXMETA_CAPI_EXPORT void Logger_dumpBacktrace();
+
+    OMEXMETA_CAPI_EXPORT void Logger_consoleLogger();
+
+    OMEXMETA_CAPI_EXPORT void Logger_fileLogger(const char*filename);
+
+    OMEXMETA_CAPI_EXPORT void Logger_info(const char* message);
+
+    OMEXMETA_CAPI_EXPORT void Logger_trace(const char* message);
+
+    OMEXMETA_CAPI_EXPORT void Logger_debug(const char* message);
+
+    OMEXMETA_CAPI_EXPORT void Logger_warn(const char* message);
+
+    OMEXMETA_CAPI_EXPORT void Logger_error(const char* message);
+
+    OMEXMETA_CAPI_EXPORT void Logger_critical(const char* message);
 
 
 #ifdef __cplusplus

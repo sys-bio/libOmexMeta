@@ -37,7 +37,7 @@ namespace omexmeta {
          * code duplication in the subclasses.
          *
          */
-        Participant(librdf_model *model, std::string base_metaid, UriHandler &uriHandler,
+        Participant(LibrdfModel & model, std::string base_metaid, UriHandler &uriHandler,
                     std::string semsim_predicate_term, double multiplier,
                     std::string physicalEntityReference, eUriType type);
 
@@ -142,7 +142,7 @@ namespace omexmeta {
         [[nodiscard]] const std::string &getModelUri() const;
 
     private:
-        librdf_model *model_ = nullptr;
+        LibrdfModel& model_ ;
         std::string metaid_template_str_;///like SourceParticipant in SourceParticipant0000
         std::string semsim_predicate_term_;
         double multiplier_ = 0;
@@ -168,7 +168,7 @@ namespace omexmeta {
         /**
          * @brief A class representing process/force energetic source.
          */
-        SourceParticipant(librdf_model *model, double multiplier, std::string physicalEntityReference, eUriType type,
+        SourceParticipant(LibrdfModel& model, double multiplier, std::string physicalEntityReference, eUriType type,
                           UriHandler &uriHandler);
     };
 
@@ -180,7 +180,7 @@ namespace omexmeta {
         /**
          * @brief A class representing process/force energetic sinks.
          */
-        SinkParticipant(librdf_model *model, double multiplier, std::string physicalEntityReference, eUriType type,
+        SinkParticipant(LibrdfModel& model, double multiplier, std::string physicalEntityReference, eUriType type,
                         UriHandler &uriHandler);
     };
 
@@ -192,7 +192,7 @@ namespace omexmeta {
         /**
          * @brief A class representing process mediators (such as a catalyst).
          */
-        MediatorParticipant(librdf_model *model, std::string physicalEntityReference, eUriType type, UriHandler &uriHandler);
+        MediatorParticipant(LibrdfModel& model, std::string physicalEntityReference, eUriType type, UriHandler &uriHandler);
 
     private:
         double multiplier_ = 0;

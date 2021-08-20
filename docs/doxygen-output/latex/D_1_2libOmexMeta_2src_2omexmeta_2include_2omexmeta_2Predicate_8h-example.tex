@@ -3,6 +3,7 @@
 \begin{DoxyCode}{0}
 \DoxyCodeLine{BiomodelBiologyQualifier is(\textcolor{stringliteral}{"{}is"{}});}
 \DoxyCodeLine{std::cout << is.str() << std::endl;}
+
 \end{DoxyCode}
  will output \href{http://biomodels.net/biology-qualifiers/is}{\texttt{ http\+://biomodels.\+net/biology-\/qualifiers/is}} to console.
 
@@ -15,17 +16,17 @@
 \DoxyCodeLine{\textcolor{preprocessor}{\#ifndef LIBOMEXMETA\_PREDICATE\_H}}
 \DoxyCodeLine{\textcolor{preprocessor}{\#define LIBOMEXMETA\_PREDICATE\_H}}
 \DoxyCodeLine{}
-\DoxyCodeLine{\textcolor{preprocessor}{\#include "{}redland/World.h"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include "{}redland/LibrdfWorld.h"{}}}
 \DoxyCodeLine{\textcolor{preprocessor}{\#include "{}redland/librdf.h"{}}}
 \DoxyCodeLine{}
 \DoxyCodeLine{\textcolor{preprocessor}{\#include "{}omexmeta/OmexMetaUtils.h"{}}}
 \DoxyCodeLine{}
-\DoxyCodeLine{\textcolor{preprocessor}{\#include <vector>}}
 \DoxyCodeLine{\textcolor{preprocessor}{\#include <algorithm>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include <iostream>}}
 \DoxyCodeLine{\textcolor{preprocessor}{\#include <sstream>}}
 \DoxyCodeLine{\textcolor{preprocessor}{\#include <unordered\_map>}}
-\DoxyCodeLine{\textcolor{preprocessor}{\#include <iostream>}}
 \DoxyCodeLine{\textcolor{preprocessor}{\#include <utility>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include <vector>}}
 \DoxyCodeLine{}
 \DoxyCodeLine{\textcolor{keyword}{using namespace }redland;}
 \DoxyCodeLine{}
@@ -43,6 +44,8 @@
 \DoxyCodeLine{        Predicate(\textcolor{keyword}{const} std::string \&namespace\_,}
 \DoxyCodeLine{                  std::string term, std::string prefix);}
 \DoxyCodeLine{}
+\DoxyCodeLine{        \textcolor{keyword}{explicit} Predicate(LibrdfNode node);}
+\DoxyCodeLine{}
 \DoxyCodeLine{        \textcolor{keywordtype}{bool} operator==(\textcolor{keyword}{const} Predicate \&rhs) \textcolor{keyword}{const};}
 \DoxyCodeLine{}
 \DoxyCodeLine{        \textcolor{keywordtype}{bool} operator!=(\textcolor{keyword}{const} Predicate \&rhs) \textcolor{keyword}{const};}
@@ -52,8 +55,6 @@
 \DoxyCodeLine{        \textcolor{keyword}{static} \textcolor{keywordtype}{void} verify(std::vector<std::string> valid\_terms, \textcolor{keyword}{const} std::string \&term);}
 \DoxyCodeLine{}
 \DoxyCodeLine{        \textcolor{keyword}{static} \textcolor{keywordtype}{bool} namespaceKnown(\textcolor{keyword}{const} std::string \&ns);}
-\DoxyCodeLine{}
-\DoxyCodeLine{        [[nodiscard]] \mbox{\hyperlink{structraptor__term}{librdf\_node}} *get() \textcolor{keyword}{const};}
 \DoxyCodeLine{}
 \DoxyCodeLine{        [[nodiscard]] \textcolor{keyword}{const} std::vector<std::string> \&getValidTerms() \textcolor{keyword}{const};}
 \DoxyCodeLine{}
@@ -69,23 +70,21 @@
 \DoxyCodeLine{}
 \DoxyCodeLine{}
 \DoxyCodeLine{        \textcolor{keyword}{static} \textcolor{keywordtype}{void}}
-\DoxyCodeLine{        addSeenNamespaceToSerializer(librdf\_world *world, librdf\_serializer *serializer, \mbox{\hyperlink{structraptor__term}{librdf\_node}} *predicate);}
+\DoxyCodeLine{        addSeenNamespaceToSerializer(LibrdfSerializer serializer, LibrdfNode predicate);}
 \DoxyCodeLine{}
-\DoxyCodeLine{        \textcolor{keywordtype}{void} setNode(\mbox{\hyperlink{structraptor__term}{librdf\_node}} *node);}
+\DoxyCodeLine{        \textcolor{keywordtype}{void} setNode(LibrdfNode \&node);}
 \DoxyCodeLine{}
-\DoxyCodeLine{        \mbox{\hyperlink{classredland_1_1LibrdfNode}{LibrdfNode}} getNode();}
+\DoxyCodeLine{        LibrdfNode getNode();}
 \DoxyCodeLine{}
-\DoxyCodeLine{\textcolor{comment}{//        std::shared\_ptr<Predicate> makeShared();}}
+\DoxyCodeLine{}
+\DoxyCodeLine{        \textcolor{comment}{//        std::shared\_ptr<Predicate> makeShared();}}
 \DoxyCodeLine{    \textcolor{keyword}{protected}:}
-\DoxyCodeLine{}
 \DoxyCodeLine{        std::string namespace\_, term\_, prefix\_;}
 \DoxyCodeLine{        std::string uri\_;}
-\DoxyCodeLine{\textcolor{comment}{//        librdf\_node *node\_ = nullptr; //! predicates can only have type uri}}
+\DoxyCodeLine{        \textcolor{comment}{//        librdf\_node *node\_ = nullptr; //! predicates can only have type uri}}
 \DoxyCodeLine{        std::vector<std::string> valid\_terms\_\{\textcolor{stringliteral}{"{}All"{}}\};}
 \DoxyCodeLine{}
-\DoxyCodeLine{        \mbox{\hyperlink{classredland_1_1LibrdfNode}{LibrdfNode}} node\_;}
-\DoxyCodeLine{}
-\DoxyCodeLine{        \textcolor{keyword}{explicit} Predicate(\mbox{\hyperlink{structraptor__term}{librdf\_node}} *node);}
+\DoxyCodeLine{        LibrdfNode node\_;}
 \DoxyCodeLine{    \};}
 \DoxyCodeLine{}
 \DoxyCodeLine{    \textcolor{keyword}{class }BiomodelsBiologyQualifier : \textcolor{keyword}{public} Predicate \{}
@@ -103,8 +102,7 @@
 \DoxyCodeLine{                \textcolor{stringliteral}{"{}occursIn"{}},}
 \DoxyCodeLine{                \textcolor{stringliteral}{"{}isVersionOf"{}},}
 \DoxyCodeLine{                \textcolor{stringliteral}{"{}isPropertyOf"{}},}
-\DoxyCodeLine{                \textcolor{stringliteral}{"{}hasTaxon"{}}}
-\DoxyCodeLine{        \};}
+\DoxyCodeLine{                \textcolor{stringliteral}{"{}hasTaxon"{}}\};}
 \DoxyCodeLine{}
 \DoxyCodeLine{        BiomodelsBiologyQualifier() = \textcolor{keywordflow}{default};}
 \DoxyCodeLine{}
@@ -112,8 +110,7 @@
 \DoxyCodeLine{}
 \DoxyCodeLine{        \textcolor{keywordtype}{void} verify();}
 \DoxyCodeLine{}
-\DoxyCodeLine{\textcolor{comment}{//        std::shared\_ptr<BiomodelsBiologyQualifier> makeShared();}}
-\DoxyCodeLine{}
+\DoxyCodeLine{        \textcolor{comment}{//        std::shared\_ptr<BiomodelsBiologyQualifier> makeShared();}}
 \DoxyCodeLine{    \};}
 \DoxyCodeLine{}
 \DoxyCodeLine{    \textcolor{keyword}{class }BiomodelsModelQualifier : \textcolor{keyword}{public} Predicate \{}
@@ -131,8 +128,7 @@
 \DoxyCodeLine{}
 \DoxyCodeLine{        \textcolor{keywordtype}{void} verify();}
 \DoxyCodeLine{}
-\DoxyCodeLine{\textcolor{comment}{//        std::shared\_ptr<BiomodelsModelQualifier> makeShared();}}
-\DoxyCodeLine{}
+\DoxyCodeLine{        \textcolor{comment}{//        std::shared\_ptr<BiomodelsModelQualifier> makeShared();}}
 \DoxyCodeLine{    \};}
 \DoxyCodeLine{}
 \DoxyCodeLine{    \textcolor{keyword}{class }DCTerm : \textcolor{keyword}{public} Predicate \{}
@@ -153,8 +149,7 @@
 \DoxyCodeLine{}
 \DoxyCodeLine{        \textcolor{keywordtype}{void} verify();}
 \DoxyCodeLine{}
-\DoxyCodeLine{\textcolor{comment}{//        std::shared\_ptr<DCTerm> makeShared() ;}}
-\DoxyCodeLine{}
+\DoxyCodeLine{        \textcolor{comment}{//        std::shared\_ptr<DCTerm> makeShared() ;}}
 \DoxyCodeLine{    \};}
 \DoxyCodeLine{}
 \DoxyCodeLine{    \textcolor{keyword}{class }SemSim : \textcolor{keyword}{public} Predicate \{}
@@ -172,7 +167,6 @@
 \DoxyCodeLine{        \textcolor{keyword}{explicit} SemSim(\textcolor{keyword}{const} std::string \&term);}
 \DoxyCodeLine{}
 \DoxyCodeLine{        \textcolor{keywordtype}{void} verify();}
-\DoxyCodeLine{}
 \DoxyCodeLine{    \};}
 \DoxyCodeLine{}
 \DoxyCodeLine{    \textcolor{keyword}{class }Foaf : \textcolor{keyword}{public} Predicate \{}
@@ -190,7 +184,6 @@
 \DoxyCodeLine{        \textcolor{keyword}{explicit} Foaf(\textcolor{keyword}{const} std::string \&term);}
 \DoxyCodeLine{}
 \DoxyCodeLine{        \textcolor{keywordtype}{void} verify();}
-\DoxyCodeLine{}
 \DoxyCodeLine{    \};}
 \DoxyCodeLine{}
 \DoxyCodeLine{    \textcolor{keyword}{typedef} std::shared\_ptr<Predicate> PredicatePtr;}
@@ -199,9 +192,10 @@
 \DoxyCodeLine{}
 \DoxyCodeLine{    PredicatePtr \mbox{\hyperlink{namespaceomexmeta_a0a8d50daa10e421d0722520cdef0ab9a}{PredicateFactory}}(std::string namespace\_, \textcolor{keyword}{const} std::string \&term);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\}}
+\DoxyCodeLine{\}\textcolor{comment}{// namespace omexmeta}}
 \DoxyCodeLine{}
 \DoxyCodeLine{}
-\DoxyCodeLine{\textcolor{preprocessor}{\#endif //LIBOMEXMETA\_PREDICATE\_H}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#endif}\textcolor{comment}{//LIBOMEXMETA\_PREDICATE\_H}}
+
 \end{DoxyCodeInclude}
  

@@ -22,7 +22,7 @@ public:
 
 
 TEST_F(SBMLSemanticExtractionTests, TestTwoCompartments){
-    std::string model_string = SBMLFactory::getSBML(SBML_Semantic_Extraction_Model);
+    std::string model_string = SBMLFactory::getSBML(SBML_SEMANTIC_EXTRACTION_MODEL);
     RDF rdf;
     Editor editor = rdf.toEditor(model_string, true);
     SBMLSemanticExtraction extraction(&editor);
@@ -133,7 +133,7 @@ TEST_F(SBMLSemanticExtractionTests, TestCompartmentSingleCompartment){
 }
 
 TEST_F(SBMLSemanticExtractionTests, TestReactionExtraction){
-    std::string model_string = SBMLFactory::getSBML(SBML_Semantic_Extraction_Model);
+    std::string model_string = SBMLFactory::getSBML(SBML_SEMANTIC_EXTRACTION_MODEL);
 //    std::cout << model_string << std::endl;
     RDF rdf;
     rdf.setArchiveUri("AnAwesomeOmex.omex");

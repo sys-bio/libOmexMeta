@@ -47,14 +47,14 @@ int main(){
     // create editor object
     Editor editor = rdf.toEditor(sbml, true);
 
-    // create out annotation
+    // create our annotation
     SingularAnnotation singular_annotation = editor.newSingularAnnotation();
     singular_annotation
         .about("species0000")
         .predicate("bqbiol", "is")
         .resourceUri("uniprot/P01137");
 
-    std::string singular_annotation_string = singular_annotation.str("turtle");
+    std::string singular_annotation_string = rdf.toString("turtle");
     std::cout << singular_annotation_string<< std::endl;
     singular_annotation.freeTriple();
 

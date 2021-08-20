@@ -1,298 +1,12 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="classomexmeta_1_1Query" kind="class" language="C++" prot="public">
     <compoundname>omexmeta::Query</compoundname>
-      <sectiondef kind="user-defined">
-      <header>: variable name</header>
-      <description><para>librdf_query_results_get_binding_value_by_name: @query_results: #librdf_query_results query results</para>
-<para>Get one binding value for a given name in the current result.</para>
-<para>Return value: a new #librdf_node binding value or NULL on failure </para>
-</description>
-      <memberdef kind="function" id="classomexmeta_1_1Query_1a31f2c3d3ea8fa0b5766d2ca35d2609fd" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>std::string</type>
-        <definition>std::string omexmeta::Query::getBindingValueByName</definition>
-        <argsstring>(const std::string &amp;name)</argsstring>
-        <name>getBindingValueByName</name>
-        <param>
-          <type>const std::string &amp;</type>
-          <declname>name</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Query.h" line="125" column="21" bodyfile="src/omexmeta/Query.cpp" bodystart="116" bodyend="125"/>
-      </memberdef>
-      <memberdef kind="function" id="classomexmeta_1_1Query_1aafaf7dc024ccb358467b2f7d814ec132" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>int</type>
-        <definition>int omexmeta::Query::getBindingsCount</definition>
-        <argsstring>()</argsstring>
-        <name>getBindingsCount</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-<para>librdf_query_results_get_bindings_count: @query_results: #librdf_query_results query results</para>
-<para>Get the number of bound variables in the result.</para>
-<para>Return value: &lt;0 if failed or results exhausted </para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Query.h" line="135" column="13" bodyfile="src/omexmeta/Query.cpp" bodystart="127" bodyend="129"/>
-      </memberdef>
-      <memberdef kind="function" id="classomexmeta_1_1Query_1a405a2bcace57e7b9a78b42ff0bb04a27" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type></type>
-        <definition>omexmeta::Query::Query</definition>
-        <argsstring>(librdf_model *model, std::string query)</argsstring>
-        <name>Query</name>
-        <param>
-          <type>librdf_model *</type>
-          <declname>model</declname>
-        </param>
-        <param>
-          <type>std::string</type>
-          <declname>query</declname>
-        </param>
-        <briefdescription>
-<para>constructor for <ref refid="classomexmeta_1_1Query" kindref="compound">Query</ref> object </para>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Query.h" line="141" column="9" bodyfile="src/omexmeta/Query.cpp" bodystart="12" bodyend="23"/>
-      </memberdef>
-      <memberdef kind="function" id="classomexmeta_1_1Query_1a3f9ff18a0ed6a389104ca76d41119739" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type></type>
-        <definition>omexmeta::Query::Query</definition>
-        <argsstring>(const Query &amp;query)=delete</argsstring>
-        <name>Query</name>
-        <param>
-          <type>const <ref refid="classomexmeta_1_1Query" kindref="compound">Query</ref> &amp;</type>
-          <declname>query</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Query.h" line="152" column="9"/>
-      </memberdef>
-      <memberdef kind="function" id="classomexmeta_1_1Query_1a6162664ef9a36b453a3b96e913356996" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type></type>
-        <definition>omexmeta::Query::Query</definition>
-        <argsstring>(Query &amp;&amp;query) noexcept</argsstring>
-        <name>Query</name>
-        <param>
-          <type><ref refid="classomexmeta_1_1Query" kindref="compound">Query</ref> &amp;&amp;</type>
-          <declname>query</declname>
-        </param>
-        <briefdescription>
-<para>move constructor for <ref refid="classomexmeta_1_1Query" kindref="compound">Query</ref> object </para>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Query.h" line="157" column="9" bodyfile="src/omexmeta/Query.cpp" bodystart="29" bodyend="44"/>
-      </memberdef>
-      <memberdef kind="function" id="classomexmeta_1_1Query_1afd53f231969232188218cae148aa6482" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="classomexmeta_1_1Query" kindref="compound">Query</ref> &amp;</type>
-        <definition>Query&amp; omexmeta::Query::operator=</definition>
-        <argsstring>(const Query &amp;query)=delete</argsstring>
-        <name>operator=</name>
-        <param>
-          <type>const <ref refid="classomexmeta_1_1Query" kindref="compound">Query</ref> &amp;</type>
-          <declname>query</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Query.h" line="168" column="15"/>
-      </memberdef>
-      <memberdef kind="function" id="classomexmeta_1_1Query_1a818772558b490e25b2ee1bc2417e1282" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type><ref refid="classomexmeta_1_1Query" kindref="compound">Query</ref> &amp;</type>
-        <definition>Query &amp; omexmeta::Query::operator=</definition>
-        <argsstring>(Query &amp;&amp;query) noexcept</argsstring>
-        <name>operator=</name>
-        <param>
-          <type><ref refid="classomexmeta_1_1Query" kindref="compound">Query</ref> &amp;&amp;</type>
-          <declname>query</declname>
-        </param>
-        <briefdescription>
-<para>move assignment constructor for <ref refid="classomexmeta_1_1Query" kindref="compound">Query</ref> object </para>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Query.h" line="175" column="15" bodyfile="src/omexmeta/Query.cpp" bodystart="46" bodyend="64"/>
-      </memberdef>
-      <memberdef kind="function" id="classomexmeta_1_1Query_1a0b9e4ef7fb6c3d0e79a51ed327639ac0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void omexmeta::Query::freeQuery</definition>
-        <argsstring>()</argsstring>
-        <name>freeQuery</name>
-        <briefdescription>
-<para>free resources associated with a query object. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>it is the callers responsibility to ensure resources used by <ref refid="classomexmeta_1_1Query" kindref="compound">Query</ref> are released after use. </para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Query.h" line="182" column="14" bodyfile="src/omexmeta/Query.cpp" bodystart="66" bodyend="75"/>
-      </memberdef>
-      <memberdef kind="function" id="classomexmeta_1_1Query_1a0dda4502056d712d351f7057329c7688" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>librdf_stream *</type>
-        <definition>librdf_stream * omexmeta::Query::resultsAsLibRdfStream</definition>
-        <argsstring>()</argsstring>
-        <name>resultsAsLibRdfStream</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-<para>@breif returns the results as a librdf_stream* object</para>
-<para>developers. Consider removing. </para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Query.h" line="189" column="24" bodyfile="src/omexmeta/Query.cpp" bodystart="103" bodyend="105"/>
-      </memberdef>
-      <memberdef kind="function" id="classomexmeta_1_1Query_1ab50cc5f76dcf7f863f9fa9d0bf755071" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>ResultsMap</type>
-        <definition>ResultsMap omexmeta::Query::resultsAsMap</definition>
-        <argsstring>()</argsstring>
-        <name>resultsAsMap</name>
-        <briefdescription>
-<para>returns query results in a map where keys are the variable names used in query and values are vectors of values for results. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><ref refid="classThis" kindref="compound">This</ref> is the only supported mechanism for ascertaining query results programatically, without needing to read/write to/from file. <ref refid="classThis" kindref="compound">This</ref> method uses an iterator from librdf. When it gets to the end of the iterator, the iterator is &quot;used up&quot;. Therefore at the end of collecting the results as a map, the original query is re-run, so that the presently instantiated <ref refid="classomexmeta_1_1Query" kindref="compound">Query</ref> object is not rendered useless.</para>
-<para>If the query looks like this: <programlisting><codeline><highlight class="normal">std::string<sp/>query_string<sp/>=<sp/><sp/><sp/>&quot;SELECT<sp/>?x<sp/>?y<sp/>?z</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;WHERE<sp/>{&quot;</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;<sp/><sp/><sp/>?x<sp/>?y<sp/>?z&quot;</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;}&quot;;</highlight></codeline>
-<codeline><highlight class="normal">Query<sp/>query(query_string);</highlight></codeline>
-</programlisting> The column names will be x, y and z and the results will be string representations of all subjects (?x), predicates (?y) and resources (?z) in a vector of size <computeroutput>n</computeroutput>, where n is the number of query results. </para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Query.h" line="216" column="20" bodyfile="src/omexmeta/Query.cpp" bodystart="160" bodyend="187"/>
-      </memberdef>
-      <memberdef kind="function" id="classomexmeta_1_1Query_1a7109dd08bd808bf5a20becb164622ed6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>std::string</type>
-        <definition>std::string omexmeta::Query::resultsAsStr</definition>
-        <argsstring>(const std::string &amp;output_format, std::string baseuri=&quot;query_results&quot;) const</argsstring>
-        <name>resultsAsStr</name>
-        <param>
-          <type>const std::string &amp;</type>
-          <declname>output_format</declname>
-        </param>
-        <param>
-          <type>std::string</type>
-          <declname>baseuri</declname>
-          <defval>&quot;query_results&quot;</defval>
-        </param>
-        <briefdescription>
-<para>collect the result of the query as a string </para>
-        </briefdescription>
-        <detaileddescription>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>output_format</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>one of 9 strings used to choose how you want the results to be presented. <ref refid="classOptions" kindref="compound">Options</ref> are xml, json, table, csv, mkr, tsv, html, turtle and rdfxml. </para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Query.h" line="224" column="22" bodyfile="src/omexmeta/Query.cpp" bodystart="131" bodyend="153"/>
-      </memberdef>
-      <memberdef kind="function" id="classomexmeta_1_1Query_1a879a4db0413abc8f4a3470877ebf5193" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void omexmeta::Query::runQuery</definition>
-        <argsstring>()</argsstring>
-        <name>runQuery</name>
-        <briefdescription>
-<para>Run a query. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>Users do not need to manually execute a query using this method. It is used automatically in the constructor for <ref refid="classomexmeta_1_1Query" kindref="compound">Query</ref> and again in <ref refid="classomexmeta_1_1Query_1ab50cc5f76dcf7f863f9fa9d0bf755071" kindref="member">Query::resultsAsMap</ref>. </para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Query.h" line="231" column="14" bodyfile="src/omexmeta/Query.cpp" bodystart="77" bodyend="89"/>
-      </memberdef>
-      <memberdef kind="function" id="classomexmeta_1_1Query_1a9f9639927203dc97e93bfca5508b6d01" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void omexmeta::Query::printQueryResults</definition>
-        <argsstring>()</argsstring>
-        <name>printQueryResults</name>
-        <briefdescription>
-<para>Output query results to cout. </para>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Query.h" line="236" column="14" bodyfile="src/omexmeta/Query.cpp" bodystart="194" bodyend="202"/>
-      </memberdef>
-      </sectiondef>
+    <includes refid="Query_8h" local="no">Query.h</includes>
       <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="classomexmeta_1_1Query_1a11312167f0820409616931d54a2b7bc5" prot="private" static="no" mutable="no">
-        <type>librdf_model *</type>
-        <definition>librdf_model* omexmeta::Query::model_</definition>
-        <argsstring></argsstring>
-        <name>model_</name>
-        <initializer>= nullptr</initializer>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Query.h" line="45" column="22" bodyfile="src/omexmeta/include/omexmeta/Query.h" bodystart="45" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="classomexmeta_1_1Query_1a9481d440660afa98b6ac3dff58cbd4dd" prot="private" static="no" mutable="no">
-        <type>librdf_query_results *</type>
-        <definition>librdf_query_results* omexmeta::Query::query_results_</definition>
-        <argsstring></argsstring>
-        <name>query_results_</name>
-        <initializer>= nullptr</initializer>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Query.h" line="46" column="30" bodyfile="src/omexmeta/include/omexmeta/Query.h" bodystart="46" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="classomexmeta_1_1Query_1a42588f89a2f1c0bbb006c665c243fbe7" prot="private" static="no" mutable="no">
-        <type>librdf_query *</type>
-        <definition>librdf_query* omexmeta::Query::q_</definition>
-        <argsstring></argsstring>
-        <name>q_</name>
-        <initializer>= nullptr</initializer>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Query.h" line="47" column="22" bodyfile="src/omexmeta/include/omexmeta/Query.h" bodystart="47" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="classomexmeta_1_1Query_1aa27e0b22999457c71ab690cf1650e26a" prot="private" static="no" mutable="no">
-        <type>std::string</type>
-        <definition>std::string omexmeta::Query::query_</definition>
+      <memberdef kind="variable" id="classomexmeta_1_1Query_1a5bc2cc1eb4a974a05343af9b3f36695a" prot="private" static="no" mutable="no">
+        <type><ref refid="classredland_1_1LibrdfQuery" kindref="compound">LibrdfQuery</ref></type>
+        <definition>LibrdfQuery omexmeta::Query::query_</definition>
         <argsstring></argsstring>
         <name>query_</name>
         <briefdescription>
@@ -301,162 +15,122 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Query.h" line="48" column="21" bodyfile="src/omexmeta/include/omexmeta/Query.h" bodystart="48" bodyend="-1"/>
+        <location file="src/omexmeta/include/omexmeta/Query.h" line="38" column="21" bodyfile="src/omexmeta/include/omexmeta/Query.h" bodystart="38" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classomexmeta_1_1Query_1a8e000eb2cc7be4a81bc9a99d0f77c23d" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; std::string &gt;</type>
-        <definition>std::vector&lt;std::string&gt; omexmeta::Query::valid_output_formats_</definition>
+      <memberdef kind="variable" id="classomexmeta_1_1Query_1ade43d2659f65e425f891b6a1ab37e767" prot="private" static="no" mutable="no">
+        <type>const <ref refid="classredland_1_1LibrdfModel" kindref="compound">LibrdfModel</ref> &amp;</type>
+        <definition>const LibrdfModel&amp; omexmeta::Query::model_</definition>
         <argsstring></argsstring>
-        <name>valid_output_formats_</name>
-        <initializer>= {
-                &quot;xml&quot;,
-                &quot;json&quot;,
-                &quot;table&quot;,
-                &quot;csv&quot;,
-                &quot;mkr&quot;,
-                &quot;tsv&quot;,
-                &quot;html&quot;,
-                &quot;turtle&quot;,
-                &quot;rdfxml&quot;,
-        }</initializer>
+        <name>model_</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Query.h" line="50" column="21" bodyfile="src/omexmeta/include/omexmeta/Query.h" bodystart="50" bodyend="-1"/>
+        <location file="src/omexmeta/include/omexmeta/Query.h" line="39" column="27" bodyfile="src/omexmeta/include/omexmeta/Query.h" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classomexmeta_1_1Query_1a6f3afede7b1f11c094811db3ef387e14" prot="private" static="no" mutable="no">
+        <type><ref refid="classredland_1_1LibrdfQueryResults" kindref="compound">LibrdfQueryResults</ref></type>
+        <definition>LibrdfQueryResults omexmeta::Query::results_</definition>
+        <argsstring></argsstring>
+        <name>results_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/Query.h" line="40" column="28" bodyfile="src/omexmeta/include/omexmeta/Query.h" bodystart="40" bodyend="-1"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-func">
-      <memberdef kind="function" id="classomexmeta_1_1Query_1a7fb986a8bd45c97d5ce818b7cc286292" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>int</type>
-        <definition>int omexmeta::Query::next</definition>
-        <argsstring>()</argsstring>
-        <name>next</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Query.h" line="62" column="13" bodyfile="src/omexmeta/Query.cpp" bodystart="156" bodyend="158"/>
-      </memberdef>
-      <memberdef kind="function" id="classomexmeta_1_1Query_1a0e31011a576bb0598e92fe3676216899" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>bool</type>
-        <definition>bool omexmeta::Query::isBindings</definition>
-        <argsstring>()</argsstring>
-        <name>isBindings</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-<para>librdf_query_results_is_bindings: @query_results: #librdf_query_results object</para>
-<para>Test if librdf_query_results is variable bindings format.</para>
-<para>Return value: non-0 if true </para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Query.h" line="73" column="14" bodyfile="src/omexmeta/Query.cpp" bodystart="95" bodyend="97"/>
-      </memberdef>
-      <memberdef kind="function" id="classomexmeta_1_1Query_1aaebf27f2a2819419a68f04b3c5d24a10" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>bool</type>
-        <definition>bool omexmeta::Query::isBoolean</definition>
-        <argsstring>()</argsstring>
-        <name>isBoolean</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-<para>Test if librdf_query_results is boolean format.</para>
-<para>If this function returns true, the result can be retrieved by librdf_query_results_get_boolean().</para>
-<para>Return value: non-0 if true </para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Query.h" line="83" column="14" bodyfile="src/omexmeta/Query.cpp" bodystart="91" bodyend="93"/>
-      </memberdef>
-      <memberdef kind="function" id="classomexmeta_1_1Query_1a5f062c8171a472529282e08f2f132813" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>int</type>
-        <definition>int omexmeta::Query::getBoolean</definition>
-        <argsstring>()</argsstring>
-        <name>getBoolean</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-<para>Get boolean query result.</para>
-<para>The return value is only meaningful if this is a boolean query result - see librdf_query_results_is_boolean()</para>
-<para>Return value: boolean query result - &gt;0 is true, 0 is false, &lt;0 on error or finished </para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Query.h" line="93" column="13" bodyfile="src/omexmeta/Query.cpp" bodystart="99" bodyend="101"/>
-      </memberdef>
-      <memberdef kind="function" id="classomexmeta_1_1Query_1aa5cdad3617be3e7b5df125762f29f0ba" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>int</type>
-        <definition>int omexmeta::Query::getCount</definition>
-        <argsstring>()</argsstring>
-        <name>getCount</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-<para>librdf_query_results_get_count: @query_results: #librdf_query_results query results</para>
-<para>Get number of bindings so far.</para>
-<para>Return value: number of bindings found so far </para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Query.h" line="103" column="13" bodyfile="src/omexmeta/Query.cpp" bodystart="112" bodyend="114"/>
-      </memberdef>
-      <memberdef kind="function" id="classomexmeta_1_1Query_1aaccc1e1973b46fb8d4c7fa8b5da9c05e" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>std::string</type>
-        <definition>std::string omexmeta::Query::getBindingsName</definition>
-        <argsstring>(int index)</argsstring>
-        <name>getBindingsName</name>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classomexmeta_1_1Query_1a2c4f294aee354b2832c4aa2521849c00" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>omexmeta::Query::Query</definition>
+        <argsstring>(const std::string &amp;query, LibrdfModel &amp;model)</argsstring>
+        <name>Query</name>
         <param>
-          <type>int</type>
-          <declname>index</declname>
+          <type>const std::string &amp;</type>
+          <declname>query</declname>
+        </param>
+        <param>
+          <type><ref refid="classredland_1_1LibrdfModel" kindref="compound">LibrdfModel</ref> &amp;</type>
+          <declname>model</declname>
         </param>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para>@query_results: #librdf_query_results query results @offset: offset of binding name into array of known names</para>
-<para>Get binding name for the current result.</para>
-<para>Return value: a pointer to a shared copy of the binding name or NULL on failure </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Query.h" line="114" column="21" bodyfile="src/omexmeta/Query.cpp" bodystart="190" bodyend="192"/>
+        <location file="src/omexmeta/include/omexmeta/Query.h" line="20" column="9" bodyfile="src/omexmeta/Query.cpp" bodystart="10" bodyend="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classomexmeta_1_1Query_1a80b878ddc423adc0f8cbc99dfa3c81b0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>ResultsMap</type>
+        <definition>ResultsMap omexmeta::Query::asMap</definition>
+        <argsstring>()</argsstring>
+        <name>asMap</name>
+        <briefdescription>
+<para>return query results as a ResultsMap, where sparql variables are bound as keys in a map and values are vectors containing nodes associated with the ith position in the query results. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/Query.h" line="27" column="20" bodyfile="src/omexmeta/Query.cpp" bodystart="15" bodyend="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classomexmeta_1_1Query_1afa2f5c1c2f26660442d61f5def6ebeca" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string omexmeta::Query::asString</definition>
+        <argsstring>(const std::string &amp;format)</argsstring>
+        <name>asString</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>format</declname>
+        </param>
+        <briefdescription>
+<para>return query results as a string in the format of your choosing. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>valid formats are &quot;xml&quot;, &quot;json&quot;, &quot;table&quot;, &quot;csv&quot;, &quot;mkr&quot;, &quot;tsv&quot;, &quot;html&quot;,&quot;turtle&quot;, &quot;rdfxml&quot;, </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/omexmeta/include/omexmeta/Query.h" line="35" column="21" bodyfile="src/omexmeta/Query.cpp" bodystart="21" bodyend="25"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>make a Sparql </para>
     </briefdescription>
     <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>query</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>on the rdf graph represented by </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>model.</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
     </detaileddescription>
-    <location file="src/omexmeta/include/omexmeta/Query.h" line="43" column="5" bodyfile="src/omexmeta/include/omexmeta/Query.h" bodystart="43" bodyend="245"/>
+    <location file="src/omexmeta/include/omexmeta/Query.h" line="18" column="5" bodyfile="src/omexmeta/include/omexmeta/Query.h" bodystart="18" bodyend="41"/>
     <listofallmembers>
-      <member refid="classomexmeta_1_1Query_1a0b9e4ef7fb6c3d0e79a51ed327639ac0" prot="public" virt="non-virtual"><scope>omexmeta::Query</scope><name>freeQuery</name></member>
-      <member refid="classomexmeta_1_1Query_1aafaf7dc024ccb358467b2f7d814ec132" prot="private" virt="non-virtual"><scope>omexmeta::Query</scope><name>getBindingsCount</name></member>
-      <member refid="classomexmeta_1_1Query_1aaccc1e1973b46fb8d4c7fa8b5da9c05e" prot="private" virt="non-virtual"><scope>omexmeta::Query</scope><name>getBindingsName</name></member>
-      <member refid="classomexmeta_1_1Query_1a31f2c3d3ea8fa0b5766d2ca35d2609fd" prot="private" virt="non-virtual"><scope>omexmeta::Query</scope><name>getBindingValueByName</name></member>
-      <member refid="classomexmeta_1_1Query_1a5f062c8171a472529282e08f2f132813" prot="private" virt="non-virtual"><scope>omexmeta::Query</scope><name>getBoolean</name></member>
-      <member refid="classomexmeta_1_1Query_1aa5cdad3617be3e7b5df125762f29f0ba" prot="private" virt="non-virtual"><scope>omexmeta::Query</scope><name>getCount</name></member>
-      <member refid="classomexmeta_1_1Query_1a0e31011a576bb0598e92fe3676216899" prot="private" virt="non-virtual"><scope>omexmeta::Query</scope><name>isBindings</name></member>
-      <member refid="classomexmeta_1_1Query_1aaebf27f2a2819419a68f04b3c5d24a10" prot="private" virt="non-virtual"><scope>omexmeta::Query</scope><name>isBoolean</name></member>
-      <member refid="classomexmeta_1_1Query_1a11312167f0820409616931d54a2b7bc5" prot="private" virt="non-virtual"><scope>omexmeta::Query</scope><name>model_</name></member>
-      <member refid="classomexmeta_1_1Query_1a7fb986a8bd45c97d5ce818b7cc286292" prot="private" virt="non-virtual"><scope>omexmeta::Query</scope><name>next</name></member>
-      <member refid="classomexmeta_1_1Query_1afd53f231969232188218cae148aa6482" prot="public" virt="non-virtual"><scope>omexmeta::Query</scope><name>operator=</name></member>
-      <member refid="classomexmeta_1_1Query_1a818772558b490e25b2ee1bc2417e1282" prot="public" virt="non-virtual"><scope>omexmeta::Query</scope><name>operator=</name></member>
-      <member refid="classomexmeta_1_1Query_1a9f9639927203dc97e93bfca5508b6d01" prot="public" virt="non-virtual"><scope>omexmeta::Query</scope><name>printQueryResults</name></member>
-      <member refid="classomexmeta_1_1Query_1a42588f89a2f1c0bbb006c665c243fbe7" prot="private" virt="non-virtual"><scope>omexmeta::Query</scope><name>q_</name></member>
-      <member refid="classomexmeta_1_1Query_1a405a2bcace57e7b9a78b42ff0bb04a27" prot="public" virt="non-virtual"><scope>omexmeta::Query</scope><name>Query</name></member>
-      <member refid="classomexmeta_1_1Query_1a3f9ff18a0ed6a389104ca76d41119739" prot="public" virt="non-virtual"><scope>omexmeta::Query</scope><name>Query</name></member>
-      <member refid="classomexmeta_1_1Query_1a6162664ef9a36b453a3b96e913356996" prot="public" virt="non-virtual"><scope>omexmeta::Query</scope><name>Query</name></member>
-      <member refid="classomexmeta_1_1Query_1aa27e0b22999457c71ab690cf1650e26a" prot="private" virt="non-virtual"><scope>omexmeta::Query</scope><name>query_</name></member>
-      <member refid="classomexmeta_1_1Query_1a9481d440660afa98b6ac3dff58cbd4dd" prot="private" virt="non-virtual"><scope>omexmeta::Query</scope><name>query_results_</name></member>
-      <member refid="classomexmeta_1_1Query_1a0dda4502056d712d351f7057329c7688" prot="public" virt="non-virtual"><scope>omexmeta::Query</scope><name>resultsAsLibRdfStream</name></member>
-      <member refid="classomexmeta_1_1Query_1ab50cc5f76dcf7f863f9fa9d0bf755071" prot="public" virt="non-virtual"><scope>omexmeta::Query</scope><name>resultsAsMap</name></member>
-      <member refid="classomexmeta_1_1Query_1a7109dd08bd808bf5a20becb164622ed6" prot="public" virt="non-virtual"><scope>omexmeta::Query</scope><name>resultsAsStr</name></member>
-      <member refid="classomexmeta_1_1Query_1a879a4db0413abc8f4a3470877ebf5193" prot="public" virt="non-virtual"><scope>omexmeta::Query</scope><name>runQuery</name></member>
-      <member refid="classomexmeta_1_1Query_1a8e000eb2cc7be4a81bc9a99d0f77c23d" prot="private" virt="non-virtual"><scope>omexmeta::Query</scope><name>valid_output_formats_</name></member>
+      <member refid="classomexmeta_1_1Query_1a80b878ddc423adc0f8cbc99dfa3c81b0" prot="public" virt="non-virtual"><scope>omexmeta::Query</scope><name>asMap</name></member>
+      <member refid="classomexmeta_1_1Query_1afa2f5c1c2f26660442d61f5def6ebeca" prot="public" virt="non-virtual"><scope>omexmeta::Query</scope><name>asString</name></member>
+      <member refid="classomexmeta_1_1Query_1ade43d2659f65e425f891b6a1ab37e767" prot="private" virt="non-virtual"><scope>omexmeta::Query</scope><name>model_</name></member>
+      <member refid="classomexmeta_1_1Query_1a2c4f294aee354b2832c4aa2521849c00" prot="public" virt="non-virtual"><scope>omexmeta::Query</scope><name>Query</name></member>
+      <member refid="classomexmeta_1_1Query_1a5bc2cc1eb4a974a05343af9b3f36695a" prot="private" virt="non-virtual"><scope>omexmeta::Query</scope><name>query_</name></member>
+      <member refid="classomexmeta_1_1Query_1a6f3afede7b1f11c094811db3ef387e14" prot="private" virt="non-virtual"><scope>omexmeta::Query</scope><name>results_</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

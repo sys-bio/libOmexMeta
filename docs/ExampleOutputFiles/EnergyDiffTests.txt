@@ -1,0 +1,65 @@
+Running main() from ..\third_party\googletest\googletest\src\gtest_main.cc
+[==========] Running 7 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 7 tests from EnergyDiffTests
+[ RUN      ] EnergyDiffTests.TestEnergyDiffSBML1
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
+@prefix semsim: <http://bime.uw.edu/semsim/> .
+@prefix OMEXlib: <http://omex-library.org/> .
+@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
+
+local:EnergyDiff_0
+    semsim:hasSinkParticipant local:SinkParticipant0000 ;
+    semsim:hasSourceParticipant local:SourceParticipant0000 .
+
+local:SinkParticipant0000
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#sink_12> .
+
+local:SourceParticipant0000
+    semsim:hasPhysicalEntityReference <http://omex-library.org/NewOmex.omex/NewModel.xml#source_23> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#parameter_metaid_0>
+    bqbiol:isPropertyOf local:EnergyDiff_0 ;
+    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_01058> .
+
+
+[       OK ] EnergyDiffTests.TestEnergyDiffSBML1 (4 ms)
+[ RUN      ] EnergyDiffTests.TestEnergyDiffSBML2
+[       OK ] EnergyDiffTests.TestEnergyDiffSBML2 (3 ms)
+[ RUN      ] EnergyDiffTests.TestEnergyDiffCellML1
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
+@prefix semsim: <http://bime.uw.edu/semsim/> .
+@prefix OMEXlib: <http://omex-library.org/> .
+@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
+
+local:Force
+    semsim:hasSinkParticipant local:SinkParticipant0000 ;
+    semsim:hasSourceParticipant local:SourceParticipant0000 .
+
+local:SinkParticipant0000
+    semsim:hasPhysicalEntityReference local:entity2 .
+
+local:SourceParticipant0000
+    semsim:hasPhysicalEntityReference local:entity1 .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#main.MembraneVoltage>
+    bqbiol:isPropertyOf local:Force ;
+    bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .
+
+
+[       OK ] EnergyDiffTests.TestEnergyDiffCellML1 (1 ms)
+[ RUN      ] EnergyDiffTests.TestEnergyDiffCellML2
+[       OK ] EnergyDiffTests.TestEnergyDiffCellML2 (2 ms)
+[ RUN      ] EnergyDiffTests.TestRemoveEnergyDiff
+[       OK ] EnergyDiffTests.TestRemoveEnergyDiff (1 ms)
+[ RUN      ] EnergyDiffTests.NernstExample
+[       OK ] EnergyDiffTests.NernstExample (2 ms)
+[ RUN      ] EnergyDiffTests.NernstExampleWithDifferentSBML
+[       OK ] EnergyDiffTests.NernstExampleWithDifferentSBML (1 ms)
+[----------] 7 tests from EnergyDiffTests (15 ms total)
+
+[----------] Global test environment tear-down
+[==========] 7 tests from 1 test suite ran. (15 ms total)
+[  PASSED  ] 7 tests.

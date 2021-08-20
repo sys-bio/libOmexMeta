@@ -57,7 +57,7 @@ namespace omexmeta {
          * the user chooses cellml the elements returned by CellMLAssistant::getValidElements()
          * are used. If the type is unknown, then all elements are given metaids.
          */
-        explicit Editor(std::string xml_or_file, bool create_ids, const LibrdfModel &model, NamespaceMap &ns_map,
+        explicit Editor(std::string xml_or_file, bool create_ids, LibrdfModel &model, NamespaceMap &ns_map,
                         UriHandler &uriHandler, bool generate_new_metaids = false, bool sbml_semantic_extraction = true);
 
         /**
@@ -80,7 +80,7 @@ namespace omexmeta {
          * @brief return the underlying librdf_model* pointer
          * @return the librdf_model pointer
          */
-        [[nodiscard]] librdf_model *getModel() const;
+        [[nodiscard]] LibrdfModel& getModel() const;
 
         /**
          * @brief set the namespace map.
@@ -322,7 +322,7 @@ namespace omexmeta {
          * @brief add the "curator" model level annotation
          * @param an orcid_id as string
          */
-        Editor &addCurator(std::string orcid_id);
+        Editor &addContributor(std::string orcid_id);
 
         /**
          * @brief add the "taxon id" model level annotation
@@ -405,12 +405,12 @@ namespace omexmeta {
     private:
         std::string xml_;
         std::vector<std::string> metaids_;
-        const LibrdfModel &model_;
+        LibrdfModel &model_;
         bool create_ids_ = false;
         std::unordered_map<std::string, std::string> &namespaces_;
         bool generate_new_metaids_;
         bool sbml_semantic_extraction_;
-        std::string metaid_base_ = "#OmexMetaId";
+        std::string metaid_base_ = "#OmexMetaId"; // maybe unused?
         OmexMetaXmlType type_;
         OmexMetaXmlPtr omexMetaXmlPtr_;
 

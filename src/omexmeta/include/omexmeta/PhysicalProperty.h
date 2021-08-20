@@ -23,11 +23,11 @@ namespace omexmeta {
     class PhysicalProperty {
 
     public:
-        PhysicalProperty(UriHandler &uriHandler);
+        PhysicalProperty(LibrdfModel& model, UriHandler &uriHandler);
         ~PhysicalProperty() = default;
-        PhysicalProperty(const PhysicalProperty &physicalProperty)  = default;
+        PhysicalProperty(const PhysicalProperty &physicalProperty) = default;
         PhysicalProperty(PhysicalProperty &&physicalProperty) noexcept = default;
-        PhysicalProperty &operator=(const PhysicalProperty &physicalProperty)  ;
+        PhysicalProperty &operator=(const PhysicalProperty &physicalProperty);
         PhysicalProperty &operator=(PhysicalProperty &&physicalProperty) noexcept;
 
         bool isSet() const;
@@ -40,7 +40,6 @@ namespace omexmeta {
 
         void setPropertyBearerBase(const std::string &propertyBearerBase);
 
-        PhysicalProperty(librdf_model *model, UriHandler &uriHandler);
 
         [[nodiscard]] const std::string &getModelUri() const;
 
@@ -76,7 +75,7 @@ namespace omexmeta {
         std::string property_bearer_base_ = "Entity";  // which string to use for the thing that has the property.
         std::string about_value_;
 
-        librdf_model *model_ = nullptr;
+        LibrdfModel &model_;
 
         UriHandler &uriHandler_;
 

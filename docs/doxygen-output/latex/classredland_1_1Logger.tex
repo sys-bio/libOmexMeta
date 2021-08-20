@@ -1,0 +1,127 @@
+\hypertarget{classredland_1_1Logger}{}\doxysection{redland\+::Logger Class Reference}
+\label{classredland_1_1Logger}\index{redland::Logger@{redland::Logger}}
+
+
+Logging class for lib\+Omex\+Meta. Implemented as a singleton.  
+
+
+
+
+{\ttfamily \#include $<$Logger.\+h$>$}
+
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classredland_1_1Logger_a9e76412d869c3ff4497ce38ef7e3342d}\label{classredland_1_1Logger_a9e76412d869c3ff4497ce38ef7e3342d}} 
+using {\bfseries Logger\+Ptr} = std\+::shared\+\_\+ptr$<$ spdlog\+::logger $>$
+\item 
+\mbox{\Hypertarget{classredland_1_1Logger_a0c9a776efbf57c060ef7f6a2f41455c4}\label{classredland_1_1Logger_a0c9a776efbf57c060ef7f6a2f41455c4}} 
+using {\bfseries Log\+Level} = spdlog\+::level\+::level\+\_\+enum
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classredland_1_1Logger_ac358531893ec79d169ec449aae2cc5c0}\label{classredland_1_1Logger_ac358531893ec79d169ec449aae2cc5c0}} 
+void \mbox{\hyperlink{classredland_1_1Logger_ac358531893ec79d169ec449aae2cc5c0}{set\+Formatter}} (const std\+::string \&format)
+\begin{DoxyCompactList}\small\item\em formatter strings use the \{fmt\} library. See documentation here\+: \href{https://fmt.dev/latest/index.html}{\texttt{ https\+://fmt.\+dev/latest/index.\+html}} \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classredland_1_1Logger_a7ae9f6e2d9c6d143192dd7253acea479}{set\+Level}} (Log\+Level level)
+\begin{DoxyCompactList}\small\item\em set the current logging level \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classredland_1_1Logger_a267cc8563aa19f296edfd859331a53a7}\label{classredland_1_1Logger_a267cc8563aa19f296edfd859331a53a7}} 
+Log\+Level \mbox{\hyperlink{classredland_1_1Logger_a267cc8563aa19f296edfd859331a53a7}{get\+Level}} ()
+\begin{DoxyCompactList}\small\item\em returns the current logging level \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classredland_1_1Logger_a48844ea4f9eecbb5c450b35a96cbdda4}{enable\+Backtrace}} (int num)
+\begin{DoxyCompactList}\small\item\em enable the backtrace logging feature -\/ display the last \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classredland_1_1Logger_a61b92676954488db03b3c3ebfbd11fe0}\label{classredland_1_1Logger_a61b92676954488db03b3c3ebfbd11fe0}} 
+void \mbox{\hyperlink{classredland_1_1Logger_a61b92676954488db03b3c3ebfbd11fe0}{disable\+Backtrace}} ()
+\begin{DoxyCompactList}\small\item\em disable the backtrace feature \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classredland_1_1Logger_a63c1f161280c140b69b3db08389a1137}\label{classredland_1_1Logger_a63c1f161280c140b69b3db08389a1137}} 
+void \mbox{\hyperlink{classredland_1_1Logger_a63c1f161280c140b69b3db08389a1137}{console\+Logger}} ()
+\begin{DoxyCompactList}\small\item\em create and switch to a console logger \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classredland_1_1Logger_a39e56c0690a855138fff179e68171bc3}\label{classredland_1_1Logger_a39e56c0690a855138fff179e68171bc3}} 
+void \mbox{\hyperlink{classredland_1_1Logger_a39e56c0690a855138fff179e68171bc3}{file\+Logger}} (const std\+::filesystem\+::path \&filename)
+\begin{DoxyCompactList}\small\item\em create and switch to a file logger \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classredland_1_1Logger_ac0d3043e20448acf27088756943e6487}\label{classredland_1_1Logger_ac0d3043e20448acf27088756943e6487}} 
+void \mbox{\hyperlink{classredland_1_1Logger_ac0d3043e20448acf27088756943e6487}{dump\+Backtrace}} ()
+\begin{DoxyCompactList}\small\item\em dump backtrace messages when called \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classredland_1_1Logger_af235df43b65913acfa616d98a299fe72}\label{classredland_1_1Logger_af235df43b65913acfa616d98a299fe72}} 
+void \mbox{\hyperlink{classredland_1_1Logger_af235df43b65913acfa616d98a299fe72}{info}} (const std\+::string \&message)
+\begin{DoxyCompactList}\small\item\em log a info message to the currently active logger \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classredland_1_1Logger_ae1be7a182e59b7aeb14f584d6d5114b6}\label{classredland_1_1Logger_ae1be7a182e59b7aeb14f584d6d5114b6}} 
+void \mbox{\hyperlink{classredland_1_1Logger_ae1be7a182e59b7aeb14f584d6d5114b6}{trace}} (const std\+::string \&message)
+\begin{DoxyCompactList}\small\item\em log a trace message to the currently active logger \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classredland_1_1Logger_a8e48332423e589a5e11c8e6ecdd16bf1}\label{classredland_1_1Logger_a8e48332423e589a5e11c8e6ecdd16bf1}} 
+void \mbox{\hyperlink{classredland_1_1Logger_a8e48332423e589a5e11c8e6ecdd16bf1}{debug}} (const std\+::string \&message)
+\begin{DoxyCompactList}\small\item\em log a debug message to the currently active logger \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classredland_1_1Logger_a244494ce1d28d0b5e3c27de7e462f8e2}\label{classredland_1_1Logger_a244494ce1d28d0b5e3c27de7e462f8e2}} 
+void \mbox{\hyperlink{classredland_1_1Logger_a244494ce1d28d0b5e3c27de7e462f8e2}{warn}} (const std\+::string \&message)
+\begin{DoxyCompactList}\small\item\em log a warning message to the currently active logger \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classredland_1_1Logger_a7736a74d653953cb3248f20706c0b9f1}\label{classredland_1_1Logger_a7736a74d653953cb3248f20706c0b9f1}} 
+void \mbox{\hyperlink{classredland_1_1Logger_a7736a74d653953cb3248f20706c0b9f1}{error}} (const std\+::string \&message)
+\begin{DoxyCompactList}\small\item\em log a error message to the currently active logger \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classredland_1_1Logger_a6d50761ac27eb3411396cdd18a9c05a9}\label{classredland_1_1Logger_a6d50761ac27eb3411396cdd18a9c05a9}} 
+void \mbox{\hyperlink{classredland_1_1Logger_a6d50761ac27eb3411396cdd18a9c05a9}{critical}} (const std\+::string \&message)
+\begin{DoxyCompactList}\small\item\em log a critical message to the currently active logger \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classredland_1_1Logger_a371ea8132ab82e1c783b74bd6bcf38c5}\label{classredland_1_1Logger_a371ea8132ab82e1c783b74bd6bcf38c5}} 
+static \mbox{\hyperlink{classredland_1_1Logger}{Logger}} $\ast$ {\bfseries get\+Logger} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classredland_1_1Logger_a9bc7671c63a3d7c3953a4d65d8570936}\label{classredland_1_1Logger_a9bc7671c63a3d7c3953a4d65d8570936}} 
+Logger\+Ptr \mbox{\hyperlink{classredland_1_1Logger_a9bc7671c63a3d7c3953a4d65d8570936}{logger}}
+\begin{DoxyCompactList}\small\item\em reference to the currently active logger \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classredland_1_1Logger_acfe5e473ffe0cb34b45ab69ab7675358}\label{classredland_1_1Logger_acfe5e473ffe0cb34b45ab69ab7675358}} 
+bool \mbox{\hyperlink{classredland_1_1Logger_acfe5e473ffe0cb34b45ab69ab7675358}{is\+File\+Logger}} = false
+\begin{DoxyCompactList}\small\item\em indicator, true when the file logger is active \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classredland_1_1Logger_a83c2fde7dc2b6547053d690e63c0f73d}\label{classredland_1_1Logger_a83c2fde7dc2b6547053d690e63c0f73d}} 
+bool \mbox{\hyperlink{classredland_1_1Logger_a83c2fde7dc2b6547053d690e63c0f73d}{is\+Console\+Logger}} = false
+\begin{DoxyCompactList}\small\item\em indicator, true when the console logger is active \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Logging class for lib\+Omex\+Meta. Implemented as a singleton. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classredland_1_1Logger_a48844ea4f9eecbb5c450b35a96cbdda4}\label{classredland_1_1Logger_a48844ea4f9eecbb5c450b35a96cbdda4}} 
+\index{redland::Logger@{redland::Logger}!enableBacktrace@{enableBacktrace}}
+\index{enableBacktrace@{enableBacktrace}!redland::Logger@{redland::Logger}}
+\doxysubsubsection{\texorpdfstring{enableBacktrace()}{enableBacktrace()}}
+{\footnotesize\ttfamily void redland\+::\+Logger\+::enable\+Backtrace (\begin{DoxyParamCaption}\item[{int}]{num }\end{DoxyParamCaption})}
+
+
+
+enable the backtrace logging feature -\/ display the last 
+
+
+\begin{DoxyParams}{Parameters}
+{\em num} & messages when spdlog\+::dump\+\_\+backtrace is called. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classredland_1_1Logger_a7ae9f6e2d9c6d143192dd7253acea479}\label{classredland_1_1Logger_a7ae9f6e2d9c6d143192dd7253acea479}} 
+\index{redland::Logger@{redland::Logger}!setLevel@{setLevel}}
+\index{setLevel@{setLevel}!redland::Logger@{redland::Logger}}
+\doxysubsubsection{\texorpdfstring{setLevel()}{setLevel()}}
+{\footnotesize\ttfamily void redland\+::\+Logger\+::set\+Level (\begin{DoxyParamCaption}\item[{Logger\+::\+Log\+Level}]{level }\end{DoxyParamCaption})}
+
+
+
+set the current logging level 
+
+possible values of level\+:
+\begin{DoxyItemize}
+\item spdlog\+::level\+::critical;
+\item spdlog\+::level\+::err;
+\item spdlog\+::level\+::warn;
+\item spdlog\+::level\+::debug;
+\item spdlog\+::level\+::info;
+\item spdlog\+::level\+::trace;
+\item spdlog\+::level\+::off; 
+\end{DoxyItemize}
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/redland/\+Redland\+Wrapper/src/include/redland/Logger.\+h\item 
+src/redland/\+Redland\+Wrapper/src/Logger.\+cpp\end{DoxyCompactItemize}

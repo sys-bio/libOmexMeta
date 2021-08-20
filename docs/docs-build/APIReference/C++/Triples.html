@@ -1,74 +1,34 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-  <title>Triples &mdash; libomexmeta 1.2.10 documentation</title>
-  
-
-  
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
-
-  
-  
-
-  
-  
-
-  
-
-  
+  <title>Triples &mdash; libomexmeta 1.2.11 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
-    
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
-
-    
+    <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="ElementExtractor" href="ElementExtractor.html" />
     <link rel="prev" title="Triple" href="Triple.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
-
-          
             <a href="../../index.html" class="icon icon-home"> libomexmeta
-          
-
-          
           </a>
-
-          
-            
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -76,20 +36,12 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
         </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Main">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../background.html">Background to Semantic Annotations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Install/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Install/install.html#build-from-source">Build from Source</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../reading_rdf/reading_rdf.html">Reading RDF</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../writing_rdf/writing_rdf.html">Serializing RDF Graphs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../singular_annotations/index.html">Singular Annotations</a></li>
@@ -98,6 +50,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../stripping_annotations/index.html">Stripping Annotations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../querying_rdf/querying_rdf.html">Querying RDF</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../diagrams/diagrams_index.html">Building Diagrams</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../errors_and_logging/errors_and_logging.html">Errors and Logging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../annotating_models/annotating_models_index.html">Annotating Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../download_biomodels/download_biomodels.html">Downloading Biomodels</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../api_reference_index.html">API Reference</a><ul class="current">
@@ -128,92 +81,52 @@
 <li class="toctree-l1"><a class="reference internal" href="../../Developers/developers_index.html">Developers Documentation</a></li>
 </ul>
 
-            
-          
         </div>
-        
       </div>
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+      <nav class="wy-nav-top" aria-label="Top" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../index.html">libomexmeta</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
           
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+<div role="navigation" aria-label="Breadcrumbs">
   <ul class="wy-breadcrumbs">
-    
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-        
           <li><a href="../api_reference_index.html">API Reference</a> &raquo;</li>
-        
           <li><a href="index.html">C++ libOmexMeta API Reference</a> &raquo;</li>
-        
       <li>Triples</li>
-    
-    
       <li class="wy-breadcrumbs-aside">
-        
-          
             <a href="../../_sources/APIReference/C++/Triples.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
+             
   <div class="section" id="triples">
-<h1>Triples<a class="headerlink" href="#triples" title="Permalink to this headline">¶</a></h1>
+<h1>Triples<a class="headerlink" href="#triples" title="Permalink to this headline"></a></h1>
 <dl class="cpp class">
 <dt class="sig sig-object cpp" id="_CPPv4N8omexmeta7TriplesE">
-<span id="_CPPv3N8omexmeta7TriplesE"></span><span id="_CPPv2N8omexmeta7TriplesE"></span><span id="omexmeta::Triples"></span><span class="target" id="classomexmeta_1_1Triples"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">omexmeta</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">Triples</span></span></span><a class="headerlink" href="#_CPPv4N8omexmeta7TriplesE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N8omexmeta7TriplesE"></span><span id="_CPPv2N8omexmeta7TriplesE"></span><span id="omexmeta::Triples"></span><span class="target" id="classomexmeta_1_1Triples"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">omexmeta</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">Triples</span></span></span><a class="headerlink" href="#_CPPv4N8omexmeta7TriplesE" title="Permalink to this definition"></a><br /></dt>
 <dd><p>A <a class="reference internal" href="#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> object is a collection of <a class="reference internal" href="Triple.html#classomexmeta_1_1Triple"><span class="std std-ref">Triple</span></a> objects. </p>
 <p>the implementation of <a class="reference internal" href="#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> is hampered by the inability to clone <a class="reference internal" href="Triple.html#classomexmeta_1_1Triple"><span class="std std-ref">Triple</span></a> objects. Instead triples must use move semantics to get <a class="reference internal" href="#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> in or out of a <a class="reference internal" href="#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> object. Under the hood, the <a class="reference internal" href="#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> object is just a std::vector&lt;Triple&gt;. </p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N8omexmeta7Triples7TriplesEv">
-<span id="_CPPv3N8omexmeta7Triples7TriplesEv"></span><span id="_CPPv2N8omexmeta7Triples7TriplesEv"></span><span id="omexmeta::Triples::Triples"></span><span class="target" id="classomexmeta_1_1Triples_1a4976c39ce5f0c652ef8b366fcdd92a58"></span><span class="sig-name descname"><span class="n"><span class="pre">Triples</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta7Triples7TriplesEv" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N8omexmeta7Triples7TriplesEv"></span><span id="_CPPv2N8omexmeta7Triples7TriplesEv"></span><span id="omexmeta::Triples::Triples"></span><span class="target" id="classomexmeta_1_1Triples_1a4976c39ce5f0c652ef8b366fcdd92a58"></span><span class="sig-name descname"><span class="n"><span class="pre">Triples</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta7Triples7TriplesEv" title="Permalink to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N8omexmeta7Triples7TriplesEi">
-<span id="_CPPv3N8omexmeta7Triples7TriplesEi"></span><span id="_CPPv2N8omexmeta7Triples7TriplesEi"></span><span id="omexmeta::Triples::Triples__i"></span><span class="target" id="classomexmeta_1_1Triples_1a32ea34c1fd3bfe9887c2221377392efe"></span><span class="k"><span class="pre">explicit</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Triples</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">size</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta7Triples7TriplesEi" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N8omexmeta7Triples7TriplesEi"></span><span id="_CPPv2N8omexmeta7Triples7TriplesEi"></span><span id="omexmeta::Triples::Triples__i"></span><span class="target" id="classomexmeta_1_1Triples_1a32ea34c1fd3bfe9887c2221377392efe"></span><span class="k"><span class="pre">explicit</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Triples</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">size</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta7Triples7TriplesEi" title="Permalink to this definition"></a><br /></dt>
 <dd><p>create an empty <a class="reference internal" href="#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> object big enough for </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -224,40 +137,44 @@
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N8omexmeta7Triples7TriplesER6Triple">
-<span id="_CPPv3N8omexmeta7Triples7TriplesER6Triple"></span><span id="_CPPv2N8omexmeta7Triples7TriplesER6Triple"></span><span id="omexmeta::Triples::Triples__TripleR"></span><span class="target" id="classomexmeta_1_1Triples_1a733eea0f6a2c206eb96771bc7a8cb430"></span><span class="k"><span class="pre">explicit</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Triples</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="Triple.html#_CPPv4N8omexmeta6TripleE" title="omexmeta::Triple"><span class="n"><span class="pre">Triple</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">triple</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta7Triples7TriplesER6Triple" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N8omexmeta7Triples7TriplesER6Triple"></span><span id="_CPPv2N8omexmeta7Triples7TriplesER6Triple"></span><span id="omexmeta::Triples::Triples__TripleR"></span><span class="target" id="classomexmeta_1_1Triples_1a733eea0f6a2c206eb96771bc7a8cb430"></span><span class="k"><span class="pre">explicit</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Triples</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="Triple.html#_CPPv4N8omexmeta6TripleE" title="omexmeta::Triple"><span class="n"><span class="pre">Triple</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">triple</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta7Triples7TriplesER6Triple" title="Permalink to this definition"></a><br /></dt>
 <dd><p>construct a <a class="reference internal" href="#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> object from a single triple </p>
+<p>
+The triple is moved into element 0 of a new <a class="reference internal" href="#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> object. The <a class="reference internal" href="Triple.html#classomexmeta_1_1Triple"><span class="std std-ref">Triple</span></a> must be passed by reference so that the triple is moved directly, instead of copied and then moved into the <a class="reference internal" href="#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> object (which is a memory leak). </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>triple</strong> – The triple to put into triples  The triple is moved into element 0 of a new <a class="reference internal" href="#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> object. The <a class="reference internal" href="Triple.html#classomexmeta_1_1Triple"><span class="std std-ref">Triple</span></a> must be passed by reference so that the triple is moved directly, instead of copied and then moved into the <a class="reference internal" href="#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> object (which is a memory leak). </p>
+<dd class="field-odd"><p><strong>triple</strong> – The triple to put into triples</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N8omexmeta7Triples7TriplesENSt6vectorI6TripleEE">
-<span id="_CPPv3N8omexmeta7Triples7TriplesENSt6vectorI6TripleEE"></span><span id="_CPPv2N8omexmeta7Triples7TriplesENSt6vectorI6TripleEE"></span><span id="omexmeta::Triples::Triples__std::vector:Triple:"></span><span class="target" id="classomexmeta_1_1Triples_1a71a3ff7b185a5420eabd9bf4e9637196"></span><span class="k"><span class="pre">explicit</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Triples</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="Triple.html#_CPPv4N8omexmeta6TripleE" title="omexmeta::Triple"><span class="n"><span class="pre">Triple</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">triples</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta7Triples7TriplesENSt6vectorI6TripleEE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N8omexmeta7Triples7TriplesENSt6vectorI6TripleEE"></span><span id="_CPPv2N8omexmeta7Triples7TriplesENSt6vectorI6TripleEE"></span><span id="omexmeta::Triples::Triples__std::vector:Triple:"></span><span class="target" id="classomexmeta_1_1Triples_1a71a3ff7b185a5420eabd9bf4e9637196"></span><span class="k"><span class="pre">explicit</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Triples</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="Triple.html#_CPPv4N8omexmeta6TripleE" title="omexmeta::Triple"><span class="n"><span class="pre">Triple</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">triples</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta7Triples7TriplesENSt6vectorI6TripleEE" title="Permalink to this definition"></a><br /></dt>
 <dd><p>construct a <a class="reference internal" href="#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> object directly from a std::vector&lt;Triple&gt; </p>
 </dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4NK8omexmeta7TripleseqERK7Triples">
-<span id="_CPPv3NK8omexmeta7TripleseqERK7Triples"></span><span id="_CPPv2NK8omexmeta7TripleseqERK7Triples"></span><span id="omexmeta::Triples::eq-operator__TriplesCRC"></span><span class="target" id="classomexmeta_1_1Triples_1a8c6e00fe9e694d9c52e1fa37a82ae489"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="k"><span class="pre">operator</span></span><span class="o"><span class="pre">==</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N8omexmeta7TriplesE" title="omexmeta::Triples"><span class="n"><span class="pre">Triples</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">rhs</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK8omexmeta7TripleseqERK7Triples" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3NK8omexmeta7TripleseqERK7Triples"></span><span id="_CPPv2NK8omexmeta7TripleseqERK7Triples"></span><span id="omexmeta::Triples::eq-operator__TriplesCRC"></span><span class="target" id="classomexmeta_1_1Triples_1a8c6e00fe9e694d9c52e1fa37a82ae489"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="k"><span class="pre">operator</span></span><span class="o"><span class="pre">==</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N8omexmeta7TriplesE" title="omexmeta::Triples"><span class="n"><span class="pre">Triples</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">rhs</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK8omexmeta7TripleseqERK7Triples" title="Permalink to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4NK8omexmeta7TriplesneERK7Triples">
-<span id="_CPPv3NK8omexmeta7TriplesneERK7Triples"></span><span id="_CPPv2NK8omexmeta7TriplesneERK7Triples"></span><span id="omexmeta::Triples::neq-operator__TriplesCRC"></span><span class="target" id="classomexmeta_1_1Triples_1a8c9df0d37572179d682127cb7368dd82"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="k"><span class="pre">operator</span></span><span class="o"><span class="pre">!=</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N8omexmeta7TriplesE" title="omexmeta::Triples"><span class="n"><span class="pre">Triples</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">rhs</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK8omexmeta7TriplesneERK7Triples" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3NK8omexmeta7TriplesneERK7Triples"></span><span id="_CPPv2NK8omexmeta7TriplesneERK7Triples"></span><span id="omexmeta::Triples::neq-operator__TriplesCRC"></span><span class="target" id="classomexmeta_1_1Triples_1a8c9df0d37572179d682127cb7368dd82"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="k"><span class="pre">operator</span></span><span class="o"><span class="pre">!=</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N8omexmeta7TriplesE" title="omexmeta::Triples"><span class="n"><span class="pre">Triples</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">rhs</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK8omexmeta7TriplesneERK7Triples" title="Permalink to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N8omexmeta7Triples8moveBackER6Triple">
-<span id="_CPPv3N8omexmeta7Triples8moveBackER6Triple"></span><span id="_CPPv2N8omexmeta7Triples8moveBackER6Triple"></span><span id="omexmeta::Triples::moveBack__TripleR"></span><span class="target" id="classomexmeta_1_1Triples_1a64e7f250d3199421c4306e9e8fbbc6e5"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">moveBack</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="Triple.html#_CPPv4N8omexmeta6TripleE" title="omexmeta::Triple"><span class="n"><span class="pre">Triple</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">triple</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta7Triples8moveBackER6Triple" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N8omexmeta7Triples8moveBackER6Triple"></span><span id="_CPPv2N8omexmeta7Triples8moveBackER6Triple"></span><span id="omexmeta::Triples::moveBack__TripleR"></span><span class="target" id="classomexmeta_1_1Triples_1a64e7f250d3199421c4306e9e8fbbc6e5"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">moveBack</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="Triple.html#_CPPv4N8omexmeta6TripleE" title="omexmeta::Triple"><span class="n"><span class="pre">Triple</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">triple</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta7Triples8moveBackER6Triple" title="Permalink to this definition"></a><br /></dt>
 <dd><p>move a <a class="reference internal" href="Triple.html#classomexmeta_1_1Triple"><span class="std std-ref">Triple</span></a> to the back of the <a class="reference internal" href="#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> object. Analogous to push back but with move semantics. </p>
 <p>moves a <a class="reference internal" href="Triple.html#classomexmeta_1_1Triple"><span class="std std-ref">Triple</span></a> object to the back of <a class="reference internal" href="#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a></p>
+<p>
+The vector storing the <a class="reference internal" href="#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> is increased in size by 1 and the</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>triple</strong> – The <a class="reference internal" href="Triple.html#classomexmeta_1_1Triple"><span class="std std-ref">Triple</span></a> object to move.  The vector storing the <a class="reference internal" href="#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> is increased in size by 1 and the</p></li>
+<li><p><strong>triple</strong> – The <a class="reference internal" href="Triple.html#classomexmeta_1_1Triple"><span class="std std-ref">Triple</span></a> object to move.</p></li>
 <li><p><strong>triple</strong> – is moved into that slot. Therefore, ownership of the triple passes to the <a class="reference internal" href="#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> object who is reposible for freeing the <a class="reference internal" href="Triple.html#classomexmeta_1_1Triple"><span class="std std-ref">Triple</span></a>. </p></li>
 </ul>
 </dd>
@@ -266,56 +183,26 @@
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N8omexmeta7Triples12emplace_backER10UriHandler10LibrdfNodeRK12PredicatePtrRK10LibrdfNode">
-<span id="_CPPv3N8omexmeta7Triples12emplace_backER10UriHandler10LibrdfNodeRK12PredicatePtrRK10LibrdfNode"></span><span id="_CPPv2N8omexmeta7Triples12emplace_backER10UriHandler10LibrdfNodeRK12PredicatePtrRK10LibrdfNode"></span><span id="omexmeta::Triples::emplace_back__UriHandlerR.LibrdfNode.PredicatePtrCR.LibrdfNodeCR"></span><span class="target" id="classomexmeta_1_1Triples_1a106779ab1767a271708dba8d93165205"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">emplace_back</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">UriHandler</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">uriHandler</span></span>, <span class="n"><span class="pre">LibrdfNode</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">subject</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">PredicatePtr</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">predicatePtr</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">LibrdfNode</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">resource</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta7Triples12emplace_backER10UriHandler10LibrdfNodeRK12PredicatePtrRK10LibrdfNode" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N8omexmeta7Triples12emplace_backER10UriHandler10LibrdfNodeRK12PredicatePtrRK10LibrdfNode"></span><span id="_CPPv2N8omexmeta7Triples12emplace_backER10UriHandler10LibrdfNodeRK12PredicatePtrRK10LibrdfNode"></span><span id="omexmeta::Triples::emplace_back__UriHandlerR.LibrdfNode.PredicatePtrCR.LibrdfNodeCR"></span><span class="target" id="classomexmeta_1_1Triples_1a106779ab1767a271708dba8d93165205"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">emplace_back</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">UriHandler</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">uriHandler</span></span>, <span class="n"><span class="pre">LibrdfNode</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">subject</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">PredicatePtr</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">predicatePtr</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">LibrdfNode</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">resource</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta7Triples12emplace_backER10UriHandler10LibrdfNodeRK12PredicatePtrRK10LibrdfNode" title="Permalink to this definition"></a><br /></dt>
 <dd><p>construct a <a class="reference internal" href="Triple.html#classomexmeta_1_1Triple"><span class="std std-ref">Triple</span></a> object from the necessary components and move it to the back of <a class="reference internal" href="#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> </p>
 <p>this method is heavily overloaded and has several signatures all of which result in the construction and emplacement of a <a class="reference internal" href="Triple.html#classomexmeta_1_1Triple"><span class="std std-ref">Triple</span></a> at the back of <a class="reference internal" href="#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a>. </p>
 </dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8omexmeta7Triples12emplace_backER10UriHandlerRK10LibrdfNodeRK10LibrdfNodeRK10LibrdfNode">
+<span id="_CPPv3N8omexmeta7Triples12emplace_backER10UriHandlerRK10LibrdfNodeRK10LibrdfNodeRK10LibrdfNode"></span><span id="_CPPv2N8omexmeta7Triples12emplace_backER10UriHandlerRK10LibrdfNodeRK10LibrdfNodeRK10LibrdfNode"></span><span id="omexmeta::Triples::emplace_back__UriHandlerR.LibrdfNodeCR.LibrdfNodeCR.LibrdfNodeCR"></span><span class="target" id="classomexmeta_1_1Triples_1ac4f1225d6e8ed9cc178bb71d7c29a764"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">emplace_back</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">UriHandler</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">uriHandler</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">LibrdfNode</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">subject</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">LibrdfNode</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">predicate</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">LibrdfNode</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">resource</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta7Triples12emplace_backER10UriHandlerRK10LibrdfNodeRK10LibrdfNodeRK10LibrdfNode" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N8omexmeta7Triples12emplace_backER10UriHandler10LibrdfNodeRK9PredicateRK10LibrdfNode">
-<span id="_CPPv3N8omexmeta7Triples12emplace_backER10UriHandler10LibrdfNodeRK9PredicateRK10LibrdfNode"></span><span id="_CPPv2N8omexmeta7Triples12emplace_backER10UriHandler10LibrdfNodeRK9PredicateRK10LibrdfNode"></span><span id="omexmeta::Triples::emplace_back__UriHandlerR.LibrdfNode.PredicateCR.LibrdfNodeCR"></span><span class="target" id="classomexmeta_1_1Triples_1a5ba6faa259c9e07b06fa796ddcba0163"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">emplace_back</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">UriHandler</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">uriHandler</span></span>, <span class="n"><span class="pre">LibrdfNode</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">subject</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="Predicate.html#_CPPv4N8omexmeta9PredicateE" title="omexmeta::Predicate"><span class="n"><span class="pre">Predicate</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">predicate</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">LibrdfNode</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">resource</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta7Triples12emplace_backER10UriHandler10LibrdfNodeRK9PredicateRK10LibrdfNode" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>construct a <a class="reference internal" href="Triple.html#classomexmeta_1_1Triple"><span class="std std-ref">Triple</span></a> object from the necessary components and move it to the back of <a class="reference internal" href="#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> </p>
-<p>this method is heavily overloaded and has several signatures all of which result in the construction and emplacement of a <a class="reference internal" href="Triple.html#classomexmeta_1_1Triple"><span class="std std-ref">Triple</span></a> at the back of <a class="reference internal" href="#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a>. </p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N8omexmeta7Triples12emplace_backER10UriHandler10LibrdfNode25BiomodelsBiologyQualifierRK10LibrdfNode">
-<span id="_CPPv3N8omexmeta7Triples12emplace_backER10UriHandler10LibrdfNode25BiomodelsBiologyQualifierRK10LibrdfNode"></span><span id="_CPPv2N8omexmeta7Triples12emplace_backER10UriHandler10LibrdfNode25BiomodelsBiologyQualifierRK10LibrdfNode"></span><span id="omexmeta::Triples::emplace_back__UriHandlerR.LibrdfNode.BiomodelsBiologyQualifier.LibrdfNodeCR"></span><span class="target" id="classomexmeta_1_1Triples_1aaaa2909bb574deb4e5e129968d545ece"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">emplace_back</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">UriHandler</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">uriHandler</span></span>, <span class="n"><span class="pre">LibrdfNode</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">subject</span></span>, <span class="n"><span class="pre">BiomodelsBiologyQualifier</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">predicate</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">LibrdfNode</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">resource</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta7Triples12emplace_backER10UriHandler10LibrdfNode25BiomodelsBiologyQualifierRK10LibrdfNode" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>construct a <a class="reference internal" href="Triple.html#classomexmeta_1_1Triple"><span class="std std-ref">Triple</span></a> object from the necessary components and move it to the back of <a class="reference internal" href="#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> </p>
-<p>this method is heavily overloaded and has several signatures all of which result in the construction and emplacement of a <a class="reference internal" href="Triple.html#classomexmeta_1_1Triple"><span class="std std-ref">Triple</span></a> at the back of <a class="reference internal" href="#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a>. </p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N8omexmeta7Triples12emplace_backER10UriHandler10LibrdfNode23BiomodelsModelQualifierRK10LibrdfNode">
-<span id="_CPPv3N8omexmeta7Triples12emplace_backER10UriHandler10LibrdfNode23BiomodelsModelQualifierRK10LibrdfNode"></span><span id="_CPPv2N8omexmeta7Triples12emplace_backER10UriHandler10LibrdfNode23BiomodelsModelQualifierRK10LibrdfNode"></span><span id="omexmeta::Triples::emplace_back__UriHandlerR.LibrdfNode.BiomodelsModelQualifier.LibrdfNodeCR"></span><span class="target" id="classomexmeta_1_1Triples_1a0b47dcbc4a0c608c7dcdb14f9db0706d"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">emplace_back</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">UriHandler</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">uriHandler</span></span>, <span class="n"><span class="pre">LibrdfNode</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">subject</span></span>, <span class="n"><span class="pre">BiomodelsModelQualifier</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">predicate</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">LibrdfNode</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">resource</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta7Triples12emplace_backER10UriHandler10LibrdfNode23BiomodelsModelQualifierRK10LibrdfNode" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>construct a <a class="reference internal" href="Triple.html#classomexmeta_1_1Triple"><span class="std std-ref">Triple</span></a> object from the necessary components and move it to the back of <a class="reference internal" href="#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> </p>
-<p>this method is heavily overloaded and has several signatures all of which result in the construction and emplacement of a <a class="reference internal" href="Triple.html#classomexmeta_1_1Triple"><span class="std std-ref">Triple</span></a> at the back of <a class="reference internal" href="#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a>. </p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N8omexmeta7Triples12emplace_backER10UriHandler10LibrdfNode6DCTermRK10LibrdfNode">
-<span id="_CPPv3N8omexmeta7Triples12emplace_backER10UriHandler10LibrdfNode6DCTermRK10LibrdfNode"></span><span id="_CPPv2N8omexmeta7Triples12emplace_backER10UriHandler10LibrdfNode6DCTermRK10LibrdfNode"></span><span id="omexmeta::Triples::emplace_back__UriHandlerR.LibrdfNode.DCTerm.LibrdfNodeCR"></span><span class="target" id="classomexmeta_1_1Triples_1a4821b664c8a28da93a979008f8fc7438"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">emplace_back</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">UriHandler</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">uriHandler</span></span>, <span class="n"><span class="pre">LibrdfNode</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">subject</span></span>, <span class="n"><span class="pre">DCTerm</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">predicate</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">LibrdfNode</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">resource</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta7Triples12emplace_backER10UriHandler10LibrdfNode6DCTermRK10LibrdfNode" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>construct a <a class="reference internal" href="Triple.html#classomexmeta_1_1Triple"><span class="std std-ref">Triple</span></a> object from the necessary components and move it to the back of <a class="reference internal" href="#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> </p>
-<p>this method is heavily overloaded and has several signatures all of which result in the construction and emplacement of a <a class="reference internal" href="Triple.html#classomexmeta_1_1Triple"><span class="std std-ref">Triple</span></a> at the back of <a class="reference internal" href="#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a>. </p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N8omexmeta7Triples12emplace_backER10UriHandler10LibrdfNode6SemSimRK10LibrdfNode">
-<span id="_CPPv3N8omexmeta7Triples12emplace_backER10UriHandler10LibrdfNode6SemSimRK10LibrdfNode"></span><span id="_CPPv2N8omexmeta7Triples12emplace_backER10UriHandler10LibrdfNode6SemSimRK10LibrdfNode"></span><span id="omexmeta::Triples::emplace_back__UriHandlerR.LibrdfNode.SemSim.LibrdfNodeCR"></span><span class="target" id="classomexmeta_1_1Triples_1a2b12527ab68f7d9a8a250dbb952e741e"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">emplace_back</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">UriHandler</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">uriHandler</span></span>, <span class="n"><span class="pre">LibrdfNode</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">subject</span></span>, <span class="n"><span class="pre">SemSim</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">predicate</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">LibrdfNode</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">resource</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta7Triples12emplace_backER10UriHandler10LibrdfNode6SemSimRK10LibrdfNode" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>construct a <a class="reference internal" href="Triple.html#classomexmeta_1_1Triple"><span class="std std-ref">Triple</span></a> object from the necessary components and move it to the back of <a class="reference internal" href="#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> </p>
-<p>this method is heavily overloaded and has several signatures all of which result in the construction and emplacement of a <a class="reference internal" href="Triple.html#classomexmeta_1_1Triple"><span class="std std-ref">Triple</span></a> at the back of <a class="reference internal" href="#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a>. </p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N8omexmeta7Triples12emplace_backER10UriHandlerP11librdf_nodeP11librdf_nodeP11librdf_node">
-<span id="_CPPv3N8omexmeta7Triples12emplace_backER10UriHandlerP11librdf_nodeP11librdf_nodeP11librdf_node"></span><span id="_CPPv2N8omexmeta7Triples12emplace_backER10UriHandlerP11librdf_nodeP11librdf_nodeP11librdf_node"></span><span id="omexmeta::Triples::emplace_back__UriHandlerR.librdf_nodeP.librdf_nodeP.librdf_nodeP"></span><span class="target" id="classomexmeta_1_1Triples_1a26e4fdcab8b0f3473e098846441adfe3"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">emplace_back</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">UriHandler</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">uriHandler</span></span>, <span class="n"><span class="pre">librdf_node</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">subject</span></span>, <span class="n"><span class="pre">librdf_node</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">predicate</span></span>, <span class="n"><span class="pre">librdf_node</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">resource</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta7Triples12emplace_backER10UriHandlerP11librdf_nodeP11librdf_nodeP11librdf_node" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N8omexmeta7Triples12emplace_backER10UriHandler10LibrdfNodeRK9PredicateRK10LibrdfNode"></span><span id="_CPPv2N8omexmeta7Triples12emplace_backER10UriHandler10LibrdfNodeRK9PredicateRK10LibrdfNode"></span><span id="omexmeta::Triples::emplace_back__UriHandlerR.LibrdfNode.PredicateCR.LibrdfNodeCR"></span><span class="target" id="classomexmeta_1_1Triples_1a5ba6faa259c9e07b06fa796ddcba0163"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">emplace_back</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">UriHandler</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">uriHandler</span></span>, <span class="n"><span class="pre">LibrdfNode</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">subject</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="Predicate.html#_CPPv4N8omexmeta9PredicateE" title="omexmeta::Predicate"><span class="n"><span class="pre">Predicate</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">predicate</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">LibrdfNode</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">resource</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta7Triples12emplace_backER10UriHandler10LibrdfNodeRK9PredicateRK10LibrdfNode" title="Permalink to this definition"></a><br /></dt>
 <dd><p>construct a <a class="reference internal" href="Triple.html#classomexmeta_1_1Triple"><span class="std std-ref">Triple</span></a> object from the necessary components and move it to the back of <a class="reference internal" href="#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> </p>
 <p>this method is heavily overloaded and has several signatures all of which result in the construction and emplacement of a <a class="reference internal" href="Triple.html#classomexmeta_1_1Triple"><span class="std std-ref">Triple</span></a> at the back of <a class="reference internal" href="#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a>. </p>
 </dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N8omexmeta7Triples14getSubjectsStrEv">
-<span id="_CPPv3N8omexmeta7Triples14getSubjectsStrEv"></span><span id="_CPPv2N8omexmeta7Triples14getSubjectsStrEv"></span><span id="omexmeta::Triples::getSubjectsStr"></span><span class="target" id="classomexmeta_1_1Triples_1a5234882414a2aaaca603eacd805df3d6"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getSubjectsStr</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta7Triples14getSubjectsStrEv" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N8omexmeta7Triples14getSubjectsStrEv"></span><span id="_CPPv2N8omexmeta7Triples14getSubjectsStrEv"></span><span id="omexmeta::Triples::getSubjectsStr"></span><span class="target" id="classomexmeta_1_1Triples_1a5234882414a2aaaca603eacd805df3d6"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getSubjectsStr</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta7Triples14getSubjectsStrEv" title="Permalink to this definition"></a><br /></dt>
 <dd><p>get all subjects as strings </p>
 <p>we do not return the subject itself because subjects cannot be copied, which complicates matters. </p>
 <dl class="field-list simple">
@@ -327,7 +214,7 @@
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N8omexmeta7Triples13getPredicatesEv">
-<span id="_CPPv3N8omexmeta7Triples13getPredicatesEv"></span><span id="_CPPv2N8omexmeta7Triples13getPredicatesEv"></span><span id="omexmeta::Triples::getPredicates"></span><span class="target" id="classomexmeta_1_1Triples_1a63639c08caac19e6c5cbf30bb28292d0"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getPredicates</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta7Triples13getPredicatesEv" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N8omexmeta7Triples13getPredicatesEv"></span><span id="_CPPv2N8omexmeta7Triples13getPredicatesEv"></span><span id="omexmeta::Triples::getPredicates"></span><span class="target" id="classomexmeta_1_1Triples_1a63639c08caac19e6c5cbf30bb28292d0"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getPredicates</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta7Triples13getPredicatesEv" title="Permalink to this definition"></a><br /></dt>
 <dd><p>get all predicates as strings </p>
 <p>we do not return the predicate itself because <a class="reference internal" href="Predicate.html#classomexmeta_1_1Predicate"><span class="std std-ref">Predicate</span></a> objects cannot be copied. </p>
 <dl class="field-list simple">
@@ -339,7 +226,7 @@
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N8omexmeta7Triples12getResourcesEv">
-<span id="_CPPv3N8omexmeta7Triples12getResourcesEv"></span><span id="_CPPv2N8omexmeta7Triples12getResourcesEv"></span><span id="omexmeta::Triples::getResources"></span><span class="target" id="classomexmeta_1_1Triples_1aa875120a73cb1618be9e699e8bfb08c4"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getResources</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta7Triples12getResourcesEv" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N8omexmeta7Triples12getResourcesEv"></span><span id="_CPPv2N8omexmeta7Triples12getResourcesEv"></span><span id="omexmeta::Triples::getResources"></span><span class="target" id="classomexmeta_1_1Triples_1aa875120a73cb1618be9e699e8bfb08c4"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getResources</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta7Triples12getResourcesEv" title="Permalink to this definition"></a><br /></dt>
 <dd><p>get all resources as strings </p>
 <p>we do not return the LibrdfNode itself because LibrdfNode objects cannot be copied. </p>
 <dl class="field-list simple">
@@ -351,7 +238,7 @@
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4NK8omexmeta7Triples4sizeEv">
-<span id="_CPPv3NK8omexmeta7Triples4sizeEv"></span><span id="_CPPv2NK8omexmeta7Triples4sizeEv"></span><span id="omexmeta::Triples::sizeC"></span><span class="target" id="classomexmeta_1_1Triples_1adc86427b3563d04849336a8da7566451"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">size</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK8omexmeta7Triples4sizeEv" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3NK8omexmeta7Triples4sizeEv"></span><span id="_CPPv2NK8omexmeta7Triples4sizeEv"></span><span id="omexmeta::Triples::sizeC"></span><span class="target" id="classomexmeta_1_1Triples_1adc86427b3563d04849336a8da7566451"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">size</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK8omexmeta7Triples4sizeEv" title="Permalink to this definition"></a><br /></dt>
 <dd><p>get the number of triples in the <a class="reference internal" href="#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> object </p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -362,87 +249,77 @@
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N8omexmeta7Triples5beginEv">
-<span id="_CPPv3N8omexmeta7Triples5beginEv"></span><span id="_CPPv2N8omexmeta7Triples5beginEv"></span><span id="omexmeta::Triples::begin"></span><span class="target" id="classomexmeta_1_1Triples_1aa6735eb506ff0d5a3179fab3af3b2602"></span><span class="n"><span class="pre">TripleVector</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">iterator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">begin</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta7Triples5beginEv" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N8omexmeta7Triples5beginEv"></span><span id="_CPPv2N8omexmeta7Triples5beginEv"></span><span id="omexmeta::Triples::begin"></span><span class="target" id="classomexmeta_1_1Triples_1aa6735eb506ff0d5a3179fab3af3b2602"></span><span class="n"><span class="pre">TripleVector</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">iterator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">begin</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta7Triples5beginEv" title="Permalink to this definition"></a><br /></dt>
 <dd><p>the begin iterator for a <a class="reference internal" href="#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> object </p>
 <p>this method is simply forwarded on to std::vector::begin() </p>
 </dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N8omexmeta7Triples3endEv">
-<span id="_CPPv3N8omexmeta7Triples3endEv"></span><span id="_CPPv2N8omexmeta7Triples3endEv"></span><span id="omexmeta::Triples::end"></span><span class="target" id="classomexmeta_1_1Triples_1a4312337b242280bcb119908c0334bfd8"></span><span class="n"><span class="pre">TripleVector</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">iterator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">end</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta7Triples3endEv" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N8omexmeta7Triples3endEv"></span><span id="_CPPv2N8omexmeta7Triples3endEv"></span><span id="omexmeta::Triples::end"></span><span class="target" id="classomexmeta_1_1Triples_1a4312337b242280bcb119908c0334bfd8"></span><span class="n"><span class="pre">TripleVector</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">iterator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">end</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta7Triples3endEv" title="Permalink to this definition"></a><br /></dt>
 <dd><p>the end iterator for a <a class="reference internal" href="#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> object </p>
 <p>this method is simply forwarded on to std::vector::end() </p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N8omexmeta7Triples3strERKNSt6stringENSt6stringENSt6stringENSt6stringE">
-<span id="_CPPv3N8omexmeta7Triples3strERKNSt6stringENSt6stringENSt6stringENSt6stringE"></span><span id="_CPPv2N8omexmeta7Triples3strERKNSt6stringENSt6stringENSt6stringENSt6stringE"></span><span id="omexmeta::Triples::str__ssCR.ss.ss.ss"></span><span class="target" id="classomexmeta_1_1Triples_1ad2510c5b335b0266b05507c53bcc64af"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">str</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">format</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="s"><span class="pre">&quot;turtle&quot;</span></span>, <span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">base</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">filesystem</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">current_path</span></span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">)</span></span><span class="w"> </span><span class="o"><span class="pre">/=</span></span><span class="w"> </span><span class="s"><span class="pre">&quot;annotations.rdf&quot;</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">string</span></span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">)</span></span>, <span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">omex_name</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="s"><span class="pre">&quot;NewOmex.omex/&quot;</span></span>, <span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">model_name</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="s"><span class="pre">&quot;NewModel.xml#&quot;</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta7Triples3strERKNSt6stringENSt6stringENSt6stringENSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Serialize the <a class="reference internal" href="#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> object to. </p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>format</strong> – </p></li>
-<li><p><strong>format</strong> – the format to serialize </p></li>
-<li><p><strong>base</strong> – argument for <a class="reference internal" href="RDF.html#classomexmeta_1_1RDF"><span class="std std-ref">RDF</span></a> graph. This is hidden so basically irrelevant. </p></li>
-<li><p><strong>omex_name</strong> – the omex portion of the current local uri. Default is NewOmex.omex </p></li>
-<li><p><strong>model_name</strong> – the omex portion of the current local uri. Default is NewModel.xml  See RDF::str for more details regarding arguments. This method is only for checking to see what <a class="reference internal" href="#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> object looks like when serialized. The annotations are not added to the main <a class="reference internal" href="RDF.html#classomexmeta_1_1RDF"><span class="std std-ref">RDF</span></a> graph. This is analogous to <a class="reference internal" href="Triple.html#classomexmeta_1_1Triple_1a2cabbc7a28348a9472bd50f059469183"><span class="std std-ref">Triple::str</span></a>. </p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N8omexmeta7Triples11freeTriplesEv">
-<span id="_CPPv3N8omexmeta7Triples11freeTriplesEv"></span><span id="_CPPv2N8omexmeta7Triples11freeTriplesEv"></span><span id="omexmeta::Triples::freeTriples"></span><span class="target" id="classomexmeta_1_1Triples_1ad0c5839b0f49d6427cf53004baf9b0f4"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">freeTriples</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta7Triples11freeTriplesEv" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N8omexmeta7Triples11freeTriplesEv"></span><span id="_CPPv2N8omexmeta7Triples11freeTriplesEv"></span><span id="omexmeta::Triples::freeTriples"></span><span class="target" id="classomexmeta_1_1Triples_1ad0c5839b0f49d6427cf53004baf9b0f4"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">freeTriples</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta7Triples11freeTriplesEv" title="Permalink to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N8omexmeta7Triples3popEv">
-<span id="_CPPv3N8omexmeta7Triples3popEv"></span><span id="_CPPv2N8omexmeta7Triples3popEv"></span><span id="omexmeta::Triples::pop"></span><span class="target" id="classomexmeta_1_1Triples_1a5dad8f2cde0a3f6c0ce341338f80b0cd"></span><a class="reference internal" href="Triple.html#_CPPv4N8omexmeta6TripleE" title="omexmeta::Triple"><span class="n"><span class="pre">Triple</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pop</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta7Triples3popEv" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N8omexmeta7Triples3popEv"></span><span id="_CPPv2N8omexmeta7Triples3popEv"></span><span id="omexmeta::Triples::pop"></span><span class="target" id="classomexmeta_1_1Triples_1a5dad8f2cde0a3f6c0ce341338f80b0cd"></span><a class="reference internal" href="Triple.html#_CPPv4N8omexmeta6TripleE" title="omexmeta::Triple"><span class="n"><span class="pre">Triple</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pop</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta7Triples3popEv" title="Permalink to this definition"></a><br /></dt>
 <dd><p>moves one triple of the end of triples </p>
+<p>
+No copies are made. This is deliberate as it reduces risk of memory issues. When you pop, you remove from the end of the <a class="reference internal" href="#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> object and return it. This means that responsibility for freeing the returned <a class="reference internal" href="Triple.html#classomexmeta_1_1Triple"><span class="std std-ref">Triple</span></a> switches to the caller. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>the triple from the end of the triples vector  No copies are made. This is deliberate as it reduces risk of memory issues. When you pop, you remove from the end of the <a class="reference internal" href="#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> object and return it. This means that responsibility for freeing the returned <a class="reference internal" href="Triple.html#classomexmeta_1_1Triple"><span class="std std-ref">Triple</span></a> switches to the caller. </p>
+<dd class="field-odd"><p>the triple from the end of the triples vector</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N8omexmeta7TriplesixEi">
-<span id="_CPPv3N8omexmeta7TriplesixEi"></span><span id="_CPPv2N8omexmeta7TriplesixEi"></span><span id="omexmeta::Triples::subscript-operator__i"></span><span class="target" id="classomexmeta_1_1Triples_1a02d9829c76b2f7e72263b55c7cc9b640"></span><a class="reference internal" href="Triple.html#_CPPv4N8omexmeta6TripleE" title="omexmeta::Triple"><span class="n"><span class="pre">Triple</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="k"><span class="pre">operator</span></span><span class="o"><span class="pre">[]</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">index</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta7TriplesixEi" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N8omexmeta7TriplesixEi"></span><span id="_CPPv2N8omexmeta7TriplesixEi"></span><span id="omexmeta::Triples::subscript-operator__i"></span><span class="target" id="classomexmeta_1_1Triples_1a02d9829c76b2f7e72263b55c7cc9b640"></span><a class="reference internal" href="Triple.html#_CPPv4N8omexmeta6TripleE" title="omexmeta::Triple"><span class="n"><span class="pre">Triple</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="k"><span class="pre">operator</span></span><span class="o"><span class="pre">[]</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">index</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta7TriplesixEi" title="Permalink to this definition"></a><br /></dt>
 <dd><p>getter operator for <a class="reference internal" href="#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> object </p>
+<p>
+A copy is made of the <a class="reference internal" href="Triple.html#classomexmeta_1_1Triple"><span class="std std-ref">Triple</span></a> you want to return. To get a reference without copying see <a class="reference internal" href="#classomexmeta_1_1Triples_1a5dad8f2cde0a3f6c0ce341338f80b0cd"><span class="std std-ref">Triples::pop()</span></a>. Remember that iterating over a <a class="reference internal" href="#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> object and making copies will cause complications with freeing the objects. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>a reference to the <a class="reference internal" href="Triple.html#classomexmeta_1_1Triple"><span class="std std-ref">Triple</span></a> at index <code class="docutils literal notranslate"><span class="pre">index</span></code>  A copy is made of the <a class="reference internal" href="Triple.html#classomexmeta_1_1Triple"><span class="std std-ref">Triple</span></a> you want to return. To get a reference without copying see <a class="reference internal" href="#classomexmeta_1_1Triples_1a5dad8f2cde0a3f6c0ce341338f80b0cd"><span class="std std-ref">Triples::pop()</span></a>. Remember that iterating over a <a class="reference internal" href="#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> object and making copies will cause complications with freeing the objects. </p>
+<dd class="field-odd"><p>a reference to the <a class="reference internal" href="Triple.html#classomexmeta_1_1Triple"><span class="std std-ref">Triple</span></a> at index <code class="docutils literal notranslate"><span class="pre">index</span></code></p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4NK8omexmeta7TriplesixEi">
-<span id="_CPPv3NK8omexmeta7TriplesixEi"></span><span id="_CPPv2NK8omexmeta7TriplesixEi"></span><span id="omexmeta::Triples::subscript-operator__iC"></span><span class="target" id="classomexmeta_1_1Triples_1a43d540423a436986d9f72d7cf0f02d72"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="Triple.html#_CPPv4N8omexmeta6TripleE" title="omexmeta::Triple"><span class="n"><span class="pre">Triple</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="k"><span class="pre">operator</span></span><span class="o"><span class="pre">[]</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">index</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK8omexmeta7TriplesixEi" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3NK8omexmeta7TriplesixEi"></span><span id="_CPPv2NK8omexmeta7TriplesixEi"></span><span id="omexmeta::Triples::subscript-operator__iC"></span><span class="target" id="classomexmeta_1_1Triples_1a43d540423a436986d9f72d7cf0f02d72"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="Triple.html#_CPPv4N8omexmeta6TripleE" title="omexmeta::Triple"><span class="n"><span class="pre">Triple</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="k"><span class="pre">operator</span></span><span class="o"><span class="pre">[]</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">index</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK8omexmeta7TriplesixEi" title="Permalink to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N8omexmeta7Triples7isEmptyEv">
-<span id="_CPPv3N8omexmeta7Triples7isEmptyEv"></span><span id="_CPPv2N8omexmeta7Triples7isEmptyEv"></span><span id="omexmeta::Triples::isEmpty"></span><span class="target" id="classomexmeta_1_1Triples_1a48ab93d0e38e3cfcb4eac9264b047f0a"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">isEmpty</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta7Triples7isEmptyEv" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N8omexmeta7Triples7isEmptyEv"></span><span id="_CPPv2N8omexmeta7Triples7isEmptyEv"></span><span id="omexmeta::Triples::isEmpty"></span><span class="target" id="classomexmeta_1_1Triples_1a48ab93d0e38e3cfcb4eac9264b047f0a"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">isEmpty</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta7Triples7isEmptyEv" title="Permalink to this definition"></a><br /></dt>
 <dd><p>indicates whether <a class="reference internal" href="#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> object is empty. </p>
+<p>
+Useful for iterating over <a class="reference internal" href="#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> in a while loop without using the <code class="docutils literal notranslate"><span class="pre">[]</span></code> operator, which makes unwanted copies that causes memory issues. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>true if the <a class="reference internal" href="#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> object doesn’t contain any <a class="reference internal" href="Triple.html#classomexmeta_1_1Triple"><span class="std std-ref">Triple</span></a> objects  Useful for iterating over <a class="reference internal" href="#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> in a while loop without using the <code class="docutils literal notranslate"><span class="pre">[]</span></code> operator, which makes unwanted copies that causes memory issues. </p>
+<dd class="field-odd"><p>true if the <a class="reference internal" href="#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> object doesn’t contain any <a class="reference internal" href="Triple.html#classomexmeta_1_1Triple"><span class="std std-ref">Triple</span></a> objects</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N8omexmeta7Triples8capacityEv">
-<span id="_CPPv3N8omexmeta7Triples8capacityEv"></span><span id="_CPPv2N8omexmeta7Triples8capacityEv"></span><span id="omexmeta::Triples::capacity"></span><span class="target" id="classomexmeta_1_1Triples_1a1f7ba9d5cd575ba5c63ed9dbbd1f279c"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">capacity</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta7Triples8capacityEv" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N8omexmeta7Triples8capacityEv"></span><span id="_CPPv2N8omexmeta7Triples8capacityEv"></span><span id="omexmeta::Triples::capacity"></span><span class="target" id="classomexmeta_1_1Triples_1a1f7ba9d5cd575ba5c63ed9dbbd1f279c"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">capacity</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta7Triples8capacityEv" title="Permalink to this definition"></a><br /></dt>
 <dd><p>move the from <a class="reference internal" href="Triple.html#classomexmeta_1_1Triple"><span class="std std-ref">Triple</span></a> object out of the <a class="reference internal" href="#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> object </p>
 <p>
-forwarded on to std::vector::capacity </p>
+caller is responsible for <a class="reference internal" href="Triple.html#classomexmeta_1_1Triple"><span class="std std-ref">Triple</span></a> resources</p>
+<p>forwarded on to std::vector::capacity </p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>a <a class="reference internal" href="Triple.html#classomexmeta_1_1Triple"><span class="std std-ref">Triple</span></a> from position 0 in <a class="reference internal" href="#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a>  caller is responsible for <a class="reference internal" href="Triple.html#classomexmeta_1_1Triple"><span class="std std-ref">Triple</span></a> resources</p>
+<dd class="field-odd"><p>a <a class="reference internal" href="Triple.html#classomexmeta_1_1Triple"><span class="std std-ref">Triple</span></a> from position 0 in <a class="reference internal" href="#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a></p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>int the size of <a class="reference internal" href="#classomexmeta_1_1Triples"><span class="std std-ref">Triples</span></a> currently allowed </p>
@@ -455,7 +332,7 @@ forwarded on to std::vector::capacity </p>
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-private-members">Private Members</p>
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N8omexmeta7Triples8triples_E">
-<span id="_CPPv3N8omexmeta7Triples8triples_E"></span><span id="_CPPv2N8omexmeta7Triples8triples_E"></span><span id="omexmeta::Triples::triples___TripleVector"></span><span class="target" id="classomexmeta_1_1Triples_1ac1bedb4d0e572623208e032280abd634"></span><span class="n"><span class="pre">TripleVector</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">triples_</span></span></span><a class="headerlink" href="#_CPPv4N8omexmeta7Triples8triples_E" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N8omexmeta7Triples8triples_E"></span><span id="_CPPv2N8omexmeta7Triples8triples_E"></span><span id="omexmeta::Triples::triples___TripleVector"></span><span class="target" id="classomexmeta_1_1Triples_1ac1bedb4d0e572623208e032280abd634"></span><span class="n"><span class="pre">TripleVector</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">triples_</span></span></span><a class="headerlink" href="#_CPPv4N8omexmeta7Triples8triples_E" title="Permalink to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 </div>
@@ -465,50 +342,33 @@ forwarded on to std::vector::capacity </p>
 
 
            </div>
-           
           </div>
           <footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="ElementExtractor.html" class="btn btn-neutral float-right" title="ElementExtractor" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="Triple.html" class="btn btn-neutral float-left" title="Triple" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ElementExtractor.html" class="btn btn-neutral float-right" title="ElementExtractor" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &#169; Copyright 2020, Ciaran Welsh.
-
-    </p>
+    <p>&#169; Copyright 2020, Ciaran Welsh.</p>
   </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

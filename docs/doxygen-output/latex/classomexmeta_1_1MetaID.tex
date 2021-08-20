@@ -7,13 +7,13 @@ an ID generator
 
 
 
-{\ttfamily \#include $<$Meta\+I\+D.\+h$>$}
+{\ttfamily \#include $<$Meta\+ID.\+h$>$}
 
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{classomexmeta_1_1MetaID_af5cc076ccd6db8c411de98902d2a1218}{Meta\+ID}} (std\+::string base, long start\+\_\+number, int num\+\_\+digits=4)
-\begin{DoxyCompactList}\small\item\em an ID generator used when creating I\+Ds in the \mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}}. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em an ID generator used when creating IDs in the \mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}}. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classomexmeta_1_1MetaID_a3d6466efca8d9e931ca8c440c0809584}\label{classomexmeta_1_1MetaID_a3d6466efca8d9e931ca8c440c0809584}} 
 bool {\bfseries operator==} (const \mbox{\hyperlink{classomexmeta_1_1MetaID}{Meta\+ID}} \&rhs) const
 \item 
@@ -41,11 +41,11 @@ an ID generator
 \index{omexmeta::MetaID@{omexmeta::MetaID}!MetaID@{MetaID}}
 \index{MetaID@{MetaID}!omexmeta::MetaID@{omexmeta::MetaID}}
 \doxysubsubsection{\texorpdfstring{MetaID()}{MetaID()}}
-{\footnotesize\ttfamily omexmeta\+::\+Meta\+I\+D\+::\+Meta\+ID (\begin{DoxyParamCaption}\item[{std\+::string}]{base,  }\item[{long}]{start\+\_\+number,  }\item[{int}]{num\+\_\+digits = {\ttfamily 4} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily omexmeta\+::\+Meta\+ID\+::\+Meta\+ID (\begin{DoxyParamCaption}\item[{std\+::string}]{base,  }\item[{long}]{start\+\_\+number,  }\item[{int}]{num\+\_\+digits = {\ttfamily 4} }\end{DoxyParamCaption})}
 
 
 
-an ID generator used when creating I\+Ds in the \mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}}. 
+an ID generator used when creating IDs in the \mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}}. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -57,14 +57,14 @@ an ID generator used when creating I\+Ds in the \mbox{\hyperlink{classomexmeta_1
 \hline
 \end{DoxyParams}
 \hypertarget{classomexmeta_1_1MetaID_autotoc_md0}{}\doxysubsubsection{Example}\label{classomexmeta_1_1MetaID_autotoc_md0}
-\mbox{\hyperlink{classomexmeta_1_1MetaID}{Meta\+ID}} metaid(\char`\"{}\+A\+New\+Meta\+I\+D\char`\"{}, 15, 3); std\+::string id = metaid.\+generate(); 
+\mbox{\hyperlink{classomexmeta_1_1MetaID}{Meta\+ID}} metaid(\char`\"{}\+ANew\+Meta\+ID\char`\"{}, 15, 3); std\+::string id = metaid.\+generate(); 
 
 \doxysubsection{Member Function Documentation}
 \mbox{\Hypertarget{classomexmeta_1_1MetaID_ae4fe83a3512f64065e8e2997bc710be6}\label{classomexmeta_1_1MetaID_ae4fe83a3512f64065e8e2997bc710be6}} 
 \index{omexmeta::MetaID@{omexmeta::MetaID}!countDigits@{countDigits}}
 \index{countDigits@{countDigits}!omexmeta::MetaID@{omexmeta::MetaID}}
 \doxysubsubsection{\texorpdfstring{countDigits()}{countDigits()}}
-{\footnotesize\ttfamily int omexmeta\+::\+Meta\+I\+D\+::count\+Digits (\begin{DoxyParamCaption}\item[{long long int}]{n }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily int omexmeta\+::\+Meta\+ID\+::count\+Digits (\begin{DoxyParamCaption}\item[{long long int}]{n }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
 
@@ -82,7 +82,7 @@ the number of digits in n
 \index{omexmeta::MetaID@{omexmeta::MetaID}!generate@{generate}}
 \index{generate@{generate}!omexmeta::MetaID@{omexmeta::MetaID}}
 \doxysubsubsection{\texorpdfstring{generate()}{generate()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily std\+::string omexmeta\+::\+Meta\+I\+D\+::generate (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+{\footnotesize\ttfamily std\+::string omexmeta\+::\+Meta\+ID\+::generate (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
 
 
@@ -95,7 +95,7 @@ a metaid defined by the parameters in instantiation
 \index{omexmeta::MetaID@{omexmeta::MetaID}!generate@{generate}}
 \index{generate@{generate}!omexmeta::MetaID@{omexmeta::MetaID}}
 \doxysubsubsection{\texorpdfstring{generate()}{generate()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily std\+::string omexmeta\+::\+Meta\+I\+D\+::generate (\begin{DoxyParamCaption}\item[{long}]{n }\end{DoxyParamCaption}) const}
+{\footnotesize\ttfamily std\+::string omexmeta\+::\+Meta\+ID\+::generate (\begin{DoxyParamCaption}\item[{long}]{n }\end{DoxyParamCaption}) const}
 
 
 
@@ -113,7 +113,7 @@ a metaid defined by the parameters in instantiation
 \index{omexmeta::MetaID@{omexmeta::MetaID}!maxNumber@{maxNumber}}
 \index{maxNumber@{maxNumber}!omexmeta::MetaID@{omexmeta::MetaID}}
 \doxysubsubsection{\texorpdfstring{maxNumber()}{maxNumber()}}
-{\footnotesize\ttfamily int omexmeta\+::\+Meta\+I\+D\+::max\+Number (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+{\footnotesize\ttfamily int omexmeta\+::\+Meta\+ID\+::max\+Number (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
 
 
@@ -126,5 +126,5 @@ the maximum possible number with user parameters
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-src/omexmeta/include/omexmeta/Meta\+I\+D.\+h\item 
-src/omexmeta/Meta\+I\+D.\+cpp\end{DoxyCompactItemize}
+src/omexmeta/include/omexmeta/Meta\+ID.\+h\item 
+src/omexmeta/Meta\+ID.\+cpp\end{DoxyCompactItemize}

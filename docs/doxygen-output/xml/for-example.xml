@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="for-example" kind="example">
+    <compoundname>for</compoundname>
+    <briefdescription>
+<para>the signature of the C function that should be used to free obj_. instance if obj_ is a librdf_uri* then freeFunc_ would be std::function&lt;void(librdf_uri*)&gt; and the actual function that does the freeing is void librdf_free_uri(librdf_uri*). </para>
+    </briefdescription>
+    <detaileddescription>
+<para>the signature of the C function that should be used to free obj_. instance if obj_ is a librdf_uri* then freeFunc_ would be std::function&lt;void(librdf_uri*)&gt; and the actual function that does the freeing is void librdf_free_uri(librdf_uri*). this is necessary so that the RedlandType can store the function responsible for freeing redland types as a member variable, in a general way. Without this, each subclass would need to define their own freeFunc using inheritance, leading to significant code duplication. <programlisting filename="for"></programlisting> </para>
+    </detaileddescription>
+    <location file="src/redland/RedlandWrapper/src/include/redland/RedlandType.h"/>
+  </compounddef>
+</doxygen>

@@ -63,7 +63,7 @@ This is an Ubuntu 18.04 based container that has libOmexMeta prebuilt and instal
 Conda is preconfigured and pyomexmeta is installed. 
 
 ## Downloading Binaries
-You can download binaries from the [releases tab](https://github.com/sys-bio/libOmexMeta/release)
+You can download binaries from the [releases tab](https://github.com/sys-bio/libOmexMeta/releases)
 
 ## Building from source
 See the azure-pipelines.yml file to see how we build libOmexMeta on Azure Pipelines. 

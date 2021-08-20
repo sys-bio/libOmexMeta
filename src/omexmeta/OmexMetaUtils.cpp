@@ -2,7 +2,8 @@
 // Created by Ciaran on 4/13/2020.
 //
 #include "omexmeta/OmexMetaUtils.h"
-#include "omexmeta/logger.h"
+#include "redland/RedlandAPI.h"
+#include "omexmeta/Error.h"
 #include <fstream>
 
 namespace omexmeta {
@@ -58,15 +59,14 @@ namespace omexmeta {
         return false;
     }
 
-    std::string OmexMetaUtils::generateUniqueMetaid(librdf_model *model, const std::string &metaid_base,
+    std::string OmexMetaUtils::generateUniqueMetaid(LibrdfModel& model, const std::string &metaid_base,
                                                     const std::vector<std::string> &exclusions) {
 
         std::string q = "SELECT ?subject ?predicate ?object\n"
                         "WHERE {?subject ?predicate ?object}";
-        Query query(model, q);
-        ResultsMap results_map = query.resultsAsMap();
-
-        query.freeQuery();
+        LibrdfQuery query(q, model);
+        LibrdfQueryResults results = query.execute();
+        ResultsMap results_map = results.map();
         std::vector<std::string> subjects = results_map["subject"];
 
         for (auto &i : exclusions) {
@@ -331,7 +331,7 @@ namespace omexmeta {
         char *s = (char *) xmlGetProp(node, (const xmlChar *) property.c_str());
         if (s == nullptr) {
             std::ostringstream os;
-            os << "xmlNode* with element tag \"" << (const char *) node->name << "\" does not have a property";
+            os << "xmlNode* with element tag \"" << (const char *) node->name << "\" does not have a property ";
             os << "by the name of \"" << property << "\"";
             throw std::logic_error(os.str());
         }

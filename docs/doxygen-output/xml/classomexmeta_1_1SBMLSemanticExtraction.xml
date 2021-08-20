@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="classomexmeta_1_1SBMLSemanticExtraction" kind="class" language="C++" prot="public">
     <compoundname>omexmeta::SBMLSemanticExtraction</compoundname>
       <sectiondef kind="private-attrib">
@@ -69,7 +69,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/SBMLSemanticExtraction.h" line="65" column="14" bodyfile="src/omexmeta/SBMLSemanticExtraction.cpp" bodystart="13" bodyend="49"/>
+        <location file="src/omexmeta/include/omexmeta/SBMLSemanticExtraction.h" line="65" column="14" bodyfile="src/omexmeta/SBMLSemanticExtraction.cpp" bodystart="13" bodyend="56"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1SBMLSemanticExtraction_1a89ed78df066e71e628c8b631175a8441" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -83,7 +83,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/SBMLSemanticExtraction.h" line="72" column="14" bodyfile="src/omexmeta/SBMLSemanticExtraction.cpp" bodystart="52" bodyend="140"/>
+        <location file="src/omexmeta/include/omexmeta/SBMLSemanticExtraction.h" line="72" column="14" bodyfile="src/omexmeta/SBMLSemanticExtraction.cpp" bodystart="59" bodyend="156"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

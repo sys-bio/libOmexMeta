@@ -7,7 +7,7 @@
 
 namespace omexmeta {
 
-    EnergyDiff::EnergyDiff(librdf_model *model, UriHandler& uriHandler,
+    EnergyDiff::EnergyDiff(LibrdfModel& model, UriHandler& uriHandler,
                                  PhysicalProperty physicalProperty,
                                  Sources sources,
                                  Sinks sinks)
@@ -87,7 +87,7 @@ namespace omexmeta {
         return (*this);
     }
 
-    EnergyDiff::EnergyDiff(librdf_model *model, UriHandler& uriHandler)
+    EnergyDiff::EnergyDiff(LibrdfModel& model, UriHandler& uriHandler)
         : PropertyBearer(model, uriHandler) {}
 
     int EnergyDiff::getNumSources() {

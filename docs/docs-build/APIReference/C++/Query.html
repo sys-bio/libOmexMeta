@@ -1,74 +1,34 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-  <title>Query &mdash; libomexmeta 1.2.10 documentation</title>
-  
-
-  
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
-
-  
-  
-
-  
-  
-
-  
-
-  
+  <title>Query &mdash; libomexmeta 1.2.11 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
-    
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
-
-    
+    <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Triple" href="Triple.html" />
     <link rel="prev" title="PropertyBearer" href="PropertyBearer.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
-
-          
             <a href="../../index.html" class="icon icon-home"> libomexmeta
-          
-
-          
           </a>
-
-          
-            
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -76,20 +36,12 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
         </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Main">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../background.html">Background to Semantic Annotations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Install/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Install/install.html#build-from-source">Build from Source</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../reading_rdf/reading_rdf.html">Reading RDF</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../writing_rdf/writing_rdf.html">Serializing RDF Graphs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../singular_annotations/index.html">Singular Annotations</a></li>
@@ -98,6 +50,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../stripping_annotations/index.html">Stripping Annotations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../querying_rdf/querying_rdf.html">Querying RDF</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../diagrams/diagrams_index.html">Building Diagrams</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../errors_and_logging/errors_and_logging.html">Errors and Logging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../annotating_models/annotating_models_index.html">Annotating Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../download_biomodels/download_biomodels.html">Downloading Biomodels</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../api_reference_index.html">API Reference</a><ul class="current">
@@ -128,253 +81,86 @@
 <li class="toctree-l1"><a class="reference internal" href="../../Developers/developers_index.html">Developers Documentation</a></li>
 </ul>
 
-            
-          
         </div>
-        
       </div>
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+      <nav class="wy-nav-top" aria-label="Top" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../index.html">libomexmeta</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
           
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+<div role="navigation" aria-label="Breadcrumbs">
   <ul class="wy-breadcrumbs">
-    
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-        
           <li><a href="../api_reference_index.html">API Reference</a> &raquo;</li>
-        
           <li><a href="index.html">C++ libOmexMeta API Reference</a> &raquo;</li>
-        
       <li>Query</li>
-    
-    
       <li class="wy-breadcrumbs-aside">
-        
-          
             <a href="../../_sources/APIReference/C++/Query.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
+             
   <div class="section" id="query">
-<h1>Query<a class="headerlink" href="#query" title="Permalink to this headline">¶</a></h1>
+<h1>Query<a class="headerlink" href="#query" title="Permalink to this headline"></a></h1>
 <dl class="cpp class">
 <dt class="sig sig-object cpp" id="_CPPv4N8omexmeta5QueryE">
-<span id="_CPPv3N8omexmeta5QueryE"></span><span id="_CPPv2N8omexmeta5QueryE"></span><span id="omexmeta::Query"></span><span class="target" id="classomexmeta_1_1Query"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">omexmeta</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">Query</span></span></span><a class="headerlink" href="#_CPPv4N8omexmeta5QueryE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric" id="breathe-section-title-:-variable-name">: variable name</p>
-<p>librdf_query_results_get_binding_value_by_name: &#64;query_results: #librdf_query_results query results</p>
-<p>Get one binding value for a given name in the current result.</p>
-<p>Return value: a new #librdf_node binding value or NULL on failure </p>
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N8omexmeta5Query21getBindingValueByNameERKNSt6stringE">
-<span id="_CPPv3N8omexmeta5Query21getBindingValueByNameERKNSt6stringE"></span><span id="_CPPv2N8omexmeta5Query21getBindingValueByNameERKNSt6stringE"></span><span id="omexmeta::Query::getBindingValueByName__ssCR"></span><span class="target" id="classomexmeta_1_1Query_1a31f2c3d3ea8fa0b5766d2ca35d2609fd"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getBindingValueByName</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">name</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta5Query21getBindingValueByNameERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N8omexmeta5Query16getBindingsCountEv">
-<span id="_CPPv3N8omexmeta5Query16getBindingsCountEv"></span><span id="_CPPv2N8omexmeta5Query16getBindingsCountEv"></span><span id="omexmeta::Query::getBindingsCount"></span><span class="target" id="classomexmeta_1_1Query_1aafaf7dc024ccb358467b2f7d814ec132"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getBindingsCount</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta5Query16getBindingsCountEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>librdf_query_results_get_bindings_count: &#64;query_results: #librdf_query_results query results</p>
-<p>Get the number of bound variables in the result.</p>
-<p>Return value: &lt;0 if failed or results exhausted </p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N8omexmeta5Query5QueryEP12librdf_modelNSt6stringE">
-<span id="_CPPv3N8omexmeta5Query5QueryEP12librdf_modelNSt6stringE"></span><span id="_CPPv2N8omexmeta5Query5QueryEP12librdf_modelNSt6stringE"></span><span id="omexmeta::Query::Query__librdf_modelP.ss"></span><span class="target" id="classomexmeta_1_1Query_1a405a2bcace57e7b9a78b42ff0bb04a27"></span><span class="sig-name descname"><span class="n"><span class="pre">Query</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">librdf_model</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">model</span></span>, <span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">query</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta5Query5QueryEP12librdf_modelNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>constructor for <a class="reference internal" href="#classomexmeta_1_1Query"><span class="std std-ref">Query</span></a> object </p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N8omexmeta5Query5QueryERK5Query">
-<span id="_CPPv3N8omexmeta5Query5QueryERK5Query"></span><span id="_CPPv2N8omexmeta5Query5QueryERK5Query"></span><span id="omexmeta::Query::Query__QueryCR"></span><span class="target" id="classomexmeta_1_1Query_1a3f9ff18a0ed6a389104ca76d41119739"></span><span class="sig-name descname"><span class="n"><span class="pre">Query</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N8omexmeta5Query5QueryERK5Query" title="omexmeta::Query::Query"><span class="n"><span class="pre">Query</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">query</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">delete</span></span><a class="headerlink" href="#_CPPv4N8omexmeta5Query5QueryERK5Query" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N8omexmeta5Query5QueryERR5Query">
-<span id="_CPPv3N8omexmeta5Query5QueryERR5Query"></span><span id="_CPPv2N8omexmeta5Query5QueryERR5Query"></span><span id="omexmeta::Query::Query__QueryRR"></span><span class="target" id="classomexmeta_1_1Query_1a6162664ef9a36b453a3b96e913356996"></span><span class="sig-name descname"><span class="n"><span class="pre">Query</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4N8omexmeta5Query5QueryERR5Query" title="omexmeta::Query::Query"><span class="n"><span class="pre">Query</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">query</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4N8omexmeta5Query5QueryERR5Query" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>move constructor for <a class="reference internal" href="#classomexmeta_1_1Query"><span class="std std-ref">Query</span></a> object </p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N8omexmeta5QueryaSERK5Query">
-<span id="_CPPv3N8omexmeta5QueryaSERK5Query"></span><span id="_CPPv2N8omexmeta5QueryaSERK5Query"></span><span id="omexmeta::Query::assign-operator__QueryCR"></span><span class="target" id="classomexmeta_1_1Query_1afd53f231969232188218cae148aa6482"></span><a class="reference internal" href="#_CPPv4N8omexmeta5QueryE" title="omexmeta::Query"><span class="n"><span class="pre">Query</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="k"><span class="pre">operator</span></span><span class="o"><span class="pre">=</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N8omexmeta5QueryE" title="omexmeta::Query"><span class="n"><span class="pre">Query</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">query</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">delete</span></span><a class="headerlink" href="#_CPPv4N8omexmeta5QueryaSERK5Query" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N8omexmeta5QueryaSERR5Query">
-<span id="_CPPv3N8omexmeta5QueryaSERR5Query"></span><span id="_CPPv2N8omexmeta5QueryaSERR5Query"></span><span id="omexmeta::Query::assign-operator__QueryRR"></span><span class="target" id="classomexmeta_1_1Query_1a818772558b490e25b2ee1bc2417e1282"></span><a class="reference internal" href="#_CPPv4N8omexmeta5QueryE" title="omexmeta::Query"><span class="n"><span class="pre">Query</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="k"><span class="pre">operator</span></span><span class="o"><span class="pre">=</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4N8omexmeta5QueryE" title="omexmeta::Query"><span class="n"><span class="pre">Query</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">query</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">noexcept</span></span><a class="headerlink" href="#_CPPv4N8omexmeta5QueryaSERR5Query" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>move assignment constructor for <a class="reference internal" href="#classomexmeta_1_1Query"><span class="std std-ref">Query</span></a> object </p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N8omexmeta5Query9freeQueryEv">
-<span id="_CPPv3N8omexmeta5Query9freeQueryEv"></span><span id="_CPPv2N8omexmeta5Query9freeQueryEv"></span><span id="omexmeta::Query::freeQuery"></span><span class="target" id="classomexmeta_1_1Query_1a0b9e4ef7fb6c3d0e79a51ed327639ac0"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">freeQuery</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta5Query9freeQueryEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>free resources associated with a query object. </p>
-<p>it is the callers responsibility to ensure resources used by <a class="reference internal" href="#classomexmeta_1_1Query"><span class="std std-ref">Query</span></a> are released after use. </p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N8omexmeta5Query21resultsAsLibRdfStreamEv">
-<span id="_CPPv3N8omexmeta5Query21resultsAsLibRdfStreamEv"></span><span id="_CPPv2N8omexmeta5Query21resultsAsLibRdfStreamEv"></span><span id="omexmeta::Query::resultsAsLibRdfStream"></span><span class="target" id="classomexmeta_1_1Query_1a0dda4502056d712d351f7057329c7688"></span><span class="n"><span class="pre">librdf_stream</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">resultsAsLibRdfStream</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta5Query21resultsAsLibRdfStreamEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>&#64;breif returns the results as a librdf_stream* object</p>
-<p>developers. Consider removing. </p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N8omexmeta5Query12resultsAsMapEv">
-<span id="_CPPv3N8omexmeta5Query12resultsAsMapEv"></span><span id="_CPPv2N8omexmeta5Query12resultsAsMapEv"></span><span id="omexmeta::Query::resultsAsMap"></span><span class="target" id="classomexmeta_1_1Query_1ab50cc5f76dcf7f863f9fa9d0bf755071"></span><span class="n"><span class="pre">ResultsMap</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">resultsAsMap</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta5Query12resultsAsMapEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>returns query results in a map where keys are the variable names used in query and values are vectors of values for results. </p>
-<p>This is the only supported mechanism for ascertaining query results programatically, without needing to read/write to/from file. This method uses an iterator from librdf. When it gets to the end of the iterator, the iterator is “used up”. Therefore at the end of collecting the results as a map, the original query is re-run, so that the presently instantiated <a class="reference internal" href="#classomexmeta_1_1Query"><span class="std std-ref">Query</span></a> object is not rendered useless.</p>
-<p>If the query looks like this: <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="p">::</span><span class="n">string</span> <span class="n">query_string</span> <span class="o">=</span>   <span class="s2">&quot;SELECT ?x ?y ?z</span>
-                             <span class="s2">&quot;WHERE {&quot;</span>
-                             <span class="s2">&quot;   ?x ?y ?z&quot;</span>
-                             <span class="s2">&quot;}&quot;</span><span class="p">;</span>
-<span class="n">Query</span> <span class="n">query</span><span class="p">(</span><span class="n">query_string</span><span class="p">);</span>
-</pre></div>
-</div>
- The column names will be x, y and z and the results will be string representations of all subjects (?x), predicates (?y) and resources (?z) in a vector of size <code class="docutils literal notranslate"><span class="pre">n</span></code>, where n is the number of query results. </p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4NK8omexmeta5Query12resultsAsStrERKNSt6stringENSt6stringE">
-<span id="_CPPv3NK8omexmeta5Query12resultsAsStrERKNSt6stringENSt6stringE"></span><span id="_CPPv2NK8omexmeta5Query12resultsAsStrERKNSt6stringENSt6stringE"></span><span id="omexmeta::Query::resultsAsStr__ssCR.ssC"></span><span class="target" id="classomexmeta_1_1Query_1a7109dd08bd808bf5a20becb164622ed6"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">resultsAsStr</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">output_format</span></span>, <span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">baseuri</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="s"><span class="pre">&quot;query_results&quot;</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK8omexmeta5Query12resultsAsStrERKNSt6stringENSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>collect the result of the query as a string </p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>output_format</strong> – one of 9 strings used to choose how you want the results to be presented. Options are xml, json, table, csv, mkr, tsv, html, turtle and rdfxml. </p>
+<span id="_CPPv3N8omexmeta5QueryE"></span><span id="_CPPv2N8omexmeta5QueryE"></span><span id="omexmeta::Query"></span><span class="target" id="classomexmeta_1_1Query"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">omexmeta</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">Query</span></span></span><a class="headerlink" href="#_CPPv4N8omexmeta5QueryE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>make a Sparql </p>
+<p><dl class="field-list simple">
+<dt class="field-odd">param query</dt>
+<dd class="field-odd"><p>on the rdf graph represented by </p>
+</dd>
+<dt class="field-even">param model.</dt>
+<dd class="field-even"><p></p>
 </dd>
 </dl>
-</dd></dl>
-
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N8omexmeta5Query8runQueryEv">
-<span id="_CPPv3N8omexmeta5Query8runQueryEv"></span><span id="_CPPv2N8omexmeta5Query8runQueryEv"></span><span id="omexmeta::Query::runQuery"></span><span class="target" id="classomexmeta_1_1Query_1a879a4db0413abc8f4a3470877ebf5193"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">runQuery</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta5Query8runQueryEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Run a query. </p>
-<p>Users do not need to manually execute a query using this method. It is used automatically in the constructor for <a class="reference internal" href="#classomexmeta_1_1Query"><span class="std std-ref">Query</span></a> and again in <a class="reference internal" href="#classomexmeta_1_1Query_1ab50cc5f76dcf7f863f9fa9d0bf755071"><span class="std std-ref">Query::resultsAsMap</span></a>. </p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N8omexmeta5Query17printQueryResultsEv">
-<span id="_CPPv3N8omexmeta5Query17printQueryResultsEv"></span><span id="_CPPv2N8omexmeta5Query17printQueryResultsEv"></span><span id="omexmeta::Query::printQueryResults"></span><span class="target" id="classomexmeta_1_1Query_1a9f9639927203dc97e93bfca5508b6d01"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">printQueryResults</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta5Query17printQueryResultsEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Output query results to cout. </p>
-</dd></dl>
-
-</div>
+</p>
 <div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric" id="breathe-section-title-private-functions">Private Functions</p>
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N8omexmeta5Query4nextEv">
-<span id="_CPPv3N8omexmeta5Query4nextEv"></span><span id="_CPPv2N8omexmeta5Query4nextEv"></span><span id="omexmeta::Query::next"></span><span class="target" id="classomexmeta_1_1Query_1a7fb986a8bd45c97d5ce818b7cc286292"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">next</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta5Query4nextEv" title="Permalink to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N8omexmeta5Query5QueryERKNSt6stringER11LibrdfModel">
+<span id="_CPPv3N8omexmeta5Query5QueryERKNSt6stringER11LibrdfModel"></span><span id="_CPPv2N8omexmeta5Query5QueryERKNSt6stringER11LibrdfModel"></span><span id="omexmeta::Query::Query__ssCR.LibrdfModelR"></span><span class="target" id="classomexmeta_1_1Query_1a2c4f294aee354b2832c4aa2521849c00"></span><span class="sig-name descname"><span class="n"><span class="pre">Query</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">query</span></span>, <span class="n"><span class="pre">LibrdfModel</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">model</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta5Query5QueryERKNSt6stringER11LibrdfModel" title="Permalink to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N8omexmeta5Query10isBindingsEv">
-<span id="_CPPv3N8omexmeta5Query10isBindingsEv"></span><span id="_CPPv2N8omexmeta5Query10isBindingsEv"></span><span id="omexmeta::Query::isBindings"></span><span class="target" id="classomexmeta_1_1Query_1a0e31011a576bb0598e92fe3676216899"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">isBindings</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta5Query10isBindingsEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>librdf_query_results_is_bindings: &#64;query_results: #librdf_query_results object</p>
-<p>Test if librdf_query_results is variable bindings format.</p>
-<p>Return value: non-0 if true </p>
+<dt class="sig sig-object cpp" id="_CPPv4N8omexmeta5Query5asMapEv">
+<span id="_CPPv3N8omexmeta5Query5asMapEv"></span><span id="_CPPv2N8omexmeta5Query5asMapEv"></span><span id="omexmeta::Query::asMap"></span><span class="target" id="classomexmeta_1_1Query_1a80b878ddc423adc0f8cbc99dfa3c81b0"></span><span class="n"><span class="pre">ResultsMap</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">asMap</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta5Query5asMapEv" title="Permalink to this definition"></a><br /></dt>
+<dd><p>return query results as a ResultsMap, where sparql variables are bound as keys in a map and values are vectors containing nodes associated with the ith position in the query results. </p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N8omexmeta5Query9isBooleanEv">
-<span id="_CPPv3N8omexmeta5Query9isBooleanEv"></span><span id="_CPPv2N8omexmeta5Query9isBooleanEv"></span><span id="omexmeta::Query::isBoolean"></span><span class="target" id="classomexmeta_1_1Query_1aaebf27f2a2819419a68f04b3c5d24a10"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">isBoolean</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta5Query9isBooleanEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Test if librdf_query_results is boolean format.</p>
-<p>If this function returns true, the result can be retrieved by librdf_query_results_get_boolean().</p>
-<p>Return value: non-0 if true </p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N8omexmeta5Query10getBooleanEv">
-<span id="_CPPv3N8omexmeta5Query10getBooleanEv"></span><span id="_CPPv2N8omexmeta5Query10getBooleanEv"></span><span id="omexmeta::Query::getBoolean"></span><span class="target" id="classomexmeta_1_1Query_1a5f062c8171a472529282e08f2f132813"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getBoolean</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta5Query10getBooleanEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Get boolean query result.</p>
-<p>The return value is only meaningful if this is a boolean query result - see librdf_query_results_is_boolean()</p>
-<p>Return value: boolean query result - &gt;0 is true, 0 is false, &lt;0 on error or finished </p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N8omexmeta5Query8getCountEv">
-<span id="_CPPv3N8omexmeta5Query8getCountEv"></span><span id="_CPPv2N8omexmeta5Query8getCountEv"></span><span id="omexmeta::Query::getCount"></span><span class="target" id="classomexmeta_1_1Query_1aa5cdad3617be3e7b5df125762f29f0ba"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getCount</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta5Query8getCountEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>librdf_query_results_get_count: &#64;query_results: #librdf_query_results query results</p>
-<p>Get number of bindings so far.</p>
-<p>Return value: number of bindings found so far </p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N8omexmeta5Query15getBindingsNameEi">
-<span id="_CPPv3N8omexmeta5Query15getBindingsNameEi"></span><span id="_CPPv2N8omexmeta5Query15getBindingsNameEi"></span><span id="omexmeta::Query::getBindingsName__i"></span><span class="target" id="classomexmeta_1_1Query_1aaccc1e1973b46fb8d4c7fa8b5da9c05e"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getBindingsName</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">index</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta5Query15getBindingsNameEi" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>&#64;query_results: #librdf_query_results query results &#64;offset: offset of binding name into array of known names</p>
-<p>Get binding name for the current result.</p>
-<p>Return value: a pointer to a shared copy of the binding name or NULL on failure </p>
+<dt class="sig sig-object cpp" id="_CPPv4N8omexmeta5Query8asStringERKNSt6stringE">
+<span id="_CPPv3N8omexmeta5Query8asStringERKNSt6stringE"></span><span id="_CPPv2N8omexmeta5Query8asStringERKNSt6stringE"></span><span id="omexmeta::Query::asString__ssCR"></span><span class="target" id="classomexmeta_1_1Query_1afa2f5c1c2f26660442d61f5def6ebeca"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">asString</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">format</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8omexmeta5Query8asStringERKNSt6stringE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>return query results as a string in the format of your choosing. </p>
+<p>valid formats are “xml”, “json”, “table”, “csv”, “mkr”, “tsv”, “html”,”turtle”, “rdfxml”, </p>
 </dd></dl>
 
 </div>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-private-members">Private Members</p>
 <dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N8omexmeta5Query6model_E">
-<span id="_CPPv3N8omexmeta5Query6model_E"></span><span id="_CPPv2N8omexmeta5Query6model_E"></span><span id="omexmeta::Query::model___librdf_modelP"></span><span class="target" id="classomexmeta_1_1Query_1a11312167f0820409616931d54a2b7bc5"></span><span class="n"><span class="pre">librdf_model</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">model_</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">nullptr</span></span><a class="headerlink" href="#_CPPv4N8omexmeta5Query6model_E" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N8omexmeta5Query14query_results_E">
-<span id="_CPPv3N8omexmeta5Query14query_results_E"></span><span id="_CPPv2N8omexmeta5Query14query_results_E"></span><span id="omexmeta::Query::query_results___librdf_query_resultsP"></span><span class="target" id="classomexmeta_1_1Query_1a9481d440660afa98b6ac3dff58cbd4dd"></span><span class="n"><span class="pre">librdf_query_results</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">query_results_</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">nullptr</span></span><a class="headerlink" href="#_CPPv4N8omexmeta5Query14query_results_E" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N8omexmeta5Query2q_E">
-<span id="_CPPv3N8omexmeta5Query2q_E"></span><span id="_CPPv2N8omexmeta5Query2q_E"></span><span id="omexmeta::Query::q___librdf_queryP"></span><span class="target" id="classomexmeta_1_1Query_1a42588f89a2f1c0bbb006c665c243fbe7"></span><span class="n"><span class="pre">librdf_query</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">q_</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">nullptr</span></span><a class="headerlink" href="#_CPPv4N8omexmeta5Query2q_E" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N8omexmeta5Query6query_E">
-<span id="_CPPv3N8omexmeta5Query6query_E"></span><span id="_CPPv2N8omexmeta5Query6query_E"></span><span id="omexmeta::Query::query___ss"></span><span class="target" id="classomexmeta_1_1Query_1aa27e0b22999457c71ab690cf1650e26a"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">query_</span></span></span><a class="headerlink" href="#_CPPv4N8omexmeta5Query6query_E" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N8omexmeta5Query6query_E"></span><span id="_CPPv2N8omexmeta5Query6query_E"></span><span id="omexmeta::Query::query___LibrdfQuery"></span><span class="target" id="classomexmeta_1_1Query_1a5bc2cc1eb4a974a05343af9b3f36695a"></span><span class="n"><span class="pre">LibrdfQuery</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">query_</span></span></span><a class="headerlink" href="#_CPPv4N8omexmeta5Query6query_E" title="Permalink to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N8omexmeta5Query21valid_output_formats_E">
-<span id="_CPPv3N8omexmeta5Query21valid_output_formats_E"></span><span id="_CPPv2N8omexmeta5Query21valid_output_formats_E"></span><span id="omexmeta::Query::valid_output_formats___std::vector:ss:"></span><span class="target" id="classomexmeta_1_1Query_1a8e000eb2cc7be4a81bc9a99d0f77c23d"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">valid_output_formats_</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="s"><span class="pre">&quot;xml&quot;</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">&quot;json&quot;</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">&quot;table&quot;</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">&quot;csv&quot;</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">&quot;mkr&quot;</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">&quot;tsv&quot;</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">&quot;html&quot;</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">&quot;turtle&quot;</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">&quot;rdfxml&quot;</span></span><span class="p"><span class="pre">,</span></span><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#_CPPv4N8omexmeta5Query21valid_output_formats_E" title="Permalink to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N8omexmeta5Query6model_E">
+<span id="_CPPv3N8omexmeta5Query6model_E"></span><span id="_CPPv2N8omexmeta5Query6model_E"></span><span id="omexmeta::Query::model___LibrdfModelCR"></span><span class="target" id="classomexmeta_1_1Query_1ade43d2659f65e425f891b6a1ab37e767"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">LibrdfModel</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="n"><span class="pre">model_</span></span></span><a class="headerlink" href="#_CPPv4N8omexmeta5Query6model_E" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N8omexmeta5Query8results_E">
+<span id="_CPPv3N8omexmeta5Query8results_E"></span><span id="_CPPv2N8omexmeta5Query8results_E"></span><span id="omexmeta::Query::results___LibrdfQueryResults"></span><span class="target" id="classomexmeta_1_1Query_1a6f3afede7b1f11c094811db3ef387e14"></span><span class="n"><span class="pre">LibrdfQueryResults</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">results_</span></span></span><a class="headerlink" href="#_CPPv4N8omexmeta5Query8results_E" title="Permalink to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 </div>
@@ -384,50 +170,33 @@
 
 
            </div>
-           
           </div>
           <footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="Triple.html" class="btn btn-neutral float-right" title="Triple" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="PropertyBearer.html" class="btn btn-neutral float-left" title="PropertyBearer" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Triple.html" class="btn btn-neutral float-right" title="Triple" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &#169; Copyright 2020, Ciaran Welsh.
-
-    </p>
+    <p>&#169; Copyright 2020, Ciaran Welsh.</p>
   </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

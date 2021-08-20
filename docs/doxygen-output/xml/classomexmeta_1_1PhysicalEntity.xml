@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="classomexmeta_1_1PhysicalEntity" kind="class" language="C++" prot="public">
     <compoundname>omexmeta::PhysicalEntity</compoundname>
     <basecompoundref refid="classomexmeta_1_1PropertyBearer" prot="public" virt="non-virtual">omexmeta::PropertyBearer</basecompoundref>
@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PhysicalEntity.h" line="249" column="21" bodyfile="src/omexmeta/include/omexmeta/PhysicalEntity.h" bodystart="249" bodyend="-1"/>
+        <location file="src/omexmeta/include/omexmeta/PhysicalEntity.h" line="248" column="21" bodyfile="src/omexmeta/include/omexmeta/PhysicalEntity.h" bodystart="248" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classomexmeta_1_1PhysicalEntity_1a3966efdc86f7f455e1abe8edc7225a25" prot="private" static="no" mutable="no">
         <type>std::vector&lt; std::string &gt;</type>
@@ -29,7 +29,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PhysicalEntity.h" line="250" column="21" bodyfile="src/omexmeta/include/omexmeta/PhysicalEntity.h" bodystart="250" bodyend="-1"/>
+        <location file="src/omexmeta/include/omexmeta/PhysicalEntity.h" line="249" column="21" bodyfile="src/omexmeta/include/omexmeta/PhysicalEntity.h" bodystart="249" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classomexmeta_1_1PhysicalEntity_1a18d640c67df3fd6c153c1298e2c9de9d" prot="private" static="no" mutable="no">
         <type>std::vector&lt; std::string &gt;</type>
@@ -42,7 +42,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PhysicalEntity.h" line="251" column="21" bodyfile="src/omexmeta/include/omexmeta/PhysicalEntity.h" bodystart="251" bodyend="-1"/>
+        <location file="src/omexmeta/include/omexmeta/PhysicalEntity.h" line="250" column="21" bodyfile="src/omexmeta/include/omexmeta/PhysicalEntity.h" bodystart="250" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classomexmeta_1_1PhysicalEntity_1a95bbbce8e02d4575f8bb00987494216e" prot="private" static="no" mutable="no">
         <type>std::string</type>
@@ -55,7 +55,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PhysicalEntity.h" line="252" column="21" bodyfile="src/omexmeta/include/omexmeta/PhysicalEntity.h" bodystart="252" bodyend="-1"/>
+        <location file="src/omexmeta/include/omexmeta/PhysicalEntity.h" line="251" column="21" bodyfile="src/omexmeta/include/omexmeta/PhysicalEntity.h" bodystart="251" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classomexmeta_1_1PhysicalEntity_1aef6d38bfa93a0c5eba971755f5241ba8" prot="private" static="no" mutable="no">
         <type>std::string</type>
@@ -69,7 +69,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PhysicalEntity.h" line="256" column="21" bodyfile="src/omexmeta/include/omexmeta/PhysicalEntity.h" bodystart="256" bodyend="-1"/>
+        <location file="src/omexmeta/include/omexmeta/PhysicalEntity.h" line="255" column="21" bodyfile="src/omexmeta/include/omexmeta/PhysicalEntity.h" bodystart="255" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -86,15 +86,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PhysicalEntity.h" line="39" column="9"/>
+        <location file="src/omexmeta/include/omexmeta/PhysicalEntity.h" line="38" column="9"/>
       </memberdef>
-      <memberdef kind="function" id="classomexmeta_1_1PhysicalEntity_1aa30078a1fa71747a37700915919bbb72" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classomexmeta_1_1PhysicalEntity_1a0724e9286d1a9fb3247e925d55e5676d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>omexmeta::PhysicalEntity::PhysicalEntity</definition>
-        <argsstring>(librdf_model *model, UriHandler &amp;uriHandler, PhysicalProperty physicalProperty, std::string is, std::vector&lt; std::string &gt; is_part_of)</argsstring>
+        <argsstring>(LibrdfModel &amp;model, UriHandler &amp;uriHandler, PhysicalProperty physicalProperty, std::string is, std::vector&lt; std::string &gt; is_part_of)</argsstring>
         <name>PhysicalEntity</name>
         <param>
-          <type>librdf_model *</type>
+          <type><ref refid="classredland_1_1LibrdfModel" kindref="compound">LibrdfModel</ref> &amp;</type>
           <declname>model</declname>
         </param>
         <param>
@@ -171,7 +171,7 @@ Users should not need to use this constructor directly as it is embedded in the 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PhysicalEntity.h" line="54" column="9" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="10" bodyend="13"/>
+        <location file="src/omexmeta/include/omexmeta/PhysicalEntity.h" line="53" column="9" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="10" bodyend="13"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalEntity_1ab905eecead2704afb14285fa44899958" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -184,7 +184,7 @@ Users should not need to use this constructor directly as it is embedded in the 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PhysicalEntity.h" line="57" column="9"/>
+        <location file="src/omexmeta/include/omexmeta/PhysicalEntity.h" line="56" column="9"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalEntity_1a6fd4acd7255a01322c4a53d3e84df0ba" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -199,15 +199,15 @@ Users should not need to use this constructor directly as it is embedded in the 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PhysicalEntity.h" line="66" column="14" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="15" bodyend="27"/>
+        <location file="src/omexmeta/include/omexmeta/PhysicalEntity.h" line="65" column="14" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="15" bodyend="15"/>
       </memberdef>
-      <memberdef kind="function" id="classomexmeta_1_1PhysicalEntity_1a0f6af5e55a34be889110b0d03e5f1aec" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classomexmeta_1_1PhysicalEntity_1a5c843c25a8343ec933cdf4465fc7723f" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
         <type>OMEXMETA_DEPRECATED</type>
         <definition>OMEXMETA_DEPRECATED omexmeta::PhysicalEntity::PhysicalEntity</definition>
-        <argsstring>(librdf_model *model)</argsstring>
+        <argsstring>(LibrdfModel &amp;model)</argsstring>
         <name>PhysicalEntity</name>
         <param>
-          <type>librdf_model *</type>
+          <type><ref refid="classredland_1_1LibrdfModel" kindref="compound">LibrdfModel</ref> &amp;</type>
           <declname>model</declname>
         </param>
         <briefdescription>
@@ -227,15 +227,15 @@ Users should not need to use this constructor directly as it is embedded in the 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PhysicalEntity.h" line="78" column="38"/>
+        <location file="src/omexmeta/include/omexmeta/PhysicalEntity.h" line="77" column="38"/>
       </memberdef>
-      <memberdef kind="function" id="classomexmeta_1_1PhysicalEntity_1a5765425cc25593f824eddb100a6f5229" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classomexmeta_1_1PhysicalEntity_1a05061b629f0bef3aeba8295390d47a34" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
         <type></type>
         <definition>omexmeta::PhysicalEntity::PhysicalEntity</definition>
-        <argsstring>(librdf_model *model, UriHandler &amp;uriHandler)</argsstring>
+        <argsstring>(LibrdfModel &amp;model, UriHandler &amp;uriHandler)</argsstring>
         <name>PhysicalEntity</name>
         <param>
-          <type>librdf_model *</type>
+          <type><ref refid="classredland_1_1LibrdfModel" kindref="compound">LibrdfModel</ref> &amp;</type>
           <declname>model</declname>
         </param>
         <param>
@@ -267,7 +267,7 @@ Users should not need to use this constructor directly as it is embedded in the 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PhysicalEntity.h" line="93" column="18" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="29" bodyend="30"/>
+        <location file="src/omexmeta/include/omexmeta/PhysicalEntity.h" line="92" column="18" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="17" bodyend="18"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalEntity_1a51f5df8b2e8a1d65e5aa0d10e53b77ba" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type><ref refid="classomexmeta_1_1Triples" kindref="compound">Triples</ref></type>
@@ -286,7 +286,7 @@ When using &quot;toTriples&quot; you are giving ownership of the nodes used by <
         <inbodydescription>
 <para>Patch around physical property triples generation. <ref refid="classThis" kindref="compound">This</ref> can be made more concise but for now we just use patch. When there is no physical property we do not add property related triples</para>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PhysicalEntity.h" line="107" column="18" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="74" bodyend="148"/>
+        <location file="src/omexmeta/include/omexmeta/PhysicalEntity.h" line="106" column="18" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="62" bodyend="136"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalEntity_1a82f43f8355a33284876b84278027cac5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::string &amp;</type>
@@ -303,7 +303,7 @@ When using &quot;toTriples&quot; you are giving ownership of the nodes used by <
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PhysicalEntity.h" line="114" column="28" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="66" bodyend="68"/>
+        <location file="src/omexmeta/include/omexmeta/PhysicalEntity.h" line="113" column="28" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="54" bodyend="56"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalEntity_1a5bca97a9f5195260bd44f72b6d29d87a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::vector&lt; std::string &gt; &amp;</type>
@@ -320,7 +320,7 @@ When using &quot;toTriples&quot; you are giving ownership of the nodes used by <
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PhysicalEntity.h" line="121" column="28" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="70" bodyend="72"/>
+        <location file="src/omexmeta/include/omexmeta/PhysicalEntity.h" line="120" column="28" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="58" bodyend="60"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalEntity_1a5d7168c527d2dbdacd612de37aa9a605" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>OMEXMETA_DEPRECATED <ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> &amp;</type>
@@ -363,7 +363,7 @@ The OBP argument requires a string of the form &quot;obp:opbxxx&quot; where &quo
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PhysicalEntity.h" line="131" column="44" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="38" bodyend="44"/>
+        <location file="src/omexmeta/include/omexmeta/PhysicalEntity.h" line="130" column="44" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="26" bodyend="32"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalEntity_1a9bca0cb13601b6f9617df9f264968f1f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>OMEXMETA_DEPRECATED <ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> &amp;</type>
@@ -385,7 +385,7 @@ Prefer the alternative setPhysicalProperty instance, since you do not need to in
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PhysicalEntity.h" line="142" column="45" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="32" bodyend="35"/>
+        <location file="src/omexmeta/include/omexmeta/PhysicalEntity.h" line="141" column="45" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="20" bodyend="23"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalEntity_1a9029e221fb2e4125284eba3935993d8f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> &amp;</type>
@@ -416,7 +416,7 @@ The input string gets converted to a LibrdfNode automatically.</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PhysicalEntity.h" line="153" column="24" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="47" bodyend="50"/>
+        <location file="src/omexmeta/include/omexmeta/PhysicalEntity.h" line="152" column="24" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="35" bodyend="38"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalEntity_1a6f51117462876bda1eb743244437104a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> &amp;</type>
@@ -434,7 +434,7 @@ The input string gets converted to a LibrdfNode automatically.</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PhysicalEntity.h" line="158" column="24" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="52" bodyend="54"/>
+        <location file="src/omexmeta/include/omexmeta/PhysicalEntity.h" line="157" column="24" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="40" bodyend="42"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalEntity_1a82e77be3327c537b2426b571afaa5045" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>OMEXMETA_DEPRECATED <ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> &amp;</type>
@@ -466,7 +466,7 @@ The input string gets converted to a LibrdfNode automatically. An arbitrary numb
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PhysicalEntity.h" line="178" column="44" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="56" bodyend="59"/>
+        <location file="src/omexmeta/include/omexmeta/PhysicalEntity.h" line="177" column="44" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="44" bodyend="47"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalEntity_1a33559c90dbe3e3be1b71898ab9a5bfa4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -483,7 +483,7 @@ The input string gets converted to a LibrdfNode automatically. An arbitrary numb
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PhysicalEntity.h" line="184" column="14" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="150" bodyend="152"/>
+        <location file="src/omexmeta/include/omexmeta/PhysicalEntity.h" line="183" column="14" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="138" bodyend="140"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalEntity_1a5f54e5c2df0fd5c3b9121e1426b23af6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -500,7 +500,7 @@ The input string gets converted to a LibrdfNode automatically. An arbitrary numb
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PhysicalEntity.h" line="186" column="14" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="155" bodyend="160"/>
+        <location file="src/omexmeta/include/omexmeta/PhysicalEntity.h" line="185" column="14" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="143" bodyend="148"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalEntity_1afee546a420f16e128ed1add9fec35b4f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -517,7 +517,7 @@ The input string gets converted to a LibrdfNode automatically. An arbitrary numb
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PhysicalEntity.h" line="188" column="14" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="162" bodyend="164"/>
+        <location file="src/omexmeta/include/omexmeta/PhysicalEntity.h" line="187" column="14" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="150" bodyend="152"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalEntity_1ad3b863794c49c8baf4477b88d5e1d8a2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> &amp;</type>
@@ -537,15 +537,15 @@ The input string gets converted to a LibrdfNode automatically. An arbitrary numb
 <parametername>property</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>an opb term  Should be of the form OPB:OPB_12345 or OPB/OPB_12345. <ref refid="classThis" kindref="compound">This</ref> function will set the LibrdfNode resource_ property on the <ref refid="classomexmeta_1_1PhysicalProperty" kindref="compound">PhysicalProperty</ref> associated with this <ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref>. </para>
+<para>an opb term</para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-</para>
+Should be of the form OPB:OPB_12345 or OPB/OPB_12345. <ref refid="classThis" kindref="compound">This</ref> function will set the LibrdfNode resource_ property on the <ref refid="classomexmeta_1_1PhysicalProperty" kindref="compound">PhysicalProperty</ref> associated with this <ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref>. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PhysicalEntity.h" line="196" column="24" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="172" bodyend="175"/>
+        <location file="src/omexmeta/include/omexmeta/PhysicalEntity.h" line="195" column="24" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="160" bodyend="163"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalEntity_1ab61ca0ab001120b8cce16de4a1f5b96d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> &amp;</type>
@@ -566,7 +566,7 @@ The input string gets converted to a LibrdfNode automatically. An arbitrary numb
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PhysicalEntity.h" line="198" column="24" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="167" bodyend="170"/>
+        <location file="src/omexmeta/include/omexmeta/PhysicalEntity.h" line="197" column="24" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="155" bodyend="158"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalEntity_1adae8f23418feee0833e8d63458175f19" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type><ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> &amp;</type>
@@ -591,15 +591,15 @@ The input string gets converted to a LibrdfNode automatically. An arbitrary numb
 <parametername>about</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The string to put in rdf:about  <ref refid="classThis" kindref="compound">This</ref> function will set the LibrdfNode subject_ property on the <ref refid="classomexmeta_1_1PhysicalProperty" kindref="compound">PhysicalProperty</ref> associated with this <ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> </para>
+<para>The string to put in rdf:about</para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-</para>
+<ref refid="classThis" kindref="compound">This</ref> function will set the LibrdfNode subject_ property on the <ref refid="classomexmeta_1_1PhysicalProperty" kindref="compound">PhysicalProperty</ref> associated with this <ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PhysicalEntity.h" line="206" column="24" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="177" bodyend="180"/>
+        <location file="src/omexmeta/include/omexmeta/PhysicalEntity.h" line="205" column="24" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="165" bodyend="168"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalEntity_1a6edbf68a1473211edc3dcc9c7a15d03c" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type><ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> &amp;</type>
@@ -618,7 +618,7 @@ The input string gets converted to a LibrdfNode automatically. An arbitrary numb
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PhysicalEntity.h" line="208" column="24" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="182" bodyend="185"/>
+        <location file="src/omexmeta/include/omexmeta/PhysicalEntity.h" line="207" column="24" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="170" bodyend="173"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalEntity_1a2498e9b0b11a00200e47332c4515b1f1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> &amp;</type>
@@ -638,15 +638,15 @@ The input string gets converted to a LibrdfNode automatically. An arbitrary numb
 <parametername>is</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>the string to be used for is. <ref refid="classThis" kindref="compound">This</ref> should be of the form OPB:OPB_00134  <ref refid="classThis" kindref="compound">This</ref> function calls the <computeroutput><ref refid="classomexmeta_1_1PhysicalEntity_1a9029e221fb2e4125284eba3935993d8f" kindref="member">PhysicalEntity::setIdentity</ref></computeroutput> method and can be used as an alternative. For developers, consider which (or both? )sets of methods to keep, <computeroutput>is</computeroutput> or <computeroutput>setIdentity</computeroutput> </para>
+<para>the string to be used for is. <ref refid="classThis" kindref="compound">This</ref> should be of the form OPB:OPB_00134</para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-</para>
+<ref refid="classThis" kindref="compound">This</ref> function calls the <computeroutput><ref refid="classomexmeta_1_1PhysicalEntity_1a9029e221fb2e4125284eba3935993d8f" kindref="member">PhysicalEntity::setIdentity</ref></computeroutput> method and can be used as an alternative. For developers, consider which (or both? )sets of methods to keep, <computeroutput>is</computeroutput> or <computeroutput>setIdentity</computeroutput> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PhysicalEntity.h" line="217" column="24" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="187" bodyend="189"/>
+        <location file="src/omexmeta/include/omexmeta/PhysicalEntity.h" line="216" column="24" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="175" bodyend="177"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalEntity_1aeba395f9474a7b6beb1b28a6095bb62d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> &amp;</type>
@@ -671,15 +671,15 @@ The input string gets converted to a LibrdfNode automatically. An arbitrary numb
 <parametername>isPartOf</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>the string to be used for isPartOf predicate. <ref refid="classThis" kindref="compound">This</ref> should be of the form fma:FMA:12345 or fma/FMA:12345  <ref refid="classThis" kindref="compound">This</ref> function calls the <computeroutput><ref refid="classomexmeta_1_1PhysicalEntity_1a82e77be3327c537b2426b571afaa5045" kindref="member">PhysicalEntity::addLocation</ref></computeroutput> method and can be used as an alternative. For developers, consider which (or both? )sets of methods to keep, <computeroutput>addLocation</computeroutput> or <computeroutput>isPartOf</computeroutput> </para>
+<para>the string to be used for isPartOf predicate. <ref refid="classThis" kindref="compound">This</ref> should be of the form fma:FMA:12345 or fma/FMA:12345</para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-</para>
+<ref refid="classThis" kindref="compound">This</ref> function calls the <computeroutput><ref refid="classomexmeta_1_1PhysicalEntity_1a82e77be3327c537b2426b571afaa5045" kindref="member">PhysicalEntity::addLocation</ref></computeroutput> method and can be used as an alternative. For developers, consider which (or both? )sets of methods to keep, <computeroutput>addLocation</computeroutput> or <computeroutput>isPartOf</computeroutput> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PhysicalEntity.h" line="226" column="24" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="191" bodyend="195"/>
+        <location file="src/omexmeta/include/omexmeta/PhysicalEntity.h" line="225" column="24" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="179" bodyend="183"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalEntity_1a200859dbbda1b17c244ced477d21f06f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> &amp;</type>
@@ -699,15 +699,15 @@ The input string gets converted to a LibrdfNode automatically. An arbitrary numb
 <parametername>part</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>the string to be used for hasPart predicate.  used in the case of annotating complexes which have no identity but several parts. </para>
+<para>the string to be used for hasPart predicate.</para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-</para>
+used in the case of annotating complexes which have no identity but several parts. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PhysicalEntity.h" line="233" column="24" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="61" bodyend="64"/>
+        <location file="src/omexmeta/include/omexmeta/PhysicalEntity.h" line="232" column="24" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="49" bodyend="52"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalEntity_1a6aff4d003c2e39aad8bd00ab536ec00e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>OMEXMETA_DEPRECATED <ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> &amp;</type>
@@ -725,7 +725,7 @@ The input string gets converted to a LibrdfNode automatically. An arbitrary numb
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PhysicalEntity.h" line="238" column="44" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="197" bodyend="200"/>
+        <location file="src/omexmeta/include/omexmeta/PhysicalEntity.h" line="237" column="44" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="185" bodyend="188"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalEntity_1ac77ef003e4111cbdaf4c9c7f0c5fb680" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>OMEXMETA_DEPRECATED const std::string &amp;</type>
@@ -739,7 +739,7 @@ The input string gets converted to a LibrdfNode automatically. An arbitrary numb
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PhysicalEntity.h" line="240" column="48" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="202" bodyend="204"/>
+        <location file="src/omexmeta/include/omexmeta/PhysicalEntity.h" line="239" column="48" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="190" bodyend="192"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalEntity_1a9d8224786f634b20b32d5cbc2cccaa12" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type><ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> &amp;</type>
@@ -757,7 +757,7 @@ The input string gets converted to a LibrdfNode automatically. An arbitrary numb
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PhysicalEntity.h" line="242" column="24" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="205" bodyend="208"/>
+        <location file="src/omexmeta/include/omexmeta/PhysicalEntity.h" line="241" column="24" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="193" bodyend="196"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalEntity_1a5ca4656de18ff0bc740ebd9f2c7f8883" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type><ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> &amp;</type>
@@ -775,7 +775,7 @@ The input string gets converted to a LibrdfNode automatically. An arbitrary numb
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PhysicalEntity.h" line="244" column="24" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="213" bodyend="216"/>
+        <location file="src/omexmeta/include/omexmeta/PhysicalEntity.h" line="243" column="24" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="201" bodyend="204"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1PhysicalEntity_1a151fae24b38b8c568fe2b0309bc8d113" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type><ref refid="classomexmeta_1_1PhysicalEntity" kindref="compound">PhysicalEntity</ref> &amp;</type>
@@ -801,7 +801,7 @@ The input string gets converted to a LibrdfNode automatically. An arbitrary numb
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/PhysicalEntity.h" line="246" column="24" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="217" bodyend="220"/>
+        <location file="src/omexmeta/include/omexmeta/PhysicalEntity.h" line="245" column="24" bodyfile="src/omexmeta/PhysicalEntity.cpp" bodystart="205" bodyend="208"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -822,21 +822,34 @@ The input string gets converted to a LibrdfNode automatically. An arbitrary numb
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="3">
+      <node id="6">
         <label>omexmeta::PhysicalProperty</label>
         <link refid="classomexmeta_1_1PhysicalProperty"/>
       </node>
-      <node id="4">
+      <node id="7">
         <label>omexmeta::UriHandler</label>
         <link refid="classomexmeta_1_1UriHandler"/>
+      </node>
+      <node id="4">
+        <label>RefCounted_librdf_model</label>
+        <link refid="classredland_1_1RefCountedRedlandType"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>redland::RedlandType&lt; ObjType, FreeFuncType &gt;</label>
+        <link refid="classredland_1_1RedlandType"/>
       </node>
       <node id="2">
         <label>omexmeta::PropertyBearer</label>
         <link refid="classomexmeta_1_1PropertyBearer"/>
         <childnode refid="3" relation="usage">
+          <edgelabel>model_</edgelabel>
+        </childnode>
+        <childnode refid="6" relation="usage">
           <edgelabel>physical_property_</edgelabel>
         </childnode>
-        <childnode refid="4" relation="usage">
+        <childnode refid="7" relation="usage">
           <edgelabel>uriHandler_</edgelabel>
         </childnode>
       </node>
@@ -846,8 +859,14 @@ The input string gets converted to a LibrdfNode automatically. An arbitrary numb
         <childnode refid="2" relation="public-inheritance">
         </childnode>
       </node>
+      <node id="3">
+        <label>redland::LibrdfModel</label>
+        <link refid="classredland_1_1LibrdfModel"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
     </collaborationgraph>
-    <location file="src/omexmeta/include/omexmeta/PhysicalEntity.h" line="27" column="5" bodyfile="src/omexmeta/include/omexmeta/PhysicalEntity.h" bodystart="27" bodyend="259"/>
+    <location file="src/omexmeta/include/omexmeta/PhysicalEntity.h" line="26" column="5" bodyfile="src/omexmeta/include/omexmeta/PhysicalEntity.h" bodystart="26" bodyend="258"/>
     <listofallmembers>
       <member refid="classomexmeta_1_1PhysicalEntity_1adae8f23418feee0833e8d63458175f19" prot="public" virt="virtual"><scope>omexmeta::PhysicalEntity</scope><name>about</name></member>
       <member refid="classomexmeta_1_1PhysicalEntity_1a6edbf68a1473211edc3dcc9c7a15d03c" prot="public" virt="virtual"><scope>omexmeta::PhysicalEntity</scope><name>about</name></member>
@@ -861,7 +880,7 @@ The input string gets converted to a LibrdfNode automatically. An arbitrary numb
       <member refid="classomexmeta_1_1PhysicalEntity_1a82f43f8355a33284876b84278027cac5" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>getIdentityResource</name></member>
       <member refid="classomexmeta_1_1PropertyBearer_1a45b07ccfc203b51dfc08c45dbd37480d" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>getLocalUri</name></member>
       <member refid="classomexmeta_1_1PhysicalEntity_1a5bca97a9f5195260bd44f72b6d29d87a" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>getLocationResources</name></member>
-      <member refid="classomexmeta_1_1PropertyBearer_1a97a2c8ec00a740a607512db4b351467a" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>getModel</name></member>
+      <member refid="classomexmeta_1_1PropertyBearer_1a7d73b7511a12c8050262de668e26f4a8" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>getModel</name></member>
       <member refid="classomexmeta_1_1PropertyBearer_1a6df2db1bb03c9b62da60263869f57ce6" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>getModelUri</name></member>
       <member refid="classomexmeta_1_1PropertyBearer_1ad5385daa0deb6a484d16a190d46fa0e7" prot="protected" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>getNewMetaidExclusionList</name></member>
       <member refid="classomexmeta_1_1PhysicalEntity_1a33559c90dbe3e3be1b71898ab9a5bfa4" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>getNumLocations</name></member>
@@ -880,7 +899,7 @@ The input string gets converted to a LibrdfNode automatically. An arbitrary numb
       <member refid="classomexmeta_1_1PhysicalEntity_1aeba395f9474a7b6beb1b28a6095bb62d" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>isPartOf</name></member>
       <member refid="classomexmeta_1_1PhysicalEntity_1ab61ca0ab001120b8cce16de4a1f5b96d" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>isPropertyOf</name></member>
       <member refid="classomexmeta_1_1PhysicalEntity_1a3966efdc86f7f455e1abe8edc7225a25" prot="private" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>location_resources_</name></member>
-      <member refid="classomexmeta_1_1PropertyBearer_1a2a2bcd9e87986713cff5877e39a9f994" prot="protected" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>model_</name></member>
+      <member refid="classomexmeta_1_1PropertyBearer_1a230f7985fea69dd3cbeb4d589f73ff4e" prot="protected" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>model_</name></member>
       <member refid="classomexmeta_1_1PropertyBearer_1a1ee416fecb12d19937f5bc9b6d43c7b1" prot="protected" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>new_metaid_exclusion_list_</name></member>
       <member refid="classomexmeta_1_1PhysicalEntity_1afee546a420f16e128ed1add9fec35b4f" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>operator!=</name></member>
       <member refid="classomexmeta_1_1PropertyBearer_1a8e065b7ca6fc51c2eb4f4d63e1203fe2" prot="public" virt="non-virtual" ambiguityscope="omexmeta::PropertyBearer::"><scope>omexmeta::PhysicalEntity</scope><name>operator!=</name></member>
@@ -892,15 +911,15 @@ The input string gets converted to a LibrdfNode automatically. An arbitrary numb
       <member refid="classomexmeta_1_1PhysicalEntity_1a95bbbce8e02d4575f8bb00987494216e" prot="private" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>physical_entity_property_id_</name></member>
       <member refid="classomexmeta_1_1PropertyBearer_1abdaa4997f02b9ef36cda61037399eb86" prot="protected" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>physical_property_</name></member>
       <member refid="classomexmeta_1_1PhysicalEntity_1a9d29348a080c64f91ff6ec184fd45ece" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>PhysicalEntity</name></member>
-      <member refid="classomexmeta_1_1PhysicalEntity_1aa30078a1fa71747a37700915919bbb72" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>PhysicalEntity</name></member>
-      <member refid="classomexmeta_1_1PhysicalEntity_1a0f6af5e55a34be889110b0d03e5f1aec" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>PhysicalEntity</name></member>
-      <member refid="classomexmeta_1_1PhysicalEntity_1a5765425cc25593f824eddb100a6f5229" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>PhysicalEntity</name></member>
+      <member refid="classomexmeta_1_1PhysicalEntity_1a0724e9286d1a9fb3247e925d55e5676d" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>PhysicalEntity</name></member>
+      <member refid="classomexmeta_1_1PhysicalEntity_1a5c843c25a8343ec933cdf4465fc7723f" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>PhysicalEntity</name></member>
+      <member refid="classomexmeta_1_1PhysicalEntity_1a05061b629f0bef3aeba8295390d47a34" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>PhysicalEntity</name></member>
       <member refid="classomexmeta_1_1PhysicalEntity_1aef6d38bfa93a0c5eba971755f5241ba8" prot="private" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>property_metaid_base_</name></member>
       <member refid="classomexmeta_1_1PropertyBearer_1a8ae678b4a1cc528b20ff969b7d728bd6" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>PropertyBearer</name></member>
       <member refid="classomexmeta_1_1PropertyBearer_1aba09b3a7c564ff208507dc0d533639ff" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>PropertyBearer</name></member>
       <member refid="classomexmeta_1_1PropertyBearer_1a130c3075575d8da0113ad6320a8f0794" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>PropertyBearer</name></member>
-      <member refid="classomexmeta_1_1PropertyBearer_1af6a967a6e8950c3fe550ee6cc4bb9e6e" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>PropertyBearer</name></member>
-      <member refid="classomexmeta_1_1PropertyBearer_1a55a9c4b8c46c2f14cd805e94a7b6f141" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>PropertyBearer</name></member>
+      <member refid="classomexmeta_1_1PropertyBearer_1a660b03e0a511fad961682b9d5105bff3" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>PropertyBearer</name></member>
+      <member refid="classomexmeta_1_1PropertyBearer_1ac6c56fcbb9cd396319c546cb472b7d01" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>PropertyBearer</name></member>
       <member refid="classomexmeta_1_1PhysicalEntity_1ad3b863794c49c8baf4477b88d5e1d8a2" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>propertyIsVersionOf</name></member>
       <member refid="classomexmeta_1_1PropertyBearer_1a50f4abd4a7a5f699343fe824612b12fb" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>setAboutUriType</name></member>
       <member refid="classomexmeta_1_1PhysicalEntity_1a9029e221fb2e4125284eba3935993d8f" prot="public" virt="non-virtual"><scope>omexmeta::PhysicalEntity</scope><name>setIdentity</name></member>

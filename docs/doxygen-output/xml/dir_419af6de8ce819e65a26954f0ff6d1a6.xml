@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="dir_419af6de8ce819e65a26954f0ff6d1a6" kind="dir">
     <compoundname>src/redland/RedlandWrapper/src/include/redland</compoundname>
     <innerfile refid="librdf_8h">librdf.h</innerfile>
@@ -15,10 +15,13 @@
     <innerfile refid="LibrdfStream_8h">LibrdfStream.h</innerfile>
     <innerfile refid="LibrdfUri_8h">LibrdfUri.h</innerfile>
     <innerfile refid="LibrdfWorld_8h">LibrdfWorld.h</innerfile>
+    <innerfile refid="Logger_8h">Logger.h</innerfile>
     <innerfile refid="raptor2_8h">raptor2.h</innerfile>
     <innerfile refid="RaptorIOStream_8h">RaptorIOStream.h</innerfile>
     <innerfile refid="rasqal_8h">rasqal.h</innerfile>
     <innerfile refid="RedlandAPI_8h">RedlandAPI.h</innerfile>
+    <innerfile refid="RedlandType_8h">RedlandType.h</innerfile>
+    <innerfile refid="RefCountedRedlandType_8h">RefCountedRedlandType.h</innerfile>
     <briefdescription>
     </briefdescription>
     <detaileddescription>

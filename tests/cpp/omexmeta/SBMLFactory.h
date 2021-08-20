@@ -14,7 +14,7 @@ enum ModelType {
     SBML_ANNOTATED,
     SBML_NOT_ANNOTATED,
     SBML_NOT_ANNOTATED2,
-    SBML_Semantic_Extraction_Model,
+    SBML_SEMANTIC_EXTRACTION_MODEL,
     SBML_BIOMD204,
     SBML_BIOMD366,
     SBML_BIOMD626,
@@ -22,7 +22,8 @@ enum ModelType {
     SBML_ADHMODEL,
     SBML_NERNST_POTENTIAL,
     SBML_NERNST_POTENTIAL2,
-    SBML_WITH_BAG
+    SBML_WITH_BAG,
+    SBML_INVALID_METAIDS
 };
 
 /*
@@ -336,7 +337,7 @@ public:
                "      \n"
                "    </notes>\n"
                "    <annotation>\n"
-               "      <rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xmlns:bqmodel=\"http://biomodels.net/model-qualifiers/\" xmlns:vCard=\"http://www.w3.org/2001/vcard-rdf/3.0#\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:dcterms=\"https://dublincore.org/specifications/dublin-core/dcmi-terms/\" xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\">\n"
+               "      <rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xmlns:bqmodel=\"http://biomodels.net/model-qualifiers/\" xmlns:vCard=\"http://www.w3.org/2001/vcard-rdf/3.0#\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:dcterms=\"http://purl.org/dc/terms/\" xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\">\n"
                "        <rdf:Description rdf:about=\"#metaid_0000002\">\n"
                "    <dc:creator>\n"
                "    <rdf:Bag>\n"
@@ -4456,7 +4457,7 @@ public:
                "<sbml xmlns=\"http://www.sbml.org/sbml/level2/version4\" level=\"2\" metaid=\"ce1cad6b-9640-4c07-88d4-595a13819703\" version=\"4\">\n"
                "  <model id=\"Model_1\" metaid=\"_0\" name=\"Orfao2008_ThrombinGeneration_AmidolyticActivity\">\n"
                "    <annotation>\n"
-               "\t<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:vCard=\"http://www.w3.org/2001/vcard-rdf/3.0#\" xmlns:dcterms=\"https://dublincore.org/specifications/dublin-core/dcmi-terms/\" xmlns:bqmodel=\"http://biomodels.net/model-qualifiers/\" xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\">\n"
+               "\t<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:vCard=\"http://www.w3.org/2001/vcard-rdf/3.0#\" xmlns:dcterms=\"http://purl.org/dc/terms/\" xmlns:bqmodel=\"http://biomodels.net/model-qualifiers/\" xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\">\n"
                "        <rdf:Description rdf:about=\"#_0\">\n"
                "\t<dc:creator>\n"
                "\t<rdf:Bag>\n"
@@ -4986,6 +4987,111 @@ public:
     }
 };
 
+class InvalidMetaids : SBMLModel {
+public:
+    InvalidMetaids() = default;
+
+    std::string str() override {
+        return "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
+               "<!-- Created by libAntimony version v2.11.0 with libSBML version 5.18.0. -->\n"
+               "<sbml xmlns=\"http://www.sbml.org/sbml/level3/version1/core\" level=\"3\" version=\"1\">\n"
+               "  <model metaid=\"SimpleRegulation\" id=\"SimpleRegulation\">\n"
+               "    <listOfCompartments>\n"
+               "      <compartment id=\"cell\" spatialDimensions=\"3\" size=\"1\" constant=\"true\" metaid=\"#OmexMetaId0000\"/>\n"
+               "    </listOfCompartments>\n"
+               "    <listOfSpecies>\n"
+               "      <species id=\"A\" compartment=\"cell\" initialConcentration=\"10\" hasOnlySubstanceUnits=\"false\" boundaryCondition=\"false\" constant=\"false\" metaid=\"#OmexMetaId0001\"/>\n"
+               "      <species id=\"B\" compartment=\"cell\" initialConcentration=\"0\" hasOnlySubstanceUnits=\"false\" boundaryCondition=\"false\" constant=\"false\" metaid=\"#OmexMetaId0002\"/>\n"
+               "      <species id=\"C\" compartment=\"cell\" initialConcentration=\"10\" hasOnlySubstanceUnits=\"false\" boundaryCondition=\"false\" constant=\"false\" metaid=\"#OmexMetaId0003\"/>\n"
+               "      <species id=\"D\" compartment=\"cell\" initialConcentration=\"0\" hasOnlySubstanceUnits=\"false\" boundaryCondition=\"false\" constant=\"false\" metaid=\"#OmexMetaId0004\"/>\n"
+               "    </listOfSpecies>\n"
+               "    <listOfParameters>\n"
+               "      <parameter id=\"S\" value=\"0\" constant=\"true\"/>\n"
+               "      <parameter id=\"k1\" value=\"0.1\" constant=\"true\"/>\n"
+               "      <parameter id=\"k2\" value=\"0.1\" constant=\"true\"/>\n"
+               "      <parameter id=\"k3\" value=\"0.1\" constant=\"true\"/>\n"
+               "      <parameter id=\"k4\" value=\"0.1\" constant=\"true\"/>\n"
+               "    </listOfParameters>\n"
+               "    <listOfReactions>\n"
+               "      <reaction id=\"R1\" reversible=\"false\" fast=\"false\" metaid=\"#OmexMetaId0005\">\n"
+               "        <listOfReactants>\n"
+               "          <speciesReference species=\"A\" stoichiometry=\"1\" constant=\"true\"/>\n"
+               "        </listOfReactants>\n"
+               "        <listOfProducts>\n"
+               "          <speciesReference species=\"B\" stoichiometry=\"1\" constant=\"true\"/>\n"
+               "        </listOfProducts>\n"
+               "        <kineticLaw metaid=\"#OmexMetaId0006\">\n"
+               "          <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n"
+               "            <apply>\n"
+               "              <times/>\n"
+               "              <ci> k1 </ci>\n"
+               "              <ci> A </ci>\n"
+               "              <ci> S </ci>\n"
+               "            </apply>\n"
+               "          </math>\n"
+               "        </kineticLaw>\n"
+               "      </reaction>\n"
+               "      <reaction id=\"R2\" reversible=\"false\" fast=\"false\" metaid=\"#OmexMetaId0007\">\n"
+               "        <listOfReactants>\n"
+               "          <speciesReference species=\"B\" stoichiometry=\"1\" constant=\"true\"/>\n"
+               "        </listOfReactants>\n"
+               "        <listOfProducts>\n"
+               "          <speciesReference species=\"A\" stoichiometry=\"1\" constant=\"true\"/>\n"
+               "        </listOfProducts>\n"
+               "        <kineticLaw metaid=\"#OmexMetaId0008\">\n"
+               "          <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n"
+               "            <apply>\n"
+               "              <times/>\n"
+               "              <ci> k2 </ci>\n"
+               "              <ci> B </ci>\n"
+               "            </apply>\n"
+               "          </math>\n"
+               "        </kineticLaw>\n"
+               "      </reaction>\n"
+               "      <reaction id=\"R3\" reversible=\"false\" fast=\"false\" metaid=\"#OmexMetaId0009\">\n"
+               "        <listOfReactants>\n"
+               "          <speciesReference species=\"C\" stoichiometry=\"1\" constant=\"true\"/>\n"
+               "        </listOfReactants>\n"
+               "        <listOfProducts>\n"
+               "          <speciesReference species=\"D\" stoichiometry=\"1\" constant=\"true\"/>\n"
+               "        </listOfProducts>\n"
+               "        <listOfModifiers>\n"
+               "          <modifierSpeciesReference species=\"B\"/>\n"
+               "        </listOfModifiers>\n"
+               "        <kineticLaw metaid=\"#OmexMetaId0010\">\n"
+               "          <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n"
+               "            <apply>\n"
+               "              <times/>\n"
+               "              <ci> k3 </ci>\n"
+               "              <ci> C </ci>\n"
+               "              <ci> B </ci>\n"
+               "            </apply>\n"
+               "          </math>\n"
+               "        </kineticLaw>\n"
+               "      </reaction>\n"
+               "      <reaction id=\"R4\" reversible=\"false\" fast=\"false\" metaid=\"#OmexMetaId0011\">\n"
+               "        <listOfReactants>\n"
+               "          <speciesReference species=\"D\" stoichiometry=\"1\" constant=\"true\"/>\n"
+               "        </listOfReactants>\n"
+               "        <listOfProducts>\n"
+               "          <speciesReference species=\"C\" stoichiometry=\"1\" constant=\"true\"/>\n"
+               "        </listOfProducts>\n"
+               "        <kineticLaw metaid=\"#OmexMetaId0012\">\n"
+               "          <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n"
+               "            <apply>\n"
+               "              <times/>\n"
+               "              <ci> k4 </ci>\n"
+               "              <ci> D </ci>\n"
+               "            </apply>\n"
+               "          </math>\n"
+               "        </kineticLaw>\n"
+               "      </reaction>\n"
+               "    </listOfReactions>\n"
+               "  </model>\n"
+               "</sbml>";
+    }
+};
+
 
 class SBMLFactory {
 public:
@@ -4996,7 +5102,7 @@ public:
             return SBMLNotAnnotated().str();
         else if (modelType == SBML_NOT_ANNOTATED2)
             return SBMLNotAnnotated2().str();
-        else if (modelType == SBML_Semantic_Extraction_Model)
+        else if (modelType == SBML_SEMANTIC_EXTRACTION_MODEL)
             return SBMLSemanticExtractionModel().str();
         else if (modelType == SBML_BIOMD204)
             return BIOMD204().str();
@@ -5014,6 +5120,8 @@ public:
             return NernstPotential().str();
         else if (modelType == SBML_NERNST_POTENTIAL2)
             return NernstPotential2().str();
+        else if (modelType == SBML_INVALID_METAIDS)
+            return InvalidMetaids().str();
         else {
             throw std::invalid_argument("SBMLFactory error: ModelType is not a valid argument.");
         }

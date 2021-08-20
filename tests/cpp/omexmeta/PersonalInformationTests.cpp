@@ -20,21 +20,18 @@ public:
         model = redland::LibrdfModel(storage);
     }
 
-    ~PersonalInformationTests() override {
-        model.freeModel();
-        storage.freeStorage();
-    }
+    ~PersonalInformationTests() override{}
 };
 
 TEST_F(PersonalInformationTests, TestAddFoaf) {
     uriHandler.setModelUri("TestModel.sbml");
     uriHandler.setModelMetaid("TestModelMetaId");
-    PersonalInformation information(model.get(), uriHandler);
+    PersonalInformation information(model, uriHandler);
     LibrdfNode value = LibrdfNode::fromLiteral("Joe Blogs");
     information.addFoaf("name", value);
     Triples triples = information.getTriples();
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n"
+                           "@prefix dc: <http://purl.org/dc/terms/> .\n"
                            "@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/TestModel.rdf#> .\n"
@@ -51,11 +48,11 @@ TEST_F(PersonalInformationTests, TestAddFoaf) {
 
 TEST_F(PersonalInformationTests, TestAddFoafUsingLiteral) {
     uriHandler.setModelUri("TestModel.sbml");
-    PersonalInformation information(model.get(), uriHandler);
+    PersonalInformation information(model, uriHandler);
     information.addFoafLiteral("name", "Ciaran Welsh");
     Triples triples = information.getTriples();
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n"
+                           "@prefix dc: <http://purl.org/dc/terms/> .\n"
                            "@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/TestModel.rdf#> .\n"
@@ -74,11 +71,11 @@ TEST_F(PersonalInformationTests, TestAddFoafUsingUri) {
     uriHandler.setModelUri("TestModel.sbml");
     ASSERT_STREQ(uriHandler.getModelUri().c_str(), "http://omex-library.org/NewOmex.omex/TestModel.sbml");
     ASSERT_STREQ(uriHandler.getLocalUri().c_str(), "http://omex-library.org/NewOmex.omex/TestModel.rdf#");
-    PersonalInformation information(model.get(), uriHandler);
+    PersonalInformation information(model, uriHandler);
     information.addFoafUri("accountName", "https://orcid.org/0000-0001-8254-4957");
     Triples triples = information.getTriples();
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n"
+                           "@prefix dc: <http://purl.org/dc/terms/> .\n"
                            "@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
@@ -93,12 +90,12 @@ TEST_F(PersonalInformationTests, TestAddFoafUsingUri) {
 }
 TEST_F(PersonalInformationTests, TestAddName) {
     uriHandler.setModelUri("TestModel.sbml");
-    PersonalInformation information(model.get(), uriHandler);
+    PersonalInformation information(model, uriHandler);
     information.addName("Ciaran Welsh");
     Triples triples = information.getTriples();
 
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n"
+                           "@prefix dc: <http://purl.org/dc/terms/> .\n"
                            "@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
@@ -114,12 +111,12 @@ TEST_F(PersonalInformationTests, TestAddName) {
 
 TEST_F(PersonalInformationTests, TestMBox) {
     uriHandler.setModelUri("TestModel.sbml");
-    PersonalInformation information(model.get(), uriHandler);
+    PersonalInformation information(model, uriHandler);
     information.addMbox("annotations@uw.edu");
     Triples triples = information.getTriples();
 
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n"
+                           "@prefix dc: <http://purl.org/dc/terms/> .\n"
                            "@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/TestModel.rdf#> .\n"
@@ -135,12 +132,12 @@ TEST_F(PersonalInformationTests, TestMBox) {
 
 TEST_F(PersonalInformationTests, TestAccountName) {
     uriHandler.setModelUri("TestModel.sbml");
-    PersonalInformation information(model.get(), uriHandler);
+    PersonalInformation information(model, uriHandler);
     information.addAccountName("0000-0001-9876-3928");
     Triples triples = information.getTriples();
 
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n"
+                           "@prefix dc: <http://purl.org/dc/terms/> .\n"
                            "@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
@@ -156,12 +153,12 @@ TEST_F(PersonalInformationTests, TestAccountName) {
 
 TEST_F(PersonalInformationTests, TestaddAccountServiceHomepage) {
     uriHandler.setModelUri("TestModel.sbml");
-    PersonalInformation information(model.get(), uriHandler);
+    PersonalInformation information(model, uriHandler);
     information.addAccountServiceHomepage("https://github.com/sys-bio/libOmexMeta");
     Triples triples = information.getTriples();
 
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n"
+                           "@prefix dc: <http://purl.org/dc/terms/> .\n"
                            "@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
@@ -177,7 +174,7 @@ TEST_F(PersonalInformationTests, TestaddAccountServiceHomepage) {
 
 TEST_F(PersonalInformationTests, TestMultipleEntries) {
     uriHandler.setModelUri("TestModel.sbml");
-    PersonalInformation information(model.get(), uriHandler);
+    PersonalInformation information(model, uriHandler);
     information.addName("Ciaran Welsh")
             .addAccountName("0000-1111-2222-3333")
             .addAccountServiceHomepage("https://github.com/sys-bio/libOmexMeta")
@@ -186,7 +183,7 @@ TEST_F(PersonalInformationTests, TestMultipleEntries) {
     Triples triples = information.getTriples();
 
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n"
+                           "@prefix dc: <http://purl.org/dc/terms/> .\n"
                            "@prefix foaf: <http://xmlns.com/foaf/0.1/> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"

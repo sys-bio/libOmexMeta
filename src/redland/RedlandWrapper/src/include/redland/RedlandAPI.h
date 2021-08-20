@@ -6,6 +6,8 @@
 #define LIBOMEXMETA_REDLANDWRAPPER_H
 
 
+#include "RedlandType.h"
+#include "RefCountedRedlandType.h"
 #include "LibrdfModel.h"
 #include "LibrdfNode.h"
 #include "LibrdfParser.h"
@@ -17,6 +19,7 @@
 #include "LibrdfUri.h"
 #include "LibrdfWorld.h"
 #include "RaptorIOStream.h"
+#include "Logger.h"
 
 
 #endif//LIBOMEXMETA_REDLANDAPI_H

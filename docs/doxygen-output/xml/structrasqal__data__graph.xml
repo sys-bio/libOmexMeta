@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="structrasqal__data__graph" kind="struct" language="C++" prot="public">
     <compoundname>rasqal_data_graph</compoundname>
     <includes refid="rasqal_8h" local="no">rasqal.h</includes>
@@ -18,7 +18,7 @@
         <location file="src/redland/RedlandWrapper/src/include/redland/rasqal.h" line="358" column="18" bodyfile="src/redland/RedlandWrapper/src/include/redland/rasqal.h" bodystart="358" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structrasqal__data__graph_1a993b89a05ca64f2173c555236c440260" prot="public" static="no" mutable="no">
-        <type>raptor_uri *</type>
+        <type><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref> *</type>
         <definition>raptor_uri* rasqal_data_graph::uri</definition>
         <argsstring></argsstring>
         <name>uri</name>
@@ -31,7 +31,7 @@
         <location file="src/redland/RedlandWrapper/src/include/redland/rasqal.h" line="359" column="16" bodyfile="src/redland/RedlandWrapper/src/include/redland/rasqal.h" bodystart="359" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structrasqal__data__graph_1af4f56e6955f3fb1dd8a401825417178f" prot="public" static="no" mutable="no">
-        <type>raptor_uri *</type>
+        <type><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref> *</type>
         <definition>raptor_uri* rasqal_data_graph::name_uri</definition>
         <argsstring></argsstring>
         <name>name_uri</name>
@@ -83,7 +83,7 @@
         <location file="src/redland/RedlandWrapper/src/include/redland/rasqal.h" line="363" column="10" bodyfile="src/redland/RedlandWrapper/src/include/redland/rasqal.h" bodystart="363" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structrasqal__data__graph_1a28584c8f4b9e9dbd87e22bddac5d1cf1" prot="public" static="no" mutable="no">
-        <type>raptor_uri *</type>
+        <type><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref> *</type>
         <definition>raptor_uri* rasqal_data_graph::format_uri</definition>
         <argsstring></argsstring>
         <name>format_uri</name>
@@ -109,7 +109,7 @@
         <location file="src/redland/RedlandWrapper/src/include/redland/rasqal.h" line="365" column="21" bodyfile="src/redland/RedlandWrapper/src/include/redland/rasqal.h" bodystart="365" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structrasqal__data__graph_1a2bbb1202a35ac46f1dfbe1a9abfa86d4" prot="public" static="no" mutable="no">
-        <type>raptor_uri *</type>
+        <type><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref> *</type>
         <definition>raptor_uri* rasqal_data_graph::base_uri</definition>
         <argsstring></argsstring>
         <name>base_uri</name>
@@ -143,6 +143,22 @@
 <para>If @iostr is present, the graph can be constructed by parsing the iostream and using @base_uri as a base uri. Otherwise the graph can be constructed from the graph at URI @uri.</para>
 <para>In either case the @name_uri is the graph name as long as @flags is RASQAL_DATA_GRAPH_NAMED </para>
     </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>rasqal_data_graph</label>
+        <link refid="structrasqal__data__graph"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>base_uri</edgelabel>
+          <edgelabel>format_uri</edgelabel>
+          <edgelabel>name_uri</edgelabel>
+          <edgelabel>uri</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>raptor_uri_s</label>
+        <link refid="structraptor__uri__s"/>
+      </node>
+    </collaborationgraph>
     <location file="src/redland/RedlandWrapper/src/include/redland/rasqal.h" line="357" column="1" bodyfile="src/redland/RedlandWrapper/src/include/redland/rasqal.h" bodystart="357" bodyend="368"/>
     <listofallmembers>
       <member refid="structrasqal__data__graph_1a2bbb1202a35ac46f1dfbe1a9abfa86d4" prot="public" virt="non-virtual"><scope>rasqal_data_graph</scope><name>base_uri</name></member>

@@ -1,0 +1,184 @@
+\hypertarget{classredland_1_1RefCountedRedlandType}{}\doxysection{redland\+::Ref\+Counted\+Redland\+Type$<$ Obj\+Type, Free\+Func\+Type $>$ Class Template Reference}
+\label{classredland_1_1RefCountedRedlandType}\index{redland::RefCountedRedlandType$<$ ObjType, FreeFuncType $>$@{redland::RefCountedRedlandType$<$ ObjType, FreeFuncType $>$}}
+Inheritance diagram for redland\+::Ref\+Counted\+Redland\+Type$<$ Obj\+Type, Free\+Func\+Type $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=0.998218cm]{classredland_1_1RefCountedRedlandType}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classredland_1_1RefCountedRedlandType_a8ce7a7bf352c4d91ae785a4468cf0960}\label{classredland_1_1RefCountedRedlandType_a8ce7a7bf352c4d91ae785a4468cf0960}} 
+using {\bfseries This\+Type} = \mbox{\hyperlink{classredland_1_1RedlandType}{Redland\+Type}}$<$ Obj\+Type, Free\+Func\+Type $>$
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classredland_1_1RefCountedRedlandType_ae0ca62ccfcffebe1f8d391fc80719fd7}{Ref\+Counted\+Redland\+Type}} (const \mbox{\hyperlink{classredland_1_1RefCountedRedlandType}{Ref\+Counted\+Redland\+Type}} \&other)
+\begin{DoxyCompactList}\small\item\em copy constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classredland_1_1RefCountedRedlandType}{Ref\+Counted\+Redland\+Type}} \& \mbox{\hyperlink{classredland_1_1RefCountedRedlandType_aa0d305fe2357f0f5370a5027e165506a}{operator=}} (const \mbox{\hyperlink{classredland_1_1RefCountedRedlandType}{Ref\+Counted\+Redland\+Type}} \&other)
+\begin{DoxyCompactList}\small\item\em copy assignment constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classredland_1_1RefCountedRedlandType_abb14a238dec2d35068c96d873ccef2da}{Ref\+Counted\+Redland\+Type}} (\mbox{\hyperlink{classredland_1_1RefCountedRedlandType}{Ref\+Counted\+Redland\+Type}} \&\&other) noexcept
+\begin{DoxyCompactList}\small\item\em move constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classredland_1_1RefCountedRedlandType}{Ref\+Counted\+Redland\+Type}} \& \mbox{\hyperlink{classredland_1_1RefCountedRedlandType_a1ac9b3d35fbbc1f17fb474d61071690e}{operator=}} (\mbox{\hyperlink{classredland_1_1RefCountedRedlandType}{Ref\+Counted\+Redland\+Type}} \&\&other) noexcept
+\begin{DoxyCompactList}\small\item\em move assignment constructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classredland_1_1RefCountedRedlandType_a5e09c936eada4386171e23bc599f334f}\label{classredland_1_1RefCountedRedlandType_a5e09c936eada4386171e23bc599f334f}} 
+void \mbox{\hyperlink{classredland_1_1RefCountedRedlandType_a5e09c936eada4386171e23bc599f334f}{free\+Obj}} () override
+\begin{DoxyCompactList}\small\item\em use the user supplied free\+Func to delete memory pointed to by obj\+\_\+ Account for reference counting \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classredland_1_1RefCountedRedlandType_a6984bffbdd92f2eaaf23e86f65044fb9}\label{classredland_1_1RefCountedRedlandType_a6984bffbdd92f2eaaf23e86f65044fb9}} 
+int \mbox{\hyperlink{classredland_1_1RefCountedRedlandType_a6984bffbdd92f2eaaf23e86f65044fb9}{get\+Usage}} () const
+\begin{DoxyCompactList}\small\item\em returns the current usage count of obj\+\_\+ \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classredland_1_1RefCountedRedlandType_ae8d1c23cc4bb8a9df585c87765d857bb}\label{classredland_1_1RefCountedRedlandType_ae8d1c23cc4bb8a9df585c87765d857bb}} 
+void \mbox{\hyperlink{classredland_1_1RefCountedRedlandType_ae8d1c23cc4bb8a9df585c87765d857bb}{increment\+Usage}} () const
+\begin{DoxyCompactList}\small\item\em Adds 1 to the usage count of obj\+\_\+. \end{DoxyCompactList}\item 
+Obj\+Type $\ast$ \mbox{\hyperlink{classredland_1_1RefCountedRedlandType_aad3189482972131c1d253e7759fee33e}{get}} () const override
+\begin{DoxyCompactList}\small\item\em get a pointer to the Obj\+Type stored by this Ref\+Counted. The usage count is incremented by one so that memory is properly handled via shared ownership. \end{DoxyCompactList}\item 
+Obj\+Type $\ast$ \mbox{\hyperlink{classredland_1_1RefCountedRedlandType_a688d681a2a77dcbd3223757912cc93b6}{get\+Without\+Increment}} () const
+\begin{DoxyCompactList}\small\item\em get a pointer to the Obj\+Type stored by this Ref\+Counted. The usage count is not incremented. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classredland_1_1RefCountedRedlandType_a3c3a57c6b73d9bea7e0a9cdb9a725006}{Redland\+Type}} ()=default
+\begin{DoxyCompactList}\small\item\em default constructor. Users would need to populate obj\+\_\+ and free\+Func\+\_\+ manually if default constructor is used. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classredland_1_1RefCountedRedlandType_ab7e0f16ed9acd6ba9c65b8e9259301e9}{Redland\+Type}} (Obj\+Type $\ast$obj\+Type, std\+::function$<$ void(Obj\+Type $\ast$)$>$ func)
+\begin{DoxyCompactList}\small\item\em generic constructor for ref counted types \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classredland_1_1RefCountedRedlandType_a89f2c7b5d8133d7b22c54263ea2dcb3b}{Redland\+Type}} (const \mbox{\hyperlink{classredland_1_1RedlandType}{Redland\+Type}} \&other)
+\begin{DoxyCompactList}\small\item\em copy constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classredland_1_1RefCountedRedlandType_a7884dd6bc66d9880090bb53f14683f1f}{Redland\+Type}} (\mbox{\hyperlink{classredland_1_1RedlandType}{Redland\+Type}} \&\&other) noexcept
+\begin{DoxyCompactList}\small\item\em move constructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classredland_1_1RefCountedRedlandType_ae0ca62ccfcffebe1f8d391fc80719fd7}\label{classredland_1_1RefCountedRedlandType_ae0ca62ccfcffebe1f8d391fc80719fd7}} 
+\index{redland::RefCountedRedlandType$<$ ObjType, FreeFuncType $>$@{redland::RefCountedRedlandType$<$ ObjType, FreeFuncType $>$}!RefCountedRedlandType@{RefCountedRedlandType}}
+\index{RefCountedRedlandType@{RefCountedRedlandType}!redland::RefCountedRedlandType$<$ ObjType, FreeFuncType $>$@{redland::RefCountedRedlandType$<$ ObjType, FreeFuncType $>$}}
+\doxysubsubsection{\texorpdfstring{RefCountedRedlandType()}{RefCountedRedlandType()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename Obj\+Type , typename Free\+Func\+Type $>$ \\
+\mbox{\hyperlink{classredland_1_1RefCountedRedlandType}{redland\+::\+Ref\+Counted\+Redland\+Type}}$<$ Obj\+Type, Free\+Func\+Type $>$\+::\mbox{\hyperlink{classredland_1_1RefCountedRedlandType}{Ref\+Counted\+Redland\+Type}} (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classredland_1_1RefCountedRedlandType}{Ref\+Counted\+Redland\+Type}}$<$ Obj\+Type, Free\+Func\+Type $>$ \&}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+copy constructor. 
+
+takes a copy of free\+Func from other. If this \mbox{\hyperlink{classredland_1_1RedlandType}{Redland\+Type}} has a obj\+\_\+ then it is deleted with the free\+Func. Then the address of the obj\+\_\+ from other is stored in this-\/$>$obj\+\_\+ and the internal reference counter is incremented by 1. \mbox{\Hypertarget{classredland_1_1RefCountedRedlandType_abb14a238dec2d35068c96d873ccef2da}\label{classredland_1_1RefCountedRedlandType_abb14a238dec2d35068c96d873ccef2da}} 
+\index{redland::RefCountedRedlandType$<$ ObjType, FreeFuncType $>$@{redland::RefCountedRedlandType$<$ ObjType, FreeFuncType $>$}!RefCountedRedlandType@{RefCountedRedlandType}}
+\index{RefCountedRedlandType@{RefCountedRedlandType}!redland::RefCountedRedlandType$<$ ObjType, FreeFuncType $>$@{redland::RefCountedRedlandType$<$ ObjType, FreeFuncType $>$}}
+\doxysubsubsection{\texorpdfstring{RefCountedRedlandType()}{RefCountedRedlandType()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename Obj\+Type , typename Free\+Func\+Type $>$ \\
+\mbox{\hyperlink{classredland_1_1RefCountedRedlandType}{redland\+::\+Ref\+Counted\+Redland\+Type}}$<$ Obj\+Type, Free\+Func\+Type $>$\+::\mbox{\hyperlink{classredland_1_1RefCountedRedlandType}{Ref\+Counted\+Redland\+Type}} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classredland_1_1RefCountedRedlandType}{Ref\+Counted\+Redland\+Type}}$<$ Obj\+Type, Free\+Func\+Type $>$ \&\&}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+move constructor. 
+
+takes a copy of free\+Func from other. If this \mbox{\hyperlink{classredland_1_1RedlandType}{Redland\+Type}} has a obj\+\_\+ then it is deleted with the free\+Func. Then the address of the obj\+\_\+ from other is stored in this-\/$>$obj\+\_\+ but the internal reference counter is not incremented by 1. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classredland_1_1RefCountedRedlandType_aad3189482972131c1d253e7759fee33e}\label{classredland_1_1RefCountedRedlandType_aad3189482972131c1d253e7759fee33e}} 
+\index{redland::RefCountedRedlandType$<$ ObjType, FreeFuncType $>$@{redland::RefCountedRedlandType$<$ ObjType, FreeFuncType $>$}!get@{get}}
+\index{get@{get}!redland::RefCountedRedlandType$<$ ObjType, FreeFuncType $>$@{redland::RefCountedRedlandType$<$ ObjType, FreeFuncType $>$}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}}
+{\footnotesize\ttfamily template$<$typename Obj\+Type , typename Free\+Func\+Type $>$ \\
+Obj\+Type$\ast$ \mbox{\hyperlink{classredland_1_1RefCountedRedlandType}{redland\+::\+Ref\+Counted\+Redland\+Type}}$<$ Obj\+Type, Free\+Func\+Type $>$\+::get (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+get a pointer to the Obj\+Type stored by this Ref\+Counted. The usage count is incremented by one so that memory is properly handled via shared ownership. 
+
+using Ref\+Counted\+::get vs Ref\+Counted\+::get\+Without\+Increment in the correct place is critical for proper memory mangement. Using Ref\+Counted\+::get in an R-\/value statement will increment the ref counter but not decrement it, causing a memory leak -\/ todo check if this is right 
+
+Reimplemented from \mbox{\hyperlink{classredland_1_1RedlandType}{redland\+::\+Redland\+Type$<$ Obj\+Type, Free\+Func\+Type $>$}}.
+
+\mbox{\Hypertarget{classredland_1_1RefCountedRedlandType_a688d681a2a77dcbd3223757912cc93b6}\label{classredland_1_1RefCountedRedlandType_a688d681a2a77dcbd3223757912cc93b6}} 
+\index{redland::RefCountedRedlandType$<$ ObjType, FreeFuncType $>$@{redland::RefCountedRedlandType$<$ ObjType, FreeFuncType $>$}!getWithoutIncrement@{getWithoutIncrement}}
+\index{getWithoutIncrement@{getWithoutIncrement}!redland::RefCountedRedlandType$<$ ObjType, FreeFuncType $>$@{redland::RefCountedRedlandType$<$ ObjType, FreeFuncType $>$}}
+\doxysubsubsection{\texorpdfstring{getWithoutIncrement()}{getWithoutIncrement()}}
+{\footnotesize\ttfamily template$<$typename Obj\+Type , typename Free\+Func\+Type $>$ \\
+Obj\+Type$\ast$ \mbox{\hyperlink{classredland_1_1RefCountedRedlandType}{redland\+::\+Ref\+Counted\+Redland\+Type}}$<$ Obj\+Type, Free\+Func\+Type $>$\+::get\+Without\+Increment (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+get a pointer to the Obj\+Type stored by this Ref\+Counted. The usage count is not incremented. 
+
+using Ref\+Counted\+::get vs Ref\+Counted\+::get\+Without\+Increment in the correct place is critical for proper memory mangement. Using Ref\+Counted\+::get in an R-\/value statement will increment the ref counter but not decrement it, causing a memory leak -\/ todo check if this is right \mbox{\Hypertarget{classredland_1_1RefCountedRedlandType_aa0d305fe2357f0f5370a5027e165506a}\label{classredland_1_1RefCountedRedlandType_aa0d305fe2357f0f5370a5027e165506a}} 
+\index{redland::RefCountedRedlandType$<$ ObjType, FreeFuncType $>$@{redland::RefCountedRedlandType$<$ ObjType, FreeFuncType $>$}!operator=@{operator=}}
+\index{operator=@{operator=}!redland::RefCountedRedlandType$<$ ObjType, FreeFuncType $>$@{redland::RefCountedRedlandType$<$ ObjType, FreeFuncType $>$}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename Obj\+Type , typename Free\+Func\+Type $>$ \\
+\mbox{\hyperlink{classredland_1_1RefCountedRedlandType}{Ref\+Counted\+Redland\+Type}}\& \mbox{\hyperlink{classredland_1_1RefCountedRedlandType}{redland\+::\+Ref\+Counted\+Redland\+Type}}$<$ Obj\+Type, Free\+Func\+Type $>$\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classredland_1_1RefCountedRedlandType}{Ref\+Counted\+Redland\+Type}}$<$ Obj\+Type, Free\+Func\+Type $>$ \&}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+copy assignment constructor. 
+
+takes a copy of free\+Func from other if we do not already have one. If this \mbox{\hyperlink{classredland_1_1RedlandType}{Redland\+Type}} has a obj\+\_\+ then it is deleted with the free\+Func. Then the address of the obj\+\_\+ from other is stored in this-\/$>$obj\+\_\+ and the internal reference counter is incremented by 1. \mbox{\Hypertarget{classredland_1_1RefCountedRedlandType_a1ac9b3d35fbbc1f17fb474d61071690e}\label{classredland_1_1RefCountedRedlandType_a1ac9b3d35fbbc1f17fb474d61071690e}} 
+\index{redland::RefCountedRedlandType$<$ ObjType, FreeFuncType $>$@{redland::RefCountedRedlandType$<$ ObjType, FreeFuncType $>$}!operator=@{operator=}}
+\index{operator=@{operator=}!redland::RefCountedRedlandType$<$ ObjType, FreeFuncType $>$@{redland::RefCountedRedlandType$<$ ObjType, FreeFuncType $>$}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename Obj\+Type , typename Free\+Func\+Type $>$ \\
+\mbox{\hyperlink{classredland_1_1RefCountedRedlandType}{Ref\+Counted\+Redland\+Type}}\& \mbox{\hyperlink{classredland_1_1RefCountedRedlandType}{redland\+::\+Ref\+Counted\+Redland\+Type}}$<$ Obj\+Type, Free\+Func\+Type $>$\+::operator= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classredland_1_1RefCountedRedlandType}{Ref\+Counted\+Redland\+Type}}$<$ Obj\+Type, Free\+Func\+Type $>$ \&\&}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+move assignment constructor. 
+
+takes a copy of free\+Func from other if we do not already have one. If this \mbox{\hyperlink{classredland_1_1RedlandType}{Redland\+Type}} has a obj\+\_\+ then it is deleted with the free\+Func. Then the address of the obj\+\_\+ from other is stored in this-\/$>$obj\+\_\+ and the internal reference counter is not incremented by 1. \mbox{\Hypertarget{classredland_1_1RefCountedRedlandType_a3c3a57c6b73d9bea7e0a9cdb9a725006}\label{classredland_1_1RefCountedRedlandType_a3c3a57c6b73d9bea7e0a9cdb9a725006}} 
+\index{redland::RefCountedRedlandType$<$ ObjType, FreeFuncType $>$@{redland::RefCountedRedlandType$<$ ObjType, FreeFuncType $>$}!RedlandType@{RedlandType}}
+\index{RedlandType@{RedlandType}!redland::RefCountedRedlandType$<$ ObjType, FreeFuncType $>$@{redland::RefCountedRedlandType$<$ ObjType, FreeFuncType $>$}}
+\doxysubsubsection{\texorpdfstring{RedlandType()}{RedlandType()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily template$<$typename Obj\+Type , typename Free\+Func\+Type $>$ \\
+\mbox{\hyperlink{classredland_1_1RedlandType}{redland\+::\+Redland\+Type}}$<$ Obj\+Type, Free\+Func\+Type $>$\+::\mbox{\hyperlink{classredland_1_1RedlandType}{Redland\+Type}}\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+default constructor. Users would need to populate obj\+\_\+ and free\+Func\+\_\+ manually if default constructor is used. 
+
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classredland_1_1RedlandType_ac3255173f68c11e2ebeb0d991fec24e7}{Redland\+Type\+::set\+Free\+Func}} 
+
+\mbox{\hyperlink{classredland_1_1RedlandType_a403c5018a01ee1dc94e4caa33bef91e7}{Redland\+Type\+::set\+Obj}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classredland_1_1RefCountedRedlandType_a89f2c7b5d8133d7b22c54263ea2dcb3b}\label{classredland_1_1RefCountedRedlandType_a89f2c7b5d8133d7b22c54263ea2dcb3b}} 
+\index{redland::RefCountedRedlandType$<$ ObjType, FreeFuncType $>$@{redland::RefCountedRedlandType$<$ ObjType, FreeFuncType $>$}!RedlandType@{RedlandType}}
+\index{RedlandType@{RedlandType}!redland::RefCountedRedlandType$<$ ObjType, FreeFuncType $>$@{redland::RefCountedRedlandType$<$ ObjType, FreeFuncType $>$}}
+\doxysubsubsection{\texorpdfstring{RedlandType()}{RedlandType()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily template$<$typename Obj\+Type , typename Free\+Func\+Type $>$ \\
+\mbox{\hyperlink{classredland_1_1RedlandType}{redland\+::\+Redland\+Type}}$<$ Obj\+Type, Free\+Func\+Type $>$\+::\mbox{\hyperlink{classredland_1_1RedlandType}{Redland\+Type}}\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+copy constructor. 
+
+takes a copy of free\+Func from other. If this \mbox{\hyperlink{classredland_1_1RedlandType}{Redland\+Type}} has a obj\+\_\+ then it is deleted with the free\+Func. Then the address of the obj\+\_\+ from other is stored in this-\/$>$obj\+\_\+ and the internal reference counter is incremented by 1. \mbox{\Hypertarget{classredland_1_1RefCountedRedlandType_ab7e0f16ed9acd6ba9c65b8e9259301e9}\label{classredland_1_1RefCountedRedlandType_ab7e0f16ed9acd6ba9c65b8e9259301e9}} 
+\index{redland::RefCountedRedlandType$<$ ObjType, FreeFuncType $>$@{redland::RefCountedRedlandType$<$ ObjType, FreeFuncType $>$}!RedlandType@{RedlandType}}
+\index{RedlandType@{RedlandType}!redland::RefCountedRedlandType$<$ ObjType, FreeFuncType $>$@{redland::RefCountedRedlandType$<$ ObjType, FreeFuncType $>$}}
+\doxysubsubsection{\texorpdfstring{RedlandType()}{RedlandType()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily template$<$typename Obj\+Type , typename Free\+Func\+Type $>$ \\
+\mbox{\hyperlink{classredland_1_1RedlandType}{redland\+::\+Redland\+Type}}$<$ Obj\+Type, Free\+Func\+Type $>$\+::\mbox{\hyperlink{classredland_1_1RedlandType}{Redland\+Type}}\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+generic constructor for ref counted types 
+
+
+\begin{DoxyParams}{Parameters}
+{\em obj\+Type} & instance of Obj\+Type$\ast$, this is the object being ref counted \\
+\hline
+{\em func} & the function that free\textquotesingle{}s the ref counted type \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classredland_1_1RefCountedRedlandType_a7884dd6bc66d9880090bb53f14683f1f}\label{classredland_1_1RefCountedRedlandType_a7884dd6bc66d9880090bb53f14683f1f}} 
+\index{redland::RefCountedRedlandType$<$ ObjType, FreeFuncType $>$@{redland::RefCountedRedlandType$<$ ObjType, FreeFuncType $>$}!RedlandType@{RedlandType}}
+\index{RedlandType@{RedlandType}!redland::RefCountedRedlandType$<$ ObjType, FreeFuncType $>$@{redland::RefCountedRedlandType$<$ ObjType, FreeFuncType $>$}}
+\doxysubsubsection{\texorpdfstring{RedlandType()}{RedlandType()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily template$<$typename Obj\+Type , typename Free\+Func\+Type $>$ \\
+\mbox{\hyperlink{classredland_1_1RedlandType}{redland\+::\+Redland\+Type}}$<$ Obj\+Type, Free\+Func\+Type $>$\+::\mbox{\hyperlink{classredland_1_1RedlandType}{Redland\+Type}}\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+move constructor. 
+
+takes a copy of free\+Func from other. If this \mbox{\hyperlink{classredland_1_1RedlandType}{Redland\+Type}} has a obj\+\_\+ then it is deleted with the free\+Func. Then the address of the obj\+\_\+ from other is stored in this-\/$>$obj\+\_\+ but the internal reference counter is not incremented by 1. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/redland/\+Redland\+Wrapper/src/include/redland/Ref\+Counted\+Redland\+Type.\+h\end{DoxyCompactItemize}

@@ -10,12 +10,12 @@
 
 #include "omexmeta/OmexMetaUtils.h"
 
-#include <vector>
 #include <algorithm>
+#include <iostream>
 #include <sstream>
 #include <unordered_map>
-#include <iostream>
 #include <utility>
+#include <vector>
 
 using namespace redland;
 
@@ -59,6 +59,8 @@ namespace omexmeta {
         Predicate(const std::string &namespace_,
                   std::string term, std::string prefix);
 
+        explicit Predicate(LibrdfNode node);
+
         bool operator==(const Predicate &rhs) const;
 
         bool operator!=(const Predicate &rhs) const;
@@ -87,13 +89,6 @@ namespace omexmeta {
          *
          */
         static bool namespaceKnown(const std::string &ns);
-
-        /**
-         * @brief getter for the node contained by the Predicate object
-         * @return the librdf_node* pointer for the redland libraries under the hood
-         *
-         */
-        [[nodiscard]] librdf_node *get() const;
 
         /**
          * @brief stores the valid terms that are allowed in a particular predicate subclass
@@ -150,32 +145,30 @@ namespace omexmeta {
          * added to @parameter serializer
          */
         static void
-        addSeenNamespaceToSerializer(librdf_world *world, librdf_serializer *serializer, librdf_node *predicate);
+        addSeenNamespaceToSerializer(LibrdfSerializer serializer, LibrdfNode predicate);
 
         /**
          * @brief replace the current librdf_node assicated with
          * this Predicate with node
          * @param node the new librdf_node pointer to use in the Predicate
          */
-        void setNode(librdf_node *node);
+        void setNode(LibrdfNode &node);
 
         LibrdfNode getNode();
+
 
         /**
          * @brief make a shared pointer from this Predicate
          *
          */
-//        std::shared_ptr<Predicate> makeShared();
+        //        std::shared_ptr<Predicate> makeShared();
     protected:
-
         std::string namespace_, term_, prefix_;
         std::string uri_;
-//        librdf_node *node_ = nullptr; //! predicates can only have type uri
+        //        librdf_node *node_ = nullptr; //! predicates can only have type uri
         std::vector<std::string> valid_terms_{"All"};
 
         LibrdfNode node_;
-
-        explicit Predicate(librdf_node *node);
     };
 
     /**
@@ -208,8 +201,7 @@ namespace omexmeta {
                 "occursIn",
                 "isVersionOf",
                 "isPropertyOf",
-                "hasTaxon"
-        };
+                "hasTaxon"};
 
         BiomodelsBiologyQualifier() = default;
 
@@ -217,8 +209,7 @@ namespace omexmeta {
 
         void verify();
 
-//        std::shared_ptr<BiomodelsBiologyQualifier> makeShared();
-
+        //        std::shared_ptr<BiomodelsBiologyQualifier> makeShared();
     };
 
     /**
@@ -251,15 +242,14 @@ namespace omexmeta {
 
         void verify();
 
-//        std::shared_ptr<BiomodelsModelQualifier> makeShared();
-
+        //        std::shared_ptr<BiomodelsModelQualifier> makeShared();
     };
 
     /**
      * @class Subclass of Predicate specifically for predicates from the
      * DCTerm set of predicates. All
      * DCTerm predicates have the namespace
-     * `https://dublincore.org/specifications/dublin-core/dcmi-terms/`
+     * `http://purl.org/dc/terms/`
      *
      * @example
      * @code
@@ -267,7 +257,7 @@ namespace omexmeta {
      * std::cout << description.str() << std::endl;
      * @endcode
      * will output
-     *   "https://dublincore.org/specifications/dublin-core/dcmi-terms/Description"
+     *   "http://purl.org/dc/terms/Description"
      * to console.
      */
     class DCTerm : public Predicate {
@@ -288,8 +278,7 @@ namespace omexmeta {
 
         void verify();
 
-//        std::shared_ptr<DCTerm> makeShared() ;
-
+        //        std::shared_ptr<DCTerm> makeShared() ;
     };
 
     /**
@@ -322,7 +311,6 @@ namespace omexmeta {
         explicit SemSim(const std::string &term);
 
         void verify();
-
     };
 
     /**
@@ -355,7 +343,6 @@ namespace omexmeta {
         explicit Foaf(const std::string &term);
 
         void verify();
-
     };
 
     typedef std::shared_ptr<Predicate> PredicatePtr;
@@ -378,7 +365,7 @@ namespace omexmeta {
      */
     PredicatePtr PredicateFactory(std::string namespace_, const std::string &term);
 
-}
+}// namespace omexmeta
 
 
-#endif //LIBOMEXMETA_PREDICATE_H
+#endif//LIBOMEXMETA_PREDICATE_H

@@ -4,7 +4,7 @@
 
 # Default graph
 @prefix void:    <http://rdfs.org/ns/void#> .
-@prefix dcterms: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix entrez:  &lt;http://entrez.example/ns#&gt; .
 
 [] dcterms:subject entrez:h2550 ;

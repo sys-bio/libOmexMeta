@@ -10,6 +10,7 @@
 #include <iostream>
 #include <memory>
 #include <regex>
+#include <functional>
 
 //#include "LibrdfStorage.h"
 //#include "RaptorWorld.h"
@@ -27,6 +28,10 @@
 
 namespace redland {
 
+    int librdfLogHandler(void *user_data, librdf_log_message *message);
+
+    void raptorLogHandler(void *user_data, raptor_log_message *message);
+
 
     /*
      * @brief C++ wrapper around librdf_world.
@@ -43,6 +48,7 @@ namespace redland {
 
         static librdf_world *world_;
 
+
         /*
          * Private constructor prevents instancing
          */
@@ -53,12 +59,21 @@ namespace redland {
         };
 
     public:
+        static void setLogHandler(void* userData, librdf_log_func logging_func);
+
+        static void setRaptorLogHandler(void* userData, raptor_log_handler logging_func);
+
+        static void setRasqalLogHandler(void* userData, raptor_log_handler logging_func);
 
         static librdf_world *getWorld();
 
         static raptor_world *getRaptor();
 
+        static rasqal_world *getRasqal();
+
         static void free(librdf_world *world);
+
+        static void initLoggers();
 
     };
 

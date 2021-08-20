@@ -64,12 +64,6 @@ int main(){
     // in C/C++ we need to manually add the annotation to the editor
     editor.addSingleAnnotation(singular_annotation);
 
-    // The Singular annotation object contains a dynamically allocated
-    // librdf_statement* from the redland libraries which must be freed
-    // by the caller. Now we've use the singular_annotation object
-    // we can release the used memory.
-    singular_annotation.freeTriple();
-
     std::cout << rdf.toString("turtle") << std::endl;
 
     return 0;
