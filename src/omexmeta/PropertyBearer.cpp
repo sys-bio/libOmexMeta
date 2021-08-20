@@ -7,19 +7,19 @@
 
 namespace omexmeta {
 
-    PropertyBearer::PropertyBearer(librdf_model *model, UriHandler &uriHandler,
+    PropertyBearer::PropertyBearer(LibrdfModel& model, UriHandler &uriHandler,
                                    PhysicalProperty propertyResource, AnnotationType type)
         : model_(model), physical_property_(std::move(propertyResource)), type_(type),
           uriHandler_(uriHandler) {}
 
-    librdf_model *PropertyBearer::getModel() const {
+    LibrdfModel& PropertyBearer::getModel() const {
         return model_;
     }
 
     PropertyBearer::~PropertyBearer() = default;
 
 
-    PropertyBearer::PropertyBearer(librdf_model *model, UriHandler &uriHandler)
+    PropertyBearer::PropertyBearer(LibrdfModel& model, UriHandler &uriHandler)
         : model_(model), uriHandler_(uriHandler),
           physical_property_(PhysicalProperty(model_, uriHandler)) {
     }
@@ -60,16 +60,15 @@ namespace omexmeta {
 
     PropertyBearer::PropertyBearer(PropertyBearer &&propertyBearer) noexcept
         : physical_property_(std::move(propertyBearer.physical_property_)),
-          uriHandler_(propertyBearer.uriHandler_) {
-        model_ = propertyBearer.model_;
-        propertyBearer.model_ = nullptr;// not sure if this is right.
+          uriHandler_(propertyBearer.uriHandler_),
+          model_(propertyBearer.model_){
         type_ = propertyBearer.type_;
     }
 
     PropertyBearer &PropertyBearer::operator=(PropertyBearer &&propertyBearer) noexcept {
         if (this != &propertyBearer) {
             model_ = propertyBearer.model_;
-            propertyBearer.model_ = nullptr;// not sure if this is right.
+//            propertyBearer.model_ = nullptr;// not sure if this is right.
             physical_property_ = std::move(propertyBearer.physical_property_);
             type_ = propertyBearer.type_;
             uriHandler_ = propertyBearer.uriHandler_;

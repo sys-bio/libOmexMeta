@@ -1,14 +1,18 @@
 #include "redland/LibrdfStorage.h"
-
+#include "redland/Logger.h"
 
 namespace redland {
-
-    LibrdfStorage::~LibrdfStorage() {
-        freeStorage();
+    LibrdfStorage::LibrdfStorage()
+        : RefCounted_librdf_storage(
+                  librdf_new_storage(LibrdfWorld::getWorld(), "memory", "libOmexMetaStore", nullptr),
+                  librdf_free_storage) {
+        REDLAND_DEBUG("Instantiated a LibrdfStorage instance");
     }
 
     LibrdfStorage::LibrdfStorage(librdf_storage *storage)
-        : storage_(storage) {}
+        : RefCounted_librdf_storage(storage, librdf_free_storage) {
+        REDLAND_DEBUG("Instantiated a LibrdfStorage instance");
+    }
 
     LibrdfStorage::LibrdfStorage(const std::string &storage_name, const std::string &name, const char *options) {
         if (std::find(valid_stores_.begin(), valid_stores_.end(), storage_name) == valid_stores_.end()) {
@@ -20,64 +24,30 @@ namespace redland {
             err << std::endl;
             throw std::invalid_argument(err.str());
         }
-        storage_ = librdf_new_storage(
+        librdf_storage *storage = librdf_new_storage(
                 LibrdfWorld::getWorld(), storage_name.c_str(),
                 name.c_str(), options);
-        if (storage_ == nullptr) {
+        if (storage == nullptr) {
             throw RedlandNullPointerException(
                     "RedlandNullPointerException: LibrdfStorage::LibrdfStorage(): librdf_storage* "
                     "type:\"" +
                     storage_name + "\" was not created. Nullptr.");
         }
-    }
-
-    LibrdfStorage::LibrdfStorage(LibrdfStorage &&storage) noexcept {
-        if (storage.storage_ != nullptr) {
-            if (storage_ != nullptr)
-                freeStorage();
-            storage_ = storage.storage_;
-            storage.storage_ = nullptr;
-        }
-    }
-
-    LibrdfStorage &LibrdfStorage::operator=(LibrdfStorage &&storage) noexcept {
-        if (this != &storage) {
-            if (storage.storage_ != nullptr) {
-                if (storage_ != nullptr)
-                    freeStorage();
-                storage_ = storage.storage_;
-                storage.storage_ = nullptr;
-            }
-        }
-        return *this;
-    }
-
-    librdf_storage *LibrdfStorage::get() const {
-        return storage_;
-    }
-
-    void LibrdfStorage::freeStorage() {
-        if (!storage_)
-            return;
-
-        librdf_free_storage(storage_);
-        storage_ = nullptr;
-    }
-
-    int LibrdfStorage::addStatement(librdf_statement *statement) {
-        return librdf_storage_add_statement(storage_, statement);
+        obj_ = storage;
+        freeFunc_ = librdf_free_storage;
+        REDLAND_DEBUG("Instantiated a LibrdfStorage instance");
     }
 
     int LibrdfStorage::addStatement(const LibrdfStatement &statement) {
-        return librdf_storage_add_statement(storage_, statement.getWithoutIncrement());
+        return librdf_storage_add_statement(obj_, statement.getWithoutIncrement());
     }
 
     int LibrdfStorage::size() {
-        return librdf_storage_size(storage_);
+        return librdf_storage_size(obj_);
     }
 
     int LibrdfStorage::commit() {
-        return librdf_storage_transaction_commit(storage_);
+        return librdf_storage_transaction_commit(obj_);
     }
 
     void LibrdfStorage::printAvailableStorages() {

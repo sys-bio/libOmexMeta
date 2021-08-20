@@ -1,0 +1,8 @@
+\hypertarget{for-example}{}\doxysection{for}
+the signature of the C function that should be used to free obj\+\_\+. instance if obj\+\_\+ is a librdf\+\_\+uri$\ast$ then free\+Func\+\_\+ would be std\+::function$<$void(librdf\+\_\+uri$\ast$)$>$ and the actual function that does the freeing is void librdf\+\_\+free\+\_\+uri(librdf\+\_\+uri$\ast$). this is necessary so that the Redland\+Type can store the function responsible for freeing redland types as a member variable, in a general way. Without this, each subclass would need to define their own free\+Func using inheritance, leading to significant code duplication.
+
+
+\begin{DoxyCodeInclude}{0}
+
+\end{DoxyCodeInclude}
+ 

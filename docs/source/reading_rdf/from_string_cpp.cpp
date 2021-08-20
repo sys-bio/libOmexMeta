@@ -11,7 +11,7 @@ int main(){
                           "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
                           "\n"
                           "<http://omex-library.org/NewOmex.omex/NewModel.xml#>\n"
-                          "    <https://dublincore.org/specifications/dublin-core/dcmi-terms/creator> <https://orcid.org/1234-1234-1234-1234> .\n\n";
+                          "    <http://purl.org/dc/terms/creator> <https://orcid.org/1234-1234-1234-1234> .\n\n";
 
     // read the turtle string into RDF graph
     RDF rdf = RDF::fromString(rdf_str, "turtle");

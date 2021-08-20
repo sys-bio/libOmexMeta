@@ -144,8 +144,11 @@ if (${BUILD_DOCS_EXAMPLES})
     add_doc_example(WritingToFileCpp source/writing_rdf/writing_to_file_cpp.cpp)
 
     # querying docs
-    add_doc_example(QueryingRdfGraphC source/querying_rdf/querying_rdf_c.cpp)
-    add_doc_example(QueryingRdfGraphCpp source/querying_rdf/querying_rdf_cpp.cpp)
+    add_doc_example(QueryingRdfGraphResultsAsStringC source/querying_rdf/querying_rdf_results_as_string_c.cpp)
+    add_doc_example(QueryingRdfGraphResultsAsStringCpp source/querying_rdf/querying_rdf_results_as_string_cpp.cpp)
+
+    add_doc_example(QueryingRdfGraphResultsAsMapC source/querying_rdf/querying_rdf_results_as_map_c.cpp)
+    add_doc_example(QueryingRdfGraphResultsAsMapCpp source/querying_rdf/querying_rdf_results_as_map_cpp.cpp)
 
     add_doc_example(AnnotatingABiologicalComplexCpp source/annotating_models/annotating_a_biological_complex_cpp.cpp)
     add_doc_example(AnnotatingABiologicalComplexC source/annotating_models/annotating_a_biological_complex_c.cpp)
@@ -153,6 +156,18 @@ if (${BUILD_DOCS_EXAMPLES})
     # strip annotations from sbml
     add_doc_example(StrippingAnnotationsC source/stripping_annotations/stripping_annotations_c.cpp)
     add_doc_example(StrippingAnnotationsCpp source/stripping_annotations/stripping_annotations_cpp.cpp)
+
+    # logging examples
+    add_doc_example(Logging1C source/errors_and_logging/logging1_c.cpp)
+    add_doc_example(Logging1Cpp source/errors_and_logging/logging1_cpp.cpp)
+    add_doc_example(Logging2C source/errors_and_logging/logging2_c.cpp)
+    add_doc_example(Logging2Cpp source/errors_and_logging/logging2_cpp.cpp)
+    add_doc_example(Logging3C source/errors_and_logging/logging3_c.cpp)
+    add_doc_example(Logging3Cpp source/errors_and_logging/logging3_cpp.cpp)
+    add_doc_example(Logging4C source/errors_and_logging/logging4_c.cpp)
+    add_doc_example(Logging4Cpp source/errors_and_logging/logging4_cpp.cpp)
+    add_doc_example(Logging5C source/errors_and_logging/logging5_c.cpp)
+    add_doc_example(Logging5Cpp source/errors_and_logging/logging5_cpp.cpp)
 
     message(STATUS "EXAMPLE_EXECUTABLES_TARGETS ${EXAMPLE_EXECUTABLES_TARGETS}")
 
@@ -176,7 +191,7 @@ if (${BUILD_DOCS_EXAMPLES})
     # later we'll set the build docs target to depend on this
     # This depends on the *install* folder. todo change such that we use the build folder instead
     add_custom_target(RunDocExamplesAndGenerateOutput
-            COMMAND Python::Interpreter ${DOC_EXAMPLE_RUNNER} --install-folder ${CMAKE_INSTALL_PREFIX} --pyomexmeta-site-package-dir ${CMAKE_BINARY_DIR}/site-packages --output-location "${CMAKE_CURRENT_SOURCE_DIR}/ExampleOutputFiles"
+            COMMAND Python::Interpreter "${DOC_EXAMPLE_RUNNER}" --build-root "${CMAKE_BINARY_DIR}" --pyomexmeta-site-package-dir "${CMAKE_BINARY_DIR}/site-packages" --output-location "${CMAKE_CURRENT_SOURCE_DIR}/ExampleOutputFiles"
             DEPENDS AllDocExamples
                 )
 
@@ -204,20 +219,20 @@ set(DOXYFILE_OUT ${CMAKE_BINARY_DIR}/Doxyfile)
 configure_file(${DOXYFILE_IN} ${DOXYFILE_OUT} @ONLY)
 
 # Doxygen won't create this for us
-file(MAKE_DIRECTORY ${DOXYGEN_OUTPUT_DIR})
+file(MAKE_DIRECTORY "${DOXYGEN_OUTPUT_DIR}")
 
 # Only regenerate Doxygen when the Doxyfile or public headers change
 add_custom_command(
-        OUTPUT ${DOXYGEN_INDEX_FILE}
-        DEPENDS ${SEMSIM_HEADERS}
-        COMMAND ${DOXYGEN_EXECUTABLE} ${DOXYFILE_OUT}
-        WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
-        MAIN_DEPENDENCY ${DOXYFILE_OUT} ${DOXYFILE_IN}
+        OUTPUT  "${DOXYGEN_INDEX_FILE}"
+        DEPENDS "${SEMSIM_HEADERS}"
+        COMMAND "${DOXYGEN_EXECUTABLE}" "${DOXYFILE_OUT}"
+        WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
+        MAIN_DEPENDENCY "${DOXYFILE_OUT}" "${DOXYFILE_IN}"
         COMMENT "Generating docs"
         VERBATIM
 )
 
-add_custom_target(libomexmeta-docs-doxygen ALL DEPENDS ${DOXYGEN_INDEX_FILE})
+add_custom_target(libomexmeta-docs-doxygen ALL DEPENDS "${DOXYGEN_INDEX_FILE}")
 
 ############################################################
 #   Sphinx

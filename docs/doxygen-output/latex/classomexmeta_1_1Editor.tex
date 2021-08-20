@@ -12,7 +12,7 @@ Add or change annotations in xml.
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classomexmeta_1_1Editor_a38d00e9a39b423cbae5058f9af49da3a}{Editor}} (std\+::string xml\+\_\+or\+\_\+file, bool create\+\_\+ids, const \mbox{\hyperlink{classredland_1_1LibrdfModel}{Librdf\+Model}} \&model, Namespace\+Map \&ns\+\_\+map, \mbox{\hyperlink{classomexmeta_1_1UriHandler}{Uri\+Handler}} \&uri\+Handler, bool generate\+\_\+new\+\_\+metaids=false, bool sbml\+\_\+semantic\+\_\+extraction=true)
+\mbox{\hyperlink{classomexmeta_1_1Editor_ac3f42bf53669cc903521ca05c47016df}{Editor}} (std\+::string xml\+\_\+or\+\_\+file, bool create\+\_\+ids, \mbox{\hyperlink{classredland_1_1LibrdfModel}{Librdf\+Model}} \&model, Namespace\+Map \&ns\+\_\+map, \mbox{\hyperlink{classomexmeta_1_1UriHandler}{Uri\+Handler}} \&uri\+Handler, bool generate\+\_\+new\+\_\+metaids=false, bool sbml\+\_\+semantic\+\_\+extraction=true)
 \begin{DoxyCompactList}\small\item\em constructor for \mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}}. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classomexmeta_1_1Editor_aa11380bb7e2ca7859937c3f5907b6240}{$\sim$\+Editor}} ()=default
 \item 
@@ -21,7 +21,7 @@ int {\bfseries size} () const
 \item 
 const Namespace\+Map \& \mbox{\hyperlink{classomexmeta_1_1Editor_a514443fe99a6e52154d1fe4f7ec94618}{get\+Namespaces}} () const
 \begin{DoxyCompactList}\small\item\em returns a hashmap of namespaces to prefixes. \end{DoxyCompactList}\item 
-librdf\+\_\+model $\ast$ \mbox{\hyperlink{classomexmeta_1_1Editor_a4b2610fb802eb306349d69ae6fde60c0}{get\+Model}} () const
+\mbox{\hyperlink{classredland_1_1LibrdfModel}{Librdf\+Model}} \& \mbox{\hyperlink{classomexmeta_1_1Editor_abfc5a972954cde4ec2112cc0e00a7ed3}{get\+Model}} () const
 \begin{DoxyCompactList}\small\item\em return the underlying librdf\+\_\+model$\ast$ pointer \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classomexmeta_1_1Editor_a83836e19bb1de9c7df69d36e8b61b2b2}\label{classomexmeta_1_1Editor_a83836e19bb1de9c7df69d36e8b61b2b2}} 
 void \mbox{\hyperlink{classomexmeta_1_1Editor_a83836e19bb1de9c7df69d36e8b61b2b2}{set\+Namespaces}} (const Namespace\+Map \&namespaces)
@@ -85,7 +85,7 @@ void \mbox{\hyperlink{classomexmeta_1_1Editor_a3e2c493ed5034a15e6915b7b649b58a3}
 void \mbox{\hyperlink{classomexmeta_1_1Editor_a8fb3a19e8f64aeff2ac9b78c483843de}{add\+Single\+Annotation\+No\+Validation}} (\mbox{\hyperlink{classomexmeta_1_1Triple}{Singular\+Annotation}} \&singular\+Annotation)
 \begin{DoxyCompactList}\small\item\em like add\+Single\+Annotation \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classomexmeta_1_1Editor_a415aa94ed30686392c65f99b4318aa84}\label{classomexmeta_1_1Editor_a415aa94ed30686392c65f99b4318aa84}} 
-O\+M\+E\+X\+M\+E\+T\+A\+\_\+\+D\+E\+P\+R\+E\+C\+A\+T\+ED void {\bfseries add\+Composite\+Annotation2} (\mbox{\hyperlink{classomexmeta_1_1PropertyBearer}{Property\+Bearer}} $\ast$phenomenon\+Ptr)
+OMEXMETA\+\_\+\+DEPRECATED void {\bfseries add\+Composite\+Annotation2} (\mbox{\hyperlink{classomexmeta_1_1PropertyBearer}{Property\+Bearer}} $\ast$phenomenon\+Ptr)
 \item 
 \mbox{\Hypertarget{classomexmeta_1_1Editor_ace8ee873498fa72b63c0747775b729f5}\label{classomexmeta_1_1Editor_ace8ee873498fa72b63c0747775b729f5}} 
 void {\bfseries add\+Triples} (\mbox{\hyperlink{classomexmeta_1_1Triples}{Triples}} \&triples)
@@ -113,7 +113,7 @@ std\+::string \mbox{\hyperlink{classomexmeta_1_1Editor_a2264cbd2efae17d1d72c3f40
 \begin{DoxyCompactList}\small\item\em instantiate a Librdf\+Node that is prefixed with the current local\+\_\+uri \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} \& \mbox{\hyperlink{classomexmeta_1_1Editor_a1926b789086e29102e33808169a5af0c}{add\+Creator}} (std\+::string orcid\+\_\+id)
 \begin{DoxyCompactList}\small\item\em add the \char`\"{}creator\char`\"{} model level annotation \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} \& \mbox{\hyperlink{classomexmeta_1_1Editor_abc8dd83a176d73f9211386ad08bb35b3}{add\+Curator}} (std\+::string orcid\+\_\+id)
+\mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} \& \mbox{\hyperlink{classomexmeta_1_1Editor_a87d3b7e4ab717c18653acf92a2c2c9d4}{add\+Contributor}} (std\+::string orcid\+\_\+id)
 \begin{DoxyCompactList}\small\item\em add the \char`\"{}curator\char`\"{} model level annotation \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} \& \mbox{\hyperlink{classomexmeta_1_1Editor_a4da72139f63090ab5682bf51c96d7886}{add\+Taxon}} (const std\+::string \&taxon\+\_\+id)
 \begin{DoxyCompactList}\small\item\em add the \char`\"{}taxon id\char`\"{} model level annotation \end{DoxyCompactList}\item 
@@ -145,11 +145,11 @@ std\+::string \mbox{\hyperlink{classomexmeta_1_1Editor_a6f201bae38c324800d0d55e7
 Add or change annotations in xml. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{classomexmeta_1_1Editor_a38d00e9a39b423cbae5058f9af49da3a}\label{classomexmeta_1_1Editor_a38d00e9a39b423cbae5058f9af49da3a}} 
+\mbox{\Hypertarget{classomexmeta_1_1Editor_ac3f42bf53669cc903521ca05c47016df}\label{classomexmeta_1_1Editor_ac3f42bf53669cc903521ca05c47016df}} 
 \index{omexmeta::Editor@{omexmeta::Editor}!Editor@{Editor}}
 \index{Editor@{Editor}!omexmeta::Editor@{omexmeta::Editor}}
 \doxysubsubsection{\texorpdfstring{Editor()}{Editor()}}
-{\footnotesize\ttfamily omexmeta\+::\+Editor\+::\+Editor (\begin{DoxyParamCaption}\item[{std\+::string}]{xml\+\_\+or\+\_\+file,  }\item[{bool}]{create\+\_\+ids,  }\item[{const \mbox{\hyperlink{classredland_1_1LibrdfModel}{Librdf\+Model}} \&}]{model,  }\item[{Namespace\+Map \&}]{ns\+\_\+map,  }\item[{\mbox{\hyperlink{classomexmeta_1_1UriHandler}{Uri\+Handler}} \&}]{uri\+Handler,  }\item[{bool}]{generate\+\_\+new\+\_\+metaids = {\ttfamily false},  }\item[{bool}]{sbml\+\_\+semantic\+\_\+extraction = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+{\footnotesize\ttfamily omexmeta\+::\+Editor\+::\+Editor (\begin{DoxyParamCaption}\item[{std\+::string}]{xml\+\_\+or\+\_\+file,  }\item[{bool}]{create\+\_\+ids,  }\item[{\mbox{\hyperlink{classredland_1_1LibrdfModel}{Librdf\+Model}} \&}]{model,  }\item[{Namespace\+Map \&}]{ns\+\_\+map,  }\item[{\mbox{\hyperlink{classomexmeta_1_1UriHandler}{Uri\+Handler}} \&}]{uri\+Handler,  }\item[{bool}]{generate\+\_\+new\+\_\+metaids = {\ttfamily false},  }\item[{bool}]{sbml\+\_\+semantic\+\_\+extraction = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
 
 
 
@@ -167,16 +167,16 @@ constructor for \mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}}.
 \hline
 {\em xml\+\_\+or\+\_\+file} & is not sbml. Default is true. \\
 \hline
-{\em model} & a reference to the current model (owned by \mbox{\hyperlink{classomexmeta_1_1RDF}{R\+DF}}). \\
+{\em model} & a reference to the current model (owned by \mbox{\hyperlink{classomexmeta_1_1RDF}{RDF}}). \\
 \hline
 {\em nm\+\_\+map} & a set of namespaces for current xml\\
 \hline
 \end{DoxyParams}
-The \mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} is usually instantiated from the R\+D\+F\+::to\+\_\+editor class which automatically takes care of the
+The \mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} is usually instantiated from the RDF\+::to\+\_\+editor class which automatically takes care of the
 \begin{DoxyParams}{Parameters}
 {\em model} & and\\
 \hline
-{\em ns\+\_\+map} & arguments. When instantiated, the editor class automatically reads the X\+ML and adds metaids to some or all of the elements, depending on the X\+ML type parameter. If the user specifies that they are annotating an S\+B\+ML model, the elements returned by S\+B\+M\+L\+Assistant\+::get\+Valid\+Elements() are given metaids (if not exist), while if the user chooses cellml the elements returned by Cell\+M\+L\+Assistant\+::get\+Valid\+Elements() are used. If the type is unknown, then all elements are given metaids. \\
+{\em ns\+\_\+map} & arguments. When instantiated, the editor class automatically reads the XML and adds metaids to some or all of the elements, depending on the XML type parameter. If the user specifies that they are annotating an SBML model, the elements returned by SBMLAssistant\+::get\+Valid\+Elements() are given metaids (if not exist), while if the user chooses cellml the elements returned by Cell\+MLAssistant\+::get\+Valid\+Elements() are used. If the type is unknown, then all elements are given metaids. \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{classomexmeta_1_1Editor_aa11380bb7e2ca7859937c3f5907b6240}\label{classomexmeta_1_1Editor_aa11380bb7e2ca7859937c3f5907b6240}} 
@@ -205,7 +205,22 @@ add a composite annotation to the rdf graph.
 \end{DoxyParams}
 Composite annotations currently supported are \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}}, \mbox{\hyperlink{classomexmeta_1_1PhysicalProcess}{Physical\+Process}} and \mbox{\hyperlink{classomexmeta_1_1EnergyDiff}{Energy\+Diff}}. The Physical\+Dependency type will be supported in future releases.
 
-For developers. Consider removing this function in favour of using the add$\ast$ functions. Implementation note\+: \mbox{\hyperlink{classThis}{This}} method generates triples on the fly and then frees. \mbox{\hyperlink{classThis}{This}} was implemented this way as it helped avoid memory issues but perhaps a better implementation would be similar to that in the \mbox{\hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information}} class.\mbox{\Hypertarget{classomexmeta_1_1Editor_a1926b789086e29102e33808169a5af0c}\label{classomexmeta_1_1Editor_a1926b789086e29102e33808169a5af0c}} 
+For developers. Consider removing this function in favour of using the add$\ast$ functions. Implementation note\+: \mbox{\hyperlink{classThis}{This}} method generates triples on the fly and then frees. \mbox{\hyperlink{classThis}{This}} was implemented this way as it helped avoid memory issues but perhaps a better implementation would be similar to that in the \mbox{\hyperlink{classomexmeta_1_1PersonalInformation}{Personal\+Information}} class.\mbox{\Hypertarget{classomexmeta_1_1Editor_a87d3b7e4ab717c18653acf92a2c2c9d4}\label{classomexmeta_1_1Editor_a87d3b7e4ab717c18653acf92a2c2c9d4}} 
+\index{omexmeta::Editor@{omexmeta::Editor}!addContributor@{addContributor}}
+\index{addContributor@{addContributor}!omexmeta::Editor@{omexmeta::Editor}}
+\doxysubsubsection{\texorpdfstring{addContributor()}{addContributor()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} \& omexmeta\+::\+Editor\+::add\+Contributor (\begin{DoxyParamCaption}\item[{std\+::string}]{orcid\+\_\+id }\end{DoxyParamCaption})}
+
+
+
+add the \char`\"{}curator\char`\"{} model level annotation 
+
+
+\begin{DoxyParams}{Parameters}
+{\em an} & orcid\+\_\+id as string \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classomexmeta_1_1Editor_a1926b789086e29102e33808169a5af0c}\label{classomexmeta_1_1Editor_a1926b789086e29102e33808169a5af0c}} 
 \index{omexmeta::Editor@{omexmeta::Editor}!addCreator@{addCreator}}
 \index{addCreator@{addCreator}!omexmeta::Editor@{omexmeta::Editor}}
 \doxysubsubsection{\texorpdfstring{addCreator()}{addCreator()}}
@@ -214,21 +229,6 @@ For developers. Consider removing this function in favour of using the add$\ast$
 
 
 add the \char`\"{}creator\char`\"{} model level annotation 
-
-
-\begin{DoxyParams}{Parameters}
-{\em an} & orcid\+\_\+id as string \\
-\hline
-\end{DoxyParams}
-\mbox{\Hypertarget{classomexmeta_1_1Editor_abc8dd83a176d73f9211386ad08bb35b3}\label{classomexmeta_1_1Editor_abc8dd83a176d73f9211386ad08bb35b3}} 
-\index{omexmeta::Editor@{omexmeta::Editor}!addCurator@{addCurator}}
-\index{addCurator@{addCurator}!omexmeta::Editor@{omexmeta::Editor}}
-\doxysubsubsection{\texorpdfstring{addCurator()}{addCurator()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} \& omexmeta\+::\+Editor\+::add\+Curator (\begin{DoxyParamCaption}\item[{std\+::string}]{orcid\+\_\+id }\end{DoxyParamCaption})}
-
-
-
-add the \char`\"{}curator\char`\"{} model level annotation 
 
 
 \begin{DoxyParams}{Parameters}
@@ -447,11 +447,11 @@ returns a list of metaids both that existed previously and that was added during
 \begin{DoxyReturn}{Returns}
 vector of metaids used in the xml 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classomexmeta_1_1Editor_a4b2610fb802eb306349d69ae6fde60c0}\label{classomexmeta_1_1Editor_a4b2610fb802eb306349d69ae6fde60c0}} 
+\mbox{\Hypertarget{classomexmeta_1_1Editor_abfc5a972954cde4ec2112cc0e00a7ed3}\label{classomexmeta_1_1Editor_abfc5a972954cde4ec2112cc0e00a7ed3}} 
 \index{omexmeta::Editor@{omexmeta::Editor}!getModel@{getModel}}
 \index{getModel@{getModel}!omexmeta::Editor@{omexmeta::Editor}}
 \doxysubsubsection{\texorpdfstring{getModel()}{getModel()}}
-{\footnotesize\ttfamily librdf\+\_\+model $\ast$ omexmeta\+::\+Editor\+::get\+Model (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+{\footnotesize\ttfamily \mbox{\hyperlink{classredland_1_1LibrdfModel}{Librdf\+Model}} \& omexmeta\+::\+Editor\+::get\+Model (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
 
 
@@ -484,9 +484,9 @@ Map where keys are namespaces and values are prefixes
 getter for the current xml type identification variable. 
 
 \begin{DoxyReturn}{Returns}
-Omex\+Meta\+Type  \mbox{\hyperlink{classThis}{This}} should be set automatically in the \mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} constructor 
+Omex\+Meta\+Type
 \end{DoxyReturn}
-\mbox{\Hypertarget{classomexmeta_1_1Editor_ad931e829fc9f78717e0c1443c619b7d3}\label{classomexmeta_1_1Editor_ad931e829fc9f78717e0c1443c619b7d3}} 
+\mbox{\hyperlink{classThis}{This}} should be set automatically in the \mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} constructor \mbox{\Hypertarget{classomexmeta_1_1Editor_ad931e829fc9f78717e0c1443c619b7d3}\label{classomexmeta_1_1Editor_ad931e829fc9f78717e0c1443c619b7d3}} 
 \index{omexmeta::Editor@{omexmeta::Editor}!getXml@{getXml}}
 \index{getXml@{getXml}!omexmeta::Editor@{omexmeta::Editor}}
 \doxysubsubsection{\texorpdfstring{getXml()}{getXml()}}
@@ -560,9 +560,9 @@ the caller is responsible for deleting the returned \mbox{\hyperlink{classomexme
 create a new Singular\+Annotation object 
 
 \begin{DoxyReturn}{Returns}
-A Singular\+Annotation object  a Singular\+Annotation is a typedefed \mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}} object. 
+A Singular\+Annotation object
 \end{DoxyReturn}
-\mbox{\Hypertarget{classomexmeta_1_1Editor_a50674b2591d2fed572954ac8490ee21c}\label{classomexmeta_1_1Editor_a50674b2591d2fed572954ac8490ee21c}} 
+a Singular\+Annotation is a typedefed \mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}} object. \mbox{\Hypertarget{classomexmeta_1_1Editor_a50674b2591d2fed572954ac8490ee21c}\label{classomexmeta_1_1Editor_a50674b2591d2fed572954ac8490ee21c}} 
 \index{omexmeta::Editor@{omexmeta::Editor}!newSingularAnnotation@{newSingularAnnotation}}
 \index{newSingularAnnotation@{newSingularAnnotation}!omexmeta::Editor@{omexmeta::Editor}}
 \doxysubsubsection{\texorpdfstring{newSingularAnnotation()}{newSingularAnnotation()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
@@ -671,9 +671,9 @@ set the base metaid string (default is Omex\+Meta\+Id)
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-void  using editor.\+set\+Metaid\+Base(\char`\"{}\+My\+New\+Metaid\char`\"{}) will make metaids added by libomexmeta look like My\+New\+Metaid0001, My\+New\+Metaid0002, etc. It is assumed that it will not be necessary to have more than 9999 new metaids. 
+void
 \end{DoxyReturn}
-\mbox{\Hypertarget{classomexmeta_1_1Editor_a3e2c493ed5034a15e6915b7b649b58a3}\label{classomexmeta_1_1Editor_a3e2c493ed5034a15e6915b7b649b58a3}} 
+using editor.\+set\+Metaid\+Base(\char`\"{}\+My\+New\+Metaid\char`\"{}) will make metaids added by libomexmeta look like My\+New\+Metaid0001, My\+New\+Metaid0002, etc. It is assumed that it will not be necessary to have more than 9999 new metaids. \mbox{\Hypertarget{classomexmeta_1_1Editor_a3e2c493ed5034a15e6915b7b649b58a3}\label{classomexmeta_1_1Editor_a3e2c493ed5034a15e6915b7b649b58a3}} 
 \index{omexmeta::Editor@{omexmeta::Editor}!setType@{setType}}
 \index{setType@{setType}!omexmeta::Editor@{omexmeta::Editor}}
 \doxysubsubsection{\texorpdfstring{setType()}{setType()}}
@@ -684,9 +684,9 @@ void  using editor.\+set\+Metaid\+Base(\char`\"{}\+My\+New\+Metaid\char`\"{}) wi
 setter for the current xml type identification variable. 
 
 \begin{DoxyReturn}{Returns}
-void  \mbox{\hyperlink{classThis}{This}} should be set automatically in the \mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} constructor 
+void
 \end{DoxyReturn}
-\mbox{\Hypertarget{classomexmeta_1_1Editor_a6f201bae38c324800d0d55e778cb6135}\label{classomexmeta_1_1Editor_a6f201bae38c324800d0d55e778cb6135}} 
+\mbox{\hyperlink{classThis}{This}} should be set automatically in the \mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} constructor \mbox{\Hypertarget{classomexmeta_1_1Editor_a6f201bae38c324800d0d55e778cb6135}\label{classomexmeta_1_1Editor_a6f201bae38c324800d0d55e778cb6135}} 
 \index{omexmeta::Editor@{omexmeta::Editor}!stripAnnotations@{stripAnnotations}}
 \index{stripAnnotations@{stripAnnotations}!omexmeta::Editor@{omexmeta::Editor}}
 \doxysubsubsection{\texorpdfstring{stripAnnotations()}{stripAnnotations()}}

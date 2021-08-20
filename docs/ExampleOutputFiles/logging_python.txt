@@ -1,0 +1,40 @@
+[10:19:20 +01:00]  error : 1 syntax error at '<' 
+[10:19:20 +01:00]  warning :  XML parser warning: Unsupported version '1.1' 
+ [10-19-20] - 21384 - 2608 - console - warning :  XML parser warning: Unsupported version '1.1' 
+ [10-19-20] - 21384 - 2608 - console - trace : trace message 
+ [10-19-20] - 21384 - 2608 - console - info : info message 
+ [10-19-20] - 21384 - 2608 - console - debug : debug message 
+ [10-19-20] - 21384 - 2608 - console - warning : warn message 
+ [10-19-20] - 21384 - 2608 - console - error : error message 
+ [10-19-20] - 21384 - 2608 - console - critical : critical message 
+first
+end first
+
+second
+end second
+
+third
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix cmeta: <http://www.cellml.org/metadata/1.0#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix OMEXlib: <http://omex-library.org/> .
+@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
+
+
+end third
+
+fourth
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix cmeta: <http://www.cellml.org/metadata/1.0#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix OMEXlib: <http://omex-library.org/> .
+@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
+
+
+end fourth
+
+fifth
+check logger_file:  D:\libOmexMeta\docs\log.log
+end fifth
+sixth
+end sixth

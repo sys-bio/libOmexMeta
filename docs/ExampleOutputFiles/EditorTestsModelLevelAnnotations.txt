@@ -1,0 +1,119 @@
+Running main() from ..\third_party\googletest\googletest\src\gtest_main.cc
+[==========] Running 14 tests from 2 test suites.
+[----------] Global test environment set-up.
+[----------] 7 tests from EditorTestsModelLevelAnnotationsFromString
+[ RUN      ] EditorTestsModelLevelAnnotationsFromString.AddCreator
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix OMEXlib: <http://omex-library.org/> .
+@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#TestModelNotAnnotated>
+    dc:creator <https://orcid.org/0000-1111-2222-3333> .
+
+
+[       OK ] EditorTestsModelLevelAnnotationsFromString.AddCreator (4 ms)
+[ RUN      ] EditorTestsModelLevelAnnotationsFromString.AddContributor
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix OMEXlib: <http://omex-library.org/> .
+@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.rdf#>
+    dc:contributor <https://orcid.org/0000-1111-2222-3333> .
+
+
+[       OK ] EditorTestsModelLevelAnnotationsFromString.AddContributor (1 ms)
+[ RUN      ] EditorTestsModelLevelAnnotationsFromString.AddDateCreated
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix OMEXlib: <http://omex-library.org/> .
+@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#TestModelNotAnnotated>
+    dc:created "2021-09-14"^^dc:W3CDTF .
+
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix OMEXlib: <http://omex-library.org/> .
+@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#TestModelNotAnnotated>
+    dc:created "2021-09-14"^^dc:W3CDTF .
+
+
+[       OK ] EditorTestsModelLevelAnnotationsFromString.AddDateCreated (1 ms)
+[ RUN      ] EditorTestsModelLevelAnnotationsFromString.AddDescription
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix OMEXlib: <http://omex-library.org/> .
+@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#TestModelNotAnnotated>
+    dc:description "Predictive model of chip butty consumer's risk of heart failure." .
+
+
+[       OK ] EditorTestsModelLevelAnnotationsFromString.AddDescription (1 ms)
+[ RUN      ] EditorTestsModelLevelAnnotationsFromString.AddPubmed
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix bqmodel: <http://biomodels.net/model-qualifiers/> .
+@prefix pubmed: <https://identifiers.org/pubmed:> .
+@prefix OMEXlib: <http://omex-library.org/> .
+@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#TestModelNotAnnotated>
+    bqmodel:isDescribedBy <https://identifiers.org/pubmed:27887851> .
+
+
+[       OK ] EditorTestsModelLevelAnnotationsFromString.AddPubmed (1 ms)
+[ RUN      ] EditorTestsModelLevelAnnotationsFromString.AddParentModel
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix bqmodel: <http://biomodels.net/model-qualifiers/> .
+@prefix biomod: <https://identifiers.org/biomodels.db:> .
+@prefix OMEXlib: <http://omex-library.org/> .
+@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#TestModelNotAnnotated>
+    bqmodel:isDerivedFrom biomod:BIOMD0000011 .
+
+
+[       OK ] EditorTestsModelLevelAnnotationsFromString.AddParentModel (0 ms)
+[ RUN      ] EditorTestsModelLevelAnnotationsFromString.AddTaxon
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
+@prefix NCBI_Taxon: <https://identifiers.org/taxonomy:> .
+@prefix OMEXlib: <http://omex-library.org/> .
+@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#TestModelNotAnnotated>
+    bqbiol:hasTaxon <https://identifiers.org/taxonomy:9696> .
+
+
+[       OK ] EditorTestsModelLevelAnnotationsFromString.AddTaxon (1 ms)
+[----------] 7 tests from EditorTestsModelLevelAnnotationsFromString (9 ms total)
+
+[----------] 7 tests from EditorTestsModelLevelAnnotationsFromFile
+[ RUN      ] EditorTestsModelLevelAnnotationsFromFile.AddCreator
+rdf.getRepositoryUri(): http://omex-library.org/
+rdf.getArchiveUri(): http://omex-library.org/NewOmex.omex/
+rdf.getModelUri(): http://omex-library.org/NewOmex.omex/NewModel.xml
+rdf.getLocalUri(): http://omex-library.org/NewOmex.omex/NewModel.rdf#
+[       OK ] EditorTestsModelLevelAnnotationsFromFile.AddCreator (1 ms)
+[ RUN      ] EditorTestsModelLevelAnnotationsFromFile.AddContributor
+[       OK ] EditorTestsModelLevelAnnotationsFromFile.AddContributor (2 ms)
+[ RUN      ] EditorTestsModelLevelAnnotationsFromFile.AddDescription
+[       OK ] EditorTestsModelLevelAnnotationsFromFile.AddDescription (1 ms)
+[ RUN      ] EditorTestsModelLevelAnnotationsFromFile.AddPubmed
+[       OK ] EditorTestsModelLevelAnnotationsFromFile.AddPubmed (1 ms)
+[ RUN      ] EditorTestsModelLevelAnnotationsFromFile.AddParentModel
+[       OK ] EditorTestsModelLevelAnnotationsFromFile.AddParentModel (1 ms)
+[ RUN      ] EditorTestsModelLevelAnnotationsFromFile.AddDateCreated
+[       OK ] EditorTestsModelLevelAnnotationsFromFile.AddDateCreated (2 ms)
+[ RUN      ] EditorTestsModelLevelAnnotationsFromFile.AddTaxon
+[       OK ] EditorTestsModelLevelAnnotationsFromFile.AddTaxon (1 ms)
+[----------] 7 tests from EditorTestsModelLevelAnnotationsFromFile (9 ms total)
+
+[----------] Global test environment tear-down
+[==========] 14 tests from 2 test suites ran. (18 ms total)
+[  PASSED  ] 14 tests.

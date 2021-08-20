@@ -64,6 +64,16 @@ TEST_F(LibrdfSerializerTests, TestToString) {
 }
 
 
+
+TEST_F(LibrdfSerializerTests, SetNamespace) {
+    LibrdfStorage storage;
+    LibrdfModel model(storage);
+    LibrdfSerializer serializer("rdfxml");
+    serializer.setNamespace("https://namespace.com", "ns");
+
+}
+
+
 TEST_F(LibrdfSerializerTests, TestToStringTurtle) {
     LibrdfStorage storage;
     LibrdfModel model(storage);

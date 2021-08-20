@@ -9,6 +9,7 @@ CMake variables and options
     PLATFORM                           ${PLATFORM}
     LIBOMEXMETA_VERSION                ${LIBOMEXMETA_VERSION}
     CMAKE_CXX_STANDARD                 ${CMAKE_CXX_STANDARD}
+    CMAKE_GENERATOR                    ${CMAKE_GENERATOR}
     CMAKE_POSITION_INDEPENDENT_CODE    ${CMAKE_POSITION_INDEPENDENT_CODE}
     CMAKE_INSTALL_RPATH                ${CMAKE_INSTALL_RPATH}
     CMAKE_CXX_FLAGS                    ${CMAKE_CXX_FLAGS}
@@ -30,6 +31,24 @@ CMake variables and options
     BUILD_DOCS                         ${BUILD_DOCS}
     BUILD_TESTS                        ${BUILD_TESTS}
     N                                  ${N}
+    BUILD_TREE_SITE_PACKAGES           ${BUILD_TREE_SITE_PACKAGES}
+    INSTALL_TREE_SITE_PACKAGES         ${INSTALL_TREE_SITE_PACKAGES}
+
+
+Python Variables
+-----------------
+
+    Python_FOUND                       ${Python_FOUND}
+    Python_Interpreter_FOUND           ${Python_Interpreter_FOUND}
+    Python_INCLUDE_DIRS                ${Python_INCLUDE_DIRS}
+    Python_LIBRARIES                   ${Python_LIBRARIES}
+    Python_EXECUTABLE                  ${Python_EXECUTABLE}
+    Python_INTERPRETER_ID              ${Python_INTERPRETER_ID}
+    Python_STDLIB                      ${Python_STDLIB}
+    Python_STDARCH                     ${Python_STDARCH}
+    Python_SITELIB                     ${Python_SITELIB}
+    Python_SITEARCH                    ${Python_SITEARCH}
+
 
 VCPKG config
 ------------

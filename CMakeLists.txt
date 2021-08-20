@@ -8,15 +8,24 @@ cmake_minimum_required(VERSION 3.15)
 # Set version.
 set(VERSION_MAJOR 1)
 set(VERSION_MINOR 2)
-set(VERSION_MICRO 10)
+set(VERSION_MICRO 11)
 
 set(LIBOMEXMETA_VERSION ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_MICRO})
 configure_file(VERSION.txt.in VERSION.txt)
 configure_file(VERSION.txt.in "${CMAKE_CURRENT_SOURCE_DIR}/src/pyomexmeta/VERSION.txt")
 
 
+set(AUX_FILES
+        "${CMAKE_CURRENT_SOURCE_DIR}/requirements.txt"
+        "${CMAKE_CURRENT_SOURCE_DIR}/test-requirements.txt"
+        "${CMAKE_CURRENT_SOURCE_DIR}/LICENCE.txt"
+        "${CMAKE_CURRENT_SOURCE_DIR}/banner.txt"
+        "${CMAKE_CURRENT_SOURCE_DIR}/environment.yml")
+file(COPY ${AUX_FILES} DESTINATION "${CMAKE_BINARY_DIR}")
+
 install(FILES
         requirements.txt
+        test-requirements.txt
         LICENCE.txt
         banner.txt
         environment.yml
@@ -127,6 +136,16 @@ include(GoogleTest)
 #   Set some variables
 #
 
+# Set a default build type if none was specified
+set(default_build_type "Release")
+if(NOT CMAKE_BUILD_TYPE)
+  message(STATUS "Setting build type to '${default_build_type}' as none was specified.")
+  set(CMAKE_BUILD_TYPE "${default_build_type}" CACHE STRING "Choose the type of build." FORCE)
+  # Set the possible values of build type for cmake-gui
+  set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS
+    "Debug" "Release" "MinSizeRel" "RelWithDebInfo")
+endif()
+
 # global settings
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -141,7 +160,13 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 # location of pyomexmeta development package.
 set(PYOMEXMETA_DIR "${CMAKE_SOURCE_DIR}/src/pyomexmeta")
 
-set(THIRD_PARTY_DIR "${CMAKE_CURRENT_SOURCE_DIR}/third_party")
+set(THIRD_PARTY_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/third_party")
+set(THIRD_PARTY_BINARY_DIR "${CMAKE_CURRENT_BINARY_DIR}/third_party")
+
+# splog is header only, so we make a target for it ourselves
+set(SPDLOG_SOURCE_DIR "${THIRD_PARTY_SOURCE_DIR}/spdlog")
+set(SPDLOG_INCLUDE_DIR "${SPDLOG_SOURCE_DIR}/include")
+
 
 # location of googletesting framework
 set(GOOGLETEST_SOURCE_DIR ${CMAKE_SOURCE_DIR}/third_party/googletest)
@@ -157,6 +182,10 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/lib)
 
 # export all on windows. Ignored on other.
 set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS TRUE)
+
+# local site packages directories
+set(INSTALL_TREE_SITE_PACKAGES "${CMAKE_INSTALL_PREFIX}/site-packages")
+set(BUILD_TREE_SITE_PACKAGES "${CMAKE_BINARY_DIR}/site-packages")
 
 # In non-windows builds and only when libOmexMeta is being built
 #   as a top level project, we set the default CMAKE_INSTALL_PREFIX
@@ -190,7 +219,6 @@ set(CMAKE_VISIBILITY_INLINES_HIDDEN YES)
 ####################################################################
 # User options
 #
-
 
 include(CMakeDependentOption)
 
@@ -257,7 +285,6 @@ if (${BUILD_PYTHON})
     set(PYTHON_SETUP_CONFIG_FILE ${CMAKE_CURRENT_SOURCE_DIR}/setup.py.in)
     set(PYTHON_SETUP_FILE ${CMAKE_CURRENT_BINARY_DIR}/setup.py)
     configure_file(${PYTHON_SETUP_CONFIG_FILE} ${PYTHON_SETUP_FILE} @ONLY)
-
 endif ()
 
 # we write a file called extra_search_directories for storing locations of places python can search for

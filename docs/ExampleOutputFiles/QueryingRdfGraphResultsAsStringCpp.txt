@@ -1,0 +1,176 @@
+Sparql results format: xml
+<?xml version="1.0" encoding="utf-8"?>
+<sparql xmlns="http://www.w3.org/2005/sparql-results#">
+  <head>
+    <variable name="x"/>
+    <variable name="y"/>
+  </head>
+  <results>
+    <result>
+      <binding name="x"><uri>https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000004</uri></binding>
+      <binding name="y"><uri>http://biomodels.net/biology-qualifiers/is</uri></binding>
+    </result>
+    <result>
+      <binding name="x"><uri>https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000022</uri></binding>
+      <binding name="y"><uri>http://biomodels.net/biology-qualifiers/is</uri></binding>
+    </result>
+  </results>
+</sparql>
+
+
+
+Sparql results format: json
+{
+  "head": {
+    "vars": [ "x", "y" ]
+  },
+  "results": {
+    "ordered" : false,
+    "distinct" : false,
+    "bindings" : [
+      {
+        "x" : { "type": "uri", "value": "https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000004" },
+        "y" : { "type": "uri", "value": "http://biomodels.net/biology-qualifiers/is" }
+      },
+      {
+        "x" : { "type": "uri", "value": "https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000022" },
+        "y" : { "type": "uri", "value": "http://biomodels.net/biology-qualifiers/is" }
+      }
+    ]
+  }
+}
+
+
+
+Sparql results format: table
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+|
+===========================================================================================================================================================================
+| uri<https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000004> | uri<http://biomodels.net/biology-qualifiers/is> |
+| uri<https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000022> | uri<http://biomodels.net/biology-qualifiers/is> |
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+Sparql results format: csv
+x,y
+https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000004,http://biomodels.net/biology-qualifiers/is
+https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000022,http://biomodels.net/biology-qualifiers/is
+
+
+
+Sparql results format: mkr
+result is relation with format = csv;
+begin relation result;
+x,y;
+https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000004,http://biomodels.net/biology-qualifiers/is;
+https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000022,http://biomodels.net/biology-qualifiers/is;
+end relation result;
+
+
+
+Sparql results format: tsv
+?x	?y
+<https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000004>	<http://biomodels.net/biology-qualifiers/is>
+<https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000022>	<http://biomodels.net/biology-qualifiers/is>
+
+
+
+Sparql results format: html
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+        "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>SPARQL Query Results</title>
+</head>
+<body>
+  <table id="results" border="1">
+    <tr>
+      <th>?x</th>
+      <th>?y</th>
+    </tr>
+    <tr class="result">
+      <td><span class="uri"><a href="https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000004">https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000004</a></span></td>
+      <td><span class="uri"><a href="http://biomodels.net/biology-qualifiers/is">http://biomodels.net/biology-qualifiers/is</a></span></td>
+    </tr>
+    <tr class="result">
+      <td><span class="uri"><a href="https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000022">https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000022</a></span></td>
+      <td><span class="uri"><a href="http://biomodels.net/biology-qualifiers/is">http://biomodels.net/biology-qualifiers/is</a></span></td>
+    </tr>
+  </table>
+  <p>Total number of rows: <span class="count">2</span>.</p>
+</body>
+</html>
+
+
+
+Sparql results format: turtle
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix rs:      <http://www.w3.org/2001/sw/DataAccess/tests/result-set#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+[]    rdf:type      rs:ResultSet ;
+      rs:resultVariable  "x" ;
+      rs:resultVariable  "y" ;
+      rs:solution   [ rs:binding    [ rs:variable   "x" ;
+                                      rs:value      <https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000004>
+                                    ] ; 
+                      rs:binding    [ rs:variable   "y" ;
+                                      rs:value      <http://biomodels.net/biology-qualifiers/is>
+                                    ] 
+      ] ;
+      rs:solution   [ rs:binding    [ rs:variable   "x" ;
+                                      rs:value      <https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000022>
+                                    ] ; 
+                      rs:binding    [ rs:variable   "y" ;
+                                      rs:value      <http://biomodels.net/biology-qualifiers/is>
+                                    ] 
+      ] .
+
+
+
+Sparql results format: rdfxml
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rs="http://www.w3.org/2001/sw/DataAccess/tests/result-set#">
+  <rs:ResultSet>
+    <rs:resultVariable>x</rs:resultVariable>
+    <rs:resultVariable>y</rs:resultVariable>
+    <rs:solution>
+      <rdf:Description>
+        <rs:binding>
+          <rdf:Description>
+            <rs:value rdf:resource="https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000004"/>
+            <rs:variable>x</rs:variable>
+          </rdf:Description>
+        </rs:binding>
+        <rs:binding>
+          <rdf:Description>
+            <rs:value rdf:resource="http://biomodels.net/biology-qualifiers/is"/>
+            <rs:variable>y</rs:variable>
+          </rdf:Description>
+        </rs:binding>
+      </rdf:Description>
+    </rs:solution>
+    <rs:solution>
+      <rdf:Description>
+        <rs:binding>
+          <rdf:Description>
+            <rs:value rdf:resource="https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000064.2?filename=BIOMD0000000064_url.xml#metaid_0000022"/>
+            <rs:variable>x</rs:variable>
+          </rdf:Description>
+        </rs:binding>
+        <rs:binding>
+          <rdf:Description>
+            <rs:value rdf:resource="http://biomodels.net/biology-qualifiers/is"/>
+            <rs:variable>y</rs:variable>
+          </rdf:Description>
+        </rs:binding>
+      </rdf:Description>
+    </rs:solution>
+  </rs:ResultSet>
+</rdf:RDF>
+
+
+

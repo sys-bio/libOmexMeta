@@ -1,50 +1,62 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="classredland_1_1LibrdfQueryResults" kind="class" language="C++" prot="public">
     <compoundname>redland::LibrdfQueryResults</compoundname>
+    <basecompoundref refid="classredland_1_1RedlandType" prot="public" virt="non-virtual">redland::RedlandType&lt; librdf_query_results, query_results_free_func &gt;</basecompoundref>
       <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="classredland_1_1LibrdfQueryResults_1afea5534b79fe281729e7841f98491bad" prot="private" static="no" mutable="no">
-        <type>librdf_query_results *</type>
-        <definition>librdf_query_results* redland::LibrdfQueryResults::query_results_</definition>
+      <memberdef kind="variable" id="classredland_1_1LibrdfQueryResults_1a853284c88d5bf8673feb0906111d1e7a" prot="private" static="no" mutable="no">
+        <type>ResultsMap</type>
+        <definition>ResultsMap redland::LibrdfQueryResults::map_</definition>
         <argsstring></argsstring>
-        <name>query_results_</name>
-        <initializer>= nullptr</initializer>
+        <name>map_</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfQueryResults.h" line="52" column="30" bodyfile="src/redland/RedlandWrapper/src/include/redland/LibrdfQueryResults.h" bodystart="52" bodyend="-1"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfQueryResults.h" line="121" column="20" bodyfile="src/redland/RedlandWrapper/src/include/redland/LibrdfQueryResults.h" bodystart="121" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classredland_1_1LibrdfQueryResults_1ac550b34ce5ebcba843fa61ec3a9556a6" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool redland::LibrdfQueryResults::mapExecuted</definition>
+        <argsstring></argsstring>
+        <name>mapExecuted</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfQueryResults.h" line="122" column="14" bodyfile="src/redland/RedlandWrapper/src/include/redland/LibrdfQueryResults.h" bodystart="122" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classredland_1_1LibrdfQueryResults_1a9717fa16357b76bee3df6827cd0f6ee9" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; std::string &gt;</type>
+        <definition>std::vector&lt;std::string&gt; redland::LibrdfQueryResults::valid_output_formats_</definition>
+        <argsstring></argsstring>
+        <name>valid_output_formats_</name>
+        <initializer>= {
+                &quot;xml&quot;,
+                &quot;json&quot;,
+                &quot;table&quot;,
+                &quot;csv&quot;,
+                &quot;mkr&quot;,
+                &quot;tsv&quot;,
+                &quot;html&quot;,
+                &quot;turtle&quot;,
+                &quot;rdfxml&quot;,
+        }</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfQueryResults.h" line="124" column="21" bodyfile="src/redland/RedlandWrapper/src/include/redland/LibrdfQueryResults.h" bodystart="124" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="classredland_1_1LibrdfQueryResults_1add57ad7c19c5b7c3dd3c0aa5baa74c15" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type></type>
-        <definition>redland::LibrdfQueryResults::LibrdfQueryResults</definition>
-        <argsstring>()=default</argsstring>
-        <name>LibrdfQueryResults</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfQueryResults.h" line="19" column="9"/>
-      </memberdef>
-      <memberdef kind="function" id="classredland_1_1LibrdfQueryResults_1acad6e06d6cc2b4a3e7ed2eb308851e01" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type></type>
-        <definition>redland::LibrdfQueryResults::~LibrdfQueryResults</definition>
-        <argsstring>()</argsstring>
-        <name>~LibrdfQueryResults</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfQueryResults.h" line="21" column="9" bodyfile="src/redland/RedlandWrapper/src/LibrdfQueryResults.cpp" bodystart="7" bodyend="12"/>
-      </memberdef>
       <memberdef kind="function" id="classredland_1_1LibrdfQueryResults_1a8c9e17542c836ff3dd09da68bfc334f1" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
         <type></type>
         <definition>redland::LibrdfQueryResults::LibrdfQueryResults</definition>
@@ -60,101 +72,278 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfQueryResults.h" line="23" column="18" bodyfile="src/redland/RedlandWrapper/src/LibrdfQueryResults.cpp" bodystart="5" bodyend="5"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfQueryResults.h" line="40" column="18" bodyfile="src/redland/RedlandWrapper/src/LibrdfQueryResults.cpp" bodystart="8" bodyend="11"/>
       </memberdef>
-      <memberdef kind="function" id="classredland_1_1LibrdfQueryResults_1a965fe04027cb2ab0392e687e891f6c44" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type></type>
-        <definition>redland::LibrdfQueryResults::LibrdfQueryResults</definition>
-        <argsstring>(const LibrdfQueryResults &amp;queryResults)=delete</argsstring>
-        <name>LibrdfQueryResults</name>
-        <param>
-          <type>const <ref refid="classredland_1_1LibrdfQueryResults" kindref="compound">LibrdfQueryResults</ref> &amp;</type>
-          <declname>queryResults</declname>
-        </param>
+      <memberdef kind="function" id="classredland_1_1LibrdfQueryResults_1abac7546d8487c786b39046878d27d0b7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classredland_1_1LibrdfStream" kindref="compound">LibrdfStream</ref></type>
+        <definition>LibrdfStream redland::LibrdfQueryResults::toStream</definition>
+        <argsstring>()</argsstring>
+        <name>toStream</name>
         <briefdescription>
+<para>get the query results as a <ref refid="classredland_1_1LibrdfStream" kindref="compound">LibrdfStream</ref> </para>
         </briefdescription>
         <detaileddescription>
-<para>Copy constructor </para>
+<para>only meaningful if this is an RDF graph query result <parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>invalid_argument</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>when toStream is called and LibrdfQueryResult::isGraph() evaluates to false. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfQueryResults.h" line="28" column="9"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfQueryResults.h" line="50" column="22" bodyfile="src/redland/RedlandWrapper/src/LibrdfQueryResults.cpp" bodystart="61" bodyend="65"/>
       </memberdef>
-      <memberdef kind="function" id="classredland_1_1LibrdfQueryResults_1a2210255d8dd871b72279915712a612cd" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type></type>
-        <definition>redland::LibrdfQueryResults::LibrdfQueryResults</definition>
-        <argsstring>(LibrdfQueryResults &amp;&amp;queryResults) noexcept</argsstring>
-        <name>LibrdfQueryResults</name>
-        <param>
-          <type><ref refid="classredland_1_1LibrdfQueryResults" kindref="compound">LibrdfQueryResults</ref> &amp;&amp;</type>
-          <declname>queryResults</declname>
-        </param>
+      <memberdef kind="function" id="classredland_1_1LibrdfQueryResults_1a2fc367d8efdeaaa4ebf9e5e710d0440e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int redland::LibrdfQueryResults::next</definition>
+        <argsstring>()</argsstring>
+        <name>next</name>
         <briefdescription>
+<para>Move to the next result. </para>
         </briefdescription>
         <detaileddescription>
-<para>move constructor </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfQueryResults.h" line="33" column="9" bodyfile="src/redland/RedlandWrapper/src/LibrdfQueryResults.cpp" bodystart="23" bodyend="32"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfQueryResults.h" line="55" column="13" bodyfile="src/redland/RedlandWrapper/src/LibrdfQueryResults.cpp" bodystart="118" bodyend="120"/>
       </memberdef>
-      <memberdef kind="function" id="classredland_1_1LibrdfQueryResults_1a8b449205365d6ba353de1ff749be1b35" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="classredland_1_1LibrdfQueryResults" kindref="compound">LibrdfQueryResults</ref> &amp;</type>
-        <definition>LibrdfQueryResults&amp; redland::LibrdfQueryResults::operator=</definition>
-        <argsstring>(const LibrdfQueryResults &amp;queryResults)=delete</argsstring>
-        <name>operator=</name>
-        <param>
-          <type>const <ref refid="classredland_1_1LibrdfQueryResults" kindref="compound">LibrdfQueryResults</ref> &amp;</type>
-          <declname>queryResults</declname>
-        </param>
+      <memberdef kind="function" id="classredland_1_1LibrdfQueryResults_1ad6ab0b2bd53491ce650f9c740f04c2ec" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool redland::LibrdfQueryResults::isFinished</definition>
+        <argsstring>()</argsstring>
+        <name>isFinished</name>
         <briefdescription>
+<para>true when binding results are exausted </para>
         </briefdescription>
         <detaileddescription>
-<para>Copy assignment constructor </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfQueryResults.h" line="38" column="28"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfQueryResults.h" line="60" column="14" bodyfile="src/redland/RedlandWrapper/src/LibrdfQueryResults.cpp" bodystart="23" bodyend="30"/>
       </memberdef>
-      <memberdef kind="function" id="classredland_1_1LibrdfQueryResults_1af8df0f428610c028703ff3c724dfb474" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type><ref refid="classredland_1_1LibrdfQueryResults" kindref="compound">LibrdfQueryResults</ref> &amp;</type>
-        <definition>LibrdfQueryResults &amp; redland::LibrdfQueryResults::operator=</definition>
-        <argsstring>(LibrdfQueryResults &amp;&amp;queryResults) noexcept</argsstring>
-        <name>operator=</name>
-        <param>
-          <type><ref refid="classredland_1_1LibrdfQueryResults" kindref="compound">LibrdfQueryResults</ref> &amp;&amp;</type>
-          <declname>queryResults</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-<para>move assignment constructor </para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfQueryResults.h" line="43" column="28" bodyfile="src/redland/RedlandWrapper/src/LibrdfQueryResults.cpp" bodystart="34" bodyend="46"/>
-      </memberdef>
-      <memberdef kind="function" id="classredland_1_1LibrdfQueryResults_1aa40ed7731b543dfc971b5acbb016cfee" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>librdf_query_results *</type>
-        <definition>librdf_query_results * redland::LibrdfQueryResults::get</definition>
-        <argsstring>() const</argsstring>
-        <name>get</name>
+      <memberdef kind="function" id="classredland_1_1LibrdfQueryResults_1a1626fe6649dbb8161a05493ac7ec6ee7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="classredland_1_1LibrdfNode" kindref="compound">LibrdfNode</ref> &gt;</type>
+        <definition>std::vector&lt; LibrdfNode &gt; redland::LibrdfQueryResults::getBindings</definition>
+        <argsstring>()</argsstring>
+        <name>getBindings</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfQueryResults.h" line="45" column="31" bodyfile="src/redland/RedlandWrapper/src/LibrdfQueryResults.cpp" bodystart="15" bodyend="17"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfQueryResults.h" line="62" column="21" bodyfile="src/redland/RedlandWrapper/src/LibrdfQueryResults.cpp" bodystart="32" bodyend="47"/>
       </memberdef>
-      <memberdef kind="function" id="classredland_1_1LibrdfQueryResults_1acb51d92dfce59fdc64bd475326b038bf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classredland_1_1LibrdfQueryResults_1a056a92a8cd926072718e4553ed9a39b9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool redland::LibrdfQueryResults::isBoolean</definition>
+        <argsstring>()</argsstring>
+        <name>isBoolean</name>
+        <briefdescription>
+<para>true when this <ref refid="classredland_1_1LibrdfQueryResults" kindref="compound">LibrdfQueryResults</ref> is variable boolean format </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfQueryResults.h" line="67" column="14" bodyfile="src/redland/RedlandWrapper/src/LibrdfQueryResults.cpp" bodystart="49" bodyend="51"/>
+      </memberdef>
+      <memberdef kind="function" id="classredland_1_1LibrdfQueryResults_1a7a175af6ea28920887c4b2dc4645feb0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool redland::LibrdfQueryResults::isBindings</definition>
+        <argsstring>()</argsstring>
+        <name>isBindings</name>
+        <briefdescription>
+<para>true when this <ref refid="classredland_1_1LibrdfQueryResults" kindref="compound">LibrdfQueryResults</ref> is variable bindings format </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfQueryResults.h" line="72" column="14" bodyfile="src/redland/RedlandWrapper/src/LibrdfQueryResults.cpp" bodystart="53" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="function" id="classredland_1_1LibrdfQueryResults_1a52fccc16c398414ddb287fa9bb2a70fd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int redland::LibrdfQueryResults::getBoolean</definition>
+        <argsstring>()</argsstring>
+        <name>getBoolean</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfQueryResults.h" line="74" column="13" bodyfile="src/redland/RedlandWrapper/src/LibrdfQueryResults.cpp" bodystart="57" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="function" id="classredland_1_1LibrdfQueryResults_1a60e7f4a030655ee3ff0801ce28e3e4e8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool redland::LibrdfQueryResults::isGraph</definition>
+        <argsstring>()</argsstring>
+        <name>isGraph</name>
+        <briefdescription>
+<para>true when this <ref refid="classredland_1_1LibrdfQueryResults" kindref="compound">LibrdfQueryResults</ref> is RDF graph format </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfQueryResults.h" line="79" column="14" bodyfile="src/redland/RedlandWrapper/src/LibrdfQueryResults.cpp" bodystart="165" bodyend="167"/>
+      </memberdef>
+      <memberdef kind="function" id="classredland_1_1LibrdfQueryResults_1a1a105e783020b8022c5bc8473818be8b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
-        <definition>std::string redland::LibrdfQueryResults::str</definition>
-        <argsstring>(std::string format)</argsstring>
-        <name>str</name>
+        <definition>std::string redland::LibrdfQueryResults::getBindingValueByName</definition>
+        <argsstring>(const std::string &amp;name)</argsstring>
+        <name>getBindingValueByName</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfQueryResults.h" line="82" column="21" bodyfile="src/redland/RedlandWrapper/src/LibrdfQueryResults.cpp" bodystart="67" bodyend="76"/>
+      </memberdef>
+      <memberdef kind="function" id="classredland_1_1LibrdfQueryResults_1a1fe7caabdd6e0a2303dd336c9a9b6fb4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int redland::LibrdfQueryResults::getBindingsCount</definition>
+        <argsstring>()</argsstring>
+        <name>getBindingsCount</name>
+        <briefdescription>
+<para>returns the number of bindings in the sparql query. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>i.e. the query SELECT ?x ?y ?z WHERE { ?x ?y ?z } has 3 bindings, x, y and z. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfQueryResults.h" line="93" column="13" bodyfile="src/redland/RedlandWrapper/src/LibrdfQueryResults.cpp" bodystart="79" bodyend="81"/>
+      </memberdef>
+      <memberdef kind="function" id="classredland_1_1LibrdfQueryResults_1a6e452fb1c79115834cf97f0898af41f6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string redland::LibrdfQueryResults::toString</definition>
+        <argsstring>(const std::string &amp;output_format)</argsstring>
+        <name>toString</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>output_format</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfQueryResults.h" line="97" column="21" bodyfile="src/redland/RedlandWrapper/src/LibrdfQueryResults.cpp" bodystart="93" bodyend="115"/>
+      </memberdef>
+      <memberdef kind="function" id="classredland_1_1LibrdfQueryResults_1ad5f4123f843438e687ef5b8f99816de4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string redland::LibrdfQueryResults::getBindingsName</definition>
+        <argsstring>(int index)</argsstring>
+        <name>getBindingsName</name>
+        <param>
+          <type>int</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+<para>get the value of the bindings at </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>as a std::string </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfQueryResults.h" line="103" column="21" bodyfile="src/redland/RedlandWrapper/src/LibrdfQueryResults.cpp" bodystart="122" bodyend="124"/>
+      </memberdef>
+      <memberdef kind="function" id="classredland_1_1LibrdfQueryResults_1adf2873cbdc7263b3dd16df61c8ae1c99" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; std::string &gt;</type>
+        <definition>std::vector&lt; std::string &gt; redland::LibrdfQueryResults::getBindingsNames</definition>
+        <argsstring>()</argsstring>
+        <name>getBindingsNames</name>
+        <briefdescription>
+<para>get all bindings names as a vector of strings </para>
+        </briefdescription>
+        <detaileddescription>
+<para>the number of bindings is determined by getBindingsCount </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfQueryResults.h" line="109" column="22" bodyfile="src/redland/RedlandWrapper/src/LibrdfQueryResults.cpp" bodystart="169" bodyend="175"/>
+      </memberdef>
+      <memberdef kind="function" id="classredland_1_1LibrdfQueryResults_1a839ea1086c888dbb62c6d5b6d8279add" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void redland::LibrdfQueryResults::printQueryResults</definition>
+        <argsstring>()</argsstring>
+        <name>printQueryResults</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfQueryResults.h" line="111" column="14" bodyfile="src/redland/RedlandWrapper/src/LibrdfQueryResults.cpp" bodystart="152" bodyend="159"/>
+      </memberdef>
+      <memberdef kind="function" id="classredland_1_1LibrdfQueryResults_1a856a47ebe225d1d828197f9f2e5c7d9c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; std::string &gt;</type>
+        <definition>std::vector&lt; std::string &gt; redland::LibrdfQueryResults::getValidOutputFormats</definition>
+        <argsstring>() const</argsstring>
+        <name>getValidOutputFormats</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfQueryResults.h" line="113" column="21" bodyfile="src/redland/RedlandWrapper/src/LibrdfQueryResults.cpp" bodystart="161" bodyend="163"/>
+      </memberdef>
+      <memberdef kind="function" id="classredland_1_1LibrdfQueryResults_1ac80249e27c57b11309311862c1cee452" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>ResultsMap</type>
+        <definition>ResultsMap redland::LibrdfQueryResults::map</definition>
+        <argsstring>()</argsstring>
+        <name>map</name>
+        <briefdescription>
+<para>create a map from the query results. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfQueryResults.h" line="118" column="20" bodyfile="src/redland/RedlandWrapper/src/LibrdfQueryResults.cpp" bodystart="126" bodyend="150"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classredland_1_1LibrdfQueryResults_1ad81559675d154f5dd2386ff67d971e46" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string redland::LibrdfQueryResults::stringReplace</definition>
+        <argsstring>(std::string str, const std::string &amp;string_to_replace, const std::string &amp;replacement)</argsstring>
+        <name>stringReplace</name>
         <param>
           <type>std::string</type>
-          <declname>format</declname>
+          <declname>str</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>string_to_replace</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>replacement</declname>
         </param>
         <briefdescription>
         </briefdescription>
@@ -162,39 +351,78 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfQueryResults.h" line="47" column="21" bodyfile="src/redland/RedlandWrapper/src/LibrdfQueryResults.cpp" bodystart="19" bodyend="21"/>
-      </memberdef>
-      <memberdef kind="function" id="classredland_1_1LibrdfQueryResults_1a7cc66b81f87f936fd59063b58d2a2571" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void redland::LibrdfQueryResults::freeQueryResults</definition>
-        <argsstring>()</argsstring>
-        <name>freeQueryResults</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfQueryResults.h" line="49" column="14"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfQueryResults.h" line="95" column="28" bodyfile="src/redland/RedlandWrapper/src/LibrdfQueryResults.cpp" bodystart="83" bodyend="91"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfQueryResults.h" line="16" column="5" bodyfile="src/redland/RedlandWrapper/src/include/redland/LibrdfQueryResults.h" bodystart="16" bodyend="53"/>
+    <inheritancegraph>
+      <node id="2">
+        <label>RedlandType_query_results</label>
+        <link refid="classredland_1_1RedlandType"/>
+      </node>
+      <node id="1">
+        <label>redland::LibrdfQueryResults</label>
+        <link refid="classredland_1_1LibrdfQueryResults"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>RedlandType_query_results</label>
+        <link refid="classredland_1_1RedlandType"/>
+      </node>
+      <node id="1">
+        <label>redland::LibrdfQueryResults</label>
+        <link refid="classredland_1_1LibrdfQueryResults"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfQueryResults.h" line="35" column="5" bodyfile="src/redland/RedlandWrapper/src/include/redland/LibrdfQueryResults.h" bodystart="35" bodyend="136"/>
     <listofallmembers>
-      <member refid="classredland_1_1LibrdfQueryResults_1a7cc66b81f87f936fd59063b58d2a2571" prot="public" virt="non-virtual"><scope>redland::LibrdfQueryResults</scope><name>freeQueryResults</name></member>
-      <member refid="classredland_1_1LibrdfQueryResults_1aa40ed7731b543dfc971b5acbb016cfee" prot="public" virt="non-virtual"><scope>redland::LibrdfQueryResults</scope><name>get</name></member>
-      <member refid="classredland_1_1LibrdfQueryResults_1add57ad7c19c5b7c3dd3c0aa5baa74c15" prot="public" virt="non-virtual"><scope>redland::LibrdfQueryResults</scope><name>LibrdfQueryResults</name></member>
+      <member refid="classredland_1_1RedlandType_1a86304e5a3e82aae8ea4aae868b4fa7e4" prot="public" virt="virtual"><scope>redland::LibrdfQueryResults</scope><name>checkForNull</name></member>
+      <member refid="classredland_1_1RedlandType_1afd3a894521540cf05dfa56a3a59b25b9" prot="public" virt="non-virtual"><scope>redland::LibrdfQueryResults</scope><name>freeFunc_</name></member>
+      <member refid="classredland_1_1RedlandType_1a812fc8fefc5df2081b8a1a384b9e1827" prot="public" virt="virtual"><scope>redland::LibrdfQueryResults</scope><name>freeObj</name></member>
+      <member refid="classredland_1_1RedlandType_1a4faf8772c3328a5427c8e0b02a92f288" prot="public" virt="virtual"><scope>redland::LibrdfQueryResults</scope><name>get</name></member>
+      <member refid="classredland_1_1LibrdfQueryResults_1a1626fe6649dbb8161a05493ac7ec6ee7" prot="public" virt="non-virtual"><scope>redland::LibrdfQueryResults</scope><name>getBindings</name></member>
+      <member refid="classredland_1_1LibrdfQueryResults_1a1fe7caabdd6e0a2303dd336c9a9b6fb4" prot="public" virt="non-virtual"><scope>redland::LibrdfQueryResults</scope><name>getBindingsCount</name></member>
+      <member refid="classredland_1_1LibrdfQueryResults_1ad5f4123f843438e687ef5b8f99816de4" prot="public" virt="non-virtual"><scope>redland::LibrdfQueryResults</scope><name>getBindingsName</name></member>
+      <member refid="classredland_1_1LibrdfQueryResults_1adf2873cbdc7263b3dd16df61c8ae1c99" prot="public" virt="non-virtual"><scope>redland::LibrdfQueryResults</scope><name>getBindingsNames</name></member>
+      <member refid="classredland_1_1LibrdfQueryResults_1a1a105e783020b8022c5bc8473818be8b" prot="public" virt="non-virtual"><scope>redland::LibrdfQueryResults</scope><name>getBindingValueByName</name></member>
+      <member refid="classredland_1_1LibrdfQueryResults_1a52fccc16c398414ddb287fa9bb2a70fd" prot="public" virt="non-virtual"><scope>redland::LibrdfQueryResults</scope><name>getBoolean</name></member>
+      <member refid="classredland_1_1LibrdfQueryResults_1a856a47ebe225d1d828197f9f2e5c7d9c" prot="public" virt="non-virtual"><scope>redland::LibrdfQueryResults</scope><name>getValidOutputFormats</name></member>
+      <member refid="classredland_1_1LibrdfQueryResults_1a7a175af6ea28920887c4b2dc4645feb0" prot="public" virt="non-virtual"><scope>redland::LibrdfQueryResults</scope><name>isBindings</name></member>
+      <member refid="classredland_1_1LibrdfQueryResults_1a056a92a8cd926072718e4553ed9a39b9" prot="public" virt="non-virtual"><scope>redland::LibrdfQueryResults</scope><name>isBoolean</name></member>
+      <member refid="classredland_1_1LibrdfQueryResults_1ad6ab0b2bd53491ce650f9c740f04c2ec" prot="public" virt="non-virtual"><scope>redland::LibrdfQueryResults</scope><name>isFinished</name></member>
+      <member refid="classredland_1_1LibrdfQueryResults_1a60e7f4a030655ee3ff0801ce28e3e4e8" prot="public" virt="non-virtual"><scope>redland::LibrdfQueryResults</scope><name>isGraph</name></member>
+      <member refid="classredland_1_1RedlandType_1ac6594279280345bd8a03c1a7e950d3e0" prot="public" virt="non-virtual"><scope>redland::LibrdfQueryResults</scope><name>isNull</name></member>
       <member refid="classredland_1_1LibrdfQueryResults_1a8c9e17542c836ff3dd09da68bfc334f1" prot="public" virt="non-virtual"><scope>redland::LibrdfQueryResults</scope><name>LibrdfQueryResults</name></member>
-      <member refid="classredland_1_1LibrdfQueryResults_1a965fe04027cb2ab0392e687e891f6c44" prot="public" virt="non-virtual"><scope>redland::LibrdfQueryResults</scope><name>LibrdfQueryResults</name></member>
-      <member refid="classredland_1_1LibrdfQueryResults_1a2210255d8dd871b72279915712a612cd" prot="public" virt="non-virtual"><scope>redland::LibrdfQueryResults</scope><name>LibrdfQueryResults</name></member>
-      <member refid="classredland_1_1LibrdfQueryResults_1a8b449205365d6ba353de1ff749be1b35" prot="public" virt="non-virtual"><scope>redland::LibrdfQueryResults</scope><name>operator=</name></member>
-      <member refid="classredland_1_1LibrdfQueryResults_1af8df0f428610c028703ff3c724dfb474" prot="public" virt="non-virtual"><scope>redland::LibrdfQueryResults</scope><name>operator=</name></member>
-      <member refid="classredland_1_1LibrdfQueryResults_1afea5534b79fe281729e7841f98491bad" prot="private" virt="non-virtual"><scope>redland::LibrdfQueryResults</scope><name>query_results_</name></member>
-      <member refid="classredland_1_1LibrdfQueryResults_1acb51d92dfce59fdc64bd475326b038bf" prot="public" virt="non-virtual"><scope>redland::LibrdfQueryResults</scope><name>str</name></member>
-      <member refid="classredland_1_1LibrdfQueryResults_1acad6e06d6cc2b4a3e7ed2eb308851e01" prot="public" virt="non-virtual"><scope>redland::LibrdfQueryResults</scope><name>~LibrdfQueryResults</name></member>
+      <member refid="classredland_1_1LibrdfQueryResults_1ac80249e27c57b11309311862c1cee452" prot="public" virt="non-virtual"><scope>redland::LibrdfQueryResults</scope><name>map</name></member>
+      <member refid="classredland_1_1LibrdfQueryResults_1a853284c88d5bf8673feb0906111d1e7a" prot="private" virt="non-virtual"><scope>redland::LibrdfQueryResults</scope><name>map_</name></member>
+      <member refid="classredland_1_1LibrdfQueryResults_1ac550b34ce5ebcba843fa61ec3a9556a6" prot="private" virt="non-virtual"><scope>redland::LibrdfQueryResults</scope><name>mapExecuted</name></member>
+      <member refid="classredland_1_1LibrdfQueryResults_1a2fc367d8efdeaaa4ebf9e5e710d0440e" prot="public" virt="non-virtual"><scope>redland::LibrdfQueryResults</scope><name>next</name></member>
+      <member refid="classredland_1_1RedlandType_1ac9d0c3d245e2394c137ee0ab266784ed" prot="public" virt="non-virtual"><scope>redland::LibrdfQueryResults</scope><name>obj_</name></member>
+      <member refid="classredland_1_1RedlandType_1a4b0707a7465ffb5952bae3651f8c6d41" prot="public" virt="non-virtual"><scope>redland::LibrdfQueryResults</scope><name>operator!=</name></member>
+      <member refid="classredland_1_1RedlandType_1a5dd5fd7edeb2b6c17e8c92eb7ba01cac" prot="public" virt="non-virtual"><scope>redland::LibrdfQueryResults</scope><name>operator=</name></member>
+      <member refid="classredland_1_1RedlandType_1a22e381182a5642883ad578db40368f13" prot="public" virt="non-virtual"><scope>redland::LibrdfQueryResults</scope><name>operator=</name></member>
+      <member refid="classredland_1_1RedlandType_1a9fc5b1ce564f4c2497855cd965df1cfd" prot="public" virt="non-virtual"><scope>redland::LibrdfQueryResults</scope><name>operator==</name></member>
+      <member refid="classredland_1_1LibrdfQueryResults_1a839ea1086c888dbb62c6d5b6d8279add" prot="public" virt="non-virtual"><scope>redland::LibrdfQueryResults</scope><name>printQueryResults</name></member>
+      <member refid="classredland_1_1RedlandType_1a3c3a57c6b73d9bea7e0a9cdb9a725006" prot="public" virt="non-virtual"><scope>redland::LibrdfQueryResults</scope><name>RedlandType</name></member>
+      <member refid="classredland_1_1RedlandType_1ab7e0f16ed9acd6ba9c65b8e9259301e9" prot="public" virt="non-virtual"><scope>redland::LibrdfQueryResults</scope><name>RedlandType</name></member>
+      <member refid="classredland_1_1RedlandType_1a89f2c7b5d8133d7b22c54263ea2dcb3b" prot="public" virt="non-virtual"><scope>redland::LibrdfQueryResults</scope><name>RedlandType</name></member>
+      <member refid="classredland_1_1RedlandType_1a7884dd6bc66d9880090bb53f14683f1f" prot="public" virt="non-virtual"><scope>redland::LibrdfQueryResults</scope><name>RedlandType</name></member>
+      <member refid="classredland_1_1RedlandType_1aee7e39b6197cf77b19f873e3c2cea495" prot="public" virt="non-virtual"><scope>redland::LibrdfQueryResults</scope><name>release</name></member>
+      <member refid="classredland_1_1RedlandType_1ac3255173f68c11e2ebeb0d991fec24e7" prot="public" virt="non-virtual"><scope>redland::LibrdfQueryResults</scope><name>setFreeFunc</name></member>
+      <member refid="classredland_1_1RedlandType_1a403c5018a01ee1dc94e4caa33bef91e7" prot="public" virt="non-virtual"><scope>redland::LibrdfQueryResults</scope><name>setObj</name></member>
+      <member refid="classredland_1_1LibrdfQueryResults_1ad81559675d154f5dd2386ff67d971e46" prot="public" virt="non-virtual"><scope>redland::LibrdfQueryResults</scope><name>stringReplace</name></member>
+      <member refid="classredland_1_1LibrdfQueryResults_1abac7546d8487c786b39046878d27d0b7" prot="public" virt="non-virtual"><scope>redland::LibrdfQueryResults</scope><name>toStream</name></member>
+      <member refid="classredland_1_1LibrdfQueryResults_1a6e452fb1c79115834cf97f0898af41f6" prot="public" virt="non-virtual"><scope>redland::LibrdfQueryResults</scope><name>toString</name></member>
+      <member refid="classredland_1_1LibrdfQueryResults_1a9717fa16357b76bee3df6827cd0f6ee9" prot="private" virt="non-virtual"><scope>redland::LibrdfQueryResults</scope><name>valid_output_formats_</name></member>
+      <member refid="classredland_1_1RedlandType_1a028dab285bfd81fa4efca9206b0cd498" prot="public" virt="virtual"><scope>redland::LibrdfQueryResults</scope><name>~RedlandType</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

@@ -5,7 +5,7 @@
 PREFIX  iuphar:     <http://iuphar.example/ns#>
 PREFIX  entrez:     <http://entrez.example/ns#>
 PREFIX  void:       <http://rdfs.org/ns/void#>
-PREFIX  dcterms:    <https://dublincore.org/specifications/dublin-core/dcmi-terms/>
+PREFIX  dcterms:    <http://purl.org/dc/terms/>
 
 SELECT ?service ?id ?iuphar
 WHERE {

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="structrasqal__literal__s" kind="struct" language="C++" prot="public">
     <compoundname>rasqal_literal_s</compoundname>
     <includes refid="rasqal_8h" local="no">rasqal.h</includes>
@@ -96,7 +96,7 @@
         <location file="src/redland/RedlandWrapper/src/include/redland/rasqal.h" line="566" column="16" bodyfile="src/redland/RedlandWrapper/src/include/redland/rasqal.h" bodystart="566" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structrasqal__literal__s_1acb3204ba8485e416f880b3ebea020b05" prot="public" static="no" mutable="no">
-        <type>raptor_uri *</type>
+        <type><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref> *</type>
         <definition>raptor_uri* rasqal_literal_s::uri</definition>
         <argsstring></argsstring>
         <name>uri</name>
@@ -187,7 +187,7 @@
         <location file="src/redland/RedlandWrapper/src/include/redland/rasqal.h" line="580" column="10" bodyfile="src/redland/RedlandWrapper/src/include/redland/rasqal.h" bodystart="580" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structrasqal__literal__s_1adb976a5448269829d3c39e8788cb1511" prot="public" static="no" mutable="no">
-        <type>raptor_uri *</type>
+        <type><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref> *</type>
         <definition>raptor_uri* rasqal_literal_s::datatype</definition>
         <argsstring></argsstring>
         <name>datatype</name>
@@ -263,19 +263,30 @@
           <edgelabel>variable</edgelabel>
         </childnode>
         <childnode refid="4" relation="usage">
-          <edgelabel>date</edgelabel>
+          <edgelabel>datatype</edgelabel>
+          <edgelabel>uri</edgelabel>
         </childnode>
         <childnode refid="5" relation="usage">
+          <edgelabel>date</edgelabel>
+        </childnode>
+        <childnode refid="6" relation="usage">
           <edgelabel>datetime</edgelabel>
         </childnode>
       </node>
-      <node id="5">
+      <node id="6">
         <label>rasqal_xsd_datetime</label>
         <link refid="structrasqal__xsd__datetime"/>
+      </node>
+      <node id="4">
+        <label>raptor_uri_s</label>
+        <link refid="structraptor__uri__s"/>
       </node>
       <node id="3">
         <label>rasqal_expression_s</label>
         <link refid="structrasqal__expression__s"/>
+        <childnode refid="4" relation="usage">
+          <edgelabel>name</edgelabel>
+        </childnode>
         <childnode refid="3" relation="usage">
           <edgelabel>arg1</edgelabel>
           <edgelabel>arg2</edgelabel>
@@ -286,7 +297,7 @@
           <edgelabel>literal</edgelabel>
         </childnode>
       </node>
-      <node id="4">
+      <node id="5">
         <label>rasqal_xsd_date</label>
         <link refid="structrasqal__xsd__date"/>
       </node>

@@ -1,0 +1,127 @@
+\hypertarget{classomexmeta_1_1Logger}{}\doxysection{omexmeta\+::Logger Class Reference}
+\label{classomexmeta_1_1Logger}\index{omexmeta::Logger@{omexmeta::Logger}}
+
+
+Logging class for lib\+Omex\+Meta. Implemented as a singleton.  
+
+
+
+
+{\ttfamily \#include $<$Logger.\+h$>$}
+
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classomexmeta_1_1Logger_ad32818f7b4fd7aac41cdbe390a93560c}\label{classomexmeta_1_1Logger_ad32818f7b4fd7aac41cdbe390a93560c}} 
+using {\bfseries Logger\+Ptr} = std\+::shared\+\_\+ptr$<$ spdlog\+::logger $>$
+\item 
+\mbox{\Hypertarget{classomexmeta_1_1Logger_a2b2be48282c5fed6f2527e03518290a5}\label{classomexmeta_1_1Logger_a2b2be48282c5fed6f2527e03518290a5}} 
+using {\bfseries Log\+Level} = spdlog\+::level\+::level\+\_\+enum
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classomexmeta_1_1Logger_a134dd390a0ffd511e7272a3ff604ea5e}\label{classomexmeta_1_1Logger_a134dd390a0ffd511e7272a3ff604ea5e}} 
+void \mbox{\hyperlink{classomexmeta_1_1Logger_a134dd390a0ffd511e7272a3ff604ea5e}{set\+Formatter}} (const std\+::string \&format)
+\begin{DoxyCompactList}\small\item\em formatter strings use the \{fmt\} library. See documentation here\+: \href{https://fmt.dev/latest/index.html}{\texttt{ https\+://fmt.\+dev/latest/index.\+html}} \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classomexmeta_1_1Logger_a8aea25829e62c8f4c6f03fc48d50dd41}{set\+Level}} (Log\+Level level)
+\begin{DoxyCompactList}\small\item\em set the current logging level \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classomexmeta_1_1Logger_a597998f70839cc4e940bdc3d88b67409}\label{classomexmeta_1_1Logger_a597998f70839cc4e940bdc3d88b67409}} 
+Log\+Level \mbox{\hyperlink{classomexmeta_1_1Logger_a597998f70839cc4e940bdc3d88b67409}{get\+Level}} ()
+\begin{DoxyCompactList}\small\item\em returns the current logging level \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classomexmeta_1_1Logger_adff73e1d612beabc4816cde05387454c}{enable\+Backtrace}} (int num)
+\begin{DoxyCompactList}\small\item\em enable the backtrace logging feature -\/ display the last \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classomexmeta_1_1Logger_ab9f86a85a769a36a22f6e02dad5c78fa}\label{classomexmeta_1_1Logger_ab9f86a85a769a36a22f6e02dad5c78fa}} 
+void \mbox{\hyperlink{classomexmeta_1_1Logger_ab9f86a85a769a36a22f6e02dad5c78fa}{disable\+Backtrace}} ()
+\begin{DoxyCompactList}\small\item\em disable the backtrace feature \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classomexmeta_1_1Logger_a10e34a8915c7520e9332d9c1889f7521}\label{classomexmeta_1_1Logger_a10e34a8915c7520e9332d9c1889f7521}} 
+void \mbox{\hyperlink{classomexmeta_1_1Logger_a10e34a8915c7520e9332d9c1889f7521}{console\+Logger}} ()
+\begin{DoxyCompactList}\small\item\em create and switch to a console logger \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classomexmeta_1_1Logger_af999f93aa9e820a40c87ed34797fc1ce}\label{classomexmeta_1_1Logger_af999f93aa9e820a40c87ed34797fc1ce}} 
+void \mbox{\hyperlink{classomexmeta_1_1Logger_af999f93aa9e820a40c87ed34797fc1ce}{file\+Logger}} (const std\+::filesystem\+::path \&filename)
+\begin{DoxyCompactList}\small\item\em create and switch to a file logger \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classomexmeta_1_1Logger_a56f5508d87ac4f700b4a7641cb7b88a0}\label{classomexmeta_1_1Logger_a56f5508d87ac4f700b4a7641cb7b88a0}} 
+void \mbox{\hyperlink{classomexmeta_1_1Logger_a56f5508d87ac4f700b4a7641cb7b88a0}{dump\+Backtrace}} ()
+\begin{DoxyCompactList}\small\item\em dump backtrace messages when called \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classomexmeta_1_1Logger_ab49ff109d59a626fbcec1c05389fe6a2}\label{classomexmeta_1_1Logger_ab49ff109d59a626fbcec1c05389fe6a2}} 
+void \mbox{\hyperlink{classomexmeta_1_1Logger_ab49ff109d59a626fbcec1c05389fe6a2}{info}} (const std\+::string \&message)
+\begin{DoxyCompactList}\small\item\em log a info message to the currently active logger \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classomexmeta_1_1Logger_a052bdd430682c2c91490bc2763b918fc}\label{classomexmeta_1_1Logger_a052bdd430682c2c91490bc2763b918fc}} 
+void \mbox{\hyperlink{classomexmeta_1_1Logger_a052bdd430682c2c91490bc2763b918fc}{trace}} (const std\+::string \&message)
+\begin{DoxyCompactList}\small\item\em log a trace message to the currently active logger \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classomexmeta_1_1Logger_a8e5db234df44e3fc3a60bfcbf3e77f4b}\label{classomexmeta_1_1Logger_a8e5db234df44e3fc3a60bfcbf3e77f4b}} 
+void \mbox{\hyperlink{classomexmeta_1_1Logger_a8e5db234df44e3fc3a60bfcbf3e77f4b}{debug}} (const std\+::string \&message)
+\begin{DoxyCompactList}\small\item\em log a debug message to the currently active logger \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classomexmeta_1_1Logger_aa35b6607acc0873cd955f518b67c81dd}\label{classomexmeta_1_1Logger_aa35b6607acc0873cd955f518b67c81dd}} 
+void \mbox{\hyperlink{classomexmeta_1_1Logger_aa35b6607acc0873cd955f518b67c81dd}{warn}} (const std\+::string \&message)
+\begin{DoxyCompactList}\small\item\em log a warning message to the currently active logger \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classomexmeta_1_1Logger_aea5f0b2cf462c59f3a682a4447dcabb8}\label{classomexmeta_1_1Logger_aea5f0b2cf462c59f3a682a4447dcabb8}} 
+void \mbox{\hyperlink{classomexmeta_1_1Logger_aea5f0b2cf462c59f3a682a4447dcabb8}{error}} (const std\+::string \&message)
+\begin{DoxyCompactList}\small\item\em log a error message to the currently active logger \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classomexmeta_1_1Logger_ae7ff56f93077d9f17626f9c8141650e8}\label{classomexmeta_1_1Logger_ae7ff56f93077d9f17626f9c8141650e8}} 
+void \mbox{\hyperlink{classomexmeta_1_1Logger_ae7ff56f93077d9f17626f9c8141650e8}{critical}} (const std\+::string \&message)
+\begin{DoxyCompactList}\small\item\em log a critical message to the currently active logger \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classomexmeta_1_1Logger_aba2c1a3abce94299011441a4a22a252b}\label{classomexmeta_1_1Logger_aba2c1a3abce94299011441a4a22a252b}} 
+static \mbox{\hyperlink{classomexmeta_1_1Logger}{Logger}} $\ast$ {\bfseries get\+Logger} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classomexmeta_1_1Logger_a93dcc13c2fc6049c66d7f5ce8246cd5e}\label{classomexmeta_1_1Logger_a93dcc13c2fc6049c66d7f5ce8246cd5e}} 
+Logger\+Ptr \mbox{\hyperlink{classomexmeta_1_1Logger_a93dcc13c2fc6049c66d7f5ce8246cd5e}{logger}}
+\begin{DoxyCompactList}\small\item\em reference to the currently active logger \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classomexmeta_1_1Logger_a96e095f68f0b4f9bb98f12290a3d96fb}\label{classomexmeta_1_1Logger_a96e095f68f0b4f9bb98f12290a3d96fb}} 
+bool \mbox{\hyperlink{classomexmeta_1_1Logger_a96e095f68f0b4f9bb98f12290a3d96fb}{is\+File\+Logger}} = false
+\begin{DoxyCompactList}\small\item\em indicator, true when the file logger is active \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classomexmeta_1_1Logger_affa234a781b835b051e9495679bcede9}\label{classomexmeta_1_1Logger_affa234a781b835b051e9495679bcede9}} 
+bool \mbox{\hyperlink{classomexmeta_1_1Logger_affa234a781b835b051e9495679bcede9}{is\+Console\+Logger}} = false
+\begin{DoxyCompactList}\small\item\em indicator, true when the console logger is active \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Logging class for lib\+Omex\+Meta. Implemented as a singleton. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classomexmeta_1_1Logger_adff73e1d612beabc4816cde05387454c}\label{classomexmeta_1_1Logger_adff73e1d612beabc4816cde05387454c}} 
+\index{omexmeta::Logger@{omexmeta::Logger}!enableBacktrace@{enableBacktrace}}
+\index{enableBacktrace@{enableBacktrace}!omexmeta::Logger@{omexmeta::Logger}}
+\doxysubsubsection{\texorpdfstring{enableBacktrace()}{enableBacktrace()}}
+{\footnotesize\ttfamily void omexmeta\+::\+Logger\+::enable\+Backtrace (\begin{DoxyParamCaption}\item[{int}]{num }\end{DoxyParamCaption})}
+
+
+
+enable the backtrace logging feature -\/ display the last 
+
+
+\begin{DoxyParams}{Parameters}
+{\em num} & messages when spdlog\+::dump\+\_\+backtrace is called. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classomexmeta_1_1Logger_a8aea25829e62c8f4c6f03fc48d50dd41}\label{classomexmeta_1_1Logger_a8aea25829e62c8f4c6f03fc48d50dd41}} 
+\index{omexmeta::Logger@{omexmeta::Logger}!setLevel@{setLevel}}
+\index{setLevel@{setLevel}!omexmeta::Logger@{omexmeta::Logger}}
+\doxysubsubsection{\texorpdfstring{setLevel()}{setLevel()}}
+{\footnotesize\ttfamily void omexmeta\+::\+Logger\+::set\+Level (\begin{DoxyParamCaption}\item[{Logger\+::\+Log\+Level}]{level }\end{DoxyParamCaption})}
+
+
+
+set the current logging level 
+
+possible values of level\+:
+\begin{DoxyItemize}
+\item spdlog\+::level\+::critical;
+\item spdlog\+::level\+::err;
+\item spdlog\+::level\+::warn;
+\item spdlog\+::level\+::debug;
+\item spdlog\+::level\+::info;
+\item spdlog\+::level\+::trace;
+\item spdlog\+::level\+::off; 
+\end{DoxyItemize}
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/omexmeta/include/omexmeta/Logger.\+h\item 
+src/omexmeta/Logger.\+cpp\end{DoxyCompactItemize}

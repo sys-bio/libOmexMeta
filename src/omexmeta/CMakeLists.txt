@@ -19,12 +19,12 @@ SET(OMEXMETA_PUBLIC_HEADERS
         "${OMEXMETA_INCLUDE_DIR}/omexmeta/PhysicalProcess.h"
         "${OMEXMETA_INCLUDE_DIR}/omexmeta/PersonalInformation.h"
         "${OMEXMETA_INCLUDE_DIR}/omexmeta/OmexMeta.h"
+#        "${OMEXMETA_INCLUDE_DIR}/omexmeta/Logger.h"
         "${CMAKE_CURRENT_BINARY_DIR}/omexmeta_export.h"
         )
 
 set(OMEXMETA_HEADERS
         ${OMEXMETA_PUBLIC_HEADERS}
-        "${OMEXMETA_INCLUDE_DIR}/omexmeta/logger.h"
         "${OMEXMETA_INCLUDE_DIR}/omexmeta/OmexMetaUtils.h"
         "${OMEXMETA_INCLUDE_DIR}/omexmeta/CurlGet.h"
         "${OMEXMETA_INCLUDE_DIR}/omexmeta/OmexMetaXml.h"
@@ -50,8 +50,8 @@ set(OMEXMETA_SOURCES
         "ElementExtractor.cpp"
         "SBMLSemanticExtraction.cpp"
         "OmexMetaUtils.cpp"
-        "RDF.cpp"
         "Query.cpp"
+        "RDF.cpp"
         "CurlGet.cpp"
         "OmexMetaXml.cpp"
         "Predicate.cpp"
@@ -71,6 +71,7 @@ set(OMEXMETA_SOURCES
         "UriHandler.cpp"
         "VCardTranslator.cpp"
         "PurgeRDFBag.cpp"
+#        "Logger.cpp"
         )
 
 
@@ -192,6 +193,12 @@ if (WIN32)
 endif()
 generate_export_header(${target}CAPI BASE_NAME OMEXMETA_CAPI)
 target_compile_definitions(${target}CAPI PUBLIC OmexMeta_CAPI_EXPORTS)
+
+# make sure we copy the OmexMetaCAPI binary to the build tree for pyomexmeta
+add_custom_command(
+        TARGET OmexMetaCAPI POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different $<TARGET_FILE:OmexMetaCAPI> "${BUILD_TREE_SITE_PACKAGES}/pyomexmeta"
+)
 
 install(TARGETS ${target}CAPI
         EXPORT ${target}CAPI

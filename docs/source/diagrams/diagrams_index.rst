@@ -14,7 +14,6 @@ of the Teusink annotations.
     .. tab:: Python
 
         .. literalinclude:: draw.py
-            :linenos:
             :language: python
             :caption: Example of drawing a diagram of the RDF graph using graphviz in Python
 

@@ -1,16 +1,16 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="namespacedbg" kind="namespace" language="C++">
     <compoundname>dbg</compoundname>
-    <innerclass refid="classdbg_1_1DebugOutput" prot="public">dbg::DebugOutput</innerclass>
-    <innerclass refid="structdbg_1_1last" prot="public">dbg::last</innerclass>
-    <innerclass refid="structdbg_1_1last_3_01T_01_4" prot="public">dbg::last&lt; T &gt;</innerclass>
+    <innerclass refid="structdbg_1_1time" prot="public">dbg::time</innerclass>
+    <innerclass refid="structdbg_1_1print__formatted" prot="public">dbg::print_formatted</innerclass>
+    <innerclass refid="structdbg_1_1type__tag" prot="public">dbg::type_tag</innerclass>
+    <innerclass refid="structdbg_1_1print__type" prot="public">dbg::print_type</innerclass>
     <innerclass refid="structdbg_1_1pretty__print__tuple" prot="public">dbg::pretty_print_tuple</innerclass>
     <innerclass refid="structdbg_1_1pretty__print__tuple_3_010_01_4" prot="public">dbg::pretty_print_tuple&lt; 0 &gt;</innerclass>
-    <innerclass refid="structdbg_1_1print__formatted" prot="public">dbg::print_formatted</innerclass>
-    <innerclass refid="structdbg_1_1print__type" prot="public">dbg::print_type</innerclass>
-    <innerclass refid="structdbg_1_1time" prot="public">dbg::time</innerclass>
-    <innerclass refid="structdbg_1_1type__tag" prot="public">dbg::type_tag</innerclass>
+    <innerclass refid="structdbg_1_1last" prot="public">dbg::last</innerclass>
+    <innerclass refid="structdbg_1_1last_3_01T_01_4" prot="public">dbg::last&lt; T &gt;</innerclass>
+    <innerclass refid="classdbg_1_1DebugOutput" prot="public">dbg::DebugOutput</innerclass>
     <innernamespace refid="namespacedbg_1_1detail">dbg::detail</innernamespace>
     <innernamespace refid="namespacedbg_1_1detail__detector">dbg::detail_detector</innernamespace>
     <innernamespace refid="namespacedbg_1_1pretty__function">dbg::pretty_function</innernamespace>

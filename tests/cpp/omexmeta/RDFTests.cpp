@@ -82,6 +82,35 @@ TEST_F(RDFTests, TestFromStringSingularAnnotation) {
     ASSERT_EQ(expected, actual);
 }
 
+TEST_F(RDFTests, TestFromStringButWrongSyntax) {
+    //  singular_annotation1 is rdfxml, but we sprcify turtle
+    //  We let librdf issue a warning, rather than throw
+    RDF rdf = RDF::fromString(samples.singular_annotation1, "turtle");
+    ASSERT_EQ(0, rdf.size());
+}
+
+
+TEST_F(RDFTests, TestFromStringTwice) {
+    // singular_annotation1 is rdfxml, but we sprcify turtle
+    // We let librdf issue a warning, rather than throw
+    RDF rdf1 = RDF::fromString(samples.singular_annotation1, "rdfxml");
+    RDF rdf2 = RDF::fromString(samples.singular_annotation1, "rdfxml");
+    ASSERT_EQ(1, rdf2.size());
+
+}
+
+TEST_F(RDFTests, TestFromStringTwiceButWrongSyntax) {
+    LOGGER_SET_DEBUG();
+    // singular_annotation1 is rdfxml, but we sprcify turtle
+    // We let librdf issue a warning, rather than throw
+    RDF rdf1 = RDF::fromString(samples.singular_annotation1, "rdfxml");
+    RDF rdf2 = RDF::fromString(samples.singular_annotation1, "turtle");
+    //    ASSERT_EQ(0, rdf2.size());
+    LOGGER_SET_ERROR();
+}
+
+
+
 TEST_F(RDFTests, TestFromStringSingularAnnotationSqlite) {
     //    "hashes", "test", "hash-type='bdb',dir='.'")
     //    librdf_new_storage()
@@ -96,7 +125,7 @@ TEST_F(RDFTests, TestFromStringSingularAnnotationSqlite) {
 TEST_F(RDFTests, TestFromStringTurtleBag) {
     // note that rdf::bag is auto removed
     RDF rdf = RDF::fromString(samples.rdf_turtle_bag_example, "turtle");
-    int expected = 5;// 7 with rdf:bag
+    int expected = 5;// 7 with rdf:bag, but we remove rdf bag constructs in constructor of RDF
     int actual = rdf.size();
     ASSERT_EQ(expected, actual);
 }
@@ -274,7 +303,7 @@ TEST_F(RDFTests, TestReadSBMLModelWithBagFromFile) {
     f.close();
 
     RDF actualRdf = RDF::fromFile(fname.string(), "rdfxml");
-    ASSERT_TRUE(RDF::equals(&actualRdf, &expectedRdf, "turtle"));
+    ASSERT_TRUE(RDF::equals(&actualRdf, &expectedRdf, "turtle", true));
 
     // clean up file
     remove(fname);
@@ -327,7 +356,7 @@ TEST_F(RDFTests, TestSerializeCellMlAnnotationNoTrailingHashes) {
     editor.addCreator("0000-0003-4667-9779");
     editor.addTaxon("9895");
     std::string expected = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
-                           "@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n"
+                           "@prefix dc: <http://purl.org/dc/terms/> .\n"
                            "@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .\n"
                            "@prefix NCBI_Taxon: <https://identifiers.org/taxonomy:> .\n"
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
@@ -340,6 +369,7 @@ TEST_F(RDFTests, TestSerializeCellMlAnnotationNoTrailingHashes) {
 }
 
 TEST_F(RDFTests, TestBagConversion) {
+//    LOGGER_SET_DEBUG();
     std::string input = "<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
                         "                 xmlns:bqmodel=\"http://biomodels.net/model-qualifiers/\"\n"
                         "                 xmlns:vCard=\"http://www.w3.org/2001/vcard-rdf/3.0#\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"\n"

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="classomexmeta_1_1MarkupIdentifier" kind="class" language="C++" prot="public">
     <compoundname>omexmeta::MarkupIdentifier</compoundname>
     <includes refid="MarkupIdentifier_8h" local="no">MarkupIdentifier.h</includes>
@@ -57,7 +57,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/MarkupIdentifier.h" line="32" column="17" bodyfile="src/omexmeta/MarkupIdentifier.cpp" bodystart="21" bodyend="29"/>
+        <location file="src/omexmeta/include/omexmeta/MarkupIdentifier.h" line="32" column="17" bodyfile="src/omexmeta/MarkupIdentifier.cpp" bodystart="20" bodyend="28"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1MarkupIdentifier_1ada1ee4ccb99e393415f63e5dcafa68a6" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -76,7 +76,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/MarkupIdentifier.h" line="34" column="14" bodyfile="src/omexmeta/MarkupIdentifier.cpp" bodystart="35" bodyend="46"/>
+        <location file="src/omexmeta/include/omexmeta/MarkupIdentifier.h" line="34" column="14" bodyfile="src/omexmeta/MarkupIdentifier.cpp" bodystart="34" bodyend="45"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -106,7 +106,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/MarkupIdentifier.h" line="42" column="18" bodyfile="src/omexmeta/MarkupIdentifier.cpp" bodystart="10" bodyend="12"/>
+        <location file="src/omexmeta/include/omexmeta/MarkupIdentifier.h" line="42" column="18" bodyfile="src/omexmeta/MarkupIdentifier.cpp" bodystart="9" bodyend="11"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1MarkupIdentifier_1a155b2867eddc685ae4eb0eebc0fd0e27" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -119,7 +119,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/MarkupIdentifier.h" line="44" column="9" bodyfile="src/omexmeta/MarkupIdentifier.cpp" bodystart="14" bodyend="16"/>
+        <location file="src/omexmeta/include/omexmeta/MarkupIdentifier.h" line="44" column="9" bodyfile="src/omexmeta/MarkupIdentifier.cpp" bodystart="13" bodyend="15"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1MarkupIdentifier_1a541ffd197ce109e20112923d7fc0641b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -136,7 +136,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/MarkupIdentifier.h" line="50" column="14" bodyfile="src/omexmeta/MarkupIdentifier.cpp" bodystart="49" bodyend="69"/>
+        <location file="src/omexmeta/include/omexmeta/MarkupIdentifier.h" line="50" column="14" bodyfile="src/omexmeta/MarkupIdentifier.cpp" bodystart="48" bodyend="68"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1MarkupIdentifier_1a2fd631a49a8a3d06e668cdbf130d5cb3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -153,7 +153,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/MarkupIdentifier.h" line="56" column="14" bodyfile="src/omexmeta/MarkupIdentifier.cpp" bodystart="71" bodyend="88"/>
+        <location file="src/omexmeta/include/omexmeta/MarkupIdentifier.h" line="56" column="14" bodyfile="src/omexmeta/MarkupIdentifier.cpp" bodystart="70" bodyend="87"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1MarkupIdentifier_1ab1736abf0d275bcb6eefcb7f08dcbd4f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::vector&lt; std::string &gt; &amp;</type>
@@ -166,7 +166,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/MarkupIdentifier.h" line="58" column="28" bodyfile="src/omexmeta/MarkupIdentifier.cpp" bodystart="91" bodyend="93"/>
+        <location file="src/omexmeta/include/omexmeta/MarkupIdentifier.h" line="58" column="28" bodyfile="src/omexmeta/MarkupIdentifier.cpp" bodystart="90" bodyend="92"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

@@ -9,8 +9,8 @@
 
 namespace omexmeta {
 
-    PhysicalProperty::PhysicalProperty(UriHandler &uriHandler)
-        : uriHandler_(uriHandler) {}
+    PhysicalProperty::PhysicalProperty(LibrdfModel& model, UriHandler &uriHandler)
+        : model_(model), uriHandler_(uriHandler) {}
 
     PhysicalProperty &PhysicalProperty::operator=(const PhysicalProperty &physicalProperty) {
         if (*this != physicalProperty) {
@@ -59,14 +59,12 @@ namespace omexmeta {
         return uriHandler_.getLocalUri();
     }
 
-    PhysicalProperty::PhysicalProperty(librdf_model *model, UriHandler &uriHandler)
-        : model_(model), uriHandler_(uriHandler) {}
-
 
     Triples PhysicalProperty::toTriples() {
         // in sbml the metaid for property needs to be generated
         if (OmexMetaUtils::isStringEmpty<PhysicalProperty>(*this, about_value_)) {
-            std::string new_about = OmexMetaUtils::generateUniqueMetaid(model_, property_metaid_base_, new_metaid_exclusion_list_);
+            std::string new_about = OmexMetaUtils::generateUniqueMetaid(
+                    model_, property_metaid_base_, new_metaid_exclusion_list_);
             new_metaid_exclusion_list_.push_back(new_about);
             about(new_about, LOCAL_URI);
         }
@@ -86,17 +84,17 @@ namespace omexmeta {
 
         Triple is_property_of_triple(
                 uriHandler_,
-                LibrdfNode::fromUriString(about_value_).get(),
-                BiomodelsBiologyQualifier("isPropertyOf").get(),
-                LibrdfNode::fromUriString(is_property_of_value_).get());
+                LibrdfNode::fromUriString(about_value_),
+                BiomodelsBiologyQualifier("isPropertyOf").getNode(),
+                LibrdfNode::fromUriString(is_property_of_value_));
         triples.moveBack(is_property_of_triple);
 
         if (!is_version_of_value_.empty()) {
             Triple is_version_of_triple(
                     uriHandler_,
-                    LibrdfNode::fromUriString(about_value_).get(),
-                    BiomodelsBiologyQualifier("isVersionOf").get(),
-                    LibrdfNode::fromUriString(is_version_of_value_).get());
+                    LibrdfNode::fromUriString(about_value_),
+                    BiomodelsBiologyQualifier("isVersionOf").getNode(),
+                    LibrdfNode::fromUriString(is_version_of_value_));
             triples.moveBack(is_version_of_triple);
         }
         return triples;

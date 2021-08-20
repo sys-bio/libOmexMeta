@@ -44,36 +44,30 @@ we model the binding of `Sos`, `Grb2` and `Shc`.
     .. tab:: python
 
         .. literalinclude:: annotating_a_biological_complex_python.py
-            :linenos:
             :language: python
             :caption: Annotating a biological complex in Python
 
         .. literalinclude:: ../../ExampleOutputFiles/annotating_a_biological_complex_python.txt
-            :linenos:
             :caption: Output
 
     .. tab:: C++
 
         .. literalinclude:: annotating_a_biological_complex_cpp.cpp
-            :linenos:
             :language: C++
             :caption: Annotating a biological complex in C++
 
         .. literalinclude:: ../../ExampleOutputFiles/AnnotatingABiologicalComplexCpp.txt
-            :linenos:
             :caption: Output
 
     .. tab:: C
 
         .. literalinclude:: annotating_a_biological_complex_c.cpp
-            :linenos:
             :language: C
             :caption: Annotating a biological complex in C
 
         Output:
 
         .. literalinclude:: ../../ExampleOutputFiles/AnnotatingABiologicalComplexC.txt
-            :linenos:
             :caption: Output
 
 

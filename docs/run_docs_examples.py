@@ -2,20 +2,20 @@ import os, sys, subprocess, glob
 import argparse
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--install-folder", help="absolute path to where you install libomexmeta",  type=str)
+parser.add_argument("--build-root", help="absolute path to where you are building libomexmeta",  type=str)
 parser.add_argument("--pyomexmeta-site-package-dir", help="absolute path to where the pyomexmeta site package dir", type=str)
 parser.add_argument("--output-location", help="where to save the output from examples", type=str)
 args = parser.parse_args()
 
 print("\n\n================================================")
 print("Generating libOmexMeta documentation examples ")
-print("================================================")
+print("====================================================")
 print("Documentation examples are run every time the docs are built. ")
 print("The doc examples are run from the install folder so you must ")
 print("ensure you have just build the install cmake target before ")
 print("building the documentation. ")
 print("Arguments used are: ")
-print("\tinstall_folder:", args.install_folder)
+print("\tbuild_root:", args.build_root)
 print("\toutput_location", args.output_location)
 print("\tpyomexmeta_site_package_dir", args.pyomexmeta_site_package_dir)
 print("\t", args)
@@ -41,9 +41,7 @@ PYTHON_FILES = glob.glob(os.path.join(DOCS_DIRECTORY, "*/*/*.py"))
 
 # We do not want to include test binaries when we search for example binaries to run
 EXCLUSION_LIST = [
-    "OmexMetaCAPITests",
-    "OmexMetaTests",
-    "redland-wrapper-tests",
+
 ]
 
 if sys.platform == "win32":
@@ -58,14 +56,15 @@ else:
 EXCLUSION_LIST = [i + ext for i in EXCLUSION_LIST]
 
 # USER SUPPLIED
-INSTALL_BIN_FOLDER = os.path.join(args.install_folder, "bin")
-print("INSTALL_BIN_FOLDER:\n\t", INSTALL_BIN_FOLDER)
+BUILD_ROOT_DIR = os.path.join(args.build_root, "bin")
+print("BUILD_ROOT_DIR:\n\t", BUILD_ROOT_DIR)
 
 print("================================================")
-BINARY_FILES = glob.glob(os.path.join(INSTALL_BIN_FOLDER, "*"+ext))
+BINARY_FILES = glob.glob(os.path.join(BUILD_ROOT_DIR, "*"+ext))
 
 for exclusion in EXCLUSION_LIST:
     BINARY_FILES = [i for i in BINARY_FILES if exclusion not in i]
+
 print("Example binary files for execution: ")
 for i in BINARY_FILES:
     print("\t", i)

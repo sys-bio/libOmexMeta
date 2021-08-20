@@ -14,31 +14,32 @@
 #include "LibrdfUri.h"
 #include "LibrdfWorld.h"
 #include "RaptorIOStream.h"
+#include "redland/RedlandType.h"
 #include <stdlib.h>
 
 namespace redland {
 
-    class LibrdfSerializer {
+
+    /**
+     * @brief std::function signature of librdf_free_parser
+     */
+    using serializer_free_func = std::function<void(librdf_serializer *)>;
+
+    /**
+     * Instantiation of templated superclass
+     */
+    using RedlandType_librdf_serializer = RedlandType<librdf_serializer, serializer_free_func>;
+
+
+    class LibrdfSerializer : public RedlandType_librdf_serializer {
 
     public:
-        LibrdfSerializer() = default;
+        using RedlandType_librdf_serializer::RedlandType_librdf_serializer;
 
-        ~LibrdfSerializer();
-
-        LibrdfSerializer(const LibrdfSerializer &serializer) = delete;
-
-        LibrdfSerializer(LibrdfSerializer &&serializer) noexcept;
-
-        LibrdfSerializer &operator=(const LibrdfSerializer &serializer) = delete;
-
-        LibrdfSerializer &operator=(LibrdfSerializer &&serializer) noexcept;
-
-        static LibrdfSerializer fromRawPtr(librdf_serializer *serializer);
+        explicit LibrdfSerializer(librdf_serializer *serializer);
 
         explicit LibrdfSerializer(const char *format, const char *mime_type = nullptr,
                                   const char *type_uri = nullptr);
-
-        [[nodiscard]] librdf_serializer *get() const;
 
         void setNamespace(const std::string &ns, const std::string &prefix) const;
 
@@ -46,18 +47,12 @@ namespace redland {
 
         std::string toString(const std::string &uri, const LibrdfModel &model);
 
-        void freeSerializer();
-
         void validateSerializerName(std::string name);
 
         void setOption(const std::string &option, const std::string &value) const;
 
         void setOptions() const;
 
-    private:
-        librdf_serializer *serializer_ = nullptr;
-
-        explicit LibrdfSerializer(librdf_serializer *serializer);
     };
 }// namespace redland
 

@@ -162,7 +162,7 @@ int rasqal_gettimeofday(struct timeval *tv, struct timezone *tz);
 #define RASQAL_DIGEST_INTERNAL 1
 
 #ifdef _DEBUG
-#define RASQAL_DEBUG 1
+#define RASQAL_DEBUG @RASQAL_DEBUGGING@
 #endif
 
 #ifdef __cplusplus

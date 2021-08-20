@@ -15,11 +15,9 @@ using namespace redland;
 class LibrdfParserTests : public ::testing::Test {
 
 public:
-
-//    AnnotationSamples samples;
+    //    AnnotationSamples samples;
 
     LibrdfParserTests() = default;
-
 };
 
 TEST_F(LibrdfParserTests, TestInstantiateParser) {
@@ -76,7 +74,7 @@ TEST_F(LibrdfParserTests, TestGetMimeType2) {
 
 TEST_F(LibrdfParserTests, TestParseFromAFile) {
     LibrdfStorage storage;
-    LibrdfModel model(storage.get());
+    LibrdfModel model(storage);
     std::string rdf_string = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
                              "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
                              "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
@@ -99,7 +97,7 @@ TEST_F(LibrdfParserTests, TestParseFromAFile) {
     }
 
     LibrdfParser parser("rdfxml");
-    parser.parseFile(fname, model);
+    parser.parseFile(fname, model, "baseUri");
 
     int actual = model.size();
     int expected = 1;
@@ -110,10 +108,6 @@ TEST_F(LibrdfParserTests, TestParseFromAFile) {
     if (failed) {
         throw std::logic_error("didn't remove file");
     }
-    storage.freeStorage();
-    model.freeModel();
-    /* parser has its own destructor */
-
 }
 
 
@@ -130,26 +124,56 @@ TEST_F(LibrdfParserTests, TestRelativeBaseUriResolvesCorrectly) {
                         "</rdf:RDF>";
     std::filesystem::path storage_fname = std::filesystem::current_path() /= "LibrdfParserTests_TestBaseUri.db";
     LibrdfStorage storage("sqlite", storage_fname.string(), "new='yes'");
-    LibrdfModel model(storage.get());
+    LibrdfModel model(storage);
     LibrdfParser parser("rdfxml");
     parser.parseString(input, model, "LibrdfParserTests_TestBaseUri");
     std::cout << storage_fname << std::endl;
 
     std::string expected = "https://www.dajobe.org/net/this/is/the/base#dajobe";
-    // note: docs do not say anything about having to free the stream and address sanitizer
-    // is happy without the free.
-    librdf_stream *stream = librdf_model_as_stream(model.get());
-    LibrdfStatement stmt = LibrdfStatement::fromRawStatementPtr(librdf_stream_get_object(stream));
-    auto s = LibrdfNode(stmt.getSubjectNode());
-    std::string actual = s.str();
+
+    LibrdfStream stream = model.toStream();
+    LibrdfStatement statement = stream.getStatement();
+    LibrdfNode node = statement.getSubjectNode();
+    std::string actual = node.str();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
-    librdf_free_stream(stream);
+}
+
+TEST_F(LibrdfParserTests, TestParserString) {
+    std::string input = "<?xml version=\"1.0\"?>\n"
+                        "<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
+                        "     xmlns:dc=\"http://purl.org/dc/elements/1.1/\"\n"
+                        "     xml:base=\"https://www.dajobe.org/net/this/is/the/base\">\n"
+                        "  <rdf:Description rdf:about=\"#dajobe\">\n"
+                        "    <dc:title>Dave Beckett's Home Page</dc:title>\n"
+                        "    <dc:creator>Dave Beckett</dc:creator>\n"
+                        "    <dc:description>The generic home page of Dave Beckett.</dc:description>\n"
+                        "  </rdf:Description> \n"
+                        "</rdf:RDF>";
+    std::filesystem::path storage_fname = std::filesystem::current_path() /= "LibrdfParserTests_TestBaseUri.db";
+    LibrdfStorage storage;
+    LibrdfModel model(storage);
+    {
+        LibrdfParser parser("turtle");
+        parser.parseString(input, model, "LibrdfParserTests_TestBaseUri");
+    }
+    {
+        LibrdfParser parser("turtle");
+        parser.parseString(input, model, "LibrdfParserTests_TestBaseUri");
+    }
+
+
+    //
+    //    LibrdfStream stream = model.toStream();
+    //    LibrdfStatement statement =  stream.getStatement();
+    //    LibrdfNode node = statement.getSubjectNode();
+    //    std::string actual = node.str();
+    //    std::cout << actual << std::endl;
 }
 
 
 TEST_F(LibrdfParserTests, TestFeatures) {
     LibrdfStorage storage;
-    LibrdfModel model(storage.get());
+    LibrdfModel model(storage);
     LibrdfParser parser("turtle");
 
     LibrdfUri scanForRDFUri("http://feature.librdf.org/raptor-scanForRDF");
@@ -194,19 +218,99 @@ TEST_F(LibrdfParserTests, TestFeatures) {
     ASSERT_EQ("1", checkRdfIDNode.str());
 }
 
+/**
+ * This scenario caused a horendous uninit value bug.
+ *
+ */
+TEST_F(LibrdfParserTests, CheckTweiceFirstFailThenParseAgain) {
+    std::string singular_annotation1 = "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
+                                       "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
+                                       "   xmlns:OMEXlib=\"http://omex-library.org/\"\n"
+                                       "   xmlns:myOMEX=\"http://omex-library.org/NewModel.omex/\"\n"
+                                       "   xmlns:local=\"http://omex-library.org/NewModel.rdf\"\n"
+                                       "   xml:base=\"file://./NewModel.rdf\">\n"
+                                       "    <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_1\">\n"
+                                       "        <bqbiol:is rdf:resource=\"https://identifiers.org/uniprot/P0DP23\"/>\n"
+                                       "    </rdf:Description>\n"
+                                       "</rdf:RDF>\n";
+    // singular_annotation1 is rdfxml, but we sprcify turtle
+    // We let librdf issue a warning, rather than throw
+
+    std::string query = "SELECT ?x ?y ?z\n"
+                        "WHERE  {?x ?y ?z}\n";
+    LibrdfStorage storage;
+    LibrdfModel model(storage);
+    LibrdfUri u("base");
+    {
+        LibrdfParser parser("rdfxml");
+        parser.parseString(singular_annotation1, model, u);
+        LibrdfQuery q1(query, model);
+        LibrdfQueryResults re1 = q1.execute();
+        auto m1 = re1.map();
+    }
+    {
+        LibrdfParser parser("turtle");
+        // had a bug here, but only after the previous {}
+        parser.parseString(singular_annotation1, model, u);
+    }
+
+    ASSERT_EQ(1, model.size());
+}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//
+//
+//TEST_F(LibrdfParserTests, CheckTweiceFirstFailThenParseAgain2) {
+//    std::string singular_annotation1 = "<rdf:RDF xmlns:bqbiol=\"http://biomodels.net/biology-qualifiers/\"\n"
+//                                       "   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n"
+//                                       "   xmlns:OMEXlib=\"http://omex-library.org/\"\n"
+//                                       "   xmlns:myOMEX=\"http://omex-library.org/NewModel.omex/\"\n"
+//                                       "   xmlns:local=\"http://omex-library.org/NewModel.rdf\"\n"
+//                                       "   xml:base=\"file://./NewModel.rdf\">\n"
+//                                       "    <rdf:Description rdf:about=\"http://omex-library.org/NewOmex.omex/NewModel.xml#metaid_1\">\n"
+//                                       "        <bqbiol:is rdf:resource=\"https://identifiers.org/uniprot/P0DP23\"/>\n"
+//                                       "    </rdf:Description>\n"
+//                                       "</rdf:RDF>\n";
+//    // singular_annotation1 is rdfxml, but we sprcify turtle
+//    // We let librdf issue a warning, rather than throw
+//
+//    std::string qstring2 = "SELECT  ?subjectBlank ?resourceBlank ?vCardPred ?literal\n"
+//                    "WHERE {\n"
+//                    "?subjectBlank <http://www.w3.org/2001/vcard-rdf/3.0#N> ?resourceBlank .\n"
+//                    "?resourceBlank ?vCardPred ?literal\n"
+//                    "}\n";
+////    librdf_world* world = librdf_new_world();
+//    librdf_storage* storage = librdf_new_storage(LibrdfWorld::getWorld(),"memory", "m", nullptr );
+//    librdf_model* model = librdf_new_model(LibrdfWorld::getWorld(), storage, nullptr);
+//    librdf_uri* u = librdf_new_uri(LibrdfWorld::getWorld(), (const unsigned char*) "base");
+////    LibrdfUri u2("base");
+//    {
+//        librdf_parser* parser = librdf_new_parser(LibrdfWorld::getWorld(), "rdfxml", nullptr, nullptr);
+//        librdf_parser_parse_string_into_model(parser, (const unsigned char*) singular_annotation1.c_str(), u, model);
+//        std::string query = "SELECT ?x ?y ?z\n"
+//                            "WHERE  {?x ?y ?z}\n";
+//        librdf_query* q = librdf_new_query(
+//                LibrdfWorld::getWorld(),
+//                "sparql",
+//                nullptr,
+//                (const unsigned char *) query.c_str(),
+//                nullptr);
+//
+////        librdf_query_results *qr = librdf_query_execute(q, model.getWithoutIncrement());
+//
+//        librdf_free_query(q);
+//        librdf_free_parser(parser);
+//
+//    }
+//    {
+//        librdf_parser* parser = librdf_new_parser(LibrdfWorld::getWorld(), "turtle", nullptr, nullptr);
+//        librdf_parser_parse_string_into_model(parser, (const unsigned char*) singular_annotation1.c_str(), u, model);
+//        librdf_free_parser(parser);
+//
+//    }
+//
+//    //    ASSERT_EQ(1, model.size());
+//    librdf_free_uri(u);
+//    librdf_free_model(model);
+//    librdf_free_storage(storage);
+//}

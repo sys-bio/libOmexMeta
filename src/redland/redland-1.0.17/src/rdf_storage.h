@@ -45,6 +45,24 @@
 extern "C" {
 #endif
 
+
+/** A storage object */
+struct librdf_storage_s {
+    librdf_world *world;
+
+    /* usage count of this instance
+     * Used by other redland classes such as model, iterator, stream
+     * via  librdf_storage_add_reference librdf_storage_remove_reference
+     * The usage count of storage after construction is 1.
+     */
+    int usage;
+
+    librdf_model *model;
+    void *instance;
+    int index_contexts;
+    struct librdf_storage_factory_s *factory;
+};
+
 /* class methods */
 REDLAND_EXPORT
 int librdf_storage_register_factory(librdf_world *world, const char *name, const char *label,

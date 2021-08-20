@@ -1,18 +1,18 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="Options_8cpp" kind="file" language="C++">
     <compoundname>Options.cpp</compoundname>
     <includes refid="Options_8h" local="yes">omexmeta/Options.h</includes>
     <incdepgraph>
+      <node id="2">
+        <label>omexmeta/Options.h</label>
+        <link refid="Options_8h_source"/>
+      </node>
       <node id="1">
         <label>src/omexmeta/Options.cpp</label>
         <link refid="Options_8cpp"/>
         <childnode refid="2" relation="include">
         </childnode>
-      </node>
-      <node id="2">
-        <label>omexmeta/Options.h</label>
-        <link refid="Options_8h_source"/>
       </node>
     </incdepgraph>
     <briefdescription>
@@ -22,7 +22,7 @@
     <programlisting>
 <codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;omexmeta/Options.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2"><highlight class="normal"></highlight></codeline>
-<codeline lineno="6"><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classOptions_1a70ee261bcbdb118b5e3b23606888cb71" kindref="member">Options::removeRDFBag_</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classOptions_1a70ee261bcbdb118b5e3b23606888cb71" kindref="member">Options::removeRDFBag_</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="7"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classOptions_1a9103fe7c299390bb2e072d54279be51a" kindref="member">Options::translateVCard_</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="8"><highlight class="normal"></highlight></codeline>
     </programlisting>

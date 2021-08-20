@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="structrasqal__expression__s" kind="struct" language="C++" prot="public">
     <compoundname>rasqal_expression_s</compoundname>
       <sectiondef kind="public-attrib">
@@ -108,7 +108,7 @@
         <location file="src/redland/RedlandWrapper/src/include/redland/rasqal.h" line="840" column="19" bodyfile="src/redland/RedlandWrapper/src/include/redland/rasqal.h" bodystart="840" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structrasqal__expression__s_1a8bfae4602ea79570f81bcb6e67cee247" prot="public" static="no" mutable="no">
-        <type>raptor_uri *</type>
+        <type><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref> *</type>
         <definition>raptor_uri* rasqal_expression_s::name</definition>
         <argsstring></argsstring>
         <name>name</name>
@@ -178,47 +178,58 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="3">
+      <node id="4">
         <label>rasqal_variable</label>
         <link refid="structrasqal__variable"/>
         <childnode refid="1" relation="usage">
           <edgelabel>expression</edgelabel>
         </childnode>
-        <childnode refid="2" relation="usage">
+        <childnode refid="3" relation="usage">
           <edgelabel>value</edgelabel>
         </childnode>
       </node>
-      <node id="2">
+      <node id="3">
         <label>rasqal_literal_s</label>
         <link refid="structrasqal__literal__s"/>
-        <childnode refid="3" relation="usage">
+        <childnode refid="4" relation="usage">
           <edgelabel>variable</edgelabel>
         </childnode>
-        <childnode refid="4" relation="usage">
-          <edgelabel>date</edgelabel>
+        <childnode refid="2" relation="usage">
+          <edgelabel>datatype</edgelabel>
+          <edgelabel>uri</edgelabel>
         </childnode>
         <childnode refid="5" relation="usage">
+          <edgelabel>date</edgelabel>
+        </childnode>
+        <childnode refid="6" relation="usage">
           <edgelabel>datetime</edgelabel>
         </childnode>
       </node>
-      <node id="5">
+      <node id="6">
         <label>rasqal_xsd_datetime</label>
         <link refid="structrasqal__xsd__datetime"/>
+      </node>
+      <node id="2">
+        <label>raptor_uri_s</label>
+        <link refid="structraptor__uri__s"/>
       </node>
       <node id="1">
         <label>rasqal_expression_s</label>
         <link refid="structrasqal__expression__s"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>name</edgelabel>
+        </childnode>
         <childnode refid="1" relation="usage">
           <edgelabel>arg1</edgelabel>
           <edgelabel>arg2</edgelabel>
           <edgelabel>arg3</edgelabel>
           <edgelabel>arg4</edgelabel>
         </childnode>
-        <childnode refid="2" relation="usage">
+        <childnode refid="3" relation="usage">
           <edgelabel>literal</edgelabel>
         </childnode>
       </node>
-      <node id="4">
+      <node id="5">
         <label>rasqal_xsd_date</label>
         <link refid="structrasqal__xsd__date"/>
       </node>

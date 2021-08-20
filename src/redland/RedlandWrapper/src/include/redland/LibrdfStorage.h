@@ -14,27 +14,25 @@
 
 namespace redland {
 
-    class LibrdfStorage {
+    /**
+     * @brief std::function signature of librdf_free_storage
+     */
+    using storage_free_func = std::function<void(librdf_storage *)>;
+
+    /**
+     * Instantiation of templated superclass
+     */
+    using RefCounted_librdf_storage = RefCountedRedlandType<librdf_storage, storage_free_func>;
+
+
+    class LibrdfStorage : public RefCounted_librdf_storage {
 
     public:
         explicit LibrdfStorage(librdf_storage *storage);
 
-        ~LibrdfStorage();
+        explicit LibrdfStorage(const std::string &storage_name, const std::string &name, const char *options = nullptr);
 
-        explicit LibrdfStorage(const std::string &storage_name = "memory", const std::string &name = "SemsimStore",
-                               const char *options = nullptr);
-
-        [[nodiscard]] librdf_storage *get() const;
-
-        void freeStorage();
-
-        LibrdfStorage(const LibrdfStorage &storage) = delete;
-
-        LibrdfStorage(LibrdfStorage &&storage) noexcept;
-
-        LibrdfStorage &operator=(LibrdfStorage &&storage) noexcept;
-
-        int addStatement(librdf_statement *statement);
+        LibrdfStorage();
 
         int addStatement(const LibrdfStatement &statement);
 
@@ -57,7 +55,6 @@ namespace redland {
                 "virtuoso",
         };
 
-        librdf_storage *storage_ = nullptr;
     };
 }// namespace redland
 

@@ -5,25 +5,16 @@
 #ifndef LIBOMEXMETA_LIBRDFNODE_H
 #define LIBOMEXMETA_LIBRDFNODE_H
 
-//
 #include "LibrdfException.h"
 #include "LibrdfUri.h"
 #include "LibrdfWorld.h"
+#include "RefCountedRedlandType.h"
 #include "librdf.h"
 #include "raptor2.h"
 #include <memory>
 #include <sstream>
 
 
-/*
- * todo
- *  This objcet is a bit of a mess at the moment.
- *  Its currently not really being used as an
- *  object, but as a static librdf_node* generator.
- *  Probably the best thing to do is remove all
- *  methods except the librdf_node* generators
- *  which are actually used in the rest of the code.
- */
 /*
  *valid literals
  * "UNKNOWN",
@@ -46,20 +37,27 @@
  */
 namespace redland {
 
-    class LibrdfNode {
+    /**
+     * @brief std::function signature of librdf_free_node
+     */
+    using node_free_func = std::function<void(librdf_node *)>;
+
+    /**
+     * @brief instantiation of superclass
+     */
+    using RefCounted_librdf_node = RefCountedRedlandType<librdf_node, node_free_func>;
+
+
+    /**
+      * @brief C++ wrapper around librdf_node that uses RAII for memory management
+      */
+    class LibrdfNode : public RefCounted_librdf_node {
 
     public:
+        /**
+         * @brief use superclass constructors and rule of 5
+         */
         LibrdfNode() = default;
-
-        ~LibrdfNode();
-
-        LibrdfNode(const LibrdfNode &node);
-
-        LibrdfNode(LibrdfNode &&node) noexcept;
-
-        LibrdfNode &operator=(const LibrdfNode &node);
-
-        LibrdfNode &operator=(LibrdfNode &&node) noexcept;
 
         bool operator==(const LibrdfNode &rhs) const;
 
@@ -67,30 +65,9 @@ namespace redland {
 
         void freeNode();
 
-
         explicit LibrdfNode(librdf_node *node);
 
-        explicit LibrdfNode(const LibrdfUri& uri);
-
-        /**
-         * @brief return pointer to underlying librdf_node pointer
-         * @details using this method increments the librdf_node* usage count
-         * by 1. The caller is responsible for decrementing the usage count.
-         * @see getUsage()
-         * @note the librdf_statement takes shared ownership of a node when passed
-         * to librdf_new_statement.
-         */
-        [[nodiscard]] librdf_node *get() const;
-
-        /**
-         * @brief get the underlying librdf_node*
-         * @details do not increment the shared pointer reference
-         * counter.
-         * @warning this method assumes you know what you are doing
-         * with regards to the librdf reference counting system
-         * @see LibrdfNode::get()
-         */
-        [[nodiscard]] librdf_node *getWithoutIncrement() const;
+        explicit LibrdfNode(const LibrdfUri &uri);
 
         static LibrdfNode fromUriString(const std::string &uri_string);
 
@@ -109,11 +86,9 @@ namespace redland {
 
         static LibrdfNode newEmptyNode();
 
-        raptor_term_type getRaptorTermType();
+        raptor_term_type getRaptorTermType() const;
 
-        static std::string str(librdf_node *node);
-
-        [[nodiscard]] std::string str() const;
+        std::string str() const;
 
         LibrdfUri getLiteralDatatype();
 
@@ -146,15 +121,19 @@ namespace redland {
         static std::vector<std::string> splitStringBy(const std::string &str, char delimiter);
 
         /**
-         * @brief returns the usage of the underlying librdf_node pointer
+         * @brief indicator for whether this is a blank node
          */
-         unsigned int getUsage() const;
+        bool isBlank();
 
-         void incrementUsageCount();
+        /**
+         * @brief indicator for whether this is a uri node
+         */
+        bool isUri();
 
-
-    private:
-        librdf_node *node_ = nullptr;
+        /**
+         * @brief indicator for whether this is a literal node
+         */
+        bool isLiteral();
     };
 }// namespace redland
 

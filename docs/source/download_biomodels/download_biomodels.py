@@ -19,7 +19,7 @@ s = BioModels()
 def get_number_of_curated_models() -> int:
     """Figure out how many curated models there are in biomodels right now"""
     all: dict = s.search("*")
-    stats: str = all["facetStats"]  # this is a string. Whaaa?
+    stats: str = all["facetStats"]  # this is a string.
     json_stats: list = json.loads(stats)
     for item in json_stats:
         for val in item["facetValues"]:

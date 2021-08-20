@@ -12,7 +12,7 @@ set(
         redland-combined-static
         redland-combined
         OmexMetaTests
-        redland-wrapper-tests
+#        redland-wrapper-tests
         gtest gtest_main
 )
 

@@ -1,76 +1,77 @@
-The tyon2003 model annotations in turtle syntax is
-
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix bqmodel: <http://biomodels.net/model-qualifiers/> .
-@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
-@prefix OMEXlib: <http://omex-library.org/> .
-@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
-
-<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0000>
-    bqbiol:is <https://identifiers.org/uniprot/PD12345> .
-
-<https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774235>
-    bqbiol:hasPart <http://identifiers.org/go/GO:0007243> ;
-    bqbiol:hasProperty <http://identifiers.org/mamo/MAMO_0000046> ;
-    bqbiol:hasTaxon <http://identifiers.org/taxonomy/131567> ;
-    bqbiol:isVersionOf <http://identifiers.org/go/GO:0051098> ;
-    bqmodel:is <http://identifiers.org/biomodels.db/BIOMD0000000308>, <http://identifiers.org/biomodels.db/MODEL1102100004> ;
-    bqmodel:isDescribedBy <http://identifiers.org/pubmed/12648679> ;
-    <http://purl.org/dc/elements/1.1/creator> [
-        <http://xmlns.com/foaf/0.1/Organization> "EMBL-EBI" ;
-        <http://xmlns.com/foaf/0.1/familyName> "Endler" ;
-        <http://xmlns.com/foaf/0.1/givenName> "Lukas" ;
-        <http://xmlns.com/foaf/0.1/mbox> "lukas@ebi.ac.uk"
-    ], [
-        <http://xmlns.com/foaf/0.1/Organization> "Department of Biology, Virginia Polytechnic Institute and State University, Blacksburg, VA 24061, USA" ;
-        <http://xmlns.com/foaf/0.1/familyName> "Tyson" ;
-        <http://xmlns.com/foaf/0.1/givenName> "John J" ;
-        <http://xmlns.com/foaf/0.1/mbox> "tyson@vt.edu"
-    ] ;
-    <http://purl.org/dc/terms/created> [
-        <http://purl.org/dc/terms/W3CDTF> "2011-02-10T03:49:32Z"
-    ] ;
-    <http://purl.org/dc/terms/modified> [
-        <http://purl.org/dc/terms/W3CDTF> "2014-04-06T20:03:14Z"
-    ] .
-
-<https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774236>
-    bqbiol:isVersionOf <http://identifiers.org/go/GO:0005623> .
-
-<https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774238>
-    bqbiol:hasVersion <http://identifiers.org/psimod/MOD:00696> ;
-    bqbiol:isVersionOf <http://identifiers.org/kegg.compound/C00562> .
-
-<https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774241>
-    bqbiol:isVersionOf <http://identifiers.org/chebi/CHEBI:36080> .
-
-<https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774242>
-    bqbiol:hasProperty <http://identifiers.org/go/GO:0016301> ;
-    bqbiol:hasVersion <http://identifiers.org/psimod/MOD:00696> ;
-    bqbiol:isVersionOf <http://identifiers.org/kegg.compound/C00562> .
-
-<https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774246>
-    bqbiol:isVersionOf <http://identifiers.org/chebi/CHEBI:36080> .
-
-<https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774249>
-    bqbiol:isVersionOf <http://identifiers.org/chebi/CHEBI:36080> .
-
-<https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774250>
-    bqbiol:isVersionOf <http://identifiers.org/go/GO:0009058> .
-
-<https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774251>
-    bqbiol:isVersionOf <http://identifiers.org/go/GO:0009056> .
-
-<https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774252>
-    bqbiol:isVersionOf <http://identifiers.org/go/GO:0006468> .
-
-<https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774253>
-    bqbiol:isVersionOf <http://identifiers.org/go/GO:0006470> .
-
-<https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774256>
-    bqbiol:isVersionOf <http://identifiers.org/go/GO:0006468> .
-
-<https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774257>
-    bqbiol:isVersionOf <http://identifiers.org/go/GO:0006470> .
-
-
+The tyon2003 model annotations in turtle syntax is
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
+@prefix bqmodel: <http://biomodels.net/model-qualifiers/> .
+@prefix OMEXlib: <http://omex-library.org/> .
+@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .
+
+<http://omex-library.org/NewOmex.omex/NewModel.xml#OmexMetaId0000>
+    bqbiol:is <https://identifiers.org/uniprot/PD12345> .
+
+<https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774235>
+    bqbiol:hasPart <http://identifiers.org/go/GO:0007243> ;
+    bqbiol:hasProperty <http://identifiers.org/mamo/MAMO_0000046> ;
+    bqbiol:hasTaxon <http://identifiers.org/taxonomy/131567> ;
+    bqbiol:isVersionOf <http://identifiers.org/go/GO:0051098> ;
+    bqmodel:is <http://identifiers.org/biomodels.db/BIOMD0000000308>, <http://identifiers.org/biomodels.db/MODEL1102100004> ;
+    bqmodel:isDescribedBy <http://identifiers.org/pubmed/12648679> ;
+    <http://purl.org/dc/elements/1.1/creator> [
+        <http://xmlns.com/foaf/0.1/Organization> "EMBL-EBI" ;
+        <http://xmlns.com/foaf/0.1/familyName> "Endler" ;
+        <http://xmlns.com/foaf/0.1/givenName> "Lukas" ;
+        <http://xmlns.com/foaf/0.1/mbox> "lukas@ebi.ac.uk"
+    ], [
+        <http://xmlns.com/foaf/0.1/Organization> "Department of Biology, Virginia Polytechnic Institute and State University, Blacksburg, VA 24061, USA" ;
+        <http://xmlns.com/foaf/0.1/familyName> "Tyson" ;
+        <http://xmlns.com/foaf/0.1/givenName> "John J" ;
+        <http://xmlns.com/foaf/0.1/mbox> "tyson@vt.edu"
+    ] ;
+    dc:created [
+        dc:W3CDTF "2011-02-10T03:49:32Z"
+    ] ;
+    dc:modified [
+        dc:W3CDTF "2014-04-06T20:03:14Z"
+    ] .
+
+<https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774236>
+    bqbiol:isVersionOf <http://identifiers.org/go/GO:0005623> .
+
+<https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774238>
+    bqbiol:hasVersion <http://identifiers.org/psimod/MOD:00696> ;
+    bqbiol:isVersionOf <http://identifiers.org/kegg.compound/C00562> .
+
+<https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774241>
+    bqbiol:isVersionOf <http://identifiers.org/chebi/CHEBI:36080> .
+
+<https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774242>
+    bqbiol:hasProperty <http://identifiers.org/go/GO:0016301> ;
+    bqbiol:hasVersion <http://identifiers.org/psimod/MOD:00696> ;
+    bqbiol:isVersionOf <http://identifiers.org/kegg.compound/C00562> .
+
+<https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774246>
+    bqbiol:isVersionOf <http://identifiers.org/chebi/CHEBI:36080> .
+
+<https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774249>
+    bqbiol:isVersionOf <http://identifiers.org/chebi/CHEBI:36080> .
+
+<https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774250>
+    bqbiol:isVersionOf <http://identifiers.org/go/GO:0009058> .
+
+<https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774251>
+    bqbiol:isVersionOf <http://identifiers.org/go/GO:0009056> .
+
+<https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774252>
+    bqbiol:isVersionOf <http://identifiers.org/go/GO:0006468> .
+
+<https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774253>
+    bqbiol:isVersionOf <http://identifiers.org/go/GO:0006470> .
+
+<https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774256>
+    bqbiol:isVersionOf <http://identifiers.org/go/GO:0006468> .
+
+<https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000308.2?filename=BIOMD0000000308_url.xml#_774257>
+    bqbiol:isVersionOf <http://identifiers.org/go/GO:0006470> .
+
+

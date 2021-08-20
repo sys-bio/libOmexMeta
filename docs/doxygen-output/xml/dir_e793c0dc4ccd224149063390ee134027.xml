@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="dir_e793c0dc4ccd224149063390ee134027" kind="dir">
     <compoundname>src/redland/RedlandWrapper/src</compoundname>
     <innerdir refid="dir_a8b1a2e1698ec3f4d0b5a380075ccb82">src/redland/RedlandWrapper/src/include</innerdir>
@@ -11,8 +11,10 @@
     <innerfile refid="LibrdfSerializer_8cpp">LibrdfSerializer.cpp</innerfile>
     <innerfile refid="LibrdfStatement_8cpp">LibrdfStatement.cpp</innerfile>
     <innerfile refid="LibrdfStorage_8cpp">LibrdfStorage.cpp</innerfile>
+    <innerfile refid="LibrdfStream_8cpp">LibrdfStream.cpp</innerfile>
     <innerfile refid="LibrdfUri_8cpp">LibrdfUri.cpp</innerfile>
     <innerfile refid="LibrdfWorld_8cpp">LibrdfWorld.cpp</innerfile>
+    <innerfile refid="Logger_8cpp">Logger.cpp</innerfile>
     <briefdescription>
     </briefdescription>
     <detaileddescription>

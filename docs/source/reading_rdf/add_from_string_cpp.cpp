@@ -9,7 +9,7 @@ int main(){
                            "@prefix OMEXlib: <http://omex-library.org/> .\n"
                            "@prefix myOMEX: <http://omex-library.org/NewOmex.omex/> .\n"
                            "@prefix local: <http://omex-library.org/NewOmex.omex/NewModel.rdf#> .\n"
-                           "@prefix dc: <https://dublincore.org/specifications/dublin-core/dcmi-terms/> .\n"
+                           "@prefix dc: <http://purl.org/dc/terms/> .\n"
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml>\n"
                            "      dc:creator <https://orcid.org/1234-1234-1234-1234> .\n";

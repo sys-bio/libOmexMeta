@@ -24,7 +24,7 @@ TEST_F(PredicateTests, TestCreateStaticFunctionFromBasePredicate) {
     std::string expected = "http://biomodels.net/biology-qualifiers/is";
     std::string actual = predicate.str();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
-    predicate.freeNode();
+    
 }
 
 TEST_F(PredicateTests, TestGetNode) {
@@ -32,7 +32,7 @@ TEST_F(PredicateTests, TestGetNode) {
     std::string expected = "http://biomodels.net/biology-qualifiers/is";
     std::string actual = predicate.str();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
-    predicate.freeNode();
+    
 }
 
 TEST_F(PredicateTests, TestGetNodeFromPtr) {
@@ -41,7 +41,7 @@ TEST_F(PredicateTests, TestGetNodeFromPtr) {
     std::string expected = "http://biomodels.net/biology-qualifiers/is";
     std::string actual = ptr->str();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
-    predicate.freeNode();
+    
 }
 
 TEST_F(PredicateTests, TestGetNodebqb) {
@@ -49,7 +49,7 @@ TEST_F(PredicateTests, TestGetNodebqb) {
     std::string expected = "http://biomodels.net/biology-qualifiers/is";
     std::string actual = predicate.str();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
-    predicate.freeNode();
+    
 }
 
 TEST_F(PredicateTests, TestGetNodeFromPtrBqB) {
@@ -61,7 +61,7 @@ TEST_F(PredicateTests, TestGetNodeFromPtrBqB) {
     std::string expected = "http://biomodels.net/biology-qualifiers/is";
     std::string actual = ptr->str();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
-    predicate.freeNode();
+    
 }
 
 //TEST_F(PredicateTests, TestGetNodebqbFails) {
@@ -77,31 +77,31 @@ TEST_F(PredicateTests, TestGetNodebqqPrefix) {
     BiomodelsBiologyQualifier predicate("is");
     std::string expected = "bqbiol";
     ASSERT_STREQ(expected.c_str(), predicate.getPrefix().c_str());
-    predicate.freeNode();
+    
 }
 
 TEST_F(PredicateTests, TestDCTermPrefix) {
     DCTerm predicate("description");
     std::string expected = "dc";
     ASSERT_STREQ(expected.c_str(), predicate.getPrefix().c_str());
-    predicate.freeNode();
+    
 }
 
 TEST_F(PredicateTests, TestDCTermUri) {
     DCTerm predicate("description");
-    std::string expected = "https://dublincore.org/specifications/dublin-core/dcmi-terms/description";
+    std::string expected = "http://purl.org/dc/terms/description";
     std::string actual = predicate.str();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
-    predicate.freeNode();
+    
 }
 
 
 TEST_F(PredicateTests, TestDCTermGetNamespace) {
     DCTerm predicate("description");
-    std::string expected = "https://dublincore.org/specifications/dublin-core/dcmi-terms/";
+    std::string expected = "http://purl.org/dc/terms/";
     std::string actual = predicate.getNamespace();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
-    predicate.freeNode();
+    
 }
 
 TEST_F(PredicateTests, TestDCTermGetPrefix) {
@@ -109,7 +109,7 @@ TEST_F(PredicateTests, TestDCTermGetPrefix) {
     std::string expected = "dc";
     std::string actual = predicate.getPrefix();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
-    predicate.freeNode();
+    
 }
 
 TEST_F(PredicateTests, TestBqBiolGetNamespace) {
@@ -117,7 +117,7 @@ TEST_F(PredicateTests, TestBqBiolGetNamespace) {
     std::string expected = "http://biomodels.net/biology-qualifiers/";
     std::string actual = predicate.getNamespace();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
-    predicate.freeNode();
+    
 }
 
 
@@ -126,7 +126,7 @@ TEST_F(PredicateTests, TestBqBiolGetPrefix) {
     std::string expected = "bqbiol";
     std::string actual = predicate.getPrefix();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
-    predicate.freeNode();
+    
 }
 
 
@@ -135,7 +135,7 @@ TEST_F(PredicateTests, TestBqModelGetNamespace) {
     std::string expected = "http://biomodels.net/biology-qualifiers/";
     std::string actual = predicate.getNamespace();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
-    predicate.freeNode();
+    
 }
 
 
@@ -144,7 +144,7 @@ TEST_F(PredicateTests, TestBqModelGetPrefix) {
     std::string expected = "bqbiol";
     std::string actual = predicate.getPrefix();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
-    predicate.freeNode();
+    
 }
 
 
@@ -154,7 +154,7 @@ TEST_F(PredicateTests, TestBqModelGetPrefixFromPtr) {
     std::string expected = "bqbiol";
     std::string actual = term_ptr->getPrefix();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
-    predicate.freeNode();
+    
 }
 
 TEST_F(PredicateTests, TestBqModelGetPrefixFromPtrToBaseClass) {
@@ -163,7 +163,7 @@ TEST_F(PredicateTests, TestBqModelGetPrefixFromPtrToBaseClass) {
     std::string expected = "bqbiol";
     std::string actual = term_ptr->getPrefix();
     ASSERT_STREQ(expected.c_str(), actual.c_str());
-    predicate.freeNode();
+    
 }
 
 
@@ -195,81 +195,72 @@ TEST_F(PredicateTests, TestSemsimPredicateNamespace) {
     term_ptr->freeNode();
 }
 
-//
-//TEST_F(PredicateTests, TestFromUriNode) {
-//    std::string url_str = "https://www.notarealaddress.com";
-//    Predicate predicate = Predicate::fromRawPtr(LibrdfNode::fromUriString(url_str.c_str()));
-//    std::string node_string = predicate.str();
-//    ASSERT_STREQ(url_str.c_str(), node_string.c_str());
-//    predicate.freeNode();
-//}
-//
-//
-//TEST_F(PredicateTests, TestFromUriNodeNamespace) {
-//    std::string url_str = "https://www.notarealaddress.com/nota/term";
-//    Predicate predicate = Predicate::fromRawPtr(LibrdfNode::fromUriString(url_str.c_str()));
-//    const std::string &actual = predicate.getNamespace();
-//    std::string expected = "https://www.notarealaddress.com/nota/";
-//    ASSERT_STREQ(expected.c_str(), actual.c_str());
-//    predicate.freeNode();
-//}
-//
-//TEST_F(PredicateTests, TestFromUriNodeNamespaceWhenPrefixIsKnown) {
-//    std::string url_str = "https://biomodels.net/biology-qualifiers/is";
-//    Predicate predicate = Predicate::fromRawPtr(LibrdfNode::fromUriString(url_str.c_str()));
-//    const std::string &actual = predicate.getNamespace();
-//    std::string expected = "https://biomodels.net/biology-qualifiers/";
-//    ASSERT_STREQ(expected.c_str(), actual.c_str());
-//    predicate.freeNode();
-//}
-//
-//TEST_F(PredicateTests, TestNamespaceWhenItEndsWithHash) {
-//    std::string url_str = "http://bime.uw.edu/semsim/hasSourceParticipant";
-//    Predicate predicate = Predicate::fromRawPtr(LibrdfNode::fromUriString(url_str.c_str()));
-//    const std::string &actual = predicate.getNamespace();
-//    std::string expected = "http://bime.uw.edu/semsim#";
-//    ASSERT_STREQ(expected.c_str(), actual.c_str());
-//    predicate.freeNode();
-//}
-//
-//TEST_F(PredicateTests, TestPrefixWhenNamespaceEndsWithHash) {
-//    std::string url_str = "http://bime.uw.edu/semsim/hasSourceParticipant";
-//    Predicate predicate = Predicate::fromRawPtr(LibrdfNode::fromUriString(url_str.c_str()));
-//    const std::string &actual = predicate.getPrefix();
-//    std::string expected = "omexmeta";
-//    ASSERT_STREQ(expected.c_str(), actual.c_str());
-//    predicate.freeNode();
-//}
-//
-//TEST_F(PredicateTests, TestTermWhenNamespaceEndsWithHash) {
-//    std::string url_str = "http://bime.uw.edu/semsim/hasSourceParticipant";
-//    Predicate predicate = Predicate::fromRawPtr(LibrdfNode::fromUriString(url_str.c_str()));
-//    const std::string &actual = predicate.getTerm();
-//    std::string expected = "hasSourceParticipant";
-//    ASSERT_STREQ(expected.c_str(), actual.c_str());
-//    predicate.freeNode();
-//}
-//
-//TEST_F(PredicateTests, TestFromUriNodeTerm) {
-//    std::string url_str = "https://www.notarealaddress.com/nota/term";
-//    Predicate predicate = Predicate::fromRawPtr(LibrdfNode::fromUriString(url_str.c_str()));
-//    const std::string &actual = predicate.getTerm();
-//    std::string expected = "term";
-//    ASSERT_STREQ(expected.c_str(), actual.c_str());
-//    predicate.freeNode();
-//}
-//
-//TEST_F(PredicateTests, TestFromUriNodePrefix) {
-//    std::string url_str = "https://www.notarealaddress.com/nota/term";
-//    Predicate predicate = Predicate::fromRawPtr(LibrdfNode::fromUriString(url_str.c_str()));
-//    const std::string &actual = predicate.getPrefix();
-//    std::string expected = "NotSet";
-//    ASSERT_STREQ(expected.c_str(), actual.c_str());
-//    predicate.freeNode();
-//}
+
+TEST_F(PredicateTests, TestFromUriNode) {
+    std::string url_str = "https://www.notarealaddress.com";
+    LibrdfNode predNode = LibrdfNode::fromUriString(url_str);
+    Predicate predicate = Predicate(predNode);
+    std::string node_string = predicate.str();
+    ASSERT_STREQ(url_str.c_str(), node_string.c_str());
+}
+
+
+TEST_F(PredicateTests, TestFromUriNodeNamespace) {
+    std::string url_str = "https://www.notarealaddress.com/nota/term";
+    LibrdfNode pNode = LibrdfNode::fromUriString(url_str);
+    Predicate predicate = Predicate(pNode);
+    const std::string &actual = predicate.getNamespace();
+    std::string expected = "https://www.notarealaddress.com/nota/";
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+TEST_F(PredicateTests, TestFromUriNodeNamespaceWhenPrefixIsKnown) {
+    std::string url_str = "https://biomodels.net/biology-qualifiers/is";
+    LibrdfNode pNode = LibrdfNode::fromUriString(url_str);
+    Predicate predicate = Predicate(pNode);
+    const std::string &actual = predicate.getNamespace();
+    std::string expected = "https://biomodels.net/biology-qualifiers/";
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+TEST_F(PredicateTests, TestNamespaceWhenItEndsWithHash) {
+    std::string url_str = "http://bime.uw.edu/semsim/hasSourceParticipant";
+    LibrdfNode pNode = LibrdfNode::fromUriString(url_str);
+    Predicate predicate = Predicate(pNode);
+    const std::string &actual = predicate.getNamespace();
+    std::string expected = "http://bime.uw.edu/semsim/";
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+TEST_F(PredicateTests, TestTermWhenNamespaceEndsWithHash) {
+    std::string url_str = "http://bime.uw.edu/semsim/hasSourceParticipant";
+    LibrdfNode pNode = LibrdfNode::fromUriString(url_str);
+    Predicate predicate = Predicate(pNode);
+    const std::string &actual = predicate.getTerm();
+    std::string expected = "hasSourceParticipant";
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+TEST_F(PredicateTests, TestFromUriNodeTerm) {
+    std::string url_str = "https://www.notarealaddress.com/nota/term";
+    LibrdfNode pNode = LibrdfNode::fromUriString(url_str);
+    Predicate predicate = Predicate(pNode);
+    const std::string &actual = predicate.getTerm();
+    std::string expected = "term";
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
+
+TEST_F(PredicateTests, TestFromUriNodePrefix) {
+    std::string url_str = "https://www.notarealaddress.com/nota/term";
+    LibrdfNode pNode = LibrdfNode::fromUriString(url_str);
+    Predicate predicate = Predicate(pNode);
+    const std::string &actual = predicate.getPrefix();
+    std::string expected = "NotSet";
+    ASSERT_STREQ(expected.c_str(), actual.c_str());
+}
 
 TEST_F(PredicateTests, TestNamespaceKnownWhenNamespaceIsKnown) {
-    std::string ns = "https://dublincore.org/specifications/dublin-core/dcmi-terms/";
+    std::string ns = "http://purl.org/dc/terms/";
     ASSERT_TRUE(Predicate::namespaceKnown(ns));
 }
 
@@ -295,7 +286,7 @@ TEST_F(PredicateTests, TestPredicateFactory) {
 TEST_F(PredicateTests, TestPredicateFactory2) {
     PredicatePtr predicatePtr = PredicateFactory("dc", "description");
     std::string actual = predicatePtr->str();
-    std::string expected = "https://dublincore.org/specifications/dublin-core/dcmi-terms/description";
+    std::string expected = "http://purl.org/dc/terms/description";
     ASSERT_STREQ(expected.c_str(), actual.c_str());
     predicatePtr->freeNode();
 }
@@ -328,7 +319,7 @@ TEST_F(PredicateTests, TestPredicateWithoutSubclass) {
     std::string actual = predicate.str();
     std::string expected = "ns/term";
     ASSERT_STREQ(actual.c_str(), expected.c_str());
-    predicate.freeNode();
+    
 }
 
 TEST_F(PredicateTests, TestPredicateWithoutSubclass2) {

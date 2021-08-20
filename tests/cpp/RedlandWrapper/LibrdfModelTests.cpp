@@ -10,8 +10,8 @@ using namespace redland;
 class LibrdfModelTests : public ::testing::Test {
 
 public:
-    LibrdfStorage storage1 = LibrdfStorage();
-    LibrdfStorage storage2 = LibrdfStorage();
+    LibrdfStorage storage1;
+    LibrdfStorage storage2;
 
     LibrdfModelTests() = default;
 
@@ -21,7 +21,8 @@ public:
 
 TEST_F(LibrdfModelTests, TestNew) {
     LibrdfModel model1 = LibrdfModel(storage1);
-    ASSERT_NE(model1.get(), nullptr);
+    // get as an R value would be a memory leak, so we avoid incrementing the usage count.
+    ASSERT_NE(model1.getWithoutIncrement(), nullptr);
 }
 
 
@@ -29,14 +30,15 @@ TEST_F(LibrdfModelTests, TestMoveConstructor) {
     // test with valgrind
     LibrdfModel model1 = LibrdfModel(storage1);
     LibrdfModel model2 = std::move(model1);
-
+    ASSERT_EQ(1, model2.getUsage());
 }
 
 TEST_F(LibrdfModelTests, TestMoveAssignment) {
     // test with valgrind
-    LibrdfModel model1 = LibrdfModel(storage1);
-    LibrdfModel model2 = LibrdfModel(storage2);
+    LibrdfModel model1(storage1);
+    LibrdfModel model2(storage2);
     model2 = std::move(model1);
+    ASSERT_EQ(1, model2.getUsage());
 }
 
 
@@ -51,7 +53,6 @@ TEST_F(LibrdfModelTests, TestAddStatement) {
     int expected = 1;
     int actual = model1.size();
     ASSERT_EQ(expected, actual);
-    statement.freeStatement();
 }
 
 TEST_F(LibrdfModelTests, TestRemoveStatement) {

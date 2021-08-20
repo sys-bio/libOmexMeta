@@ -237,6 +237,7 @@ typedef struct librdf_storage_factory_s librdf_storage_factory;
  */
 typedef struct librdf_stream_s librdf_stream;
 
+
 /**
  * librdf_parser:
  *

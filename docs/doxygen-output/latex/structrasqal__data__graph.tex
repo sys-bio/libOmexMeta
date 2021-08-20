@@ -11,10 +11,10 @@
 rasqal\+\_\+world $\ast$ {\bfseries world}
 \item 
 \mbox{\Hypertarget{structrasqal__data__graph_a993b89a05ca64f2173c555236c440260}\label{structrasqal__data__graph_a993b89a05ca64f2173c555236c440260}} 
-raptor\+\_\+uri $\ast$ {\bfseries uri}
+\mbox{\hyperlink{structraptor__uri__s}{raptor\+\_\+uri}} $\ast$ {\bfseries uri}
 \item 
 \mbox{\Hypertarget{structrasqal__data__graph_af4f56e6955f3fb1dd8a401825417178f}\label{structrasqal__data__graph_af4f56e6955f3fb1dd8a401825417178f}} 
-raptor\+\_\+uri $\ast$ {\bfseries name\+\_\+uri}
+\mbox{\hyperlink{structraptor__uri__s}{raptor\+\_\+uri}} $\ast$ {\bfseries name\+\_\+uri}
 \item 
 \mbox{\Hypertarget{structrasqal__data__graph_a37496edef1168d08487daf6583f453d4}\label{structrasqal__data__graph_a37496edef1168d08487daf6583f453d4}} 
 unsigned int {\bfseries flags}
@@ -26,13 +26,13 @@ char $\ast$ {\bfseries format\+\_\+type}
 char $\ast$ {\bfseries format\+\_\+name}
 \item 
 \mbox{\Hypertarget{structrasqal__data__graph_a28584c8f4b9e9dbd87e22bddac5d1cf1}\label{structrasqal__data__graph_a28584c8f4b9e9dbd87e22bddac5d1cf1}} 
-raptor\+\_\+uri $\ast$ {\bfseries format\+\_\+uri}
+\mbox{\hyperlink{structraptor__uri__s}{raptor\+\_\+uri}} $\ast$ {\bfseries format\+\_\+uri}
 \item 
 \mbox{\Hypertarget{structrasqal__data__graph_a283811653869403b16d53b5aae8f3539}\label{structrasqal__data__graph_a283811653869403b16d53b5aae8f3539}} 
 raptor\+\_\+iostream $\ast$ {\bfseries iostr}
 \item 
 \mbox{\Hypertarget{structrasqal__data__graph_a2bbb1202a35ac46f1dfbe1a9abfa86d4}\label{structrasqal__data__graph_a2bbb1202a35ac46f1dfbe1a9abfa86d4}} 
-raptor\+\_\+uri $\ast$ {\bfseries base\+\_\+uri}
+\mbox{\hyperlink{structraptor__uri__s}{raptor\+\_\+uri}} $\ast$ {\bfseries base\+\_\+uri}
 \item 
 \mbox{\Hypertarget{structrasqal__data__graph_aca7511143d638037f64563ee4f29d508}\label{structrasqal__data__graph_aca7511143d638037f64563ee4f29d508}} 
 int {\bfseries usage}
@@ -40,13 +40,13 @@ int {\bfseries usage}
 
 
 \doxysubsection{Detailed Description}
-\mbox{\hyperlink{structrasqal__data__graph}{rasqal\+\_\+data\+\_\+graph}}\+: @world\+: rasqal\+\_\+world object @uri\+: source U\+RI @name\+\_\+uri\+: name of graph for R\+A\+S\+Q\+A\+L\+\_\+\+D\+A\+T\+A\+\_\+\+G\+R\+A\+P\+H\+\_\+\+N\+A\+M\+ED @flags\+: R\+A\+S\+Q\+A\+L\+\_\+\+D\+A\+T\+A\+\_\+\+G\+R\+A\+P\+H\+\_\+\+N\+A\+M\+ED or R\+A\+S\+Q\+A\+L\+\_\+\+D\+A\+T\+A\+\_\+\+G\+R\+A\+P\+H\+\_\+\+B\+A\+C\+K\+G\+R\+O\+U\+ND @format\+\_\+type\+: M\+I\+ME Type of data format at @uri (or N\+U\+LL) @format\+\_\+name\+: Raptor parser Name of data format at @uri (or N\+U\+LL) @format\+\_\+uri\+: U\+RI of data format at @uri (or N\+U\+LL) @iostr\+: Raptor iostream for content, overriding @uri if present (or N\+U\+LL) @base\+\_\+uri\+: base U\+RI for reading from iostream @usage\+: usage count of this object
+\mbox{\hyperlink{structrasqal__data__graph}{rasqal\+\_\+data\+\_\+graph}}\+: @world\+: rasqal\+\_\+world object @uri\+: source URI @name\+\_\+uri\+: name of graph for RASQAL\+\_\+\+DATA\+\_\+\+GRAPH\+\_\+\+NAMED @flags\+: RASQAL\+\_\+\+DATA\+\_\+\+GRAPH\+\_\+\+NAMED or RASQAL\+\_\+\+DATA\+\_\+\+GRAPH\+\_\+\+BACKGROUND @format\+\_\+type\+: MIME Type of data format at @uri (or NULL) @format\+\_\+name\+: Raptor parser Name of data format at @uri (or NULL) @format\+\_\+uri\+: URI of data format at @uri (or NULL) @iostr\+: Raptor iostream for content, overriding @uri if present (or NULL) @base\+\_\+uri\+: base URI for reading from iostream @usage\+: usage count of this object
 
-A source of R\+DF data for querying.
+A source of RDF data for querying.
 
-If @iostr is present, the graph can be constructed by parsing the iostream and using @base\+\_\+uri as a base uri. Otherwise the graph can be constructed from the graph at U\+RI @uri.
+If @iostr is present, the graph can be constructed by parsing the iostream and using @base\+\_\+uri as a base uri. Otherwise the graph can be constructed from the graph at URI @uri.
 
-In either case the @name\+\_\+uri is the graph name as long as @flags is R\+A\+S\+Q\+A\+L\+\_\+\+D\+A\+T\+A\+\_\+\+G\+R\+A\+P\+H\+\_\+\+N\+A\+M\+ED 
+In either case the @name\+\_\+uri is the graph name as long as @flags is RASQAL\+\_\+\+DATA\+\_\+\+GRAPH\+\_\+\+NAMED 
 
 The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 

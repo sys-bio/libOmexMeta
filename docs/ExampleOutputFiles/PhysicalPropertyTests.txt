@@ -1,0 +1,19 @@
+Running main() from ..\third_party\googletest\googletest\src\gtest_main.cc
+[==========] Running 5 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 5 tests from PhysicalPropertyTests
+[ RUN      ] PhysicalPropertyTests.TestPhysicalProperty
+[       OK ] PhysicalPropertyTests.TestPhysicalProperty (3 ms)
+[ RUN      ] PhysicalPropertyTests.TestPhysicalPropertyAutoGenerateAbout
+[       OK ] PhysicalPropertyTests.TestPhysicalPropertyAutoGenerateAbout (0 ms)
+[ RUN      ] PhysicalPropertyTests.TestEquality
+[       OK ] PhysicalPropertyTests.TestEquality (0 ms)
+[ RUN      ] PhysicalPropertyTests.TestInequality
+[       OK ] PhysicalPropertyTests.TestInequality (0 ms)
+[ RUN      ] PhysicalPropertyTests.OptionalProperty
+[       OK ] PhysicalPropertyTests.OptionalProperty (0 ms)
+[----------] 5 tests from PhysicalPropertyTests (3 ms total)
+
+[----------] Global test environment tear-down
+[==========] 5 tests from 1 test suite ran. (3 ms total)
+[  PASSED  ] 5 tests.

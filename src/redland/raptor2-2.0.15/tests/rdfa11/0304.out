@@ -1,2 +1,2 @@
-<http://example.net/> <https://dublincore.org/specifications/dublin-core/dcmi-terms/title> "Test 0304" .
-<http://example.net/> <https://dublincore.org/specifications/dublin-core/dcmi-terms/description> "A yellow rectangle with sharp corners." .
+<http://example.net/> <http://purl.org/dc/terms/title> "Test 0304" .
+<http://example.net/> <http://purl.org/dc/terms/description> "A yellow rectangle with sharp corners." .

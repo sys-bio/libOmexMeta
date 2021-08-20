@@ -1,59 +1,122 @@
 \hypertarget{classredland_1_1LibrdfQueryResults}{}\doxysection{redland\+::Librdf\+Query\+Results Class Reference}
 \label{classredland_1_1LibrdfQueryResults}\index{redland::LibrdfQueryResults@{redland::LibrdfQueryResults}}
+Inheritance diagram for redland\+::Librdf\+Query\+Results\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classredland_1_1LibrdfQueryResults}
+\end{center}
+\end{figure}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{classredland_1_1LibrdfQueryResults_a8c9e17542c836ff3dd09da68bfc334f1}\label{classredland_1_1LibrdfQueryResults_a8c9e17542c836ff3dd09da68bfc334f1}} 
 {\bfseries Librdf\+Query\+Results} (librdf\+\_\+query\+\_\+results $\ast$query\+Results)
 \item 
-\mbox{\hyperlink{classredland_1_1LibrdfQueryResults_a965fe04027cb2ab0392e687e891f6c44}{Librdf\+Query\+Results}} (const \mbox{\hyperlink{classredland_1_1LibrdfQueryResults}{Librdf\+Query\+Results}} \&query\+Results)=delete
+\mbox{\hyperlink{classredland_1_1LibrdfStream}{Librdf\+Stream}} \mbox{\hyperlink{classredland_1_1LibrdfQueryResults_abac7546d8487c786b39046878d27d0b7}{to\+Stream}} ()
+\begin{DoxyCompactList}\small\item\em get the query results as a \mbox{\hyperlink{classredland_1_1LibrdfStream}{Librdf\+Stream}} \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classredland_1_1LibrdfQueryResults_a2fc367d8efdeaaa4ebf9e5e710d0440e}\label{classredland_1_1LibrdfQueryResults_a2fc367d8efdeaaa4ebf9e5e710d0440e}} 
+int \mbox{\hyperlink{classredland_1_1LibrdfQueryResults_a2fc367d8efdeaaa4ebf9e5e710d0440e}{next}} ()
+\begin{DoxyCompactList}\small\item\em Move to the next result. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classredland_1_1LibrdfQueryResults_ad6ab0b2bd53491ce650f9c740f04c2ec}\label{classredland_1_1LibrdfQueryResults_ad6ab0b2bd53491ce650f9c740f04c2ec}} 
+bool \mbox{\hyperlink{classredland_1_1LibrdfQueryResults_ad6ab0b2bd53491ce650f9c740f04c2ec}{is\+Finished}} ()
+\begin{DoxyCompactList}\small\item\em true when binding results are exausted \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classredland_1_1LibrdfQueryResults_a1626fe6649dbb8161a05493ac7ec6ee7}\label{classredland_1_1LibrdfQueryResults_a1626fe6649dbb8161a05493ac7ec6ee7}} 
+std\+::vector$<$ \mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} $>$ {\bfseries get\+Bindings} ()
 \item 
-\mbox{\hyperlink{classredland_1_1LibrdfQueryResults_a2210255d8dd871b72279915712a612cd}{Librdf\+Query\+Results}} (\mbox{\hyperlink{classredland_1_1LibrdfQueryResults}{Librdf\+Query\+Results}} \&\&query\+Results) noexcept
+\mbox{\Hypertarget{classredland_1_1LibrdfQueryResults_a056a92a8cd926072718e4553ed9a39b9}\label{classredland_1_1LibrdfQueryResults_a056a92a8cd926072718e4553ed9a39b9}} 
+bool \mbox{\hyperlink{classredland_1_1LibrdfQueryResults_a056a92a8cd926072718e4553ed9a39b9}{is\+Boolean}} ()
+\begin{DoxyCompactList}\small\item\em true when this \mbox{\hyperlink{classredland_1_1LibrdfQueryResults}{Librdf\+Query\+Results}} is variable boolean format \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classredland_1_1LibrdfQueryResults_a7a175af6ea28920887c4b2dc4645feb0}\label{classredland_1_1LibrdfQueryResults_a7a175af6ea28920887c4b2dc4645feb0}} 
+bool \mbox{\hyperlink{classredland_1_1LibrdfQueryResults_a7a175af6ea28920887c4b2dc4645feb0}{is\+Bindings}} ()
+\begin{DoxyCompactList}\small\item\em true when this \mbox{\hyperlink{classredland_1_1LibrdfQueryResults}{Librdf\+Query\+Results}} is variable bindings format \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classredland_1_1LibrdfQueryResults_a52fccc16c398414ddb287fa9bb2a70fd}\label{classredland_1_1LibrdfQueryResults_a52fccc16c398414ddb287fa9bb2a70fd}} 
+int {\bfseries get\+Boolean} ()
 \item 
-\mbox{\hyperlink{classredland_1_1LibrdfQueryResults}{Librdf\+Query\+Results}} \& \mbox{\hyperlink{classredland_1_1LibrdfQueryResults_a8b449205365d6ba353de1ff749be1b35}{operator=}} (const \mbox{\hyperlink{classredland_1_1LibrdfQueryResults}{Librdf\+Query\+Results}} \&query\+Results)=delete
+\mbox{\Hypertarget{classredland_1_1LibrdfQueryResults_a60e7f4a030655ee3ff0801ce28e3e4e8}\label{classredland_1_1LibrdfQueryResults_a60e7f4a030655ee3ff0801ce28e3e4e8}} 
+bool \mbox{\hyperlink{classredland_1_1LibrdfQueryResults_a60e7f4a030655ee3ff0801ce28e3e4e8}{is\+Graph}} ()
+\begin{DoxyCompactList}\small\item\em true when this \mbox{\hyperlink{classredland_1_1LibrdfQueryResults}{Librdf\+Query\+Results}} is RDF graph format \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classredland_1_1LibrdfQueryResults_a1a105e783020b8022c5bc8473818be8b}\label{classredland_1_1LibrdfQueryResults_a1a105e783020b8022c5bc8473818be8b}} 
+std\+::string {\bfseries get\+Binding\+Value\+By\+Name} (const std\+::string \&name)
 \item 
-\mbox{\hyperlink{classredland_1_1LibrdfQueryResults}{Librdf\+Query\+Results}} \& \mbox{\hyperlink{classredland_1_1LibrdfQueryResults_af8df0f428610c028703ff3c724dfb474}{operator=}} (\mbox{\hyperlink{classredland_1_1LibrdfQueryResults}{Librdf\+Query\+Results}} \&\&query\+Results) noexcept
+int \mbox{\hyperlink{classredland_1_1LibrdfQueryResults_a1fe7caabdd6e0a2303dd336c9a9b6fb4}{get\+Bindings\+Count}} ()
+\begin{DoxyCompactList}\small\item\em returns the number of bindings in the sparql query. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classredland_1_1LibrdfQueryResults_a6e452fb1c79115834cf97f0898af41f6}\label{classredland_1_1LibrdfQueryResults_a6e452fb1c79115834cf97f0898af41f6}} 
+std\+::string {\bfseries to\+String} (const std\+::string \&output\+\_\+format)
 \item 
-\mbox{\Hypertarget{classredland_1_1LibrdfQueryResults_aa40ed7731b543dfc971b5acbb016cfee}\label{classredland_1_1LibrdfQueryResults_aa40ed7731b543dfc971b5acbb016cfee}} 
-librdf\+\_\+query\+\_\+results $\ast$ {\bfseries get} () const
+std\+::string \mbox{\hyperlink{classredland_1_1LibrdfQueryResults_ad5f4123f843438e687ef5b8f99816de4}{get\+Bindings\+Name}} (int index)
+\begin{DoxyCompactList}\small\item\em get the value of the bindings at \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{classredland_1_1LibrdfQueryResults_adf2873cbdc7263b3dd16df61c8ae1c99}{get\+Bindings\+Names}} ()
+\begin{DoxyCompactList}\small\item\em get all bindings names as a vector of strings \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classredland_1_1LibrdfQueryResults_a839ea1086c888dbb62c6d5b6d8279add}\label{classredland_1_1LibrdfQueryResults_a839ea1086c888dbb62c6d5b6d8279add}} 
+void {\bfseries print\+Query\+Results} ()
 \item 
-\mbox{\Hypertarget{classredland_1_1LibrdfQueryResults_acb51d92dfce59fdc64bd475326b038bf}\label{classredland_1_1LibrdfQueryResults_acb51d92dfce59fdc64bd475326b038bf}} 
-std\+::string {\bfseries str} (std\+::string format)
+\mbox{\Hypertarget{classredland_1_1LibrdfQueryResults_a856a47ebe225d1d828197f9f2e5c7d9c}\label{classredland_1_1LibrdfQueryResults_a856a47ebe225d1d828197f9f2e5c7d9c}} 
+std\+::vector$<$ std\+::string $>$ {\bfseries get\+Valid\+Output\+Formats} () const
 \item 
-\mbox{\Hypertarget{classredland_1_1LibrdfQueryResults_a7cc66b81f87f936fd59063b58d2a2571}\label{classredland_1_1LibrdfQueryResults_a7cc66b81f87f936fd59063b58d2a2571}} 
-void {\bfseries free\+Query\+Results} ()
+\mbox{\Hypertarget{classredland_1_1LibrdfQueryResults_ac80249e27c57b11309311862c1cee452}\label{classredland_1_1LibrdfQueryResults_ac80249e27c57b11309311862c1cee452}} 
+Results\+Map \mbox{\hyperlink{classredland_1_1LibrdfQueryResults_ac80249e27c57b11309311862c1cee452}{map}} ()
+\begin{DoxyCompactList}\small\item\em create a map from the query results. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classredland_1_1LibrdfQueryResults_ad81559675d154f5dd2386ff67d971e46}\label{classredland_1_1LibrdfQueryResults_ad81559675d154f5dd2386ff67d971e46}} 
+static std\+::string {\bfseries string\+Replace} (std\+::string str, const std\+::string \&string\+\_\+to\+\_\+replace, const std\+::string \&replacement)
 \end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
 
-
-\doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{classredland_1_1LibrdfQueryResults_a965fe04027cb2ab0392e687e891f6c44}\label{classredland_1_1LibrdfQueryResults_a965fe04027cb2ab0392e687e891f6c44}} 
-\index{redland::LibrdfQueryResults@{redland::LibrdfQueryResults}!LibrdfQueryResults@{LibrdfQueryResults}}
-\index{LibrdfQueryResults@{LibrdfQueryResults}!redland::LibrdfQueryResults@{redland::LibrdfQueryResults}}
-\doxysubsubsection{\texorpdfstring{LibrdfQueryResults()}{LibrdfQueryResults()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily redland\+::\+Librdf\+Query\+Results\+::\+Librdf\+Query\+Results (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classredland_1_1LibrdfQueryResults}{Librdf\+Query\+Results}} \&}]{query\+Results }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
-
-Copy constructor \mbox{\Hypertarget{classredland_1_1LibrdfQueryResults_a2210255d8dd871b72279915712a612cd}\label{classredland_1_1LibrdfQueryResults_a2210255d8dd871b72279915712a612cd}} 
-\index{redland::LibrdfQueryResults@{redland::LibrdfQueryResults}!LibrdfQueryResults@{LibrdfQueryResults}}
-\index{LibrdfQueryResults@{LibrdfQueryResults}!redland::LibrdfQueryResults@{redland::LibrdfQueryResults}}
-\doxysubsubsection{\texorpdfstring{LibrdfQueryResults()}{LibrdfQueryResults()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily redland\+::\+Librdf\+Query\+Results\+::\+Librdf\+Query\+Results (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classredland_1_1LibrdfQueryResults}{Librdf\+Query\+Results}} \&\&}]{query\+Results }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
-
-move constructor 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{classredland_1_1LibrdfQueryResults_a8b449205365d6ba353de1ff749be1b35}\label{classredland_1_1LibrdfQueryResults_a8b449205365d6ba353de1ff749be1b35}} 
-\index{redland::LibrdfQueryResults@{redland::LibrdfQueryResults}!operator=@{operator=}}
-\index{operator=@{operator=}!redland::LibrdfQueryResults@{redland::LibrdfQueryResults}}
-\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classredland_1_1LibrdfQueryResults}{Librdf\+Query\+Results}}\& redland\+::\+Librdf\+Query\+Results\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classredland_1_1LibrdfQueryResults}{Librdf\+Query\+Results}} \&}]{query\+Results }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+\mbox{\Hypertarget{classredland_1_1LibrdfQueryResults_a1fe7caabdd6e0a2303dd336c9a9b6fb4}\label{classredland_1_1LibrdfQueryResults_a1fe7caabdd6e0a2303dd336c9a9b6fb4}} 
+\index{redland::LibrdfQueryResults@{redland::LibrdfQueryResults}!getBindingsCount@{getBindingsCount}}
+\index{getBindingsCount@{getBindingsCount}!redland::LibrdfQueryResults@{redland::LibrdfQueryResults}}
+\doxysubsubsection{\texorpdfstring{getBindingsCount()}{getBindingsCount()}}
+{\footnotesize\ttfamily int redland\+::\+Librdf\+Query\+Results\+::get\+Bindings\+Count (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-Copy assignment constructor \mbox{\Hypertarget{classredland_1_1LibrdfQueryResults_af8df0f428610c028703ff3c724dfb474}\label{classredland_1_1LibrdfQueryResults_af8df0f428610c028703ff3c724dfb474}} 
-\index{redland::LibrdfQueryResults@{redland::LibrdfQueryResults}!operator=@{operator=}}
-\index{operator=@{operator=}!redland::LibrdfQueryResults@{redland::LibrdfQueryResults}}
-\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classredland_1_1LibrdfQueryResults}{Librdf\+Query\+Results}} \& redland\+::\+Librdf\+Query\+Results\+::operator= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classredland_1_1LibrdfQueryResults}{Librdf\+Query\+Results}} \&\&}]{query\+Results }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
 
-move assignment constructor 
+
+returns the number of bindings in the sparql query. 
+
+i.\+e. the query SELECT ?x ?y ?z WHERE \{ ?x ?y ?z \} has 3 bindings, x, y and z. \mbox{\Hypertarget{classredland_1_1LibrdfQueryResults_ad5f4123f843438e687ef5b8f99816de4}\label{classredland_1_1LibrdfQueryResults_ad5f4123f843438e687ef5b8f99816de4}} 
+\index{redland::LibrdfQueryResults@{redland::LibrdfQueryResults}!getBindingsName@{getBindingsName}}
+\index{getBindingsName@{getBindingsName}!redland::LibrdfQueryResults@{redland::LibrdfQueryResults}}
+\doxysubsubsection{\texorpdfstring{getBindingsName()}{getBindingsName()}}
+{\footnotesize\ttfamily std\+::string redland\+::\+Librdf\+Query\+Results\+::get\+Bindings\+Name (\begin{DoxyParamCaption}\item[{int}]{index }\end{DoxyParamCaption})}
+
+
+
+get the value of the bindings at 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & as a std\+::string \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classredland_1_1LibrdfQueryResults_adf2873cbdc7263b3dd16df61c8ae1c99}\label{classredland_1_1LibrdfQueryResults_adf2873cbdc7263b3dd16df61c8ae1c99}} 
+\index{redland::LibrdfQueryResults@{redland::LibrdfQueryResults}!getBindingsNames@{getBindingsNames}}
+\index{getBindingsNames@{getBindingsNames}!redland::LibrdfQueryResults@{redland::LibrdfQueryResults}}
+\doxysubsubsection{\texorpdfstring{getBindingsNames()}{getBindingsNames()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::string $>$ redland\+::\+Librdf\+Query\+Results\+::get\+Bindings\+Names (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+get all bindings names as a vector of strings 
+
+the number of bindings is determined by get\+Bindings\+Count \mbox{\Hypertarget{classredland_1_1LibrdfQueryResults_abac7546d8487c786b39046878d27d0b7}\label{classredland_1_1LibrdfQueryResults_abac7546d8487c786b39046878d27d0b7}} 
+\index{redland::LibrdfQueryResults@{redland::LibrdfQueryResults}!toStream@{toStream}}
+\index{toStream@{toStream}!redland::LibrdfQueryResults@{redland::LibrdfQueryResults}}
+\doxysubsubsection{\texorpdfstring{toStream()}{toStream()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classredland_1_1LibrdfStream}{Librdf\+Stream}} redland\+::\+Librdf\+Query\+Results\+::to\+Stream (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+get the query results as a \mbox{\hyperlink{classredland_1_1LibrdfStream}{Librdf\+Stream}} 
+
+only meaningful if this is an RDF graph query result 
+\begin{DoxyExceptions}{Exceptions}
+{\em invalid\+\_\+argument} & when to\+Stream is called and Librdf\+Query\+Result\+::is\+Graph() evaluates to false. \\
+\hline
+\end{DoxyExceptions}
+
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

@@ -54,9 +54,8 @@ int main(){
         .predicate("bqbiol", "is")
         .resourceUri("uniprot/P01137");
 
-    std::string singular_annotation_string = singular_annotation.str("turtle");
+    std::string singular_annotation_string = rdf.toString("turtle");
     std::cout << singular_annotation_string<< std::endl;
-    singular_annotation.freeTriple();
 
     return 0;
 }

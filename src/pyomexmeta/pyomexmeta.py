@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import ctypes as ct
 import os
+import sys
 from contextlib import contextmanager
 from sys import executable as _python_interpretor
 from typing import List
@@ -9,13 +10,13 @@ from functools import wraps
 
 try:
     # for use from outside the package, as a python package
-    from .pyomexmeta_api import PyOmexMetaAPI, eUriType, eXmlType, OmexMetaException
+    from .pyomexmeta_api import PyOmexMetaAPI, eUriType, eXmlType, eLogLevel, OmexMetaException
 except ImportError:
     try:  # for internal use
-        from pyomexmeta_api import PyOmexMetaAPI, eUriType, eXmlType, OmexMetaException
+        from pyomexmeta_api import PyOmexMetaAPI, eUriType, eXmlType, eLogLevel, OmexMetaException
     except ImportError:
         # for internal use
-        from . import pyomexmeta_api, eUriType, eXmlType, OmexMetaException
+        from . import pyomexmeta_api, eUriType, eXmlType, eLogLevel, OmexMetaException
 
 _pyom = PyOmexMetaAPI()
 
@@ -46,6 +47,7 @@ def propagate_omexmeta_error(func):
 
     """
     if callable(func):
+
         @wraps(func)
         def raise_error_if_necessary(*args, **kwargs):
             failed = func(*args, **kwargs)
@@ -59,6 +61,7 @@ def propagate_omexmeta_error(func):
                     _pyom.clear_last_error()
                     raise OmexMetaException(err)
             return failed
+
         return raise_error_if_necessary
     else:
         value = func
@@ -66,12 +69,12 @@ def propagate_omexmeta_error(func):
             err = _pyom.get_last_error()
             _pyom.clear_last_error()
             raise OmexMetaException(err)
-        if isinstance(func, int):
-            if func < 0:
-                err = _pyom.get_last_error()
-                _pyom.clear_last_error()
-                raise OmexMetaException(err)
-        return func
+    if isinstance(func, int):
+        if func < 0:
+            err = _pyom.get_last_error()
+            _pyom.clear_last_error()
+            raise OmexMetaException(err)
+    return func
 
 
 class RDF:
@@ -653,8 +656,10 @@ class RDF:
         propagate_omexmeta_error(string_ptr)
         return _pyom.get_and_free_c_str(string_ptr)
 
-    def query(self, query_str: str, results_syntax: str) -> str:
+    def query_results_as_string(self, query_str: str, results_syntax: str) -> str:
         """Query the :class:`RDF` using sparql.
+
+        Returns the results as a string in the specified format.
 
         Args:
             query_str: (str) A SPAQRL query
@@ -666,7 +671,10 @@ class RDF:
         
         Examples:
             >>> rdf = RDF.from_file("annot.rdf") # read from file on disk
-            >>> rdf.query("SELECT *?x ?y ?z WHERE { ?x ?y ?z }") # selects everything
+            >>> rdf.query_results_as_string("SELECT *?x ?y ?z WHERE { ?x ?y ?z }") # selects everything
+
+        See Also:
+            query_results_as_dict
 
         """
         query_results_ptr = _pyom.rdf_query_results_as_str(
@@ -675,6 +683,70 @@ class RDF:
         results_crlf = _pyom.get_and_free_c_str(query_results_ptr)
         results_lf = _pyom.crlf_to_lr(results_crlf)
         return results_lf
+
+    def query_results_as_dict(self, query_str: str) -> dict:
+        """Query the :class:`RDF` using sparql
+
+        Returns the results as a dict[variable_name] = list(results)
+
+        Args:
+            query_str: (str) A SPAQRL query
+
+        Returns: dict
+
+        Examples:
+            >>> rdf = RDF.from_file("annot.rdf") # read from file on disk
+            >>> rdf.query_results_as_dict("SELECT *?x ?y ?z WHERE { ?x ?y ?z }") # selects everything
+
+        See Also:
+            query_results_as_str
+
+        """
+        # Do the query, get the pointer to the map obj
+        results_map_ptr = _pyom.rdf_query_results_as_map(self._obj, query_str.encode())
+        propagate_omexmeta_error(results_map_ptr)
+
+        # how many elements in the map?
+        map_size = _pyom.results_map_get_size(results_map_ptr)
+        propagate_omexmeta_error(map_size)
+
+        # get the keys in the map
+        map_keys = _pyom.results_map_get_keys(results_map_ptr)
+        propagate_omexmeta_error(map_keys)
+
+        results_dict = dict()
+
+        # iterate over the number of elements in the map
+        for i in range(map_size):
+            # get the string value of key i
+            key = _pyom.string_vector_get_element_at_idx(map_keys, i)
+            propagate_omexmeta_error(key)
+            key = _pyom.get_and_free_c_str(key)
+
+            # assign new key in our results dict
+            results_dict[key] = []
+
+            # get the value of the string vector that is mapped to by key
+            string_vector_at_key = _pyom.results_map_get_string_vector_at(results_map_ptr, key.encode())
+            propagate_omexmeta_error(string_vector_at_key)
+
+            # get the size of the string vector
+            string_vector_size = _pyom.string_vector_get_size(string_vector_at_key)
+            propagate_omexmeta_error(string_vector_size)
+
+            # iterate over the string vector and pop the results into the results dict
+            for i in range(string_vector_size):
+                # collect the value of the element at position i as string
+                val = _pyom.string_vector_get_element_at_idx(string_vector_at_key, i)
+                propagate_omexmeta_error(val)
+                val = _pyom.get_and_free_c_str(val)
+                results_dict[key].append(val)
+
+            # clean up heap memory
+            _pyom.string_vector_delete(string_vector_at_key)
+        _pyom.string_vector_delete(map_keys)
+        _pyom.results_map_delete(results_map_ptr)
+        return results_dict
 
     def to_editor(self, xml: str, generate_new_metaids: bool = False, sbml_semantic_extraction: bool = True) -> Editor:
         """Create an Editor object which is the interface for creating and removing annotations
@@ -1319,7 +1391,7 @@ class Editor:
 
     def add_curator(self, curator) -> Editor:
         """Add model level annotation "curator" to the rdf graph"""
-        self._obj = _pyom.editor_add_curator(self._obj, curator.encode())
+        self._obj = _pyom.editor_add_contributor(self._obj, curator.encode())
         propagate_omexmeta_error(self._obj)
         return self
 
@@ -1353,7 +1425,7 @@ class Editor:
         propagate_omexmeta_error(self._obj)
         return self
 
-    def strip_annotations(self, annotationElementName:str = "annotation") -> str:
+    def strip_annotations(self, annotationElementName: str = "annotation") -> str:
         xml = _pyom.get_and_free_c_str(_pyom.editor_strip_annotations(self._obj, annotationElementName.encode()))
         propagate_omexmeta_error(self._obj)
         return xml
@@ -1475,7 +1547,7 @@ class SingularAnnotation:
             namespace: One of
                 * "bqbiol"   BiomodelsBiologyQualifier. http://biomodels.net/biology-qualifiers/
                 * "bqmodel"  BiomodelsModelQualifier.   http://biomodels.net/model-qualifiers/
-                * "dc"       DCTerm.                    https://dublincore.org/specifications/dublin-core/dcmi-terms/
+                * "dc"       DCTerm.                    http://purl.org/dc/terms/
                 * "semsim"   SemSim.                    http://bime.uw.edu/semsim/
                 * "foaf"     Foaf.                      http://xmlns.com/foaf/0.1/
 
@@ -2263,6 +2335,7 @@ class EnergyDiff(_PropertyBearer):
     elsewhere in the RDF metadata.
 
     """
+
     def __init__(self, energy_diff_ptr: ct.c_int64):
         """Constructor for :class:`EnergyDiff`.
 
@@ -2462,3 +2535,119 @@ class PersonalInformation:
     def delete(self):
         """Clean up resources associated with this object"""
         return _pyom.personal_information_delete(self._obj)
+
+
+class Logger:
+
+    def __init__(self):
+        pass
+
+    @staticmethod
+    def get_logger() -> int:
+        """returns memory address of logger instance"""
+        return _pyom.logger_get_logger()
+
+    @staticmethod
+    def set_formatter(format: str) -> None:
+        """Format string for the logger
+
+        See `here <https://github.com/gabime/spdlog/wiki/3.-Custom-formatting#pattern-flags>`_ for valid formatting codes
+
+        """
+        return _pyom.logger_set_formatter(format.encode())
+
+    @staticmethod
+    def set_level(level: eLogLevel) -> None:
+        """Set the current log level.
+
+        Valid logging levels are:
+          - eLogLevel.trace = 0
+          - eLogLevel.debug = 1
+          - eLogLevel.info = 2
+          - eLogLevel.warn = 3
+          - eLogLevel.err = 4
+          - eLogLevel.critical = 5
+          - eLogLevel.off = 6
+
+        Only messages with a priority equal to
+        or greater than the current log level
+        will be shown.
+
+        """
+        return _pyom.logger_set_level(level)
+
+    @staticmethod
+    def get_level() -> int:
+        """Returns the value of the current log level"""
+        return _pyom.logger_get_level()
+
+    @staticmethod
+    def enable_backtrace(num: int) -> None:
+        """Turn on backtrace feature, for traceback
+        in the underlying c/c++ libraries.
+
+        Experimental feature. Backtracing
+        will show the last num logging messages when dumped with
+        dump_backtrace (i.e. after error).
+
+        Args:
+            num (int): How many logging messages to show on dumping the log stack trace
+
+        """
+        return _pyom.logger_enable_backtrace(num)
+
+    @staticmethod
+    def disable_backtrace(self) -> None:
+        """Turn off backtrace feature
+
+        Experimental feature
+
+        """
+        return _pyom.logger_disable_backtrace()
+
+    @staticmethod
+    def console_logger() -> None:
+        """Switch to a console logger
+
+        Turns off file_logger and activates the console logger"""
+        return _pyom.logger_console_logger()
+
+    @staticmethod
+    def file_logger(filepath: str) -> None:
+        """Switch to a file logger
+
+        Args:
+            filepath: valid path to where you would like to store logging messages
+
+        Turns off console logger and activate file_logger"""
+        return _pyom.logger_file_logger(filepath.encode())
+
+    @staticmethod
+    def info(message: str) -> None:
+        """Log an info message"""
+        return _pyom.logger_info(message.encode())
+
+    @staticmethod
+    def trace(message: str) -> None:
+        """Log an trace message"""
+        return _pyom.logger_trace(message.encode())
+
+    @staticmethod
+    def debug(message: str) -> None:
+        """Log an debug message"""
+        return _pyom.logger_debug(message.encode())
+
+    @staticmethod
+    def warn(message: str) -> None:
+        """Log a warning message"""
+        return _pyom.logger_warn(message.encode())
+
+    @staticmethod
+    def error(message: str) -> None:
+        """Log a error message"""
+        return _pyom.logger_error(message.encode())
+
+    @staticmethod
+    def critical(message: str) -> None:
+        """Log a critical message"""
+        return _pyom.logger_critical(message.encode())

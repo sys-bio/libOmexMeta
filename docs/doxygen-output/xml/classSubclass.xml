@@ -1,13 +1,17 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="classSubclass" kind="class" language="C++" prot="public">
     <compoundname>Subclass</compoundname>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
-<para>specifically for predicates from the SemSim set of predicates. All SemSim predicates have the namespace <computeroutput><ulink url="http://www.bhi.washington.edu/semsim">http://www.bhi.washington.edu/semsim</ulink>#</computeroutput> and a <computeroutput>bqmodel</computeroutput> prefix. </para>
+<para>specifically for predicates from the BiomodelsBiologyQualifier set of predicates. All BiomodelsBiologyQualifier predicates have the namespace <computeroutput><ulink url="http://biomodels.net/biology-qualifiers/">http://biomodels.net/biology-qualifiers/</ulink></computeroutput> and a <computeroutput>bqbiol</computeroutput> prefix.</para>
+<para>specifically for predicates from the BiomodelsModelQualifier set of predicates. All BiomodelsModelQualifier predicates have the namespace <computeroutput><ulink url="http://biomodels.net/model-qualifiers/">http://biomodels.net/model-qualifiers/</ulink></computeroutput> and a <computeroutput>bqmodel</computeroutput> prefix.</para>
+<para>specifically for predicates from the DCTerm set of predicates. All DCTerm predicates have the namespace <computeroutput><ulink url="http://purl.org/dc/terms/">http://purl.org/dc/terms/</ulink></computeroutput></para>
+<para>specifically for predicates from the SemSim set of predicates. All SemSim predicates have the namespace <computeroutput><ulink url="http://www.bhi.washington.edu/semsim">http://www.bhi.washington.edu/semsim</ulink>#</computeroutput> and a <computeroutput>bqmodel</computeroutput> prefix.</para>
+<para>specifically for predicates from the Foaf set of predicates. All predicates have the namespace <computeroutput><ulink url="http://www.bhi.washington.edu/semsim">http://www.bhi.washington.edu/semsim</ulink>#</computeroutput> and a <computeroutput>bqmodel</computeroutput> prefix. </para>
     </detaileddescription>
-    <location file="src/omexmeta/include/omexmeta/Predicate.h" line="296" column="1"/>
+    <location file="src/omexmeta/include/omexmeta/Predicate.h" line="175" column="1"/>
     <listofallmembers>
     </listofallmembers>
   </compounddef>

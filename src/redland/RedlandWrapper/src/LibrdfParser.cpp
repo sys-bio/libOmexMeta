@@ -2,25 +2,32 @@
 
 #include "redland/LibrdfModel.h"
 #include <utility>
+#include "redland/Logger.h"
 
 namespace redland {
 
-    LibrdfParser::LibrdfParser(librdf_parser *parser) : parser_(parser) {}
+    LibrdfParser::LibrdfParser(librdf_parser *parser)
+        : RedlandType_librdf_parser(parser, librdf_free_parser) {
+        REDLAND_DEBUG("Instantiated a LibrdfParser instance");
+    }
 
-    LibrdfParser::LibrdfParser(std::string format, std::string mime_type, const std::string &type_uri) : format_(std::move(format)), mime_type_(std::move(mime_type)) {
+    LibrdfParser::LibrdfParser(std::string syntax, std::string mime_type, const std::string &type_uri)
+        : syntax_(std::move(syntax)), mime_type_(std::move(mime_type)) {
+        freeFunc_ = librdf_free_parser;
         setTypeUri(type_uri);
         validateParserName();
-        parser_ = makeParser();
+        obj_ = makeParser();
+        REDLAND_DEBUG("Instantiated a LibrdfParser instance");
     }
 
     librdf_parser *LibrdfParser::makeParser() {
-        if (parser_ != nullptr) {
-            librdf_free_parser(parser_);
-            parser_ = nullptr;
+        if (obj_ != nullptr) {
+            librdf_free_parser(obj_);
+            obj_ = nullptr;
         }
         const char *name_used = nullptr;
-        if (!format_.empty())
-            name_used = format_.c_str();
+        if (!syntax_.empty())
+            name_used = syntax_.c_str();
 
         const char *mime_type_used = nullptr;
         if (!mime_type_.empty())
@@ -37,18 +44,58 @@ namespace redland {
         return parser;
     }
 
-    librdf_parser *LibrdfParser::get() const {
-        return parser_;
-    }
-
+    //    LibrdfParser::LibrdfParser(LibrdfParser &&parser) noexcept {
+    //        format_ = std::move(parser.format_);
+    //        mime_type_ = std::move(parser.mime_type_);
+    //        if (parser.type_uri_ != nullptr) {
+    //            if (type_uri_ != nullptr) {
+    //                librdf_free_uri(type_uri_);
+    //            }
+    //            type_uri_ = parser.type_uri_;
+    //            parser.type_uri_ = nullptr;
+    //        }
+    //        if (parser.obj_ != nullptr) {
+    //            if (obj_ != nullptr) {
+    //                // ensure we don't create leak from
+    //                // forgetting to free the original parser
+    //                librdf_free_parser(obj_);
+    //            }
+    //            obj_ = parser.obj_;
+    //            parser.obj_ = nullptr;
+    //        }
+    //    }
+    //
+    //    LibrdfParser &LibrdfParser::operator=(LibrdfParser &&parser) noexcept {
+    //        if (this != &parser) {
+    //            format_ = std::move(parser.format_);
+    //            mime_type_ = std::move(parser.mime_type_);
+    //            if (parser.type_uri_ != nullptr) {
+    //                if (type_uri_ != nullptr) {
+    //                    librdf_free_uri(type_uri_);
+    //                }
+    //                type_uri_ = parser.type_uri_;
+    //                parser.type_uri_ = nullptr;
+    //            }
+    //            if (parser.obj_ != nullptr) {
+    //                // ensure we don't create leak from
+    //                // forgetting to free the original parser
+    //                if (obj_ != nullptr) {
+    //                    librdf_free_parser(obj_);
+    //                }
+    //                obj_ = parser.obj_;
+    //                parser.obj_ = nullptr;
+    //            }
+    //        }
+    //        return *this;
+    //    }
     std::string LibrdfParser::getName() const {
-        return format_;
+        return syntax_;
     }
 
     void LibrdfParser::setName(const char *name) {
-        format_ = name;
+        syntax_ = name;
         validateParserName();
-        parser_ = makeParser();
+        obj_ = makeParser();
     }
 
     std::string LibrdfParser::getMimeType() const {
@@ -57,7 +104,7 @@ namespace redland {
 
     void LibrdfParser::setMimeType(const char *mimeType) {
         mime_type_ = mimeType;
-        parser_ = makeParser();
+        obj_ = makeParser();
     }
 
     librdf_uri *LibrdfParser::getTypeUri() const {
@@ -117,51 +164,44 @@ namespace redland {
     }
 
     int LibrdfParser::numNamespacesSeen() const {
-        return librdf_parser_get_namespaces_seen_count(parser_);
+        return librdf_parser_get_namespaces_seen_count(obj_);
     }
 
     std::string LibrdfParser::getNamespacesSeenUri(int index) const {
-        librdf_uri *uri = librdf_parser_get_namespaces_seen_uri(parser_, index);
+        librdf_uri *uri = librdf_parser_get_namespaces_seen_uri(obj_, index);
         return (const char *) librdf_uri_as_string(uri);
     }
 
     std::string LibrdfParser::getNamespacesSeenPrefix(int index) const {
-        return std::string(librdf_parser_get_namespaces_seen_prefix(parser_, index));
+        return std::string(librdf_parser_get_namespaces_seen_prefix(obj_, index));
     }
 
     void LibrdfParser::parseString(const std::string &rdf_string, const LibrdfModel &model,
                                    const LibrdfUri &base_uri) const {
         librdf_parser_parse_string_into_model(
-                parser_, (const unsigned char *) rdf_string.c_str(),
-                base_uri.get(), model.get());
+                obj_, (const unsigned char *) rdf_string.c_str(),
+                base_uri.get(), model.getWithoutIncrement());
     }
 
     void LibrdfParser::parseString(const std::string &rdf_string, const LibrdfModel &model,
                                    const std::string &base_uri) const {
         LibrdfUri u(base_uri);
         librdf_parser_parse_string_into_model(
-                parser_, (const unsigned char *) rdf_string.c_str(),
-                u.getWithoutIncrement(), model.get());
+                obj_, (const unsigned char *) rdf_string.c_str(),
+                u.getWithoutIncrement(), model.getWithoutIncrement());
     }
 
     void LibrdfParser::parseUri(const std::string &uri_string, const LibrdfModel &model) const {
         LibrdfUri uri(uri_string);
         librdf_parser_parse_into_model(
-                parser_, uri.getWithoutIncrement(), uri.getWithoutIncrement(), model.get());
+                obj_, uri.getWithoutIncrement(), uri.getWithoutIncrement(), model.getWithoutIncrement());
     }
 
-    void LibrdfParser::parseFile(const std::string &filename_uri, const LibrdfModel &model) const {
+    void LibrdfParser::parseFile(const std::string &filename_uri, const LibrdfModel &model, const std::string& baseUriString) const {
         LibrdfUri filename_uri_ = LibrdfUri::fromFilename(filename_uri);
-        LibrdfUri base_uri = LibrdfUri::fromFilename(filename_uri);
+        LibrdfUri base_uri = LibrdfUri(baseUriString);
         librdf_parser_parse_into_model(
-                parser_, filename_uri_.get(), base_uri.get(), model.get());
-    }
-
-    void LibrdfParser::parseFile(const std::string &filename_uri, const LibrdfModel &model, const std::string &local_uri) const {
-        LibrdfUri filename_uri_ = LibrdfUri::fromFilename(filename_uri);
-        LibrdfUri base_uri(local_uri);
-        librdf_parser_parse_into_model(
-                parser_, filename_uri_.get(), base_uri.get(), model.get());
+                obj_, filename_uri_.getWithoutIncrement(), base_uri.getWithoutIncrement(), model.getWithoutIncrement());
     }
 
     void LibrdfParser::validateParserName() const {
@@ -187,13 +227,6 @@ namespace redland {
         throw std::invalid_argument(os.str());
     }
 
-    LibrdfParser::~LibrdfParser() {
-        if (!parser_)
-            return;
-        librdf_free_parser(parser_);
-        parser_ = nullptr;
-    }
-
     std::vector<std::string> LibrdfParser::getSeenNamespaces(std::vector<std::string> namespaces) const {
         for (int i = 0; i < numNamespacesSeen(); i++) {
             std::string nsref = getNamespacesSeenUri(i);
@@ -203,48 +236,4 @@ namespace redland {
         return namespaces;
     }
 
-    LibrdfParser::LibrdfParser(LibrdfParser &&parser) noexcept {
-        format_ = std::move(parser.format_);
-        mime_type_ = std::move(parser.mime_type_);
-        if (parser.type_uri_ != nullptr) {
-            if (type_uri_ != nullptr) {
-                librdf_free_uri(type_uri_);
-            }
-            type_uri_ = parser.type_uri_;
-            parser.type_uri_ = nullptr;
-        }
-        if (parser.parser_ != nullptr) {
-            if (parser_ != nullptr) {
-                // ensure we don't create leak from
-                // forgetting to free the original parser
-                librdf_free_parser(parser_);
-            }
-            parser_ = parser.parser_;
-            parser.parser_ = nullptr;
-        }
-    }
-
-    LibrdfParser &LibrdfParser::operator=(LibrdfParser &&parser) noexcept {
-        if (this != &parser) {
-            format_ = std::move(parser.format_);
-            mime_type_ = std::move(parser.mime_type_);
-            if (parser.type_uri_ != nullptr) {
-                if (type_uri_ != nullptr) {
-                    librdf_free_uri(type_uri_);
-                }
-                type_uri_ = parser.type_uri_;
-                parser.type_uri_ = nullptr;
-            }
-            if (parser.parser_ != nullptr) {
-                // ensure we don't create leak from
-                // forgetting to free the original parser
-                if (parser_ != nullptr) {
-                    librdf_free_parser(parser_);
-                }
-                parser_ = parser.parser_;
-                parser.parser_ = nullptr;
-            }
-        }
-        return *this;
-    }
 }// namespace redland

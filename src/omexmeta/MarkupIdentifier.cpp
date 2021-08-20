@@ -3,7 +3,6 @@
 //
 
 #include "omexmeta/MarkupIdentifier.h"
-#include "omexmeta/logger.h"
 
 namespace omexmeta {
 

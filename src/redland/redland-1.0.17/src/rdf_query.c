@@ -340,6 +340,7 @@ librdf_new_query(librdf_world *world,
 
     return librdf_new_query_from_factory(world, factory, name, uri,
                                          query_string, base_uri);
+//    return -1;
 }
 
 

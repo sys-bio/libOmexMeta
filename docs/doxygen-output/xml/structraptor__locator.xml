@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="structraptor__locator" kind="struct" language="C++" prot="public">
     <compoundname>raptor_locator</compoundname>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structraptor__locator_1a5489ed859cea940ed7885fe49f67ec62" prot="public" static="no" mutable="no">
-        <type>raptor_uri *</type>
+        <type><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref> *</type>
         <definition>raptor_uri* raptor_locator::uri</definition>
         <argsstring></argsstring>
         <name>uri</name>
@@ -14,7 +14,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/include/redland/raptor2.h" line="417" column="16" bodyfile="src/redland/RedlandWrapper/src/include/redland/raptor2.h" bodystart="417" bodyend="-1"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/raptor2.h" line="428" column="16" bodyfile="src/redland/RedlandWrapper/src/include/redland/raptor2.h" bodystart="428" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structraptor__locator_1a5ff6674538154199859f15164ceb654a" prot="public" static="no" mutable="no">
         <type>const char *</type>
@@ -27,7 +27,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/include/redland/raptor2.h" line="418" column="16" bodyfile="src/redland/RedlandWrapper/src/include/redland/raptor2.h" bodystart="418" bodyend="-1"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/raptor2.h" line="429" column="16" bodyfile="src/redland/RedlandWrapper/src/include/redland/raptor2.h" bodystart="429" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structraptor__locator_1a9b7b33164de294f9317247fc76826cca" prot="public" static="no" mutable="no">
         <type>int</type>
@@ -40,7 +40,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/include/redland/raptor2.h" line="419" column="9" bodyfile="src/redland/RedlandWrapper/src/include/redland/raptor2.h" bodystart="419" bodyend="-1"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/raptor2.h" line="430" column="9" bodyfile="src/redland/RedlandWrapper/src/include/redland/raptor2.h" bodystart="430" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structraptor__locator_1af02e1cfac4d498951d828b1d60c3051e" prot="public" static="no" mutable="no">
         <type>int</type>
@@ -53,7 +53,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/include/redland/raptor2.h" line="420" column="9" bodyfile="src/redland/RedlandWrapper/src/include/redland/raptor2.h" bodystart="420" bodyend="-1"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/raptor2.h" line="431" column="9" bodyfile="src/redland/RedlandWrapper/src/include/redland/raptor2.h" bodystart="431" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structraptor__locator_1abe1aed97cc146ca64f7a17e09cadce84" prot="public" static="no" mutable="no">
         <type>int</type>
@@ -66,14 +66,27 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/include/redland/raptor2.h" line="421" column="9" bodyfile="src/redland/RedlandWrapper/src/include/redland/raptor2.h" bodystart="421" bodyend="-1"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/raptor2.h" line="432" column="9" bodyfile="src/redland/RedlandWrapper/src/include/redland/raptor2.h" bodystart="432" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="src/redland/RedlandWrapper/src/include/redland/raptor2.h" line="416" column="1" bodyfile="src/redland/RedlandWrapper/src/include/redland/raptor2.h" bodystart="416" bodyend="422"/>
+    <collaborationgraph>
+      <node id="1">
+        <label>raptor_locator</label>
+        <link refid="structraptor__locator"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>uri</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>raptor_uri_s</label>
+        <link refid="structraptor__uri__s"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/redland/RedlandWrapper/src/include/redland/raptor2.h" line="427" column="1" bodyfile="src/redland/RedlandWrapper/src/include/redland/raptor2.h" bodystart="427" bodyend="433"/>
     <listofallmembers>
       <member refid="structraptor__locator_1abe1aed97cc146ca64f7a17e09cadce84" prot="public" virt="non-virtual"><scope>raptor_locator</scope><name>byte</name></member>
       <member refid="structraptor__locator_1af02e1cfac4d498951d828b1d60c3051e" prot="public" virt="non-virtual"><scope>raptor_locator</scope><name>column</name></member>
