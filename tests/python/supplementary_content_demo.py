@@ -242,13 +242,13 @@ class OmexMetaSpec1_1:
         # create an editor. Note these are the default arguments - but shown here for completeness
         editor = rdf.to_editor(sbml, generate_new_metaids=False, sbml_semantic_extraction=True)
 
-        editor.add_creator("orcid:0000-0001-8254-4957")\
-            .add_curator("orcid:0000-0001-8254-4958")\
-            .add_taxon("taxon/9895")\
-            .add_pubmed("pubmed/12334")\
+        editor.add_creator("0000-0001-8254-4957")\
+            .add_curator("0000-0001-8254-4958")\
+            .add_taxon("9895")\
+            .add_pubmed("12334")\
             .add_description("My supercool model")\
             .add_date_created("2020-09-18")\
-            .add_parent_model("pubmed/123456")
+            .add_parent_model("123456")
 
         fname = create_combine_archive(sbml, "ModelLevelAnnotations", str(rdf))
 
@@ -281,7 +281,7 @@ class OmexMetaSpec1_1:
         # so that the user cannot forget to do it.
         # Note that in C or C++, the user must remember to add a newly created annotation to the editor.
         with editor.new_personal_information() as information:
-            information.add_creator("orcid:0000-0001-8254-4957") \
+            information.add_creator("0000-0001-8254-4957") \
                 .add_name("Robin hood") \
                 .add_mbox("rhood@theifinthenight.com") \
                 .add_account_name("stolen_goods") \
