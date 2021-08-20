@@ -407,16 +407,6 @@ stages:
               {
                 New-Item -ItemType Directory -Force -Path $(BUILD_DIRECTORY)
               }
-              echo "cd $(BUILD_DIRECTORY)"
-              cd $(BUILD_DIRECTORY)
-              ls
-
-              echo "Where.exe conda: "
-              where.exe conda
-
-              echo "Where.exe pip: "
-              where.exe pip
-
               echo "$(CondaExecutable) shell.powershell hook"
               $(CondaExecutable) shell.powershell hook
 
@@ -440,35 +430,9 @@ stages:
               $(PipExecutable) install -r test-requirements.txt
               $(PipExecutable) install pywin32
 
-
-              echo "$(CondaExecutable) env list"
-              $(CondaExecutable) env list
-              #echo "python -c import pytest"
-              $(PythonExecutable) -c "import pytest"
-
-              #echo "python -c import win32api"
-              $(PythonExecutable) -c "import win32api"
-
-              echo "cd $(BUILD_DIRECTORY)"
-              cd $(BUILD_DIRECTORY)
-              ls
-
-              echo "cd $(BUILD_DIRECTORY)\site-packages"
-              cd $(BUILD_DIRECTORY)\site-packages
-              ls
-
-              echo "cd $(BUILD_DIRECTORY)\site-packages\pyomexmeta"
-              cd $(BUILD_DIRECTORY)\site-packages\pyomexmeta
-              ls
-
               cd $(BUILD_DIRECTORY)
               cmake  -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX=$(INSTALL_DIRECTORY) -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(PythonRoot)  -DBUILD_DOCS=ON -DBUILD_DOCS_EXAMPLES=ON -DDOXYGEN_EXECUTABLE=$(DoxygenExecutable) ..
               cmake --build . --target install --config Release
-
-
-              echo "cd to install dir: $(INSTALL_DIRECTORY) and ls"
-              cd $(INSTALL_DIRECTORY)
-              ls
 
             displayName: Build With Python
 
