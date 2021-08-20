@@ -671,7 +671,7 @@ class RDF:
         
         Examples:
             >>> rdf = RDF.from_file("annot.rdf") # read from file on disk
-            >>> rdf.query_results_as_string("SELECT *?x ?y ?z WHERE { ?x ?y ?z }") # selects everything
+            >>> rdf.query_results_as_string("SELECT *?x ?y ?z WHERE { ?x ?y ?z }", results_syntax="csv") # selects everything
 
         See Also:
             query_results_as_dict
