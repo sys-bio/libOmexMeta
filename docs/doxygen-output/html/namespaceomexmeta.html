@@ -156,6 +156,7 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1PurgeRDFBag.html">PurgeRDFBag</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1Query.html">Query</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">make a Sparql  <a href="classomexmeta_1_1Query.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classomexmeta_1_1RDF.html">RDF</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -203,9 +204,6 @@ typedef std::vector&lt; PredicatePtr &gt;&#160;</td><td class="memItemRight" val
 <tr class="memitem:a4a755ee078afb8f071a545ff5a5631b0"><td class="memItemLeft" align="right" valign="top"><a id="a4a755ee078afb8f071a545ff5a5631b0"></a>
 typedef std::shared_ptr&lt; <a class="el" href="classomexmeta_1_1PropertyBearer.html">PropertyBearer</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>PropertyBearerPtr</b></td></tr>
 <tr class="separator:a4a755ee078afb8f071a545ff5a5631b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a08a1cea39a93f919e8c481f1307e9d64"><td class="memItemLeft" align="right" valign="top"><a id="a08a1cea39a93f919e8c481f1307e9d64"></a>
-typedef std::unordered_map&lt; std::string, std::vector&lt; std::string &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>ResultsMap</b></td></tr>
-<tr class="separator:a08a1cea39a93f919e8c481f1307e9d64"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7fc6fa4ba32424705fe4953ee297a795"><td class="memItemLeft" align="right" valign="top"><a id="a7fc6fa4ba32424705fe4953ee297a795"></a>
 typedef <a class="el" href="classomexmeta_1_1Triple.html">Triple</a>&#160;</td><td class="memItemRight" valign="bottom"><b>SingularAnnotation</b></td></tr>
 <tr class="separator:a7fc6fa4ba32424705fe4953ee297a795"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -255,6 +253,11 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>clearLastError</b> (c
 <tr class="memitem:afa1aa630059180eafbb1ebf543c56216"><td class="memItemLeft" align="right" valign="top"><a id="afa1aa630059180eafbb1ebf543c56216"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>free_c_char_star</b> (char *c)</td></tr>
 <tr class="separator:afa1aa630059180eafbb1ebf543c56216"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a95dd3c54698838b3092832732b6be306"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceomexmeta.html#a95dd3c54698838b3092832732b6be306">funcThatReturnsCharStarFailed</a> (const char *errorMsg)</td></tr>
+<tr class="memdesc:a95dd3c54698838b3092832732b6be306"><td class="mdescLeft">&#160;</td><td class="mdescRight">when a function fails and it returns char*, do not return nullptr as it will crash python. Instead copy the error string into dynamic memory and return that.  <a href="namespaceomexmeta.html#a95dd3c54698838b3092832732b6be306">More...</a><br /></td></tr>
+<tr class="separator:a95dd3c54698838b3092832732b6be306"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade8cf4e6ce9dba23d7cfb28ab742613e"><td class="memItemLeft" align="right" valign="top">int *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceomexmeta.html#ade8cf4e6ce9dba23d7cfb28ab742613e">functionThatReturnsNullptr</a> ()</td></tr>
+<tr class="separator:ade8cf4e6ce9dba23d7cfb28ab742613e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2f3a19ccb17e0be38e706861fa141fcc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classomexmeta_1_1RDF.html">RDF</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceomexmeta.html#a2f3a19ccb17e0be38e706861fa141fcc">RDF_new</a> (const char *storage_type, const char *storage_name, const char *storage_options, const char *model_options)</td></tr>
 <tr class="separator:a2f3a19ccb17e0be38e706861fa141fcc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0cd028836b6f77062a1e55e187641cd4"><td class="memItemLeft" align="right" valign="top"><a id="a0cd028836b6f77062a1e55e187641cd4"></a>
@@ -485,9 +488,6 @@ char *&#160;</td><td class="memItemRight" valign="bottom"><b>SingularAnnotation_
 <tr class="memitem:a76253abd9ff8ae24164de48086c348c5"><td class="memItemLeft" align="right" valign="top"><a id="a76253abd9ff8ae24164de48086c348c5"></a>
 char *&#160;</td><td class="memItemRight" valign="bottom"><b>SingularAnnotation_getResource</b> (<a class="el" href="classomexmeta_1_1Triple.html">SingularAnnotation</a> *singular_annotation)</td></tr>
 <tr class="separator:a76253abd9ff8ae24164de48086c348c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a49d1107f0ea55c318a266727bea089d9"><td class="memItemLeft" align="right" valign="top"><a id="a49d1107f0ea55c318a266727bea089d9"></a>
-char *&#160;</td><td class="memItemRight" valign="bottom"><b>SingularAnnotation_str</b> (<a class="el" href="classomexmeta_1_1Triple.html">SingularAnnotation</a> *singular_annotation, const char *format)</td></tr>
-<tr class="separator:a49d1107f0ea55c318a266727bea089d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a386a15d5d186e00467ffdbb15dc9b2e3"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceomexmeta.html#a386a15d5d186e00467ffdbb15dc9b2e3">PhysicalProperty_getAbout</a> (<a class="el" href="classomexmeta_1_1PhysicalProperty.html">PhysicalProperty</a> *property)</td></tr>
 <tr class="separator:a386a15d5d186e00467ffdbb15dc9b2e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad7fa194ecac46238ce148e64dd2a1283"><td class="memItemLeft" align="right" valign="top"><a id="ad7fa194ecac46238ce148e64dd2a1283"></a>
@@ -675,6 +675,50 @@ std::vector&lt; std::string &gt; *&#160;</td><td class="memItemRight" valign="bo
 <tr class="memitem:a6434b2cffea803818b02bf9a7584b263"><td class="memItemLeft" align="right" valign="top"><a id="a6434b2cffea803818b02bf9a7584b263"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>ResultsMap_delete</b> (ResultsMap *resultsMap)</td></tr>
 <tr class="separator:a6434b2cffea803818b02bf9a7584b263"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a401a97ce4b2a6c22f92b774091289ef8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classredland_1_1Logger.html">Logger</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceomexmeta.html#a401a97ce4b2a6c22f92b774091289ef8">Logger_getLogger</a> ()</td></tr>
+<tr class="separator:a401a97ce4b2a6c22f92b774091289ef8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00b49a350dca49a197c8b96920c6336b"><td class="memItemLeft" align="right" valign="top"><a id="a00b49a350dca49a197c8b96920c6336b"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>Logger_setFormatter</b> (const char *format)</td></tr>
+<tr class="separator:a00b49a350dca49a197c8b96920c6336b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa53a5e35c8e35aa716999e2bee6674aa"><td class="memItemLeft" align="right" valign="top"><a id="aa53a5e35c8e35aa716999e2bee6674aa"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>Logger_setLevel</b> (Logger::LogLevel level)</td></tr>
+<tr class="separator:aa53a5e35c8e35aa716999e2bee6674aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec761fbe8fd8621544e2eb08a93ca6bb"><td class="memItemLeft" align="right" valign="top"><a id="aec761fbe8fd8621544e2eb08a93ca6bb"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>Logger_getLevel</b> ()</td></tr>
+<tr class="separator:aec761fbe8fd8621544e2eb08a93ca6bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac3d164e61ae7cd1925a591f54abf515"><td class="memItemLeft" align="right" valign="top"><a id="aac3d164e61ae7cd1925a591f54abf515"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>Logger_enableBacktrace</b> (int num)</td></tr>
+<tr class="separator:aac3d164e61ae7cd1925a591f54abf515"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8799d08a3e0e07b1866b72c95565bb1a"><td class="memItemLeft" align="right" valign="top"><a id="a8799d08a3e0e07b1866b72c95565bb1a"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>Logger_disableBacktrace</b> ()</td></tr>
+<tr class="separator:a8799d08a3e0e07b1866b72c95565bb1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75fc5039ad0e686ff6211daeb2131eb9"><td class="memItemLeft" align="right" valign="top"><a id="a75fc5039ad0e686ff6211daeb2131eb9"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>Logger_dumpBacktrace</b> ()</td></tr>
+<tr class="separator:a75fc5039ad0e686ff6211daeb2131eb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e5e22a8c34ba9014bfaa635900d751a"><td class="memItemLeft" align="right" valign="top"><a id="a3e5e22a8c34ba9014bfaa635900d751a"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>Logger_consoleLogger</b> ()</td></tr>
+<tr class="separator:a3e5e22a8c34ba9014bfaa635900d751a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad67a74ecb6408eb3f72f8be1c0e7d448"><td class="memItemLeft" align="right" valign="top"><a id="ad67a74ecb6408eb3f72f8be1c0e7d448"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>Logger_fileLogger</b> (const char *filename)</td></tr>
+<tr class="separator:ad67a74ecb6408eb3f72f8be1c0e7d448"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a867513601843c5e1ab364f65a22bfb9d"><td class="memItemLeft" align="right" valign="top"><a id="a867513601843c5e1ab364f65a22bfb9d"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>Logger_info</b> (const char *message)</td></tr>
+<tr class="separator:a867513601843c5e1ab364f65a22bfb9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01b3ea59b98096bbb46a60c75ecc0306"><td class="memItemLeft" align="right" valign="top"><a id="a01b3ea59b98096bbb46a60c75ecc0306"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>Logger_trace</b> (const char *message)</td></tr>
+<tr class="separator:a01b3ea59b98096bbb46a60c75ecc0306"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c00a547f41821c5794c4e3d2f911bc5"><td class="memItemLeft" align="right" valign="top"><a id="a2c00a547f41821c5794c4e3d2f911bc5"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>Logger_debug</b> (const char *message)</td></tr>
+<tr class="separator:a2c00a547f41821c5794c4e3d2f911bc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abffb02d727c2ea3060e42c4140cb903b"><td class="memItemLeft" align="right" valign="top"><a id="abffb02d727c2ea3060e42c4140cb903b"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>Logger_warn</b> (const char *message)</td></tr>
+<tr class="separator:abffb02d727c2ea3060e42c4140cb903b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a305282ca72c7f4af6d1fea665bdee5fe"><td class="memItemLeft" align="right" valign="top"><a id="a305282ca72c7f4af6d1fea665bdee5fe"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>Logger_error</b> (const char *message)</td></tr>
+<tr class="separator:a305282ca72c7f4af6d1fea665bdee5fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09fc0cbf9bf4b34308c9ca2cb19e4ce3"><td class="memItemLeft" align="right" valign="top"><a id="a09fc0cbf9bf4b34308c9ca2cb19e4ce3"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>Logger_critical</b> (const char *message)</td></tr>
+<tr class="separator:a09fc0cbf9bf4b34308c9ca2cb19e4ce3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a17e4b403c1f6627264259b7d300f5cb1"><td class="memItemLeft" align="right" valign="top"><a id="a17e4b403c1f6627264259b7d300f5cb1"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>removeElementRecursion</b> (xmlNodePtr a_node, const std::string &amp;elementName)</td></tr>
 <tr class="separator:a17e4b403c1f6627264259b7d300f5cb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -716,7 +760,7 @@ OMEXMETA_CAPI_EXPORT int&#160;</td><td class="memItemRight" valign="bottom"><b>P
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:a00405b6a215f728dfa31cc7966ec6688"><td class="memItemLeft" align="right" valign="top"><a id="a00405b6a215f728dfa31cc7966ec6688"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>LAST_ERROR</b></td></tr>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>LAST_ERROR</b> = &quot;No errors&quot;</td></tr>
 <tr class="separator:a00405b6a215f728dfa31cc7966ec6688"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -764,7 +808,7 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>LAST_ERROR</b>
 </div><div class="memdoc">
 <pre class="fragment">@brief get the xml from the editor
 </pre><p> The returned string is owned by the caller. </p>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="D_1_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example.html#a5">D:/libOmexMeta/src/omexmeta/include/omexmeta/OmexMetaCApi.h</a>.</dd>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="D_1_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example.html#a6">D:/libOmexMeta/src/omexmeta/include/omexmeta/OmexMetaCApi.h</a>.</dd>
 </dl>
 
 </div>
@@ -785,7 +829,7 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>LAST_ERROR</b>
       </table>
 </div><div class="memdoc">
 <p><a class="el" href="classomexmeta_1_1Editor.html" title="Add or change annotations in xml.">Editor</a> class methods </p>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="D_1_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example.html#a3">D:/libOmexMeta/src/omexmeta/include/omexmeta/OmexMetaCApi.h</a>.</dd>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="D_1_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example.html#a4">D:/libOmexMeta/src/omexmeta/include/omexmeta/OmexMetaCApi.h</a>.</dd>
 </dl>
 
 </div>
@@ -806,7 +850,7 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>LAST_ERROR</b>
       </table>
 </div><div class="memdoc">
 <p><a class="el" href="classomexmeta_1_1Editor.html" title="Add or change annotations in xml.">Editor</a> class methods </p>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="D_1_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example.html#a4">D:/libOmexMeta/src/omexmeta/include/omexmeta/OmexMetaCApi.h</a>.</dd>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="D_1_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example.html#a5">D:/libOmexMeta/src/omexmeta/include/omexmeta/OmexMetaCApi.h</a>.</dd>
 </dl>
 
 </div>
@@ -828,7 +872,7 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>LAST_ERROR</b>
 </div><div class="memdoc">
 <p><a class="el" href="classomexmeta_1_1EnergyDiff.html">EnergyDiff</a> class methods </p><pre class="fragment">@brief deletes energy differential excluding all
 </pre><p> nodes associated with it. </p>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="D_1_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example.html#a10">D:/libOmexMeta/src/omexmeta/include/omexmeta/OmexMetaCApi.h</a>.</dd>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="D_1_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example.html#a11">D:/libOmexMeta/src/omexmeta/include/omexmeta/OmexMetaCApi.h</a>.</dd>
 </dl>
 
 </div>
@@ -850,7 +894,68 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>LAST_ERROR</b>
 </div><div class="memdoc">
 <pre class="fragment">@brief deletes energy differential including all
 </pre><p> nodes associated with it. </p>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="D_1_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example.html#a11">D:/libOmexMeta/src/omexmeta/include/omexmeta/OmexMetaCApi.h</a>.</dd>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="D_1_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example.html#a12">D:/libOmexMeta/src/omexmeta/include/omexmeta/OmexMetaCApi.h</a>.</dd>
+</dl>
+
+</div>
+</div>
+<a id="a95dd3c54698838b3092832732b6be306"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a95dd3c54698838b3092832732b6be306">&#9670;&nbsp;</a></span>funcThatReturnsCharStarFailed()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* omexmeta::funcThatReturnsCharStarFailed </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>errorMsg</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>when a function fails and it returns char*, do not return nullptr as it will crash python. Instead copy the error string into dynamic memory and return that. </p>
+<p>the caller is responsible for freeing the memory associated with the returned string. </p>
+
+</div>
+</div>
+<a id="ade8cf4e6ce9dba23d7cfb28ab742613e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ade8cf4e6ce9dba23d7cfb28ab742613e">&#9670;&nbsp;</a></span>functionThatReturnsNullptr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">OMEXMETA_CAPI_EXPORT int * omexmeta::functionThatReturnsNullptr </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p><a class="el" href="classomexmeta_1_1RDF.html">RDF</a> methods </p>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="D_1_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example.html#a1">D:/libOmexMeta/src/omexmeta/include/omexmeta/OmexMetaCApi.h</a>.</dd>
+</dl>
+
+</div>
+</div>
+<a id="a401a97ce4b2a6c22f92b774091289ef8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a401a97ce4b2a6c22f92b774091289ef8">&#9670;&nbsp;</a></span>Logger_getLogger()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">OMEXMETA_CAPI_EXPORT <a class="el" href="classredland_1_1Logger.html">Logger</a> * omexmeta::Logger_getLogger </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Logger </p>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="D_1_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example.html#a14">D:/libOmexMeta/src/omexmeta/include/omexmeta/OmexMetaCApi.h</a>.</dd>
 </dl>
 
 </div>
@@ -871,7 +976,7 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>LAST_ERROR</b>
       </table>
 </div><div class="memdoc">
 <p><a class="el" href="classomexmeta_1_1PersonalInformation.html" title="add personal information to the model as a composite annotation.">PersonalInformation</a> class methods </p>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="D_1_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example.html#a12">D:/libOmexMeta/src/omexmeta/include/omexmeta/OmexMetaCApi.h</a>.</dd>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="D_1_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example.html#a13">D:/libOmexMeta/src/omexmeta/include/omexmeta/OmexMetaCApi.h</a>.</dd>
 </dl>
 
 </div>
@@ -892,7 +997,7 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>LAST_ERROR</b>
       </table>
 </div><div class="memdoc">
 <p><a class="el" href="classomexmeta_1_1PhysicalEntity.html">PhysicalEntity</a> class methods </p>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="D_1_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example.html#a8">D:/libOmexMeta/src/omexmeta/include/omexmeta/OmexMetaCApi.h</a>.</dd>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="D_1_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example.html#a9">D:/libOmexMeta/src/omexmeta/include/omexmeta/OmexMetaCApi.h</a>.</dd>
 </dl>
 
 </div>
@@ -913,7 +1018,7 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>LAST_ERROR</b>
       </table>
 </div><div class="memdoc">
 <p><a class="el" href="classomexmeta_1_1PhysicalProcess.html">PhysicalProcess</a> class methods </p>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="D_1_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example.html#a9">D:/libOmexMeta/src/omexmeta/include/omexmeta/OmexMetaCApi.h</a>.</dd>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="D_1_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example.html#a10">D:/libOmexMeta/src/omexmeta/include/omexmeta/OmexMetaCApi.h</a>.</dd>
 </dl>
 
 </div>
@@ -934,7 +1039,7 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>LAST_ERROR</b>
       </table>
 </div><div class="memdoc">
 <p><a class="el" href="classomexmeta_1_1PhysicalProperty.html">PhysicalProperty</a> class methods </p>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="D_1_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example.html#a7">D:/libOmexMeta/src/omexmeta/include/omexmeta/OmexMetaCApi.h</a>.</dd>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="D_1_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example.html#a8">D:/libOmexMeta/src/omexmeta/include/omexmeta/OmexMetaCApi.h</a>.</dd>
 </dl>
 
 </div>
@@ -993,25 +1098,25 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>LAST_ERROR</b>
           <td class="memname">OMEXMETA_CAPI_EXPORT <a class="el" href="classomexmeta_1_1RDF.html">RDF</a> * omexmeta::RDF_new </td>
           <td>(</td>
           <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>storage_type</em>, </td>
+          <td class="paramname"><em>storage_type</em> = <code>&quot;memory&quot;</code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>storage_name</em>, </td>
+          <td class="paramname"><em>storage_name</em> = <code>&quot;semsim_store&quot;</code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>storage_options</em>, </td>
+          <td class="paramname"><em>storage_options</em> = <code>nullptr</code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>model_options</em>&#160;</td>
+          <td class="paramname"><em>model_options</em> = <code>nullptr</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -1020,7 +1125,6 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>LAST_ERROR</b>
         </tr>
       </table>
 </div><div class="memdoc">
-<p><a class="el" href="classomexmeta_1_1RDF.html">RDF</a> methods</p>
 <p><a class="el" href="classomexmeta_1_1RDF.html">RDF</a> class methods </p>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="D_1_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example.html#a0">D:/libOmexMeta/src/omexmeta/include/omexmeta/OmexMetaCApi.h</a>.</dd>
 </dl>
@@ -1055,7 +1159,7 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>LAST_ERROR</b>
 
 <p>run a sparql query on rdf_ptr. Return the results as a ResultsMap*. </p>
 <p>Caller is responsible for freeing memory associated with returned map ptr </p>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="D_1_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example.html#a1">D:/libOmexMeta/src/omexmeta/include/omexmeta/OmexMetaCApi.h</a>.</dd>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="D_1_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example.html#a2">D:/libOmexMeta/src/omexmeta/include/omexmeta/OmexMetaCApi.h</a>.</dd>
 </dl>
 
 </div>
@@ -1076,7 +1180,7 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>LAST_ERROR</b>
       </table>
 </div><div class="memdoc">
 <p>SingularAnnotation class methods </p>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="D_1_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example.html#a6">D:/libOmexMeta/src/omexmeta/include/omexmeta/OmexMetaCApi.h</a>.</dd>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="D_1_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example.html#a7">D:/libOmexMeta/src/omexmeta/include/omexmeta/OmexMetaCApi.h</a>.</dd>
 </dl>
 
 </div>

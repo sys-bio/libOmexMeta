@@ -39,7 +39,7 @@ namespace omexmeta {
          */
         [[maybe_unused]] const std::string &getMetaidBase() const;
 
-//        virtual ~OmexMetaXml();
+        virtual ~OmexMetaXml();
 
         int getMetaidNumDigits() const;
 

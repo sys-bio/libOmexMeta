@@ -105,13 +105,6 @@ extern "C" {
 #include "stdlib.h"
 #endif
 
-/**
- * raptor_uri:
- *
- * Raptor URI Class.
- */
-typedef struct raptor_uri_s raptor_uri;
-
 
 /* Public statics */
 
@@ -262,6 +255,24 @@ extern const unsigned int raptor_xml_literal_datatype_uri_string_len;
  * Raptor world class.
  */
 typedef struct raptor_world_s raptor_world;
+
+
+/**
+ * raptor_uri:
+ *
+ * Raptor URI Class.
+ */
+typedef struct raptor_uri_s {
+    /* raptor_world object */
+    raptor_world *world;
+    /* the URI string */
+    unsigned char *string;
+    /* length of string */
+    unsigned int length;
+    /* usage count */
+    int usage;
+} raptor_uri;
+
 /**
  * raptor_parser:
  *

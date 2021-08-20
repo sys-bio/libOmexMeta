@@ -48,7 +48,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/VCardTranslator.h" line="23" column="18" bodyfile="src/omexmeta/VCardTranslator.cpp" bodystart="14" bodyend="15"/>
+        <location file="src/omexmeta/include/omexmeta/VCardTranslator.h" line="23" column="18" bodyfile="src/omexmeta/VCardTranslator.cpp" bodystart="13" bodyend="14"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1VCardTranslator_1aa4f5c15215fb26e1b80d21a1cb4b0f6d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -61,7 +61,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/VCardTranslator.h" line="25" column="14" bodyfile="src/omexmeta/VCardTranslator.cpp" bodystart="17" bodyend="26"/>
+        <location file="src/omexmeta/include/omexmeta/VCardTranslator.h" line="25" column="14" bodyfile="src/omexmeta/VCardTranslator.cpp" bodystart="16" bodyend="25"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -85,7 +85,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/VCardTranslator.h" line="34" column="14" bodyfile="src/omexmeta/VCardTranslator.cpp" bodystart="72" bodyend="99"/>
+        <location file="src/omexmeta/include/omexmeta/VCardTranslator.h" line="34" column="14" bodyfile="src/omexmeta/VCardTranslator.cpp" bodystart="69" bodyend="94"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1VCardTranslator_1a79931fdad672b25254906cf76a972b44" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -99,7 +99,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/VCardTranslator.h" line="40" column="14" bodyfile="src/omexmeta/VCardTranslator.cpp" bodystart="28" bodyend="70"/>
+        <location file="src/omexmeta/include/omexmeta/VCardTranslator.h" line="40" column="14" bodyfile="src/omexmeta/VCardTranslator.cpp" bodystart="27" bodyend="67"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1VCardTranslator_1a5dfb6db0f5365196a8304b2f56f10290" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -113,7 +113,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/VCardTranslator.h" line="45" column="14" bodyfile="src/omexmeta/VCardTranslator.cpp" bodystart="101" bodyend="103"/>
+        <location file="src/omexmeta/include/omexmeta/VCardTranslator.h" line="45" column="14" bodyfile="src/omexmeta/VCardTranslator.cpp" bodystart="96" bodyend="98"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1VCardTranslator_1ab774550e933e2bb1ca4e540510071719" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -127,7 +127,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/VCardTranslator.h" line="50" column="14" bodyfile="src/omexmeta/VCardTranslator.cpp" bodystart="105" bodyend="107"/>
+        <location file="src/omexmeta/include/omexmeta/VCardTranslator.h" line="50" column="14" bodyfile="src/omexmeta/VCardTranslator.cpp" bodystart="100" bodyend="102"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1VCardTranslator_1aafae8501bc3eafe66356fac040153373" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -141,7 +141,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/VCardTranslator.h" line="55" column="14" bodyfile="src/omexmeta/VCardTranslator.cpp" bodystart="113" bodyend="150"/>
+        <location file="src/omexmeta/include/omexmeta/VCardTranslator.h" line="55" column="14" bodyfile="src/omexmeta/VCardTranslator.cpp" bodystart="108" bodyend="144"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1VCardTranslator_1aac64a10f8edc75738e260c824fcd3d8a" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -155,7 +155,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/VCardTranslator.h" line="60" column="14" bodyfile="src/omexmeta/VCardTranslator.cpp" bodystart="109" bodyend="111"/>
+        <location file="src/omexmeta/include/omexmeta/VCardTranslator.h" line="60" column="14" bodyfile="src/omexmeta/VCardTranslator.cpp" bodystart="104" bodyend="106"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

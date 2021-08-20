@@ -1,0 +1,28 @@
+Running main() from ..\third_party\googletest\googletest\src\gtest_main.cc
+[==========] Running 9 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 9 tests from LibrdfStorageTests
+[ RUN      ] LibrdfStorageTests.TestInstantiateStorage
+[       OK ] LibrdfStorageTests.TestInstantiateStorage (2 ms)
+[ RUN      ] LibrdfStorageTests.TestMoveConstructor
+[       OK ] LibrdfStorageTests.TestMoveConstructor (0 ms)
+[ RUN      ] LibrdfStorageTests.TestMoveAssignment
+[       OK ] LibrdfStorageTests.TestMoveAssignment (0 ms)
+[ RUN      ] LibrdfStorageTests.TestCopyConstructor
+[       OK ] LibrdfStorageTests.TestCopyConstructor (0 ms)
+[ RUN      ] LibrdfStorageTests.TestCopyAssignment
+[       OK ] LibrdfStorageTests.TestCopyAssignment (0 ms)
+[ RUN      ] LibrdfStorageTests.TestSQLiteStorage
+[       OK ] LibrdfStorageTests.TestSQLiteStorage (13 ms)
+[ RUN      ] LibrdfStorageTests.TestMemoryStorage
+[       OK ] LibrdfStorageTests.TestMemoryStorage (0 ms)
+[ RUN      ] LibrdfStorageTests.TesthashesMemory
+[       OK ] LibrdfStorageTests.TesthashesMemory (0 ms)
+[ RUN      ] LibrdfStorageTests.TestfileMemory
+[13:09:13 +01:00]  error :  XML parser error: Document is empty 
+[       OK ] LibrdfStorageTests.TestfileMemory (2 ms)
+[----------] 9 tests from LibrdfStorageTests (17 ms total)
+
+[----------] Global test environment tear-down
+[==========] 9 tests from 1 test suite ran. (17 ms total)
+[  PASSED  ] 9 tests.

@@ -1,0 +1,41 @@
+Running main() from ..\third_party\googletest\googletest\src\gtest_main.cc
+[==========] Running 16 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 16 tests from MetaIDTests
+[ RUN      ] MetaIDTests.TestCountDigits1
+[       OK ] MetaIDTests.TestCountDigits1 (0 ms)
+[ RUN      ] MetaIDTests.TestCountDigits2
+[       OK ] MetaIDTests.TestCountDigits2 (0 ms)
+[ RUN      ] MetaIDTests.TestCountDigits3
+[       OK ] MetaIDTests.TestCountDigits3 (0 ms)
+[ RUN      ] MetaIDTests.TestCountDigits4
+[       OK ] MetaIDTests.TestCountDigits4 (0 ms)
+[ RUN      ] MetaIDTests.TestCountDigits5
+[       OK ] MetaIDTests.TestCountDigits5 (0 ms)
+[ RUN      ] MetaIDTests.TestMaxNumber1
+[       OK ] MetaIDTests.TestMaxNumber1 (0 ms)
+[ RUN      ] MetaIDTests.TestMaxNumber2
+[       OK ] MetaIDTests.TestMaxNumber2 (0 ms)
+[ RUN      ] MetaIDTests.TestMaxNumberFail
+[       OK ] MetaIDTests.TestMaxNumberFail (0 ms)
+[ RUN      ] MetaIDTests.TestGenerate
+[       OK ] MetaIDTests.TestGenerate (0 ms)
+[ RUN      ] MetaIDTests.TestGenerate5
+[       OK ] MetaIDTests.TestGenerate5 (0 ms)
+[ RUN      ] MetaIDTests.TestGenerate2
+[       OK ] MetaIDTests.TestGenerate2 (0 ms)
+[ RUN      ] MetaIDTests.TestGenerate3
+[       OK ] MetaIDTests.TestGenerate3 (0 ms)
+[ RUN      ] MetaIDTests.TestGenerate4
+[       OK ] MetaIDTests.TestGenerate4 (0 ms)
+[ RUN      ] MetaIDTests.TestEquality1
+[       OK ] MetaIDTests.TestEquality1 (0 ms)
+[ RUN      ] MetaIDTests.TestInequality1
+[       OK ] MetaIDTests.TestInequality1 (0 ms)
+[ RUN      ] MetaIDTests.AnotherTest
+[       OK ] MetaIDTests.AnotherTest (0 ms)
+[----------] 16 tests from MetaIDTests (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 16 tests from 1 test suite ran. (0 ms total)
+[  PASSED  ] 16 tests.

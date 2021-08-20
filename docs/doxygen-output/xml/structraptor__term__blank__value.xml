@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/include/redland/raptor2.h" line="588" column="19" bodyfile="src/redland/RedlandWrapper/src/include/redland/raptor2.h" bodystart="588" bodyend="-1"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/raptor2.h" line="599" column="19" bodyfile="src/redland/RedlandWrapper/src/include/redland/raptor2.h" bodystart="599" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structraptor__term__blank__value_1a368b921e2ba1858ddf05db831c309649" prot="public" static="no" mutable="no">
         <type>unsigned int</type>
@@ -28,7 +28,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/include/redland/raptor2.h" line="589" column="18" bodyfile="src/redland/RedlandWrapper/src/include/redland/raptor2.h" bodystart="589" bodyend="-1"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/raptor2.h" line="600" column="18" bodyfile="src/redland/RedlandWrapper/src/include/redland/raptor2.h" bodystart="600" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -37,7 +37,7 @@
 <para><ref refid="structraptor__term__blank__value" kindref="compound">raptor_term_blank_value</ref>: @string: literal string @string_len: length of string</para>
 <para>Blank term value - this typedef exists solely for use in <ref refid="structraptor__term" kindref="compound">raptor_term</ref> </para>
     </detaileddescription>
-    <location file="src/redland/RedlandWrapper/src/include/redland/raptor2.h" line="587" column="1" bodyfile="src/redland/RedlandWrapper/src/include/redland/raptor2.h" bodystart="587" bodyend="590"/>
+    <location file="src/redland/RedlandWrapper/src/include/redland/raptor2.h" line="598" column="1" bodyfile="src/redland/RedlandWrapper/src/include/redland/raptor2.h" bodystart="598" bodyend="601"/>
     <listofallmembers>
       <member refid="structraptor__term__blank__value_1acb4d203aeae3b04ea361326b2a1a3733" prot="public" virt="non-virtual"><scope>raptor_term_blank_value</scope><name>string</name></member>
       <member refid="structraptor__term__blank__value_1a368b921e2ba1858ddf05db831c309649" prot="public" virt="non-virtual"><scope>raptor_term_blank_value</scope><name>string_len</name></member>

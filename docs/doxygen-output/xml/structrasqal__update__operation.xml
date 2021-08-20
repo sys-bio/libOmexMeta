@@ -18,7 +18,7 @@
         <location file="src/redland/RedlandWrapper/src/include/redland/rasqal.h" line="1042" column="24" bodyfile="src/redland/RedlandWrapper/src/include/redland/rasqal.h" bodystart="1042" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structrasqal__update__operation_1af87c12ad390bd66d3d1051c9135098ff" prot="public" static="no" mutable="no">
-        <type>raptor_uri *</type>
+        <type><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref> *</type>
         <definition>raptor_uri* rasqal_update_operation::graph_uri</definition>
         <argsstring></argsstring>
         <name>graph_uri</name>
@@ -31,7 +31,7 @@
         <location file="src/redland/RedlandWrapper/src/include/redland/rasqal.h" line="1044" column="16" bodyfile="src/redland/RedlandWrapper/src/include/redland/rasqal.h" bodystart="1044" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structrasqal__update__operation_1ab82442412c780a171fd41b292945005a" prot="public" static="no" mutable="no">
-        <type>raptor_uri *</type>
+        <type><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref> *</type>
         <definition>raptor_uri* rasqal_update_operation::document_uri</definition>
         <argsstring></argsstring>
         <name>document_uri</name>
@@ -117,6 +117,20 @@
 <para>For LOAD and CLEAR if @applies is set (not 0) then the operation applies to just those graph(), otherwise it applies to the @graph_uri.</para>
 <para>For ADD, MOVE and COPY the source graph is stored in @graph_uri field and the destination graph in the @document_uri field. The field names have no meaning in this case since both values are always present, always graphs and a NULL value signifies the default graph. </para>
     </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>rasqal_update_operation</label>
+        <link refid="structrasqal__update__operation"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>document_uri</edgelabel>
+          <edgelabel>graph_uri</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>raptor_uri_s</label>
+        <link refid="structraptor__uri__s"/>
+      </node>
+    </collaborationgraph>
     <location file="src/redland/RedlandWrapper/src/include/redland/rasqal.h" line="1041" column="1" bodyfile="src/redland/RedlandWrapper/src/include/redland/rasqal.h" bodystart="1041" bodyend="1057"/>
     <listofallmembers>
       <member refid="structrasqal__update__operation_1ac4ad56cc24be010a98ef42d5012d6387" prot="public" virt="non-virtual"><scope>rasqal_update_operation</scope><name>applies</name></member>

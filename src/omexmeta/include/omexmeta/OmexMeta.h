@@ -10,6 +10,7 @@
  * other headers that are needed to use libOmexMeta.
  */
 
+#include "include/redland/Logger.h"
 #include "omexmeta/Editor.h"
 #include "omexmeta/EnergyDiff.h"
 #include "omexmeta/PersonalInformation.h"

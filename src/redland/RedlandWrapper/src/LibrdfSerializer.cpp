@@ -1,70 +1,35 @@
 #include "redland/LibrdfSerializer.h"
+#include "redland/Logger.h"
 
 
 namespace redland {
-    LibrdfSerializer::LibrdfSerializer(librdf_serializer *serializer) :
-            serializer_(serializer) {}
+    LibrdfSerializer::LibrdfSerializer(librdf_serializer *serializer)
+        : RedlandType_librdf_serializer(serializer, librdf_free_serializer) {
+        REDLAND_DEBUG("Instantiated a LibrdfSerializer instance");
+    }
+
 
     LibrdfSerializer::LibrdfSerializer(const char *format, const char *mime_type, const char *type_uri) {
+        freeFunc_ = librdf_free_serializer;
         validateSerializerName(format);
         librdf_uri *type_uri_ = nullptr;
         if (type_uri)
             type_uri_ = librdf_new_uri(LibrdfWorld::getWorld(), (const unsigned char *) type_uri);
-        serializer_ = librdf_new_serializer(LibrdfWorld::getWorld(),
-                                            format, mime_type, type_uri_
-        );
+        obj_ = librdf_new_serializer(LibrdfWorld::getWorld(),
+                                     format, mime_type, type_uri_);
         setOptions();
+        REDLAND_DEBUG("Instantiated a LibrdfSerializer instance");
     }
-
-    void LibrdfSerializer::freeSerializer() {
-        if (serializer_ != nullptr) {
-            librdf_free_serializer(serializer_);
-            serializer_ = nullptr;
-        }
-    }
-
-    LibrdfSerializer::~LibrdfSerializer() {
-        freeSerializer();
-    }
-
-    LibrdfSerializer::LibrdfSerializer(LibrdfSerializer &&serializer) noexcept {
-        if (serializer.serializer_ != nullptr) {
-            if (serializer_ != nullptr)
-                freeSerializer();
-            serializer_ = serializer.serializer_;
-            serializer.serializer_ = nullptr;
-        }
-    }
-
-    LibrdfSerializer &LibrdfSerializer::operator=(LibrdfSerializer &&serializer) noexcept {
-        if (this != &serializer) {
-            if (serializer.serializer_ != nullptr) {
-                if (serializer_ != nullptr)
-                    freeSerializer();
-                serializer_ = serializer.serializer_;
-                serializer.serializer_ = nullptr;
-            }
-        }
-        return *this;
-    }
-
-    librdf_serializer *LibrdfSerializer::get() const {
-        return serializer_;
-    }
-
 
     void LibrdfSerializer::setNamespace(const std::string &ns, const std::string &prefix) const {
         LibrdfUri u(ns);
-        librdf_serializer_set_namespace(serializer_, u.get(), prefix.c_str());
-        u.freeUri();
+        librdf_serializer_set_namespace(obj_, u.getWithoutIncrement(), prefix.c_str());
     }
 
     void LibrdfSerializer::setFeature(const std::string &ns, const std::string &prefix) const {
         LibrdfUri u(ns);
         LibrdfNode node = LibrdfNode::fromLiteral(prefix);
-        librdf_serializer_set_feature(serializer_, u.get(), node.get());
-        u.freeUri();
-        node.freeNode();
+        librdf_serializer_set_feature(obj_, u.getWithoutIncrement(), node.getWithoutIncrement());
     }
 
     std::string LibrdfSerializer::toString(const std::string &uri, const LibrdfModel &model) {
@@ -75,34 +40,28 @@ namespace redland {
             throw RedlandNullPointerException("Writer::toString(): raptor_iostream");
         LibrdfUri u(uri);
         librdf_serializer_serialize_model_to_iostream(
-                serializer_, u.get(), model.get(), ios
-        );
-        u.freeUri();
+                obj_, u.getWithoutIncrement(), model.getWithoutIncrement(), ios);
         const char *s = (const char *) buffer_to_hold_string;
         std::string output(s);
         free(buffer_to_hold_string);
         return output;
     }
 
-
-    LibrdfSerializer LibrdfSerializer::fromRawPtr(librdf_serializer *serializer) {
-        return LibrdfSerializer(serializer);
-    }
-
     void LibrdfSerializer::validateSerializerName(std::string name) {
         std::vector<std::string> v = {
                 "ntriples",
                 "turtle",
-                "rdfxml-xmp",
                 "rdfxml-abbrev",
                 "rdfxml",
-                "rss-1.0",
-                "atom",
                 "dot",
                 "json-triples",
                 "json",
                 "nquads",
                 "html",
+                // unsupported by libOmexMeta
+                //                "rdfxml-xmp",
+                //                "rss-1.0",
+                //                "atom",
         };
         if (std::find(v.begin(), v.end(), name) != v.end()) {
             // string accepted return
@@ -123,7 +82,7 @@ namespace redland {
         std::string feature_uri_base = "http://feature.librdf.org/raptor-";
         LibrdfUri feature_uri(feature_uri_base + option);
         LibrdfNode node = LibrdfNode::fromLiteral(value);
-        int failure = librdf_serializer_set_feature(get(), feature_uri.get(), node.get());
+        int failure = librdf_serializer_set_feature(get(), feature_uri.getWithoutIncrement(), node.getWithoutIncrement());
         if (failure < 0) {
             throw std::invalid_argument(
                     "std::invalid_argument: LibrdfSerializer::setOption: Invalid feature: " + option);
@@ -132,8 +91,6 @@ namespace redland {
             throw std::logic_error(
                     "std::logic_error: LibrdfSerializer::setOption. Failed to set serializer option: " + option);
         }
-        node.freeNode();
-        feature_uri.freeUri();
     }
 
     void LibrdfSerializer::setOptions() const {
@@ -146,5 +103,4 @@ namespace redland {
 
     int toIOStream(const LibrdfUri &uri, const LibrdfModel *model, const RaptorIOStream &stream);
 
-}
-
+}// namespace redland

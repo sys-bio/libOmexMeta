@@ -1,16 +1,42 @@
 \hypertarget{classredland_1_1LibrdfStream}{}\doxysection{redland\+::Librdf\+Stream Class Reference}
 \label{classredland_1_1LibrdfStream}\index{redland::LibrdfStream@{redland::LibrdfStream}}
+Inheritance diagram for redland\+::Librdf\+Stream\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classredland_1_1LibrdfStream}
+\end{center}
+\end{figure}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{classredland_1_1LibrdfStream_aaa64a7ef8a26be8cf35f3b31d6e34a1b}\label{classredland_1_1LibrdfStream_aaa64a7ef8a26be8cf35f3b31d6e34a1b}} 
 {\bfseries Librdf\+Stream} (librdf\+\_\+stream $\ast$stream)
 \item 
-\mbox{\Hypertarget{classredland_1_1LibrdfStream_a1702c7a940f477973bd5d6611277063e}\label{classredland_1_1LibrdfStream_a1702c7a940f477973bd5d6611277063e}} 
-librdf\+\_\+stream $\ast$ {\bfseries get} () const
-\end{DoxyCompactItemize}
+\mbox{\hyperlink{classredland_1_1LibrdfStatement}{Librdf\+Statement}} \mbox{\hyperlink{classredland_1_1LibrdfStream_a2b766ae59bc0ae607a5116f2a7597348}{get\+Statement}} ()
+\begin{DoxyCompactList}\small\item\em get the current librdf\+\_\+statement$\ast$ as a \mbox{\hyperlink{classredland_1_1LibrdfStatement}{Librdf\+Statement}} \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classredland_1_1LibrdfStream_a68cb397d3d4cd583c6368bb5e917da06}\label{classredland_1_1LibrdfStream_a68cb397d3d4cd583c6368bb5e917da06}} 
+bool \mbox{\hyperlink{classredland_1_1LibrdfStream_a68cb397d3d4cd583c6368bb5e917da06}{end}} ()
+\begin{DoxyCompactList}\small\item\em true when stream has ended \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classredland_1_1LibrdfStream_a84acb963afdcb2f40426e16aab2dba7c}\label{classredland_1_1LibrdfStream_a84acb963afdcb2f40426e16aab2dba7c}} 
+bool \mbox{\hyperlink{classredland_1_1LibrdfStream_a84acb963afdcb2f40426e16aab2dba7c}{next}} ()
+\begin{DoxyCompactList}\small\item\em move current statement to the next statement \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
 
 
-The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classredland_1_1LibrdfStream_a2b766ae59bc0ae607a5116f2a7597348}\label{classredland_1_1LibrdfStream_a2b766ae59bc0ae607a5116f2a7597348}} 
+\index{redland::LibrdfStream@{redland::LibrdfStream}!getStatement@{getStatement}}
+\index{getStatement@{getStatement}!redland::LibrdfStream@{redland::LibrdfStream}}
+\doxysubsubsection{\texorpdfstring{getStatement()}{getStatement()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classredland_1_1LibrdfStatement}{Librdf\+Statement}} redland\+::\+Librdf\+Stream\+::get\+Statement (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+get the current librdf\+\_\+statement$\ast$ as a \mbox{\hyperlink{classredland_1_1LibrdfStatement}{Librdf\+Statement}} 
+
+The returned \mbox{\hyperlink{classredland_1_1LibrdfStatement}{Librdf\+Statement}} has its internal reference counter incremented by 1 and is therefore managed via RAII. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-src/redland/\+Redland\+Wrapper/src/include/redland/Librdf\+Stream.\+h\end{DoxyCompactItemize}
+src/redland/\+Redland\+Wrapper/src/include/redland/Librdf\+Stream.\+h\item 
+src/redland/\+Redland\+Wrapper/src/Librdf\+Stream.\+cpp\end{DoxyCompactItemize}

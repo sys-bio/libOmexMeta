@@ -119,41 +119,52 @@
         <childnode refid="2" relation="usage">
           <edgelabel>expression</edgelabel>
         </childnode>
-        <childnode refid="3" relation="usage">
+        <childnode refid="4" relation="usage">
           <edgelabel>value</edgelabel>
         </childnode>
       </node>
-      <node id="3">
+      <node id="4">
         <label>rasqal_literal_s</label>
         <link refid="structrasqal__literal__s"/>
         <childnode refid="1" relation="usage">
           <edgelabel>variable</edgelabel>
         </childnode>
-        <childnode refid="4" relation="usage">
-          <edgelabel>date</edgelabel>
+        <childnode refid="3" relation="usage">
+          <edgelabel>datatype</edgelabel>
+          <edgelabel>uri</edgelabel>
         </childnode>
         <childnode refid="5" relation="usage">
+          <edgelabel>date</edgelabel>
+        </childnode>
+        <childnode refid="6" relation="usage">
           <edgelabel>datetime</edgelabel>
         </childnode>
       </node>
-      <node id="5">
+      <node id="6">
         <label>rasqal_xsd_datetime</label>
         <link refid="structrasqal__xsd__datetime"/>
+      </node>
+      <node id="3">
+        <label>raptor_uri_s</label>
+        <link refid="structraptor__uri__s"/>
       </node>
       <node id="2">
         <label>rasqal_expression_s</label>
         <link refid="structrasqal__expression__s"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>name</edgelabel>
+        </childnode>
         <childnode refid="2" relation="usage">
           <edgelabel>arg1</edgelabel>
           <edgelabel>arg2</edgelabel>
           <edgelabel>arg3</edgelabel>
           <edgelabel>arg4</edgelabel>
         </childnode>
-        <childnode refid="3" relation="usage">
+        <childnode refid="4" relation="usage">
           <edgelabel>literal</edgelabel>
         </childnode>
       </node>
-      <node id="4">
+      <node id="5">
         <label>rasqal_xsd_date</label>
         <link refid="structrasqal__xsd__date"/>
       </node>

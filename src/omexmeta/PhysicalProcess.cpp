@@ -6,14 +6,14 @@
 
 namespace omexmeta {
 
-    PhysicalProcess::PhysicalProcess(librdf_model *model, UriHandler& uriHandler,
+    PhysicalProcess::PhysicalProcess(LibrdfModel& model, UriHandler& uriHandler,
                                      const PhysicalProperty &physicalProperty,
                                      Sources sources, Sinks sinks, Mediators mediators)
         : PropertyBearer(model, uriHandler, physicalProperty, PHYSICAL_PROCESS),
           sources_(std::move(sources)), sinks_(std::move(sinks)), mediators_(std::move(mediators)) {
     }
 
-    PhysicalProcess::PhysicalProcess(librdf_model *model, UriHandler& uriHandler)
+    PhysicalProcess::PhysicalProcess(LibrdfModel& model, UriHandler& uriHandler)
         : PropertyBearer(model, uriHandler) {}
 
     const std::vector<SourceParticipant> &PhysicalProcess::getSources() const {
@@ -113,9 +113,9 @@ namespace omexmeta {
         if (!is_version_of_.empty()) {
             SingularAnnotation singularAnnotation(
                     uriHandler_,
-                    LibrdfNode::fromUriString(getAbout()).get(),
-                    PredicateFactory("bqbiol", "isVersionOf")->get(),
-                    LibrdfNode::fromUriString(is_version_of_).get());
+                    LibrdfNode::fromUriString(getAbout()),
+                    PredicateFactory("bqbiol", "isVersionOf")->getNode(),
+                    LibrdfNode::fromUriString(is_version_of_));
             triples.moveBack(singularAnnotation);
         }
         for (auto &source : sources_) {

@@ -75,21 +75,28 @@ $(function() {
 <div class="title">redland::LibrdfNode Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>C++ wrapper around librdf_node that uses RAII for memory management.  
+ <a href="classredland_1_1LibrdfNode.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="LibrdfNode_8h_source.html">LibrdfNode.h</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for redland::LibrdfNode:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="classredland_1_1LibrdfNode.png" usemap="#redland::LibrdfNode_map" alt=""/>
+  <map id="redland::LibrdfNode_map" name="redland::LibrdfNode_map">
+<area href="classredland_1_1RefCountedRedlandType.html" alt="redland::RefCountedRedlandType&lt; ObjType, FreeFuncType &gt;" shape="rect" coords="0,56,388,80"/>
+<area href="classredland_1_1RedlandType.html" alt="redland::RedlandType&lt; ObjType, FreeFuncType &gt;" shape="rect" coords="0,0,388,24"/>
+  </map>
+</div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a6bca38d88eb20f9f6b29e9f32848fb5b"><td class="memItemLeft" align="right" valign="top"><a id="a6bca38d88eb20f9f6b29e9f32848fb5b"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>LibrdfNode</b> (const <a class="el" href="classredland_1_1LibrdfNode.html">LibrdfNode</a> &amp;node)</td></tr>
-<tr class="separator:a6bca38d88eb20f9f6b29e9f32848fb5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a822ce6a4221315abe5768b278b83d0e5"><td class="memItemLeft" align="right" valign="top"><a id="a822ce6a4221315abe5768b278b83d0e5"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>LibrdfNode</b> (<a class="el" href="classredland_1_1LibrdfNode.html">LibrdfNode</a> &amp;&amp;node) noexcept</td></tr>
-<tr class="separator:a822ce6a4221315abe5768b278b83d0e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a01b8ce0f193e277ccb914b460b1c275c"><td class="memItemLeft" align="right" valign="top"><a id="a01b8ce0f193e277ccb914b460b1c275c"></a>
-<a class="el" href="classredland_1_1LibrdfNode.html">LibrdfNode</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const <a class="el" href="classredland_1_1LibrdfNode.html">LibrdfNode</a> &amp;node)</td></tr>
-<tr class="separator:a01b8ce0f193e277ccb914b460b1c275c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9de3a69b00958b2bb50646dbf0aa8d7e"><td class="memItemLeft" align="right" valign="top"><a id="a9de3a69b00958b2bb50646dbf0aa8d7e"></a>
-<a class="el" href="classredland_1_1LibrdfNode.html">LibrdfNode</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (<a class="el" href="classredland_1_1LibrdfNode.html">LibrdfNode</a> &amp;&amp;node) noexcept</td></tr>
-<tr class="separator:a9de3a69b00958b2bb50646dbf0aa8d7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f6b28fba74ab6ff25de32c725d499e9"><td class="memItemLeft" align="right" valign="top"><a id="a0f6b28fba74ab6ff25de32c725d499e9"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredland_1_1LibrdfNode.html#a0f6b28fba74ab6ff25de32c725d499e9">LibrdfNode</a> ()=default</td></tr>
+<tr class="memdesc:a0f6b28fba74ab6ff25de32c725d499e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">use superclass constructors and rule of 5 <br /></td></tr>
+<tr class="separator:a0f6b28fba74ab6ff25de32c725d499e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afc1bdf57705253e8204a394541b96ca7"><td class="memItemLeft" align="right" valign="top"><a id="afc1bdf57705253e8204a394541b96ca7"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator==</b> (const <a class="el" href="classredland_1_1LibrdfNode.html">LibrdfNode</a> &amp;rhs) const</td></tr>
 <tr class="separator:afc1bdf57705253e8204a394541b96ca7"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -105,15 +112,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>freeNode</b> ()</td><
 <tr class="memitem:a0662461585aba94581be80247d9bd917"><td class="memItemLeft" align="right" valign="top"><a id="a0662461585aba94581be80247d9bd917"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>LibrdfNode</b> (const <a class="el" href="classredland_1_1LibrdfUri.html">LibrdfUri</a> &amp;uri)</td></tr>
 <tr class="separator:a0662461585aba94581be80247d9bd917"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a33162ea36efe451c100325816cf8613f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structraptor__term.html">librdf_node</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredland_1_1LibrdfNode.html#a33162ea36efe451c100325816cf8613f">get</a> () const</td></tr>
-<tr class="memdesc:a33162ea36efe451c100325816cf8613f"><td class="mdescLeft">&#160;</td><td class="mdescRight">return pointer to underlying librdf_node pointer  <a href="classredland_1_1LibrdfNode.html#a33162ea36efe451c100325816cf8613f">More...</a><br /></td></tr>
-<tr class="separator:a33162ea36efe451c100325816cf8613f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0bd36d9a9140a98753bb1d35ff8c1695"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structraptor__term.html">librdf_node</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredland_1_1LibrdfNode.html#a0bd36d9a9140a98753bb1d35ff8c1695">getWithoutIncrement</a> () const</td></tr>
-<tr class="memdesc:a0bd36d9a9140a98753bb1d35ff8c1695"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the underlying librdf_node*  <a href="classredland_1_1LibrdfNode.html#a0bd36d9a9140a98753bb1d35ff8c1695">More...</a><br /></td></tr>
-<tr class="separator:a0bd36d9a9140a98753bb1d35ff8c1695"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a83ec604f27e71cea80ac49569a06ddfe"><td class="memItemLeft" align="right" valign="top"><a id="a83ec604f27e71cea80ac49569a06ddfe"></a>
-raptor_term_type&#160;</td><td class="memItemRight" valign="bottom"><b>getRaptorTermType</b> ()</td></tr>
-<tr class="separator:a83ec604f27e71cea80ac49569a06ddfe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30d48200b6b5c8a837985e7c298082d8"><td class="memItemLeft" align="right" valign="top"><a id="a30d48200b6b5c8a837985e7c298082d8"></a>
+raptor_term_type&#160;</td><td class="memItemRight" valign="bottom"><b>getRaptorTermType</b> () const</td></tr>
+<tr class="separator:a30d48200b6b5c8a837985e7c298082d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a535fbe1bc21ca9cd9b39b969bfd2e500"><td class="memItemLeft" align="right" valign="top"><a id="a535fbe1bc21ca9cd9b39b969bfd2e500"></a>
 std::string&#160;</td><td class="memItemRight" valign="bottom"><b>str</b> () const</td></tr>
 <tr class="separator:a535fbe1bc21ca9cd9b39b969bfd2e500"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -142,13 +143,108 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>setBlankIdentifier</b
 std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredland_1_1LibrdfNode.html#a43ba1bed3f1cc6ed654a16c570598565">getNamespace</a> () const</td></tr>
 <tr class="memdesc:a43ba1bed3f1cc6ed654a16c570598565"><td class="mdescLeft">&#160;</td><td class="mdescRight">get namespace portion of the node. I.e. all but last section of the uri <br /></td></tr>
 <tr class="separator:a43ba1bed3f1cc6ed654a16c570598565"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6dd134798082dbee9fb5601752609981"><td class="memItemLeft" align="right" valign="top"><a id="a6dd134798082dbee9fb5601752609981"></a>
-unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredland_1_1LibrdfNode.html#a6dd134798082dbee9fb5601752609981">getUsage</a> () const</td></tr>
-<tr class="memdesc:a6dd134798082dbee9fb5601752609981"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the usage of the underlying librdf_node pointer <br /></td></tr>
-<tr class="separator:a6dd134798082dbee9fb5601752609981"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a21d7aff6813bf11d13057f4dab8bbef7"><td class="memItemLeft" align="right" valign="top"><a id="a21d7aff6813bf11d13057f4dab8bbef7"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>incrementUsageCount</b> ()</td></tr>
-<tr class="separator:a21d7aff6813bf11d13057f4dab8bbef7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeeac0c4a350c5974edbd5e335cf200b8"><td class="memItemLeft" align="right" valign="top"><a id="aeeac0c4a350c5974edbd5e335cf200b8"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredland_1_1LibrdfNode.html#aeeac0c4a350c5974edbd5e335cf200b8">isBlank</a> ()</td></tr>
+<tr class="memdesc:aeeac0c4a350c5974edbd5e335cf200b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">indicator for whether this is a blank node <br /></td></tr>
+<tr class="separator:aeeac0c4a350c5974edbd5e335cf200b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7795f903a87e8afc2d3e7dc5a1630dd"><td class="memItemLeft" align="right" valign="top"><a id="ad7795f903a87e8afc2d3e7dc5a1630dd"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredland_1_1LibrdfNode.html#ad7795f903a87e8afc2d3e7dc5a1630dd">isUri</a> ()</td></tr>
+<tr class="memdesc:ad7795f903a87e8afc2d3e7dc5a1630dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">indicator for whether this is a uri node <br /></td></tr>
+<tr class="separator:ad7795f903a87e8afc2d3e7dc5a1630dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5e2c53c062c913fda451712585d1f3cd"><td class="memItemLeft" align="right" valign="top"><a id="a5e2c53c062c913fda451712585d1f3cd"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredland_1_1LibrdfNode.html#a5e2c53c062c913fda451712585d1f3cd">isLiteral</a> ()</td></tr>
+<tr class="memdesc:a5e2c53c062c913fda451712585d1f3cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">indicator for whether this is a literal node <br /></td></tr>
+<tr class="separator:a5e2c53c062c913fda451712585d1f3cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classredland_1_1RefCountedRedlandType"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classredland_1_1RefCountedRedlandType')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classredland_1_1RefCountedRedlandType.html">redland::RefCountedRedlandType&lt; ObjType, FreeFuncType &gt;</a></td></tr>
+<tr class="memitem:ae0ca62ccfcffebe1f8d391fc80719fd7 inherit pub_methods_classredland_1_1RefCountedRedlandType"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredland_1_1RefCountedRedlandType.html#ae0ca62ccfcffebe1f8d391fc80719fd7">RefCountedRedlandType</a> (const <a class="el" href="classredland_1_1RefCountedRedlandType.html">RefCountedRedlandType</a> &amp;other)</td></tr>
+<tr class="memdesc:ae0ca62ccfcffebe1f8d391fc80719fd7 inherit pub_methods_classredland_1_1RefCountedRedlandType"><td class="mdescLeft">&#160;</td><td class="mdescRight">copy constructor.  <a href="classredland_1_1RefCountedRedlandType.html#ae0ca62ccfcffebe1f8d391fc80719fd7">More...</a><br /></td></tr>
+<tr class="separator:ae0ca62ccfcffebe1f8d391fc80719fd7 inherit pub_methods_classredland_1_1RefCountedRedlandType"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0d305fe2357f0f5370a5027e165506a inherit pub_methods_classredland_1_1RefCountedRedlandType"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classredland_1_1RefCountedRedlandType.html">RefCountedRedlandType</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredland_1_1RefCountedRedlandType.html#aa0d305fe2357f0f5370a5027e165506a">operator=</a> (const <a class="el" href="classredland_1_1RefCountedRedlandType.html">RefCountedRedlandType</a> &amp;other)</td></tr>
+<tr class="memdesc:aa0d305fe2357f0f5370a5027e165506a inherit pub_methods_classredland_1_1RefCountedRedlandType"><td class="mdescLeft">&#160;</td><td class="mdescRight">copy assignment constructor.  <a href="classredland_1_1RefCountedRedlandType.html#aa0d305fe2357f0f5370a5027e165506a">More...</a><br /></td></tr>
+<tr class="separator:aa0d305fe2357f0f5370a5027e165506a inherit pub_methods_classredland_1_1RefCountedRedlandType"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb14a238dec2d35068c96d873ccef2da inherit pub_methods_classredland_1_1RefCountedRedlandType"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredland_1_1RefCountedRedlandType.html#abb14a238dec2d35068c96d873ccef2da">RefCountedRedlandType</a> (<a class="el" href="classredland_1_1RefCountedRedlandType.html">RefCountedRedlandType</a> &amp;&amp;other) noexcept</td></tr>
+<tr class="memdesc:abb14a238dec2d35068c96d873ccef2da inherit pub_methods_classredland_1_1RefCountedRedlandType"><td class="mdescLeft">&#160;</td><td class="mdescRight">move constructor.  <a href="classredland_1_1RefCountedRedlandType.html#abb14a238dec2d35068c96d873ccef2da">More...</a><br /></td></tr>
+<tr class="separator:abb14a238dec2d35068c96d873ccef2da inherit pub_methods_classredland_1_1RefCountedRedlandType"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ac9b3d35fbbc1f17fb474d61071690e inherit pub_methods_classredland_1_1RefCountedRedlandType"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classredland_1_1RefCountedRedlandType.html">RefCountedRedlandType</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredland_1_1RefCountedRedlandType.html#a1ac9b3d35fbbc1f17fb474d61071690e">operator=</a> (<a class="el" href="classredland_1_1RefCountedRedlandType.html">RefCountedRedlandType</a> &amp;&amp;other) noexcept</td></tr>
+<tr class="memdesc:a1ac9b3d35fbbc1f17fb474d61071690e inherit pub_methods_classredland_1_1RefCountedRedlandType"><td class="mdescLeft">&#160;</td><td class="mdescRight">move assignment constructor.  <a href="classredland_1_1RefCountedRedlandType.html#a1ac9b3d35fbbc1f17fb474d61071690e">More...</a><br /></td></tr>
+<tr class="separator:a1ac9b3d35fbbc1f17fb474d61071690e inherit pub_methods_classredland_1_1RefCountedRedlandType"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5e09c936eada4386171e23bc599f334f inherit pub_methods_classredland_1_1RefCountedRedlandType"><td class="memItemLeft" align="right" valign="top"><a id="a5e09c936eada4386171e23bc599f334f"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredland_1_1RefCountedRedlandType.html#a5e09c936eada4386171e23bc599f334f">freeObj</a> () override</td></tr>
+<tr class="memdesc:a5e09c936eada4386171e23bc599f334f inherit pub_methods_classredland_1_1RefCountedRedlandType"><td class="mdescLeft">&#160;</td><td class="mdescRight">use the user supplied freeFunc to delete memory pointed to by obj_ Account for reference counting <br /></td></tr>
+<tr class="separator:a5e09c936eada4386171e23bc599f334f inherit pub_methods_classredland_1_1RefCountedRedlandType"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6984bffbdd92f2eaaf23e86f65044fb9 inherit pub_methods_classredland_1_1RefCountedRedlandType"><td class="memItemLeft" align="right" valign="top"><a id="a6984bffbdd92f2eaaf23e86f65044fb9"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredland_1_1RefCountedRedlandType.html#a6984bffbdd92f2eaaf23e86f65044fb9">getUsage</a> () const</td></tr>
+<tr class="memdesc:a6984bffbdd92f2eaaf23e86f65044fb9 inherit pub_methods_classredland_1_1RefCountedRedlandType"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the current usage count of obj_ <br /></td></tr>
+<tr class="separator:a6984bffbdd92f2eaaf23e86f65044fb9 inherit pub_methods_classredland_1_1RefCountedRedlandType"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae8d1c23cc4bb8a9df585c87765d857bb inherit pub_methods_classredland_1_1RefCountedRedlandType"><td class="memItemLeft" align="right" valign="top"><a id="ae8d1c23cc4bb8a9df585c87765d857bb"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredland_1_1RefCountedRedlandType.html#ae8d1c23cc4bb8a9df585c87765d857bb">incrementUsage</a> () const</td></tr>
+<tr class="memdesc:ae8d1c23cc4bb8a9df585c87765d857bb inherit pub_methods_classredland_1_1RefCountedRedlandType"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds 1 to the usage count of obj_. <br /></td></tr>
+<tr class="separator:ae8d1c23cc4bb8a9df585c87765d857bb inherit pub_methods_classredland_1_1RefCountedRedlandType"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad3189482972131c1d253e7759fee33e inherit pub_methods_classredland_1_1RefCountedRedlandType"><td class="memItemLeft" align="right" valign="top">ObjType *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredland_1_1RefCountedRedlandType.html#aad3189482972131c1d253e7759fee33e">get</a> () const override</td></tr>
+<tr class="memdesc:aad3189482972131c1d253e7759fee33e inherit pub_methods_classredland_1_1RefCountedRedlandType"><td class="mdescLeft">&#160;</td><td class="mdescRight">get a pointer to the ObjType stored by this RefCounted. The usage count is incremented by one so that memory is properly handled via shared ownership.  <a href="classredland_1_1RefCountedRedlandType.html#aad3189482972131c1d253e7759fee33e">More...</a><br /></td></tr>
+<tr class="separator:aad3189482972131c1d253e7759fee33e inherit pub_methods_classredland_1_1RefCountedRedlandType"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a688d681a2a77dcbd3223757912cc93b6 inherit pub_methods_classredland_1_1RefCountedRedlandType"><td class="memItemLeft" align="right" valign="top">ObjType *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredland_1_1RefCountedRedlandType.html#a688d681a2a77dcbd3223757912cc93b6">getWithoutIncrement</a> () const</td></tr>
+<tr class="memdesc:a688d681a2a77dcbd3223757912cc93b6 inherit pub_methods_classredland_1_1RefCountedRedlandType"><td class="mdescLeft">&#160;</td><td class="mdescRight">get a pointer to the ObjType stored by this RefCounted. The usage count is not incremented.  <a href="classredland_1_1RefCountedRedlandType.html#a688d681a2a77dcbd3223757912cc93b6">More...</a><br /></td></tr>
+<tr class="separator:a688d681a2a77dcbd3223757912cc93b6 inherit pub_methods_classredland_1_1RefCountedRedlandType"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c3a57c6b73d9bea7e0a9cdb9a725006 inherit pub_methods_classredland_1_1RefCountedRedlandType"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredland_1_1RefCountedRedlandType.html#a3c3a57c6b73d9bea7e0a9cdb9a725006">RedlandType</a> ()=default</td></tr>
+<tr class="memdesc:a3c3a57c6b73d9bea7e0a9cdb9a725006 inherit pub_methods_classredland_1_1RefCountedRedlandType"><td class="mdescLeft">&#160;</td><td class="mdescRight">default constructor. Users would need to populate obj_ and freeFunc_ manually if default constructor is used.  <a href="classredland_1_1RefCountedRedlandType.html#a3c3a57c6b73d9bea7e0a9cdb9a725006">More...</a><br /></td></tr>
+<tr class="separator:a3c3a57c6b73d9bea7e0a9cdb9a725006 inherit pub_methods_classredland_1_1RefCountedRedlandType"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7e0f16ed9acd6ba9c65b8e9259301e9 inherit pub_methods_classredland_1_1RefCountedRedlandType"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredland_1_1RefCountedRedlandType.html#ab7e0f16ed9acd6ba9c65b8e9259301e9">RedlandType</a> (ObjType *objType, std::function&lt; void(ObjType *)&gt; func)</td></tr>
+<tr class="memdesc:ab7e0f16ed9acd6ba9c65b8e9259301e9 inherit pub_methods_classredland_1_1RefCountedRedlandType"><td class="mdescLeft">&#160;</td><td class="mdescRight">generic constructor for ref counted types  <a href="classredland_1_1RefCountedRedlandType.html#ab7e0f16ed9acd6ba9c65b8e9259301e9">More...</a><br /></td></tr>
+<tr class="separator:ab7e0f16ed9acd6ba9c65b8e9259301e9 inherit pub_methods_classredland_1_1RefCountedRedlandType"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a89f2c7b5d8133d7b22c54263ea2dcb3b inherit pub_methods_classredland_1_1RefCountedRedlandType"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredland_1_1RefCountedRedlandType.html#a89f2c7b5d8133d7b22c54263ea2dcb3b">RedlandType</a> (const <a class="el" href="classredland_1_1RedlandType.html">RedlandType</a> &amp;other)</td></tr>
+<tr class="memdesc:a89f2c7b5d8133d7b22c54263ea2dcb3b inherit pub_methods_classredland_1_1RefCountedRedlandType"><td class="mdescLeft">&#160;</td><td class="mdescRight">copy constructor.  <a href="classredland_1_1RefCountedRedlandType.html#a89f2c7b5d8133d7b22c54263ea2dcb3b">More...</a><br /></td></tr>
+<tr class="separator:a89f2c7b5d8133d7b22c54263ea2dcb3b inherit pub_methods_classredland_1_1RefCountedRedlandType"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7884dd6bc66d9880090bb53f14683f1f inherit pub_methods_classredland_1_1RefCountedRedlandType"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredland_1_1RefCountedRedlandType.html#a7884dd6bc66d9880090bb53f14683f1f">RedlandType</a> (<a class="el" href="classredland_1_1RedlandType.html">RedlandType</a> &amp;&amp;other) noexcept</td></tr>
+<tr class="memdesc:a7884dd6bc66d9880090bb53f14683f1f inherit pub_methods_classredland_1_1RefCountedRedlandType"><td class="mdescLeft">&#160;</td><td class="mdescRight">move constructor.  <a href="classredland_1_1RefCountedRedlandType.html#a7884dd6bc66d9880090bb53f14683f1f">More...</a><br /></td></tr>
+<tr class="separator:a7884dd6bc66d9880090bb53f14683f1f inherit pub_methods_classredland_1_1RefCountedRedlandType"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classredland_1_1RedlandType"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classredland_1_1RedlandType')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classredland_1_1RedlandType.html">redland::RedlandType&lt; ObjType, FreeFuncType &gt;</a></td></tr>
+<tr class="memitem:a3c3a57c6b73d9bea7e0a9cdb9a725006 inherit pub_methods_classredland_1_1RedlandType"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredland_1_1RedlandType.html#a3c3a57c6b73d9bea7e0a9cdb9a725006">RedlandType</a> ()=default</td></tr>
+<tr class="memdesc:a3c3a57c6b73d9bea7e0a9cdb9a725006 inherit pub_methods_classredland_1_1RedlandType"><td class="mdescLeft">&#160;</td><td class="mdescRight">default constructor. Users would need to populate obj_ and freeFunc_ manually if default constructor is used.  <a href="classredland_1_1RedlandType.html#a3c3a57c6b73d9bea7e0a9cdb9a725006">More...</a><br /></td></tr>
+<tr class="separator:a3c3a57c6b73d9bea7e0a9cdb9a725006 inherit pub_methods_classredland_1_1RedlandType"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7e0f16ed9acd6ba9c65b8e9259301e9 inherit pub_methods_classredland_1_1RedlandType"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredland_1_1RedlandType.html#ab7e0f16ed9acd6ba9c65b8e9259301e9">RedlandType</a> (ObjType *objType, std::function&lt; void(ObjType *)&gt; func)</td></tr>
+<tr class="memdesc:ab7e0f16ed9acd6ba9c65b8e9259301e9 inherit pub_methods_classredland_1_1RedlandType"><td class="mdescLeft">&#160;</td><td class="mdescRight">generic constructor for ref counted types  <a href="classredland_1_1RedlandType.html#ab7e0f16ed9acd6ba9c65b8e9259301e9">More...</a><br /></td></tr>
+<tr class="separator:ab7e0f16ed9acd6ba9c65b8e9259301e9 inherit pub_methods_classredland_1_1RedlandType"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a028dab285bfd81fa4efca9206b0cd498 inherit pub_methods_classredland_1_1RedlandType"><td class="memItemLeft" align="right" valign="top"><a id="a028dab285bfd81fa4efca9206b0cd498"></a>
+virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredland_1_1RedlandType.html#a028dab285bfd81fa4efca9206b0cd498">~RedlandType</a> ()</td></tr>
+<tr class="memdesc:a028dab285bfd81fa4efca9206b0cd498 inherit pub_methods_classredland_1_1RedlandType"><td class="mdescLeft">&#160;</td><td class="mdescRight">destructor calls the free function specified by the user. <a class="el" href="classThis.html" title="interface for querying an rdf graph basically a wrapper around both librdf_query and librdf_query_res...">This</a> allows multiple redland types to use the same logic for the rule of 5. <br /></td></tr>
+<tr class="separator:a028dab285bfd81fa4efca9206b0cd498 inherit pub_methods_classredland_1_1RedlandType"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86304e5a3e82aae8ea4aae868b4fa7e4 inherit pub_methods_classredland_1_1RedlandType"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredland_1_1RedlandType.html#a86304e5a3e82aae8ea4aae868b4fa7e4">checkForNull</a> ()</td></tr>
+<tr class="separator:a86304e5a3e82aae8ea4aae868b4fa7e4 inherit pub_methods_classredland_1_1RedlandType"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a89f2c7b5d8133d7b22c54263ea2dcb3b inherit pub_methods_classredland_1_1RedlandType"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredland_1_1RedlandType.html#a89f2c7b5d8133d7b22c54263ea2dcb3b">RedlandType</a> (const <a class="el" href="classredland_1_1RedlandType.html">RedlandType</a> &amp;other)</td></tr>
+<tr class="memdesc:a89f2c7b5d8133d7b22c54263ea2dcb3b inherit pub_methods_classredland_1_1RedlandType"><td class="mdescLeft">&#160;</td><td class="mdescRight">copy constructor.  <a href="classredland_1_1RedlandType.html#a89f2c7b5d8133d7b22c54263ea2dcb3b">More...</a><br /></td></tr>
+<tr class="separator:a89f2c7b5d8133d7b22c54263ea2dcb3b inherit pub_methods_classredland_1_1RedlandType"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7884dd6bc66d9880090bb53f14683f1f inherit pub_methods_classredland_1_1RedlandType"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredland_1_1RedlandType.html#a7884dd6bc66d9880090bb53f14683f1f">RedlandType</a> (<a class="el" href="classredland_1_1RedlandType.html">RedlandType</a> &amp;&amp;other) noexcept</td></tr>
+<tr class="memdesc:a7884dd6bc66d9880090bb53f14683f1f inherit pub_methods_classredland_1_1RedlandType"><td class="mdescLeft">&#160;</td><td class="mdescRight">move constructor.  <a href="classredland_1_1RedlandType.html#a7884dd6bc66d9880090bb53f14683f1f">More...</a><br /></td></tr>
+<tr class="separator:a7884dd6bc66d9880090bb53f14683f1f inherit pub_methods_classredland_1_1RedlandType"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5dd5fd7edeb2b6c17e8c92eb7ba01cac inherit pub_methods_classredland_1_1RedlandType"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classredland_1_1RedlandType.html">RedlandType</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredland_1_1RedlandType.html#a5dd5fd7edeb2b6c17e8c92eb7ba01cac">operator=</a> (const <a class="el" href="classredland_1_1RedlandType.html">RedlandType</a> &amp;other)</td></tr>
+<tr class="memdesc:a5dd5fd7edeb2b6c17e8c92eb7ba01cac inherit pub_methods_classredland_1_1RedlandType"><td class="mdescLeft">&#160;</td><td class="mdescRight">copy assignment constructor.  <a href="classredland_1_1RedlandType.html#a5dd5fd7edeb2b6c17e8c92eb7ba01cac">More...</a><br /></td></tr>
+<tr class="separator:a5dd5fd7edeb2b6c17e8c92eb7ba01cac inherit pub_methods_classredland_1_1RedlandType"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a22e381182a5642883ad578db40368f13 inherit pub_methods_classredland_1_1RedlandType"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classredland_1_1RedlandType.html">RedlandType</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredland_1_1RedlandType.html#a22e381182a5642883ad578db40368f13">operator=</a> (<a class="el" href="classredland_1_1RedlandType.html">RedlandType</a> &amp;&amp;other) noexcept</td></tr>
+<tr class="memdesc:a22e381182a5642883ad578db40368f13 inherit pub_methods_classredland_1_1RedlandType"><td class="mdescLeft">&#160;</td><td class="mdescRight">move assignment constructor.  <a href="classredland_1_1RedlandType.html#a22e381182a5642883ad578db40368f13">More...</a><br /></td></tr>
+<tr class="separator:a22e381182a5642883ad578db40368f13 inherit pub_methods_classredland_1_1RedlandType"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9fc5b1ce564f4c2497855cd965df1cfd inherit pub_methods_classredland_1_1RedlandType"><td class="memItemLeft" align="right" valign="top"><a id="a9fc5b1ce564f4c2497855cd965df1cfd"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredland_1_1RedlandType.html#a9fc5b1ce564f4c2497855cd965df1cfd">operator==</a> (const <a class="el" href="classredland_1_1RedlandType.html">RedlandType</a> &amp;rhs) const</td></tr>
+<tr class="memdesc:a9fc5b1ce564f4c2497855cd965df1cfd inherit pub_methods_classredland_1_1RedlandType"><td class="mdescLeft">&#160;</td><td class="mdescRight">equality operator. <a class="el" href="classThis.html" title="interface for querying an rdf graph basically a wrapper around both librdf_query and librdf_query_res...">This</a> <a class="el" href="classredland_1_1RedlandType.html">RedlandType</a> is equal to rhs if their obj_ is the same (i.e. the address of the object pointed to by obj_ is equal) and if the signature of their freeFunc is the same. <br /></td></tr>
+<tr class="separator:a9fc5b1ce564f4c2497855cd965df1cfd inherit pub_methods_classredland_1_1RedlandType"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b0707a7465ffb5952bae3651f8c6d41 inherit pub_methods_classredland_1_1RedlandType"><td class="memItemLeft" align="right" valign="top"><a id="a4b0707a7465ffb5952bae3651f8c6d41"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredland_1_1RedlandType.html#a4b0707a7465ffb5952bae3651f8c6d41">operator!=</a> (const <a class="el" href="classredland_1_1RedlandType.html">RedlandType</a> &amp;rhs) const</td></tr>
+<tr class="memdesc:a4b0707a7465ffb5952bae3651f8c6d41 inherit pub_methods_classredland_1_1RedlandType"><td class="mdescLeft">&#160;</td><td class="mdescRight">inequality operator. Inverse of <a class="el" href="classredland_1_1RedlandType.html#a9fc5b1ce564f4c2497855cd965df1cfd" title="equality operator. This RedlandType is equal to rhs if their obj_ is the same (i.e....">RedlandType::operator==</a> <br /></td></tr>
+<tr class="separator:a4b0707a7465ffb5952bae3651f8c6d41 inherit pub_methods_classredland_1_1RedlandType"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3255173f68c11e2ebeb0d991fec24e7 inherit pub_methods_classredland_1_1RedlandType"><td class="memItemLeft" align="right" valign="top"><a id="ac3255173f68c11e2ebeb0d991fec24e7"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredland_1_1RedlandType.html#ac3255173f68c11e2ebeb0d991fec24e7">setFreeFunc</a> (FreeFuncType freeFunc)</td></tr>
+<tr class="memdesc:ac3255173f68c11e2ebeb0d991fec24e7 inherit pub_methods_classredland_1_1RedlandType"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set or replace the free function associated with this <a class="el" href="classredland_1_1RedlandType.html">RedlandType</a>. <br /></td></tr>
+<tr class="separator:ac3255173f68c11e2ebeb0d991fec24e7 inherit pub_methods_classredland_1_1RedlandType"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a403c5018a01ee1dc94e4caa33bef91e7 inherit pub_methods_classredland_1_1RedlandType"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredland_1_1RedlandType.html#a403c5018a01ee1dc94e4caa33bef91e7">setObj</a> (ObjType *objType)</td></tr>
+<tr class="memdesc:a403c5018a01ee1dc94e4caa33bef91e7 inherit pub_methods_classredland_1_1RedlandType"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set or replace the object stored in this <a class="el" href="classredland_1_1RedlandType.html">RedlandType</a>.  <a href="classredland_1_1RedlandType.html#a403c5018a01ee1dc94e4caa33bef91e7">More...</a><br /></td></tr>
+<tr class="separator:a403c5018a01ee1dc94e4caa33bef91e7 inherit pub_methods_classredland_1_1RedlandType"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee7e39b6197cf77b19f873e3c2cea495 inherit pub_methods_classredland_1_1RedlandType"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredland_1_1RedlandType.html#aee7e39b6197cf77b19f873e3c2cea495">release</a> ()</td></tr>
+<tr class="memdesc:aee7e39b6197cf77b19f873e3c2cea495 inherit pub_methods_classredland_1_1RedlandType"><td class="mdescLeft">&#160;</td><td class="mdescRight">Free the memory pointed to by obj_ with freeFunc but do not destroy this object. If.  <a href="classredland_1_1RedlandType.html#aee7e39b6197cf77b19f873e3c2cea495">More...</a><br /></td></tr>
+<tr class="separator:aee7e39b6197cf77b19f873e3c2cea495 inherit pub_methods_classredland_1_1RedlandType"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6594279280345bd8a03c1a7e950d3e0 inherit pub_methods_classredland_1_1RedlandType"><td class="memItemLeft" align="right" valign="top"><a id="ac6594279280345bd8a03c1a7e950d3e0"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredland_1_1RedlandType.html#ac6594279280345bd8a03c1a7e950d3e0">isNull</a> () const</td></tr>
+<tr class="memdesc:ac6594279280345bd8a03c1a7e950d3e0 inherit pub_methods_classredland_1_1RedlandType"><td class="mdescLeft">&#160;</td><td class="mdescRight">indicator variable. True if obj_ is nullptr <br /></td></tr>
+<tr class="separator:ac6594279280345bd8a03c1a7e950d3e0 inherit pub_methods_classredland_1_1RedlandType"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -164,9 +260,6 @@ static <a class="el" href="classredland_1_1LibrdfNode.html">LibrdfNode</a>&#160;
 <tr class="memitem:aaeeeca26bafdaf7f118af3307a4768be"><td class="memItemLeft" align="right" valign="top"><a id="aaeeeca26bafdaf7f118af3307a4768be"></a>
 static <a class="el" href="classredland_1_1LibrdfNode.html">LibrdfNode</a>&#160;</td><td class="memItemRight" valign="bottom"><b>newEmptyNode</b> ()</td></tr>
 <tr class="separator:aaeeeca26bafdaf7f118af3307a4768be"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa6bf7e25e68e473f2f39cb7b4cb5f39b"><td class="memItemLeft" align="right" valign="top"><a id="aa6bf7e25e68e473f2f39cb7b4cb5f39b"></a>
-static std::string&#160;</td><td class="memItemRight" valign="bottom"><b>str</b> (<a class="el" href="structraptor__term.html">librdf_node</a> *node)</td></tr>
-<tr class="separator:aa6bf7e25e68e473f2f39cb7b4cb5f39b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3242e29edb736ba0aa8ac42fd6b3ae58"><td class="memItemLeft" align="right" valign="top"><a id="a3242e29edb736ba0aa8ac42fd6b3ae58"></a>
 static std::string&#160;</td><td class="memItemRight" valign="bottom"><b>validateLiteralDatatype</b> (const std::string &amp;literal_datatype_uri)</td></tr>
 <tr class="separator:a3242e29edb736ba0aa8ac42fd6b3ae58"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -179,8 +272,24 @@ static <a class="el" href="classredland_1_1LibrdfNode.html">LibrdfNode</a>&#160;
 <tr class="memitem:a56623e9b231d824ad34d43d9a3994df7"><td class="memItemLeft" align="right" valign="top"><a id="a56623e9b231d824ad34d43d9a3994df7"></a>
 static std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>splitStringBy</b> (const std::string &amp;str, char delimiter)</td></tr>
 <tr class="separator:a56623e9b231d824ad34d43d9a3994df7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
+Additional Inherited Members</h2></td></tr>
+<tr class="inherit_header pub_types_classredland_1_1RefCountedRedlandType"><td colspan="2" onclick="javascript:toggleInherit('pub_types_classredland_1_1RefCountedRedlandType')"><img src="closed.png" alt="-"/>&#160;Public Types inherited from <a class="el" href="classredland_1_1RefCountedRedlandType.html">redland::RefCountedRedlandType&lt; ObjType, FreeFuncType &gt;</a></td></tr>
+<tr class="memitem:a8ce7a7bf352c4d91ae785a4468cf0960 inherit pub_types_classredland_1_1RefCountedRedlandType"><td class="memItemLeft" align="right" valign="top"><a id="a8ce7a7bf352c4d91ae785a4468cf0960"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>ThisType</b> = <a class="el" href="classredland_1_1RedlandType.html">RedlandType</a>&lt; ObjType, FreeFuncType &gt;</td></tr>
+<tr class="separator:a8ce7a7bf352c4d91ae785a4468cf0960 inherit pub_types_classredland_1_1RefCountedRedlandType"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_attribs_classredland_1_1RedlandType"><td colspan="2" onclick="javascript:toggleInherit('pub_attribs_classredland_1_1RedlandType')"><img src="closed.png" alt="-"/>&#160;Public Attributes inherited from <a class="el" href="classredland_1_1RedlandType.html">redland::RedlandType&lt; ObjType, FreeFuncType &gt;</a></td></tr>
+<tr class="memitem:ac9d0c3d245e2394c137ee0ab266784ed inherit pub_attribs_classredland_1_1RedlandType"><td class="memItemLeft" align="right" valign="top">ObjType *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredland_1_1RedlandType.html#ac9d0c3d245e2394c137ee0ab266784ed">obj_</a> = nullptr</td></tr>
+<tr class="memdesc:ac9d0c3d245e2394c137ee0ab266784ed inherit pub_attribs_classredland_1_1RedlandType"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to the heap allocated object that is managed by this <a class="el" href="classredland_1_1RedlandType.html">RedlandType</a>.  <a href="classredland_1_1RedlandType.html#ac9d0c3d245e2394c137ee0ab266784ed">More...</a><br /></td></tr>
+<tr class="separator:ac9d0c3d245e2394c137ee0ab266784ed inherit pub_attribs_classredland_1_1RedlandType"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd3a894521540cf05dfa56a3a59b25b9 inherit pub_attribs_classredland_1_1RedlandType"><td class="memItemLeft" align="right" valign="top"><a id="afd3a894521540cf05dfa56a3a59b25b9"></a>
+FreeFuncType&#160;</td><td class="memItemRight" valign="bottom"><b>freeFunc_</b></td></tr>
+<tr class="separator:afd3a894521540cf05dfa56a3a59b25b9 inherit pub_attribs_classredland_1_1RedlandType"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>C++ wrapper around librdf_node that uses RAII for memory management. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a96a685f8e79ba04c91a15e024a66388f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a96a685f8e79ba04c91a15e024a66388f">&#9670;&nbsp;</a></span>fromLiteral()</h2>
 
@@ -230,48 +339,6 @@ static std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valig
   </table>
   </dd>
 </dl>
-
-</div>
-</div>
-<a id="a33162ea36efe451c100325816cf8613f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a33162ea36efe451c100325816cf8613f">&#9670;&nbsp;</a></span>get()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structraptor__term.html">librdf_node</a> * redland::LibrdfNode::get </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>return pointer to underlying librdf_node pointer </p>
-<p>using this method increments the librdf_node* usage count by 1. The caller is responsible for decrementing the usage count. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="classredland_1_1LibrdfNode.html#a6dd134798082dbee9fb5601752609981" title="returns the usage of the underlying librdf_node pointer">getUsage()</a> </dd></dl>
-<dl class="section note"><dt>Note</dt><dd>the librdf_statement takes shared ownership of a node when passed to librdf_new_statement. </dd></dl>
-
-</div>
-</div>
-<a id="a0bd36d9a9140a98753bb1d35ff8c1695"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0bd36d9a9140a98753bb1d35ff8c1695">&#9670;&nbsp;</a></span>getWithoutIncrement()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structraptor__term.html">librdf_node</a> * redland::LibrdfNode::getWithoutIncrement </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>get the underlying librdf_node* </p>
-<p>do not increment the shared pointer reference counter. </p><dl class="section warning"><dt>Warning</dt><dd>this method assumes you know what you are doing with regards to the librdf reference counting system </dd></dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="classredland_1_1LibrdfNode.html#a33162ea36efe451c100325816cf8613f" title="return pointer to underlying librdf_node pointer">LibrdfNode::get()</a> </dd></dl>
 
 </div>
 </div>

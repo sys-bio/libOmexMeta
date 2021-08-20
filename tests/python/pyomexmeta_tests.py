@@ -1578,5 +1578,38 @@ class DrawTests(unittest.TestCase):
         self.assertTrue(os.path.isfile(self.output_filename))
 
 
+class LoggerTests(unittest.TestCase):
+
+    def setUp(self) -> None:
+        pass
+
+    def tearDown(self) -> None:
+        pass
+
+    def test_default_level(self):
+        actual = Logger.get_level()
+        expected = eLogLevel.warn
+        self.assertEqual(actual, expected)
+
+    def test_use_console_logger_out_of_the_box(self):
+        Logger.info("Information is not displayed by default beecause the default level is warn")
+        Logger.warn("Warnings are displayed to console")
+
+    def test_file_logger(self):
+        fname = os.path.join(os.path.abspath(os.path.dirname(__file__)), "log.log")
+        print(fname)
+        Logger.file_logger(fname)
+        Logger.critical("A critical message that you just must see")
+        if os.path.isfile(fname):
+            try:
+                os.remove(fname)
+            except OSError as e:
+                Logger.warn(str(e))
+
+    def test_set_logging_level(self):
+        Logger.set_level(eLogLevel.info)
+        Logger.info("Doing information")
+
+
 if __name__ == "__main__":
     unittest.main()

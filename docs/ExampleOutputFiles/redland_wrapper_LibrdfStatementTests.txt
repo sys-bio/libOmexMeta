@@ -1,0 +1,58 @@
+Running main() from ..\third_party\googletest\googletest\src\gtest_main.cc
+[==========] Running 23 tests from 2 test suites.
+[----------] Global test environment set-up.
+[----------] 17 tests from LibrdfStatementTests
+[ RUN      ] LibrdfStatementTests.TestCreate
+[       OK ] LibrdfStatementTests.TestCreate (2 ms)
+[ RUN      ] LibrdfStatementTests.TestMoveConstructor
+[       OK ] LibrdfStatementTests.TestMoveConstructor (0 ms)
+[ RUN      ] LibrdfStatementTests.TestMoveAssignment
+[       OK ] LibrdfStatementTests.TestMoveAssignment (0 ms)
+[ RUN      ] LibrdfStatementTests.TestGetPredicateStr
+[       OK ] LibrdfStatementTests.TestGetPredicateStr (0 ms)
+[ RUN      ] LibrdfStatementTests.TestGetPredicateStr2
+[       OK ] LibrdfStatementTests.TestGetPredicateStr2 (1 ms)
+[ RUN      ] LibrdfStatementTests.TestToStatementSubject
+[       OK ] LibrdfStatementTests.TestToStatementSubject (0 ms)
+[ RUN      ] LibrdfStatementTests.TestPartial1
+[       OK ] LibrdfStatementTests.TestPartial1 (0 ms)
+[ RUN      ] LibrdfStatementTests.TestGetSubjectNode
+[       OK ] LibrdfStatementTests.TestGetSubjectNode (0 ms)
+[ RUN      ] LibrdfStatementTests.TestGetPredicateNode
+[       OK ] LibrdfStatementTests.TestGetPredicateNode (0 ms)
+[ RUN      ] LibrdfStatementTests.TestGetResourceNode
+[       OK ] LibrdfStatementTests.TestGetResourceNode (0 ms)
+[ RUN      ] LibrdfStatementTests.setSubjectNode
+[       OK ] LibrdfStatementTests.setSubjectNode (0 ms)
+[ RUN      ] LibrdfStatementTests.setPredicateNode
+[       OK ] LibrdfStatementTests.setPredicateNode (0 ms)
+[ RUN      ] LibrdfStatementTests.setResourceNode
+[       OK ] LibrdfStatementTests.setResourceNode (0 ms)
+[ RUN      ] LibrdfStatementTests.CopyConstruct
+[       OK ] LibrdfStatementTests.CopyConstruct (0 ms)
+[ RUN      ] LibrdfStatementTests.CopyAssignment
+[       OK ] LibrdfStatementTests.CopyAssignment (0 ms)
+[ RUN      ] LibrdfStatementTests.MoveConstruct
+[       OK ] LibrdfStatementTests.MoveConstruct (0 ms)
+[ RUN      ] LibrdfStatementTests.MoveAssignment
+[       OK ] LibrdfStatementTests.MoveAssignment (0 ms)
+[----------] 17 tests from LibrdfStatementTests (4 ms total)
+
+[----------] 6 tests from LibrdfStatementTestsNoFixture
+[ RUN      ] LibrdfStatementTestsNoFixture.TestInequality
+[       OK ] LibrdfStatementTestsNoFixture.TestInequality (1 ms)
+[ RUN      ] LibrdfStatementTestsNoFixture.TestEquality
+[       OK ] LibrdfStatementTestsNoFixture.TestEquality (0 ms)
+[ RUN      ] LibrdfStatementTestsNoFixture.TestBlankEquality
+[       OK ] LibrdfStatementTestsNoFixture.TestBlankEquality (0 ms)
+[ RUN      ] LibrdfStatementTestsNoFixture.TestBlankEquality2
+[       OK ] LibrdfStatementTestsNoFixture.TestBlankEquality2 (0 ms)
+[ RUN      ] LibrdfStatementTestsNoFixture.TestBlankInEquality2
+[       OK ] LibrdfStatementTestsNoFixture.TestBlankInEquality2 (0 ms)
+[ RUN      ] LibrdfStatementTestsNoFixture.TestBlankInEquality3
+[       OK ] LibrdfStatementTestsNoFixture.TestBlankInEquality3 (0 ms)
+[----------] 6 tests from LibrdfStatementTestsNoFixture (1 ms total)
+
+[----------] Global test environment tear-down
+[==========] 23 tests from 2 test suites ran. (5 ms total)
+[  PASSED  ] 23 tests.

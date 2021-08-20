@@ -1,153 +1,169 @@
 \hypertarget{classredland_1_1LibrdfStatement}{}\doxysection{redland\+::Librdf\+Statement Class Reference}
 \label{classredland_1_1LibrdfStatement}\index{redland::LibrdfStatement@{redland::LibrdfStatement}}
+
+
+C++ wrapper around librdf\+\_\+statement using RAII for memory management.  
+
+
+
+
+{\ttfamily \#include $<$Librdf\+Statement.\+h$>$}
+
 Inheritance diagram for redland\+::Librdf\+Statement\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[height=2.000000cm]{classredland_1_1LibrdfStatement}
+\includegraphics[height=4.000000cm]{classredland_1_1LibrdfStatement}
 \end{center}
 \end{figure}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classredland_1_1LibrdfStatement_ac1b38e67ff0b90ac54b27c4f5f5d9e12}\label{classredland_1_1LibrdfStatement_ac1b38e67ff0b90ac54b27c4f5f5d9e12}} 
-{\bfseries Librdf\+Statement} (\mbox{\hyperlink{structraptor__term}{librdf\+\_\+node}} $\ast$subject, \mbox{\hyperlink{structraptor__term}{librdf\+\_\+node}} $\ast$predicate, \mbox{\hyperlink{structraptor__term}{librdf\+\_\+node}} $\ast$resource)
-\item 
-\mbox{\Hypertarget{classredland_1_1LibrdfStatement_a3cc134733626929faabbbdd376b348c1}\label{classredland_1_1LibrdfStatement_a3cc134733626929faabbbdd376b348c1}} 
-{\bfseries Librdf\+Statement} (const \mbox{\hyperlink{classredland_1_1LibrdfStatement}{Librdf\+Statement}} \&statement)
-\item 
-\mbox{\Hypertarget{classredland_1_1LibrdfStatement_aea171565ffb3ecc8d9c1db5439314306}\label{classredland_1_1LibrdfStatement_aea171565ffb3ecc8d9c1db5439314306}} 
-{\bfseries Librdf\+Statement} (\mbox{\hyperlink{classredland_1_1LibrdfStatement}{Librdf\+Statement}} \&\&statement) noexcept
-\item 
-\mbox{\Hypertarget{classredland_1_1LibrdfStatement_a12bfe14c6ca6abf09ee29b3ee6fe3ab7}\label{classredland_1_1LibrdfStatement_a12bfe14c6ca6abf09ee29b3ee6fe3ab7}} 
-\mbox{\hyperlink{classredland_1_1LibrdfStatement}{Librdf\+Statement}} \& {\bfseries operator=} (const \mbox{\hyperlink{classredland_1_1LibrdfStatement}{Librdf\+Statement}} \&statement)
-\item 
-\mbox{\Hypertarget{classredland_1_1LibrdfStatement_a6cebbcea1400ba2983b25096f3db3b3c}\label{classredland_1_1LibrdfStatement_a6cebbcea1400ba2983b25096f3db3b3c}} 
-\mbox{\hyperlink{classredland_1_1LibrdfStatement}{Librdf\+Statement}} \& {\bfseries operator=} (\mbox{\hyperlink{classredland_1_1LibrdfStatement}{Librdf\+Statement}} \&\&statement) noexcept
-\item 
+\mbox{\hyperlink{classredland_1_1LibrdfStatement_a4cbbbf99d094cea4569324a8c67789fb}{Librdf\+Statement}} (\mbox{\hyperlink{structraptor__statement}{librdf\+\_\+statement}} $\ast$statement)
+\begin{DoxyCompactList}\small\item\em construct a \mbox{\hyperlink{classredland_1_1LibrdfStatement}{Librdf\+Statement}} from an existing librdf\+\_\+statement$\ast$ pointer. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classredland_1_1LibrdfStatement_a65d896e0bf026ff027ad8488bddf6384}{Librdf\+Statement}} ()
+\begin{DoxyCompactList}\small\item\em default construct an instance of librdf\+\_\+statement$\ast$. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classredland_1_1LibrdfStatement_ada81e9bfb312e25daf20d6dda10eeb2e}\label{classredland_1_1LibrdfStatement_ada81e9bfb312e25daf20d6dda10eeb2e}} 
-bool {\bfseries operator==} (const \mbox{\hyperlink{classredland_1_1LibrdfStatement}{Librdf\+Statement}} \&rhs) const
-\item 
+bool \mbox{\hyperlink{classredland_1_1LibrdfStatement_ada81e9bfb312e25daf20d6dda10eeb2e}{operator==}} (const \mbox{\hyperlink{classredland_1_1LibrdfStatement}{Librdf\+Statement}} \&rhs) const
+\begin{DoxyCompactList}\small\item\em equality operator. @detials equal if the three nodes contained by this statement are equal \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classredland_1_1LibrdfStatement_ad3d6c126b90c0d93413a08353c496f8f}\label{classredland_1_1LibrdfStatement_ad3d6c126b90c0d93413a08353c496f8f}} 
-bool {\bfseries operator!=} (const \mbox{\hyperlink{classredland_1_1LibrdfStatement}{Librdf\+Statement}} \&rhs) const
-\item 
-\mbox{\Hypertarget{classredland_1_1LibrdfStatement_ae7f7e27b7a502070195103268407243a}\label{classredland_1_1LibrdfStatement_ae7f7e27b7a502070195103268407243a}} 
-{\bfseries Librdf\+Statement} (const \mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} \&subject, const \mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} \&predicate, const \mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} \&resource)
-\item 
-\mbox{\Hypertarget{classredland_1_1LibrdfStatement_aa51bc647bc938a07bd6c16b4d6ce07b4}\label{classredland_1_1LibrdfStatement_aa51bc647bc938a07bd6c16b4d6ce07b4}} 
-void {\bfseries free\+Statement} ()
-\item 
-\mbox{\hyperlink{structraptor__statement}{librdf\+\_\+statement}} $\ast$ \mbox{\hyperlink{classredland_1_1LibrdfStatement_a6b655a56f37dbe95fec840a0a1f0ed53}{get}} () const
-\begin{DoxyCompactList}\small\item\em returns a librdf\+\_\+statement pointer and increments the usage count. The caller is responsible for calling \end{DoxyCompactList}\item 
-\mbox{\hyperlink{structraptor__statement}{librdf\+\_\+statement}} $\ast$ \mbox{\hyperlink{classredland_1_1LibrdfStatement_aae6c894388cf0e0af0cb427e03224d38}{get\+Without\+Increment}} () const
-\begin{DoxyCompactList}\small\item\em get the underlying librdf\+\_\+statement$\ast$ \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classredland_1_1LibrdfStatement_ae72ad665ee0546f9b412ef2798c719b6}\label{classredland_1_1LibrdfStatement_ae72ad665ee0546f9b412ef2798c719b6}} 
-\mbox{\hyperlink{structraptor__term}{librdf\+\_\+node}} $\ast$ {\bfseries get\+Subject\+As\+Raw\+Node} () const
-\item 
-\mbox{\Hypertarget{classredland_1_1LibrdfStatement_a87edefc7382feb47585d4a3a91f26a76}\label{classredland_1_1LibrdfStatement_a87edefc7382feb47585d4a3a91f26a76}} 
-\mbox{\hyperlink{structraptor__term}{librdf\+\_\+node}} $\ast$ {\bfseries get\+Predicate\+As\+Raw\+Node} () const
-\item 
-\mbox{\Hypertarget{classredland_1_1LibrdfStatement_a37e4c22fa0b2cc3fbf0c659fa1546d92}\label{classredland_1_1LibrdfStatement_a37e4c22fa0b2cc3fbf0c659fa1546d92}} 
-\mbox{\hyperlink{structraptor__term}{librdf\+\_\+node}} $\ast$ {\bfseries get\+Resource\+As\+Raw\+Node} () const
-\item 
-\mbox{\Hypertarget{classredland_1_1LibrdfStatement_a2d7cc313572ac34e9822e97d6b23dd36}\label{classredland_1_1LibrdfStatement_a2d7cc313572ac34e9822e97d6b23dd36}} 
-\mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} {\bfseries get\+Subject\+Node} () const
-\item 
-\mbox{\Hypertarget{classredland_1_1LibrdfStatement_ade668892ca9383eacbf5517df4e8f8d8}\label{classredland_1_1LibrdfStatement_ade668892ca9383eacbf5517df4e8f8d8}} 
-\mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} {\bfseries get\+Predicate\+Node} () const
-\item 
-\mbox{\Hypertarget{classredland_1_1LibrdfStatement_a9d4376221d84e22d15eeb6393ea4afe3}\label{classredland_1_1LibrdfStatement_a9d4376221d84e22d15eeb6393ea4afe3}} 
-\mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} {\bfseries get\+Resource\+Node} () const
-\item 
-\mbox{\Hypertarget{classredland_1_1LibrdfStatement_a700219b2fed175a96fecfbd905d20ab1}\label{classredland_1_1LibrdfStatement_a700219b2fed175a96fecfbd905d20ab1}} 
-void {\bfseries check\+For\+Null} ()
-\item 
-\mbox{\Hypertarget{classredland_1_1LibrdfStatement_a5fa27f77859a4673e991b9e86f84d889}\label{classredland_1_1LibrdfStatement_a5fa27f77859a4673e991b9e86f84d889}} 
-void {\bfseries set\+Subject} (\mbox{\hyperlink{structraptor__term}{librdf\+\_\+node}} $\ast$node)
-\item 
-\mbox{\Hypertarget{classredland_1_1LibrdfStatement_a8b8fd2999e80bd2912af2430503a557a}\label{classredland_1_1LibrdfStatement_a8b8fd2999e80bd2912af2430503a557a}} 
-void {\bfseries set\+Resource} (\mbox{\hyperlink{structraptor__term}{librdf\+\_\+node}} $\ast$node)
-\item 
-\mbox{\Hypertarget{classredland_1_1LibrdfStatement_a3306876fb080f3d19fca806142f93f87}\label{classredland_1_1LibrdfStatement_a3306876fb080f3d19fca806142f93f87}} 
-void {\bfseries set\+Predicate} (\mbox{\hyperlink{structraptor__term}{librdf\+\_\+node}} $\ast$node)
-\item 
+bool \mbox{\hyperlink{classredland_1_1LibrdfStatement_ad3d6c126b90c0d93413a08353c496f8f}{operator!=}} (const \mbox{\hyperlink{classredland_1_1LibrdfStatement}{Librdf\+Statement}} \&rhs) const
+\begin{DoxyCompactList}\small\item\em inequality operator. Inverse of equality operator \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classredland_1_1LibrdfStatement_ae7f7e27b7a502070195103268407243a}{Librdf\+Statement}} (const \mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} \&subject, const \mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} \&predicate, const \mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} \&resource)
+\begin{DoxyCompactList}\small\item\em construct a \mbox{\hyperlink{classredland_1_1LibrdfStatement}{Librdf\+Statement}} from \mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} objects. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} \mbox{\hyperlink{classredland_1_1LibrdfStatement_a2d7cc313572ac34e9822e97d6b23dd36}{get\+Subject\+Node}} () const
+\begin{DoxyCompactList}\small\item\em get the subject of this statement as a \mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} \mbox{\hyperlink{classredland_1_1LibrdfStatement_ade668892ca9383eacbf5517df4e8f8d8}{get\+Predicate\+Node}} () const
+\begin{DoxyCompactList}\small\item\em get the predicate of this statement as a \mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} \mbox{\hyperlink{classredland_1_1LibrdfStatement_a9d4376221d84e22d15eeb6393ea4afe3}{get\+Resource\+Node}} () const
+\begin{DoxyCompactList}\small\item\em get the resource of this statement as a \mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classredland_1_1LibrdfStatement_a4935cf54fa2f367678319f1f2d837005}\label{classredland_1_1LibrdfStatement_a4935cf54fa2f367678319f1f2d837005}} 
+void \mbox{\hyperlink{classredland_1_1LibrdfStatement_a4935cf54fa2f367678319f1f2d837005}{check\+For\+Null}} () override
+\begin{DoxyCompactList}\small\item\em throws an error if any of the subject, predicate, resource or librdf\+\_\+statement are nullptr. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classredland_1_1LibrdfStatement_a9133d53a9b24ac0f0499f23cb6e53d40}{set\+Subject}} (const \mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} \&node)
+\begin{DoxyCompactList}\small\item\em set the subject of this \mbox{\hyperlink{classredland_1_1LibrdfStatement}{Librdf\+Statement}} to node. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classredland_1_1LibrdfStatement_a74151d5fae756918cfd9b22d51fb8d71}{set\+Resource}} (const \mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} \&node)
+\begin{DoxyCompactList}\small\item\em set the resource of this \mbox{\hyperlink{classredland_1_1LibrdfStatement}{Librdf\+Statement}} to node. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classredland_1_1LibrdfStatement_a155e25bff7660b03c4253715fe5e8194}{set\+Predicate}} (const \mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} \&node)
+\begin{DoxyCompactList}\small\item\em set the predicate of this \mbox{\hyperlink{classredland_1_1LibrdfStatement}{Librdf\+Statement}} to node. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classredland_1_1LibrdfStatement_a84a6fae7f1879c2f033001a9927627b0}\label{classredland_1_1LibrdfStatement_a84a6fae7f1879c2f033001a9927627b0}} 
-bool {\bfseries is\+Complete} ()
-\item 
-\mbox{\Hypertarget{classredland_1_1LibrdfStatement_af52b7e72cb067548d97f48b4a77a44ff}\label{classredland_1_1LibrdfStatement_af52b7e72cb067548d97f48b4a77a44ff}} 
-std\+::string {\bfseries get\+Predicate\+Namespace\+Str} () const
-\item 
-\mbox{\Hypertarget{classredland_1_1LibrdfStatement_ae86b7dd596bd71e23fb7284354273791}\label{classredland_1_1LibrdfStatement_ae86b7dd596bd71e23fb7284354273791}} 
-int {\bfseries get\+Usage} () const
-\item 
-\mbox{\Hypertarget{classredland_1_1LibrdfStatement_a90c9f8f0c9c560d168dadfd26ac7febb}\label{classredland_1_1LibrdfStatement_a90c9f8f0c9c560d168dadfd26ac7febb}} 
-void {\bfseries increment\+Usage} () const
-\end{DoxyCompactItemize}
+bool \mbox{\hyperlink{classredland_1_1LibrdfStatement_a84a6fae7f1879c2f033001a9927627b0}{is\+Complete}} ()
+\begin{DoxyCompactList}\small\item\em returns true when all of subject, predicate and resource nodes are not empty. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classredland_1_1LibrdfStatement_a2013f7fa1ce77c0659d504c2f54d6e45}\label{classredland_1_1LibrdfStatement_a2013f7fa1ce77c0659d504c2f54d6e45}} 
-static bool {\bfseries equals} (\mbox{\hyperlink{structraptor__statement}{librdf\+\_\+statement}} $\ast$first, \mbox{\hyperlink{structraptor__statement}{librdf\+\_\+statement}} $\ast$second)
-\item 
-\mbox{\Hypertarget{classredland_1_1LibrdfStatement_a9fb66c801d731ffce13e4d1381c49c29}\label{classredland_1_1LibrdfStatement_a9fb66c801d731ffce13e4d1381c49c29}} 
-static \mbox{\hyperlink{classredland_1_1LibrdfStatement}{Librdf\+Statement}} {\bfseries from\+Raw\+Statement\+Ptr} (\mbox{\hyperlink{structraptor__statement}{librdf\+\_\+statement}} $\ast$statement)
-\item 
-\mbox{\Hypertarget{classredland_1_1LibrdfStatement_a4eceaebc10deea27f4c75f7c8b4cccaf}\label{classredland_1_1LibrdfStatement_a4eceaebc10deea27f4c75f7c8b4cccaf}} 
-static \mbox{\hyperlink{classredland_1_1LibrdfStatement}{Librdf\+Statement}} {\bfseries from\+Raw\+Node\+Ptrs} (\mbox{\hyperlink{structraptor__term}{librdf\+\_\+node}} $\ast$subject, \mbox{\hyperlink{structraptor__term}{librdf\+\_\+node}} $\ast$predicate, \mbox{\hyperlink{structraptor__term}{librdf\+\_\+node}} $\ast$resource)
-\end{DoxyCompactItemize}
-\doxysubsection*{Protected Member Functions}
-\begin{DoxyCompactItemize}
-\item 
-\mbox{\Hypertarget{classredland_1_1LibrdfStatement_afd63d6425b2130dbe4e76fdee4d7218b}\label{classredland_1_1LibrdfStatement_afd63d6425b2130dbe4e76fdee4d7218b}} 
-void {\bfseries refresh\+Statement} ()
-\item 
-\mbox{\Hypertarget{classredland_1_1LibrdfStatement_a4cbbbf99d094cea4569324a8c67789fb}\label{classredland_1_1LibrdfStatement_a4cbbbf99d094cea4569324a8c67789fb}} 
-{\bfseries Librdf\+Statement} (\mbox{\hyperlink{structraptor__statement}{librdf\+\_\+statement}} $\ast$statement)
-\end{DoxyCompactItemize}
-\doxysubsection*{Protected Attributes}
-\begin{DoxyCompactItemize}
-\item 
-\mbox{\Hypertarget{classredland_1_1LibrdfStatement_acd1e53cd114c6744cf808174a9333ce5}\label{classredland_1_1LibrdfStatement_acd1e53cd114c6744cf808174a9333ce5}} 
-\mbox{\hyperlink{structraptor__statement}{librdf\+\_\+statement}} $\ast$ {\bfseries statement\+\_\+} = librdf\+\_\+new\+\_\+statement(Librdf\+World\+::get\+World())
-\end{DoxyCompactItemize}
+static bool \mbox{\hyperlink{classredland_1_1LibrdfStatement_ac5acd1a9c67a8bd6f7b99098a7353424}{equals}} (const \mbox{\hyperlink{classredland_1_1LibrdfStatement}{Librdf\+Statement}} \&first, const \mbox{\hyperlink{classredland_1_1LibrdfStatement}{Librdf\+Statement}} \&second)
+\begin{DoxyCompactList}\small\item\em returns true if first equals second. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
 
+
+\doxysubsection{Detailed Description}
+C++ wrapper around librdf\+\_\+statement using RAII for memory management. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classredland_1_1LibrdfStatement_a4cbbbf99d094cea4569324a8c67789fb}\label{classredland_1_1LibrdfStatement_a4cbbbf99d094cea4569324a8c67789fb}} 
+\index{redland::LibrdfStatement@{redland::LibrdfStatement}!LibrdfStatement@{LibrdfStatement}}
+\index{LibrdfStatement@{LibrdfStatement}!redland::LibrdfStatement@{redland::LibrdfStatement}}
+\doxysubsubsection{\texorpdfstring{LibrdfStatement()}{LibrdfStatement()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily redland\+::\+Librdf\+Statement\+::\+Librdf\+Statement (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structraptor__statement}{librdf\+\_\+statement}} $\ast$}]{statement }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+construct a \mbox{\hyperlink{classredland_1_1LibrdfStatement}{Librdf\+Statement}} from an existing librdf\+\_\+statement$\ast$ pointer. 
+
+The reference is stolen, and subsequently managed by \mbox{\hyperlink{classredland_1_1LibrdfStatement}{Librdf\+Statement}} \mbox{\Hypertarget{classredland_1_1LibrdfStatement_a65d896e0bf026ff027ad8488bddf6384}\label{classredland_1_1LibrdfStatement_a65d896e0bf026ff027ad8488bddf6384}} 
+\index{redland::LibrdfStatement@{redland::LibrdfStatement}!LibrdfStatement@{LibrdfStatement}}
+\index{LibrdfStatement@{LibrdfStatement}!redland::LibrdfStatement@{redland::LibrdfStatement}}
+\doxysubsubsection{\texorpdfstring{LibrdfStatement()}{LibrdfStatement()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily redland\+::\+Librdf\+Statement\+::\+Librdf\+Statement (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+default construct an instance of librdf\+\_\+statement$\ast$. 
+
+Memory is owned by \mbox{\hyperlink{classredland_1_1LibrdfStatement}{Librdf\+Statement}} and automatically destructed via RAII. \mbox{\Hypertarget{classredland_1_1LibrdfStatement_ae7f7e27b7a502070195103268407243a}\label{classredland_1_1LibrdfStatement_ae7f7e27b7a502070195103268407243a}} 
+\index{redland::LibrdfStatement@{redland::LibrdfStatement}!LibrdfStatement@{LibrdfStatement}}
+\index{LibrdfStatement@{LibrdfStatement}!redland::LibrdfStatement@{redland::LibrdfStatement}}
+\doxysubsubsection{\texorpdfstring{LibrdfStatement()}{LibrdfStatement()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily redland\+::\+Librdf\+Statement\+::\+Librdf\+Statement (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} \&}]{subject,  }\item[{const \mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} \&}]{predicate,  }\item[{const \mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} \&}]{resource }\end{DoxyParamCaption})}
+
+
+
+construct a \mbox{\hyperlink{classredland_1_1LibrdfStatement}{Librdf\+Statement}} from \mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} objects. 
+
+The memory associated with the constructed librdf\+\_\+statement$\ast$ is managed by RAII while the \mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} types handled themselves, also by RAII. The reference count of the \mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} types is incremented by 1 on instantiation 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{classredland_1_1LibrdfStatement_a6b655a56f37dbe95fec840a0a1f0ed53}\label{classredland_1_1LibrdfStatement_a6b655a56f37dbe95fec840a0a1f0ed53}} 
-\index{redland::LibrdfStatement@{redland::LibrdfStatement}!get@{get}}
-\index{get@{get}!redland::LibrdfStatement@{redland::LibrdfStatement}}
-\doxysubsubsection{\texorpdfstring{get()}{get()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{structraptor__statement}{librdf\+\_\+statement}} $\ast$ redland\+::\+Librdf\+Statement\+::get (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+\mbox{\Hypertarget{classredland_1_1LibrdfStatement_ac5acd1a9c67a8bd6f7b99098a7353424}\label{classredland_1_1LibrdfStatement_ac5acd1a9c67a8bd6f7b99098a7353424}} 
+\index{redland::LibrdfStatement@{redland::LibrdfStatement}!equals@{equals}}
+\index{equals@{equals}!redland::LibrdfStatement@{redland::LibrdfStatement}}
+\doxysubsubsection{\texorpdfstring{equals()}{equals()}}
+{\footnotesize\ttfamily bool redland\+::\+Librdf\+Statement\+::equals (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classredland_1_1LibrdfStatement}{Librdf\+Statement}} \&}]{first,  }\item[{const \mbox{\hyperlink{classredland_1_1LibrdfStatement}{Librdf\+Statement}} \&}]{second }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
 
-returns a librdf\+\_\+statement pointer and increments the usage count. The caller is responsible for calling 
+returns true if first equals second. 
 
-\begin{DoxySeeAlso}{See also}
-free\+Uri to decrement the librdf\+\_\+statement$\ast$ again. 
-\end{DoxySeeAlso}
-\begin{DoxyNote}{Note}
-when 
-\end{DoxyNote}
-\begin{DoxySeeAlso}{See also}
-get\+Usage() is 1 the destructor will take care of freeing memory associated with librdf\+\_\+statement object. 
-\end{DoxySeeAlso}
-\mbox{\Hypertarget{classredland_1_1LibrdfStatement_aae6c894388cf0e0af0cb427e03224d38}\label{classredland_1_1LibrdfStatement_aae6c894388cf0e0af0cb427e03224d38}} 
-\index{redland::LibrdfStatement@{redland::LibrdfStatement}!getWithoutIncrement@{getWithoutIncrement}}
-\index{getWithoutIncrement@{getWithoutIncrement}!redland::LibrdfStatement@{redland::LibrdfStatement}}
-\doxysubsubsection{\texorpdfstring{getWithoutIncrement()}{getWithoutIncrement()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{structraptor__statement}{librdf\+\_\+statement}} $\ast$ redland\+::\+Librdf\+Statement\+::get\+Without\+Increment (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+All three of subject, predicate and resource nodes need to be equal before \mbox{\hyperlink{classredland_1_1LibrdfStatement_ac5acd1a9c67a8bd6f7b99098a7353424}{Librdf\+Statement\+::equals}} returns true. \mbox{\Hypertarget{classredland_1_1LibrdfStatement_ade668892ca9383eacbf5517df4e8f8d8}\label{classredland_1_1LibrdfStatement_ade668892ca9383eacbf5517df4e8f8d8}} 
+\index{redland::LibrdfStatement@{redland::LibrdfStatement}!getPredicateNode@{getPredicateNode}}
+\index{getPredicateNode@{getPredicateNode}!redland::LibrdfStatement@{redland::LibrdfStatement}}
+\doxysubsubsection{\texorpdfstring{getPredicateNode()}{getPredicateNode()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} redland\+::\+Librdf\+Statement\+::get\+Predicate\+Node (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
 
 
-get the underlying librdf\+\_\+statement$\ast$ 
+get the predicate of this statement as a \mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}}. 
 
-do not increment the shared pointer reference counter. \begin{DoxyWarning}{Warning}
-this method assumes you know what you are doing with regards to the librdf reference counting system 
-\end{DoxyWarning}
-\begin{DoxySeeAlso}{See also}
-\mbox{\hyperlink{classredland_1_1LibrdfStatement_a6b655a56f37dbe95fec840a0a1f0ed53}{Librdf\+Statement\+::get()}} 
-\end{DoxySeeAlso}
+Ref count is incremented by 1 \mbox{\Hypertarget{classredland_1_1LibrdfStatement_a9d4376221d84e22d15eeb6393ea4afe3}\label{classredland_1_1LibrdfStatement_a9d4376221d84e22d15eeb6393ea4afe3}} 
+\index{redland::LibrdfStatement@{redland::LibrdfStatement}!getResourceNode@{getResourceNode}}
+\index{getResourceNode@{getResourceNode}!redland::LibrdfStatement@{redland::LibrdfStatement}}
+\doxysubsubsection{\texorpdfstring{getResourceNode()}{getResourceNode()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} redland\+::\+Librdf\+Statement\+::get\+Resource\+Node (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
+
+
+get the resource of this statement as a \mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}}. 
+
+Ref count is incremented by 1 \mbox{\Hypertarget{classredland_1_1LibrdfStatement_a2d7cc313572ac34e9822e97d6b23dd36}\label{classredland_1_1LibrdfStatement_a2d7cc313572ac34e9822e97d6b23dd36}} 
+\index{redland::LibrdfStatement@{redland::LibrdfStatement}!getSubjectNode@{getSubjectNode}}
+\index{getSubjectNode@{getSubjectNode}!redland::LibrdfStatement@{redland::LibrdfStatement}}
+\doxysubsubsection{\texorpdfstring{getSubjectNode()}{getSubjectNode()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} redland\+::\+Librdf\+Statement\+::get\+Subject\+Node (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+get the subject of this statement as a \mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}}. 
+
+Ref count is incremented by 1 \mbox{\Hypertarget{classredland_1_1LibrdfStatement_a155e25bff7660b03c4253715fe5e8194}\label{classredland_1_1LibrdfStatement_a155e25bff7660b03c4253715fe5e8194}} 
+\index{redland::LibrdfStatement@{redland::LibrdfStatement}!setPredicate@{setPredicate}}
+\index{setPredicate@{setPredicate}!redland::LibrdfStatement@{redland::LibrdfStatement}}
+\doxysubsubsection{\texorpdfstring{setPredicate()}{setPredicate()}}
+{\footnotesize\ttfamily void redland\+::\+Librdf\+Statement\+::set\+Predicate (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} \&}]{node }\end{DoxyParamCaption})}
+
+
+
+set the predicate of this \mbox{\hyperlink{classredland_1_1LibrdfStatement}{Librdf\+Statement}} to node. 
+
+reference count of node is incremented \mbox{\Hypertarget{classredland_1_1LibrdfStatement_a74151d5fae756918cfd9b22d51fb8d71}\label{classredland_1_1LibrdfStatement_a74151d5fae756918cfd9b22d51fb8d71}} 
+\index{redland::LibrdfStatement@{redland::LibrdfStatement}!setResource@{setResource}}
+\index{setResource@{setResource}!redland::LibrdfStatement@{redland::LibrdfStatement}}
+\doxysubsubsection{\texorpdfstring{setResource()}{setResource()}}
+{\footnotesize\ttfamily void redland\+::\+Librdf\+Statement\+::set\+Resource (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} \&}]{node }\end{DoxyParamCaption})}
+
+
+
+set the resource of this \mbox{\hyperlink{classredland_1_1LibrdfStatement}{Librdf\+Statement}} to node. 
+
+reference count of node is incremented \mbox{\Hypertarget{classredland_1_1LibrdfStatement_a9133d53a9b24ac0f0499f23cb6e53d40}\label{classredland_1_1LibrdfStatement_a9133d53a9b24ac0f0499f23cb6e53d40}} 
+\index{redland::LibrdfStatement@{redland::LibrdfStatement}!setSubject@{setSubject}}
+\index{setSubject@{setSubject}!redland::LibrdfStatement@{redland::LibrdfStatement}}
+\doxysubsubsection{\texorpdfstring{setSubject()}{setSubject()}}
+{\footnotesize\ttfamily void redland\+::\+Librdf\+Statement\+::set\+Subject (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} \&}]{node }\end{DoxyParamCaption})}
+
+
+
+set the subject of this \mbox{\hyperlink{classredland_1_1LibrdfStatement}{Librdf\+Statement}} to node. 
+
+reference count of node is incremented 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

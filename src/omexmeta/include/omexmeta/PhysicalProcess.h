@@ -43,7 +43,7 @@ namespace omexmeta {
          * @param mediator a vector of Sink objects representing the energetic modulators for the PhysicalProcess
          *
          */
-        PhysicalProcess(librdf_model *model, UriHandler& uriHandler,
+        PhysicalProcess(LibrdfModel& model, UriHandler& uriHandler,
                                      const PhysicalProperty &physicalProperty,
                                      Sources sources, Sinks sinks, Mediators mediators);
         /**
@@ -62,7 +62,7 @@ namespace omexmeta {
          * @param model the currently active RDF model.
          * @param model_uri the local uri in current use.
          */
-        explicit PhysicalProcess(librdf_model *model, UriHandler& uriHandler);
+        explicit PhysicalProcess(LibrdfModel& model, UriHandler& uriHandler);
 
         /**
          * @brief getter for sources

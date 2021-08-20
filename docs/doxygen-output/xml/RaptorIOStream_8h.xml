@@ -19,13 +19,16 @@
         </childnode>
         <childnode refid="27" relation="include">
         </childnode>
-        <childnode refid="29" relation="include">
-        </childnode>
         <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
         </childnode>
       </node>
       <node id="6">
         <label>stdarg.h</label>
+      </node>
+      <node id="29">
+        <label>functional</label>
       </node>
       <node id="8">
         <label>rasqal.h</label>
@@ -56,7 +59,7 @@
       <node id="28">
         <label>regex</label>
       </node>
-      <node id="31">
+      <node id="32">
         <label>exception</label>
       </node>
       <node id="21">
@@ -65,10 +68,10 @@
       <node id="20">
         <label>rdf_parser.h</label>
       </node>
-      <node id="30">
+      <node id="31">
         <label>LibrdfException.h</label>
         <link refid="LibrdfException_8h_source"/>
-        <childnode refid="31" relation="include">
+        <childnode refid="32" relation="include">
         </childnode>
         <childnode refid="26" relation="include">
         </childnode>
@@ -82,7 +85,7 @@
       <node id="16">
         <label>rdf_concepts.h</label>
       </node>
-      <node id="29">
+      <node id="30">
         <label>utility</label>
       </node>
       <node id="11">
@@ -179,6 +182,8 @@
         </childnode>
         <childnode refid="28" relation="include">
         </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
       </node>
       <node id="27">
         <label>memory</label>
@@ -207,15 +212,9 @@
         <childnode refid="23" relation="include">
         </childnode>
       </node>
-      <node id="26">
+      <node id="27">
         <label>src/omexmeta/include/omexmeta/Query.h</label>
         <link refid="Query_8h_source"/>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="17" relation="include">
-        </childnode>
-        <childnode refid="23" relation="include">
-        </childnode>
       </node>
       <node id="7">
         <label>src/omexmeta/include/omexmeta/RDF.h</label>
@@ -284,11 +283,9 @@
         </childnode>
         <childnode refid="19" relation="include">
         </childnode>
-        <childnode refid="26" relation="include">
-        </childnode>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="27" relation="include">
+        <childnode refid="26" relation="include">
         </childnode>
       </node>
       <node id="5">
@@ -408,7 +405,7 @@
         </childnode>
         <childnode refid="23" relation="include">
         </childnode>
-        <childnode refid="26" relation="include">
+        <childnode refid="27" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
@@ -437,7 +434,7 @@
         <childnode refid="9" relation="include">
         </childnode>
       </node>
-      <node id="27">
+      <node id="26">
         <label>src/omexmeta/include/omexmeta/UriHandler.h</label>
         <link refid="UriHandler_8h_source"/>
         <childnode refid="4" relation="include">

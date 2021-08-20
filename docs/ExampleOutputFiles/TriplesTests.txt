@@ -1,0 +1,53 @@
+Running main() from ..\third_party\googletest\googletest\src\gtest_main.cc
+[==========] Running 14 tests from 3 test suites.
+[----------] Global test environment set-up.
+[----------] 8 tests from TriplesTests
+[ RUN      ] TriplesTests.TestCreateMoveAfterInstantiation
+[       OK ] TriplesTests.TestCreateMoveAfterInstantiation (3 ms)
+[ RUN      ] TriplesTests.TestCreateMoveOnInstantiation
+[       OK ] TriplesTests.TestCreateMoveOnInstantiation (0 ms)
+[ RUN      ] TriplesTests.TestEmplaceBack
+[       OK ] TriplesTests.TestEmplaceBack (0 ms)
+[ RUN      ] TriplesTests.TestEmplaceBack2
+[       OK ] TriplesTests.TestEmplaceBack2 (0 ms)
+[ RUN      ] TriplesTests.TestEmplaceBack3
+[       OK ] TriplesTests.TestEmplaceBack3 (0 ms)
+[ RUN      ] TriplesTests.TestEmplaceBack4
+[       OK ] TriplesTests.TestEmplaceBack4 (1 ms)
+[ RUN      ] TriplesTests.TestEmplaceBack5
+[       OK ] TriplesTests.TestEmplaceBack5 (0 ms)
+[ RUN      ] TriplesTests.TestEmplaceBack6
+[       OK ] TriplesTests.TestEmplaceBack6 (0 ms)
+[----------] 8 tests from TriplesTests (4 ms total)
+
+[----------] 5 tests from TriplesTestsNoFixture
+[ RUN      ] TriplesTestsNoFixture.TestPreallocate
+[       OK ] TriplesTestsNoFixture.TestPreallocate (0 ms)
+[ RUN      ] TriplesTestsNoFixture.TestStr
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+<http://subject1.com/subject1>
+    <http://predicate1.com/predicate1> <http://resource1.com/resource1> .
+
+<http://subject2.com/subject2>
+    <http://predicate2.com/predicate2> <http://resource2.com/resource2> .
+
+
+[       OK ] TriplesTestsNoFixture.TestStr (0 ms)
+[ RUN      ] TriplesTestsNoFixture.TestTwoIdenticalTripesObjectsCanBeFreed
+[       OK ] TriplesTestsNoFixture.TestTwoIdenticalTripesObjectsCanBeFreed (1 ms)
+[ RUN      ] TriplesTestsNoFixture.TestIteration
+[       OK ] TriplesTestsNoFixture.TestIteration (0 ms)
+[ RUN      ] TriplesTestsNoFixture.TestEquality
+[       OK ] TriplesTestsNoFixture.TestEquality (0 ms)
+[----------] 5 tests from TriplesTestsNoFixture (1 ms total)
+
+[----------] 1 test from TestTriplesTwice
+[ RUN      ] TestTriplesTwice.TestMakeSameTriplesTwice
+creating triples 2 
+[       OK ] TestTriplesTwice.TestMakeSameTriplesTwice (0 ms)
+[----------] 1 test from TestTriplesTwice (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 14 tests from 3 test suites ran. (5 ms total)
+[  PASSED  ] 14 tests.

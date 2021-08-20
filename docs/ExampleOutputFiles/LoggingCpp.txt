@@ -1,0 +1,22 @@
+first
+[11:24:09 +01:00]  error : 1 syntax error at '<' 
+end first
+second
+end second
+third
+[11:24:09 +01:00]  error : 1 syntax error at '<' 
+end third
+fourth
+ [11-24-09] - 2220 - 20868 - console - error : 1 syntax error at '<' 
+end fourth
+fifth
+check logger filename: "D:\\libOmexMeta\\cmake-build-release\\docs\\log.log"
+end fifth
+sixth
+ [11-24-09] - 2220 - 20868 - console - trace : trace message 
+ [11-24-09] - 2220 - 20868 - console - info : info message 
+ [11-24-09] - 2220 - 20868 - console - debug : debug message 
+ [11-24-09] - 2220 - 20868 - console - warning : warn message 
+ [11-24-09] - 2220 - 20868 - console - error : error message 
+ [11-24-09] - 2220 - 20868 - console - critical : critical message 
+end sixth

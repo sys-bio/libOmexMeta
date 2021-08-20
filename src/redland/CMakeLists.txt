@@ -26,6 +26,12 @@ SET(WRAPPER_SOURCE_DIR ${WRAPPER_DIR}/src)
 # directory of the wrapper tests
 SET(WRAPPER_TEST_DIR ${WRAPPER_DIR}/test)
 
+if (${CMAKE_BUILD_TYPE} STREQUAL "Debug")
+    set(RASQAL_DEBUGGING OFF CACHE BOOL "Turn on debugging for rasqal library. Only effective in debug mode")
+    set(RAPTOR_DEBUGGING OFF CACHE BOOL "Turn on debugging for raptor library. Only effective in debug mode")
+    set(LIBRDF_DEBUGGING OFF CACHE BOOL "Turn on debugging for librdf library. Only effective in debug mode")
+endif ()
+
 # set directory for librdf storage/cache. only used when not specified by user
 #  which it is in the context of libomexmeta. I'm not sure about this.
 set(PKGDATADIR $ENV{HOME}/.librdf_package_data_dir)
@@ -377,6 +383,9 @@ set(WRAPPER_SOURCES
         ${WRAPPER_SOURCE_DIR}/LibrdfStorage.cpp
         ${WRAPPER_SOURCE_DIR}/LibrdfUri.cpp
         ${WRAPPER_SOURCE_DIR}/LibrdfWorld.cpp
+        ${WRAPPER_SOURCE_DIR}/LibrdfStream.cpp
+        ${WRAPPER_SOURCE_DIR}/Logger.cpp
+
         ${WRAPPER_INCLUDE_DIR}/redland/RedlandAPI.h
         ${WRAPPER_INCLUDE_DIR}/redland/LibrdfWorld.h
         ${WRAPPER_INCLUDE_DIR}/redland/LibrdfModel.h
@@ -389,6 +398,10 @@ set(WRAPPER_SOURCES
         ${WRAPPER_INCLUDE_DIR}/redland/LibrdfStorage.h
         ${WRAPPER_INCLUDE_DIR}/redland/LibrdfUri.h
         ${WRAPPER_INCLUDE_DIR}/redland/LibrdfException.h
+        ${WRAPPER_INCLUDE_DIR}/redland/RefCountedRedlandType.h
+        ${WRAPPER_INCLUDE_DIR}/redland/RedlandType.h
+        ${WRAPPER_INCLUDE_DIR}/redland/LibrdfStream.h
+        ${WRAPPER_INCLUDE_DIR}/redland/Logger.h
         )
 
 
@@ -452,7 +465,9 @@ target_link_libraries(
         LibXml2
         ${YAJL_STATIC_LIBRARY}
         ${PCRE_STATIC_LIBRARY}
+        spdlog
 )
+
 
 add_dependencies(${target}-static LibXml2 LibXslt)
 
@@ -502,6 +517,7 @@ target_include_directories(
         $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/src/omexmeta>
         $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/src/omexmeta/C>
         $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/src/redland>
+        $<BUILD_INTERFACE:${SPDLOG_INCLUDE_DIR}>
         $<INSTALL_INTERFACE:${CMAKE_INSTALL_PREFIX}/include>
         #        # dependency includes
         #        $<BUILD_INTERFACE:${LIBXML2_INCLUDE_DIR}>

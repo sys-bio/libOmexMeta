@@ -15,13 +15,13 @@ Inheritance diagram for omexmeta\+::Physical\+Entity\+:\begin{figure}[H]
 \item 
 \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity_a9d29348a080c64f91ff6ec184fd45ece}{Physical\+Entity}} ()=delete
 \begin{DoxyCompactList}\small\item\em default constructor for \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classomexmeta_1_1PhysicalEntity_aa30078a1fa71747a37700915919bbb72}{Physical\+Entity}} (librdf\+\_\+model $\ast$model, \mbox{\hyperlink{classomexmeta_1_1UriHandler}{Uri\+Handler}} \&uri\+Handler, \mbox{\hyperlink{classomexmeta_1_1PhysicalProperty}{Physical\+Property}} physical\+Property, std\+::string \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity_a2498e9b0b11a00200e47332c4515b1f1}{is}}, std\+::vector$<$ std\+::string $>$ is\+\_\+part\+\_\+of)
+\mbox{\hyperlink{classomexmeta_1_1PhysicalEntity_a0724e9286d1a9fb3247e925d55e5676d}{Physical\+Entity}} (\mbox{\hyperlink{classredland_1_1LibrdfModel}{Librdf\+Model}} \&model, \mbox{\hyperlink{classomexmeta_1_1UriHandler}{Uri\+Handler}} \&uri\+Handler, \mbox{\hyperlink{classomexmeta_1_1PhysicalProperty}{Physical\+Property}} physical\+Property, std\+::string \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity_a2498e9b0b11a00200e47332c4515b1f1}{is}}, std\+::vector$<$ std\+::string $>$ is\+\_\+part\+\_\+of)
 \begin{DoxyCompactList}\small\item\em constructor for instantiating a \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} object \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity_a6fd4acd7255a01322c4a53d3e84df0ba}{free}} ()
 \begin{DoxyCompactList}\small\item\em free resources uses by \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} \end{DoxyCompactList}\item 
-OMEXMETA\+\_\+\+DEPRECATED \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity_a0f6af5e55a34be889110b0d03e5f1aec}{Physical\+Entity}} (librdf\+\_\+model $\ast$model)
+OMEXMETA\+\_\+\+DEPRECATED \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity_a5c843c25a8343ec933cdf4465fc7723f}{Physical\+Entity}} (\mbox{\hyperlink{classredland_1_1LibrdfModel}{Librdf\+Model}} \&model)
 \begin{DoxyCompactList}\small\item\em constructor for \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} object. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classomexmeta_1_1PhysicalEntity_a5765425cc25593f824eddb100a6f5229}{Physical\+Entity}} (librdf\+\_\+model $\ast$model, \mbox{\hyperlink{classomexmeta_1_1UriHandler}{Uri\+Handler}} \&uri\+Handler)
+\mbox{\hyperlink{classomexmeta_1_1PhysicalEntity_a05061b629f0bef3aeba8295390d47a34}{Physical\+Entity}} (\mbox{\hyperlink{classredland_1_1LibrdfModel}{Librdf\+Model}} \&model, \mbox{\hyperlink{classomexmeta_1_1UriHandler}{Uri\+Handler}} \&uri\+Handler)
 \begin{DoxyCompactList}\small\item\em constructor for \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} object. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classomexmeta_1_1Triples}{Triples}} \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity_a51f5df8b2e8a1d65e5aa0d10e53b77ba}{to\+Triples}} () override
 \begin{DoxyCompactList}\small\item\em convert \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} to a \mbox{\hyperlink{classomexmeta_1_1Triples}{Triples}} object, which can then be passed to a model via the \mbox{\hyperlink{classomexmeta_1_1Editor_a0740831baafe244374ad7a324d51a87e}{Editor\+::add\+Physical\+Entity}} method. \end{DoxyCompactList}\item 
@@ -95,11 +95,11 @@ The \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} type of
 
 default constructor for \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} 
 
-deliberately deleted. If you try using the builder interface (chaining setter methods) from a default instantiated \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} you will get an error, because there will be no model assicated with \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}}. Instead, always instantiate a \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} from the \mbox{\hyperlink{classomexmeta_1_1Editor_a0740831baafe244374ad7a324d51a87e}{Editor\+::add\+Physical\+Entity()}} method. \mbox{\Hypertarget{classomexmeta_1_1PhysicalEntity_aa30078a1fa71747a37700915919bbb72}\label{classomexmeta_1_1PhysicalEntity_aa30078a1fa71747a37700915919bbb72}} 
+deliberately deleted. If you try using the builder interface (chaining setter methods) from a default instantiated \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} you will get an error, because there will be no model assicated with \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}}. Instead, always instantiate a \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} from the \mbox{\hyperlink{classomexmeta_1_1Editor_a0740831baafe244374ad7a324d51a87e}{Editor\+::add\+Physical\+Entity()}} method. \mbox{\Hypertarget{classomexmeta_1_1PhysicalEntity_a0724e9286d1a9fb3247e925d55e5676d}\label{classomexmeta_1_1PhysicalEntity_a0724e9286d1a9fb3247e925d55e5676d}} 
 \index{omexmeta::PhysicalEntity@{omexmeta::PhysicalEntity}!PhysicalEntity@{PhysicalEntity}}
 \index{PhysicalEntity@{PhysicalEntity}!omexmeta::PhysicalEntity@{omexmeta::PhysicalEntity}}
 \doxysubsubsection{\texorpdfstring{PhysicalEntity()}{PhysicalEntity()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
-{\footnotesize\ttfamily omexmeta\+::\+Physical\+Entity\+::\+Physical\+Entity (\begin{DoxyParamCaption}\item[{librdf\+\_\+model $\ast$}]{model,  }\item[{\mbox{\hyperlink{classomexmeta_1_1UriHandler}{Uri\+Handler}} \&}]{uri\+Handler,  }\item[{\mbox{\hyperlink{classomexmeta_1_1PhysicalProperty}{Physical\+Property}}}]{physical\+Property,  }\item[{std\+::string}]{is,  }\item[{std\+::vector$<$ std\+::string $>$}]{is\+\_\+part\+\_\+of }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily omexmeta\+::\+Physical\+Entity\+::\+Physical\+Entity (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classredland_1_1LibrdfModel}{Librdf\+Model}} \&}]{model,  }\item[{\mbox{\hyperlink{classomexmeta_1_1UriHandler}{Uri\+Handler}} \&}]{uri\+Handler,  }\item[{\mbox{\hyperlink{classomexmeta_1_1PhysicalProperty}{Physical\+Property}}}]{physical\+Property,  }\item[{std\+::string}]{is,  }\item[{std\+::vector$<$ std\+::string $>$}]{is\+\_\+part\+\_\+of }\end{DoxyParamCaption})}
 
 
 
@@ -123,11 +123,11 @@ Users should not need to use this constructor directly as it is embedded in the 
 {\em is\+\_\+part\+\_\+of} & parameter is actually a std\+::vector of Librdf\+Node objects. It can be as long as needed. \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{classomexmeta_1_1PhysicalEntity_a0f6af5e55a34be889110b0d03e5f1aec}\label{classomexmeta_1_1PhysicalEntity_a0f6af5e55a34be889110b0d03e5f1aec}} 
+\mbox{\Hypertarget{classomexmeta_1_1PhysicalEntity_a5c843c25a8343ec933cdf4465fc7723f}\label{classomexmeta_1_1PhysicalEntity_a5c843c25a8343ec933cdf4465fc7723f}} 
 \index{omexmeta::PhysicalEntity@{omexmeta::PhysicalEntity}!PhysicalEntity@{PhysicalEntity}}
 \index{PhysicalEntity@{PhysicalEntity}!omexmeta::PhysicalEntity@{omexmeta::PhysicalEntity}}
 \doxysubsubsection{\texorpdfstring{PhysicalEntity()}{PhysicalEntity()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
-{\footnotesize\ttfamily OMEXMETA\+\_\+\+DEPRECATED omexmeta\+::\+Physical\+Entity\+::\+Physical\+Entity (\begin{DoxyParamCaption}\item[{librdf\+\_\+model $\ast$}]{model }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+{\footnotesize\ttfamily OMEXMETA\+\_\+\+DEPRECATED omexmeta\+::\+Physical\+Entity\+::\+Physical\+Entity (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classredland_1_1LibrdfModel}{Librdf\+Model}} \&}]{model }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
 
 
 
@@ -138,11 +138,11 @@ constructor for \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Enti
 {\em model} & the librdf\+\_\+model object in use. Passed down from \mbox{\hyperlink{classomexmeta_1_1Editor}{Editor}} class during instantiation.\\
 \hline
 \end{DoxyParams}
-\mbox{\hyperlink{classThis}{This}} alternative constructor is used when users use the builder interface (which should actually be most of the time). The \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} is instantiated with only the model to allow for a better way of collecting necessary information from the user. \mbox{\Hypertarget{classomexmeta_1_1PhysicalEntity_a5765425cc25593f824eddb100a6f5229}\label{classomexmeta_1_1PhysicalEntity_a5765425cc25593f824eddb100a6f5229}} 
+\mbox{\hyperlink{classThis}{This}} alternative constructor is used when users use the builder interface (which should actually be most of the time). The \mbox{\hyperlink{classomexmeta_1_1PhysicalEntity}{Physical\+Entity}} is instantiated with only the model to allow for a better way of collecting necessary information from the user. \mbox{\Hypertarget{classomexmeta_1_1PhysicalEntity_a05061b629f0bef3aeba8295390d47a34}\label{classomexmeta_1_1PhysicalEntity_a05061b629f0bef3aeba8295390d47a34}} 
 \index{omexmeta::PhysicalEntity@{omexmeta::PhysicalEntity}!PhysicalEntity@{PhysicalEntity}}
 \index{PhysicalEntity@{PhysicalEntity}!omexmeta::PhysicalEntity@{omexmeta::PhysicalEntity}}
 \doxysubsubsection{\texorpdfstring{PhysicalEntity()}{PhysicalEntity()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
-{\footnotesize\ttfamily omexmeta\+::\+Physical\+Entity\+::\+Physical\+Entity (\begin{DoxyParamCaption}\item[{librdf\+\_\+model $\ast$}]{model,  }\item[{\mbox{\hyperlink{classomexmeta_1_1UriHandler}{Uri\+Handler}} \&}]{uri\+Handler }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+{\footnotesize\ttfamily omexmeta\+::\+Physical\+Entity\+::\+Physical\+Entity (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classredland_1_1LibrdfModel}{Librdf\+Model}} \&}]{model,  }\item[{\mbox{\hyperlink{classomexmeta_1_1UriHandler}{Uri\+Handler}} \&}]{uri\+Handler }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
 
 
 

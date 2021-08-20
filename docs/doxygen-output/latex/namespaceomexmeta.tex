@@ -74,7 +74,7 @@ class \mbox{\hyperlink{classomexmeta_1_1PropertyBearer}{Property\+Bearer}}
 class \mbox{\hyperlink{classomexmeta_1_1PurgeRDFBag}{Purge\+RDFBag}}
 \item 
 class \mbox{\hyperlink{classomexmeta_1_1Query}{Query}}
-\item 
+\begin{DoxyCompactList}\small\item\em make a Sparql \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classomexmeta_1_1RDF}{RDF}}
 \item 
 class \mbox{\hyperlink{classomexmeta_1_1SBMLSemanticExtraction}{SBMLSemantic\+Extraction}}
@@ -119,9 +119,6 @@ typedef std\+::vector$<$ Predicate\+Ptr $>$ {\bfseries Predicate\+Ptrs}
 \item 
 \mbox{\Hypertarget{namespaceomexmeta_a4a755ee078afb8f071a545ff5a5631b0}\label{namespaceomexmeta_a4a755ee078afb8f071a545ff5a5631b0}} 
 typedef std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classomexmeta_1_1PropertyBearer}{Property\+Bearer}} $>$ {\bfseries Property\+Bearer\+Ptr}
-\item 
-\mbox{\Hypertarget{namespaceomexmeta_a08a1cea39a93f919e8c481f1307e9d64}\label{namespaceomexmeta_a08a1cea39a93f919e8c481f1307e9d64}} 
-typedef std\+::unordered\+\_\+map$<$ std\+::string, std\+::vector$<$ std\+::string $>$ $>$ {\bfseries Results\+Map}
 \item 
 \mbox{\Hypertarget{namespaceomexmeta_a7fc6fa4ba32424705fe4953ee297a795}\label{namespaceomexmeta_a7fc6fa4ba32424705fe4953ee297a795}} 
 typedef \mbox{\hyperlink{classomexmeta_1_1Triple}{Triple}} {\bfseries Singular\+Annotation}
@@ -172,6 +169,10 @@ void {\bfseries clear\+Last\+Error} (const std\+::string \&err)
 \item 
 \mbox{\Hypertarget{namespaceomexmeta_afa1aa630059180eafbb1ebf543c56216}\label{namespaceomexmeta_afa1aa630059180eafbb1ebf543c56216}} 
 int {\bfseries free\+\_\+c\+\_\+char\+\_\+star} (char $\ast$c)
+\item 
+char $\ast$ \mbox{\hyperlink{namespaceomexmeta_a95dd3c54698838b3092832732b6be306}{func\+That\+Returns\+Char\+Star\+Failed}} (const char $\ast$error\+Msg)
+\begin{DoxyCompactList}\small\item\em when a function fails and it returns char$\ast$, do not return nullptr as it will crash python. Instead copy the error string into dynamic memory and return that. \end{DoxyCompactList}\item 
+int $\ast$ \mbox{\hyperlink{namespaceomexmeta_ade8cf4e6ce9dba23d7cfb28ab742613e}{function\+That\+Returns\+Nullptr}} ()
 \item 
 \mbox{\hyperlink{classomexmeta_1_1RDF}{RDF}} $\ast$ \mbox{\hyperlink{namespaceomexmeta_a2f3a19ccb17e0be38e706861fa141fcc}{RDF\+\_\+new}} (const char $\ast$storage\+\_\+type, const char $\ast$storage\+\_\+name, const char $\ast$storage\+\_\+options, const char $\ast$model\+\_\+options)
 \item 
@@ -401,9 +402,6 @@ char $\ast$ {\bfseries Singular\+Annotation\+\_\+get\+Predicate} (\mbox{\hyperli
 \mbox{\Hypertarget{namespaceomexmeta_a76253abd9ff8ae24164de48086c348c5}\label{namespaceomexmeta_a76253abd9ff8ae24164de48086c348c5}} 
 char $\ast$ {\bfseries Singular\+Annotation\+\_\+get\+Resource} (\mbox{\hyperlink{classomexmeta_1_1Triple}{Singular\+Annotation}} $\ast$singular\+\_\+annotation)
 \item 
-\mbox{\Hypertarget{namespaceomexmeta_a49d1107f0ea55c318a266727bea089d9}\label{namespaceomexmeta_a49d1107f0ea55c318a266727bea089d9}} 
-char $\ast$ {\bfseries Singular\+Annotation\+\_\+str} (\mbox{\hyperlink{classomexmeta_1_1Triple}{Singular\+Annotation}} $\ast$singular\+\_\+annotation, const char $\ast$format)
-\item 
 char $\ast$ \mbox{\hyperlink{namespaceomexmeta_a386a15d5d186e00467ffdbb15dc9b2e3}{Physical\+Property\+\_\+get\+About}} (\mbox{\hyperlink{classomexmeta_1_1PhysicalProperty}{Physical\+Property}} $\ast$property)
 \item 
 \mbox{\Hypertarget{namespaceomexmeta_ad7fa194ecac46238ce148e64dd2a1283}\label{namespaceomexmeta_ad7fa194ecac46238ce148e64dd2a1283}} 
@@ -591,6 +589,50 @@ std\+::vector$<$ std\+::string $>$ $\ast$ {\bfseries Results\+Map\+\_\+get\+Keys
 \mbox{\Hypertarget{namespaceomexmeta_a6434b2cffea803818b02bf9a7584b263}\label{namespaceomexmeta_a6434b2cffea803818b02bf9a7584b263}} 
 void {\bfseries Results\+Map\+\_\+delete} (Results\+Map $\ast$results\+Map)
 \item 
+\mbox{\hyperlink{classredland_1_1Logger}{Logger}} $\ast$ \mbox{\hyperlink{namespaceomexmeta_a401a97ce4b2a6c22f92b774091289ef8}{Logger\+\_\+get\+Logger}} ()
+\item 
+\mbox{\Hypertarget{namespaceomexmeta_a00b49a350dca49a197c8b96920c6336b}\label{namespaceomexmeta_a00b49a350dca49a197c8b96920c6336b}} 
+void {\bfseries Logger\+\_\+set\+Formatter} (const char $\ast$format)
+\item 
+\mbox{\Hypertarget{namespaceomexmeta_aa53a5e35c8e35aa716999e2bee6674aa}\label{namespaceomexmeta_aa53a5e35c8e35aa716999e2bee6674aa}} 
+void {\bfseries Logger\+\_\+set\+Level} (Logger\+::\+Log\+Level level)
+\item 
+\mbox{\Hypertarget{namespaceomexmeta_aec761fbe8fd8621544e2eb08a93ca6bb}\label{namespaceomexmeta_aec761fbe8fd8621544e2eb08a93ca6bb}} 
+int {\bfseries Logger\+\_\+get\+Level} ()
+\item 
+\mbox{\Hypertarget{namespaceomexmeta_aac3d164e61ae7cd1925a591f54abf515}\label{namespaceomexmeta_aac3d164e61ae7cd1925a591f54abf515}} 
+void {\bfseries Logger\+\_\+enable\+Backtrace} (int num)
+\item 
+\mbox{\Hypertarget{namespaceomexmeta_a8799d08a3e0e07b1866b72c95565bb1a}\label{namespaceomexmeta_a8799d08a3e0e07b1866b72c95565bb1a}} 
+void {\bfseries Logger\+\_\+disable\+Backtrace} ()
+\item 
+\mbox{\Hypertarget{namespaceomexmeta_a75fc5039ad0e686ff6211daeb2131eb9}\label{namespaceomexmeta_a75fc5039ad0e686ff6211daeb2131eb9}} 
+void {\bfseries Logger\+\_\+dump\+Backtrace} ()
+\item 
+\mbox{\Hypertarget{namespaceomexmeta_a3e5e22a8c34ba9014bfaa635900d751a}\label{namespaceomexmeta_a3e5e22a8c34ba9014bfaa635900d751a}} 
+void {\bfseries Logger\+\_\+console\+Logger} ()
+\item 
+\mbox{\Hypertarget{namespaceomexmeta_ad67a74ecb6408eb3f72f8be1c0e7d448}\label{namespaceomexmeta_ad67a74ecb6408eb3f72f8be1c0e7d448}} 
+void {\bfseries Logger\+\_\+file\+Logger} (const char $\ast$filename)
+\item 
+\mbox{\Hypertarget{namespaceomexmeta_a867513601843c5e1ab364f65a22bfb9d}\label{namespaceomexmeta_a867513601843c5e1ab364f65a22bfb9d}} 
+void {\bfseries Logger\+\_\+info} (const char $\ast$message)
+\item 
+\mbox{\Hypertarget{namespaceomexmeta_a01b3ea59b98096bbb46a60c75ecc0306}\label{namespaceomexmeta_a01b3ea59b98096bbb46a60c75ecc0306}} 
+void {\bfseries Logger\+\_\+trace} (const char $\ast$message)
+\item 
+\mbox{\Hypertarget{namespaceomexmeta_a2c00a547f41821c5794c4e3d2f911bc5}\label{namespaceomexmeta_a2c00a547f41821c5794c4e3d2f911bc5}} 
+void {\bfseries Logger\+\_\+debug} (const char $\ast$message)
+\item 
+\mbox{\Hypertarget{namespaceomexmeta_abffb02d727c2ea3060e42c4140cb903b}\label{namespaceomexmeta_abffb02d727c2ea3060e42c4140cb903b}} 
+void {\bfseries Logger\+\_\+warn} (const char $\ast$message)
+\item 
+\mbox{\Hypertarget{namespaceomexmeta_a305282ca72c7f4af6d1fea665bdee5fe}\label{namespaceomexmeta_a305282ca72c7f4af6d1fea665bdee5fe}} 
+void {\bfseries Logger\+\_\+error} (const char $\ast$message)
+\item 
+\mbox{\Hypertarget{namespaceomexmeta_a09fc0cbf9bf4b34308c9ca2cb19e4ce3}\label{namespaceomexmeta_a09fc0cbf9bf4b34308c9ca2cb19e4ce3}} 
+void {\bfseries Logger\+\_\+critical} (const char $\ast$message)
+\item 
 \mbox{\Hypertarget{namespaceomexmeta_a17e4b403c1f6627264259b7d300f5cb1}\label{namespaceomexmeta_a17e4b403c1f6627264259b7d300f5cb1}} 
 void {\bfseries remove\+Element\+Recursion} (xml\+Node\+Ptr a\+\_\+node, const std\+::string \&element\+Name)
 \item 
@@ -632,7 +674,7 @@ OMEXMETA\+\_\+\+CAPI\+\_\+\+EXPORT int {\bfseries Personal\+Information\+\_\+set
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{namespaceomexmeta_a00405b6a215f728dfa31cc7966ec6688}\label{namespaceomexmeta_a00405b6a215f728dfa31cc7966ec6688}} 
-std\+::string {\bfseries LAST\+\_\+\+ERROR}
+std\+::string {\bfseries LAST\+\_\+\+ERROR} = \char`\"{}No errors\char`\"{}
 \end{DoxyCompactItemize}
 
 
@@ -718,6 +760,34 @@ Denotes the type of composite annotation in use.
  nodes associated with it. \begin{Desc}
 \item[Examples]\par
 \mbox{\hyperlink{D_1_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example}{D\+:/lib\+Omex\+Meta/src/omexmeta/include/omexmeta/\+Omex\+Meta\+CApi.\+h}}.\end{Desc}
+\mbox{\Hypertarget{namespaceomexmeta_a95dd3c54698838b3092832732b6be306}\label{namespaceomexmeta_a95dd3c54698838b3092832732b6be306}} 
+\index{omexmeta@{omexmeta}!funcThatReturnsCharStarFailed@{funcThatReturnsCharStarFailed}}
+\index{funcThatReturnsCharStarFailed@{funcThatReturnsCharStarFailed}!omexmeta@{omexmeta}}
+\doxysubsubsection{\texorpdfstring{funcThatReturnsCharStarFailed()}{funcThatReturnsCharStarFailed()}}
+{\footnotesize\ttfamily char$\ast$ omexmeta\+::func\+That\+Returns\+Char\+Star\+Failed (\begin{DoxyParamCaption}\item[{const char $\ast$}]{error\+Msg }\end{DoxyParamCaption})}
+
+
+
+when a function fails and it returns char$\ast$, do not return nullptr as it will crash python. Instead copy the error string into dynamic memory and return that. 
+
+the caller is responsible for freeing the memory associated with the returned string. \mbox{\Hypertarget{namespaceomexmeta_ade8cf4e6ce9dba23d7cfb28ab742613e}\label{namespaceomexmeta_ade8cf4e6ce9dba23d7cfb28ab742613e}} 
+\index{omexmeta@{omexmeta}!functionThatReturnsNullptr@{functionThatReturnsNullptr}}
+\index{functionThatReturnsNullptr@{functionThatReturnsNullptr}!omexmeta@{omexmeta}}
+\doxysubsubsection{\texorpdfstring{functionThatReturnsNullptr()}{functionThatReturnsNullptr()}}
+{\footnotesize\ttfamily OMEXMETA\+\_\+\+CAPI\+\_\+\+EXPORT int $\ast$ omexmeta\+::function\+That\+Returns\+Nullptr (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\hyperlink{classomexmeta_1_1RDF}{RDF}} methods \begin{Desc}
+\item[Examples]\par
+\mbox{\hyperlink{D_1_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example}{D\+:/lib\+Omex\+Meta/src/omexmeta/include/omexmeta/\+Omex\+Meta\+CApi.\+h}}.\end{Desc}
+\mbox{\Hypertarget{namespaceomexmeta_a401a97ce4b2a6c22f92b774091289ef8}\label{namespaceomexmeta_a401a97ce4b2a6c22f92b774091289ef8}} 
+\index{omexmeta@{omexmeta}!Logger\_getLogger@{Logger\_getLogger}}
+\index{Logger\_getLogger@{Logger\_getLogger}!omexmeta@{omexmeta}}
+\doxysubsubsection{\texorpdfstring{Logger\_getLogger()}{Logger\_getLogger()}}
+{\footnotesize\ttfamily OMEXMETA\+\_\+\+CAPI\+\_\+\+EXPORT \mbox{\hyperlink{classredland_1_1Logger}{Logger}} $\ast$ omexmeta\+::\+Logger\+\_\+get\+Logger (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Logger \begin{Desc}
+\item[Examples]\par
+\mbox{\hyperlink{D_1_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example}{D\+:/lib\+Omex\+Meta/src/omexmeta/include/omexmeta/\+Omex\+Meta\+CApi.\+h}}.\end{Desc}
 \mbox{\Hypertarget{namespaceomexmeta_a0b43aced94ae55c938cc788111586fc8}\label{namespaceomexmeta_a0b43aced94ae55c938cc788111586fc8}} 
 \index{omexmeta@{omexmeta}!PersonalInformation\_delete@{PersonalInformation\_delete}}
 \index{PersonalInformation\_delete@{PersonalInformation\_delete}!omexmeta@{omexmeta}}
@@ -786,9 +856,7 @@ a shared\+\_\+ptr to a object from the predicate heirachy.
 \index{omexmeta@{omexmeta}!RDF\_new@{RDF\_new}}
 \index{RDF\_new@{RDF\_new}!omexmeta@{omexmeta}}
 \doxysubsubsection{\texorpdfstring{RDF\_new()}{RDF\_new()}}
-{\footnotesize\ttfamily OMEXMETA\+\_\+\+CAPI\+\_\+\+EXPORT \mbox{\hyperlink{classomexmeta_1_1RDF}{RDF}} $\ast$ omexmeta\+::\+RDF\+\_\+new (\begin{DoxyParamCaption}\item[{const char $\ast$}]{storage\+\_\+type,  }\item[{const char $\ast$}]{storage\+\_\+name,  }\item[{const char $\ast$}]{storage\+\_\+options,  }\item[{const char $\ast$}]{model\+\_\+options }\end{DoxyParamCaption})}
-
-\mbox{\hyperlink{classomexmeta_1_1RDF}{RDF}} methods
+{\footnotesize\ttfamily OMEXMETA\+\_\+\+CAPI\+\_\+\+EXPORT \mbox{\hyperlink{classomexmeta_1_1RDF}{RDF}} $\ast$ omexmeta\+::\+RDF\+\_\+new (\begin{DoxyParamCaption}\item[{const char $\ast$}]{storage\+\_\+type = {\ttfamily \char`\"{}memory\char`\"{}},  }\item[{const char $\ast$}]{storage\+\_\+name = {\ttfamily \char`\"{}semsim\+\_\+store\char`\"{}},  }\item[{const char $\ast$}]{storage\+\_\+options = {\ttfamily nullptr},  }\item[{const char $\ast$}]{model\+\_\+options = {\ttfamily nullptr} }\end{DoxyParamCaption})}
 
 \mbox{\hyperlink{classomexmeta_1_1RDF}{RDF}} class methods \begin{Desc}
 \item[Examples]\par

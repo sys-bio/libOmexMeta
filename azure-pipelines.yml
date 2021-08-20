@@ -8,7 +8,7 @@ pr:
 - develop
 
 stages:
-      # linux
+      # ubuntu
   - stage: BuildUbuntu
     dependsOn: []
     displayName: Build Ubuntu
@@ -73,7 +73,7 @@ stages:
               ./bootstrap-vcpkg.sh
               vcpkg integrate install
               vcpkg install curl pcre openssl yajl sqlite3 liblzma
-            displayName: InstallDependencies
+            displayName: Install vcpkg dependencies
 
           - script: |
               echo "gcc $(gcc --version)"
@@ -81,29 +81,53 @@ stages:
               sudo add-apt-repository ppa:ubuntu-toolchain-r/test
               sudo apt-get update
               sudo apt-get install -y gcc-10 g++-10 graphviz
-              update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-10
+              sudo apt install doxygen
+              doxygen --help
+            displayName: Install Other Dependencies
+
+          - script: |
+              # activate gcc-10 in current shell
+              update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-10 100
               export CC=/usr/bin/gcc-10
               export CXX=/usr/bin/g++-10
               export C=/usr/bin/gcc-10
-              mkdir $(BUILD_DIRECTORY)
-              cd $(BUILD_DIRECTORY)
-              cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)" -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release ..
-              cmake --build . --target install --config Release -j 12
-            displayName: BuildLibOmexMeta
-          - script: |
-              cd $(System.DefaultWorkingDirectory)/build
-              cmake --build $(BUILD_DIRECTORY) --target run-ctest --config Release -j 12
-            displayName: RunLibOmexMetaTests
-          - script: |
+
               eval "$(conda shell.bash hook)"
+              echo "[running] $(CondaExecutable) create -y --name $(PythonName) python=$(PythonVersion)"
               $(CondaExecutable) create -y --name $(PythonName) python=$(PythonVersion)
+
+              echo "[running] $(CondaExecutable) activate $(PythonName)"
               $(CondaExecutable) activate $(PythonName)
-              $(PipExecutable) install auditwheel breathe sphinx-tabs recommonmark beautifulsoup4 requests sphinxcontrib-programoutput tellurium python-libcombine pytest graphviz
+
+              echo "[running] cd $(SOURCE_DIRECTORY)"
+              cd $(SOURCE_DIRECTORY)
+
+              echo "[running] $(PipExecutable) install -r requirements.txt"
+              $(PipExecutable) install -r requirements.txt
+
+              echo "[running] $(PipExecutable) install -r test-requirements.txt"
+              $(PipExecutable) install -r test-requirements.txt
+
+              echo "[running] mkdir -p $(BUILD_DIRECTORY)"
+              mkdir -p $(BUILD_DIRECTORY)
+
+              echo "[running] cd $(BUILD_DIRECTORY)"
               cd $(BUILD_DIRECTORY)
-              cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)" -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(PythonRoot) ..
-              cmake --build $(BUILD_DIRECTORY) --target run-ctest --config Release
+
+              echo "[running] cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX=\"$(INSTALL_DIRECTORY)\" -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(PythonRoot) -DBUILD_DOCS=ON -DBUILD_DOCS_EXECUTABLE=ON .."
+              cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX=$(INSTALL_DIRECTORY) -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(PythonRoot) -DBUILD_DOCS=ON -DBUILD_DOCS_EXECUTABLE=ON -DSPHINX_EXECUTABLE=$(which sphinx-build) ..
               cmake --build . --target install --config Release -j 12
+            displayName: Build libOmexMeta
+
+          - script: |
+              echo "[running] cmake --build $(BUILD_DIRECTORY) --target run-ctest --config Release"
+              echo "[running] cd $(BUILD_DIRECTORY)"
+              cd $(BUILD_DIRECTORY)
+
+              echo "[running] cmake --build . --target run-ctest --config Release"
+              cmake --build . --target run-ctest --config Release
             displayName: Run Tests With Python
+
           - script: |
               eval "$(conda shell.bash hook)"
               $(CondaExecutable) activate $(PythonName)
@@ -114,15 +138,9 @@ stages:
               echo "wheel is: $wheel"
               $(PipExecutable) install $wheel
               $(PythonExecutable) -c "import pyomexmeta;pyomexmeta.run_tests()"
+
             displayName: Build and install pip wheel then run tests from within Python
-#          - script: |
-#              git clone https://github.com/doxygen/doxygen.git '$(DOXYGEN_DIRECTORY)'
-#              cd doxygen
-#              mkdir build
-#              cd build
-#              cmake -DCMAKE_INSTALL_PREFIX=../install-doxygen
-#
-#            displayName: Build Doxygen
+
           - powershell: gci env:* | sort-object name | Format-Table -AutoSize | Out-File $env:BUILD_ARTIFACTSTAGINGDIRECTORY/environment-variables.txt
 
           - task: CopyFiles@2
@@ -137,7 +155,7 @@ stages:
               Parallel: true
               ParallelCount: 8
 
-      # macos
+  # macos
   - stage: MacOS
     dependsOn: []
     displayName: MacOs
@@ -186,6 +204,11 @@ stages:
             displayName: Take ownership of conda installation
 
           - script: |
+              brew install doxygen
+              doxygen --help
+            displayName: InstallDoxygen
+
+          - script: |
               echo "Default directory: $(pwd)"
               echo "Agent.BuildDirectory $(Agent.BuildDirectory)"
               echo "Pipeline.Workspace $(Pipeline.Workspace)"
@@ -212,26 +235,26 @@ stages:
             displayName: InstallDependencies
 
           - script: |
-              mkdir $(BUILD_DIRECTORY)
-              cd $(BUILD_DIRECTORY)
-              cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)" -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release ..
-              cmake --build $(BUILD_DIRECTORY) --target install --config Release -j 12
-            displayName: BuildLibOmexMeta
-          - script: |
-              cd $(BUILD_DIRECTORY)
-              cmake --build . --target run-ctest --config Release -j 12
-            displayName: RunLibOmexMetaTests
-          - script: |
               eval "$(conda shell.bash hook)"
               $(CondaExecutable) create -y --name $(PythonName) python=$(PythonVersion)
               $(CondaExecutable) activate $(PythonName)
-              $(PipExecutable) install ipython
-              $(PipExecutable) install breathe sphinx-tabs recommonmark beautifulsoup4 requests sphinxcontrib-programoutput tellurium python-libcombine pytest graphviz
+              $(PipExecutable) install -r requirements.txt
+              $(PipExecutable) install -r test-requirements.txt
+              # $(PipExecutable) install ipython
+              # $(PipExecutable) install breathe sphinx-tabs recommonmark beautifulsoup4 requests sphinxcontrib-programoutput tellurium python-libcombine pytest graphviz
+              echo "[running] mkdir -p $(BUILD_DIRECTORY)"
+              mkdir -p $(BUILD_DIRECTORY)
+              echo "[running] cd $(BUILD_DIRECTORY)"
               cd $(BUILD_DIRECTORY)
-              cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)" -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(PythonRoot)  ..
-              cmake --build . --target run-ctest --config Release
+              cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX=$(INSTALL_DIRECTORY) -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(PythonRoot) -DBUILD_DOCS=ON -DBUILD_DOCS_EXAMPLES=ON  -DSPHINX_EXECUTABLE=$(which sphinx-build) ..
               cmake --build . --target install --config Release -j 12
-            displayName: Run Tests With Python
+
+            displayName: Build libOmexMeta 
+          - script: |
+              cd $(BUILD_DIRECTORY)
+              cmake --build . --target run-ctest --config Release
+            displayName: Run libOmexMeta Tests
+
           - script: |
               eval "$(conda shell.bash hook)"
               conda activate $(PythonName)
@@ -256,7 +279,7 @@ stages:
               Parallel: true
               ParallelCount: 8
 
-      # windows
+  # windows
   - stage: Windows
     dependsOn: []
     displayName: Windows
@@ -298,6 +321,9 @@ stages:
           PythonIncludeDir: '$(PythonRoot)\include'
           PipExecutable: '$(PythonScriptsDir)\pip.exe'
           PyWin32Path: '$(PythonLibDir)\site-packages\pywin32_system32' # needs to be added to path for win32api
+          DoxygenDownloadUrl: 'https://doxygen.nl/files/doxygen-1.9.1.windows.x64.bin.zip'
+          DoxygenDirectory: '$(System.DefaultWorkingDirectory)\Doxygen'
+          DoxygenExecutable: '$(DoxygenDirectory)\doxygen.exe'
 
         steps:
           - checkout: self
@@ -334,41 +360,60 @@ stages:
               ./bootstrap-vcpkg.sh
               vcpkg integrate install
               vcpkg install curl:x64-windows-static pcre:x64-windows-static openssl:x64-windows-static yajl:x64-windows-static sqlite3:x64-windows-static liblzma:x64-windows-static
-
             displayName: InstallDependencies
 
+          - task: Cache@2
+            inputs:
+              key: 'doxygen_cache |"$(Agent.Os)"'
+              path: '"$(DoxygenDirectory)"'
+          - powershell: |
+              # create place for Doxygen, if not exists already
+              echo "creating a new directory for doxygen, if not already exists. Doxygen directory is $(DoxygenDirectory)"
+              If (!(test-path $(DoxygenDirectory)))
+              {
+                New-Item -ItemType Directory -Force -Path $(DoxygenDirectory)
+              }
+              echo "Cding to DoxygenDirectory $(DoxygenDirectory)"
+              cd $(DoxygenDirectory)
+              # download doxygen
+              Invoke-WebRequest "$(DoxygenDownloadUrl)" -OutFile 'doxygen.zip'
+              # unzip doxygen
+              unzip doxygen.zip
+
+              # Ensure doxygen exists
+              $ErrorActionPreference = 'Stop'
+              # check for file explicitly (in case a directory with that name exists)
+              if(![System.IO.File]::Exists("$(DoxygenExecutable)")) {
+                  # throwing an exception will abort the job
+                  throw (New-Object System.IO.FileNotFoundException("File not found: $(DoxygenExecutable)", "$(DoxygenExecutable)"))
+              }
+            displayName: Install Doxygen
+
           - script: |
-              echo "BUILD_DIRECTORY: $(BUILD_DIRECTORY)"
-              mkdir "$(BUILD_DIRECTORY)"
-              cd "$(BUILD_DIRECTORY)"
-              cmake -DVCPKG_ROOT="$(VCPKG_INSTALL_PREFIX)" -DCMAKE_INSTALL_PREFIX="$(INSTALL_DIRECTORY)" -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release ..
-              cmake --build . --target install --config Release -j 12
-            displayName: BuildLibOmexMeta
-          - script: |
-              # https://stackoverflow.com/a/63102942/3059024
-              $ENV:PATH="$ENV:PATH;$(PyWin32Path)"
-              cd "$(BUILD_DIRECTORY)"
-              cmake --build . --target run-ctest --config Release -j 12
-            displayName: RunLibOmexMetaTests
+
+              echo "cd to $(DoxygenDirectory) and ls"
+              cd $(DoxygenDirectory)
+              ls
+              echo "$env:Path += ;$(DoxygenDirectory)"
+              $env:Path += ';$(DoxygenDirectory)'
+
+              echo "[running] doxygen --help"
+              doxygen --help
+
+            displayName: Check Doxygen
 
           - powershell: |
-
-              echo "cd D:\a\1\s\build\"
-              cd D:\a\1\s\build\
-              ls
-
-              echo "Where.exe conda: "
-              where.exe conda
-
-              echo "Where.exe pip: "
-              where.exe pip
-
+              If (!(test-path $(BUILD_DIRECTORY)))
+              {
+                New-Item -ItemType Directory -Force -Path $(BUILD_DIRECTORY)
+              }
               echo "$(CondaExecutable) shell.powershell hook"
               $(CondaExecutable) shell.powershell hook
 
               echo "installing pywin32 on base python"
               $(MinicondaRoot)/Scripts/pip.exe install pywin32
 
+              $ENV:PATH="$ENV:PATH;$(PyWin32Path)"
 
               echo "$(CondaExecutable) create -y --name $(PythonName) python=$(PythonVersion)"
               $(CondaExecutable) create -y --name $(PythonName) python=$(PythonVersion)
@@ -379,46 +424,32 @@ stages:
               echo "$Env:LD_LIBRARY_PATH = $(PythonLibDir)"
               $Env:LD_LIBRARY_PATH = "$(PythonLibDir)"
 
-              echo "$(PipExecutable) install -y ipython breathe sphinx-tabs requests tellurium python-libcombine pytest graphviz pypiwin32 pywin32 wheel"
-              $(PipExecutable) install ipython breathe sphinx-tabs requests tellurium python-libcombine pytest graphviz pypiwin32 pywin32 wheel
+              echo "cding to source directory:"
+              cd $(SOURCE_DIRECTORY)
+              $(PipExecutable) install -r requirements.txt
+              $(PipExecutable) install -r test-requirements.txt
+              $(PipExecutable) install pywin32
 
-              echo "$(CondaExecutable) env list"
-              $(CondaExecutable) env list
-              #echo "python -c import pytest"
-              $(PythonExecutable) -c "import pytest"
-
-              #echo "python -c import win32api"
-              $(PythonExecutable) -c "import win32api"
-
-              If(!(test-path $(BUILD_DIRECTORY))) {
-                mkdir $(BUILD_DIRECTORY)
-              }
               cd $(BUILD_DIRECTORY)
-              cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX=$(INSTALL_DIRECTORY) -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(PythonRoot)  ..
-              cmake --build . --target install --config Release -j 12
+              cmake  -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX=$(INSTALL_DIRECTORY) -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(PythonRoot)  -DBUILD_DOCS=ON -DBUILD_DOCS_EXAMPLES=ON -DDOXYGEN_EXECUTABLE=$(DoxygenExecutable) ..
+              cmake --build . --target install --config Release
 
-              echo "cd D:\a\1\s\build\"
-              cd D:\a\1\s\build\
-              ls
-
-              echo "cd D:\a\1\s\build\site-packages"
-              cd D:\a\1\s\build\site-packages\
-              ls
-
-              echo "cd D:\a\1\s\build\site-packages\pyomexmeta"
-              cd D:\a\1\s\build\site-packages\pyomexmeta
-              ls
-
-              ctest -C Release --verbose --extra-verbose --output-on-failure
             displayName: Build With Python
+
+          - powershell: |
+              cd $(BUILD_DIRECTORY)
+              # https://stackoverflow.com/a/63102942/3059024
+              $ENV:PATH="$ENV:PATH;$(PyWin32Path)"
+              ctest -C Release --verbose --extra-verbose --output-on-failure
+            displayName: Run libOmexMeta Tests
+
             # publish python packages in azure:
             #   https://docs.microsoft.com/en-us/azure/devops/pipelines/artifacts/pypi?view=azure-devops&tabs=yaml
 
           - powershell: |
-
-
               $ENV:PATH="$ENV:PATH;$(PythonScriptsDir)"
               $Env:LD_LIBRARY_PATH = "$(PythonLibDir)"
+              $ENV:PATH="$ENV:PATH;$(PyWin32Path)"
               echo "Where.exe conda: "
               where.exe conda
               echo "Where.exe pip: "
@@ -433,10 +464,10 @@ stages:
               $(PythonExecutable) setup.py bdist_wheel
               $wheel = Get-ChildItem -LiteralPath dist -Recurse -File |% FullName
               echo "Wheel is: $wheel"
-              # echo "running $(PipExecutable) install wheel ipython python-libcombine"
-              # $(PipExecutable) install $wheel ipython python-libcombine
-              # echo "Running $(PythonExecutable) -c import pyomexmeta;pyomexmeta.run_tests()"
-              # $(PythonExecutable) -c "import pyomexmeta;pyomexmeta.run_tests()"
+              echo "[running] $(PipExecutable) install $wheel"
+              $(PipExecutable) install $wheel
+              echo "Running $(PythonExecutable) -c import pyomexmeta;pyomexmeta.run_tests()"
+              $(PythonExecutable) -c "import pyomexmeta;pyomexmeta.run_tests()"
             displayName: Build and install pip wheel then run tests from within Python
           - task: CopyFiles@2
             inputs:
@@ -451,9 +482,9 @@ stages:
               Parallel: true
               ParallelCount: 8
 
-
-  - stage: ManyLinux2014
-    displayName: ManyLinux2014
+  # manylinux
+  - stage: Manylinux2014
+    displayName: libomexmeta-manylinux2014-base
     dependsOn: []
     jobs:
       - job:
@@ -470,7 +501,7 @@ stages:
               PythonName: py39
         pool:
           vmImage: 'ubuntu-18.04'
-        container: ciaranwelsh/manylinux2014:latest
+        container: ciaranwelsh/libomexmeta-manylinux2014-base:latest
         variables:
           VCPKG_INSTALL_PREFIX: '/vcpkg'
           CCACHE_DIR: '$(Pipeline.Workspace)/ccache'
@@ -496,20 +527,34 @@ stages:
               eval "$(conda shell.bash hook)"
               $(CondaExecutable) activate $(PythonName)
 
+              echo "cd $(SOURCE_DIRECTORY)"
+              cd $(SOURCE_DIRECTORY)
+
+              echo "$(PipExecutable) install -r requirements.txt"
+              $(PipExecutable) install -r requirements.txt
+              echo "$(PipExecutable) install -r test-requirements.txt"
+              $(PipExecutable) install -r test-requirements.txt
+
+              echo "doxygen --help"
+              doxygen --help
+
               echo "mkdir $(BUILD_DIRECTORY)"
               mkdir $(BUILD_DIRECTORY)
 
               echo "cd $(BUILD_DIRECTORY)"
               cd $(BUILD_DIRECTORY)
 
-              $(PipExecutable) install python-libcombine pytest wheel ipython breathe sphinx-tabs requests tellurium python-libcombine graphviz
+              #$(PipExecutable) install python-libcombine pytest wheel ipython breathe sphinx-tabs requests tellurium python-libcombine graphviz
 
-              yum install -y graphviz
-              cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX=$(INSTALL_DIRECTORY) -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(PythonRoot)  ..
+              cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX=$(INSTALL_DIRECTORY) -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(PythonRoot) -DBUILD_DOCS=ON -DBUILD_DOCS_EXAMPLES=ON -DSPHINX_EXECUTABLE=$(which sphinx-build) ..
               cmake --build . --target install --config Release -j 12
-              ctest --verbose --extra-verbose --output-on-failure
 
             displayName: Build With Python
+
+          - script: |
+              cd $(BUILD_DIRECTORY)
+              ctest --verbose --extra-verbose --output-on-failure
+            displayName: Run tests
 
           - script: |
               eval "$(conda shell.bash hook)"
@@ -520,7 +565,7 @@ stages:
               wheel=$(realpath $(ls))
               echo "wheel is: $wheel"
               $(PipExecutable) install $wheel
-              # $(PythonExecutable) -c "import pyomexmeta;pyomexmeta.run_tests()"
+              $(PythonExecutable) -c "import pyomexmeta;pyomexmeta.run_tests()"
 
             displayName: Build Pip Wheel
           - task: CopyFiles@2
@@ -532,6 +577,6 @@ stages:
           - task: PublishBuildArtifacts@1
             inputs:
               pathToPublish: '$(Build.ArtifactStagingDirectory)/libomexmeta-$(PythonName)'
-              artifactName: libOmexMeta-ManyLinux2014-$(PythonName)
+              artifactName: libOmexMeta-libomexmeta-manylinux2014-base-$(PythonName)
               Parallel: true
               ParallelCount: 8

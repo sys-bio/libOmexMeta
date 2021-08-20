@@ -26,3 +26,22 @@ set(
 
 add_subdirectory(libxslt)
 add_dependencies(LibXslt LibXml2)
+
+add_library(spdlog INTERFACE)
+target_include_directories(spdlog INTERFACE
+        $<BUILD_INTERFACE:${SPDLOG_INCLUDE_DIR}>
+        )
+
+install(
+        TARGETS spdlog
+        EXPORT spdlog
+        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+)
+install(
+        EXPORT spdlog
+        DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/spdlog"
+        NAMESPACE spdlog::
+        FILE spdlog.cmake
+)

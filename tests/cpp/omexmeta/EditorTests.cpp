@@ -34,10 +34,7 @@ public:
         model = LibrdfModel(storage);
     };
 
-    ~EditorTests() override {
-        model.freeModel();
-        storage.freeStorage();
-    }
+    ~EditorTests() override {}
 };
 
 TEST_F(EditorTests, TestMetaIds) {
@@ -163,14 +160,13 @@ TEST_F(EditorTests, TestAddSingleAnnotationToEditor) {
     RDF rdf;
     Editor editor = rdf.toEditor(
             SBMLFactory::getSBML(SBML_NOT_ANNOTATED), true, false);
-    Triple triple(uriHandler, LibrdfNode::fromUriString("species0001").get(),
-                  BiomodelsBiologyQualifier("is").get(),
-                  LibrdfNode::fromUriString("uniprot/P0DP23").get());
+    Triple triple(uriHandler, LibrdfNode::fromUriString("species0001"),
+                  BiomodelsBiologyQualifier("is").getNode(),
+                  LibrdfNode::fromUriString("uniprot/P0DP23"));
     editor.addSingleAnnotation(triple);
     int expected = 1;
     int actual = editor.size();
     ASSERT_EQ(expected, actual);
-    triple.freeStatement();
 }
 
 TEST_F(EditorTests, TestEditorCreateUriRelativeToLocalUri) {
@@ -195,7 +191,7 @@ TEST_F(EditorTests, TestAddSingleAnnotationToRDF1) {
     LibrdfNode subject = editor.createNodeWithModelUri("species0001");
     BiomodelsBiologyQualifier predicate("is");
     LibrdfNode resource = LibrdfNode::fromUriString("uniprot/P0DP23");
-    Triple triple(uriHandler, subject.get(), predicate.get(), resource.get());
+    Triple triple(uriHandler, subject, predicate.getNode(), resource);
 
     editor.addSingleAnnotation(triple);
 
@@ -211,7 +207,6 @@ TEST_F(EditorTests, TestAddSingleAnnotationToRDF1) {
                            "    bqbiol:is <https://identifiers.org/uniprot/P0DP23> .\n"
                            "\n";
     ASSERT_TRUE(RDF::equals(&rdf, expected));
-    triple.freeStatement();
 }
 
 TEST_F(EditorTests, TestAddSingleAnnotationToRDF2) {
@@ -310,8 +305,6 @@ TEST_F(EditorTests, TestSingularAnnotWithBuilderPattern) {
                            "\n"
                            "";
     ASSERT_TRUE(RDF::equals(&rdf, expected));
-
-    singularAnnotation.freeStatement();
 }
 
 TEST_F(EditorTests, TestSingularAnnotWithBuilderPattern2) {
@@ -340,8 +333,6 @@ TEST_F(EditorTests, TestSingularAnnotWithBuilderPattern2) {
                            "\n"
                            "";
     ASSERT_TRUE(RDF::equals(&rdf, expected));
-
-    singularAnnotation.freeStatement();
 }
 
 TEST_F(EditorTests, TestSingularAnnotWithBuilderPatternChebiResource) {
@@ -370,8 +361,6 @@ TEST_F(EditorTests, TestSingularAnnotWithBuilderPatternChebiResource) {
                            "\n"
                            "";
     ASSERT_TRUE(RDF::equals(&rdf, expected));
-
-    singularAnnotation.freeStatement();
 }
 
 TEST_F(EditorTests, TestSingularAnnotWithBuilderPatternOPBResource) {
@@ -400,8 +389,6 @@ TEST_F(EditorTests, TestSingularAnnotWithBuilderPatternOPBResource) {
                            "\n"
                            "";
     ASSERT_TRUE(RDF::equals(&rdf, expected));
-
-    singularAnnotation.freeStatement();
 }
 
 TEST_F(EditorTests, TestEditASingularAnnotWithBuilderPatternThenRemove) {
@@ -438,9 +425,6 @@ TEST_F(EditorTests, TestEditASingularAnnotWithBuilderPatternThenRemove) {
                            "\n"
                            "";
     ASSERT_TRUE(RDF::equals(&rdf, expected));
-
-    singularAnnotation.freeStatement();
-    singularAnnotation2.freeStatement();
 }
 
 TEST_F(EditorTests, TestSingularAnnotationBuilder) {
@@ -459,7 +443,6 @@ TEST_F(EditorTests, TestSingularAnnotationBuilder) {
     int expected = 1;
     int actual = rdf.size();
     ASSERT_EQ(expected, actual);
-    singularAnnotation.freeStatement();
 }
 
 TEST_F(EditorTests, TestSingularAnnotationBuilder2) {
@@ -479,7 +462,6 @@ TEST_F(EditorTests, TestSingularAnnotationBuilder2) {
     int expected = 1;
     int actual = rdf.size();
     ASSERT_EQ(expected, actual);
-    singularAnnotation.freeStatement();
 }
 
 TEST_F(EditorTests, TestSingularAnnotationBuilderAlternativeInterface) {
@@ -501,11 +483,9 @@ TEST_F(EditorTests, TestSingularAnnotationBuilderAlternativeInterface) {
                            "\n"
                            "<http://omex-library.org/NewOmex.omex/NewModel.xml#species0000>\n"
                            "    bqbiol:is \"resource\" .\n\n";
-    std::string actual = singularAnnotation.str("turtle");
+    std::string actual = rdf.toString("turtle");
     std::cout << actual << std::endl;
     ASSERT_TRUE(RDF::equals(&rdf, expected));
-
-    singularAnnotation.freeTriple();
 }
 
 TEST_F(EditorTests, TestRemoveSingularAnnotation) {
@@ -526,7 +506,6 @@ TEST_F(EditorTests, TestRemoveSingularAnnotation) {
     int expected = 0;
     int actual = rdf.size();
     ASSERT_EQ(expected, actual);
-    singularAnnotation.freeStatement();
 }
 
 
@@ -642,36 +621,27 @@ TEST_F(EditorTests, StripAnnotationElements) {
                            "    </model>\n"
                            "</sbml>\n";
     RDF rdf;
-    std::cout << SBMLFactory::getSBML(SBML_SEMANTIC_EXTRACTION_MODEL) << std::endl;
     Editor editor = rdf.toEditor(SBMLFactory::getSBML(SBML_SEMANTIC_EXTRACTION_MODEL), false, false);
     std::string stripped = editor.stripAnnotations();
-    std::cout << stripped << std::endl;
     ASSERT_STREQ(expected.c_str(), stripped.c_str());
 }
 
 TEST_F(EditorTests, CheckGetXmlWithValidSBML) {
+    Logger::getLogger()->setLevel(Logger::LogLevel::debug);
     RDF rdf;
     std::cout << SBMLFactory::getSBML(SBML_SEMANTIC_EXTRACTION_MODEL) << std::endl;
     Editor editor = rdf.toEditor(SBMLFactory::getSBML(SBML_SEMANTIC_EXTRACTION_MODEL), false, true);
-    std::cout << editor.getXml() << std::endl;
+    ASSERT_FALSE( editor.getXml().empty());
+    Logger::getLogger()->setLevel(Logger::LogLevel::warn);
 }
 
 TEST_F(EditorTests, CheckGetXmlWithInvalidSBML) {
     RDF rdf;
     Editor editor = rdf.toEditor(SBMLFactory::getSBML(SBML_INVALID_METAIDS), false, true);
-    ASSERT_NO_THROW(editor.getXml() );
+    ASSERT_NO_THROW(editor.getXml());
 }
 
 //TEST_F(EditorTests, CheckInvalidSbml) {
 //    RDF rdf;
 //    Editor editor = rdf.toEditor("<sbml></sbml>", false, false);
 //}
-
-
-
-
-
-
-
-
-

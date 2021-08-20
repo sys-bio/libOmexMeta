@@ -92,7 +92,7 @@ $(function() {
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        ~<a class="code" href="classomexmeta_1_1PersonalInformation.html">PersonalInformation</a>();</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <a class="code" href="classomexmeta_1_1PersonalInformation.html">PersonalInformation</a>(librdf_model *model, <a class="code" href="classomexmeta_1_1UriHandler.html">UriHandler</a>&amp; uriHandler);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <a class="code" href="classomexmeta_1_1PersonalInformation.html">PersonalInformation</a>(<a class="code" href="classredland_1_1LibrdfModel.html">LibrdfModel</a>&amp; model, <a class="code" href="classomexmeta_1_1UriHandler.html">UriHandler</a>&amp; uriHandler);</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
 <div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="classomexmeta_1_1PersonalInformation.html#a75cedb2a97efb996852b4e7cd39d6440">   42</a></span>&#160;        <a class="code" href="classomexmeta_1_1PersonalInformation.html#a75cedb2a97efb996852b4e7cd39d6440">PersonalInformation</a>(<span class="keyword">const</span> <a class="code" href="classomexmeta_1_1PersonalInformation.html">PersonalInformation</a> &amp;information) = <span class="keyword">delete</span>;</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
@@ -149,7 +149,7 @@ $(function() {
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        <span class="keywordtype">void</span> setTriples(<a class="code" href="classomexmeta_1_1Triples.html">Triples</a> triples);</div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        librdf_model *model_;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        <a class="code" href="classredland_1_1LibrdfModel.html">LibrdfModel</a>&amp; model_;</div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        <a class="code" href="classomexmeta_1_1Triples.html">Triples</a> triples_;</div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        std::string metaid_;</div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        std::vector&lt;std::string&gt; namespaces_;</div>
@@ -167,7 +167,8 @@ $(function() {
 <div class="ttc" id="aclassomexmeta_1_1PersonalInformation_html_a75cedb2a97efb996852b4e7cd39d6440"><div class="ttname"><a href="classomexmeta_1_1PersonalInformation.html#a75cedb2a97efb996852b4e7cd39d6440">omexmeta::PersonalInformation::PersonalInformation</a></div><div class="ttdeci">PersonalInformation(const PersonalInformation &amp;information)=delete</div><div class="ttdoc">Copy constructor for PersonalInformation.</div></div>
 <div class="ttc" id="aclassomexmeta_1_1Triples_html"><div class="ttname"><a href="classomexmeta_1_1Triples.html">omexmeta::Triples</a></div><div class="ttdoc">A Triples object is a collection of Triple objects.</div><div class="ttdef"><b>Definition:</b> Triples.h:35</div></div>
 <div class="ttc" id="aclassomexmeta_1_1UriHandler_html"><div class="ttname"><a href="classomexmeta_1_1UriHandler.html">omexmeta::UriHandler</a></div><div class="ttdef"><b>Definition:</b> UriHandler.h:21</div></div>
-<div class="ttc" id="aclassredland_1_1LibrdfNode_html"><div class="ttname"><a href="classredland_1_1LibrdfNode.html">redland::LibrdfNode</a></div><div class="ttdef"><b>Definition:</b> LibrdfNode.h:49</div></div>
+<div class="ttc" id="aclassredland_1_1LibrdfModel_html"><div class="ttname"><a href="classredland_1_1LibrdfModel.html">redland::LibrdfModel</a></div><div class="ttdoc">RAII abstraction around librdf_model.</div><div class="ttdef"><b>Definition:</b> LibrdfModel.h:38</div></div>
+<div class="ttc" id="aclassredland_1_1LibrdfNode_html"><div class="ttname"><a href="classredland_1_1LibrdfNode.html">redland::LibrdfNode</a></div><div class="ttdoc">C++ wrapper around librdf_node that uses RAII for memory management.</div><div class="ttdef"><b>Definition:</b> LibrdfNode.h:54</div></div>
 <div class="ttc" id="anamespaceomexmeta_html"><div class="ttname"><a href="namespaceomexmeta.html">omexmeta</a></div><div class="ttdef"><b>Definition:</b> Editor.cpp:9</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->

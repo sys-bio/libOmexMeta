@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/OmexMetaXml.h" line="118" column="22" bodyfile="src/omexmeta/OmexMetaXml.cpp" bodystart="287" bodyend="298"/>
+        <location file="src/omexmeta/include/omexmeta/OmexMetaXml.h" line="118" column="22" bodyfile="src/omexmeta/OmexMetaXml.cpp" bodystart="288" bodyend="299"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1OmexMetaSBML_1a24dd24d2e28a152aeee93d155d0ff44c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::string</type>
@@ -30,7 +30,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/OmexMetaXml.h" line="120" column="22" bodyfile="src/omexmeta/OmexMetaXml.cpp" bodystart="300" bodyend="302"/>
+        <location file="src/omexmeta/include/omexmeta/OmexMetaXml.h" line="120" column="22" bodyfile="src/omexmeta/OmexMetaXml.cpp" bodystart="301" bodyend="303"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1OmexMetaSBML_1a78e71a49421e5069c52594c44e5965c5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::string</type>
@@ -44,7 +44,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/OmexMetaXml.h" line="122" column="22" bodyfile="src/omexmeta/OmexMetaXml.cpp" bodystart="304" bodyend="306"/>
+        <location file="src/omexmeta/include/omexmeta/OmexMetaXml.h" line="122" column="22" bodyfile="src/omexmeta/OmexMetaXml.cpp" bodystart="305" bodyend="307"/>
       </memberdef>
       <memberdef kind="function" id="classomexmeta_1_1OmexMetaSBML_1acb185d817563f308ecde94491623ced0" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
         <type></type>
@@ -76,7 +76,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/OmexMetaXml.h" line="114" column="9" bodyfile="src/omexmeta/OmexMetaXml.cpp" bodystart="10" bodyend="16"/>
+        <location file="src/omexmeta/include/omexmeta/OmexMetaXml.h" line="114" column="9" bodyfile="src/omexmeta/OmexMetaXml.cpp" bodystart="11" bodyend="17"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -131,6 +131,7 @@
       <member refid="classomexmeta_1_1OmexMetaXml_1ae5ec502a76aa8b133de07f7b98926c6d" prot="public" virt="non-virtual"><scope>omexmeta::OmexMetaSBML</scope><name>removeElement</name></member>
       <member refid="classomexmeta_1_1OmexMetaXml_1aaa0e43035473faa50350e1b5d703e445" prot="public" virt="non-virtual"><scope>omexmeta::OmexMetaSBML</scope><name>toString</name></member>
       <member refid="classomexmeta_1_1OmexMetaXml_1aaca7a37ac733433d4f3a143adbbccbc1" prot="protected" virt="non-virtual"><scope>omexmeta::OmexMetaSBML</scope><name>xml_</name></member>
+      <member refid="classomexmeta_1_1OmexMetaXml_1a12ca5e9087c6b5b45a8e17efc5a354fa" prot="public" virt="virtual"><scope>omexmeta::OmexMetaSBML</scope><name>~OmexMetaXml</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

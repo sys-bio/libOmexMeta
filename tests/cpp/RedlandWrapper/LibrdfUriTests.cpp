@@ -2,11 +2,11 @@
 // Created by Ciaran on 5/17/2020.
 //
 
+#include "gtest/gtest.h"
 #include "raptor2.h"
 #include "redland/LibrdfNode.h"
 #include "redland/LibrdfUri.h"
 #include "redland/LibrdfWorld.h"
-#include "gtest/gtest.h"
 #include <filesystem>
 
 using namespace redland;

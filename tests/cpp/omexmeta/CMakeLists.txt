@@ -23,7 +23,6 @@ set(
         PropertyBearerTests.cpp
         EnergyDiffTests.cpp
         PhysicalProcessTests.cpp
-        QueryTests.cpp
         EditorTests.cpp
         PersonalInformationTests.cpp
         MarkupIdentifierTests.cpp
@@ -53,7 +52,6 @@ add_test_executable(PhysicalProcessTests OmexMetaTests PhysicalProcessTests.cpp)
 add_test_executable(PhysicalPropertyTests OmexMetaTests PhysicalPropertyTests.cpp)
 add_test_executable(PropertyBearerTests OmexMetaTests PropertyBearerTests.cpp)
 add_test_executable(PredicateTests OmexMetaTests PredicateTests.cpp)
-add_test_executable(QueryTests OmexMetaTests QueryTests.cpp)
 add_test_executable(RDFTests OmexMetaTests RDFTests.cpp)
 add_test_executable(SBMLSemanticExtractionTests OmexMetaTests SBMLSemanticExtractionTests.cpp)
 add_test_executable(TripleTests OmexMetaTests TripleTests.cpp)
@@ -63,6 +61,8 @@ add_test_executable(XmlAssistantTests OmexMetaTests OmexMetaXmlTests.cpp)
 add_test_executable(VCardTranslatorTests OmexMetaTests VCardTranslatorTests.cpp )
 add_test_executable(PurgeRDFBagTests OmexMetaTests PurgeRDFBagTests.cpp MockRDF.h)
 add_test_executable(checkBiomodels OmexMetaTests checkBiomodels.cpp)
+#add_test_executable(LoggingTests OmexMetaTests ../RedlandWrapper/LoggerTests.cpp)
+add_test_executable(QueryTests OmexMetaTests QueryTests.cpp)
 
 
 

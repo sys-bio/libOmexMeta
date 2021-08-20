@@ -31,7 +31,7 @@
         <location file="src/redland/RedlandWrapper/src/include/redland/rasqal.h" line="261" column="25" bodyfile="src/redland/RedlandWrapper/src/include/redland/rasqal.h" bodystart="261" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structrasqal__prefix_1ab1d582bf50eaf4e80ef8b4808057f38d" prot="public" static="no" mutable="no">
-        <type>raptor_uri *</type>
+        <type><ref refid="structraptor__uri__s" kindref="compound">raptor_uri</ref> *</type>
         <definition>raptor_uri* rasqal_prefix::uri</definition>
         <argsstring></argsstring>
         <name>uri</name>
@@ -77,6 +77,19 @@
 <para>Namespace (prefix, uri) pair.</para>
 <para>Includes internal flags used for marking when prefixes are declared and at what XML element depth when used in XML formats. </para>
     </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>rasqal_prefix</label>
+        <link refid="structrasqal__prefix"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>uri</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>raptor_uri_s</label>
+        <link refid="structraptor__uri__s"/>
+      </node>
+    </collaborationgraph>
     <location file="src/redland/RedlandWrapper/src/include/redland/rasqal.h" line="259" column="1" bodyfile="src/redland/RedlandWrapper/src/include/redland/rasqal.h" bodystart="259" bodyend="265"/>
     <listofallmembers>
       <member refid="structrasqal__prefix_1a8058e6936dd7fba55a40478fb8f66fa8" prot="public" virt="non-virtual"><scope>rasqal_prefix</scope><name>declared</name></member>

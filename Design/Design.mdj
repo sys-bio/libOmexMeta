@@ -53317,7 +53317,7 @@
 											"top": 785,
 											"width": 428.82861328125,
 											"height": 13,
-											"text": "+getResource(): getResourceAsRawNode",
+											"text": "+getResource(): getResourceNode",
 											"horizontalAlignment": 0
 										},
 										{

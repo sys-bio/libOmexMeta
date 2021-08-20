@@ -21,6 +21,19 @@ RDF$\ast$ rdf\+\_\+ptr = RDF\+\_\+from\+String(string\+\_\+annotations, \char`\"
 \DoxyCodeLine{\textcolor{preprocessor}{\#ifndef LIBOMEXMETA\_OMEXMETACAPI\_H}}
 \DoxyCodeLine{\textcolor{preprocessor}{\#define LIBOMEXMETA\_OMEXMETACAPI\_H}}
 \DoxyCodeLine{}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define GENERAL\_ERROR -\/1}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define RDF\_ERROR -\/2}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define EDITOR\_ERROR -\/3}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define QUERY\_ERROR -\/4}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define SINGULAR\_ANNOTATION\_ERROR -\/5}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define PERSONAL\_INFORMATION\_ERROR -\/6}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define PHYSICAL\_ENTITY\_ERROR -\/7}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define PHYSICAL\_PROCESS\_ERROR -\/8}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define ENERGY\_DIFF\_ERROR -\/9}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define PHYSICAL\_PROPERTY\_ERROR -\/10}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include "{}include/redland/Logger.h"{}}}
 \DoxyCodeLine{\textcolor{preprocessor}{\#include "{}omexmeta/Editor.h"{}}}
 \DoxyCodeLine{\textcolor{preprocessor}{\#include "{}omexmeta/EnergyDiff.h"{}}}
 \DoxyCodeLine{\textcolor{preprocessor}{\#include "{}omexmeta/OmexMetaUtils.h"{}}}
@@ -63,6 +76,8 @@ RDF$\ast$ rdf\+\_\+ptr = RDF\+\_\+from\+String(string\+\_\+annotations, \char`\"
 \DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT RDF *RDF\_fromString(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *str, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *format,}
 \DoxyCodeLine{                                             \textcolor{keyword}{const} \textcolor{keywordtype}{char} *storage\_type = \textcolor{stringliteral}{"{}memory"{}}, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *storage\_name = \textcolor{stringliteral}{"{}semsim\_store"{}},}
 \DoxyCodeLine{                                             \textcolor{keyword}{const} \textcolor{keywordtype}{char} *storage\_options = \textcolor{keyword}{nullptr}, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *model\_options = \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{}
+\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{int} *\mbox{\hyperlink{namespaceomexmeta_ade8cf4e6ce9dba23d7cfb28ab742613e}{functionThatReturnsNullptr}}();}
 \DoxyCodeLine{}
 \DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{int} RDF\_addFromString(RDF *rdf\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *str, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *format);}
 \DoxyCodeLine{}
@@ -225,8 +240,8 @@ RDF$\ast$ rdf\+\_\+ptr = RDF\+\_\+from\+String(string\+\_\+annotations, \char`\"
 \DoxyCodeLine{}
 \DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{char} *SingularAnnotation\_getAbout(SingularAnnotation *singular\_annotation);}
 \DoxyCodeLine{}
-\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{char} *}
-\DoxyCodeLine{    SingularAnnotation\_str(SingularAnnotation *singular\_annotation, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *format);}
+\DoxyCodeLine{\textcolor{comment}{//    OMEXMETA\_CAPI\_EXPORT char *}}
+\DoxyCodeLine{\textcolor{comment}{//    SingularAnnotation\_str(SingularAnnotation *singular\_annotation, const char *format);}}
 \DoxyCodeLine{}
 \DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{char} *SingularAnnotation\_getPredicate(SingularAnnotation *singular\_annotation);}
 \DoxyCodeLine{}
@@ -394,6 +409,36 @@ RDF$\ast$ rdf\+\_\+ptr = RDF\+\_\+from\+String(string\+\_\+annotations, \char`\"
 \DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT std::vector<std::string>* ResultsMap\_getKeys(ResultsMap* resultsMap);}
 \DoxyCodeLine{}
 \DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{void} ResultsMap\_delete(ResultsMap * resultsMap);}
+\DoxyCodeLine{}
+\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT Logger *\mbox{\hyperlink{namespaceomexmeta_a401a97ce4b2a6c22f92b774091289ef8}{Logger\_getLogger}}();}
+\DoxyCodeLine{}
+\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{void} Logger\_setFormatter(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* format);}
+\DoxyCodeLine{}
+\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{void} Logger\_setLevel(Logger::LogLevel level);}
+\DoxyCodeLine{}
+\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{int} Logger\_getLevel();}
+\DoxyCodeLine{}
+\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{void} Logger\_enableBacktrace(\textcolor{keywordtype}{int} num);}
+\DoxyCodeLine{}
+\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{void} Logger\_disableBacktrace();}
+\DoxyCodeLine{}
+\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{void} Logger\_dumpBacktrace();}
+\DoxyCodeLine{}
+\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{void} Logger\_consoleLogger();}
+\DoxyCodeLine{}
+\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{void} Logger\_fileLogger(\textcolor{keyword}{const} \textcolor{keywordtype}{char}*filename);}
+\DoxyCodeLine{}
+\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{void} Logger\_info(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* message);}
+\DoxyCodeLine{}
+\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{void} Logger\_trace(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* message);}
+\DoxyCodeLine{}
+\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{void} Logger\_debug(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* message);}
+\DoxyCodeLine{}
+\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{void} Logger\_warn(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* message);}
+\DoxyCodeLine{}
+\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{void} Logger\_error(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* message);}
+\DoxyCodeLine{}
+\DoxyCodeLine{    OMEXMETA\_CAPI\_EXPORT \textcolor{keywordtype}{void} Logger\_critical(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* message);}
 \DoxyCodeLine{}
 \DoxyCodeLine{}
 \DoxyCodeLine{\textcolor{preprocessor}{\#ifdef \_\_cplusplus}}

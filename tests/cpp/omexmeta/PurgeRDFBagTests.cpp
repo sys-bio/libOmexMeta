@@ -376,9 +376,8 @@ TEST_F(PurgeRDFBagTests, Biomd385Input1Pattern1) {
                            "        <http://xmlns.com/foaf/0.1/mbox> \"arnold@mpimp-golm.mpg.de\"\n"
                            "    ] .";
     RDF rdf = RDF::fromString(biomd385_input1, "turtle");
-    std::cout << rdf.toString("turtle") << std::endl;
-    std::cout << rdf.toString("ntriples") << std::endl;
     checkPattern1(biomd385_input1, "turtle", expected, "turtle");
+    LOGGER_SET_WARN();
 }
 
 /**

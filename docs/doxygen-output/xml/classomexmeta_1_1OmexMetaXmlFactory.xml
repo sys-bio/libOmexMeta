@@ -37,7 +37,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/OmexMetaXml.h" line="145" column="31" bodyfile="src/omexmeta/OmexMetaXml.cpp" bodystart="330" bodyend="351"/>
+        <location file="src/omexmeta/include/omexmeta/OmexMetaXml.h" line="145" column="31" bodyfile="src/omexmeta/OmexMetaXml.cpp" bodystart="331" bodyend="351"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

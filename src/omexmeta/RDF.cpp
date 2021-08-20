@@ -3,29 +3,28 @@
 //
 
 #include "omexmeta/RDF.h"
-
-#include "omexmeta/PurgeRDFBag.h"
+#include "omexmeta/Query.h"
 #include "omexmeta/Options.h"
+#include "omexmeta/PurgeRDFBag.h"
+#include "redland/RedlandAPI.h"
 
 namespace omexmeta {
+
 
     RDF::RDF(const std::string &storage_type, const std::string &storage_name,
              const char *storage_options, const char *model_options) {
         storage_ = LibrdfStorage(storage_type, storage_name, storage_options);
         // model_ now owns storage_
         model_ = LibrdfModel(storage_, model_options);
+
+        // initialises the logger ;-)
+        Logger::getLogger();
+        REDLAND_DEBUG("Created an empty RDF graph");
     }
 
-    void RDF::freeRDF() {
-        model_.freeModel();
-        storage_.freeStorage();
-    }
-
-    RDF::~RDF() {
-        freeRDF();
-    }
 
     RDF::RDF(RDF &&rdf) noexcept {
+        REDLAND_DEBUG("Moved an RDF graph");
         namespaces_ = std::move(rdf.namespaces_);
         seen_namespaces_ = std::move(rdf.seen_namespaces_);
         storage_ = std::move(rdf.storage_);
@@ -34,6 +33,7 @@ namespace omexmeta {
 
     RDF &RDF::operator=(RDF &&rdf) noexcept {
         if (this != &rdf) {
+            REDLAND_DEBUG("Move assigned an RDF graph");
             namespaces_ = std::move(rdf.namespaces_);
             seen_namespaces_ = std::move(rdf.seen_namespaces_);
             storage_ = std::move(rdf.storage_);
@@ -54,8 +54,7 @@ namespace omexmeta {
         RDF rdf;
         LibrdfParser parser(syntax);
         LibrdfUri u(rdf.getModelUri());
-        parser.parseString(str, rdf.model_, u);
-        u.freeUri(); // shouldnt be neeeded
+        parser.parseString(str, rdf.getModel(), u);
 
         // update the list of "seen" namespaces
         rdf.seen_namespaces_ = parser.getSeenNamespaces(std::vector<std::string>());
@@ -77,17 +76,16 @@ namespace omexmeta {
 
         if (Options::removeRDFBag_)
             rdf.purgeRDFBag();
-
         return rdf;
     }
 
-    void RDF::purgeRDFBag(){
+    void RDF::purgeRDFBag() {
         // remove rdf bag constructs
         PurgeRDFBag purger(this);
         purger.purge();
     }
 
-    void RDF::translateVcard(){
+    void RDF::translateVcard() {
         // remove rdf bag constructs
         VCardTranslator translator(this);
         translator.translate();
@@ -100,7 +98,6 @@ namespace omexmeta {
 
         LibrdfUri u = LibrdfUri::fromFilename(getModelUri());
         parser.parseString(str, model_, u);
-        u.freeUri();
 
         // update the list of "seen" namespaces
         seen_namespaces_ = parser.getSeenNamespaces(seen_namespaces_);
@@ -176,13 +173,14 @@ namespace omexmeta {
 
         if (Options::removeRDFBag_)
             purgeRDFBag();
-
     }
 
     RDF RDF::fromFile(const std::string &filename, const std::string &syntax) {
         RDF rdf;
         LibrdfParser parser(syntax);
         parser.parseFile(filename, rdf.model_, rdf.getModelUri());
+
+        std::cout << "ttle:" << rdf.toString("turtle") << std::endl;
         rdf.classifyXmlTypeFromFile(filename, syntax);
         // update the list of "seen" namespaces
         rdf.seen_namespaces_ = parser.getSeenNamespaces(rdf.seen_namespaces_);
@@ -220,7 +218,6 @@ namespace omexmeta {
 
         if (Options::removeRDFBag_)
             purgeRDFBag();
-
     }
 
     /**
@@ -262,18 +259,17 @@ namespace omexmeta {
         return serializer.toString("base", model_);
     }
 
-    std::string RDF::queryResultsAsString(const std::string &query_str, const std::string &results_syntax) const {
-        Query query(getModel(), query_str);
-        std::string results = query.resultsAsStr(results_syntax);
-        query.freeQuery();
-        return results;
+    std::string RDF::queryResultsAsString(const std::string &query_str, const std::string &results_syntax) {
+        // create query object
+        LibrdfModel model = getModel();
+        Query query(query_str, model);
+        return query.asString(results_syntax);
     }
 
-    ResultsMap RDF::queryResultsAsMap(const std::string &query_str) const {
-        Query query(getModel(), query_str);
-        ResultsMap results = query.resultsAsMap();
-        query.freeQuery();
-        return results;
+    ResultsMap RDF::queryResultsAsMap(const std::string &query_str)  {
+        LibrdfModel model = getModel();
+        Query query(query_str, model);
+        return query.asMap();
     }
 
     void RDF::toFile(const std::string &filename, const std::string &syntax, const char *mime_type, const char *type_uri) {
@@ -288,8 +284,9 @@ namespace omexmeta {
         }
     }
 
-    librdf_model *RDF::getModel() const {
-        return model_.get();
+    LibrdfModel RDF::getModel() const {
+        // do not increment usage here, causes memory leaks
+        return model_;
     }
 
     Editor RDF::toEditor(const std::string &xml, bool generate_new_metaids, bool sbml_semantic_extraction) {
@@ -301,28 +298,28 @@ namespace omexmeta {
         return editor;
     }
 
-    librdf_storage *RDF::getStorage() const {
-        return storage_.get();
+    LibrdfStorage RDF::getStorage() const {
+        return storage_;
     }
 
     int RDF::commitTransaction() const {
-        return librdf_model_transaction_commit(getModel());
+        return getModel().commitTransaction();
     }
 
     int RDF::startTransaction() const {
-        return librdf_model_transaction_start(getModel());
+        return getModel().startTransaction();
     }
 
     void *RDF::getTransactionHandle() const {
-        return librdf_model_transaction_get_handle(getModel());
+        return getModel().getTransactionHandle();
     }
 
     int RDF::startTransactionWithHandle(void *handle) const {
-        return librdf_model_transaction_start_with_handle(getModel(), handle);
+         return getModel().startTransactionWithHandle(handle);
     }
 
     int RDF::getTransactionRollback() const {
-        return librdf_model_transaction_rollback(getModel());
+        return getModel().getTransactionRollback();
     }
 
     std::ostringstream RDF::listOptions() {
@@ -393,7 +390,7 @@ namespace omexmeta {
         return uriHandler_.getModelMetaid();
     }
 
-    void RDF::setModelMetaid(const std::string& modelMetaid) {
+    void RDF::setModelMetaid(const std::string &modelMetaid) {
         uriHandler_.setModelMetaid(modelMetaid);
     }
 
@@ -472,7 +469,7 @@ namespace omexmeta {
     }
 
     void RDF::addTriple(const Triple &triple) {
-        model_.addStatement(triple.getStatement());
+        model_.addStatement(triple);
         // after adding content to the model we need to
         // update namespace information
         seen_namespaces_.push_back(triple.getPredicateNode().str());
@@ -481,7 +478,7 @@ namespace omexmeta {
 
     void RDF::addTriples(Triples &triples) {
         for (auto &triple : triples) {
-            model_.addStatement(triple.getStatement());
+            model_.addStatement(triple);
             seen_namespaces_.push_back(triple.getPredicateNode().getNamespace());
             namespaces_ = propagateNamespacesFromParser(seen_namespaces_);
         }

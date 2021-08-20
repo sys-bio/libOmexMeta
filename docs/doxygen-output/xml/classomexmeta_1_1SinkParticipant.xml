@@ -5,13 +5,13 @@
     <basecompoundref refid="classomexmeta_1_1Participant" prot="public" virt="non-virtual">omexmeta::Participant</basecompoundref>
     <includes refid="Participant_8h" local="no">Participant.h</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="classomexmeta_1_1SinkParticipant_1ad1511bd4bfa1ce694c813e8ce658da18" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classomexmeta_1_1SinkParticipant_1a080d3b3379b4dfb24ea8bbb8186df4d1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>omexmeta::SinkParticipant::SinkParticipant</definition>
-        <argsstring>(librdf_model *model, double multiplier, std::string physicalEntityReference, eUriType type, UriHandler &amp;uriHandler)</argsstring>
+        <argsstring>(LibrdfModel &amp;model, double multiplier, std::string physicalEntityReference, eUriType type, UriHandler &amp;uriHandler)</argsstring>
         <name>SinkParticipant</name>
         <param>
-          <type>librdf_model *</type>
+          <type><ref refid="classredland_1_1LibrdfModel" kindref="compound">LibrdfModel</ref> &amp;</type>
           <declname>model</declname>
         </param>
         <param>
@@ -37,7 +37,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/omexmeta/include/omexmeta/Participant.h" line="183" column="9" bodyfile="src/omexmeta/Participant.cpp" bodystart="144" bodyend="149"/>
+        <location file="src/omexmeta/include/omexmeta/Participant.h" line="183" column="9" bodyfile="src/omexmeta/Participant.cpp" bodystart="143" bodyend="148"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -82,12 +82,12 @@
       <member refid="classomexmeta_1_1Participant_1a232d2e7fe124ee13650d666fdfc3b866" prot="public" virt="non-virtual"><scope>omexmeta::SinkParticipant</scope><name>getSubject</name></member>
       <member refid="classomexmeta_1_1Participant_1aa4baa62cb4ccffe8443262382490328d" prot="public" virt="non-virtual"><scope>omexmeta::SinkParticipant</scope><name>operator!=</name></member>
       <member refid="classomexmeta_1_1Participant_1ad3db317039b403fdb7728885152cbeda" prot="public" virt="non-virtual"><scope>omexmeta::SinkParticipant</scope><name>operator==</name></member>
-      <member refid="classomexmeta_1_1Participant_1afd275c1f5648ae4c86cc22f3a0853ffb" prot="public" virt="non-virtual"><scope>omexmeta::SinkParticipant</scope><name>Participant</name></member>
+      <member refid="classomexmeta_1_1Participant_1a1727bd3a3080af7e40e9e5957eb538cd" prot="public" virt="non-virtual"><scope>omexmeta::SinkParticipant</scope><name>Participant</name></member>
       <member refid="classomexmeta_1_1Participant_1aee7846dcbb910dd394a0683841ab723a" prot="public" virt="non-virtual"><scope>omexmeta::SinkParticipant</scope><name>setMultiplier</name></member>
       <member refid="classomexmeta_1_1Participant_1a415c1205762dff6943426d830d74edcd" prot="public" virt="non-virtual"><scope>omexmeta::SinkParticipant</scope><name>setPhysicalEntityReference</name></member>
       <member refid="classomexmeta_1_1Participant_1a1188d6a2036514eb6b649ce1e08eca4d" prot="public" virt="non-virtual"><scope>omexmeta::SinkParticipant</scope><name>setPredicate</name></member>
       <member refid="classomexmeta_1_1Participant_1a5e8f680950f55230587c0f85498c5047" prot="public" virt="non-virtual"><scope>omexmeta::SinkParticipant</scope><name>setUniqueParticipantMetaid</name></member>
-      <member refid="classomexmeta_1_1SinkParticipant_1ad1511bd4bfa1ce694c813e8ce658da18" prot="public" virt="non-virtual"><scope>omexmeta::SinkParticipant</scope><name>SinkParticipant</name></member>
+      <member refid="classomexmeta_1_1SinkParticipant_1a080d3b3379b4dfb24ea8bbb8186df4d1" prot="public" virt="non-virtual"><scope>omexmeta::SinkParticipant</scope><name>SinkParticipant</name></member>
       <member refid="classomexmeta_1_1Participant_1aabb81b9996c05ce9519c44f5d1d529db" prot="public" virt="non-virtual"><scope>omexmeta::SinkParticipant</scope><name>toTriples</name></member>
       <member refid="classomexmeta_1_1Participant_1a78529cee5b9d5b30d76f937af652d4f0" prot="public" virt="non-virtual"><scope>omexmeta::SinkParticipant</scope><name>~Participant</name></member>
     </listofallmembers>

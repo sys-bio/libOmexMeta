@@ -168,9 +168,20 @@ class eUriType:
     IDENTIFIERS_URI = 3
 
 
+class eLogLevel:
+    trace = 0
+    debug = 1
+    info = 2
+    warn = 3
+    err = 4
+    critical = 5
+    off = 6
+
+
 class eXmlType:
     SBML = 0
     CELLML = 1
+
 
 class OmexMetaException(Exception):
     pass
@@ -216,6 +227,7 @@ class PyOmexMetaAPI:
     #################################################################
     # RDF methods
     #
+    function_that_returns_null = utils.load_func("functionThatReturnsNullptr", [], ct.c_int64)
 
     # RDF *RDF_new(const char *storage_type = "memory", const char *storage_name = "semsim_store",
     #              const char *storage_options = nullptr, const char *model_options = nullptr);
@@ -266,7 +278,8 @@ class PyOmexMetaAPI:
     rdf_delete = utils.load_func("RDF_delete", [ct.c_int64], ct.c_int)
 
     # char *RDF_queryResultsAsString(RDF *rdf_ptr, const char *query_str, const char *results_format);
-    rdf_query_results_as_str = utils.load_func("RDF_queryResultsAsString", [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_int64)
+    rdf_query_results_as_str = utils.load_func("RDF_queryResultsAsString", [ct.c_int64, ct.c_char_p, ct.c_char_p],
+                                               ct.c_int64)
 
     # Note yet supported - how to get std::unordered_map into a Python dict? Problem for later
     # ResultsMap RDF_queryResultsAsMap(RDF *rdf_ptr, const char *query_str, const char *results_format);
@@ -306,11 +319,13 @@ class PyOmexMetaAPI:
     rdf_to_editor = utils.load_func("RDF_toEditor", [ct.c_int64, ct.c_char_p, ct.c_bool, ct.c_bool], ct.c_int64)
 
     # bool RDF_equals_rdf_vs_string(RDF *rdf_ptr, const char *serialized_rdf, const char *format, bool, bool verbose) {
-    rdf_equals_rdf_vs_string = utils.load_func("RDF_equals_rdf_vs_string", [ct.c_int64, ct.c_char_p, ct.c_char_p, ct.c_bool],
+    rdf_equals_rdf_vs_string = utils.load_func("RDF_equals_rdf_vs_string",
+                                               [ct.c_int64, ct.c_char_p, ct.c_char_p, ct.c_bool],
                                                ct.c_bool)
 
     # bool RDF_equals_rdf_vs_rdf(RDF *rdf_ptr1, RDF *rdf_ptr2, const char *format, bool verbose) {
-    rdf_equals_rdf_vs_rdf = utils.load_func("RDF_equals_rdf_vs_rdf", [ct.c_int64, ct.c_int64, ct.c_char_p, ct.c_bool], ct.c_bool)
+    rdf_equals_rdf_vs_rdf = utils.load_func("RDF_equals_rdf_vs_rdf", [ct.c_int64, ct.c_int64, ct.c_char_p, ct.c_bool],
+                                            ct.c_bool)
 
     # bool RDF_equals_string_vs_string(const char *first_rdf_graph, const char *second_rdf_graph, const char *format, bool verbose) {
     rdf_equals_string_vs_string = utils.load_func("RDF_equals_string_vs_string",
@@ -361,7 +376,8 @@ class PyOmexMetaAPI:
     editor_remove_personal_information = utils.load_func("Editor_removePersonalInformation", [ct.c_int64], ct.c_int)
 
     # int Editor_addPersonalInformation(Editor *editor_ptr, PersonalInformation *personalInformation);
-    editor_add_personal_information = utils.load_func("Editor_addPersonalInformation", [ct.c_int64, ct.c_int64], ct.c_int)
+    editor_add_personal_information = utils.load_func("Editor_addPersonalInformation", [ct.c_int64, ct.c_int64],
+                                                      ct.c_int)
 
     # char *Editor_getMetaId(Editor *editor_ptr, int index);
     editor_get_metaid = utils.load_func("Editor_getMetaId", [ct.c_int64, ct.c_int64], ct.c_int64)
@@ -561,7 +577,8 @@ class PyOmexMetaAPI:
     physical_entity_about = utils.load_func("PhysicalEntity_about", [ct.c_int64, ct.c_char_p, ct.c_int64], ct.c_int64)
 
     # PhysicalEntity *PhysicalEntity_isPartOf(PhysicalEntity *physical_entity_ptr, const char *is_part_of, eUriType type);
-    physical_entity_is_part_of = utils.load_func("PhysicalEntity_isPartOf", [ct.c_int64, ct.c_char_p, ct.c_int64], ct.c_int64)
+    physical_entity_is_part_of = utils.load_func("PhysicalEntity_isPartOf", [ct.c_int64, ct.c_char_p, ct.c_int64],
+                                                 ct.c_int64)
 
     # PhysicalEntity *PhysicalEntity_hasPart(PhysicalEntity *physical_entity_ptr, const char *part);
     physical_entity_has_part = utils.load_func("PhysicalEntity_hasPart", [ct.c_int64, ct.c_char_p], ct.c_int64)
@@ -587,7 +604,6 @@ class PyOmexMetaAPI:
     #                                 const char *physical_entity_reference, eUriType type)
     physical_process_add_mediator = utils.load_func("PhysicalProcess_addMediator",
                                                     [ct.c_int64, ct.c_char_p, ct.c_int64], ct.c_int64)
-
 
     # PhysicalProcess *PhysicalProcess_isVersionOf(PhysicalProcess *physical_process_ptr, const char *version, eUriType type){
     physical_process_is_version_of = utils.load_func("PhysicalProcess_isVersionOf",
@@ -617,28 +633,28 @@ class PyOmexMetaAPI:
     # EnergyDiff *EnergyDiff_setPhysicalProperty(
     #         EnergyDiff *energy_diff_ptr, const char *subject_metaid, const char *physical_property);
     energy_diff_set_physical_property = utils.load_func("EnergyDiff_setPhysicalProperty",
-                                                           [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_int64)
+                                                        [ct.c_int64, ct.c_char_p, ct.c_char_p], ct.c_int64)
 
     #    EnergyDiff *EnergyDiff_addSource(EnergyDiff *energy_diff_ptr,
     #                                        const char *physical_entity_reference, eUriType type)
     energy_diff_add_source = utils.load_func("EnergyDiff_addSource",
-                                                [ct.c_int64, ct.c_char_p, ct.c_int64], ct.c_int64)
+                                             [ct.c_int64, ct.c_char_p, ct.c_int64], ct.c_int64)
 
     #    EnergyDiff *EnergyDiff_addSink(EnergyDiff *energy_diff_ptr,
     #                                      const char *physical_entity_reference, eUriType type) {
     energy_diff_add_sink = utils.load_func("EnergyDiff_addSink",
-                                              [ct.c_int64, ct.c_char_p, ct.c_int64], ct.c_int64)
+                                           [ct.c_int64, ct.c_char_p, ct.c_int64], ct.c_int64)
 
     # EnergyDiff *EnergyDiff_hasProperty(EnergyDiff *physical_entity_ptr, PhysicalProperty* property);
     energy_diff_has_property = utils.load_func("EnergyDiff_hasProperty", [ct.c_int64], ct.c_int64)
 
     # EnergyDiff *EnergyDiff_hasPropertyisVersionOf(EnergyDiff *physical_process_ptr, const char* isVersionOf) ;
     energy_diff_has_property_is_version_of = utils.load_func("EnergyDiff_hasPropertyisVersionOf",
-                                                                [ct.c_int64, ct.c_char_p], ct.c_int64)
+                                                             [ct.c_int64, ct.c_char_p], ct.c_int64)
 
     # EnergyDiff *EnergyDiff_hasPropertyFull(EnergyDiff *physical_process_ptr, const char* property_about, eUriType about_uri_type, const char* is_version_of) ;
     energy_diff_has_property_full = utils.load_func("EnergyDiff_hasPropertyFull",
-                                                       [ct.c_int64, ct.c_char_p, ct.c_int64, ct.c_char_p], ct.c_int64)
+                                                    [ct.c_int64, ct.c_char_p, ct.c_int64, ct.c_char_p], ct.c_int64)
 
     # int EnergyDiff_delete(EnergyDiff *physicalForce);
     energy_diff_delete = utils.load_func("EnergyDiff_delete", [ct.c_int64], ct.c_int)
@@ -694,7 +710,8 @@ class PyOmexMetaAPI:
     personal_information_get_metaid = utils.load_func("PersonalInformation_getMetaid", [ct.c_int64], ct.c_int64)
 
     # int PersonalInformation_setMetaid(PersonalInformation *information, const char *metaid);
-    personal_information_set_metaid = utils.load_func("PersonalInformation_setMetaid", [ct.c_int64, ct.c_char_p], ct.c_int)
+    personal_information_set_metaid = utils.load_func("PersonalInformation_setMetaid", [ct.c_int64, ct.c_char_p],
+                                                      ct.c_int)
 
     # int PersonalInformation_delete(PersonalInformation* information);
     personal_information_delete = utils.load_func("PersonalInformation_delete", [ct.c_int64], ct.c_int)
@@ -707,7 +724,8 @@ class PyOmexMetaAPI:
     string_vector_get_size = utils.load_func("StringVector_getSize", [ct.c_int64], ct.c_int64)
 
     # char* StringVector_getElementAtIdx(std::vector<std::string>* vec, int idx);
-    string_vector_get_element_at_idx = utils.load_func("StringVector_getElementAtIdx", [ct.c_int64, ct.c_int64], ct.c_int64)
+    string_vector_get_element_at_idx = utils.load_func("StringVector_getElementAtIdx", [ct.c_int64, ct.c_int64],
+                                                       ct.c_int64)
 
     # void StringVector_delete(std::vector<std::string> *strVec);
     string_vector_delete = utils.load_func("StringVector_delete", [ct.c_int64], ct.c_void_p)
@@ -716,7 +734,8 @@ class PyOmexMetaAPI:
     results_map_get_size = utils.load_func("ResultsMap_getSize", [ct.c_int64], ct.c_int64)
 
     # std::vector<std::string>* ResultsMap_getStringVectorAt(ResultsMap* resultsMap, const char* key);
-    results_map_get_string_vector_at = utils.load_func("ResultsMap_getStringVectorAt", [ct.c_int64, ct.c_char_p], ct.c_int64)
+    results_map_get_string_vector_at = utils.load_func("ResultsMap_getStringVectorAt", [ct.c_int64, ct.c_char_p],
+                                                       ct.c_int64)
 
     # std::vector<std::string>* ResultsMap_getKeys(ResultsMap* resultsMap);
     results_map_get_keys = utils.load_func("ResultsMap_getKeys", [ct.c_int64], ct.c_int64)
@@ -724,7 +743,52 @@ class PyOmexMetaAPI:
     # void ResultsMap_delete(ResultsMap * resultsMap);
     results_map_delete = utils.load_func("ResultsMap_delete", [ct.c_int64], ct.c_void_p)
 
+    # Logger API
+    # Note - you'll need to initialise the logger by calling logger_get_logger once at the start
+    # of the program, if you are using the raw pyomexmeta api directly. If using the front facing
+    # pyomexmeta api then the initialization is handled in the constructor for RDF.
 
+    # Logger *Logger_getLogger()
+    logger_get_logger = utils.load_func("Logger_getLogger", [], ct.c_void_p)
 
+    # void Logger_setFormatter(const char* format)
+    logger_set_formatter = utils.load_func("Logger_setFormatter", [ct.c_char_p], ct.c_void_p)
 
+    # void Logger_setLevel(Logger::LogLevel level)
+    logger_set_level = utils.load_func("Logger_setLevel", [ct.c_int64], ct.c_void_p)
 
+    # Logger::LogLevel Logger_getLevel()
+    logger_get_level = utils.load_func("Logger_getLevel", [], ct.c_int64)
+
+    # void Logger_enableBacktrace(int num)
+    logger_enable_backtrace = utils.load_func("Logger_enableBacktrace", [ct.c_int64], ct.c_void_p)
+
+    # void Logger_disableBacktrace()
+    logger_disable_backtrace = utils.load_func("Logger_disableBacktrace", [], ct.c_void_p)
+
+    # void Logger_dumpBacktrace();
+    logger_dump_backtrace = utils.load_func("Logger_dumpBacktrace", [], ct.c_void_p)
+
+    # void Logger_consoleLogger()
+    logger_console_logger = utils.load_func("Logger_consoleLogger", [], ct.c_void_p)
+
+    # void Logger_fileLogger(const char*filename)
+    logger_file_logger = utils.load_func("Logger_fileLogger", [ct.c_char_p], ct.c_void_p)
+
+    # void Logger_info(const char* message)
+    logger_info = utils.load_func("Logger_info", [ct.c_char_p], ct.c_void_p)
+
+    # void Logger_trace(const char* message)
+    logger_trace = utils.load_func("Logger_trace", [ct.c_char_p], ct.c_void_p)
+
+    # void Logger_debug(const char* message)
+    logger_debug = utils.load_func("Logger_debug", [ct.c_char_p], ct.c_void_p)
+
+    # void Logger_warn(const char* message)
+    logger_warn = utils.load_func("Logger_warn", [ct.c_char_p], ct.c_void_p)
+
+    # void Logger_error(const char* message)
+    logger_error = utils.load_func("Logger_error", [ct.c_char_p], ct.c_void_p)
+
+    # void Logger_critical(const char* message)
+    logger_critical = utils.load_func("Logger_critical", [ct.c_char_p], ct.c_void_p)

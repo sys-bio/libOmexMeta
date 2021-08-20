@@ -1,20 +1,26 @@
 \hypertarget{classredland_1_1LibrdfNode}{}\doxysection{redland\+::Librdf\+Node Class Reference}
 \label{classredland_1_1LibrdfNode}\index{redland::LibrdfNode@{redland::LibrdfNode}}
+
+
+C++ wrapper around librdf\+\_\+node that uses RAII for memory management.  
+
+
+
+
+{\ttfamily \#include $<$Librdf\+Node.\+h$>$}
+
+Inheritance diagram for redland\+::Librdf\+Node\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classredland_1_1LibrdfNode}
+\end{center}
+\end{figure}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classredland_1_1LibrdfNode_a6bca38d88eb20f9f6b29e9f32848fb5b}\label{classredland_1_1LibrdfNode_a6bca38d88eb20f9f6b29e9f32848fb5b}} 
-{\bfseries Librdf\+Node} (const \mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} \&node)
-\item 
-\mbox{\Hypertarget{classredland_1_1LibrdfNode_a822ce6a4221315abe5768b278b83d0e5}\label{classredland_1_1LibrdfNode_a822ce6a4221315abe5768b278b83d0e5}} 
-{\bfseries Librdf\+Node} (\mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} \&\&node) noexcept
-\item 
-\mbox{\Hypertarget{classredland_1_1LibrdfNode_a01b8ce0f193e277ccb914b460b1c275c}\label{classredland_1_1LibrdfNode_a01b8ce0f193e277ccb914b460b1c275c}} 
-\mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} \& {\bfseries operator=} (const \mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} \&node)
-\item 
-\mbox{\Hypertarget{classredland_1_1LibrdfNode_a9de3a69b00958b2bb50646dbf0aa8d7e}\label{classredland_1_1LibrdfNode_a9de3a69b00958b2bb50646dbf0aa8d7e}} 
-\mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} \& {\bfseries operator=} (\mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} \&\&node) noexcept
-\item 
+\mbox{\Hypertarget{classredland_1_1LibrdfNode_a0f6b28fba74ab6ff25de32c725d499e9}\label{classredland_1_1LibrdfNode_a0f6b28fba74ab6ff25de32c725d499e9}} 
+\mbox{\hyperlink{classredland_1_1LibrdfNode_a0f6b28fba74ab6ff25de32c725d499e9}{Librdf\+Node}} ()=default
+\begin{DoxyCompactList}\small\item\em use superclass constructors and rule of 5 \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classredland_1_1LibrdfNode_afc1bdf57705253e8204a394541b96ca7}\label{classredland_1_1LibrdfNode_afc1bdf57705253e8204a394541b96ca7}} 
 bool {\bfseries operator==} (const \mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} \&rhs) const
 \item 
@@ -30,12 +36,8 @@ void {\bfseries free\+Node} ()
 \mbox{\Hypertarget{classredland_1_1LibrdfNode_a0662461585aba94581be80247d9bd917}\label{classredland_1_1LibrdfNode_a0662461585aba94581be80247d9bd917}} 
 {\bfseries Librdf\+Node} (const \mbox{\hyperlink{classredland_1_1LibrdfUri}{Librdf\+Uri}} \&uri)
 \item 
-\mbox{\hyperlink{structraptor__term}{librdf\+\_\+node}} $\ast$ \mbox{\hyperlink{classredland_1_1LibrdfNode_a33162ea36efe451c100325816cf8613f}{get}} () const
-\begin{DoxyCompactList}\small\item\em return pointer to underlying librdf\+\_\+node pointer \end{DoxyCompactList}\item 
-\mbox{\hyperlink{structraptor__term}{librdf\+\_\+node}} $\ast$ \mbox{\hyperlink{classredland_1_1LibrdfNode_a0bd36d9a9140a98753bb1d35ff8c1695}{get\+Without\+Increment}} () const
-\begin{DoxyCompactList}\small\item\em get the underlying librdf\+\_\+node$\ast$ \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classredland_1_1LibrdfNode_a83ec604f27e71cea80ac49569a06ddfe}\label{classredland_1_1LibrdfNode_a83ec604f27e71cea80ac49569a06ddfe}} 
-raptor\+\_\+term\+\_\+type {\bfseries get\+Raptor\+Term\+Type} ()
+\mbox{\Hypertarget{classredland_1_1LibrdfNode_a30d48200b6b5c8a837985e7c298082d8}\label{classredland_1_1LibrdfNode_a30d48200b6b5c8a837985e7c298082d8}} 
+raptor\+\_\+term\+\_\+type {\bfseries get\+Raptor\+Term\+Type} () const
 \item 
 \mbox{\Hypertarget{classredland_1_1LibrdfNode_a535fbe1bc21ca9cd9b39b969bfd2e500}\label{classredland_1_1LibrdfNode_a535fbe1bc21ca9cd9b39b969bfd2e500}} 
 std\+::string {\bfseries str} () const
@@ -64,12 +66,15 @@ void {\bfseries set\+Blank\+Identifier} (const std\+::string \&identifier)
 \mbox{\Hypertarget{classredland_1_1LibrdfNode_a43ba1bed3f1cc6ed654a16c570598565}\label{classredland_1_1LibrdfNode_a43ba1bed3f1cc6ed654a16c570598565}} 
 std\+::string \mbox{\hyperlink{classredland_1_1LibrdfNode_a43ba1bed3f1cc6ed654a16c570598565}{get\+Namespace}} () const
 \begin{DoxyCompactList}\small\item\em get namespace portion of the node. I.\+e. all but last section of the uri \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classredland_1_1LibrdfNode_a6dd134798082dbee9fb5601752609981}\label{classredland_1_1LibrdfNode_a6dd134798082dbee9fb5601752609981}} 
-unsigned int \mbox{\hyperlink{classredland_1_1LibrdfNode_a6dd134798082dbee9fb5601752609981}{get\+Usage}} () const
-\begin{DoxyCompactList}\small\item\em returns the usage of the underlying librdf\+\_\+node pointer \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classredland_1_1LibrdfNode_a21d7aff6813bf11d13057f4dab8bbef7}\label{classredland_1_1LibrdfNode_a21d7aff6813bf11d13057f4dab8bbef7}} 
-void {\bfseries increment\+Usage\+Count} ()
-\end{DoxyCompactItemize}
+\mbox{\Hypertarget{classredland_1_1LibrdfNode_aeeac0c4a350c5974edbd5e335cf200b8}\label{classredland_1_1LibrdfNode_aeeac0c4a350c5974edbd5e335cf200b8}} 
+bool \mbox{\hyperlink{classredland_1_1LibrdfNode_aeeac0c4a350c5974edbd5e335cf200b8}{is\+Blank}} ()
+\begin{DoxyCompactList}\small\item\em indicator for whether this is a blank node \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classredland_1_1LibrdfNode_ad7795f903a87e8afc2d3e7dc5a1630dd}\label{classredland_1_1LibrdfNode_ad7795f903a87e8afc2d3e7dc5a1630dd}} 
+bool \mbox{\hyperlink{classredland_1_1LibrdfNode_ad7795f903a87e8afc2d3e7dc5a1630dd}{is\+Uri}} ()
+\begin{DoxyCompactList}\small\item\em indicator for whether this is a uri node \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classredland_1_1LibrdfNode_a5e2c53c062c913fda451712585d1f3cd}\label{classredland_1_1LibrdfNode_a5e2c53c062c913fda451712585d1f3cd}} 
+bool \mbox{\hyperlink{classredland_1_1LibrdfNode_a5e2c53c062c913fda451712585d1f3cd}{is\+Literal}} ()
+\begin{DoxyCompactList}\small\item\em indicator for whether this is a literal node \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -84,9 +89,6 @@ static \mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} \mbox{\hyperl
 \mbox{\Hypertarget{classredland_1_1LibrdfNode_aaeeeca26bafdaf7f118af3307a4768be}\label{classredland_1_1LibrdfNode_aaeeeca26bafdaf7f118af3307a4768be}} 
 static \mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} {\bfseries new\+Empty\+Node} ()
 \item 
-\mbox{\Hypertarget{classredland_1_1LibrdfNode_aa6bf7e25e68e473f2f39cb7b4cb5f39b}\label{classredland_1_1LibrdfNode_aa6bf7e25e68e473f2f39cb7b4cb5f39b}} 
-static std\+::string {\bfseries str} (\mbox{\hyperlink{structraptor__term}{librdf\+\_\+node}} $\ast$node)
-\item 
 \mbox{\Hypertarget{classredland_1_1LibrdfNode_a3242e29edb736ba0aa8ac42fd6b3ae58}\label{classredland_1_1LibrdfNode_a3242e29edb736ba0aa8ac42fd6b3ae58}} 
 static std\+::string {\bfseries validate\+Literal\+Datatype} (const std\+::string \&literal\+\_\+datatype\+\_\+uri)
 \item 
@@ -99,7 +101,11 @@ static \mbox{\hyperlink{classredland_1_1LibrdfNode}{Librdf\+Node}} {\bfseries fr
 \mbox{\Hypertarget{classredland_1_1LibrdfNode_a56623e9b231d824ad34d43d9a3994df7}\label{classredland_1_1LibrdfNode_a56623e9b231d824ad34d43d9a3994df7}} 
 static std\+::vector$<$ std\+::string $>$ {\bfseries split\+String\+By} (const std\+::string \&str, char delimiter)
 \end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
 
+
+\doxysubsection{Detailed Description}
+C++ wrapper around librdf\+\_\+node that uses RAII for memory management. 
 
 \doxysubsection{Member Function Documentation}
 \mbox{\Hypertarget{classredland_1_1LibrdfNode_a96a685f8e79ba04c91a15e024a66388f}\label{classredland_1_1LibrdfNode_a96a685f8e79ba04c91a15e024a66388f}} 
@@ -121,38 +127,6 @@ construct a literal node
 {\em xml\+\_\+language} & The language for this literal. See RDF specification for more details. \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{classredland_1_1LibrdfNode_a33162ea36efe451c100325816cf8613f}\label{classredland_1_1LibrdfNode_a33162ea36efe451c100325816cf8613f}} 
-\index{redland::LibrdfNode@{redland::LibrdfNode}!get@{get}}
-\index{get@{get}!redland::LibrdfNode@{redland::LibrdfNode}}
-\doxysubsubsection{\texorpdfstring{get()}{get()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{structraptor__term}{librdf\+\_\+node}} $\ast$ redland\+::\+Librdf\+Node\+::get (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
-
-
-
-return pointer to underlying librdf\+\_\+node pointer 
-
-using this method increments the librdf\+\_\+node$\ast$ usage count by 1. The caller is responsible for decrementing the usage count. \begin{DoxySeeAlso}{See also}
-\mbox{\hyperlink{classredland_1_1LibrdfNode_a6dd134798082dbee9fb5601752609981}{get\+Usage()}} 
-\end{DoxySeeAlso}
-\begin{DoxyNote}{Note}
-the librdf\+\_\+statement takes shared ownership of a node when passed to librdf\+\_\+new\+\_\+statement. 
-\end{DoxyNote}
-\mbox{\Hypertarget{classredland_1_1LibrdfNode_a0bd36d9a9140a98753bb1d35ff8c1695}\label{classredland_1_1LibrdfNode_a0bd36d9a9140a98753bb1d35ff8c1695}} 
-\index{redland::LibrdfNode@{redland::LibrdfNode}!getWithoutIncrement@{getWithoutIncrement}}
-\index{getWithoutIncrement@{getWithoutIncrement}!redland::LibrdfNode@{redland::LibrdfNode}}
-\doxysubsubsection{\texorpdfstring{getWithoutIncrement()}{getWithoutIncrement()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{structraptor__term}{librdf\+\_\+node}} $\ast$ redland\+::\+Librdf\+Node\+::get\+Without\+Increment (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
-
-
-
-get the underlying librdf\+\_\+node$\ast$ 
-
-do not increment the shared pointer reference counter. \begin{DoxyWarning}{Warning}
-this method assumes you know what you are doing with regards to the librdf reference counting system 
-\end{DoxyWarning}
-\begin{DoxySeeAlso}{See also}
-\mbox{\hyperlink{classredland_1_1LibrdfNode_a33162ea36efe451c100325816cf8613f}{Librdf\+Node\+::get()}} 
-\end{DoxySeeAlso}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

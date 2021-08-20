@@ -77,6 +77,7 @@ namespace omexmeta {
          */
         void emplace_back(UriHandler& uriHandler, LibrdfNode subject, const PredicatePtr &predicatePtr, const LibrdfNode &resource);
 
+        void emplace_back(UriHandler& uriHandler, const LibrdfNode& subject, const LibrdfNode& predicate, const LibrdfNode &resource);
 
         /**
          * @brief construct a Triple object from the necessary components and move it to the back of Triples
@@ -85,44 +86,44 @@ namespace omexmeta {
          */
         void emplace_back(UriHandler& uriHandler, LibrdfNode subject, const Predicate &predicate, const LibrdfNode &resource);
 
-
-        /**
-         * @brief construct a Triple object from the necessary components and move it to the back of Triples
-         * @details this method is heavily overloaded and has several signatures
-         * all of which result in the construction and emplacement of a Triple at the back of Triples.
-         */
-        void emplace_back(UriHandler& uriHandler, LibrdfNode subject, BiomodelsBiologyQualifier predicate, const LibrdfNode &resource);
-
-
-        /**
-         * @brief construct a Triple object from the necessary components and move it to the back of Triples
-         * @details this method is heavily overloaded and has several signatures
-         * all of which result in the construction and emplacement of a Triple at the back of Triples.
-         */
-        void emplace_back(UriHandler& uriHandler, LibrdfNode subject, BiomodelsModelQualifier predicate, const LibrdfNode &resource);
-
-
-        /**
-         * @brief construct a Triple object from the necessary components and move it to the back of Triples
-         * @details this method is heavily overloaded and has several signatures
-         * all of which result in the construction and emplacement of a Triple at the back of Triples.
-         */
-        void emplace_back(UriHandler& uriHandler, LibrdfNode subject, DCTerm predicate, const LibrdfNode &resource);
-
-
-        /**
-         * @brief construct a Triple object from the necessary components and move it to the back of Triples
-         * @details this method is heavily overloaded and has several signatures
-         * all of which result in the construction and emplacement of a Triple at the back of Triples.
-         */
-        void emplace_back(UriHandler& uriHandler, LibrdfNode subject, SemSim predicate, const LibrdfNode &resource);
-
-        /**
-         * @brief construct a Triple object from the necessary components and move it to the back of Triples
-         * @details this method is heavily overloaded and has several signatures
-         * all of which result in the construction and emplacement of a Triple at the back of Triples.
-         */
-        void emplace_back(UriHandler& uriHandler, librdf_node *subject, librdf_node *predicate, librdf_node *resource);
+//
+//        /**
+//         * @brief construct a Triple object from the necessary components and move it to the back of Triples
+//         * @details this method is heavily overloaded and has several signatures
+//         * all of which result in the construction and emplacement of a Triple at the back of Triples.
+//         */
+//        void emplace_back(UriHandler& uriHandler, LibrdfNode subject, BiomodelsBiologyQualifier predicate, const LibrdfNode &resource);
+//
+//
+//        /**
+//         * @brief construct a Triple object from the necessary components and move it to the back of Triples
+//         * @details this method is heavily overloaded and has several signatures
+//         * all of which result in the construction and emplacement of a Triple at the back of Triples.
+//         */
+//        void emplace_back(UriHandler& uriHandler, LibrdfNode subject, BiomodelsModelQualifier predicate, const LibrdfNode &resource);
+//
+//
+//        /**
+//         * @brief construct a Triple object from the necessary components and move it to the back of Triples
+//         * @details this method is heavily overloaded and has several signatures
+//         * all of which result in the construction and emplacement of a Triple at the back of Triples.
+//         */
+//        void emplace_back(UriHandler& uriHandler, LibrdfNode subject, DCTerm predicate, const LibrdfNode &resource);
+//
+//
+//        /**
+//         * @brief construct a Triple object from the necessary components and move it to the back of Triples
+//         * @details this method is heavily overloaded and has several signatures
+//         * all of which result in the construction and emplacement of a Triple at the back of Triples.
+//         */
+//        void emplace_back(UriHandler& uriHandler, LibrdfNode subject, SemSim predicate, const LibrdfNode &resource);
+//
+//        /**
+//         * @brief construct a Triple object from the necessary components and move it to the back of Triples
+//         * @details this method is heavily overloaded and has several signatures
+//         * all of which result in the construction and emplacement of a Triple at the back of Triples.
+//         */
+//        void emplace_back(UriHandler& uriHandler, librdf_node *subject, librdf_node *predicate, librdf_node *resource);
 
         /**
          * @brief get all subjects as strings
@@ -165,23 +166,6 @@ namespace omexmeta {
          * @details this method is simply forwarded on to std::vector::end()
          */
         TripleVector::iterator end();
-
-        /**
-         * @brief Serialize the Triples object to @param format
-         * @param format the format to serialize
-         * @param base argument for RDF graph. This is hidden so basically irrelevant.
-         * @param omex_name the omex portion of the current local uri. Default is NewOmex.omex
-         * @param model_name the omex portion of the current local uri. Default is NewModel.xml
-         * @details See RDF::str for more details regarding arguments. This method
-         * is only for checking to see what Triples object looks like when serialized. The
-         * annotations are not added to the main RDF graph. This is analogous to
-         * Triple::str.
-         */
-        std::string str(
-                const std::string &format = "turtle",
-                std::string base = (std::filesystem::current_path() /= "annotations.rdf").string(),
-                std::string omex_name = "NewOmex.omex/", std::string model_name = "NewModel.xml#"
-                );
 
         void freeTriples();
 

@@ -417,24 +417,24 @@ TEST_F(PhysicalEntityMemory, TestPhysicalEntityAdds4TriplesToModel) {
     ASSERT_EQ(4, rdf.size());
 }
 
-TEST_F(PhysicalEntityMemory, TestUnpackTriplesAndAccountForStatements) {
-    Triples triples = physicalEntity.toTriples();
-
-    // unpack triples
-    Triple triple4 = triples.pop();
-    Triple triple3 = triples.pop();
-    Triple triple2 = triples.pop();
-    Triple triple1 = triples.pop();
-
-    // make sure we've emptied the triples object
-    ASSERT_EQ(0, triples.size());
-
-    // check that all statements have 1 usage
-    ASSERT_EQ(1, triple1.getStatement()->usage);
-    ASSERT_EQ(1, triple2.getStatement()->usage);
-    ASSERT_EQ(1, triple3.getStatement()->usage);
-    ASSERT_EQ(1, triple4.getStatement()->usage);
-}
+//TEST_F(PhysicalEntityMemory, TestUnpackTriplesAndAccountForStatements) {
+//    Triples triples = physicalEntity.toTriples();
+//
+//    // unpack triples
+//    Triple triple4 = triples.pop();
+//    Triple triple3 = triples.pop();
+//    Triple triple2 = triples.pop();
+//    Triple triple1 = triples.pop();
+//
+//    // make sure we've emptied the triples object
+//    ASSERT_EQ(0, triples.size());
+//
+//    // check that all statements have 1 usage
+//    ASSERT_EQ(1, triple1.getStatement().getUsage());
+//    ASSERT_EQ(1, triple2.getStatement().getUsage());
+//    ASSERT_EQ(1, triple3.getStatement().getUsage());
+//    ASSERT_EQ(1, triple4.getStatement().getUsage());
+//}
 
 TEST_F(PhysicalEntityMemory, TestUnpackTriplesAndAccountForTermsAndUris) {
 
@@ -965,7 +965,6 @@ TEST_F(DeletePhysicalEntity, TestCreateAddAndRemoveTripleFromAPropertyOfPhysical
             .identity("uniprot/PD12345")
             .isPartOf("fma:1234");
     Triples triples = physicalEntity.toTriples();
-    std::cout << triples.str() << std::endl;
     for (auto &it : triples) {
         editor.addSingleAnnotationNoValidation(it);
     }
@@ -985,7 +984,6 @@ TEST_F(DeletePhysicalEntity,
             .identity("uniprot/PD12345")
             .isPartOf("fma:1234");
     Triples triples = physicalEntity.toTriples();
-    std::cout << triples.str() << std::endl;
     for (auto &it : triples) {
         editor.addSingleAnnotationNoValidation(it);
         editor.addNamespaceFromAnnotation(it.getPredicateNode().str());
@@ -1029,7 +1027,6 @@ TEST_F(DeletePhysicalEntity, TestDeleteFirstTriple) {
      */
 
     Triples triples = physicalEntity.toTriples();
-    std::cout << triples.str("ntriples", "base") << std::endl;
     Triple triple = triples.pop();
 
     editor.removeSingleAnnotation(triple);

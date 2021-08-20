@@ -34,7 +34,7 @@ namespace omexmeta {
 
         ~PersonalInformation();
 
-        PersonalInformation(librdf_model *model, UriHandler& uriHandler);
+        PersonalInformation(LibrdfModel& model, UriHandler& uriHandler);
 
         /**
          * @brief Copy constructor for PersonalInformation
@@ -103,7 +103,7 @@ namespace omexmeta {
         void setTriples(Triples triples);
 
     private:
-        librdf_model *model_;
+        LibrdfModel& model_;
         Triples triples_;
         std::string metaid_;
         std::vector<std::string> namespaces_;

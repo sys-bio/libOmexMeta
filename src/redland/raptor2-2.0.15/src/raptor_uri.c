@@ -84,18 +84,23 @@
 #define WIN32
 #endif
 
-
+/**
+ * Note: raptor_uri has been made public by moving this definition into raptor2.h.
+ * This is because we need to be able to jack into the reference counting system
+ * and access the usage field from the redland C++ wrapper.
+ *  -- ciaran
+ */
 /* raptor_uri structure */
-struct raptor_uri_s {
-    /* raptor_world object */
-    raptor_world *world;
-    /* the URI string */
-    unsigned char *string;
-    /* length of string */
-    unsigned int length;
-    /* usage count */
-    int usage;
-};
+//struct raptor_uri_s {
+//    /* raptor_world object */
+//    raptor_world *world;
+//    /* the URI string */
+//    unsigned char *string;
+//    /* length of string */
+//    unsigned int length;
+//    /* usage count */
+//    int usage;
+//};
 
 
 #ifndef STANDALONE
