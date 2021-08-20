@@ -12,8 +12,8 @@ cellml = '''<?xml version=\"1.1\" encoding=\"UTF-8\"?>
 
 # changing the logging level to critical is one way to hide error messages or messages with lower precedence
 Logger.set_level(eLogLevel.critical)
-rdf = RDF.from_string(cellml, syntax="turtle")  # See console - nothing is emitted
+rdf = RDF.from_string(cellml, syntax="ntriples")  # See console - nothing is emitted
 
 # turning the logger off is another
 Logger.set_level(eLogLevel.off)
-rdf = RDF.from_string(cellml, syntax="turtle")  # See console - nothing is emitted
+rdf = RDF.from_string(cellml, syntax="ntriples")  # See console - nothing is emitted

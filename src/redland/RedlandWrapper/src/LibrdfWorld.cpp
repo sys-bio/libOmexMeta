@@ -16,18 +16,7 @@ namespace redland {
         // getLogger.
         Logger::getLogger();
 
-        int facility = librdf_log_message_facility(message);
         std::ostringstream log;
-        if (facility == LIBRDF_FROM_PARSER) {
-            /* valid for certain facilities such as LIBRDF_FROM_PARSER */
-            // can't be sure which others, as undocumented.
-            // See rdf_log.h L119.
-            // Do not check message->locator for null as unit value
-            // bug is horrendous to find.
-            log << message->locator->file;
-            log << ": ";
-            log << message->locator->line;
-        }
         log << message->message;
         switch (message->level) {
             case LIBRDF_LOG_INFO: {
@@ -54,7 +43,7 @@ namespace redland {
                 break;
             }
         }
-        return 0;
+        return 1;
     }
 
     void raptorLogHandler(void *user_data, raptor_log_message *message) {
@@ -64,16 +53,7 @@ namespace redland {
         Logger::getLogger();
 
         std::ostringstream log;
-        if (message->locator) {
-            if (message->locator->file) {
-                log << message->locator->file;
-                log << ":";
-            }
-            if (message->locator->line) {
-                log << message->locator->line;
-            }
-        }
-        log << " " << message->text;
+        log << message->text;
 
         switch (message->level) {
             case RAPTOR_LOG_LEVEL_INFO: {
