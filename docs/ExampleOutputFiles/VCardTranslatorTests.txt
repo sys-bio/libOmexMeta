@@ -3,9 +3,9 @@ Running main() from ..\third_party\googletest\googletest\src\gtest_main.cc
 [----------] Global test environment set-up.
 [----------] 1 test from VCardTranslatorTests
 [ RUN      ] VCardTranslatorTests.purgeNConstruct
-[       OK ] VCardTranslatorTests.purgeNConstruct (15 ms)
-[----------] 1 test from VCardTranslatorTests (15 ms total)
+[       OK ] VCardTranslatorTests.purgeNConstruct (17 ms)
+[----------] 1 test from VCardTranslatorTests (17 ms total)
 
 [----------] Global test environment tear-down
-[==========] 1 test from 1 test suite ran. (15 ms total)
+[==========] 1 test from 1 test suite ran. (18 ms total)
 [  PASSED  ] 1 test.

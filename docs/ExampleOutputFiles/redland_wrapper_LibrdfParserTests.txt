@@ -23,18 +23,18 @@ D:\libOmexMeta\cmake-build-release\docs/example_rdf.rdf
 [       OK ] LibrdfParserTests.TestParseFromAFile (1 ms)
 [ RUN      ] LibrdfParserTests.TestRelativeBaseUriResolvesCorrectly
 "D:\\libOmexMeta\\cmake-build-release\\docs\\LibrdfParserTests_TestBaseUri.db"
-[       OK ] LibrdfParserTests.TestRelativeBaseUriResolvesCorrectly (23 ms)
+[       OK ] LibrdfParserTests.TestRelativeBaseUriResolvesCorrectly (31 ms)
 [ RUN      ] LibrdfParserTests.TestParserString
-[13:09:13 +01:00]  error : 1 syntax error at '<' 
-[13:09:13 +01:00]  error : 1 syntax error at '<' 
-[       OK ] LibrdfParserTests.TestParserString (1 ms)
+[00:55:14 +01:00]  error : syntax error at '<' 
+[00:55:14 +01:00]  error : syntax error at '<' 
+[       OK ] LibrdfParserTests.TestParserString (2 ms)
 [ RUN      ] LibrdfParserTests.TestFeatures
 [       OK ] LibrdfParserTests.TestFeatures (0 ms)
 [ RUN      ] LibrdfParserTests.CheckTweiceFirstFailThenParseAgain
-[13:09:13 +01:00]  error : syntax error at '<' 
-[       OK ] LibrdfParserTests.CheckTweiceFirstFailThenParseAgain (0 ms)
-[----------] 13 tests from LibrdfParserTests (28 ms total)
+[00:55:14 +01:00]  error : syntax error at '<' 
+[       OK ] LibrdfParserTests.CheckTweiceFirstFailThenParseAgain (1 ms)
+[----------] 13 tests from LibrdfParserTests (38 ms total)
 
 [----------] Global test environment tear-down
-[==========] 13 tests from 1 test suite ran. (28 ms total)
+[==========] 13 tests from 1 test suite ran. (38 ms total)
 [  PASSED  ] 13 tests.

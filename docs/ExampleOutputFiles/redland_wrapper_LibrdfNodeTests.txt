@@ -53,9 +53,9 @@ Running main() from ..\third_party\googletest\googletest\src\gtest_main.cc
 [ RUN      ] LibrdfNodeTests.TestSetBlankValueNotChanged
 [       OK ] LibrdfNodeTests.TestSetBlankValueNotChanged (0 ms)
 [ RUN      ] LibrdfNodeTests.TestSetUri2
-[       OK ] LibrdfNodeTests.TestSetUri2 (1 ms)
+[       OK ] LibrdfNodeTests.TestSetUri2 (0 ms)
 [ RUN      ] LibrdfNodeTests.TestEquality
-[       OK ] LibrdfNodeTests.TestEquality (0 ms)
+[       OK ] LibrdfNodeTests.TestEquality (1 ms)
 [ RUN      ] LibrdfNodeTests.TestEqualityBlank
 [       OK ] LibrdfNodeTests.TestEqualityBlank (0 ms)
 [ RUN      ] LibrdfNodeTests.TestInequality

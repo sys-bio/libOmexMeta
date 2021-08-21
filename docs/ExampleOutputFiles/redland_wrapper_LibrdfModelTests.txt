@@ -3,13 +3,13 @@ Running main() from ..\third_party\googletest\googletest\src\gtest_main.cc
 [----------] Global test environment set-up.
 [----------] 11 tests from LibrdfModelTests
 [ RUN      ] LibrdfModelTests.TestNew
-[       OK ] LibrdfModelTests.TestNew (2 ms)
+[       OK ] LibrdfModelTests.TestNew (3 ms)
 [ RUN      ] LibrdfModelTests.TestMoveConstructor
 [       OK ] LibrdfModelTests.TestMoveConstructor (0 ms)
 [ RUN      ] LibrdfModelTests.TestMoveAssignment
 [       OK ] LibrdfModelTests.TestMoveAssignment (0 ms)
 [ RUN      ] LibrdfModelTests.TestAddStatement
-[       OK ] LibrdfModelTests.TestAddStatement (1 ms)
+[       OK ] LibrdfModelTests.TestAddStatement (0 ms)
 [ RUN      ] LibrdfModelTests.TestRemoveStatement
 [       OK ] LibrdfModelTests.TestRemoveStatement (0 ms)
 [ RUN      ] LibrdfModelTests.TestContext
@@ -17,15 +17,15 @@ Running main() from ..\third_party\googletest\googletest\src\gtest_main.cc
 [ RUN      ] LibrdfModelTests.containsPass
 [       OK ] LibrdfModelTests.containsPass (0 ms)
 [ RUN      ] LibrdfModelTests.containsFail
-[       OK ] LibrdfModelTests.containsFail (0 ms)
+[       OK ] LibrdfModelTests.containsFail (1 ms)
 [ RUN      ] LibrdfModelTests.Equality1Pass
-[       OK ] LibrdfModelTests.Equality1Pass (1 ms)
+[       OK ] LibrdfModelTests.Equality1Pass (0 ms)
 [ RUN      ] LibrdfModelTests.Equality1Blanks
 [       OK ] LibrdfModelTests.Equality1Blanks (0 ms)
 [ RUN      ] LibrdfModelTests.Equality1Fail
-[       OK ] LibrdfModelTests.Equality1Fail (0 ms)
-[----------] 11 tests from LibrdfModelTests (4 ms total)
+[       OK ] LibrdfModelTests.Equality1Fail (1 ms)
+[----------] 11 tests from LibrdfModelTests (5 ms total)
 
 [----------] Global test environment tear-down
-[==========] 11 tests from 1 test suite ran. (4 ms total)
+[==========] 11 tests from 1 test suite ran. (5 ms total)
 [  PASSED  ] 11 tests.

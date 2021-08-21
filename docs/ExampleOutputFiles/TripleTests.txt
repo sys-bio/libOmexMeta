@@ -7,7 +7,7 @@ Running main() from ..\third_party\googletest\googletest\src\gtest_main.cc
 [ RUN      ] TripleTests.TestInstantiation2
 [       OK ] TripleTests.TestInstantiation2 (0 ms)
 [ RUN      ] TripleTests.TestSubjectStringUsingLibrdf
-[       OK ] TripleTests.TestSubjectStringUsingLibrdf (0 ms)
+[       OK ] TripleTests.TestSubjectStringUsingLibrdf (1 ms)
 [ RUN      ] TripleTests.TestSubjectStrUsingWrapper
 [       OK ] TripleTests.TestSubjectStrUsingWrapper (0 ms)
 [ RUN      ] TripleTests.TestPredicate
@@ -26,311 +26,311 @@ Running main() from ..\third_party\googletest\googletest\src\gtest_main.cc
 [       OK ] TripleTests.TestMoveAssignmentOperator (0 ms)
 [ RUN      ] TripleTests.TestBuilderPattern2
 [       OK ] TripleTests.TestBuilderPattern2 (0 ms)
-[----------] 12 tests from TripleTests (4 ms total)
+[----------] 12 tests from TripleTests (5 ms total)
 
 [----------] 10 tests from TripleTestsNoFixture
 [ RUN      ] TripleTestsNoFixture.TestInstantiationEmptyForBuilder
-[13:09:17 +01:00]  debug ..\src\redland\RedlandWrapper\src\LibrdfStatement.cpp:13 Instantiated a LibrdfStatement instance 
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug ..\src\redland\RedlandWrapper\src\LibrdfStatement.cpp:13 Instantiated a LibrdfStatement instance 
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_statement,class std::function<void __cdecl(struct raptor_statement * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_statement,class std::function<void __cdecl(struct raptor_statement * __ptr64)> >
  
 [       OK ] TripleTestsNoFixture.TestInstantiationEmptyForBuilder (1 ms)
 [ RUN      ] TripleTestsNoFixture.TestEquality
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_statement,class std::function<void __cdecl(struct raptor_statement * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_statement,class std::function<void __cdecl(struct raptor_statement * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_statement,class std::function<void __cdecl(struct raptor_statement * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_statement,class std::function<void __cdecl(struct raptor_statement * __ptr64)> >
  
-[       OK ] TripleTestsNoFixture.TestEquality (1 ms)
+[       OK ] TripleTestsNoFixture.TestEquality (0 ms)
 [ RUN      ] TripleTestsNoFixture.TestInequality
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_statement,class std::function<void __cdecl(struct raptor_statement * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_statement,class std::function<void __cdecl(struct raptor_statement * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_statement,class std::function<void __cdecl(struct raptor_statement * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_statement,class std::function<void __cdecl(struct raptor_statement * __ptr64)> >
  
-[       OK ] TripleTestsNoFixture.TestInequality (0 ms)
+[       OK ] TripleTestsNoFixture.TestInequality (1 ms)
 [ RUN      ] TripleTestsNoFixture.TestAboutTwoArguments
-[13:09:17 +01:00]  debug ..\src\redland\RedlandWrapper\src\LibrdfStatement.cpp:13 Instantiated a LibrdfStatement instance 
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug ..\src\redland\RedlandWrapper\src\LibrdfStatement.cpp:13 Instantiated a LibrdfStatement instance 
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_statement,class std::function<void __cdecl(struct raptor_statement * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_statement,class std::function<void __cdecl(struct raptor_statement * __ptr64)> >
  
-[       OK ] TripleTestsNoFixture.TestAboutTwoArguments (1 ms)
+[       OK ] TripleTestsNoFixture.TestAboutTwoArguments (0 ms)
 [ RUN      ] TripleTestsNoFixture.TestAboutOneArgumentWithSetLocal
-[13:09:17 +01:00]  debug ..\src\redland\RedlandWrapper\src\LibrdfStatement.cpp:13 Instantiated a LibrdfStatement instance 
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug ..\src\redland\RedlandWrapper\src\LibrdfStatement.cpp:13 Instantiated a LibrdfStatement instance 
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_statement,class std::function<void __cdecl(struct raptor_statement * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_statement,class std::function<void __cdecl(struct raptor_statement * __ptr64)> >
  
 [       OK ] TripleTestsNoFixture.TestAboutOneArgumentWithSetLocal (0 ms)
 [ RUN      ] TripleTestsNoFixture.TestAboutAgain2
-[13:09:17 +01:00]  debug ..\src\redland\RedlandWrapper\src\LibrdfStatement.cpp:13 Instantiated a LibrdfStatement instance 
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug ..\src\redland\RedlandWrapper\src\LibrdfStatement.cpp:13 Instantiated a LibrdfStatement instance 
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_statement,class std::function<void __cdecl(struct raptor_statement * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_statement,class std::function<void __cdecl(struct raptor_statement * __ptr64)> >
  
 [       OK ] TripleTestsNoFixture.TestAboutAgain2 (0 ms)
 [ RUN      ] TripleTestsNoFixture.TestSetPredicate
-[13:09:17 +01:00]  debug ..\src\redland\RedlandWrapper\src\LibrdfStatement.cpp:13 Instantiated a LibrdfStatement instance 
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug ..\src\redland\RedlandWrapper\src\LibrdfStatement.cpp:13 Instantiated a LibrdfStatement instance 
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_statement,class std::function<void __cdecl(struct raptor_statement * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_statement,class std::function<void __cdecl(struct raptor_statement * __ptr64)> >
  
 [       OK ] TripleTestsNoFixture.TestSetPredicate (0 ms)
 [ RUN      ] TripleTestsNoFixture.TestResourceLiteral
-[13:09:17 +01:00]  debug ..\src\redland\RedlandWrapper\src\LibrdfStatement.cpp:13 Instantiated a LibrdfStatement instance 
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug ..\src\redland\RedlandWrapper\src\LibrdfStatement.cpp:13 Instantiated a LibrdfStatement instance 
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_statement,class std::function<void __cdecl(struct raptor_statement * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_statement,class std::function<void __cdecl(struct raptor_statement * __ptr64)> >
  
 [       OK ] TripleTestsNoFixture.TestResourceLiteral (0 ms)
 [ RUN      ] TripleTestsNoFixture.TestResourceUri
-[13:09:17 +01:00]  debug ..\src\redland\RedlandWrapper\src\LibrdfStatement.cpp:13 Instantiated a LibrdfStatement instance 
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug ..\src\redland\RedlandWrapper\src\LibrdfStatement.cpp:13 Instantiated a LibrdfStatement instance 
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_statement,class std::function<void __cdecl(struct raptor_statement * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_statement,class std::function<void __cdecl(struct raptor_statement * __ptr64)> >
  
 [       OK ] TripleTestsNoFixture.TestResourceUri (0 ms)
 [ RUN      ] TripleTestsNoFixture.TestResourceBlank
-[13:09:17 +01:00]  debug ..\src\redland\RedlandWrapper\src\LibrdfStatement.cpp:13 Instantiated a LibrdfStatement instance 
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug ..\src\redland\RedlandWrapper\src\LibrdfStatement.cpp:13 Instantiated a LibrdfStatement instance 
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_statement,class std::function<void __cdecl(struct raptor_statement * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_statement,class std::function<void __cdecl(struct raptor_statement * __ptr64)> >
  
 [       OK ] TripleTestsNoFixture.TestResourceBlank (0 ms)
-[----------] 10 tests from TripleTestsNoFixture (3 ms total)
+[----------] 10 tests from TripleTestsNoFixture (2 ms total)
 
 [----------] 1 test from TripleTestsVector
 [ RUN      ] TripleTestsVector.TestTripleVecMove
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_statement,class std::function<void __cdecl(struct raptor_statement * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_statement,class std::function<void __cdecl(struct raptor_statement * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_statement,class std::function<void __cdecl(struct raptor_statement * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_statement,class std::function<void __cdecl(struct raptor_statement * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[       OK ] TripleTestsVector.TestTripleVecMove (1 ms)
-[----------] 1 test from TripleTestsVector (1 ms total)
+[       OK ] TripleTestsVector.TestTripleVecMove (0 ms)
+[----------] 1 test from TripleTestsVector (0 ms total)
 
 [----------] 4 tests from TestTripleTwice
 [ RUN      ] TestTripleTwice.WithRawNodes
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_statement,class std::function<void __cdecl(struct raptor_statement * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_statement,class std::function<void __cdecl(struct raptor_statement * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_statement,class std::function<void __cdecl(struct raptor_statement * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_statement,class std::function<void __cdecl(struct raptor_statement * __ptr64)> >
  
 [       OK ] TestTripleTwice.WithRawNodes (0 ms)
 [ RUN      ] TestTripleTwice.WithSubjectPredAndRes
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_statement,class std::function<void __cdecl(struct raptor_statement * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_statement,class std::function<void __cdecl(struct raptor_statement * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_statement,class std::function<void __cdecl(struct raptor_statement * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_statement,class std::function<void __cdecl(struct raptor_statement * __ptr64)> >
  
-[       OK ] TestTripleTwice.WithSubjectPredAndRes (0 ms)
+[       OK ] TestTripleTwice.WithSubjectPredAndRes (1 ms)
 [ RUN      ] TestTripleTwice.WithSubjectBiomodelModelQualifierAndRes
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_statement,class std::function<void __cdecl(struct raptor_statement * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_statement,class std::function<void __cdecl(struct raptor_statement * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_statement,class std::function<void __cdecl(struct raptor_statement * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_statement,class std::function<void __cdecl(struct raptor_statement * __ptr64)> >
  
 [       OK ] TestTripleTwice.WithSubjectBiomodelModelQualifierAndRes (0 ms)
 [ RUN      ] TestTripleTwice.WithRawNodesWithMovingTheFirst
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_term,class std::function<void __cdecl(struct raptor_term * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_statement,class std::function<void __cdecl(struct raptor_statement * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_statement,class std::function<void __cdecl(struct raptor_statement * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_statement,class std::function<void __cdecl(struct raptor_statement * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_statement,class std::function<void __cdecl(struct raptor_statement * __ptr64)> >
  
-[13:09:17 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_statement,class std::function<void __cdecl(struct raptor_statement * __ptr64)> >
+[00:55:19 +01:00]  debug D:\libOmexMeta\src\redland\RedlandWrapper\src\include\redland\RedlandType.h:63 Destructing a class redland::RedlandType<struct raptor_statement,class std::function<void __cdecl(struct raptor_statement * __ptr64)> >
  
-[       OK ] TestTripleTwice.WithRawNodesWithMovingTheFirst (1 ms)
+[       OK ] TestTripleTwice.WithRawNodesWithMovingTheFirst (0 ms)
 [----------] 4 tests from TestTripleTwice (1 ms total)
 
 [----------] Global test environment tear-down
-[==========] 27 tests from 4 test suites ran. (9 ms total)
+[==========] 27 tests from 4 test suites ran. (8 ms total)
 [  PASSED  ] 27 tests.
