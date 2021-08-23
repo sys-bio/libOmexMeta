@@ -1636,8 +1636,6 @@ class LoggerTests(unittest.TestCase):
         # now check logger_file
         # windows hangs on to files so we skip these tests on windows
         if sys.platform != "win32":
-            if os.path.isfile(self.logger_file):
-                os.remove(self.logger_file)
             with open(self.logger_file, 'r') as file:
                 # empty without flush
                 self.assertTrue(file.read() == "")
@@ -1658,8 +1656,6 @@ class LoggerTests(unittest.TestCase):
         # now check logger_file
         # windows hangs on to files so we skip these tests on windows
         if sys.platform != "win32":
-            if os.path.isfile(self.logger_file):
-                os.remove(self.logger_file)
             with open(self.logger_file, 'r') as file:
                 self.assertEqual(file.readline(), "syntax error at '<' ")
 
@@ -1681,8 +1677,6 @@ class LoggerTests(unittest.TestCase):
         # now check logger_file
         # windows hangs on to files so we skip these tests on windows
         if sys.platform != "win32":
-            if os.path.isfile(self.logger_file):
-                os.remove(self.logger_file)
             with open(self.logger_file, 'r') as file:
                 self.assertEqual(file.readline(), "syntax error at '<' ")
 
@@ -1701,8 +1695,6 @@ class LoggerTests(unittest.TestCase):
         # now check logger_file
         # windows hangs on to files so we skip these tests on windows
         if sys.platform != "win32":
-            if os.path.isfile(self.logger_file):
-                os.remove(self.logger_file)
             with open(self.logger_file, 'r') as file:
                 self.assertEqual(file.readline(), "syntax error at '<' ")
 
