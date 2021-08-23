@@ -1,6 +1,6 @@
-[10:41:29 +01:00]  trace : trace message 
-[10:41:29 +01:00]  info : info message 
-[10:41:29 +01:00]  debug : debug message 
-[10:41:29 +01:00]  warning : warn message 
-[10:41:29 +01:00]  error : error message 
-[10:41:29 +01:00]  critical : critical message 
+[00:55:05 +01:00]  trace : trace message 
+[00:55:05 +01:00]  info : info message 
+[00:55:05 +01:00]  debug : debug message 
+[00:55:05 +01:00]  warning : warn message 
+[00:55:05 +01:00]  error : error message 
+[00:55:05 +01:00]  critical : critical message 

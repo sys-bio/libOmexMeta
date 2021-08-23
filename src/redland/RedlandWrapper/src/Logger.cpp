@@ -99,12 +99,12 @@ namespace redland {
         logger->set_pattern(format);
     }
 
-    void Logger::setLevel(Logger::LogLevel level) {
+    void Logger::setLevel(LogLevel level) {
         Logger::level_ = level;
         logger->set_level(Logger::level_);
     }
 
-    Logger::LogLevel Logger::getLevel() {
+    LogLevel Logger::getLevel() {
         return logger->level();
     }
 
@@ -122,27 +122,59 @@ namespace redland {
         return logger->dump_backtrace();
     }
     void Logger::info(const std::string &message) {
+        messages_.emplace_back(spdlog::level::level_enum::info, message);
         logger->info(message);
     }
 
     void Logger::trace(const std::string &message) {
+        messages_.emplace_back(spdlog::level::level_enum::trace, message);
         logger->trace(message);
     }
 
     void Logger::debug(const std::string &message) {
+        messages_.emplace_back(spdlog::level::level_enum::debug, message);
         logger->debug(message);
     }
 
     void Logger::warn(const std::string &message) {
+        messages_.emplace_back(spdlog::level::level_enum::warn, message);
         logger->warn(message);
     }
 
     void Logger::error(const std::string &message) {
+        messages_.emplace_back(spdlog::level::level_enum::err, message);
         logger->error(message);
     }
 
     void Logger::critical(const std::string &message) {
+        messages_.emplace_back(spdlog::level::level_enum::critical, message);
         logger->critical(message);
+    }
+
+    void Logger::clear() {
+        messages_.clear();
+    }
+    Message &Logger::operator[](int idx) {
+        return messages_[idx];
+    }
+    int Logger::size() {
+        return messages_.size();
+    }
+
+    void Logger::addMessage(LogLevel level, const std::string &message) {
+        messages_.emplace_back(level, message);
+    }
+
+    std::vector<Message> Logger::getMessages() const {
+        return messages_;
+    }
+
+    void Logger::flush(){
+        logger->flush();
+    }
+
+    void Logger::flushOn(LogLevel level){
+        logger->flush_on(level);
     }
 
 

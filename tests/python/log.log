@@ -1,5 +1,1 @@
-[13:14:09 +01:00]  critical : A critical message that you just must see 
-[13:14:09 +01:00]  warning : [WinError 32] The process cannot access the file because it is being used by another process: 'D:\\libOmexMeta\\tests\\python\\log.log' 
-[13:14:09 +01:00]  info : Doing information 
-[13:14:09 +01:00]  info : Information is not displayed by default beecause the default level is warn 
-[13:14:09 +01:00]  warning : Warnings are displayed to console 
+[10:28:58 +01:00]  error : syntax error at '<' 

@@ -1,6 +1,6 @@
 # switching to the file logger
 from os.path import join, exists, dirname, abspath
-from os import remove
+from os import remove, getcwd
 from pyomexmeta import RDF, Logger
 
 cellml = '''<?xml version=\"1.1\" encoding=\"UTF-8\"?>
@@ -12,8 +12,8 @@ cellml = '''<?xml version=\"1.1\" encoding=\"UTF-8\"?>
               </component>
             </model>'''
 
-logger_file = join(abspath(dirname(__file__)), "log.log")
-print("check logger_file: " , logger_file)
+logger_file = join(getcwd(), "log.log")
+print(f"Logger file is: \"{logger_file}\"")
 
 # if already exists, remove
 if exists(logger_file):
@@ -22,10 +22,14 @@ assert not exists(logger_file)
 
 # activate the file logger
 Logger.file_logger(logger_file)
-rdf = RDF.from_string(cellml, syntax="turtle") # nothing is emitted to console
+rdf = RDF.from_string(cellml, syntax="turtle")  # nothing is emitted to console
+
+# ensure logging content has been written to disk
+Logger.flush()
+
 # now check logger_file
 
 
 # now activate the console logger again
 Logger.console_logger()
-rdf = RDF.from_string(cellml, syntax="turtle") # and our log message is back
+rdf = RDF.from_string(cellml, syntax="turtle")  # and our log message is back

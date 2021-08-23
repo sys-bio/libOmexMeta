@@ -30,14 +30,25 @@
         <childnode refid="5" relation="include">
         </childnode>
       </node>
-      <node id="35">
+      <node id="37">
         <label>filesystem</label>
       </node>
       <node id="13">
         <label>rdf_init.h</label>
       </node>
-      <node id="37">
+      <node id="35">
+        <label>spdlog/common.h</label>
+      </node>
+      <node id="39">
         <label>variant</label>
+      </node>
+      <node id="34">
+        <label>Message.h</label>
+        <link refid="Message_8h_source"/>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
       </node>
       <node id="24">
         <label>rdf_stream.h</label>
@@ -51,21 +62,23 @@
       <node id="25">
         <label>rdf_query.h</label>
       </node>
-      <node id="36">
+      <node id="38">
         <label>string</label>
       </node>
       <node id="33">
         <label>redland/Logger.h</label>
         <link refid="Logger_8h_source"/>
-        <childnode refid="5" relation="include">
+        <childnode refid="34" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="34" relation="include">
-        </childnode>
-        <childnode refid="35" relation="include">
+        <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
         </childnode>
       </node>
       <node id="14">
@@ -91,7 +104,7 @@
         <childnode refid="27" relation="include">
         </childnode>
       </node>
-      <node id="34">
+      <node id="36">
         <label>spdlog/spdlog.h</label>
       </node>
       <node id="8">
@@ -100,7 +113,7 @@
       <node id="19">
         <label>rdf_model.h</label>
       </node>
-      <node id="38">
+      <node id="40">
         <label>rdf_uri_internal.h</label>
       </node>
       <node id="17">
@@ -126,9 +139,9 @@
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="37" relation="include">
+        <childnode refid="39" relation="include">
         </childnode>
-        <childnode refid="38" relation="include">
+        <childnode refid="40" relation="include">
         </childnode>
       </node>
       <node id="12">

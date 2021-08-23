@@ -428,7 +428,6 @@
   </compound>
   <compound refid="classredland_1_1Logger" kind="class"><name>redland::Logger</name>
     <member refid="classredland_1_1Logger_1a9e76412d869c3ff4497ce38ef7e3342d" kind="typedef"><name>LoggerPtr</name></member>
-    <member refid="classredland_1_1Logger_1a0c9a776efbf57c060ef7f6a2f41455c4" kind="typedef"><name>LogLevel</name></member>
     <member refid="classredland_1_1Logger_1a9bc7671c63a3d7c3953a4d65d8570936" kind="variable"><name>logger</name></member>
     <member refid="classredland_1_1Logger_1acfe5e473ffe0cb34b45ab69ab7675358" kind="variable"><name>isFileLogger</name></member>
     <member refid="classredland_1_1Logger_1a83c2fde7dc2b6547053d690e63c0f73d" kind="variable"><name>isConsoleLogger</name></member>
@@ -438,10 +437,11 @@
     <member refid="classredland_1_1Logger_1ad9c881a08834cf4e8f45ec9f59cbf141" kind="variable"><name>formatterPattern</name></member>
     <member refid="classredland_1_1Logger_1ad5c9edd10e0235d22b883ef378a8d7a8" kind="variable"><name>level_</name></member>
     <member refid="classredland_1_1Logger_1af47c7ee65088b85f238a1db26c40f48f" kind="variable"><name>shouldBacktrace_</name></member>
+    <member refid="classredland_1_1Logger_1a41eda09f641f86b0faccdb2b9afd0743" kind="variable"><name>messages_</name></member>
     <member refid="classredland_1_1Logger_1a371ea8132ab82e1c783b74bd6bcf38c5" kind="function"><name>getLogger</name></member>
     <member refid="classredland_1_1Logger_1ac358531893ec79d169ec449aae2cc5c0" kind="function"><name>setFormatter</name></member>
     <member refid="classredland_1_1Logger_1a7ae9f6e2d9c6d143192dd7253acea479" kind="function"><name>setLevel</name></member>
-    <member refid="classredland_1_1Logger_1a267cc8563aa19f296edfd859331a53a7" kind="function"><name>getLevel</name></member>
+    <member refid="classredland_1_1Logger_1a1d5985081e4c2035aa848a2e3b88decf" kind="function"><name>getLevel</name></member>
     <member refid="classredland_1_1Logger_1a48844ea4f9eecbb5c450b35a96cbdda4" kind="function"><name>enableBacktrace</name></member>
     <member refid="classredland_1_1Logger_1a61b92676954488db03b3c3ebfbd11fe0" kind="function"><name>disableBacktrace</name></member>
     <member refid="classredland_1_1Logger_1a63c1f161280c140b69b3db08389a1137" kind="function"><name>consoleLogger</name></member>
@@ -453,6 +453,13 @@
     <member refid="classredland_1_1Logger_1a244494ce1d28d0b5e3c27de7e462f8e2" kind="function"><name>warn</name></member>
     <member refid="classredland_1_1Logger_1a7736a74d653953cb3248f20706c0b9f1" kind="function"><name>error</name></member>
     <member refid="classredland_1_1Logger_1a6d50761ac27eb3411396cdd18a9c05a9" kind="function"><name>critical</name></member>
+    <member refid="classredland_1_1Logger_1aea11131258193a5591138b72dd89bb4b" kind="function"><name>clear</name></member>
+    <member refid="classredland_1_1Logger_1aee656a6c8590b0e6d3233eefcbc96dff" kind="function"><name>operator[]</name></member>
+    <member refid="classredland_1_1Logger_1af875a9fae3bb610584c636e0d6ff7070" kind="function"><name>size</name></member>
+    <member refid="classredland_1_1Logger_1a30c31dbdfa17ea8555064025396b0595" kind="function"><name>addMessage</name></member>
+    <member refid="classredland_1_1Logger_1aa7ad499cadd4e05655bf63f46e0db35a" kind="function"><name>getMessages</name></member>
+    <member refid="classredland_1_1Logger_1a950004905d3b16ed243ef81b7150a9e5" kind="function"><name>flush</name></member>
+    <member refid="classredland_1_1Logger_1a63cf9aadf21df23188b4770208695669" kind="function"><name>flushOn</name></member>
     <member refid="classredland_1_1Logger_1a0e046d7572c3756ed188fda9b7914bb4" kind="function"><name>Logger</name></member>
   </compound>
   <compound refid="classomexmeta_1_1MarkupIdentifier" kind="class"><name>omexmeta::MarkupIdentifier</name>
@@ -470,6 +477,17 @@
   <compound refid="classomexmeta_1_1MediatorParticipant" kind="class"><name>omexmeta::MediatorParticipant</name>
     <member refid="classomexmeta_1_1MediatorParticipant_1aa0ee2b1a660455271ef16adcbf81fe58" kind="variable"><name>multiplier_</name></member>
     <member refid="classomexmeta_1_1MediatorParticipant_1adeb00bca090897dc2f1fc6c8d3b5d146" kind="function"><name>MediatorParticipant</name></member>
+  </compound>
+  <compound refid="classredland_1_1Message" kind="class"><name>redland::Message</name>
+    <member refid="classredland_1_1Message_1a0d2f9487eba3502dc93eb4757fdc1bf9" kind="variable"><name>level_</name></member>
+    <member refid="classredland_1_1Message_1ac6a37df2f198427c33a315f698493aa0" kind="variable"><name>message_</name></member>
+    <member refid="classredland_1_1Message_1a58fd601cf1897a589b9a2e7d44d50d7c" kind="function"><name>Message</name></member>
+    <member refid="classredland_1_1Message_1a319dd184ad1b8996c1c74e086c1ec37e" kind="function"><name>Message</name></member>
+    <member refid="classredland_1_1Message_1a863bce000126e29257184cc0ae24f229" kind="function"><name>getLevel</name></member>
+    <member refid="classredland_1_1Message_1a9169a0554e23413149228b6964f709bf" kind="function"><name>getMessage</name></member>
+    <member refid="classredland_1_1Message_1a14078424b434c9a3ae56d64e243a3acf" kind="function"><name>setLevel</name></member>
+    <member refid="classredland_1_1Message_1a8821f9d384dc93f642ef804b2792ad23" kind="function"><name>setMessage</name></member>
+    <member refid="classredland_1_1Message_1a38d8bc972f7e74ffa6b540d829daa3a9" kind="friend"><name>operator&lt;&lt;</name></member>
   </compound>
   <compound refid="classomexmeta_1_1MetaID" kind="class"><name>omexmeta::MetaID</name>
     <member refid="classomexmeta_1_1MetaID_1a51a9bc3c81218b25902e0285c878a2b9" kind="variable"><name>base_</name></member>
@@ -1520,7 +1538,7 @@
     <member refid="namespaceomexmeta_1a6434b2cffea803818b02bf9a7584b263" kind="function"><name>ResultsMap_delete</name></member>
     <member refid="namespaceomexmeta_1a401a97ce4b2a6c22f92b774091289ef8" kind="function"><name>Logger_getLogger</name></member>
     <member refid="namespaceomexmeta_1a00b49a350dca49a197c8b96920c6336b" kind="function"><name>Logger_setFormatter</name></member>
-    <member refid="namespaceomexmeta_1aa53a5e35c8e35aa716999e2bee6674aa" kind="function"><name>Logger_setLevel</name></member>
+    <member refid="namespaceomexmeta_1a719b588a02751f7cd3fa4fc0d6a791c1" kind="function"><name>Logger_setLevel</name></member>
     <member refid="namespaceomexmeta_1aec761fbe8fd8621544e2eb08a93ca6bb" kind="function"><name>Logger_getLevel</name></member>
     <member refid="namespaceomexmeta_1aac3d164e61ae7cd1925a591f54abf515" kind="function"><name>Logger_enableBacktrace</name></member>
     <member refid="namespaceomexmeta_1a8799d08a3e0e07b1866b72c95565bb1a" kind="function"><name>Logger_disableBacktrace</name></member>
@@ -1533,6 +1551,14 @@
     <member refid="namespaceomexmeta_1abffb02d727c2ea3060e42c4140cb903b" kind="function"><name>Logger_warn</name></member>
     <member refid="namespaceomexmeta_1a305282ca72c7f4af6d1fea665bdee5fe" kind="function"><name>Logger_error</name></member>
     <member refid="namespaceomexmeta_1a09fc0cbf9bf4b34308c9ca2cb19e4ce3" kind="function"><name>Logger_critical</name></member>
+    <member refid="namespaceomexmeta_1add6b47623eee669e86e1157b04d8a998" kind="function"><name>Logger_clear</name></member>
+    <member refid="namespaceomexmeta_1a061d1e87254a58591be4336669762958" kind="function"><name>Logger_size</name></member>
+    <member refid="namespaceomexmeta_1a0bccdc9cd01a73aedeb5cc8a585daccb" kind="function"><name>Logger_getMessageI</name></member>
+    <member refid="namespaceomexmeta_1ac7f51c52e378cfeb535b9d4a635b5e66" kind="function"><name>Logger_flush</name></member>
+    <member refid="namespaceomexmeta_1a2b9b454b8429ebf714a4b71dbc205456" kind="function"><name>Logger_flushOn</name></member>
+    <member refid="namespaceomexmeta_1acd9f002cc983c9609affc9970b4c12ed" kind="function"><name>Message_getMessage</name></member>
+    <member refid="namespaceomexmeta_1ad90f8fbc6e8f92c9f0535d127dbb98d2" kind="function"><name>Message_deleteMessage</name></member>
+    <member refid="namespaceomexmeta_1afdaed1c8202da394fae776c6d20930f6" kind="function"><name>Message_getLevel</name></member>
     <member refid="namespaceomexmeta_1a17e4b403c1f6627264259b7d300f5cb1" kind="function"><name>removeElementRecursion</name></member>
     <member refid="namespaceomexmeta_1a0a8d50daa10e421d0722520cdef0ab9a" kind="function"><name>PredicateFactory</name></member>
     <member refid="namespaceomexmeta_1a902ae2b86ac75376d9d826aecbd99b43" kind="function"><name>RDF_getBaseUri</name></member>
@@ -1569,9 +1595,11 @@
     <member refid="LibrdfStream_8h_1af435e1af07ba9892ec8b43f8a201a07d" kind="typedef"><name>Redland_librdf_stream</name></member>
     <member refid="LibrdfUri_8h_1a1992ba5aa55673f90da8a652e62884f4" kind="typedef"><name>uri_free_func</name></member>
     <member refid="LibrdfUri_8h_1a999f1ab9c3d8aa423436e859de526cb4" kind="typedef"><name>RefCounted_librdf_uri</name></member>
+    <member refid="Logger_8h_1ad8993a3ac236d4079502059e8ea21729" kind="typedef"><name>LogLevel</name></member>
     <member refid="LibrdfSerializer_8cpp_1ab3d24521870fec5bb77735a3a4a7e4d5" kind="function"><name>toIOStream</name></member>
     <member refid="LibrdfWorld_8cpp_1ab790561c5b67f6157f06aaf36010e7ad" kind="function"><name>librdfLogHandler</name></member>
     <member refid="LibrdfWorld_8cpp_1a02104b680dc8d25eb02cc6d2c3fd8e2c" kind="function"><name>raptorLogHandler</name></member>
+    <member refid="Message_8cpp_1aaff10c862d801bc37ad630c18e8f9595" kind="function"><name>operator&lt;&lt;</name></member>
   </compound>
   <compound refid="namespacestd" kind="namespace"><name>std</name>
   </compound>
@@ -1816,6 +1844,8 @@
     <member refid="Logger_8h_1a98b6b060aca6ac30aa457420058c01da" kind="define"><name>LOGGER_SET_WARN</name></member>
     <member refid="Logger_8h_1af57d4b35a1aa509b65825ad68ec4f457" kind="define"><name>LOGGER_SET_ERROR</name></member>
     <member refid="Logger_8h_1a333ce988b2658345d414adabd74ae60e" kind="define"><name>LOGGER_SET_CRITICAL</name></member>
+  </compound>
+  <compound refid="Message_8h" kind="file"><name>Message.h</name>
   </compound>
   <compound refid="raptor2_8h" kind="file"><name>raptor2.h</name>
     <member refid="raptor2_8h_1a0e1a23d85c6cfbe9914b68a3f6ca3fe3" kind="define"><name>RAPTOR_V2_AVAILABLE</name></member>
@@ -2498,6 +2528,8 @@
   <compound refid="LibrdfWorld_8cpp" kind="file"><name>LibrdfWorld.cpp</name>
   </compound>
   <compound refid="Logger_8cpp" kind="file"><name>Logger.cpp</name>
+  </compound>
+  <compound refid="Message_8cpp" kind="file"><name>Message.cpp</name>
   </compound>
   <compound refid="dir_0ff2839f0436a7bd3ba130866134b3e9" kind="dir"><name>src/omexmeta/include</name>
   </compound>

@@ -24,9 +24,9 @@ local:SourceParticipant0000
     bqbiol:isVersionOf <https://identifiers.org/opb:OPB_01058> .
 
 
-[       OK ] EnergyDiffTests.TestEnergyDiffSBML1 (4 ms)
+[       OK ] EnergyDiffTests.TestEnergyDiffSBML1 (5 ms)
 [ RUN      ] EnergyDiffTests.TestEnergyDiffSBML2
-[       OK ] EnergyDiffTests.TestEnergyDiffSBML2 (3 ms)
+[       OK ] EnergyDiffTests.TestEnergyDiffSBML2 (2 ms)
 [ RUN      ] EnergyDiffTests.TestEnergyDiffCellML1
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
@@ -49,11 +49,11 @@ local:SourceParticipant0000
     bqbiol:isVersionOf <https://identifiers.org/opb:OPB_00592> .
 
 
-[       OK ] EnergyDiffTests.TestEnergyDiffCellML1 (1 ms)
+[       OK ] EnergyDiffTests.TestEnergyDiffCellML1 (2 ms)
 [ RUN      ] EnergyDiffTests.TestEnergyDiffCellML2
-[       OK ] EnergyDiffTests.TestEnergyDiffCellML2 (2 ms)
+[       OK ] EnergyDiffTests.TestEnergyDiffCellML2 (1 ms)
 [ RUN      ] EnergyDiffTests.TestRemoveEnergyDiff
-[       OK ] EnergyDiffTests.TestRemoveEnergyDiff (1 ms)
+[       OK ] EnergyDiffTests.TestRemoveEnergyDiff (2 ms)
 [ RUN      ] EnergyDiffTests.NernstExample
 [       OK ] EnergyDiffTests.NernstExample (2 ms)
 [ RUN      ] EnergyDiffTests.NernstExampleWithDifferentSBML

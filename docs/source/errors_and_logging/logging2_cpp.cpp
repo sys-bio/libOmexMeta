@@ -15,11 +15,11 @@ int main(){
 
 
     // changing the logging level to critical is one way to hide error messages or messages with lower precedence
-    Logger::getLogger()->setLevel(Logger::LogLevel::critical);
+    Logger::getLogger()->setLevel(LogLevel::critical);
     RDF rdf1 = RDF::fromString(cellml, "turtle"); // See console - nothing is emitted
 
     // turning the logger off is another
-    Logger::getLogger()->setLevel(Logger::LogLevel::off);
+    Logger::getLogger()->setLevel(LogLevel::off);
     RDF rdf2 = RDF::fromString(cellml, "turtle"); // See console - nothing is emitted
 
     return 0;

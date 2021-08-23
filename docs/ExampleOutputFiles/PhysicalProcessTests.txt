@@ -30,9 +30,9 @@ local:SourceParticipant0000
     semsim:hasSourceParticipant local:SourceParticipant0000 .
 
 
-[       OK ] PhysicalProcessTests.TestPhysicalProcessSBML1 (5 ms)
+[       OK ] PhysicalProcessTests.TestPhysicalProcessSBML1 (8 ms)
 [ RUN      ] PhysicalProcessTests.TestPhysicalProcessSBML2
-[       OK ] PhysicalProcessTests.TestPhysicalProcessSBML2 (3 ms)
+[       OK ] PhysicalProcessTests.TestPhysicalProcessSBML2 (4 ms)
 [ RUN      ] PhysicalProcessTests.TestPhysicalProcessCellML1
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
@@ -63,11 +63,11 @@ local:SourceParticipant0000
 
 [       OK ] PhysicalProcessTests.TestPhysicalProcessCellML1 (3 ms)
 [ RUN      ] PhysicalProcessTests.TestPhysicalProcessCellML2
-[       OK ] PhysicalProcessTests.TestPhysicalProcessCellML2 (2 ms)
+[       OK ] PhysicalProcessTests.TestPhysicalProcessCellML2 (3 ms)
 [ RUN      ] PhysicalProcessTests.TestRemovePhysicalProcess
-[       OK ] PhysicalProcessTests.TestRemovePhysicalProcess (2 ms)
-[----------] 5 tests from PhysicalProcessTests (15 ms total)
+[       OK ] PhysicalProcessTests.TestRemovePhysicalProcess (3 ms)
+[----------] 5 tests from PhysicalProcessTests (21 ms total)
 
 [----------] Global test environment tear-down
-[==========] 5 tests from 1 test suite ran. (15 ms total)
+[==========] 5 tests from 1 test suite ran. (21 ms total)
 [  PASSED  ] 5 tests.

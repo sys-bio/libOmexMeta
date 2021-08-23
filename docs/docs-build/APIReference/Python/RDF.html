@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>RDF &mdash; libomexmeta 1.2.11 documentation</title>
+  <title>RDF &mdash; libomexmeta 1.2.12 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
@@ -101,7 +102,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="rdf">
+  <section id="rdf">
 <h1>RDF<a class="headerlink" href="#rdf" title="Permalink to this headline"></a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="pyomexmeta.RDF">
@@ -533,7 +534,7 @@ If incorrect string given, options are presented to user.</p></li>
 <p>Returns: string. Results</p>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rdf</span> <span class="o">=</span> <span class="n">RDF</span><span class="o">.</span><span class="n">from_file</span><span class="p">(</span><span class="s2">&quot;annot.rdf&quot;</span><span class="p">)</span> <span class="c1"># read from file on disk</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">rdf</span><span class="o">.</span><span class="n">query_results_as_string</span><span class="p">(</span><span class="s2">&quot;SELECT *?x ?y ?z WHERE { ?x ?y ?z }&quot;</span><span class="p">)</span> <span class="c1"># selects everything</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rdf</span><span class="o">.</span><span class="n">query_results_as_string</span><span class="p">(</span><span class="s2">&quot;SELECT *?x ?y ?z WHERE { ?x ?y ?z }&quot;</span><span class="p">,</span> <span class="n">results_syntax</span><span class="o">=</span><span class="s2">&quot;csv&quot;</span><span class="p">)</span> <span class="c1"># selects everything</span>
 </pre></div>
 </div>
 <div class="admonition seealso">
@@ -718,7 +719,7 @@ json-triples, json, nquads, html</p>
 
 </dd></dl>
 
-</div>
+</section>
 
 
            </div>
