@@ -5,13 +5,13 @@ Running main() from ..\third_party\googletest\googletest\src\gtest_main.cc
 [ RUN      ] ParticipantTests.TestCreateParticipant
 hasSourceParticipant
 http://bime.uw.edu/semsim/hasSourceParticipant
-[       OK ] ParticipantTests.TestCreateParticipant (3 ms)
+[       OK ] ParticipantTests.TestCreateParticipant (2 ms)
 [ RUN      ] ParticipantTests.TestSinkParticipant1
 http://bime.uw.edu/semsim/hasSinkParticipant
 [       OK ] ParticipantTests.TestSinkParticipant1 (0 ms)
 [ RUN      ] ParticipantTests.TestSinkParticipantMakMetaid
 SinkParticipant0000
-[       OK ] ParticipantTests.TestSinkParticipantMakMetaid (1 ms)
+[       OK ] ParticipantTests.TestSinkParticipantMakMetaid (0 ms)
 [ RUN      ] ParticipantTests.TestSinkParticipantGetLocalUri
 http://omex-library.org/NewOmex.omex/NewModel.rdf#
 [       OK ] ParticipantTests.TestSinkParticipantGetLocalUri (0 ms)
@@ -47,7 +47,7 @@ http://omex-library.org/NewOmex.omex/NewModel.rdf#
     <http://bime.uw.edu/semsim/hasSinkParticipant> <http://omex-library.org/NewOmex.omex/NewModel.rdf#SinkParticipant0000> .
 
 
-[       OK ] ParticipantTests.TestToTriplesWhenMultiplierIs0 (0 ms)
+[       OK ] ParticipantTests.TestToTriplesWhenMultiplierIs0 (1 ms)
 [ RUN      ] ParticipantTests.TestToTriplesMediator
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 
@@ -58,9 +58,9 @@ http://omex-library.org/NewOmex.omex/NewModel.rdf#
     <http://bime.uw.edu/semsim/hasMediatorParticipant> <http://omex-library.org/NewOmex.omex/NewModel.rdf#MediatorParticipant0000> .
 
 
-[       OK ] ParticipantTests.TestToTriplesMediator (2 ms)
+[       OK ] ParticipantTests.TestToTriplesMediator (1 ms)
 [ RUN      ] ParticipantTests.TestParticipantVecToTriples
-[       OK ] ParticipantTests.TestParticipantVecToTriples (0 ms)
+[       OK ] ParticipantTests.TestParticipantVecToTriples (1 ms)
 [----------] 10 tests from ParticipantTests (9 ms total)
 
 [----------] Global test environment tear-down

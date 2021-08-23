@@ -28,8 +28,12 @@ rdf = RDF.from_string(cellml, syntax="turtle")  # nothing is emitted to console
 Logger.flush()
 
 # now check logger_file
+print(f"Reading logging data from \"{logger_file}\":")
+with open(logger_file) as f:
+    print(f.read())
 
 
 # now activate the console logger again
 Logger.console_logger()
+print("Switching back to the console logger:")
 rdf = RDF.from_string(cellml, syntax="turtle")  # and our log message is back

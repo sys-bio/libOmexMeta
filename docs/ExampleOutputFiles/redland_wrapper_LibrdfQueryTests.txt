@@ -3,21 +3,21 @@ Running main() from ..\third_party\googletest\googletest\src\gtest_main.cc
 [----------] Global test environment set-up.
 [----------] 12 tests from LibrdfQueryTests
 [ RUN      ] LibrdfQueryTests.CheckQueryResultsBindingsCount
-[       OK ] LibrdfQueryTests.CheckQueryResultsBindingsCount (4 ms)
+[       OK ] LibrdfQueryTests.CheckQueryResultsBindingsCount (3 ms)
 [ RUN      ] LibrdfQueryTests.IsBinding
-[       OK ] LibrdfQueryTests.IsBinding (1 ms)
+[       OK ] LibrdfQueryTests.IsBinding (0 ms)
 [ RUN      ] LibrdfQueryTests.IsGraph
 [       OK ] LibrdfQueryTests.IsGraph (1 ms)
 [ RUN      ] LibrdfQueryTests.IsBoolean
 [       OK ] LibrdfQueryTests.IsBoolean (0 ms)
 [ RUN      ] LibrdfQueryTests.IsFinished
-[       OK ] LibrdfQueryTests.IsFinished (1 ms)
+[       OK ] LibrdfQueryTests.IsFinished (0 ms)
 [ RUN      ] LibrdfQueryTests.isNull
-[       OK ] LibrdfQueryTests.isNull (0 ms)
+[       OK ] LibrdfQueryTests.isNull (1 ms)
 [ RUN      ] LibrdfQueryTests.getBindingsName
-[       OK ] LibrdfQueryTests.getBindingsName (1 ms)
+[       OK ] LibrdfQueryTests.getBindingsName (0 ms)
 [ RUN      ] LibrdfQueryTests.getBindingsNames
-[       OK ] LibrdfQueryTests.getBindingsNames (0 ms)
+[       OK ] LibrdfQueryTests.getBindingsNames (1 ms)
 [ RUN      ] LibrdfQueryTests.TestRunQueryTwice
 [       OK ] LibrdfQueryTests.TestRunQueryTwice (0 ms)
 [ RUN      ] LibrdfQueryTests.getBindingValueByName
@@ -26,8 +26,8 @@ Running main() from ..\third_party\googletest\googletest\src\gtest_main.cc
 [       OK ] LibrdfQueryTests.TestgetResultsAsMap (0 ms)
 [ RUN      ] LibrdfQueryTests.BindingNotUsed
 [       OK ] LibrdfQueryTests.BindingNotUsed (0 ms)
-[----------] 12 tests from LibrdfQueryTests (9 ms total)
+[----------] 12 tests from LibrdfQueryTests (7 ms total)
 
 [----------] Global test environment tear-down
-[==========] 12 tests from 1 test suite ran. (9 ms total)
+[==========] 12 tests from 1 test suite ran. (7 ms total)
 [  PASSED  ] 12 tests.

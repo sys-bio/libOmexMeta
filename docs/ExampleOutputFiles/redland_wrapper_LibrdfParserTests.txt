@@ -7,11 +7,11 @@ Running main() from ..\third_party\googletest\googletest\src\gtest_main.cc
 [ RUN      ] LibrdfParserTests.TestMoveConstructor
 [       OK ] LibrdfParserTests.TestMoveConstructor (0 ms)
 [ RUN      ] LibrdfParserTests.TestMoveAssignment
-[       OK ] LibrdfParserTests.TestMoveAssignment (0 ms)
+[       OK ] LibrdfParserTests.TestMoveAssignment (1 ms)
 [ RUN      ] LibrdfParserTests.TestValidParserName
 [       OK ] LibrdfParserTests.TestValidParserName (0 ms)
 [ RUN      ] LibrdfParserTests.TestInvalidParserName
-[       OK ] LibrdfParserTests.TestInvalidParserName (1 ms)
+[       OK ] LibrdfParserTests.TestInvalidParserName (0 ms)
 [ RUN      ] LibrdfParserTests.TestSetName
 [       OK ] LibrdfParserTests.TestSetName (0 ms)
 [ RUN      ] LibrdfParserTests.TestGetMimeType
@@ -23,18 +23,18 @@ D:\libOmexMeta\cmake-build-release\docs/example_rdf.rdf
 [       OK ] LibrdfParserTests.TestParseFromAFile (1 ms)
 [ RUN      ] LibrdfParserTests.TestRelativeBaseUriResolvesCorrectly
 "D:\\libOmexMeta\\cmake-build-release\\docs\\LibrdfParserTests_TestBaseUri.db"
-[       OK ] LibrdfParserTests.TestRelativeBaseUriResolvesCorrectly (31 ms)
+[       OK ] LibrdfParserTests.TestRelativeBaseUriResolvesCorrectly (25 ms)
 [ RUN      ] LibrdfParserTests.TestParserString
-[00:55:14 +01:00]  error : syntax error at '<' 
-[00:55:14 +01:00]  error : syntax error at '<' 
-[       OK ] LibrdfParserTests.TestParserString (2 ms)
+[16:26:18 +01:00]  error : syntax error at '<' 
+[16:26:18 +01:00]  error : syntax error at '<' 
+[       OK ] LibrdfParserTests.TestParserString (1 ms)
 [ RUN      ] LibrdfParserTests.TestFeatures
 [       OK ] LibrdfParserTests.TestFeatures (0 ms)
 [ RUN      ] LibrdfParserTests.CheckTweiceFirstFailThenParseAgain
-[00:55:14 +01:00]  error : syntax error at '<' 
-[       OK ] LibrdfParserTests.CheckTweiceFirstFailThenParseAgain (1 ms)
-[----------] 13 tests from LibrdfParserTests (38 ms total)
+[16:26:18 +01:00]  error : syntax error at '<' 
+[       OK ] LibrdfParserTests.CheckTweiceFirstFailThenParseAgain (0 ms)
+[----------] 13 tests from LibrdfParserTests (30 ms total)
 
 [----------] Global test environment tear-down
-[==========] 13 tests from 1 test suite ran. (38 ms total)
+[==========] 13 tests from 1 test suite ran. (30 ms total)
 [  PASSED  ] 13 tests.

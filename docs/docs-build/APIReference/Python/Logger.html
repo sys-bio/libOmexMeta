@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Logger &mdash; libomexmeta 1.2.13 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> libomexmeta
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div>
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Main">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../background.html">Background to Semantic Annotations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Install/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Install/install.html#build-from-source">Build from Source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reading_rdf/reading_rdf.html">Reading RDF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../writing_rdf/writing_rdf.html">Serializing RDF Graphs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../singular_annotations/index.html">Singular Annotations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../composite_annotations/index.html">Composite Annotations: SBML Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../composite_annotations/index.html#composite-annotations-cellml-examples">Composite Annotations: CellML Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../stripping_annotations/index.html">Stripping Annotations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../querying_rdf/querying_rdf.html">Querying RDF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams/diagrams_index.html">Building Diagrams</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../errors_and_logging/errors_and_logging.html">Errors and Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../annotating_models/annotating_models_index.html">Annotating Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../download_biomodels/download_biomodels.html">Downloading Biomodels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api_reference_index.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Developers/developers_index.html">Developers Documentation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" aria-label="Top" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">libomexmeta</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+<div role="navigation" aria-label="Breadcrumbs">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Logger</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/APIReference/Python/Logger.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="logger">
+<h1>Logger<a class="headerlink" href="#logger" title="Permalink to this headline"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="pyomexmeta.Logger">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">pyomexmeta.</span></span><span class="sig-name descname"><span class="pre">Logger</span></span><a class="headerlink" href="#pyomexmeta.Logger" title="Permalink to this definition"></a></dt>
+<dd><dl class="py method">
+<dt class="sig sig-object py" id="pyomexmeta.Logger.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyomexmeta.Logger.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyomexmeta.Logger.__weakref__">
+<span class="sig-name descname"><span class="pre">__weakref__</span></span><a class="headerlink" href="#pyomexmeta.Logger.__weakref__" title="Permalink to this definition"></a></dt>
+<dd><p>list of weak references to the object (if defined)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyomexmeta.Logger.clear">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#pyomexmeta.Logger.clear" title="Permalink to this definition"></a></dt>
+<dd><p>Clear all logging messages, putting size (aka len) back to 0</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyomexmeta.Logger.console_logger">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">console_logger</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#pyomexmeta.Logger.console_logger" title="Permalink to this definition"></a></dt>
+<dd><p>Switch to a console logger</p>
+<p>Turns off file_logger and activates the console logger</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyomexmeta.Logger.critical">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">critical</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#pyomexmeta.Logger.critical" title="Permalink to this definition"></a></dt>
+<dd><p>Log a critical message</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyomexmeta.Logger.debug">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">debug</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#pyomexmeta.Logger.debug" title="Permalink to this definition"></a></dt>
+<dd><p>Log an debug message</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyomexmeta.Logger.disable_backtrace">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">disable_backtrace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#pyomexmeta.Logger.disable_backtrace" title="Permalink to this definition"></a></dt>
+<dd><p>Turn off backtrace feature</p>
+<p>Experimental feature</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyomexmeta.Logger.enable_backtrace">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">enable_backtrace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#pyomexmeta.Logger.enable_backtrace" title="Permalink to this definition"></a></dt>
+<dd><p>Turn on backtrace feature, for traceback
+in the underlying c/c++ libraries.</p>
+<p>Experimental feature. Backtracing
+will show the last num logging messages when dumped with
+dump_backtrace (i.e. after error).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>num</strong> (<em>int</em>) – How many logging messages to show on dumping the log stack trace</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyomexmeta.Logger.error">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">error</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#pyomexmeta.Logger.error" title="Permalink to this definition"></a></dt>
+<dd><p>Log a error message</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyomexmeta.Logger.file_logger">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">file_logger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#pyomexmeta.Logger.file_logger" title="Permalink to this definition"></a></dt>
+<dd><p>Switch to a file logger</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filepath</strong> – valid path to where you would like to store logging messages</p>
+</dd>
+</dl>
+<p>Turns off console logger and activate file_logger</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyomexmeta.Logger.flush">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">flush</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#pyomexmeta.Logger.flush" title="Permalink to this definition"></a></dt>
+<dd><p>Flush the content in the current logger to disk</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyomexmeta.Logger.flush_on">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">flush_on</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">level</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pyomexmeta.pyomexmeta_api.eLogLevel</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#pyomexmeta.Logger.flush_on" title="Permalink to this definition"></a></dt>
+<dd><p>Flush content in the current logger with log level <cite>level</cite> to disk</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyomexmeta.Logger.get_level">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">get_level</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">int</span><a class="headerlink" href="#pyomexmeta.Logger.get_level" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the value of the current log level</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyomexmeta.Logger.get_logger">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">get_logger</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#pyomexmeta.Logger" title="pyomexmeta.pyomexmeta.Logger"><span class="pre">pyomexmeta.pyomexmeta.Logger</span></a><a class="headerlink" href="#pyomexmeta.Logger.get_logger" title="Permalink to this definition"></a></dt>
+<dd><p>returns memory address of logger instance</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyomexmeta.Logger.info">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#pyomexmeta.Logger.info" title="Permalink to this definition"></a></dt>
+<dd><p>Log an info message</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyomexmeta.Logger.set_formatter">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">set_formatter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#pyomexmeta.Logger.set_formatter" title="Permalink to this definition"></a></dt>
+<dd><p>Format string for the logger</p>
+<p>See <a class="reference external" href="https://github.com/gabime/spdlog/wiki/3.-Custom-formatting#pattern-flags">here</a> for valid formatting codes</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyomexmeta.Logger.set_level">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">set_level</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">level</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pyomexmeta.pyomexmeta_api.eLogLevel</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#pyomexmeta.Logger.set_level" title="Permalink to this definition"></a></dt>
+<dd><p>Set the current log level.</p>
+<dl class="simple">
+<dt>Valid logging levels are:</dt><dd><ul class="simple">
+<li><p>eLogLevel.trace = 0</p></li>
+<li><p>eLogLevel.debug = 1</p></li>
+<li><p>eLogLevel.info = 2</p></li>
+<li><p>eLogLevel.warn = 3</p></li>
+<li><p>eLogLevel.err = 4</p></li>
+<li><p>eLogLevel.critical = 5</p></li>
+<li><p>eLogLevel.off = 6</p></li>
+</ul>
+</dd>
+</dl>
+<p>Only messages with a priority equal to
+or greater than the current log level
+will be shown.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyomexmeta.Logger.size">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">size</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">int</span><a class="headerlink" href="#pyomexmeta.Logger.size" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the number of logging message there are contained in this logger</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyomexmeta.Logger.trace">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">trace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#pyomexmeta.Logger.trace" title="Permalink to this definition"></a></dt>
+<dd><p>Log an trace message</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyomexmeta.Logger.warn">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">warn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#pyomexmeta.Logger.warn" title="Permalink to this definition"></a></dt>
+<dd><p>Log a warning message</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Ciaran Welsh.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

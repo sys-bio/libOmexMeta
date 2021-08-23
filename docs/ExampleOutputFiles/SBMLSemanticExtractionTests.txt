@@ -3,7 +3,7 @@ Running main() from ..\third_party\googletest\googletest\src\gtest_main.cc
 [----------] Global test environment set-up.
 [----------] 3 tests from SBMLSemanticExtractionTests
 [ RUN      ] SBMLSemanticExtractionTests.TestTwoCompartments
-[       OK ] SBMLSemanticExtractionTests.TestTwoCompartments (11 ms)
+[       OK ] SBMLSemanticExtractionTests.TestTwoCompartments (8 ms)
 [ RUN      ] SBMLSemanticExtractionTests.TestCompartmentSingleCompartment
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
@@ -126,9 +126,9 @@ local:SourceParticipant0005
     bqbiol:isPartOf <http://omex-library.org/AnAwesomeOmex.omex/Model1.xml#cytosol> .
 
 
-[       OK ] SBMLSemanticExtractionTests.TestReactionExtraction (33 ms)
-[----------] 3 tests from SBMLSemanticExtractionTests (47 ms total)
+[       OK ] SBMLSemanticExtractionTests.TestReactionExtraction (39 ms)
+[----------] 3 tests from SBMLSemanticExtractionTests (50 ms total)
 
 [----------] Global test environment tear-down
-[==========] 3 tests from 1 test suite ran. (47 ms total)
+[==========] 3 tests from 1 test suite ran. (50 ms total)
 [  PASSED  ] 3 tests.

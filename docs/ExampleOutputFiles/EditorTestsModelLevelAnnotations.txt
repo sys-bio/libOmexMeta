@@ -12,7 +12,7 @@ Running main() from ..\third_party\googletest\googletest\src\gtest_main.cc
     dc:creator <https://orcid.org/0000-1111-2222-3333> .
 
 
-[       OK ] EditorTestsModelLevelAnnotationsFromString.AddCreator (3 ms)
+[       OK ] EditorTestsModelLevelAnnotationsFromString.AddCreator (4 ms)
 [ RUN      ] EditorTestsModelLevelAnnotationsFromString.AddContributor
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix dc: <http://purl.org/dc/terms/> .
@@ -43,7 +43,7 @@ Running main() from ..\third_party\googletest\googletest\src\gtest_main.cc
     dc:created "2021-09-14"^^dc:W3CDTF .
 
 
-[       OK ] EditorTestsModelLevelAnnotationsFromString.AddDateCreated (1 ms)
+[       OK ] EditorTestsModelLevelAnnotationsFromString.AddDateCreated (2 ms)
 [ RUN      ] EditorTestsModelLevelAnnotationsFromString.AddDescription
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix dc: <http://purl.org/dc/terms/> .
@@ -66,7 +66,7 @@ Running main() from ..\third_party\googletest\googletest\src\gtest_main.cc
     bqmodel:isDescribedBy <https://identifiers.org/pubmed:27887851> .
 
 
-[       OK ] EditorTestsModelLevelAnnotationsFromString.AddPubmed (0 ms)
+[       OK ] EditorTestsModelLevelAnnotationsFromString.AddPubmed (1 ms)
 [ RUN      ] EditorTestsModelLevelAnnotationsFromString.AddParentModel
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix bqmodel: <http://biomodels.net/model-qualifiers/> .
@@ -91,7 +91,7 @@ Running main() from ..\third_party\googletest\googletest\src\gtest_main.cc
 
 
 [       OK ] EditorTestsModelLevelAnnotationsFromString.AddTaxon (1 ms)
-[----------] 7 tests from EditorTestsModelLevelAnnotationsFromString (8 ms total)
+[----------] 7 tests from EditorTestsModelLevelAnnotationsFromString (11 ms total)
 
 [----------] 7 tests from EditorTestsModelLevelAnnotationsFromFile
 [ RUN      ] EditorTestsModelLevelAnnotationsFromFile.AddCreator
@@ -103,17 +103,17 @@ rdf.getLocalUri(): http://omex-library.org/NewOmex.omex/NewModel.rdf#
 [ RUN      ] EditorTestsModelLevelAnnotationsFromFile.AddContributor
 [       OK ] EditorTestsModelLevelAnnotationsFromFile.AddContributor (1 ms)
 [ RUN      ] EditorTestsModelLevelAnnotationsFromFile.AddDescription
-[       OK ] EditorTestsModelLevelAnnotationsFromFile.AddDescription (1 ms)
+[       OK ] EditorTestsModelLevelAnnotationsFromFile.AddDescription (2 ms)
 [ RUN      ] EditorTestsModelLevelAnnotationsFromFile.AddPubmed
 [       OK ] EditorTestsModelLevelAnnotationsFromFile.AddPubmed (2 ms)
 [ RUN      ] EditorTestsModelLevelAnnotationsFromFile.AddParentModel
 [       OK ] EditorTestsModelLevelAnnotationsFromFile.AddParentModel (1 ms)
 [ RUN      ] EditorTestsModelLevelAnnotationsFromFile.AddDateCreated
-[       OK ] EditorTestsModelLevelAnnotationsFromFile.AddDateCreated (1 ms)
+[       OK ] EditorTestsModelLevelAnnotationsFromFile.AddDateCreated (2 ms)
 [ RUN      ] EditorTestsModelLevelAnnotationsFromFile.AddTaxon
 [       OK ] EditorTestsModelLevelAnnotationsFromFile.AddTaxon (1 ms)
-[----------] 7 tests from EditorTestsModelLevelAnnotationsFromFile (9 ms total)
+[----------] 7 tests from EditorTestsModelLevelAnnotationsFromFile (12 ms total)
 
 [----------] Global test environment tear-down
-[==========] 14 tests from 2 test suites ran. (17 ms total)
+[==========] 14 tests from 2 test suites ran. (23 ms total)
 [  PASSED  ] 14 tests.
