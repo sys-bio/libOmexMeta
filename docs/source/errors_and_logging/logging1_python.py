@@ -13,6 +13,8 @@ cellml = '''<?xml version=\"1.1\" encoding=\"UTF-8\"?>
 # oops - did a whoops. Parsing rdfxml as turtle
 rdf = RDF.from_string(cellml, syntax="turtle")  # See Python console for logging message
 
+assert len(Logger()) == 1
+
 # get the message as a object
 message = Logger()[0]
 
@@ -25,4 +27,9 @@ message_level = message.get_level()
 
 print("message_string: ", message_string)
 print("message_level: ", message_level)
+
+# now clear the logger
+Logger.clear()
+
+assert len(Logger()) == 0
 
