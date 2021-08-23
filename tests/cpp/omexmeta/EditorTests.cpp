@@ -627,12 +627,12 @@ TEST_F(EditorTests, StripAnnotationElements) {
 }
 
 TEST_F(EditorTests, CheckGetXmlWithValidSBML) {
-    Logger::getLogger()->setLevel(Logger::LogLevel::debug);
+    Logger::getLogger()->setLevel(LogLevel::debug);
     RDF rdf;
     std::cout << SBMLFactory::getSBML(SBML_SEMANTIC_EXTRACTION_MODEL) << std::endl;
     Editor editor = rdf.toEditor(SBMLFactory::getSBML(SBML_SEMANTIC_EXTRACTION_MODEL), false, true);
     ASSERT_FALSE( editor.getXml().empty());
-    Logger::getLogger()->setLevel(Logger::LogLevel::warn);
+    Logger::getLogger()->setLevel(LogLevel::warn);
 }
 
 TEST_F(EditorTests, CheckGetXmlWithInvalidSBML) {

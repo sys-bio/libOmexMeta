@@ -177,6 +177,22 @@ class eLogLevel:
     critical = 5
     off = 6
 
+    enum_items = [
+        "trace",
+        "debug",
+        "info",
+        "warning",
+        "error",
+        "critical",
+        "off"
+    ]
+
+    def __init__(self, level: int):
+        self.level = level
+
+    def __str__(self):
+        return self.enum_items[self.level]
+
 
 class eXmlType:
     SBML = 0
@@ -749,7 +765,7 @@ class PyOmexMetaAPI:
     # pyomexmeta api then the initialization is handled in the constructor for RDF.
 
     # Logger *Logger_getLogger()
-    logger_get_logger = utils.load_func("Logger_getLogger", [], ct.c_void_p)
+    logger_get_logger = utils.load_func("Logger_getLogger", [], ct.c_int64)
 
     # void Logger_setFormatter(const char* format)
     logger_set_formatter = utils.load_func("Logger_setFormatter", [ct.c_char_p], ct.c_void_p)
@@ -792,3 +808,21 @@ class PyOmexMetaAPI:
 
     # void Logger_critical(const char* message)
     logger_critical = utils.load_func("Logger_critical", [ct.c_char_p], ct.c_void_p)
+
+    #  void Logger_clear();
+    logger_clear = utils.load_func("Logger_clear", [], ct.c_void_p)
+
+    #  int Logger_size();
+    logger_size = utils.load_func("Logger_size", [], ct.c_int64)
+
+    #  Message *Logger_getMessageI(int idx);
+    logger_get_message_i = utils.load_func("Logger_getMessageI", [ct.c_int64], ct.c_int64)
+
+    #  int Message_getLevel(Message *message);
+    message_get_level = utils.load_func("Message_getLevel", [ct.c_int64], ct.c_int64)
+
+    # char *Message_getMessage(Message *message);
+    message_get_message = utils.load_func("Message_getMessage", [ct.c_int64], ct.c_int64)
+
+    # void Message_deleteMessage(Message *message);
+    message_delete_message = utils.load_func("Message_deleteMessage", [ct.c_int64], ct.c_void_p)

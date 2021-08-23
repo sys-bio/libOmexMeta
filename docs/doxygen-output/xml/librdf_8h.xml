@@ -247,6 +247,12 @@
         <childnode refid="27" relation="include">
         </childnode>
       </node>
+      <node id="43">
+        <label>src/redland/RedlandWrapper/src/include/redland/Message.h</label>
+        <link refid="Message_8h_source"/>
+        <childnode refid="42" relation="include">
+        </childnode>
+      </node>
       <node id="24">
         <label>src/redland/RedlandWrapper/src/include/redland/LibrdfModel.h</label>
         <link refid="LibrdfModel_8h_source"/>
@@ -311,6 +317,8 @@
         <childnode refid="7" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
         </childnode>
         <childnode refid="27" relation="include">
         </childnode>

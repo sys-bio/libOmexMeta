@@ -5,7 +5,7 @@ using namespace omexmeta;
 
 int main(){
 
-    Logger_setLevel(Logger::LogLevel::trace); // switch to trace log level;
+    Logger_setLevel(LogLevel::trace); // switch to trace log level;
     // you can also use the logger yourself, if needed;
     Logger_trace("trace message");
     Logger_info("info message");

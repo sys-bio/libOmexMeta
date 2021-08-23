@@ -245,8 +245,8 @@ namespace omexmeta {
 
     OMEXMETA_CAPI_EXPORT char *SingularAnnotation_getAbout(SingularAnnotation *singular_annotation);
 
-//    OMEXMETA_CAPI_EXPORT char *
-//    SingularAnnotation_str(SingularAnnotation *singular_annotation, const char *format);
+    //    OMEXMETA_CAPI_EXPORT char *
+    //    SingularAnnotation_str(SingularAnnotation *singular_annotation, const char *format);
 
     OMEXMETA_CAPI_EXPORT char *SingularAnnotation_getPredicate(SingularAnnotation *singular_annotation);
 
@@ -426,25 +426,25 @@ namespace omexmeta {
 
     OMEXMETA_CAPI_EXPORT int PersonalInformation_setMetaid(PersonalInformation *information, const char *metaid);
 
-    OMEXMETA_CAPI_EXPORT int StringVector_getSize(std::vector<std::string>* vec);
+    OMEXMETA_CAPI_EXPORT int StringVector_getSize(std::vector<std::string> *vec);
 
-    OMEXMETA_CAPI_EXPORT char* StringVector_getElementAtIdx(std::vector<std::string>* vec, int idx);
+    OMEXMETA_CAPI_EXPORT char *StringVector_getElementAtIdx(std::vector<std::string> *vec, int idx);
 
     OMEXMETA_CAPI_EXPORT void StringVector_delete(std::vector<std::string> *strVec);
 
-    OMEXMETA_CAPI_EXPORT int ResultsMap_getSize(ResultsMap* resultsMap);
+    OMEXMETA_CAPI_EXPORT int ResultsMap_getSize(ResultsMap *resultsMap);
 
-    OMEXMETA_CAPI_EXPORT std::vector<std::string>* ResultsMap_getStringVectorAt(ResultsMap* resultsMap, const char* key);
+    OMEXMETA_CAPI_EXPORT std::vector<std::string> *ResultsMap_getStringVectorAt(ResultsMap *resultsMap, const char *key);
 
-    OMEXMETA_CAPI_EXPORT std::vector<std::string>* ResultsMap_getKeys(ResultsMap* resultsMap);
+    OMEXMETA_CAPI_EXPORT std::vector<std::string> *ResultsMap_getKeys(ResultsMap *resultsMap);
 
-    OMEXMETA_CAPI_EXPORT void ResultsMap_delete(ResultsMap * resultsMap);
+    OMEXMETA_CAPI_EXPORT void ResultsMap_delete(ResultsMap *resultsMap);
 
     OMEXMETA_CAPI_EXPORT Logger *Logger_getLogger();
 
-    OMEXMETA_CAPI_EXPORT void Logger_setFormatter(const char* format);
+    OMEXMETA_CAPI_EXPORT void Logger_setFormatter(const char *format);
 
-    OMEXMETA_CAPI_EXPORT void Logger_setLevel(Logger::LogLevel level);
+    OMEXMETA_CAPI_EXPORT void Logger_setLevel(LogLevel level);
 
     OMEXMETA_CAPI_EXPORT int Logger_getLevel();
 
@@ -456,19 +456,42 @@ namespace omexmeta {
 
     OMEXMETA_CAPI_EXPORT void Logger_consoleLogger();
 
-    OMEXMETA_CAPI_EXPORT void Logger_fileLogger(const char*filename);
+    OMEXMETA_CAPI_EXPORT void Logger_fileLogger(const char *filename);
 
-    OMEXMETA_CAPI_EXPORT void Logger_info(const char* message);
+    OMEXMETA_CAPI_EXPORT void Logger_info(const char *message);
 
-    OMEXMETA_CAPI_EXPORT void Logger_trace(const char* message);
+    OMEXMETA_CAPI_EXPORT void Logger_trace(const char *message);
 
-    OMEXMETA_CAPI_EXPORT void Logger_debug(const char* message);
+    OMEXMETA_CAPI_EXPORT void Logger_debug(const char *message);
 
-    OMEXMETA_CAPI_EXPORT void Logger_warn(const char* message);
+    OMEXMETA_CAPI_EXPORT void Logger_warn(const char *message);
 
-    OMEXMETA_CAPI_EXPORT void Logger_error(const char* message);
+    OMEXMETA_CAPI_EXPORT void Logger_error(const char *message);
 
-    OMEXMETA_CAPI_EXPORT void Logger_critical(const char* message);
+    OMEXMETA_CAPI_EXPORT void Logger_critical(const char *message);
+
+    /**
+     * @brief Clear the logging messages - aka put size back to 0.
+     */
+    OMEXMETA_CAPI_EXPORT void Logger_clear();
+
+    /**
+     * @brief get number of logged messages
+     */
+    OMEXMETA_CAPI_EXPORT int Logger_size();
+
+    /**
+     * @brief get the ith log message.
+     * @param idx between 0 and Logger_size() - 1.
+     * @returns ith message for logger or empty string if failed.
+     */
+    OMEXMETA_CAPI_EXPORT Message *Logger_getMessageI(int idx);
+
+    OMEXMETA_CAPI_EXPORT int Message_getLevel(Message *message);
+
+    OMEXMETA_CAPI_EXPORT char *Message_getMessage(Message *message);
+
+    OMEXMETA_CAPI_EXPORT void Message_deleteMessage(Message *message);
 
 
 #ifdef __cplusplus

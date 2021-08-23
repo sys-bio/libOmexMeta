@@ -15,6 +15,7 @@
     <innerfile refid="LibrdfUri_8cpp">LibrdfUri.cpp</innerfile>
     <innerfile refid="LibrdfWorld_8cpp">LibrdfWorld.cpp</innerfile>
     <innerfile refid="Logger_8cpp">Logger.cpp</innerfile>
+    <innerfile refid="Message_8cpp">Message.cpp</innerfile>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
