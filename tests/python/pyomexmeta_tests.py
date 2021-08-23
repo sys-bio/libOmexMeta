@@ -1,9 +1,12 @@
 import libcombine
 import os
+from os.path import join, exists, dirname, abspath
+from os import remove, getcwd
 import requests
 import sys
 import typing
 import unittest
+
 
 # add the source directory to path so we can import code we are testing
 _PYTHON_TESTS_DIR = os.path.dirname(__file__)
@@ -76,6 +79,7 @@ class TestRDF(unittest.TestCase):
     sbml_file = os.path.join(os.getcwd(), "sbml_file_for_tests.sbml")
 
     sqlite_fname = os.path.join(os.path.dirname(__file__), "sqlite_db_from_python.db")
+    logger_file = os.path.join(os.path.abspath(os.path.dirname(__file__)), "log.log")
 
     def setUp(self) -> None:
         with open(self.sbml_file, "w") as f:
@@ -84,14 +88,20 @@ class TestRDF(unittest.TestCase):
     def tearDown(self) -> None:
         teardown = True
         if teardown:
-            if os.path.isfile(self.sbml_file):
-                os.remove(self.sbml_file)
-
             try:
+                if os.path.isfile(self.sbml_file):
+                    os.remove(self.sbml_file)
+
                 if os.path.isfile(self.sqlite_fname):
                     os.remove(self.sqlite_fname)
+
+                if os.path.isfile(self.logger_file):
+                    os.remove(self.logger_file)
+
             except PermissionError:
                 pass
+
+
 
     def test_crete_new_rdf_obj(self):
         rdf = RDF()
@@ -1579,12 +1589,21 @@ class DrawTests(unittest.TestCase):
 
 
 class LoggerTests(unittest.TestCase):
+    logger_file = os.path.join(os.path.abspath(os.path.dirname(__file__)), "log.log")
 
     def setUp(self) -> None:
         pass
 
     def tearDown(self) -> None:
-        pass
+        teardown = True
+        if teardown:
+            try:
+                if os.path.isfile(self.logger_file):
+                    os.remove(self.logger_file)
+
+            except PermissionError:
+                pass
+
 
     def test_default_level(self):
         actual = Logger.get_level()
@@ -1596,45 +1615,96 @@ class LoggerTests(unittest.TestCase):
         Logger.warn("Warnings are displayed to console")
 
     def test_file_logger(self):
-        fname = os.path.join(os.path.abspath(os.path.dirname(__file__)), "log.log")
-        print(fname)
-        Logger.file_logger(fname)
+        print(self.logger_file)
+        Logger.file_logger(self.logger_file)
         Logger.critical("A critical message that you just must see")
-        if os.path.isfile(fname):
-            try:
-                os.remove(fname)
-            except OSError as e:
-                Logger.warn(str(e))
 
-    def test_f(self):
-        from os.path import join, exists, dirname, abspath
-        from os import remove
-        from pyomexmeta import RDF, Logger
 
-        cellml = '''<?xml version=\"1.1\" encoding=\"UTF-8\"?>
-                <model xmlns=\"http://www.cellml.org/cellml/1.1#\" xmlns:cmeta=\"http://www.cellml.org/metadata/1.0#\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xmlns:bqs=\"http://www.cellml.org/bqs/1.0#\" xmlns:semsim=\"http://bime.uw.edu/semsim/#\" xmlns:dc=\"http://purl.org/dc/terms/\" xmlns:vCard=\"http://www.w3.org/2001/vcard-rdf/3.0#\" name=\"annotation_examples\" cmeta:id=\"annExamples\">
-                  <component name=\"main\">
-                    <variable cmeta:id=\"main.Volume\" initial_value=\"100\" name=\"Volume\" units=\"dimensionless\" />
-                    <variable cmeta:id=\"main.MembraneVoltage\" initial_value=\"-80\" name=\"MembraneVoltage\" units=\"dimensionless\" />
-                    <variable cmeta:id=\"main.ReactionRate\" initial_value=\"1\" name=\"ReactionRate\" units=\"dimensionless\" />
-                  </component>
-                </model>'''
-
-        logger_file = "log.log"
-        print("check logger_file: ", logger_file)
-
-        # if already exists, remove
-        if exists(logger_file):
-            remove(logger_file)
-        assert not exists(logger_file)
+    def test_logger_file_flush_none(self):
+        print("")
+        print("logger file is: ", self.logger_file)
 
         # activate the file logger
-        Logger.file_logger(logger_file)
-        rdf = RDF.from_string(cellml, syntax="turtle")  # nothing is emitted to console
+        Logger.file_logger(self.logger_file)
+        Logger.set_formatter("%v") # no fancy stuff
+        rdf1 = RDF.from_string(TestStrings.cellml, syntax="turtle")  # nothing is emitted to console
+        # Logger.flush()
+
+        rdf2 = RDF.from_string(TestStrings.cellml, syntax="turtle")  # nothing is emitted to console
+        # Logger.flush()
 
         # now check logger_file
-        with open(logger_file, 'r') as file:
-            print(file.read())
+        # windows hangs on to files so we skip these tests on windows
+        if sys.platform != "win32":
+            if os.path.isfile(self.logger_file):
+                os.remove(self.logger_file)
+            with open(self.logger_file, 'r') as file:
+                # empty without flush
+                self.assertTrue(file.read() == "")
+
+    def test_logger_file_flush_1(self):
+        print("")
+        print("logger file is: ", self.logger_file)
+
+        # activate the file logger
+        Logger.file_logger(self.logger_file)
+        Logger.set_formatter("%v") # no fancy stuff
+        rdf1 = RDF.from_string(TestStrings.cellml, syntax="turtle")  # nothing is emitted to console
+        Logger.flush()
+
+        rdf2 = RDF.from_string(TestStrings.cellml, syntax="turtle")  # nothing is emitted to console
+        # Logger.flush()
+
+        # now check logger_file
+        # windows hangs on to files so we skip these tests on windows
+        if sys.platform != "win32":
+            if os.path.isfile(self.logger_file):
+                os.remove(self.logger_file)
+            with open(self.logger_file, 'r') as file:
+                self.assertEqual(file.readline(), "syntax error at '<' ")
+
+    def test_logger_file_flush_2(self):
+        print("")
+
+        self.logger_file = join(getcwd(), "log.log")
+        print("logger file is: ", self.logger_file)
+
+        # activate the file logger
+        Logger.file_logger(self.logger_file)
+        Logger.set_formatter("%v") # no fancy stuff
+        rdf1 = RDF.from_string(TestStrings.cellml, syntax="turtle")  # nothing is emitted to console
+        Logger.flush()
+
+        rdf2 = RDF.from_string(TestStrings.cellml, syntax="turtle")  # nothing is emitted to console
+        Logger.flush()
+
+        # now check logger_file
+        # windows hangs on to files so we skip these tests on windows
+        if sys.platform != "win32":
+            if os.path.isfile(self.logger_file):
+                os.remove(self.logger_file)
+            with open(self.logger_file, 'r') as file:
+                self.assertEqual(file.readline(), "syntax error at '<' ")
+
+    def test_logger_file_flush_once_at_end(self):
+        print("")
+        print("logger file is: ", self.logger_file)
+
+        # activate the file logger
+        Logger.file_logger(self.logger_file)
+        Logger.set_formatter("%v") # no fancy stuff
+        rdf1 = RDF.from_string(TestStrings.cellml, syntax="turtle")  # nothing is emitted to console
+
+        rdf2 = RDF.from_string(TestStrings.cellml, syntax="turtle")  # nothing is emitted to console
+        Logger.flush()
+
+        # now check logger_file
+        # windows hangs on to files so we skip these tests on windows
+        if sys.platform != "win32":
+            if os.path.isfile(self.logger_file):
+                os.remove(self.logger_file)
+            with open(self.logger_file, 'r') as file:
+                self.assertEqual(file.readline(), "syntax error at '<' ")
 
     def test_set_logging_level(self):
         Logger.set_level(eLogLevel.info)

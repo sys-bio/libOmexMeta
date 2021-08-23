@@ -483,6 +483,35 @@ TEST_F(RDFTests, TestBagConversion) {
     ASSERT_TRUE(RDF::equals(&rdf, expected, "turtle", true));
 }
 
+TEST_F(RDFTests, CheckFileLoggerWithFlushTwice){
+    Logger::getLogger()->setFormatter("%v");
+    std::string badCellml = "<?xml version=\"1.1\" encoding=\"UTF-8\"?>\n"
+                            "        <model xmlns=\"http://www.cellml.org/cellml/1.1#\" xmlns:cmeta=\"http://www.cellml.org/metadata/1.0#\" xmlns:xl$          <component name=\"main\">\n"
+                            "            <variable cmeta:id=\"main.Volume\" initial_value=\"100\" name=\"Volume\" units=\"dimensionless\" />\n"
+                            "            <variable cmeta:id=\"main.MembraneVoltage\" initial_value=\"-80\" name=\"MembraneVoltage\" units=\"dimensio$            <variable cmeta:id=\"main.ReactionRate\" initial_value=\"1\" name=\"ReactionRate\" units=\"dimensionless\" $          </component>\n"
+                            "        </model>";
+    std::string expected = "syntax error at '<'";
+    std::filesystem::path p = std::filesystem::current_path() / "brokenCellml.cellml";
+    std::cout << p << std::endl;
+    Logger::getLogger()->fileLogger(p);
+    RDF rdf1 = RDF::fromString(badCellml, "turtle");
+    Logger::getLogger()->flush();
+    RDF rdf2 = RDF::fromString(badCellml, "turtle");
+    Logger::getLogger()->flush();
+
+    std::ifstream istr(p);
+    for (std::string s; std::getline(istr, s); ){
+        // both lines are "syntax error at '<'"
+        ASSERT_STREQ(expected.c_str(), s.c_str());
+    }
+
+    try {
+        std::filesystem::remove(p);
+    } catch (std::exception &e){
+        // windows likes to hang on to files (annoying)
+    }
+
+}
 
 
 class ParserReadTesReadFromFileHasPrefixesTests : public ::testing::Test {
