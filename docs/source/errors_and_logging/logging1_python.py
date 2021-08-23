@@ -21,7 +21,7 @@ message = Logger()[0]
 # print as string
 print(message)
 
-# or collect the message / level as objects
+# or collect the message content / level as objects
 message_string  = message.get_message()
 message_level = message.get_level()
 
