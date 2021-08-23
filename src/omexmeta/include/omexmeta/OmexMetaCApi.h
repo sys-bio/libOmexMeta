@@ -487,6 +487,10 @@ namespace omexmeta {
      */
     OMEXMETA_CAPI_EXPORT Message *Logger_getMessageI(int idx);
 
+    OMEXMETA_CAPI_EXPORT void Logger_flush();
+
+    OMEXMETA_CAPI_EXPORT void Logger_flushOn(int level);
+
     OMEXMETA_CAPI_EXPORT int Message_getLevel(Message *message);
 
     OMEXMETA_CAPI_EXPORT char *Message_getMessage(Message *message);

@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libomexmeta
-   &#160;<span id="projectnumber">1.2.12</span>
+   &#160;<span id="projectnumber">1.2.13</span>
    </div>
    <div id="projectbrief">Annotations for models in systems biology</div>
   </td>
@@ -181,37 +181,40 @@ $(function() {
 <div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160; </div>
 <div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;        std::vector&lt;Message&gt; <a class="code" href="classredland_1_1Logger.html#aa7ad499cadd4e05655bf63f46e0db35a">getMessages</a>() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160; </div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160; </div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;        <a class="code" href="classredland_1_1Logger.html">Logger</a>();</div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160; </div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;        <span class="keyword">static</span> <a class="code" href="classredland_1_1Logger.html">Logger</a> *inst_;<span class="comment">// The one, single instance</span></div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160; </div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;        std::filesystem::path filepath_;</div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160; </div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;        <span class="keywordtype">int</span> backtraceNum = 32;</div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160; </div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;        std::string formatterPattern = <span class="stringliteral">&quot;[%H:%M:%S %z] %^ %l %g:%# %v %$&quot;</span>;</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160; </div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;        LogLevel level_ = LogLevel::warn;</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160; </div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;        <span class="keywordtype">bool</span> shouldBacktrace_ = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160; </div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;        std::vector&lt;Message&gt; messages_;</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;    };</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160; </div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160; </div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;<span class="comment">// quickly set logging levels</span></div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;<span class="preprocessor">#define LOGGER_SET_INFO() Logger::getLogger()-&gt;setLevel(LogLevel::info);</span></div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;<span class="preprocessor">#define LOGGER_SET_TRACE() Logger::getLogger()-&gt;setLevel(LogLevel::trace);</span></div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;<span class="preprocessor">#define LOGGER_SET_DEBUG() Logger::getLogger()-&gt;setLevel(LogLevel::debug);</span></div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;<span class="preprocessor">#define LOGGER_SET_WARN() Logger::getLogger()-&gt;setLevel(LogLevel::warn);</span></div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;<span class="preprocessor">#define LOGGER_SET_ERROR() Logger::getLogger()-&gt;setLevel(LogLevel::err);</span></div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;<span class="preprocessor">#define LOGGER_SET_CRITICAL() Logger::getLogger()-&gt;setLevel(LogLevel::critical);</span></div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classredland_1_1Logger.html#a950004905d3b16ed243ef81b7150a9e5">flush</a>();</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160; </div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classredland_1_1Logger.html#a63cf9aadf21df23188b4770208695669">flushOn</a>(LogLevel level);</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160; </div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;        <a class="code" href="classredland_1_1Logger.html">Logger</a>();</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160; </div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;        <span class="keyword">static</span> <a class="code" href="classredland_1_1Logger.html">Logger</a> *inst_;<span class="comment">// The one, single instance</span></div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160; </div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;        std::filesystem::path filepath_;</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160; </div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;        <span class="keywordtype">int</span> backtraceNum = 32;</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160; </div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;        std::string formatterPattern = <span class="stringliteral">&quot;[%H:%M:%S %z] %^ %l %g:%# %v %$&quot;</span>;</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160; </div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;        LogLevel level_ = LogLevel::warn;</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160; </div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;        <span class="keywordtype">bool</span> shouldBacktrace_ = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160; </div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;        std::vector&lt;Message&gt; messages_;</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;    };</div>
 <div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160; </div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;}<span class="comment">// namespace redland</span></div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160; </div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;<span class="preprocessor">#endif</span><span class="comment">//LIBOMEXMETA_LOGGER2_H</span></div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160; </div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;<span class="comment">// quickly set logging levels</span></div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;<span class="preprocessor">#define LOGGER_SET_INFO() Logger::getLogger()-&gt;setLevel(LogLevel::info);</span></div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;<span class="preprocessor">#define LOGGER_SET_TRACE() Logger::getLogger()-&gt;setLevel(LogLevel::trace);</span></div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;<span class="preprocessor">#define LOGGER_SET_DEBUG() Logger::getLogger()-&gt;setLevel(LogLevel::debug);</span></div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;<span class="preprocessor">#define LOGGER_SET_WARN() Logger::getLogger()-&gt;setLevel(LogLevel::warn);</span></div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;<span class="preprocessor">#define LOGGER_SET_ERROR() Logger::getLogger()-&gt;setLevel(LogLevel::err);</span></div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;<span class="preprocessor">#define LOGGER_SET_CRITICAL() Logger::getLogger()-&gt;setLevel(LogLevel::critical);</span></div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160; </div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;}<span class="comment">// namespace redland</span></div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160; </div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;<span class="preprocessor">#endif</span><span class="comment">//LIBOMEXMETA_LOGGER2_H</span></div>
 <div class="ttc" id="aclassredland_1_1Logger_html"><div class="ttname"><a href="classredland_1_1Logger.html">redland::Logger</a></div><div class="ttdoc">Logging class for libOmexMeta. Implemented as a singleton.</div><div class="ttdef"><b>Definition:</b> Logger.h:73</div></div>
 <div class="ttc" id="aclassredland_1_1Logger_html_a1d5985081e4c2035aa848a2e3b88decf"><div class="ttname"><a href="classredland_1_1Logger.html#a1d5985081e4c2035aa848a2e3b88decf">redland::Logger::getLevel</a></div><div class="ttdeci">LogLevel getLevel()</div><div class="ttdoc">returns the current logging level</div><div class="ttdef"><b>Definition:</b> Logger.cpp:107</div></div>
 <div class="ttc" id="aclassredland_1_1Logger_html_a244494ce1d28d0b5e3c27de7e462f8e2"><div class="ttname"><a href="classredland_1_1Logger.html#a244494ce1d28d0b5e3c27de7e462f8e2">redland::Logger::warn</a></div><div class="ttdeci">void warn(const std::string &amp;message)</div><div class="ttdoc">log a warning message to the currently active logger</div><div class="ttdef"><b>Definition:</b> Logger.cpp:139</div></div>
@@ -220,13 +223,15 @@ $(function() {
 <div class="ttc" id="aclassredland_1_1Logger_html_a48844ea4f9eecbb5c450b35a96cbdda4"><div class="ttname"><a href="classredland_1_1Logger.html#a48844ea4f9eecbb5c450b35a96cbdda4">redland::Logger::enableBacktrace</a></div><div class="ttdeci">void enableBacktrace(int num)</div><div class="ttdoc">enable the backtrace logging feature - display the last</div><div class="ttdef"><b>Definition:</b> Logger.cpp:111</div></div>
 <div class="ttc" id="aclassredland_1_1Logger_html_a61b92676954488db03b3c3ebfbd11fe0"><div class="ttname"><a href="classredland_1_1Logger.html#a61b92676954488db03b3c3ebfbd11fe0">redland::Logger::disableBacktrace</a></div><div class="ttdeci">void disableBacktrace()</div><div class="ttdoc">disable the backtrace feature</div><div class="ttdef"><b>Definition:</b> Logger.cpp:117</div></div>
 <div class="ttc" id="aclassredland_1_1Logger_html_a63c1f161280c140b69b3db08389a1137"><div class="ttname"><a href="classredland_1_1Logger.html#a63c1f161280c140b69b3db08389a1137">redland::Logger::consoleLogger</a></div><div class="ttdeci">void consoleLogger()</div><div class="ttdoc">create and switch to a console logger</div><div class="ttdef"><b>Definition:</b> Logger.cpp:34</div></div>
+<div class="ttc" id="aclassredland_1_1Logger_html_a63cf9aadf21df23188b4770208695669"><div class="ttname"><a href="classredland_1_1Logger.html#a63cf9aadf21df23188b4770208695669">redland::Logger::flushOn</a></div><div class="ttdeci">void flushOn(LogLevel level)</div><div class="ttdoc">flush logger content for</div><div class="ttdef"><b>Definition:</b> Logger.cpp:176</div></div>
 <div class="ttc" id="aclassredland_1_1Logger_html_a6d50761ac27eb3411396cdd18a9c05a9"><div class="ttname"><a href="classredland_1_1Logger.html#a6d50761ac27eb3411396cdd18a9c05a9">redland::Logger::critical</a></div><div class="ttdeci">void critical(const std::string &amp;message)</div><div class="ttdoc">log a critical message to the currently active logger</div><div class="ttdef"><b>Definition:</b> Logger.cpp:149</div></div>
 <div class="ttc" id="aclassredland_1_1Logger_html_a7736a74d653953cb3248f20706c0b9f1"><div class="ttname"><a href="classredland_1_1Logger.html#a7736a74d653953cb3248f20706c0b9f1">redland::Logger::error</a></div><div class="ttdeci">void error(const std::string &amp;message)</div><div class="ttdoc">log a error message to the currently active logger</div><div class="ttdef"><b>Definition:</b> Logger.cpp:144</div></div>
 <div class="ttc" id="aclassredland_1_1Logger_html_a7ae9f6e2d9c6d143192dd7253acea479"><div class="ttname"><a href="classredland_1_1Logger.html#a7ae9f6e2d9c6d143192dd7253acea479">redland::Logger::setLevel</a></div><div class="ttdeci">void setLevel(LogLevel level)</div><div class="ttdoc">set the current logging level</div><div class="ttdef"><b>Definition:</b> Logger.cpp:102</div></div>
 <div class="ttc" id="aclassredland_1_1Logger_html_a83c2fde7dc2b6547053d690e63c0f73d"><div class="ttname"><a href="classredland_1_1Logger.html#a83c2fde7dc2b6547053d690e63c0f73d">redland::Logger::isConsoleLogger</a></div><div class="ttdeci">bool isConsoleLogger</div><div class="ttdoc">indicator, true when the console logger is active</div><div class="ttdef"><b>Definition:</b> Logger.h:179</div></div>
 <div class="ttc" id="aclassredland_1_1Logger_html_a8e48332423e589a5e11c8e6ecdd16bf1"><div class="ttname"><a href="classredland_1_1Logger.html#a8e48332423e589a5e11c8e6ecdd16bf1">redland::Logger::debug</a></div><div class="ttdeci">void debug(const std::string &amp;message)</div><div class="ttdoc">log a debug message to the currently active logger</div><div class="ttdef"><b>Definition:</b> Logger.cpp:134</div></div>
+<div class="ttc" id="aclassredland_1_1Logger_html_a950004905d3b16ed243ef81b7150a9e5"><div class="ttname"><a href="classredland_1_1Logger.html#a950004905d3b16ed243ef81b7150a9e5">redland::Logger::flush</a></div><div class="ttdeci">void flush()</div><div class="ttdoc">flush logger content for all levels</div><div class="ttdef"><b>Definition:</b> Logger.cpp:172</div></div>
 <div class="ttc" id="aclassredland_1_1Logger_html_a9bc7671c63a3d7c3953a4d65d8570936"><div class="ttname"><a href="classredland_1_1Logger.html#a9bc7671c63a3d7c3953a4d65d8570936">redland::Logger::logger</a></div><div class="ttdeci">LoggerPtr logger</div><div class="ttdoc">reference to the currently active logger</div><div class="ttdef"><b>Definition:</b> Logger.h:169</div></div>
-<div class="ttc" id="aclassredland_1_1Logger_html_aa7ad499cadd4e05655bf63f46e0db35a"><div class="ttname"><a href="classredland_1_1Logger.html#aa7ad499cadd4e05655bf63f46e0db35a">redland::Logger::getMessages</a></div><div class="ttdeci">std::vector&lt; Message &gt; getMessages() const</div><div class="ttdoc">get the vector of messages logged so far.</div><div class="ttdef"><b>Definition:</b> Logger.cpp:167</div></div>
+<div class="ttc" id="aclassredland_1_1Logger_html_aa7ad499cadd4e05655bf63f46e0db35a"><div class="ttname"><a href="classredland_1_1Logger.html#aa7ad499cadd4e05655bf63f46e0db35a">redland::Logger::getMessages</a></div><div class="ttdeci">std::vector&lt; Message &gt; getMessages() const</div><div class="ttdoc">get the vector of messages logged so far.</div><div class="ttdef"><b>Definition:</b> Logger.cpp:168</div></div>
 <div class="ttc" id="aclassredland_1_1Logger_html_ac0d3043e20448acf27088756943e6487"><div class="ttname"><a href="classredland_1_1Logger.html#ac0d3043e20448acf27088756943e6487">redland::Logger::dumpBacktrace</a></div><div class="ttdeci">void dumpBacktrace()</div><div class="ttdoc">dump backtrace messages when called</div><div class="ttdef"><b>Definition:</b> Logger.cpp:121</div></div>
 <div class="ttc" id="aclassredland_1_1Logger_html_ac358531893ec79d169ec449aae2cc5c0"><div class="ttname"><a href="classredland_1_1Logger.html#ac358531893ec79d169ec449aae2cc5c0">redland::Logger::setFormatter</a></div><div class="ttdeci">void setFormatter(const std::string &amp;format)</div><div class="ttdoc">formatter strings use the {fmt} library. See documentation here: https://fmt.dev/latest/index....</div><div class="ttdef"><b>Definition:</b> Logger.cpp:97</div></div>
 <div class="ttc" id="aclassredland_1_1Logger_html_acfe5e473ffe0cb34b45ab69ab7675358"><div class="ttname"><a href="classredland_1_1Logger.html#acfe5e473ffe0cb34b45ab69ab7675358">redland::Logger::isFileLogger</a></div><div class="ttdeci">bool isFileLogger</div><div class="ttdoc">indicator, true when the file logger is active</div><div class="ttdef"><b>Definition:</b> Logger.h:174</div></div>

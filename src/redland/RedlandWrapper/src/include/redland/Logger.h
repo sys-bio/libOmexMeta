@@ -207,6 +207,15 @@ namespace redland {
          */
         std::vector<Message> getMessages() const;
 
+        /**
+         * @brief flush logger content for all levels
+         */
+        void flush();
+
+        /**
+         * @brief flush logger content for @param level
+         */
+        void flushOn(LogLevel level);
 
     private:
         /**

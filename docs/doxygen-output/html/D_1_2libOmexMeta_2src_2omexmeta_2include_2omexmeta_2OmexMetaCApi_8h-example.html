@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libomexmeta
-   &#160;<span id="projectnumber">1.2.12</span>
+   &#160;<span id="projectnumber">1.2.13</span>
    </div>
    <div id="projectbrief">Annotations for models in systems biology</div>
   </td>
@@ -508,6 +508,10 @@ $(function() {
 <div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">int</span> <a name="a16"></a><a class="code" href="namespaceomexmeta.html#a061d1e87254a58591be4336669762958">Logger_size</a>();</div>
 <div class="line"> </div>
 <div class="line">    OMEXMETA_CAPI_EXPORT Message *<a name="a17"></a><a class="code" href="namespaceomexmeta.html#a0bccdc9cd01a73aedeb5cc8a585daccb">Logger_getMessageI</a>(<span class="keywordtype">int</span> idx);</div>
+<div class="line"> </div>
+<div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">void</span> Logger_flush();</div>
+<div class="line"> </div>
+<div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">void</span> Logger_flushOn(<span class="keywordtype">int</span> level);</div>
 <div class="line"> </div>
 <div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">int</span> Message_getLevel(Message *message);</div>
 <div class="line"> </div>

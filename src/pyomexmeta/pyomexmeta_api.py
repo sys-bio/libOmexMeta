@@ -818,6 +818,12 @@ class PyOmexMetaAPI:
     #  Message *Logger_getMessageI(int idx);
     logger_get_message_i = utils.load_func("Logger_getMessageI", [ct.c_int64], ct.c_int64)
 
+    # void Logger_flush();
+    logger_flush = utils.load_func("Logger_flush", [], ct.c_void_p)
+
+    # void Logger_flushOn(int level);
+    logger_flush_on = utils.load_func("Logger_flushOn", [ct.c_int64], ct.c_void_p)
+
     #  int Message_getLevel(Message *message);
     message_get_level = utils.load_func("Message_getLevel", [ct.c_int64], ct.c_int64)
 

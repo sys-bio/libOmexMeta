@@ -2697,4 +2697,12 @@ class Logger:
         """Returns the number of logging message there are contained in this logger"""
         return _pyom.logger_size()
 
+    @staticmethod
+    def flush() -> None:
+        """Flush the content in the current logger to disk"""
+        _pyom.logger_flush()
 
+    @staticmethod
+    def flush_on(level: eLogLevel) -> None:
+        """Flush content in the current logger with log level `level` to disk"""
+        _pyom.logger_flush_on(level.level)

@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libomexmeta
-   &#160;<span id="projectnumber">1.2.12</span>
+   &#160;<span id="projectnumber">1.2.13</span>
    </div>
    <div id="projectbrief">Annotations for models in systems biology</div>
   </td>
@@ -503,19 +503,23 @@ $(function() {
 <div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160; </div>
 <div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;    OMEXMETA_CAPI_EXPORT <a class="code" href="classredland_1_1Message.html">Message</a> *<a class="code" href="namespaceomexmeta.html#a0bccdc9cd01a73aedeb5cc8a585daccb">Logger_getMessageI</a>(<span class="keywordtype">int</span> idx);</div>
 <div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160; </div>
-<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;    OMEXMETA_CAPI_EXPORT <span class="keywordtype">int</span> Message_getLevel(<a class="code" href="classredland_1_1Message.html">Message</a> *message);</div>
+<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;    OMEXMETA_CAPI_EXPORT <span class="keywordtype">void</span> Logger_flush();</div>
 <div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160; </div>
-<div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160;    OMEXMETA_CAPI_EXPORT <span class="keywordtype">char</span> *Message_getMessage(<a class="code" href="classredland_1_1Message.html">Message</a> *message);</div>
+<div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160;    OMEXMETA_CAPI_EXPORT <span class="keywordtype">void</span> Logger_flushOn(<span class="keywordtype">int</span> level);</div>
 <div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160; </div>
-<div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160;    OMEXMETA_CAPI_EXPORT <span class="keywordtype">void</span> Message_deleteMessage(<a class="code" href="classredland_1_1Message.html">Message</a> *message);</div>
+<div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160;    OMEXMETA_CAPI_EXPORT <span class="keywordtype">int</span> Message_getLevel(<a class="code" href="classredland_1_1Message.html">Message</a> *message);</div>
 <div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160; </div>
-<div class="line"><a name="l00496"></a><span class="lineno">  496</span>&#160; </div>
-<div class="line"><a name="l00497"></a><span class="lineno">  497</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160;    }</div>
-<div class="line"><a name="l00499"></a><span class="lineno">  499</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160;}<span class="comment">// namespace omexmeta</span></div>
-<div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160; </div>
-<div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160;<span class="preprocessor">#endif</span><span class="comment">//LIBOMEXMETA_OMEXMETACAPI_H</span></div>
+<div class="line"><a name="l00496"></a><span class="lineno">  496</span>&#160;    OMEXMETA_CAPI_EXPORT <span class="keywordtype">char</span> *Message_getMessage(<a class="code" href="classredland_1_1Message.html">Message</a> *message);</div>
+<div class="line"><a name="l00497"></a><span class="lineno">  497</span>&#160; </div>
+<div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160;    OMEXMETA_CAPI_EXPORT <span class="keywordtype">void</span> Message_deleteMessage(<a class="code" href="classredland_1_1Message.html">Message</a> *message);</div>
+<div class="line"><a name="l00499"></a><span class="lineno">  499</span>&#160; </div>
+<div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160; </div>
+<div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160;    }</div>
+<div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160;}<span class="comment">// namespace omexmeta</span></div>
+<div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160; </div>
+<div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;<span class="preprocessor">#endif</span><span class="comment">//LIBOMEXMETA_OMEXMETACAPI_H</span></div>
 <div class="ttc" id="aclassomexmeta_1_1EnergyDiff_html"><div class="ttname"><a href="classomexmeta_1_1EnergyDiff.html">omexmeta::EnergyDiff</a></div><div class="ttdef"><b>Definition:</b> EnergyDiff.h:24</div></div>
 <div class="ttc" id="aclassomexmeta_1_1PersonalInformation_html"><div class="ttname"><a href="classomexmeta_1_1PersonalInformation.html">omexmeta::PersonalInformation</a></div><div class="ttdoc">add personal information to the model as a composite annotation.</div><div class="ttdef"><b>Definition:</b> PersonalInformation.h:29</div></div>
 <div class="ttc" id="aclassomexmeta_1_1PhysicalProperty_html"><div class="ttname"><a href="classomexmeta_1_1PhysicalProperty.html">omexmeta::PhysicalProperty</a></div><div class="ttdef"><b>Definition:</b> PhysicalProperty.h:23</div></div>

@@ -54,7 +54,7 @@ namespace omexmeta {
      *  RDF methods
      */
 
-    int *functionThatReturnsNullptr(){
+    int *functionThatReturnsNullptr() {
         return nullptr;
     };
 
@@ -188,7 +188,7 @@ namespace omexmeta {
             return rOut;
         } catch (std::exception &error) {
             setLastError(error.what());
-            ResultsMap* r = new ResultsMap{};
+            ResultsMap *r = new ResultsMap{};
             return r;
         }
     }
@@ -1684,37 +1684,55 @@ namespace omexmeta {
         }
     }
 
-    void Logger_clear(){
+    void Logger_clear() {
         try {
             Logger::getLogger()->clear();
-        } catch (std::exception &e){
+        } catch (std::exception &e) {
             setLastError(e.what());
         }
     }
 
-    int Logger_size(){
-       try {
+    int Logger_size() {
+        try {
             return Logger::getLogger()->size();
         } catch (std::exception &e) {
-           setLastError(e.what());
-           return -1;
-       }
+            setLastError(e.what());
+            return -1;
+        }
     }
 
-    Message* Logger_getMessageI(int idx){
+    Message *Logger_getMessageI(int idx) {
         try {
             Message *message = new Message;
             Message msg = (*Logger::getLogger())[idx];
             message->setLevel(msg.getLevel());
             message->setMessage(msg.getMessage());
             return message;
-        } catch (std::exception &e){
+        } catch (std::exception &e) {
             setLastError(e.what());
             return nullptr;
         }
     }
 
-    char* Message_getMessage(Message* message){
+    void Logger_flush() {
+        try {
+            Logger::getLogger()->flush();
+        } catch (std::exception &e) {
+            setLastError(e.what());
+        }
+    }
+
+    void Logger_flushOn(int level) {
+        try {
+            Logger::getLogger()->flushOn((LogLevel)level);
+        } catch (std::exception &e) {
+            setLastError(e.what());
+            -1;
+        }
+    }
+
+
+    char *Message_getMessage(Message *message) {
         try {
             const std::string &str = message->getMessage();
             char *cstr = (char *) malloc((str.size() + 1) * sizeof(char *));
@@ -1725,22 +1743,21 @@ namespace omexmeta {
         }
     }
 
-    void Message_deleteMessage(Message* message){
-        if (message){
+    void Message_deleteMessage(Message *message) {
+        if (message) {
             delete message;
         }
     }
 
-    int Message_getLevel(Message* message){
-       try {
+    int Message_getLevel(Message *message) {
+        try {
             int level = message->getLevel();
             return level;
         } catch (std::exception &e) {
-           setLastError(e.what());
-           return -1;
-       }
+            setLastError(e.what());
+            return -1;
+        }
     }
-
 
 
 }// namespace omexmeta

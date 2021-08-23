@@ -738,7 +738,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/include/redland/Logger.h" line="256" column="9" bodyfile="src/redland/RedlandWrapper/src/include/redland/Logger.h" bodystart="256" bodyend="-1"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/Logger.h" line="265" column="9" bodyfile="src/redland/RedlandWrapper/src/include/redland/Logger.h" bodystart="265" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="Logger_8h_1ad92381534e72883f729338fa33a34518" prot="public" static="no">
         <name>LOGGER_SET_TRACE</name>
@@ -750,7 +750,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/include/redland/Logger.h" line="257" column="9" bodyfile="src/redland/RedlandWrapper/src/include/redland/Logger.h" bodystart="257" bodyend="-1"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/Logger.h" line="266" column="9" bodyfile="src/redland/RedlandWrapper/src/include/redland/Logger.h" bodystart="266" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="Logger_8h_1a2c11ceae760b7bde1d438b5e6d1e94e8" prot="public" static="no">
         <name>LOGGER_SET_DEBUG</name>
@@ -762,7 +762,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/include/redland/Logger.h" line="258" column="9" bodyfile="src/redland/RedlandWrapper/src/include/redland/Logger.h" bodystart="258" bodyend="-1"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/Logger.h" line="267" column="9" bodyfile="src/redland/RedlandWrapper/src/include/redland/Logger.h" bodystart="267" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="Logger_8h_1a98b6b060aca6ac30aa457420058c01da" prot="public" static="no">
         <name>LOGGER_SET_WARN</name>
@@ -774,7 +774,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/include/redland/Logger.h" line="259" column="9" bodyfile="src/redland/RedlandWrapper/src/include/redland/Logger.h" bodystart="259" bodyend="-1"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/Logger.h" line="268" column="9" bodyfile="src/redland/RedlandWrapper/src/include/redland/Logger.h" bodystart="268" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="Logger_8h_1af57d4b35a1aa509b65825ad68ec4f457" prot="public" static="no">
         <name>LOGGER_SET_ERROR</name>
@@ -786,7 +786,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/include/redland/Logger.h" line="260" column="9" bodyfile="src/redland/RedlandWrapper/src/include/redland/Logger.h" bodystart="260" bodyend="-1"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/Logger.h" line="269" column="9" bodyfile="src/redland/RedlandWrapper/src/include/redland/Logger.h" bodystart="269" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="Logger_8h_1a333ce988b2658345d414adabd74ae60e" prot="public" static="no">
         <name>LOGGER_SET_CRITICAL</name>
@@ -798,7 +798,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/include/redland/Logger.h" line="261" column="9" bodyfile="src/redland/RedlandWrapper/src/include/redland/Logger.h" bodystart="261" bodyend="-1"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/Logger.h" line="270" column="9" bodyfile="src/redland/RedlandWrapper/src/include/redland/Logger.h" bodystart="270" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -916,37 +916,40 @@
 <codeline lineno="204"><highlight class="normal"></highlight></codeline>
 <codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;Message&gt;<sp/><ref refid="classredland_1_1Logger_1aa7ad499cadd4e05655bf63f46e0db35a" kindref="member">getMessages</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="209"><highlight class="normal"></highlight></codeline>
-<codeline lineno="210"><highlight class="normal"></highlight></codeline>
-<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classredland_1_1Logger" kindref="compound">Logger</ref>();</highlight></codeline>
-<codeline lineno="216"><highlight class="normal"></highlight></codeline>
-<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classredland_1_1Logger" kindref="compound">Logger</ref><sp/>*inst_;</highlight><highlight class="comment">//<sp/>The<sp/>one,<sp/>single<sp/>instance</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="221"><highlight class="normal"></highlight></codeline>
-<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::filesystem::path<sp/>filepath_;</highlight></codeline>
-<codeline lineno="227"><highlight class="normal"></highlight></codeline>
-<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>backtraceNum<sp/>=<sp/>32;</highlight></codeline>
-<codeline lineno="232"><highlight class="normal"></highlight></codeline>
-<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>formatterPattern<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;[%H:%M:%S<sp/>%z]<sp/>%^<sp/>%l<sp/>%g:%#<sp/>%v<sp/>%$&quot;</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="237"><highlight class="normal"></highlight></codeline>
-<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LogLevel<sp/>level_<sp/>=<sp/>LogLevel::warn;</highlight></codeline>
-<codeline lineno="242"><highlight class="normal"></highlight></codeline>
-<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>shouldBacktrace_<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="247"><highlight class="normal"></highlight></codeline>
-<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;Message&gt;<sp/>messages_;</highlight></codeline>
-<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
-<codeline lineno="253"><highlight class="normal"></highlight></codeline>
-<codeline lineno="254"><highlight class="normal"></highlight></codeline>
-<codeline lineno="255"><highlight class="normal"></highlight><highlight class="comment">//<sp/>quickly<sp/>set<sp/>logging<sp/>levels</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="256"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LOGGER_SET_INFO()<sp/>Logger::getLogger()-&gt;setLevel(LogLevel::info);</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="257"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LOGGER_SET_TRACE()<sp/>Logger::getLogger()-&gt;setLevel(LogLevel::trace);</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="258"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LOGGER_SET_DEBUG()<sp/>Logger::getLogger()-&gt;setLevel(LogLevel::debug);</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="259"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LOGGER_SET_WARN()<sp/>Logger::getLogger()-&gt;setLevel(LogLevel::warn);</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="260"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LOGGER_SET_ERROR()<sp/>Logger::getLogger()-&gt;setLevel(LogLevel::err);</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="261"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LOGGER_SET_CRITICAL()<sp/>Logger::getLogger()-&gt;setLevel(LogLevel::critical);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classredland_1_1Logger_1a950004905d3b16ed243ef81b7150a9e5" kindref="member">flush</ref>();</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"></highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classredland_1_1Logger_1a63cf9aadf21df23188b4770208695669" kindref="member">flushOn</ref>(LogLevel<sp/>level);</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"></highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classredland_1_1Logger" kindref="compound">Logger</ref>();</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"></highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classredland_1_1Logger" kindref="compound">Logger</ref><sp/>*inst_;</highlight><highlight class="comment">//<sp/>The<sp/>one,<sp/>single<sp/>instance</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="230"><highlight class="normal"></highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::filesystem::path<sp/>filepath_;</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"></highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>backtraceNum<sp/>=<sp/>32;</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"></highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>formatterPattern<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;[%H:%M:%S<sp/>%z]<sp/>%^<sp/>%l<sp/>%g:%#<sp/>%v<sp/>%$&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"></highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LogLevel<sp/>level_<sp/>=<sp/>LogLevel::warn;</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"></highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>shouldBacktrace_<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"></highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;Message&gt;<sp/>messages_;</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
 <codeline lineno="262"><highlight class="normal"></highlight></codeline>
-<codeline lineno="263"><highlight class="normal">}</highlight><highlight class="comment">//<sp/>namespace<sp/>redland</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="264"><highlight class="normal"></highlight></codeline>
-<codeline lineno="265"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="comment">//LIBOMEXMETA_LOGGER2_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="263"><highlight class="normal"></highlight></codeline>
+<codeline lineno="264"><highlight class="normal"></highlight><highlight class="comment">//<sp/>quickly<sp/>set<sp/>logging<sp/>levels</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="265"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LOGGER_SET_INFO()<sp/>Logger::getLogger()-&gt;setLevel(LogLevel::info);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="266"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LOGGER_SET_TRACE()<sp/>Logger::getLogger()-&gt;setLevel(LogLevel::trace);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="267"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LOGGER_SET_DEBUG()<sp/>Logger::getLogger()-&gt;setLevel(LogLevel::debug);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="268"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LOGGER_SET_WARN()<sp/>Logger::getLogger()-&gt;setLevel(LogLevel::warn);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="269"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LOGGER_SET_ERROR()<sp/>Logger::getLogger()-&gt;setLevel(LogLevel::err);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="270"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LOGGER_SET_CRITICAL()<sp/>Logger::getLogger()-&gt;setLevel(LogLevel::critical);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="271"><highlight class="normal"></highlight></codeline>
+<codeline lineno="272"><highlight class="normal">}</highlight><highlight class="comment">//<sp/>namespace<sp/>redland</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="273"><highlight class="normal"></highlight></codeline>
+<codeline lineno="274"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="comment">//LIBOMEXMETA_LOGGER2_H</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="src/redland/RedlandWrapper/src/include/redland/Logger.h"/>
   </compounddef>

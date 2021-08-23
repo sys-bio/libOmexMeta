@@ -164,8 +164,17 @@ namespace redland {
     void Logger::addMessage(LogLevel level, const std::string &message) {
         messages_.emplace_back(level, message);
     }
+
     std::vector<Message> Logger::getMessages() const {
         return messages_;
+    }
+
+    void Logger::flush(){
+        logger->flush();
+    }
+
+    void Logger::flushOn(LogLevel level){
+        logger->flush_on(level);
     }
 
 

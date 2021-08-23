@@ -471,6 +471,10 @@ RDF* rdf_ptr = RDF_fromString(string_annotations, &quot;rdfxml&quot;, &quot;stri
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>OMEXMETA_CAPI_EXPORT<sp/>Message<sp/>*<ref refid="namespaceomexmeta_1a0bccdc9cd01a73aedeb5cc8a585daccb" kindref="member">Logger_getMessageI</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>idx);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>OMEXMETA_CAPI_EXPORT<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Logger_flush();</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>OMEXMETA_CAPI_EXPORT<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Logger_flushOn(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>level);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>OMEXMETA_CAPI_EXPORT<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>Message_getLevel(Message<sp/>*message);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>OMEXMETA_CAPI_EXPORT<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*Message_getMessage(Message<sp/>*message);</highlight></codeline>

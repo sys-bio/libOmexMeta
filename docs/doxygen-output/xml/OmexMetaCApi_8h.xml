@@ -1543,19 +1543,23 @@
 <codeline lineno="482"><highlight class="normal"></highlight></codeline>
 <codeline lineno="488"><highlight class="normal"><sp/><sp/><sp/><sp/>OMEXMETA_CAPI_EXPORT<sp/><ref refid="classredland_1_1Message" kindref="compound">Message</ref><sp/>*<ref refid="namespaceomexmeta_1a0bccdc9cd01a73aedeb5cc8a585daccb" kindref="member">Logger_getMessageI</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>idx);</highlight></codeline>
 <codeline lineno="489"><highlight class="normal"></highlight></codeline>
-<codeline lineno="490"><highlight class="normal"><sp/><sp/><sp/><sp/>OMEXMETA_CAPI_EXPORT<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>Message_getLevel(<ref refid="classredland_1_1Message" kindref="compound">Message</ref><sp/>*message);</highlight></codeline>
+<codeline lineno="490"><highlight class="normal"><sp/><sp/><sp/><sp/>OMEXMETA_CAPI_EXPORT<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Logger_flush();</highlight></codeline>
 <codeline lineno="491"><highlight class="normal"></highlight></codeline>
-<codeline lineno="492"><highlight class="normal"><sp/><sp/><sp/><sp/>OMEXMETA_CAPI_EXPORT<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*Message_getMessage(<ref refid="classredland_1_1Message" kindref="compound">Message</ref><sp/>*message);</highlight></codeline>
+<codeline lineno="492"><highlight class="normal"><sp/><sp/><sp/><sp/>OMEXMETA_CAPI_EXPORT<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Logger_flushOn(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>level);</highlight></codeline>
 <codeline lineno="493"><highlight class="normal"></highlight></codeline>
-<codeline lineno="494"><highlight class="normal"><sp/><sp/><sp/><sp/>OMEXMETA_CAPI_EXPORT<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Message_deleteMessage(<ref refid="classredland_1_1Message" kindref="compound">Message</ref><sp/>*message);</highlight></codeline>
+<codeline lineno="494"><highlight class="normal"><sp/><sp/><sp/><sp/>OMEXMETA_CAPI_EXPORT<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>Message_getLevel(<ref refid="classredland_1_1Message" kindref="compound">Message</ref><sp/>*message);</highlight></codeline>
 <codeline lineno="495"><highlight class="normal"></highlight></codeline>
-<codeline lineno="496"><highlight class="normal"></highlight></codeline>
-<codeline lineno="497"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="498"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="499"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="500"><highlight class="normal">}</highlight><highlight class="comment">//<sp/>namespace<sp/>omexmeta</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="501"><highlight class="normal"></highlight></codeline>
-<codeline lineno="502"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="comment">//LIBOMEXMETA_OMEXMETACAPI_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="496"><highlight class="normal"><sp/><sp/><sp/><sp/>OMEXMETA_CAPI_EXPORT<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*Message_getMessage(<ref refid="classredland_1_1Message" kindref="compound">Message</ref><sp/>*message);</highlight></codeline>
+<codeline lineno="497"><highlight class="normal"></highlight></codeline>
+<codeline lineno="498"><highlight class="normal"><sp/><sp/><sp/><sp/>OMEXMETA_CAPI_EXPORT<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Message_deleteMessage(<ref refid="classredland_1_1Message" kindref="compound">Message</ref><sp/>*message);</highlight></codeline>
+<codeline lineno="499"><highlight class="normal"></highlight></codeline>
+<codeline lineno="500"><highlight class="normal"></highlight></codeline>
+<codeline lineno="501"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="502"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="503"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="504"><highlight class="normal">}</highlight><highlight class="comment">//<sp/>namespace<sp/>omexmeta</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="505"><highlight class="normal"></highlight></codeline>
+<codeline lineno="506"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="comment">//LIBOMEXMETA_OMEXMETACAPI_H</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="src/omexmeta/include/omexmeta/OmexMetaCApi.h"/>
   </compounddef>

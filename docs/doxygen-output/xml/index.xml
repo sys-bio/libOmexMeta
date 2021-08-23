@@ -458,6 +458,8 @@
     <member refid="classredland_1_1Logger_1af875a9fae3bb610584c636e0d6ff7070" kind="function"><name>size</name></member>
     <member refid="classredland_1_1Logger_1a30c31dbdfa17ea8555064025396b0595" kind="function"><name>addMessage</name></member>
     <member refid="classredland_1_1Logger_1aa7ad499cadd4e05655bf63f46e0db35a" kind="function"><name>getMessages</name></member>
+    <member refid="classredland_1_1Logger_1a950004905d3b16ed243ef81b7150a9e5" kind="function"><name>flush</name></member>
+    <member refid="classredland_1_1Logger_1a63cf9aadf21df23188b4770208695669" kind="function"><name>flushOn</name></member>
     <member refid="classredland_1_1Logger_1a0e046d7572c3756ed188fda9b7914bb4" kind="function"><name>Logger</name></member>
   </compound>
   <compound refid="classomexmeta_1_1MarkupIdentifier" kind="class"><name>omexmeta::MarkupIdentifier</name>
@@ -1552,6 +1554,8 @@
     <member refid="namespaceomexmeta_1add6b47623eee669e86e1157b04d8a998" kind="function"><name>Logger_clear</name></member>
     <member refid="namespaceomexmeta_1a061d1e87254a58591be4336669762958" kind="function"><name>Logger_size</name></member>
     <member refid="namespaceomexmeta_1a0bccdc9cd01a73aedeb5cc8a585daccb" kind="function"><name>Logger_getMessageI</name></member>
+    <member refid="namespaceomexmeta_1ac7f51c52e378cfeb535b9d4a635b5e66" kind="function"><name>Logger_flush</name></member>
+    <member refid="namespaceomexmeta_1a2b9b454b8429ebf714a4b71dbc205456" kind="function"><name>Logger_flushOn</name></member>
     <member refid="namespaceomexmeta_1acd9f002cc983c9609affc9970b4c12ed" kind="function"><name>Message_getMessage</name></member>
     <member refid="namespaceomexmeta_1ad90f8fbc6e8f92c9f0535d127dbb98d2" kind="function"><name>Message_deleteMessage</name></member>
     <member refid="namespaceomexmeta_1afdaed1c8202da394fae776c6d20930f6" kind="function"><name>Message_getLevel</name></member>

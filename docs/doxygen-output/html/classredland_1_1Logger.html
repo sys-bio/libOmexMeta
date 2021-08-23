@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libomexmeta
-   &#160;<span id="projectnumber">1.2.12</span>
+   &#160;<span id="projectnumber">1.2.13</span>
    </div>
    <div id="projectbrief">Annotations for models in systems biology</div>
   </td>
@@ -163,6 +163,13 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 std::vector&lt; <a class="el" href="classredland_1_1Message.html">Message</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredland_1_1Logger.html#aa7ad499cadd4e05655bf63f46e0db35a">getMessages</a> () const</td></tr>
 <tr class="memdesc:aa7ad499cadd4e05655bf63f46e0db35a"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the vector of messages logged so far. <br /></td></tr>
 <tr class="separator:aa7ad499cadd4e05655bf63f46e0db35a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a950004905d3b16ed243ef81b7150a9e5"><td class="memItemLeft" align="right" valign="top"><a id="a950004905d3b16ed243ef81b7150a9e5"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredland_1_1Logger.html#a950004905d3b16ed243ef81b7150a9e5">flush</a> ()</td></tr>
+<tr class="memdesc:a950004905d3b16ed243ef81b7150a9e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">flush logger content for all levels <br /></td></tr>
+<tr class="separator:a950004905d3b16ed243ef81b7150a9e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63cf9aadf21df23188b4770208695669"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredland_1_1Logger.html#a63cf9aadf21df23188b4770208695669">flushOn</a> (LogLevel level)</td></tr>
+<tr class="memdesc:a63cf9aadf21df23188b4770208695669"><td class="mdescLeft">&#160;</td><td class="mdescRight">flush logger content for  <a href="classredland_1_1Logger.html#a63cf9aadf21df23188b4770208695669">More...</a><br /></td></tr>
+<tr class="separator:a63cf9aadf21df23188b4770208695669"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -208,6 +215,32 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">num</td><td>messages when spdlog::dump_backtrace is called. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a63cf9aadf21df23188b4770208695669"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a63cf9aadf21df23188b4770208695669">&#9670;&nbsp;</a></span>flushOn()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void redland::Logger::flushOn </td>
+          <td>(</td>
+          <td class="paramtype">LogLevel&#160;</td>
+          <td class="paramname"><em>level</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>flush logger content for </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">level</td><td></td></tr>
   </table>
   </dd>
 </dl>

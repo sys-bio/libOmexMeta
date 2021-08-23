@@ -78,7 +78,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/include/redland/Logger.h" line="220" column="23" bodyfile="src/redland/RedlandWrapper/src/include/redland/Logger.h" bodystart="220" bodyend="-1"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/Logger.h" line="229" column="23" bodyfile="src/redland/RedlandWrapper/src/include/redland/Logger.h" bodystart="229" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-attrib">
@@ -94,7 +94,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/include/redland/Logger.h" line="226" column="31" bodyfile="src/redland/RedlandWrapper/src/include/redland/Logger.h" bodystart="226" bodyend="-1"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/Logger.h" line="235" column="31" bodyfile="src/redland/RedlandWrapper/src/include/redland/Logger.h" bodystart="235" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classredland_1_1Logger_1a45b353c2b889f2407e60b9a4b2851712" prot="private" static="no" mutable="no">
         <type>int</type>
@@ -109,7 +109,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/include/redland/Logger.h" line="231" column="13" bodyfile="src/redland/RedlandWrapper/src/include/redland/Logger.h" bodystart="231" bodyend="-1"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/Logger.h" line="240" column="13" bodyfile="src/redland/RedlandWrapper/src/include/redland/Logger.h" bodystart="240" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classredland_1_1Logger_1ad9c881a08834cf4e8f45ec9f59cbf141" prot="private" static="no" mutable="no">
         <type>std::string</type>
@@ -124,7 +124,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/include/redland/Logger.h" line="236" column="21" bodyfile="src/redland/RedlandWrapper/src/include/redland/Logger.h" bodystart="236" bodyend="-1"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/Logger.h" line="245" column="21" bodyfile="src/redland/RedlandWrapper/src/include/redland/Logger.h" bodystart="245" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classredland_1_1Logger_1ad5c9edd10e0235d22b883ef378a8d7a8" prot="private" static="no" mutable="no">
         <type>LogLevel</type>
@@ -139,7 +139,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/include/redland/Logger.h" line="241" column="18" bodyfile="src/redland/RedlandWrapper/src/include/redland/Logger.h" bodystart="241" bodyend="-1"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/Logger.h" line="250" column="18" bodyfile="src/redland/RedlandWrapper/src/include/redland/Logger.h" bodystart="250" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classredland_1_1Logger_1af47c7ee65088b85f238a1db26c40f48f" prot="private" static="no" mutable="no">
         <type>bool</type>
@@ -154,7 +154,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/include/redland/Logger.h" line="246" column="14" bodyfile="src/redland/RedlandWrapper/src/include/redland/Logger.h" bodystart="246" bodyend="-1"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/Logger.h" line="255" column="14" bodyfile="src/redland/RedlandWrapper/src/include/redland/Logger.h" bodystart="255" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classredland_1_1Logger_1a41eda09f641f86b0faccdb2b9afd0743" prot="private" static="no" mutable="no">
         <type>std::vector&lt; <ref refid="classredland_1_1Message" kindref="compound">Message</ref> &gt;</type>
@@ -168,7 +168,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/include/redland/Logger.h" line="251" column="21" bodyfile="src/redland/RedlandWrapper/src/include/redland/Logger.h" bodystart="251" bodyend="-1"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/Logger.h" line="260" column="21" bodyfile="src/redland/RedlandWrapper/src/include/redland/Logger.h" bodystart="260" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -530,7 +530,49 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/include/redland/Logger.h" line="208" column="21" bodyfile="src/redland/RedlandWrapper/src/Logger.cpp" bodystart="167" bodyend="169"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/Logger.h" line="208" column="21" bodyfile="src/redland/RedlandWrapper/src/Logger.cpp" bodystart="168" bodyend="170"/>
+      </memberdef>
+      <memberdef kind="function" id="classredland_1_1Logger_1a950004905d3b16ed243ef81b7150a9e5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void redland::Logger::flush</definition>
+        <argsstring>()</argsstring>
+        <name>flush</name>
+        <briefdescription>
+<para>flush logger content for all levels </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/Logger.h" line="213" column="14" bodyfile="src/redland/RedlandWrapper/src/Logger.cpp" bodystart="172" bodyend="174"/>
+      </memberdef>
+      <memberdef kind="function" id="classredland_1_1Logger_1a63cf9aadf21df23188b4770208695669" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void redland::Logger::flushOn</definition>
+        <argsstring>(LogLevel level)</argsstring>
+        <name>flushOn</name>
+        <param>
+          <type>LogLevel</type>
+          <declname>level</declname>
+        </param>
+        <briefdescription>
+<para>flush logger content for </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>level</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/Logger.h" line="218" column="14" bodyfile="src/redland/RedlandWrapper/src/Logger.cpp" bodystart="176" bodyend="178"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -546,7 +588,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/include/redland/Logger.h" line="215" column="9" bodyfile="src/redland/RedlandWrapper/src/Logger.cpp" bodystart="16" bodyend="22"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/Logger.h" line="224" column="9" bodyfile="src/redland/RedlandWrapper/src/Logger.cpp" bodystart="16" bodyend="22"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -554,7 +596,7 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="src/redland/RedlandWrapper/src/include/redland/Logger.h" line="73" column="5" bodyfile="src/redland/RedlandWrapper/src/include/redland/Logger.h" bodystart="73" bodyend="252"/>
+    <location file="src/redland/RedlandWrapper/src/include/redland/Logger.h" line="73" column="5" bodyfile="src/redland/RedlandWrapper/src/include/redland/Logger.h" bodystart="73" bodyend="261"/>
     <listofallmembers>
       <member refid="classredland_1_1Logger_1a30c31dbdfa17ea8555064025396b0595" prot="public" virt="non-virtual"><scope>redland::Logger</scope><name>addMessage</name></member>
       <member refid="classredland_1_1Logger_1a45b353c2b889f2407e60b9a4b2851712" prot="private" virt="non-virtual"><scope>redland::Logger</scope><name>backtraceNum</name></member>
@@ -568,6 +610,8 @@
       <member refid="classredland_1_1Logger_1a7736a74d653953cb3248f20706c0b9f1" prot="public" virt="non-virtual"><scope>redland::Logger</scope><name>error</name></member>
       <member refid="classredland_1_1Logger_1a39e56c0690a855138fff179e68171bc3" prot="public" virt="non-virtual"><scope>redland::Logger</scope><name>fileLogger</name></member>
       <member refid="classredland_1_1Logger_1a75b8207b5289478fb52cb59933184f33" prot="private" virt="non-virtual"><scope>redland::Logger</scope><name>filepath_</name></member>
+      <member refid="classredland_1_1Logger_1a950004905d3b16ed243ef81b7150a9e5" prot="public" virt="non-virtual"><scope>redland::Logger</scope><name>flush</name></member>
+      <member refid="classredland_1_1Logger_1a63cf9aadf21df23188b4770208695669" prot="public" virt="non-virtual"><scope>redland::Logger</scope><name>flushOn</name></member>
       <member refid="classredland_1_1Logger_1ad9c881a08834cf4e8f45ec9f59cbf141" prot="private" virt="non-virtual"><scope>redland::Logger</scope><name>formatterPattern</name></member>
       <member refid="classredland_1_1Logger_1a1d5985081e4c2035aa848a2e3b88decf" prot="public" virt="non-virtual"><scope>redland::Logger</scope><name>getLevel</name></member>
       <member refid="classredland_1_1Logger_1a371ea8132ab82e1c783b74bd6bcf38c5" prot="public" virt="non-virtual"><scope>redland::Logger</scope><name>getLogger</name></member>
@@ -577,8 +621,8 @@
       <member refid="classredland_1_1Logger_1a83c2fde7dc2b6547053d690e63c0f73d" prot="public" virt="non-virtual"><scope>redland::Logger</scope><name>isConsoleLogger</name></member>
       <member refid="classredland_1_1Logger_1acfe5e473ffe0cb34b45ab69ab7675358" prot="public" virt="non-virtual"><scope>redland::Logger</scope><name>isFileLogger</name></member>
       <member refid="classredland_1_1Logger_1ad5c9edd10e0235d22b883ef378a8d7a8" prot="private" virt="non-virtual"><scope>redland::Logger</scope><name>level_</name></member>
-      <member refid="classredland_1_1Logger_1a9bc7671c63a3d7c3953a4d65d8570936" prot="public" virt="non-virtual"><scope>redland::Logger</scope><name>logger</name></member>
       <member refid="classredland_1_1Logger_1a0e046d7572c3756ed188fda9b7914bb4" prot="private" virt="non-virtual"><scope>redland::Logger</scope><name>Logger</name></member>
+      <member refid="classredland_1_1Logger_1a9bc7671c63a3d7c3953a4d65d8570936" prot="public" virt="non-virtual"><scope>redland::Logger</scope><name>logger</name></member>
       <member refid="classredland_1_1Logger_1a9e76412d869c3ff4497ce38ef7e3342d" prot="public" virt="non-virtual"><scope>redland::Logger</scope><name>LoggerPtr</name></member>
       <member refid="classredland_1_1Logger_1a41eda09f641f86b0faccdb2b9afd0743" prot="private" virt="non-virtual"><scope>redland::Logger</scope><name>messages_</name></member>
       <member refid="classredland_1_1Logger_1aee656a6c8590b0e6d3233eefcbc96dff" prot="public" virt="non-virtual"><scope>redland::Logger</scope><name>operator[]</name></member>
