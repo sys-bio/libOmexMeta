@@ -11,15 +11,15 @@ Running main() from ..\third_party\googletest\googletest\src\gtest_main.cc
 [ RUN      ] PersonalInformationTests.TestAddName
 [       OK ] PersonalInformationTests.TestAddName (1 ms)
 [ RUN      ] PersonalInformationTests.TestMBox
-[       OK ] PersonalInformationTests.TestMBox (0 ms)
+[       OK ] PersonalInformationTests.TestMBox (1 ms)
 [ RUN      ] PersonalInformationTests.TestAccountName
 [       OK ] PersonalInformationTests.TestAccountName (1 ms)
 [ RUN      ] PersonalInformationTests.TestaddAccountServiceHomepage
 [       OK ] PersonalInformationTests.TestaddAccountServiceHomepage (1 ms)
 [ RUN      ] PersonalInformationTests.TestMultipleEntries
 [       OK ] PersonalInformationTests.TestMultipleEntries (2 ms)
-[----------] 8 tests from PersonalInformationTests (11 ms total)
+[----------] 8 tests from PersonalInformationTests (12 ms total)
 
 [----------] Global test environment tear-down
-[==========] 8 tests from 1 test suite ran. (11 ms total)
+[==========] 8 tests from 1 test suite ran. (13 ms total)
 [  PASSED  ] 8 tests.

@@ -7,22 +7,24 @@ Running main() from ..\third_party\googletest\googletest\src\gtest_main.cc
 [ RUN      ] LibrdfStorageTests.TestMoveConstructor
 [       OK ] LibrdfStorageTests.TestMoveConstructor (0 ms)
 [ RUN      ] LibrdfStorageTests.TestMoveAssignment
-[       OK ] LibrdfStorageTests.TestMoveAssignment (1 ms)
+[       OK ] LibrdfStorageTests.TestMoveAssignment (0 ms)
 [ RUN      ] LibrdfStorageTests.TestCopyConstructor
 [       OK ] LibrdfStorageTests.TestCopyConstructor (0 ms)
 [ RUN      ] LibrdfStorageTests.TestCopyAssignment
-[       OK ] LibrdfStorageTests.TestCopyAssignment (0 ms)
+[       OK ] LibrdfStorageTests.TestCopyAssignment (1 ms)
 [ RUN      ] LibrdfStorageTests.TestSQLiteStorage
-[       OK ] LibrdfStorageTests.TestSQLiteStorage (17 ms)
+[       OK ] LibrdfStorageTests.TestSQLiteStorage (13 ms)
 [ RUN      ] LibrdfStorageTests.TestMemoryStorage
-[       OK ] LibrdfStorageTests.TestMemoryStorage (0 ms)
+[       OK ] LibrdfStorageTests.TestMemoryStorage (1 ms)
 [ RUN      ] LibrdfStorageTests.TesthashesMemory
 [       OK ] LibrdfStorageTests.TesthashesMemory (0 ms)
 [ RUN      ] LibrdfStorageTests.TestfileMemory
-[00:55:14 +01:00]  error : XML parser error: Document is empty 
+[16:26:19 +01:00]  error : XML parser error: Document is empty 
+[16:26:19 +01:00]  error : rename of 'D:\libOmexMeta\cmake-build-release\docsStorageName.db' to 'D:\libOmexMeta\cmake-build-release\docsStorageName.db~' failed - File exists 
+[16:26:19 +01:00]  error : rename of 'D:\libOmexMeta\cmake-build-release\docsStorageName.db' to 'D:\libOmexMeta\cmake-build-release\docsStorageName.db~' failed - File exists 
 [       OK ] LibrdfStorageTests.TestfileMemory (2 ms)
-[----------] 9 tests from LibrdfStorageTests (23 ms total)
+[----------] 9 tests from LibrdfStorageTests (20 ms total)
 
 [----------] Global test environment tear-down
-[==========] 9 tests from 1 test suite ran. (23 ms total)
+[==========] 9 tests from 1 test suite ran. (20 ms total)
 [  PASSED  ] 9 tests.

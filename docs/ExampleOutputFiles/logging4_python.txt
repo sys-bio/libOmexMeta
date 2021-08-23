@@ -1,2 +1,6 @@
-[00:54:38 +01:00]  error : syntax error at '<' 
-check logger_file:  D:\libOmexMeta\docs\log.log
+[16:33:36 +01:00]  error : syntax error at '<' 
+Logger file is: "D:\libOmexMeta\cmake-build-release\docs\log.log"
+Reading logging data from "D:\libOmexMeta\cmake-build-release\docs\log.log":
+[16:33:36 +01:00]  error : syntax error at '<' 
+
+Switching back to the console logger:

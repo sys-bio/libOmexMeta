@@ -3,29 +3,29 @@ Running main() from ..\third_party\googletest\googletest\src\gtest_main.cc
 [----------] Global test environment set-up.
 [----------] 71 tests from CAPITests
 [ RUN      ] CAPITests.RDFSize
-[       OK ] CAPITests.RDFSize (3 ms)
+[       OK ] CAPITests.RDFSize (4 ms)
 [ RUN      ] CAPITests.RDFToString
-[00:55:05 +01:00]  warning : XML parser warning: Unsupported version '1.1' 
-[       OK ] CAPITests.RDFToString (4 ms)
+[16:26:44 +01:00]  warning : XML parser warning: Unsupported version '1.1' 
+[       OK ] CAPITests.RDFToString (3 ms)
 [ RUN      ] CAPITests.RDF_fromString
 [       OK ] CAPITests.RDF_fromString (1 ms)
 [ RUN      ] CAPITests.RDF_fromStringButWrongSyntax
-[00:55:05 +01:00]  error : syntax error at '<' 
+[16:26:44 +01:00]  error : syntax error at '<' 
 [       OK ] CAPITests.RDF_fromStringButWrongSyntax (0 ms)
 [ RUN      ] CAPITests.RDF_toFile
-[       OK ] CAPITests.RDF_toFile (1 ms)
+[       OK ] CAPITests.RDF_toFile (2 ms)
 [ RUN      ] CAPITests.RDF_addFromString
 [       OK ] CAPITests.RDF_addFromString (1 ms)
 [ RUN      ] CAPITests.RDF_addFromStringOutput
 [       OK ] CAPITests.RDF_addFromStringOutput (1 ms)
 [ RUN      ] CAPITests.RDF_addFromUriSqliteStorage
-[       OK ] CAPITests.RDF_addFromUriSqliteStorage (17 ms)
+[       OK ] CAPITests.RDF_addFromUriSqliteStorage (20 ms)
 [ RUN      ] CAPITests.RDF_fromFile
 D:\libOmexMeta\cmake-build-release\docs/TestParseFromFile.rdf
 [       OK ] CAPITests.RDF_fromFile (2 ms)
 [ RUN      ] CAPITests.RDF_addFromFile
 D:\libOmexMeta\cmake-build-release\docs\TestParseFromFile.rdf
-[       OK ] CAPITests.RDF_addFromFile (1 ms)
+[       OK ] CAPITests.RDF_addFromFile (2 ms)
 [ RUN      ] CAPITests.TestCheckValidMetaid
 [       OK ] CAPITests.TestCheckValidMetaid (1 ms)
 [ RUN      ] CAPITests.TestGetMetaID
@@ -39,7 +39,7 @@ TestModelNotAnnotated
 [ RUN      ] CAPITests.TestSingularAnnotationSetPredicate
 [       OK ] CAPITests.TestSingularAnnotationSetPredicate (0 ms)
 [ RUN      ] CAPITests.TestSingularAnnotationSetPredicateUri
-[       OK ] CAPITests.TestSingularAnnotationSetPredicateUri (0 ms)
+[       OK ] CAPITests.TestSingularAnnotationSetPredicateUri (1 ms)
 [ RUN      ] CAPITests.TestSingularAnnotationFull
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix OMEXlib: <http://omex-library.org/> .
@@ -56,35 +56,35 @@ TestModelNotAnnotated
 [ RUN      ] CAPITests.TestSingularAnnotationSetResourceUri
 [       OK ] CAPITests.TestSingularAnnotationSetResourceUri (0 ms)
 [ RUN      ] CAPITests.TestSingularAnnotationSetResourceBlank
-[       OK ] CAPITests.TestSingularAnnotationSetResourceBlank (0 ms)
+[       OK ] CAPITests.TestSingularAnnotationSetResourceBlank (1 ms)
 [ RUN      ] CAPITests.TestPhysicalEntitySBML1
 [       OK ] CAPITests.TestPhysicalEntitySBML1 (2 ms)
 [ RUN      ] CAPITests.TestPhysicalEntitySBML2
-[       OK ] CAPITests.TestPhysicalEntitySBML2 (1 ms)
+[       OK ] CAPITests.TestPhysicalEntitySBML2 (2 ms)
 [ RUN      ] CAPITests.TestPhysicalEntitySBML3
 [       OK ] CAPITests.TestPhysicalEntitySBML3 (2 ms)
 [ RUN      ] CAPITests.TestPhysicalEntityCellML1
-[       OK ] CAPITests.TestPhysicalEntityCellML1 (1 ms)
+[       OK ] CAPITests.TestPhysicalEntityCellML1 (2 ms)
 [ RUN      ] CAPITests.TestPhysicalEntityCellML2
-[       OK ] CAPITests.TestPhysicalEntityCellML2 (1 ms)
+[       OK ] CAPITests.TestPhysicalEntityCellML2 (2 ms)
 [ RUN      ] CAPITests.TestPhysicalEntityCellML3
-[       OK ] CAPITests.TestPhysicalEntityCellML3 (1 ms)
+[       OK ] CAPITests.TestPhysicalEntityCellML3 (2 ms)
 [ RUN      ] CAPITests.TestPhysicalEntityLocations
 [       OK ] CAPITests.TestPhysicalEntityLocations (1 ms)
 [ RUN      ] CAPITests.TestPhysicalProcessSBML1
-[       OK ] CAPITests.TestPhysicalProcessSBML1 (3 ms)
+[       OK ] CAPITests.TestPhysicalProcessSBML1 (4 ms)
 [ RUN      ] CAPITests.TestPhysicalProcessSBML2
-[       OK ] CAPITests.TestPhysicalProcessSBML2 (3 ms)
+[       OK ] CAPITests.TestPhysicalProcessSBML2 (5 ms)
 [ RUN      ] CAPITests.TestPhysicalProcessCellML1
-[       OK ] CAPITests.TestPhysicalProcessCellML1 (3 ms)
+[       OK ] CAPITests.TestPhysicalProcessCellML1 (4 ms)
 [ RUN      ] CAPITests.TestPhysicalProcessCellML2
-[       OK ] CAPITests.TestPhysicalProcessCellML2 (3 ms)
+[       OK ] CAPITests.TestPhysicalProcessCellML2 (5 ms)
 [ RUN      ] CAPITests.TestEnergyDiffSBML1
-[       OK ] CAPITests.TestEnergyDiffSBML1 (1 ms)
+[       OK ] CAPITests.TestEnergyDiffSBML1 (3 ms)
 [ RUN      ] CAPITests.TestEnergyDiffSBML2
 [       OK ] CAPITests.TestEnergyDiffSBML2 (2 ms)
 [ RUN      ] CAPITests.TestEnergyDiffCellML1
-[       OK ] CAPITests.TestEnergyDiffCellML1 (2 ms)
+[       OK ] CAPITests.TestEnergyDiffCellML1 (3 ms)
 [ RUN      ] CAPITests.TestRDFTwice1
 [       OK ] CAPITests.TestRDFTwice1 (0 ms)
 [ RUN      ] CAPITests.TestRDFTwice3
@@ -178,7 +178,7 @@ http://omex-library.org/NewOmex.omex/NewModel.rdf#
     bqmodel:isDescribedBy <https://identifiers.org/pubmed:12345678> .
 
 
-[       OK ] CAPITests.Editorpubmed (1 ms)
+[       OK ] CAPITests.Editorpubmed (2 ms)
 [ RUN      ] CAPITests.EditoraddDescription
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix dc: <http://purl.org/dc/terms/> .
@@ -189,7 +189,7 @@ http://omex-library.org/NewOmex.omex/NewModel.rdf#
     dc:description "A model" .
 
 
-[       OK ] CAPITests.EditoraddDescription (0 ms)
+[       OK ] CAPITests.EditoraddDescription (1 ms)
 [ RUN      ] CAPITests.EditoraddDateCreated
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix dc: <http://purl.org/dc/terms/> .
@@ -214,7 +214,7 @@ http://omex-library.org/NewOmex.omex/NewModel.rdf#
 
 [       OK ] CAPITests.EditoraddParentModel (1 ms)
 [ RUN      ] CAPITests.EditorGetXml
-[       OK ] CAPITests.EditorGetXml (2 ms)
+[       OK ] CAPITests.EditorGetXml (1 ms)
 [ RUN      ] CAPITests.PersonalInformationaddCreator
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix dc: <http://purl.org/dc/terms/> .
@@ -228,7 +228,7 @@ http://omex-library.org/NewOmex.omex/NewModel.rdf#
     dc:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .
 
 
-[       OK ] CAPITests.PersonalInformationaddCreator (1 ms)
+[       OK ] CAPITests.PersonalInformationaddCreator (2 ms)
 [ RUN      ] CAPITests.PersonalInformationaddName
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix dc: <http://purl.org/dc/terms/> .
@@ -273,7 +273,7 @@ http://omex-library.org/NewOmex.omex/NewModel.rdf#
     dc:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .
 
 
-[       OK ] CAPITests.PersonalInformationaddAccountName (1 ms)
+[       OK ] CAPITests.PersonalInformationaddAccountName (2 ms)
 [ RUN      ] CAPITests.PersonalInformationaddAccountServiceHomepage
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix dc: <http://purl.org/dc/terms/> .
@@ -318,12 +318,12 @@ http://omex-library.org/NewOmex.omex/NewModel.rdf#
     dc:creator <http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000> .
 
 
-[       OK ] CAPITests.PersonalInformationaddFoafLiteral (2 ms)
+[       OK ] CAPITests.PersonalInformationaddFoafLiteral (1 ms)
 [ RUN      ] CAPITests.PersonalInformationgetMetaid
 http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000
-[       OK ] CAPITests.PersonalInformationgetMetaid (1 ms)
+[       OK ] CAPITests.PersonalInformationgetMetaid (2 ms)
 [ RUN      ] CAPITests.RDFToEditorTestWithSemanticExtraction
-[       OK ] CAPITests.RDFToEditorTestWithSemanticExtraction (12 ms)
+[       OK ] CAPITests.RDFToEditorTestWithSemanticExtraction (14 ms)
 [ RUN      ] CAPITests.RDFToEditorTestWithoutSemanticExtraction
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix OMEXlib: <http://omex-library.org/> .
@@ -394,8 +394,8 @@ http://omex-library.org/NewOmex.omex/NewModel.xml#PersonalInfo0000
     </model>
 </sbml>
 [       OK ] CAPITests.EditorStripAnnotations (1 ms)
-[----------] 71 tests from CAPITests (96 ms total)
+[----------] 71 tests from CAPITests (123 ms total)
 
 [----------] Global test environment tear-down
-[==========] 71 tests from 1 test suite ran. (96 ms total)
+[==========] 71 tests from 1 test suite ran. (123 ms total)
 [  PASSED  ] 71 tests.

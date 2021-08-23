@@ -3,25 +3,25 @@ Running main() from ..\third_party\googletest\googletest\src\gtest_main.cc
 [----------] Global test environment set-up.
 [----------] 22 tests from PurgeRDFBagTests
 [ RUN      ] PurgeRDFBagTests.Biomd385Input1Pattern1
-[       OK ] PurgeRDFBagTests.Biomd385Input1Pattern1 (13 ms)
+[       OK ] PurgeRDFBagTests.Biomd385Input1Pattern1 (18 ms)
 [ RUN      ] PurgeRDFBagTests.Biomd385Input1Pattern2
-[       OK ] PurgeRDFBagTests.Biomd385Input1Pattern2 (7 ms)
+[       OK ] PurgeRDFBagTests.Biomd385Input1Pattern2 (10 ms)
 [ RUN      ] PurgeRDFBagTests.Biomd385Input1Pattern3
-[       OK ] PurgeRDFBagTests.Biomd385Input1Pattern3 (7 ms)
+[       OK ] PurgeRDFBagTests.Biomd385Input1Pattern3 (9 ms)
 [ RUN      ] PurgeRDFBagTests.Biomd385Input2Pattern1
 [       OK ] PurgeRDFBagTests.Biomd385Input2Pattern1 (5 ms)
 [ RUN      ] PurgeRDFBagTests.Biomd385Input2Pattern2
-[       OK ] PurgeRDFBagTests.Biomd385Input2Pattern2 (3 ms)
+[       OK ] PurgeRDFBagTests.Biomd385Input2Pattern2 (4 ms)
 [ RUN      ] PurgeRDFBagTests.Biomd385Input2Pattern3
-[       OK ] PurgeRDFBagTests.Biomd385Input2Pattern3 (4 ms)
+[       OK ] PurgeRDFBagTests.Biomd385Input2Pattern3 (6 ms)
 [ RUN      ] PurgeRDFBagTests.Biomd385Input3
-[       OK ] PurgeRDFBagTests.Biomd385Input3 (15 ms)
+[       OK ] PurgeRDFBagTests.Biomd385Input3 (18 ms)
 [ RUN      ] PurgeRDFBagTests.Biomd626Input1Pattern1
 [       OK ] PurgeRDFBagTests.Biomd626Input1Pattern1 (11 ms)
 [ RUN      ] PurgeRDFBagTests.Biomd626Input1Pattern2
-[       OK ] PurgeRDFBagTests.Biomd626Input1Pattern2 (8 ms)
+[       OK ] PurgeRDFBagTests.Biomd626Input1Pattern2 (10 ms)
 [ RUN      ] PurgeRDFBagTests.Biomd626Input1Pattern3
-[       OK ] PurgeRDFBagTests.Biomd626Input1Pattern3 (6 ms)
+[       OK ] PurgeRDFBagTests.Biomd626Input1Pattern3 (10 ms)
 [ RUN      ] PurgeRDFBagTests.Biomd626Input2Pattern1
 [       OK ] PurgeRDFBagTests.Biomd626Input2Pattern1 (1 ms)
 [ RUN      ] PurgeRDFBagTests.Biomd626Input2Pattern2
@@ -29,13 +29,13 @@ Running main() from ..\third_party\googletest\googletest\src\gtest_main.cc
 [ RUN      ] PurgeRDFBagTests.Biomd626Input2Pattern3
 [       OK ] PurgeRDFBagTests.Biomd626Input2Pattern3 (1 ms)
 [ RUN      ] PurgeRDFBagTests.Biomd626Input3Pattern1
-[       OK ] PurgeRDFBagTests.Biomd626Input3Pattern1 (0 ms)
+[       OK ] PurgeRDFBagTests.Biomd626Input3Pattern1 (1 ms)
 [ RUN      ] PurgeRDFBagTests.Biomd626Input3Pattern2
 [       OK ] PurgeRDFBagTests.Biomd626Input3Pattern2 (1 ms)
 [ RUN      ] PurgeRDFBagTests.Biomd626Input3Pattern3
 [       OK ] PurgeRDFBagTests.Biomd626Input3Pattern3 (1 ms)
 [ RUN      ] PurgeRDFBagTests.Bimd626Input4Pattern1
-[       OK ] PurgeRDFBagTests.Bimd626Input4Pattern1 (6 ms)
+[       OK ] PurgeRDFBagTests.Bimd626Input4Pattern1 (10 ms)
 [ RUN      ] PurgeRDFBagTests.Bimd626Input5Pattern1
 [       OK ] PurgeRDFBagTests.Bimd626Input5Pattern1 (3 ms)
 [ RUN      ] PurgeRDFBagTests.Bimd626Input5Pattern2
@@ -62,15 +62,15 @@ Running main() from ..\third_party\googletest\googletest\src\gtest_main.cc
     ] .
 
 
-[       OK ] PurgeRDFBagTests.Bimd626Input5Pattern2 (3 ms)
+[       OK ] PurgeRDFBagTests.Bimd626Input5Pattern2 (4 ms)
 [ RUN      ] PurgeRDFBagTests.Bimd626Input5Pattern3
-[       OK ] PurgeRDFBagTests.Bimd626Input5Pattern3 (2 ms)
+[       OK ] PurgeRDFBagTests.Bimd626Input5Pattern3 (5 ms)
 [ RUN      ] PurgeRDFBagTests.Biomd626Full
-[       OK ] PurgeRDFBagTests.Biomd626Full (432 ms)
+[       OK ] PurgeRDFBagTests.Biomd626Full (618 ms)
 [ RUN      ] PurgeRDFBagTests.Biomd689FullPattern1
-[       OK ] PurgeRDFBagTests.Biomd689FullPattern1 (1064 ms)
-[----------] 22 tests from PurgeRDFBagTests (1594 ms total)
+[       OK ] PurgeRDFBagTests.Biomd689FullPattern1 (1266 ms)
+[----------] 22 tests from PurgeRDFBagTests (2013 ms total)
 
 [----------] Global test environment tear-down
-[==========] 22 tests from 1 test suite ran. (1594 ms total)
+[==========] 22 tests from 1 test suite ran. (2013 ms total)
 [  PASSED  ] 22 tests.

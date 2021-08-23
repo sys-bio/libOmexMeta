@@ -13,19 +13,19 @@ Running main() from ..\third_party\googletest\googletest\src\gtest_main.cc
 [ RUN      ] LibrdfModelTests.TestRemoveStatement
 [       OK ] LibrdfModelTests.TestRemoveStatement (0 ms)
 [ RUN      ] LibrdfModelTests.TestContext
-[       OK ] LibrdfModelTests.TestContext (0 ms)
+[       OK ] LibrdfModelTests.TestContext (1 ms)
 [ RUN      ] LibrdfModelTests.containsPass
 [       OK ] LibrdfModelTests.containsPass (0 ms)
 [ RUN      ] LibrdfModelTests.containsFail
-[       OK ] LibrdfModelTests.containsFail (1 ms)
+[       OK ] LibrdfModelTests.containsFail (0 ms)
 [ RUN      ] LibrdfModelTests.Equality1Pass
-[       OK ] LibrdfModelTests.Equality1Pass (0 ms)
+[       OK ] LibrdfModelTests.Equality1Pass (1 ms)
 [ RUN      ] LibrdfModelTests.Equality1Blanks
 [       OK ] LibrdfModelTests.Equality1Blanks (0 ms)
 [ RUN      ] LibrdfModelTests.Equality1Fail
 [       OK ] LibrdfModelTests.Equality1Fail (1 ms)
-[----------] 11 tests from LibrdfModelTests (5 ms total)
+[----------] 11 tests from LibrdfModelTests (6 ms total)
 
 [----------] Global test environment tear-down
-[==========] 11 tests from 1 test suite ran. (5 ms total)
+[==========] 11 tests from 1 test suite ran. (6 ms total)
 [  PASSED  ] 11 tests.

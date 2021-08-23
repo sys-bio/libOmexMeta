@@ -51,15 +51,15 @@ local:SourceParticipant0000
 
 [       OK ] EnergyDiffTests.TestEnergyDiffCellML1 (2 ms)
 [ RUN      ] EnergyDiffTests.TestEnergyDiffCellML2
-[       OK ] EnergyDiffTests.TestEnergyDiffCellML2 (1 ms)
+[       OK ] EnergyDiffTests.TestEnergyDiffCellML2 (3 ms)
 [ RUN      ] EnergyDiffTests.TestRemoveEnergyDiff
 [       OK ] EnergyDiffTests.TestRemoveEnergyDiff (2 ms)
 [ RUN      ] EnergyDiffTests.NernstExample
 [       OK ] EnergyDiffTests.NernstExample (2 ms)
 [ RUN      ] EnergyDiffTests.NernstExampleWithDifferentSBML
-[       OK ] EnergyDiffTests.NernstExampleWithDifferentSBML (1 ms)
-[----------] 7 tests from EnergyDiffTests (15 ms total)
+[       OK ] EnergyDiffTests.NernstExampleWithDifferentSBML (3 ms)
+[----------] 7 tests from EnergyDiffTests (20 ms total)
 
 [----------] Global test environment tear-down
-[==========] 7 tests from 1 test suite ran. (15 ms total)
+[==========] 7 tests from 1 test suite ran. (20 ms total)
 [  PASSED  ] 7 tests.

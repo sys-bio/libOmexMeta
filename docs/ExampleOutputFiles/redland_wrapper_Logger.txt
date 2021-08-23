@@ -1,19 +1,42 @@
 Running main() from ..\third_party\googletest\googletest\src\gtest_main.cc
-[==========] Running 4 tests from 1 test suite.
+[==========] Running 16 tests from 1 test suite.
 [----------] Global test environment set-up.
-[----------] 4 tests from LoggerTests
-[ RUN      ] LoggerTests.DefaultLevel
-[       OK ] LoggerTests.DefaultLevel (0 ms)
-[ RUN      ] LoggerTests.UseConsoleLoggerOutOfTheBox
-[00:55:14 +01:00]  warning ..\tests\cpp\RedlandWrapper\LoggerTests.cpp:45 Displayed to console 
-[       OK ] LoggerTests.UseConsoleLoggerOutOfTheBox (2 ms)
-[ RUN      ] LoggerTests.SwitchToFileLogger
-[       OK ] LoggerTests.SwitchToFileLogger (1 ms)
-[ RUN      ] LoggerTests.UseFileLogger
-"D:\\libOmexMeta\\cmake-build-release\\docs\\log.log"
-[       OK ] LoggerTests.UseFileLogger (3 ms)
-[----------] 4 tests from LoggerTests (6 ms total)
+[----------] 16 tests from LibrdfUriTests
+[ RUN      ] LibrdfUriTests.TestCreate
+[       OK ] LibrdfUriTests.TestCreate (2 ms)
+[ RUN      ] LibrdfUriTests.TestGet
+[       OK ] LibrdfUriTests.TestGet (0 ms)
+[ RUN      ] LibrdfUriTests.TestStr
+[       OK ] LibrdfUriTests.TestStr (0 ms)
+[ RUN      ] LibrdfUriTests.TestFromFilenameWithWindowsFormattedFile
+file:///D:/libOmexMeta/tests/cpp
+[       OK ] LibrdfUriTests.TestFromFilenameWithWindowsFormattedFile (0 ms)
+[ RUN      ] LibrdfUriTests.TestConcatonate
+[       OK ] LibrdfUriTests.TestConcatonate (0 ms)
+[ RUN      ] LibrdfUriTests.TestIsFileUri
+[       OK ] LibrdfUriTests.TestIsFileUri (0 ms)
+[ RUN      ] LibrdfUriTests.TestEqualityOperator
+[       OK ] LibrdfUriTests.TestEqualityOperator (0 ms)
+[ RUN      ] LibrdfUriTests.TestEquality
+[       OK ] LibrdfUriTests.TestEquality (0 ms)
+[ RUN      ] LibrdfUriTests.TestInequality
+[       OK ] LibrdfUriTests.TestInequality (0 ms)
+[ RUN      ] LibrdfUriTests.TestUriTwiceWithMyConstructsWhenSameUri
+[       OK ] LibrdfUriTests.TestUriTwiceWithMyConstructsWhenSameUri (0 ms)
+[ RUN      ] LibrdfUriTests.TestUriInANode
+[       OK ] LibrdfUriTests.TestUriInANode (1 ms)
+[ RUN      ] LibrdfUriTests.TestUriInANode2
+[       OK ] LibrdfUriTests.TestUriInANode2 (0 ms)
+[ RUN      ] LibrdfUriTests.CopyConstruct
+[       OK ] LibrdfUriTests.CopyConstruct (0 ms)
+[ RUN      ] LibrdfUriTests.CopyAssignment
+[       OK ] LibrdfUriTests.CopyAssignment (0 ms)
+[ RUN      ] LibrdfUriTests.MoveConstruct
+[       OK ] LibrdfUriTests.MoveConstruct (0 ms)
+[ RUN      ] LibrdfUriTests.MoveAssignment
+[       OK ] LibrdfUriTests.MoveAssignment (0 ms)
+[----------] 16 tests from LibrdfUriTests (3 ms total)
 
 [----------] Global test environment tear-down
-[==========] 4 tests from 1 test suite ran. (6 ms total)
-[  PASSED  ] 4 tests.
+[==========] 16 tests from 1 test suite ran. (3 ms total)
+[  PASSED  ] 16 tests.

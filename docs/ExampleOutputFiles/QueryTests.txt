@@ -3,13 +3,13 @@ Running main() from ..\third_party\googletest\googletest\src\gtest_main.cc
 [----------] Global test environment set-up.
 [----------] 3 tests from QueryTests
 [ RUN      ] QueryTests.CheckQueryResultsAsMap
-[       OK ] QueryTests.CheckQueryResultsAsMap (2 ms)
+[       OK ] QueryTests.CheckQueryResultsAsMap (3 ms)
 [ RUN      ] QueryTests.CheckQueryResultsAsString
-[       OK ] QueryTests.CheckQueryResultsAsString (0 ms)
+[       OK ] QueryTests.CheckQueryResultsAsString (1 ms)
 [ RUN      ] QueryTests.CheckQueryResultsAsMapTwice
 [       OK ] QueryTests.CheckQueryResultsAsMapTwice (1 ms)
-[----------] 3 tests from QueryTests (4 ms total)
+[----------] 3 tests from QueryTests (5 ms total)
 
 [----------] Global test environment tear-down
-[==========] 3 tests from 1 test suite ran. (4 ms total)
+[==========] 3 tests from 1 test suite ran. (5 ms total)
 [  PASSED  ] 3 tests.

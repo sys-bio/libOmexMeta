@@ -17,7 +17,7 @@ Running main() from ..\third_party\googletest\googletest\src\gtest_main.cc
 [ RUN      ] LibrdfNodeTests.TestMoveConstructor
 [       OK ] LibrdfNodeTests.TestMoveConstructor (0 ms)
 [ RUN      ] LibrdfNodeTests.TestMoveAssignmentOperator
-[       OK ] LibrdfNodeTests.TestMoveAssignmentOperator (0 ms)
+[       OK ] LibrdfNodeTests.TestMoveAssignmentOperator (1 ms)
 [ RUN      ] LibrdfNodeTests.TestLiteral1
 [       OK ] LibrdfNodeTests.TestLiteral1 (0 ms)
 [ RUN      ] LibrdfNodeTests.TestTypedLiteral1
@@ -55,7 +55,7 @@ Running main() from ..\third_party\googletest\googletest\src\gtest_main.cc
 [ RUN      ] LibrdfNodeTests.TestSetUri2
 [       OK ] LibrdfNodeTests.TestSetUri2 (0 ms)
 [ RUN      ] LibrdfNodeTests.TestEquality
-[       OK ] LibrdfNodeTests.TestEquality (1 ms)
+[       OK ] LibrdfNodeTests.TestEquality (0 ms)
 [ RUN      ] LibrdfNodeTests.TestEqualityBlank
 [       OK ] LibrdfNodeTests.TestEqualityBlank (0 ms)
 [ RUN      ] LibrdfNodeTests.TestInequality
@@ -92,8 +92,8 @@ Running main() from ..\third_party\googletest\googletest\src\gtest_main.cc
 [       OK ] LibrdfNodeTests.isUri (0 ms)
 [ RUN      ] LibrdfNodeTests.isLiteral
 [       OK ] LibrdfNodeTests.isLiteral (0 ms)
-[----------] 45 tests from LibrdfNodeTests (3 ms total)
+[----------] 45 tests from LibrdfNodeTests (4 ms total)
 
 [----------] Global test environment tear-down
-[==========] 45 tests from 1 test suite ran. (3 ms total)
+[==========] 45 tests from 1 test suite ran. (4 ms total)
 [  PASSED  ] 45 tests.

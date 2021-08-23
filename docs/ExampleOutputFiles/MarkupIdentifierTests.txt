@@ -9,9 +9,9 @@ Running main() from ..\third_party\googletest\googletest\src\gtest_main.cc
 [ RUN      ] MarkupIdentifierTests.isSBMLTestWhenSomeElementsAreMissing
 [       OK ] MarkupIdentifierTests.isSBMLTestWhenSomeElementsAreMissing (0 ms)
 [ RUN      ] MarkupIdentifierTests.isCellMLTest
-[       OK ] MarkupIdentifierTests.isCellMLTest (3 ms)
-[----------] 4 tests from MarkupIdentifierTests (4 ms total)
+[       OK ] MarkupIdentifierTests.isCellMLTest (4 ms)
+[----------] 4 tests from MarkupIdentifierTests (5 ms total)
 
 [----------] Global test environment tear-down
-[==========] 4 tests from 1 test suite ran. (4 ms total)
+[==========] 4 tests from 1 test suite ran. (5 ms total)
 [  PASSED  ] 4 tests.
