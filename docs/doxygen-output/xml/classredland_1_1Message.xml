@@ -1,0 +1,192 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classredland_1_1Message" kind="class" language="C++" prot="public">
+    <compoundname>redland::Message</compoundname>
+    <includes refid="Message_8h" local="no">Message.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classredland_1_1Message_1a0d2f9487eba3502dc93eb4757fdc1bf9" prot="private" static="no" mutable="no">
+        <type>LogLevel</type>
+        <definition>LogLevel redland::Message::level_</definition>
+        <argsstring></argsstring>
+        <name>level_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/Message.h" line="44" column="18" bodyfile="src/redland/RedlandWrapper/src/include/redland/Message.h" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classredland_1_1Message_1ac6a37df2f198427c33a315f698493aa0" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string redland::Message::message_</definition>
+        <argsstring></argsstring>
+        <name>message_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/Message.h" line="45" column="21" bodyfile="src/redland/RedlandWrapper/src/include/redland/Message.h" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classredland_1_1Message_1a58fd601cf1897a589b9a2e7d44d50d7c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>redland::Message::Message</definition>
+        <argsstring>()=default</argsstring>
+        <name>Message</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/Message.h" line="22" column="9"/>
+      </memberdef>
+      <memberdef kind="function" id="classredland_1_1Message_1a319dd184ad1b8996c1c74e086c1ec37e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>redland::Message::Message</definition>
+        <argsstring>(LogLevel level, std::string message)</argsstring>
+        <name>Message</name>
+        <param>
+          <type>LogLevel</type>
+          <declname>level</declname>
+        </param>
+        <param>
+          <type>std::string</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+<para>Constructor for <ref refid="classredland_1_1Message" kindref="compound">Message</ref> takes a. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>level</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>and a</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>message.</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/Message.h" line="27" column="9" bodyfile="src/redland/RedlandWrapper/src/Message.cpp" bodystart="11" bodyend="12"/>
+      </memberdef>
+      <memberdef kind="function" id="classredland_1_1Message_1a863bce000126e29257184cc0ae24f229" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>LogLevel</type>
+        <definition>LogLevel redland::Message::getLevel</definition>
+        <argsstring>() const</argsstring>
+        <name>getLevel</name>
+        <briefdescription>
+<para>getter for the level of this logger message </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/Message.h" line="34" column="18" bodyfile="src/redland/RedlandWrapper/src/Message.cpp" bodystart="18" bodyend="20"/>
+      </memberdef>
+      <memberdef kind="function" id="classredland_1_1Message_1a9169a0554e23413149228b6964f709bf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const std::string &amp;</type>
+        <definition>const std::string &amp; redland::Message::getMessage</definition>
+        <argsstring>() const</argsstring>
+        <name>getMessage</name>
+        <briefdescription>
+<para>getter for the content string for this logger message </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/Message.h" line="39" column="27" bodyfile="src/redland/RedlandWrapper/src/Message.cpp" bodystart="22" bodyend="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classredland_1_1Message_1a14078424b434c9a3ae56d64e243a3acf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void redland::Message::setLevel</definition>
+        <argsstring>(LogLevel level)</argsstring>
+        <name>setLevel</name>
+        <param>
+          <type>LogLevel</type>
+          <declname>level</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/Message.h" line="40" column="14" bodyfile="src/redland/RedlandWrapper/src/Message.cpp" bodystart="25" bodyend="27"/>
+      </memberdef>
+      <memberdef kind="function" id="classredland_1_1Message_1a8821f9d384dc93f642ef804b2792ad23" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void redland::Message::setMessage</definition>
+        <argsstring>(const std::string &amp;message)</argsstring>
+        <name>setMessage</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/Message.h" line="41" column="14" bodyfile="src/redland/RedlandWrapper/src/Message.cpp" bodystart="28" bodyend="30"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classredland_1_1Message_1a38d8bc972f7e74ffa6b540d829daa3a9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream&amp; operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;os, Message &amp;message)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>os</declname>
+        </param>
+        <param>
+          <type><ref refid="classredland_1_1Message" kindref="compound">Message</ref> &amp;</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/Message.h" line="29" column="16" bodyfile="src/redland/RedlandWrapper/src/Message.cpp" bodystart="14" bodyend="17"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>container for Redland logging messages. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/redland/RedlandWrapper/src/include/redland/Message.h" line="20" column="5" bodyfile="src/redland/RedlandWrapper/src/include/redland/Message.h" bodystart="20" bodyend="47"/>
+    <listofallmembers>
+      <member refid="classredland_1_1Message_1a863bce000126e29257184cc0ae24f229" prot="public" virt="non-virtual"><scope>redland::Message</scope><name>getLevel</name></member>
+      <member refid="classredland_1_1Message_1a9169a0554e23413149228b6964f709bf" prot="public" virt="non-virtual"><scope>redland::Message</scope><name>getMessage</name></member>
+      <member refid="classredland_1_1Message_1a0d2f9487eba3502dc93eb4757fdc1bf9" prot="private" virt="non-virtual"><scope>redland::Message</scope><name>level_</name></member>
+      <member refid="classredland_1_1Message_1a58fd601cf1897a589b9a2e7d44d50d7c" prot="public" virt="non-virtual"><scope>redland::Message</scope><name>Message</name></member>
+      <member refid="classredland_1_1Message_1a319dd184ad1b8996c1c74e086c1ec37e" prot="public" virt="non-virtual"><scope>redland::Message</scope><name>Message</name></member>
+      <member refid="classredland_1_1Message_1ac6a37df2f198427c33a315f698493aa0" prot="private" virt="non-virtual"><scope>redland::Message</scope><name>message_</name></member>
+      <member refid="classredland_1_1Message_1a38d8bc972f7e74ffa6b540d829daa3a9" prot="public" virt="non-virtual"><scope>redland::Message</scope><name>operator&lt;&lt;</name></member>
+      <member refid="classredland_1_1Message_1a14078424b434c9a3ae56d64e243a3acf" prot="public" virt="non-virtual"><scope>redland::Message</scope><name>setLevel</name></member>
+      <member refid="classredland_1_1Message_1a8821f9d384dc93f642ef804b2792ad23" prot="public" virt="non-virtual"><scope>redland::Message</scope><name>setMessage</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

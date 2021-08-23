@@ -30,7 +30,7 @@ public:
 
 TEST_F(LoggerTests, DefaultLevel){
     auto actual = Logger::getLogger()->getLevel();
-    auto expected = Logger::LogLevel::warn;
+    auto expected = LogLevel::warn;
     ASSERT_EQ(expected, actual);
 }
 
@@ -58,7 +58,7 @@ TEST_F(LoggerTests, SwitchToFileLogger){
 TEST_F(LoggerTests, UseFileLogger) {
     LibrdfStorage storage;
     LibrdfModel model(storage);
-    Logger::getLogger()->setLevel(Logger::LogLevel::info);
+    Logger::getLogger()->setLevel(LogLevel::info);
     std::cout<< p << std::endl;
     Logger::getLogger()->fileLogger(p);
     std::string sbml = SBMLFactory::getSBML(SBML_INVALID_METAIDS);
@@ -69,6 +69,46 @@ TEST_F(LoggerTests, UseFileLogger) {
 
 
 
+TEST_F(LoggerTests, UseFileLoggerReproduceIssue128) {
+    // if file already exists remove
+    if (std::filesystem::exists(p)){
+        std::filesystem::remove(p);
+    }
+    std::cout<< p << std::endl;
+    Logger::getLogger()->fileLogger(p);
+
+    Logger::getLogger()->setLevel(LogLevel::info);
+    ASSERT_TRUE(std::filesystem::exists(p));
+
+    REDLAND_INFO("INFO");
+    REDLAND_TRACE("TRACE");
+    REDLAND_DEBUG("DEBUG");
+    REDLAND_WARN("WARN");
+    REDLAND_ERROR("ERROR");
+    REDLAND_CRITICAL("CRITICAL");
+}
+
+
+TEST_F(LoggerTests, CollectLogMessageSize) {
+    REDLAND_INFO("INFO");
+    REDLAND_TRACE("TRACE");
+    REDLAND_DEBUG("DEBUG");
+    REDLAND_WARN("WARN");
+    REDLAND_ERROR("ERROR");
+    REDLAND_CRITICAL("CRITICAL");
+    std::cout << "logger get level: " << Logger::getLogger()->getLevel() << std::endl;
+    for (auto i: Logger::getLogger()->getMessages()){
+        std::cout << i << std::endl;
+    }
+    ASSERT_EQ(3, Logger::getLogger()->size());
+}
+
+TEST_F(LoggerTests, GetLogMessage){
+    LOGGER_SET_INFO();
+    REDLAND_INFO("INFO");
+    std::string msg = (*Logger::getLogger())[0].getMessage();
+    ASSERT_STREQ("INFO", msg.c_str());
+}
 
 
 

@@ -14,6 +14,6 @@ cellml = '''<?xml version=\"1.1\" encoding=\"UTF-8\"?>
 Logger.set_level(eLogLevel.critical)
 rdf = RDF.from_string(cellml, syntax="ntriples")  # See console - nothing is emitted
 
-# turning the logger off is another
+# turning the logger ff is another
 Logger.set_level(eLogLevel.off)
 rdf = RDF.from_string(cellml, syntax="ntriples")  # See console - nothing is emitted

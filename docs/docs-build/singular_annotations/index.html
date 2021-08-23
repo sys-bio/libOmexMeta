@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Singular Annotations &mdash; libomexmeta 1.2.11 documentation</title>
+  <title>Singular Annotations &mdash; libomexmeta 1.2.12 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
@@ -99,7 +100,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="singular-annotations">
+  <section id="singular-annotations">
 <h1>Singular Annotations<a class="headerlink" href="#singular-annotations" title="Permalink to this headline"></a></h1>
 <p>There’s a little more to creating new annotations compared to
 reading and writing them. There are a few additional classes that need
@@ -164,13 +165,13 @@ tellurium and antimony.</p>
 <span class="nt">&lt;/sbml&gt;</span>
 </pre></div>
 </div>
-<div class="section" id="creating-single-annotations">
+<section id="creating-single-annotations">
 <h2>Creating Single Annotations<a class="headerlink" href="#creating-single-annotations" title="Permalink to this headline"></a></h2>
 <p>A SingularAnnotation object is a typedef’d <cite>omexmeta::Triple</cite> object which is essentially
 a wrapper around the <cite>librdf_statement*</cite> object from the Redland Libraries. In this example
 we create a simple singular annotation for the top level <cite>model</cite> element of the sbml. We also
 add this annotation to our RDF graph and serialize to Turtle syntax.</p>
-<div class="section" id="simple-example-of-creating-a-single-annotation">
+<section id="simple-example-of-creating-a-single-annotation">
 <h3>Simple example of creating a single annotation<a class="headerlink" href="#simple-example-of-creating-a-single-annotation" title="Permalink to this headline"></a></h3>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">python</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">C++</button><button aria-controls="panel-0-0-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-2" name="0-2" role="tab" tabindex="-1">C</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id1">
@@ -232,10 +233,10 @@ add this annotation to our RDF graph and serialize to Turtle syntax.</p>
 </div>
 <div class="literal-block-wrapper docutils container" id="id2">
 <div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id2" title="Permalink to this code"></a></div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">13</span><span class="p">:</span><span class="mi">18</span><span class="p">:</span><span class="mi">24</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">warning</span> <span class="p">:</span>  <span class="n">XML</span> <span class="n">parser</span> <span class="n">warning</span><span class="p">:</span> <span class="n">Unsupported</span> <span class="n">version</span> <span class="s1">&#39;1.1&#39;</span> 
-<span class="p">[</span><span class="mi">13</span><span class="p">:</span><span class="mi">18</span><span class="p">:</span><span class="mi">24</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">warning</span> <span class="p">:</span>  <span class="n">XML</span> <span class="n">parser</span> <span class="n">warning</span><span class="p">:</span> <span class="n">Unsupported</span> <span class="n">version</span> <span class="s1">&#39;1.1&#39;</span> 
-<span class="p">[</span><span class="mi">13</span><span class="p">:</span><span class="mi">18</span><span class="p">:</span><span class="mi">24</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">warning</span> <span class="p">:</span>  <span class="n">XML</span> <span class="n">parser</span> <span class="n">warning</span><span class="p">:</span> <span class="n">Unsupported</span> <span class="n">version</span> <span class="s1">&#39;1.1&#39;</span> 
-<span class="p">[</span><span class="mi">13</span><span class="p">:</span><span class="mi">18</span><span class="p">:</span><span class="mi">24</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">warning</span> <span class="p">:</span>  <span class="n">XML</span> <span class="n">parser</span> <span class="n">warning</span><span class="p">:</span> <span class="n">Unsupported</span> <span class="n">version</span> <span class="s1">&#39;1.1&#39;</span> 
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">00</span><span class="p">:</span><span class="mi">54</span><span class="p">:</span><span class="mi">41</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">warning</span> <span class="p">:</span> <span class="n">XML</span> <span class="n">parser</span> <span class="n">warning</span><span class="p">:</span> <span class="n">Unsupported</span> <span class="n">version</span> <span class="s1">&#39;1.1&#39;</span> 
+<span class="p">[</span><span class="mi">00</span><span class="p">:</span><span class="mi">54</span><span class="p">:</span><span class="mi">41</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">warning</span> <span class="p">:</span> <span class="n">XML</span> <span class="n">parser</span> <span class="n">warning</span><span class="p">:</span> <span class="n">Unsupported</span> <span class="n">version</span> <span class="s1">&#39;1.1&#39;</span> 
+<span class="p">[</span><span class="mi">00</span><span class="p">:</span><span class="mi">54</span><span class="p">:</span><span class="mi">41</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">warning</span> <span class="p">:</span> <span class="n">XML</span> <span class="n">parser</span> <span class="n">warning</span><span class="p">:</span> <span class="n">Unsupported</span> <span class="n">version</span> <span class="s1">&#39;1.1&#39;</span> 
+<span class="p">[</span><span class="mi">00</span><span class="p">:</span><span class="mi">54</span><span class="p">:</span><span class="mi">41</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">warning</span> <span class="p">:</span> <span class="n">XML</span> <span class="n">parser</span> <span class="n">warning</span><span class="p">:</span> <span class="n">Unsupported</span> <span class="n">version</span> <span class="s1">&#39;1.1&#39;</span> 
 <span class="p">[</span><span class="s1">&#39;ToyModel&#39;</span><span class="p">,</span> <span class="s1">&#39;compartment0000&#39;</span><span class="p">,</span> <span class="s1">&#39;species0000&#39;</span><span class="p">,</span> <span class="s1">&#39;species0001&#39;</span><span class="p">,</span> <span class="s1">&#39;parameter0000&#39;</span><span class="p">,</span> <span class="s1">&#39;parameter0001&#39;</span><span class="p">,</span> <span class="s1">&#39;reaction0000&#39;</span><span class="p">,</span> <span class="s1">&#39;kineticLaw0000&#39;</span><span class="p">]</span>
 <span class="nd">@prefix</span> <span class="n">rdf</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">w3</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="mi">1999</span><span class="o">/</span><span class="mi">02</span><span class="o">/</span><span class="mi">22</span><span class="o">-</span><span class="n">rdf</span><span class="o">-</span><span class="n">syntax</span><span class="o">-</span><span class="n">ns</span><span class="c1">#&gt; .</span>
 <span class="nd">@prefix</span> <span class="n">dc</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">purl</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">dc</span><span class="o">/</span><span class="n">terms</span><span class="o">/&gt;</span> <span class="o">.</span>
@@ -335,12 +336,6 @@ add this annotation to our RDF graph and serialize to Turtle syntax.</p>
 
     <span class="c1">// in C/C++ we need to manually add the annotation to the editor</span>
     <span class="n">editor</span><span class="p">.</span><span class="n">addSingleAnnotation</span><span class="p">(</span><span class="n">singular_annotation</span><span class="p">);</span>
-
-    <span class="c1">// The Singular annotation object contains a dynamically allocated</span>
-    <span class="c1">// librdf_statement* from the redland libraries which must be freed</span>
-    <span class="c1">// by the caller. Now we&#39;ve use the singular_annotation object</span>
-    <span class="c1">// we can release the used memory.</span>
-    <span class="n">singular_annotation</span><span class="p">.</span><span class="n">freeTriple</span><span class="p">();</span>
 
     <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">rdf</span><span class="p">.</span><span class="n">toString</span><span class="p">(</span><span class="s">&quot;turtle&quot;</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
 
@@ -553,8 +548,8 @@ add this annotation to our RDF graph and serialize to Turtle syntax.</p>
 single metaid called <cite>ToyModel</cite>, which is the metaid of the model element.
 Metaids are essential for annotation, given that you cannot annotate an
 element that does not have a metaid.</p>
-</div>
-<div class="section" id="using-the-generate-new-metaids-argument">
+</section>
+<section id="using-the-generate-new-metaids-argument">
 <h3>Using the <cite>generate_new_metaids</cite> argument<a class="headerlink" href="#using-the-generate-new-metaids-argument" title="Permalink to this headline"></a></h3>
 <p>If only some of your model elements have metaids,
 you can use the third argument to <cite>toEditor</cite>  to automatically
@@ -619,10 +614,10 @@ create metaids</p>
 </div>
 <div class="literal-block-wrapper docutils container" id="id8">
 <div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id8" title="Permalink to this code"></a></div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[13:18:25 +01:00]  warning :  XML parser warning: Unsupported version &#39;1.1&#39; 
-[13:18:25 +01:00]  warning :  XML parser warning: Unsupported version &#39;1.1&#39; 
-[13:18:25 +01:00]  warning :  XML parser warning: Unsupported version &#39;1.1&#39; 
-[13:18:25 +01:00]  warning :  XML parser warning: Unsupported version &#39;1.1&#39; 
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[00:54:41 +01:00]  warning : XML parser warning: Unsupported version &#39;1.1&#39; 
+[00:54:41 +01:00]  warning : XML parser warning: Unsupported version &#39;1.1&#39; 
+[00:54:41 +01:00]  warning : XML parser warning: Unsupported version &#39;1.1&#39; 
+[00:54:41 +01:00]  warning : XML parser warning: Unsupported version &#39;1.1&#39; 
 &lt;?xml version=&quot;1.1&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;!-- Created by libAntimony version v2.12.0 with libSBML version 5.18.1. --&gt;
 &lt;sbml xmlns=&quot;http://www.sbml.org/sbml/level3/version1/core&quot; level=&quot;3&quot; version=&quot;1&quot;&gt;
@@ -756,12 +751,6 @@ local:SourceParticipant0000
 
     <span class="c1">// in C/C++ we need to manually add the annotation to the editor</span>
     <span class="n">editor</span><span class="p">.</span><span class="n">addSingleAnnotation</span><span class="p">(</span><span class="n">singular_annotation</span><span class="p">);</span>
-
-    <span class="c1">// The Singular annotation object contains a dynamically allocated</span>
-    <span class="c1">// librdf_statement* from the redland libraries which must be freed</span>
-    <span class="c1">// by the caller. Now we&#39;ve use the singular_annotation object</span>
-    <span class="c1">// we can release the used memory.</span>
-    <span class="n">singular_annotation</span><span class="p">.</span><span class="n">freeTriple</span><span class="p">();</span>
 
     <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">rdf</span><span class="p">.</span><span class="n">toString</span><span class="p">(</span><span class="s">&quot;turtle&quot;</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
 
@@ -956,8 +945,8 @@ local:SourceParticipant0000
 </div>
 </div>
 </div></div>
-</div>
-<div class="section" id="creating-and-serializing-a-single-annotation-without-adding-to-the-model">
+</section>
+<section id="creating-and-serializing-a-single-annotation-without-adding-to-the-model">
 <h3>Creating and Serializing a Single Annotation without adding to the model<a class="headerlink" href="#creating-and-serializing-a-single-annotation-without-adding-to-the-model" title="Permalink to this headline"></a></h3>
 <p>In the previous examples, we added the singular annotation we had just constructed to the
 RDF graph and then serialized the RDF graph to turtle syntax. It is also
@@ -1029,11 +1018,11 @@ RDF graph.</p>
 </div>
 <div class="literal-block-wrapper docutils container" id="id14">
 <div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id14" title="Permalink to this code"></a></div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">13</span><span class="p">:</span><span class="mi">18</span><span class="p">:</span><span class="mi">24</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">warning</span> <span class="p">:</span>  <span class="n">XML</span> <span class="n">parser</span> <span class="n">warning</span><span class="p">:</span> <span class="n">Unsupported</span> <span class="n">version</span> <span class="s1">&#39;1.1&#39;</span> 
-<span class="p">[</span><span class="mi">13</span><span class="p">:</span><span class="mi">18</span><span class="p">:</span><span class="mi">24</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">warning</span> <span class="p">:</span>  <span class="n">XML</span> <span class="n">parser</span> <span class="n">warning</span><span class="p">:</span> <span class="n">Unsupported</span> <span class="n">version</span> <span class="s1">&#39;1.1&#39;</span> 
-<span class="p">[</span><span class="mi">13</span><span class="p">:</span><span class="mi">18</span><span class="p">:</span><span class="mi">24</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">warning</span> <span class="p">:</span>  <span class="n">XML</span> <span class="n">parser</span> <span class="n">warning</span><span class="p">:</span> <span class="n">Unsupported</span> <span class="n">version</span> <span class="s1">&#39;1.1&#39;</span> 
-<span class="p">[</span><span class="mi">13</span><span class="p">:</span><span class="mi">18</span><span class="p">:</span><span class="mi">24</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">warning</span> <span class="p">:</span>  <span class="n">XML</span> <span class="n">parser</span> <span class="n">warning</span><span class="p">:</span> <span class="n">Unsupported</span> <span class="n">version</span> <span class="s1">&#39;1.1&#39;</span> 
-<span class="o">&lt;</span><span class="n">pyomexmeta</span><span class="o">.</span><span class="n">pyomexmeta</span><span class="o">.</span><span class="n">SingularAnnotation</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x00000217661F5AF0</span><span class="o">&gt;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">00</span><span class="p">:</span><span class="mi">54</span><span class="p">:</span><span class="mi">41</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">warning</span> <span class="p">:</span> <span class="n">XML</span> <span class="n">parser</span> <span class="n">warning</span><span class="p">:</span> <span class="n">Unsupported</span> <span class="n">version</span> <span class="s1">&#39;1.1&#39;</span> 
+<span class="p">[</span><span class="mi">00</span><span class="p">:</span><span class="mi">54</span><span class="p">:</span><span class="mi">41</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">warning</span> <span class="p">:</span> <span class="n">XML</span> <span class="n">parser</span> <span class="n">warning</span><span class="p">:</span> <span class="n">Unsupported</span> <span class="n">version</span> <span class="s1">&#39;1.1&#39;</span> 
+<span class="p">[</span><span class="mi">00</span><span class="p">:</span><span class="mi">54</span><span class="p">:</span><span class="mi">41</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">warning</span> <span class="p">:</span> <span class="n">XML</span> <span class="n">parser</span> <span class="n">warning</span><span class="p">:</span> <span class="n">Unsupported</span> <span class="n">version</span> <span class="s1">&#39;1.1&#39;</span> 
+<span class="p">[</span><span class="mi">00</span><span class="p">:</span><span class="mi">54</span><span class="p">:</span><span class="mi">41</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">warning</span> <span class="p">:</span> <span class="n">XML</span> <span class="n">parser</span> <span class="n">warning</span><span class="p">:</span> <span class="n">Unsupported</span> <span class="n">version</span> <span class="s1">&#39;1.1&#39;</span> 
+<span class="o">&lt;</span><span class="n">pyomexmeta</span><span class="o">.</span><span class="n">pyomexmeta</span><span class="o">.</span><span class="n">SingularAnnotation</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x00000182AE255AF0</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 </div>
@@ -1097,7 +1086,6 @@ RDF graph.</p>
 
     <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">singular_annotation_string</span> <span class="o">=</span> <span class="n">rdf</span><span class="p">.</span><span class="n">toString</span><span class="p">(</span><span class="s">&quot;turtle&quot;</span><span class="p">);</span>
     <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">singular_annotation_string</span><span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
-    <span class="n">singular_annotation</span><span class="p">.</span><span class="n">freeTriple</span><span class="p">();</span>
 
     <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
@@ -1206,7 +1194,7 @@ RDF graph.</p>
     <span class="c1">// create editor object</span>
     <span class="n">Editor</span> <span class="n">editor</span> <span class="o">=</span> <span class="n">rdf</span><span class="p">.</span><span class="n">toEditor</span><span class="p">(</span><span class="n">sbml</span><span class="p">,</span> <span class="nb">true</span><span class="p">);</span>
 
-    <span class="c1">// create out annotation</span>
+    <span class="c1">// create our annotation</span>
     <span class="n">SingularAnnotation</span> <span class="n">singular_annotation</span> <span class="o">=</span> <span class="n">editor</span><span class="p">.</span><span class="n">newSingularAnnotation</span><span class="p">();</span>
     <span class="n">singular_annotation</span>
         <span class="p">.</span><span class="n">about</span><span class="p">(</span><span class="s">&quot;species0000&quot;</span><span class="p">)</span>
@@ -1274,9 +1262,9 @@ RDF graph.</p>
 </div>
 </div>
 </div></div>
-</div>
-</div>
-<div class="section" id="subjects-predicates-and-resources">
+</section>
+</section>
+<section id="subjects-predicates-and-resources">
 <h2>Subjects, Predicates and Resources<a class="headerlink" href="#subjects-predicates-and-resources" title="Permalink to this headline"></a></h2>
 <p>Singular annotations are Triples or RDF statements. Therefore  by definition
 they are composed of three nodes (or terms): the subject, the predicate and the
@@ -1285,7 +1273,7 @@ refer to the <a class="reference external" href="https://www.w3.org/TR/rdf11-con
 The RDF is a very general framework for storing information. In libOmexMeta
 we have restricted this generality in accordance with the OmexMeta specification
 1.1.</p>
-<div class="section" id="subject">
+<section id="subject">
 <h3>Subject<a class="headerlink" href="#subject" title="Permalink to this headline"></a></h3>
 <p>A subject in libOmexMeta is the metaid of the element being element appended onto
 the local namespace. In RDF, the subject is the value of the <cite>about</cite> attribute. To set
@@ -1340,8 +1328,8 @@ because the metaid <cite>#OmexMetaId0002</cite> was not found in your model.</p>
 </div>
 </div>
 </div></div>
-</div>
-<div class="section" id="predicate">
+</section>
+<section id="predicate">
 <h3>Predicate<a class="headerlink" href="#predicate" title="Permalink to this headline"></a></h3>
 <p>Predicates in libOmexMeta are all subclasses of the Predicate class. Existing predicate
 classes include <cite>BiomodelsBiologyQualifier</cite>, <cite>BiomodelsBiologyQualifier</cite>,
@@ -1508,10 +1496,10 @@ this is a different method call - see below.</p>
 </div>
 <div class="literal-block-wrapper docutils container" id="id27">
 <div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id27" title="Permalink to this code"></a></div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">13</span><span class="p">:</span><span class="mi">18</span><span class="p">:</span><span class="mi">24</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">warning</span> <span class="p">:</span>  <span class="n">XML</span> <span class="n">parser</span> <span class="n">warning</span><span class="p">:</span> <span class="n">Unsupported</span> <span class="n">version</span> <span class="s1">&#39;1.1&#39;</span> 
-<span class="p">[</span><span class="mi">13</span><span class="p">:</span><span class="mi">18</span><span class="p">:</span><span class="mi">24</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">warning</span> <span class="p">:</span>  <span class="n">XML</span> <span class="n">parser</span> <span class="n">warning</span><span class="p">:</span> <span class="n">Unsupported</span> <span class="n">version</span> <span class="s1">&#39;1.1&#39;</span> 
-<span class="p">[</span><span class="mi">13</span><span class="p">:</span><span class="mi">18</span><span class="p">:</span><span class="mi">24</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">warning</span> <span class="p">:</span>  <span class="n">XML</span> <span class="n">parser</span> <span class="n">warning</span><span class="p">:</span> <span class="n">Unsupported</span> <span class="n">version</span> <span class="s1">&#39;1.1&#39;</span> 
-<span class="p">[</span><span class="mi">13</span><span class="p">:</span><span class="mi">18</span><span class="p">:</span><span class="mi">24</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">warning</span> <span class="p">:</span>  <span class="n">XML</span> <span class="n">parser</span> <span class="n">warning</span><span class="p">:</span> <span class="n">Unsupported</span> <span class="n">version</span> <span class="s1">&#39;1.1&#39;</span> 
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">00</span><span class="p">:</span><span class="mi">54</span><span class="p">:</span><span class="mi">41</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">warning</span> <span class="p">:</span> <span class="n">XML</span> <span class="n">parser</span> <span class="n">warning</span><span class="p">:</span> <span class="n">Unsupported</span> <span class="n">version</span> <span class="s1">&#39;1.1&#39;</span> 
+<span class="p">[</span><span class="mi">00</span><span class="p">:</span><span class="mi">54</span><span class="p">:</span><span class="mi">41</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">warning</span> <span class="p">:</span> <span class="n">XML</span> <span class="n">parser</span> <span class="n">warning</span><span class="p">:</span> <span class="n">Unsupported</span> <span class="n">version</span> <span class="s1">&#39;1.1&#39;</span> 
+<span class="p">[</span><span class="mi">00</span><span class="p">:</span><span class="mi">54</span><span class="p">:</span><span class="mi">41</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">warning</span> <span class="p">:</span> <span class="n">XML</span> <span class="n">parser</span> <span class="n">warning</span><span class="p">:</span> <span class="n">Unsupported</span> <span class="n">version</span> <span class="s1">&#39;1.1&#39;</span> 
+<span class="p">[</span><span class="mi">00</span><span class="p">:</span><span class="mi">54</span><span class="p">:</span><span class="mi">41</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">warning</span> <span class="p">:</span> <span class="n">XML</span> <span class="n">parser</span> <span class="n">warning</span><span class="p">:</span> <span class="n">Unsupported</span> <span class="n">version</span> <span class="s1">&#39;1.1&#39;</span> 
 <span class="nd">@prefix</span> <span class="n">rdf</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">w3</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="mi">1999</span><span class="o">/</span><span class="mi">02</span><span class="o">/</span><span class="mi">22</span><span class="o">-</span><span class="n">rdf</span><span class="o">-</span><span class="n">syntax</span><span class="o">-</span><span class="n">ns</span><span class="c1">#&gt; .</span>
 <span class="nd">@prefix</span> <span class="n">bqbiol</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">biomodels</span><span class="o">.</span><span class="n">net</span><span class="o">/</span><span class="n">biology</span><span class="o">-</span><span class="n">qualifiers</span><span class="o">/&gt;</span> <span class="o">.</span>
 <span class="nd">@prefix</span> <span class="n">semsim</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">bime</span><span class="o">.</span><span class="n">uw</span><span class="o">.</span><span class="n">edu</span><span class="o">/</span><span class="n">semsim</span><span class="o">/&gt;</span> <span class="o">.</span>
@@ -1600,7 +1588,6 @@ this is a different method call - see below.</p>
         <span class="p">.</span><span class="n">resourceLiteral</span><span class="p">(</span><span class="s">&quot;New predicate demonstration&quot;</span><span class="p">);</span>
 
     <span class="n">editor</span><span class="p">.</span><span class="n">addSingleAnnotation</span><span class="p">(</span><span class="n">singular_annotation</span><span class="p">);</span>
-    <span class="n">singular_annotation</span><span class="p">.</span><span class="n">freeTriple</span><span class="p">();</span>
     <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">rdf</span><span class="p">.</span><span class="n">toString</span><span class="p">(</span><span class="s">&quot;turtle&quot;</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
     <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
@@ -1792,8 +1779,8 @@ this is a different method call - see below.</p>
 </div>
 </div>
 </div></div>
-</div>
-<div class="section" id="resources">
+</section>
+<section id="resources">
 <h3>Resources<a class="headerlink" href="#resources" title="Permalink to this headline"></a></h3>
 <p>A resource node can be any of the three types of node: a literal, uri or a blank node. Separate
 methods exist for each of these. In the next example we create a set of singular annotations
@@ -1884,10 +1871,10 @@ that demonstrate the various usages of Resource.</p>
 </div>
 <div class="literal-block-wrapper docutils container" id="id33">
 <div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id33" title="Permalink to this code"></a></div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">13</span><span class="p">:</span><span class="mi">18</span><span class="p">:</span><span class="mi">24</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">warning</span> <span class="p">:</span>  <span class="n">XML</span> <span class="n">parser</span> <span class="n">warning</span><span class="p">:</span> <span class="n">Unsupported</span> <span class="n">version</span> <span class="s1">&#39;1.1&#39;</span> 
-<span class="p">[</span><span class="mi">13</span><span class="p">:</span><span class="mi">18</span><span class="p">:</span><span class="mi">24</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">warning</span> <span class="p">:</span>  <span class="n">XML</span> <span class="n">parser</span> <span class="n">warning</span><span class="p">:</span> <span class="n">Unsupported</span> <span class="n">version</span> <span class="s1">&#39;1.1&#39;</span> 
-<span class="p">[</span><span class="mi">13</span><span class="p">:</span><span class="mi">18</span><span class="p">:</span><span class="mi">24</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">warning</span> <span class="p">:</span>  <span class="n">XML</span> <span class="n">parser</span> <span class="n">warning</span><span class="p">:</span> <span class="n">Unsupported</span> <span class="n">version</span> <span class="s1">&#39;1.1&#39;</span> 
-<span class="p">[</span><span class="mi">13</span><span class="p">:</span><span class="mi">18</span><span class="p">:</span><span class="mi">24</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">warning</span> <span class="p">:</span>  <span class="n">XML</span> <span class="n">parser</span> <span class="n">warning</span><span class="p">:</span> <span class="n">Unsupported</span> <span class="n">version</span> <span class="s1">&#39;1.1&#39;</span> 
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">00</span><span class="p">:</span><span class="mi">54</span><span class="p">:</span><span class="mi">41</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">warning</span> <span class="p">:</span> <span class="n">XML</span> <span class="n">parser</span> <span class="n">warning</span><span class="p">:</span> <span class="n">Unsupported</span> <span class="n">version</span> <span class="s1">&#39;1.1&#39;</span> 
+<span class="p">[</span><span class="mi">00</span><span class="p">:</span><span class="mi">54</span><span class="p">:</span><span class="mi">41</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">warning</span> <span class="p">:</span> <span class="n">XML</span> <span class="n">parser</span> <span class="n">warning</span><span class="p">:</span> <span class="n">Unsupported</span> <span class="n">version</span> <span class="s1">&#39;1.1&#39;</span> 
+<span class="p">[</span><span class="mi">00</span><span class="p">:</span><span class="mi">54</span><span class="p">:</span><span class="mi">41</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">warning</span> <span class="p">:</span> <span class="n">XML</span> <span class="n">parser</span> <span class="n">warning</span><span class="p">:</span> <span class="n">Unsupported</span> <span class="n">version</span> <span class="s1">&#39;1.1&#39;</span> 
+<span class="p">[</span><span class="mi">00</span><span class="p">:</span><span class="mi">54</span><span class="p">:</span><span class="mi">41</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">warning</span> <span class="p">:</span> <span class="n">XML</span> <span class="n">parser</span> <span class="n">warning</span><span class="p">:</span> <span class="n">Unsupported</span> <span class="n">version</span> <span class="s1">&#39;1.1&#39;</span> 
 <span class="mi">13</span>
 <span class="nd">@prefix</span> <span class="n">rdf</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">w3</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="mi">1999</span><span class="o">/</span><span class="mi">02</span><span class="o">/</span><span class="mi">22</span><span class="o">-</span><span class="n">rdf</span><span class="o">-</span><span class="n">syntax</span><span class="o">-</span><span class="n">ns</span><span class="c1">#&gt; .</span>
 <span class="nd">@prefix</span> <span class="n">dc</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">purl</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">dc</span><span class="o">/</span><span class="n">terms</span><span class="o">/&gt;</span> <span class="o">.</span>
@@ -2139,9 +2126,9 @@ that demonstrate the various usages of Resource.</p>
 </div>
 </div>
 </div></div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
            </div>

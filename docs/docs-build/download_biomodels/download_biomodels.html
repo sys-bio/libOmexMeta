@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Downloading Biomodels &mdash; libomexmeta 1.2.11 documentation</title>
+  <title>Downloading Biomodels &mdash; libomexmeta 1.2.12 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
@@ -50,6 +51,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../stripping_annotations/index.html">Stripping Annotations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../querying_rdf/querying_rdf.html">Querying RDF</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../diagrams/diagrams_index.html">Building Diagrams</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../errors_and_logging/errors_and_logging.html">Errors and Logging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../annotating_models/annotating_models_index.html">Annotating Models</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Downloading Biomodels</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../APIReference/api_reference_index.html">API Reference</a></li>
@@ -83,7 +85,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="downloading-biomodels">
+  <section id="downloading-biomodels">
 <h1>Downloading Biomodels<a class="headerlink" href="#downloading-biomodels" title="Permalink to this headline"></a></h1>
 <p>It is often useful to have access to the entire biomodels database locally, though it isn’t necessarily obvious how best to
 download them. Here, we provide a script that makes use to <cite>bioservices.BioModels</cite> for downloading sbml models
@@ -121,7 +123,7 @@ It is likely that these could also be downloaded using a similar strategy, but w
 <span class="linenos"> 19</span><span class="k">def</span> <span class="nf">get_number_of_curated_models</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
 <span class="linenos"> 20</span>    <span class="sd">&quot;&quot;&quot;Figure out how many curated models there are in biomodels right now&quot;&quot;&quot;</span>
 <span class="linenos"> 21</span>    <span class="nb">all</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;*&quot;</span><span class="p">)</span>
-<span class="linenos"> 22</span>    <span class="n">stats</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="nb">all</span><span class="p">[</span><span class="s2">&quot;facetStats&quot;</span><span class="p">]</span>  <span class="c1"># this is a string. Whaaa?</span>
+<span class="linenos"> 22</span>    <span class="n">stats</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="nb">all</span><span class="p">[</span><span class="s2">&quot;facetStats&quot;</span><span class="p">]</span>  <span class="c1"># this is a string.</span>
 <span class="linenos"> 23</span>    <span class="n">json_stats</span><span class="p">:</span> <span class="nb">list</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">stats</span><span class="p">)</span>
 <span class="linenos"> 24</span>    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">json_stats</span><span class="p">:</span>
 <span class="linenos"> 25</span>        <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">item</span><span class="p">[</span><span class="s2">&quot;facetValues&quot;</span><span class="p">]:</span>
@@ -209,7 +211,7 @@ It is likely that these could also be downloaded using a similar strategy, but w
 </pre></div>
 </div>
 </div>
-</div>
+</section>
 
 
            </div>

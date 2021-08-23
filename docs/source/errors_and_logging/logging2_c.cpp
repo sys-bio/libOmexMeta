@@ -15,11 +15,11 @@ int main(){
 
     
     // changing the logging level to critical is one way to hide error messages or messages with lower precedence
-    Logger_setLevel(Logger::LogLevel::critical);
+    Logger_setLevel(LogLevel::critical);
     RDF* rdf1 = RDF_fromString(cellml, "turtle"); // See Python console - nothing is emitted
 
     // turning the logger off is another
-    Logger_setLevel(Logger::LogLevel::off);
+    Logger_setLevel(LogLevel::off);
     RDF* rdf2 = RDF_fromString(cellml, "turtle"); // See Python console - nothing is emitted
 
     return 0;

@@ -3,11 +3,11 @@ Running main() from ..\third_party\googletest\googletest\src\gtest_main.cc
 [----------] Global test environment set-up.
 [----------] 4 tests from ElementExtractorTests
 [ RUN      ] ElementExtractorTests.TetsListOfCompartmentsExtraction
-[       OK ] ElementExtractorTests.TetsListOfCompartmentsExtraction (1 ms)
+[       OK ] ElementExtractorTests.TetsListOfCompartmentsExtraction (0 ms)
 [ RUN      ] ElementExtractorTests.TestCompartmentExtraction
 [       OK ] ElementExtractorTests.TestCompartmentExtraction (0 ms)
 [ RUN      ] ElementExtractorTests.TestReactionExtraction
-[       OK ] ElementExtractorTests.TestReactionExtraction (0 ms)
+[       OK ] ElementExtractorTests.TestReactionExtraction (1 ms)
 [ RUN      ] ElementExtractorTests.TestElementNamesAreAccessibleAfterExtraction
 [       OK ] ElementExtractorTests.TestElementNamesAreAccessibleAfterExtraction (0 ms)
 [----------] 4 tests from ElementExtractorTests (1 ms total)

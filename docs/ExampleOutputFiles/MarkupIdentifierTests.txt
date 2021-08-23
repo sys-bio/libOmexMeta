@@ -3,15 +3,15 @@ Running main() from ..\third_party\googletest\googletest\src\gtest_main.cc
 [----------] Global test environment set-up.
 [----------] 4 tests from MarkupIdentifierTests
 [ RUN      ] MarkupIdentifierTests.ElementNames
-[       OK ] MarkupIdentifierTests.ElementNames (0 ms)
+[       OK ] MarkupIdentifierTests.ElementNames (1 ms)
 [ RUN      ] MarkupIdentifierTests.isSBMLTest
 [       OK ] MarkupIdentifierTests.isSBMLTest (0 ms)
 [ RUN      ] MarkupIdentifierTests.isSBMLTestWhenSomeElementsAreMissing
 [       OK ] MarkupIdentifierTests.isSBMLTestWhenSomeElementsAreMissing (0 ms)
 [ RUN      ] MarkupIdentifierTests.isCellMLTest
-[       OK ] MarkupIdentifierTests.isCellMLTest (2 ms)
-[----------] 4 tests from MarkupIdentifierTests (2 ms total)
+[       OK ] MarkupIdentifierTests.isCellMLTest (3 ms)
+[----------] 4 tests from MarkupIdentifierTests (4 ms total)
 
 [----------] Global test environment tear-down
-[==========] 4 tests from 1 test suite ran. (2 ms total)
+[==========] 4 tests from 1 test suite ran. (4 ms total)
 [  PASSED  ] 4 tests.

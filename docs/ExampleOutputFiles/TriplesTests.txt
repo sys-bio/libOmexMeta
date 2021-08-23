@@ -33,9 +33,9 @@ Running main() from ..\third_party\googletest\googletest\src\gtest_main.cc
     <http://predicate2.com/predicate2> <http://resource2.com/resource2> .
 
 
-[       OK ] TriplesTestsNoFixture.TestStr (0 ms)
+[       OK ] TriplesTestsNoFixture.TestStr (1 ms)
 [ RUN      ] TriplesTestsNoFixture.TestTwoIdenticalTripesObjectsCanBeFreed
-[       OK ] TriplesTestsNoFixture.TestTwoIdenticalTripesObjectsCanBeFreed (1 ms)
+[       OK ] TriplesTestsNoFixture.TestTwoIdenticalTripesObjectsCanBeFreed (0 ms)
 [ RUN      ] TriplesTestsNoFixture.TestIteration
 [       OK ] TriplesTestsNoFixture.TestIteration (0 ms)
 [ RUN      ] TriplesTestsNoFixture.TestEquality
@@ -45,9 +45,9 @@ Running main() from ..\third_party\googletest\googletest\src\gtest_main.cc
 [----------] 1 test from TestTriplesTwice
 [ RUN      ] TestTriplesTwice.TestMakeSameTriplesTwice
 creating triples 2 
-[       OK ] TestTriplesTwice.TestMakeSameTriplesTwice (0 ms)
-[----------] 1 test from TestTriplesTwice (0 ms total)
+[       OK ] TestTriplesTwice.TestMakeSameTriplesTwice (1 ms)
+[----------] 1 test from TestTriplesTwice (1 ms total)
 
 [----------] Global test environment tear-down
-[==========] 14 tests from 3 test suites ran. (5 ms total)
+[==========] 14 tests from 3 test suites ran. (6 ms total)
 [  PASSED  ] 14 tests.

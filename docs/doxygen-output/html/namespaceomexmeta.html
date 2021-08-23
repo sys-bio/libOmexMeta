@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libomexmeta
-   &#160;<span id="projectnumber">1.2.11</span>
+   &#160;<span id="projectnumber">1.2.13</span>
    </div>
    <div id="projectbrief">Annotations for models in systems biology</div>
   </td>
@@ -680,9 +680,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>ResultsMap_delete</b>
 <tr class="memitem:a00b49a350dca49a197c8b96920c6336b"><td class="memItemLeft" align="right" valign="top"><a id="a00b49a350dca49a197c8b96920c6336b"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>Logger_setFormatter</b> (const char *format)</td></tr>
 <tr class="separator:a00b49a350dca49a197c8b96920c6336b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa53a5e35c8e35aa716999e2bee6674aa"><td class="memItemLeft" align="right" valign="top"><a id="aa53a5e35c8e35aa716999e2bee6674aa"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>Logger_setLevel</b> (Logger::LogLevel level)</td></tr>
-<tr class="separator:aa53a5e35c8e35aa716999e2bee6674aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a719b588a02751f7cd3fa4fc0d6a791c1"><td class="memItemLeft" align="right" valign="top"><a id="a719b588a02751f7cd3fa4fc0d6a791c1"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>Logger_setLevel</b> (LogLevel level)</td></tr>
+<tr class="separator:a719b588a02751f7cd3fa4fc0d6a791c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aec761fbe8fd8621544e2eb08a93ca6bb"><td class="memItemLeft" align="right" valign="top"><a id="aec761fbe8fd8621544e2eb08a93ca6bb"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>Logger_getLevel</b> ()</td></tr>
 <tr class="separator:aec761fbe8fd8621544e2eb08a93ca6bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -719,6 +719,32 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>Logger_error</b> (con
 <tr class="memitem:a09fc0cbf9bf4b34308c9ca2cb19e4ce3"><td class="memItemLeft" align="right" valign="top"><a id="a09fc0cbf9bf4b34308c9ca2cb19e4ce3"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>Logger_critical</b> (const char *message)</td></tr>
 <tr class="separator:a09fc0cbf9bf4b34308c9ca2cb19e4ce3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add6b47623eee669e86e1157b04d8a998"><td class="memItemLeft" align="right" valign="top"><a id="add6b47623eee669e86e1157b04d8a998"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceomexmeta.html#add6b47623eee669e86e1157b04d8a998">Logger_clear</a> ()</td></tr>
+<tr class="memdesc:add6b47623eee669e86e1157b04d8a998"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear the logging messages - aka put size back to 0. <br /></td></tr>
+<tr class="separator:add6b47623eee669e86e1157b04d8a998"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a061d1e87254a58591be4336669762958"><td class="memItemLeft" align="right" valign="top"><a id="a061d1e87254a58591be4336669762958"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceomexmeta.html#a061d1e87254a58591be4336669762958">Logger_size</a> ()</td></tr>
+<tr class="memdesc:a061d1e87254a58591be4336669762958"><td class="mdescLeft">&#160;</td><td class="mdescRight">get number of logged messages <br /></td></tr>
+<tr class="separator:a061d1e87254a58591be4336669762958"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0bccdc9cd01a73aedeb5cc8a585daccb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classredland_1_1Message.html">Message</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceomexmeta.html#a0bccdc9cd01a73aedeb5cc8a585daccb">Logger_getMessageI</a> (int idx)</td></tr>
+<tr class="memdesc:a0bccdc9cd01a73aedeb5cc8a585daccb"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the ith log message.  <a href="namespaceomexmeta.html#a0bccdc9cd01a73aedeb5cc8a585daccb">More...</a><br /></td></tr>
+<tr class="separator:a0bccdc9cd01a73aedeb5cc8a585daccb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac7f51c52e378cfeb535b9d4a635b5e66"><td class="memItemLeft" align="right" valign="top"><a id="ac7f51c52e378cfeb535b9d4a635b5e66"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>Logger_flush</b> ()</td></tr>
+<tr class="separator:ac7f51c52e378cfeb535b9d4a635b5e66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b9b454b8429ebf714a4b71dbc205456"><td class="memItemLeft" align="right" valign="top"><a id="a2b9b454b8429ebf714a4b71dbc205456"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>Logger_flushOn</b> (int level)</td></tr>
+<tr class="separator:a2b9b454b8429ebf714a4b71dbc205456"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd9f002cc983c9609affc9970b4c12ed"><td class="memItemLeft" align="right" valign="top"><a id="acd9f002cc983c9609affc9970b4c12ed"></a>
+char *&#160;</td><td class="memItemRight" valign="bottom"><b>Message_getMessage</b> (<a class="el" href="classredland_1_1Message.html">Message</a> *message)</td></tr>
+<tr class="separator:acd9f002cc983c9609affc9970b4c12ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad90f8fbc6e8f92c9f0535d127dbb98d2"><td class="memItemLeft" align="right" valign="top"><a id="ad90f8fbc6e8f92c9f0535d127dbb98d2"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>Message_deleteMessage</b> (<a class="el" href="classredland_1_1Message.html">Message</a> *message)</td></tr>
+<tr class="separator:ad90f8fbc6e8f92c9f0535d127dbb98d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afdaed1c8202da394fae776c6d20930f6"><td class="memItemLeft" align="right" valign="top"><a id="afdaed1c8202da394fae776c6d20930f6"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>Message_getLevel</b> (<a class="el" href="classredland_1_1Message.html">Message</a> *message)</td></tr>
+<tr class="separator:afdaed1c8202da394fae776c6d20930f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a17e4b403c1f6627264259b7d300f5cb1"><td class="memItemLeft" align="right" valign="top"><a id="a17e4b403c1f6627264259b7d300f5cb1"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>removeElementRecursion</b> (xmlNodePtr a_node, const std::string &amp;elementName)</td></tr>
 <tr class="separator:a17e4b403c1f6627264259b7d300f5cb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -956,6 +982,35 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>LAST_ERROR</b>
 </div><div class="memdoc">
 <p>Logger </p>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="D_1_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example.html#a14">D:/libOmexMeta/src/omexmeta/include/omexmeta/OmexMetaCApi.h</a>.</dd>
+</dl>
+
+</div>
+</div>
+<a id="a0bccdc9cd01a73aedeb5cc8a585daccb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0bccdc9cd01a73aedeb5cc8a585daccb">&#9670;&nbsp;</a></span>Logger_getMessageI()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">OMEXMETA_CAPI_EXPORT <a class="el" href="classredland_1_1Message.html">Message</a> * omexmeta::Logger_getMessageI </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>idx</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>get the ith log message. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">idx</td><td>between 0 and <a class="el" href="namespaceomexmeta.html#a061d1e87254a58591be4336669762958" title="get number of logged messages">Logger_size()</a> - 1. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>ith message for logger or empty string if failed. </dd></dl>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="D_1_2libOmexMeta_2src_2omexmeta_2include_2omexmeta_2OmexMetaCApi_8h-example.html#a17">D:/libOmexMeta/src/omexmeta/include/omexmeta/OmexMetaCApi.h</a>.</dd>
 </dl>
 
 </div>

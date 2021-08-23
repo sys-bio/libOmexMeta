@@ -34,8 +34,8 @@ Running main() from ..\third_party\googletest\googletest\src\gtest_main.cc
 [       OK ] MetaIDTests.TestInequality1 (0 ms)
 [ RUN      ] MetaIDTests.AnotherTest
 [       OK ] MetaIDTests.AnotherTest (0 ms)
-[----------] 16 tests from MetaIDTests (0 ms total)
+[----------] 16 tests from MetaIDTests (1 ms total)
 
 [----------] Global test environment tear-down
-[==========] 16 tests from 1 test suite ran. (0 ms total)
+[==========] 16 tests from 1 test suite ran. (1 ms total)
 [  PASSED  ] 16 tests.

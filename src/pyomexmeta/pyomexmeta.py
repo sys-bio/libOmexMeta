@@ -671,7 +671,7 @@ class RDF:
         
         Examples:
             >>> rdf = RDF.from_file("annot.rdf") # read from file on disk
-            >>> rdf.query_results_as_string("SELECT *?x ?y ?z WHERE { ?x ?y ?z }") # selects everything
+            >>> rdf.query_results_as_string("SELECT *?x ?y ?z WHERE { ?x ?y ?z }", results_syntax="csv") # selects everything
 
         See Also:
             query_results_as_dict
@@ -2537,13 +2537,48 @@ class PersonalInformation:
         return _pyom.personal_information_delete(self._obj)
 
 
+class Message:
+
+    def __init__(self, message_ptr: ct.c_int64):
+        """ Container for a message and its logging level
+
+        This message is constructed by `Logger.get_message_i`
+
+        Parameters
+        ----------
+        message_ptr: a pointer to the redland::Message type in the C++ api.
+        """
+        self._obj = message_ptr
+
+    def __del__(self) -> None:
+        """Destruct a Message object"""
+        _pyom.message_delete_message(self._obj)
+
+    def get_level(self) -> eLogLevel:
+        """Returns the logging level for this Message"""
+        return eLogLevel(_pyom.message_get_level(self._obj))
+
+    def get_message(self) -> str:
+        """Returns the content of this message as a string"""
+        return _pyom.get_and_free_c_str(_pyom.message_get_message(self._obj))
+
+    def __str__(self):
+        return f"{str(self.get_level())}: {self.get_message()}"
+
+
 class Logger:
 
     def __init__(self):
-        pass
+        self._obj = self.get_logger()
+
+    def __getitem__(self, idx) -> Message:
+        return Message(_pyom.logger_get_message_i(idx))
+
+    def __len__(self):
+        return _pyom.logger_size()
 
     @staticmethod
-    def get_logger() -> int:
+    def get_logger() -> Logger:
         """returns memory address of logger instance"""
         return _pyom.logger_get_logger()
 
@@ -2651,3 +2686,23 @@ class Logger:
     def critical(message: str) -> None:
         """Log a critical message"""
         return _pyom.logger_critical(message.encode())
+
+    @staticmethod
+    def clear() -> None:
+        """Clear all logging messages, putting size (aka len) back to 0"""
+        _pyom.logger_clear()
+
+    @staticmethod
+    def size() -> int:
+        """Returns the number of logging message there are contained in this logger"""
+        return _pyom.logger_size()
+
+    @staticmethod
+    def flush() -> None:
+        """Flush the content in the current logger to disk"""
+        _pyom.logger_flush()
+
+    @staticmethod
+    def flush_on(level: eLogLevel) -> None:
+        """Flush content in the current logger with log level `level` to disk"""
+        _pyom.logger_flush_on(level.level)

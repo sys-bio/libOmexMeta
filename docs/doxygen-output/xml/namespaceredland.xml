@@ -14,6 +14,7 @@
     <innerclass refid="classredland_1_1LibrdfUri" prot="public">redland::LibrdfUri</innerclass>
     <innerclass refid="classredland_1_1LibrdfWorld" prot="public">redland::LibrdfWorld</innerclass>
     <innerclass refid="classredland_1_1Logger" prot="public">redland::Logger</innerclass>
+    <innerclass refid="classredland_1_1Message" prot="public">redland::Message</innerclass>
     <innerclass refid="classredland_1_1RaptorIOStream" prot="public">redland::RaptorIOStream</innerclass>
     <innerclass refid="classredland_1_1RedlandType" prot="public">redland::RedlandType</innerclass>
     <innerclass refid="classredland_1_1RefCountedRedlandType" prot="public">redland::RefCountedRedlandType</innerclass>
@@ -311,6 +312,19 @@
         </inbodydescription>
         <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfUri.h" line="24" column="5" bodyfile="src/redland/RedlandWrapper/src/include/redland/LibrdfUri.h" bodystart="24" bodyend="-1"/>
       </memberdef>
+      <memberdef kind="typedef" id="Logger_8h_1ad8993a3ac236d4079502059e8ea21729" prot="public" static="no">
+        <type>spdlog::level::level_enum</type>
+        <definition>typedef spdlog::level::level_enum redland::LogLevel</definition>
+        <argsstring></argsstring>
+        <name>LogLevel</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/Logger.h" line="32" column="5" bodyfile="src/redland/RedlandWrapper/src/include/redland/Logger.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
       </sectiondef>
       <sectiondef kind="func">
       <memberdef kind="function" id="LibrdfSerializer_8cpp_1ab3d24521870fec5bb77735a3a4a7e4d5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -379,6 +393,27 @@
         <inbodydescription>
         </inbodydescription>
         <location file="src/redland/RedlandWrapper/src/LibrdfWorld.cpp" line="49" column="10" bodyfile="src/redland/RedlandWrapper/src/LibrdfWorld.cpp" bodystart="49" bodyend="87" declfile="src/redland/RedlandWrapper/src/include/redland/LibrdfWorld.h" declline="33" declcolumn="10"/>
+      </memberdef>
+      <memberdef kind="function" id="Message_8cpp_1aaff10c862d801bc37ad630c18e8f9595" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream&amp; redland::operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;os, Message &amp;message)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>os</declname>
+        </param>
+        <param>
+          <type><ref refid="classredland_1_1Message" kindref="compound">Message</ref> &amp;</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/Message.cpp" line="14" column="5" bodyfile="src/redland/RedlandWrapper/src/Message.cpp" bodystart="14" bodyend="17"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

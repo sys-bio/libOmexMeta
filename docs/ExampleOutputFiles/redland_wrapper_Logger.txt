@@ -5,15 +5,15 @@ Running main() from ..\third_party\googletest\googletest\src\gtest_main.cc
 [ RUN      ] LoggerTests.DefaultLevel
 [       OK ] LoggerTests.DefaultLevel (0 ms)
 [ RUN      ] LoggerTests.UseConsoleLoggerOutOfTheBox
-[13:09:13 +01:00]  warning ..\tests\cpp\RedlandWrapper\LoggerTests.cpp:45 Displayed to console 
-[       OK ] LoggerTests.UseConsoleLoggerOutOfTheBox (1 ms)
+[00:55:14 +01:00]  warning ..\tests\cpp\RedlandWrapper\LoggerTests.cpp:45 Displayed to console 
+[       OK ] LoggerTests.UseConsoleLoggerOutOfTheBox (2 ms)
 [ RUN      ] LoggerTests.SwitchToFileLogger
-[       OK ] LoggerTests.SwitchToFileLogger (0 ms)
+[       OK ] LoggerTests.SwitchToFileLogger (1 ms)
 [ RUN      ] LoggerTests.UseFileLogger
 "D:\\libOmexMeta\\cmake-build-release\\docs\\log.log"
 [       OK ] LoggerTests.UseFileLogger (3 ms)
-[----------] 4 tests from LoggerTests (4 ms total)
+[----------] 4 tests from LoggerTests (6 ms total)
 
 [----------] Global test environment tear-down
-[==========] 4 tests from 1 test suite ran. (4 ms total)
+[==========] 4 tests from 1 test suite ran. (6 ms total)
 [  PASSED  ] 4 tests.

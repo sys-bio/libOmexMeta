@@ -9,7 +9,8 @@ from .pyomexmeta import (
     PhysicalEntity,
     SingularAnnotation,
     OmexMetaException,
-    Logger
+    Logger,
+    Message
 )
 from .pyomexmeta_api import PyOmexMetaAPI, get_version, eUriType, eXmlType, eLogLevel
 

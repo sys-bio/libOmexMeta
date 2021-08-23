@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libomexmeta
-   &#160;<span id="projectnumber">1.2.11</span>
+   &#160;<span id="projectnumber">1.2.13</span>
    </div>
    <div id="projectbrief">Annotations for models in systems biology</div>
   </td>
@@ -303,8 +303,8 @@ $(function() {
 <div class="line"> </div>
 <div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">char</span> *SingularAnnotation_getAbout(SingularAnnotation *singular_annotation);</div>
 <div class="line"> </div>
-<div class="line"><span class="comment">//    OMEXMETA_CAPI_EXPORT char *</span></div>
-<div class="line"><span class="comment">//    SingularAnnotation_str(SingularAnnotation *singular_annotation, const char *format);</span></div>
+<div class="line">    <span class="comment">//    OMEXMETA_CAPI_EXPORT char *</span></div>
+<div class="line">    <span class="comment">//    SingularAnnotation_str(SingularAnnotation *singular_annotation, const char *format);</span></div>
 <div class="line"> </div>
 <div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">char</span> *SingularAnnotation_getPredicate(SingularAnnotation *singular_annotation);</div>
 <div class="line"> </div>
@@ -459,25 +459,25 @@ $(function() {
 <div class="line"> </div>
 <div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">int</span> PersonalInformation_setMetaid(PersonalInformation *information, <span class="keyword">const</span> <span class="keywordtype">char</span> *metaid);</div>
 <div class="line"> </div>
-<div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">int</span> StringVector_getSize(std::vector&lt;std::string&gt;* vec);</div>
+<div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">int</span> StringVector_getSize(std::vector&lt;std::string&gt; *vec);</div>
 <div class="line"> </div>
-<div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">char</span>* StringVector_getElementAtIdx(std::vector&lt;std::string&gt;* vec, <span class="keywordtype">int</span> idx);</div>
+<div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">char</span> *StringVector_getElementAtIdx(std::vector&lt;std::string&gt; *vec, <span class="keywordtype">int</span> idx);</div>
 <div class="line"> </div>
 <div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">void</span> StringVector_delete(std::vector&lt;std::string&gt; *strVec);</div>
 <div class="line"> </div>
-<div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">int</span> ResultsMap_getSize(ResultsMap* resultsMap);</div>
+<div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">int</span> ResultsMap_getSize(ResultsMap *resultsMap);</div>
 <div class="line"> </div>
-<div class="line">    OMEXMETA_CAPI_EXPORT std::vector&lt;std::string&gt;* ResultsMap_getStringVectorAt(ResultsMap* resultsMap, <span class="keyword">const</span> <span class="keywordtype">char</span>* key);</div>
+<div class="line">    OMEXMETA_CAPI_EXPORT std::vector&lt;std::string&gt; *ResultsMap_getStringVectorAt(ResultsMap *resultsMap, <span class="keyword">const</span> <span class="keywordtype">char</span> *key);</div>
 <div class="line"> </div>
-<div class="line">    OMEXMETA_CAPI_EXPORT std::vector&lt;std::string&gt;* ResultsMap_getKeys(ResultsMap* resultsMap);</div>
+<div class="line">    OMEXMETA_CAPI_EXPORT std::vector&lt;std::string&gt; *ResultsMap_getKeys(ResultsMap *resultsMap);</div>
 <div class="line"> </div>
-<div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">void</span> ResultsMap_delete(ResultsMap * resultsMap);</div>
+<div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">void</span> ResultsMap_delete(ResultsMap *resultsMap);</div>
 <div class="line"> </div>
 <div class="line">    OMEXMETA_CAPI_EXPORT Logger *<a name="a14"></a><a class="code" href="namespaceomexmeta.html#a401a97ce4b2a6c22f92b774091289ef8">Logger_getLogger</a>();</div>
 <div class="line"> </div>
-<div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">void</span> Logger_setFormatter(<span class="keyword">const</span> <span class="keywordtype">char</span>* format);</div>
+<div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">void</span> Logger_setFormatter(<span class="keyword">const</span> <span class="keywordtype">char</span> *format);</div>
 <div class="line"> </div>
-<div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">void</span> Logger_setLevel(Logger::LogLevel level);</div>
+<div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">void</span> Logger_setLevel(LogLevel level);</div>
 <div class="line"> </div>
 <div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">int</span> Logger_getLevel();</div>
 <div class="line"> </div>
@@ -489,19 +489,35 @@ $(function() {
 <div class="line"> </div>
 <div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">void</span> Logger_consoleLogger();</div>
 <div class="line"> </div>
-<div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">void</span> Logger_fileLogger(<span class="keyword">const</span> <span class="keywordtype">char</span>*filename);</div>
+<div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">void</span> Logger_fileLogger(<span class="keyword">const</span> <span class="keywordtype">char</span> *filename);</div>
 <div class="line"> </div>
-<div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">void</span> Logger_info(<span class="keyword">const</span> <span class="keywordtype">char</span>* message);</div>
+<div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">void</span> Logger_info(<span class="keyword">const</span> <span class="keywordtype">char</span> *message);</div>
 <div class="line"> </div>
-<div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">void</span> Logger_trace(<span class="keyword">const</span> <span class="keywordtype">char</span>* message);</div>
+<div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">void</span> Logger_trace(<span class="keyword">const</span> <span class="keywordtype">char</span> *message);</div>
 <div class="line"> </div>
-<div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">void</span> Logger_debug(<span class="keyword">const</span> <span class="keywordtype">char</span>* message);</div>
+<div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">void</span> Logger_debug(<span class="keyword">const</span> <span class="keywordtype">char</span> *message);</div>
 <div class="line"> </div>
-<div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">void</span> Logger_warn(<span class="keyword">const</span> <span class="keywordtype">char</span>* message);</div>
+<div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">void</span> Logger_warn(<span class="keyword">const</span> <span class="keywordtype">char</span> *message);</div>
 <div class="line"> </div>
-<div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">void</span> Logger_error(<span class="keyword">const</span> <span class="keywordtype">char</span>* message);</div>
+<div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">void</span> Logger_error(<span class="keyword">const</span> <span class="keywordtype">char</span> *message);</div>
 <div class="line"> </div>
-<div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">void</span> Logger_critical(<span class="keyword">const</span> <span class="keywordtype">char</span>* message);</div>
+<div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">void</span> Logger_critical(<span class="keyword">const</span> <span class="keywordtype">char</span> *message);</div>
+<div class="line"> </div>
+<div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">void</span> <a name="a15"></a><a class="code" href="namespaceomexmeta.html#add6b47623eee669e86e1157b04d8a998">Logger_clear</a>();</div>
+<div class="line"> </div>
+<div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">int</span> <a name="a16"></a><a class="code" href="namespaceomexmeta.html#a061d1e87254a58591be4336669762958">Logger_size</a>();</div>
+<div class="line"> </div>
+<div class="line">    OMEXMETA_CAPI_EXPORT Message *<a name="a17"></a><a class="code" href="namespaceomexmeta.html#a0bccdc9cd01a73aedeb5cc8a585daccb">Logger_getMessageI</a>(<span class="keywordtype">int</span> idx);</div>
+<div class="line"> </div>
+<div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">void</span> Logger_flush();</div>
+<div class="line"> </div>
+<div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">void</span> Logger_flushOn(<span class="keywordtype">int</span> level);</div>
+<div class="line"> </div>
+<div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">int</span> Message_getLevel(Message *message);</div>
+<div class="line"> </div>
+<div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">char</span> *Message_getMessage(Message *message);</div>
+<div class="line"> </div>
+<div class="line">    OMEXMETA_CAPI_EXPORT <span class="keywordtype">void</span> Message_deleteMessage(Message *message);</div>
 <div class="line"> </div>
 <div class="line"> </div>
 <div class="line"><span class="preprocessor">#ifdef __cplusplus</span></div>
@@ -512,7 +528,9 @@ $(function() {
 <div class="line"><span class="preprocessor">#endif</span><span class="comment">//LIBOMEXMETA_OMEXMETACAPI_H</span></div>
 <div class="ttc" id="anamespaceomexmeta_html"><div class="ttname"><a href="namespaceomexmeta.html">omexmeta</a></div><div class="ttdef"><b>Definition:</b> Editor.cpp:9</div></div>
 <div class="ttc" id="anamespaceomexmeta_html_a03fca9cddea3f90911a1eb3a1eda5e22"><div class="ttname"><a href="namespaceomexmeta.html#a03fca9cddea3f90911a1eb3a1eda5e22">omexmeta::RDF_queryResultsAsMap</a></div><div class="ttdeci">ResultsMap * RDF_queryResultsAsMap(RDF *rdf_ptr, const char *query_str)</div><div class="ttdoc">run a sparql query on rdf_ptr. Return the results as a ResultsMap*.</div><div class="ttdef"><b>Definition:</b> OmexMetaCApi.cpp:183</div></div>
+<div class="ttc" id="anamespaceomexmeta_html_a061d1e87254a58591be4336669762958"><div class="ttname"><a href="namespaceomexmeta.html#a061d1e87254a58591be4336669762958">omexmeta::Logger_size</a></div><div class="ttdeci">int Logger_size()</div><div class="ttdoc">get number of logged messages</div><div class="ttdef"><b>Definition:</b> OmexMetaCApi.cpp:1695</div></div>
 <div class="ttc" id="anamespaceomexmeta_html_a0b43aced94ae55c938cc788111586fc8"><div class="ttname"><a href="namespaceomexmeta.html#a0b43aced94ae55c938cc788111586fc8">omexmeta::PersonalInformation_delete</a></div><div class="ttdeci">int PersonalInformation_delete(PersonalInformation *information)</div><div class="ttdef"><b>Definition:</b> OmexMetaCApi.cpp:1342</div></div>
+<div class="ttc" id="anamespaceomexmeta_html_a0bccdc9cd01a73aedeb5cc8a585daccb"><div class="ttname"><a href="namespaceomexmeta.html#a0bccdc9cd01a73aedeb5cc8a585daccb">omexmeta::Logger_getMessageI</a></div><div class="ttdeci">Message * Logger_getMessageI(int idx)</div><div class="ttdoc">get the ith log message.</div><div class="ttdef"><b>Definition:</b> OmexMetaCApi.cpp:1704</div></div>
 <div class="ttc" id="anamespaceomexmeta_html_a11a77dd69a30da66d2e7bbddaa15c15c"><div class="ttname"><a href="namespaceomexmeta.html#a11a77dd69a30da66d2e7bbddaa15c15c">omexmeta::Editor_newPhysicalEntity</a></div><div class="ttdeci">PhysicalEntity * Editor_newPhysicalEntity(Editor *editor_ptr)</div><div class="ttdef"><b>Definition:</b> OmexMetaCApi.cpp:379</div></div>
 <div class="ttc" id="anamespaceomexmeta_html_a27067bfb4290fcb7251845281520767f"><div class="ttname"><a href="namespaceomexmeta.html#a27067bfb4290fcb7251845281520767f">omexmeta::Editor_getXml</a></div><div class="ttdeci">char * Editor_getXml(Editor *editor_ptr)</div><div class="ttdef"><b>Definition:</b> OmexMetaCApi.cpp:572</div></div>
 <div class="ttc" id="anamespaceomexmeta_html_a2f3a19ccb17e0be38e706861fa141fcc"><div class="ttname"><a href="namespaceomexmeta.html#a2f3a19ccb17e0be38e706861fa141fcc">omexmeta::RDF_new</a></div><div class="ttdeci">RDF * RDF_new(const char *storage_type, const char *storage_name, const char *storage_options, const char *model_options)</div><div class="ttdef"><b>Definition:</b> OmexMetaCApi.cpp:62</div></div>
@@ -523,6 +541,7 @@ $(function() {
 <div class="ttc" id="anamespaceomexmeta_html_a8f35bfdeddd4366704c681fac1b8112e"><div class="ttname"><a href="namespaceomexmeta.html#a8f35bfdeddd4366704c681fac1b8112e">omexmeta::PhysicalProcess_delete</a></div><div class="ttdeci">int PhysicalProcess_delete(PhysicalProcess *physicalProcess)</div><div class="ttdef"><b>Definition:</b> OmexMetaCApi.cpp:1089</div></div>
 <div class="ttc" id="anamespaceomexmeta_html_aac58f146c00ed4c492efebb1e239c90b"><div class="ttname"><a href="namespaceomexmeta.html#aac58f146c00ed4c492efebb1e239c90b">omexmeta::deleteResultsMap</a></div><div class="ttdeci">void deleteResultsMap(ResultsMap *map)</div><div class="ttdoc">RDF_queryResultsAsMap allocates a ResultsMap to the heap. This method deletes that memory.</div><div class="ttdef"><b>Definition:</b> OmexMetaCApi.cpp:200</div></div>
 <div class="ttc" id="anamespaceomexmeta_html_ac4ee432e12f736c29692417b0302f5f0"><div class="ttname"><a href="namespaceomexmeta.html#ac4ee432e12f736c29692417b0302f5f0">omexmeta::EnergyDiff_freeAll</a></div><div class="ttdeci">OMEXMETA_CAPI_EXPORT int EnergyDiff_freeAll(EnergyDiff *energy_diff_ptr)</div></div>
+<div class="ttc" id="anamespaceomexmeta_html_add6b47623eee669e86e1157b04d8a998"><div class="ttname"><a href="namespaceomexmeta.html#add6b47623eee669e86e1157b04d8a998">omexmeta::Logger_clear</a></div><div class="ttdeci">void Logger_clear()</div><div class="ttdoc">Clear the logging messages - aka put size back to 0.</div><div class="ttdef"><b>Definition:</b> OmexMetaCApi.cpp:1687</div></div>
 <div class="ttc" id="anamespaceomexmeta_html_ade152f2f88f1394cfd5341d504384532"><div class="ttname"><a href="namespaceomexmeta.html#ade152f2f88f1394cfd5341d504384532">omexmeta::EnergyDiff_delete</a></div><div class="ttdeci">int EnergyDiff_delete(EnergyDiff *physicalForce)</div><div class="ttdef"><b>Definition:</b> OmexMetaCApi.cpp:1226</div></div>
 <div class="ttc" id="anamespaceomexmeta_html_ade8cf4e6ce9dba23d7cfb28ab742613e"><div class="ttname"><a href="namespaceomexmeta.html#ade8cf4e6ce9dba23d7cfb28ab742613e">omexmeta::functionThatReturnsNullptr</a></div><div class="ttdeci">int * functionThatReturnsNullptr()</div><div class="ttdef"><b>Definition:</b> OmexMetaCApi.cpp:57</div></div>
 <div class="ttc" id="anamespaceomexmeta_html_afbe0ad46666e43033c32182a23fba6d7"><div class="ttname"><a href="namespaceomexmeta.html#afbe0ad46666e43033c32182a23fba6d7">omexmeta::PhysicalEntity_delete</a></div><div class="ttdeci">int PhysicalEntity_delete(PhysicalEntity *physical_entity_ptr)</div><div class="ttdef"><b>Definition:</b> OmexMetaCApi.cpp:950</div></div>
