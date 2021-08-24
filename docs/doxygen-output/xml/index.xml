@@ -427,7 +427,7 @@
     <member refid="classredland_1_1LibrdfWorld_1a99f512cd3ab229bc5a89a48ba0048866" kind="function"><name>initLoggers</name></member>
   </compound>
   <compound refid="classredland_1_1Logger" kind="class"><name>redland::Logger</name>
-    <member refid="classredland_1_1Logger_1a9e76412d869c3ff4497ce38ef7e3342d" kind="typedef"><name>LoggerPtr</name></member>
+    <member refid="classredland_1_1Logger_1a9e76412d869c3ff4497ce38ef7e3342d" kind="typedef"><name>SpdLogPtr</name></member>
     <member refid="classredland_1_1Logger_1a9bc7671c63a3d7c3953a4d65d8570936" kind="variable"><name>logger</name></member>
     <member refid="classredland_1_1Logger_1acfe5e473ffe0cb34b45ab69ab7675358" kind="variable"><name>isFileLogger</name></member>
     <member refid="classredland_1_1Logger_1a83c2fde7dc2b6547053d690e63c0f73d" kind="variable"><name>isConsoleLogger</name></member>

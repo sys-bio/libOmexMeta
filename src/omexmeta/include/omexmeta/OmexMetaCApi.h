@@ -440,8 +440,6 @@ namespace omexmeta {
 
     OMEXMETA_CAPI_EXPORT void ResultsMap_delete(ResultsMap *resultsMap);
 
-    OMEXMETA_CAPI_EXPORT Logger *Logger_getLogger();
-
     OMEXMETA_CAPI_EXPORT void Logger_setFormatter(const char *format);
 
     OMEXMETA_CAPI_EXPORT void Logger_setLevel(LogLevel level);

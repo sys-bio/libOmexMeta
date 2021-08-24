@@ -6,9 +6,9 @@
       <sectiondef kind="public-type">
       <memberdef kind="typedef" id="classredland_1_1Logger_1a9e76412d869c3ff4497ce38ef7e3342d" prot="public" static="no">
         <type>std::shared_ptr&lt; spdlog::logger &gt;</type>
-        <definition>using redland::Logger::LoggerPtr =  std::shared_ptr&lt;spdlog::logger&gt;</definition>
+        <definition>using redland::Logger::SpdLogPtr =  std::shared_ptr&lt;spdlog::logger&gt;</definition>
         <argsstring></argsstring>
-        <name>LoggerPtr</name>
+        <name>SpdLogPtr</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -20,8 +20,8 @@
       </sectiondef>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="classredland_1_1Logger_1a9bc7671c63a3d7c3953a4d65d8570936" prot="public" static="no" mutable="no">
-        <type>LoggerPtr</type>
-        <definition>LoggerPtr redland::Logger::logger</definition>
+        <type>SpdLogPtr</type>
+        <definition>SpdLogPtr redland::Logger::logger</definition>
         <argsstring></argsstring>
         <name>logger</name>
         <briefdescription>
@@ -623,7 +623,7 @@
       <member refid="classredland_1_1Logger_1ad5c9edd10e0235d22b883ef378a8d7a8" prot="private" virt="non-virtual"><scope>redland::Logger</scope><name>level_</name></member>
       <member refid="classredland_1_1Logger_1a0e046d7572c3756ed188fda9b7914bb4" prot="private" virt="non-virtual"><scope>redland::Logger</scope><name>Logger</name></member>
       <member refid="classredland_1_1Logger_1a9bc7671c63a3d7c3953a4d65d8570936" prot="public" virt="non-virtual"><scope>redland::Logger</scope><name>logger</name></member>
-      <member refid="classredland_1_1Logger_1a9e76412d869c3ff4497ce38ef7e3342d" prot="public" virt="non-virtual"><scope>redland::Logger</scope><name>LoggerPtr</name></member>
+      <member refid="classredland_1_1Logger_1a9e76412d869c3ff4497ce38ef7e3342d" prot="public" virt="non-virtual"><scope>redland::Logger</scope><name>SpdLogPtr</name></member>
       <member refid="classredland_1_1Logger_1a41eda09f641f86b0faccdb2b9afd0743" prot="private" virt="non-virtual"><scope>redland::Logger</scope><name>messages_</name></member>
       <member refid="classredland_1_1Logger_1aee656a6c8590b0e6d3233eefcbc96dff" prot="public" virt="non-virtual"><scope>redland::Logger</scope><name>operator[]</name></member>
       <member refid="classredland_1_1Logger_1ac358531893ec79d169ec449aae2cc5c0" prot="public" virt="non-virtual"><scope>redland::Logger</scope><name>setFormatter</name></member>

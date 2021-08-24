@@ -267,7 +267,7 @@
 <codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classredland_1_1Logger_1a83c2fde7dc2b6547053d690e63c0f73d" kindref="member">isConsoleLogger</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classredland_1_1Logger_1acfe5e473ffe0cb34b45ab69ab7675358" kindref="member">isFileLogger</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LoggerPtr<sp/>console<sp/>=<sp/>spdlog::stdout_color_mt(</highlight><highlight class="stringliteral">&quot;console&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SpdLogPtr<sp/>console<sp/>=<sp/>spdlog::stdout_color_mt(</highlight><highlight class="stringliteral">&quot;console&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="42"><highlight class="normal"></highlight></codeline>
 <codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>copy<sp/>level<sp/>of<sp/>current<sp/>logger</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>console-&gt;set_level(level_);</highlight></codeline>
@@ -304,7 +304,7 @@
 <codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="76"><highlight class="normal"></highlight></codeline>
 <codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>filepath_<sp/>=<sp/>filename;</highlight></codeline>
-<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LoggerPtr<sp/><ref refid="classredland_1_1Logger_1a39e56c0690a855138fff179e68171bc3" kindref="member">fileLogger</ref><sp/>=<sp/>spdlog::basic_logger_mt(</highlight><highlight class="stringliteral">&quot;fileLogger&quot;</highlight><highlight class="normal">,<sp/>filepath_.string());</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SpdLogPtr<sp/><ref refid="classredland_1_1Logger_1a39e56c0690a855138fff179e68171bc3" kindref="member">fileLogger</ref><sp/>=<sp/>spdlog::basic_logger_mt(</highlight><highlight class="stringliteral">&quot;fileLogger&quot;</highlight><highlight class="normal">,<sp/>filepath_.string());</highlight></codeline>
 <codeline lineno="79"><highlight class="normal"></highlight></codeline>
 <codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>copy<sp/>level<sp/>of<sp/>current<sp/>logger</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classredland_1_1Logger_1a39e56c0690a855138fff179e68171bc3" kindref="member">fileLogger</ref>-&gt;set_level(<ref refid="classredland_1_1Logger_1a1d5985081e4c2035aa848a2e3b88decf" kindref="member">getLevel</ref>());</highlight></codeline>

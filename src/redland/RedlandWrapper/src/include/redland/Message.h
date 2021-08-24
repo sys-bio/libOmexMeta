@@ -11,6 +11,7 @@
 namespace redland {
 
     class Logger;
+    class LoggerStore;
 
     using LogLevel = spdlog::level::level_enum;
 

@@ -385,6 +385,7 @@ set(WRAPPER_SOURCES
         ${WRAPPER_SOURCE_DIR}/LibrdfWorld.cpp
         ${WRAPPER_SOURCE_DIR}/LibrdfStream.cpp
         ${WRAPPER_SOURCE_DIR}/Logger.cpp
+        ${WRAPPER_SOURCE_DIR}/LoggerStore.cpp
         ${WRAPPER_SOURCE_DIR}/Message.cpp
 
         ${WRAPPER_INCLUDE_DIR}/redland/RedlandAPI.h
@@ -403,6 +404,7 @@ set(WRAPPER_SOURCES
         ${WRAPPER_INCLUDE_DIR}/redland/RedlandType.h
         ${WRAPPER_INCLUDE_DIR}/redland/LibrdfStream.h
         ${WRAPPER_INCLUDE_DIR}/redland/Logger.h
+        ${WRAPPER_INCLUDE_DIR}/redland/LoggerStore.h
         ${WRAPPER_INCLUDE_DIR}/redland/Message.h
         )
 

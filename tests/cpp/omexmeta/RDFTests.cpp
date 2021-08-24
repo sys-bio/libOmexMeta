@@ -484,7 +484,7 @@ TEST_F(RDFTests, TestBagConversion) {
 }
 
 TEST_F(RDFTests, CheckFileLoggerWithFlushTwice){
-    Logger::getLogger()->setFormatter("%v");
+    Logger().setFormatter("%v");
     std::string badCellml = "<?xml version=\"1.1\" encoding=\"UTF-8\"?>\n"
                             "        <model xmlns=\"http://www.cellml.org/cellml/1.1#\" xmlns:cmeta=\"http://www.cellml.org/metadata/1.0#\" xmlns:xl$          <component name=\"main\">\n"
                             "            <variable cmeta:id=\"main.Volume\" initial_value=\"100\" name=\"Volume\" units=\"dimensionless\" />\n"
@@ -493,11 +493,11 @@ TEST_F(RDFTests, CheckFileLoggerWithFlushTwice){
     std::string expected = "syntax error at '<'";
     std::filesystem::path p = std::filesystem::current_path() / "brokenCellml.cellml";
     std::cout << p << std::endl;
-    Logger::getLogger()->fileLogger(p);
+    Logger().fileLogger(p);
     RDF rdf1 = RDF::fromString(badCellml, "turtle");
-    Logger::getLogger()->flush();
+    Logger().flush();
     RDF rdf2 = RDF::fromString(badCellml, "turtle");
-    Logger::getLogger()->flush();
+    Logger().flush();
 
     std::ifstream istr(p);
     for (std::string s; std::getline(istr, s); ){

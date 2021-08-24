@@ -16,6 +16,7 @@
 #define SPDLOG_ACTIVE_LEVEL SPDLOG_LEVEL_TRACE
 #endif
 
+#include "LoggerStore.h"
 #include "Message.h"
 #include "librdf.h"
 #include "raptor2.h"
@@ -25,56 +26,63 @@
 
 namespace redland {
     /**
- * wrapper macros around spdlog
- */
+     * wrapper macros around spdlog
+     */
     class Message;
+    class LoggerStore;
 
     using LogLevel = spdlog::level::level_enum;
 
-#define REDLAND_INFO(msg)                                         \
-    if (LogLevel::info >= Logger::getLogger()->getLevel() ) {       \
-            Logger::getLogger()->addMessage(LogLevel::info, msg); \
-        }                                                         \
+#define REDLAND_INFO(msg)                         \
+    if (LogLevel::info >= Logger().getLevel()) {  \
+        Logger().addMessage(LogLevel::info, msg); \
+    }                                             \
     SPDLOG_INFO(msg);
 
-#define REDLAND_TRACE(msg)                                 \
-    if (LogLevel::trace >= Logger::getLogger()->getLevel() ) {       \
-            Logger::getLogger()->addMessage(LogLevel::trace, msg); \
-        }                                                         \
+#define REDLAND_TRACE(msg)                         \
+    if (LogLevel::trace >= Logger().getLevel()) {  \
+        Logger().addMessage(LogLevel::trace, msg); \
+    }                                              \
     SPDLOG_TRACE(msg);
 
-#define REDLAND_DEBUG(msg)                                 \
-    if (LogLevel::debug >= Logger::getLogger()->getLevel() ) {       \
-            Logger::getLogger()->addMessage(LogLevel::debug, msg); \
-        }                                                         \
+#define REDLAND_DEBUG(msg)                         \
+    if (LogLevel::debug >= Logger().getLevel()) {  \
+        Logger().addMessage(LogLevel::debug, msg); \
+    }                                              \
     SPDLOG_DEBUG(msg);
 
-#define REDLAND_WARN(msg)                                 \
-    if (LogLevel::warn >= Logger::getLogger()->getLevel() ) {       \
-            Logger::getLogger()->addMessage(LogLevel::warn, msg); \
-        }                                                         \
+#define REDLAND_WARN(msg)                         \
+    if (LogLevel::warn >= Logger().getLevel()) {  \
+        Logger().addMessage(LogLevel::warn, msg); \
+    }                                             \
     SPDLOG_WARN(msg);
 
-#define REDLAND_ERROR(msg)                               \
-    if (LogLevel::err >= Logger::getLogger()->getLevel() ) {       \
-            Logger::getLogger()->addMessage(LogLevel::err, msg); \
-        }                                                         \
+#define REDLAND_ERROR(msg)                       \
+    if (LogLevel::err >= Logger().getLevel()) {  \
+        Logger().addMessage(LogLevel::err, msg); \
+    }                                            \
     SPDLOG_ERROR(msg);
 
-#define REDLAND_CRITICAL(msg)                                 \
-    if (LogLevel::critical >= Logger::getLogger()->getLevel() ) {       \
-            Logger::getLogger()->addMessage(LogLevel::critical, msg); \
-        }                                                         \
+#define REDLAND_CRITICAL(msg)                         \
+    if (LogLevel::critical >= Logger().getLevel()) {  \
+        Logger().addMessage(LogLevel::critical, msg); \
+    }                                                 \
     SPDLOG_CRITICAL(msg);
+
+    using SpdLogPtr = std::shared_ptr<spdlog::logger>;
 
     /**
      * @brief Logging class for libOmexMeta. Implemented as a singleton
      */
     class Logger {
     public:
-        using LoggerPtr = std::shared_ptr<spdlog::logger>;
         // This is how clients can access the single instance
-        static Logger *getLogger();
+        //        static Logger *getLogger();
+
+        /**
+         * @brief constructor is private
+         */
+        Logger();
 
         /**
          * @brief formatter strings use the {fmt} library.
@@ -162,11 +170,10 @@ namespace redland {
          */
         void critical(const std::string &message);
 
-
         /**
          * @brief reference to the currently active logger
          */
-        LoggerPtr logger;
+        //        SpdLogPtr logger;
 
         /**
          * @brief indicator, true when the file logger is active
@@ -195,7 +202,7 @@ namespace redland {
           * @brief returns the number of logging messages currently stored in the Logger.
           * @details this is reset to 0 when Logger::clear is called
           */
-        int size();
+        unsigned long long size();
 
         /**
          * @brief append a new message to the logger.
@@ -219,14 +226,9 @@ namespace redland {
 
     private:
         /**
-         * @brief constructor is private
+         * @brief an instance of shapred pointer to spdlog logger
          */
-        Logger();
-
-        /**
-         * The one single instance of Logger
-         */
-        static Logger *inst_;// The one, single instance
+        SpdLogPtr logger_;
 
         /**
          * @brief the filepath to be used for when
@@ -257,17 +259,17 @@ namespace redland {
         /**
          * @brief a place to store the error messages
          */
-        std::vector<Message> messages_;
+        LoggerStore *store = nullptr;
     };
 
 
 // quickly set logging levels
-#define LOGGER_SET_INFO() Logger::getLogger()->setLevel(LogLevel::info);
-#define LOGGER_SET_TRACE() Logger::getLogger()->setLevel(LogLevel::trace);
-#define LOGGER_SET_DEBUG() Logger::getLogger()->setLevel(LogLevel::debug);
-#define LOGGER_SET_WARN() Logger::getLogger()->setLevel(LogLevel::warn);
-#define LOGGER_SET_ERROR() Logger::getLogger()->setLevel(LogLevel::err);
-#define LOGGER_SET_CRITICAL() Logger::getLogger()->setLevel(LogLevel::critical);
+#define LOGGER_SET_INFO() Logger().setLevel(LogLevel::info);
+#define LOGGER_SET_TRACE() Logger().setLevel(LogLevel::trace);
+#define LOGGER_SET_DEBUG() Logger().setLevel(LogLevel::debug);
+#define LOGGER_SET_WARN() Logger().setLevel(LogLevel::warn);
+#define LOGGER_SET_ERROR() Logger().setLevel(LogLevel::err);
+#define LOGGER_SET_CRITICAL() Logger().setLevel(LogLevel::critical);
 
 }// namespace redland
 

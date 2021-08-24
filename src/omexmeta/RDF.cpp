@@ -17,9 +17,9 @@ namespace omexmeta {
         // model_ now owns storage_
         model_ = LibrdfModel(storage_, model_options);
 
-        // initialises the logger ;-)
-        Logger::getLogger();
-        REDLAND_DEBUG("Created an empty RDF graph");
+//         initialises the logger ;-)
+//        Logger::getLogger();
+//        REDLAND_DEBUG("Created an empty RDF graph");
     }
 
 
