@@ -1,6 +1,6 @@
 import libcombine
 import os
-from os.path import join, exists, dirname, abspath
+from os.path import join, exists, dirname, abspath, isfile, isdir, isabs
 from os import remove, getcwd
 import requests
 import sys
@@ -1619,7 +1619,6 @@ class LoggerTests(unittest.TestCase):
         Logger.file_logger(self.logger_file)
         Logger.critical("A critical message that you just must see")
 
-
     def test_logger_file_flush_none(self):
         print("")
         print("logger file is: ", self.logger_file)
@@ -1701,6 +1700,50 @@ class LoggerTests(unittest.TestCase):
     def test_set_logging_level(self):
         Logger.set_level(eLogLevel.info)
         Logger.info("Doing information")
+
+    def test_set(self):
+        import os
+        import pyomexmeta
+        import tempfile
+
+        print(f"logger file is at: {self.logger_file}")
+        # make sure file is closed
+        if isfile(self.logger_file):
+            os.remove(self.logger_file)
+
+        pyomexmeta.Logger.file_logger(self.logger_file)
+        rdf = pyomexmeta.RDF.from_string(TestStrings.invalid_rdf, 'rdfxml')
+
+        pyomexmeta.Logger.flush()
+
+        assert os.path.isfile(self.logger_file)
+        with open(self.logger_file, 'r') as file:
+            print(file.read())
+
+        os.chmod(self.logger_file, 0o777)
+        os.remove(self.logger_file)
+
+        # read again
+        pyomexmeta.Logger.file_logger(self.logger_file)
+
+        rdf = pyomexmeta.RDF.from_string(TestStrings.invalid_rdf, 'rdfxml')
+
+        pyomexmeta.Logger.flush()
+
+        assert os.path.isfile(self.logger_file)
+        with open(self.logger_file, 'r') as file:
+            print(file.read())
+
+    def test(self):
+        if isfile(self.logger_file):
+            os.remove(self.logger_file)
+
+        with open(self.logger_file, 'w') as f:
+            f.write("doing logging")
+
+        os.remove(self.logger_file)
+        assert not isfile(self.logger_file)
+
 
 
 if __name__ == "__main__":

@@ -65,6 +65,7 @@ TEST_F(LoggerTests, UseFileLogger) {
     redland::LibrdfParser parser("turtle");
     parser.parseString(sbml, model, "Nothing");
     ASSERT_TRUE(std::filesystem::exists(p));
+//    Logger::getLogger()->releaseLogger();
 }
 
 
@@ -86,6 +87,7 @@ TEST_F(LoggerTests, UseFileLoggerReproduceIssue128) {
     REDLAND_WARN("WARN");
     REDLAND_ERROR("ERROR");
     REDLAND_CRITICAL("CRITICAL");
+
 }
 
 
