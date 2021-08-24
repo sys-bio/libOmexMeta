@@ -17,10 +17,10 @@ int main(){
     // oops - did a whoops. Parsing rdfxml as turtle
     RDF rdf1 = RDF::fromString(cellml, "turtle"); // See console
 
-    assert(Logger::getLogger()->size() == 1);
+    assert(Logger().size() == 1);
 
     // get the message
-    Message message = (*Logger::getLogger())[0];
+    Message message = Logger()[0];
 
     // output message content to stdout
     std::cout << message << std::endl;
@@ -33,9 +33,9 @@ int main(){
     std::cout << "messageLevel: " << messageLevel << std::endl;
 
     // now clear the logger
-    Logger::getLogger()->clear();
+    Logger().clear();
 
-    assert(Logger::getLogger()->size() == 0);
+    assert(Logger().size() == 0);
 
 
     return 0;

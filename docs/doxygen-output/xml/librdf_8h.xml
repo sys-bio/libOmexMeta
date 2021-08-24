@@ -31,6 +31,7 @@
     <includedby refid="Triple_8h" local="yes">src/omexmeta/include/omexmeta/Triple.h</includedby>
     <includedby refid="LibrdfUri_8cpp" local="yes">src/redland/RedlandWrapper/src/LibrdfUri.cpp</includedby>
     <includedby refid="Logger_8cpp" local="yes">src/redland/RedlandWrapper/src/Logger.cpp</includedby>
+    <includedby refid="LoggerStore_8cpp" local="yes">src/redland/RedlandWrapper/src/LoggerStore.cpp</includedby>
     <includedby refid="LibrdfModel_8h" local="yes">src/redland/RedlandWrapper/src/include/redland/LibrdfModel.h</includedby>
     <includedby refid="LibrdfNode_8h" local="yes">src/redland/RedlandWrapper/src/include/redland/LibrdfNode.h</includedby>
     <includedby refid="LibrdfParser_8h" local="yes">src/redland/RedlandWrapper/src/include/redland/LibrdfParser.h</includedby>
@@ -43,6 +44,7 @@
     <includedby refid="LibrdfUri_8h" local="yes">src/redland/RedlandWrapper/src/include/redland/LibrdfUri.h</includedby>
     <includedby refid="LibrdfWorld_8h" local="yes">src/redland/RedlandWrapper/src/include/redland/LibrdfWorld.h</includedby>
     <includedby refid="Logger_8h" local="yes">src/redland/RedlandWrapper/src/include/redland/Logger.h</includedby>
+    <includedby refid="LoggerStore_8h" local="yes">src/redland/RedlandWrapper/src/include/redland/LoggerStore.h</includedby>
     <includedby refid="RaptorIOStream_8h" local="yes">src/redland/RedlandWrapper/src/include/redland/RaptorIOStream.h</includedby>
     <includedby refid="RedlandType_8h" local="yes">src/redland/RedlandWrapper/src/include/redland/RedlandType.h</includedby>
     <includedby refid="RefCountedRedlandType_8h" local="yes">src/redland/RedlandWrapper/src/include/redland/RefCountedRedlandType.h</includedby>
@@ -221,6 +223,12 @@
         <label>src/omexmeta/include/omexmeta/Query.h</label>
         <link refid="Query_8h_source"/>
       </node>
+      <node id="44">
+        <label>src/redland/RedlandWrapper/src/include/redland/LoggerStore.h</label>
+        <link refid="LoggerStore_8h_source"/>
+        <childnode refid="42" relation="include">
+        </childnode>
+      </node>
       <node id="5">
         <label>src/omexmeta/include/omexmeta/RDF.h</label>
         <link refid="RDF_8h_source"/>
@@ -251,6 +259,8 @@
         <label>src/redland/RedlandWrapper/src/include/redland/Message.h</label>
         <link refid="Message_8h_source"/>
         <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
         </childnode>
       </node>
       <node id="24">
@@ -649,6 +659,8 @@
         <childnode refid="38" relation="include">
         </childnode>
         <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
         </childnode>
         <childnode refid="39" relation="include">
         </childnode>

@@ -440,6 +440,10 @@ namespace omexmeta {
 
     OMEXMETA_CAPI_EXPORT void ResultsMap_delete(ResultsMap *resultsMap);
 
+    OMEXMETA_CAPI_EXPORT Logger* Logger_getLogger();
+
+    OMEXMETA_CAPI_EXPORT void Logger_deleteLogger(Logger* logger);
+
     OMEXMETA_CAPI_EXPORT void Logger_setFormatter(const char *format);
 
     OMEXMETA_CAPI_EXPORT void Logger_setLevel(LogLevel level);
@@ -476,7 +480,7 @@ namespace omexmeta {
     /**
      * @brief get number of logged messages
      */
-    OMEXMETA_CAPI_EXPORT int Logger_size();
+    OMEXMETA_CAPI_EXPORT unsigned long long Logger_size();
 
     /**
      * @brief get the ith log message.

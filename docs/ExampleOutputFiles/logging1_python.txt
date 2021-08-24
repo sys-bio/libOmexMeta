@@ -1,4 +1,4 @@
-[16:33:35 +01:00]  error : syntax error at '<' 
+[22:30:55 +01:00]  error : syntax error at '<' 
 error: syntax error at '<'
 message_string:  syntax error at '<'
 message_level:  error

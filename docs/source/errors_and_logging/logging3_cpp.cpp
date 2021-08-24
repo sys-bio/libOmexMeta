@@ -16,7 +16,7 @@ int main(){
     // users can customize the formatting of the logger;
     // See https://github.com/gabime/spdlog/wiki/3.-Custom-formatting//pattern-flags;
     // for more information on the supported symbols and their meanings;
-    Logger::getLogger()->setFormatter("%^ [%H-%M-%S] - %t - %P - %n - %l : %v %$");
+    Logger().setFormatter("%^ [%H-%M-%S] - %t - %P - %n - %l : %v %$");
     RDF rdf = RDF::fromString(cellml, "turtle");
 
     return 0;

@@ -87,7 +87,8 @@ stages:
 
           - script: |
               # activate gcc-10 in current shell
-              update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-10 100
+              # update-alternatives does not work without sudo
+              sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-10 100
               export CC=/usr/bin/gcc-10
               export CXX=/usr/bin/g++-10
               export C=/usr/bin/gcc-10

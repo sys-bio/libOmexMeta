@@ -1701,38 +1701,34 @@ class LoggerTests(unittest.TestCase):
         Logger.set_level(eLogLevel.info)
         Logger.info("Doing information")
 
-    def test_set(self):
-        import os
-        import pyomexmeta
-        import tempfile
-
+    def test_read_bad_rdf_file_twice(self):
+        expected_logging_content = """XML parser error: expected '>'
+XML parser error: Char 0x0 out of allowed range
+XML parser error: Char 0x0 out of allowed range
+XML parser error: expected '>'
+"""
         print(f"logger file is at: {self.logger_file}")
-        # make sure file is closed
-        if isfile(self.logger_file):
-            os.remove(self.logger_file)
+        Logger.set_formatter("%v")
+        Logger.file_logger(self.logger_file)
+        rdf = RDF.from_string(TestStrings.invalid_rdf, 'rdfxml')
 
-        pyomexmeta.Logger.file_logger(self.logger_file)
-        rdf = pyomexmeta.RDF.from_string(TestStrings.invalid_rdf, 'rdfxml')
-
-        pyomexmeta.Logger.flush()
+        Logger.flush()
 
         assert os.path.isfile(self.logger_file)
-        with open(self.logger_file, 'r') as file:
-            print(file.read())
-
-        os.chmod(self.logger_file, 0o777)
-        os.remove(self.logger_file)
+        with open(self.logger_file, 'r') as f:
+            self.assertEqual(expected_logging_content, f.read())
 
         # read again
-        pyomexmeta.Logger.file_logger(self.logger_file)
+        Logger.file_logger(self.logger_file)
 
-        rdf = pyomexmeta.RDF.from_string(TestStrings.invalid_rdf, 'rdfxml')
+        rdf = RDF.from_string(TestStrings.invalid_rdf, 'rdfxml')
 
-        pyomexmeta.Logger.flush()
+        Logger.flush()
 
         assert os.path.isfile(self.logger_file)
-        with open(self.logger_file, 'r') as file:
-            print(file.read())
+        with open(self.logger_file, 'r') as f:
+            self.assertEqual(f"{expected_logging_content}"
+                             f"{expected_logging_content}", f.read())
 
     def test(self):
         if isfile(self.logger_file):

@@ -1561,6 +1561,17 @@ namespace omexmeta {
     /**
      * Logger
      */
+
+    Logger* Logger_getLogger(){
+        return new Logger;
+    }
+
+    void Logger_deleteLogger(Logger* logger){
+        if (logger){
+            delete logger;
+            logger = nullptr;
+        }
+    }
     
 
     void Logger_setFormatter(const char *format) {
@@ -1684,7 +1695,7 @@ namespace omexmeta {
         }
     }
 
-    int Logger_size() {
+    unsigned long long Logger_size() {
         try {
             return Logger().size();
         } catch (std::exception &e) {

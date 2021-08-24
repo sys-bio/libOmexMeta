@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['namespace_5f_758',['namespace_',['../classomexmeta_1_1Predicate.html#afc79b0cc43eb11e4bc2fe0b305e551bc',1,'omexmeta::Predicate']]],
-  ['namespaces_5f_759',['namespaces_',['../classomexmeta_1_1RDF.html#a1979d7d70a4c20f2e63f00c7fa668b1f',1,'omexmeta::RDF']]]
+  ['obj_5f_761',['obj_',['../classredland_1_1RedlandType.html#ac9d0c3d245e2394c137ee0ab266784ed',1,'redland::RedlandType']]],
+  ['omexlib_5f_762',['OMEXlib_',['../classomexmeta_1_1RDF.html#a59014bbb45a43dbfa760480f1713c473',1,'omexmeta::RDF']]]
 ];

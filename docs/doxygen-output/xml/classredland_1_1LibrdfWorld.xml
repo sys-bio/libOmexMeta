@@ -165,7 +165,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfWorld.h" line="76" column="21" bodyfile="src/redland/RedlandWrapper/src/LibrdfWorld.cpp" bodystart="136" bodyend="140"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/LibrdfWorld.h" line="76" column="21" bodyfile="src/redland/RedlandWrapper/src/LibrdfWorld.cpp" bodystart="136" bodyend="141"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

@@ -4,14 +4,14 @@ using namespace omexmeta;
 
 int main(){
 
-    Logger::getLogger()->setLevel(LogLevel::trace); // switch to trace log level;
+    Logger().setLevel(LogLevel::trace); // switch to trace log level;
     // you can also use the logger yourself, if needed;
-    Logger::getLogger()->trace("trace message");
-    Logger::getLogger()->info("info message");
-    Logger::getLogger()->debug("debug message");
-    Logger::getLogger()->warn("warn message");
-    Logger::getLogger()->error("error message");
-    Logger::getLogger()->critical("critical message");
+    Logger().trace("trace message");
+    Logger().info("info message");
+    Logger().debug("debug message");
+    Logger().warn("warn message");
+    Logger().error("error message");
+    Logger().critical("critical message");
 
     return 0;
 }
