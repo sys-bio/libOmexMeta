@@ -26,6 +26,9 @@ stages:
             py39:
               PythonVersion: 3.9
               PythonName: py39
+            py310:
+              PythonVersion: 3.10
+              PythonName: py310
         pool:
           vmImage: 'ubuntu-18.04'
         variables:
@@ -173,6 +176,9 @@ stages:
             py39:
               PythonVersion: 3.9
               PythonName: py39
+            py310:
+              PythonVersion: 3.10
+              PythonName: py310
         pool:
           vmImage: 'macos-10.15'
         variables:
@@ -297,6 +303,9 @@ stages:
             py39:
               PythonVersion: 3.9
               PythonName: py39
+            py310:
+              PythonVersion: 3.10
+              PythonName: py310
         pool:
           vmImage: 'windows-2019'
         variables:
@@ -499,6 +508,9 @@ stages:
             py39:
               PythonVersion: 3.9
               PythonName: py39
+            py310:
+              PythonVersion: 3.10
+              PythonName: py310
         pool:
           vmImage: 'ubuntu-18.04'
         container: ciaranwelsh/libomexmeta-manylinux2014-base:latest
