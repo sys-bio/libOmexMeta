@@ -29,6 +29,9 @@ stages:
             py310:
               PythonVersion: 3.10
               PythonName: py310
+            py311:
+              PythonVersion: 3.11
+              PythonName: py311
         pool:
           vmImage: 'ubuntu-18.04'
         variables:
@@ -179,6 +182,9 @@ stages:
             py310:
               PythonVersion: 3.10
               PythonName: py310
+            py311:
+              PythonVersion: 3.11
+              PythonName: py311
         pool:
           vmImage: 'macos-10.15'
         variables:
@@ -242,7 +248,7 @@ stages:
 
           - script: |
               eval "$(conda shell.bash hook)"
-              $(CondaExecutable) create -y --name $(PythonName) python=$(PythonVersion)
+              $(CondaExecutable) create -y --name $(PythonName) python=$(PythonVersion) -c conda-forge
               $(CondaExecutable) activate $(PythonName)
               $(PipExecutable) install -r requirements.txt
               $(PipExecutable) install -r test-requirements.txt
@@ -306,6 +312,9 @@ stages:
             py310:
               PythonVersion: 3.10
               PythonName: py310
+            py311:
+              PythonVersion: 3.11
+              PythonName: py311
         pool:
           vmImage: 'windows-2019'
         variables:
@@ -330,7 +339,7 @@ stages:
           PythonIncludeDir: '$(PythonRoot)\include'
           PipExecutable: '$(PythonScriptsDir)\pip.exe'
           PyWin32Path: '$(PythonLibDir)\site-packages\pywin32_system32' # needs to be added to path for win32api
-          DoxygenDownloadUrl: 'https://doxygen.nl/files/doxygen-1.9.1.windows.x64.bin.zip'
+          DoxygenDownloadUrl: 'https://www.doxygen.nl/files/doxygen-1.9.6.windows.x64.bin.zip'
           DoxygenDirectory: '$(System.DefaultWorkingDirectory)\Doxygen'
           DoxygenExecutable: '$(DoxygenDirectory)\doxygen.exe'
 
@@ -424,8 +433,8 @@ stages:
 
               $ENV:PATH="$ENV:PATH;$(PyWin32Path)"
 
-              echo "$(CondaExecutable) create -y --name $(PythonName) python=$(PythonVersion)"
-              $(CondaExecutable) create -y --name $(PythonName) python=$(PythonVersion)
+              echo "$(CondaExecutable) create -y --name $(PythonName) python=$(PythonVersion)" -c conda-forge
+              $(CondaExecutable) create -y --name $(PythonName) python=$(PythonVersion) -c conda-forge
 
               echo "$(CondaExecutable) activate $(PythonName)"
               $(CondaExecutable) activate $(PythonName)
@@ -511,9 +520,13 @@ stages:
             py310:
               PythonVersion: 3.10
               PythonName: py310
+            py311:
+              PythonVersion: 3.11
+              PythonName: py311
         pool:
-          vmImage: 'ubuntu-18.04'
-        container: ciaranwelsh/libomexmeta-manylinux2014-base:latest
+          vmImage: 'ubuntu-22.04'
+        container: sysbiouw/roadrunner-manylinux2014-base:latest
+        #container: ciaranwelsh/libomexmeta-manylinux2014-base:latest
         variables:
           VCPKG_INSTALL_PREFIX: '/vcpkg'
           CCACHE_DIR: '$(Pipeline.Workspace)/ccache'
@@ -537,7 +550,7 @@ stages:
 
           - script: |
               eval "$(conda shell.bash hook)"
-              $(CondaExecutable) activate $(PythonName)
+              $(CondaExecutable) activate $(PythonName) -c conda-forge
 
               echo "cd $(SOURCE_DIRECTORY)"
               cd $(SOURCE_DIRECTORY)
@@ -570,7 +583,7 @@ stages:
 
           - script: |
               eval "$(conda shell.bash hook)"
-              $(CondaExecutable) activate $(PythonName)
+              $(CondaExecutable) activate $(PythonName) -c conda-forge
               cd $(INSTALL_DIRECTORY)
               $(PythonExecutable) setup.py bdist_wheel
               cd dist
