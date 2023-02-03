@@ -525,8 +525,8 @@ stages:
               PythonName: py311
         pool:
           vmImage: 'ubuntu-22.04'
-        container: sysbiouw/roadrunner-manylinux2014-base:latest
-        #container: ciaranwelsh/libomexmeta-manylinux2014-base:latest
+        #container: sysbiouw/roadrunner-manylinux2014-base:latest
+        container: ciaranwelsh/libomexmeta-manylinux2014-base:latest
         variables:
           VCPKG_INSTALL_PREFIX: '/vcpkg'
           CCACHE_DIR: '$(Pipeline.Workspace)/ccache'
