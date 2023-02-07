@@ -33,7 +33,7 @@ stages:
               PythonVersion: 3.11
               PythonName: py311
         pool:
-          vmImage: 'ubuntu-18.04'
+          vmImage: 'ubuntu-latest'
         variables:
           MinicondaRoot: '/usr/share/miniconda'
           CondaExecutable: '$(MinicondaRoot)/bin/conda'
@@ -524,7 +524,7 @@ stages:
               PythonVersion: 3.11
               PythonName: py311
         pool:
-          vmImage: 'ubuntu-22.04'
+          vmImage: 'ubuntu-latest'
         container: sysbiouw/libomexmeta-manylinux2014-base:latest
         #container: ciaranwelsh/libomexmeta-manylinux2014-base:latest
         variables:
