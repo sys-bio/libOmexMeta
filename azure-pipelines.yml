@@ -17,9 +17,6 @@ stages:
         timeoutInMinutes: "0"
         strategy:
           matrix:
-            py37:
-              PythonVersion: 3.7
-              PythonName: py37
             py38:
               PythonVersion: 3.8
               PythonName: py38
@@ -170,9 +167,6 @@ stages:
         timeoutInMinutes: "0"
         strategy:
           matrix:
-            py37:
-              PythonVersion: 3.7
-              PythonName: py37
             py38:
               PythonVersion: 3.8
               PythonName: py38
@@ -264,6 +258,7 @@ stages:
             displayName: Build libOmexMeta 
           - script: |
               cd $(BUILD_DIRECTORY)
+              $(CondaExecutable) activate $(PythonName)
               cmake --build . --target run-ctest --config Release
             displayName: Run libOmexMeta Tests
 
@@ -300,9 +295,6 @@ stages:
         timeoutInMinutes: "0"
         strategy:
           matrix:
-            py37:
-              PythonVersion: 3.7
-              PythonName: py37
             py38:
               PythonVersion: 3.8
               PythonName: py38
@@ -508,9 +500,6 @@ stages:
       - job:
         strategy:
           matrix:
-            py37:
-              PythonVersion: 3.7
-              PythonName: py37
             py38:
               PythonVersion: 3.8
               PythonName: py38
