@@ -244,9 +244,8 @@ stages:
               eval "$(conda shell.bash hook)"
               $(CondaExecutable) create -y --name $(PythonName) python=$(PythonVersion) -c conda-forge
               $(CondaExecutable) activate $(PythonName)
-              $(CondaExecutable) install -c conda-forge pytest
-              $(PipExecutable) install -r requirements.txt
-              $(PipExecutable) install -r test-requirements.txt
+              $(PythonExecutable) -m pip install -r requirements.txt
+              $(PythonExecutable) -m pip install -r test-requirements.txt
               echo "[running] mkdir -p $(BUILD_DIRECTORY)"
               mkdir -p $(BUILD_DIRECTORY)
               echo "[running] cd $(BUILD_DIRECTORY)"
@@ -263,7 +262,7 @@ stages:
 
           - script: |
               eval "$(conda shell.bash hook)"
-              conda activate $(PythonName)
+              $(CondaExecutable) activate $(PythonName)
               $(PipExecutable) install ipython
               cd $(INSTALL_DIRECTORY)
               $(PythonExecutable) setup.py bdist_wheel
