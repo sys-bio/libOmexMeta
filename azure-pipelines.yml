@@ -244,10 +244,9 @@ stages:
               eval "$(conda shell.bash hook)"
               $(CondaExecutable) create -y --name $(PythonName) python=$(PythonVersion) -c conda-forge
               $(CondaExecutable) activate $(PythonName)
+              $(CondaExecutable) install -c conda-forge pytest
               $(PipExecutable) install -r requirements.txt
               $(PipExecutable) install -r test-requirements.txt
-              # $(PipExecutable) install ipython
-              # $(PipExecutable) install breathe sphinx-tabs recommonmark beautifulsoup4 requests sphinxcontrib-programoutput tellurium python-libcombine pytest graphviz
               echo "[running] mkdir -p $(BUILD_DIRECTORY)"
               mkdir -p $(BUILD_DIRECTORY)
               echo "[running] cd $(BUILD_DIRECTORY)"
