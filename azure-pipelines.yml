@@ -243,9 +243,14 @@ stages:
           - script: |
               eval "$(conda shell.bash hook)"
               $(CondaExecutable) create -y --name $(PythonName) python=$(PythonVersion) -c conda-forge
-              $(CondaExecutable) activate $(PythonName)
+              echo "$(PythonExecutable) -m pip install -r requirements.txt"
               $(PythonExecutable) -m pip install -r requirements.txt
+              echo "$(PythonExecutable) -m pip install -r test-requirements.txt"
               $(PythonExecutable) -m pip install -r test-requirements.txt
+              $(CondaExecutable) init bash
+            displayName: Setup conda
+
+          - script: |
               echo "[running] mkdir -p $(BUILD_DIRECTORY)"
               mkdir -p $(BUILD_DIRECTORY)
               echo "[running] cd $(BUILD_DIRECTORY)"
@@ -256,6 +261,7 @@ stages:
             displayName: Build libOmexMeta 
           - script: |
               cd $(BUILD_DIRECTORY)
+              echo "$(CondaExecutable) activate $(PythonName)"
               $(CondaExecutable) activate $(PythonName)
               cmake --build . --target run-ctest --config Release
             displayName: Run libOmexMeta Tests
