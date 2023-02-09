@@ -249,9 +249,6 @@ stages:
               $(PythonExecutable) -m pip install -r test-requirements.txt
               echo "$(CondaExecutable) init bash"
               $(CondaExecutable) init bash
-            displayName: Setup conda
-
-          - script: |
               echo "[running] mkdir -p $(BUILD_DIRECTORY)"
               mkdir -p $(BUILD_DIRECTORY)
               echo "[running] cd $(BUILD_DIRECTORY)"
@@ -261,6 +258,7 @@ stages:
 
             displayName: Build libOmexMeta 
           - script: |
+              bash
               cd $(BUILD_DIRECTORY)
               echo "$(CondaExecutable) activate $(PythonName)"
               $(CondaExecutable) activate $(PythonName)
