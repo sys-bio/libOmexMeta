@@ -247,6 +247,9 @@ stages:
               $(PythonExecutable) -m pip install -r requirements.txt
               echo "$(PythonExecutable) -m pip install -r test-requirements.txt"
               $(PythonExecutable) -m pip install -r test-requirements.txt
+              #Something goes wrong for Python 3.11 when installing python-libcombine. Try installing it directly.
+              echo "$(PythonExecutable) -m pip install python-libcombine"
+              $(PythonExecutable) -m pip install python-libcombine
               echo "$(CondaExecutable) init bash"
               $(CondaExecutable) init bash
               echo "[running] mkdir -p $(BUILD_DIRECTORY)"
@@ -255,10 +258,9 @@ stages:
               cd $(BUILD_DIRECTORY)
               cmake -DVCPKG_ROOT=$(VCPKG_INSTALL_PREFIX) -DCMAKE_INSTALL_PREFIX=$(INSTALL_DIRECTORY) -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_PYTHON=ON -DPython_ROOT_DIR=$(PythonRoot) -DBUILD_DOCS=ON -DBUILD_DOCS_EXAMPLES=ON  -DSPHINX_EXECUTABLE=$(which sphinx-build) ..
               cmake --build . --target install --config Release -j 12
+            displayName: Build libOmexMeta
 
-            displayName: Build libOmexMeta 
           - script: |
-              bash
               cd $(BUILD_DIRECTORY)
               echo "$(CondaExecutable) activate $(PythonName)"
               $(CondaExecutable) activate $(PythonName)
