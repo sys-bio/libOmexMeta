@@ -242,11 +242,12 @@ stages:
 
           - script: |
               eval "$(conda shell.bash hook)"
-              $(CondaExecutable) create -y --name $(PythonName) python=$(PythonVersion) -c conda-forge
+              $(CondaExecutable) create -y --name $(PythonName) python=$(PythonVersion) -c conda-forge pytest
               echo "$(PythonExecutable) -m pip install -r requirements.txt"
               $(PythonExecutable) -m pip install -r requirements.txt
               echo "$(PythonExecutable) -m pip install -r test-requirements.txt"
               $(PythonExecutable) -m pip install -r test-requirements.txt
+              echo "$(CondaExecutable) init bash"
               $(CondaExecutable) init bash
             displayName: Setup conda
 
