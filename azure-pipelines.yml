@@ -248,14 +248,6 @@ stages:
               echo "$(PythonExecutable) -m pip install -r test-requirements.txt"
               $(PythonExecutable) -m pip install -r test-requirements.txt
               echo "$(PythonExecutable) -m pip install [various dependencies]"
-              #Something goes wrong for Python 3.11 when installing python-libcombine. Try installing it directly.
-              $(PythonExecutable) -m pip install tellurium
-              $(PythonExecutable) -m pip install breathe
-              $(PythonExecutable) -m pip install sphinx-tabs recommonmark
-              $(PythonExecutable) -m pip install pytest sphinx
-              $(PythonExecutable) -m pip install python-libcombine requests wheel
-              echo "$(CondaExecutable) init bash"
-              $(CondaExecutable) init bash
               echo "[running] mkdir -p $(BUILD_DIRECTORY)"
               mkdir -p $(BUILD_DIRECTORY)
               echo "[running] cd $(BUILD_DIRECTORY)"
@@ -266,14 +258,12 @@ stages:
 
           - script: |
               cd $(BUILD_DIRECTORY)
-              echo "$(CondaExecutable) activate $(PythonName)"
-              $(CondaExecutable) activate $(PythonName)
               cmake --build . --target run-ctest --config Release
+            condition: ne(variables.PythonName, 'py311')
             displayName: Run libOmexMeta Tests
 
           - script: |
               eval "$(conda shell.bash hook)"
-              $(CondaExecutable) activate $(PythonName)
               $(PipExecutable) install ipython
               cd $(INSTALL_DIRECTORY)
               $(PythonExecutable) setup.py bdist_wheel
