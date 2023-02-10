@@ -247,9 +247,13 @@ stages:
               $(PythonExecutable) -m pip install -r requirements.txt
               echo "$(PythonExecutable) -m pip install -r test-requirements.txt"
               $(PythonExecutable) -m pip install -r test-requirements.txt
+              echo "$(PythonExecutable) -m pip install [various dependencies]"
               #Something goes wrong for Python 3.11 when installing python-libcombine. Try installing it directly.
-              echo "$(PythonExecutable) -m pip install python-libcombine"
-              $(PythonExecutable) -m pip install python-libcombine
+              $(PythonExecutable) -m pip install tellurium
+              $(PythonExecutable) -m pip install breathe
+              $(PythonExecutable) -m pip install sphinx-tabs recommonmark
+              $(PythonExecutable) -m pip install pytest sphinx
+              $(PythonExecutable) -m pip install python-libcombine requests wheel
               echo "$(CondaExecutable) init bash"
               $(CondaExecutable) init bash
               echo "[running] mkdir -p $(BUILD_DIRECTORY)"
