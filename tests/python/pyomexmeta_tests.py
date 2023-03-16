@@ -1716,6 +1716,10 @@ XML parser error: expected '>'
 
         assert os.path.isfile(self.logger_file)
         with open(self.logger_file, 'r') as f:
+            print("Actual f read:\n")
+            print("---")
+            print(f.read())
+            print("---")
             self.assertEqual(expected_logging_content, f.read())
 
         # read again
