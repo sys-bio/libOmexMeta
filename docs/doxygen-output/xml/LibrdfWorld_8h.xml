@@ -13,6 +13,7 @@
     <includedby refid="LibrdfUri_8cpp" local="yes">src/redland/RedlandWrapper/src/LibrdfUri.cpp</includedby>
     <includedby refid="LibrdfWorld_8cpp" local="yes">src/redland/RedlandWrapper/src/LibrdfWorld.cpp</includedby>
     <includedby refid="Logger_8cpp" local="no">src/redland/RedlandWrapper/src/Logger.cpp</includedby>
+    <includedby refid="LoggerStore_8cpp" local="no">src/redland/RedlandWrapper/src/LoggerStore.cpp</includedby>
     <includedby refid="LibrdfModel_8h" local="yes">src/redland/RedlandWrapper/src/include/redland/LibrdfModel.h</includedby>
     <includedby refid="LibrdfNode_8h" local="yes">src/redland/RedlandWrapper/src/include/redland/LibrdfNode.h</includedby>
     <includedby refid="LibrdfParser_8h" local="yes">src/redland/RedlandWrapper/src/include/redland/LibrdfParser.h</includedby>

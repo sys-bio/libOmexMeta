@@ -17,14 +17,10 @@ int main() {
     // oops - did a whoops. Parsing rdfxml as turtle
     RDF *rdf = RDF_fromString(cellml, "turtle");// See console
 
-    // get the logger
-    Logger *logger = Logger_getLogger();
-
     assert(Logger_size() == 1);
 
     // get the message
     Message *message = Logger_getMessageI(0);
-
 
     // collect message content / level
     char *messageString = Message_getMessage(message);// remember to free returned char*

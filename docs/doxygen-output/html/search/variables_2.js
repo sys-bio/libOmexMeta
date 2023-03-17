@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['logger_756',['logger',['../classredland_1_1Logger.html#a9bc7671c63a3d7c3953a4d65d8570936',1,'redland::Logger']]]
+  ['msg_5f_758',['msg_',['../classomexmeta_1_1Exception.html#a99067aa4ed7e38cf27b986cca3734512',1,'omexmeta::Exception::msg_()'],['../classException.html#a5d59cc46086c61391ed26773ce861780',1,'Exception::msg_()']]]
 ];

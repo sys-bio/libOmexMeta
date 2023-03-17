@@ -6,9 +6,9 @@
       <sectiondef kind="public-type">
       <memberdef kind="typedef" id="classomexmeta_1_1Logger_1ad32818f7b4fd7aac41cdbe390a93560c" prot="public" static="no">
         <type>std::shared_ptr&lt; spdlog::logger &gt;</type>
-        <definition>using omexmeta::Logger::LoggerPtr =  std::shared_ptr&lt;spdlog::logger&gt;</definition>
+        <definition>using omexmeta::Logger::SpdLogPtr =  std::shared_ptr&lt;spdlog::logger&gt;</definition>
         <argsstring></argsstring>
-        <name>LoggerPtr</name>
+        <name>SpdLogPtr</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -33,8 +33,8 @@
       </sectiondef>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="classomexmeta_1_1Logger_1a93dcc13c2fc6049c66d7f5ce8246cd5e" prot="public" static="no" mutable="no">
-        <type>LoggerPtr</type>
-        <definition>LoggerPtr omexmeta::Logger::logger</definition>
+        <type>SpdLogPtr</type>
+        <definition>SpdLogPtr omexmeta::Logger::logger</definition>
         <argsstring></argsstring>
         <name>logger</name>
         <briefdescription>
@@ -486,7 +486,7 @@
       <member refid="classomexmeta_1_1Logger_1a2aafb972d112f6cb7b65ec03cda89886" prot="private" virt="non-virtual"><scope>omexmeta::Logger</scope><name>level_</name></member>
       <member refid="classomexmeta_1_1Logger_1a93dcc13c2fc6049c66d7f5ce8246cd5e" prot="public" virt="non-virtual"><scope>omexmeta::Logger</scope><name>logger</name></member>
       <member refid="classomexmeta_1_1Logger_1a47644826c7413d390d471f23033edfc0" prot="private" virt="non-virtual"><scope>omexmeta::Logger</scope><name>Logger</name></member>
-      <member refid="classomexmeta_1_1Logger_1ad32818f7b4fd7aac41cdbe390a93560c" prot="public" virt="non-virtual"><scope>omexmeta::Logger</scope><name>LoggerPtr</name></member>
+      <member refid="classomexmeta_1_1Logger_1ad32818f7b4fd7aac41cdbe390a93560c" prot="public" virt="non-virtual"><scope>omexmeta::Logger</scope><name>SpdLogPtr</name></member>
       <member refid="classomexmeta_1_1Logger_1a2b2be48282c5fed6f2527e03518290a5" prot="public" virt="non-virtual"><scope>omexmeta::Logger</scope><name>LogLevel</name></member>
       <member refid="classomexmeta_1_1Logger_1a134dd390a0ffd511e7272a3ff604ea5e" prot="public" virt="non-virtual"><scope>omexmeta::Logger</scope><name>setFormatter</name></member>
       <member refid="classomexmeta_1_1Logger_1a8aea25829e62c8f4c6f03fc48d50dd41" prot="public" virt="non-virtual"><scope>omexmeta::Logger</scope><name>setLevel</name></member>

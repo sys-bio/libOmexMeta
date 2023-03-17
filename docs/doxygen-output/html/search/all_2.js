@@ -3,7 +3,7 @@ var searchData=
   ['capacity_37',['capacity',['../classomexmeta_1_1Triples.html#a1f7ba9d5cd575ba5c63ed9dbbd1f279c',1,'omexmeta::Triples']]],
   ['checkfornull_38',['checkForNull',['../classredland_1_1LibrdfStatement.html#a4935cf54fa2f367678319f1f2d837005',1,'redland::LibrdfStatement::checkForNull()'],['../classredland_1_1RedlandType.html#a86304e5a3e82aae8ea4aae868b4fa7e4',1,'redland::RedlandType::checkForNull()']]],
   ['checkvalidmetaid_39',['checkValidMetaid',['../classomexmeta_1_1Editor.html#a790458ef32f01ce0a6fd87bf14bed81a',1,'omexmeta::Editor']]],
-  ['clear_40',['clear',['../classredland_1_1Logger.html#aea11131258193a5591138b72dd89bb4b',1,'redland::Logger']]],
+  ['clear_40',['clear',['../classredland_1_1Logger.html#aea11131258193a5591138b72dd89bb4b',1,'redland::Logger::clear()'],['../classredland_1_1LoggerStore.html#adfdca1799d3cdd26122f34bc30f45b2a',1,'redland::LoggerStore::clear()']]],
   ['concatmetaidanduri_41',['concatMetaIdAndUri',['../classomexmeta_1_1OmexMetaUtils.html#ae645af49ce57dac8bd0e0eba9e39a6c0',1,'omexmeta::OmexMetaUtils']]],
   ['configureprefixstrings_42',['configurePrefixStrings',['../classomexmeta_1_1OmexMetaUtils.html#a744a0575136f1cc60b76a6560a5595e9',1,'omexmeta::OmexMetaUtils']]],
   ['consolelogger_43',['consoleLogger',['../classredland_1_1Logger.html#a63c1f161280c140b69b3db08389a1137',1,'redland::Logger']]],

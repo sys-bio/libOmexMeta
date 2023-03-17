@@ -140,7 +140,7 @@ because the <code class="docutils literal notranslate"><span class="pre">rdfxml<
 </div>
 <div class="literal-block-wrapper docutils container" id="id2">
 <div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id2" title="Permalink to this code"></a></div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">16</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mi">35</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">error</span> <span class="p">:</span> <span class="n">syntax</span> <span class="n">error</span> <span class="n">at</span> <span class="s1">&#39;&lt;&#39;</span> 
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">22</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">55</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">error</span> <span class="p">:</span> <span class="n">syntax</span> <span class="n">error</span> <span class="n">at</span> <span class="s1">&#39;&lt;&#39;</span> 
 <span class="n">error</span><span class="p">:</span> <span class="n">syntax</span> <span class="n">error</span> <span class="n">at</span> <span class="s1">&#39;&lt;&#39;</span>
 <span class="n">message_string</span><span class="p">:</span>  <span class="n">syntax</span> <span class="n">error</span> <span class="n">at</span> <span class="s1">&#39;&lt;&#39;</span>
 <span class="n">message_level</span><span class="p">:</span>  <span class="n">error</span>
@@ -168,10 +168,10 @@ because the <code class="docutils literal notranslate"><span class="pre">rdfxml<
     <span class="c1">// oops - did a whoops. Parsing rdfxml as turtle</span>
     <span class="n">RDF</span> <span class="n">rdf1</span> <span class="o">=</span> <span class="n">RDF</span><span class="o">::</span><span class="n">fromString</span><span class="p">(</span><span class="n">cellml</span><span class="p">,</span> <span class="s">&quot;turtle&quot;</span><span class="p">);</span> <span class="c1">// See console</span>
 
-    <span class="n">assert</span><span class="p">(</span><span class="n">Logger</span><span class="o">::</span><span class="n">getLogger</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="n">assert</span><span class="p">(</span><span class="n">Logger</span><span class="p">().</span><span class="n">size</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span><span class="p">);</span>
 
     <span class="c1">// get the message</span>
-    <span class="n">Message</span> <span class="n">message</span> <span class="o">=</span> <span class="p">(</span><span class="o">*</span><span class="n">Logger</span><span class="o">::</span><span class="n">getLogger</span><span class="p">())[</span><span class="mi">0</span><span class="p">];</span>
+    <span class="n">Message</span> <span class="n">message</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">()[</span><span class="mi">0</span><span class="p">];</span>
 
     <span class="c1">// output message content to stdout</span>
     <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">message</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
@@ -184,9 +184,9 @@ because the <code class="docutils literal notranslate"><span class="pre">rdfxml<
     <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;messageLevel: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">messageLevel</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
 
     <span class="c1">// now clear the logger</span>
-    <span class="n">Logger</span><span class="o">::</span><span class="n">getLogger</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">clear</span><span class="p">();</span>
+    <span class="n">Logger</span><span class="p">().</span><span class="n">clear</span><span class="p">();</span>
 
-    <span class="n">assert</span><span class="p">(</span><span class="n">Logger</span><span class="o">::</span><span class="n">getLogger</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="n">assert</span><span class="p">(</span><span class="n">Logger</span><span class="p">().</span><span class="n">size</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">);</span>
 
 
     <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
@@ -196,7 +196,7 @@ because the <code class="docutils literal notranslate"><span class="pre">rdfxml<
 </div>
 <div class="literal-block-wrapper docutils container" id="id4">
 <div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id4" title="Permalink to this code"></a></div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">16</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mi">49</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">error</span> <span class="p">:</span> <span class="n">syntax</span> <span class="n">error</span> <span class="n">at</span> <span class="s1">&#39;&lt;&#39;</span> 
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">22</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mi">01</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">error</span> <span class="p">:</span> <span class="n">syntax</span> <span class="n">error</span> <span class="n">at</span> <span class="s1">&#39;&lt;&#39;</span> 
 
 <span class="mi">4</span><span class="p">:</span> <span class="n">syntax</span> <span class="n">error</span> <span class="n">at</span> <span class="s1">&#39;&lt;&#39;</span>
 
@@ -228,14 +228,10 @@ because the <code class="docutils literal notranslate"><span class="pre">rdfxml<
     <span class="c1">// oops - did a whoops. Parsing rdfxml as turtle</span>
     <span class="n">RDF</span> <span class="o">*</span><span class="n">rdf</span> <span class="o">=</span> <span class="n">RDF_fromString</span><span class="p">(</span><span class="n">cellml</span><span class="p">,</span> <span class="s">&quot;turtle&quot;</span><span class="p">);</span><span class="c1">// See console</span>
 
-    <span class="c1">// get the logger</span>
-    <span class="n">Logger</span> <span class="o">*</span><span class="n">logger</span> <span class="o">=</span> <span class="n">Logger_getLogger</span><span class="p">();</span>
-
     <span class="n">assert</span><span class="p">(</span><span class="n">Logger_size</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span><span class="p">);</span>
 
     <span class="c1">// get the message</span>
     <span class="n">Message</span> <span class="o">*</span><span class="n">message</span> <span class="o">=</span> <span class="n">Logger_getMessageI</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-
 
     <span class="c1">// collect message content / level</span>
     <span class="kt">char</span> <span class="o">*</span><span class="n">messageString</span> <span class="o">=</span> <span class="n">Message_getMessage</span><span class="p">(</span><span class="n">message</span><span class="p">);</span><span class="c1">// remember to free returned char*</span>
@@ -263,7 +259,7 @@ because the <code class="docutils literal notranslate"><span class="pre">rdfxml<
 </div>
 <div class="literal-block-wrapper docutils container" id="id6">
 <div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id6" title="Permalink to this code"></a></div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">16</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mi">49</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">error</span> <span class="p">:</span> <span class="n">syntax</span> <span class="n">error</span> <span class="n">at</span> <span class="s1">&#39;&lt;&#39;</span> 
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">22</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mi">01</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">error</span> <span class="p">:</span> <span class="n">syntax</span> <span class="n">error</span> <span class="n">at</span> <span class="s1">&#39;&lt;&#39;</span> 
 
 <span class="n">syntax</span> <span class="n">error</span> <span class="n">at</span> <span class="s1">&#39;&lt;&#39;</span>
 
@@ -342,11 +338,11 @@ levels and their precedence levels are:</p>
 
 
     <span class="c1">// changing the logging level to critical is one way to hide error messages or messages with lower precedence</span>
-    <span class="n">Logger</span><span class="o">::</span><span class="n">getLogger</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">setLevel</span><span class="p">(</span><span class="n">LogLevel</span><span class="o">::</span><span class="n">critical</span><span class="p">);</span>
+    <span class="n">Logger</span><span class="p">().</span><span class="n">setLevel</span><span class="p">(</span><span class="n">LogLevel</span><span class="o">::</span><span class="n">critical</span><span class="p">);</span>
     <span class="n">RDF</span> <span class="n">rdf1</span> <span class="o">=</span> <span class="n">RDF</span><span class="o">::</span><span class="n">fromString</span><span class="p">(</span><span class="n">cellml</span><span class="p">,</span> <span class="s">&quot;turtle&quot;</span><span class="p">);</span> <span class="c1">// See console - nothing is emitted</span>
 
     <span class="c1">// turning the logger off is another</span>
-    <span class="n">Logger</span><span class="o">::</span><span class="n">getLogger</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">setLevel</span><span class="p">(</span><span class="n">LogLevel</span><span class="o">::</span><span class="n">off</span><span class="p">);</span>
+    <span class="n">Logger</span><span class="p">().</span><span class="n">setLevel</span><span class="p">(</span><span class="n">LogLevel</span><span class="o">::</span><span class="n">off</span><span class="p">);</span>
     <span class="n">RDF</span> <span class="n">rdf2</span> <span class="o">=</span> <span class="n">RDF</span><span class="o">::</span><span class="n">fromString</span><span class="p">(</span><span class="n">cellml</span><span class="p">,</span> <span class="s">&quot;turtle&quot;</span><span class="p">);</span> <span class="c1">// See console - nothing is emitted</span>
 
     <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
@@ -431,7 +427,7 @@ for a list of valid formatting symbols and their purpose.</p>
 </div>
 <div class="literal-block-wrapper docutils container" id="id14">
 <div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id14" title="Permalink to this code"></a></div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="p">[</span><span class="mi">16</span><span class="o">-</span><span class="mi">33</span><span class="o">-</span><span class="mi">36</span><span class="p">]</span> <span class="o">-</span> <span class="mi">8008</span> <span class="o">-</span> <span class="mi">12964</span> <span class="o">-</span> <span class="n">console</span> <span class="o">-</span> <span class="n">warning</span> <span class="p">:</span> <span class="n">XML</span> <span class="n">parser</span> <span class="n">warning</span><span class="p">:</span> <span class="n">Unsupported</span> <span class="n">version</span> <span class="s1">&#39;1.1&#39;</span> 
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="p">[</span><span class="mi">22</span><span class="o">-</span><span class="mi">30</span><span class="o">-</span><span class="mi">55</span><span class="p">]</span> <span class="o">-</span> <span class="mi">4244</span> <span class="o">-</span> <span class="mi">4800</span> <span class="o">-</span> <span class="n">console</span> <span class="o">-</span> <span class="n">warning</span> <span class="p">:</span> <span class="n">XML</span> <span class="n">parser</span> <span class="n">warning</span><span class="p">:</span> <span class="n">Unsupported</span> <span class="n">version</span> <span class="s1">&#39;1.1&#39;</span> 
 </pre></div>
 </div>
 </div>
@@ -455,7 +451,7 @@ for a list of valid formatting symbols and their purpose.</p>
     <span class="c1">// users can customize the formatting of the logger;</span>
     <span class="c1">// See https://github.com/gabime/spdlog/wiki/3.-Custom-formatting//pattern-flags;</span>
     <span class="c1">// for more information on the supported symbols and their meanings;</span>
-    <span class="n">Logger</span><span class="o">::</span><span class="n">getLogger</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">setFormatter</span><span class="p">(</span><span class="s">&quot;%^ [%H-%M-%S] - %t - %P - %n - %l : %v %$&quot;</span><span class="p">);</span>
+    <span class="n">Logger</span><span class="p">().</span><span class="n">setFormatter</span><span class="p">(</span><span class="s">&quot;%^ [%H-%M-%S] - %t - %P - %n - %l : %v %$&quot;</span><span class="p">);</span>
     <span class="n">RDF</span> <span class="n">rdf</span> <span class="o">=</span> <span class="n">RDF</span><span class="o">::</span><span class="n">fromString</span><span class="p">(</span><span class="n">cellml</span><span class="p">,</span> <span class="s">&quot;turtle&quot;</span><span class="p">);</span>
 
     <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
@@ -465,7 +461,7 @@ for a list of valid formatting symbols and their purpose.</p>
 </div>
 <div class="literal-block-wrapper docutils container" id="id16">
 <div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id16" title="Permalink to this code"></a></div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="p">[</span><span class="mi">16</span><span class="o">-</span><span class="mi">33</span><span class="o">-</span><span class="mi">50</span><span class="p">]</span> <span class="o">-</span> <span class="mi">668</span> <span class="o">-</span> <span class="mi">29820</span> <span class="o">-</span> <span class="n">console</span> <span class="o">-</span> <span class="n">error</span> <span class="p">:</span> <span class="n">syntax</span> <span class="n">error</span> <span class="n">at</span> <span class="s1">&#39;&lt;&#39;</span> 
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="p">[</span><span class="mi">22</span><span class="o">-</span><span class="mi">31</span><span class="o">-</span><span class="mi">01</span><span class="p">]</span> <span class="o">-</span> <span class="mi">20304</span> <span class="o">-</span> <span class="mi">1064</span> <span class="o">-</span> <span class="n">console</span> <span class="o">-</span> <span class="n">error</span> <span class="p">:</span> <span class="n">syntax</span> <span class="n">error</span> <span class="n">at</span> <span class="s1">&#39;&lt;&#39;</span> 
 
 </pre></div>
 </div>
@@ -500,7 +496,7 @@ for a list of valid formatting symbols and their purpose.</p>
 </div>
 <div class="literal-block-wrapper docutils container" id="id18">
 <div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id18" title="Permalink to this code"></a></div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="p">[</span><span class="mi">16</span><span class="o">-</span><span class="mi">33</span><span class="o">-</span><span class="mi">49</span><span class="p">]</span> <span class="o">-</span> <span class="mi">18536</span> <span class="o">-</span> <span class="mi">31132</span> <span class="o">-</span> <span class="n">console</span> <span class="o">-</span> <span class="n">error</span> <span class="p">:</span> <span class="n">syntax</span> <span class="n">error</span> <span class="n">at</span> <span class="s1">&#39;&lt;&#39;</span> 
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="p">[</span><span class="mi">22</span><span class="o">-</span><span class="mi">31</span><span class="o">-</span><span class="mi">01</span><span class="p">]</span> <span class="o">-</span> <span class="mi">12664</span> <span class="o">-</span> <span class="mi">30660</span> <span class="o">-</span> <span class="n">console</span> <span class="o">-</span> <span class="n">error</span> <span class="p">:</span> <span class="n">syntax</span> <span class="n">error</span> <span class="n">at</span> <span class="s1">&#39;&lt;&#39;</span> 
 
 </pre></div>
 </div>
@@ -560,10 +556,10 @@ switching between the file and console loggers.</p>
 </div>
 <div class="literal-block-wrapper docutils container" id="id20">
 <div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id20" title="Permalink to this code"></a></div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">16</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mi">36</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">error</span> <span class="p">:</span> <span class="n">syntax</span> <span class="n">error</span> <span class="n">at</span> <span class="s1">&#39;&lt;&#39;</span> 
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">22</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">55</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">error</span> <span class="p">:</span> <span class="n">syntax</span> <span class="n">error</span> <span class="n">at</span> <span class="s1">&#39;&lt;&#39;</span> 
+<span class="p">[</span><span class="mi">22</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">55</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">error</span> <span class="p">:</span> <span class="n">syntax</span> <span class="n">error</span> <span class="n">at</span> <span class="s1">&#39;&lt;&#39;</span> 
 <span class="n">Logger</span> <span class="n">file</span> <span class="ow">is</span><span class="p">:</span> <span class="s2">&quot;D:\libOmexMeta\cmake-build-release\docs\log.log&quot;</span>
 <span class="n">Reading</span> <span class="n">logging</span> <span class="n">data</span> <span class="kn">from</span> <span class="s2">&quot;D:\libOmexMeta\cmake-build-release\docs\log.log&quot;</span><span class="p">:</span>
-<span class="p">[</span><span class="mi">16</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mi">36</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">error</span> <span class="p">:</span> <span class="n">syntax</span> <span class="n">error</span> <span class="n">at</span> <span class="s1">&#39;&lt;&#39;</span> 
 
 <span class="n">Switching</span> <span class="n">back</span> <span class="n">to</span> <span class="n">the</span> <span class="n">console</span> <span class="n">logger</span><span class="p">:</span>
 </pre></div>
@@ -594,7 +590,7 @@ switching between the file and console loggers.</p>
     <span class="k">if</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">filesystem</span><span class="o">::</span><span class="n">exists</span><span class="p">(</span><span class="n">fname</span><span class="p">))</span> <span class="p">{</span>
         <span class="n">std</span><span class="o">::</span><span class="n">filesystem</span><span class="o">::</span><span class="n">remove</span><span class="p">(</span><span class="n">fname</span><span class="p">);</span>
     <span class="p">}</span>
-    <span class="n">Logger</span><span class="o">::</span><span class="n">getLogger</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">fileLogger</span><span class="p">(</span><span class="n">fname</span><span class="p">);</span>
+    <span class="n">Logger</span><span class="p">().</span><span class="n">fileLogger</span><span class="p">(</span><span class="n">fname</span><span class="p">);</span>
     <span class="n">RDF</span> <span class="n">rdf</span> <span class="o">=</span> <span class="n">RDF</span><span class="o">::</span><span class="n">fromString</span><span class="p">(</span><span class="n">cellml</span><span class="p">,</span> <span class="s">&quot;turtle&quot;</span><span class="p">);</span>
     <span class="c1">// now check Logger::getLogger()::file;</span>
     <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
@@ -605,6 +601,8 @@ switching between the file and console loggers.</p>
 <div class="literal-block-wrapper docutils container" id="id22">
 <div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id22" title="Permalink to this code"></a></div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">check</span> <span class="n">logger</span> <span class="n">filename</span><span class="p">:</span> <span class="s2">&quot;D:</span><span class="se">\\</span><span class="s2">libOmexMeta</span><span class="se">\\</span><span class="s2">cmake-build-release</span><span class="se">\\</span><span class="s2">docs</span><span class="se">\\</span><span class="s2">log.log&quot;</span>
+
+<span class="p">[</span><span class="mi">22</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mi">02</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">error</span> <span class="p">:</span> <span class="n">syntax</span> <span class="n">error</span> <span class="n">at</span> <span class="s1">&#39;&lt;&#39;</span> 
 
 </pre></div>
 </div>
@@ -648,7 +646,9 @@ switching between the file and console loggers.</p>
 </div>
 <div class="literal-block-wrapper docutils container" id="id24">
 <div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id24" title="Permalink to this code"></a></div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">check</span> <span class="n">logger_file</span><span class="p">:</span> <span class="n">D</span><span class="p">:</span>\<span class="n">libOmexMeta</span>\<span class="n">cmake</span><span class="o">-</span><span class="n">build</span><span class="o">-</span><span class="n">release</span>\<span class="n">docs</span>\<span class="n">log</span><span class="o">.</span><span class="n">log</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">22</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mi">02</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">error</span> <span class="p">:</span> <span class="n">syntax</span> <span class="n">error</span> <span class="n">at</span> <span class="s1">&#39;&lt;&#39;</span> 
+
+<span class="n">check</span> <span class="n">logger_file</span><span class="p">:</span> <span class="n">D</span><span class="p">:</span>\<span class="n">libOmexMeta</span>\<span class="n">cmake</span><span class="o">-</span><span class="n">build</span><span class="o">-</span><span class="n">release</span>\<span class="n">docs</span>\<span class="n">log</span><span class="o">.</span><span class="n">log</span>
 
 </pre></div>
 </div>
@@ -676,12 +676,12 @@ switching between the file and console loggers.</p>
 </div>
 <div class="literal-block-wrapper docutils container" id="id26">
 <div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id26" title="Permalink to this code"></a></div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">16</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mi">36</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">trace</span> <span class="p">:</span> <span class="n">trace</span> <span class="n">message</span> 
-<span class="p">[</span><span class="mi">16</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mi">36</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">info</span> <span class="p">:</span> <span class="n">info</span> <span class="n">message</span> 
-<span class="p">[</span><span class="mi">16</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mi">36</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">debug</span> <span class="p">:</span> <span class="n">debug</span> <span class="n">message</span> 
-<span class="p">[</span><span class="mi">16</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mi">36</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">warning</span> <span class="p">:</span> <span class="n">warn</span> <span class="n">message</span> 
-<span class="p">[</span><span class="mi">16</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mi">36</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">error</span> <span class="p">:</span> <span class="n">error</span> <span class="n">message</span> 
-<span class="p">[</span><span class="mi">16</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mi">36</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">critical</span> <span class="p">:</span> <span class="n">critical</span> <span class="n">message</span> 
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">22</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">55</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">trace</span> <span class="p">:</span> <span class="n">trace</span> <span class="n">message</span> 
+<span class="p">[</span><span class="mi">22</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">55</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">info</span> <span class="p">:</span> <span class="n">info</span> <span class="n">message</span> 
+<span class="p">[</span><span class="mi">22</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">55</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">debug</span> <span class="p">:</span> <span class="n">debug</span> <span class="n">message</span> 
+<span class="p">[</span><span class="mi">22</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">55</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">warning</span> <span class="p">:</span> <span class="n">warn</span> <span class="n">message</span> 
+<span class="p">[</span><span class="mi">22</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">55</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">error</span> <span class="p">:</span> <span class="n">error</span> <span class="n">message</span> 
+<span class="p">[</span><span class="mi">22</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">55</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">critical</span> <span class="p">:</span> <span class="n">critical</span> <span class="n">message</span> 
 </pre></div>
 </div>
 </div>
@@ -693,14 +693,14 @@ switching between the file and console loggers.</p>
 
 <span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
 
-    <span class="n">Logger</span><span class="o">::</span><span class="n">getLogger</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">setLevel</span><span class="p">(</span><span class="n">LogLevel</span><span class="o">::</span><span class="n">trace</span><span class="p">);</span> <span class="c1">// switch to trace log level;</span>
+    <span class="n">Logger</span><span class="p">().</span><span class="n">setLevel</span><span class="p">(</span><span class="n">LogLevel</span><span class="o">::</span><span class="n">trace</span><span class="p">);</span> <span class="c1">// switch to trace log level;</span>
     <span class="c1">// you can also use the logger yourself, if needed;</span>
-    <span class="n">Logger</span><span class="o">::</span><span class="n">getLogger</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">trace</span><span class="p">(</span><span class="s">&quot;trace message&quot;</span><span class="p">);</span>
-    <span class="n">Logger</span><span class="o">::</span><span class="n">getLogger</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;info message&quot;</span><span class="p">);</span>
-    <span class="n">Logger</span><span class="o">::</span><span class="n">getLogger</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;debug message&quot;</span><span class="p">);</span>
-    <span class="n">Logger</span><span class="o">::</span><span class="n">getLogger</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">warn</span><span class="p">(</span><span class="s">&quot;warn message&quot;</span><span class="p">);</span>
-    <span class="n">Logger</span><span class="o">::</span><span class="n">getLogger</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">error</span><span class="p">(</span><span class="s">&quot;error message&quot;</span><span class="p">);</span>
-    <span class="n">Logger</span><span class="o">::</span><span class="n">getLogger</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">critical</span><span class="p">(</span><span class="s">&quot;critical message&quot;</span><span class="p">);</span>
+    <span class="n">Logger</span><span class="p">().</span><span class="n">trace</span><span class="p">(</span><span class="s">&quot;trace message&quot;</span><span class="p">);</span>
+    <span class="n">Logger</span><span class="p">().</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;info message&quot;</span><span class="p">);</span>
+    <span class="n">Logger</span><span class="p">().</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;debug message&quot;</span><span class="p">);</span>
+    <span class="n">Logger</span><span class="p">().</span><span class="n">warn</span><span class="p">(</span><span class="s">&quot;warn message&quot;</span><span class="p">);</span>
+    <span class="n">Logger</span><span class="p">().</span><span class="n">error</span><span class="p">(</span><span class="s">&quot;error message&quot;</span><span class="p">);</span>
+    <span class="n">Logger</span><span class="p">().</span><span class="n">critical</span><span class="p">(</span><span class="s">&quot;critical message&quot;</span><span class="p">);</span>
 
     <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
@@ -709,17 +709,17 @@ switching between the file and console loggers.</p>
 </div>
 <div class="literal-block-wrapper docutils container" id="id28">
 <div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id28" title="Permalink to this code"></a></div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">16</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mi">50</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">trace</span> <span class="p">:</span> <span class="n">trace</span> <span class="n">message</span> 
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">22</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mi">02</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">trace</span> <span class="p">:</span> <span class="n">trace</span> <span class="n">message</span> 
 
-<span class="p">[</span><span class="mi">16</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mi">50</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">info</span> <span class="p">:</span> <span class="n">info</span> <span class="n">message</span> 
+<span class="p">[</span><span class="mi">22</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mi">02</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">info</span> <span class="p">:</span> <span class="n">info</span> <span class="n">message</span> 
 
-<span class="p">[</span><span class="mi">16</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mi">50</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">debug</span> <span class="p">:</span> <span class="n">debug</span> <span class="n">message</span> 
+<span class="p">[</span><span class="mi">22</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mi">02</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">debug</span> <span class="p">:</span> <span class="n">debug</span> <span class="n">message</span> 
 
-<span class="p">[</span><span class="mi">16</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mi">50</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">warning</span> <span class="p">:</span> <span class="n">warn</span> <span class="n">message</span> 
+<span class="p">[</span><span class="mi">22</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mi">02</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">warning</span> <span class="p">:</span> <span class="n">warn</span> <span class="n">message</span> 
 
-<span class="p">[</span><span class="mi">16</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mi">50</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">error</span> <span class="p">:</span> <span class="n">error</span> <span class="n">message</span> 
+<span class="p">[</span><span class="mi">22</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mi">02</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">error</span> <span class="p">:</span> <span class="n">error</span> <span class="n">message</span> 
 
-<span class="p">[</span><span class="mi">16</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mi">50</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">critical</span> <span class="p">:</span> <span class="n">critical</span> <span class="n">message</span> 
+<span class="p">[</span><span class="mi">22</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mi">02</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">critical</span> <span class="p">:</span> <span class="n">critical</span> <span class="n">message</span> 
 
 </pre></div>
 </div>
@@ -749,17 +749,17 @@ switching between the file and console loggers.</p>
 </div>
 <div class="literal-block-wrapper docutils container" id="id30">
 <div class="code-block-caption"><span class="caption-text">Output</span><a class="headerlink" href="#id30" title="Permalink to this code"></a></div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">16</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mi">50</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">trace</span> <span class="p">:</span> <span class="n">trace</span> <span class="n">message</span> 
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">22</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mi">02</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">trace</span> <span class="p">:</span> <span class="n">trace</span> <span class="n">message</span> 
 
-<span class="p">[</span><span class="mi">16</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mi">50</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">info</span> <span class="p">:</span> <span class="n">info</span> <span class="n">message</span> 
+<span class="p">[</span><span class="mi">22</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mi">02</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">info</span> <span class="p">:</span> <span class="n">info</span> <span class="n">message</span> 
 
-<span class="p">[</span><span class="mi">16</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mi">50</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">debug</span> <span class="p">:</span> <span class="n">debug</span> <span class="n">message</span> 
+<span class="p">[</span><span class="mi">22</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mi">02</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">debug</span> <span class="p">:</span> <span class="n">debug</span> <span class="n">message</span> 
 
-<span class="p">[</span><span class="mi">16</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mi">50</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">warning</span> <span class="p">:</span> <span class="n">warn</span> <span class="n">message</span> 
+<span class="p">[</span><span class="mi">22</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mi">02</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">warning</span> <span class="p">:</span> <span class="n">warn</span> <span class="n">message</span> 
 
-<span class="p">[</span><span class="mi">16</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mi">50</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">error</span> <span class="p">:</span> <span class="n">error</span> <span class="n">message</span> 
+<span class="p">[</span><span class="mi">22</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mi">02</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">error</span> <span class="p">:</span> <span class="n">error</span> <span class="n">message</span> 
 
-<span class="p">[</span><span class="mi">16</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mi">50</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">critical</span> <span class="p">:</span> <span class="n">critical</span> <span class="n">message</span> 
+<span class="p">[</span><span class="mi">22</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mi">02</span> <span class="o">+</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>  <span class="n">critical</span> <span class="p">:</span> <span class="n">critical</span> <span class="n">message</span> 
 
 </pre></div>
 </div>

@@ -1,1 +1,2 @@
 check logger filename: "D:\\libOmexMeta\\cmake-build-release\\docs\\log.log"
+[22:31:02 +01:00]  error : syntax error at '<' 

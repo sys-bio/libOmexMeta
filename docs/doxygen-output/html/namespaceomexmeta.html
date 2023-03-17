@@ -677,6 +677,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>ResultsMap_delete</b>
 <tr class="separator:a6434b2cffea803818b02bf9a7584b263"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a401a97ce4b2a6c22f92b774091289ef8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classredland_1_1Logger.html">Logger</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceomexmeta.html#a401a97ce4b2a6c22f92b774091289ef8">Logger_getLogger</a> ()</td></tr>
 <tr class="separator:a401a97ce4b2a6c22f92b774091289ef8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6fda6aa1d67038b7acdc1185036b7b4c"><td class="memItemLeft" align="right" valign="top"><a id="a6fda6aa1d67038b7acdc1185036b7b4c"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>Logger_deleteLogger</b> (<a class="el" href="classredland_1_1Logger.html">Logger</a> *logger)</td></tr>
+<tr class="separator:a6fda6aa1d67038b7acdc1185036b7b4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a00b49a350dca49a197c8b96920c6336b"><td class="memItemLeft" align="right" valign="top"><a id="a00b49a350dca49a197c8b96920c6336b"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>Logger_setFormatter</b> (const char *format)</td></tr>
 <tr class="separator:a00b49a350dca49a197c8b96920c6336b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -723,10 +726,10 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>Logger_critical</b> (
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceomexmeta.html#add6b47623eee669e86e1157b04d8a998">Logger_clear</a> ()</td></tr>
 <tr class="memdesc:add6b47623eee669e86e1157b04d8a998"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear the logging messages - aka put size back to 0. <br /></td></tr>
 <tr class="separator:add6b47623eee669e86e1157b04d8a998"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a061d1e87254a58591be4336669762958"><td class="memItemLeft" align="right" valign="top"><a id="a061d1e87254a58591be4336669762958"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceomexmeta.html#a061d1e87254a58591be4336669762958">Logger_size</a> ()</td></tr>
-<tr class="memdesc:a061d1e87254a58591be4336669762958"><td class="mdescLeft">&#160;</td><td class="mdescRight">get number of logged messages <br /></td></tr>
-<tr class="separator:a061d1e87254a58591be4336669762958"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e33120634342e3f893785389b1a61ad"><td class="memItemLeft" align="right" valign="top"><a id="a8e33120634342e3f893785389b1a61ad"></a>
+unsigned long long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceomexmeta.html#a8e33120634342e3f893785389b1a61ad">Logger_size</a> ()</td></tr>
+<tr class="memdesc:a8e33120634342e3f893785389b1a61ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">get number of logged messages <br /></td></tr>
+<tr class="separator:a8e33120634342e3f893785389b1a61ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0bccdc9cd01a73aedeb5cc8a585daccb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classredland_1_1Message.html">Message</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceomexmeta.html#a0bccdc9cd01a73aedeb5cc8a585daccb">Logger_getMessageI</a> (int idx)</td></tr>
 <tr class="memdesc:a0bccdc9cd01a73aedeb5cc8a585daccb"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the ith log message.  <a href="namespaceomexmeta.html#a0bccdc9cd01a73aedeb5cc8a585daccb">More...</a><br /></td></tr>
 <tr class="separator:a0bccdc9cd01a73aedeb5cc8a585daccb"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1005,7 +1008,7 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>LAST_ERROR</b>
 <p>get the ith log message. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">idx</td><td>between 0 and <a class="el" href="namespaceomexmeta.html#a061d1e87254a58591be4336669762958" title="get number of logged messages">Logger_size()</a> - 1. </td></tr>
+    <tr><td class="paramname">idx</td><td>between 0 and <a class="el" href="namespaceomexmeta.html#a8e33120634342e3f893785389b1a61ad" title="get number of logged messages">Logger_size()</a> - 1. </td></tr>
   </table>
   </dd>
 </dl>

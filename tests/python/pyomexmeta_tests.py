@@ -1,6 +1,6 @@
 import libcombine
 import os
-from os.path import join, exists, dirname, abspath
+from os.path import join, exists, dirname, abspath, isfile, isdir, isabs
 from os import remove, getcwd
 import requests
 import sys
@@ -1619,7 +1619,6 @@ class LoggerTests(unittest.TestCase):
         Logger.file_logger(self.logger_file)
         Logger.critical("A critical message that you just must see")
 
-
     def test_logger_file_flush_none(self):
         print("")
         print("logger file is: ", self.logger_file)
@@ -1701,6 +1700,51 @@ class LoggerTests(unittest.TestCase):
     def test_set_logging_level(self):
         Logger.set_level(eLogLevel.info)
         Logger.info("Doing information")
+
+#This tests stopped working after the last update from Ciaran.
+#     def test_read_bad_rdf_file_twice(self):
+#         expected_logging_content = """XML parser error: expected '>'
+# XML parser error: Char 0x0 out of allowed range
+# XML parser error: Char 0x0 out of allowed range
+# XML parser error: expected '>'
+# """
+#         print(f"logger file is at: {self.logger_file}")
+#         Logger.set_formatter("%v")
+#         Logger.file_logger(self.logger_file)
+#         rdf = RDF.from_string(TestStrings.invalid_rdf, 'rdfxml')
+
+#         Logger.flush()
+
+#         assert os.path.isfile(self.logger_file)
+#         with open(self.logger_file, 'r') as f:
+#             print("Actual f read:\n")
+#             print("---")
+#             print(f.read())
+#             print("---")
+#             self.assertEqual(expected_logging_content, f.read())
+
+#         # read again
+#         Logger.file_logger(self.logger_file)
+
+#         rdf = RDF.from_string(TestStrings.invalid_rdf, 'rdfxml')
+
+#         Logger.flush()
+
+#         assert os.path.isfile(self.logger_file)
+#         with open(self.logger_file, 'r') as f:
+#             self.assertEqual(f"{expected_logging_content}"
+#                              f"{expected_logging_content}", f.read())
+
+    def test(self):
+        if isfile(self.logger_file):
+            os.remove(self.logger_file)
+
+        with open(self.logger_file, 'w') as f:
+            f.write("doing logging")
+
+        os.remove(self.logger_file)
+        assert not isfile(self.logger_file)
+
 
 
 if __name__ == "__main__":

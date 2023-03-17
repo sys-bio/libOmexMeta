@@ -6,25 +6,42 @@
     <includes local="yes">spdlog/common.h</includes>
     <includedby refid="Message_8cpp" local="yes">src/redland/RedlandWrapper/src/Message.cpp</includedby>
     <includedby refid="Logger_8h" local="yes">src/redland/RedlandWrapper/src/include/redland/Logger.h</includedby>
+    <includedby refid="LoggerStore_8h" local="yes">src/redland/RedlandWrapper/src/include/redland/LoggerStore.h</includedby>
     <incdepgraph>
-      <node id="6">
+      <node id="7">
         <label>stdarg.h</label>
       </node>
-      <node id="8">
+      <node id="9">
         <label>rasqal.h</label>
         <link refid="rasqal_8h_source"/>
-        <childnode refid="7" relation="include">
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="28">
+        <label>filesystem</label>
+      </node>
+      <node id="3">
+        <label>LoggerStore.h</label>
+        <link refid="LoggerStore_8h_source"/>
+        <childnode refid="1" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
       </node>
-      <node id="27">
-        <label>filesystem</label>
-      </node>
-      <node id="12">
+      <node id="13">
         <label>rdf_init.h</label>
       </node>
-      <node id="29">
+      <node id="30">
         <label>spdlog/common.h</label>
       </node>
       <node id="1">
@@ -32,104 +49,104 @@
         <link refid="Message_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="29" relation="include">
+        <childnode refid="30" relation="include">
         </childnode>
       </node>
-      <node id="23">
+      <node id="24">
         <label>rdf_stream.h</label>
       </node>
-      <node id="15">
+      <node id="16">
         <label>rdf_node.h</label>
       </node>
-      <node id="19">
+      <node id="20">
         <label>rdf_storage.h</label>
       </node>
-      <node id="24">
+      <node id="25">
         <label>rdf_query.h</label>
       </node>
-      <node id="28">
+      <node id="29">
         <label>string</label>
       </node>
       <node id="2">
         <label>Logger.h</label>
         <link refid="Logger_8h_source"/>
-        <childnode refid="1" relation="include">
-        </childnode>
         <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="1" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="26" relation="include">
+        <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="27" relation="include">
         </childnode>
         <childnode refid="28" relation="include">
         </childnode>
-      </node>
-      <node id="13">
-        <label>rdf_iterator.h</label>
-      </node>
-      <node id="21">
-        <label>rdf_raptor.h</label>
-      </node>
-      <node id="20">
-        <label>rdf_parser.h</label>
-      </node>
-      <node id="26">
-        <label>spdlog/spdlog.h</label>
-      </node>
-      <node id="7">
-        <label>redland_export.h</label>
-      </node>
-      <node id="18">
-        <label>rdf_model.h</label>
-      </node>
-      <node id="16">
-        <label>rdf_concepts.h</label>
-      </node>
-      <node id="11">
-        <label>rdf_hash.h</label>
+        <childnode refid="29" relation="include">
+        </childnode>
       </node>
       <node id="14">
+        <label>rdf_iterator.h</label>
+      </node>
+      <node id="22">
+        <label>rdf_raptor.h</label>
+      </node>
+      <node id="21">
+        <label>rdf_parser.h</label>
+      </node>
+      <node id="27">
+        <label>spdlog/spdlog.h</label>
+      </node>
+      <node id="8">
+        <label>redland_export.h</label>
+      </node>
+      <node id="19">
+        <label>rdf_model.h</label>
+      </node>
+      <node id="17">
+        <label>rdf_concepts.h</label>
+      </node>
+      <node id="12">
+        <label>rdf_hash.h</label>
+      </node>
+      <node id="15">
         <label>rdf_uri.h</label>
       </node>
-      <node id="4">
+      <node id="5">
         <label>raptor2.h</label>
         <link refid="raptor2_8h_source"/>
-        <childnode refid="5" relation="include">
-        </childnode>
         <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
-      </node>
-      <node id="9">
-        <label>rdf_log.h</label>
-      </node>
-      <node id="17">
-        <label>rdf_statement.h</label>
-      </node>
-      <node id="22">
-        <label>rdf_serializer.h</label>
-      </node>
-      <node id="25">
-        <label>rdf_utf8.h</label>
-      </node>
-      <node id="5">
-        <label>stdio.h</label>
-      </node>
-      <node id="3">
-        <label>librdf.h</label>
-        <link refid="librdf_8h_source"/>
-        <childnode refid="4" relation="include">
-        </childnode>
         <childnode refid="8" relation="include">
         </childnode>
+      </node>
+      <node id="10">
+        <label>rdf_log.h</label>
+      </node>
+      <node id="18">
+        <label>rdf_statement.h</label>
+      </node>
+      <node id="23">
+        <label>rdf_serializer.h</label>
+      </node>
+      <node id="26">
+        <label>rdf_utf8.h</label>
+      </node>
+      <node id="6">
+        <label>stdio.h</label>
+      </node>
+      <node id="4">
+        <label>librdf.h</label>
+        <link refid="librdf_8h_source"/>
         <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="9" relation="include">
+        <childnode refid="7" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
@@ -163,8 +180,10 @@
         </childnode>
         <childnode refid="25" relation="include">
         </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
       </node>
-      <node id="10">
+      <node id="11">
         <label>rdf_digest.h</label>
       </node>
     </incdepgraph>
@@ -209,6 +228,12 @@
         <label>src/omexmeta/include/omexmeta/Query.h</label>
         <link refid="Query_8h_source"/>
       </node>
+      <node id="41">
+        <label>src/redland/RedlandWrapper/src/include/redland/LoggerStore.h</label>
+        <link refid="LoggerStore_8h_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
       <node id="5">
         <label>src/omexmeta/include/omexmeta/RDF.h</label>
         <link refid="RDF_8h_source"/>
@@ -239,6 +264,8 @@
         <label>src/redland/RedlandWrapper/src/include/redland/Message.h</label>
         <link refid="Message_8h"/>
         <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
         </childnode>
       </node>
       <node id="30">
@@ -620,31 +647,32 @@
 <codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">redland<sp/>{</highlight></codeline>
 <codeline lineno="12"><highlight class="normal"></highlight></codeline>
 <codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">Logger;</highlight></codeline>
-<codeline lineno="14"><highlight class="normal"></highlight></codeline>
-<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>LogLevel<sp/>=<sp/>spdlog::level::level_enum;</highlight></codeline>
-<codeline lineno="16"><highlight class="normal"></highlight></codeline>
-<codeline lineno="20" refid="classredland_1_1Message" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classredland_1_1Message" kindref="compound">Message</ref><sp/>{</highlight></codeline>
-<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classredland_1_1Message" kindref="compound">Message</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classredland_1_1Message" kindref="compound">Message</ref>(LogLevel<sp/>level,<sp/>std::string<sp/><sp/>message);</highlight></codeline>
-<codeline lineno="28"><highlight class="normal"></highlight></codeline>
-<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">friend</highlight><highlight class="normal"><sp/>std::ostream&amp;<sp/>operator&lt;&lt;(std::ostream&amp;<sp/>os,<sp/><ref refid="classredland_1_1Message" kindref="compound">Message</ref><sp/>&amp;<sp/>message);</highlight></codeline>
-<codeline lineno="30"><highlight class="normal"></highlight></codeline>
-<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LogLevel<sp/><ref refid="classredland_1_1Message_1a863bce000126e29257184cc0ae24f229" kindref="member">getLevel</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="35"><highlight class="normal"></highlight></codeline>
-<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;<ref refid="classredland_1_1Message_1a9169a0554e23413149228b6964f709bf" kindref="member">getMessage</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>setLevel(LogLevel<sp/>level);</highlight></codeline>
-<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>setMessage(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;message);</highlight></codeline>
-<codeline lineno="42"><highlight class="normal"></highlight></codeline>
-<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LogLevel<sp/>level_;</highlight></codeline>
-<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>message_;</highlight></codeline>
-<codeline lineno="46"><highlight class="normal"></highlight></codeline>
-<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
-<codeline lineno="48"><highlight class="normal"></highlight></codeline>
-<codeline lineno="49"><highlight class="normal">}</highlight><highlight class="comment">//<sp/>namespace<sp/>redland</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="50"><highlight class="normal"></highlight></codeline>
-<codeline lineno="51"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="comment">//LIBOMEXMETA_REDLANDERROR_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">LoggerStore;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>LogLevel<sp/>=<sp/>spdlog::level::level_enum;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21" refid="classredland_1_1Message" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classredland_1_1Message" kindref="compound">Message</ref><sp/>{</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classredland_1_1Message" kindref="compound">Message</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classredland_1_1Message" kindref="compound">Message</ref>(LogLevel<sp/>level,<sp/>std::string<sp/><sp/>message);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">friend</highlight><highlight class="normal"><sp/>std::ostream&amp;<sp/>operator&lt;&lt;(std::ostream&amp;<sp/>os,<sp/><ref refid="classredland_1_1Message" kindref="compound">Message</ref><sp/>&amp;<sp/>message);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LogLevel<sp/><ref refid="classredland_1_1Message_1a863bce000126e29257184cc0ae24f229" kindref="member">getLevel</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;<ref refid="classredland_1_1Message_1a9169a0554e23413149228b6964f709bf" kindref="member">getMessage</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>setLevel(LogLevel<sp/>level);</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>setMessage(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;message);</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LogLevel<sp/>level_;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>message_;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal">}</highlight><highlight class="comment">//<sp/>namespace<sp/>redland</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="comment">//LIBOMEXMETA_REDLANDERROR_H</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="src/redland/RedlandWrapper/src/include/redland/Message.h"/>
   </compounddef>

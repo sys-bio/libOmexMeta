@@ -1562,18 +1562,21 @@ namespace omexmeta {
      * Logger
      */
 
-    Logger *Logger_getLogger() {
-        try {
-            return Logger::getLogger();
-        } catch (std::exception &e) {
-            setLastError(e.what());
-            return nullptr;
+    Logger* Logger_getLogger(){
+        return new Logger;
+    }
+
+    void Logger_deleteLogger(Logger* logger){
+        if (logger){
+            delete logger;
+            logger = nullptr;
         }
     }
+    
 
     void Logger_setFormatter(const char *format) {
         try {
-            Logger::getLogger()->setFormatter(format);
+            Logger().setFormatter(format);
         } catch (std::exception &e) {
             setLastError(e.what());
         }
@@ -1581,7 +1584,7 @@ namespace omexmeta {
 
     void Logger_setLevel(LogLevel level) {
         try {
-            Logger::getLogger()->setLevel(level);
+            Logger().setLevel(level);
         } catch (std::exception &e) {
             setLastError(e.what());
         }
@@ -1589,7 +1592,7 @@ namespace omexmeta {
 
     int Logger_getLevel() {
         try {
-            return (int) Logger::getLogger()->getLevel();
+            return (int) Logger().getLevel();
         } catch (std::exception &e) {
             setLastError(e.what());
             return -1;
@@ -1598,7 +1601,7 @@ namespace omexmeta {
 
     void Logger_enableBacktrace(int num) {
         try {
-            Logger::getLogger()->enableBacktrace(num);
+            Logger().enableBacktrace(num);
         } catch (std::exception &e) {
             setLastError(e.what());
         }
@@ -1606,7 +1609,7 @@ namespace omexmeta {
 
     void Logger_disableBacktrace() {
         try {
-            Logger::getLogger()->disableBacktrace();
+            Logger().disableBacktrace();
         } catch (std::exception &e) {
             setLastError(e.what());
         }
@@ -1614,7 +1617,7 @@ namespace omexmeta {
 
     void Logger_dumpBacktrace() {
         try {
-            Logger::getLogger()->dumpBacktrace();
+            Logger().dumpBacktrace();
         } catch (std::exception &e) {
             setLastError(e.what());
         }
@@ -1622,7 +1625,7 @@ namespace omexmeta {
 
     void Logger_consoleLogger() {
         try {
-            Logger::getLogger()->consoleLogger();
+            Logger().consoleLogger();
         } catch (std::exception &e) {
             setLastError(e.what());
         }
@@ -1630,7 +1633,7 @@ namespace omexmeta {
 
     void Logger_fileLogger(const char *filename) {
         try {
-            Logger::getLogger()->fileLogger(filename);
+            Logger().fileLogger(filename);
         } catch (std::exception &e) {
             setLastError(e.what());
         }
@@ -1638,7 +1641,7 @@ namespace omexmeta {
 
     void Logger_info(const char *message) {
         try {
-            Logger::getLogger()->info(message);
+            Logger().info(message);
         } catch (std::exception &e) {
             setLastError(e.what());
         }
@@ -1646,7 +1649,7 @@ namespace omexmeta {
 
     void Logger_trace(const char *message) {
         try {
-            Logger::getLogger()->trace(message);
+            Logger().trace(message);
         } catch (std::exception &e) {
             setLastError(e.what());
         }
@@ -1654,7 +1657,7 @@ namespace omexmeta {
 
     void Logger_debug(const char *message) {
         try {
-            Logger::getLogger()->debug(message);
+            Logger().debug(message);
         } catch (std::exception &e) {
             setLastError(e.what());
         }
@@ -1662,7 +1665,7 @@ namespace omexmeta {
 
     void Logger_warn(const char *message) {
         try {
-            Logger::getLogger()->warn(message);
+            Logger().warn(message);
         } catch (std::exception &e) {
             setLastError(e.what());
         }
@@ -1670,7 +1673,7 @@ namespace omexmeta {
 
     void Logger_error(const char *message) {
         try {
-            Logger::getLogger()->error(message);
+            Logger().error(message);
         } catch (std::exception &e) {
             setLastError(e.what());
         }
@@ -1678,7 +1681,7 @@ namespace omexmeta {
 
     void Logger_critical(const char *message) {
         try {
-            Logger::getLogger()->critical(message);
+            Logger().critical(message);
         } catch (std::exception &e) {
             setLastError(e.what());
         }
@@ -1686,15 +1689,15 @@ namespace omexmeta {
 
     void Logger_clear() {
         try {
-            Logger::getLogger()->clear();
+            Logger().clear();
         } catch (std::exception &e) {
             setLastError(e.what());
         }
     }
 
-    int Logger_size() {
+    unsigned long long Logger_size() {
         try {
-            return Logger::getLogger()->size();
+            return Logger().size();
         } catch (std::exception &e) {
             setLastError(e.what());
             return -1;
@@ -1704,7 +1707,7 @@ namespace omexmeta {
     Message *Logger_getMessageI(int idx) {
         try {
             Message *message = new Message;
-            Message msg = (*Logger::getLogger())[idx];
+            Message msg = Logger()[idx];
             message->setLevel(msg.getLevel());
             message->setMessage(msg.getMessage());
             return message;
@@ -1716,7 +1719,7 @@ namespace omexmeta {
 
     void Logger_flush() {
         try {
-            Logger::getLogger()->flush();
+            Logger().flush();
         } catch (std::exception &e) {
             setLastError(e.what());
         }
@@ -1724,7 +1727,7 @@ namespace omexmeta {
 
     void Logger_flushOn(int level) {
         try {
-            Logger::getLogger()->flushOn((LogLevel)level);
+            Logger().flushOn((LogLevel)level);
         } catch (std::exception &e) {
             setLastError(e.what());
             -1;

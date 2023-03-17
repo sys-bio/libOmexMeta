@@ -12,7 +12,7 @@ var searchData=
   ['addfromuri_9',['addFromUri',['../classomexmeta_1_1RDF.html#a602c7ca8ca94b151dd97b8a513cef0a4',1,'omexmeta::RDF']]],
   ['addlocation_10',['addLocation',['../classomexmeta_1_1PhysicalEntity.html#a82e77be3327c537b2426b571afaa5045',1,'omexmeta::PhysicalEntity']]],
   ['addmediator_11',['addMediator',['../classomexmeta_1_1PhysicalProcess.html#a5a4ee2c911331eb5196e25168b41ee31',1,'omexmeta::PhysicalProcess']]],
-  ['addmessage_12',['addMessage',['../classredland_1_1Logger.html#a30c31dbdfa17ea8555064025396b0595',1,'redland::Logger']]],
+  ['addmessage_12',['addMessage',['../classredland_1_1Logger.html#a30c31dbdfa17ea8555064025396b0595',1,'redland::Logger::addMessage()'],['../classredland_1_1LoggerStore.html#a09c7e83aa49f98e1b30f4b9a6590b9f1',1,'redland::LoggerStore::addMessage()']]],
   ['addnamespace_13',['addNamespace',['../classomexmeta_1_1Editor.html#a052a725cee8b8e577c55e977eee81ace',1,'omexmeta::Editor']]],
   ['addnamespacefromannotation_14',['addNamespaceFromAnnotation',['../classomexmeta_1_1Editor.html#a3fef7f1c38949b50239a9a07cc327d67',1,'omexmeta::Editor']]],
   ['addparentmodel_15',['addParentModel',['../classomexmeta_1_1Editor.html#a904a1beb0ba56ccfc1aca70d512030ed',1,'omexmeta::Editor']]],

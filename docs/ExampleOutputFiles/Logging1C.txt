@@ -1,4 +1,4 @@
-[16:33:49 +01:00]  error : syntax error at '<' 
+[22:31:01 +01:00]  error : syntax error at '<' 
 syntax error at '<'
 messageString: syntax error at '<'
 messageLevel: 4

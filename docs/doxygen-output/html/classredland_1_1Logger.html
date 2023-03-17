@@ -68,9 +68,7 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="classredland_1_1Logger-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -83,14 +81,12 @@ $(function() {
 
 <p><code>#include &lt;<a class="el" href="Logger_8h_source.html">Logger.h</a>&gt;</code></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
-Public Types</h2></td></tr>
-<tr class="memitem:a9e76412d869c3ff4497ce38ef7e3342d"><td class="memItemLeft" align="right" valign="top"><a id="a9e76412d869c3ff4497ce38ef7e3342d"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>LoggerPtr</b> = std::shared_ptr&lt; spdlog::logger &gt;</td></tr>
-<tr class="separator:a9e76412d869c3ff4497ce38ef7e3342d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:a0e046d7572c3756ed188fda9b7914bb4"><td class="memItemLeft" align="right" valign="top"><a id="a0e046d7572c3756ed188fda9b7914bb4"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredland_1_1Logger.html#a0e046d7572c3756ed188fda9b7914bb4">Logger</a> ()</td></tr>
+<tr class="memdesc:a0e046d7572c3756ed188fda9b7914bb4"><td class="mdescLeft">&#160;</td><td class="mdescRight">constructor is private <br /></td></tr>
+<tr class="separator:a0e046d7572c3756ed188fda9b7914bb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac358531893ec79d169ec449aae2cc5c0"><td class="memItemLeft" align="right" valign="top"><a id="ac358531893ec79d169ec449aae2cc5c0"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredland_1_1Logger.html#ac358531893ec79d169ec449aae2cc5c0">setFormatter</a> (const std::string &amp;format)</td></tr>
 <tr class="memdesc:ac358531893ec79d169ec449aae2cc5c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">formatter strings use the {fmt} library. See documentation here: <a href="https://fmt.dev/latest/index.html">https://fmt.dev/latest/index.html</a> <br /></td></tr>
@@ -152,9 +148,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memitem:aee656a6c8590b0e6d3233eefcbc96dff"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classredland_1_1Message.html">Message</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredland_1_1Logger.html#aee656a6c8590b0e6d3233eefcbc96dff">operator[]</a> (int idx)</td></tr>
 <tr class="memdesc:aee656a6c8590b0e6d3233eefcbc96dff"><td class="mdescLeft">&#160;</td><td class="mdescRight">get a specific logging message based on the numerical index.  <a href="classredland_1_1Logger.html#aee656a6c8590b0e6d3233eefcbc96dff">More...</a><br /></td></tr>
 <tr class="separator:aee656a6c8590b0e6d3233eefcbc96dff"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af875a9fae3bb610584c636e0d6ff7070"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredland_1_1Logger.html#af875a9fae3bb610584c636e0d6ff7070">size</a> ()</td></tr>
-<tr class="memdesc:af875a9fae3bb610584c636e0d6ff7070"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the number of logging messages currently stored in the <a class="el" href="classredland_1_1Logger.html" title="Logging class for libOmexMeta. Implemented as a singleton.">Logger</a>.  <a href="classredland_1_1Logger.html#af875a9fae3bb610584c636e0d6ff7070">More...</a><br /></td></tr>
-<tr class="separator:af875a9fae3bb610584c636e0d6ff7070"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27e4ed445b6c5aa5adcf0bc8cce3cd6a"><td class="memItemLeft" align="right" valign="top">unsigned long long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredland_1_1Logger.html#a27e4ed445b6c5aa5adcf0bc8cce3cd6a">size</a> ()</td></tr>
+<tr class="memdesc:a27e4ed445b6c5aa5adcf0bc8cce3cd6a"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the number of logging messages currently stored in the <a class="el" href="classredland_1_1Logger.html" title="Logging class for libOmexMeta. Implemented as a singleton.">Logger</a>.  <a href="classredland_1_1Logger.html#a27e4ed445b6c5aa5adcf0bc8cce3cd6a">More...</a><br /></td></tr>
+<tr class="separator:a27e4ed445b6c5aa5adcf0bc8cce3cd6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a30c31dbdfa17ea8555064025396b0595"><td class="memItemLeft" align="right" valign="top"><a id="a30c31dbdfa17ea8555064025396b0595"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredland_1_1Logger.html#a30c31dbdfa17ea8555064025396b0595">addMessage</a> (LogLevel level, const std::string &amp;message)</td></tr>
 <tr class="memdesc:a30c31dbdfa17ea8555064025396b0595"><td class="mdescLeft">&#160;</td><td class="mdescRight">append a new message to the logger. <br /></td></tr>
@@ -171,21 +167,10 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memdesc:a63cf9aadf21df23188b4770208695669"><td class="mdescLeft">&#160;</td><td class="mdescRight">flush logger content for  <a href="classredland_1_1Logger.html#a63cf9aadf21df23188b4770208695669">More...</a><br /></td></tr>
 <tr class="separator:a63cf9aadf21df23188b4770208695669"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
-Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a371ea8132ab82e1c783b74bd6bcf38c5"><td class="memItemLeft" align="right" valign="top"><a id="a371ea8132ab82e1c783b74bd6bcf38c5"></a>
-static <a class="el" href="classredland_1_1Logger.html">Logger</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>getLogger</b> ()</td></tr>
-<tr class="separator:a371ea8132ab82e1c783b74bd6bcf38c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a9bc7671c63a3d7c3953a4d65d8570936"><td class="memItemLeft" align="right" valign="top"><a id="a9bc7671c63a3d7c3953a4d65d8570936"></a>
-LoggerPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredland_1_1Logger.html#a9bc7671c63a3d7c3953a4d65d8570936">logger</a></td></tr>
-<tr class="memdesc:a9bc7671c63a3d7c3953a4d65d8570936"><td class="mdescLeft">&#160;</td><td class="mdescRight">reference to the currently active logger <br /></td></tr>
-<tr class="separator:a9bc7671c63a3d7c3953a4d65d8570936"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acfe5e473ffe0cb34b45ab69ab7675358"><td class="memItemLeft" align="right" valign="top"><a id="acfe5e473ffe0cb34b45ab69ab7675358"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredland_1_1Logger.html#acfe5e473ffe0cb34b45ab69ab7675358">isFileLogger</a> = false</td></tr>
-<tr class="memdesc:acfe5e473ffe0cb34b45ab69ab7675358"><td class="mdescLeft">&#160;</td><td class="mdescRight">indicator, true when the file logger is active <br /></td></tr>
+<tr class="memitem:acfe5e473ffe0cb34b45ab69ab7675358"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredland_1_1Logger.html#acfe5e473ffe0cb34b45ab69ab7675358">isFileLogger</a> = false</td></tr>
+<tr class="memdesc:acfe5e473ffe0cb34b45ab69ab7675358"><td class="mdescLeft">&#160;</td><td class="mdescRight">reference to the currently active logger  <a href="classredland_1_1Logger.html#acfe5e473ffe0cb34b45ab69ab7675358">More...</a><br /></td></tr>
 <tr class="separator:acfe5e473ffe0cb34b45ab69ab7675358"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a83c2fde7dc2b6547053d690e63c0f73d"><td class="memItemLeft" align="right" valign="top"><a id="a83c2fde7dc2b6547053d690e63c0f73d"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classredland_1_1Logger.html#a83c2fde7dc2b6547053d690e63c0f73d">isConsoleLogger</a> = false</td></tr>
@@ -300,14 +285,14 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 
 </div>
 </div>
-<a id="af875a9fae3bb610584c636e0d6ff7070"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af875a9fae3bb610584c636e0d6ff7070">&#9670;&nbsp;</a></span>size()</h2>
+<a id="a27e4ed445b6c5aa5adcf0bc8cce3cd6a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a27e4ed445b6c5aa5adcf0bc8cce3cd6a">&#9670;&nbsp;</a></span>size()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int redland::Logger::size </td>
+          <td class="memname">unsigned long long redland::Logger::size </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -317,6 +302,24 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 
 <p>returns the number of logging messages currently stored in the <a class="el" href="classredland_1_1Logger.html" title="Logging class for libOmexMeta. Implemented as a singleton.">Logger</a>. </p>
 <p>this is reset to 0 when <a class="el" href="classredland_1_1Logger.html#aea11131258193a5591138b72dd89bb4b" title="remove the cache of stored logging messages.">Logger::clear</a> is called </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="acfe5e473ffe0cb34b45ab69ab7675358"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acfe5e473ffe0cb34b45ab69ab7675358">&#9670;&nbsp;</a></span>isFileLogger</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool redland::Logger::isFileLogger = false</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>reference to the currently active logger </p>
+<p>indicator, true when the file logger is active </p>
 
 </div>
 </div>

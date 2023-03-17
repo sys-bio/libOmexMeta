@@ -17,67 +17,67 @@ public:
     std::filesystem::path p = std::filesystem::current_path() / "log.log";
     LoggerTests() = default;
 
-    ~LoggerTests() override{
-        if (std::filesystem::exists(p)){
+    ~LoggerTests() override {
+        if (std::filesystem::exists(p)) {
             try {
                 std::filesystem::remove(p);
-            } catch (std::exception& e){
+            } catch (std::exception &e) {
                 REDLAND_INFO(e.what());
             }
         }
+        Logger().clear();
     }
 };
 
-TEST_F(LoggerTests, DefaultLevel){
-    auto actual = Logger::getLogger()->getLevel();
+TEST_F(LoggerTests, DefaultLevel) {
+    auto actual = Logger().getLevel();
     auto expected = LogLevel::warn;
     ASSERT_EQ(expected, actual);
+    Logger().clear();
 }
 
-TEST_F(LoggerTests, UseConsoleLoggerOutOfTheBox){
-    // needs to be called at least once, otherwise we'll
-    // not have init the omexmeta logger, and we'll just
-    // be using the spdlog defaults.
-    Logger::getLogger();
+TEST_F(LoggerTests, UseConsoleLoggerOutOfTheBox) {
     // should not output to console
     REDLAND_INFO("Not displayed to console");
     // should output to console
     REDLAND_WARN("Displayed to console");
+    Logger().clear();
 }
 
-TEST_F(LoggerTests, SwitchToFileLogger){
+TEST_F(LoggerTests, SwitchToFileLogger) {
     std::filesystem::path fname = std::filesystem::current_path() / "log.log";
-    Logger::getLogger()->fileLogger(fname);
+    Logger().fileLogger(fname);
     // should not output to console
     REDLAND_INFO("Not displayed to console");
     // should output to console
     REDLAND_WARN("Displayed to console");
     ASSERT_TRUE(std::filesystem::exists(fname));
+    Logger().clear();
 }
 
 TEST_F(LoggerTests, UseFileLogger) {
     LibrdfStorage storage;
     LibrdfModel model(storage);
-    Logger::getLogger()->setLevel(LogLevel::info);
-    std::cout<< p << std::endl;
-    Logger::getLogger()->fileLogger(p);
+    Logger().setLevel(LogLevel::info);
+    std::cout << p << std::endl;
+    Logger().fileLogger(p);
     std::string sbml = SBMLFactory::getSBML(SBML_INVALID_METAIDS);
     redland::LibrdfParser parser("turtle");
     parser.parseString(sbml, model, "Nothing");
     ASSERT_TRUE(std::filesystem::exists(p));
+    Logger().clear();
 }
-
 
 
 TEST_F(LoggerTests, UseFileLoggerReproduceIssue128) {
     // if file already exists remove
-    if (std::filesystem::exists(p)){
+    if (std::filesystem::exists(p)) {
         std::filesystem::remove(p);
     }
-    std::cout<< p << std::endl;
-    Logger::getLogger()->fileLogger(p);
+    std::cout << p << std::endl;
+    Logger().fileLogger(p);
 
-    Logger::getLogger()->setLevel(LogLevel::info);
+    Logger().setLevel(LogLevel::info);
     ASSERT_TRUE(std::filesystem::exists(p));
 
     REDLAND_INFO("INFO");
@@ -86,46 +86,30 @@ TEST_F(LoggerTests, UseFileLoggerReproduceIssue128) {
     REDLAND_WARN("WARN");
     REDLAND_ERROR("ERROR");
     REDLAND_CRITICAL("CRITICAL");
+    Logger().clear();
 }
 
 
 TEST_F(LoggerTests, CollectLogMessageSize) {
+    LOGGER_SET_WARN();
     REDLAND_INFO("INFO");
     REDLAND_TRACE("TRACE");
     REDLAND_DEBUG("DEBUG");
     REDLAND_WARN("WARN");
     REDLAND_ERROR("ERROR");
     REDLAND_CRITICAL("CRITICAL");
-    std::cout << "logger get level: " << Logger::getLogger()->getLevel() << std::endl;
-    for (auto i: Logger::getLogger()->getMessages()){
+    std::cout << "logger get level: " << Logger().getLevel() << std::endl;
+    for (auto i : Logger().getMessages()) {
         std::cout << i << std::endl;
     }
-    ASSERT_EQ(3, Logger::getLogger()->size());
+    ASSERT_EQ(3, Logger().size());
+    Logger().clear();
 }
 
-TEST_F(LoggerTests, GetLogMessage){
+TEST_F(LoggerTests, GetLogMessage) {
     LOGGER_SET_INFO();
     REDLAND_INFO("INFO");
-    std::string msg = (*Logger::getLogger())[0].getMessage();
+    std::string msg = Logger()[0].getMessage();
     ASSERT_STREQ("INFO", msg.c_str());
+    Logger().clear();
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

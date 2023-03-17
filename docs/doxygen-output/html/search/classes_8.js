@@ -14,5 +14,6 @@ var searchData=
   ['librdfstream_398',['LibrdfStream',['../classredland_1_1LibrdfStream.html',1,'redland']]],
   ['librdfuri_399',['LibrdfUri',['../classredland_1_1LibrdfUri.html',1,'redland']]],
   ['librdfworld_400',['LibrdfWorld',['../classredland_1_1LibrdfWorld.html',1,'redland']]],
-  ['logger_401',['Logger',['../classredland_1_1Logger.html',1,'redland']]]
+  ['logger_401',['Logger',['../classredland_1_1Logger.html',1,'redland']]],
+  ['loggerstore_402',['LoggerStore',['../classredland_1_1LoggerStore.html',1,'redland']]]
 ];

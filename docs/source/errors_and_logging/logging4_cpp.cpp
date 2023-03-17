@@ -21,7 +21,7 @@ int main(){
     if (std::filesystem::exists(fname)) {
         std::filesystem::remove(fname);
     }
-    Logger::getLogger()->fileLogger(fname);
+    Logger().fileLogger(fname);
     RDF rdf = RDF::fromString(cellml, "turtle");
     // now check Logger::getLogger()::file;
     return 0;

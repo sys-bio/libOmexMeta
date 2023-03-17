@@ -14,6 +14,7 @@
     <innerclass refid="classredland_1_1LibrdfUri" prot="public">redland::LibrdfUri</innerclass>
     <innerclass refid="classredland_1_1LibrdfWorld" prot="public">redland::LibrdfWorld</innerclass>
     <innerclass refid="classredland_1_1Logger" prot="public">redland::Logger</innerclass>
+    <innerclass refid="classredland_1_1LoggerStore" prot="public">redland::LoggerStore</innerclass>
     <innerclass refid="classredland_1_1Message" prot="public">redland::Message</innerclass>
     <innerclass refid="classredland_1_1RaptorIOStream" prot="public">redland::RaptorIOStream</innerclass>
     <innerclass refid="classredland_1_1RedlandType" prot="public">redland::RedlandType</innerclass>
@@ -323,7 +324,20 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/redland/RedlandWrapper/src/include/redland/Logger.h" line="32" column="5" bodyfile="src/redland/RedlandWrapper/src/include/redland/Logger.h" bodystart="32" bodyend="-1"/>
+        <location file="src/redland/RedlandWrapper/src/include/redland/Logger.h" line="34" column="5" bodyfile="src/redland/RedlandWrapper/src/include/redland/Logger.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="Logger_8h_1a02baf25d22d098a1258da222db5bc086" prot="public" static="no">
+        <type>std::shared_ptr&lt; spdlog::logger &gt;</type>
+        <definition>using redland::SpdLogPtr = typedef std::shared_ptr&lt;spdlog::logger&gt;</definition>
+        <argsstring></argsstring>
+        <name>SpdLogPtr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/redland/RedlandWrapper/src/include/redland/Logger.h" line="72" column="5" bodyfile="src/redland/RedlandWrapper/src/include/redland/Logger.h" bodystart="72" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">

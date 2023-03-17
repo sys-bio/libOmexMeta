@@ -14,10 +14,10 @@ var searchData=
   ['librdfstream_189',['LibrdfStream',['../classredland_1_1LibrdfStream.html',1,'redland']]],
   ['librdfuri_190',['LibrdfUri',['../classredland_1_1LibrdfUri.html#a4992fcae8de6b2814b6c9061f8f3d5b8',1,'redland::LibrdfUri::LibrdfUri()'],['../classredland_1_1LibrdfUri.html',1,'redland::LibrdfUri']]],
   ['librdfworld_191',['LibrdfWorld',['../classredland_1_1LibrdfWorld.html',1,'redland']]],
-  ['logger_192',['logger',['../classredland_1_1Logger.html#a9bc7671c63a3d7c3953a4d65d8570936',1,'redland::Logger']]],
-  ['logger_193',['Logger',['../classredland_1_1Logger.html',1,'redland']]],
-  ['logger_5fclear_194',['Logger_clear',['../namespaceomexmeta.html#add6b47623eee669e86e1157b04d8a998',1,'omexmeta']]],
-  ['logger_5fgetlogger_195',['Logger_getLogger',['../namespaceomexmeta.html#a401a97ce4b2a6c22f92b774091289ef8',1,'omexmeta']]],
-  ['logger_5fgetmessagei_196',['Logger_getMessageI',['../namespaceomexmeta.html#a0bccdc9cd01a73aedeb5cc8a585daccb',1,'omexmeta']]],
-  ['logger_5fsize_197',['Logger_size',['../namespaceomexmeta.html#a061d1e87254a58591be4336669762958',1,'omexmeta']]]
+  ['logger_192',['Logger',['../classredland_1_1Logger.html#a0e046d7572c3756ed188fda9b7914bb4',1,'redland::Logger::Logger()'],['../classredland_1_1Logger.html',1,'redland::Logger']]],
+  ['logger_5fclear_193',['Logger_clear',['../namespaceomexmeta.html#add6b47623eee669e86e1157b04d8a998',1,'omexmeta']]],
+  ['logger_5fgetlogger_194',['Logger_getLogger',['../namespaceomexmeta.html#a401a97ce4b2a6c22f92b774091289ef8',1,'omexmeta']]],
+  ['logger_5fgetmessagei_195',['Logger_getMessageI',['../namespaceomexmeta.html#a0bccdc9cd01a73aedeb5cc8a585daccb',1,'omexmeta']]],
+  ['logger_5fsize_196',['Logger_size',['../namespaceomexmeta.html#a8e33120634342e3f893785389b1a61ad',1,'omexmeta']]],
+  ['loggerstore_197',['LoggerStore',['../classredland_1_1LoggerStore.html',1,'redland']]]
 ];

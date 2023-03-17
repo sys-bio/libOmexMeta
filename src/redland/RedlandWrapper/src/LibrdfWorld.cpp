@@ -14,29 +14,29 @@ namespace redland {
         // make sure logger has been called so we set default logger to
         // the ones we've built if this is the first time we've called
         // getLogger.
-        Logger::getLogger();
+        Logger();
 
         std::ostringstream log;
         log << message->message;
         switch (message->level) {
             case LIBRDF_LOG_INFO: {
-                Logger::getLogger()->info(log.str());
+                Logger().info(log.str());
                 break;
             }
             case LIBRDF_LOG_DEBUG: {
-                Logger::getLogger()->debug(log.str());
+                Logger().debug(log.str());
                 break;
             }
             case LIBRDF_LOG_WARN: {
-                Logger::getLogger()->warn(log.str());
+                Logger().warn(log.str());
                 break;
             }
             case LIBRDF_LOG_ERROR: {
-                Logger::getLogger()->error(log.str());
+                Logger().error(log.str());
                 break;
             }
             case LIBRDF_LOG_FATAL: {
-                Logger::getLogger()->critical(log.str());
+                Logger().critical(log.str());
                 break;
             }
             case LIBRDF_LOG_NONE: {
@@ -50,34 +50,34 @@ namespace redland {
         // make sure logger has been called so we set default logger to
         // the ones we've built if this is the first time we've called
         // getLogger.
-        Logger::getLogger();
+        Logger();
 
         std::ostringstream log;
         log << message->text;
 
         switch (message->level) {
             case RAPTOR_LOG_LEVEL_INFO: {
-                Logger::getLogger()->info(log.str());
+                Logger().info(log.str());
                 break;
             }
             case RAPTOR_LOG_LEVEL_TRACE: {
-                Logger::getLogger()->trace(log.str());
+                Logger().trace(log.str());
                 break;
             }
             case RAPTOR_LOG_LEVEL_DEBUG: {
-                Logger::getLogger()->debug(log.str());
+                Logger().debug(log.str());
                 break;
             }
             case RAPTOR_LOG_LEVEL_WARN: {
-                Logger::getLogger()->warn(log.str());
+                Logger().warn(log.str());
                 break;
             }
             case RAPTOR_LOG_LEVEL_ERROR: {
-                Logger::getLogger()->error(log.str());
+                Logger().error(log.str());
                 break;
             }
             case RAPTOR_LOG_LEVEL_FATAL: {
-                Logger::getLogger()->critical(log.str());
+                Logger().critical(log.str());
                 break;
             }
             case RAPTOR_LOG_LEVEL_NONE: {
@@ -134,9 +134,10 @@ namespace redland {
         rasqal_world_set_log_handler(LibrdfWorld::getRasqal(), userData, logging_func);
     }
     void LibrdfWorld::initLoggers() {
-        setLogHandler((void*)Logger::getLogger(), librdfLogHandler);
-        setRaptorLogHandler((void*)Logger::getLogger(), raptorLogHandler);
-        setRasqalLogHandler((void*)Logger::getLogger(), raptorLogHandler);
+        Logger logger;
+        setLogHandler((void*)&logger, librdfLogHandler);
+        setRaptorLogHandler((void*)&logger, raptorLogHandler);
+        setRasqalLogHandler((void*)&logger, raptorLogHandler);
     }
 
     LibrdfWorld::LibrdfWorld() = default;

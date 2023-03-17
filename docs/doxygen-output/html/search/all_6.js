@@ -16,7 +16,7 @@ var searchData=
   ['getlocationresources_107',['getLocationResources',['../classomexmeta_1_1PhysicalEntity.html#a5bca97a9f5195260bd44f72b6d29d87a',1,'omexmeta::PhysicalEntity']]],
   ['getmediators_108',['getMediators',['../classomexmeta_1_1PhysicalProcess.html#a349b76ad1831d2510904510583f0d7f2',1,'omexmeta::PhysicalProcess']]],
   ['getmessage_109',['getMessage',['../classredland_1_1Message.html#a9169a0554e23413149228b6964f709bf',1,'redland::Message']]],
-  ['getmessages_110',['getMessages',['../classredland_1_1Logger.html#aa7ad499cadd4e05655bf63f46e0db35a',1,'redland::Logger']]],
+  ['getmessages_110',['getMessages',['../classredland_1_1Logger.html#aa7ad499cadd4e05655bf63f46e0db35a',1,'redland::Logger::getMessages()'],['../classredland_1_1LoggerStore.html#abab4f589adcbdc63a69875aba1433666',1,'redland::LoggerStore::getMessages()']]],
   ['getmetaidbase_111',['getMetaidBase',['../classomexmeta_1_1Editor.html#af987e450e4bf9d75391ad3f5ac6233f6',1,'omexmeta::Editor::getMetaidBase()'],['../classomexmeta_1_1OmexMetaXml.html#a0971092abfca49f1510a83540047d2d0',1,'omexmeta::OmexMetaXml::getMetaidBase()']]],
   ['getmetaids_112',['getMetaids',['../classomexmeta_1_1Editor.html#a242c86222e1aeff337d3af22641db1de',1,'omexmeta::Editor']]],
   ['getmodel_113',['getModel',['../classomexmeta_1_1Editor.html#abfc5a972954cde4ec2112cc0e00a7ed3',1,'omexmeta::Editor']]],
