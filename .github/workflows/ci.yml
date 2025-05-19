@@ -179,7 +179,6 @@ jobs:
         if: matrix.platform.build_python == 'ON'
         shell: bash
         run: |
-          cd ${RUNNER_WORKSPACE}/libomexmeta
           ${{ env.python_v1_exe }} -m pip install --upgrade pip 
           ${{ env.python_v1_exe }} -m pip install -r ./requirements.txt
           ${{ env.python_v1_exe }} -m pip install -r ./test-requirements.txt
