@@ -18,4 +18,4 @@
 	url = https://github.com/gabime/spdlog.git
 [submodule "third_party/vcpkg"]
 	path = third_party/vcpkg
-	url = https://github.com/microsoft/vcpkg.git
+	url = https://github.com/microsoft/vcpkg
