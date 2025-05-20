@@ -297,7 +297,7 @@ jobs:
           # Change it to the right location if needed.
           vcpkgDirectory: '${{ github.workspace }}/third_party/vcpkg'
 
-      - name: Create build directory
+      - name: Install vcpkg modules.
         shell: bash
         run: vcpkg install curl pcre openssl yajl sqlite3 liblzma
 
@@ -327,7 +327,7 @@ jobs:
         shell: bash
         run: |
           cd ${RUNNER_WORKSPACE}/build-libomexmeta
-          cmake \
+          cmake $GITHUB_WORKSPACE \
           -DVCPKG_ROOT=_VCPKG_ROOT \
           -DCMAKE_INSTALL_PREFIX=$(INSTALL_DIRECTORY) \
           -DBUILD_TESTS=ON \
@@ -337,7 +337,6 @@ jobs:
           -DBUILD_DOCS=ON \
           -DBUILD_DOCS_EXAMPLES=ON  \
           -DSPHINX_EXECUTABLE=$(which sphinx-build) \
-          ..
 
       - name: Build and install libomexmeta
         shell: bash
