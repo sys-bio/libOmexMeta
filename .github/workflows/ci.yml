@@ -296,10 +296,11 @@ jobs:
           # This is the default location of the directory containing vcpkg sources.
           # Change it to the right location if needed.
           vcpkgDirectory: '${{ github.workspace }}/third_party/vcpkg'
+          runVcpkgInstall: true
 
-      - name: Install vcpkg modules.
-        shell: bash
-        run: vcpkg install curl pcre openssl yajl sqlite3 liblzma
+      #- name: Install vcpkg modules.
+      #  shell: bash
+      #  run: vcpkg install curl pcre openssl yajl sqlite3 liblzma
 
       - name: Save standardized os/compiler names
         shell: bash
