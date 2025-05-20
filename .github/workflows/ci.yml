@@ -290,6 +290,12 @@ jobs:
             ${{ runner.os }}-${{ steps.ccache_cache_timestamp.outputs.timestamp }}
             ${{ runner.os }}-
 
+      - name: Tell git it's OK to mess with working directory
+        if: matrix.platform.os_type == 'manylinux'
+        shell: bash
+        run: |
+          git config --global --add safe.directory ${{ github.workspace }}
+
       - name: Setup vcpkg
         uses: lukka/run-vcpkg@v11 
         with:
@@ -369,7 +375,7 @@ jobs:
           -DCMAKE_INSTALL_PREFIX="${RUNNER_WORKSPACE}/install-libomexmeta" \
           -DBUILD_TESTS=ON \
           -DCMAKE_BUILD_TYPE=Release \
-          -DBUILD_PYTHON=ON \
+          -DBUILD_PYTHON=${{ env.build_python }} \
           -DPython_ROOT_DIR=${{ env.python_v1_dir }} \
           -DBUILD_DOCS=OFF \
           -DBUILD_DOCS_EXAMPLES=ON  \
