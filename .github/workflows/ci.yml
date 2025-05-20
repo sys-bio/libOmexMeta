@@ -335,7 +335,7 @@ jobs:
           -DCMAKE_BUILD_TYPE=Release \
           -DBUILD_PYTHON=ON \
           -DPython_ROOT_DIR=${{ env.python_v1_dir }} \
-          -DBUILD_DOCS=ON \
+          -DBUILD_DOCS=OFF \
           -DBUILD_DOCS_EXAMPLES=ON  \
           -DSPHINX_EXECUTABLE=$(which sphinx-build) \
 
