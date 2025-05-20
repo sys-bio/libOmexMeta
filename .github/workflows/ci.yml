@@ -347,18 +347,18 @@ jobs:
           configurePresetAdditionalArgs: "['-DVCPKG_ROOT=${{ env.VCPKG_ROOT }}','-DCMAKE_INSTALL_PREFIX=\"${RUNNER_WORKSPACE}/install-libomexmeta\"', '-DBUILD_TESTS=ON', '-DCMAKE_BUILD_TYPE=Release', '-DBUILD_PYTHON=ON', '-DPython_ROOT_DIR=${{ env.python_v1_dir }}', -DBUILD_DOCS=OFF', '-DBUILD_DOCS_EXAMPLES=ON', '-DSPHINX_EXECUTABLE=$(which sphinx-build)', ]"
 
           # This is the name of the CMakePresets.json's configuration to build the project.
-          buildPreset: 'ninja-multi-vcpkg'
+          #buildPreset: 'ninja-multi-vcpkg'
           # Additional arguments can be appended when building, for example to specify the
           # configuration to build.
           # This is useful to reduce the number of CMake's Presets you need in CMakePresets.json.
-          buildPresetAdditionalArgs: "['--config ${{ matrix.platform.build_type }}']"
+          #buildPresetAdditionalArgs: "['--config ${{ matrix.platform.build_type }}']"
 
           # This is the name of the CMakePresets.json's configuration to test the project with.
-          testPreset: 'ninja-multi-vcpkg'
+          #testPreset: 'ninja-multi-vcpkg'
           # Additional arguments can be appended when testing, for example to specify the config
           # to test.
           # This is useful to reduce the number of CMake's Presets you need in CMakePresets.json.
-          testPresetAdditionalArgs: "['--config ${{ matrix.platform.build_type }}']"
+          #testPresetAdditionalArgs: "['--config ${{ matrix.platform.build_type }}']"
 
       # - name: Configure CMake for libomexmeta
       #   shell: bash
