@@ -328,7 +328,7 @@ jobs:
         run: |
           cd ${RUNNER_WORKSPACE}/build-libomexmeta
           cmake $GITHUB_WORKSPACE \
-          -DVCPKG_ROOT=_VCPKG_ROOT \
+          -DVCPKG_ROOT=${{ env.VCPKG_ROOT }} \
           -DCMAKE_INSTALL_PREFIX=$(INSTALL_DIRECTORY) \
           -DBUILD_TESTS=ON \
           -DCMAKE_BUILD_TYPE=Release \
