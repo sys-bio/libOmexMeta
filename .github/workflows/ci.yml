@@ -15,14 +15,14 @@ jobs:
       fail-fast: false
       matrix:
         platform:
-          - name: macos-13-release
+          - name: macos-15-intel-release
             os_type: macos
-            os_name: macos-13
+            os_name: macos-15-intel
             build_type: Release
             build_python: ON
-          - name: macos-13-debug
+          - name: macos-15-intel-debug
             os_type: macos
-            os_name: macos-13
+            os_name: macos-15-intel
             build_type: Debug
             build_python: OFF
           - name: macos-14-release
@@ -281,7 +281,7 @@ jobs:
 
       - name: Cache ccache files on non-Windows
         if: matrix.platform.os_type != 'windows'
-        uses: actions/cache@v4
+        uses: actions/cache@main
         with:
           path: ${RUNNER_WORKSPACE}/.ccache
           key:
@@ -297,7 +297,7 @@ jobs:
           git config --global --add safe.directory ${{ github.workspace }}
 
       - name: Setup vcpkg
-        uses: lukka/run-vcpkg@v11 
+        uses: lukka/run-vcpkg@main
         with:
           # This is the default location of the directory containing vcpkg sources.
           # Change it to the right location if needed.
@@ -423,7 +423,7 @@ jobs:
           echo "artifacts_path=${RUNNER_WORKSPACE}/install-libomexmeta" >> $GITHUB_ENV
 
       - name: Upload libomexmeta binaries
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@main
         with:
           name: ${{ env.artifacts_name }}
           path: ${{ env.artifacts_path }}
@@ -564,7 +564,7 @@ jobs:
 
       - name: Upload libomexmeta Python wheel artifacts
         if: matrix.platform.build_type == 'Release' && matrix.platform.build_python == 'ON'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@main
         with:
           name: ${{ env.libomexmeta_python_wheel_artifacts_name }}
           path: ${{ env.libomexmeta_python_wheel_artifacts_file }}
